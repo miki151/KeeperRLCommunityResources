@@ -1,1 +1,0 @@
-Upload your sprites into the correct subdirectory.
