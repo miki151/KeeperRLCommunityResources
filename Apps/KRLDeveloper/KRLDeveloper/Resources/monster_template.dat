@@ -1,0 +1,70 @@
+ "|ADAMANTIUM_GOLEM_2@Give this creature a unique ID. Anything which describes the monster but is not already used will do. Block capitals are recommended with underscores for spaces.|"
+    {
+      viewId = { "|ada_golem@What is the file name of the image file?|" }
+      viewIdUpgrades = { { "|NONE@Second file name?(Keepers only)|" } { "|NONE@Third file name?(Keepers only)|" } { "|NONE@Forth file name?(Keepers only)|" }}
+      attr = {
+        DAMAGE |20@What is this creature's damage stat?|
+        DEFENSE |20@What is the defense stat of this creature?| 
+        SPELL_DAMAGE |0@What is the spell damage stat of this creature?| 
+        RANGED_DAMAGE |0@What is the ranged damage stat of this creature?| 
+      }
+      body = {
+        type = |Humanoid/FourLegged/Bird/HumanoidLike/NonHumanoid@What type of body does this creature have?| |SMALL/MEDIUM/LARGE/HUGE@What size is this creature?|
+        material = |FLESH/SPIRIT/FIRE/WATER/UNDEAD_FLESH/BONE/ROCK/CLAY/WOOD/IRON/LAVA/ADA@Enter the material this creature is made of.|
+        weight = |100@What is the weight of this creature?(where 0.1 = fly, 500 = unicorn)||
+        addBodyPart = {
+          WING 2
+        }@Add two wings? [Note: birds would end up with 4 wings!](Y/N)|
+        |USE DEFAULT ATTACKS/Attack:FireFist/Attack:Punch/Attack:WeakBite/Attack:MagicHorn/Attack:InsaneTouch/Attack:LoveTouch/Attack:PoisonBite/Attack:FireBite/Attack:Claw/Attack:PoisonNibble/Attack:ClawAndBite/Attack:Bite@Select the unarmed attacks.|
+      }|
+      gender = FEMALE@Is this creature female?(Y/N)|
+	  hatedByEffect = |none/HATE_DWARVES/HATE_ELVES/HATE_GREENSKINS/HATE_HUMANS/HATE_UNDEAD@Choose the type of racism this creature might suffer.|
+      maxLevelIncrease = {
+        MELEE |20@How many melee levels can this creature train?|
+        SPELL |5@How many archery levels can this creature train?|
+        ARCHERY |0@How many spell levels can this creature train?|
+      }
+	  spellSchools = { "|none/fighter/mage/healer/illusion/shaman@Choose a class for this creature.(Choose none if you can't train spells or abilities)|" }
+      spells = {
+        "|LEAVE SLOT EMPTY/circular blast/cure blindness/cure poison/cure poison2/damage bonus/damage bonus2/deception/defense bonus/defense bonus2/directed blast/escape/fire breath/fire elemental/fire elemental2/fireball/firewall/haste/haste2/healing/healing2/healing3/invisibility/invisibility2/magic missile/meteor shower/pacify/panic/poison resistance/shove/slow/summon element/summon flies/summon spirit/swap positions@There are 5 spell slots for this creature to have (without training). SPELL SLOT 1 - Select NONE to leave this slot empty. Do not repeat the same spell in different slots.|"
+        "|LEAVE SLOT EMPTY/circular blast/cure blindness/cure poison/cure poison2/damage bonus/damage bonus2/deception/defense bonus/defense bonus2/directed blast/escape/fire breath/fire elemental/fire elemental2/fireball/firewall/haste/haste2/healing/healing2/healing3/invisibility/invisibility2/magic missile/meteor shower/pacify/panic/poison resistance/shove/slow/summon element/summon flies/summon spirit/swap positions@Fill up SPELL SLOT 2|"
+        "|LEAVE SLOT EMPTY/circular blast/cure blindness/cure poison/cure poison2/damage bonus/damage bonus2/deception/defense bonus/defense bonus2/directed blast/escape/fire breath/fire elemental/fire elemental2/fireball/firewall/haste/haste2/healing/healing2/healing3/invisibility/invisibility2/magic missile/meteor shower/pacify/panic/poison resistance/shove/slow/summon element/summon flies/summon spirit/swap positions@Fill up SPELL SLOT 3|"
+        "|LEAVE SLOT EMPTY/circular blast/cure blindness/cure poison/cure poison2/damage bonus/damage bonus2/deception/defense bonus/defense bonus2/directed blast/escape/fire breath/fire elemental/fire elemental2/fireball/firewall/haste/haste2/healing/healing2/healing3/invisibility/invisibility2/magic missile/meteor shower/pacify/panic/poison resistance/shove/slow/summon element/summon flies/summon spirit/swap positions@Fill up SPELL SLOT 4|"
+        "|LEAVE SLOT EMPTY/circular blast/cure blindness/cure poison/cure poison2/damage bonus/damage bonus2/deception/defense bonus/defense bonus2/directed blast/escape/fire breath/fire elemental/fire elemental2/fireball/firewall/haste/haste2/healing/healing2/healing3/invisibility/invisibility2/magic missile/meteor shower/pacify/panic/poison resistance/shove/slow/summon element/summon flies/summon spirit/swap positions@Fill up SPELL SLOT 5|"
+      }
+      skills = {
+        LABORATORY |NONE/0.1/0.2/0.3/0.4/0.5/0.6/0.7/0.8/0.9/1@How skilled is this creature in the lab?(Zero to One)|
+        WORKSHOP |NONE/0.1/0.2/0.3/0.4/0.5/0.6/0.7/0.8/0.9/1@How skilled is this creature in the workshop?(Zero to One)|
+        FORGE |NONE/0.1/0.2/0.3/0.4/0.5/0.6/0.7/0.8/0.9/1@How skilled is this creature forging equipment?(Zero to One)|
+        JEWELER |NONE/0.1/0.2/0.3/0.4/0.5/0.6/0.7/0.8/0.9/1@How skilled is this creature at making jewelery?(Zero to One)|
+        DIGGING |NONE/0.1/0.2/0.3/0.4/0.5/0.6/0.7/0.8/0.9/1@How skilled is this creature at digging?(Zero to One)|
+      }
+      permanentEffects = {
+        |NORMAL/SPEED/SLOWED/FAST_CRAFTING/FAST_TRAINING/SLOW_CRAFTING/SLOW_TRAINING@Describe the creatures speed.| 1
+        |NORMAL/PEACEFULNESS/INSANITY/PANIC/RAGE@Describe the creatures temper.| 1
+        |NORMAL/LIGHT_SOURCE/DARKNESS_SOURCE/SUNLIGHT_VULNERABLE/DISAPPEAR_DURING_DAY/EXPLORE_NOCTURNAL_SKILL/EXPLORE_SKILL/EXPLORE_CAVES_SKILL/CROPS_SKILL@How does it behave in day and night?| 1
+        |NORMAL/TELEPATHY/ELF_VISION/NIGHT_VISION/BLIND/HALLU@Describe this creatures vision.| 1
+        |NORMAL/MAGIC_RESISTANCE/MAGIC_VULNERABILITY@Describe the level of spell resistance this creature has.| 1
+        |NORMAL/MELEE_RESISTANCE/MELEE_VULNERABILITY@Describe the level of melee resistance this creature has.| 1
+        |NORMAL/RANGED_RESISTANCE/RANGED_VULNERABILITY@Describe this creatures level of ranged arrow resistance.| 1
+        |NORMAL/HATE_DWARVES/HATE_UNDEAD/HATE_HUMANS/HATE_GREENSKINS/HATE_ELVES/ENTERTAINER/BAD_BREATH/COPULATION_SKILL/CONSUMPTION_SKILL/SPIDER_SKILL@Describe this creatures social interactions.| 1
+        |NORMAL/NAVIGATION_DIGGING_SKILL/BRIDGE_BUILDING_SKILL/DISARM_TRAPS_SKILL/AMBUSH_SKILL/SWIMMING_SKILL/INVISIBLE@Describe this creatures ability to invade dungeons.| 1|
+        POISON_RESISTANT 1@Is this creature poison resistant?(Y/N)||
+        FIRE_RESISTANT 1@Is this creature fire resistant?(Y/N)||
+        SLEEP_RESISTANT 1@Is this creature sleep resistant?(Y/N)||
+        FLYING 1@Does this creature fly?(Y/N)||
+        REGENERATION 1@Does this creature regenerate health?(Y/N)||
+        NO_CARRY_LIMIT 1@Does this creature have the ability to carry unlimited items?(Y/N)|
+      }|
+      cantEquip = true@Prevent this creature from using equipment?(Y/N)|
+      name = {
+        name = "|adamantine monster@What is the name of this creature?|"
+        pluralName = "|USE THE DEFAULT NAME@Is there a special plural for this name?(For example a child has a special plural of 'children')|"
+        firstNameGen = |NONE/CYCLOPS/DEITY/DEMON/DOG/DRAGON/DWARF/FIRST_FEMALE/FIRST_MALE/ORC/VAMPIRE@Select a name generator for this creature.|
+      }
+      chatReactionFriendly = "\"|Hello!@What does this creature say when it is friendly?|\""
+      chatReactionHostile = "\"|Die!@What does this creature say when it is hostile?|\""
+      deathDescription = "|killed.@What is the message when it dies? (It is....?)|"
+      courage = |0/1/-1@How brave is this creature (0=normal, 1=brave, -1=coward)?||
+      noChase = true@Stop military from chasing this creature?(Y/N)|
+    }
