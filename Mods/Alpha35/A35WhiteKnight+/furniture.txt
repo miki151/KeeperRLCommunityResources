@@ -1,0 +1,19 @@
+  "BARN"
+  {
+    name = "barn"
+    viewId = { "haypile" }
+	strength = 50
+	blockingEnemies = true
+    populationIncrease = { 1 none }
+    canBuildOutsideOfTerritory = true
+  }
+  "CROPS" modify
+  {
+    usageType = UsageEffect "scythe " Chain
+	  { Chance 0.3 CreatureMessage { "scythe the field" "scythes the field" }
+	    Chance 0.1 Filter And { CreatureId "PESEANT_PLAYER" Not Indoors } DropItems {"sack"} 1
+	  }
+    usageTime = 20
+    canBuildOutsideOfTerritory = true
+  }
+
