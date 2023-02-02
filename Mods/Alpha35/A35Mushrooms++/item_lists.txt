@@ -1,14 +1,108 @@
+	#https://github.com/miki151/keeperrl/blob/master/effect_type.h
+
+	#Escape Optional{int}
+	#Teleport
+	#Jump
+	#Heal Named{healthType} optional{int}
+	#Fire Named{int}
+	#Ice Named{int}
+	#Fire Named{int}
+	#DestroyEquipment
+	#DestroyWalls DestroyAction
+	#Enhance EnhanceType<WEAPON\ARMOUR> int
+	#EmitGas TileGasType double
+	#CircularBlast
+	#Deception
+	#Summon CreatureId Range{int int} Optional{int}
+	#AssembledMinion Named{CreatureId} Named{MinionTrait} Optional{effects}
+	#AddAutomatonPart AutomatonPart
+	#ItemPrefix ItemPrefix
+	#SummonEnemy CreatureId Range{int int} Optional{int}
+	#SummonElement
+	#Acid Named{int}
+	#Alarm bool
+	#Lasting Optional int LastingOrBuff
+	#RemoveLasting LastingOrBuff
+	#Permanent LastingOrBuff
+	#RemovePermanent LastingOrBuff
+	#PlaceFurniture FurnitureType
+	#Damage AttrType AttackType
+	#FixedDamage AttrType int AttackType
+	#IncreaseAttr AttrType int
+	#InjureBodyPart BodyPart
+	#LoseBodyPart BodyPart
+	#AddBodyPart BodyPart int optional ItemType
+	#MakeHumanoid
+	#Area int Effect
+	#CustomArea Effect {positions}
+	#RegrowBodyPart int
+	#Suicide MsgType
+	#DoubleTrouble
+	#Blast
+	#Pull
+	#Shove
+	#SwapPosition
+	#Stairs
+	#DirectedBlast Vec2 int
+	#ReviveCorpse {CreatureIds} int
+	#Filter CreaturePredicate Effect
+	#Wish
+	#Caster Effect
+	#Chain {Effects}
+	#ChooseRandom {Effects}
+	#ChainUntilFail {Effects}
+	#Message string MessagePriority
+	#UnseenMessage string MessagePriority
+	#CreatureMessage Named{string} Named{string} Optional{MessagePriority}
+	#PlayerMessage MessagePriority string
+	#GrantAbility SpellId 
+	#RemoveAbility SpellId
+	#AddSpellSchool SpellSchoolId;
+	#IncreaseMorale double
+	#Chance double Effect
+	#TriggerTrap
+	#AnimateItems int int Range{min max} AnimatedItemType<WEAPON\CORPSE>
+	#DropItems ItemType Range{min max}
+	#SoundEffect Sound
+	#Audience optional int
+	#FirstSuccessful {Effects}
+	#ColorVariant Color
+	#Fx FxInfo
+	#Description Effect
+	#Name Effect
+	#AI CreaturePredicate From(EffectAIIntent) To(EffectAIIntent) Effect
+	#ReturnFalse Effect
+	#SetMinionActivity MinionActivity
+	#AddMinionTrait = MinionTrait
+	#RemoveMinionTrait MinionTrait
+	#CollectiveMessage string
+	#RemoveFurniture FurnitureType
+	#SetFlag string bool
+	#SetCreatureFlag  string bool
+	#TakeItems string
+	#Unlock UnlockId
+	#Analytics string string
+	#Polymorph optional CreatureId optional TimeInterval
+	#SetCreatureName string
+	#SetViewId ViewId
+	#UI ScriptedUIId ScriptedUIData
+	#AddCompanion CompanionInfo
+	#SetPhylactery
+	#SpecialAttr
+	#AddTechnology TechId
+	#EquipmentType MinionEquipmentType Effect
+	#NoAutoAssign Effect
+	#Bleed double string
+	#Price Effect
+	#IncreaseMaxLevel ExperienceType int 
+	#ApplyToSteed Effect
+
 "wildernessItems" modify
 {
   items = {
-	  #Lasting effects
-      {{Mushroom Lasting HALLU} 10}
-      {{Mushroom Lasting 40 DAM_BONUS} 10}
-      {{Mushroom Lasting 40 DEF_BONUS} 10}
-      {{Mushroom Lasting NIGHT_VISION} 10}
-      {{Mushroom Lasting 50 REGENERATION} 10}
-      {{Mushroom Lasting RAGE} 10}
-      {{Mushroom Lasting PANIC} 10}
+  
+	  #Lasting effects - https://github.com/miki151/keeperrl/blob/master/lasting_effect.h 
+      #Lasting Optional int LastingOrBuff
       {{Mushroom Lasting SLEEP} 10}
       {{Mushroom Lasting PANIC} 10}
       {{Mushroom Lasting RAGE} 10}
@@ -65,12 +159,8 @@
       {{Mushroom Lasting STEED} 10}
       {{Mushroom Lasting RIDER} 10}
 	  
-	  #Permanent Effects
-      {{Mushroom Permanent HALLU}   3}
-      {{Mushroom Permanent DAM_BONUS}   3}
-      {{Mushroom Permanent DEF_BONUS}   3}
-      {{Mushroom Permanent NIGHT_VISION}   3}
-      {{Mushroom Permanent RAGE}   3}	  
+	  #Permanent Effects - https://github.com/miki151/keeperrl/blob/master/lasting_effect.h
+      #Permanent Optional int LastingOrBuff
       {{Mushroom Permanent HALLU}   3}
       {{Mushroom Permanent POISON_RESISTANT}   3}
       {{Mushroom Permanent LIGHT_SOURCE}   3}
@@ -94,8 +184,87 @@
       {{Mushroom Permanent PSYCHIATRY}   3}	  
       {{Mushroom Permanent NO_FRIENDLY_FIRE}   3}	  
       {{Mushroom Permanent CAN_DANCE}   3}
-	  
+
+	  #Lasting Buff - https://github.com/miki151/keeperrl/blob/master/data_free/game_config/buffs.txt
+      #Lasting Optional int LastingOrBuff
+      {{Mushroom Lasting 20 SUPER_BONUS } 20}
+      {{Mushroom Lasting 100 DAM_BONUS } 20}
+      {{Mushroom Lasting 100 DEF_BONUS } 20}
+      {{Mushroom Lasting 500 REGENERATION } 20}
+      {{Mushroom Lasting 20 BLEEDING } 20}
+      {{Mushroom Lasting 100 SPELL_DAMAGE } 20}
+      {{Mushroom Lasting 100 FIRE_DAMAGE } 20}
+      {{Mushroom Lasting 500 KINGS_CHARGE } 20}
+      {{Mushroom Lasting 500 AMBUSH_SKILL } 20}
+      {{Mushroom Lasting 500 SWIMMING_SKILL } 20}
+      {{Mushroom Lasting 500 DISARM_TRAPS_SKILL } 20}
+      {{Mushroom Lasting 2000 CONSUMPTION_SKILL } 20}
+      {{Mushroom Lasting 2000 COPULATION_SKILL } 20}
+      {{Mushroom Lasting 10 CROPS_SKILL } 20}
+      {{Mushroom Lasting 50 SPIDER_SKILL } 20}
+      {{Mushroom Lasting 2000 EXPLORE_SKILL } 20}
+      {{Mushroom Lasting 2000 EXPLORE_NOCTURNAL_SKILL } 20}
+      {{Mushroom Lasting 2000 EXPLORE_CAVES_SKILL } 20}
+      {{Mushroom Lasting 2000 BRIDGE_BUILDING_SKILL } 20}
+      {{Mushroom Lasting 2000 DISTILLATION_SKILL } 20}
+      {{Mushroom Lasting 2000 SWIMMING_SKILL } 20}
+      {{Mushroom Lasting 2000 HATE_DWARVES } 20}
+      {{Mushroom Lasting 2000 HATE_HUMANS } 20}
+      {{Mushroom Lasting 2000 HATE_GREENSKINS } 20}
+      {{Mushroom Lasting 2000 HATE_ELVES } 20}
+      {{Mushroom Lasting 2000 HATE_UNDEAD } 20}
+      {{Mushroom Lasting 2000 HATE_DRAGONS } 20}
+      {{Mushroom Lasting 30 INVULNERABLE } 20}
+      {{Mushroom Lasting 2000 FIRE_RESISTANT } 20}
+      {{Mushroom Lasting 2000 COLD_RESISTANT } 20}
+      {{Mushroom Lasting 2000 ACID_RESISTANT } 20}
+      {{Mushroom Lasting 50 MELEE_RESISTANCE } 20}
+      {{Mushroom Lasting 50 MAGIC_RESISTANCE } 20}
+      {{Mushroom Lasting 50 RANGED_RESISTANCE } 20}
+      {{Mushroom Lasting 2000 FIRE_VULNERABILITY } 20}
+      {{Mushroom Lasting 2000 COLD_VULNERABILITY } 20}
+      {{Mushroom Lasting 2000 ACID_VULNERABILITY } 20}
+      {{Mushroom Lasting 2000 MELEE_VULNERABILITY } 20}
+      {{Mushroom Lasting 2000 MAGIC_VULNERABILITY } 20}
+      {{Mushroom Lasting 2000 RANGED_VULNERABILITY } 20}
+      {{Mushroom Lasting 2000 FIRE_IMMUNITY } 20}
+      {{Mushroom Lasting 2000 COLD_IMMUNITY } 20}
+      {{Mushroom Lasting 2000 ACID_IMMUNITY } 20}
+      {{Mushroom Lasting 2000 MELEE_IMMUNITY } 20}
+      {{Mushroom Lasting 2000 MAGIC_IMMUNITY } 20}
+      {{Mushroom Lasting 2000 RANGED_IMMUNITY } 20}
+
+	  #Permanent Buff - https://github.com/miki151/keeperrl/blob/master/data_free/game_config/buffs.txt
+      {{Mushroom Permanent DAM_BONUS } 10}
+      {{Mushroom Permanent DEF_BONUS } 10}
+      {{Mushroom Permanent SPELL_DAMAGE } 2}
+      {{Mushroom Permanent FIRE_DAMAGE } 2}
+      {{Mushroom Permanent KINGS_CHARGE } 2}
+      {{Mushroom Permanent AMBUSH_SKILL } 2}
+      {{Mushroom Permanent SWIMMING_SKILL } 2}
+      {{Mushroom Permanent DISARM_TRAPS_SKILL } 2}
+      {{Mushroom Permanent COPULATION_SKILL } 2}
+      {{Mushroom Permanent CROPS_SKILL } 2}
+      {{Mushroom Permanent EXPLORE_SKILL } 2}
+      {{Mushroom Permanent EXPLORE_NOCTURNAL_SKILL } 2}
+      {{Mushroom Permanent EXPLORE_CAVES_SKILL } 2}
+      {{Mushroom Permanent BRIDGE_BUILDING_SKILL } 2}
+      {{Mushroom Permanent DISTILLATION_SKILL } 2}
+      {{Mushroom Permanent SWIMMING_SKILL } 2}
+      {{Mushroom Permanent HATE_DWARVES } 2}
+      {{Mushroom Permanent HATE_HUMANS } 2}
+      {{Mushroom Permanent HATE_GREENSKINS } 2}
+      {{Mushroom Permanent HATE_ELVES } 2}
+      {{Mushroom Permanent HATE_UNDEAD } 2}
+      {{Mushroom Permanent HATE_DRAGONS } 2}
+      {{Mushroom Permanent FIRE_RESISTANT } 2}
+      {{Mushroom Permanent COLD_RESISTANT } 2}
+      {{Mushroom Permanent ACID_RESISTANT } 2}
+
+      #https://github.com/miki151/keeperrl/blob/master/effect_type.h
+
 	  #Simple Effects (No parameters)
+      #Effect
       {{Mushroom MakeHumanoid }  20 }
       {{Mushroom Teleport  } 20 }
       {{Mushroom CircularBlast } 20 }
@@ -110,19 +279,56 @@
       {{Mushroom Stairs} 20 }
       {{Mushroom TriggerTrap} 20 }
 	  
-	  #Escape {maxDist}
-      {{Mushroom Escape{5} } 10}
-	  {{Mushroom Escape{1000} } 10}
-	  
-	  #Heal {healthType} amount
-      {{Mushroom Heal {FLESH} } 20 }
-      {{Mushroom Heal {SPIRIT} } 20 }
+      ################
+      #Effect boolean#
+      ################
 
-	  #Fire/Ice/Acid {damage}
+	  #Alarm silent
+	  {{Mushroom Alarm true } 10}
+	  {{Mushroom Alarm false } 10}
+
+	  ############
+      #Effect int#
+      ############
+
+	  #Audience maxDist
+	  {{Mushroom Audience 100 } 10}
+
+	  #RegrowBodyPart maxcount
+	  {{Mushroom RegrowBodyPart 5 } 10}
+
+
+      ###################
+      #Effect Named{int}#
+      ###################
+
+	  #Fire/Ice/Acid Named{damage}
 	  {{Mushroom Fire{30} } 20 }
 	  {{Mushroom Ice{30} } 20 }
 	  {{Mushroom Acid{30} } 20 }
 
+      ######################
+      #Effect Optional{int}#
+      ######################
+	  
+	  #Escape {maxDist}
+      {{Mushroom Escape{} } 10}
+      {{Mushroom Escape{5} } 10}
+	  {{Mushroom Escape{30} } 10}
+	  	  
+      ###############
+      #Effect double#
+      ###############
+
+	  #IncreaseMorale amount
+	  {{Mushroom IncreaseMorale 1.0 } 20 }
+
+	  #https://github.com/miki151/keeperrl/blob/master/health_type.h
+	  #Heal {healthType} amount
+      {{Mushroom Heal {FLESH} } 20 }
+      {{Mushroom Heal {SPIRIT} } 20 }
+
+      #RICH_ENUM(Effects::EnhanceType, WEAPON, ARMOR);
 	  #Enhance EnhanceType amount
       {{Mushroom Enhance ARMOR 1 } 10}
       {{Mushroom Enhance WEAPON 1 } 10}
@@ -130,26 +336,17 @@
 	  #EmitGas GassType radius
       {{Mushroom EmitGas "POISON_GAS" 5} 20 }
 	  	  	  
-	  #Summon CreatureId {min, max} duration
+	  #Summon CreatureId {min max} duration
       {{Mushroom Summon "FIRE_ELEMENTAL" {1 2} 100} 10}
       {{Mushroom Summon "FLY" {3 6} 100 } 10}
 	  #TODO MORE
 	  
-	  #SummonEnemy CreatureId {quantity} duration
+	  #SummonEnemy CreatureId {min max} duration
       {{Mushroom SummonEnemy "AUTOMATON" {1} 100 } 10}	  
 	  #TODO MORE
-	  
-	  #IncreaseMorale amount
-	  {{Mushroom IncreaseMorale 1.0 } 20 }
-	  
+	  	  
 	  #Suicide MessageType
 	  {{Mushroom Suicide DIE } 20 }
-
-	  #Alarm silent
-	  {{Mushroom Alarm false } 10}
-	  
-	  #Audience maxDist
-	  {{Mushroom Audience 1000 } 10}
 	  
 	  #PlaceFurniture furniture
 	  {{Mushroom PlaceFurniture "METEOR_SHOWER" } 10}
@@ -157,10 +354,7 @@
 	  {{Mushroom PlaceFurniture "EYEBALL" } 10}
 	  {{Mushroom PlaceFurniture "GROUND_TORCH" } 10}
 	  #TODO MORE
-	  
-	  #RegrowBodyPart maxcount
-	  {{Mushroom RegrowBodyPart 5 } 10}
-	  
+	  	  
 	  #GrantAbility SpellId
 	  {{Mushroom GrantAbility "magic missile" } 2 }
 
@@ -316,11 +510,31 @@
 	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent OIL}   3}
   	  {{Mushroom Name "Unidentified" Description "Could be anything" Area 30 Fire {1} } 3 } #Area radius Fire amount-of-damage
   	  {{Mushroom Name "Unidentified" Description "Could be anything" Area 30 DestroyWalls DIG } 3 } #Area radius DestoryWalls action
+      #{{Mushroom Permanent SUPER_BONUS } 2}# OP
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent REGENERATION } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent BLEEDING } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent CONSUMPTION_SKILL } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent SPIDER_SKILL } 2}
+      #{{Mushroom Permanent INVULNERABLE } 2}# OP
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent MELEE_RESISTANCE } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent MAGIC_RESISTANCE } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent RANGED_RESISTANCE } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent FIRE_VULNERABILITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent COLD_VULNERABILITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent ACID_VULNERABILITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent MELEE_VULNERABILITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent MAGIC_VULNERABILITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent RANGED_VULNERABILITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent FIRE_IMMUNITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent COLD_IMMUNITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent ACID_IMMUNITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent MELEE_IMMUNITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent MAGIC_IMMUNITY } 2}
+  	  {{Mushroom Name "Unidentified" Description "Could be anything" Permanent RANGED_IMMUNITY } 2}
 
 	}
 	
 }
-
 	  
 	  #Unused effects - From effect_type.h
 	 
@@ -364,9 +578,11 @@
 	  #FURNITURE#
 	  #RemoveFurniture FurnitureType
 
+	  #RICH_ENUM(Effects::AnimatedItemType, WEAPON, CORPSE);
+	  #AnimateItems maxCount radius AnimatedItemType
+
       #MISC#
 	  #TakeItems Ingredient
-	  #AnimateItems maxCount radius AnimatedItemType	  
 	  #DropItems type count
   	  #SetMinionActivity activity
 	  #SoundEffect sound
@@ -402,3 +618,6 @@
 
   }
 }
+
+
+

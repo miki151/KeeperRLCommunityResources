@@ -1,0 +1,82 @@
+Def SPELL(spell, effects)
+{
+  viewId = { "creature_highlight" }
+  name = "spell target" 
+  layer = CEILING
+  constructMessage = none
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  tickType = Effect { effects RemoveFurniture spell }
+}
+End
+
+"SUMMON_HORSES" SPELL ("SUMMON_HORSES", Summon "HORSE" {5} none )
+
+"MINE_FIELD" SPELL ("MINE_FIELD",
+	        CustomArea PlaceFurniture "MINE" {{ -2 -3 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -3 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -3 }}
+  	        CustomArea PlaceFurniture "MINE" {{  1 -3 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2 -2 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{  1 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2 -1 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{  1 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2  0 }}
+	        CustomArea PlaceFurniture "MINE" {{ -1  0 }}
+	        CustomArea PlaceFurniture "MINE" {{  0  0 }}
+	        CustomArea PlaceFurniture "MINE" {{  1  0 }}
+)
+
+"MINE"
+{
+  name = "fire trap"
+  viewId = { "trap" ColorId RED }
+  entryType = Trap { Chain {PlaceFurniture "FIRE_WALL" CircularBlast Area 1 Fire{100} } }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"SUMMON_ARMOURY" SPELL (
+	"SUMMON_ARMOURY",
+		DropItems {"BattleAxe"} {10}
+		DropItems {"ChainArmor"} {10}
+		DropItems {"IronHelm"} {10}
+		DropItems {"IronBoots"} {10}
+		DropItems {"IronGloves"} {10}
+	)
+
+"SUMMON_ARTIFACT" SPELL (
+	"SUMMON_ARTIFACT", ChooseRandom {
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet TELEPATHY} {1}
+		}
+	)
+	
+"TRANSFORM_DRAGON" SPELL
+(
+    "TRANSFORM_DRAGON",
+	Area 1 ChooseRandom
+	{
+		Chain { RemovePermanent POLYMORPHED RemoveLasting POLYMORPHED Polymorph "RED_DRAGON" 2 Permanent POLYMORPHED GrantAbility "true form" }
+		Chain { RemovePermanent POLYMORPHED RemoveLasting POLYMORPHED Polymorph "GREEN_DRAGON" 2 Permanent POLYMORPHED GrantAbility "true form" }
+	} Area 1 CircularBlast
+)
