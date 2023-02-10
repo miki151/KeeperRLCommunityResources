@@ -171,4 +171,7 @@ Public Class KRLDeveloper
         frmA30PortHelper.ShowDialog()
     End Sub
 
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        frmRandomMapViewer.ShowDialog()
+    End Sub
 End Class

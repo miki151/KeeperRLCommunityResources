@@ -195,4 +195,45 @@
         tribe = InputBox("Enter wiki entry for this tribe", "Edit wiki entry", tribe)
         Shell("Explorer """ + Replace(link, "¬tribe¬", tribe) + """")
     End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim filter As String = InputBox("Enter Text Filter")
+        Dim txt As String = ""
+        For Each row As DataGridViewRow In dgvCreatures.Rows
+            Dim block As String = ""
+            Dim name As String = ""
+            If row.Cells("Name").Value Is Nothing Then
+                name = ""
+            Else
+                name = row.Cells("Name").Value.ToString()
+            End If
+            If name.Contains("name =") Then
+                name = Split(name, "=")(1)
+                name = Split(name, """")(1)
+            Else
+                name = ""
+            End If
+            For Each cell As DataGridViewCell In row.Cells
+                Dim line As String = ""
+                If Not cell.Value Is Nothing Then
+                    line = line + vbTab + cell.Value.ToString + vbCrLf
+                End If
+                If line.Trim <> "" Then
+                    block = block + line
+                End If
+            Next
+            If block.Contains(filter) And name <> "" Then
+                txt = txt + name + vbCrLf
+            End If
+        Next
+        Dim lst As New SortedList(Of String, String)
+        For Each line As String In txt.Split(vbCrLf)
+            If Not lst.ContainsKey(line) Then
+                lst.Add(line, line)
+            End If
+        Next
+        txt = Join(lst.Keys.ToArray())
+        TextViewer.RichTextBox1.Text = txt
+        TextViewer.ShowDialog()
+    End Sub
 End Class

@@ -46,6 +46,7 @@ Partial Class frmVanillaViewer
         Me.SplitContainer2 = New System.Windows.Forms.SplitContainer()
         Me.dgvEnemies = New System.Windows.Forms.DataGridView()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.tbEditors.SuspendLayout()
         Me.tbCreatures.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -89,21 +90,19 @@ Partial Class frmVanillaViewer
         Me.tbEditors.Controls.Add(Me.tbEnemies)
         Me.tbEditors.Dock = System.Windows.Forms.DockStyle.Fill
         Me.tbEditors.Location = New System.Drawing.Point(0, 0)
-        Me.tbEditors.Margin = New System.Windows.Forms.Padding(4)
         Me.tbEditors.Name = "tbEditors"
         Me.tbEditors.SelectedIndex = 0
-        Me.tbEditors.Size = New System.Drawing.Size(1067, 554)
+        Me.tbEditors.Size = New System.Drawing.Size(800, 450)
         Me.tbEditors.TabIndex = 0
         '
         'tbCreatures
         '
         Me.tbCreatures.Controls.Add(Me.SplitContainer1)
         Me.tbCreatures.Controls.Add(Me.dgvPlayerCreatures)
-        Me.tbCreatures.Location = New System.Drawing.Point(4, 25)
-        Me.tbCreatures.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbCreatures.Location = New System.Drawing.Point(4, 22)
         Me.tbCreatures.Name = "tbCreatures"
-        Me.tbCreatures.Padding = New System.Windows.Forms.Padding(4)
-        Me.tbCreatures.Size = New System.Drawing.Size(1059, 525)
+        Me.tbCreatures.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.tbCreatures.Size = New System.Drawing.Size(792, 424)
         Me.tbCreatures.TabIndex = 0
         Me.tbCreatures.Text = "Creatures"
         Me.tbCreatures.UseVisualStyleBackColor = True
@@ -111,7 +110,8 @@ Partial Class frmVanillaViewer
         'SplitContainer1
         '
         Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(4, 4)
+        Me.SplitContainer1.Location = New System.Drawing.Point(3, 3)
+        Me.SplitContainer1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.SplitContainer1.Name = "SplitContainer1"
         Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -121,9 +121,11 @@ Partial Class frmVanillaViewer
         '
         'SplitContainer1.Panel2
         '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.Button3)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Button1)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1051, 517)
-        Me.SplitContainer1.SplitterDistance = 460
+        Me.SplitContainer1.Size = New System.Drawing.Size(786, 418)
+        Me.SplitContainer1.SplitterDistance = 371
+        Me.SplitContainer1.SplitterWidth = 3
         Me.SplitContainer1.TabIndex = 2
         '
         'dgvCreatures
@@ -131,17 +133,17 @@ Partial Class frmVanillaViewer
         Me.dgvCreatures.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCreatures.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvCreatures.Location = New System.Drawing.Point(0, 0)
-        Me.dgvCreatures.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvCreatures.Name = "dgvCreatures"
         Me.dgvCreatures.RowHeadersWidth = 51
-        Me.dgvCreatures.Size = New System.Drawing.Size(1051, 460)
+        Me.dgvCreatures.Size = New System.Drawing.Size(786, 371)
         Me.dgvCreatures.TabIndex = 4
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(911, 17)
+        Me.Button1.Location = New System.Drawing.Point(683, 14)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(124, 23)
+        Me.Button1.Size = New System.Drawing.Size(93, 19)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Wiki Suggestion"
         Me.Button1.UseVisualStyleBackColor = True
@@ -150,20 +152,18 @@ Partial Class frmVanillaViewer
         '
         Me.dgvPlayerCreatures.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvPlayerCreatures.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dgvPlayerCreatures.Location = New System.Drawing.Point(4, 4)
-        Me.dgvPlayerCreatures.Margin = New System.Windows.Forms.Padding(4)
+        Me.dgvPlayerCreatures.Location = New System.Drawing.Point(3, 3)
         Me.dgvPlayerCreatures.Name = "dgvPlayerCreatures"
         Me.dgvPlayerCreatures.RowHeadersWidth = 51
-        Me.dgvPlayerCreatures.Size = New System.Drawing.Size(1051, 517)
+        Me.dgvPlayerCreatures.Size = New System.Drawing.Size(786, 418)
         Me.dgvPlayerCreatures.TabIndex = 1
         '
         'tbCreatureInventory
         '
         Me.tbCreatureInventory.Controls.Add(Me.dgvCreatureInventory)
-        Me.tbCreatureInventory.Location = New System.Drawing.Point(4, 25)
-        Me.tbCreatureInventory.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbCreatureInventory.Location = New System.Drawing.Point(4, 22)
         Me.tbCreatureInventory.Name = "tbCreatureInventory"
-        Me.tbCreatureInventory.Size = New System.Drawing.Size(1059, 525)
+        Me.tbCreatureInventory.Size = New System.Drawing.Size(792, 424)
         Me.tbCreatureInventory.TabIndex = 2
         Me.tbCreatureInventory.Text = "Creature Inventory"
         Me.tbCreatureInventory.UseVisualStyleBackColor = True
@@ -173,19 +173,17 @@ Partial Class frmVanillaViewer
         Me.dgvCreatureInventory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCreatureInventory.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvCreatureInventory.Location = New System.Drawing.Point(0, 0)
-        Me.dgvCreatureInventory.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvCreatureInventory.Name = "dgvCreatureInventory"
         Me.dgvCreatureInventory.RowHeadersWidth = 51
-        Me.dgvCreatureInventory.Size = New System.Drawing.Size(1059, 525)
+        Me.dgvCreatureInventory.Size = New System.Drawing.Size(792, 424)
         Me.dgvCreatureInventory.TabIndex = 2
         '
         'tbTechnology
         '
         Me.tbTechnology.Controls.Add(Me.dgvTechnology)
-        Me.tbTechnology.Location = New System.Drawing.Point(4, 25)
-        Me.tbTechnology.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbTechnology.Location = New System.Drawing.Point(4, 22)
         Me.tbTechnology.Name = "tbTechnology"
-        Me.tbTechnology.Size = New System.Drawing.Size(1059, 525)
+        Me.tbTechnology.Size = New System.Drawing.Size(792, 424)
         Me.tbTechnology.TabIndex = 3
         Me.tbTechnology.Text = "Technology"
         Me.tbTechnology.UseVisualStyleBackColor = True
@@ -195,19 +193,17 @@ Partial Class frmVanillaViewer
         Me.dgvTechnology.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvTechnology.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvTechnology.Location = New System.Drawing.Point(0, 0)
-        Me.dgvTechnology.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvTechnology.Name = "dgvTechnology"
         Me.dgvTechnology.RowHeadersWidth = 51
-        Me.dgvTechnology.Size = New System.Drawing.Size(1059, 525)
+        Me.dgvTechnology.Size = New System.Drawing.Size(792, 424)
         Me.dgvTechnology.TabIndex = 2
         '
         'tbImmigration
         '
         Me.tbImmigration.Controls.Add(Me.dgvImmigration)
-        Me.tbImmigration.Location = New System.Drawing.Point(4, 25)
-        Me.tbImmigration.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbImmigration.Location = New System.Drawing.Point(4, 22)
         Me.tbImmigration.Name = "tbImmigration"
-        Me.tbImmigration.Size = New System.Drawing.Size(1059, 525)
+        Me.tbImmigration.Size = New System.Drawing.Size(792, 424)
         Me.tbImmigration.TabIndex = 4
         Me.tbImmigration.Text = "Immigration"
         Me.tbImmigration.UseVisualStyleBackColor = True
@@ -217,19 +213,17 @@ Partial Class frmVanillaViewer
         Me.dgvImmigration.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvImmigration.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvImmigration.Location = New System.Drawing.Point(0, 0)
-        Me.dgvImmigration.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvImmigration.Name = "dgvImmigration"
         Me.dgvImmigration.RowHeadersWidth = 51
-        Me.dgvImmigration.Size = New System.Drawing.Size(1059, 525)
+        Me.dgvImmigration.Size = New System.Drawing.Size(792, 424)
         Me.dgvImmigration.TabIndex = 2
         '
         'tbWorkShopsMenu
         '
         Me.tbWorkShopsMenu.Controls.Add(Me.dgvWorkshopsMenu)
-        Me.tbWorkShopsMenu.Location = New System.Drawing.Point(4, 25)
-        Me.tbWorkShopsMenu.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbWorkShopsMenu.Location = New System.Drawing.Point(4, 22)
         Me.tbWorkShopsMenu.Name = "tbWorkShopsMenu"
-        Me.tbWorkShopsMenu.Size = New System.Drawing.Size(1059, 525)
+        Me.tbWorkShopsMenu.Size = New System.Drawing.Size(792, 424)
         Me.tbWorkShopsMenu.TabIndex = 5
         Me.tbWorkShopsMenu.Text = "Workshops Menu"
         Me.tbWorkShopsMenu.UseVisualStyleBackColor = True
@@ -239,19 +233,17 @@ Partial Class frmVanillaViewer
         Me.dgvWorkshopsMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvWorkshopsMenu.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvWorkshopsMenu.Location = New System.Drawing.Point(0, 0)
-        Me.dgvWorkshopsMenu.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvWorkshopsMenu.Name = "dgvWorkshopsMenu"
         Me.dgvWorkshopsMenu.RowHeadersWidth = 51
-        Me.dgvWorkshopsMenu.Size = New System.Drawing.Size(1059, 525)
+        Me.dgvWorkshopsMenu.Size = New System.Drawing.Size(792, 424)
         Me.dgvWorkshopsMenu.TabIndex = 2
         '
         'tbBuildMenu
         '
         Me.tbBuildMenu.Controls.Add(Me.dgvBuildMenu)
-        Me.tbBuildMenu.Location = New System.Drawing.Point(4, 25)
-        Me.tbBuildMenu.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbBuildMenu.Location = New System.Drawing.Point(4, 22)
         Me.tbBuildMenu.Name = "tbBuildMenu"
-        Me.tbBuildMenu.Size = New System.Drawing.Size(1059, 525)
+        Me.tbBuildMenu.Size = New System.Drawing.Size(792, 424)
         Me.tbBuildMenu.TabIndex = 6
         Me.tbBuildMenu.Text = "Build Menu"
         Me.tbBuildMenu.UseVisualStyleBackColor = True
@@ -261,19 +253,17 @@ Partial Class frmVanillaViewer
         Me.dgvBuildMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvBuildMenu.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvBuildMenu.Location = New System.Drawing.Point(0, 0)
-        Me.dgvBuildMenu.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvBuildMenu.Name = "dgvBuildMenu"
         Me.dgvBuildMenu.RowHeadersWidth = 51
-        Me.dgvBuildMenu.Size = New System.Drawing.Size(1059, 525)
+        Me.dgvBuildMenu.Size = New System.Drawing.Size(792, 424)
         Me.dgvBuildMenu.TabIndex = 2
         '
         'tbCampaignVillains
         '
         Me.tbCampaignVillains.Controls.Add(Me.DgvCampaignVillains)
-        Me.tbCampaignVillains.Location = New System.Drawing.Point(4, 25)
-        Me.tbCampaignVillains.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbCampaignVillains.Location = New System.Drawing.Point(4, 22)
         Me.tbCampaignVillains.Name = "tbCampaignVillains"
-        Me.tbCampaignVillains.Size = New System.Drawing.Size(1059, 525)
+        Me.tbCampaignVillains.Size = New System.Drawing.Size(792, 424)
         Me.tbCampaignVillains.TabIndex = 7
         Me.tbCampaignVillains.Text = "Campaign Villains"
         Me.tbCampaignVillains.UseVisualStyleBackColor = True
@@ -283,19 +273,17 @@ Partial Class frmVanillaViewer
         Me.DgvCampaignVillains.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DgvCampaignVillains.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DgvCampaignVillains.Location = New System.Drawing.Point(0, 0)
-        Me.DgvCampaignVillains.Margin = New System.Windows.Forms.Padding(4)
         Me.DgvCampaignVillains.Name = "DgvCampaignVillains"
         Me.DgvCampaignVillains.RowHeadersWidth = 51
-        Me.DgvCampaignVillains.Size = New System.Drawing.Size(1059, 525)
+        Me.DgvCampaignVillains.Size = New System.Drawing.Size(792, 424)
         Me.DgvCampaignVillains.TabIndex = 2
         '
         'tbZLevels
         '
         Me.tbZLevels.Controls.Add(Me.dgvZLevels)
-        Me.tbZLevels.Location = New System.Drawing.Point(4, 25)
-        Me.tbZLevels.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbZLevels.Location = New System.Drawing.Point(4, 22)
         Me.tbZLevels.Name = "tbZLevels"
-        Me.tbZLevels.Size = New System.Drawing.Size(1059, 525)
+        Me.tbZLevels.Size = New System.Drawing.Size(792, 424)
         Me.tbZLevels.TabIndex = 8
         Me.tbZLevels.Text = "ZLevels"
         Me.tbZLevels.UseVisualStyleBackColor = True
@@ -305,19 +293,17 @@ Partial Class frmVanillaViewer
         Me.dgvZLevels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvZLevels.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvZLevels.Location = New System.Drawing.Point(0, 0)
-        Me.dgvZLevels.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvZLevels.Name = "dgvZLevels"
         Me.dgvZLevels.RowHeadersWidth = 51
-        Me.dgvZLevels.Size = New System.Drawing.Size(1059, 525)
+        Me.dgvZLevels.Size = New System.Drawing.Size(792, 424)
         Me.dgvZLevels.TabIndex = 2
         '
         'tbEnemies
         '
         Me.tbEnemies.Controls.Add(Me.SplitContainer2)
-        Me.tbEnemies.Location = New System.Drawing.Point(4, 25)
-        Me.tbEnemies.Margin = New System.Windows.Forms.Padding(4)
+        Me.tbEnemies.Location = New System.Drawing.Point(4, 22)
         Me.tbEnemies.Name = "tbEnemies"
-        Me.tbEnemies.Size = New System.Drawing.Size(1059, 525)
+        Me.tbEnemies.Size = New System.Drawing.Size(792, 424)
         Me.tbEnemies.TabIndex = 9
         Me.tbEnemies.Text = "Enemies"
         Me.tbEnemies.UseVisualStyleBackColor = True
@@ -326,6 +312,7 @@ Partial Class frmVanillaViewer
         '
         Me.SplitContainer2.Dock = System.Windows.Forms.DockStyle.Fill
         Me.SplitContainer2.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.SplitContainer2.Name = "SplitContainer2"
         Me.SplitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal
         '
@@ -336,8 +323,9 @@ Partial Class frmVanillaViewer
         'SplitContainer2.Panel2
         '
         Me.SplitContainer2.Panel2.Controls.Add(Me.Button2)
-        Me.SplitContainer2.Size = New System.Drawing.Size(1059, 525)
-        Me.SplitContainer2.SplitterDistance = 460
+        Me.SplitContainer2.Size = New System.Drawing.Size(792, 424)
+        Me.SplitContainer2.SplitterDistance = 371
+        Me.SplitContainer2.SplitterWidth = 3
         Me.SplitContainer2.TabIndex = 0
         '
         'dgvEnemies
@@ -345,28 +333,37 @@ Partial Class frmVanillaViewer
         Me.dgvEnemies.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvEnemies.Dock = System.Windows.Forms.DockStyle.Fill
         Me.dgvEnemies.Location = New System.Drawing.Point(0, 0)
-        Me.dgvEnemies.Margin = New System.Windows.Forms.Padding(4)
         Me.dgvEnemies.Name = "dgvEnemies"
         Me.dgvEnemies.RowHeadersWidth = 51
-        Me.dgvEnemies.Size = New System.Drawing.Size(1059, 460)
+        Me.dgvEnemies.Size = New System.Drawing.Size(792, 371)
         Me.dgvEnemies.TabIndex = 3
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(927, 18)
+        Me.Button2.Location = New System.Drawing.Point(695, 15)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(124, 23)
+        Me.Button2.Size = New System.Drawing.Size(93, 19)
         Me.Button2.TabIndex = 1
         Me.Button2.Text = "Wiki Suggestion"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(586, 14)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(2)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(93, 19)
+        Me.Button3.TabIndex = 1
+        Me.Button3.Text = "Wiki Suggestion"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
         'frmVanillaViewer
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 16.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1067, 554)
+        Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.tbEditors)
-        Me.Margin = New System.Windows.Forms.Padding(4)
         Me.Name = "frmVanillaViewer"
         Me.Text = "Vanilla viewer"
         Me.tbEditors.ResumeLayout(False)
@@ -425,4 +422,5 @@ Partial Class frmVanillaViewer
     Friend WithEvents SplitContainer2 As SplitContainer
     Friend WithEvents dgvEnemies As DataGridView
     Friend WithEvents Button2 As Button
+    Friend WithEvents Button3 As Button
 End Class
