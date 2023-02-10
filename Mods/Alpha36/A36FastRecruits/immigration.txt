@@ -434,32 +434,6 @@
     }
     WhiteRecruits()
 }
-"zombies" modify
-{
-    {
-      ids = { "ZOMBIE_WORKER" }
-      traits = { FIGHTER WORKER LEADER }
-#      spawnLocation = FurnitureType "GRAVE"
-      requirements = {
-        { 1.0 SunlightState NIGHT }
-        { 1.0 AttractionInfo 0 {FurnitureType "COFFIN1"}}
-      }
-      specialTraits = {
-         { 0.03 { CompanionInfo 1 true none 0.1 { "FLY" }}}
-         { 0.2 { ExtraIntrinsicAttack
-            HEAD
-            { Intrinsic { "bite_attack" } "fangs" 5 {
-                attackType = BITE
-                attackMsg = BITE
-                victimEffect = {0.1 Lasting POISON} } } } }
-         { 0.1 { ExtraBodyPart HEAD 1}}
-         { 0.3 { Lasting { BLIND } }}
-         { 1.0 { Lasting { SWARMER } }}
-         { 0.3 { Lasting { COLLAPSED } }}
-      }
-    }
-
-}
 "goblins" modify
 {
     {
