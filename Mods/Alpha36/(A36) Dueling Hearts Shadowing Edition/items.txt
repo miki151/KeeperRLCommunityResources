@@ -1,0 +1,44 @@
+"ChickenMeat"
+{
+    viewId = { "dhk_chickenleg" }
+    shortName = "chciken"
+    name = "chicken meat"
+    plural = "chicken meat"
+    blindName = "meat"
+	description = "Some chicken you can eat."
+    applyVerb = "eat" "eats"
+    fragile = true
+    weight = 0.3
+    effect = { Heal { FLESH } Lasting SATIATED }
+    price = 10
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"potions" "equipment"}
+  }
+   
+"Scythe"
+  {
+    viewId = { "dhk_scythle" }
+    equipedViewId = { "dhk_scythle_v" }
+    name = "scythle"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 8
+    modifiers = {
+      DAMAGE 14
+    }
+    price = 30
+    craftingCost = "IRON" 50
+    weaponInfo = {
+      attackType = CUT
+      twoHanded = true
+    }
+    genPrefixes = {
+      1 VictimEffect 0.2 Lasting 50 BLEEDING
+      1 LastingEffect RAGE
+    }
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "iron equipment"
+  }

@@ -1,0 +1,324 @@
+"CS_Mgehye"
+  {
+    viewId = { "cs_crystal" }
+    name = "mgehye"
+    itemClass = OTHER
+    price = 0
+    resourceId = "CS_MGEHYE"
+    weight = 0.3
+    wishedCount = { 5 10 }
+    storageIds = {"resources"}
+  }
+  
+"CS_Mgehye_Sword"
+  {
+    viewId = { "cs_crystal_sword" }
+	equipedViewId = { "cs_crystal_sword_v" }
+	shortName = "sword"
+	name = "sword made of mgehye"
+    plural = "swords made of mgehye"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      DAMAGE 11
+    }
+    price = 6
+    craftingCost = "CS_MGEHYE" 30
+    weaponInfo = {
+      attackType = CUT
+    }
+    genPrefixes = {
+      1 VictimEffect 0.4 Lasting 50 CS_TEMPORAL_DISRUPTION
+      1 VictimEffect 0.2 Lasting 50 SLOWED 
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "mgehye eqeuipment"
+  }
+
+"CS_Mgehye_WarHammer"
+  {
+    viewId = { "cs_crystal_warhammer" }
+	equipedViewId = { "cs_crystal_warhammer_v" }
+	shortName = "war hammer"
+	name = "war hammer made of mgehye"
+    plural = "war hammers made of mgehye"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 8
+    modifiers = {
+      DAMAGE 15
+    }
+    price = 20
+    craftingCost = "CS_MGEHYE" 40
+    weaponInfo = {
+      attackType = CRUSH
+      twoHanded = true
+    }
+    genPrefixes = {
+      1 VictimEffect 0.3 Lasting 50 COLLAPSED
+	  1 VictimEffect 0.4 Lasting 50 CS_TEMPORAL_DISRUPTION
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "mgehye eqeuipment"
+  }
+  
+"CS_Mgehye_BattleAxe"
+  {
+    viewId = { "cs_crystal_battle_axe" }
+	equipedViewId = { "cs_crystal_battle_axe_v" }
+	shortName = "battle axe"
+	name = "battle axe made of mgehye"
+    plural = "battle axes made of mgehye"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 8
+    modifiers = {
+      DAMAGE 18
+    }
+    price = 45
+    craftingCost = "CS_MGEHYE" 75
+    weaponInfo = {
+      attackType = CUT
+      twoHanded = true
+    }
+    genPrefixes = {
+      1 VictimEffect 0.2 Lasting 50 SLOWED
+	  1 VictimEffect 0.4 Lasting 50 CS_TEMPORAL_DISRUPTION
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "mgehye eqeuipment"
+  }
+
+"CS_Mgehye_Staff"
+  {
+    viewId = { "cs_crystal_staff" }
+	equipedViewId = { "cs_crystal_staff_v" }
+    shortName = "staff"
+	name = "staff made of mgehye"
+    plural = "staves made of mgehye"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      SPELL_DAMAGE 13
+      SPELL_SPEED 10
+    }
+    price = 60
+    craftingCost = "CS_MGEHYE" 60
+    weaponInfo = {
+      attackType = SPELL
+      attackMsg = WAVE
+      meleeAttackAttr = SPELL_DAMAGE
+    }
+    genPrefixes = {
+      1 VictimEffect 1.0 Escape{}
+      1 VictimEffect 0.4 Lasting 50 CS_TEMPORAL_DISRUPTION
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    maxUpgrades = 2
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "mgehye eqeuipment"
+  }
+  
+"CS_Mgehye_Gloves"
+  {
+    viewId = { "cs_crystal_gloves" }
+    shortName = "gloves"
+    name = "pair of mgehye gloves"
+    plural = "pairs of mgehye gloves"
+    itemClass = ARMOR
+    equipmentSlot = GLOVES
+    weight = 1
+    price = 10
+    craftingCost = "CS_MGEHYE" 3
+    modifiers = {
+      DEFENSE 3
+    }
+    genPrefixes = {
+      1 LastingEffect ACID_RESISTANT
+      3 ItemAttrBonus DEFENSE 3
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    maxUpgrades = 1
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "mgehye eqeuipment"
+  }
+
+"CS_Mgehye_Shield"
+  {
+    viewId = { "cs_crystal_shield" }
+    shortName = "shield"
+    name = "shield made from Mgehye"
+    plural = "shields made from Mgehye"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 2
+    price = 10
+    craftingCost = "CS_MGEHYE" 36
+    modifiers = {
+      PARRY 2
+      DEFENSE 2
+    }
+	genPrefixes = {
+      1 LastingEffect ACID_RESISTANT
+      3 ItemAttrBonus DEFENSE 3
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    maxUpgrades = 1
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "mgehye eqeuipment"
+  }
+  
+"CS_Mgehye_Armor"
+  {
+    viewId = { "cs_crystal_armor" }
+    shortName = "armor"
+	name = "mgehye armor"
+    plural = "mgehye armors"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 15
+    price = 25
+    craftingCost = "CS_MGEHYE" 60
+    modifiers = {
+      DEFENSE 6
+    }
+    genPrefixes = {
+      1 LastingEffect ACID_RESISTANT
+      3 ItemAttrBonus DEFENSE 3
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    maxUpgrades = 2
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "mgehye eqeuipment"
+  }
+  
+"CS_Mgehye_Helm"
+  {
+    viewId = { "cs_crystal_helm" }
+    shortName = "helm"
+    name = "mgehye helm"
+	plural = "mgehye helmets"
+    itemClass = ARMOR
+    equipmentSlot = HELMET
+    weight = 4
+    price = 8
+    craftingCost = "CS_MGEHYE" 16
+    modifiers = {
+      DEFENSE 3
+    }
+    genPrefixes = {
+      1 LastingEffect ACID_RESISTANT
+      3 ItemAttrBonus DEFENSE 3
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    maxUpgrades = 1
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "mgehye eqeuipment"
+  }
+  
+"CS_Mgehye_Boots"
+  {
+    viewId = { "cs_crystal_boots" }
+    shortName = "boots"
+    name = "pair of mgehye boots"
+    plural = "pairs of mgehye boots"
+    itemClass = ARMOR
+    equipmentSlot = BOOTS
+    weight = 4
+    price = 8
+    craftingCost = "CS_MGEHYE" 24
+    modifiers = {
+      DEFENSE 3
+    }
+    genPrefixes = {
+      1 LastingEffect ACID_RESISTANT
+      3 ItemAttrBonus DEFENSE 3
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    maxUpgrades = 1
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "mgehye eqeuipment"
+  }
+
+"CS_Mgehye_Bow"
+  {
+    viewId = { "cs_crystal_bow" }
+    shortName = "short bow"
+    name = "bow made of mgehye"
+    plural = "bows made of mgehye"
+    itemClass = RANGED_WEAPON
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"shoot arrow"}
+    weaponInfo = {
+      twoHanded = true
+    }
+    weight = 1
+    modifiers = {
+      RANGED_DAMAGE 12
+    }
+	genPrefixes = {
+      1 VictimEffect 0.2 Lasting 50 SLOWED
+	  1 VictimEffect 0.4 Lasting 50 CS_TEMPORAL_DISRUPTION
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    price = 12
+    maxUpgrades = 1
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "ranged weapons"
+  }
+  
+"CS_Mgehye_Crossbow"
+  {
+    viewId = { "cs_crystal_crossbow" }
+    name = "crossbow"
+    itemClass = RANGED_WEAPON
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"shoot bolt"}
+    weaponInfo = {
+      twoHanded = true
+    }
+    weight = 1
+    modifiers = {
+      RANGED_DAMAGE 17
+    }
+	genPrefixes = {
+      1 VictimEffect 0.2 Lasting 50 SLOWED
+	  1 VictimEffect 0.4 Lasting 50 CS_TEMPORAL_DISRUPTION
+    }
+	autoEquipPredicate = LastingEffect CS_DISRUPTION_RESIST
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = {CS_TEMPORAL_DISRUPTION}
+    price = 90
+    maxUpgrades = 1
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "ranged weapons"
+  }
+  

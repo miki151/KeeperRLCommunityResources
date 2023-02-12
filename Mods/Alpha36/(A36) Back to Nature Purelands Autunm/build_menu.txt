@@ -1,0 +1,158 @@
+
+  "structure" modify
+  {
+    { { Dig CutTree }                                        "Dig or cut tree"   "Structure"  
+      "" "DIG" {} true DIG_OR_CUT_TREES}
+# If you want you can use "just dig" or "just cut tree" in your mod
+#    { Dig                                                          "Dig"   "Structure" }
+#    { CutTree                                                      "Cut tree"   "Structure" }
+
+    { Furniture {{ "DUNGEON_WALL" "DUNGEON_WALL2" "SANDSTONE_WALL" "RED_SANDSTONE_WALL" "GLACIER_WALL" "SKULL_WALL" } "STONE" 3}       "Reinforce wall"    "Structure"
+      "Reinforced walls are better at stopping enemies from digging into your dungeon."}
+
+    { Furniture {{ "PIT" }                        "STONE" 0 }      "Dig a pit"         "Structure"
+      "Dig a pit in the ground. Building next to water or lava will cause it to fill up." }
+
+    { Furniture {{ "FILL_UP_WATER_FLOOR" }        "STONE" 20 }     "Fill lava or water""Structure"
+      "" }
+
+    { Furniture {{ "FLOOR" }              }               "Building interior" "Structure"
+      "" none {} false none true}
+
+    { Furniture {{ "WOOD_WALL" }                  "WOOD" 5 }       "Wooden wall"   "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+
+    { Furniture {{ "WOOD_PILLAR" }                "WOOD" 2 }       "Wooden pillar"     "Structure"
+      "Acts as roof support, but doesn't block movement." }
+
+    { Furniture {{ "CASTLE_WALL" }                "STONE" 5 }      "Stone wall"    "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+
+    { Furniture {{ "CASTLE_PILLAR" }              "STONE" 2 }      "Stone pillar"      "Structure"
+      "Acts as roof support, but doesn't block movement." }
+    
+	{ Furniture {{ "SNOW_WALL" }                    "STONE" 5 }     "Snow Wall"    "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+
+	{ Furniture {{ "MUD_WALL" }                     "STONE" 5 }     "Mud Wall"    "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+
+	{ Furniture {{ "RUIN_WALL" }                    "STONE" 5 }     "Ruin Wall"    "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+
+    { Furniture {{ "BRIDGE" }                     "WOOD" 5 }       "Wooden bridge"     "Structure"
+      "Build to pass over water. Will burn on lava." }
+
+    { Furniture {{ "STONE_BRIDGE" }               "STONE" 5 }      "Stone bridge"      "Structure"
+      "Build to pass over water or lava." }
+
+    { Furniture {{ "UP_STAIRS" }                  }              "Up stairs"       "Structure"
+      "Build to reach higher z-levels." }
+
+    { Furniture {{ "DOWN_STAIRS" }                }              "Down stairs"       "Structure"
+      "Build to reach deeper z-levels." }
+	  
+  }
+  
+  "floors" modify append
+  {
+      { Furniture {{ "MOUNTAIN" }             "STONE" 5 }      "Soft rock"         "Nature Wall" }
+      { Furniture {{ "MOUNTAIN2" }            "STONE" 10 }     "Hard rock"         "Nature Wall" }
+	  { Furniture {{ "SANDSTONE" }                    "STONE" 5 }     "Sandstone"       		"Nature Wall" }
+	  { Furniture {{ "RED_SANDSTONE" }                "STONE" 5 }     "Red Sandstone"           "Nature Wall" }
+	  { Furniture {{ "GLACIER" }                      "STONE" 5 }     "Glacier"       		    "Nature Wall" }
+	  { Furniture {{ "MOUNTAIN_SKULLS" }              "STONE" 5 }     "Skull Mountain"       	"Nature Wall" }
+
+	  { Furniture {{ "ADAMANTIUM_ORE" }               "ADA" 30 }              "Adamantium Ore"       		"Nature Wall" }
+	  { Furniture {{ "ADOXIUM_ORE" }                  "ADOXIUM" 30 }          "Adoxium Ore"       	    	"Nature Wall" }
+	  { Furniture {{ "INFERNITE_ORE" }                "INFERNITE" 30 }     "Infernite Ore"       		    "Nature Wall" }
+	  { Furniture {{ "IRON_ORE" }                     "IRON" 30 }             "Iron Ore"             		"Nature Wall" }
+	  { Furniture {{ "STONE" }                        "STONE" 30 }            "Adoxium Ore"       	    	"Nature Wall" }
+	  { Furniture {{ "GOLD_ORE" }                     "GOLD" 30 }             "Gold Ore"             		"Nature Wall" }
+	    
+      { Furniture {{ "BUILD_GRASS" }                   "STONE" 2 }       "Grass"               "Natural Floor"}
+      { Furniture {{ "BUILD_JUNGLE_GRASS" }            "STONE" 2 }       "Jungle Grass"        "Natural Floor"}
+      { Furniture {{ "BUILD_BLOSSOM_GRASS" }           "STONE" 2 }       "Blossom Grass"       "Natural Floor"}
+      { Furniture {{ "BUILD_GRASS" }                   "STONE" 2 }       "Grass"               "Natural Floor"}
+	  { Furniture {{ "BUILD_SNOW" }                    "STONE" 2 }       "Snow"                "Natural Floor"}  
+      { Furniture {{ "BUILD_MUD" }                     "STONE" 2 }       "Mud"                 "Natural Floor"}
+	  { Furniture {{ "BUILD_SWAMPGRASS" }              "STONE" 2 }       "SwampGrass"          "Natural Floor"}
+	  { Furniture {{ "BUILD_HILL" }                    "STONE" 2 }       "Hill"                "Natural Floor"}		 
+	  { Furniture {{ "BUILD_SAND" }                    "STONE" 2 }       "Sand"                "Natural Floor"}
+	  { Furniture {{ "BUILD_RED_SAND" }                "STONE" 2 }       "Red Sand"            "Natural Floor"}	
+	  { Furniture {{ "BUILD_ROAD" }                    "STONE" 2 }       "Road"                "Natural Floor"}			
+	  { Furniture {{ "BUILD_MAGMA_SOIL" }              "STONE" 2 }       "Volcanic Soil"       "Natural Floor"}		 
+	  { Furniture {{ "BUILD_MAGMA_FLOOR" }             "STONE" 2 }       "Hellish Rock"        "Natural Floor"}		 
+	  { Furniture {{ "BUILD_MAGMA_SAND" }              "STONE" 2 }       "Igneous Rock"        "Natural Floor"}	
+	  
+	  { Furniture {{ "BUILD_WATER" }              "STONE" 2 }       "Water"        "Natural Liquid"}	
+	  { Furniture {{ "BUILD_SHALLOW_WATER1" "BUILD_SHALLOW_WATER2" }              "STONE" 1 }       "Shallow Water"        "Natural Liquid"}	
+	  { Furniture {{ "BUILD_MAGMA" }              "STONE" 4 }       "Magma"        "Natural Liquid"}	
+}
+
+"traps" modify append
+  {
+    { Furniture {{ "BUILD_TAR" }            "WOOD" 20 }  "Tar"       "Traps"
+        "Can immobilize creatures." none                  { TechId "traps" }}
+	{ Furniture {{ "BUILD_KRAKEN_WATER" }   "GOLD" 50 }  "Kraken"       "Traps"
+        "Summons Kraken." none                  { TechId "traps" }}
+}
+
+  "installations_no_heads" modify append
+  {	
+	 { Furniture {{ "CROPS" }               "WOOD" 5 }                        "Crops"       		"Installations" }  
+     { Furniture {{ "SCARECROW" }               "WOOD" 5 }                    "Scarecrow"       		"Installations" }
+	 { Furniture {{ "SNOWMAN" }                 "WOOD" 5 }                    "Snowman"       		"Installations" }	
+	 { Furniture {{ "CAULDRON_TAR" }            "STONE" 5 }                   "Cauldron Tar"       		"Installations" }	
+	 { Furniture {{ "CHEST" }                   "GOLD" 50 }                  "Chest"       		"Installations" }
+  }
+
+  "installations" modify append
+  {	
+	 { Furniture {{ "CROPS" }               "WOOD" 5 }                        "Crops"       		"Installations" }  
+     { Furniture {{ "SCARECROW" }               "WOOD" 5 }                    "Scarecrow"       		"Installations" }
+	 { Furniture {{ "SNOWMAN" }                 "WOOD" 5 }                    "Snowman"       		"Installations" }	
+	 { Furniture {{ "CAULDRON_TAR" }            "STONE" 5 }                   "Cauldron Tar"       		"Installations" }	
+	 { Furniture {{ "CHEST" }                   "GOLD" 50 }                  "Chest"       		"Installations" }
+  }
+
+"swish_installations" modify append
+  {	
+	 { Furniture {{ "CROPS" }               "WOOD" 5 }                        "Crops"       		"Installations" }  
+     { Furniture {{ "SCARECROW" }               "WOOD" 5 }                    "Scarecrow"       		"Installations" }
+	 { Furniture {{ "SNOWMAN" }                 "WOOD" 5 }                    "Snowman"       		"Installations" }	
+	 { Furniture {{ "CAULDRON_TAR" }            "STONE" 5 }                   "Cauldron Tar"       		"Installations" }	
+	 { Furniture {{ "CHEST" }                   "GOLD" 50 }                  "Chest"       		"Installations" }
+  }
+    
+  "orders" modify append
+  {	  
+  	 { Furniture {{ "swish_torii_gate" "swish_torii_gate2" }               "WOOD" 5 }                    "Torii gate"       		"Installations 2" }
+	 { Furniture {{ "swish_lizard_tablet" }     "STONE" 5 }                   "Ancient Stone Tablet"       		"Installations 2" }
+	 { Furniture {{ "swish_grave" }             "GOLD" 50 }                  "Grave"       		"Installations 2" }
+	 { Furniture {{ "swish_sticks" "swish_sticks2" }                 "WOOD" 5 }                    "Sticks"       		"Natural Installations" }	
+	 { Furniture {{ "swish_boulder" "swish_boulder2" "swish_boulder3" "swish_boulder4" "swish_boulder_jungle" "swish_stone_piled"}                 "STONE" 25 }                    "Boulder"       		"Natural Installations" }	
+	 { Furniture {{ "swish_boulder_iron"  }     "IRON" 15 }                   "Iron Boulder"       		"Natural Installations" }
+	 { Furniture {{ "swish_boulder_ironconcentrated" }     "IRON" 25 }                   "Iron Boulder"       		"Natural Installations" }
+	 { Furniture {{ "swish_boulder_gold"  }     "GOLD" 15 }                   "Iron Boulder"       		"Natural Installations" }
+	 { Furniture {{ "swish_volcano_vent" "swish_volcano_vent2" "swish_volcano_vent3" }                 "STONE" 5 }   "Volcanic Vent"       		"Natural Installations" }		 
+	 { Furniture {{ "swish_hell_spire" "swish_hell_spire2" "swish_hell_spire3" "swish_hell_spire4" "swish_hell_spire5" "swish_hell_spire6" "swish_hell_spire7" "swish_hell_spire8" }                 "STONE" 25 }                    "hell spire"      		"Natural Installations" }		 
+	 { Furniture {{ "swish_pond" "swish_pond2" }                 "STONE" 5 }   "Pond"       		"Natural Installations" }	
+
+	{ Furniture {{"BUSH"} "WOOD"   20 }                                                                        "Bush"                   "Nature Trees"    "sustainable wood." none                   }
+	{ Furniture {{"swish_jungle_plant" "swish_jungle_plant2"} "WOOD"   20 }                                    "Jungle Plant"                   "Nature Trees"    "sustainable wood." none                   }
+ 	{ Furniture {{"swish_tree_sapling"} "WOOD"   20 }                                                          "Sapling"                   "Nature Trees"    "sustainable wood." none                   }
+    { Furniture {{"BURNT_TREE" "swish_burnt_tree" "swish_burnt_tree2" "swish_burnt_tree3" "swish_burnt_tree4" "swish_burnt_tree5" "swish_burnt_tree6"} "WOOD"   20 }                                                                  "Burnt Tree"             "Nature Trees"    "sustainable wood." none                   }
+	{ Furniture {{"TREE_TRUNK"} "WOOD"   20 }                                                                  "Tree Trunk"             "Nature Trees"    "sustainable wood." none                   }
+	{ Furniture {{"GIANT_MUSHROOM"} "WOOD"   20 }                                                              "Giant Treeshroom"       "Nature Trees"    "sustainable wood." none                   }
+    { Furniture {{"GUM_TREE"} "WOOD"   20 }                                                                    "Gum Tree"               "Nature Trees"    "sustainable wood." none                   }
+	{ Furniture {{"PALM_TREE"} "WOOD"   20 }                                                                   "Palm Tree"              "Nature Trees"    "sustainable wood." none                   }
+	{ Furniture {{"CACTUS1" "swish_cactus2" "swish_cactus3"} "WOOD"   20 }                                     "Cactus"                 "Nature Trees"    "sustainable wood." none                   }
+    { Furniture {{"SWAMPTREE"} "WOOD"   20 }                                                                   "Swamp Tree"             "Nature Trees"    "sustainable wood." none                   }
+	{ Furniture {{"TREE_SNOW"} "WOOD"   20 }                                                                   "Tree Snow"              "Nature Trees"    "sustainable wood." none                   }
+	{ Furniture {{"DECID_TREE"} "WOOD"   20 }                                                                  "Decid Tree"             "Nature Trees"    "sustainable wood." none                   }
+    { Furniture {{"CANIF_TREE" "swish_tree3"} "WOOD"   20 }                                                    "Canif Tree"             "Nature Trees"    "sustainable wood." none                   }
+    { Furniture {{"swish_tree_jungle" "swish_tree_jungle2" "swish_tree_jungle3"} "WOOD"   20 }               "Jungle Tree"             "Nature Trees"    "sustainable wood." none                   }
+    { Furniture {{"swish_cherry_blossom" "swish_cherry_blossom2" "swish_cherry_blossom3" } "WOOD"   20 }      "Cherry Tree"             "Nature Trees"    "sustainable wood." none                   }
+ 
+  }

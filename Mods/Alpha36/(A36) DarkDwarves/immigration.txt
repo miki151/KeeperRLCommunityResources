@@ -1,0 +1,32 @@
+"dark_keeper" modify append {
+    {
+      ids = { "DARK_DWARF" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "Z_LEVEL_DARK_DWARF_VAULT" } 0 FIGHTER }
+      }
+    }
+    {
+      ids = { "DARK_DWARF_BLACKSMITH" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "DARK_DWARVES" } 0 FIGHTER }
+        { 1.0 CostInfo "GOLD" 100 }
+      }
+      specialTraits = {
+       { 1.0 { WorkshopType "FORGE" }}
+      }
+    }
+}
+
+"dark dwarves"
+{
+    {
+      ids = { "DARK_DWARF_PLAYER" "DARK_DWARF_PLAYER_F" }
+      traits = { LEADER WORKER FIGHTER }
+      invisible = true
+      noAuto = true
+      initialRecruitment = 11
+      spawnLocation = NearLeader
+    }
+}

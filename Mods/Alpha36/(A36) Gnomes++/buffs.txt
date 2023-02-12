@@ -1,0 +1,40 @@
+"OVERCLOCK" {
+  name = "overclocked"
+  description = "Causes loss of health points over time."
+  addedMessage = "start" "starts" "overclocking"
+  removedMessage = YOUR "overclocking stops"
+  adjective = "overclocking"
+  tickEffect = Filter Not LastingEffect FROZEN {
+    CreatureMessage { "are being overclocked" "is  being overclocked" HIGH }
+    Bleed 0.01 "bleeding"
+  }
+  consideredBad = true
+  canAbsorb = false
+  price = 2
+  fx = DEBUFF_RED
+  color = ColorId RED
+}
+
+"STEADY" {
+  name = "steady"
+  description = "Cannot be immobilized, slowed or collapsed."
+  addedMessage = "start" "starts" "bleeding"
+  removedMessage = YOUR "bleeding stops"
+  adjective = "bleeding"
+  tickEffect = Filter Not LastingEffect FROZEN {
+    Filter LastingEffect IMMOBILE {
+	RemoveLasting IMMOBILE
+	}
+	Filter LastingEffect SLOWED {
+	RemoveLasting SLOWED
+	}
+	Filter LastingEffect COLLAPSED {
+	RemoveLasting COLLAPSED
+	}
+  }
+  consideredBad = true
+  canAbsorb = false
+  price = 2
+  fx = BUFF_WHITE
+  color = ColorId WHITE
+}

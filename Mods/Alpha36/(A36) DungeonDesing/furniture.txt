@@ -1,0 +1,654 @@
+"DD_TILE"
+{
+  name = "testing tileset"
+  viewId = { "dd_tile" }
+  viewLayer = FLOOR_BACKGROUND
+  luxury = 0.4
+}
+
+"DD_PORTCULLIS"
+{
+  name = "portcullis"
+  viewId = { "dd_portcullis_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  strength = 160
+  clickType = LOCK
+  requiredSupport = { { { E W } } { { N S } {"dd_portcullis_ns"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_PORTCULLIS_GATE"
+{
+  name = "portcullis gate"
+  viewId = { "dd_prison_gate_w" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  strength = 320
+  clickType = LOCK
+  requiredSupport = { { { W } } { { N } {"dd_prison_gate_n"} } { { E } {"dd_prison_gate_e"} } { { S } {"dd_prison_gate_s"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_IRON_BARS"
+{
+  name = "iron bars"
+  viewId = { "dd_iron_bars" }
+  blockMovement = true
+  wall = true
+  strength = 160
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"DD_FLOOR_CANAL"
+{
+  name = "water canal"
+  viewId = { "dd_floor_canal" }
+  layer = FLOOR
+  luxury = 0.4
+}
+"DD_FLOOR_LAVA_CANAL"
+{
+  name = "lava canal"
+  viewId = { "dd_floor_lava_canal"}
+  layer = FLOOR
+  luxury = 0.4
+  lightEmission = 1.7
+}
+"DD_STANDING_ARMOR"
+{
+  name = "standing armor"
+  viewId = { "dd_standing_armor_1" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.4
+  strength = 50
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_LANTERN"
+{
+  name = "flying lantern"
+  viewId = { "dd_lantern" }
+  luxury = 0.4
+  lightEmission = 8.2
+  strength = 20
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"DD_LANTERN_BLUE"
+{
+  name = "blue flying lantern"
+  viewId = { "dd_lantern_blue" }
+  luxury = 0.4
+  lightEmission = 8.2
+  strength = 20
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"DD_FIREPLACE_N"
+{
+  name = "fireplace"
+  viewId = { "dd_fireplace_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  lightEmission = 4.1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  canBuildOutsideOfTerritory = true
+}
+"DD_FIREPLACE_E" inherit "DD_FIREPLACE_N"
+{
+  name = "fireplace"
+  viewId = { "dd_fireplace_e"}
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+"DD_FIREPLACE_W" inherit "DD_FIREPLACE_N"
+{
+  name = "fireplace"
+  viewId = { "dd_fireplace_w"}
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+"DD_FIREPLACE_S" inherit "DD_FIREPLACE_N"
+{
+  name = "fireplace"
+  viewId = { "dd_fireplace_s"}
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+"DD_ALKOVE_N"
+{
+  name = "alkove with candle"
+  viewId = { "dd_alkove_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  lightEmission = 4.1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  canBuildOutsideOfTerritory = true
+}
+"DD_ALKOVE_S" inherit "DD_ALKOVE_N"
+{
+  name = "alkove with candle"
+  viewId = { "dd_alkove_s"}
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+"DD_ALKOVE_E" inherit "DD_ALKOVE_N"
+{
+  name = "alkove with candle"
+  viewId = { "dd_alkove_e"}
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+"DD_ALKOVE_W" inherit "DD_ALKOVE_N"
+{
+  name = "alkove with candle"
+  viewId = { "dd_alkove_w"}
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+"DD_STATUE_SUCCUBUS"
+{
+  name = "succubus statue"
+  viewId = { "dd_statue_succubus" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 4}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_STATUE_WARRIOR"
+{
+  name = "warrior statue"
+  viewId = { "dd_statue_warrior" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 4}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_SHIELD_N"
+{
+  name = "shield"
+  viewId = { "dd_shield_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+}
+"DD_SHIELD_E" inherit "DD_SHIELD_N"
+{
+  name = "shield"
+  viewId = { "dd_shield_e"}
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+"DD_SHIELD_W" inherit "DD_SHIELD_N"
+{
+  name = "shield"
+  viewId = { "dd_shield_w"}
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+"DD_SHIELD_S" inherit "DD_SHIELD_N"
+{
+  name = "shield"
+  viewId = { "dd_shield_s"}
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+
+"DD_FOUNTAIN_RED" 
+{
+  name = "red fountain"
+  viewId = { "dd_fountain_red" }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect "drink from"
+      {
+        CreatureMessage { "take a sip" "takes a sip"}
+        ChooseRandom {
+          Heal { FLESH }
+          Lasting SLEEP
+          Lasting SLOWED
+          Lasting BLIND
+          Lasting INVISIBLE
+          Lasting POISON
+          Lasting POISON_RESISTANT
+          Lasting FLYING
+          Lasting SPEED
+        }
+      }
+  summonedElement = "WATER_ELEMENTAL"
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_WALL_SKULL_N"
+{
+  name = "wall skull"
+  viewId = { "dd_wall_skull_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+}
+"DD_WALL_SKULL_E" inherit "DD_WALL_SKULL_N"
+{
+  name = "wall skull"
+  viewId = { "dd_wall_skull_e"}
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+"DD_WALL_SKULL_W" inherit "DD_WALL_SKULL_N"
+{
+  name = "wall skull"
+  viewId = { "dd_wall_skull_w"}
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+"DD_WALL_SKULL_S" inherit "DD_WALL_SKULL_N"
+{
+  name = "wall skull"
+  viewId = { "dd_wall_skull_s"}
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+"DD_RED_CRYSTAL" 
+{
+  name = "red crystal"
+  viewId = { "dd_red_crystal" }
+  strength = 60
+  luxury = 0.4
+  lightEmission = 4.1
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_BLUE_CRYSTAL" 
+{
+  name = "blue crystal"
+  viewId = { "dd_blue_crystal" }
+  strength = 60
+  luxury = 0.4
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_GREEN_CRYSTAL" 
+{
+  name = "green crystal"
+  viewId = { "dd_green_crystal" }
+  strength = 60
+  luxury = 0.4
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_WALL_FOUNTAIN_N"
+{
+  name = "wall fountain"
+  viewId = { "dd_wall_fountain_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+}
+
+"DD_USABLE_CRATE"
+{
+  name = "crate"
+  viewId = { "dd_swish_crate" }
+  emptyViewId = { "dd_swish_crate_empty" }
+  fire = 50
+  strength = 80
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"equipment"}
+  hidesItems = true
+}
+
+"DD_USABLE_BARREL"
+{
+  name = "barrel"
+  viewId = { "dd_swish_barrel" }
+  emptyViewId = { "dd_swish_barrel_empty" }
+  fire = 50
+  strength = 80
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"equipment"}
+  hidesItems = true
+}
+
+"DD_CAULDRON_DECORATION"
+{
+  name = "cauldron"
+  viewId = { "cauldron" }
+  blockMovement = true
+  canHideHere = true
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_TAR_CAULDRON_DECORATION"
+{
+  name = "cauldron"
+  viewId = { "cauldron_tar" }
+  blockMovement = true
+  canHideHere = true
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_CORPSE_PIT"
+{
+  name = "Corpse Pit"
+  viewId = { "dd_corpse_pit" }
+  emptyViewId = { "dd_corpse_pit_empty" }
+  canHideHere = true
+  tickType = Effect BedHeal()
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  storageIds = {"corpses"}
+  hidesItems = true
+}
+
+"GRAVE" modify append 
+{
+  hidesItems = true
+}
+
+ "DD_TORTURE_02"
+{
+  name = "Wheel"
+  viewId = { "dd_torture_02" }
+  canHideHere = true
+  usageType = BuiltinUsageId TIE_UP
+  strength = 80
+  upgrade = "TORTURE_TABLE"
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+
+ "DD_TORTURE_01"
+{
+  name = "Grill"
+  viewId = { "dd_torture_01" }
+  canHideHere = true
+  usageType = BuiltinUsageId TIE_UP
+  strength = 80
+  upgrade = "TORTURE_TABLE"
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_LOG_WOOD_PILLAR"
+{
+  name = "wooden pillar"
+  viewId = { "dd_log_pillar" }
+#wall = true
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+  }
+  summonedElement = "ENT"
+  fire = 100
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"DD_LOG_WOOD_WALL" inherit "DD_LOG_WOOD_PILLAR"
+{
+  name = "wall"
+  viewId = { "dd_log_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"DD_FLOOR_LOG1"
+{
+  name = "floor"
+  viewId = { "dd_log_floor" }
+  fire = 50
+  luxury = 0.1
+  layer = FLOOR
+}
+
+"DD_BURNT_WOOD_WALL" inherit "DD_LOG_WOOD_PILLAR"
+{
+  name = "wall"
+  viewId = { "dd_woodb_ruin_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"DD_UNDEAD_ANGEL_STATUE"
+{
+  name = "undead angel statue"
+  viewId = { "dd_angel_statue_undead" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 50
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DD_UNDEAD_ANGEL_STATUE_GLOW"
+{
+  name = "undead angel statue"
+  viewId = { "dd_angel_statue_undead_glowing" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 50
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  lightEmission = 8.2
+}
+
+"DD_ANGEL_STATUE"
+{
+  name = "undead angel statue"
+  viewId = { "dd_angel_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 50
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DD_SAND_CASTLE_PILLAR"
+{
+  name = "stone pillar"
+  viewId = { "dd_sand_swish_castle_pillar" }
+  strength2 = {
+    300 BOULDER
+    100 DIG
+    1900 HOSTILE_DIG
+  }
+  canBuildOutsideOfTerritory = true
+}
+"DD_SAND_CASTLE_WALL" inherit "DD_SAND_CASTLE_PILLAR"
+{
+  name = "wall"
+  viewId = { "dd_sand_swish_castle_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"DD_SAND_FLOOR_STONE1"
+{
+  name = "floor"
+  viewId = { "dd_sand_floor_stone1" }
+  luxury = 0.3
+  layer = FLOOR
+}
+"DD_SAND_FLOOR_STONE2" inherit "DD_SAND_FLOOR_STONE1"
+{
+  viewId = { "dd_sand_floor_stone2" }
+}
+
+"DD_SAND_STATUE_SUCCUBUS"
+{
+  name = "succubus statue"
+  viewId = { "dd_sand_statue_succubus" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 4}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_SAND_STATUE_WARRIOR"
+{
+  name = "warrior statue"
+  viewId = { "dd_sand_statue_warrior" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 4}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_SAND_STATUE_MINION"
+{
+  name = "minion statue"
+  viewId = { "dd_sand_statue_minion" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 4}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_SAND_FLOOR_CANAL"
+{
+  name = "water canal"
+  viewId = { "dd_sand_floor_canal" }
+  layer = FLOOR
+  luxury = 0.4
+}
+"DD_SAND_FLOOR_LAVA_CANAL"
+{
+  name = "lava canal"
+  viewId = { "dd_sand_floor_lava_canal"}
+  layer = FLOOR
+  luxury = 0.4
+  lightEmission = 1.7
+}
+
+
+"DD_CASTLE_PILLAR"
+{
+  name = "stone pillar"
+  viewId = { "dd_swish_castle_pillar" }
+  strength2 = {
+    300 BOULDER
+    100 DIG
+    1900 HOSTILE_DIG
+  }
+  canBuildOutsideOfTerritory = true
+}
+"DD_CASTLE_WALL" inherit "DD_CASTLE_PILLAR"
+{
+  name = "wall"
+  viewId = { "dd_swish_castle_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"DD_SAND_FOUNTAIN_RED" 
+{
+  name = "red fountain"
+  viewId = { "dd_sand_fountain_red" }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect "drink from"
+      {
+        CreatureMessage { "take a sip" "takes a sip"}
+        ChooseRandom {
+          Heal { FLESH }
+          Lasting SLEEP
+          Lasting SLOWED
+          Lasting BLIND
+          Lasting INVISIBLE
+          Lasting POISON
+          Lasting POISON_RESISTANT
+          Lasting FLYING
+          Lasting SPEED
+        }
+      }
+  summonedElement = "WATER_ELEMENTAL"
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_SAND_FOUNTAIN" 
+{
+  name = "fountain"
+  viewId = { "dd_sand_fountain" }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect "drink from"
+      {
+        CreatureMessage { "take a sip" "takes a sip"}
+        ChooseRandom {
+          Heal { FLESH }
+          Lasting SLEEP
+          Lasting SLOWED
+          Lasting BLIND
+          Lasting INVISIBLE
+          Lasting POISON
+          Lasting POISON_RESISTANT
+          Lasting FLYING
+          Lasting SPEED
+        }
+      }
+  summonedElement = "WATER_ELEMENTAL"
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_GOLD_WARRIOR_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dd_gold_statue_warrior" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = { 1 none }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DD_GOLD_SUCCUBUS_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dd_gold_statue_succubus" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = { 1 none }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DD_PRISON_GATE"
+{
+  name = "prison gate"
+  viewId = { "dd_prison_gate_w" }
+  movementSet = {
+    traits = { WALK }
+    blockingEnemies = true
+    blockingPrisoners = true
+  }
+  canHideHere = true
+  blockAllVision = true
+  strength = 80
+  requiredSupport = { { { W } } { { N } {"dd_prison_gate_n"} } { { E } {"dd_prison_gate_e"} } { { S } {"dd_prison_gate_s"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}

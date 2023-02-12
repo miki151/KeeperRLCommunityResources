@@ -1,0 +1,231 @@
+"OV_HIVE_MINION_BROWN"
+{
+  name = "Brown Minion Hive"
+  viewId = { "ov_minion_hive_brown" }
+  blockMovement = true
+  canHideHere = true
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"OV_HIVE_MINION_BLUE"
+{
+  name = "Blue Minion Hive"
+  viewId = { "ov_minion_hive_blue" }
+  blockMovement = true
+  canHideHere = true
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+
+"OV_HIVE_MINION_RED"
+{
+  name = "Red Minion Hive"
+  viewId = { "ov_minion_hive_red" }
+  blockMovement = true
+  canHideHere = true
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"OV_HIVE_MINION_GREEN"
+{
+  name = "Green Minion Hive"
+  viewId = { "ov_minion_hive_green" }
+  blockMovement = true
+  canHideHere = true
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"OV_TOWER_HEART"
+{
+  name = "Tower Heart"
+  viewId = { "ov_tower_heart" }
+  blockMovement = true
+  usageTime = 1500
+  canHideHere = true
+  luxury = 1.0
+  strength = 80
+  populationIncrease = { 10 none }
+  lightEmission = 8.2
+  usageType = UsageEffect "use" {
+    IncreaseAttr DAMAGE 1
+    IncreaseAttr RANGED_DAMAGE 1
+    IncreaseAttr SPELL_DAMAGE 1
+    IncreaseAttr DEFENSE 1
+    Heal { FLESH }
+    CreatureMessage {"commuted with the Heart" "commuted with the Heart"}
+  }
+}
+
+"OV_NETHERHEART"
+{
+  name = "Netherheart"
+  viewId = { "ov_nether_heart" }
+  blockMovement = true
+  usageTime = 1500
+  canHideHere = true
+  luxury = 1.0
+  strength = 80
+  populationIncrease = { 10 none }
+  lightEmission = 8.2
+}
+
+"OV_SKULL_LANTERN"
+{
+  name = "Skull Lantern"
+  viewId = { "ov_skull_lantern" }
+  luxury = 0.1
+  lightEmission = 8.2
+}
+
+
+"OV_PLEASURE_CULT_BED1"
+{
+  name = "basic bed"
+  viewId = { "ov_pleasurecult_bed1" }
+  usageType = UsageEffect "sleep in" Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  fire = 50
+  luxury = 0.2
+  strength = 40
+  upgrade = "BED1"
+  bedType = BED
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"OV_PLEASURE_CULT_BED2"
+{
+  name = "fine bed"
+  viewId = { "ov_pleasurecult_bed2" }
+  usageType = UsageEffect "sleep in" Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  fire = 50
+  luxury = 0.4
+  strength = 40
+  upgrade = "OV_PLEASURE_CULT_BED1"
+  bedType = BED
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"OV_PLEASURE_CULT_BED3"
+{
+  name = "luxurious bed"
+  viewId = { "ov_pleasurecult_bed3" }
+  usageType = UsageEffect "sleep in" Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  luxury = 0.8
+  fire = 50
+  strength = 40
+  upgrade = "OV_PLEASURE_CULT_BED2"
+  bedType = BED
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+
+"OV_MUD_FLOOR"
+{
+  name = "floor"
+  viewId = { "floor" }
+  layer = GROUND
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  builtOver = {"WATER" "SHALLOW_WATER1" "SHALLOW_WATER2" "MAGMA" }
+}
+
+"OV_HOBBIT_WALLS"
+{
+  name = "wall"
+  viewId = { "mountain" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  xForgetAfterBuilding = true
+  strength2 = {
+    200 BOULDER
+    30 DIG
+    200 HOSTILE_DIG
+  }
+  summonedElement = "EARTH_ELEMENTAL"
+  canBuildOutsideOfTerritory = true
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+}
+
+"OV_PUMPKINS"
+{
+  name = "pumpkins"
+  viewId = { "ov_pumpkins" }
+  populationIncrease = {0.05 none}
+  canBuildOutsideOfTerritory = true
+  layer = FLOOR
+  viewLayer = FLOOR
+}
+
+"OV_ABYSS_PUMPKINS"
+{
+  name = "pumpkins"
+  viewId = { "ov_abyss_pumpkins" }
+  populationIncrease = {0.05 none}
+  canBuildOutsideOfTerritory = true
+  layer = FLOOR
+  viewLayer = FLOOR
+}
+
+"OV_ABYSS_GRASS"
+{
+  name = "grass"
+  viewId = { "ov_abyss_grass" }
+  layer = GROUND
+}
+
+"OV_ABYSS_CRYSTALS"
+{
+  name = "crystals"
+  viewId = { "ov_abyss_crystal" }
+  luxury = 0.1
+  lightEmission = 8.2
+}
+
+"OV_ABYSS_RIFT"
+{
+  name = "crystals"
+  viewId = { "ov_abyss_rift" }
+  luxury = 0.1
+  lightEmission = 8.2
+  blockMovement = true
+  blockAllVision = true
+}
+  
+"OV_OBERON_SHRINE_SPAWN"
+  {  
+  name = "oberon shrine"
+  viewId = { "ov_oberon_shrine" }
+  blockMovement = true
+  canHideHere = true
+  strength = 100
+  tickType = Effect {
+    RemoveFurniture "OV_OBERON_SHRINE_SPAWN"
+    PlaceFurniture "OV_OBERON_SHRINE"
+   }
+  }
+  
+"OV_OBERON_SHRINE"
+{
+  name = "oberon shrine"
+  viewId = { "ov_oberon_shrine" }
+  blockMovement = true
+  usageTime = 5
+  usageType = BuiltinUsageId DEMON_RITUAL
+  lastingEffect = ALLY DARKNESS_SOURCE 8 # ALLY/ENEMY LastingEffect radius
+  tickType = Effect Chance 0.001 Chain { Summon "OV_ELVEN_GHOST" 1 none Filter Area 1 CreatureId "OV_ELVEN_GHOST" AddMinionTrait NO_LIMIT}
+  populationIncrease = { 0.25 none }
+  luxury = 0.4
+  strength = 80
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}

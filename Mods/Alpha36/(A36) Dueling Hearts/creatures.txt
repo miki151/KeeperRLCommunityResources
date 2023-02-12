@@ -1,0 +1,1244 @@
+"DHK_KEEPER"
+  {
+    viewId = { "dhk_keeper" }
+    attr = {
+      DEFENSE 100
+    }
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      noHealth = true
+      fallsApart = false
+    }
+    permanentEffects = {
+      INVULNERABLE 1
+      SLOWED 1
+      BLIND 1
+      INVISIBLE 1
+      FLYING 1
+    }
+    name = {
+      name = "Dark Heart"
+      fullTitle = true
+    }
+    gender = IT
+    }
+  "DHK_IMP"
+    {
+      viewId = { "dhk_imp" }
+      attr = {
+        DAMAGE 5
+        DEFENSE 8
+		DIGGING 15
+      }
+      body = {
+        type = Humanoid SMALL
+        material = SPIRIT
+      }
+      aiType = RANGED
+      noChase = true
+      cantEquip = true
+      maxLevelIncrease = {
+        SPELL 10
+      }
+      chatReactionFriendly = "talks about digging"
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+	      { type = Simple "Torch" }
+	    }
+      permanentEffects = {
+        SPEED 1
+        NO_CARRY_LIMIT 1
+		RIDER 1
+      }
+      spellSchools = { "dhk_imp" }
+      name = {
+        name = "imp"
+      }
+    }
+  "DHK_BEETLE"
+    {
+      viewId = { "dhk_beetle" }
+      attr = {
+        DAMAGE 12
+        DEFENSE 10
+      }
+      body = {
+        type = NonHumanoid MEDIUM
+        weight = 1
+        bodyParts = {
+          LEG 6
+          HEAD 1
+          TORSO 1
+        }
+        deathSound = none
+        intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            meleeAttackAttr = DAMAGE
+            attackMsg = BITE } }}}
+      }}
+      maxLevelIncrease = {
+        MELEE 7
+      }
+      permanentEffects = {
+        NIGHT_VISION 1
+        EXPLORE_CAVES_SKILL 1
+		STEED 1
+      }
+      spellSchools = { "dhk_beetle" }
+      name = {
+        name = "beetle"
+        firstNameGen = "CREATURE"
+      }
+    }
+  "DHK_FLY"
+    {
+      viewId = { "dhk_fly" }
+      attr = {
+        DAMAGE 10
+        DEFENSE 8
+      }
+      body = {
+        type = NonHumanoid SMALL
+        bodyParts = {
+          LEG 6
+          WING 2
+          TORSO 1
+          HEAD 1
+        }
+        weight = 0.1
+        deathSound = none
+        intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "leg_attack" } "kick" 4 {
+            attackType = HIT
+            meleeAttackAttr = DAMAGE
+            attackMsg = KICK } }}}
+      }}
+      permanentEffects = {
+        EXPLORE_SKILL 1
+        SPEED 1
+      }
+      noChase = true
+      maxLevelIncrease = {
+        MELEE 8
+      }
+      spellSchools = { "dhk_fly" }
+      name = {
+        name = "fly"
+        firstNameGen = "CREATURE"
+        pluralName = "flies"
+      }
+    }
+  "DHK_SPIDER"
+    {
+      viewId = { "dhk_spider" }
+      attr = {
+        DAMAGE 14
+        DEFENSE 13
+		WORKSHOP 15
+      }
+      body = {
+        type = NonHumanoid MEDIUM
+        bodyParts = {
+          LEG 8
+          TORSO 1
+          HEAD 1
+        }
+        weight = 2
+        deathSound = none
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "bite_attack" } "fangs" 2 {
+              attackType = BITE
+              attackMsg = BITE
+              meleeAttackAttr = DAMAGE
+              victimEffect = {0.1 Lasting POISON} } }}}
+        }
+      }
+      permanentEffects = {
+        EXPLORE_NOCTURNAL_SKILL 1
+        NIGHT_VISION 1
+		STEED 1
+      }
+      maxLevelIncrease = {
+        MELEE 8
+      }
+      spellSchools = { "dhk_spider" }
+      name = {
+      	firstNameGen = "CREATURE"
+        name = "spider"
+      }
+    }
+  "DHK_DEMON"
+    {
+      viewId = { "dhk_kobold" }
+      attr = {
+        DAMAGE 14
+        DEFENSE 12
+        RANGED_DAMAGE 10
+		WORKSHOP 20
+		FORGE 15
+      }
+      body = {
+        type = Humanoid SMALL
+      }
+      chatReactionFriendly = "curses all elves"
+      chatReactionHostile = "\"Die!\""
+      maxLevelIncrease = {
+        MELEE 10
+        ARCHERY 6
+      }
+      name = {
+        name = "kobold"
+        firstNameGen = "DRAGON"
+      }
+      spellSchools = { "dhk_demon" }
+      permanentEffects = {
+        FIRE_RESISTANT 1
+		RIDER 1
+      }
+      inventory = {
+	      { type = Simple "Spear" }
+		  { type = Simple "LeatherArmor" chance = 0.2 }
+	      { type = Simple "LeatherHelm" chance = 0.2 }
+	      { type = Simple "LeatherBoots" chance = 0.2 }
+	      { type = Simple "LeatherGloves" chance = 0.2 }
+	    }
+      hatedByEffect = HATE_GREENSKINS
+    }
+  "DHK_WARLOCK"
+    {
+      viewId = { "dhk_warlock" }
+      attr = {
+        DAMAGE 10
+        DEFENSE 12
+        SPELL_DAMAGE 14
+		LABORATORY 35
+        JEWELER 20
+      }
+      body = {
+        type = Humanoid LARGE
+      }
+      permanentEffects = {
+	  RIDER 1
+      }
+      aiType = RANGED
+      chatReactionFriendly = "curses all elves"
+      chatReactionHostile = "\"Die!\""
+      maxLevelIncrease = {
+        SPELL 10
+      }
+      spellSchools = { "dhk_warlock" }
+      inventory = {
+	      { type = Simple "Robe" }
+	      { type = Simple "LeatherBoots" chance = 0.8 }
+	      { type = Simple "LeatherGloves" chance = 0.8 }
+	    }
+      name = {
+        name = "warlock"
+        firstNameGen = "FIRST_MALE"
+      }
+      hatedByEffect = HATE_HUMANS
+    }
+  "DHK_BIGDEMON"
+    {
+      viewId = { "dhk_bigdemon" }
+      attr = {
+        DAMAGE 22
+        DEFENSE 22 
+		WORKSHOP 40
+		FORGE 40
+      }
+      body = {
+        type = Humanoid LARGE
+        weight = 140
+      }
+      spellSchools = { "dhk_bigdemon" }
+      name = {
+        name = "swamp demon"
+        firstNameGen = "DEMON"
+      }
+      permanentEffects = {
+        SLOWED 1
+        POISON_RESISTANT 1
+        SWIMMING_SKILL 1
+      }
+      inventory = {
+	      { type = Simple "IronGloves" }
+	    }
+      maxLevelIncrease = {
+        MELEE 7
+      }
+      hatedByEffect = HATE_GREENSKINS
+    }
+  "DHK_MISTRESS"
+    {
+      attr = {
+        DAMAGE 18
+        DEFENSE 16
+        SPELL_DAMAGE 14 
+        RANGED_DAMAGE 14
+      }
+      viewId = { "dhk_mistress" }
+      body = {
+        type = Humanoid LARGE
+      }
+      permanentEffects = {
+        COPULATION_SKILL 1
+		RIDER 1
+      }
+      maxLevelIncrease = {
+        MELEE 10
+        SPELL 6
+        ARCHERY 8
+      }
+      aiType = RANGED
+      gender = FEMALE
+      spellSchools = { "dhk_mistress" }
+      inventory = {
+	      { type = Simple "IronBoots" }
+	      { type = Simple "IronGloves" chance = 0.5 }
+	    }
+      name = {
+        name = "temptress"
+        firstNameGen = "DEMON"
+      }
+    }
+  "DHK_TROLL"
+    {
+      viewId = { "dhk_troll" }
+      attr = {
+        DAMAGE 14
+        DEFENSE 14
+        RANGED_DAMAGE 10
+		WORKSHOP 40
+        FORGE 40
+        JEWELER 15
+      }
+      body = {
+        type = Humanoid MEDIUM
+      }
+      chatReactionFriendly = "talks about crafting"
+      chatReactionHostile = "\"Die!\""
+      permanentEffects = {
+        DISARM_TRAPS_SKILL 1
+        DISTILLATION_SKILL 1
+		RIDER 1
+      }
+      spellSchools = { "dhk_troll" }
+      inventory = {
+	      { type = Simple "WarHammer" }
+	    }
+      maxLevelIncrease = {
+        MELEE 10
+        ARCHERY 4
+      }
+      name = {
+        name = "troll"
+        firstNameGen = "ORC"
+      }
+      hatedByEffect = HATE_GREENSKINS
+    }
+  "DHK_ORC"
+    {
+      viewId = { "dhk_orc" }
+      attr = {
+        DAMAGE 19
+        DEFENSE 16
+        RANGED_DAMAGE 7
+		WORKSHOP 15
+        FORGE 15
+      }
+      body = {
+        type = Humanoid SMALL
+      }
+      chatReactionFriendly = "curses all elves"
+      chatReactionHostile = "\"Die!\""
+      maxLevelIncrease = {
+        MELEE 9
+        ARCHERY 6
+      }
+	 permanentEffects = {
+      RIDER 1
+     }
+      spellSchools = { "dhk_orc" }
+      inventory = {
+	      { type = Simple "IronShield" }
+	      { type = Simple "Sword" }
+	      { type = Simple "ChainArmor" chance = 0.5 }
+	      { type = Simple "IronGloves" chance = 0.5 }
+	      { type = Simple "IronBoots" chance = 0.5 }
+	    }
+      name = {
+        name = "orc guard"
+        firstNameGen = "ORC"
+      }
+      hatedByEffect = HATE_GREENSKINS
+    }
+	
+  "DHK_GHOST"
+    {
+      viewId = { "dhk_ghost" }
+      attr = {
+        DAMAGE 8
+        DEFENSE 10
+        SPELL_DAMAGE 13
+      }
+      body = {
+        type = NonHumanoid LARGE
+        material = SPIRIT
+      }
+      permanentEffects = {
+        NIGHT_VISION 1
+        ELF_VISION 1
+        FLYING 1
+        POISON_RESISTANT 1
+      }
+      maxLevelIncrease = {
+        SPELL 8
+      }
+      spellSchools = { "dhk_ghost" }
+      spells = { "dhh_rebound" }
+      hatedByEffect = HATE_UNDEAD
+      name = {
+        name = "ghost"
+      }
+    }
+  "DHK_SKELETON"
+    {
+      viewId = { "dhk_skeleton" }
+      attr = {
+        DAMAGE 15
+        DEFENSE 13
+        RANGED_DAMAGE 15
+		WORKSHOP 10
+        LABORATORY 10
+        FORGE 10
+        JEWELER 10
+      }
+      body = {
+        type = Humanoid LARGE
+        material = BONE
+      }
+      permanentEffects = {
+        NIGHT_VISION 1
+        POISON_RESISTANT 1
+		RIDER 1
+      }
+      maxLevelIncrease = {
+        MELEE 10
+        ARCHERY 8
+      }
+      inventory = {
+	      { type = Simple "WoodenShield" }
+	      { type = Simple "Sword" }
+	    }
+      spellSchools = { "dhk_skeleton" }
+      name = {
+        name = "skeleton"
+      }
+      hatedByEffect = HATE_UNDEAD
+    }
+  "DHK_VAMPIRE"
+    {
+      viewId = { "dhk_vampire" }
+      attr = {
+        DAMAGE 20
+        DEFENSE 18
+        SPELL_DAMAGE 20
+        LABORATORY 30
+        JEWELER 20
+      }
+      body = {
+        type = Humanoid LARGE
+        material = UNDEAD_FLESH
+      }
+      aiType = RANGED
+      chatReactionFriendly = "\"All men be cursed!\""
+      chatReactionHostile = "\"Die!\""
+      permanentEffects = {
+        NIGHT_VISION 1
+        ELF_VISION 1
+        POISON_RESISTANT 1
+        TELEPATHY 1
+	    RIDER 1
+      }
+      maxLevelIncrease = {
+        MELEE 10
+        SPELL 10
+      }
+      inventory = {
+	      { type = Simple "Robe" }
+	      { type = Simple "LeatherBoots" chance = 0.5 }
+	      { type = Simple "LeatherGloves" chance = 0.5 }
+	    }
+      spellSchools = { "dhk_vampire" }
+      name = {
+        name = "vampire"
+        firstNameGen = "VAMPIRE"
+      }
+      hatedByEffect = HATE_UNDEAD
+    }
+  "DHK_HELLHOUND"
+    {
+      viewId = { "dhk_hellhound" }
+      attr = {
+        DAMAGE 20
+        DEFENSE 16
+      }
+      body = {
+        type = FourLegged MEDIUM
+        weight = 35
+        intrinsicAttacks = {
+          LEG  {{{ Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }}}
+          HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE } }}}
+        }
+      }
+      permanentEffects = {
+        NIGHT_VISION 1
+        EXPLORE_CAVES_SKILL 1
+        FIRE_RESISTANT 1
+		STEED 1
+      }
+      maxLevelIncrease = {
+        MELEE 5
+      }
+      spellSchools = { "dhk_hellhound" }
+      name = {
+        name = "hellhound"
+        firstNameGen = "DOG"
+        groupName = "pack"
+      }
+    }
+  "DHK_DRAGON"
+    {
+      viewId = { "dhk_dragon" }
+      attr = {
+        DAMAGE 24
+        DEFENSE 24
+        SPELL_DAMAGE 20
+		WORKSHOP 35
+        LABORATORY 35
+        FORGE 30
+        JEWELER 40
+      }
+      cantEquip = true
+      body = {
+        type = Humanoid HUGE
+        intrinsicAttacks = {
+          ARM  {{{ Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }}}
+          HEAD {{{ Intrinsic { "bite_attack" }  "jaws" 10 { attackType = BITE attackMsg = BITE } }}}
+        } 
+      }
+      permanentEffects = {
+        FIRE_RESISTANT 1
+        MAGIC_RESISTANCE 1
+        RANGED_VULNERABILITY 1
+		STEED 1
+      }
+      maxLevelIncrease = {
+        MELEE 10
+        SPELL 10
+      }
+      spellSchools = { "dhk_dragon" }
+      spells = { "fire breath" }
+      hatedByEffect = HATE_DRAGONS
+      name = {
+        name = "red dragon"
+        firstNameGen = "DRAGON"
+      }
+    }
+  "DHK_REAPER"
+    {
+      viewId = { "dhk_hellreaper" }
+      attr = {
+        DAMAGE 28
+        DEFENSE 28 
+        WORKSHOP 20
+        FORGE 20
+      }
+      body = {
+        type = Humanoid LARGE
+      }
+      name = {
+        name = "infernal reaper"
+        firstNameGen = "DEMON"
+      }
+      permanentEffects = {
+        FIRE_RESISTANT 1
+        SPEED 1
+        INSANITY  1
+        HATE_UNDEAD 1
+        HATE_GREENSKINS 1
+        HATE_DRAGONS 1
+        HATE_ELVES 1
+        HATE_HUMANS 1
+        HATE_DWARVES 1
+		RIDER 1
+      }
+      inventory = {
+	      { type = Simple "Scythe" }
+	      { type = Simple "IronHelm" }
+	      { type = Simple "ChainArmor" }
+	      { type = Simple "IronGloves" }
+	      { type = Simple "IronBoots" }
+	    }
+      spellSchools = { "dhk_reaper" }
+      maxLevelIncrease = {
+        MELEE 10
+      }
+    }
+
+"DHK_CHICKEN"
+  {
+    viewId = { "chicken" }
+    attr = { 
+      DAMAGE 0
+      DEFENSE 1
+    }
+    body = {
+        type = NonHumanoid SMALL
+        minionFood = true
+        bodyParts = {
+          LEG 2
+          TORSO 1
+          HEAD 1
+        }}
+    permanentEffects = {
+      SLOWED 1
+    }
+    deathEffect =  Chain {
+      DropItems { Simple "ChickenMeat"} {1 2}
+    }
+    name = {
+      name = "chicken"
+    }
+  }
+
+##########SUMMONED CREATURES##########
+"DHK_SPIRITIMP" inherit "DHK_IMP"
+  {
+    viewId = { "dhk_imp" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITBEETLE" inherit "DHK_BEETLE"
+  {
+    viewId = { "dhk_beetle" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITFLY" inherit "DHK_FLY"
+  {
+    viewId = { "dhk_fly" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITSPIDER" inherit "DHK_SPIDER"
+  {
+    viewId = { "dhk_spider" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITDEMON" inherit "DHK_DEMON"
+  {
+    viewId = { "dhk_kobold" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITWARLOCK" inherit "DHK_WARLOCK"
+  {
+    viewId = { "dhk_warlock" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITBIGDEMON" inherit "DHK_BIGDEMON"
+  {
+    viewId = { "dhk_bigdemon" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITMISTRESS" inherit "DHK_MISTRESS"
+  {
+    viewId = { "dhk_mistress" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITTROLL" inherit "DHK_TROLL"
+  {
+    viewId = { "dhk_troll" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITORC" inherit "DHK_ORC"
+  {
+    viewId = { "dhk_orc" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITGHOST" inherit "DHK_GHOST"
+  {
+    viewId = { "dhk_ghost" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITSKELETON" inherit "DHK_SKELETON"
+  {
+    viewId = { "dhk_skeleton" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITVAMPIRE" inherit "DHK_VAMPIRE"
+  {
+    viewId = { "dhk_vampire" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITHELLHOUND" inherit "DHK_HELLHOUND"
+  {
+    viewId = { "dhk_hellhound" Rgb 80 63 127 100 }
+  }
+"DHK_SPIRITDRAGON" inherit "DHK_DRAGON"
+  {
+    viewId = { "dhk_dragon" Rgb 80 63 127 100 }
+  }
+
+##########LIGHT HEART##########
+"DHH_KEEPER"
+  {
+    viewId = { "dhh_thief" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+	  MULTI_WEAPON 50
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "light heart"
+      firstNameGen = "DEITY"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "dhh_knight" } { "dhh_avatar" }}
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 10
+    }
+    hatedByEffect = HATE_HUMANS
+    spellSchools = { "dhh_avatar" }
+    inventory = {
+      { Simple "LeatherArmor"}
+      { Simple "LeatherHelm"}
+      { Simple "Sword"}
+    }
+  }
+	"DHH_MOUNTAINDWARF"
+	  {
+	    viewId = { "dhh_mountaindwarf" }
+	    attr = {
+	      DAMAGE 10
+	      DEFENSE 18
+		  WORKSHOP 15
+	      FORGE 15
+	      MULTI_WEAPON 20
+		  DIGGING 20
+	    }
+	    specialAttr = {
+	      DEFENSE { -7 Name "when outdoors" Not Indoors }
+	    }
+	    body = {
+	      type = Humanoid MEDIUM
+	      weight = 90
+	    }
+	    name = {
+	      name = "mountain dwarf"
+	      pluralName = "mountain dwarves"
+	      firstNameGen = "DWARF"
+	    }
+	    maxLevelIncrease = {
+	      MELEE 10
+	    }
+	    permanentEffects = {
+	      MAGIC_VULNERABILITY 1
+	      DISTILLATION_SKILL 1
+		  RIDER 1
+	    }
+	    chatReactionFriendly = "curses all orcs"
+	    chatReactionHostile = "\"Die!\""
+	    hatedByEffect = HATE_DWARVES
+	    spellSchools = { "dhh_mountaindwarf" }
+        spells = { "dhh_tunnel" }
+	    inventory = {
+	      { type = Simple "Sword" }
+	      { Simple "LeatherArmor"}
+	      { type = Simple "LeatherHelm" chance = 0.5 }
+	      { type = Simple "LeatherBoots" chance = 0.3 }
+	      { type = Simple "Torch" chance = 0.3 }
+	    }
+	  }
+	"DHH_DWARFGUARD"
+	  {
+	    viewId = { "dhh_dwarfguard" }
+	    attr = {
+	      DAMAGE 14
+	      DEFENSE 20
+		  WORKSHOP 10
+	      FORGE 10
+		  MULTI_WEAPON 20
+		  DIGGING 10
+	    }
+	    specialAttr = {
+	      DEFENSE { -7 Name "when outdoors" Not Indoors }
+	    }
+	    body = {
+	      type = Humanoid MEDIUM
+	      weight = 90
+	    }
+	    name = {
+	      name = "dwarf guard"
+	      pluralName = "dwarves"
+	      firstNameGen = "DWARF"
+	    }
+	    maxLevelIncrease = {
+	      MELEE 10
+	    }
+	    permanentEffects = {
+	      MAGIC_VULNERABILITY 1
+	      SPEED 1
+	      EXPLORE_CAVES_SKILL 1
+	      DISTILLATION_SKILL 1
+		  RIDER 1
+	    }
+	    spellSchools = { "dhh_dwarfguard" }
+	    chatReactionFriendly = "curses all orcs"
+	    chatReactionHostile = "\"Die!\""
+	    hatedByEffect = HATE_DWARVES
+	    inventory = {
+	      { type = Simple "Sword" }
+	      { type = Simple "ChainArmor"}
+	      { type = Simple "IronHelm" chance = 0.5 }
+	      { type = Simple "IronBoots" chance = 0.3 }
+	      { type = Simple "IronShield" chance = 0.3 }
+	    }
+	  }
+	"DHH_THIEF"
+	  {
+	    viewId = { "dhh_thief" }
+	    attr = {
+	      DAMAGE 12
+	      DEFENSE 12
+	      RANGED_DAMAGE 10
+		  WORKSHOP 5
+	    }
+	    body = {
+	      type = Humanoid MEDIUM
+	    }
+	    chatReactionFriendly = "curses all law enforcement"
+	    chatReactionHostile = "\"Die!\""
+	    permanentEffects = {
+	      EXPLORE_NOCTURNAL_SKILL 1
+	      SWIMMING_SKILL 1
+	      SWARMER 1
+	      AMBUSH_SKILL 1
+	      DISARM_TRAPS_SKILL 1
+		  RIDER 1
+	    }
+	    maxLevelIncrease = {
+	      MELEE 15
+	      ARCHERY 6
+	    }
+	    name = {
+	      name = "thief"
+	      firstNameGen = "FIRST_MALE"
+	    }
+	    spellSchools = { "dhh_thief" }
+	    hatedByEffect = HATE_HUMANS
+	    inventory = {
+	      { Simple "Knife"}
+	      { type = Potion Heal {FLESH} chance = 0.7 }
+	      { type = Simple "Torch" chance = 0.3 }
+	      { type = Simple "LeatherBoots" chance = 0.3 }
+	      { type = Simple "LeatherArmor" chance = 0.5 }
+	      { Simple "GoldPiece" 4 10 }
+	    }
+	  }
+	"DHH_ARCHER"
+	  {
+	    viewId = { "dhh_archer" }
+	    attr = {
+	      DAMAGE 10
+	      DEFENSE 12
+	      RANGED_DAMAGE 15
+		  WORKSHOP 15
+	    }
+	    body = {
+	      type = Humanoid MEDIUM
+	    }
+      aiType = RANGED
+	    chatReactionFriendly = "curses all dungeons"
+	    chatReactionHostile = "\"Die!\""
+	    maxLevelIncrease = {
+	      ARCHERY 8
+	    }
+		permanentEffects = {
+           RIDER 1
+        }
+	    spellSchools = { "dhh_archer" }
+	    name = {
+	      name = "archer"
+	      firstNameGen = "FIRST_MALE"
+	    }
+	    hatedByEffect = HATE_HUMANS
+	    inventory = {
+	      { Simple "Bow"}
+	      { Simple "Knife"}
+	      { Simple "LeatherArmor"}
+	      { Simple "LeatherBoots"}
+	      { type = Simple "Torch" chance = 0.3 }
+	      { type = Potion Heal {FLESH} chance = 0.7 }
+	    }
+	  }
+	  "DHH_BARBARIAN"
+	  {
+	    viewId = { "dhh_barbarian" }
+	    attr = {
+	      DAMAGE 16
+	      DEFENSE 18
+	      RANGED_DAMAGE 10
+		  WORKSHOP 20
+	      FORGE 15
+	      MULTI_WEAPON 40
+	    }
+	    body = {
+	      type = Humanoid LARGE
+	    }
+	    chatReactionFriendly = "curses all dungoens"
+	    chatReactionHostile = "\"Die!\""
+	    maxLevelIncrease = {
+	      MELEE 6
+	    }
+	    spellSchools = { "dhh_barbarian" }
+	    permanentEffects = {
+	      MELEE_RESISTANCE 1
+		  RIDER 1
+	    }
+	    name = {
+	      name = "barbarian"
+	      firstNameGen = "FIRST_MALE"
+	    }
+	    hatedByEffect = HATE_HUMANS
+	    inventory = {
+	      { Simple "BattleAxe"}
+	      { type = Simple "Torch" chance = 0.3 }
+	      { type = Simple "LeatherBoots" chance = 0.5 }
+	      { type = Simple "LeatherArmor" chance = 0.5 }
+	    }
+	  }
+  "DHH_WIZARD"
+    {
+      viewId = { "dhh_wizard" }
+      attr = {
+        DAMAGE 10
+        DEFENSE 14
+        SPELL_DAMAGE 18
+		LABORATORY 45
+        JEWELER 40
+      }
+      body = {
+        type = Humanoid MEDIUM
+      }
+      permanentEffects = {
+      MAGIC_RESISTANCE 1
+      MELEE_VULNERABILITY 1
+	  RIDER 1
+      }
+      aiType = RANGED
+      chatReactionFriendly = "curses all undead"
+      chatReactionHostile = "\"Die!\""
+      maxLevelIncrease = {
+        SPELL 10
+      }
+      spells = { "magic missile" }
+      spellSchools = { "dhh_wizard" }
+      inventory = {
+	      { type = Simple "Robe" }
+	      { type = Simple "IronStaff" }
+	      { type = Simple "LeatherBoots" chance = 0.8 }
+	      { type = Simple "LeatherGloves" chance = 0.8 }
+	    }
+      name = {
+        name = "wizard"
+        firstNameGen = "FIRST_MALE"
+      }
+      hatedByEffect = HATE_HUMANS
+    }
+  "DHH_FAIRY"
+    {
+      viewId = { "dhh_fairy" }
+      attr = {
+        DAMAGE 14
+        DEFENSE 10
+        SPELL_DAMAGE 14
+        RANGED_DAMAGE 10
+		LABORATORY 30
+        JEWELER 20
+      }
+      aiType = RANGED
+      body = {
+        type = Humanoid SMALL
+        addBodyPart = {
+        WING 2
+      }
+      }
+      permanentEffects = {
+      SPEED 1
+      POISON_RESISTANT 1
+      RANGED_VULNERABILITY 1
+      TELEPATHY 1
+      ELF_VISION 1
+      SLOW_TRAINING 1
+      EXPLORE_SKILL 1
+	  RIDER 1
+      }
+      chatReactionFriendly = "curses all vampires"
+      chatReactionHostile = "\"Die!\""
+      maxLevelIncrease = {
+      	MELEE 5
+        SPELL 10
+        ARCHERY 5
+      }
+      spellSchools = { "dhh_fairy" }
+      inventory = {
+	      { type = Simple "LeatherArmor" }
+	      { type = Simple "IronStaff" }
+	      { type = Simple "LeatherBoots" chance = 0.8 }
+	      { type = Simple "LeatherGloves" chance = 0.8 }
+	    }
+      name = {
+        name = "fairy"
+        firstNameGen = "DEITY"
+      }
+      hatedByEffect = HATE_ELVES
+    }
+  "DHH_PRIESTESS"
+    {
+      viewId = { "dhh_priestess" }
+      attr = {
+        DAMAGE 14
+        DEFENSE 16
+        SPELL_DAMAGE 18
+		LABORATORY 20
+        JEWELER 15
+      }
+      body = {
+        type = Humanoid MEDIUM
+      }
+      permanentEffects = {
+      RANGED_RESISTANCE 1
+      MAGIC_RESISTANCE 1
+	  RIDER 1
+      }
+      aiType = RANGED
+      chatReactionFriendly = "curses all undead"
+      chatReactionHostile = "\"Die!\""
+      maxLevelIncrease = {
+        SPELL 10
+      }
+      spellSchools = { "dhh_priestess" }
+      inventory = {
+	      { type = Simple "Robe" }
+	      { type = Simple "IronStaff" }
+	      { type = Simple "IronBoots" chance = 0.8 }
+	      { type = Simple "IronGloves" chance = 0.8 }
+	    }
+      name = {
+        name = "priestess"
+        firstNameGen = "FIRST_FEMALE"
+      }
+      hatedByEffect = HATE_HUMANS
+    }
+  "DHH_MONK"
+    {
+      viewId = { "dhh_monk" }
+      attr = {
+        DAMAGE 18
+        DEFENSE 16
+        SPELL_DAMAGE 14
+      	WORKSHOP 5
+        LABORATORY 20
+        JEWELER 20
+      }
+      body = {
+        type = Humanoid MEDIUM
+      }
+      permanentEffects = {
+      PLAGUE_RESISTANT 1
+	  RIDER 1
+      }
+      chatReactionFriendly = "curses all undead"
+      chatReactionHostile = "\"Die!\""
+      maxLevelIncrease = {
+        MELEE 10
+        SPELL 5
+      }
+      spellSchools = { "dhh_monk" }
+      inventory = {
+	      { type = Simple "Robe" }
+	      { type = Simple "IronStaff" }
+	      { type = Simple "LeatherBoots" chance = 0.8 }
+	      { type = Simple "LeatherGloves" chance = 0.8 }
+	    }
+      name = {
+        name = "monk"
+        firstNameGen = "FIRST_MALE"
+      }
+      hatedByEffect = HATE_HUMANS
+    }
+  "DHH_SAMURAI"
+    {
+      viewId = { "dhh_samurai" }
+      attr = {
+        DAMAGE 22
+        DEFENSE 16
+		WORKSHOP 25
+      }
+      body = {
+        type = Humanoid MEDIUM
+      }
+      permanentEffects = {
+      MELEE_RESISTANCE 1
+      TELEPATHY 1
+      AMBUSH_SKILL 1
+	  RIDER 1
+      }
+      chatReactionFriendly = "curses all demons"
+      chatReactionHostile = "\"Die!\""
+      maxLevelIncrease = {
+        MELEE 9
+      }
+      spellSchools = { "dhh_samurai" }
+      inventory = {
+	      { type = Simple "LeatherArmor" }
+	      { type = Simple "Sword" }
+	      { type = Simple "LeatherBoots" chance = 0.8 }
+	      { type = Simple "LeatherGloves" chance = 0.8 }
+	    }
+      name = {
+        name = "samurai"
+        firstNameGen = "FIRST_MALE"
+      }
+      hatedByEffect = HATE_HUMANS
+    }
+  "DHH_KNIGHT"
+    {
+      viewId = { "dhh_knight" }
+      attr = {
+        DAMAGE 22
+        DEFENSE 22
+		WORKSHOP 20
+      	FORGE 30
+      }
+      body = {
+        type = Humanoid MEDIUM
+      }
+      permanentEffects = {
+      RANGED_RESISTANCE 1
+	  RIDER 1
+      }
+      chatReactionFriendly = "curses all evil"
+      chatReactionHostile = "\"Die!\""
+      maxLevelIncrease = {
+        MELEE 12
+      }
+      spellSchools = { "dhh_knight" }
+      inventory = {
+	      { type = Simple "ChainArmor" }
+	      { type = Simple "Sword" }
+	      { type = Simple "IronBoots"  }
+	      { type = Simple "IronGloves" }
+	      { type = Simple "IronHelm" }
+	      { type = Simple "IronShield" }
+	    }
+      name = {
+        name = "knight"
+        firstNameGen = "FIRST_MALE"
+      }
+      hatedByEffect = HATE_HUMANS
+    }
+  "DHH_LORD" inherit "DHH_KNIGHT"
+    {
+      attr = {
+        DAMAGE 26
+        DEFENSE 26
+      }
+      permanentEffects = {
+      RANGED_RESISTANCE 1
+      HATE_GREENSKINS 1
+      HATE_UNDEAD 1
+      HATE_DRAGONS 1
+	  RIDER 1
+      }
+      inventory = {
+	      { type = Simple "ChainArmor" }
+	      { type = Simple "Sword" }
+	      { type = Simple "IronBoots"  }
+	      { type = Simple "IronGloves" }
+	      { type = Simple "IronHelm" }
+	      { type = Simple "IronShield" }
+	      { Simple "GoldPiece" 60 80 }
+	    }
+      name = {
+        name = "lord of the land"
+        firstNameGen = "FIRST_MALE"
+      }
+    }
+	
+	  "DHH_GIANT"
+	  {
+	    viewId = { "dhh_giant" }
+	    attr = {
+	      DAMAGE 26
+	      DEFENSE 14
+		  WORKSHOP 30
+	      FORGE 20
+	      MULTI_WEAPON 40
+	    }
+	    body = {
+	      type = Humanoid HUGE
+	    }
+	    chatReactionFriendly = "curses all orcs"
+	    chatReactionHostile = "\"Die!\""
+	    maxLevelIncrease = {
+	      MELEE 10
+	    }
+	    spellSchools = { "dhh_giant" }
+	    permanentEffects = {
+	      SLOWED 1
+	      MAGIC_VULNERABILITY 1
+	    }
+	    name = {
+	      name = "giant"
+	      firstNameGen = "FIRST_MALE"
+	    }
+	    hatedByEffect = HATE_HUMANS
+	    inventory = {
+	      { Simple "Club"}
+	      { type = Simple "LeatherBoots" chance = 0.5 }
+	      { type = Simple "LeatherArmor" chance = 0.5 }
+	    }
+	  }
+	  
+  "DHH_AVATAR"
+    {
+      viewId = { "dhh_avatar" }
+      attr = {
+        DAMAGE 28
+        DEFENSE 34
+	    MULTI_WEAPON 50
+      }
+      body = {
+        type = Humanoid MEDIUM
+      }
+      permanentEffects = {
+      RANGED_RESISTANCE 1
+      MAGIC_RESISTANCE 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+      }
+      chatReactionFriendly = "curses all evil"
+      chatReactionHostile = "\"Die!\""
+      maxLevelIncrease = {
+        MELEE 10
+      }
+      spellSchools = { "dhh_avatar" }
+      inventory = {
+	      { type = Simple "AdaArmor" }
+	      { type = Simple "Sword" }
+	      { type = Simple "AdaBoots"  }
+	      { type = Simple "AdaGloves" }
+	      { type = Simple "AdaHelm" }
+	      { type = Simple "AdaShield" }
+	    }
+      name = {
+        name = "avatar"
+        firstNameGen = "DEITY"
+      }
+      hatedByEffect = HATE_HUMANS
+    }
