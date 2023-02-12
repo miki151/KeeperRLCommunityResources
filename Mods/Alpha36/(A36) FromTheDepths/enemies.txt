@@ -1,0 +1,240 @@
+"FTD_PIRATES"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = {{ "FTD_PIRATE_CAPTAIN" }}
+      fighters = {
+        count = {4 9}
+        all = { 1 "FTD_PIRATE" }
+      }
+    }
+    tribe = BANDIT
+    race = "bandits"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Gold 500}
+    attackBehaviour = StealGold
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_PIRATE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_COTTAGE_PIRATES" inherit "FTD_PIRATES"
+{
+  createOnBones = 1.0 { "HUMAN_COTTAGE" }
+}
+
+"FTD_DEEP_ONES"
+{
+  biomes = { "FTD_GREAT_LAKE" }
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE_ANCIENT" } }
+      fighters = {
+        count = {6 8}
+        all = {
+          1 "FTD_DEEP_ONE"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "FTD_deep ones"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Gold 500}
+    attackBehaviour = StealGold
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_DEEP_ONES_ALLY"
+{
+  biomes = { "FTD_GREAT_LAKE" }
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE_ANCIENT" } }
+      fighters = {
+        count = {6 8}
+        all = {
+          1 "FTD_DEEP_ONE"
+        }
+      }
+    }
+    tribe = GREENSKIN
+    race = "deep ones"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Gold 500}
+    attackBehaviour = StealGold
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_DEEP_ONES_LESSER"
+{
+  biomes = { "FTD_GREAT_LAKE" }
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE" } }
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "FTD_DEEP_ONE"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "deep ones"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Gold 500}
+    attackBehaviour = StealGold
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_HYBRID_COTTAGE"
+{
+  settlement = {
+    type = Builtin COTTAGE "WOOD"
+    tribe = MONSTER
+    crops = Crops()
+    inhabitants = {
+	  leader = { { "FTD_DEEP_ONE_HYBRID" } }
+      fighters = {
+        count = {2 4}
+        all = { 1 "FTD_DEEP_ONE_HYBRID" }
+      }
+      civilians = {
+        count = {3 7},
+        all = {
+          1 "HORSE"
+          1 "DONKEY"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    race = "humans"
+    furniture = "roomFurniture"
+  }
+}
+
+"FTD_HYBRID_CASTLE"
+{
+  settlement = {
+    type = Builtin CASTLE2 "WOOD_CASTLE"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE_FIRSTBORN_NPC" } }
+      fighters = {
+        count = {7 10}
+        all = { 2 "FTD_DEEP_ONE_HYBRID_ENFONCER"
+		        2 "FTD_DEEP_ONE_HYBRID_ARCHER"
+				1 "FTD_DEEP_ONE_HYBRID_PRIEST" }
+      }
+	        civilians = {
+        count = {3 7},
+        all = { 1 "FTD_DEEP_ONE_HYBRID" }
+        }
+      }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
+    furniture = "roomFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+    ghostProb = 0.1
+    spawnGhosts = 6
+  }
+  behaviour = {
+    minPopulation = 3
+    minTeamSize = 5
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 2
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.8 140
+  }
+  immigrants = {
+    {
+      ids = {"FTD_DEEP_ONE_HYBRID"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"FTD_DEEP_ONE_HYBRID_ENFONCER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}

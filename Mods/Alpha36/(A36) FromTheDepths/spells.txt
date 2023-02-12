@@ -1,0 +1,129 @@
+Def SeaSummons(MinMax, Time)
+ChooseRandom{
+Summon "FTD_SUMMON_CRAB" {MinMax} Time 
+Summon "FTD_SUMMON_HORSESHOE_CRAB" {MinMax} Time 
+Summon "FTD_SUMMON_SPIDER_CRAB" {MinMax} Time
+Summon "FTD_SUMMON_TURTLE" {MinMax} Time 
+Summon "FTD_SUMMON_STARFISH" {MinMax} Time 
+}
+End
+
+Def SeaSummonsSwarm(MinMax, Time)
+ChooseRandom{
+Summon "FTD_CRAB_SWARM" {MinMax} Time 
+Summon "FTD_HORSESHOE_CRAB_SWARM" {MinMax} Time 
+Summon "FTD_SPIDER_CRAB_SWARM" {MinMax} Time
+Summon "FTD_TURTLE_SWARM" {MinMax} Time 
+Summon "FTD_STARFISH_SWARM" {MinMax} Time 
+}
+End
+
+"ftd_fire_pistol"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(2) Name "shoot pistol" Description "Shoots an pistol"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage {"are hit by the shot" "is hit by the shot"}
+          Damage RANGED_DAMAGE SHOOT
+        },
+        CreatureMessage {"are spared by the shot" "is spared by the shot"}
+      )
+  range = 3
+  cooldown = 100
+  maxHits = 10
+  projectileViewId = {"ftd_bullet"}
+  message = "shoot an pistol" "shoots an pistol"
+  type = ABILITY
+}
+
+"ftd_summon_drowned"
+{
+  symbol = "🧟"
+  effect = Name "summon drowned" Summon "FTD_DROWNER" 1 30
+  message = "clack" "clacks"
+  cooldown = 60
+  type = ABILITY
+}
+"ftd_summon_crab"
+{
+  symbol = "🦀"
+  effect = Name "summon sea critters" SeaSummons(3 5, 30)
+  message = "clack" "clacks"
+  cooldown = 60
+  type = ABILITY
+}
+
+"ftd_ominous_fog_cloud"
+{
+  upgrade = "fog cloud"
+  symbol = "🌫"
+  effect = Name "ominous fog" Description "Creates a ominous fog cloud." Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1
+  cooldown = 40
+}
+
+"ftd_sea_invasion"
+{
+  symbol = "🌫🦀"
+  effect = Name "sea invasion" Description "Calls the sea creatures under cover of the fog." {
+              SeaSummonsSwarm (5 10, 30) 
+			  Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}
+  cooldown = 60
+}
+
+"ftd_great_sea_invasion"
+{
+  upgrade = ftd_sea_invasion
+  symbol = "🌫🦀"
+  effect = Name "sea invasion" Description "Calls the sea creatures under cover of the fog." {
+              SeaSummonsSwarm (5 10, 30)
+              Summon "FTD_DROWNER" {1 2} 30 
+			  Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}
+  cooldown = 60
+}
+
+"sunlight resistance"
+{
+  symbol = "🐍"
+  effect = Lasting 10 SUNLIGHT_RESISTANCE
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"ftd_mutation"
+{
+  symbol = "🐝"
+  cooldown = 500
+  effect = Name "Mutation" Description "Shoggoth would adapt and thrive everywhere." Chain{
+					ChooseRandom {
+                        IncreaseAttr SPELL_DAMAGE 1
+						IncreaseAttr DAMAGE 1
+						IncreaseAttr DEFENSE 1					
+						Permanent NIGHT_VISION
+						Permanent SPEED 
+						Permanent MAGIC_RESISTANCE
+						Permanent FIRE_RESISTANT
+						Permanent AMBUSH_SKILL	
+                        IncreaseAttr DIGGING 16		
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+						AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						IncreaseAttr MULTI_WEAPON 8
+						} }
+} 
+
+"ftd_long_arms"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(1) Name "long arms" Description "Attack with long arms"
+           Chain{
+           CreatureMessage {"are hit by the claw" "is hit by the claw"}
+           Damage DAMAGE HIT}
+  fx = {MAGIC_MISSILE}
+  range = 2
+  cooldown = {0}
+  sound = SPELL_BLAST
+}

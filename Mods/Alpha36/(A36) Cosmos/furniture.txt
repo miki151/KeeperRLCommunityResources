@@ -1,0 +1,148 @@
+Def resetcosmos()
+SetFlag "cosmos_01" false
+SetFlag "cosmos_02" false
+SetFlag "cosmos_03" false
+SetFlag "cosmos_04" false
+SetFlag "cosmos_05" false
+SetFlag "cosmos_06" false
+SetFlag "cosmos_07" false
+SetFlag "cosmos_08" false
+End
+
+Def countcosmos()
+Filter Flag "cosmos_07" {
+    Filter Not Flag "cosmos_08" {
+           SetFlag "cosmos_08" true
+        }
+    }
+Filter Flag "cosmos_06" {
+    Filter Not Flag "cosmos_07" {
+           SetFlag "cosmos_07" true
+        }
+    }
+Filter Flag "cosmos_05" {
+    Filter Not Flag "cosmos_06" {
+           SetFlag "cosmos_06" true
+        }
+    }
+Filter Flag "cosmos_04" {
+    Filter Not Flag "cosmos_05" {
+           SetFlag "cosmos_05" true
+        }
+    }
+Filter Flag "cosmos_03" {
+    Filter Not Flag "cosmos_04" {
+           SetFlag "cosmos_04" true
+        }
+    }
+Filter Flag "cosmos_02" {
+    Filter Not Flag "cosmos_03" {
+           SetFlag "cosmos_03" true
+        }
+    }
+Filter Flag "cosmos_01" {
+    Filter Not Flag "cosmos_02" {
+           SetFlag "cosmos_02" true
+        }
+    }
+Filter Not Flag "cosmos_01" {
+       SetFlag "cosmos_01" true
+    }
+	
+End
+
+"CS_ALTAR"
+{
+  name = "Genesis Altar"
+  viewId = { "cs_crystal_altar" }
+  tickType = Effect Chain {
+    Filter Flag "cosmos_05" {
+	  ChooseRandom{ 
+	  DropItems { "CS_Mgehye"} {10 20}
+	  DropItems { "CS_Mgehye"} {10 20}
+	  DropItems { "CS_Mgehye"} {10 20}
+	  DropItems { "CS_Mgehye"} {10 20}
+	  
+      Chain{ ChooseRandom { 
+	  Summon "CS_DRAINED_HUMAN" 1 none
+	  Summon "CS_DRAINED_GREENSKIN" 1 none
+	  Summon "CS_DRAINED_DWARF" 1 none
+	  Summon "CS_DRAINED_ELF" 1 none
+	  Summon "CS_DRAINED_BEAST" 1 none}}
+      Chain{ ChooseRandom { 
+	  Summon "CS_DRAINED_HUMAN" 1 none
+	  Summon "CS_DRAINED_GREENSKIN" 1 none
+	  Summon "CS_DRAINED_DWARF" 1 none
+	  Summon "CS_DRAINED_ELF" 1 none
+	  Summon "CS_DRAINED_BEAST" 1 none}}
+      Chain{ ChooseRandom { 
+	  Summon "CS_DRAINED_HUMAN" 1 none
+	  Summon "CS_DRAINED_GREENSKIN" 1 none
+	  Summon "CS_DRAINED_DWARF" 1 none
+	  Summon "CS_DRAINED_ELF" 1 none
+	  Summon "CS_DRAINED_BEAST" 1 none}}
+	  
+	  Chain{ Summon "CS_COSMOS_LIGHT" 1 none}
+	  Chain{ Summon "CS_COSMOS_LIGHT" 1 none}
+	  
+	  Chain{ Summon "CS_COSMOS_BEAST" 1 none}}
+	  resetcosmos()}}	  
+  usageTime = 1
+  strength = 100
+  hidesItems = true
+  canHideHere = true
+   }
+
+
+"CS_MGHEYE_ORE" inherit "MOUNTAIN2"
+{
+  name = "mgehye ore"
+  viewId = { "cs_crystal_ore" }
+  clearFogOfWar = true
+  itemDrop = {{{{"CS_Mgehye"} 1 { 16 28 }}}}
+  strength2 = {
+    200 BOULDER
+    220 DIG
+    200 HOSTILE_DIG
+  }
+  lightEmission = 8.2
+  summonedElement = "CS_ELEMENTAL"
+}
+
+"CS_DRAINED_CORPSE_HUMAN"
+{
+  name = "Drained"
+  viewId = { "cs_drained_human_furniture" }
+  blockMovement = true
+  blockVision = { NORMAL }
+  strength2 = {
+    30 BOULDER
+    30 DIG
+    30 HOSTILE_DIG
+  }
+  lightEmission = 4.1
+  fire = 100
+  itemDrop = {{{{"CS_Mgehye"} 1 { 8 14 }}}}
+  summonedElement = "CS_ELEMENTAL"
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 220 210 180 255 }
+}
+
+"CS_DRAINED_CORPSE_ELF" inherit "CS_DRAINED_CORPSE_HUMAN"
+{
+  viewId = { "cs_drained_elf_furniture" }
+}
+
+"CS_DRAINED_CORPSE_GREENSKIN" inherit "CS_DRAINED_CORPSE_HUMAN"
+{
+  viewId = { "cs_drained_greenskin_furniture" }
+}
+
+"CS_DRAINED_CORPSE_DWARF" inherit "CS_DRAINED_CORPSE_HUMAN"
+{
+  viewId = { "cs_drained_dwarf_furniture" }
+}
+
+"CS_DRAINED_CORPSE_BEAST" inherit "CS_DRAINED_CORPSE_HUMAN"
+{
+  viewId = { "cs_drained_beast_furniture" }
+}

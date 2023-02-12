@@ -1,0 +1,262 @@
+  "freeze"
+  {
+    symbol = "🐢"
+    effect = Name "freeze" Lasting ENTANGLED
+    range = 3
+    fx = {MAGIC_MISSILE ColorId LIGHT_BLUE}
+    cooldown = 120
+    sound = SPELL_SPEED_SELF
+  }
+  "sight"
+  {
+    symbol = "🌀"
+    effect = Name "sight" Lasting ELF_VISION
+    cooldown = 80
+  }
+
+  "fire shot"
+  {
+    symbol = "🔥"
+    effect = Name "fire shot" Chain {
+    Damage DAMAGE SHOOT 
+    Damage RANGED_DAMAGE SHOOT
+    }
+    range = 4
+    cooldown = 10
+    projectileViewId = {"dhk_missile"}
+    message = "shoot a fire blast" "shoots a fire blast"
+  }
+  "advanced fire shot"
+  {
+    symbol = "🔥"
+    effect = Name "advanced fire shot" Chain {
+    Damage DAMAGE SHOOT 
+    Damage RANGED_DAMAGE SHOOT
+    }
+    range = 8
+    cooldown = 10
+    projectileViewId = {"dhk_missile"}
+    message = "shoot a fire blast" "shoots a fire blast"
+  }
+  "meteor shot"
+  {
+    symbol = "☄"
+    effect = Name "meteor shot" Chain { 
+    Damage SPELL_DAMAGE SPELL
+    Blast
+    }
+    range = 8
+    endOnly = true
+    cooldown = 10
+    sound = SPELL_BLAST
+  }
+  "poison shot"
+  {
+    symbol = "💨"
+    effect = Name "poison shot" Lasting POISON
+    fx = {MAGIC_MISSILE ColorId GREEN}
+    range = 4
+    cooldown = 30
+    sound = SPELL_AIR_BLAST
+  }
+  "dh_poison cloud"
+  {
+    symbol = "💨"
+    effect = Name "poison cloud" Description "Creates a poison cloud."  Area 4 Filter DistanceD none 3.2 EmitGas "FOG" 1
+    cooldown = 30
+    sound = SPELL_AIR_BLAST
+  }
+  "dhh_tunnel"
+  {
+    symbol = "X"
+    effect = Name "dig" DestroyWalls DIG
+    range = 1
+    cooldown = 1
+    blockedByWall = false
+  }
+  "dhh_flight"
+  {
+    symbol = "🏃"
+    effect = Name "flight" Lasting FLYING
+    cooldown = 60
+    sound = SPELL_SPEED_SELF
+  }
+  "dhh_rebound"
+  {
+    symbol = "🛡"
+    effect = Name "rebound" 
+    Description "Protects against projectiles and magic spells."
+    Chain {
+            Lasting 40 RANGED_RESISTANCE
+            Lasting 40 MAGIC_RESISTANCE
+             }
+    cooldown = 60
+    sound = SPELL_DEX_BONUS
+  }
+"dhh_wind"
+  {
+    symbol = "🌪️"
+    effect = Name "whirlwind" Area 3 CircularBlast 
+    cooldown = 40
+  }
+"dhh_arena_trap"
+  {
+    symbol = "🌪️"
+    effect = Name "arena trap"
+    Description "Pulls in surrounding enemies dealing huge damage and slowing them." 
+    Chain {
+    Area 3 Pull
+    Area 3 Filter Enemy Damage DAMAGE SPELL 
+    Area 3 Filter Enemy Damage RANGED_DAMAGE SPELL
+    Area 3 Filter Enemy Damage SPELL_DAMAGE SPELL
+    Area 3 Filter Enemy Lasting SLOWED
+    } 
+    cooldown = 40
+    sound = SPELL_BLAST
+  }
+  
+  "poison slash"
+{
+  symbol = "☠"
+  effect = Name "poison slash" Lasting POISON
+  range = 1
+  targetSelf = true
+  cooldown = 15
+}
+
+"dhk_fart"
+{
+  symbol = "☠"
+  effect = Name "fart" Area 2 EmitGas "POISON_GAS" 0.5
+  cooldown = 30
+  sound = SPELL_BLAST
+  message = "farts!" "farts!"
+}
+
+"dhk_fart_missile"
+{
+  symbol = "☠"
+  effect = Name "missile fart" Area 1 EmitGas "POISON_GAS" 0.5
+  range = 4
+  cooldown = 60
+  sound = SPELL_BLAST
+  message = "farts!" "farts!"
+}
+
+"dhk_summon_imp"
+{
+  symbol = "👝"
+  effect = Name "summon imps" 
+  Summon "DHK_IMP_SUMMON" {2 4} 100
+  cooldown = 400
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"dhk_chicken"
+{
+  symbol = "🐣"
+  effect = Name "chicken" Description "Turn someone into a chicken temporarily!" Polymorph "CHICKEN" 100
+  range = 10
+  cooldown = 500
+  message = "cluck" "clucks"
+  type = ABILITY
+}
+
+"dhk_heal"
+{
+  symbol = "❤️"
+  effect = Name "heal" 
+  Chain {
+  Heal { FLESH }
+  Heal { SPIRIT }
+  }
+  range = 10
+  targetSelf = true
+  cooldown = 150
+  sound = SPELL_HEALING
+}
+
+"dhk_thunder"
+{
+  symbol = "⥇"
+  effect = Name "thunder" Description "forces thunter to strike the target" 
+  Chain {
+  Fire {}
+  Damage SPELL_DAMAGE SPELL
+  }
+  fx = {BALROGS_WHIP ColorId BLUE}
+  range = 10
+  endOnly = true
+  cooldown = 200
+  sound = SPELL_BLAST
+}
+
+"dhk_inferno"
+{
+  symbol = "𝍔"
+  effect =  Name "inferno" 
+  Area 3 { 
+	PlaceFurniture "FIRE_WALL"
+	Fire {}
+    Damage SPELL_DAMAGE SPELL
+  }
+  endOnly = true
+  range = 10
+  cooldown = 300
+  sound = SPELL_BLAST
+}
+
+"dhk_turncoat"
+{
+  symbol = "⥇"
+  effect = Name "turncoat" Lasting INSANITY
+  fx = {BALROGS_WHIP ColorId BLUE}
+  range = 10
+  endOnly = true
+  cooldown = 200
+  sound = SPELL_BLAST
+}
+
+"dhk_dragonify"
+{
+  symbol = "🐉"
+  effect = Name "dragonify" Description "ascend intro the dragon" AI And {} 0 1 {
+    Polymorph "DHK_DRAGON" none
+  }
+  message = "" ""
+  cooldown = 1
+}
+
+"dhk_tremor"
+{
+  symbol = "X"
+  effect = Name "tremor" Area 4 { 
+  Damage SPELL_DAMAGE SPELL 
+  Lasting SLOWED
+  DestroyWalls DIG}
+  range = 10
+  cooldown = 100
+  blockedByWall = false
+}
+
+OneTimeAbility("dhk_worker", "allows to work.", {AddMinionTrait WORKER}, "🧛")
+
+"dhk_sightofevil"
+{
+  symbol = "☠"
+  effect =  Name "Sight of Evil" PlaceFurniture "EYEBALL"
+  range = 10
+  cooldown = 100
+  sound = SPELL_TELEPORT
+  message = "Evil sees you!" "Evil sees you!"
+}
+
+"dhh_scare"
+{
+  symbol = "😨"
+  effect = Name "scare" Description "Scare the enemy" Area 1 Filter Enemy {IncreaseMorale -0.5}
+  cooldown = 120
+  sound = SPELL_BLAST
+}
+
+OneTimeAbility("dh_limited_life", "you will die.", Lasting 1500 SUMMONED, "🕛")

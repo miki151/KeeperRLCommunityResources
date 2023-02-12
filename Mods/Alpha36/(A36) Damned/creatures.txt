@@ -1,0 +1,534 @@
+# keepers
+"DM_DEMONCULT_PROMITTENS_M"
+  {
+    viewId = { "dm_demoncult_promittens_m01" }
+    viewIdUpgrades = { { "dm_demoncult_promittens_m02" } { "dm_demoncult_promittens_m03" } { "dm_demoncult_promittens_m04" } }
+    name = {
+      # The name gets changed appropriately to Keeper and Adventurer
+      name = "promittens"
+      # Definitions in name_generator.h
+      firstNameGen = "DEMON_MALE"
+      # Creature is always referred to as [FirstName] the [Creature name]
+      fullTitle = true
+    }
+    body = {
+	  type = Humanoid LARGE
+      material = SPIRIT
+    }
+    # attr_type.h
+    attr = {
+      DAMAGE 16
+      DEFENSE 16
+	  FIRE_DAMAGE 16
+      SPELL_DAMAGE 16
+	  LABORATORY 15
+	  DEMON_RITUAL 45
+	  DEMON_WORSHIP 45
+    }
+    maxLevelIncrease = {
+      MELEE 8
+      SPELL 8
+    }
+	permanentEffects = {
+      FIRE_RESISTANT 1
+	  RIDER 1
+    }
+    spellSchools = { "Gloria ad Inferos" }
+    spells = { "Spirit Self healing" }
+    inventory = {
+      { "Sword"}
+      { "LeatherArmor"}
+    }
+  }
+ 
+"DM_DEMONCULT_PROMITTENS_F" inherit "DM_DEMONCULT_PROMITTENS_M"
+  {
+  
+    viewId = { "dm_demoncult_promittens_f01" }
+    viewIdUpgrades = { { "dm_demoncult_promittens_f02" } { "dm_demoncult_promittens_f03" } { "dm_demoncult_promittens_f04" } }
+    gender = FEMALE
+    name = append {
+      firstNameGen = "DEMON_FEMALE"
+    }
+  }
+ 
+# Demons
+"DM_DEMONCULT_PESTIS"
+  {
+    viewId = { "dm_demoncult_pestis" }
+    attr = {
+      DAMAGE 9
+      DEFENSE 7
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+      SWARMER 1
+	  FIRE_RESISTANT 1
+	  MAGIC_RESISTANCE 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    name = {
+      name = "demon pestis"
+    }
+  }
+  
+"DM_DEMONCULT_PESTIS_BLOAT"
+  {
+    viewId = { "dm_demoncult_pestis_bloat" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 13
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+      SWARMER 1
+	  FIRE_RESISTANT 1
+	  MAGIC_RESISTANCE 1
+	  MELEE_VULNERABILITY 1
+	  RANGED_VULNERABILITY 1
+	  COLLAPSED 1
+    }
+    maxLevelIncrease = {
+      MELEE 6
+    }
+    name = {
+      name = "demon pestis bloat"
+    }
+  }
+  
+"DM_DEMONCULT_MILITUS"
+  {
+    viewId = { "dm_demoncult_militus" }
+    attr = {
+      DAMAGE 18
+	  FIRE_DAMAGE 10
+      DEFENSE 16
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  FIRE_RESISTANT 1
+      MAGIC_RESISTANCE 1
+	  RIDER 1
+    }
+    chatReactionFriendly = "\"Kneel before us!\""
+    chatReactionHostile = "\"Face your death!\""
+	spells = { "demon blazing blast" }
+    name = {
+      name = "demon militus"
+      firstNameGen = "DEMON_MALE"
+      groupName = "pack"
+    }
+    maxLevelIncrease = {
+      MELEE 6
+	  ARCHERY 3
+    }
+  }
+   
+"DM_DEMONCULT_EMISSARIUS"
+  {
+    viewId = { "dm_demoncult_emissarius" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+	  FIRE_DAMAGE 20
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  FIRE_RESISTANT 1
+      MAGIC_RESISTANCE 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    chatReactionFriendly = "\"Kneel before us!\""
+    chatReactionHostile = "\"Face your death!\""
+	spells = { "demon blazing blast" }
+	spellSchools = {"Emissarius Inferni"}
+    name = {
+      name = "demon emissatius"
+      firstNameGen = "DEMON_MALE"
+      groupName = "pack"
+    }
+    maxLevelIncrease = {
+      MELEE 2
+	  ARCHERY 2
+	  SPELL 7
+    }
+  }
+   
+"DM_DEMONCULT_MILES_VOLANTEM"
+  {
+    viewId = { "dm_demoncult_miles_volantem" }
+    attr = {
+      DAMAGE 14
+	  FIRE_DAMAGE 12
+      DEFENSE 12
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+	  addBodyPart = {
+        WING 2
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  FIRE_RESISTANT 1
+      FLYING 1
+      MAGIC_RESISTANCE 1
+	  RIDER 1
+    }
+	aiType = RANGED
+    chatReactionFriendly = "\"Kneel before us!\""
+    chatReactionHostile = "\"Face your death!\""
+	spells = { "demon blazing blast" }
+    name = {
+      name = "demon militus"
+      firstNameGen = "DEMON_MALE"
+      groupName = "pack"
+    }
+    maxLevelIncrease = {
+      MELEE 6
+	  ARCHERY 3
+    }
+  }
+   
+"DM_DEMONCULT_ASPICIENTIS"
+  {
+    viewId = { "dm_demoncult_aspicientis" }
+    attr = {
+      DAMAGE 10
+	  FIRE_DAMAGE 14
+      DEFENSE 14
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  FIRE_RESISTANT 1
+      MAGIC_RESISTANCE 1
+	  TELEPATHY 1
+	  RIDER 1
+    }
+    chatReactionFriendly = "\"Kneel before us!\""
+    chatReactionHostile = "\"Face your death!\""
+	spells = { "demon blazing blast" }
+    aiType = RANGED
+    name = {
+      name = "demon aspicientis"
+      firstNameGen = "DEMON_MALE"
+      groupName = "pack"
+    }
+    maxLevelIncrease = {
+      MELEE 3
+	  ARCHERY 6
+    }
+  }
+  
+"DM_DEMONCULT_OBSIDIO"
+  {
+    viewId = { "dm_demoncult_obsidio" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 30
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  FIRE_RESISTANT 1
+      MAGIC_RESISTANCE 1
+	  MELEE_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+      BLIND 1
+	  SLOWED 1
+    }
+    spells = { "haste" }
+    chatReactionFriendly = "\"ROAR!\""
+    chatReactionHostile = "\"Face your death!\""
+    name = {
+      name = "demon obsidio"
+      firstNameGen = "DEMON_MALE"
+      groupName = "pack"
+    }
+    maxLevelIncrease = {
+    }
+  }
+    
+"DM_DEMONCULT_VOLANS_TERROREM"
+  {
+    viewId = { "dm_demoncult_volans_terrorem" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 20
+	  FIRE_DAMAGE 15
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+	  addBodyPart = {
+        WING 2
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  FIRE_RESISTANT 1
+      FLYING 1
+      MAGIC_RESISTANCE 1
+	  SPEED 1
+    }
+    spells = { "blazing blast" }
+    chatReactionFriendly = "\"ROAR!\""
+    chatReactionHostile = "\"Face your death!\""
+    name = {
+      name = "demon volans terrorem"
+      firstNameGen = "DEMON_MALE"
+      groupName = "pack"
+    }
+    maxLevelIncrease = {
+    }
+  }
+  
+"DM_DEMONCULT_GULA"
+  {
+    viewId = { "dm_demoncult_gula" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 50
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  FIRE_RESISTANT 1
+      MAGIC_RESISTANCE 1
+      REGENERATION 1
+	  SLOWED 1
+    }
+    chatReactionFriendly = "\"ROAR!\""
+    chatReactionHostile = "\"Face your death!\""
+    name = {
+      name = "demon gula"
+      firstNameGen = "DEMON_MALE"
+      groupName = "pack"
+    }
+    maxLevelIncrease = {
+    }
+  }
+   
+"DM_DEMONCULT_FUROR"
+  {
+    viewId = { "dm_demoncult_furor" }
+    attr = {
+      DAMAGE 36
+      DEFENSE 32
+	  MULTI_WEAPON 40
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+		ARM  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  FIRE_RESISTANT 1
+      MAGIC_RESISTANCE 1
+	  INSANITY 1
+	  SPEED 1
+    }
+    chatReactionFriendly = "\"ROAR!\""
+    chatReactionHostile = "\"Face your death!\""
+	spells = { "terryfing howl furor" }
+    name = {
+      name = "demon furoris"
+      firstNameGen = "DEMON_MALE"
+      groupName = "pack"
+    }
+    maxLevelIncrease = {
+    }
+  }
+"DM_DEMONCULT_SOMNUM_EXTERRERI"
+  {
+    viewId = { "dm_demoncult_somnum_exterreri" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 7 
+    }
+    body = {
+      type = FourLegged LARGE
+      weight = 500
+    }
+    permanentEffects = {
+      STEED 1
+	  FIRE_RESISTANT 1
+      MAGIC_RESISTANCE 1
+	  SPEED 1
+    }
+	spells = { "fire breath" }
+    noChase = true
+    petReaction = "neighs"
+    name = {
+      name = "somnum exterreri"
+    }
+  } 
+    
+  
+# Demon Cultist
+"DM_DEMONCULT_SORCERER"
+  {
+    viewId = { "dm_demoncult_sorcerer" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+      SPELL_DAMAGE 16
+	  LABORATORY 70
+	  DEMON_RITUAL 20
+	  DEMON_WORSHIP 40
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about black magic"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "Sorcerer"
+      firstNameGen = "FIRST_MALE"
+    }
+	permanentEffects = {
+	  FIRE_RESISTANT 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      SPELL 3
+    }
+    spellSchools = { "Gloria ad Inferos" }
+    inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"DM_DEMONCULT_CULTIST"
+  {
+    viewId = { "dm_demoncult_cultist" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+	  DIGGING 15
+	  DEMON_WORSHIP 15
+	  WORKSHOP 15
+      FORGE 15
+      FURNACE 15
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "praises demons"
+    chatReactionHostile = "\"Heeelp!\""
+    name = {
+      name = "cultist"
+	  firstNameGen = "FIRST_MALE"
+    }
+	permanentEffects = {
+	  FIRE_RESISTANT 1
+	  RIDER 1
+    }
+    hatedByEffect = HATE_HUMANS
+    promotionGroup = "demons"
+    promotionCost = 0.25
+  }
+  
+"DM_DEMONCULT_SERVUS"
+  {
+    viewId = { "dm_demoncult_servus" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "glibbering"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "possesed"
+	  firstNameGen = "FIRST_MALE"
+    }
+	permanentEffects = {
+	  FIRE_RESISTANT 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+
+	spellSchools = { "Possessed" }
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+  
+ # Victims  
+"DM_HUMAN_CATTLE"
+  {
+    viewId = { "dm_breed_m" }
+    genderAlternatives = {
+      FEMALE { "dm_breed_f" }
+    }
+    attr = {
+      DAMAGE 6
+      DEFENSE 6
+	  DIGGING 15
+    }
+    body = {
+      type = Humanoid LARGE
+	   minionFood = true
+    }
+    chatReactionFriendly = "please help..."
+    chatReactionHostile = "\"Heeelp!\""
+	specialAttr = {
+      DEFENSE { -3 Name "when indoors"  Indoors }
+	  DAMAGE { -3 Name "when indoors"  Indoors }
+    }
+    permanentEffects = {
+      RANGED_VULNERABILITY 1
+	  MAGIC_VULNERABILITY 1
+	  SLOWED 1
+	  MELEE_VULNERABILITY 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "cattle"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  

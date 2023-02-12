@@ -1,0 +1,963 @@
+Def TryMagicAttack(DamageType , TrainingType, AreaSize, TrueOrNot, aremessage, ismessage )
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {aremessage ismessage}
+	  SetCreatureFlag "frienldlyfire" TrueOrNot
+	  Filter CreatureFlag "frienldlyfire" {
+		Area AreaSize {Damage DamageType TrainingType}
+	  } 
+	  Filter Not CreatureFlag "frienldlyfire"
+	  {
+		Filter Enemy { Area AreaSize {Damage DamageType TrainingType}}
+	  } 
+    },
+    CreatureMessage {aremessage ismessage}
+  )
+End
+
+
+"elemental_storm_bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
+      TryMagicAttack(LIGHTNING_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = {4}
+  sound = SPELL_BLAST
+}
+
+# lightning spells
+"lightning bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
+  Chain {
+	  { Caster Lasting 0 "LIGHTNING_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")}
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"advanced lightning bolt"
+{
+  upgrade = "lightning bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"expert lightning bolt"
+{
+  upgrade = "advanced lightning bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"lightning charge"
+{
+  symbol = "⥇"
+  effect = Lasting 30 LIGHTING_DISCHARGE
+  cooldown = {50 101}
+  targetSelf = true
+  range = 6
+  sound = SPELL_CURE_POISON
+}
+
+"lightning resistance"
+{
+  symbol = "🛡"
+  effect = Name "lightning resistance" Lasting 40 LIGHTNING_RESISTANT
+  cooldown = {50 101}
+  sound = SPELL_CURE_POISON
+}
+
+"advanced lightning resistance"
+{
+  upgrade = "lightning resistance"
+  symbol = "🛡"
+  effect = Name "lightning resistance" Lasting 40 LIGHTNING_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"mass lightning resistance"
+{
+  upgrade = "advanced lightning resistance"
+  symbol = "🛡"
+  effect = Name "lightning resistance" Area 10 Filter Not Enemy Lasting 40 LIGHTNING_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"lightning damage"
+{
+  symbol = "💪"
+  effect = Name "lightning damage" Lasting 40 LIGHTNING_DAMAGE
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"advanced lightning damage"
+{
+  upgrade = "lightning damage"
+  symbol = "💪"
+  effect = Name "lightning damage" Lasting 40 LIGHTNING_DAMAGE
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"mass lightning damage"
+{
+  upgrade = "advanced lightning damage"
+  symbol = "💪"
+  effect = Name "mass lightning damage" Area 10 Filter Not Enemy Lasting 40 LIGHTNING_DAMAGE
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+ 
+"storm elemental"
+{
+  symbol = "👾"
+  effect = Name "storm elemental" Summon "STORM_ELEMENTAL" { 1 2 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"advanced storm elemental"
+{
+  upgrade = "storm elemental"
+  symbol = "👾"
+  effect = Name "storm elemental" Summon "STORM_ELEMENTAL" { 2 4 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+OneTimeAbility("lightning resistance self", "Becomes resistant to lightning.", Permanent LIGHTNING_RESISTANT, "🎯")
+
+# fire spells
+"fire bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire ball" Description "Shoots a fire ball"
+  Chain {
+	  { Caster Lasting 0 "FIRE_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ball", "is hit by the ball")
+	  Fire {}}
+  fx = {MAGIC_MISSILE}
+  range = 2
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"advanced fire bolt"
+{
+  upgrade = "fire bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire ball" Description "Shoots a fire ball"
+  Chain {
+	  { Caster Lasting 0 "FIRE_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 1, true, "are hit by the ball", "is hit by the ball")
+	  Fire {}}
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"expert fire bolt"
+{
+  upgrade = "advanced fire bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire ball" Description "Shoots a fire ball"
+  Chain {
+	  { Caster Lasting 0 "FIRE_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 2, true, "are hit by the ball", "is hit by the ball")
+	  Fire {}}
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"fire resistance"
+{
+  symbol = "🛡"
+  effect = Name "fire resistance" Lasting 40 FIRE_RESISTANT
+  cooldown = {50 101}
+  sound = SPELL_CURE_POISON
+}
+
+"advanced fire resistance"
+{
+  upgrade = "fire resistance"
+  symbol = "🛡"
+  effect = Name "fire resistance" Lasting 40 FIRE_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"mass fire resistance"
+{
+  upgrade = "advanced fire resistance"
+  symbol = "🛡"
+  effect = Name "fire resistance" Area 10 Filter Not Enemy Lasting 40 FIRE_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"fire damage"
+{
+  symbol = "💪"
+  effect = Name "fire damage" Lasting 40 FIRE_DAMAGE
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"advanced fire damage"
+{
+  upgrade = "fire damage"
+  symbol = "💪"
+  effect = Name "fire damage" Lasting 40 FIRE_DAMAGE
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"mass fire damage"
+{
+  upgrade = "advanced fire damage"
+  symbol = "💪"
+  effect = Name "mass fire damage" Area 10 Filter Not Enemy Lasting 40 FIRE_DAMAGE
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+OneTimeAbility("fire resistance self", "Becomes resistant to fire.", Permanent FIRE_RESISTANT, "🎯")
+
+# ice spells
+"ice bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "ice shard" Description "Shoots a ice shard"
+  Chain {
+	  { Caster Lasting 0 "COLD_DAMAGE"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the shard", "is hit by the shard")
+	  Ice{}}
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"advanced ice bolt"
+{
+  upgrade = "ice bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "ice shard" Description "Shoots a ice shard"
+  Chain {
+	  { Caster Lasting 0 "COLD_DAMAGE"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the shard", "is hit by the shard")
+	  Ice{}}
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"expert ice bolt"
+{
+  upgrade = "advanced ice bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "ice shard" Description "Shoots a ice shard"
+  Chain {
+	  { Caster Lasting 0 "COLD_DAMAGE"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the shard", "is hit by the shard")
+	  Ice{}}
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"ice resistance"
+{
+  symbol = "🛡"
+  effect = Name "ice resistance" Lasting 40 COLD_RESISTANT
+  cooldown = {50 101}
+  sound = SPELL_CURE_POISON
+}
+
+"advanced ice resistance"
+{
+  upgrade = "ice resistance"
+  symbol = "🛡"
+  effect = Name "ice resistance" Lasting 40 COLD_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"mass ice resistance"
+{
+  upgrade = "advanced ice resistance"
+  symbol = "🛡"
+  effect = Name "ice resistance" Area 10 Filter Not Enemy Lasting 40 COLD_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"ice damage"
+{
+  symbol = "💪"
+  effect = Name "ice damage" Lasting 40 COLD_DAMAGE
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"advanced ice damage"
+{
+  upgrade = "ice damage"
+  symbol = "💪"
+  effect = Name "ice damage" Lasting 40 COLD_DAMAGE
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"mass ice damage"
+{
+  upgrade = "advanced ice damage"
+  symbol = "💪"
+  effect = Name "mass ice damage" Area 10 Filter Not Enemy Lasting 40 COLD_DAMAGE
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"ice elemental"
+{
+  symbol = "👾"
+  effect = Name "ice elemental" Summon "ICE_ELEMENTAL" { 1 2 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+"advanced ice elemental"
+{
+  upgrade = "ice elemental"
+  symbol = "👾"
+  effect = Name "ice elemental" Summon "ICE_ELEMENTAL" { 2 4 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+OneTimeAbility("cold resistance self", "Becomes resistant to cold.", Permanent COLD_RESISTANT, "🎯")
+
+# acid spells
+"acid bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "acid splash" Description "Shoots a acid shard"
+  Chain {
+	  { Caster Lasting 0 "ACID_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the splash", "is hit by the splash")}
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"advanced acid bolt"
+{
+  upgrade = "acid bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "acid splash" Description "Shoots a acid splash"
+  Chain {
+	  { Caster Lasting 0 "ACID_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the splash", "is hit by the splash")}
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"expert acid bolt"
+{
+  upgrade = "advanced acid bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "acid splash" Description "Shoots a acid splash"
+  Chain {
+	  { Caster Lasting 0 "ACID_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the splash", "is hit by the splash")}
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"acid resistance"
+{
+  symbol = "🛡"
+  effect = Name "acid resistance" Lasting 40 ACID_RESISTANT
+  cooldown = {50 101}
+  sound = SPELL_CURE_POISON
+}
+
+"advanced acid resistance"
+{
+  upgrade = "acid resistance"
+  symbol = "🛡"
+  effect = Name "acid resistance" Lasting 40 ACID_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"mass acid resistance"
+{
+  upgrade = "advanced acid resistance"
+  symbol = "🛡"
+  effect = Name "acid resistance" Area 10 Filter Not Enemy Lasting 40 ACID_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"acid damage"
+{
+  symbol = "💪"
+  effect = Name "acid damage" Lasting 40 ACID_DAMAGE
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"advanced acid damage"
+{
+  upgrade = "acid damage"
+  symbol = "💪"
+  effect = Name "acid damage" Lasting 40 ACID_DAMAGE
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"mass acid damage"
+{
+  upgrade = "advanced acid damage"
+  symbol = "💪"
+  effect = Name "mass acid damage" Area 10 Filter Not Enemy Lasting 40 ACID_DAMAGE
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"acid elemental"
+{
+  symbol = "👾"
+  effect = Name "acid elemental" Summon "ACID_ELEMENTAL" { 1 2 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+"advanced acid elemental"
+{
+  upgrade = "acid elemental"
+  symbol = "👾"
+  effect = Name "acid elemental" Summon "ACID_ELEMENTAL" { 2 4 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"acid stream - elemental"
+{
+  symbol = "🜅"
+  effect = Name "acid stream" Chain{ Acid{} Damage ACID_DAMAGE SHOOT PlaceFurniture "ME_ACID" }
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = {15 31}
+  message = "spit acid!" "spits acid!"
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"acid stream leaves"
+{
+  symbol = "🜅"
+  effect = Name "acid stream" Chain{{ Caster Lasting 0 "ACID_SPELL"} Acid{} PlaceFurniture "ME_ACID" Damage SPELL_DAMAGE SPELL}
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = {15 31}
+  message = "spit acid!" "spits acid!"
+}
+
+OneTimeAbility("acid resistance self", "Becomes resistant to acid.", Permanent ACID_RESISTANT, "🎯")
+
+# dark spells
+"dark bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "Invoke Darkness" Description "invokes darkness in form of ray"
+  Chain {
+	  { Caster Lasting 0 "DARKNESS_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")}
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"advanced dark bolt"
+{
+  upgrade = "dark bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "Invoke Darkness" Description "invokes darkness in form of ray"
+  Chain {
+	  { Caster Lasting 0 "DARKNESS_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")}
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"expert dark bolt"
+{
+  upgrade = "advanced dark bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "invoke Darkness" Description "invokes darkness in form of ray"
+  Chain {
+	  { Caster Lasting 0 "DARKNESS_SPELL"}
+      Area 1{ TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")}}
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"dark resistance"
+{
+  symbol = "🛡"
+  effect = Name "darkness resistance" Lasting 40 ACID_RESISTANT
+  cooldown = {50 101}
+  sound = SPELL_CURE_POISON
+}
+
+"advanced dark resistance"
+{
+  upgrade = "dark resistance"
+  symbol = "🛡"
+  effect = Name "darkness resistance" Lasting 40 ACID_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"mass dark resistance"
+{
+  upgrade = "advanced dark resistance"
+  symbol = "🛡"
+  effect = Name "darkness resistance" Area 10 Filter Not Enemy Lasting 40 ACID_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"dark damage"
+{
+  symbol = "💪"
+  effect = Name "darkness damage" Lasting 40 ACID_DAMAGE
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"advanced dark damage"
+{
+  upgrade = "dark damage"
+  symbol = "💪"
+  effect = Name "darkness damage" Lasting 40 ACID_DAMAGE
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"mass dark damage"
+{
+  upgrade = "advanced dark damage"
+  symbol = "💪"
+  effect = Name "mass darkness damage" Area 10 Filter Not Enemy Lasting 40 ACID_DAMAGE
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"dark elemental"
+{
+  symbol = "👾"
+  effect = Name "dark elemental" Summon "ACID_ELEMENTAL" { 1 2 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+"advanced dark elemental"
+{
+  upgrade = "dark elemental"
+  symbol = "👾"
+  effect = Name "dark elemental" Summon "ACID_ELEMENTAL" { 2 4 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"dark shere"
+{
+  symbol = "🌫"
+  effect = Name "night sphere" Description "Creates a sphere of life sapping darkness." Area 4 Filter DistanceD none 3.2 EmitGas "DARKNESS_GAS" 1
+  range = 8
+  cooldown = {30 61}
+}
+
+OneTimeAbility("dark resistance self", "Becomes resistant to darkness.", Permanent DARKNESS_RESISTANT, "🎯")
+
+# earth spells
+"rock bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "throw rock" Description "conjures and flying rock to hit the enemy"
+  Chain {
+	  { Caster Lasting 0 "DAMAGE_SPELL"}
+	  { Caster Lasting 0 "EARTHPOWER"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the boulder", "is hit by the boulder")}
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"advanced rock bolt"
+{
+  upgrade = "rock bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "throw rock" Description "conjures and flying rock to hit the enemy"
+  Chain {
+	  { Caster Lasting 0 "DAMAGE_SPELL"}
+	  { Caster Lasting 0 "EARTHPOWER"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the boulder", "is hit by the boulder")}
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"expert rock bolt"
+{
+  upgrade = "advanced rock bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "throw rock" Description "conjures and flying rock to hit the enemy"
+  Chain {
+	  { Caster Lasting 0 "DAMAGE_SPELL"}
+	  { Caster Lasting 0 "EARTHPOWER"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the boulder", "is hit by the boulder")}
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"rock resistance"
+{
+  symbol = "🛡"
+  effect = Name "stoneskin" Lasting 40 STONESKIN
+  cooldown = {50 101}
+  sound = SPELL_CURE_POISON
+}
+
+"advanced rock resistance"
+{
+  upgrade = "rock resistance"
+  symbol = "🛡"
+  effect = Name "stoneskin" Lasting 40 STONESKIN
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"mass rock resistance"
+{
+  upgrade = "advanced rock resistance"
+  symbol = "🛡"
+  effect = Name "stoneskin" Area 10 Filter Not Enemy Lasting 40 STONESKIN
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"rock elemental"
+{
+  symbol = "👾"
+  effect = Name "earth elemental" Summon "EARTH_ELEMENTAL" { 1 2 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"advanced rock elemental"
+{
+  upgrade = "earth elemental"
+  symbol = "👾"
+  effect = Name "earth elemental" Summon "EARTH_ELEMENTAL" { 2 4 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"rock dig"
+{
+  symbol = "X"
+  effect = Name "dig" DestroyWalls DIG
+  range = 1
+  cooldown = {10 41}
+  blockedByWall = false
+}
+
+"advanced rock dig"
+{
+  upgrade = "rock dig"
+  symbol = "X"
+  effect = Name "dig" DestroyWalls DIG
+  range = 2
+  cooldown = {10 41}
+  blockedByWall = false
+}
+
+"expert rock dig"
+{
+  upgrade = "advanced rock dig"
+  symbol = "X"
+  effect = Name "dig" Area 1 DestroyWalls DIG
+  range = 2
+  cooldown = {10 41}
+  blockedByWall = false
+}
+
+"rock summon mountain"
+{
+  symbol = "𝍔"
+  effect =  Name "summon mountain" CustomArea PlaceFurniture "MOUNTAIN" { {0 -2} {0 -1} {0 0} {0 1} {0 2} }
+  endOnly = true
+  range = 2
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+}
+
+"advanced rock summon mountain"
+{
+  upgrade = "rock summon mountain"
+  symbol = "𝍔"
+  effect =  Name "summon mountain" CustomArea PlaceFurniture "MOUNTAIN2" { {0 -2} {0 -1} {0 0} {0 1} {0 2} }
+  endOnly = true
+  range = 2
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+}
+
+# water spells
+"water bolt"
+{
+  symbol = "⥇"
+  effect = Name "water whip" Description "conjures a steam of water and uses it like whip on the enemy"
+  Chain {
+	  { Caster Lasting 0 "DAMAGE_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the whip", "is hit by the whip")}
+  fx = {MAGIC_MISSILE}
+  range = 2
+  cooldown = {0 10}
+  sound = SPELL_BLAST
+}
+
+"advanced water bolt"
+{
+  upgrade = "water bolt"
+  symbol = "⥇"
+  effect = Name "water whip" Description "conjures a steam of water and uses it like whip on the enemy"
+  Chain {
+	  { Caster Lasting 0 "DAMAGE_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the whip", "is hit by the whip")}
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {0 10}
+  sound = SPELL_BLAST
+}
+
+"expert water bolt"
+{
+  upgrade = "advanced water bolt"
+  symbol = "⥇"
+  effect = Name "water whip" Description "conjures a steam of water and uses it like whip on the enemy"
+  Chain {
+	  { Caster Lasting 0 "DAMAGE_SPELL"}
+      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the whip", "is hit by the whip")}
+  fx = {MAGIC_MISSILE}
+  range = 6
+  cooldown = {0 10}
+  sound = SPELL_BLAST
+}
+
+"water resistance"
+{
+  symbol = "🛡"
+  effect = Name "water breathing" Lasting 40 SWIMMING_SKILL
+  cooldown = {50 101}
+  sound = SPELL_CURE_POISON
+}
+
+"advanced water resistance"
+{
+  upgrade = "water resistance"
+  symbol = "🛡"
+  effect = Name "water breathing" Lasting 40 SWIMMING_SKILL
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"mass water resistance"
+{
+  upgrade = "advanced water resistance"
+  symbol = "🛡"
+  effect = Name "water breathing" Area 10 Filter Not Enemy Lasting 40 SWIMMING_SKILL
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"water elemental"
+{
+  symbol = "👾"
+  effect = Name "water elemental" Summon "WATER_ELEMENTAL" { 1 2 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"advanced water elemental"
+{
+  upgrade = "water elemental"
+  symbol = "👾"
+  effect = Name "water elemental" Summon "WATER_ELEMENTAL" { 2 4 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"Flood"
+{
+  symbol = "𝍔"
+  effect =  Name "flood" Description "conjures an water to flood area around caster" Area 1 { Chain{
+									{Filter Area 0 FurnitureType "SHALLOW_WATER2" {PlaceFurniture "SHALLOW_WATER1" }}
+									{Filter Area 0 FurnitureType "SHALLOW_WATER1" {PlaceFurniture "WATER"}}
+									{Filter Area 0 Not And {FurnitureType "WATER" FurnitureType "SHALLOW_WATER1" FurnitureType "SHALLOW_WATER2"} {PlaceFurniture "SHALLOW_WATER2"}}
+									Shove}}
+  endOnly = true
+  range = 0
+  cooldown = {25 50}
+  sound = SPELL_BLAST
+}
+
+"Advanced Flood"
+{
+  upgrade = "Flood"
+  symbol = "𝍔"
+  effect =  Name "flood" Description "conjures an water to flood area around caster" Area 2 { Chain{
+									{Filter Area 0 FurnitureType "SHALLOW_WATER2" {PlaceFurniture "SHALLOW_WATER1" }}
+									{Filter Area 0 FurnitureType "SHALLOW_WATER1" {PlaceFurniture "WATER"}}
+									{Filter Area 0 Not And {FurnitureType "WATER" FurnitureType "SHALLOW_WATER1" FurnitureType "SHALLOW_WATER2"} {PlaceFurniture "SHALLOW_WATER2"}}
+									Shove}}
+  endOnly = true
+  range = 0
+  cooldown = {25 50}
+  sound = SPELL_BLAST
+}
+
+"Expert Flood"
+{
+  upgrade = "Flood"
+  symbol = "𝍔"
+  effect =  Name "flood" Description "conjures an water to flood area around caster" Area 3 { Chain{
+									{Filter Area 0 FurnitureType "SHALLOW_WATER2" {PlaceFurniture "SHALLOW_WATER1" }}
+									{Filter Area 0 FurnitureType "SHALLOW_WATER1" {PlaceFurniture "WATER"}}
+									{Filter Area 0 Not And {FurnitureType "WATER" FurnitureType "SHALLOW_WATER1" FurnitureType "SHALLOW_WATER2"} {PlaceFurniture "SHALLOW_WATER2"}}
+									Shove}}
+  endOnly = true
+  range = 0
+  cooldown = {25 50}
+  sound = SPELL_BLAST
+}
+
+"drowning chant"
+{
+  symbol = "⥇"
+  effect = Lasting 30 DROWNING
+  cooldown = {50 101}
+  targetSelf = true
+  range = 6
+  sound = SPELL_CURE_POISON
+}
+
+OneTimeAbility("water resistance self", "Becomes able to breathe in water.", Permanent SWIMMING_SKILL, "🎯")
+
+# transmuter
+
+"Polymorph"
+{
+  symbol = "🐣"
+  effect = Name "Polymorph" Description "Turn yourself or someone into a sheep temporarily!" AI Health 0 0.4 0 1 {
+    Polymorph "CHICKEN" 10
+	EmitGas "FOG" 0.5
+  }
+  targetSelf = true
+  endOnly = true
+  range = 4
+  cooldown = {30 101}
+  message = "puff" "puff"
+  type = ABILITY
+}
+"advanced Polymorph"
+{
+  upgrade = "Polymorph"
+  symbol = "🐣"
+  effect = Name "Polymorph" Description "Turn yourself or someone into a sheep temporarily!" AI Health 0 0.4 0 1 {
+    Polymorph "CHICKEN" 10
+	EmitGas "FOG" 0.5
+  }
+  targetSelf = true
+  endOnly = true
+  range = 4
+  cooldown = {30 101}
+  message = "puff" "puff"
+  type = ABILITY
+}

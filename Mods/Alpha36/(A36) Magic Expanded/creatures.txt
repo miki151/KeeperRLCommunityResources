@@ -1,0 +1,89 @@
+# Each element is of the form:
+
+# "CreatureId" { CreatureAttributes }, see creature_attributes.h
+
+"KEEPER_MAGE" modify append
+  {
+  spells = { "Flood" }
+  }
+ 
+"ICE_ELEMENTAL"
+  {
+    viewId = { "ice_demon" }
+    attr = {
+      DEFENSE 30
+      COLD_DAMAGE 10
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = ICE
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 10 {
+            attackType = HIT
+            attackMsg = SWING
+            meleeAttackAttr = COLD_DAMAGE
+        } }}}
+      }
+    }
+    name = {
+      name = "ice elemental"
+    }
+  }
+  
+"STORM_ELEMENTAL"
+  {
+    viewId = { "storm_elemental" }
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+		TORSO {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT meleeAttackAttr = LIGHTNING_DAMAGE attackMsg = SWING } }}}
+      }
+    }
+    attr = {
+      LIGHTNING_DAMAGE 35
+      DEFENSE 15 
+    }
+    permanentEffects = {
+      FLYING 1
+      RANGED_RESISTANCE 1
+    }
+    spells = { "circular blast" "elemental_storm_bolt" }
+    name = {
+      name = "storm elemental"
+    }
+    gender = IT
+  }
+
+"ACID_ELEMENTAL"
+  {
+    viewId = { "water_elemental" }
+    body = {
+      type = HumanoidLike LARGE
+      material = ACID
+      weight = 300
+      deathSound = none
+	  intrinsicAttacks = {
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = { 0.1 Acid{} } } }}}
+      }
+    }
+    attr = {
+      ACID_DAMAGE 25
+      DEFENSE 25
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+    }
+	spells = { "acid stream - elemental" }
+    name = {
+      name = "acid elemental"
+    }
+    gender = IT
+  }

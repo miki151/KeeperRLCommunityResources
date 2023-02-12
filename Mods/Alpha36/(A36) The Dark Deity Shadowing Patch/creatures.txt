@@ -1,0 +1,2522 @@
+"Dark_Dwarf_Blacksmith"
+ {
+    viewId = { "dwarf_darkblacksmith" }
+    attr = {
+        DAMAGE 20
+        DEFENSE 10
+		WORKSHOP 50
+        FURNACE 50
+        FORGE 50
+        LABORATORY 50
+    }
+    body = {
+        type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "nags you about state of your weapons"
+    chatReactionHostile = "\"Ill Feed You To My Forge!\""
+    maxLevelIncrease = {
+        MELEE 12
+    }
+    name = {
+        name = "dark dwarf blacksmith" 
+         firstNameGen = "DWARF"
+        }
+    permanentEffects = {
+        PLAGUE_RESISTANT 1
+        SWIMMING_SKILL 1
+        REGENERATION 1
+        NIGHT_VISION 1
+        FIRE_RESISTANT 1
+		RIDER 1
+    }
+    spells = { "animate weapons" }
+  }
+"DARK_LORD"
+  {
+    viewId = { "dark_lord1" }
+    viewIdUpgrades = { { "dark_lord2" } { "dark_lord3"}}
+    name = {
+      name = "dark lord"
+      firstNameGen = "WORLD"
+    }
+    gender = IT
+    attr = {
+        DAMAGE 20
+        DEFENSE 20
+        SPELL_DAMAGE 20
+		LABORATORY 20
+        WORKSHOP 20
+        FORGE 20
+        FURNACE 20
+        JEWELER 20
+        DIGGING 20
+        MORGUE 20
+        MULTI_WEAPON 20
+    }
+    body = {
+        type = Humanoid MEDIUM
+        weight = 80
+        addBodyPart = {
+            ARM 4
+            WING 4
+            LEG 6
+            HEAD 1
+            TORSO 1
+        }
+        intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        ARM  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+
+      }
+    }
+    permanentEffects = {
+      REGENERATION 1
+      PLAGUE_RESISTANT 1
+      POISON_RESISTANT 1
+      FLYING 1
+      ARCHER_VISION 1
+      DISTILLATION_SKILL 1
+      SLOW_TRAINING 1
+      NO_CARRY_LIMIT 1
+      NIGHT_VISION 1
+      TELEPATHY 1
+      FIRE_RESISTANT 1
+    }
+    promotionGroup = "master"
+    promotionCost = 0.20
+    aiType = MELEE
+    chatReactionFriendly = "hello"
+    chatReactionHostile = "eadfdssfewwafdgdgreqafghrefsasgrfac"
+    maxLevelIncrease = {
+        MELEE 25
+        SPELL 25
+        ARCHERY 15
+    }
+    spellSchools = { "master magus" "master fighter" }
+    spells = { "spawning" "summon element" "expert healing" "dig" }
+  }
+"DARK_ORC"
+  {
+    viewId = { "dark_orc" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 15 
+	  WORKSHOP 15
+      FORGE 15
+      FURNACE 5
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+        PLAGUE_RESISTANT 1
+        NIGHT_VISION 1
+        SWIMMING_SKILL 1
+        CAN_DANCE 1
+        FIRE_RESISTANT 1
+		RIDER 1
+    }
+    promotionGroup = "darkness"
+    promotionCost = 0.20
+    chatReactionFriendly = "curses all elves"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 7
+    }
+    name = {
+      name = "dark orc"
+      firstNameGen = "ORC"
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+"DARK_ORC_SCOUT"
+ {
+   viewId = { "dark_orcscout" }
+   attr = {
+     DAMAGE 15
+     DEFENSE 10
+     SPELL_DAMAGE 10
+     RANGED_DAMAGE 15
+   }
+   body = {
+     type = Humanoid LARGE
+   }
+   permanentEffects = {
+     NIGHT_VISION 1
+     PLAGUE_RESISTANT 1
+     SWIMMING_SKILL 1
+     CAN_DANCE 1
+     ELF_VISION 1
+     FIRE_RESISTANT 1
+	 RIDER 1
+   }
+   promotionGroup = "darkness"
+   promotionCost = 0.20
+   spellSchools = { "illusion" }
+   maxLevelIncrease = {
+     MELEE 5
+     ARCHERY 7
+     SPELL 7
+   }
+   name = {
+     name = "dark orc scout"
+     firstNameGen = "ORC"
+   }
+   hatedByEffect = HATE_GREENSKINS
+   inventory = {
+      { "Bow"}
+      { "LeatherArmor"}
+    }
+ }
+"DARK_ORC_MAGE"
+ {
+    viewId = { "dark_orcmage" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 16 
+	  LABORATORY 35
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+        NIGHT_VISION 1
+        SWIMMING_SKILL 1
+        PLAGUE_RESISTANT 1
+        CAN_DANCE 1
+        FIRE_RESISTANT 1
+		RIDER 1
+    }
+    promotionGroup = "darkness"
+    promotionCost = 0.20
+    aiType = RANGED
+    chatReactionFriendly = "curses all elves"
+    chatReactionHostile = "Die!"
+    maxLevelIncrease = {
+      MELEE 4
+      SPELL 7
+    }
+    spellSchools = { "mage" }
+    name = {
+      name = "dark orc mage"
+      firstNameGen = "ORC"
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+  }
+"DARK_ORC_SHAMAN" inherit "DARK_ORC_MAGE"
+  {
+    viewId = { "dark_orcshaman" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 25 
+    }
+    maxLevelIncrease = {
+      MELEE 4
+      SPELL 12
+    }
+    spellSchools = { "spiritualist" }
+    spells = { "heal spirit" }
+    companions = {4 false SPELL_DAMAGE 0.02 { "SPIRIT" }}
+    permanentEffects = append {
+      DISTILLATION_SKILL 1
+    }
+    name = {
+      name = "dark orc shaman"
+      firstNameGen = "ORC"
+    }
+  }
+"DARK_ORC_HEALER" inherit "DARK_ORC_MAGE"
+  {
+    viewId = { "dark_orchealer" }
+    spellSchools = { "healer" }
+    maxLevelIncrease = {
+      SPELL 7
+    }
+    spells = { "healing" }
+    companions = {4 false SPELL_DAMAGE 0.02 { "RAVEN" }}
+    name = {
+      name = "dark orc healer"
+      firstNameGen = "ORC"
+    }
+  }
+"DARK_OGRE"
+  {
+    viewId = { "dark_ogre" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 18 
+	  WORKSHOP 20
+      FORGE 20
+      FURNACE 40
+    }
+    body = {
+      type = Humanoid LARGE
+      weight = 140
+    }
+    name = {
+      name = "dark ogre"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      PLAGUE_RESISTANT 1
+      NIGHT_VISION 1
+      SWIMMING_SKILL 1
+      CAN_DANCE 1
+	  RIDER 1
+      FIRE_RESISTANT 1
+    }
+    companions = {1 false DAMAGE 0.02 { "HYDRA" }}
+    maxLevelIncrease = {
+      MELEE 12
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "HeavyClub" }
+    }
+    promotionGroup = "darkness"
+    promotionCost = 0.20
+  }
+"DARK_GOBLIN_MATRON"
+  {
+    viewId = { "dark_goblin_matron" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about makeup and lovemaking"
+    chatReactionHostile = "Die!"
+    hatedByEffect = HATE_GREENSKINS
+    gender = FEMALE
+    aiType = RANGED
+    name = {
+      name = "dark goblin matron"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      PLAGUE_RESISTANT 1
+      REGENERATION 1
+      SWIMMING_SKILL 1
+      NIGHT_VISION 1
+      CAN_DANCE 1 
+      FIRE_RESISTANT 1
+	  RIDER 1
+    }
+    promotionGroup = "darkness"
+    promotionCost = 0.20
+    spells = { "advanced healing" }
+  }
+"DARK_IMP"
+  {
+    viewId = { "winged_dark_imp" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 15 
+	  DIGGING 10
+    }
+    body = {
+      type = Humanoid SMALL
+      material = SPIRIT
+    }
+    aiType = RANGED
+    noChase = true
+    cantEquip = true
+    chatReactionFriendly = "talks about digging"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      SPEED 1
+      NO_CARRY_LIMIT 1
+      FLYING 1
+      NIGHT_VISION 1
+      PLAGUE_RESISTANT 1
+      FIRE_RESISTANT 1
+    }
+    name = {
+      name = "dark imp"
+    }
+  }
+"DARK_ANT_QUEEN"
+  {
+    viewId = { "dark_ant_queen" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 26
+      SPELL_DAMAGE 10
+	  DIGGING 50
+    }
+    body = {
+      type = Humanoid LARGE
+      bodyParts = {
+        LEG 4
+        ARM 2
+        HEAD 1
+        TORSO 1
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+           attackType = BITE
+           attackMsg = BITE
+           victimEffect = {1.0 Lasting POISON} } }}}
+      }
+    }
+    maxLevelIncrease = {
+        MELEE 12
+        SPELL 12
+      }
+    companions = { 2 false SPELL_DAMAGE 0.02 { "DARK_ANT_SOLDIER" }}
+    aiType = RANGED
+    permanentEffects = {
+        NIGHT_VISION 1
+        NO_CARRY_LIMIT 1
+        PLAGUE_RESISTANT 1
+        POISON_RESISTANT 1
+        SWIMMING_SKILL 1
+        CAN_DANCE 1
+        FIRE_RESISTANT 1
+		RIDER 1
+      }
+    promotionGroup = "darkness"
+    promotionCost = 0.20
+    spellSchools = { "dwarf" }
+    gender = FEMALE
+    name = {
+      name = "dark ant queen"
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+"DARK_ANT_SOLDIER"
+  {
+    viewId = { "dark_ant_soldier" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20 
+    }
+    permanentEffects = {
+      PLAGUE_RESISTANT 1
+      SWIMMING_SKILL 1
+      POISON_RESISTANT 1
+	  RIDER 1
+    }
+    body = {
+      type = Humanoid MEDIUM
+      weight = 10
+      bodyParts = {
+        LEG 2
+        HEAD 1
+        TORSO 1
+        ARM 4
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.1 Lasting POISON} } }}}
+      }
+    }
+    name = {
+      name = "giant dark ant soldier"
+    }
+    inventory = {
+        { "Sword" }
+        { "Sword" }
+        { "IronShield" }
+        { "Sword" }
+        { "LeatherArmor" }
+        { "LeatherGloves" }
+        { "LeatherHelm" }
+        
+    }
+  }
+"DARK_ANT_WORKER"
+  {
+    viewId = { "dark_ant_worker" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 16
+      SPELL_DAMAGE 10
+	  DIGGING 50
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      weight = 10
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+        ARM 2
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {1.0 Lasting POISON} } }}}
+      }
+    }
+    maxLevelIncrease = {
+      MELEE 10
+    }
+    name = {
+      name = "giant dark ant"
+    }
+    spells = { "poison breath" }
+    permanentEffects = {
+        NO_CARRY_LIMIT 1
+        SWIMMING_SKILL 1
+        POISON_RESISTANT 1
+        PLAGUE_RESISTANT 1
+        NIGHT_VISION 1
+        CAN_DANCE 1
+        FIRE_RESISTANT 1
+    }
+    promotionGroup = "darkness"
+    promotionCost = 0.20
+  }
+"DARK_HOUND" inherit "WOLF"
+  {
+    viewId = { "dark_hound" }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        WING 2
+        LEG 2
+        ARM 2
+        HEAD 1
+        TORSO 1
+      }
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        ARM  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+      }
+    }
+    name = {
+      name = "dark hound"
+      pluralName = "dark hounds" 
+      firstNameGen = "DOG"
+    }
+    spells = { "poison breath" }
+    permanentEffects = {
+      FLYING 1
+      PLAGUE_RESISTANT 1
+      NIGHT_VISION 1
+      SWARMER 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      REGENERATION 1
+    }
+  }
+"WEREBAT"
+  {
+    viewId = { "werebat" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid LARGE
+      bodyParts = {
+        WING 2
+        HEAD 1
+        ARM 2
+        LEG 2
+        TORSO 1
+      }
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      MAGIC_RESISTANCE 1
+      REGENERATION 1
+      DISTILLATION_SKILL 1
+      PLAGUE_RESISTANT 1
+      FLYING 1
+      FIRE_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      MELEE 12
+      ARCHERY 7
+    }
+    name = {
+      name = "werebat"
+      pluralName = "werebats"
+      firstNameGen = "DOG"
+    }
+  }
+"DARK_MOLE"
+  {
+    viewId = { "dark_mole" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 18 
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      weight = 250
+      intrinsicAttacks = {
+        LEG {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } }}}
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 { attackType = BITE attackMsg = BITE} }}}
+      }
+    }
+    permanentEffects = {
+      EXPLORE_CAVES_SKILL 1
+      PLAGUE_RESISTANT 1
+      NIGHT_VISION 1
+      SWIMMING_SKILL 1
+    }
+    name = {
+      name = "dark mole"
+      firstNameGen = "DOG"
+    }
+  }
+"DARK_DEER" inherit "DEER"
+  {
+    viewId = { "dark_deer" }
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  STEED 1
+    }
+  }
+"MOLE_RAT" inherit "FOX"
+  {
+    viewId = { "mole_rat" }
+    name = {
+      name = "mole rat"
+    }
+  }
+"INFECTED_BANDIT"
+  {
+    viewId = { "infected_bandit" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 13
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all law enforcement"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 2
+    }
+    name = {
+      name = "bandit"
+    }
+    deathEffect = Filter Not Flag "key_dropped" {
+      SetFlag "key_dropped" true
+      DropItems { "BlackMarketKey"} {1}
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Club"}
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { type = "Torch" chance = 0.3 }
+      { type = "Bow" chance = 0.05 }
+    }
+  }
+"INFECTED_PESEANT"
+  {
+    viewId = { "infected_peasant" }
+    genderAlternatives = {
+      FEMALE { "infected_peasant_woman" }
+    }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+	  DIGGING 5
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      DISTILLATION_SKILL 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "peasant"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+"INFECTED_PESEANT_LEADER" inherit "INFECTED_PESEANT"
+  {
+    body = {
+      type = Humanoid LARGE
+      droppedPartUpgrade = IncreaseAttr DAMAGE 2
+    }
+  }
+"INFECTED_CHILD"
+  {
+    viewId = { "infected_child" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 8 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "\"plaaaaay!\""
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+	  RIDER 1
+    }
+    companions = {1 true none 0.01 { "DOG" }}
+    name = {
+      name = "child"
+      pluralName = "children"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+"CROSSBREED_CHILD"
+  {
+    viewId = { "crossbreed_child" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 14 
+    }
+    body = {
+      type = Humanoid MEDIUM
+      weight = 35
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+    maxLevelIncrease = {
+      MELEE 12
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      REGENERATION 1
+      SWIMMING_SKILL 1
+	  RIDER 1
+    }
+    name = {
+      name = "crossbreed child"
+      pluralName = "crossbreed children"
+      firstNameGen = "DOG"
+      groupName = "pack"
+    }
+  }
+"DARK_ORC_VILLAIN" inherit "DARK_ORC"
+  {
+    attr = {
+      DAMAGE 36
+      DEFENSE 36
+    }
+    inventory = {
+      { "Sword" }
+      { "ChainArmor" }
+      { "IronHelm" }
+    }
+  }
+"DARK_ORC_MAGE_VILLAIN" inherit "DARK_ORC_MAGE"
+  {
+    attr = {
+      SPELL_DAMAGE 36
+      DEFENSE 26
+    }
+    inventory = {
+      { "IronStaff" }
+      { "LeatherArmor"}
+    }
+  }
+"DARK_ORC_SCOUT_VILLAIN" inherit "DARK_ORC_SCOUT"
+  {
+    attr = {
+      RANGED_DAMAGE 36
+      DEFENSE 30
+    }
+  }
+"DARK_OGRE_VILLAIN" inherit "DARK_OGRE"
+  {
+    attr = {
+      DAMAGE 46
+      DEFENSE 45
+    }
+  }
+"DARK_ORC_PLAYER" inherit "DARK_ORC"
+  {
+    viewId = { "dark_orcplayer" }
+    name = append {
+      fullTitle = true
+    }
+    attr = {
+	  DAMAGE 16
+      DEFENSE 15 
+      DIGGING 30
+      WORKSHOP 10
+      FORGE 10
+      LABORATORY 10
+      JEWELER 10
+      FURNACE 10
+    }
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      CAN_DANCE 1
+      NIGHT_VISION 1
+      SWIMMING_SKILL 1
+      FIRE_RESISTANT 1
+      PLAGUE_RESISTANT 1
+	  RIDER 1
+    }
+    inventory = {}
+    specialAttr = {}
+    promotionGroup = "dark orc tribes"
+    promotionCost = 0.25
+  }
+"DARK_ORC_PLAYER2" inherit "DARK_ORC_PLAYER"
+ {
+   body = {
+     type = Humanoid MEDIUM
+   }
+ }
+"DARK_LORD_SPAWN" inherit "DARK_LORD"
+{
+  viewId = { "dark_lord_spawn" }
+  name = {
+    name = "dark lord spawn"
+  }
+  spells = { "advanced healing" "ice cone" "haste" }
+}
+"GNOLL_QUEEN"
+{
+  viewId = { "special_humanoid" }
+  name = {
+    name = "gnoll queen"
+    firstNameGen = "FIRST_FEMALE"
+  }
+      attr = {
+        DAMAGE 20
+        DEFENSE 20
+        SPELL_DAMAGE 20
+		LABORATORY 20
+        WORKSHOP 20
+        FORGE 20
+        FURNACE 20
+        JEWELER 20
+        DIGGING 20
+        MORGUE 20
+    }
+    body = {
+        type = Humanoid MEDIUM
+        weight = 80
+        addBodyPart = {
+            ARM 2
+            LEG 2
+            HEAD 1
+            TORSO 1
+        }
+        intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        ARM  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+
+      }
+    }
+    permanentEffects = {
+      REGENERATION 1
+      PLAGUE_RESISTANT 1
+      ARCHER_VISION 1
+      NO_CARRY_LIMIT 1
+      NIGHT_VISION 1
+      TELEPATHY 1
+      FIRE_RESISTANT 1
+      DISARM_TRAPS_SKILL 1
+      SWIMMING_SKILL 1
+      COPULATION_SKILL 1
+      CONSUMPTION_SKILL 1
+      AMBUSH_SKILL 1
+	  RIDER 1
+    }
+    promotionGroup = "darkness"
+    promotionCost = 0.25
+    aiType = MELEE
+    maxLevelIncrease = {
+        MELEE 25
+        SPELL 25
+    }
+    spellSchools = { "mage" "fire" "illusion" "dark fighter" }
+    spells = { "earth elemental" "water elemental" "air elemental" "fire elemental" "expert healing" "dig" }
+}
+"DRACONIAN"
+{
+  viewId = { "special_beast" }
+  name = {
+    name = "dragonian"
+    firstNameGen = "WORLD"
+  }
+      attr = {
+        DAMAGE 20
+        DEFENSE 20
+        SPELL_DAMAGE 20
+		DIGGING 20
+    }
+    body = {
+        type = NonHumanoid MEDIUM
+        weight = 80
+        addBodyPart = {
+            ARM 2
+            WING 2
+            LEG 2
+            HEAD 1
+            TORSO 1
+        }
+        intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        ARM  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+      }
+    }
+    permanentEffects = {
+      REGENERATION 1
+      PLAGUE_RESISTANT 1
+      ARCHER_VISION 1
+      NO_CARRY_LIMIT 1
+      NIGHT_VISION 1
+      TELEPATHY 1
+      FIRE_RESISTANT 1
+      DISARM_TRAPS_SKILL 1
+      FLYING 1
+      CONSUMPTION_SKILL 1
+	  RIDER 1
+    }
+    promotionGroup = "darkness"
+    promotionCost = 0.25
+    aiType = MELEE
+    maxLevelIncrease = {
+        MELEE 25
+    }
+    spellSchools = { "mage" "fire" "dragon blood" }
+    spells = { "advanced fire elemental" "expert healing" "dig" }
+}
+"SHELOBB" inherit "SHELOB"
+{
+  viewId = { "special_bmgn" }
+  permanentEffects = {
+    POISON_RESISTANT 1
+    PLAGUE_RESISTANT 1
+    NIGHT_VISION 1
+    SPIDER_SKILL 1
+    SWIMMING_SKILL 1
+  }
+}
+"THE_CHILD"
+  {
+    viewId = { "crossbreed_child" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 14 
+	  DIGGING 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+      weight = 35
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+      }
+    }
+    maxLevelIncrease = {
+      MELEE 12
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      REGENERATION 1
+      SWIMMING_SKILL 1
+      PLAGUE_RESISTANT 1
+      FIRE_RESISTANT 1
+      SWARMER 1
+      CONSUMPTION_SKILL 1
+	  RIDER 1
+      }
+      promotionGroup = "darkness"
+      promotionCost = 0.25
+    name = {
+      name = "the child"
+      pluralName = "the children"
+      firstNameGen = "DOG"
+      groupName = "pack"
+    }
+    spells = { "pack howl" }
+  }
+  "INFECTED_PESEANT_PLAYER"
+  {
+    viewId = { "infected_peasant" }
+    genderAlternatives = {
+      FEMALE { "infected_peasant_woman" }
+    }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      DISTILLATION_SKILL 1
+      NO_CARRY_LIMIT 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWIMMING_SKILL 1
+      ELF_VISION 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "peasant"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+"INFECTED_CHILD_PLAYER"
+  {
+    viewId = { "infected_child" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 8 
+	  DIGGING 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "\"plaaaaay!\""
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      SWIMMING_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      ELF_VISION 1
+      NO_CARRY_LIMIT 1
+	  RIDER 1
+    }
+    name = {
+      name = "child"
+      pluralName = "children"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+"MYCOLOGIST"
+  {
+    viewId = { "matango_mycologist" }
+    genderAlternatives = {
+      FEMALE { "matangof_mycologist" }
+    }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10 
+	  WORKSHOP 50
+      FORGE 50
+      JEWELER 50
+      FURNACE 50
+      LABORATORY 50
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    permanentEffects = {
+      SWIMMING_SKILL 1
+      PLAGUE_RESISTANT 1
+      POISON_RESISTANT 1
+      ELF_VISION 1
+      REGENERATION 1
+	  RIDER 1
+    }
+    chatReactionFriendly = "talks about mushrooms"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "mycologist"
+      firstNameGen = "GERMANIC"
+    }
+    spells = { "propogate" }
+  }
+"MATANGO"
+  {
+    viewId = { "matango" }
+    genderAlternatives = {
+      FEMALE { "matangof" }
+    }
+    attr = {
+      DAMAGE 16
+      DEFENSE 14 
+	  WORKSHOP 15
+      FORGE 15
+      FURNACE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      MELEE 12
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWIMMING_SKILL 1
+      ELF_VISION 1
+      REGENERATION 1
+	  RIDER 1
+    }
+    spellSchools = { "fighter" }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "matango"
+      firstNameGen = "GERMANIC"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+"MATRIAD"
+  {
+    viewId = { "matango_driad" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+      RANGED_DAMAGE 10 
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      ARCHER_VISION 1
+      ELF_VISION 1
+      SWIMMING_SKILL 1
+      PLAGUE_RESISTANT 1
+      POISON_RESISTANT 1
+      REGENERATION 1
+	  RIDER 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    spellSchools = { "archer" }
+    maxLevelIncrease = {
+      MELEE 7
+      ARCHERY 12
+    }
+    aiType = RANGED
+    name = {
+      name = "matriad"
+      firstNameGen = "GERMANIC"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+"MATANGO_PRIEST"
+  {
+    viewId = { "matango_priest" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 10
+      SPELL_DAMAGE 16 
+    }
+    maxLevelIncrease = {
+     SPELL 15
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    companions = {4 false SPELL_DAMAGE 0.02 { "SPIRIT" }}
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+	permanentEffects = {
+      RIDER 1
+    }
+    name = {
+      name = "priest"
+      firstNameGen = "FIRST_MALE"
+    }
+    spellSchools = { "spiritualist" "healer" }
+    spells = { "poison cloud" "poison breath" }
+    hatedByEffect = HATE_HUMANS
+  }
+"MATANGO_PRIESTESS" inherit "MATANGO_PRIEST"
+  {
+    viewId = { "matangof_priest" }
+    gender = FEMALE
+    name = {
+      name = "priestess"
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+"MATANGO_MAGE"
+  {
+    viewId = { "matangof_goldshroom" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 16 
+    }
+    maxLevelIncrease = {
+      MELEE 5
+      SPELL 12
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "mage"
+      firstNameGen = "FIRST_MALE"
+    }
+    spellSchools = { "matangage" }
+    hatedByEffect = HATE_HUMANS
+  }
+"MATANGO_ELEMENTAL"
+  {
+    viewId = { "matangle" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 22
+      SPELL_DAMAGE 20 
+    }
+    maxLevelIncrease = {
+      MELEE 15
+      SPELL 15
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      addBodyPart = {
+        WING 2
+      }
+    }
+    permanentEffects = {
+      FLYING 1
+      PLAGUE_RESISTANT 1
+      POISON_RESISTANT 1
+      REGENERATION 1
+      ELF_VISION 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "matangel"
+      firstNameGen = "GERMANIC"
+    }
+    spellSchools = { "dwarf" "matangage" "mushroom fighter" }
+  }
+"MATANGO_DAME"
+  {
+    viewId = { "mushroom_warrior" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 15
+	  WORKSHOP 15
+      FORGE 15
+      FURNACE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    gender = FEMALE
+    maxLevelIncrease = {
+      MELEE 12
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWIMMING_SKILL 1
+      ELF_VISION 1
+      REGENERATION 1
+	  RIDER 1
+    }
+    spellSchools = { "mushroom fighter" }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "matango"
+      firstNameGen = "FIRST_FEMALE"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+"MATANGDINGO" inherit "DARK_HOUND"
+{
+  viewId = { "matangdingo" }
+  permanentEffects = {
+    SWIMMING_SKILL 1
+    POISON_RESISTANT 1
+    PLAGUE_RESISTANT 1
+    ELF_VISION 1
+	RIDER 1
+  }
+  name = {
+    name = "matangdingo"
+    firstNameGen = "DOG"
+  }
+}
+"GIANT_MATANGO"
+{
+  viewId = { "giant_matango" }
+  genderAlternatives = {
+    FEMALE { "giant_matangof" }
+  }
+  attr = {
+    DAMAGE 30
+    DEFENSE 30
+  }
+  body = {
+    type = Humanoid HUGE
+  }
+  permanentEffects = {
+    SWIMMING_SKILL 1
+    POISON_RESISTANT 1
+    PLAGUE_RESISTANT 1
+    ELF_VISION 1
+    REGENERATION 1
+  }
+  name = {
+    name = "giant matango"
+  }
+}
+"KEEPER_MATANGO"
+  {
+    viewId = { "keeper_matango0" }
+    viewIdUpgrades = { { "keeper_matango1" } { "keeper_matango2"} { "keeper_matango3" }}
+    name = {
+      name = "matangler"
+      firstNameGen = "WORLD"
+    }
+    gender = MALE
+    attr = {
+        DAMAGE 20
+        DEFENSE 20
+        SPELL_DAMAGE 20
+        RANGED_DAMAGE 10
+		LABORATORY 20
+        WORKSHOP 20
+        FORGE 20
+        FURNACE 20
+        JEWELER 20
+        DIGGING 20
+    }
+    body = {
+        type = Humanoid MEDIUM
+        weight = 80
+        intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+        ARM  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+      }
+    }
+    permanentEffects = {
+      REGENERATION 1
+      PLAGUE_RESISTANT 1
+      POISON_RESISTANT 1
+      SWIMMING_SKILL 1
+      DISTILLATION_SKILL 1
+      NO_CARRY_LIMIT 1
+      ELF_VISION 1
+      FIRE_RESISTANT 1
+	  RIDER 1
+    }
+    aiType = MELEE
+    chatReactionFriendly = "hello"
+    chatReactionHostile = "die"
+    maxLevelIncrease = {
+        MELEE 25
+        SPELL 25
+        ARCHERY 15
+    }
+    spellSchools = { "matangage" "fire" "archer" "mushroom fighter" }
+    spells = { "expert healing" "dig" "propogate" }
+  }
+"KEEPER_MATANGOF" inherit "KEEPER_MATANGO"
+{
+    viewId = { "keeper_matangof0" }
+    viewIdUpgrades = { { "keeper_matangof1" } { "keeper_matangof2"} { "keeper_matangof3" }}
+    name = {
+      name = "matangler"
+      firstNameGen = "WORLD"
+    }
+    gender = FEMALE
+}
+"MATANGO_SPORE"
+{
+  viewId = { "matango_spore" }
+  name = {
+    name = "matango spore"
+    firstNameGen = "WORLD"
+  }
+  attr = {
+    DAMAGE 5
+    DEFENSE 5
+    RANGED_DAMAGE 5
+    SPELL_DAMAGE 5
+  }
+  body = {
+      type = Humanoid SMALL
+      intrinsicAttacks = { 
+            HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+      }
+  }
+  permanentEffects = {
+    FLYING 1
+    PLAGUE_RESISTANT 1
+    POISON_RESISTANT 1
+    REGENERATION 1
+    ELF_VISION 1
+  }
+  promotionGroup = "matango growth"
+  promotionCost = 0.10
+}
+"MATANGO_ADVENTURER" inherit "KEEPER_MATANGO"
+{
+  viewId = { "keeper_matango3" }
+}
+"MATANGO_ADVENTURER_F" inherit "KEEPER_MATANGOF"
+{
+  viewId = { "keeper_matangof3" }
+}
+"DARK_ADVENTURER" inherit "DARK_LORD"
+{
+  viewId = { "dark_lord3" }
+}
+"CULTIST_KEEPER"
+  {
+    viewId = { "demon_keeper1" }
+    viewIdUpgrades = { { "demon_keeper2" } { "demon_keeper3"} { "demon_keeper4" }}
+    name = {
+      name = "cultist keeper"
+      firstNameGen = "WORLD"
+    }
+    attr = {
+        DAMAGE 20
+        DEFENSE 20
+        SPELL_DAMAGE 20
+		LABORATORY 20
+        WORKSHOP 20
+        FORGE 20
+        FURNACE 20
+        JEWELER 20
+        DIGGING 20
+    }
+    body = {
+        type = Humanoid MEDIUM
+        weight = 80
+        addBodyPart = {
+            WING 2
+        }
+        intrinsicAttacks = {
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } victimEffect = {0.5 Fire{}} }} isExtraAttack = true }
+        }
+        ARM  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+      }
+    }
+    permanentEffects = {
+      REGENERATION 1
+      PLAGUE_RESISTANT 1
+      POISON_RESISTANT 1
+      FLYING 1
+      SLOW_TRAINING 1
+      NO_CARRY_LIMIT 1
+      NIGHT_VISION 1
+      TELEPATHY 1
+      FIRE_RESISTANT 1
+	  RIDER 1
+    }
+    aiType = MELEE
+    chatReactionFriendly = "hello"
+    chatReactionHostile = "DIE"
+    maxLevelIncrease = {
+        MELEE 99
+        SPELL 99
+    }
+    spellSchools = { "mage" "fire" "illusion" "fighter" }
+    spells = { "expert healing" "dig" }
+  }
+  "CULTISTMAN"
+  {
+    viewId = { "cultistman" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+	  DIGGING 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      DISTILLATION_SKILL 1
+      NO_CARRY_LIMIT 1
+      PLAGUE_RESISTANT 1
+      SWIMMING_SKILL 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "man"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+"CULTISTWOMAN" inherit "CULTISTMAN"
+{
+  viewId = { "cultistwoman" }
+  permanentEffects = append {
+    COPULATION_SKILL 1
+  }
+  gender = FEMALE
+  name = {
+    name = "woman"
+  }
+}
+"CULTISTKID"
+  {
+    viewId = { "cultistkid" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 5
+	  DIGGING 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "\"plaaaaay!\""
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      SWIMMING_SKILL 1
+      PLAGUE_RESISTANT 1
+      NO_CARRY_LIMIT 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 7
+      SPELL 7
+    }
+    promotionGroup = "cult"
+    promotionCost = 0.1
+    name = {
+      name = "child"
+      pluralName = "children"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+"CULTIST_BERSERKER"
+{
+  viewId = { "cultistwarrior" }
+  attr = {
+    DAMAGE 20
+    DEFENSE 10
+	WORKSHOP 20
+    FORGE 20
+    FURNACE 20
+    JEWELER 20
+  }
+  body = {
+    type = Humanoid MEDIUM
+  }
+  gender = MALE
+  permanentEffects = {
+    SWIMMING_SKILL 1
+    FIRE_RESISTANT 1
+    POISON_RESISTANT 1
+    PLAGUE_RESISTANT 1
+    NIGHT_VISION 1
+    CAN_DANCE 1
+	RIDER 1
+  }
+  maxLevelIncrease = {
+    MELEE 25
+  }
+  spellSchools = { "berserker fury" }
+  name = {
+    name = "berserker"
+    firstNameGen = "DEMON"
+  }
+}
+"CULTIST_KNIGHT"
+{
+  viewId = { "cultist_knight" }
+  attr = {
+    DAMAGE 15
+    DEFENSE 15
+	WORKSHOP 20
+    FORGE 20
+    FURNACE 20
+    JEWELER 20
+  }
+  body = {
+    type = Humanoid MEDIUM
+  }
+  gender = FEMALE
+  permanentEffects = {
+    SWIMMING_SKILL 1
+    FIRE_RESISTANT 1
+    POISON_RESISTANT 1
+    PLAGUE_RESISTANT 1
+    NIGHT_VISION 1
+    CAN_DANCE 1
+	RIDER 1
+  }
+  maxLevelIncrease = {
+    MELEE 25
+  }
+  spellSchools = { "knightarts" }
+  name = {
+    name = "knight"
+    firstNameGen = "DEMON"
+  }
+}
+"CULTIST_WITCH"
+{
+  viewId = { "cultist_mage" }
+  attr = {
+    DAMAGE 5
+    DEFENSE 10
+    SPELL_DAMAGE 20
+	LABORATORY 50
+  }
+  body = {
+    type = Humanoid MEDIUM
+  }
+  gender = FEMALE
+  permanentEffects = {
+    SWIMMING_SKILL 1
+    FIRE_RESISTANT 1
+    POISON_RESISTANT 1
+    PLAGUE_RESISTANT 1
+    NIGHT_VISION 1
+    CAN_DANCE 1
+	RIDER 1
+  }
+  maxLevelIncrease = {
+    SPELL 25
+  }
+  spellSchools = { "witchcraft" }
+  name = {
+    name = "witch"
+    firstNameGen = "DEMON"
+  }
+}
+"CULTIST_SMITH"
+{
+  viewId = { "cultist_smith" }
+  attr = {
+    DAMAGE 5
+    DEFENSE 10
+    SPELL_DAMAGE 20
+	WORKSHOP 50
+    FORGE 50
+    FURNACE 50
+    JEWELER 50
+  }
+  body = {
+    type = Humanoid MEDIUM
+  }
+  gender = MALE
+  permanentEffects = {
+    SWIMMING_SKILL 1
+    FIRE_RESISTANT 1
+    POISON_RESISTANT 1
+    PLAGUE_RESISTANT 1
+    NIGHT_VISION 1
+    CAN_DANCE 1
+	RIDER 1
+  }
+  maxLevelIncrease = {
+    MELEE 12
+    SPELL 12
+  }
+  spells = { "animate weapons" }
+  name = {
+    name = "smith"
+    firstNameGen = "DEMON"
+  }
+}
+"DEMON_FORM"
+{
+  viewId = { "demon_form1" }
+  attr = {
+    DAMAGE 30
+    DEFENSE 10
+	WORKSHOP 20
+    FORGE 20
+    FURNACE 20
+    JEWELER 20
+  }
+  body = {
+    type = Humanoid MEDIUM
+    material = SPIRIT
+  }
+  gender = MALE
+  permanentEffects = {
+    SWIMMING_SKILL 1
+    FIRE_RESISTANT 1
+    POISON_RESISTANT 1
+    PLAGUE_RESISTANT 1
+    NIGHT_VISION 1
+    CAN_DANCE 1
+	RIDER 1
+  }
+  maxLevelIncrease = {
+    MELEE 25
+  }
+  spells = { "haste" "heal spirit" "fire breath" }
+  name = {
+    name = "berserker"
+    firstNameGen = "DEMON"
+  }
+}
+"KALIAN"
+{
+  viewId = { "kali" }
+  attr = {
+    DAMAGE 20
+    DEFENSE 20
+	WORKSHOP 20
+    FORGE 20
+    FURNACE 20
+    JEWELER 20
+    MULTI_WEAPON 20
+  }
+  gender = FEMALE
+  body = {
+    type = Humanoid LARGE
+    addBodyPart = {
+      ARM 4
+    }
+    material = SPIRIT
+  }
+  permanentEffects = {
+    SWIMMING_SKILL 1
+    POISON_RESISTANT 1
+    FIRE_RESISTANT 1
+    PLAGUE_RESISTANT 1
+    NIGHT_VISION 1
+	RIDER 1
+    CAN_DANCE 1
+  }
+  maxLevelIncrease = {
+    MELEE 25
+  }
+  spellSchools = {  }
+  name = {
+    name = "kali"
+  }
+}
+"OMNIBUS"
+{
+  viewId = { "omnibus" }
+  attr = {
+    DAMAGE 5
+    DEFENSE 10
+    SPELL_DAMAGE 30
+	LABORATORY 50
+  }
+  body = {
+    type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        TORSO {{ itemType ={ Intrinsic { "touch_attack" } "touch" 0 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = {1.0 Lasting PEACEFULNESS} } } isExtraAttack = true }}
+      }
+  }
+  gender = FEMALE
+  permanentEffects = {
+    SWIMMING_SKILL 1
+    FIRE_RESISTANT 1
+    POISON_RESISTANT 1
+    PLAGUE_RESISTANT 1
+    NIGHT_VISION 1
+    CAN_DANCE 1
+	RIDER 1
+  }
+  maxLevelIncrease = {
+    SPELL 25
+  }
+  spellSchools = { "witchcraft" }
+  name = {
+    name = "omnibus"
+    firstNameGen = "DEMON"
+  }
+}
+"HELLBOAR" inherit "WOLF"
+{
+  viewId = { "hellboar" }
+    attr = {
+      DAMAGE 18
+	  FIRE_DAMAGE 9
+      DEFENSE 11 
+    }
+  body = {
+    type = NonHumanoid MEDIUM
+    bodyParts = {
+      LEG 4
+      HEAD 1
+      TORSO 1
+    }
+    intrinsicAttacks = {
+      HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+      { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+      }
+    }
+  }
+  name = {
+    name = "hellboar"
+    pluralName = "hellboars" 
+    firstNameGen = "DOG"
+  }
+  spells = { "fire breath" }
+  permanentEffects = {
+    PLAGUE_RESISTANT 1
+    NIGHT_VISION 1
+    SWARMER 1
+    EXPLORE_NOCTURNAL_SKILL 1
+    REGENERATION 1
+    SWIMMING_SKILL 1
+    FIRE_RESISTANT 1
+	STEED 1
+  }
+}
+ "HALFLING"
+    {
+      viewId = { "halfling" }
+      genderAlternatives = {
+		FEMALE { "halfling_female" }
+		}
+      attr = {
+        DAMAGE 10
+        DEFENSE 15  
+        RANGED_DAMAGE 25 
+		WORKSHOP 20
+        JEWELER 20
+      }
+      body = {
+        type = Humanoid SMALL
+        material = FLESH
+        weight = 50
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT meleeAttackAttr = DAMAGE attackMsg = PUNCH } }}}
+        }
+	  }
+      permanentEffects = {
+        DISARM_TRAPS_SKILL 1
+		RIDER 1
+      }
+      name = {
+        name = "halfling"
+        firstNameGen = "FIRST_MALE"
+      }
+      chatReactionFriendly = "\"Time to eat.\""
+      chatReactionHostile = "\"Leave me alone!\""
+
+    }
+ "HALFLING_CHIEF" inherit "HALFLING"
+   {
+      viewId = { "halfling_chief" }
+      name = {
+        name = "halfling chief"
+        firstNameGen = "FIRST_MALE"
+      }
+   }
+ 
+ "GREMLIN"
+    {
+      viewId = { "gremlin" }
+      attr = {
+        DAMAGE 20
+        DEFENSE 30   
+      }
+      body = {
+        type = Humanoid MEDIUM
+        material = FLESH
+        weight = 30
+        intrinsicAttacks = {
+          LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 20 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+          HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 20 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+        }
+	  }
+      permanentEffects = {
+        SPEED 1
+        RAGE 1
+        NIGHT_VISION 1
+        AMBUSH_SKILL 1
+		RIDER 1
+      }
+      name = {
+        name = "gremlin"
+        firstNameGen = "DEMON"
+      }
+      chatReactionFriendly = "\"Grrrerk!\""
+      chatReactionHostile = "\"Graaaaaaa!\""
+    }
+ "GREMLIN_CHIEF" inherit "GREMLIN"
+   {
+      viewId = { "gremlin_chief" }
+      name = {
+        name = "gremlin chief"
+        firstNameGen = "DEMON"
+      }
+   }
+ "DRUID"
+    {
+      viewId = { "druid" }
+      attr = {
+        DAMAGE 20
+        DEFENSE 35 
+        SPELL_DAMAGE 35  
+      }
+      body = {
+        type = Humanoid MEDIUM
+        material = FLESH
+        weight = 20
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT meleeAttackAttr = DAMAGE attackMsg = PUNCH } }}}
+        }
+	  }
+      spells = {
+        "healing"
+        "magic missile"
+        "haste"
+      }
+      permanentEffects = {
+        FAST_TRAINING 1
+        TELEPATHY 1
+		RIDER 1
+      }
+      name = {
+        name = "druid"
+        firstNameGen = "FIRST_MALE"
+      }
+	  inventory = { { "WoodenStaff" } }
+      chatReactionFriendly = "\"The woods are life.\""
+      chatReactionHostile = "\"The woods are death.\""
+    }
+  "DRUID_CHIEF" inherit "DRUID"
+   {
+      viewId = { "druid_chief" }
+      name = {
+        name = "druid chief"
+        firstNameGen = "FIRST_MALE"
+      }
+   }
+"ZOMBIE_WORKER" modify append
+  {
+    viewId = { "zombie" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 17 
+    }
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_FLESH
+      drops = {
+        none 20
+        { "ZombieBrain" } 1
+      }
+    }
+    permanentEffects = {
+      NO_CARRY_LIMIT 1
+      RANGED_RESISTANCE 1
+      SLOWED 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    name = {
+      name = "zombie"
+    }
+    hatedByEffect = HATE_UNDEAD
+  }
+  
+"SKELETAL_WOLF" inherit "WOLF"
+{
+  viewId = { "skeletal_wolf" }
+  body = append {
+    material = BONE
+  }
+  hatedByEffect = HATE_UNDEAD
+  permanentEffects = append { SUNLIGHT_VULNERABLE 1 }
+  name = {
+      name = "Skeletal Wolf"
+    }
+}
+
+"SKELETAL_BAT" inherit "BAT"
+{
+  viewId = { "skeletal_bat" }
+  body = append {
+    material = BONE
+  }
+  hatedByEffect = HATE_UNDEAD
+  permanentEffects = append { SUNLIGHT_VULNERABLE 1 }
+  name = {
+      name = "Skeletal Bat"
+    }
+}
+
+"SKELETAL_BOAR" inherit "CAVE_BEAR"
+{
+  viewId = { "skeletal_boar" }
+  body = append {
+    material = BONE
+  }
+  hatedByEffect = HATE_UNDEAD
+  permanentEffects = append { SUNLIGHT_VULNERABLE 1 }
+  name = {
+      name = "Skeletal Boar"
+    }
+}
+
+"SKELETAL_RAT" inherit "RAT"
+{
+  viewId = { "skeletal_rat" }
+  body = append {
+    material = BONE
+  }
+  hatedByEffect = HATE_UNDEAD
+  permanentEffects = append { SUNLIGHT_VULNERABLE 1 }
+  name = {
+      name = "Skeletal Rat"
+    }
+}
+
+"KARASU_KEEPER"
+  {
+    viewId = { "karasu_keeper1" }
+    viewIdUpgrades = { { "karasu_keeper2" } { "karasu_keeper3"}}
+    name = {
+      name = "onmyo"
+      firstNameGen = "WORLD"
+    }
+    gender = MALE
+    attr = {
+        DAMAGE 20
+        DEFENSE 20
+        SPELL_DAMAGE 20
+		LABORATORY 20
+        WORKSHOP 20
+        FORGE 20
+        FURNACE 20
+        JEWELER 20
+        DIGGING 20
+    }
+    body = {
+        type = Humanoid MEDIUM
+        weight = 80
+        addBodyPart = {
+            ARM 4
+            WING 4
+            LEG 6
+            HEAD 1
+            TORSO 1
+        }
+        intrinsicAttacks = {
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+      }
+    }
+    permanentEffects = {
+      REGENERATION 1
+      PLAGUE_RESISTANT 1
+      ELF_VISION 1
+      FLYING 1
+      DISTILLATION_SKILL 1
+      NO_CARRY_LIMIT 1
+      TELEPATHY 1
+	  RIDER 1
+    }
+    aiType = MELEE
+    maxLevelIncrease = {
+        MELEE 25
+        SPELL 25
+    }
+    spellSchools = { "onmyo mage" "master fighter" }
+    spells = { "advanced air elemental" "expert healing" }
+  }
+"KARASU_FOOTMAN"
+  {
+    viewId = { "karasu_footman" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 15 
+	  WORKSHOP 15
+      FORGE 15
+      FURNACE 5
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+        PLAGUE_RESISTANT 1
+        FLYING 1
+        ELF_VISION 1
+        CAN_DANCE 1
+		RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 7
+    }
+    name = {
+      name = "footman"
+      firstNameGen = "CREATURE"
+    }
+    spells = { "haste" }
+  }
+"KARASU_ARCHER"
+ {
+   viewId = { "karasu_archer" }
+   attr = {
+     DAMAGE 10
+     DEFENSE 10
+     RANGED_DAMAGE 15
+   }
+   body = {
+     type = Humanoid LARGE
+   }
+   permanentEffects = {
+     FLYING 1
+     PLAGUE_RESISTANT 1
+     CAN_DANCE 1
+     ELF_VISION 1
+	 RIDER 1
+   }
+   spellSchools = { "archer" }
+   maxLevelIncrease = {
+     MELEE 5
+     ARCHERY 7
+   }
+   name = {
+     name = "archer"
+     firstNameGen = "CREATURE"
+   }
+   spells = { "haste" }
+ }
+  "CROW_HARPY"
+  {
+    viewId = { "crow_harpy" }
+    genderAlternatives = {
+      FEMALE { "crow_harpy_f" }
+    }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+	  DIGGING 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      DISTILLATION_SKILL 1
+      NO_CARRY_LIMIT 1
+      PLAGUE_RESISTANT 1
+      FLYING 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "crow harpy"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  "CROW_HARPY_DOCTOR"
+  {
+    viewId = { "crow_harpy_doctor" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+	  LABORATORY 50
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      DISTILLATION_SKILL 1
+      NO_CARRY_LIMIT 1
+      PLAGUE_RESISTANT 1
+      FLYING 1
+      POISON_RESISTANT 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "doctor"
+    }
+    maxLevelIncrease = {
+      SPELL 12
+    }
+    spellSchools = { "spiritualist" "healer" }
+    spells = { "haste" }
+    hatedByEffect = HATE_HUMANS
+  }
+  "CROW_HARPY_SMITH"
+  {
+    viewId = { "crow_harpy_smith" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+	  FORGE 50
+      WORKSHOP 50
+      FURNACE 50
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      DISTILLATION_SKILL 1
+      NO_CARRY_LIMIT 1
+      PLAGUE_RESISTANT 1
+      FLYING 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "smith"
+    }
+    maxLevelIncrease = {
+      SPELL 12
+    }
+    spells = { "animate weapons" "haste" }
+    hatedByEffect = HATE_HUMANS
+  }
+"CROW_BEAR"
+  {
+    viewId = { "crow_bear" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 18 
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 4
+        HEAD 1
+        TORSO 1
+      }
+      weight = 250
+      intrinsicAttacks = {
+        LEG {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } }}}
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 { attackType = BITE attackMsg = BITE} }}}
+      }
+    }
+    permanentEffects = {
+      EXPLORE_CAVES_SKILL 1
+      PLAGUE_RESISTANT 1
+      NIGHT_VISION 1
+      FLYING 1
+	  STEED 1
+    }
+    name = {
+      name = "bear"
+      firstNameGen = "DOG"
+    }
+    spells = { "haste" }
+  }
+"KARASU_SOLDIER"
+  {
+    viewId = { "karasu_soldier" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 20
+	  WORKSHOP 20
+      FORGE 20
+      FURNACE 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+        PLAGUE_RESISTANT 1
+        FLYING 1
+        ELF_VISION 1
+        CAN_DANCE 1
+		RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 14
+    }
+    name = {
+      name = "soldier"
+      firstNameGen = "CREATURE"
+    }
+    spellSchools = { "master fighter" }
+    spells = { "haste" }
+  }
+"KARASU_MARKSMAN"
+ {
+   viewId = { "karasu_marksman" }
+   attr = {
+     DAMAGE 15
+     DEFENSE 15
+     RANGED_DAMAGE 20
+   }
+   body = {
+     type = Humanoid LARGE
+   }
+   permanentEffects = {
+     FLYING 1
+     PLAGUE_RESISTANT 1
+     CAN_DANCE 1
+     ELF_VISION 1
+	 RIDER 1
+   }
+   spellSchools = { "archer" }
+   spells = { "haste" }
+   maxLevelIncrease = {
+     MELEE 10
+     ARCHERY 14
+   }
+   name = {
+     name = "marksman"
+     firstNameGen = "CREATURE"
+   }
+ }
+"KARASU_TENGU"
+ {
+    viewId = { "karasu_tengu" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 20
+      SPELL_DAMAGE 20
+	  LABORATORY 35
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+        FLYING 1
+        PLAGUE_RESISTANT 1
+        CAN_DANCE 1
+        ELF_VISION 1
+		RIDER 1
+    }
+    aiType = RANGED
+    maxLevelIncrease = {
+      MELEE 14
+      SPELL 14
+    }
+    spellSchools = { "onmyo mage" }
+    spells = { "haste" }
+    name = {
+      name = "tengu"
+      firstNameGen = "CREATURE"
+    }
+  }
+"YATAGARASU"
+  {
+    viewId = { "yatagarasu" }
+    attr = {
+      DEFENSE 75
+      DAMAGE 75
+      SPELL_DAMAGE 75
+    }
+    body = {
+      type = NonHumanoid HUGE
+      bodyParts = {
+        WING 2
+        LEG 3
+        HEAD 1
+        TORSO 1
+      }
+      material = SPIRIT
+        intrinsicAttacks = {
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } victimEffect = {0.5 Fire{}} }} isExtraAttack = true }
+        }
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 
+        { attackType = HIT attackMsg = CLAW attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+      }
+    }
+    permanentEffects = {
+      FIRE_RESISTANT 1
+      FLYING 1
+      ELF_VISION 1
+      TELEPATHY 1
+      PLAGUE_RESISTANT 1
+      NIGHT_VISION 1
+      POISON_RESISTANT 1
+	  STEED 1
+    }
+    name = { 
+      name = "yatagarasu"
+      firstNameGen = "DRAGON"
+    }
+    spellSchools = { "master magus" }
+    spells = { "heal spirit" "haste" }
+  }
+"SHIKIGAMI_SAMURAI"
+  {
+    viewId = { "shikigami_samurai" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20 
+    }
+    permanentEffects = {
+      PLAGUE_RESISTANT 1
+      SWIMMING_SKILL 1
+      POISON_RESISTANT 1
+	  RIDER 1
+    }
+    body = {
+      type = Humanoid MEDIUM
+      weight = 10
+      bodyParts = {
+        LEG 2
+        HEAD 1
+        TORSO 1
+        ARM 2
+      }
+      deathSound = none
+    }
+    name = {
+      name = "shikigami"
+    }
+    inventory = {
+        { "Sword" }
+        { "LeatherArmor" }
+        { "LeatherHelm" }
+        
+    }
+  }
+"SHIKIGAMI_BEETLE"
+  {
+    viewId = { "shikigami_beetle" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 30
+    }
+    body = {
+      type = FourLegged MEDIUM
+      weight = 250
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "horn_attack" } "horn" 10 { attackType = HIT attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+      FLYING 1
+      PLAGUE_RESISTANT 1
+      POISON_RESISTANT 1
+	  STEED 1
+    }
+    name = {
+      name = "shikigami"
+    }
+  }
+"SHIKIGAMI_DOG" inherit "WOLF"
+  {
+    viewId = { "shikigami_dog" }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 4
+        HEAD 1
+        TORSO 1
+      }
+      intrinsicAttacks = {
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 
+        { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } }} isExtraAttack = true }
+        }
+      }
+    }
+    name = {
+      name = "shikigami dog"
+      pluralName = "shikigami dogs" 
+      firstNameGen = "DOG"
+    }
+    permanentEffects = {
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      REGENERATION 1
+      POISON_RESISTANT 1
+	  STEED 1
+    }
+  }

@@ -1,0 +1,41 @@
+"GoldPiece" modify append
+  {
+    ingredientType = "Gold"
+  }
+  
+"ftd_drownedring"
+  {
+    viewId = { "ring" ColorId WHITE }
+    name = "ring of the drowned"
+    shortName = "drowned ring"
+    equipedCompanion = 2 true none 0.01 { "FTD_DROWNER" }
+    weight = 0.05
+    equipmentSlot = RINGS
+    price = 1
+    storageIds = {"jewellery" "equipment"}
+    equipmentGroup = "jewellery"
+  }
+  
+"ftd_staff" inherit "WoodenStaff"
+  {
+    viewId = { "ftd_firstborn_staff" }
+    equipedViewId = { "ftd_firstborn_staff_v" }
+    name = "iron staff"
+    modifiers = {
+      SPELL_DAMAGE 8
+    }
+	equipedCompanion = 5 true none 0.01 { "FTD_CRAB_SWARM"  "FTD_TURTLE_SWARM" "FTD_STARFISH_SWARM" }
+    price = 60
+    craftingCost = "WOOD" 120
+    genPrefixes = {
+      1 VictimEffect 1.0 Escape{}
+      1 VictimEffect 0.4 DestroyEquipment
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 20
+        AttackerEffect Suicide DIE
+      }
+    }
+    maxUpgrades = 2
+    equipmentGroup = "iron equipment"
+  }
+  
