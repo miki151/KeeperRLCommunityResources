@@ -1,10 +1,32 @@
-"TURRET"
+"MACHINE_TURRET"
 {
   viewId = { "machine_turret" }
-  name = "machine_turret" 
+  name = "machine turret" 
   layer = CEILING
   constructMessage = none
   canBuildOutsideOfTerritory = true
   xForgetAfterBuilding = true
-  tickType = Effect {  Summon "ANTI_ZOMBIE_TURRET" {1} none RemoveFurniture "TURRET" }
+  tickType = Effect {  Summon "ANTI_ZOMBIE_TURRET" {1} none RemoveFurniture "MACHINE_TURRET" }
+}
+
+"MISSILE_TURRET"
+{
+  viewId = { "evil_stone_wall" Rgb 0 50 150 255  }
+  name = "missile turret" 
+  layer = CEILING
+  constructMessage = none
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  tickType = Effect {  Summon "ANTI_ZOMBIE_TURRET2" {1} none RemoveFurniture "MISSILE_TURRET" }
+}
+
+"GHOST_TURRET"
+{
+  viewId = { "evil_stone_wall" Rgb 255 255 255 255 }
+  name = "ghost turret" 
+  layer = CEILING
+  constructMessage = none
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  tickType = Effect {  Summon "ANTI_ZOMBIE_TURRET3" {1} none RemoveFurniture "GHOST_TURRET" }
 }
