@@ -8,3 +8,14 @@
   color = ColorId RED
   tickEffect = Chain { Permanent DAM_BONUS Chance 0.01 Area 1 Permanent INFECTION Chance 0.0005 Permanent INSANITY Area 1 Chance 0.001 Chain { Filter Indoors Polymorph "ZOMBIE" none Filter Not Indoors Polymorph "ZOMBIE_FLESH" none } }
 }
+
+"BRAINLESS" {
+  name = "brainless"
+  adjective = "brainless"
+  description = "It doesn't have a brain, so even when covered in germs it does not stay infected."
+  addedMessage = ARE "brainless"
+  removedMessage = ARE "no longer brainless"
+  canWishFor = false
+  color = ColorId GREEN
+  tickEffect = Chance 0.1 RemovePermanent INFECTION
+}
