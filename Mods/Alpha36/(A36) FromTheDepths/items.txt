@@ -3,9 +3,22 @@
     ingredientType = "Gold"
   }
   
-"ftd_drownedring"
+"ftd_swarm_ring"
   {
-    viewId = { "ring" ColorId WHITE }
+    viewId = { "ftd_shell_ring" }
+    name = "ring of the swarm"
+    shortName = "swarm ring"
+	equipedCompanion = 5 true none 0.01 { "FTD_CRAB_SWARM"  "FTD_TURTLE_SWARM" "FTD_STARFISH_SWARM" "FTD_SPIDER_CRAB_SWARM" "FTD_HORSESHOE_CRAB_SWARM" "FTD_REACH_CRAB_SWARM" "FTD_RAT_PARASITE_SWARM" }
+    weight = 0.05
+    equipmentSlot = RINGS
+    price = 1
+    storageIds = {"jewellery" "equipment"}
+    equipmentGroup = "jewellery"
+  }
+  
+"ftd_drowned_ring"
+  {
+    viewId = { "ftd_shell_ring_drowned" }
     name = "ring of the drowned"
     shortName = "drowned ring"
     equipedCompanion = 2 true none 0.01 { "FTD_DROWNER" }
@@ -15,16 +28,16 @@
     storageIds = {"jewellery" "equipment"}
     equipmentGroup = "jewellery"
   }
-  
+    
 "ftd_staff" inherit "WoodenStaff"
   {
     viewId = { "ftd_firstborn_staff" }
     equipedViewId = { "ftd_firstborn_staff_v" }
-    name = "iron staff"
+    name = "shell staff"
     modifiers = {
-      SPELL_DAMAGE 8
+      SPELL_DAMAGE 10
     }
-	equipedCompanion = 5 true none 0.01 { "FTD_CRAB_SWARM"  "FTD_TURTLE_SWARM" "FTD_STARFISH_SWARM" }
+	equipedAbility = {"ftd_ominous_fog_cloud"}
     price = 60
     craftingCost = "WOOD" 120
     genPrefixes = {
@@ -38,4 +51,86 @@
     maxUpgrades = 2
     equipmentGroup = "iron equipment"
   }
+
+"ftd_shell_spear"
+  {
+    viewId = { "ftd_firstborn_spear" }
+    equipedViewId = { "ftd_firstborn_spear_v" }
+    name = "shell spear"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      DAMAGE 8
+    }
+	equipedAbility = {"ftd_ominous_fog_cloud"}
+    price = 4
+    weaponInfo = {
+      attackType = STAB
+      attackMsg = THRUST
+    }
+    specialAttr = {
+      DAMAGE 15 Rider
+    }
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "basic equipment"
+  }
   
+"ftd_shell"
+  {
+    viewId = { "ftd_shell_magic" }
+    name = "shell"
+    itemClass = OTHER
+    weight = 5
+    price = 100
+    ingredientType = "ftd_shell"
+    storageIds = {"upgrades" "equipment"}
+  }
+  
+"ftd_shell_horn"
+  {
+    viewId = { "ftd_shell_horn" }
+    name = "shell horn"
+    applyMsgFirstPerson = "blow the horn"
+    applyMsgThirdPerson = "blows the horn"
+    weight = 1
+    description = "horn made of seashell"
+    uses = 1
+    price = 1000
+    effect = Chain {Summon "FTD_CRUSTACEAN_CRAB" {1 2} 30 
+					Summon "FTD_SUMMON_CRAB" {4 8} 30}
+    effectDescription = false
+    storageIds = {"equipment"}
+	equipmentGroup = "consumables"
+  }
+  
+"ftd_flintlock"
+  {
+    viewId = { "ftd_flintlock" }
+    name = "flintlock"
+    itemClass = RANGED_WEAPON
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"ftd_fire_pistol"}
+    weaponInfo = {
+      twoHanded = true
+    }
+    weight = 1
+    modifiers = {
+      RANGED_DAMAGE 20
+    }
+    price = 90
+    maxUpgrades = 1
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "ranged weapons"
+  }
+    
+"ftd_Archwood_flintlock" inherit "ftd_flintlock"
+  {
+    viewId = { "ftd_archwood_flintlock" }
+    modifiers = {
+      RANGED_DAMAGE 32
+    }
+    name = "archwood flintlock"
+    maxUpgrades = 2
+    price = 1000
+  }
