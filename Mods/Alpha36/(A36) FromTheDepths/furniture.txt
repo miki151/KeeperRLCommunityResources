@@ -58,33 +58,3 @@
   warning = true
   constructMessage = SET_UP
 }
-
-"FTD_CRUSTACEAN_LURE"
-{
-  name = "crustacean lure"
-  viewId = { "ftd_food_offering" }
-  tickType = Effect Area 3 Chain {
-  Filter Not Or {CreatureId "FTD_CRUSTACEAN_CRAB" CreatureId "FTD_CRUSTACEAN_LOBSTER"} {
-  Filter Not Enemy Lasting 1 FTD_RAVENOUS
-  Filter Enemy Lasting 1 FTD_STARVED  }}
-  blockMovement = true
-  canHideHere = true
-  strength = 100
-  usageType = UsageEffect "eat from" Chain {
-    Filter Or {CreatureId "FTD_CRUSTACEAN_CRAB" CreatureId "FTD_CRUSTACEAN_LOBSTER"}
-    CreatureMessage { "eat a raw flesh" "eats a raw flesh"}
-    Lasting SATIATED
-  }
-}
-
-"FTD_FISH_BUTCHER" inherit "JEWELLER"
-{
-  viewId = { "ftd_fish_barrel" }
-  name = "fish barrel"
-  usageFX = none
-  diningFurniture = true
-  tickType = Effect Chain {
-	Chance 0.0001 DropItems {"ftd_shell"} {1}
-    Chance 0.0001 SummonEnemy "FTD_RAT_PARASITE" {1 4} none	
-  }
-}

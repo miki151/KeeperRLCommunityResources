@@ -19,20 +19,19 @@
       SPELL_DAMAGE 10
     }
     maxLevelIncrease = {
-      MELEE 4
-      SPELL 12
+      MELEE 12
+      SPELL 8
     }
-	permanentEffects = {
+	    permanentEffects = {
       SWIMMING_SKILL 1
 	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     spellSchools = { "Lore of the Deep" }
     spells = { "healing" }
     inventory = {
-	  { "ftd_staff" }
-      { "Robe" }
-	  { "ftd_swarm_ring" }
+	  { "ftd_staff"}
+      { "Robe"}
+	  { "GoldPiece" 60 80 }
     }
   }
   
@@ -83,7 +82,6 @@
       SWIMMING_SKILL 1
 	  COPULATION_SKILL 1
 	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     maxLevelIncrease = {
       MELEE 4
@@ -119,7 +117,6 @@
       SWIMMING_SKILL 1
 	  COPULATION_SKILL 1
 	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     maxLevelIncrease = {
       MELEE 8
@@ -160,7 +157,6 @@
       CROPS_SKILL 1
       DISTILLATION_SKILL 1
 	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     aiType = RANGED
     name = {
@@ -183,12 +179,11 @@
       type = Humanoid MEDIUM
       intrinsicAttacks = {
         HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {attackType = BITE  attackMsg = BITE} }}}
-		ARM {{{ Intrinsic { "claws_attack" } "claws" 4 { attackType = HIT attackMsg = CLAW } }}}}}
+		LEG {{{ Intrinsic { "claws_attack" } "claws" 4 { attackType = HIT attackMsg = CLAW } }}}}}
     permanentEffects = {
       SWIMMING_SKILL 1
 	  NIGHT_VISION 1
 	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     chatReactionFriendly = "graa... GRAAA!!"
     chatReactionHostile = "graa... GRAAA!!"
@@ -223,10 +218,9 @@
       SWIMMING_SKILL 1
 	  NIGHT_VISION 1
 	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     name = {
-      name = "deep one hybrid craftsman"
+      name = "deep one hybrid"
 	  firstNameGen = "LOVECRAFTIAN"
     }
 	inventory = {
@@ -254,14 +248,13 @@
       SWIMMING_SKILL 1
 	  NIGHT_VISION 1
 	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     name = {
-      name = "deep one hybrid enfoncer"
+      name = "deep one hybrid"
 	  firstNameGen = "LOVECRAFTIAN"
     }
     maxLevelIncrease = {
-      MELEE 8
+      MELEE 10
     }
 	inventory = {
 	  {"Club"}
@@ -289,13 +282,13 @@
       SWIMMING_SKILL 1
 	  NIGHT_VISION 1
 	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     name = {
-      name = "deep one hybrid archer"
+      name = "deep one hybrid"
 	  firstNameGen = "LOVECRAFTIAN"
     }
     maxLevelIncrease = {
+      MELEE 4
 	  ARCHERY 8
     }
 	inventory = {
@@ -304,57 +297,16 @@
       # Take a look a CYCLOPS for a more detailed example.
     }
   } 
-     
+  
+    
 "FTD_DEEP_ONE_HYBRID_PRIEST"
   {
-    viewId = { "ftd_deep_hybrid_priest_m" }
-    genderAlternatives = {
-      FEMALE { "ftd_deep_hybrid_priest_f" }
-    }
+    viewId = { "ftd_deep_hybrid_priest" }
+
     attr = {
       DAMAGE 20
       DEFENSE 16
 	  SPELL_DAMAGE 14
-	  SPELL_SPEED 5
-	  LABORATORY 15
-    }
-    body = {
-      type = Humanoid LARGE
-    }
-    chatReactionFriendly = "c' ahnythor ahthrodog ehyeeog"
-    chatReactionHostile = "\"Heeelp!\""
-    permanentEffects = {
-      SWIMMING_SKILL 1
-	  NIGHT_VISION 1
-	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
-    }
-    name = {
-      name = "deep one hybrid priest"
-	  firstNameGen = "LOVECRAFTIAN"
-    }
-    maxLevelIncrease = {
-	  SPELL 8
-    }
-    spellSchools = { "Lore of the Deep"  }
-	inventory = {
-      # Here comes a list of items. The format of each element is defined in creature_inventory.h
-      {"Robe"}
-	  {"WoodenStaff"}
-      # Take a look a CYCLOPS for a more detailed example.
-    }
-  } 
-     
-"FTD_DEEP_ONE_HYBRID_APOTHECARY"
-  {
-    viewId = { "ftd_hybrid_apothecary_m" }
-    genderAlternatives = {
-      FEMALE { "ftd_hybrid_apothecary_f" }
-    }
-    attr = {
-      DAMAGE 20
-      DEFENSE 16
-	  SPELL_SPEED 14
 	  LABORATORY 45
     }
     body = {
@@ -366,16 +318,16 @@
       SWIMMING_SKILL 1
 	  NIGHT_VISION 1
 	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     name = {
-      name = "deep one hybrid apothecary"
+      name = "deep one hybrid"
 	  firstNameGen = "LOVECRAFTIAN"
     }
     maxLevelIncrease = {
+      MELEE 4
 	  SPELL 8
     }
-    spellSchools = { "healer" }
+    spellSchools = { "Lore of the Deep"  }
 	inventory = {
       # Here comes a list of items. The format of each element is defined in creature_inventory.h
       {"Robe"}
@@ -383,7 +335,7 @@
       # Take a look a CYCLOPS for a more detailed example.
     }
   } 
-      
+   
 "EG_SHOGGOTH"
   {
     viewId = { "ftd_shoggoth_imitator" }
@@ -412,7 +364,6 @@
       NIGHT_VISION 1
 	  SLOWED 1
 	  SWARMER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     name = {
       name = "shoggoth"
@@ -443,7 +394,6 @@
       REGENERATION 1
 	  SWIMMING_SKILL 1
 	  SWARMER 1
-	  FTD_CLOUD_IMMUNE 1
     }
     noChase = true
     name = {
@@ -468,8 +418,6 @@
   {
     viewId = { "ftd_crab_01" }
 	genderAlternatives = {
-	  FEMALE { "ftd_crab_01" }
-	  MALE { "ftd_crab_02" }
       FEMALE { "ftd_crab_02" }
     }
     attr = {
@@ -493,7 +441,6 @@
     permanentEffects = {
       RANGED_RESISTANCE 1
 	  SWIMMING_SKILL 1
-	  FTD_CLOUD_IMMUNE 1
     }
     noChase = true
     name = {
@@ -518,8 +465,6 @@
   {
     viewId = { "ftd_giant_crab_01" }
 	genderAlternatives = {
-	  FEMALE { "ftd_giant_crab_01" }
-	  MALE { "ftd_giant_crab_02" }
       FEMALE { "ftd_giant_crab_02" }
     }
     attr = {
@@ -543,7 +488,6 @@
       RANGED_RESISTANCE 1
 	  SWIMMING_SKILL 1
 	  STEED 1
-	  FTD_CLOUD_IMMUNE 1
     }
     noChase = true
     name = {
@@ -574,7 +518,6 @@
     permanentEffects = {
       SWIMMING_SKILL 1
 	  SLOWED 1
-	  FTD_CLOUD_IMMUNE 1
     }
     name = {
       name = "drodgher"
@@ -608,7 +551,6 @@
     permanentEffects = {
 	  SPEED 1
 	  SWIMMING_SKILL 1
-	  FTD_CLOUD_IMMUNE 1
     }
     noChase = true
     name = {
@@ -639,7 +581,6 @@
       MELEE_RESISTANCE 1
 	  SLOWED 1
 	  SWIMMING_SKILL 1
-	  FTD_CLOUD_IMMUNE 1
     }
     noChase = true
     name = {
@@ -684,7 +625,6 @@
     permanentEffects = {
       RANGED_RESISTANCE 1
 	  SWIMMING_SKILL 1
-	  FTD_CLOUD_IMMUNE 1
     }
     noChase = true
     name = {
@@ -730,7 +670,6 @@
 	  NO_FRIENDLY_FIRE 1
       RANGED_RESISTANCE 1
 	  SWIMMING_SKILL 1
-	  FTD_CLOUD_IMMUNE 1
     }
     spells = { "ftd_long_arms" }
     noChase = true
@@ -751,98 +690,7 @@
 	  SWARMER 1
     }
   }  
-
-"FTD_SUMMON_RAT_PARASITE"
-  {
-    viewId = { "ftd_crab_parasite_rat" }
-    attr = {
-      DAMAGE 2
-      DEFENSE 2 
-    }
-
-    body = {
-      type = NonHumanoid SMALL
-      bodyParts = {
-        LEG 6
-        TORSO 1
-	    ARM 2
-      }
-      weight = 1
-      canBeRevived = false
-    }
-    aiType = RANGED
-    permanentEffects = {
-      SPEED 1
-      STEED 1
-	  SWIMMING_SKILL 1
-	  FTD_CLOUD_IMMUNE 1
-    }
-    noChase = true
-    name = {
-      name = "rat?"
-    }
-  }
-    
-"FTD_RAT_PARASITE" inherit "FTD_SUMMON_RAT_PARASITE"
-  {
-    aiType = RANGED
-  }
-   
-"FTD_RAT_PARASITE_SWARM" inherit "FTD_SUMMON_RAT_PARASITE"
-  {
-    permanentEffects = append {
-	  SWARMER 1
-    }
-  }  
- 
-"FTD_SUMMON_REACH_CRAB"
-  {
-    viewId = { "ftd_reach" }
-    attr = {
-      DAMAGE 2
-      DEFENSE 6
-    }
-    body = {
-      type = NonHumanoid SMALL
-      bodyParts = {
-        LEG 6
-        TORSO 1
-	    ARM 2
-      }
-	    intrinsicAttacks = {
-        ARM {{{ Intrinsic { "claws_attack" } "claws" 1 {
-            attackType = HIT
-            attackMsg = CLAW }}}}
-      } 
-      weight = 10
-    }
-    permanentEffects = {
-	  SLOWED 1
-	  NO_FRIENDLY_FIRE 1
-      RANGED_RESISTANCE 1
-	  SWIMMING_SKILL 1
-	  FTD_CLOUD_IMMUNE 1
-    }
-    spells = { "ftd_long_arms" }
-    noChase = true
-    name = {
-      name = "reach crab"
-      pluralName = "reach crabs"
-    }
-  }
-    
-"FTD_REACH_CRAB" inherit "FTD_SUMMON_REACH_CRAB"
-  {
-    aiType = RANGED
-  }
-   
-"FTD_REACH_CRAB_SWARM" inherit "FTD_SUMMON_REACH_CRAB"
-  {
-    permanentEffects = append {
-	  SWARMER 1
-    }
-  }  
-    
+  
  # Constructs 
 "FTD_DEEP_ONE_GOLEM"
   {
@@ -889,13 +737,13 @@
 	    permanentEffects = {
       RIDER 1
     }
+    spells = { "ftd_fire_pistol" }
     hatedByEffect = HATE_HUMANS
     inventory = {
-      { "Knife"}
-	  { "ftd_flintlock"}
+      { "Club"}
       { type = Potion Heal { FLESH } chance = 0.7 }
       { type = "Torch" chance = 0.3 }
-      { type = "Moonshine" chance = 0.5 }
+      { type = "Bow" chance = 0.05 }
     }
   }
   
@@ -922,13 +770,13 @@
 	    permanentEffects = {
       RIDER 1
     }
+    spells = { "ftd_fire_pistol" }
     hatedByEffect = HATE_HUMANS
     inventory = {
-      { "Knife"}
-	  { "ftd_flintlock"}
+      { "Club"}
       { type = Potion Heal { FLESH } chance = 0.7 }
       { type = "Torch" chance = 0.3 }
-      { type = "Moonshine" chance = 0.5 }
+      { type = "Bow" chance = 0.05 }
     }
   }
 
@@ -1004,7 +852,7 @@
       RANGED_RESISTANCE 1
       SLOWED 1
 	  SWIMMING_SKILL 1	
-	  FTD_SUNLIGHT_RESISTANCE 1  
+	  SUNLIGHT_RESISTANCE 1  
     }
     maxLevelIncrease = {
       MELEE 3
@@ -1014,117 +862,3 @@
     }
     hatedByEffect = HATE_UNDEAD
   }
-
- # Crustacean horde
-"FTD_CRUSTACEAN_CRAB"
-  {
-    viewId = { "ftd_mutant_crab_01" }
-	genderAlternatives = {
-      FEMALE { "ftd_mutant_crab_01" }
-	  MALE { "ftd_mutant_crab_02" }
-	  FEMALE { "ftd_mutant_crab_02" }
-    }
-    attr = {
-      DAMAGE 16
-      DEFENSE 28
-    }
-    body = {
-      type = Humanoid MEDIUM
-      intrinsicAttacks = {
-		ARM {{{ Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }}}}}
-    permanentEffects = {
-      SWIMMING_SKILL 1
-	  RIDER 1
-	  RANGED_RESISTANCE 1
-	  MELEE_RESISTANCE 1
-	  FTD_CLOUD_IMMUNE 1
-    }
-	maxLevelIncrease = {
-      MELEE 4
-    }
-    chatReactionFriendly = "chirp??"
-    chatReactionHostile = "chirp!!"
-    name = {
-      name = "crabman"
-    }
-     inventory = {
-    }
-  }
-  
-"FTD_CRUSTACEAN_LOBSTER"
-  {
-    viewId = { "ftd_mutant_lobster_01" }
-		genderAlternatives = {
-      FEMALE { "ftd_mutant_lobster_01" }
-	  MALE { "ftd_mutant_lobster_02" }
-	  FEMALE { "ftd_mutant_lobster_02" }
-    }
-    attr = {
-      DAMAGE 16
-      DEFENSE 22
-	  MULTI_WEAPON 20
-    }
-    body = {
-      type = Humanoid LARGE
-	  addBodyPart = {
-        ARM 2
-      }
-      intrinsicAttacks = {
-		ARM {{{ Intrinsic { "claws_attack" } "claws" 6 { attackType = HIT attackMsg = CLAW } }}}}}
-    permanentEffects = {
-      SWIMMING_SKILL 1
-	  RIDER 1
-	  FTD_CLOUD_IMMUNE 1
-    }
-	maxLevelIncrease = {
-      MELEE 4
-    }
-    chatReactionFriendly = "chirp??"
-    chatReactionHostile = "chirp!!"
-    name = {
-      name = "lobsterman"
-    }
-     inventory = {
-    }
-  }
-  
-"FTD_CRUSTACEAN_CRAB_BEHEMOTH"
-  {
-    viewId = { "ftd_mutant_crab_behemoth_01" }
-	genderAlternatives = {
-      FEMALE { "ftd_mutant_crab_behemoth_01" }
-	  MALE { "ftd_mutant_crab_behemoth_02" }
-	  FEMALE { "ftd_mutant_crab_behemoth_02" }
-    }
-    attr = {
-      DAMAGE 24
-      DEFENSE 36
-	  MULTI_WEAPON 20
-    }
-    body = {
-      type = Humanoid MEDIUM
-	  addBodyPart = {
-        ARM 2
-		LEG 4
-      }
-      intrinsicAttacks = {
-		ARM {{{ Intrinsic { "claws_attack" } "claws" 16 { attackType = HIT attackMsg = CLAW } }}}}}
-    permanentEffects = {
-      SWIMMING_SKILL 1
-	  RIDER 1
-	  RANGED_RESISTANCE 1
-	  MELEE_RESISTANCE 1
-	  FTD_CLOUD_IMMUNE 1
-    }
-	maxLevelIncrease = {
-      MELEE 4
-    }
-    chatReactionFriendly = "chirp??"
-    chatReactionHostile = "chirp!!"
-    name = {
-      name = "crabman behemoth"
-    }
-     inventory = {
-    }
-  }
-  

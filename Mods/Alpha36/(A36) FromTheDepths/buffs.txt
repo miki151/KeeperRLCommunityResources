@@ -1,4 +1,4 @@
-"FTD_SUNLIGHT_RESISTANCE" {
+"SUNLIGHT_RESISTANCE" {
   name = "sunlight resistance"
   description = "Resist sunlight."
   addedMessage = "" "" "is resistant to sunlight"
@@ -7,60 +7,6 @@
   tickEffect = Chain {
   RemovePermanent SUNLIGHT_VULNERABLE  
   }
-  canAbsorb = true
-  price = 2
-  color = ColorId GREEN
-}
-
-"FTD_RAVENOUS" {
-  name = "ravenous"
-  description = "Overwhelmed by hunger."
-  addedMessage = "" "" "is ravenous"
-  removedMessage = YOUR "is no longer ravenous"
-  adjective = "ravenous"
-  tickEffect = IncreaseMorale -0.01
-  startEffect = IncreaseAttr DAMAGE 6
-  endEffect = IncreaseAttr DAMAGE -6
-  canAbsorb = true
-  price = 2
-  color = ColorId RED
-  fx = DEBUFF_RED
-}
-
-"FTD_STARVED" {
-  name = "starved"
-  description = "Overwhelmed by hunger."
-  addedMessage = "" "" "is starved"
-  removedMessage = YOUR "is no longer starved"
-  adjective = "starved"
-  tickEffect = IncreaseMorale -0.1
-  canAbsorb = true
-  price = 2
-  color = ColorId RED
-  fx = DEBUFF_RED
-}
-
-"FTD_CLOUD_IMMUNE" {
-  name = "fog immune"
-  description = "Immune to ominous fog."
-  addedMessage = "" "" "is immune to ominous cloud"
-  removedMessage = YOUR "is no longer immune to ominous cloud"
-  adjective = "fog immunity"
-  canAbsorb = true
-  price = 2
-  color = ColorId GREEN
-}
-
-"FTD_FOGGER" {
-  name = "Fogger"
-  description = "Causes ominous fog to leak from their body."
-  addedMessage = "start" "starts" "fogging"
-  removedMessage = YOUR "fogging stops"
-  adjective = "fogger"
-  tickEffect = Filter Not LastingEffect FROZEN {
-               Area 2 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1
-  }
-  consideredBad = true
   canAbsorb = true
   price = 2
   color = ColorId GREEN

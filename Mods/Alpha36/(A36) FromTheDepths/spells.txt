@@ -1,92 +1,27 @@
-Def SeaSummons(Time)
+Def SeaSummons(MinMax, Time)
 ChooseRandom{
-Summon "FTD_SUMMON_CRAB" {1} Time 
-Summon "FTD_SUMMON_HORSESHOE_CRAB" {1} Time 
-Summon "FTD_SUMMON_SPIDER_CRAB" {1} Time
-Summon "FTD_SUMMON_TURTLE" {1} Time 
-Summon "FTD_SUMMON_STARFISH" {1} Time 
-Summon "FTD_SUMMON_REACH_CRAB" {1} Time 
-Summon "FTD_SUMMON_RAT_PARASITE" {1} Time 
+Summon "FTD_SUMMON_CRAB" {MinMax} Time 
+Summon "FTD_SUMMON_HORSESHOE_CRAB" {MinMax} Time 
+Summon "FTD_SUMMON_SPIDER_CRAB" {MinMax} Time
+Summon "FTD_SUMMON_TURTLE" {MinMax} Time 
+Summon "FTD_SUMMON_STARFISH" {MinMax} Time 
 }
 End
 
-Def SeaSummonsSwarm(Time)
+Def SeaSummonsSwarm(MinMax, Time)
 ChooseRandom{
-Summon "FTD_CRAB_SWARM" {1} Time 
-Summon "FTD_HORSESHOE_CRAB_SWARM" {1} Time 
-Summon "FTD_SPIDER_CRAB_SWARM" {1} Time
-Summon "FTD_TURTLE_SWARM" {1} Time 
-Summon "FTD_STARFISH_SWARM" {1} Time 
-Summon "FTD_REACH_CRAB_SWARM" {1} Time 
-Summon "FTD_RAT_PARASITE_SWARM" {1} Time 
-}
-End
-
-Def SeaSummonsSwarmCast(Time)
-Chain{
-ChooseRandom{
-SetFlag "ss_10" true
-SetFlag "ss_09" true
-SetFlag "ss_08" true
-SetFlag "ss_07" true
-SetFlag "ss_06" true
-}
-Filter Flag "ss_10" {
-	       SetFlag "ss_10" false
-		   SeaSummonsSwarm(Time)
-           SetFlag "ss_09" true
-    }
-Filter Flag "ss_09" {
-	       SetFlag "ss_09" false
-		   SeaSummonsSwarm(Time)
-           SetFlag "ss_08" true
-    }
-Filter Flag "ss_08" {
-	       SetFlag "ss_08" false
-		   SeaSummonsSwarm(Time)
-           SetFlag "ss_07" true
-    }
-Filter Flag "ss_07" {
-	       SetFlag "ss_07" false
-		   SeaSummonsSwarm(Time)
-           SetFlag "ss_06" true
-    }	
-Filter Flag "ss_06" {
-	       SetFlag "ss_06" false
-		   SeaSummonsSwarm(Time)
-    }
-SeaSummons(Time)
-SeaSummons(Time)
-SeaSummons(Time)
-SeaSummons(Time)
-SeaSummons(Time)
-}
-End
-
-Def SeaSummonsCast(Time)
-Chain{
-ChooseRandom{
-SetFlag "ss_04" true
-SetFlag "ss_03" true
-}
-Filter Flag "ss_04" {
-	       SetFlag "ss_04" false
-		   SeaSummons(Time)
-           SetFlag "ss_03" true
-    }
-Filter Flag "ss_03" {
-	       SetFlag "ss_03" false
-		   SeaSummons(Time)
-    }
-SeaSummons(Time)
-SeaSummons(Time)
+Summon "FTD_CRAB_SWARM" {MinMax} Time 
+Summon "FTD_HORSESHOE_CRAB_SWARM" {MinMax} Time 
+Summon "FTD_SPIDER_CRAB_SWARM" {MinMax} Time
+Summon "FTD_TURTLE_SWARM" {MinMax} Time 
+Summon "FTD_STARFISH_SWARM" {MinMax} Time 
 }
 End
 
 "ftd_fire_pistol"
 {
   symbol = "↣"
-  effect = MinDistanceFromStrongEnemy(2) Name "shoot pistol" Description "Shoots an pistol" Chain{
+  effect = MinDistanceFromStrongEnemy(2) Name "shoot pistol" Description "Shoots an pistol"
       TryNoFriendlyFire(
         {
           CreatureMessage {"are hit by the shot" "is hit by the shot"}
@@ -94,24 +29,13 @@ End
         },
         CreatureMessage {"are spared by the shot" "is spared by the shot"}
       )
-	  Area 0 Filter DistanceD none 0.8 EmitGas "FOG" 1}
-  range = 7
-  cooldown = 3
+  range = 3
+  cooldown = 100
   maxHits = 10
   projectileViewId = {"ftd_bullet"}
   message = "shoot an pistol" "shoots an pistol"
   type = ABILITY
 }
-
-"ftd_imbue_ominous_fog_cloud"
-{
-  symbol = "🌫"
-  effect = Name "imbue ominous fog" Description "Imbues ominous fog intro creature."  GrantAbility "imbued fog cloud"
-  range = 1
-  cooldown = {50 101}
-}
-
-OneTimeAbility("imbued fog cloud", "Creates a ominous fog cloud..", { Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}, "🌫")
 
 "ftd_summon_drowned"
 {
@@ -124,7 +48,7 @@ OneTimeAbility("imbued fog cloud", "Creates a ominous fog cloud..", { Area 4 Fil
 "ftd_summon_crab"
 {
   symbol = "🦀"
-  effect = Name "summon sea critters" Description "Summons 2 to 4 sea critters." SeaSummonsCast(30)
+  effect = Name "summon sea critters" SeaSummons(3 5, 30)
   message = "clack" "clacks"
   cooldown = 60
   type = ABILITY
@@ -132,97 +56,36 @@ OneTimeAbility("imbued fog cloud", "Creates a ominous fog cloud..", { Area 4 Fil
 
 "ftd_ominous_fog_cloud"
 {
+  upgrade = "fog cloud"
   symbol = "🌫"
   effect = Name "ominous fog" Description "Creates a ominous fog cloud." Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1
-  cooldown = {20 40}
+  cooldown = 40
 }
 
-"ftd_ominous_fog_cloud_advanced"
-{
-  upgrade = "ftd_ominous_fog_cloud"
-  symbol = "🌫"
-  effect = Name "ominous fog" Description "Creates a ominous fog cloud." Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1
-  range = 6
-  cooldown = {20 40}
-}
-
-"ftd_ominous_fog_cloud_expert"
-{
-  upgrade = "ftd_ominous_fog_cloud_advanced"
-  symbol = "🌫"
-  effect = Name "ominous fog" Description "Creates a ominous fog cloud." Area 8 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1
-  range = 10
-  cooldown = {20 40}
-}
-
-"ftd_fogger"
-{
-  symbol = "🌫"
-  effect = Name "leak fog" Lasting 40 FTD_FOGGER
-  cooldown = {50 101}
-  targetSelf = true
-  range = 1
-}
-
-"ftd_fogger_mass"
-{
-  symbol = "🌫"
-  effect = Name "mass fogger" Area 4 Filter Not Enemy Lasting 40 FTD_FOGGER
-  cooldown = {30 81}
-}
-
-"ftd_fog_blessing"
-{
-  symbol = "🌫"
-  effect = Name "resist fog" Permanent FTD_CLOUD_IMMUNE
-  cooldown = {50 101}
-  targetSelf = true
-  range = 1
-}
-
-"ftd_fog_blessing_mass"
-{
-
-  symbol = "🌫"
-  effect = Name "resist fog" Area 4 Filter Not Enemy Permanent FTD_CLOUD_IMMUNE
-  cooldown = {30 81}
-}
 "ftd_sea_invasion"
 {
   symbol = "🌫🦀"
   effect = Name "sea invasion" Description "Calls the sea creatures under cover of the fog." {
-              SeaSummonsSwarmCast (30) 
+              SeaSummonsSwarm (5 10, 30) 
 			  Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}
-  cooldown = {40 60}
+  cooldown = 60
 }
 
 "ftd_great_sea_invasion"
 {
-  upgrade = "ftd_sea_invasion"
-  symbol = "🌫🦀"
-  effect = Name "great sea invasion" Description "Calls the sea creatures under cover of the fog." {
-              SeaSummonsSwarmCast (30)
-              Summon "FTD_DROWNER" {1 2} 30 
-			  Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}
-  cooldown = {40 60}
-}
-
-"ftd_apocalyptic_sea_invasion"
-{
-  upgrade = "ftd_great_sea_invasion"
+  upgrade = ftd_sea_invasion
   symbol = "🌫🦀"
   effect = Name "sea invasion" Description "Calls the sea creatures under cover of the fog." {
-              SeaSummonsSwarmCast (30)
-			  SeaSummonsSwarmCast (30)
+              SeaSummonsSwarm (5 10, 30)
               Summon "FTD_DROWNER" {1 2} 30 
-			  Area 8 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}
-  cooldown = {40 60}
+			  Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}
+  cooldown = 60
 }
 
 "sunlight resistance"
 {
   symbol = "🐍"
-  effect = Lasting 10 FTD_SUNLIGHT_RESISTANCE
+  effect = Lasting 10 SUNLIGHT_RESISTANCE
   cooldown = {50 101}
   targetSelf = true
   range = 1
