@@ -108,10 +108,9 @@
     description = "Play a sandbox game where you can build and do whatever you like in a creative mode."
     zLevelGroups = { "basic" "evil" }
   }
-"10_outcasts"
+"02_outcasts"
 {
   creatureId = { "PESEANT" }
-  noLeader = true
   tribeAlignment = LAWFUL
   immigrantGroups = {"outcasts"}
   technology = {
@@ -124,13 +123,14 @@
   zLevelGroups = { "basic" "evil" "lawful" }
   initialTech = { "sorcery" "iron working" "archery" }
   buildingGroups = { "outcasts" }
-  workshopGroups = { "basic" "crossbows" "bows" "gnomes" "morgue" }
+  workshopGroups = { "basic" "crossbows" "bows" "gnomes" "morgue_outcasts" }
   description = "'Peasants' is community of outcasts with the ability to unite the creatures and technologies of gnomes, goblins, warlocks, undead and knights."
-  minionTraits = { LEADER WORKER FIGHTER NO_LIMIT }
+  minionTraits = { LEADER WORKER NO_LIMIT }
   maxPopulation = 100
   flags = { "abomination_upgrades" }
+  noLeader = true
+  specialTraits = { Lasting { FOUNDER } }
 }
-
 #Various modded scrolls
 
 "1_dark_mage" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription" } }

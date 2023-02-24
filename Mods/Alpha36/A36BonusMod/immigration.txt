@@ -3050,26 +3050,36 @@
 "outcasts"
 {
     {
+      ids = { "ZOMBIE" }
+	  traits = { WORKER }
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+		{ 1 TechId "necromancy" }
+		{ 1 CostInfo "CORPSE" 1}
+        { 1 ExponentialCost "GOLD" 50 1 0 }
+      }
+      specialTraits = {
+         { 1 { AttrBonus MORGUE 10 }}
+	  }
+    }
+    {
       ids = { "IMP" }
-      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
-      spawnLocation = NearLeader
-      keybinding = CREATE_IMP
-      sound = CREATE_IMP 2
+      traits = { LEADER WORKER NO_LIMIT }
+      invisible = true
       noAuto = true
       initialRecruitment = 4
-      requirements = {
-        { 1 ExponentialCost "GOLD" 30 5 4 }
-      }
+      spawnLocation = NearLeader
+      specialTraits = { { 1 { Lasting { FOUNDER } }} }	  
     }
     {
       ids = { "PESEANT_PLAYER" }
-      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      traits = { LEADER WORKER NO_LIMIT }
       keybinding = CREATE_IMP
       noAuto = true
-      initialRecruitment = 4
-      requirements = {
-        { 1 ExponentialCost "CROPS" 10 5 4 }
-      }
+      invisible = true
+      initialRecruitment = 3
+      spawnLocation = NearLeader
+      specialTraits = { { 1 { Lasting { FOUNDER } }} }	  
     }
     {
       ids = { "GNOME" }
@@ -3078,13 +3088,15 @@
       noAuto = true
       initialRecruitment = 4
       spawnLocation = NearLeader
+      specialTraits = { { 1 { Lasting { FOUNDER } }} }	  
     }
     {
       ids = { "GOBLIN_WORKER" }
-      traits = { WORKER NO_AUTO_EQUIPMENT }
+      traits = { LEADER WORKER NO_LIMIT }
       initialRecruitment = 4
       invisible = true
       hiddenInHelp = true
+      specialTraits = { { 1 { Lasting { FOUNDER } }} }	  
     }
     {
       ids = { "GOBLIN_ARTIFICER" }
