@@ -369,7 +369,7 @@
       topLevel = MainEnemy 
       levels = {
         {ExtraEnemy { "DWARF_MARKET_SMALL" { 1 } } { 35 35 } BLACK_MARKET }
-        {ExtraEnemy { "DWARF_MINE" { 1 } } { 80 80 } DUNGEON }
+        {ExtraEnemy { "DWARF_MINE" { 1 } } { 80 80 } BASIC }
        }
      }
   config = {
@@ -547,7 +547,7 @@
       topLevel = MainEnemy 
       levels = {
         {ExtraEnemy { "DWARF_MARKET" { 1 } } { 50 50 } BLACK_MARKET }
-        {ExtraEnemy { "DWARF_MINE" { 1 } } { 80 80 } DUNGEON }
+        {ExtraEnemy { "DWARF_MINE" { 1 } } { 80 80 } BASIC }
        }
      }
     config = {
@@ -838,7 +838,6 @@
     settlement = {
     type = Builtin COTTAGE "WOOD"
       tribe = HUMAN
-      #cropsDistance = 13
       inhabitants = {
         fighters = {
           count = {2 4}
@@ -1188,7 +1187,6 @@
     }
     stockpiles = {{ "gold" 50 "TREASURE_CHEST" }}
     furniture = "roomFurniture"
-    #cropsDistance = 12
     outsideFeatures = "villageOutside"
     }
 	config = { 
@@ -1219,7 +1217,6 @@
     }
     stockpiles = {{ "gold" 50 "TREASURE_CHEST" }}
     furniture = "roomFurniture"
-    #cropsDistance = 12
     outsideFeatures = "villageOutside"
     }
 	config = { 
@@ -1468,8 +1465,7 @@
     }
 	createOnBones = 0.1 { "VILLAGE" "ELVES" }
   }
-  
-  "COW_DEMONS_ENTRY"
+    "COW_DEMONS_ENTRY"
   {
     settlement = {
       type = Builtin SMALL_MINETOWN "DUNGEON"
@@ -1487,8 +1483,6 @@
     }
     discoverable = false
   }
-  
-  
   "COW_DUNGEON1"
   {
     settlement = {
@@ -1589,8 +1583,8 @@
     levelConnection = {
       topLevel = ExtraEnemy {"COW_DEMONS_ENTRY"}
       levels = {
-        { ExtraEnemy { "COW_DUNGEON1" { 2 4 } } { 60 40 } DUNGEON }
-        { ExtraEnemy { "COW_DUNGEON2" { 1 2 } } { 70 50 } DUNGEON }
+        { ExtraEnemy { "COW_DUNGEON1" { 2 4 } } { 60 40 } BASIC }
+        { ExtraEnemy { "COW_DUNGEON2" { 1 2 } } { 70 50 } BASIC }
         { MainEnemy { 60 40 } MINETOWN }
       }
     }
@@ -1674,10 +1668,10 @@
     levelConnection = {
       topLevel = ExtraEnemy {"GOBLIN_ENTRY"}
       levels = {
-        { ExtraEnemy { "GOBLIN_DUNGEON1" { 1 } } { 60 40 } DUNGEON }
-        { ExtraEnemy { "GOBLIN_DUNGEON2" { 1 } } { 70 50 } DUNGEON }
-        { ExtraEnemy { "GOBLIN_DUNGEON3" { 1 } } { 80 60 } DUNGEON }
-        { MainEnemy { 60 40 } DUNGEON }
+        { ExtraEnemy { "GOBLIN_DUNGEON1" { 1 } } { 60 40 } BASIC }
+        { ExtraEnemy { "GOBLIN_DUNGEON2" { 1 } } { 70 50 } BASIC }
+        { ExtraEnemy { "GOBLIN_DUNGEON3" { 1 } } { 80 60 } BASIC }
+        { MainEnemy { 60 40 } BASIC }
       }
     }
   }
@@ -2588,7 +2582,7 @@
     levelConnection = {
       topLevel = ExtraEnemy {"RATMEN_ENTRY"}
       levels = {
-        { ExtraEnemy { "RATMEN_DUNGEON" { 3 4 } } { 100 100 } DUNGEON }
+        { ExtraEnemy { "RATMEN_DUNGEON" { 3 4 } } { 100 100 } BASIC }
         { MainEnemy { 80 80 } MINETOWN }
           }
       }
@@ -2722,7 +2716,6 @@
   settlement = append {
     type =  Builtin COTTAGE "VOLCANIC_BRICK"
     tribe = BANDIT
-    #cropsDistance = none
     inhabitants = {
       fighters = {
         count = {2 4}
@@ -2751,7 +2744,6 @@
     discoverable = false
     settlement = append {
       type = Builtin COTTAGE "CITY_BRICK_GRASS"
-      #cropsDistance = none
       inhabitants = {
       fighters = {
         count = {2 4}
@@ -2765,7 +2757,6 @@
   {
   discoverable = false
   settlement = append {
-    #cropsDistance = none
     type = Builtin TOWER "CITY_BRICK_GRASS"
     shopItems = { { 8 16 } "armory" }
     }
@@ -2873,7 +2864,7 @@
     inhabitants = {
       leader = { { "KING" } }
       fighters = {
-        count = {12 17}
+        count = {55 62}
         all = {
           60 "ROYAL_PRIEST"
           80 "ROYAL_KNIGHT"
@@ -2944,26 +2935,35 @@
   levelConnection = {
     topLevel = MainEnemy
     levels = {
-        { ExtraEnemy { "ROYAL_DUNGEON4" { 1 2 } } { 60 40 } DUNGEON }
-        { ExtraEnemy { "ROYAL_DUNGEON12" { 1 2 } } { 60 40 } DUNGEON }
-        { ExtraEnemy { "ROYAL_DUNGEON20" { 1 2 } } { 60 40 } DUNGEON }
-        { ExtraEnemy { "ROYAL_DUNGEON32" { 1 2 } } { 60 40 } DUNGEON }
-		{ ExtraEnemy { "ROYAL_DUNGEON52" { 1 2 } } { 60 40 } DUNGEON }
-        { ExtraEnemy { "ROYAL_DUNGEON72" { 1 2 } } { 60 40 } DUNGEON }
+        { ExtraEnemy { "ROYAL_DUNGEON1" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON8" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON12" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON20" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON28" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON36" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON40" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON48" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON56" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON64" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON72" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON80" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON88" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON96" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "ROYAL_DUNGEON99" { 1 2 } } { 60 40 } BASIC }
     }
   }
 }
 
-"SHADOW_KING"
+"SHADOW_KING" inherit "KING"
 {
   biomes = { "SHADOW_PALACE" }  
-  settlement = { 
+  settlement = append {
+  type = Predefined { "castle64" "SHADOW_CITY_BRICK" }
     tribe = DARK_ELF #Allied to dark elves and dark keepers
-	type = Predefined { "castle64" "SHADOW_CITY_BRICK" }
     inhabitants = {
       leader = { { "SHADOW_KING" } }
       fighters = {
-        count = {12 17}
+        count = {55 62}
         all = {
           50 "SHADOW_PRIEST"
           70 "SHADOW_KNIGHT"
@@ -2984,32 +2984,9 @@
         }
       }
     }
-     locationNameGen = "TOWN"
-     race = "shadows"
-     furniture = "palace_furniture"
-     outsideFeatures = "castleOutside"
-     shopItems = { { 8 16 } "villageShop" }
-  }
-  config = {
-    immigrantInterval = 80
-    maxPopulation = 26
-    ghostProb = 0.1
-    spawnGhosts = 6
-  }
-  behaviour = {
-    minPopulation = 12
-    minTeamSize = 10
-    triggers = {
-      RoomTrigger "THRONE" 0.0003
-      RoomTrigger "IMPALED_HEAD" 0.0001
-      SelfVictims
-      StolenItems
-      FinishOff
-      EnemyPopulation 65
-      NumConquered 18
-    }
-    attackBehaviour = KillLeader
-    ransom = 0.9 400
+   race = "shadows"
+   furniture = "palace_furniture"
+   outsideFeatures = "castleOutside"
   }
   immigrants = {
     {
@@ -3023,19 +3000,7 @@
       frequency = 1
     }
   }
-  levelConnection = {
-    topLevel = MainEnemy
-    levels = {
-        { ExtraEnemy { "ROYAL_DUNGEON4" { 1 2 } } { 60 40 } DUNGEON }
-        { ExtraEnemy { "ROYAL_DUNGEON12" { 1 2 } } { 60 40 } DUNGEON }
-        { ExtraEnemy { "ROYAL_DUNGEON20" { 1 2 } } { 60 40 } DUNGEON }
-        { ExtraEnemy { "ROYAL_DUNGEON32" { 1 2 } } { 60 40 } DUNGEON }
-		{ ExtraEnemy { "ROYAL_DUNGEON52" { 1 2 } } { 60 40 } DUNGEON }
-        { ExtraEnemy { "ROYAL_DUNGEON72" { 1 2 } } { 60 40 } DUNGEON }
-    }
-  }
 }
-
 
 "OMALLY_BANDITS"
   {
@@ -3120,7 +3085,7 @@
       furniture = "royalDungeon"
       inhabitants = {
         fighters = {
-          count = {3 6}
+          count = {7 11}
           all = {
             1 "BANDIT"
             1 "RAT_SOLDIER"
@@ -3136,7 +3101,6 @@
             1 "MUMMY"
             1 "ORC"
             1 "KOBOLD"
-            1 "GOBLIN_WARRIOR"
             1 "ELF"
             1 "ELF_CHILD"
             1 "DARK_ELF"
@@ -3157,7 +3121,7 @@
           }
         }
         civilians = {
-          count = {3 6}
+          count = {1}
           all = {
             1 "ANT_WORKER"
             1 "BAT"
@@ -3183,7 +3147,6 @@
       }
     }
   }
-  
   "ROYAL_DUNGEON_TYPE_2"
   {
     settlement = {
@@ -3194,7 +3157,7 @@
       furniture = "royalDungeon"
       inhabitants = {
         fighters = {
-          count = {3 6}
+          count = {7 11}
           all = {
             1 "ARCHER"
             1 "SKELETON"
@@ -3282,18 +3245,17 @@
       }
     }
   }
-
   "ROYAL_DUNGEON_TYPE_3"
   {
     settlement = {
-      type = Builtin MINETOWN "ROYAL_BRICK"
+      type = Builtin MINETOWN "BRICK"
       tribe = MONSTER
       locationName = "royal dungeon level"
       race = "dwellers"
       furniture = "royalDungeon"
       inhabitants = {
         fighters = {
-          count = {2 4}
+          count = {6 10}
           all = {
             1 "SUCCUBUS"
             1 "WITCH"
@@ -3354,7 +3316,7 @@
         }
       }
     }
-  } 
+  }
 
   "ROYAL_DUNGEON_TYPE_4"
   {
@@ -3390,19 +3352,20 @@
   }
 
   #Split base class 2 into 2a and 2b
+
   "ROYAL_DUNGEON_TYPE_2a" inherit "ROYAL_DUNGEON_TYPE_2" { settlement = append {type = Builtin MINETOWN "RUINS"}}
   "ROYAL_DUNGEON_TYPE_2b" inherit "ROYAL_DUNGEON_TYPE_2" { settlement = append {type = Builtin MINETOWN "TAINTED"}}
-
+  
   #Split base class 3 into 3a, 3b and 3c
   
   "ROYAL_DUNGEON_TYPE_3a" inherit "ROYAL_DUNGEON_TYPE_3"
-     { settlement = append { type = Builtin MINETOWN "ROYAL_MINOTAUR" inhabitants = append { fighters = append { count = {5 9}}}}}
+     { settlement = append { type = Builtin MINETOWN "MINOTAUR" inhabitants = append { fighters = append { count = {5 9}}}}}
   "ROYAL_DUNGEON_TYPE_3b" inherit "ROYAL_DUNGEON_TYPE_3"
-     { settlement = append { type = Builtin MINETOWN "ROYAL_SANDSTONE_WALL" inhabitants = append { fighters = append { count = {4 8}}}}}
+     { settlement = append { type = Builtin MINETOWN "SANDSTONE_WALL" inhabitants = append { fighters = append { count = {4 8}}}}}
   "ROYAL_DUNGEON_TYPE_3c" inherit "ROYAL_DUNGEON_TYPE_3"
-     { settlement = append { type = Builtin MINETOWN "ROYAL_TAINTED" inhabitants = append { fighters = append { count = {3 7}}}}}
+     { settlement = append { type = Builtin MINETOWN "TAINTED" inhabitants = append { fighters = append { count = {3 7}}}}}
       
-        
+      
   #Define 100 levels of dungeons with increasing difficulty based on the base classes available.
   #This ensures that there is a continuous stream of enemies available getting gradually harder.  
       
