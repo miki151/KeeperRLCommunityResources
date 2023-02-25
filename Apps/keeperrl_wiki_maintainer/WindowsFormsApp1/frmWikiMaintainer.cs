@@ -336,7 +336,7 @@ namespace WindowsFormsApp1
             if (!link.EndsWith("/")) link = link + "/";
             if (ValidLinks.Count == 0)
             {
-                LoadValidLinks("C:\\keeperrl_wiki\\", ValidLinks);
+                LoadValidLinks(GitFolderPath, ValidLinks);
             }
             link = Strings.Replace(link, " ", "_");
             link = Strings.Replace(link, ":", "");
@@ -399,12 +399,12 @@ namespace WindowsFormsApp1
             string newHeader = "---\r\ntitle: " + Strings.Replace(caps, "_", " ") + "\r\npermalink: " + caps + "/\r\nlayout: wiki\r\n" + "---" + "\r\n\nThis article has gone missing.\r\n";
             if (SuggestedLinks.ContainsKey(link))
             {
-                System.IO.File.Copy("C:\\keeperrl_wiki_suggestions\\" + link + ".md", "C:\\keeperrl_wiki\\Unfinished\\"+link + ".md");
-                ValidLinks.Add(link, "C:\\keeperrl_wiki\\Unfinished\\" + link + ".md");
+                System.IO.File.Copy("C:\\keeperrl_wiki_suggestions\\" + link + ".md", GitFolderPath+"\\Unfinished\\"+link + ".md");
+                ValidLinks.Add(link, GitFolderPath+"\\Unfinished\\" + link + ".md");
                 return caps;
             }
             if (caps != link) newHeader = newHeader + "The capitalisation of the existing article is wrong: " + link + "\r\n";
-            System.IO.File.WriteAllText("C:\\keeperrl_wiki\\Missing\\" + caps+".md", newHeader);
+            System.IO.File.WriteAllText(GitFolderPath+"\\Missing\\" + caps+".md", newHeader);
             return caps; 
         }
 
@@ -437,8 +437,8 @@ namespace WindowsFormsApp1
         {
             LoadValidPics();
             //CapitalizeValidPics();
-            LoadValidLinks("C:\\keeperrl_wiki\\", ValidLinks);
-            ImportPictures("C:\\keeperrl_wiki\\");
+            LoadValidLinks(GitFolderPath, ValidLinks);
+            ImportPictures(GitFolderPath);
         }
 
         private void CapitalizeValidPics()
@@ -490,7 +490,7 @@ namespace WindowsFormsApp1
                         {
                             if (text.ToUpper().Contains(pic.ToUpper() + ".PNG"))
                             {
-                                string newFil = "C:\\keeperrl_wiki\\" + Capitalize(pic.ToLower()) + ".png";
+                                string newFil = GitFolderPath + Capitalize(pic.ToLower()) + ".png";
                                 if (System.IO.File.Exists(ValidPics[pic]) && !System.IO.File.Exists(newFil))
                                 {
                                     System.IO.File.Copy(ValidPics[pic], newFil);
@@ -520,8 +520,8 @@ namespace WindowsFormsApp1
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string dir = "C:\\keeperrl_wiki\\Creature\\Bestiary";
-            string gid = "C:\\keeperrl_wiki\\Creature\\Creature_Guide.md";
+            string dir = GitFolderPath+"\\Creature\\Bestiary";
+            string gid = GitFolderPath + "\\Creature\\Creature_Guide.md";
             foreach (String fil in System.IO.Directory.GetFiles(dir))
             {
                 string nam = System.IO.Path.GetFileNameWithoutExtension(fil);
@@ -591,7 +591,7 @@ namespace WindowsFormsApp1
                 }
                 i++;
             }
-            StandardizeHeaders("C:\\keeperrl_wiki\\", "");
+            StandardizeHeaders(GitFolderPath, "");
             button6.Enabled = true;
         }
 
@@ -602,7 +602,7 @@ namespace WindowsFormsApp1
             {
                 foreach (String fil in System.IO.Directory.GetFiles(dir))
                 {
-                    string CreatureDir = "C:\\keeperrl_wiki\\Creature\\Bestiary\\";
+                    string CreatureDir = GitFolderPath + "\\Creature\\Bestiary\\";
                     string text = System.IO.File.ReadAllText(fil);
                     string nam = Capitalize(System.IO.Path.GetFileNameWithoutExtension(fil).Trim());
                     nam = Strings.Replace(nam, "Old_", "");
@@ -629,7 +629,7 @@ namespace WindowsFormsApp1
                     System.IO.File.Delete(fil);
                 }
             }
-            StandardizeHeaders("C:\\keeperrl_wiki\\", "");
+            StandardizeHeaders(GitFolderPath, "");
             button7.Enabled = true;
         }
 
@@ -645,6 +645,24 @@ namespace WindowsFormsApp1
                 GitFolderPath = directchoosedlg.SelectedPath;
                 textBox1.Text = GitFolderPath;
             }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            button1.Visible = checkBox1.Checked;
+            button2.Visible = checkBox1.Checked;
+            button3.Visible = checkBox1.Checked;
+            button4.Visible = checkBox1.Checked;
+            button5.Visible = checkBox1.Checked;
+            button6.Visible = checkBox1.Checked;
+            button7.Visible = checkBox1.Checked;
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            button8.Enabled = false;
+            StandardizeHeaders(GitFolderPath, "");
+            button8.Enabled = true;
         }
     }
 }
