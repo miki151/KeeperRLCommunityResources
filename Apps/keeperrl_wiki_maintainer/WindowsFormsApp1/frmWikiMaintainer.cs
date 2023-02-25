@@ -12,12 +12,15 @@ using Microsoft.VisualBasic;
 
 namespace WindowsFormsApp1
 {
-    public partial class Form1 : Form
+    public partial class frmWikiMaintainer : Form
     {
 
-        public Form1()
+        private string GitFolderPath = "C:\\keeperrl_wiki\\";
+
+        public frmWikiMaintainer()
         {
             InitializeComponent();
+            textBox1.Text = GitFolderPath;
         }
 
         public void NewArticles()
@@ -628,6 +631,20 @@ namespace WindowsFormsApp1
             }
             StandardizeHeaders("C:\\keeperrl_wiki\\", "");
             button7.Enabled = true;
+        }
+
+        private void btnSetGitRepo_Click(object sender, EventArgs e)
+        {
+            FolderBrowserDialog directchoosedlg = new FolderBrowserDialog();
+            directchoosedlg.SelectedPath  = GitFolderPath;
+            directchoosedlg.ShowNewFolderButton = false;
+            directchoosedlg.Description = "Locate git Repository";
+            directchoosedlg.RootFolder = Environment.SpecialFolder.MyComputer;
+            if (directchoosedlg.ShowDialog() == DialogResult.OK)
+            {
+                GitFolderPath = directchoosedlg.SelectedPath;
+                textBox1.Text = GitFolderPath;
+            }
         }
     }
 }
