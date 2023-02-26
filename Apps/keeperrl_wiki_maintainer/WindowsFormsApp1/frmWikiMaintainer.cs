@@ -15,7 +15,7 @@ namespace WindowsFormsApp1
     public partial class frmWikiMaintainer : Form
     {
 
-        private string GitFolderPath = "C:\\keeperrl_wiki\\";
+        private string GitFolderPath = "C:\\PRJ\\keeperrl_wiki\\";
 
         public frmWikiMaintainer()
         {
@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
 
         public void NewArticles()
         {
-            LoadValidLinks("C:\\keeperrl_wiki\\",ValidLinks);
+            LoadValidLinks(GitFolderPath, ValidLinks);
             string fil = System.IO.File.ReadAllText("C:\\keeperrl_wiki_dump\\wiki_dump.xml");
             List<String> fils = Strings.Split(fil, "=", -1, CompareMethod.Text).ToList();
             int f = -1;
@@ -43,7 +43,7 @@ namespace WindowsFormsApp1
                     }
                     f++;
                 }
-                try { nam = "C:\\keeperrl_wiki\\" + nam.Trim(); nam = nam + ".md"; } catch { }
+                try { nam = GitFolderPath + nam.Trim(); nam = nam + ".md"; } catch { }
                 nam = Strings.Replace(nam, "]", "");
                 nam = Strings.Replace(nam, "[", "");
                 string entry = "";
@@ -113,22 +113,22 @@ namespace WindowsFormsApp1
         private void button1_Click(object sender, EventArgs e)
         {
            button1.Enabled = false;
-           StandardizeHeaders("C:\\keeperrl_wiki\\","");
+           StandardizeHeaders(GitFolderPath, "");
            button1.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             button2.Enabled = false;
-            System.IO.DirectoryInfo di = new DirectoryInfo("C:\\keeperrl_wiki\\Missing");
+            System.IO.DirectoryInfo di = new DirectoryInfo(GitFolderPath+"Missing");
             foreach (FileInfo file in di.GetFiles())
             {
                 file.Delete();
             }
             LoadValidLinks("C:\\keeperrl_wiki_suggestions\\", SuggestedLinks);
-            LoadValidLinks("C:\\keeperrl_wiki\\", ValidLinks);
+            LoadValidLinks(GitFolderPath, ValidLinks);
             //CapitalizeValidLinks();
-            FixLinksDir("C:\\keeperrl_wiki\\");
+            FixLinksDir(GitFolderPath);
             button2.Enabled = true;
         }
 
@@ -144,7 +144,7 @@ namespace WindowsFormsApp1
                 System.IO.File.Delete(caps+".bak");
             }
             ValidLinks = new Dictionary<string, string>();
-            LoadValidLinks("C:\\keeperrl_wiki\\", ValidLinks);
+            LoadValidLinks(GitFolderPath, ValidLinks);
         }
 
         private void FixLinksDir(string dir)
@@ -213,7 +213,7 @@ namespace WindowsFormsApp1
                         string partname = Strings.Replace(part, ".md", "");
                         if (partname != "Index")
                         {
-                            if (part != "C:" && part != "keeperrl_wiki" && !part.EndsWith(".md"))
+                            if (!Strings.Split(GitFolderPath,"\\").Contains(part) && !part.EndsWith(".md"))
                             {
                                 string guideFil = Strings.Split(fil, part)[0] + part + "\\"+part+"_Guide.md";
                                 if (System.IO.File.Exists(guideFil))
