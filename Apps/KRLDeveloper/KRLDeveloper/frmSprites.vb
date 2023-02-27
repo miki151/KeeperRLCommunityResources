@@ -198,6 +198,7 @@ Public Class frmSprites
         Dim TMPBMP As Bitmap = Image.FromFile(filename)
         Dim tmpClone As Bitmap = TMPBMP.Clone
         TMPBMP.Dispose()
+        TextBox4.Text = "C:\Temp\" + Path.GetFileName(fil)
         Return tmpClone
     End Function
 
