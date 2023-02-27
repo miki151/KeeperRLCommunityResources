@@ -1,0 +1,28 @@
+"shoot bullet round"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(4) Name "shoot bullet round" Description "Shoots a bullet round"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage { "are hit by the round of bullets" "is hit by the round of bullets"}
+          Damage RANGED_DAMAGE SHOOT
+        },
+        CreatureMessage { "are spared by the round of bullets" "is spared by the round of bullets"}
+      )
+  range = 10
+  cooldown = 1
+  maxHits = 1
+  projectileViewId = {"arrow"}
+  message = "shoot a round of bullets" "shoots a round of bullets"
+  type = ABILITY
+}
+
+"shoot rocket"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "shoot rocket" Description "Shoots a rocket"
+      TryMagicMissile()
+  fx = {MAGIC_MISSILE}
+  range = 10
+  cooldown = {5 21}
+}

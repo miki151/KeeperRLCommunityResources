@@ -118,7 +118,7 @@ Public Class frmSprites
         Dim av As Long = (CLng(tmpcol.R) + CLng(tmpcol.B) + CLng(tmpcol.B))
         If av > 255 Then av = av / 2
         If av > 255 Then av = av / 1.5
-        Return Color.FromArgb(av, av, av)
+        Return Color.FromArgb(av, av, av, av)
     End Function
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnSave.Click
@@ -226,13 +226,15 @@ Public Class frmSprites
     End Sub
 
     Private Sub ClearImage()
-        On Error Resume Next
         Dim tmpbmp As Bitmap = PictureBox2.BackgroundImage
         PictureBox2.BackgroundImage = Nothing
-        tmpbmp.Dispose()
+        If Not tmpbmp Is Nothing Then
+            tmpbmp.Dispose()
+            tmpbmp = Nothing
+        End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click, btnLast.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
         Try
             If MsgBox("Replace White with transparent?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                 Dim clone As Bitmap = bmp.Clone
