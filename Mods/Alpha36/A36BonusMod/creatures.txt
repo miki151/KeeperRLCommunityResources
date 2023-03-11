@@ -7228,8 +7228,10 @@
       attr = {
         DAMAGE 16
         DEFENSE 35
-        SPELL_DAMAGE 30 
-      }
+        SPELL_DAMAGE 30
+        MORGUE 50
+        LABORATORY 50
+	}
       body = {
         type = Humanoid LARGE
         material = UNDEAD_FLESH
@@ -7260,6 +7262,47 @@
         { type = Glyph WEAPON ItemAttrBonus DAMAGE 3 chance = 0.01 }
       }
     }
+	
+    "NECROMANCER_F" modify
+    {
+      viewId = { "necromancer" }
+      attr = {
+        DAMAGE 16
+        DEFENSE 35
+        SPELL_DAMAGE 30
+        MORGUE 50
+        LABORATORY 50
+	}
+      body = {
+        type = Humanoid LARGE
+        material = UNDEAD_FLESH
+      }
+      name = {
+        name = "necromancer"
+      }
+      maxLevelIncrease = {
+        MELEE 3
+        SPELL 12
+      }
+      permanentEffects = {
+        RANGED_RESISTANCE 1
+        POISON_RESISTANT 1
+        SLEEP_RESISTANT 1
+        DARKNESS_SOURCE 1
+		RIDER 1
+      }
+      spellSchools = append { "necromancy" }
+      spells = { "deception" "summon skeletons" }
+      chatReactionFriendly = "\"At your service, master!\""
+      chatReactionHostile = "\"Soon you will join my undead ranks. DIE!\""
+      hatedByEffect = HATE_UNDEAD
+      inventory = {
+        {  "IronStaff" }
+        {  "Robe" }
+        { type = Glyph ARMOR ItemAttrBonus DEFENSE 3 chance = 0.01 }
+        { type = Glyph WEAPON ItemAttrBonus DAMAGE 3 chance = 0.01 }
+      }
+    }	
 
   "DISENCHANTER" inherit "LOST_SOUL"
     {
