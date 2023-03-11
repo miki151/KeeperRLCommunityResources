@@ -1,6 +1,6 @@
-Def SPELL(spell, effects)
+Def SPELL(spell, color, effects)
 {
-  viewId = { "creature_highlight" }
+  viewId = { "spell_circle" ColorId color }
   name = "spell target" 
   layer = CEILING
   constructMessage = none
@@ -10,9 +10,9 @@ Def SPELL(spell, effects)
 }
 End
 
-"SUMMON_HORSES" SPELL ("SUMMON_HORSES", Summon "HORSE" {5} none )
+"SUMMON_HORSES" SPELL ("SUMMON_HORSES", GREEN, Summon "HORSE" {5} none )
 
-"MINE_FIELD" SPELL ("MINE_FIELD",
+"MINE_FIELD" SPELL ("MINE_FIELD", RED,
 	        CustomArea PlaceFurniture "MINE" {{ -2 -3 }} 
 	        CustomArea PlaceFurniture "MINE" {{ -1 -3 }}
 	        CustomArea PlaceFurniture "MINE" {{  0 -3 }}
@@ -41,7 +41,7 @@ End
 }
 
 "SUMMON_ARMOURY" SPELL (
-	"SUMMON_ARMOURY",
+	"SUMMON_ARMOURY", YELLOW,
 		DropItems {"BattleAxe"} {10}
 		DropItems {"ChainArmor"} {10}
 		DropItems {"IronHelm"} {10}
@@ -50,7 +50,8 @@ End
 	)
 
 "SUMMON_ARTIFACT" SPELL (
-	"SUMMON_ARTIFACT", ChooseRandom {
+	"SUMMON_ARTIFACT", ORANGE,
+	ChooseRandom {
 			DropItems {"RedDragonArmor"} {1}
 			DropItems {"BlackDragonArmor"} {1}
 			DropItems {"WhiteDragonArmor"} {1}
@@ -73,7 +74,7 @@ End
 	
 "TRANSFORM_DRAGON" SPELL
 (
-    "TRANSFORM_DRAGON",
+    "TRANSFORM_DRAGON", BLUE,
 	Area 1 ChooseRandom
 	{
 		Chain { RemovePermanent POLYMORPHED RemoveLasting POLYMORPHED Polymorph "RED_DRAGON" 2 Permanent POLYMORPHED GrantAbility "true form" }
