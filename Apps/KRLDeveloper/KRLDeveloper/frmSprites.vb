@@ -54,9 +54,9 @@ Public Class frmSprites
         rbgs = New List(Of Color)
         PictureBox1.BackgroundImage = bmp
         Label1.Text = Path.GetFileName(fil)
-        For x = 0 To bmp.Width - 1
-            For y = 0 To bmp.Height - 1
-                If Not rbgs.Contains(bmp.GetPixel(x, y)) Then rbgs.Add(bmp.GetPixel(x, y))
+        For x = 0 To original.Width - 1
+            For y = 0 To original.Height - 1
+                If Not rbgs.Contains(original.GetPixel(x, y)) Then rbgs.Add(original.GetPixel(x, y))
             Next
         Next
         SelectColour()
@@ -84,8 +84,14 @@ Public Class frmSprites
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
         Try
             If bmp Is Nothing Then Exit Sub
+            For x = 0 To original.Width - 1
+                For y = 0 To original.Height - 1
+                    If Not rbgs.Contains(original.GetPixel(x, y)) Then rbgs.Add(original.GetPixel(x, y))
+                Next
+            Next
             If Not substitutes.ContainsKey(col) Then
-                substitutes.Add(col, GetSub(col))
+                Dim subs As Color = GetSub(col)
+                substitutes.Add(col, subs)
             End If
             Dim png2 As New Bitmap(bmp.Width * 2, bmp.Height)
             Dim gr_dest As Graphics = Graphics.FromImage(png2)
@@ -98,7 +104,7 @@ Public Class frmSprites
                 Else
                     For x = 0 To bmp.Width - 1
                         For y = 0 To bmp.Height - 1
-                            If bmptemp.GetPixel(x, y) = col2 Then
+                            If bmptemp.GetPixel(x, y).ToArgb = col2.ToArgb Then
                                 bmptemp.SetPixel(x, y, substitutes(col2))
                             End If
                         Next
@@ -118,7 +124,8 @@ Public Class frmSprites
         Dim av As Long = (CLng(tmpcol.R) + CLng(tmpcol.B) + CLng(tmpcol.B))
         If av > 255 Then av = av / 2
         If av > 255 Then av = av / 1.5
-        Return Color.FromArgb(av, av, av, av)
+        Dim substitute As Color = Color.FromArgb(av, av, av, av)
+        Return substitute
     End Function
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnSave.Click
