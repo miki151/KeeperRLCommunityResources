@@ -1,6 +1,6 @@
-# "structure", "doors", etc are groups that are then used in the last column in player_creatures.txt.
-# (they do not necessarily correspond to how menu items are grouped into submenus, you can join several
-# groups into a submenu, like beds, cages, pigsty and coffins are in the "living" submenu)
+#Rockblast
+
+  "structure" modify append { { ImmediateDig "Rockblast (magic)" "Structure" "Destroy rock immediately using magic" none {TechId "rock blast"} } }
 
   "guildmaster" #Mod
   {
@@ -424,8 +424,9 @@
   }
   "outcasts"
   {
-    { { Dig CutTree }                                        "Dig or cut tree"   "Structure"  
-      "" "DIG" {} true DIG_OR_CUT_TREES}
+    { { Dig CutTree }                                        "Dig or cut tree"   "Structure" "" "DIG" {} true DIG_OR_CUT_TREES}
+    { ImmediateDig "Rockblast (magic)" "Structure" "Destroy rock immediately using magic" none {TechId "rock blast"} }	
+	
     { Furniture {{ "MOUNTAIN" }             "STONE" 5 }      "Soft rock"         "Structure" "" none {}}
     { Furniture {{ "MOUNTAIN2" }            "STONE" 10 }     "Hard rock"         "Structure" "" none {}}
 
@@ -788,3 +789,23 @@
     { Furniture {{ "ANIMAL_FENCE" } "WOOD" 1 }                     "Animal fence"      "Farming"
         "Require to keep farm animals from escaping." }
   }
+  
+  
+#Spell Circles
+
+Def CIRCLE(spell, name, cost, level)
+{
+
+	Furniture {{ spell } "GOLD" cost } name "Spell Circle" "A powerful spell circle, if you know how to use it."   none { TechId "spell circles" DungeonLevel level }
+	
+}
+End
+
+"spells"
+{
+	CIRCLE("SUMMON_HORSES", "Magic horses" ,200, 1)
+	CIRCLE("SUMMON_ARMOURY", "Mass Armoury", 500, 3)
+	CIRCLE("MINE_FIELD", "Minefield", 500, 7)
+	CIRCLE("SUMMON_ARTIFACT", "Artifact summoning", 1000, 10)
+	CIRCLE("TRANSFORM_DRAGON", "Dragonform circle", 700, 11)
+}

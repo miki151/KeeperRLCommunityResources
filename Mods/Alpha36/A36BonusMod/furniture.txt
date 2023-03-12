@@ -1,3 +1,5 @@
+#Farming
+
   "BARN"
   {
     name = "barn"
@@ -18,7 +20,9 @@
     usageTime = 20
     canBuildOutsideOfTerritory = true
   }
-  
+
+#Haunted Ruins
+
   "FAKE_GRAVE"
   {
 	  name = "grave"
@@ -66,7 +70,95 @@
 				  }
 	  }
    }
-  
+   
+#Spell Circles
+
+Def SPELL(spell, color, effects)
+{
+  viewId = { "spell_circle" ColorId color }
+  name = "spell target" 
+  layer = CEILING
+  constructMessage = none
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  tickType = Effect { effects RemoveFurniture spell }
+}
+End
+
+"SUMMON_HORSES" SPELL ("SUMMON_HORSES", GREEN, Summon "HORSE" {5} none )
+
+"MINE_FIELD" SPELL ("MINE_FIELD", RED,
+	        CustomArea PlaceFurniture "MINE" {{ -2 -3 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -3 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -3 }}
+  	        CustomArea PlaceFurniture "MINE" {{  1 -3 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2 -2 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{  1 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2 -1 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{  1 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2  0 }}
+	        CustomArea PlaceFurniture "MINE" {{ -1  0 }}
+	        CustomArea PlaceFurniture "MINE" {{  0  0 }}
+	        CustomArea PlaceFurniture "MINE" {{  1  0 }}
+)
+
+"MINE"
+{
+  name = "fire trap"
+  viewId = { "trap" ColorId RED }
+  entryType = Trap { Chain {PlaceFurniture "FIRE_WALL" CircularBlast Area 1 Fire{100} } }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"SUMMON_ARMOURY" SPELL (
+	"SUMMON_ARMOURY", YELLOW,
+		DropItems {"BattleAxe"} {10}
+		DropItems {"ChainArmor"} {10}
+		DropItems {"IronHelm"} {10}
+		DropItems {"IronBoots"} {10}
+		DropItems {"IronGloves"} {10}
+	)
+
+"SUMMON_ARTIFACT" SPELL (
+	"SUMMON_ARTIFACT", ORANGE,
+	ChooseRandom {
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet TELEPATHY} {1}
+		}
+	)
+	
+"TRANSFORM_DRAGON" SPELL
+(
+    "TRANSFORM_DRAGON", BLUE,
+	Area 1 ChooseRandom
+	{
+		Chain { RemovePermanent POLYMORPHED RemoveLasting POLYMORPHED Polymorph "RED_DRAGON" 2 Permanent POLYMORPHED GrantAbility "true form" }
+		Chain { RemovePermanent POLYMORPHED RemoveLasting POLYMORPHED Polymorph "GREEN_DRAGON" 2 Permanent POLYMORPHED GrantAbility "true form" }
+	} Area 1 CircularBlast
+)
+ 
+#Modding Vanilla
+ 
   "BOOKCASE_GOLD" modify append {
     name = "golden bookcase"
     viewId = { "bookcase_gold" }
@@ -966,6 +1058,99 @@
       Chance 0.001 Chain { Message HIGH "You have disturbed a spider!" SummonEnemy "SPIDER" {1} none }
     } 
   }
+
+#Recycle Tiles
+
+"WOOD_WALL" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"WOOD_PILLAR" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 2 }}}} }
+"CASTLE_WALL" modify append { itemDrop = {{{{"Rock"} 1 { 1 5 }}}} }
+"CASTLE_PILLAR" modify append { itemDrop = {{{{"Rock"} 1 { 1 2 }}}} }
+"BRIDGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"STONE_BRIDGE" modify append { itemDrop = {{{{"Rock"} 1 { 1 5 }}}} }
+"ARCHER_WALL" modify append { itemDrop = {{{{"Rock"} 1 { 1 20 }}}} }
+"WOOD_DOOR" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"IRON_DOOR" modify append { itemDrop = {{{{"IronOre"} 1 { 1 5 }}}} }
+"ADA_DOOR" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 5 }}}} }
+"WOOD_GATE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 8 }}}} }
+"IRON_GATE" modify append { itemDrop = {{{{"IronOre"} 1 { 1 8 }}}} }
+"ADA_GATE" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 8 }}}} }
+"FLOOR_WOOD1" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 2 }}}} }
+"FLOOR_WOOD2" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 2 }}}} }
+"FLOOR_STONE1" modify append { itemDrop = {{{{"Rock"} 1 { 1 2 }}}} }
+"FLOOR_STONE2" modify append { itemDrop = {{{{"Rock"} 1 { 1 2 }}}} }
+"FLOOR_CARPET1" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 2 }}}} }
+"FLOOR_CARPET2" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 2 }}}} }
+"TREASURE_CHEST" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"ARMOR_RACK" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"WEAPON_RACK" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"BOW_RACK" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"SCROLL_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"POTION_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"JEWELLERY_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"GRAVE" modify append { itemDrop = {{{{"Rock"} 1 { 1 5 }}}} }
+"AUTOMATON_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"BOOKCASE_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"BOOKCASE_IRON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 15 }}}} }
+"BOOKCASE_GOLD" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 15 }}}} }
+"THRONE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 500 }}}} }
+"PHYLACTERY" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 500 }}}} }
+"BED1" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"BED2" modify append { itemDrop = {{{{"IronOre"} 1 { 1 12 }}}} }
+"BED3" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 12 }}}} }
+"DINING_TABLE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"HAYPILE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"COFFIN1" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"COFFIN2" modify append { itemDrop = {{{{"Rock"} 1 { 1 15 }}}} }
+"COFFIN3" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 15 }}}} }
+"CHICKEN_COOP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"PIGSTY" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"COW_PEN" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"TRAINING_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"TRAINING_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"TRAINING_IRON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 12 }}}} }
+"TRAINING_ADA" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 12 }}}} }
+"ARCHERY_RANGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"WORKSHOP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"FORGE" modify append { itemDrop = {{{{"IronOre"} 1 { 1 20 }}}} }
+"LABORATORY" modify append { itemDrop = {{{{"Rock"} 1 { 1 10 }}}} }
+"LABORATORY" modify append { itemDrop = {{{{"Rock"} 1 { 1 10 }}}} }
+"JEWELLER" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"POETRY_TABLE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"DISTILLERY" modify append { itemDrop = {{{{"IronOre"} 1 { 1 30 }}}} }
+"MORGUE_TABLE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 10 }}}} }
+"FURNACE" modify append { itemDrop = {{{{"Rock"} 1 { 1 50 }}}} }
+"AUTOMATON_ENGINE_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 50 }}}} }
+"AUTOMATON_ENGINE_IRON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 50 }}}} }
+"AUTOMATON_ENGINE_ADA" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 50 }}}} }
+"DEMON_SHRINE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 30 }}}} }
+"ANGEL_SHRINE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 30 }}}} }
+"PRISON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 15 }}}} }
+"PRISON_BARS" modify append { itemDrop = {{{{"IronOre"} 1 { 1 5 }}}} }
+"PRISON_DOOR" modify append { itemDrop = {{{{"IronOre"} 1 { 1 30 }}}} }
+"TORTURE_TABLE" modify append { itemDrop = {{{{"IronOre"} 1 { 1 15 }}}} }
+"GALLOWS" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"BEAST_CAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 8 }}}} }
+"BARRICADE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"GROUND_TORCH" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 10 }}}} }
+"KEEPER_BOARD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"FOUNTAIN" modify append { itemDrop = {{{{"Rock"} 1 { 1 30 }}}} }
+"WHIPPING_POST" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"MINION_STATUE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 50 }}}} }
+"STONE_MINION_STATUE" modify append { itemDrop = {{{{"Rock"} 1 { 1 250 }}}} }
+"PORTAL" modify append { itemDrop = {{{{"Rock"} 1 { 1 60 }}}} }
+"HEALING_TOTEM" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 60 }}}} }
+"TERROR_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"POISON_GAS_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"ALARM_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"WEB_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"SURPRISE_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"FIRE_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"BOULDER_TRAP" modify append { itemDrop = {{{{"Rock"} 1 { 1 120 }}}} }
+"BLAST_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"GARGOYLE_TRAP" modify append { itemDrop = {{{{"Rock"} 1 { 1 20 }}}} }
+"TRAP_TRIGGER" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"DESTROY_WALLS_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+
 
 ####################
 #Ideas for new traps

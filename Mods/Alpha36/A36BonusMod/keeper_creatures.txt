@@ -3,7 +3,7 @@
 
 "2_dark_knight" modify {
     immigrantGroups = append {"dark_knight_modded" "neutral_allies" "dark_allies_extended" }
-    technology = append { "simplistic animations" "magic contraptions" }
+    technology = append { "simplistic animations" "magic contraptions" "rock blast" }
     initialTech = { "iron working" }
     workshopGroups = append { "basic_Bonus_Mod"   "techBooks" }
     description = "(Challenge) The dark knight keeper is better at melee combat but worse at spell casting."
@@ -12,27 +12,35 @@
 #Dark mages come after dark knights as sometimes bits of the GUI get duplicated the other way round.
 "1_dark_mage" modify {
     immigrantGroups = append {"dark_keeper_modded" "neutral_allies" "dark_allies_extended" }
-    technology = append { "simplistic animations" "magic contraptions" "dragon taming" "demonic alliance" }
+    technology = append { "simplistic animations" "magic contraptions" "dragon taming" "demonic alliance" "rock blast"}
     workshopGroups = append { "basic_Bonus_Mod" "techBooks" }
 	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
   }
 "3_white_knight" modify {
     immigrantGroups = append { "white_keeper_modded" "neutral_allies" "white_allies_extended" }
-    technology = append { "simplistic animations" "magic contraptions" "legendary heroes" "royal jewellery" "unicorn taming" }
+    technology = append { "simplistic animations" "magic contraptions" "legendary heroes" "royal jewellery" "unicorn taming" "rock blast" }
     workshopGroups = append { "white knights workshop" "basic_Bonus_Mod" }
     description = "(Hard) Be on the side of the good!"
 	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
   }
+
 "6_dwarves" modify
 {
 	creatureId = { "DWARF_ELDER" }
     description = "Play as a group of dwarves that you can specialize to your liking."	
-	immigrantGroups = append {"dwarf_player"}
+	immigrantGroups = append {"dwarf_player" "animations"}
 	maxPopulation = 1
 	specialTraits = append { Lasting {DISAPPEAR_DURING_DAY } Lasting {SUNLIGHT_VULNERABLE} } 
 	credit = { "GOLD" 180 "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
-}  
+    technology = append { "simplistic animations" "magic contraptions" 
+		 "master jewellery" "dwarven alchemy" "magic inscription" "rock blast"}
+	
+}
 
+"5_gnomes" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} }
+"7_goblins" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} }
+"8_zombies" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} }
+"9_cyclops" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} }
 
 #####################
 #Extra modded Keepers
@@ -50,7 +58,7 @@
 		"basic forest magic" "master forest magic" "elite forest magic"
 		"basic fire magic" "master fire magic" "elite fire magic"
 		"basic metalic magic" "simplistic animations"
-		"magic contraptions" "master metalic magic" "elite metalic magic"
+		"magic contraptions" "master metalic magic" "elite metalic magic" "rock blast"
     }
     initialTech = { "iron working" "alchemy" "advanced alchemy" "sorcery" "advanced sorcery" "master sorcery"}
     buildingGroups = {
@@ -72,7 +80,7 @@
 		"two-handed weapons" "sorcery"
         "advanced sorcery" "magical weapons" "master sorcery" "archery"
 		"zombie hoards"  "mummy hoards" "skeleton hoards"  "vampire hoards"
-		"lord of war" "lord of magic" "lord of speed" "lord of resistance" }
+		"lord of war" "lord of magic" "lord of speed" "lord of resistance" "rock blast" }
     initialTech = { "sorcery" "archery" }
     buildingGroups = {
         "structure" "doors" "floors" "storage" "zones" "library" "pigsty_no_crops" "coffins"
@@ -129,6 +137,7 @@
 	  "magical weapons" "master sorcery" "demonology" "distillation" "worship" "embalming" "advanced embalming"
 	  "master embalming" "necromancy" "advanced necromancy" "master necromancy" "advanced traps"
       "automatons" "advanced automatons" "automaton brains" "aerodynamics" "incendiary alchemy"
+	  "simplistic animations" "magic contraptions" "rock blast"
   }
   zLevelGroups = { "basic" "evil" "lawful" }
   initialTech = { "sorcery" "iron working" "archery" }
@@ -142,6 +151,7 @@
   specialTraits = { Lasting { FOUNDER } }
   credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 }
 }
+
 #Various modded scrolls
 
 "5_BonusDev_elementalist" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription" } }
@@ -156,6 +166,21 @@
 "7_goblins" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription" } }
 "8_zombies" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription" } }
 "9_cyclops" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription" } }
+
+#Spell Circles
+
+"5_BonusDev_elementalist" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+"4_BonusDev_vampire_lord" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+"1_dark_mage" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+"2_dark_knight" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+"3_white_knight" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+"4_necromancer" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+"5_gnomes" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+"6_dwarves" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+"7_goblins" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+"8_zombies" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+"9_cyclops" modify { buildingGroups = append { "spells" } technology = append { "spell circles" } }
+
 
 #Badly implememnted. Need rework.
 ######################################################################################
