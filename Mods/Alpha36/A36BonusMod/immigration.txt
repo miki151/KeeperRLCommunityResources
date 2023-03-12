@@ -769,73 +769,15 @@
         { ids = { "AIR_ELEMENTAL" }   traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "GOLD" 80}   { 0.0 TechId "elite forest magic"   }}}
     }
     
-    "gnome_wizards"
+    "gnomes" modify
     {
-        {
-          ids = { "IMP" }
-          traits = { WORKER NO_LIMIT NO_EQUIPMENT }
-          spawnLocation = NearLeader
-          keybinding = CREATE_IMP
-          sound = CREATE_IMP 2
-          noAuto = true
-          initialRecruitment = 4
-          requirements = {
-            { 1 ExponentialCost "GOLD" 30 5 4 }
-          }
-        }  
-        {
-          ids = { "GHOST_ARMOUR" "GHOST_ARMOUR" }
-          traits = { FIGHTER }
-          spawnLocation = FurnitureType "FORGE"
-          noAuto = true
-          consumeIds = true    
-          requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
-        }
-        {
-          ids = { "POSSESSED_SWORD" "POSSESSED_SWORD" }
-          traits = { FIGHTER }
-          spawnLocation = FurnitureType "FORGE"
-          noAuto = true
-          consumeIds = true    
-          requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
-        }
-        {
-          ids = { "GIANT_ROBOT" "GIANT_ROBOT" }
-          traits = { FIGHTER }
-          spawnLocation = FurnitureType "FORGE"
-          noAuto = true
-          consumeIds = true    
-          requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}}}
-        }
-        {
-          ids = { "GNOME_PLAYER" }
-          traits = { FIGHTER }
-          frequency = 0.45
-          specialTraits = {
-            { 0.05 { WorkshopType "WORKSHOP" }}
-            { 0.05 { WorkshopType "FORGE" }}
-            { 0.1 { WorkshopType "JEWELER" }}
-            { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
-            { 0.1 { Lasting { SWIMMING_SKILL } }}
-            { 0.1 { WorkshopType "LABORATORY" }}
-            { 0.05 { Lasting { MAGIC_RESISTANCE } }}
-            { 0.05 { Lasting { REGENERATION } }}
-            { 0.1 { Lasting { TELEPATHY } }}
-            { 0.1 { Lasting { SLEEP_RESISTANT } }}
-            { 0.1 { Lasting { NIGHT_VISION } }}
-            { 0.05 { Lasting { HATE_ELVES } }}
-            { 0.05 { Lasting { HATE_HUMANS } }}
-            { 1.0 { AttrBonus SPELL_DAMAGE 10 ExtraTraining SPELL 12 }}
-		  }
-		}
 		{
+          initialRecruitment = 1
+          spawnLocation = NearLeader
+          noAuto = true
+          invisible = true
           ids = { "GNOME_CROSSBOWMAN_PLAYER" }
-          traits = { FIGHTER }
-          frequency = 0.5
-          requirements = {
-            { 0.0 MinTurnRequirement 1000 }
-            { 0.2 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
-            { 0.0 TechId "archery" }}
+          traits = { LEADER WORKER NO_LIMIT }
           specialTraits = {
             { 0.25 { Lasting { DISARM_TRAPS_SKILL } }}
             { 0.1 { Lasting { SWIMMING_SKILL } }}
@@ -849,17 +791,18 @@
 		  }
         }
 		{
-          ids = { "GNOME_FIRE_MAGE_PLAYER" "GNOME_MAGE_PLAYER" }
-          traits = { FIGHTER }
-          frequency = 0.45
-          requirements = {
-            { 0.2 AttractionInfo 1 {FurnitureType "BOOKCASE_IRON"}}
-            { 0.0 TechId "advanced sorcery" }}
+          ids = { "GNOME_FIRE_MAGE_PLAYER" }
+          spawnLocation = NearLeader
+          noAuto = true
+          invisible = true
+          initialRecruitment = 1
+          traits = { LEADER WORKER NO_LIMIT }
           specialTraits = {
-            { 0.2 { WorkshopType "JEWELER" }}
-            { 0.05 { Lasting { SWIMMING_SKILL } }}
-            { 0.2 { WorkshopType "LABORATORY" }}
-            { 0.05 { Lasting { MAGIC_RESISTANCE } }}
+            { 0.1 { WorkshopType "JEWELER" }}
+            { 0.2 { Lasting { DISARM_TRAPS_SKILL } }}
+            { 0.2 { Lasting { SWIMMING_SKILL } }}
+            { 0.1 { WorkshopType "LABORATORY" }}
+            { 0.2 { Lasting { MAGIC_RESISTANCE } }}
 			{ 0.2 { Lasting { FIRE_RESISTANT } }}
 			{ 0.05 { Lasting { POISON_RESISTANT } }}
             { 0.4 { Lasting { TELEPATHY } }}
@@ -872,11 +815,11 @@
         }
 		{
           ids = { "GNOME_MAGE_PLAYER" }
-          traits = { FIGHTER }
-          frequency = 0.35
-          requirements = {
-            { 0.2 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
-            { 0.0 TechId "sorcery" }}
+          spawnLocation = NearLeader
+          noAuto = true
+          invisible = true
+          initialRecruitment = 1
+          traits = { LEADER WORKER NO_LIMIT }
           specialTraits = {
             { 0.1 { WorkshopType "JEWELER" }}
             { 0.2 { Lasting { DISARM_TRAPS_SKILL } }}
@@ -894,157 +837,50 @@
 		  }
         }
         {
-          ids = { "GNOME_FIRE_WIZARD_PLAYER" "GNOME_FIRE_WIZARD_PLAYER" }
-          traits = { FIGHTER }
-          frequency = 0.65
-		  consumeIds = true
-          requirements = {
-            { 0.0 TechId "gnome wizards" }
-          }
-        }
-        {
-          ids = { "GNOME_WIZARD_PLAYER" "GNOME_WIZARD_PLAYER" }
-          traits = { FIGHTER }
-          frequency = 0.65
-		  consumeIds = true
-          requirements = {
-            { 0.0 TechId "gnome wizards" }
-          }
-        }
-        {
-          ids = { "MUSHROOM_MAN" }
-          traits = { FIGHTER }
-          frequency = 0.2
-		  consumeIds = true
-          initialRecruitment = 1
-          requirements = {
-            { 0.0 TechId "alchemical conversion" }
-          }
-        }
-    }
-    
-    "dwarven"
-    {
-        {
-          ids = { "DWARF_WORKER" }
-          traits = { WORKER NO_LIMIT NO_EQUIPMENT }
-          keybinding = CREATE_IMP
+          ids = { "GNOME_FIRE_WIZARD_PLAYER"}
+          spawnLocation = NearLeader
           noAuto = true
-          initialRecruitment = 4
-          requirements = {
-            { 1 ExponentialCost "GOLD" 30 5 4 }
-          }
-        }
-        {
-          ids = { "DWARF_MILITIA" }
-          frequency = 0.5
-          traits = { FIGHTER WORKER }
-          requirements = {{ 0.0 NegateRequirement TechId "basic nobility" }}		  
+          invisible = true
+          initialRecruitment = 1
+          traits = { LEADER WORKER NO_LIMIT }
           specialTraits = {
-            { 0.1 { WorkshopType "LABORATORY" }}
             { 0.1 { WorkshopType "JEWELER" }}
-            { 0.1 { WorkshopType "FORGE" }}
-		  }
-        }
-        {
-          ids = { "DWARF_TOUGH" }
-          frequency = 0.5
-          traits = { FIGHTER }
-          requirements = { {0.0 TechId "basic nobility"} {0.0 NegateRequirement TechId "advanced nobility"} }		  
-          specialTraits = {
             { 0.2 { Lasting { DISARM_TRAPS_SKILL } }}
-            { 0.2 { WorkshopType "LABORATORY" }}
-            { 0.2 { WorkshopType "JEWELER" }}
-            { 0.2 { WorkshopType "FORGE" }}
-		  }
-        }
-        {
-          ids = { "DWARF_WARRIOR" }
-          frequency = 0.5
-          traits = { FIGHTER }
-          requirements = {{ 0.0 TechId "advanced nobility"} {0.0 NegateRequirement TechId "elite nobility"} }
-          specialTraits = {
-            { 0.3 { WorkshopType "FORGE" }}
-            { 0.2 { Lasting { DISARM_TRAPS_SKILL } }}
-            { 0.3 { WorkshopType "LABORATORY" }}
-            { 0.3 { WorkshopType "JEWELER" }}
-		  }
-        }
-        {
-          ids = { "DWARF_MONK" }
-          frequency = 0.45
-          traits = { FIGHTER NO_EQUIPMENT }
-          requirements = {
-		  { 0.0 TechId "dwarven monks"} 
-		  { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
-		  { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
-		  }
-          specialTraits = {
-            { 0.3 { Lasting { TELEPATHY } }}
-            { 0.2 { Lasting { DISARM_TRAPS_SKILL } }}
-            { 0.1 { AttrBonus SPELL_DAMAGE 5 }}
-			{ 0.1 { AttrBonus DAMAGE 5 }}
-            { 0.2 { AttrBonus DEFENSE 5 }}
-			{ 0.08 { AttrBonus DEFENSE 15 AttrBonus DAMAGE 15 Lasting { INSANITY } }}
-            { 0.3 { Lasting { NIGHT_VISION } }}
-		  }
-        }
-		{
-          ids = { "ELITE_DWARF_WARRIOR" }
-          frequency = 0.5
-          traits = { FIGHTER }
-          requirements = {{ 0.0 TechId "elite nobility"}}
-          specialTraits = {
-            { 0.5 { WorkshopType "FORGE" }}
-            { 0.5 { WorkshopType "WORKSHOP" }}
-            { 0.3 { WorkshopType "JEWELER" }}
-            { 0.2 { Lasting { DISARM_TRAPS_SKILL } }}
-            { 0.3 { WorkshopType "LABORATORY" }}
-            { 0.2 { Lasting { REGENERATION } }}
-            { 0.2 { Lasting { TELEPATHY } }}
-            { 0.2 { Lasting { SLEEP_RESISTANT } }}
-            { 0.2 { Lasting { NIGHT_VISION } }}
-		  }
-        }
-		{
-          ids = { "PLAYER_DWARF_FEMALE" "PLAYER_DWARF_FEMALE2" "PLAYER_DWARF_FEMALE3" }
-          traits = { NO_LIMIT INCREASE_POPULATION NO_EQUIPMENT }
-          requirements = {
-            { 1.0 CostInfo "GOLD" 50 }
-		  }
-          specialTraits = {
-            { 0.25 { Lasting { COPULATION_SKILL } }}
-          }
-        }
-    	{
-          ids = { "DWARF_BARON" }
-          traits = { FIGHTER }
-          consumeIds = true
-          stripEquipment = false 
-          requirements = {
-            { 1.0 FurnitureType "THRONE" }
-            { 1.0 CostInfo "GOLD" 500 }
-            { 0.0 TechId "marriage of convenience" }
-          }
-        }
-        {
-          ids = { "ELITE_DWARF_WARRIOR" "DWARF_WARRIOR" "DWARF_TOUGH" "DWARF_MILITIA" }
-          traits = { FIGHTER WORKER }
-          spawnLocation = Pregnancy
-          requirements = {
-            { 0.0 Pregnancy }
-          }
-          specialTraits = {
-            { 0.1 { WorkshopType "FORGE" }}
-            { 0.1 { WorkshopType "WORKSHOP" }}
-            { 0.1 { WorkshopType "JEWELER" }}
-            { 0.1 { Lasting { DISARM_TRAPS_SKILL } }}
+            { 0.2 { Lasting { SWIMMING_SKILL } }}
             { 0.1 { WorkshopType "LABORATORY" }}
-            { 0.05 { Lasting { REGENERATION } }}
-            { 0.1 { Lasting { TELEPATHY } }}
-            { 0.1 { Lasting { SLEEP_RESISTANT } }}
-            { 0.1 { Lasting { NIGHT_VISION } }}
-          }
+            { 0.2 { Lasting { MAGIC_RESISTANCE } }}
+			{ 0.2 { Lasting { FIRE_RESISTANT } }}
+			{ 0.05 { Lasting { POISON_RESISTANT } }}
+            { 0.4 { Lasting { TELEPATHY } }}
+            { 0.4 { Lasting { NIGHT_VISION } }}
+            { 0.08 { Lasting { HATE_ELVES } }}
+            { 0.08 { Lasting { HATE_HUMANS } }}
+            { 0.2 { AttrBonus SPELL_DAMAGE 5 }}
+			{ 0.1 { ExtraTraining SPELL 2 }}
+		  }
+        }
+        {
+          ids = { "GNOME_WIZARD_PLAYER" }
+          spawnLocation = NearLeader
+          noAuto = true
+          invisible = true
+          initialRecruitment = 1
+          traits = { LEADER WORKER NO_LIMIT }
+          specialTraits = {
+            { 0.1 { WorkshopType "JEWELER" }}
+            { 0.2 { Lasting { DISARM_TRAPS_SKILL } }}
+            { 0.2 { Lasting { SWIMMING_SKILL } }}
+            { 0.1 { WorkshopType "LABORATORY" }}
+            { 0.2 { Lasting { MAGIC_RESISTANCE } }}
+			{ 0.2 { Lasting { FIRE_RESISTANT } }}
+			{ 0.05 { Lasting { POISON_RESISTANT } }}
+            { 0.4 { Lasting { TELEPATHY } }}
+            { 0.4 { Lasting { NIGHT_VISION } }}
+            { 0.08 { Lasting { HATE_ELVES } }}
+            { 0.08 { Lasting { HATE_HUMANS } }}
+            { 0.2 { AttrBonus SPELL_DAMAGE 5 }}
+			{ 0.1 { ExtraTraining SPELL 2 }}
+		  }
         }
     }
     
