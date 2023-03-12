@@ -7,22 +7,21 @@
     initialTech = { "iron working" }
     workshopGroups = append { "basic_Bonus_Mod"   "techBooks" }
     description = "(Challenge) The dark knight keeper is better at melee combat but worse at spell casting."
+	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
   }
 #Dark mages come after dark knights as sometimes bits of the GUI get duplicated the other way round.
 "1_dark_mage" modify {
     immigrantGroups = append {"dark_keeper_modded" "neutral_allies" "dark_allies_extended" }
     technology = append { "simplistic animations" "magic contraptions" "dragon taming" "demonic alliance" }
-    workshopGroups = append { "basic_Bonus_Mod""techBooks" }
+    workshopGroups = append { "basic_Bonus_Mod" "techBooks" }
+	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
   }
 "3_white_knight" modify {
     immigrantGroups = append { "white_keeper_modded" "neutral_allies" "white_allies_extended" }
     technology = append { "simplistic animations" "magic contraptions" "legendary heroes" "royal jewellery" "unicorn taming" }
     workshopGroups = append { "white knights workshop" "basic_Bonus_Mod" }
     description = "(Hard) Be on the side of the good!"
-    buildingGroups = {
-      "structure" "arrowslits" "doors" "floors" "storage" "zones" "library" "throne" "beds"
-      "dining table" "white_knight_pigsty" "training" "crafting" "laboratory" "jeweller" "poetry" "distillery"
-      "furnace" "angel_shrine" "prison" "orders" "installations" }
+	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
   }
 "6_dwarves" modify
 {
@@ -31,7 +30,7 @@
 	immigrantGroups = append {"dwarf_player"}
 	maxPopulation = 1
 	specialTraits = append { Lasting {DISAPPEAR_DURING_DAY } Lasting {SUNLIGHT_VULNERABLE} } 
-	credit = { "GOLD" 180 }
+	credit = { "GOLD" 180 "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
 }  
 
 
@@ -61,6 +60,7 @@
     workshopGroups = {"elements"}
     description = "(Challenge) Summon an army from your raw resources that can take over the map."
     zLevelGroups = { "basic" "lawful" }
+	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 }
   }
 "4_BonusDev_vampire_lord"  
   {
@@ -75,7 +75,7 @@
 		"lord of war" "lord of magic" "lord of speed" "lord of resistance" }
     initialTech = { "sorcery" "archery" }
     buildingGroups = {
-        "structure" "doors" "floors" "storage" "zones" "library" "pigsty" "coffins"
+        "structure" "doors" "floors" "storage" "zones" "library" "pigsty_no_crops" "coffins"
         "prison" "orders" "installations" "magical_installations" "necromancer"
     }
     workshopGroups = { "necromancer" }
@@ -91,6 +91,7 @@
       AttrBonus DEFENSE 5
     }
     zLevelGroups = { "basic" "evil" }
+	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CORPSE" 5 }
   }
 
 "9_BonusDev_dungeon_master"
@@ -139,9 +140,13 @@
   flags = { "abomination_upgrades" }
   noLeader = true
   specialTraits = { Lasting { FOUNDER } }
+  credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 }
 }
 #Various modded scrolls
 
+"5_BonusDev_elementalist" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription" } }
+"4_BonusDev_vampire_lord" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription" } }
+"02_outcasts" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription" } }
 "1_dark_mage" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription" } }
 "2_dark_knight" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription"} }
 "3_white_knight" modify { workshopGroups = append { "scrolls" "anti-nature" } technology = append { "magic inscription"}}

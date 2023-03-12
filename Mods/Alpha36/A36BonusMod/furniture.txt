@@ -10,13 +10,63 @@
   "CROPS" modify
   {
     usageType = UsageEffect "scythe " Chain
-	  { Chance 0.3 CreatureMessage {"scythe the field" "scythes the field"}
+	  { Chance 0.3 CreatureMessage { "scythe the field" "scythes the field" }
+	    Chance 0.1 Filter And { CreatureId "IMP" Not Indoors } DropItems {"sack"} 1
 	    Chance 0.1 Filter And { CreatureId "PESEANT_PLAYER" Not Indoors } DropItems {"sack"} 1
+	    Chance 0.1 Filter And { CreatureId "GOBLIN_WORKER" Not Indoors } DropItems {"sack"} 1
 	  }
     usageTime = 20
     canBuildOutsideOfTerritory = true
   }
-
+  
+  "FAKE_GRAVE"
+  {
+	  name = "grave"
+	  viewId = { "grave" }
+	  blockingEnemies = true
+	  canHideHere = true
+	  strength = 1
+	  destroyedEffect = {
+		   ChooseRandom {
+					 SummonEnemy "ANGEL" {1} none
+					 SummonEnemy "BONE_DRAGON" {1} none
+					 SummonEnemy "SKELETON_WARRIOR" {1} none
+					 SummonEnemy "VAMPIRE_BRUTE" {1} none
+					 SummonEnemy "ZOMBIE_MAGE" {1} none
+					 SummonEnemy "ABOMINATION" {1} none
+					 SummonEnemy "SLASHER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "VAMPIRE" {1} none
+					 SummonEnemy "VAMPIRE" {1} none
+					 SummonEnemy "VAMPIRE" {1} none
+					 SummonEnemy "SPIRIT" {1} none
+					 SummonEnemy "SPIRIT" {1} none
+					 SummonEnemy "SPIRIT" {1} none
+					 SummonEnemy "SLASHER" {2} none 
+					 SummonEnemy "ANGEL" {3} none
+					 SummonEnemy "SKELETON_WARRIOR" {4} none
+					 SummonEnemy "ZOMBIE" {5} none
+				  }
+	  }
+   }
+  
   "BOOKCASE_GOLD" modify append {
     name = "golden bookcase"
     viewId = { "bookcase_gold" }
