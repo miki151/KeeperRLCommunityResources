@@ -24,7 +24,14 @@
         For Each line As String In lines
             Text = Text + "P(""" + line.Trim() + """)" + vbCrLf
         Next
-        TextBox1.Text = "# View with word wrap! " + vbCrLf + vbCrLf + Text
+        Text = "Def P(Text) Paragraph(500, Text) End" + vbCrLf +
+            "MiniWindow(Scrolling(MarginRight(30, MarginLeft(30,  " + vbCrLf +
+            "Vertical {" + vbCrLf +
+            "Horizontal{ViewId(1, {""scroll""}) Width 10 {} Label(""<New Page>"")}" + vbCrLf +
+            "Height 30 {}" + vbCrLf +
+            "# View with word wrap! " + vbCrLf + vbCrLf + Text + vbCrLf +
+            "} ))))"
+        TextBox1.Text = Text
     End Sub
 End Class
 

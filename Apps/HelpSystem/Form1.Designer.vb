@@ -63,11 +63,11 @@ Partial Class Form1
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(704, 23)
+        Me.Button2.Location = New System.Drawing.Point(685, 23)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.Size = New System.Drawing.Size(94, 23)
         Me.Button2.TabIndex = 0
-        Me.Button2.Text = "Button2"
+        Me.Button2.Text = "Reformat Text"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Form1
