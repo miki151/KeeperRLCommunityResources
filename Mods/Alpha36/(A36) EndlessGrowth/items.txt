@@ -1,0 +1,73 @@
+"eg_br_corpse"
+  {
+    viewId = { "eg_rotten_corpse" }
+    name = "breed corpse"
+    itemClass = CORPSE
+    price = 0
+    weight = 50
+    resourceId = "CORPSE"
+    storageIds = {"corpses"}
+  }
+  
+"eg_flesh_club"
+  {
+    viewId = { "eg_gore_club" }
+    equipedViewId = { "eg_gore_club_v" }
+    name = "gore club"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 2
+    modifiers = {
+      DAMAGE 9
+	  BLESSED_FLESH 2
+    }
+    price = 2
+    weaponInfo = {
+      attackType = CRUSH
+    }
+    genPrefixes = {
+      1 VictimEffect 0.3 Fire { 25 }
+      1 VictimEffect 0.1 Lasting POISON
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 3
+        LastingEffect HALLU
+      }
+    }
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "basic equipment"
+  }
+  
+"eg_gore_staff"
+  {
+    viewId = { "eg_flesh_staff" }
+    equipedViewId = { "eg_flesh_staff_v" }
+    name = "gore staff"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      SPELL_DAMAGE 8
+	  BLESSED_FLESH 2
+    }
+    price = 30
+    weaponInfo = {
+      attackType = SPELL
+      attackMsg = WAVE
+      meleeAttackAttr = SPELL_DAMAGE
+    }
+    genPrefixes = {
+      1 VictimEffect 1.0 Escape{}
+      1 VictimEffect 0.4 DestroyEquipment
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 20
+        AttackerEffect Suicide DIE
+      }
+    }
+    maxUpgrades = 2
+	equipedAbility = { "Forced Regeneration_caster_mass" }
+	equipedCompanion = 5 true BLESSED_FLESH 0.01 { "EG_GORE_TUMOR" }
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "basic equipment"
+  }

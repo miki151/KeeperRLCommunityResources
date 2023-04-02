@@ -1,0 +1,1291 @@
+Def resetgore()
+SetFlag "gore_01" false
+SetFlag "gore_02" false
+SetFlag "gore_03" false
+SetFlag "gore_04" false
+SetFlag "gore_05" false
+SetFlag "gore_06" false
+SetFlag "gore_07" false
+SetFlag "gore_08" false
+End
+
+Def countgore()
+Filter Flag "gore_07" {
+    Filter Not Flag "gore_08" {
+           SetFlag "gore_08" true
+        }
+    }
+Filter Flag "gore_06" {
+    Filter Not Flag "gore_07" {
+           SetFlag "gore_07" true
+        }
+    }
+Filter Flag "gore_05" {
+    Filter Not Flag "gore_06" {
+           SetFlag "gore_06" true
+        }
+    }
+Filter Flag "gore_04" {
+    Filter Not Flag "gore_05" {
+           SetFlag "gore_05" true
+        }
+    }
+Filter Flag "gore_03" {
+    Filter Not Flag "gore_04" {
+           SetFlag "gore_04" true
+        }
+    }
+Filter Flag "gore_02" {
+    Filter Not Flag "gore_03" {
+           SetFlag "gore_03" true
+        }
+    }
+Filter Flag "gore_01" {
+    Filter Not Flag "gore_02" {
+           SetFlag "gore_02" true
+        }
+    }
+Filter Not Flag "gore_01" {
+       SetFlag "gore_01" true
+    }
+	
+End
+
+Def PromoteGore()
+ Chain
+			 {
+			     Filter CreatureId "EG_GORE_SPAWN"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+                        IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "DEFENSE" 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"	
+                        IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "DEFENSE" 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {	
+						SetViewId {"eg_gore_spawn_2"}	
+                        IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DAMAGE" 4
+						IncreaseAttr "DEFENSE" 4
+						Permanent REGENERATION
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+					
+				Filter CreatureId "EG_GORE_FAMILLIAR"
+				    {
+					Filter	CreatureFlag "promotion_2" {			
+						IncreaseAttr "SPELL_DAMAGE" 1
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "BLESSED_FLESH" 1	
+						}
+					Filter	CreatureFlag "promotion_1" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						AddSpellSchool "Ahthrodog"					
+						IncreaseAttr "SPELL_DAMAGE" 1
+						IncreaseAttr "DEFENSE" 1
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {	
+						SetViewId {"eg_gore_familliar_2"}
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "SPELL_DAMAGE" 2
+						IncreaseAttr "DEFENSE" 2
+						Permanent REGENERATION
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+
+				Filter CreatureId "EG_GORE_REBORN"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "DEFENSE" 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						AddSpellSchool "Ahthrodog"					
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "DEFENSE" 1
+						RemovePermanent SLOWED
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {	
+						IncreaseAttr "BLESSED_FLESH" 1
+						SetViewId {"eg_gore_reborn_2"}		
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "DEFENSE" 1
+						Permanent REGENERATION
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+
+				Filter CreatureId "EG_GORE_TREE"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "DEFENSE" 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DAMAGE" 3
+						IncreaseAttr "DEFENSE" 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {	
+						SetViewId {"eg_gore_tree_2"}	
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DAMAGE" 4
+						IncreaseAttr "DEFENSE" 3
+						Permanent REGENERATION
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+
+				Filter CreatureId "EG_GORE_CRAWLER"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "DEFENSE" 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"	
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "DEFENSE" 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {	
+						SetViewId {"eg_gore_crawler_01"}
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DAMAGE" 3
+						IncreaseAttr "DEFENSE" 3
+						Permanent REGENERATION
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+					
+			     Filter CreatureId  "EG_CULTIST"
+			    	{
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "WORKSHOP" 2
+						IncreaseAttr "FORGE" 2
+						IncreaseAttr "LABORATORY" 2
+						IncreaseAttr "JEWELER" 2
+						IncreaseAttr "FURNACE" 2
+						IncreaseAttr "DIGGING" 2
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "DEFENSE" 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						AddSpellSchool "Ahthrodog"		
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "DEFENSE" 2						
+						IncreaseAttr "WORKSHOP" 2
+						IncreaseAttr "FORGE" 2
+						IncreaseAttr "LABORATORY" 2
+						IncreaseAttr "JEWELER" 2
+						IncreaseAttr "FURNACE" 2
+						IncreaseAttr "DIGGING" 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {
+						SetViewId {"eg_cultist_gore"}
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DAMAGE" 3
+						IncreaseAttr "DEFENSE" 3
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						IncreaseAttr "WORKSHOP" 2
+						IncreaseAttr "FORGE" 2
+						IncreaseAttr "LABORATORY" 2
+						IncreaseAttr "JEWELER" 2
+						IncreaseAttr "FURNACE" 2
+						IncreaseAttr "DIGGING" 2
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+					
+			     Filter CreatureId  "EG_CULTIST_F"
+			    	{
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "WORKSHOP" 2
+						IncreaseAttr "FORGE" 2
+						IncreaseAttr "LABORATORY" 2
+						IncreaseAttr "JEWELER" 2
+						IncreaseAttr "FURNACE" 2
+						IncreaseAttr "DIGGING" 2
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "DEFENSE" 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						AddSpellSchool "Ahthrodog"		
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "DEFENSE" 2						
+						IncreaseAttr "WORKSHOP" 2
+						IncreaseAttr "FORGE" 2
+						IncreaseAttr "LABORATORY" 2
+						IncreaseAttr "JEWELER" 2
+						IncreaseAttr "FURNACE" 2
+						IncreaseAttr "DIGGING" 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {
+						SetViewId {"eg_cultist_gore_f"}
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DAMAGE" 3
+						IncreaseAttr "DEFENSE" 3
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						IncreaseAttr "WORKSHOP" 2
+						IncreaseAttr "FORGE" 2
+						IncreaseAttr "LABORATORY" 2
+						IncreaseAttr "JEWELER" 2
+						IncreaseAttr "FURNACE" 2
+						IncreaseAttr "DIGGING" 2
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+										
+			     Filter CreatureId  "EG_CULTIST_DEFENDER"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						IncreaseMaxLevel MELEE 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						AddSpellSchool "Ahthrodog"					
+						IncreaseAttr "DEFENSE" 3
+						IncreaseAttr "DAMAGE" 2
+						IncreaseMaxLevel MELEE 3
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {
+						SetViewId {"eg_cultist_defender_gore"}	
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DAMAGE" 4
+						IncreaseAttr "DEFENSE" 6
+						IncreaseMaxLevel MELEE 4
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						SetCreatureFlag "promotion_1" true
+						}
+                    }		
+										
+			     Filter CreatureId  "EG_CULTIST_DEFENDER_F"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						IncreaseMaxLevel MELEE 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						AddSpellSchool "Ahthrodog"					
+						IncreaseAttr "DEFENSE" 3
+						IncreaseAttr "DAMAGE" 2
+						IncreaseMaxLevel MELEE 3
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {
+						SetViewId {"eg_cultist_defender_gore_f"}	
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DAMAGE" 4
+						IncreaseAttr "DEFENSE" 6
+						IncreaseMaxLevel MELEE 4
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						SetCreatureFlag "promotion_1" true
+						}
+                    }		
+										
+			     Filter CreatureId  "EG_CULTIST_RITUALIST"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "SPELL_DAMAGE" 1
+						IncreaseMaxLevel SPELL 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"	
+						IncreaseAttr "BLESSED_FLESH" 2					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "SPELL_DAMAGE" 3
+						IncreaseMaxLevel SPELL 2
+						SetCreatureFlag "promotion_2" true
+						}
+						Filter Not CreatureFlag "promotion_1" {
+						SetViewId {"eg_cultist_ritualist_gore"}	
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "BLESSED_FLESH" 3
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						IncreaseAttr "SPELL_DAMAGE" 6
+						IncreaseMaxLevel SPELL 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }					
+										
+			     Filter CreatureId  "EG_CULTIST_RITUALIST_F"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "SPELL_DAMAGE" 1
+						IncreaseMaxLevel SPELL 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"	
+						IncreaseAttr "BLESSED_FLESH" 2					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "SPELL_DAMAGE" 3
+						IncreaseMaxLevel SPELL 2
+						SetCreatureFlag "promotion_2" true
+						}
+						Filter Not CreatureFlag "promotion_1" {
+						SetViewId {"eg_cultist_ritualist_gore_f"}	
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "BLESSED_FLESH" 3
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						IncreaseAttr "SPELL_DAMAGE" 6
+						IncreaseMaxLevel SPELL 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }					
+										
+			     Filter CreatureId   "EG_CULTIST_ARCHER"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "RANGED_DAMAGE" 1
+						IncreaseMaxLevel ARCHERY 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"	
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "RANGED_DAMAGE" 3
+						IncreaseMaxLevel ARCHERY 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {					
+						SetViewId {"eg_cultist_archer_gore"}
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DEFENSE" 2
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						IncreaseAttr "RANGED_DAMAGE" 6
+						IncreaseMaxLevel ARCHERY 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+										
+			     Filter CreatureId   "EG_CULTIST_ARCHER_F"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "RANGED_DAMAGE" 1
+						IncreaseMaxLevel ARCHERY 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"	
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "RANGED_DAMAGE" 3
+						IncreaseMaxLevel ARCHERY 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {					
+						SetViewId {"eg_cultist_archer_gore_f"}
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DEFENSE" 2
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						IncreaseAttr "RANGED_DAMAGE" 6
+						IncreaseMaxLevel ARCHERY 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+
+			     Filter CreatureId   "EG_CULTIST_TEMPLAR"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "SPELL_SPEED" 1
+						IncreaseMaxLevel SPELL 1
+						IncreaseMaxLevel MELEE 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"					
+						Permanent SPEED
+						IncreaseAttr "BLESSED_FLESH" 2
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "SPELL_SPEED" 2
+						IncreaseMaxLevel SPELL 2
+						IncreaseMaxLevel MELEE 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {					
+						SetViewId {"eg_cultist_templar_gore"}	
+						IncreaseAttr "BLESSED_FLESH" 2
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "SPELL_SPEED" 2
+						Permanent REGENERATION
+						IncreaseMaxLevel SPELL 3
+						IncreaseMaxLevel MELEE 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+
+			     Filter CreatureId   "EG_CULTIST_TEMPLAR_F"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "SPELL_SPEED" 1
+						IncreaseMaxLevel MELEE 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"					
+						Permanent SPEED
+						IncreaseAttr "BLESSED_FLESH" 2
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "SPELL_SPEED" 1
+						IncreaseMaxLevel SPELL 1
+						IncreaseMaxLevel MELEE 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {					
+						SetViewId {"eg_cultist_templar_gore"}	
+						IncreaseAttr "BLESSED_FLESH" 2
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "SPELL_SPEED" 1
+						Permanent REGENERATION
+						IncreaseMaxLevel SPELL 1
+						IncreaseMaxLevel MELEE 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+										
+			     Filter CreatureId  "DOG"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						AddSpellSchool "Ahthrodog"					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {
+						SetViewId {"eg_dog_gore"}
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 10 {
+											 attackType = HIT
+											 attackMsg = CLAW
+											 victimEffect = {1 Lasting 50 POISON }}}
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						SetCreatureFlag "promotion_1" true
+						}
+                    }		
+										
+			     Filter CreatureId  "WOLF"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						AddSpellSchool "Ahthrodog"					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {
+						SetViewId {"eg_dog_gore"}
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 10 {
+											 attackType = HIT
+											 attackMsg = CLAW
+											 victimEffect = {1 Lasting 50 POISON }}}
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						SetCreatureFlag "promotion_1" true
+						}
+                    }		
+						
+			     Filter CreatureId   "DARK_ELF_WARRIOR"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "SPELL_DAMAGE" 1
+						IncreaseMaxLevel SPELL 1
+						IncreaseMaxLevel MELEE 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"					
+						Permanent SPEED
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "SPELL_DAMAGE" 2
+						IncreaseMaxLevel SPELL 2
+						IncreaseMaxLevel MELEE 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {					
+						SetViewId {"eg_dark_elf_warrior_gore"}	
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "SPELL_DAMAGE" 2
+						Permanent REGENERATION
+						IncreaseMaxLevel SPELL 3
+						IncreaseMaxLevel MELEE 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }
+
+			     Filter CreatureId   "GOBLIN_WARRIOR"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						IncreaseMaxLevel MELEE 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 2
+						IncreaseMaxLevel MELEE 3
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {					
+						SetViewId {"eg_goblin_warrior_gore"}
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 2
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						IncreaseMaxLevel MELEE 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }					
+
+			     Filter CreatureId   "GOBLIN_WARRIOR_VILLAIN"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						IncreaseMaxLevel MELEE 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 2
+						IncreaseMaxLevel MELEE 3
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {					
+						SetViewId {"eg_goblin_warrior_gore"}
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 2
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						IncreaseMaxLevel MELEE 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }	
+							
+			     Filter CreatureId   "HARPY"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "RANGED_DAMAGE" 1
+						IncreaseMaxLevel ARCHERY 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						AddSpellSchool "Ahthrodog"	
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "RANGED_DAMAGE" 2
+						IncreaseMaxLevel ARCHERY 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {					
+						SetViewId {"eg_harpy_gore"}
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DEFENSE" 2
+						Permanent REGENERATION
+						Permanent NIGHT_VISION 
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "RANGED_DAMAGE" 4
+						IncreaseMaxLevel ARCHERY 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }		
+										
+			     Filter CreatureId  "VAMPIRE"
+				    {
+					Filter	CreatureFlag "promotion_2" {
+						IncreaseAttr "BLESSED_FLESH" 1					
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "DAMAGE" 2
+						IncreaseMaxLevel MELEE 1
+						}
+					Filter	CreatureFlag "promotion_1" {
+						IncreaseAttr "BLESSED_FLESH" 1
+						AddSpellSchool "Ahthrodog"					
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "DAMAGE" 4
+						IncreaseMaxLevel MELEE 2
+						SetCreatureFlag "promotion_2" true
+						}
+					Filter Not CreatureFlag "promotion_1" {
+						SetViewId {"eg_vampire_varrior_gore"}	
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DAMAGE" 8
+						IncreaseAttr "DEFENSE" 4
+						IncreaseMaxLevel MELEE 3
+						Permanent DARKNESS_SOURCE
+						Permanent REGENERATION
+						Permanent SPEED 
+						SetCreatureFlag "promotion_1" true
+						}
+                    }		
+
+			     Filter Or { CreatureId "EG_GORE_VESSEL" CreatureId "EG_GORE_VESSEL_F"}
+				    {
+					Filter CreatureFlag "promotion_4" {	
+						IncreaseAttr "BLESSED_FLESH" 2					
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "DEFENSE" 1
+						IncreaseAttr "SPELL_DAMAGE" 1
+					}
+					Filter CreatureFlag "promotion_3" {
+						SetViewId {"eg_gore_vessel_up_4"}	
+						IncreaseAttr "BLESSED_FLESH" 2					
+						IncreaseAttr "SPELL_DAMAGE" 2
+						IncreaseAttr "DEFENSE" 1
+						Permanent FLYING
+						AddBodyPart ARM 2  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						SetCreatureFlag "promotion_4" true
+						}
+					Filter Not CreatureFlag "promotion_3"	{
+					Filter CreatureFlag "promotion_2" {
+					    SetViewId {"eg_gore_vessel_up_3"}
+						IncreaseAttr "BLESSED_FLESH" 2
+						IncreaseAttr "SPELL_DAMAGE" 2
+						IncreaseAttr "DEFENSE" 1							
+						AddBodyPart ARM 2  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						SetCreatureFlag "promotion_3" true
+						}
+					Filter Not CreatureFlag "promotion_2"	{
+					Filter CreatureFlag "promotion_1" {
+					    Filter CreatureId "EG_GORE_VESSEL"{
+						SetViewId {"eg_gore_vessel_up_2"}
+						}
+						Filter CreatureId "EG_GORE_VESSEL_F"{
+						SetViewId {"eg_gore_vessel_up_f_2"}
+						}
+						IncreaseAttr "BLESSED_FLESH" 2						
+                        AddSpellSchool "Ahthrodog"					
+						IncreaseAttr "DAMAGE" 3
+						IncreaseAttr "DEFENSE" 3
+						IncreaseAttr "SPELL_DAMAGE" 3
+						SetCreatureFlag "promotion_2" true
+						}
+                    Filter Not CreatureFlag "promotion_1"	{
+					    Filter CreatureId "EG_GORE_VESSEL"{
+						SetViewId {"eg_gore_vessel_up_1"}
+						}
+						Filter CreatureId "EG_GORE_VESSEL_F"{
+						SetViewId {"eg_gore_vessel_up_f_1"}
+						}					
+                        AddSpellSchool "Bthnkor Ahair'luhh"	
+						IncreaseAttr "BLESSED_FLESH" 2						
+						IncreaseAttr "DAMAGE" 2
+						IncreaseAttr "DEFENSE" 2
+						IncreaseAttr "SPELL_DAMAGE" 2
+						SetCreatureFlag "promotion_1" true
+						}
+                    }}}		
+					
+		     }
+End
+
+"EG_BREEDING_PIT"
+{
+  name = "Pit"
+  viewId = { "mud" }
+  tickType = Effect Chance 0.05 Filter
+    And {
+      IsClosedOffPigsty
+      CanCreatureEnter
+      Area 1 Not CreatureId "EG_HUMAN_CATTLE"
+    }
+    Summon "EG_HUMAN_CATTLE" 1 1000
+  populationIncrease = { 0.25 4 true }
+}
+
+"EG_GORE_SHRINE"
+{
+  name = "Blessed Growth shrine"
+  viewId = { "eg_gore_shrine" }
+  blockMovement = true
+  usageTime = 5
+  usageType = BuiltinUsageId DEMON_RITUAL
+  luxury = 0.4
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"EG_GORE_ALTAR"
+{
+  name = "Fleshshaper Altar"
+  viewId = { "eg_gore_altar" }
+  usageTime = 1
+  strength = 100
+  hidesItems = true
+  canHideHere = true
+  usageType = UsageEffect "use" {
+   Chain 
+        { 
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+			Filter Not Flag "gore_08" {	
+			Filter Flag "gore_04" 
+			{
+			                 Area 1 PlaceFurniture "EG_GROWTH_FLOOR"
+						     Area 1 RemoveFurniture "EG_OFFERING"
+							 PromoteGore()
+            }}
+			Filter Flag "gore_08"
+			{
+						     Area 1 PlaceFurniture "EG_GROWTH_FLOOR"
+						     Area 1 RemoveFurniture "EG_OFFERING"
+							 PromoteGore()
+							 PromoteGore()
+            } 
+        }
+	}
+}
+
+"EG_GORE_ALTAR_WG"
+{
+  name = "World-growth Altar"
+  viewId = { "eg_gore_altar_wg" }
+  usageTime = 1
+  strength = 100
+  hidesItems = true
+  canHideHere = true
+  usageType = UsageEffect "use" {
+   Chain 
+        { 
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+			Filter Flag "gore_04" 
+			{
+			                 Area 2 PlaceFurniture "EG_GROWTH_FLOOR"
+						     Area 1 RemoveFurniture "EG_OFFERING"
+							 Filter CreatureFlag "wg_promotion_1"
+							 {
+							 AddSpellSchool "Lw'shuggornah Ahthrodog"
+							 }
+							 AddSpellSchool "Shuggog Ahthrodog"
+            }
+			Filter Flag "gore_08"
+			{
+						     Area 2 PlaceFurniture "EG_GROWTH_FLOOR"
+						     Area 1 RemoveFurniture "EG_OFFERING"
+							 AddSpellSchool "Shuggog Ahthrodog"
+							 AddSpellSchool "Lw'shuggornah Ahthrodog"
+            }
+        }
+        }
+}
+
+"EG_GROWTH_FLOOR"
+{
+  name = "floor"
+  viewId = { "eg_gore_floorgrowth" }
+  fire = 50
+  luxury = 0.2
+  layer = FLOOR
+  tickType = Effect Chain {
+     Area 2 Filter FurnitureType "MOUNTAIN" {
+	 RemoveFurniture "MOUNTAIN"
+     PlaceFurniture "MOUNTAIN1_OVERGROWN"}
+     Area 2 Filter FurnitureType "MOUNTAIN2" {
+	 RemoveFurniture "MOUNTAIN2"
+     PlaceFurniture "MOUNTAIN2_OVERGROWN"}
+	 Area 2 Filter FurnitureType "DUNGEON_WALL" {
+	 RemoveFurniture "DUNGEON_WALL"
+     PlaceFurniture "MOUNTAIN2_OVERGROWN"}
+	 Area 2 Filter FurnitureType "DUNGEON_WALL2" {
+	 RemoveFurniture "DUNGEON_WALL2"
+     PlaceFurniture "MOUNTAIN2_OVERGROWN"}
+	 Area 2 Filter FurnitureType "RUIN_WALL" {
+	 RemoveFurniture "RUIN_WALL"
+     PlaceFurniture "RUIN_WALL_OVERGROWN"}
+	 Area 2 Filter FurnitureType "MUD_WALL" {
+	 RemoveFurniture "MUD_WALL"
+     PlaceFurniture "MUD_WALL_OVERGROWN"}
+	 Area 2 Filter FurnitureType "WOOD_WALL" {
+	 RemoveFurniture "WOOD_WALL"
+     PlaceFurniture "WOOD_WALL_OVERGROWN"}
+	 Area 2 Filter FurnitureType "SNOW_WALL" {
+	 RemoveFurniture "SNOW_WALL"
+     PlaceFurniture "SNOW_WALL_OVERGROWN"}
+	 Area 2 Filter FurnitureType "ARCHER_WALL" {
+	 RemoveFurniture "ARCHER_WALL"
+     PlaceFurniture "ARCHER_WALL_OVERGROWN"}
+	 Area 2 Filter FurnitureType "CASTLE_WALL" {
+	 RemoveFurniture "CASTLE_WALL"
+     PlaceFurniture "CASTLE_WALL_OVERGROWN"}
+	 Area 2 Filter FurnitureType "MOUNTAIN_SKULLS" {
+	 RemoveFurniture "MOUNTAIN_SKULLS"
+     PlaceFurniture "MOUNTAIN_SKULLS_OVERGROWN"}
+	 Area 2 Filter FurnitureType "WALL_SKULLS" {
+	 RemoveFurniture "WALL_SKULLS"
+     PlaceFurniture "MOUNTAIN_SKULLS_OVERGROWN"}
+	 Area 2 Filter FurnitureType "GLACIER_OVERGROWN" {
+	 RemoveFurniture "GLACIER_OVERGROWN"
+     PlaceFurniture "GLACIER"}
+	 Area 2 Filter FurnitureType "RED_SANDSTONE" {
+	 RemoveFurniture "RED_SANDSTONE"
+     PlaceFurniture "RED_SANDSTONE"}
+	 Area 2 Filter FurnitureType "ADAMANTIUM_ORE" {
+	 RemoveFurniture "ADAMANTIUM_ORE"
+     PlaceFurniture "ADAMANTIUM_ORE_OVERGROWN"}
+	 Area 2 Filter FurnitureType "ADOXIUM_ORE" {
+	 RemoveFurniture "ADOXIUM_ORE"
+     PlaceFurniture "ADOXIUM_ORE_OVERGROWN"}
+	 Area 2 Filter FurnitureType "INFERNITE_ORE" {
+	 RemoveFurniture "INFERNITE_ORE"
+     PlaceFurniture "INFERNITE_ORE_OVERGROWN"}
+	 Area 2 Filter FurnitureType "IRON_ORE" {
+	 RemoveFurniture "IRON_ORE"
+     PlaceFurniture "IRON_ORE_OVERGROWN"}
+	 Area 2 Filter FurnitureType "STONE" {
+	 RemoveFurniture "STONE"
+     PlaceFurniture "STONE_OVERGROWN"}
+	 Area 2 Filter FurnitureType "GOLD_ORE" {
+	 RemoveFurniture "GOLD_ORE"
+     PlaceFurniture "GOLD_ORE_OVERGROWN"}
+  }
+}
+
+"EG_GROWTH_FLOOR_FINISH"
+{
+  name = "floor"
+  viewId = { "eg_gore_floorgrowth" }
+  fire = 50
+  luxury = 0.2
+  layer = FLOOR
+}
+"EG_GROWTH_FLOOR_GROUND"
+{
+  name = "floor"
+  viewId = { "eg_gore_floorgrowth" }
+  fire = 50
+  luxury = 0.2
+  layer = GROUND
+}
+
+"EG_GROWTH_WALL"
+{
+  name = "flesh"
+  viewId = { "eg_gore_wallgrowth" }
+  blockMovement = true
+  blockAllVision = true
+  constructMessage = FILL_UP
+  viewLayer = FLOOR_BACKGROUND
+  wall = true
+  fire = 50
+  tickType = Effect Filter Area 0 Not FurnitureType "EG_GROWTH_WALL" {
+	  Area 0 RemoveFurniture "EG_GROWTH_WALL"
+	  Area 0 PlaceFurniture  "EG_GROWTH_WALL_FIN"
+	  Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
+	  }
+  xForgetAfterBuilding = true
+  strength2 = {
+    100 BOULDER
+    15 DIG
+    100 HOSTILE_DIG
+  }
+  summonedElement = "EG_GORE_FLESHWRAITH"
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 90 38 51 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 90 38 51 255 }
+}
+
+"EG_GROWTH_WALL_FIN"
+{
+  name = "flesh"
+  viewId = { "eg_gore_wallgrowth" }
+  blockMovement = true
+  blockAllVision = true
+  constructMessage = FILL_UP
+  viewLayer = FLOOR_BACKGROUND
+  wall = true
+  fire = 50
+  xForgetAfterBuilding = true
+  strength2 = {
+    100 BOULDER
+    15 DIG
+    100 HOSTILE_DIG
+  }
+  summonedElement = "EG_GORE_FLESHWRAITH"
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 90 38 51 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 90 38 51 255 }
+}
+
+"EG_GROWTH_EYEBALL"
+{
+  name = "eyeball"
+  viewId = { "eg_gore_eye" }
+  blockMovement = true
+  fire = 50
+  canHideHere = true
+  lightEmission = 8.2
+  strength = 30
+  canBuildOutsideOfTerritory = true
+  eyeball = true
+}
+
+"EG_GROWTH_DOOR"
+{
+  name = "flesh door"
+  viewId = { "eg_gore_door_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 160
+  clickType = LOCK
+  requiredSupport = { { { E W } } { { N S } {"eg_gore_door_ns"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"EG_GROWTH_GAS_TRAP"
+{
+  name = "violate tumor"
+  viewId = { "eg_gore_violate_tumor" }
+  entryType = Trap { Area 1 Chain { EmitGas "POISON_GAS" 0.4  Acid{30}}}
+  fire = 50
+  warning = true
+  constructMessage = SET_UP
+}
+
+"EG_GROWTH_INERT_TANTACLE"
+{
+  name = "eg_gore tumor"
+  viewId = { "eg_gore_tumor" }
+  blockMovement = true
+  tickType = Trap 1 {
+    Def SummonGoreTentacle() {
+      Message HIGH "The tentacle burst ot of tumor!"
+      Summon "EG_GORE_TENTACLE" 1 20
+    } End
+    SummonGoreTentacle()
+    SummonGoreTentacle()
+    SummonGoreTentacle()
+    SummonGoreTentacle()
+  }
+  strength = 40
+  fire = 50
+  warning = true
+  constructMessage = SET_UP
+}
+
+"EG_GROWTH_PORTAL"
+{
+  name = "portal"
+  viewId = { "eg_gore_portal" }
+  strength = 40
+  usageType = BuiltinUsageId PORTAL
+  onBuilt = PORTAL
+  fire = 50
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"EG_GROWTH_TUMOR"
+{
+  name = "tumor"
+  viewId = { "eg_gore_tumor" }
+  tickType = Trap 1 {
+    Def SummonGoreTumor() {
+      Message HIGH "Tumor bursts!"
+      Summon "EG_GORE_TUMOR" {2 4} 20
+    } End
+    SummonGoreTumor()
+    SummonGoreTumor()
+    SummonGoreTumor()
+    SummonGoreTumor()
+  }
+  fire = 50
+  warning = true
+  constructMessage = SET_UP
+}
+
+"EG_OFFERING"
+{
+  name = "offering"
+  viewId = { "eg_offering" }
+  usageTime = 5
+  canHideHere = true
+  strength = 100 
+  canBuildOutsideOfTerritory = true
+}
+
+"MOUNTAIN1_OVERGROWN" inherit "MOUNTAIN"
+{
+  viewId = { "mountain1_overgrown" }
+  fire = 150
+  destroyedRemains = "MOUNTAIN"
+  burntRemains = "MOUNTAIN"
+  dissolveTo = "MOUNTAIN"
+}
+
+"MOUNTAIN2_OVERGROWN" inherit "MOUNTAIN2"
+{
+  viewId = { "mountain2_overgrown" }
+  fire = 150
+  destroyedRemains = "MOUNTAIN2"
+  burntRemains = "MOUNTAIN2"
+  dissolveTo = "MOUNTAIN2"
+}
+
+"SANDSTONE_OVERGROWN" inherit "SANDSTONE"
+{
+  viewId = { "sandstone_overgrown" }
+  fire = 150
+  destroyedRemains = "SANDSTONE"
+  burntRemains = "SANDSTONE"
+  dissolveTo = "SANDSTONE"
+}
+
+"DUNGEON_WALL_OVERGROWN" inherit "DUNGEON_WALL"
+{
+  viewId = { "mountain1_overgrown" }
+  fire = 150
+  destroyedRemains = "DUNGEON_WALL"
+  burntRemains = "DUNGEON_WALL"
+  dissolveTo = "DUNGEON_WALL"
+}
+
+"DUNGEON_WALL2_OVERGROWN" inherit "DUNGEON_WALL2"
+{
+  viewId = { "mountain2_overgrown" }
+  fire = 150
+  destroyedRemains = "DUNGEON_WALL2"
+  burntRemains = "DUNGEON_WALL2"
+  dissolveTo = "DUNGEON_WALL2"
+}
+
+"SANDSTONE_WALL_OVERGROWN" inherit "SANDSTONE_WALL"
+{
+  viewId = { "sandstone_overgrown" }
+  fire = 150
+  destroyedRemains = "SANDSTONE_WALL"
+  burntRemains = "SANDSTONE_WALL"
+  dissolveTo = "SANDSTONE_WALL"
+}
+
+"RED_SANDSTONE_OVERGROWN" inherit "RED_SANDSTONE"
+{
+  viewId = { "red_sandstone_overgrown" }
+  fire = 150
+  destroyedRemains = "RED_SANDSTONE"
+  burntRemains = "RED_SANDSTONE"
+  dissolveTo = "RED_SANDSTONE"
+}
+
+"GLACIER_OVERGROWN" inherit "GLACIER"
+{
+  viewId = { "glacier_overgrown" }
+  fire = 150
+  destroyedRemains = "GLACIER"
+  burntRemains = "GLACIER"
+  dissolveTo = "GLACIER"
+}
+
+"MOUNTAIN_SKULLS_OVERGROWN" inherit "MOUNTAIN_SKULLS"
+{
+  viewId = { "mountain_skulls_overgrown" }
+  fire = 150
+  destroyedRemains = "MOUNTAIN_SKULLS"
+  burntRemains = "MOUNTAIN_SKULLS"
+  dissolveTo = "MOUNTAIN_SKULLS"
+}
+
+"WALL_SKULLS_OVERGROWN" inherit "WALL_SKULLS"
+{
+  viewId = { "mountain_skulls_overgrown" }
+  fire = 150
+  destroyedRemains = "WALL_SKULLS"
+  burntRemains = "WALL_SKULLS"
+  dissolveTo = "WALL_SKULLS"
+}
+
+"CASTLE_WALL_OVERGROWN" inherit "CASTLE_WALL"
+{
+  viewId = { "eg_castle_wall" }
+  fire = 150
+  destroyedRemains = "CASTLE_WALL"
+  burntRemains = "CASTLE_WALL"
+  dissolveTo = "CASTLE_WALL"
+}
+
+"ARCHER_WALL_OVERGROWN" inherit "ARCHER_WALL"
+{
+  viewId = { "eg_archer_wall" }
+  fire = 150
+  destroyedRemains = "ARCHER_WALL"
+  burntRemains = "ARCHER_WALL"
+  dissolveTo = "ARCHER_WALL"
+}
+
+"SNOW_WALL_OVERGROWN" inherit "SNOW_WALL"
+{
+  viewId = { "eg_snow_wall" }
+  fire = 150
+  destroyedRemains = "SNOW_WALL"
+  burntRemains = "SNOW_WALL"
+  dissolveTo = "SNOW_WALL"
+}
+
+"WOOD_WALL_OVERGROWN" inherit "WOOD_WALL"
+{
+  viewId = { "eg_wood_wall" }
+  fire = 150
+  destroyedRemains = "WOOD_WALL"
+  burntRemains = "WOOD_WALL"
+  dissolveTo = "WOOD_WALL"
+}
+
+"MUD_WALL_OVERGROWN" inherit "MUD_WALL"
+{
+  viewId = { "eg_mud_wall" }
+  fire = 150
+  destroyedRemains = "MUD_WALL"
+  burntRemains = "MUD_WALL"
+  dissolveTo = "MUD_WALL"
+}
+
+"RUIN_WALL_OVERGROWN" inherit "RUIN_WALL"
+{
+  viewId = { "eg_ruin_wall" }
+  fire = 150
+  destroyedRemains = "RUIN_WALL"
+  burntRemains = "RUIN_WALL"
+  dissolveTo = "RUIN_WALL"
+}
+
+"ADAMANTIUM_ORE_OVERGROWN" inherit "ADAMANTIUM_ORE"
+{
+  viewId = { "adamantium_ore_overgrown" }
+  fire = 150
+  destroyedRemains = "ADAMANTIUM_ORE"
+  burntRemains = "ADAMANTIUM_ORE"
+  dissolveTo = "ADAMANTIUM_ORE"
+}
+
+"ADOXIUM_ORE_OVERGROWN" inherit "ADOXIUM_ORE"
+{
+  viewId = { "adoxium_ore_overgrown" }
+  fire = 150
+  destroyedRemains = "ADOXIUM_ORE"
+  burntRemains = "ADOXIUM_ORE"
+  dissolveTo = "ADOXIUM_ORE"
+}
+
+"INFERNITE_ORE_OVERGROWN" inherit "INFERNITE_ORE"
+{
+  viewId = { "infernite_ore_overgrown" }
+  onBuilt = SET_ON_FIRE
+  fire = 150
+  destroyedRemains = "INFERNITE_ORE"
+  burntRemains = "INFERNITE_ORE"
+  dissolveTo = "INFERNITE_ORE"
+}
+
+"IRON_ORE_OVERGROWN" inherit "IRON_ORE"
+{
+  viewId = { "iron_ore_overgrown" }
+  fire = 150
+  destroyedRemains = "IRON_ORE"
+  burntRemains = "IRON_ORE"
+  dissolveTo = "IRON_ORE"
+}
+
+"STONE_OVERGROWN" inherit "STONE"
+{
+  viewId = { "stone_overgrown" }
+  fire = 150
+  destroyedRemains = "STONE"
+  burntRemains = "STONE"
+  dissolveTo = "STONE"
+}
+
+"GOLD_ORE_OVERGROWN" inherit "GOLD_ORE"
+{
+  viewId = { "gold_ore_overgrown" }
+  fire = 150
+  destroyedRemains = "GOLD_ORE"
+  burntRemains = "GOLD_ORE"
+  dissolveTo = "GOLD_ORE"
+}

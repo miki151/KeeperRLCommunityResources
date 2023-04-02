@@ -1,0 +1,421 @@
+Def resetgore()
+SetFlag "gore_01" false
+SetFlag "gore_02" false
+SetFlag "gore_03" false
+SetFlag "gore_04" false
+SetFlag "gore_05" false
+SetFlag "gore_06" false
+SetFlag "gore_07" false
+SetFlag "gore_08" false
+End
+
+Def countgore()
+Filter Flag "gore_07" {
+    Filter Not Flag "gore_08" {
+           SetFlag "gore_08" true
+        }
+    }
+Filter Flag "gore_06" {
+    Filter Not Flag "gore_07" {
+           SetFlag "gore_07" true
+        }
+    }
+Filter Flag "gore_05" {
+    Filter Not Flag "gore_06" {
+           SetFlag "gore_06" true
+        }
+    }
+Filter Flag "gore_04" {
+    Filter Not Flag "gore_05" {
+           SetFlag "gore_05" true
+        }
+    }
+Filter Flag "gore_03" {
+    Filter Not Flag "gore_04" {
+           SetFlag "gore_04" true
+        }
+    }
+Filter Flag "gore_02" {
+    Filter Not Flag "gore_03" {
+           SetFlag "gore_03" true
+        }
+    }
+Filter Flag "gore_01" {
+    Filter Not Flag "gore_02" {
+           SetFlag "gore_02" true
+        }
+    }
+Filter Not Flag "gore_01" {
+       SetFlag "gore_01" true
+    }
+	
+End
+"tentacle lash"
+{
+  symbol = "↣"
+  effect = Name "lash out" Description "Lash out to distant enemies"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage {"are hit" "is hit"}
+          Damage DAMAGE SHOOT
+        },
+        CreatureMessage {"are spared" "is spared"}
+      )
+  range = 3
+  cooldown = 0
+  maxHits = 1
+  message = "lashes out" "lashes out"
+  type = ABILITY
+}
+
+"summon gore familliar"
+{
+  symbol = "🐝"
+  effect = Name "summon familliar" Description "Beseech your patron for companion." Chain 
+        { 
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+            Filter Not Flag "gore_04" {
+               Summon "EG_GORE_FAMILLIAR" {1} 30
+            }
+			 Filter Not Flag "gore_08" {	
+			Filter Flag "gore_04" {
+               Area 1 RemoveFurniture "EG_OFFERING"
+			   Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
+               Summon "EG_GORE_FAMILLIAR" {1} none
+            }} 	
+			Filter Flag "gore_08" {
+                Area 1 RemoveFurniture "EG_OFFERING"
+				Area 2 PlaceFurniture  "EG_GROWTH_FLOOR"
+                Summon "EG_GORE_FAMILLIAR" {2} none
+            } 
+        }
+  cooldown = 40
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"summon gorespawn"
+{
+  symbol = "🐝"
+  cooldown = 40
+  effect = Name "eldrich summoning" Description "Beseech your patron for help." Chain 
+        { 
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }			
+			Filter Not Flag "gore_04" {
+				    ChooseRandom {
+                       Summon "EG_GORE_REBORN" {1 2} 30
+		               Summon "EG_GORE_SPAWN" {1 2} 30
+					   Summon "EG_GORE_TREE" {1 2} 30
+					   Summon "EG_GORE_CRAWLER" {4 6} 30
+                                 }
+
+            }
+			Filter Not Flag "gore_08" {			
+            Filter Flag "gore_04" {
+                Area 1 RemoveFurniture "EG_OFFERING"
+				Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
+				    ChooseRandom {
+					   Summon "EG_GORE_TREE" {1 2} none
+                       Summon "EG_GORE_REBORN" {1 2} none
+		               Summon "EG_GORE_SPAWN" {1 2} none
+					   Summon "EG_GORE_CRAWLER" {2 4} none
+                                 }
+				
+            }}
+			Filter Flag "gore_08" {
+                Area 1 RemoveFurniture "EG_OFFERING"
+				Area 2 PlaceFurniture  "EG_GROWTH_FLOOR"
+				    ChooseRandom {
+                       Summon "EG_GORE_REBORN" {2 3} none
+		               Summon "EG_GORE_SPAWN" {2 3} none
+					   Summon "EG_GORE_TREE" {2 3} none
+					   Summon "EG_GORE_CRAWLER" {4 6} none
+                                 }
+				
+            }		
+        }
+}
+
+"Mutation"
+{
+  symbol = "🐝"
+  cooldown = 500
+  effect = Name "Mutation" Description "Flesh rarely stays still." Chain{
+					IncreaseAttr "BLESSED_FLESH" 1
+					ChooseRandom {
+                        IncreaseAttr SPELL_DAMAGE 1
+						IncreaseAttr DAMAGE 1
+						IncreaseAttr DEFENSE 1					
+						Permanent SWIMMING_SKILL
+						Permanent SPEED 
+						Permanent MAGIC_RESISTANCE
+						Permanent FIRE_RESISTANT
+						Permanent AMBUSH_SKILL	
+                        Permanent BLIND 	
+                        IncreaseAttr DIGGING 16	
+                        Permanent BAD_BREATH	
+						AddBodyPart ARM 1 none
+						AddBodyPart LEG 1 none
+						AddBodyPart HEAD 1 none
+						AddBodyPart WING 1 none
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+						AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						IncreaseAttr MULTI_WEAPON 8
+						} }
+} 
+						
+ "gore form"
+{
+  symbol = "🐝"
+  cooldown = 200
+  effect = Name "strenght of flesh" Description "open yourself to your patron in order to get great power." Chain 
+        { 
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+			 Filter Not Flag "gore_04" {
+                Polymorph "EG_GORE_BEAST" 100
+            }
+            Filter Flag "gore_04" {
+			    Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
+                Area 1 RemoveFurniture "EG_OFFERING"
+                Polymorph "EG_GORE_BEAST" none
+				
+            }			
+			Filter Flag "gore_08" {
+			    Area 2 PlaceFurniture  "EG_GROWTH_FLOOR"
+                Area 1 RemoveFurniture "EG_OFFERING"
+                Polymorph "EG_GORE_BEAST_ADV" none								 
+            }  				
+        }
+}
+
+
+"Shred tumors"
+{
+  symbol = "🐝"
+  effect = Name "shred tumors" Description "shred useless tomors that sprouted on your body." Chain 
+        { 
+                Summon "EG_GORE_TUMOR" {2 4} 30		
+        }
+  cooldown = 100
+}
+
+"Forced Regeneration" 
+{
+  symbol = "❤️"
+  effect =  Name "Forced Regeneration"  Description "There is no time for those wounds, get back together."  Chain {
+                                 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 10  
+								 RemoveLasting BLIND }
+  cooldown = {20 60}
+    sound = SPELL_HEALING
+}
+
+"Forced Regeneration_caster" 
+{
+  symbol = "❤️" 
+  effect = Name "Forced Regeneration"  Description "All flesh will lisen, no matter how stubborn it is."   Chain {
+                               Heal { FLESH }  
+							   RemoveLasting POISON
+							   RemoveLasting PLAGUE
+							   RegrowBodyPart 10  
+							   RemoveLasting BLIND
+							   }
+  range = 1
+  targetSelf = true
+  cooldown = {10 30}
+  sound = SPELL_HEALING
+}
+
+"Forced Regeneration_caster_expert" 
+{
+  upgrade = "Forced Regeneration_caster"
+  symbol = "❤️" 
+  effect = Name "Forced Regeneration"  Description "All flesh will lisen, no matter how stubborn it is."   Chain {
+                               Heal { FLESH }  
+							   RemoveLasting POISON 
+							   RegrowBodyPart 10  
+							   RemoveLasting BLIND
+							   }
+  range = 4
+  targetSelf = true
+  cooldown = {10 30}
+  sound = SPELL_HEALING
+}
+
+"Forced Regeneration_caster_mass" 
+{
+  symbol = "💕"
+  effect = Name "Mass Forced Regeneration"  Description "So eager the flesh had become" Area 2 Filter Not Enemy { Chain {
+							   Heal { FLESH }
+ 							   RemoveLasting POISON 
+							   RegrowBodyPart 10  
+							   RemoveLasting BLIND
+							   }
+						}	   
+  cooldown = 50
+  sound = SPELL_HEALING
+}
+
+"Seed Flesh" 
+{
+  symbol = "🌱" 
+  effect = Name "Seed Flesh"  Description "Its body shall spread trouh the land."   Chain {
+							   Area 1 PlaceFurniture "EG_GROWTH_FLOOR"
+							   }
+  targetSelf = true
+  cooldown = 200
+  sound = SPELL_HEALING
+}
+
+"Harden Flesh" 
+{
+  symbol = "🌱" 
+  effect = Name "Harden Flesh"  Description "So we shall hide in its embrace."   Chain {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_WALL_FIN"
+							                                              }
+							   }
+  targetSelf = true
+  cooldown = 200
+  sound = SPELL_HEALING
+}
+
+"Grant us eyes" 
+{
+  symbol = "🌱" 
+  effect = Name "Grant us eyes"   Description "We can sleep soundly knowing it watches over us."   Chain {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_EYEBALL"
+							                                              }
+							   }
+  targetSelf = true
+  cooldown = 600
+  sound = SPELL_HEALING
+}
+
+"Hands to protect us" 
+{
+  symbol = "🌱" 
+  effect = Name "Hands to protect us"  Description "Its hand shall shield us from world."   Chain {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_INERT_TANTACLE"
+							                                              }
+							   }
+  targetSelf = true
+  cooldown = 800
+  sound = SPELL_HEALING
+}
+
+"Rampart Growth" 
+{
+  symbol = "🌱" 
+  effect = Name "Rampart Growth"  Description "Even its weakness is its strenght."   Chain {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_TUMOR"
+							                                              }
+							   }
+  targetSelf = true
+  cooldown = 800
+  sound = SPELL_HEALING
+}
+
+"Acidic Buildup" 
+{
+  symbol = "🌱" 
+  effect = Name "Acidic Buildup"  Description "Its waste is our protection."   Chain {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_GAS_TRAP"
+							                                              }
+							   }
+  targetSelf = true
+  cooldown = 800
+  sound = SPELL_HEALING
+}
+
+"Sphincter" 
+{
+  symbol = "🌱" 
+  effect = Name "Sphincter"  Description "It wont let unbelievers in."   Chain {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_DOOR"
+							                                              }
+							   }
+  targetSelf = true
+  cooldown = 400
+  sound = SPELL_HEALING
+}
+
+"Veins Beyond" 
+{
+  symbol = "🌱" 
+  effect = Name "Veins Beyond"  Description "Its veins shall let us defend if better."   Chain {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_PORTAL"
+							                                              }
+							   }
+  targetSelf = true
+  cooldown = 2000
+  sound = SPELL_HEALING
+}
+
+"Forced Mutation"
+{
+  symbol = "🐝"
+  cooldown = 750
+  effect = Name "Forced Mutation" Description "Trouh my guidance you shall ascend." Chain{
+					IncreaseAttr "BLESSED_FLESH" 1
+					ChooseRandom {
+                        IncreaseAttr SPELL_DAMAGE 1
+						IncreaseAttr DAMAGE 1
+						IncreaseAttr DEFENSE 1					
+						Permanent SWIMMING_SKILL
+						Permanent SPEED 
+						Permanent MAGIC_RESISTANCE
+						Permanent FIRE_RESISTANT
+						Permanent AMBUSH_SKILL	
+                        Permanent BLIND 	
+                        IncreaseAttr DIGGING 16	
+                        Permanent BAD_BREATH	
+						AddBodyPart ARM 1 none
+						AddBodyPart LEG 1 none
+						AddBodyPart HEAD 1 none
+						AddBodyPart WING 1 none
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+						AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						IncreaseAttr MULTI_WEAPON 8	} }
+} 	
+
+"eg_release_limits"
+{
+  symbol = "🛡"
+  effect = Name "release limits" Lasting 40 EG_BEYOND_LIMITS
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"eg_horryfic_wail"
+{
+  symbol = "😱"
+  effect = Name "horryfying wail" Area 2 Chance 0.5 Lasting PANIC
+  cooldown = {25 51}
+  sound = SPELL_STR_BONUS
+}
+
+"eg_final_sacrifice"
+{
+  symbol = "🛡"
+  effect = Name "final sacrifice" AI And{} 1 -1 { Permanent EG_FINAL_SACRIFICE }
+  cooldown = {99999}
+  sound = SPELL_DEX_BONUS
+}

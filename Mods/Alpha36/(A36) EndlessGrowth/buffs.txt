@@ -1,0 +1,60 @@
+"CANCER" {
+  name = "cancer"
+  adjective = "cancerous"
+  description = "cancer"
+  addedMessage = "start" "starts" "rampart growth"
+  removedMessage = YOUR "no longer have cancer"
+  tickEffect = Filter BodyMaterial FLESH {
+    CreatureMessage {"are suffering from cancer" "is suffering from cancer" }
+    Bleed 0.1 "growing"
+  }
+  consideredBad = true
+  price = 2
+  fx = DEBUFF_RED
+  canWishFor = false
+  color = ColorId RED
+}
+
+"EG_BEYOND_LIMITS" {
+  name = "released limits"
+  adjective = "released limits"
+  description = "Released Limiters"
+  addedMessage = ARE "have released limits"
+  removedMessage = ARE "no longer released limits"
+  startEffect = Chain {
+						IncreaseAttr DAMAGE 15
+						IncreaseAttr DEFENSE 15
+						IncreaseAttr SPELL_SPEED 15
+					  }
+  endEffect = Chain {
+						IncreaseAttr DAMAGE -15
+						IncreaseAttr DEFENSE -15
+						IncreaseAttr SPELL_SPEED -15
+					  }
+  tickEffect = Bleed 0.03 "exhaustion"
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId RED
+}
+
+"EG_FINAL_SACRIFICE" {
+  name = "released limits"
+  adjective = "released limits"
+  description = "Released Limiters"
+  addedMessage = ARE "have released limits"
+  removedMessage = ARE "no longer released limits"
+  startEffect = Chain {
+						IncreaseAttr DAMAGE 30
+						IncreaseAttr DEFENSE 30
+						IncreaseAttr SPELL_SPEED 30
+					  }
+  endEffect = Chain {
+						IncreaseAttr DAMAGE -30
+						IncreaseAttr DEFENSE -30
+						IncreaseAttr SPELL_SPEED -30
+					  }
+  tickEffect = Bleed 0.1 "exhaustion"
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId RED
+}
