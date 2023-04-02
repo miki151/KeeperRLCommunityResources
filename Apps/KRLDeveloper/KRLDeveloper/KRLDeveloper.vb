@@ -174,4 +174,8 @@ Public Class KRLDeveloper
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         frmRandomMapViewer.ShowDialog()
     End Sub
+
+    Private Sub btnBatchProcess_Click(sender As Object, e As EventArgs) Handles btnBatchProcess.Click
+        frmSpriteBatch.ShowDialog()
+    End Sub
 End Class

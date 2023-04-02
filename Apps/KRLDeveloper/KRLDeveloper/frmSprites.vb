@@ -242,7 +242,7 @@ Public Class frmSprites
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click, btnLast.Click
         Try
             If MsgBox("Replace White with transparent?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                 Dim clone As Bitmap = bmp.Clone

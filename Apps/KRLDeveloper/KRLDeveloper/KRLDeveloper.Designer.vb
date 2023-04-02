@@ -34,12 +34,13 @@ Partial Class KRLDeveloper
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
+        Me.btnBatchProcess = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
         '
         Me.Button1.Location = New System.Drawing.Point(373, 137)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(2)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(87, 26)
         Me.Button1.TabIndex = 0
@@ -49,7 +50,7 @@ Partial Class KRLDeveloper
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(97, 91)
-        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(595, 20)
         Me.TextBox1.TabIndex = 1
@@ -58,7 +59,7 @@ Partial Class KRLDeveloper
         'TextBox2
         '
         Me.TextBox2.Location = New System.Drawing.Point(97, 114)
-        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.TextBox2.Name = "TextBox2"
         Me.TextBox2.Size = New System.Drawing.Size(595, 20)
         Me.TextBox2.TabIndex = 2
@@ -87,7 +88,7 @@ Partial Class KRLDeveloper
         'Button2
         '
         Me.Button2.Location = New System.Drawing.Point(274, 137)
-        Me.Button2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(2)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(94, 26)
         Me.Button2.TabIndex = 5
@@ -97,7 +98,7 @@ Partial Class KRLDeveloper
         'Button3
         '
         Me.Button3.Location = New System.Drawing.Point(182, 137)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(2)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(88, 27)
         Me.Button3.TabIndex = 6
@@ -107,7 +108,7 @@ Partial Class KRLDeveloper
         'Button4
         '
         Me.Button4.Location = New System.Drawing.Point(97, 136)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(2)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(80, 27)
         Me.Button4.TabIndex = 7
@@ -128,7 +129,7 @@ Partial Class KRLDeveloper
         'Button5
         '
         Me.Button5.Location = New System.Drawing.Point(603, 56)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(2)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(89, 19)
         Me.Button5.TabIndex = 9
@@ -138,7 +139,7 @@ Partial Class KRLDeveloper
         'Button6
         '
         Me.Button6.Location = New System.Drawing.Point(464, 137)
-        Me.Button6.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button6.Margin = New System.Windows.Forms.Padding(2)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(90, 26)
         Me.Button6.TabIndex = 10
@@ -155,11 +156,21 @@ Partial Class KRLDeveloper
         Me.Button7.Text = "Random Map Viewer"
         Me.Button7.UseVisualStyleBackColor = True
         '
+        'btnBatchProcess
+        '
+        Me.btnBatchProcess.Location = New System.Drawing.Point(97, 168)
+        Me.btnBatchProcess.Name = "btnBatchProcess"
+        Me.btnBatchProcess.Size = New System.Drawing.Size(80, 23)
+        Me.btnBatchProcess.TabIndex = 12
+        Me.btnBatchProcess.Text = "Batch"
+        Me.btnBatchProcess.UseVisualStyleBackColor = True
+        '
         'KRLDeveloper
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(740, 258)
+        Me.Controls.Add(Me.btnBatchProcess)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
@@ -172,7 +183,7 @@ Partial Class KRLDeveloper
         Me.Controls.Add(Me.TextBox2)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.Button1)
-        Me.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Margin = New System.Windows.Forms.Padding(2)
         Me.Name = "KRLDeveloper"
         Me.Text = "Form1"
         Me.ResumeLayout(False)
@@ -192,4 +203,5 @@ Partial Class KRLDeveloper
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
+    Friend WithEvents btnBatchProcess As Button
 End Class
