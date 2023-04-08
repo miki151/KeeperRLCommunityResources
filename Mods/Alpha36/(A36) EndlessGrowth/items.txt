@@ -36,7 +36,7 @@
     }
     maxUpgrades = 1
     storageIds = {"weapons" "equipment"}
-    equipmentGroup = "basic equipment"
+    equipmentGroup = "fleshy equipment"
   }
   
 "eg_gore_staff"
@@ -69,5 +69,242 @@
 	equipedAbility = { "Forced Regeneration_caster_mass" }
 	equipedCompanion = 5 true BLESSED_FLESH 0.01 { "EG_GORE_TUMOR" }
     storageIds = {"weapons" "equipment"}
-    equipmentGroup = "basic equipment"
+    equipmentGroup = "fleshy equipment"
+  }
+  
+"eg_minor_gore_bond"
+  {
+    viewId = { "eg_gore_ring" }
+    name = "minor bond of flesh"
+    shortName = "bond"
+    equipedCompanion = 1 true BLESSED_FLESH 0.2 {"EG_GORE_TUMOR"}
+    weight = 0.05
+    equipmentSlot = RINGS
+    price = 1
+    storageIds = {"jewellery" "equipment"}
+    equipmentGroup = "jewellery"
+  }
+    
+"eg_lesser_gore_bond"
+  {
+    viewId = { "eg_gore_ring" }
+    name = "lesser bond of flesh"
+    shortName = "bond"
+    equipedCompanion = 1 true BLESSED_FLESH 0.02 {"EG_GORE_FAMILLIAR" "EG_GORE_CRAWLER"}
+    weight = 0.05
+    equipmentSlot = RINGS
+    price = 1
+    storageIds = {"jewellery" "equipment"}
+    equipmentGroup = "jewellery"
+  }
+  
+"eg_gore_bond"
+  {
+    viewId = { "eg_gore_ring" }
+    name = "bond of flesh"
+    shortName = "bond"
+    equipedCompanion = 1 true BLESSED_FLESH 0.02 {"EG_GORE_REBORN" "EG_GORE_SPAWN" "EG_GORE_TREE" }
+    weight = 0.05
+    equipmentSlot = RINGS
+    price = 1
+    storageIds = {"jewellery" "equipment"}
+    equipmentGroup = "jewellery"
+  }
+  
+"eg_greater_gore_bond"
+  {
+    viewId = { "eg_gore_ring" }
+    name = "greater bond of flesh"
+    shortName = "bond"
+    equipedCompanion = 1 true BLESSED_FLESH 0.001 {"EG_GORE_FLESHWRAITH" "EG_GORE_BEAST_ADV"}
+    weight = 0.05
+    equipmentSlot = RINGS
+    price = 1
+    storageIds = {"jewellery" "equipment"}
+    equipmentGroup = "jewellery"
+  }
+ 
+"eg_blessed_mutagen"
+  {
+    viewId = { "potion1" Rgb 60 0 0 255 }
+    shortName = "blessed blood"
+    name = "flask of blessed blood"
+    plural = "flasks of blessed blood"
+    blindName = "blood"
+    applyVerb = "drink" "drinks"
+    fragile = true
+    weight = 0.3
+    effect = {Chain{
+					IncreaseAttr "BLESSED_FLESH" 1
+					ChooseRandom {
+                        IncreaseAttr SPELL_DAMAGE 1
+						IncreaseAttr DAMAGE 1
+						IncreaseAttr DEFENSE 1					
+						Permanent SWIMMING_SKILL
+						Permanent SPEED 
+						Permanent MAGIC_RESISTANCE
+						Permanent FIRE_RESISTANT
+						Permanent AMBUSH_SKILL	
+                        Permanent BLIND 	
+                        IncreaseAttr DIGGING 16	
+                        Permanent BAD_BREATH	
+						AddBodyPart ARM 1 none
+						AddBodyPart LEG 1 none
+						AddBodyPart HEAD 1 none
+						AddBodyPart WING 1 none
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+						AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						IncreaseAttr MULTI_WEAPON 8
+						}}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"potions" "equipment"}
+  }
+ 
+"eg_blessed_healing_potion"
+  {
+    viewId = { "potion1" Rgb 255 30 30 255 }
+    shortName = "blessed healing potion"
+    name = "flask of blessed healing potion"
+    plural = "flasks of blessed healing potion"
+    blindName = "blood"
+    applyVerb = "drink" "drinks"
+    fragile = true
+    weight = 0.3
+    effect = {Chain {
+                                 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 10  
+								 RemoveLasting BLIND }}
+    price = 10
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"potions" "equipment"}
+  }
+  
+"eg_gore_gloves"
+  {
+    viewId = { "eg_gore_gloves" }
+    shortName = "gloves"
+    name = "pair of fleshy gloves"
+    plural = "pairs of fleshy gloves"
+    itemClass = ARMOR
+    equipmentSlot = GLOVES
+    weight = 0.3
+    price = 2
+    modifiers = {
+      DEFENSE 2
+    }
+    maxUpgrades = 2
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "fleshy equipment"
+  }
+  
+"eg_gore_armor"
+  {
+    viewId = { "eg_gore_armor" }
+    shortName = "armor"
+    name = "fleshy armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 7
+    price = 4
+    modifiers = {
+      DEFENSE 5
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 3
+    }
+    maxUpgrades = 3
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "fleshy equipment"
+  }
+  
+"eg_gore_helm"
+  {
+    viewId = { "eg_gore_helm" }
+    shortName = "helm"
+    name = "fleshy helm"
+    itemClass = ARMOR
+    equipmentSlot = HELMET
+    weight = 1.5
+    price = 1
+    modifiers = {
+      DEFENSE 2
+    }
+    genPrefixes = {
+      1 LastingEffect TELEPATHY
+      1 LastingEffect SLEEP_RESISTANT
+      2 ItemAttrBonus DEFENSE 3
+    }
+    maxUpgrades = 2
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "fleshy equipment"
+  }
+  
+"eg_gore_boots"
+  {
+    viewId = { "eg_gore_boots" }
+    shortName = "boots"
+    name = "pair of fleshy boots"
+    plural = "pairs of fleshy boots"
+    itemClass = ARMOR
+    equipmentSlot = BOOTS
+    weight = 2
+    price = 2
+    modifiers = {
+      DEFENSE 2
+    }
+    genPrefixes = {
+      1 LastingEffect FLYING
+      1 LastingEffect SPEED
+      2 ItemAttrBonus DEFENSE 3
+    }
+    maxUpgrades = 2
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "fleshy equipment"
+  }
+  
+"eg_gore_shield"
+  {
+    viewId = { "eg_gore_shield" }
+    shortName = "shield"
+    name = "fleshy shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 2
+    price = 1
+    modifiers = {
+      PARRY 2
+      DEFENSE 2
+    }
+    maxUpgrades = 2
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "fleshy equipment"
+  }
+  
+"eg_gore_bow"
+  {
+    viewId = { "eg_gore_bow" }
+    name = "fleshy bow"
+    itemClass = RANGED_WEAPON
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"shoot arrow"}
+    weaponInfo = {
+      twoHanded = true
+    }
+    weight = 1
+    modifiers = {
+      RANGED_DAMAGE 10
+    }
+    price = 12
+    maxUpgrades = 2
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "fleshy equipment"
   }

@@ -314,6 +314,42 @@
   }
 } 
  
+"EG_MINOR_CULT_VILLAGE"
+{
+  biomes = { "Cult_Forest" }
+  settlement = {
+    type =  RandomLayout { "village" { 20 15 } "village"}
+    tribe = MONSTER
+    inhabitants = {
+      leader = {
+        id = { "EG_GORE_VESSEL" }
+      }
+	  civilians = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST"
+          1 "EG_CULTIST_F"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+	  steeds = {
+        all = { 1 "HORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "cultists"
+    furniture = "roomFurniture"
+    outsideFeatures = "villageOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 16
+  }
+} 
+ 
 "EG_GRAND_VILLAGE_GROWTH"
 {
   settlement = {
@@ -460,5 +496,23 @@
     minPopulation = 0
     minTeamSize = 1
     attackBehaviour = KillLeader
+  }
+}
+
+"GORE KRAKEN"
+{
+  settlement = {
+    type = Builtin MOUNTAIN_LAKE "DUNGEON"
+	inhabitants = {
+      leader = { { "EG_GORE_KRAKEN" } }
+    }
+    tribe = MONSTER
+    race = "kraken"
+    furniture = "eg_kraken"
+    dontBuildRoad = true
+    closeToPlayer = true
+  }
+  config = {
+    conquerCondition = NEVER
   }
 }

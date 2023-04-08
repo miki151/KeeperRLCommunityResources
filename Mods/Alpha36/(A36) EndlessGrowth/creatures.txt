@@ -18,6 +18,7 @@
       DEFENSE 12
       SPELL_DAMAGE 20
 	  LABORATORY 20
+	  BLESSED_FLESH 4
 	  
     }
     maxLevelIncrease = {
@@ -224,6 +225,41 @@
     gender = IT
   }
   
+"EG_GORE_BEAST_ADV"
+  {
+    viewId = { "eg_gore_beast" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+      BLESSED_FLESH 10
+    }
+    body = {
+      type = NonHumanoid LARGE
+	    bodyParts = {
+        ARM 3
+        TORSO 1
+		HEAD 1
+      }
+	  	  intrinsicAttacks = {
+	          ARM  {{{ Intrinsic { "claws_attack" } "claws" 14 { attackType = HIT attackMsg = CLAW } }}}
+	          HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 16 { attackType = BITE attackMsg = BITE} }}}
+			                 }
+    }
+	spells = { "Mutation" }
+    permanentEffects = {
+	  CONSUMPTION_SKILL 1
+      RANGED_RESISTANCE 1
+      NIGHT_VISION 1
+	  SLOWED 1
+	  SWARMER 1
+    }
+	companions = {2 true BLESSED_FLESH 0.01 { "EG_GORE_SPAWN" }}
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+  
   "EG_GORE_TREE"
   {
     viewId = { "eg_gore_tree_1" }
@@ -271,43 +307,7 @@
     }
 	spellSchools = { "Ahthrodog" }
   }  
-  
-"EG_GORE_BEAST_ADV"
-  {
-    viewId = { "eg_gore_beast" }
-    attr = {
-      DAMAGE 30
-      DEFENSE 20
-      BLESSED_FLESH 10
-    }
-    body = {
-      type = NonHumanoid LARGE
-	    bodyParts = {
-        ARM 3
-        TORSO 1
-		HEAD 1
-      }
-	  	  intrinsicAttacks = {
-	          ARM  {{{ Intrinsic { "claws_attack" } "claws" 14 { attackType = HIT attackMsg = CLAW } }}}
-	          HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 16 { attackType = BITE attackMsg = BITE} }}}
-			                 }
-    }
-	spells = { "Mutation" }
-    permanentEffects = {
-	  CONSUMPTION_SKILL 1
-      RANGED_RESISTANCE 1
-      NIGHT_VISION 1
-	  SLOWED 1
-	  SWARMER 1
-    }
-	companions = {2 true BLESSED_FLESH 0.01 { "EG_GORE_SPAWN" }}
-    name = {
-      name = "eldrich spawn"
-    }
-    gender = IT
-  }
-  
-  
+    
 "EG_GORE_FAMILLIAR"
   {
     viewId = { "eg_gore_familliar_1" }
@@ -410,7 +410,7 @@
         TORSO {{{ Intrinsic { "touch_attack" } "touch" 5 {
             attackType = HIT
             attackMsg = TOUCH
-            victimEffect = {1 Lasting 50 BLEEDING }
+            victimEffect = {1 Lasting 5 BLEEDING }
             attackerEffect = {Suicide DIE} } }}}
       }
     }
@@ -441,7 +441,7 @@
     }
     attr = {
       DAMAGE 30
-      DEFENSE 15
+      DEFENSE 20
 	  BLESSED_FLESH	8
 	  MULTI_WEAPON 40
     }
@@ -449,12 +449,45 @@
       FLYING 1
       TELEPATHY 1
     }
+    spells = { "blink" }
     name = {
-      name = "flesh wraith"
+      name = "eldrich spawn"
     }
     gender = IT
   }
-
+ 
+"EG_GORE_FLESHWRAITH_ADV"
+  {
+    viewId = { "eg_fleshwraith" }
+    body = {
+      type = NonHumanoid HUGE
+      addBodyPart = {
+        TORSO 1
+		HEAD 1
+        ARM 7
+      }
+      intrinsicAttacks = {
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 12 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+      }
+      deathSound = none
+    }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+	  BLESSED_FLESH	8
+	  MULTI_WEAPON 40
+    }
+    permanentEffects = {
+      FLYING 1
+      TELEPATHY 1
+    }
+    spells = { "blink" "teleport" }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+  
 "EG_GORE_TENTACLE"
   {
     viewId = { "eg_gore_tentacle" }
@@ -485,7 +518,7 @@
 	  NO_FRIENDLY_FIRE 1
     }
     name = {
-      name = "Fleshy Tentacle"
+      name = "eldrich spawn"
       fullTitle = true
     }
 	spells = { "tentacle lash" }
@@ -522,11 +555,47 @@
 	      TELEPATHY 1
     }
     name = {
-      name = "torn tentacle"
+      name = "eldrich spawn"
     }
 	deathEffect = Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
   }
-
+  
+"GORE_ABOMINATION" 
+  {
+    viewId = { "eg_gore_cleanser" }
+    attr = {
+      DAMAGE 60
+      DEFENSE 40 
+    }
+    body = {
+      type = FourLegged HUGE
+      weight = 500
+      material = FLESH
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+   
+"GORE_ABOMINATION_PLAYER" 
+  {
+    viewId = { "eg_gore_cleanser" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10 
+    }
+    body = {
+      type = FourLegged HUGE
+      weight = 500
+      material = FLESH
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+   
  # Victims  
 "EG_HUMAN_CATTLE"
   {
@@ -987,5 +1056,161 @@
 		  RIDER 1
     }
 	spellSchools = append { "Ahthrodog" }
-  }  
- 
+  } 
+  
+"EG_DOG_UPGRADE"
+  {
+    viewId = { "dog" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 10
+      BLESSED_FLESH 3	  
+    }
+    body = {
+      type = FourLegged MEDIUM
+	  addBodyPart = {ARM 1}
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 4 { attackType = BITE attackMsg = BITE } }}}
+		ARM  {{{ Intrinsic { "claws_attack" } "claws" 10 {
+											 attackType = HIT
+											 attackMsg = CLAW
+											 victimEffect = {1 Lasting 50 POISON }}}}}
+      }
+      weight = 25
+    }
+    aiType = RANGED
+    name = {
+      name = "dog"
+      groupName = "pack"
+      firstNameGen = "DOG"
+    }
+	spellSchools = { "Ahthrodog" }
+    petReaction = "\"WOOF!\""
+  }
+
+"EG_WOLF_UPGRADE"
+  {
+    viewId = { "eg_dog_gore" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 14 
+      BLESSED_FLESH 3	
+    }
+    body = {
+      type = FourLegged MEDIUM
+      weight = 35
+	  addBodyPart = {ARM 1}
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+		ARM  {{{ Intrinsic { "claws_attack" } "claws" 10 {
+											 attackType = HIT
+											 attackMsg = CLAW
+											 victimEffect = {1 Lasting 50 POISON }}}}}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      STEED 1
+    }
+	spellSchools = { "Ahthrodog" }
+    name = {
+      name = "wolf"
+      pluralName = "wolves"
+      firstNameGen = "DOG"
+      groupName = "pack"
+    }
+  }
+  
+ "EG_HORSE_GORE"
+  {
+    viewId = { "eg_horse_gore" }
+    attr = {
+      DAMAGE 19
+      DEFENSE 13
+    }
+    body = {
+      type = FourLegged LARGE
+      weight = 500
+    }
+    permanentEffects = {
+      STEED 1
+      SWIMMING_SKILL 1
+    }
+	spellSchools =  { "Ahthrodog" }
+    spells = { "warhorse_haste" }
+    noChase = true
+    petReaction = "neighs"
+    name = {
+      name = "horse"
+    }
+  }
+  
+  "EG_BLOOD_PHANTOM"
+  {
+    viewId = { "eg_blood_phantom" }
+    body = {
+      type = HumanoidLike LARGE
+      material = WATER
+      weight = 300
+      deathSound = none
+    }
+    attr = {
+      DAMAGE 40
+      DEFENSE 15 
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      SWIMMING_SKILL 1
+    }
+    name = {
+      name = "water elemental"
+    }
+    gender = IT
+  }
+  
+"EG_GORE_KRAKEN"
+  {
+    viewId = { "eg_krakenhead_gore" }
+    attr = {
+      DAMAGE 13
+      DEFENSE 15
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "kraken"
+    }
+    permanentEffects = {
+	  REGENERATION 1
+      IMMOBILE 1
+      SWIMMING_SKILL 1
+    }
+    spells = {"gore_kraken_mechanics"}
+  }
+
+"EG_GORE_KRAKEN_TENDRIL"
+  {
+    viewId = { "eg_kraken_gore_tentacle" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+    }
+    permanentEffects = {
+	  REGENERATION 1
+      IMMOBILE 1
+      SWIMMING_SKILL 1
+    }
+    body = {
+      type = NonHumanoid LARGE
+      addBodyPart = {
+        ARM 2
+      }
+      weight = 800
+    }
+    name = {
+      name = "Kraken tendril"
+    }
+  }
