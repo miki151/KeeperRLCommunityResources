@@ -4,13 +4,16 @@
   description = "started to discharge"
   addedMessage = ARE "super"
   removedMessage = ARE "is no longer discharging"
-  tickEffect = Area 1 Bleed 0.05 "bleeding"
+  tickEffect = Area 1 Filter Not Enemy {Bleed 0.05 "shocked"}
   combatConsumable = true
   canWishFor = false
   color = ColorId RED
 }
 
 "LIGHTNING_RESISTANT" RESISTANCE("lightning", LIGHTNING_DAMAGE)
+"LIGHTNING_VULNERABILITY" VULNERABILITY("lightning", LIGHTNING_DAMAGE)
+"LIGHTNING_IMMUNITY" IMMUNITY("lightning", LIGHTNING_DAMAGE)
+
 
 "LIGHTNING_DAMAGE" {
   name = "lighting damage"
@@ -97,6 +100,9 @@
 }
 
 "DARKNESS_RESISTANT" RESISTANCE("darkness", DARKNESS_DAMAGE)
+"DARKNESS_VULNERABILITY" VULNERABILITY("darkness", DARKNESS_DAMAGE)
+"DARKNESS_IMMUNITY" IMMUNITY("darkness", DARKNESS_DAMAGE)
+
 
 "DARKNESS_SPELL" {
   name = "darkness damage"
@@ -119,7 +125,65 @@
   fx = BUFF_RED
   color = ColorId RED
   price = 50
-  modifyDamageAttr = DAMAGE DARKNESS_DAMAGE
+  modifyDamageAttr = DAMAGE LIGHT_DAMAGE
+}
+
+"LIGHT_RESISTANT" RESISTANCE("light", LIGHT_DAMAGE)
+"LIGHT_VULNERABILITY" VULNERABILITY("light", LIGHT_DAMAGE)
+"LIGHT_IMMUNITY" IMMUNITY("light", LIGHT_DAMAGE)
+
+
+"LIGHT_SPELL" {
+  name = "light damage"
+  adjective = "deals light damage"
+  description = "All dealt melee damage is transformed into light damage."
+  addedMessage = "deal" "deals" "light damage"
+  removedMessage = "no longer deal" "no longer deals" "light damage"
+  fx = BUFF_RED
+  color = ColorId RED
+  price = 50
+  modifyDamageAttr = SPELL_DAMAGE LIGHT_DAMAGE
+}
+
+"LIGHT_DAMAGE" {
+  name = "light damage"
+  adjective = "deals light damage"
+  description = "All dealt melee damage is transformed into light damage."
+  addedMessage = "deal" "deals" "light damage"
+  removedMessage = "no longer deal" "no longer deals" "light damage"
+  fx = BUFF_RED
+  color = ColorId RED
+  price = 50
+  modifyDamageAttr = DAMAGE LIGHT_DAMAGE
+}
+
+"NECROTIC_RESISTANT" RESISTANCE("necrotic", NECROTIC_DAMAGE)
+"NECROTIC_VULNERABILITY" VULNERABILITY("necrotic", NECROTIC_DAMAGE)
+"NECROTIC_IMMUNITY" IMMUNITY("necrotic", NECROTIC_DAMAGE)
+
+
+"NECROTIC_SPELL" {
+  name = "necrotic damage"
+  adjective = "deals necrotic damage"
+  description = "All dealt melee damage is transformed into necrotic damage."
+  addedMessage = "deal" "deals" "necrotic damage"
+  removedMessage = "no longer deal" "no longer deals" "necrotic damage"
+  fx = BUFF_RED
+  color = ColorId RED
+  price = 50
+  modifyDamageAttr = SPELL_DAMAGE NECROTIC_DAMAGE
+}
+
+"NECROTIC_DAMAGE" {
+  name = "necrotic damage"
+  adjective = "deals necrotic damage"
+  description = "All dealt melee damage is transformed into necrotic damage."
+  addedMessage = "deal" "deals" "necrotic damage"
+  removedMessage = "no longer deal" "no longer deals" "necrotic damage"
+  fx = BUFF_RED
+  color = ColorId RED
+  price = 50
+  modifyDamageAttr = DAMAGE NECROTIC_DAMAGE
 }
 
 "DAMAGE_SPELL" {
@@ -161,7 +225,8 @@
   combatConsumable = true
 }
 
-"DROWNING" {
+"DROWNING" 
+{
   name = "drowning"
   description = "Causes loss of health points over time."
   addedMessage = "start" "starts" "drowning"
@@ -175,5 +240,32 @@
   canAbsorb = false
   price = 2
   fx = DEBUFF_BLUE
+  color = ColorId RED
+}
+
+"NECROTIC_SATURATION" 
+{
+  name = "necrotic saturation"
+  description = "Necrotic energy blocks the healing."
+  addedMessage = ARE "saturated with necrotic energy"
+  removedMessage = ARE "no longer saturated with necrotic energy"
+  adjective = "necroticaly saturated"
+  combatConsumable = true
+  price = 12
+  fx = DEBUFF_BLACK
+  color = ColorId RED
+}
+
+"REGENERATION" modify {
+  name = "regeneration"
+  description = "Recovers a little bit of health every turn."
+  addedMessage = ARE "regenerating"
+  removedMessage = ARE "no longer regenerating"
+  adjective = "regenerating"
+  tickEffect = Filter Not Or { LastingEffect FROZEN
+							   LastingEffect NECROTIC_SATURATION} {Heal{ FLESH 0.03 }}
+  combatConsumable = true
+  price = 12
+  fx = BUFF_RED
   color = ColorId RED
 }
