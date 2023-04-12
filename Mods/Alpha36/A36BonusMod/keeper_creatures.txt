@@ -30,18 +30,20 @@
     technology = append { "jewellery" "sorcery" "advanced sorcery" "master sorcery"
 	                      "simplistic animations" "magic contraptions" "rock blast"
 						  "gnomish smithy" "gnomish alchemy" "gnomish jewellery" "magic inscription"}
+        prisoners = true
 	immigrantGroups = append {"animations"}
 	workshopGroups = append {"gnomish" }
-	buildingGroups = append { "library" "crafting" "laboratory" "jeweller"}
+	buildingGroups = append { "library" "crafting" "laboratory" "jeweller" "prison_no_capture" }
 	credit = { "GOLD" 20 "WOOD" 2000 "STONE" 5 "IRON" 5 "ADA" 5 }
 }
 
 "6_dwarves" modify
 {
+        prisoners = true
 	creatureId = { "DWARF_ELDER" }
     description = "Play as a group of dwarves that you can specialize to your liking."	
 	immigrantGroups = append {"dwarf_player" "animations"}
-    buildingGroups = append { "traps" }	
+    buildingGroups = append { "traps" "prison_no_capture" }	
 	maxPopulation = 1
 	specialTraits = append { Lasting {DISAPPEAR_DURING_DAY } Lasting {SUNLIGHT_VULNERABLE} } 
 	credit = { "GOLD" 398 "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
@@ -52,7 +54,12 @@
 
 "7_goblins" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} }
 "8_zombies" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} }
-"9_cyclops" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} }
+"9_cyclops" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" }
+                     immigrantGroups = append {"animations"}
+                     prisoners = true
+                     buildingGroups = append { "prison_no_capture" }	
+
+}
 
 #####################
 #Extra modded Keepers
