@@ -49,6 +49,23 @@
     }
   }
   
+"EG_ALTARSPAWN" inherit "EG_GORE_VESSEL"
+  {
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      canCapture = true
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "spell" 1 {
+            attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = SPELL } }}}
+      }
+    }
+	permanentEffects = {
+	IMMOBILE 1
+    }
+	spells = {"EG Altar TRANSFORM"}
+  }
+  
 "EG_GORE_VESSEL_VILLIAN"
   {
     viewId = { "eg_gore_vessel_up_4" }
@@ -1170,18 +1187,41 @@
     gender = IT
   }
   
-"EG_GORE_KRAKEN"
+"EG_GORE_KRAKEN_TRANSFORMED"
   {
-    viewId = { "eg_krakenhead_gore" }
+    viewId = { "eg_blessed_spawn" }
     attr = {
-      DAMAGE 13
-      DEFENSE 15
+      DAMAGE 30
+      DEFENSE 20
+	  BLESSED_FLESH	8
     }
     body = {
       type = Humanoid LARGE
     }
     name = {
-      name = "kraken"
+      name = "eldrich spawn"
+    }
+    permanentEffects = {
+	  REGENERATION 1
+      FLYING 1
+    }
+	spellSchools =  { "Ahthrodog" }
+    spells = {"gore_kraken_mechanics_player" "Mutation" "Seed Flesh" "ADVANCED_Spread_Seed"}
+  }
+  
+"EG_GORE_KRAKEN"
+  {
+    viewId = { "eg_krakenhead_gore" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+	  BLESSED_FLESH	8
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "eldrich spawn"
     }
     permanentEffects = {
 	  REGENERATION 1
@@ -1199,6 +1239,7 @@
       DEFENSE 10
     }
     permanentEffects = {
+	  WATERCHECK 1
 	  REGENERATION 1
       IMMOBILE 1
       SWIMMING_SKILL 1
@@ -1210,7 +1251,8 @@
       }
       weight = 800
     }
+    spells = {"gore_kraken_pull"}
     name = {
-      name = "Kraken tendril"
+      name = "eldrich spawn"
     }
   }
