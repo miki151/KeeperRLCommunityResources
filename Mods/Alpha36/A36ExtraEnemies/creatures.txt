@@ -961,13 +961,7 @@
       DIGGING 30
     }
   }
-"PESEANT_PRISONER" inherit "PESEANT_PLAYER"
-  {
-    attr = append {
-      DIGGING 30
-    }
-  }
-  "RAT_SOLDIER" modify append {
+"RAT_SOLDIER" modify append {
       attr = append {
         MULTI_WEAPON 15
       }
@@ -1293,36 +1287,6 @@
 	  }
     }
 
-"SKELETON"
-  {
-    viewId = { "skeleton" }
-    attr = {
-      DAMAGE 17
-      DEFENSE 13
-      RANGED_DAMAGE 5
-    }
-    body = {
-      type = Humanoid LARGE
-      material = BONE
-    }
-    permanentEffects = {
-      RANGED_RESISTANCE 1
-    }
-    maxLevelIncrease = {
-      MELEE 3
-      ARCHERY 4
-    }
-    aiType = RANGED
-    name = {
-      name = "skeleton"
-    }
-    hatedByEffect = HATE_UNDEAD
-	inventory = { # Modded
-        { type =  "Bow" chance = 0.3 }
-        {  "Knife" }
-        { type =  "WoodenShield" chance = 0.01 }
-      }
-  }	
   "VAMPIRE_LORD" modify append {
       attr = append {
 	    LABORATORY 50
@@ -1587,3128 +1551,7 @@
       }
     }
 
-#######################
-##Endless enemies mod
-#######################
-
-#############
-#Base classes
-#############
-
-"BASE_SPELL_CASTER_1"
-#Inherit for a large random inventory
-{
-  name = { name = "base class" }
-  viewId = { "gnome" }
-  attr = { DEFENSE 10 }
-  body = { type = Humanoid MEDIUM }
-  inventory = {
-    { type =  "IronStaff" prefixChance = 0.03 }
-    { Potion Lasting 50 MAGIC_VULNERABILITY 1 4 0.01}
-    { Potion Lasting 50 MELEE_VULNERABILITY 1 4 0.01}
-    { Potion Lasting PEACEFULNESS 1 4 0.01}
-    { Potion Lasting POISON 1 4 0.01}
-    { Potion Lasting POISON_RESISTANT 1 4 0.01}
-    { Amulet REGENERATION 1 1 0.01}
-    { Ring SPELL_DAMAGE 1 1 0.01}
-    { Amulet TELEPATHY 1 1 0.01}
-    { Amulet WARNING 1 1 0.01}
-    { Potion DestroyEquipment 1 1 0.01}
-    { Potion Heal {SPIRIT} 1 4 0.01}
-    { Potion Lasting 50 BLEEDING 1 4 0.01}
-    { Potion Lasting BLIND 1 4 0.01}
-    { Potion Lasting COLLAPSED 1 4 0.01}
-    { Potion Lasting FLYING 1 4 0.01}
-    { Potion Lasting INSANITY 1 4 0.01}
-    { Potion Lasting INVISIBLE 1 4 0.01}
-    { Potion Lasting 50 REGENERATION 1 4 0.01}
-    { Potion Lasting SLEEP 1 4 0.01}
-    { Potion Lasting SLOWED 1 4 0.01}
-    { Potion Lasting SPEED 1 4 0.01}
-    { Potion Lasting TELEPATHY 1 4 0.01}
-    { FireScroll 1 4 0.01}
-    { Ring FAST_CRAFTING 1 1 0.01}
-    { Ring FAST_TRAINING 1 1 0.01}
-    { Ring FIRE_RESISTANT 1 1 0.01}
-    { Ring MAGIC_RESISTANCE 1 1 0.01}
-    { Ring POISON_RESISTANT 1 1 0.01}
-    { Scroll Teleport 1 1 0.01}
-    { Ring RANGED_RESISTANCE 1 1 0.01}
-    { Ring RESTED 1 1 0.01}
-    { Ring SATIATED 1 1 0.01}
-    { Ring SLEEP_RESISTANT 1 1 0.01}
-    { Scroll CircularBlast 1 1 0.01}
-    { Scroll Deception 1 1 0.01}
-    { Scroll Escape{} 1 1 0.01}
-    { Scroll Lasting 50 FIRE_RESISTANT 1 1 0.01}
-  }
-}
-
-###########################
-#Difficulty mods (removed)
-###########################
-
-  "KEEPER_MAGE_EASY" inherit "KEEPER_MAGE"
-    {
-      viewId = { "keeper1" Rgb 58 255 106 106 }
-      viewIdUpgrades = { { "keeper2" Rgb 58 255 106 106 } { "keeper3" Rgb 58 255 106 106 } { "keeper4" Rgb 58 255 106 106 } }
-      attr = {
-        DAMAGE 15
-        DEFENSE 15
-        SPELL_DAMAGE 25
-      }
-    }
-  "KEEPER_MAGE_F_EASY" inherit "KEEPER_MAGE_EASY"
-    {
-      viewId = { "keeper_f1" Rgb 58 255 106 106 }
-      viewIdUpgrades = { { "keeper_f2" Rgb 58 255 106 106 } { "keeper_f3" Rgb 58 255 106 106 } { "keeper_f4" Rgb 58 255 106 106 } }
-      gender = FEMALE
-      name = {
-        name = "wizard"
-        firstNameGen = "FIRST_FEMALE"
-        fullTitle = true
-      }
-    }
-  "KEEPER_MAGE_HARD" inherit "KEEPER_MAGE"
-    {
-      viewId = { "keeper1" Rgb 106 106 255 106 }
-      viewIdUpgrades = { { "keeper2" Rgb 106 106 255 106 } { "keeper3" Rgb 106 106 255 106 } { "keeper4" Rgb 106 106 255 106 } }
-      attr = {
-        DAMAGE 10
-        DEFENSE 10
-        SPELL_DAMAGE 15
-      }
-    }
-  "KEEPER_MAGE_F_HARD" inherit "KEEPER_MAGE_HARD"
-    {
-      viewId = { "keeper_f1" Rgb 106 106 255 106 }
-      gender = FEMALE
-      name = {
-        name = "wizard"
-        firstNameGen = "FIRST_FEMALE"
-        fullTitle = true
-      }
-      viewIdUpgrades = {{ "keeper_f2"  Rgb 106 106 255 106 } { "keeper_f3"  Rgb 106 106 255 106 } { "keeper_f4"  Rgb 106 106 255 106 }}
-    }
-
-#---------------------------------------------------------
-#The KING
-#---------------------------------------------------------
-  "ROYAL_KNIGHT" inherit "KNIGHT" {
-    viewId = { "knight" ColorId PURPLE } #Modded
-    inventory = {
-      {  "Sword"}
-      {  "ChainArmor"}
-      {  "LeatherBoots"}
-    }
-    attr = {
-      DAMAGE 45
-      DEFENSE 35
-    }
-    name = {
-      name = "royal knight"
-    }
-   }
-  "ROYAL_ARCHER" inherit "ARCHER" {
-      viewId = { "archer" ColorId PURPLE } #Modded
-      attr = {
-      DAMAGE 22
-      DEFENSE 32
-      RANGED_DAMAGE 40
-    }
-    name = {
-      name = "royal archer"
-    }
-    inventory = {
-        {  "Bow"}
-        {  "Knife"}
-        {  "LeatherArmor"}
-        {  "LeatherBoots"}
-    }
-  }
-  "ROYAL_PRIEST" inherit "PRIEST" {
-    viewId = { "priest" ColorId PURPLE } #Modded
-    attr = {
-      DAMAGE 15
-      DEFENSE 30
-      SPELL_DAMAGE 40
-    }
-    name = {
-      name = "royal priest"
-    }
-  }
-#---------------------------------------------------------
-#Centaur faction
-#---------------------------------------------------------
-		
- "CENTAUR_ARCHER"
-    {
-      viewId = { "centaur_archer" }
-      attr = {
-        DAMAGE 30
-        DEFENSE 36  
-        RANGED_DAMAGE 23 
-      }
-      body = {
-        type = Humanoid LARGE
-        addBodyPart = {
-          TORSO 1
-	      LEG 2
-        }
-        material = FLESH
-        weight = 600 
-      }
-      gender = FEMALE
-      maxLevelIncrease = {
-        MELEE 3
-        ARCHERY 7
-      }
-      permanentEffects = {
-        SPEED 1
-        HATE_GREENSKINS 1
-      }
-      name = {
-        name = "centaur archer"
-        pluralName = "centaurs"
-	    firstNameGen = "FIRST_FEMALE"
-      }
-      chatReactionFriendly = "\"curses all greenskins\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        {  "ElvenSword"}
-        {  "LeatherArmor"}
-        {  "Bow"}
-        {  "GoldPiece" 2 6 }
-        {  "EE_DEFENSEAMULET" 1 1 0.03}
-        { Amulet RANGED_RESISTANCE 1 1 0.05}
-        { Amulet AMBUSH_SKILL 1 1 0.05}
-        { Amulet DISARM_TRAPS_SKILL 1 1 0.05}
-        { Amulet ELF_VISION 1 1 0.05}
-        { Amulet NIGHT_VISION 1 1 0.05}
-        { Amulet SWIMMING_SKILL 1 1 0.05}
-      }
-    }
- "CENTAUR_FARMER" inherit "CENTAUR_ARCHER"
-    {
-      viewId = { "centaur_farmer" }
-      attr = {
-        DAMAGE 14
-        DEFENSE 14   
-      }
-      maxLevelIncrease = {
-        MELEE 3
-        ARCHERY 1
-      }
-      permanentEffects = {
-        SPEED 1
-        HATE_GREENSKINS 1
-        CROPS_SKILL 1
-      }
-      name = {
-        name = "centaur farmer"
-        pluralName = "Centaurs"
-	    firstNameGen = "FIRST_MALE"
-      }
-      chatReactionFriendly = "\"talks about farming\""
-      chatReactionHostile = "\"Stay Back!\""
-	  inventory = {
-        {  "FirstAidKit" 1 1 0.1}
-        { Potion Heal {FLESH} 1 4 0.2 }
-        {  "Torch" 1 1 0.1 }
-	  }
-    }
- "CENTAUR_HUNTER" inherit "CENTAUR_ARCHER"
-    {
-      viewId = { "centaur_hunter" }
-      attr = {
-        DAMAGE 18
-        DEFENSE 18 
-        RANGED_DAMAGE 13 
-      }
-      gender = FEMALE
-      maxLevelIncrease = {
-        MELEE 2
-        ARCHERY 5
-      }
-      spells = {
-        "advanced healing"
-      }
-      name = {
-        name = "centaur hunter"
-        pluralName = "Centaurs"
-    	firstNameGen = "FIRST_FEMALE"
-      }
-      chatReactionFriendly = "\"talks about methods of trackings animals\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        {  "Bow"}
-		{  "LeatherArmor"}
-        { Amulet RANGED_RESISTANCE 1 1 0.05}
-        { Amulet AMBUSH_SKILL 1 1 0.05}
-        { Amulet DISARM_TRAPS_SKILL 1 1 0.05}
-        { Amulet ELF_VISION 1 1 0.05}
-        { Amulet NIGHT_VISION 1 1 0.05}
-        { Amulet SWIMMING_SKILL 1 1 0.05}
-      }
-    }
- "CENTAUR_PRIESTESS" inherit "CENTAUR_ARCHER"
-    {
-      viewId = { "centaur_priestess" }
-      attr = {
-        DAMAGE 18
-        DEFENSE 26 
-        SPELL_DAMAGE 36 
-      }
-      gender = FEMALE
-      maxLevelIncrease = {
-        MELEE 2
-        SPELL 4
-      }
-      permanentEffects = {
-        SPEED 1
-		TELEPATHY 1
-        HATE_GREENSKINS 1
-	  }
-      spells = {
-        "expert healing"
-		"group healing"
-		"advanced magic missile"
-		"EE advanced magic blast"
-		"advanced cure poison"
-		"cure blindness"
-      }
-      companions = {4 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
-      name = {
-        name = "centaur priestess"
-        pluralName = "Centaurs"
-    	firstNameGen = "FIRST_FEMALE"
-      }
-      chatReactionFriendly = "\"talks about centaur religion\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        { type =  "IronStaff" prefixChance = 0.3}
-		{ type =  "Robe" prefixChance = 1.0 }
-        { Amulet RANGED_RESISTANCE 1 1 0.8}
-        { Ring ELF_VISION 1 1 0.2}
-        { Ring NIGHT_VISION 1 1 0.4}
-		{ Ring DEF_BONUS 1 1 0.8}
-        { Amulet REGENERATION 1 1 0.4}
-      }
-    }
- "CENTAUR_CHILD" inherit "CENTAUR_ARCHER"
-    {
-      viewId = { "centaur_child" }
-      attr = {
-        DAMAGE 8
-        DEFENSE 8   
-      }
-      permanentEffects = {
-        SPEED 1
-      }
-      name = {
-        name = "centaur child"
-        pluralName = "centaur children"
-      }
-      chatReactionFriendly = "\"talks about playing in the fields\""
-      chatReactionHostile = "\"Don't hurt me!\""
-	  inventory = {
-        {  "FirstAidKit" 1 1 0.1}
-        { Potion Heal {FLESH} 1 4 0.2 }
-        {  "Torch" 1 1 0.1 }
-	  }
-    }
- "CENTAUR_KING" inherit "CENTAUR_ARCHER"
-    {
-      viewId = { "centaur_king" }
-      attr = {
-        DAMAGE 43
-        DEFENSE 36   
-      }
-      maxLevelIncrease = {
-        MELEE 7
-      }
-	  spellSchools = { "extra fighter" }
-      name = {
-        name = "centaur king"
-        pluralName = "Centaurs"
-	    firstNameGen = "FIRST_MALE"
-      }
-      chatReactionFriendly = "\"curses all greenskin invaders\""
-      chatReactionHostile = "\"Die!\""
-      deathDescription = "slain"
-      inventory = {
-        { type =  "EE_VenLongSpear" prefixChance = 1 }
-        {  "AdaArmor" }
-        {  "AdaGloves" }
-		{  "AdaBoots" 1 1 0.03 }
-		{  "AdaHelm" 1 1 0.03 }
-  		{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
-		{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
-		{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
-		{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
-		{ Potion Permanent SPEED 1 1 0.03 }
-		{ Potion RegrowBodyPart 1 1 1 0.03 }
-		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
-        { Potion Heal {FLESH}}
-        {  "GoldPiece" 16 26 }
-      }
-    }
- "CENTAUR_KNIGHT" inherit "CENTAUR_ARCHER"
-    {
-      viewId = { "centaur_knight" }
-      attr = {
-        DAMAGE 38
-        DEFENSE 38   
-		FORGE 15
-      }
-      maxLevelIncrease = {
-        MELEE 5
-      }
-	  spellSchools = { "extra fighter" }
-      name = {
-        name = "centaur knight"
-        pluralName = "Centaurs"
-	    firstNameGen = "FIRST_MALE"
-      }
-      chatReactionFriendly = "\"talks about slaying greenskins\""
-      chatReactionHostile = "\"Perish Fiend!\""
-      inventory = {
-        {  "Sword" }
-        {  "ChainArmor" }
-        {  "LeatherGloves" }
-        {  "EE_DEFENSEAMULET" 1 1 0.03}
-        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
-        { Ring DAM_BONUS 1 1 0.03}
-        { Ring DEF_BONUS 1 1 0.03}
-        { Ring RAGE 1 1 0.03}
-      }
-    }
-	
-#---------------------------------------------------------
-#Amazon faction
-#---------------------------------------------------------
-"AMAZON_PESEANT"
-  {
-    viewId = { "peasant" }
-    attr = {
-      DAMAGE 14
-      DEFENSE 12
-	  DIGGING 20
-    }
-    body = {
-      type = Humanoid LARGE
-    }
-    chatReactionFriendly = "talks about amazon women"
-    chatReactionHostile = "\"Heeelp!\""
-    permanentEffects = {
-      CROPS_SKILL 1
-	  RIDER 1
-    }
-    name = {
-      name = "peasant"
-    }
-    hatedByEffect = HATE_HUMANS
-  }
-    "AMAZON"
-    {
-      viewId = { "amazon" }
-      attr = {
-        DAMAGE 20
-        DEFENSE 17
-		RANGED_DAMAGE 10
-		WORKSHOP 20
-        FORGE 20
-		DIGGING 30
-      }
-      body = {
-        type = Humanoid LARGE
-        material = FLESH
-        weight = 240
-        
-      }
-      gender = FEMALE
-	  hatedByEffect = HATE_HUMANS
-      maxLevelIncrease = {
-        MELEE 4
-        ARCHERY 3
-      }
-	  spellSchools = { "extra fighter" }
-      permanentEffects = {
-        FAST_TRAINING 1
-        ELF_VISION 1
-        HATE_UNDEAD 1
-        RANGED_RESISTANCE 1
-        DISARM_TRAPS_SKILL 1
-        REGENERATION 1
-		RIDER 1
-      }
-      name = {
-        name = "amazon"
-        pluralName = "amazons"
-        firstNameGen = "FIRST_FEMALE"
-      }
-      chatReactionFriendly = "\"talks about her god's many blessings\""
-      chatReactionHostile = "\"Die, fiend!\""
-      inventory = {
-        {  "Sword"}
-		{  "LeatherArmor"}
-		{  "WoodenShield"}
-		{ type = "Bow" chance = 0.3 }
-        {  "EE_DEFENSEAMULET" 1 1 0.03}
-        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
-		{ Potion Heal {FLESH} 1 2 0.3}
-        { Ring DAM_BONUS 1 1 0.03}
-        { Ring DEF_BONUS 1 1 0.03}
-        { Ring RAGE 1 1 0.03}
-      }
-    }
-    "AMAZON_ARCHER" inherit "AMAZON"
-    {
-      viewId = { "amazon_archer" }
-      attr = {
-        DAMAGE 22
-        DEFENSE 16  
-        RANGED_DAMAGE 32 
-      }
-      maxLevelIncrease = {
-        MELEE 2
-        ARCHERY 4
-      }
-      spells = {
-        "healing"
-        "haste"
-      }
-	  	  permanentEffects = {
-		RIDER 1
-      }
-      name = {
-        name = "amazon archer"
-        pluralName = "amazons"
-        firstNameGen = "FIRST_FEMALE"
-      }
-      chatReactionFriendly = "\"talks about tracking prey\""
-      chatReactionHostile = "\"Die, fiend!\""
-      inventory = {
-        {  "ElvenBow"}
-		{  "LeatherArmor" }
-		{  "LeatherBoots" }
-        { Amulet RANGED_RESISTANCE 1 1 0.05}
-        { Amulet AMBUSH_SKILL 1 1 0.05}
-        { Amulet DISARM_TRAPS_SKILL 1 1 0.05}
-        { Amulet ELF_VISION 1 1 0.05}
-        { Amulet NIGHT_VISION 1 1 0.05}
-        { Amulet SWIMMING_SKILL 1 1 0.05}
-		{ Ring SPEED 1 1 0.02 }
-      }
-    }
-    "AMAZON_CHAMPION" inherit "AMAZON"
-    {
-      viewId = { "amazon_champion" }
-      attr = {
-        DAMAGE 38
-        DEFENSE 25   
-		FORGE 30
-        JEWELER 10
-        DIGGING 25
-      }
-      maxLevelIncrease = {
-        MELEE 5
-      }
-	  spellSchools = { "extra fighter" }
-      name = {
-        name = "amazon champion"
-        pluralName = "amazons"
-        firstNameGen = "FIRST_FEMALE"
-      }
-	  	  permanentEffects = {
-		RIDER 1
-      }
-      chatReactionFriendly = "\"talks about honoring the gods.\""
-      chatReactionHostile = "\"Die, cretin!\""
-      inventory = {
-        { type =  "BattleAxe" prefixChance = 0.1 }
-		{ type =  "ChainArmor" prefixChance = 0.1 }
-		{  "IronGloves"}
-		{  "IronBoots"}
-        {  "EE_DEFENSEAMULET" 1 1 0.3}
-        { Potion Lasting 50 MELEE_RESISTANCE 1 1 0.3}
-		{ Potion Heal {FLESH} 1 3 0.4}
-        { Ring DAM_BONUS 1 1 0.3}
-        { Ring DEF_BONUS 1 1 0.3}
-        { Ring RAGE 1 1 0.03}
-      }
-    }
-    "AMAZON_ELDER" inherit "AMAZON"
-    {
-      viewId = { "amazon_elder" }
-      attr = {
-        DAMAGE 16
-        DEFENSE 16 
-        SPELL_DAMAGE 45  
-      }
-      maxLevelIncrease = {
-        MELEE 7
-        SPELL 10
-        ARCHERY 3
-      }
-	  spellSchools = { "extra shaman" }
-      spells = {
-        "magic missile"
-        "slow"
-        "healing"
-        "advanced healing"
-        "EE summon spirit"
-      }
-      permanentEffects = {
-        FAST_TRAINING 1
-        ELF_VISION 1
-        RANGED_RESISTANCE 1
-        HATE_UNDEAD 1
-        DISARM_TRAPS_SKILL 1
-        REGENERATION 1
-		RIDER 1
-      }
-      companions = {5 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
-      name = {
-        name = "amazon elder"
-        pluralName = "amazons"
-        firstNameGen = "FIRST_FEMALE"
-      }
-      chatReactionFriendly = "\"talks about legends of old.\""
-      chatReactionHostile = "\"Die, fiend!\""
-      inventory = {
-        { type =  "Robe" prefixChance = 1}
-        {  "IronStaff" }
-        { type = Glyph ARMOR LastingEffect POISON_RESISTANT chance = 0.2 }
-      }   
-    }
-    "AMAZON_QUEEN" inherit "AMAZON"
-    {
-      viewId = { "amazon_queen" }
-      attr = {
-        DAMAGE 42
-        DEFENSE 36 
-        SPELL_DAMAGE 35  
-      }
-      maxLevelIncrease = {
-        MELEE 9
-        SPELL 7
-        ARCHERY 3
-      }
-	  spellSchools = { "extra fighter" }
-      spells = {
-        "healing"
-        "cure poison"
-        "damage bonus"
-        "defense bonus"
-        "pacify"
-      }
-      permanentEffects = {
-        FAST_TRAINING 1
-        ELF_VISION 1
-        MAGIC_RESISTANCE 1
-        RANGED_RESISTANCE 1
-        HATE_UNDEAD 1
-        DISARM_TRAPS_SKILL 1
-        REGENERATION 1
-		RIDER 1
-      }
-      name = {
-        name = "amazon queen"
-        pluralName = "amazons"
-        firstNameGen = "FIRST_FEMALE"
-      }
-      chatReactionFriendly = "\"complains about the teachings of the elders\""
-      chatReactionHostile = "\"Die, fiend!\""
-      inventory = {
-
-        { type =  "AdaArmor" prefixChance = 0.05 }
-		{ type =  "AdaBoots" prefixChance = 0.05 }
-        { type =  "AdaGloves" prefixChance = 0.05 }
-	    { type =  "AdaHelm" prefixChance = 0.05 }
-  		{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
-		{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
-		{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
-		{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
-	    { Potion Permanent SPEED 1 1 0.4 }
-	    { Potion RegrowBodyPart 1 1 1 0.4 }
-      }
-    }
-    "AMAZON_WAR_MAIDEN" inherit "AMAZON"
-    {
-      viewId = { "amazon_war_maiden" }
-      attr = {
-        DAMAGE 30
-        DEFENSE 20   
-      }
-      maxLevelIncrease = {
-        MELEE 3
-        SPELL 3
-        ARCHERY 2
-      }
-	  spellSchools = { "extra fighter" }
-      permanentEffects = {
-        FAST_TRAINING 1
-        ELF_VISION 1
-        RANGED_RESISTANCE 1
-        HATE_UNDEAD 1
-        DISARM_TRAPS_SKILL 1
-        REGENERATION 1
-		RIDER 1
-      }
-      name = {
-        name = "amazon war maiden"
-        pluralName = "amazons"
-        firstNameGen = "FIRST_FEMALE"
-      }
-      chatReactionFriendly = "\"talks about combat training\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        {  "ElvenSword"}
-        { type =  "ChainArmor" prefixChance = 0.05}
-		{  "IronGloves"}
-		{  "IronBoots"}
-        {  "GoldPiece" 2 6 }
-      }
-    }
-
-#---------------------------------------------------------
-#Fairy faction
-#---------------------------------------------------------
-	
-    "AIR_FAIRY" inherit "BASE_SPELL_CASTER_1"
-    {
-      viewId = { "air_fairy" }
-      attr = {
-        DAMAGE 14
-        DEFENSE 15 
-        SPELL_DAMAGE 45  
-      }
-      body = {
-        type = Humanoid MEDIUM
-        material = FLESH
-        weight = 80
-        addBodyPart = {
-          WING 2
-        }
-      }
-      gender = FEMALE
-      maxLevelIncrease = {
-        MELEE 3
-        SPELL 16
-      }
-	  spellSchools = { "mage" }
-      spells = {
-	    "EE elemental tea"
-        "EE choking vapor"
-		"EE arrow shield"
-		"EE magic blast"
-		"EE summon air elementals"
-      }
-      permanentEffects = {
-        ELF_VISION 1
-     	SPEED 1
-        MAGIC_RESISTANCE 1
-        MELEE_VULNERABILITY 1
-        COLD_RESISTANT 1
-        FLYING 1
-      }
-      name = {
-        name = "air fairy"
-        pluralName = "fairies"
-        firstNameGen = "EE_PIXIE"
-      }
-      chatReactionFriendly = "\"talks about flying through clouds\""
-      chatReactionHostile = "\"Don't mess with Air Fairies!\""
-    }
-    "DARK_FAIRY" inherit "AIR_FAIRY"
-    {
-      viewId = { "dark_fairy" }
-	  spellSchools = { "mage" }
-      spells = {
-	    "healing"
-        "EE blood curse"
-        "EE spiders"
-        "EE darkness"
-		"EE mana curse"
-      }
-      name = {
-        name = "dark fairy"
-        pluralName = "fairies"
-        firstNameGen = "EE_PIXIE"
-      }
-      chatReactionFriendly = "\"talks about the all-consuming void of darkness\""
-      chatReactionHostile = "\"The shadows will consume you!\""
-    }
-    "DEMON_FAIRY" inherit "AIR_FAIRY"
-    {
-      viewId = { "demon_fairy" }
-      attr = {
-        DAMAGE 20
-        DEFENSE 16 
-        SPELL_DAMAGE 45  
-		LABORATORY 40
-        WORKSHOP 10
-        JEWELER 20
-      }
-	  spellSchools = { "mage" }
-      spells = {
-	  	"healing"
-        "EE mind bolt"
-		"EE cause blindness"
-      }
-
-      name = {
-        name = "demon fairy"
-        pluralName = "fairies"
-        firstNameGen = "EE_PIXIE"
-      }
-      chatReactionFriendly = "\"talks about not wanting to become a succubus\""
-      chatReactionHostile = "\"Die, Whelp!\""
-    }
-    "EARTH_FAIRY" inherit "AIR_FAIRY"
-    {
-      viewId = { "earth_fairy" }
-	  spellSchools = { "mage" }
-      spells = {
-        "EE summon earth elementals"
-        "EE earth blast"
-        "EE elemental tea"
-        "EE spit shards"
-        "EE stone to mud"
-        "EE stone golems"
-      }
-      attr = append {
-	    DIGGING 50
-	    FORGE 35
-      }
-      name = {
-        name = "earth fairy"
-        pluralName = "fairies"
-        firstNameGen = "EE_PIXIE"
-      }
-      chatReactionFriendly = "\"talks about different kinds of metals\""
-      chatReactionHostile = "\"Don't mess with Earth Fairies!\""
-    }
-    "ELECTRIC_FAIRY" inherit "AIR_FAIRY"
-    {
-      viewId = { "electric_fairy" }
-	  spellSchools = { "mage" }
-      spells = {
-	    "healing"
-        "EE cripple"
-		"magic missile"
-      }
-      name = {
-        name = "electric fairy"
-        pluralName = "fairies"
-        firstNameGen = "EE_PIXIE"
-      }
-      chatReactionFriendly = "\"talks about shocking people\""
-      chatReactionHostile = "\"Get Zapped!\""
-    }
-    "FIRE_FAIRY" inherit "AIR_FAIRY"
-    {
-      viewId = { "fire_fairy" }
-      body = {
-        type = Humanoid MEDIUM
-        material = FLESH
-        weight = 80
-        addBodyPart = {
-          WING 2
-        }		
-        intrinsicAttacks = {
-          TORSO {{{ Intrinsic { "fist_attack" }  "fists" 5 {
-          attackType = HIT attackMsg = SWING victimEffect = {1.0 Fire{}}} }}}
-        }
-	  }	  spellSchools = { "mage" }
-      spells = {
-	  	"EE elemental tea"
-        "fireball"
-    	"firewall"
-      }
-      permanentEffects = {
-        ELF_VISION 1
-        MAGIC_RESISTANCE 1
-        MELEE_VULNERABILITY 1
-        FLYING 1
-        FIRE_RESISTANT 1
-		SPEED 1
-      }
-      name = {
-        name = "fire fairy"
-        pluralName = "fairies"
-        firstNameGen = "EE_PIXIE"
-      }
-      chatReactionFriendly = "\"talks about burning things\""
-      chatReactionHostile = "\"BURN!\""
-    }
-    "LIGHT_FAIRY" inherit "AIR_FAIRY"
-    {
-      viewId = { "light_fairy" }
-	  spellSchools = { "mage" }
-      spells = {
-	    "healing"
-        "directed blast"
-        "EE light"
-      }
-      name = {
-        name = "light fairy"
-        pluralName = "fairies"
-        firstNameGen = "EE_PIXIE"
-      }
-      chatReactionFriendly = "\"talks about helping people\""
-      chatReactionHostile = "\"I will smite you!\""
-    }
-    "MAGIC_FAIRY" inherit "AIR_FAIRY"
-    {
-      viewId = { "magic_fairy" }
-	  spellSchools = { "extra illusion" }
-      spells = {
-	    "healing"
-        "expert magic missile"
-		"EE advanced rapid magic missile"
-        "EE snakes"
-        "EE telepathy"		
-      }
-      attr = append {
-        LABORATORY 40
-      }
-      name = {
-        name = "magic fairy"
-        pluralName = "fairies"
-        firstNameGen = "EE_PIXIE"
-      }
-      chatReactionFriendly = "\"talks about good tricks to play on people\""
-      chatReactionHostile = "\"Don't mess with Magic Fairies!\""
-    }
-    "NATURE_FAIRY" inherit "AIR_FAIRY"
-    {
-      viewId = { "nature_fairy" }
-	  spellSchools = { "extra shaman" }
-      spells = {
-	    "healing"
-		"advanced healing"
-		"expert healing"
-		"EE wolves"
-		"EE bear"
-		"EE boar"
-      }
-      companions = {5 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
-      name = {
-        name = "nature fairy"
-        pluralName = "fairies"
-        firstNameGen = "EE_PIXIE"
-      }
-      chatReactionFriendly = "\"talks about growing plants\""
-      chatReactionHostile = "\"Don't mess with Nature Fairies!\""
-    }
-    "WATER_FAIRY" inherit "AIR_FAIRY"
-    {
-      viewId = { "water_fairy" }
-	  spellSchools = { "mage" }
-      spells = {
-        "EE elemental tea"
-	    "EE choking vapor"
-	    "EE summon water elementals"
-	    "ice cone"
-	    "EE acid blast"
-	  }
-      attr = append {
-        LABORATORY 45
-      }
-      permanentEffects = {
-        ELF_VISION 1
-        MAGIC_RESISTANCE 1
-        MELEE_VULNERABILITY 1
-	    SWIMMING_SKILL 1
-        FLYING 1
-		SPEED 1
-      }
-      name = {
-        name = "water fairy"
-        pluralName = "fairies"
-        firstNameGen = "EE_PIXIE"
-      }
-      chatReactionFriendly = "\"talks about fish and other water animals\""
-      chatReactionHostile = "\"Drown, fairy hater!\""
-    }
-    "FAIRY_QUEEN"
-    {
-      viewId = { "fairy_queen" }
-      attr = {
-        DAMAGE 34
-        DEFENSE 35 
-        SPELL_DAMAGE 55  
-      }
-      body = {
-        type = Humanoid MEDIUM
-        material = FLESH
-        weight = 80
-        addBodyPart = {
-          WING 2
-        }
-      }
-      gender = FEMALE
-      maxLevelIncrease = {
-        SPELL 16
-      }
-	  spellSchools = { "extra fairy lore" }
-      spells = {
-		"expert healing"
-		"EE expert rapid magic missile"
-		"expert magic missile"
-		"EE fae deception"
-		"EE fae melee boost"
-		"EE fae time twisting"
-		"EE fae illusion"
-		"EE fae escape"
-		"EE fae teleport"
-		"EE summon fae army"
-      }
-      permanentEffects = {
-        ELF_VISION 1
-     	SPEED 1
-        MAGIC_RESISTANCE 1
-		RANGED_RESISTANCE 1
-        COLD_RESISTANT 1
-		FIRE_RESISTANT 1
-        FLYING 1
-      }
-      name = {
-        name = "Goddess Illusia"
-        pluralName = "fairies"
-      }
-      chatReactionFriendly = "\"talks about ancient fae magic\""
-      chatReactionHostile = "\"Magic consume you!\""
-      inventory = {
-
-        { type =  "EE_VenShield" }
-        { type =  "AdaArmor" prefixChance = 1 }
-		{  "AdaBoots" 1 1 0.03 }
-        {  "AdaGloves" 1 1 0.03 }
-	    {  "AdaHelm" 1 1 0.03 }
-		{  "EE_IlluRing" }
-  		{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
-		{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
-		{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
-		{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
-	    { Potion Permanent SPEED 1 1 0.03 }
-	    { Potion RegrowBodyPart 1 1 1 0.03 }
-	    { Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
-        {  "GoldPiece" 350 450 }
-        { type = Glyph ARMOR LastingEffect MAGIC_RESISTANCE chance = 0.8 }
-        { type = Glyph ARMOR LastingEffect ELF_VISION chance = 0.5 }
-        { type = Glyph ARMOR LastingEffect SPEED chance = 0.8 }
-        { type = Glyph ARMOR LastingEffect FLYING chance = 0.5 }
-      } 
-	  }
-    "FAIRY_QUEEN_ILLUSION"
-    {
-      viewId = { "fairy_queen" }
-      attr = {
-        DAMAGE 20
-        DEFENSE 5 
-        SPELL_DAMAGE 25
-	  }
-      body = {
-        type = Humanoid MEDIUM
-        material = SPIRIT
-        weight = 80
-        addBodyPart = {
-          WING 2
-      }
-	  }
-      spells = {
-		"EE rapid magic missile"
-		"EE summon fae clone"
-      }
-      permanentEffects = {
-        ELF_VISION 1
-     	SPEED 1
-        MAGIC_RESISTANCE 1
-		RANGED_RESISTANCE 1
-        COLD_RESISTANT 1
-		FIRE_RESISTANT 1
-        FLYING 1
-      }
-      gender = FEMALE
-      name = {
-        name = "Illusia's Illusion"
-        pluralName = "fairies"
-      }
-      chatReactionFriendly = "\"talks in the ancient spirit language.\""
-      chatReactionHostile = "\"talks in the ancient spirit language angrily.\"" 
-    }
-    "FAIRY_QUEEN_ILLUSION_2"
-    {
-      viewId = { "fairy_queen" }
-      attr = {
-        DAMAGE 20
-        DEFENSE 5 
-        SPELL_DAMAGE 25
-	  }
-      body = {
-        type = Humanoid MEDIUM
-        material = SPIRIT
-        weight = 80
-        addBodyPart = {
-          WING 2
-      }
-	  }
-      spells = {
-		"EE rapid magic missile"
-      }
-      permanentEffects = {
-        ELF_VISION 1
-     	SPEED 1
-        MAGIC_RESISTANCE 1
-		RANGED_RESISTANCE 1
-        COLD_RESISTANT 1
-		FIRE_RESISTANT 1
-        FLYING 1
-      }
-      gender = FEMALE
-      name = {
-        name = "Illusia's Illusion"
-        pluralName = "fairies"
-      }
-      chatReactionFriendly = "\"talks in the ancient spirit language.\""
-      chatReactionHostile = "\"talks in the ancient spirit language angrily.\"" 
-    }
-	
-#---------------------------------------------------------
-#Dragon faction
-#---------------------------------------------------------
-
-	
-  "ANCIENT_GREEN_DRAGON" inherit "GREEN_DRAGON"
-    {
-      viewId = { "ancient_greendragon" }
-      attr = {
-        DAMAGE 75
-        DEFENSE 60
-      }
-      name = {
-        name = "ancient green dragon"
-        pluralName = "dragons"
-        firstNameGen = "DRAGON"
-      }
-      chatReactionFriendly = "\"Pah viidost aal kos qahnaaraan, nuz ni dov piraak kinzon jot\""
-      chatReactionHostile = "\"Dinok Bo Fah Hi!\""
-      genderAlternatives = {
-        FEMALE { "ancient_reddragon" ColorId LIGHT_GREEN }
-	}
-  }
-  "ANCIENT_RED_DRAGON" inherit "RED_DRAGON"
-    {
-      viewId = { "ancient_reddragon" }
-      attr = {
-        DAMAGE 75
-        DEFENSE 60
-      }
-      name = {
-        name = "ancient red dragon"
-        pluralName = "dragons"
-        firstNameGen = "DRAGON"
-      }
-      chatReactionFriendly = "\"Yol Lost Nid Grah-Zeymahzin... Nii Ag Pah\""
-      chatReactionHostile = "\"Ag Joor!\""
-      genderAlternatives = {
-        FEMALE { "ancient_reddragon" ColorId LIGHT_RED }
-	  }
-	}
-  "YOUNG_RED_DRAGON" inherit "RED_DRAGON"
-    {
-      viewId = { "young_reddragon" }
-      attr = {
-        DAMAGE 35
-        DEFENSE 35
-      }
-      name = {
-        name = "young red dragon"
-        pluralName = "dragons"
-        firstNameGen = "DRAGON"
-      }
-      chatReactionFriendly = "\"Ag Muz Los Lot\""
-      chatReactionHostile = "\"ROOOAAAR!\""
-      inventory = {
-        {  "GoldPiece" 40 70 }
-      }
-      genderAlternatives = {
-        FEMALE { "young_reddragon" ColorId LIGHT_RED }
-	  }
-	}
-  "YOUNG_GREEN_DRAGON" inherit "GREEN_DRAGON"
-    {
-      viewId = { "young_greendragon" }
-      attr = {
-        DAMAGE 35
-        DEFENSE 35
-      }
-      name = {
-        name = "young green dragon"
-        pluralName = "dragons"
-        firstNameGen = "DRAGON"
-      }
-      chatReactionFriendly = "\"Viidost Los Pruzah Fah Krii, Nuz Ni Fah Mey\""
-      chatReactionHostile = "\"ROOOAAAR!\""
-      inventory = {
-        {  "GoldPiece" 40 70 }
-      }
-      genderAlternatives = {
-        FEMALE { "young_greendragon" ColorId LIGHT_GREEN }
-      }
-	}
- "ZOMBIE_DRAGON"
-    {
-      viewId = { "zombiedragon" }
-      attr = {
-        DAMAGE 45
-        DEFENSE 45   
-      }
-      body = {
-        type = FourLegged HUGE
-        material = UNDEAD_FLESH
-        weight = 38500
-        addBodyPart = {
-          WING 2
-        }
-        intrinsicAttacks = {
-          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
-              attackType = BITE
-              attackMsg = BITE
-              victimEffect = {0.5 Lasting POISON} } } }}
-        }
-	  }
-	  hatedByEffect = HATE_UNDEAD
-      spells = {
-        "deception"
-        "haste"
-        "cure poison"
-        "panic"
-      }
-      permanentEffects = {
-        SUNLIGHT_VULNERABLE 1
-        NIGHT_VISION 1
-        MELEE_RESISTANCE 1
-        BAD_BREATH 1
-        POISON_RESISTANT 1
-        SLEEP_RESISTANT 1
-        FLYING 1
-		STEED 1
-      }
-      cantEquip = true
-      name = {
-        name = "zombie dragon"
-        pluralName = "dragons"
-        firstNameGen = "DRAGON"
-      }
-      chatReactionFriendly = "\"Faaz Al Zu'u\""
-      chatReactionHostile = "\"Mindok Dii Faaz Joor!\""
-      deathDescription = "slain"
-    }
- "SPIRIT_DRAGON"
-    {
-      viewId = { "spirit_dragon" }
-      attr = {
-        DAMAGE 30
-        DEFENSE 30 
-        SPELL_DAMAGE 30  
-      }
-      body = {
-        type = FourLegged HUGE
-        material = SPIRIT
-        weight = 100
-        addBodyPart = {
-          WING 2
-        }
-        intrinsicAttacks = {
-          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 10 {
-              attackType = BITE
-              attackMsg = BITE
-              victimEffect = {0.1 Lasting INSANITY} } }}}
-        }
-	  }
-      spells = {
-        "deception"
-        "invisibility"
-      }
-      permanentEffects = {
-        TELEPATHY 1
-        MAGIC_VULNERABILITY 1
-        MELEE_RESISTANCE 1
-        POISON_RESISTANT 1
-        FIRE_RESISTANT 1
-        SLEEP_RESISTANT 1
-        FLYING 1
-		STEED 1
-      }
-      cantEquip = true
-      name = {
-        name = "spirit dragon"
-        pluralName = "dragon spirits"
-        firstNameGen = "DRAGON"
-      }
-      chatReactionFriendly = "\"Zii Aak Hi\""
-      chatReactionHostile = "\"Dur Hi!\""
-      deathDescription = "banished"
-    }
- "RED_DRAGONNEWT"
-    {
-      viewId = { "red_dragonewt" }
-      genderAlternatives = {
-        FEMALE { "red_dragonewt" ColorId LIGHT_RED }
-	  }
-      attr = {
-        DAMAGE 18
-        DEFENSE 18 
-        SPELL_DAMAGE 20 
-        RANGED_DAMAGE 12 
-        LABORATORY 15
-        WORKSHOP 15
-        FORGE 15
-        DIGGING 5
-      }
-      body = {
-        type = Humanoid LARGE
-        material = FLESH
-        weight = 380
-        addBodyPart = {
-          WING 2
-        }        
-      }
-      maxLevelIncrease = {
-        MELEE 3
-        SPELL 2
-        ARCHERY 2
-      }
-      spells = {
-        "fireball"
-      }
-      permanentEffects = {
-        MAGIC_RESISTANCE 1
-        RANGED_VULNERABILITY 1
-        FIRE_RESISTANT 1
-        FLYING 1
-		RIDER 1
-      }
-      name = {
-        name = "red dragonewt"
-        firstNameGen = "DOG"
-      }
-      chatReactionFriendly = "\"Dragons are scary\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        {  "WoodenStaff"}
-        {  "LeatherArmor"}
-        {  "EE_DEFENSEAMULET" 1 1 0.03}
-        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
-        { Ring DAM_BONUS 1 1 0.03}
-        { Ring DEF_BONUS 1 1 0.03}
-        { Ring RAGE 1 1 0.03}
-      }
-    }
- "GREEN_DRAGONEWT" inherit "RED_DRAGONNEWT"
-    {
-      viewId = { "green_dragonewt" }
-      genderAlternatives = {
-        FEMALE { "red_dragonewt" ColorId LIGHT_GREEN }
-	  }
-      body = {
-        type = Humanoid LARGE
-        material = FLESH
-        weight = 380
-        addBodyPart = {
-          WING 2
-        }
-        intrinsicAttacks = {
-          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
-              attackType = BITE
-              attackMsg = BITE
-              victimEffect = {0.2 Lasting 50 BLEEDING} } }}}
-        }
-     }
-      spells = {
-        "cure poison"
-        "healing"
-      }
-      permanentEffects = {
-        MAGIC_RESISTANCE 1
-        RANGED_VULNERABILITY 1
-        POISON_RESISTANT 1
-        FLYING 1
-		RIDER 1
-      }
-      name = {
-        name = "green dragonewt"
-        firstNameGen = "DOG"
-      }
-      inventory = {
-        {  "LeatherArmor" }
-        {  "GoldPiece" 5 10 }
-        {  "EE_DEFENSEAMULET" 1 1 0.03}
-        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
-        { Ring DAM_BONUS 1 1 0.03}
-        { Ring DEF_BONUS 1 1 0.03}
-        { Ring RAGE 1 1 0.03}
-      }
-    }
-     "RED_DRAGONNEWT_WILDLIFE" inherit "RED_DRAGONNEWT"
-	 {
-      noChase = true
-	 }
-	 
-#---------------------------------------------------------
-#Hell knight faction
-#---------------------------------------------------------
-
-    "HELL_KNIGHT"
-    {
-      viewId = { "hell_knight" }
-      attr = {
-        DAMAGE 40
-        DEFENSE 45 
-        SPELL_DAMAGE 25  
-      }
-      body = {
-        type = HumanoidLike LARGE
-        material = FLESH
-        weight = 280
-        intrinsicAttacks = {
-          ARM {{{ Intrinsic { "sword" } "arm sword" 10 { attackType = HIT attackMsg = THRUST } }}}
-        }        
-      }
-	  spellSchools = { "extra fighter" }
-      spells = {
-        "fireball"
-        "damage bonus"
-	    "healing"
-      }
-      permanentEffects = {
-        NIGHT_VISION 1
-        MAGIC_RESISTANCE 1
-        RANGED_RESISTANCE 1
-        HATE_HUMANS 1
-        FIRE_RESISTANT 1
-		RIDER 1
-      }
-      name = {
-        name = "hell knight"
-        firstNameGen = "DEMON"
-      }
-      chatReactionFriendly = "\"!Dlrowrevo eht ot htaed\""
-      chatReactionHostile = "\"!Eid\""
-      deathDescription = "vanquished"
-      cantEquip = true
-	  inventory = {
-	    {  "EE_DEFENSEAMULET" 1 1 0.03}
-        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
-        { Ring DAM_BONUS 1 1 0.03}
-        { Ring DEF_BONUS 1 1 0.03}
-        { Ring RAGE 1 1 0.03}
-      }
-    }
-    "HELL_KNIGHT_BRUTE" inherit "HELL_KNIGHT"
-    {
-      viewId = { "hell_knight_brute" }
-      attr = {
-        DAMAGE 45
-        DEFENSE 50   
-        SPELL_DAMAGE 20
-      }
-	  spellSchools = { "extra fighter" }
-      spells = {
-        "damage bonus"
-        "firewall"
-      }
-      permanentEffects = {
-        NIGHT_VISION 1
-        MAGIC_RESISTANCE 1
-        MELEE_RESISTANCE 1
-        HATE_HUMANS 1
-        FIRE_RESISTANT 1
-		RIDER 1
-      }
-      name = {
-        name = "hell knight brute"
-        firstNameGen = "DEMON"
-      }
-      chatReactionFriendly = "\".Em ot emas lla ,krow ro thgif\""
-      chatReactionHostile = "\"!Llik\""
-    }
-    "HELL_KNIGHT_LORD" inherit "HELL_KNIGHT"
-    {
-      viewId = { "hell_knight_lord" }
-      attr = {
-        DAMAGE 50
-        DEFENSE 55 
-        SPELL_DAMAGE 35  
-      }
-	  spellSchools = { "extra fighter" }
-      spells = {
-        "fireball"
-        "firewall"
-        "escape"
-        "panic"
-        "defense bonus"
-      }
-      permanentEffects = {
-        NIGHT_VISION 1
-        MAGIC_RESISTANCE 1
-        RANGED_RESISTANCE 1
-        HATE_HUMANS 1
-        DISARM_TRAPS_SKILL 1
-        FIRE_RESISTANT 1
-		RIDER 1
-      }
-      name = {
-        name = "hell knight lord"
-        firstNameGen = "DEMON"
-      }
-      chatReactionFriendly = "\"!Dlrowrevo eht mialcer llahs stneicna eht\""
-      chatReactionHostile = "\"!Hsirep\""
-      inventory = {
-		  {  "AdaBoots" 1 1 0.1 }
-		  {  "AdaGloves" 1 1 0.1 }
-		  {  "EE_InfHelm" 1 1 0.1 }
-  		{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
-		{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
-		{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
-		{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
-		  { Potion Permanent SPEED 1 1 0.05 }
-		  { Potion RegrowBodyPart 1 1 1 0.05 }
-		  { Scroll Permanent DARKNESS_SOURCE 1 1 0.05 }
-      }
-    }
-    "HELL_KNIGHT_SWORDMASTER" inherit "HELL_KNIGHT"
-    {
-      viewId = { "hell_knight_swordmaster" }
-      attr = {
-        DAMAGE 50
-        DEFENSE 40 
-        SPELL_DAMAGE 40  
-      }
-      gender = FEMALE
-      maxLevelIncrease = {
-        MELEE 9
-        SPELL 4
-      }
-	  spellSchools = { "extra fighter" }
-      spells = {
-        "healing"
-        "deception"
-        "fireball"
-        "swap positions"
-      }
-      permanentEffects = {
-        NIGHT_VISION 1
-        MELEE_RESISTANCE 1
-        HATE_HUMANS 1
-        FIRE_RESISTANT 1
-		RIDER 1
-      }
-      name = {
-        name = "hell knight swordmaster"
-        firstNameGen = "DEMON"
-      }
-      chatReactionFriendly = "\"Tuc ot erehw wonk uoy fi seid gnihtyreve\""
-      chatReactionHostile = "\"!Era uoy gip eht ekil uoy tug ll'I\""
-    }
-    "HELL_PORTAL"
-    {
-      viewId = { "hell_portal" }
-      attr = {
-        DAMAGE 0
-        DEFENSE 35
-        SPELL_DAMAGE 20   
-      }
-      spells = {
-        "EE magma bolt"
-        "EE fire shield"
-        "advanced fire elemental"
-		"EE spawn hell knights"
-		"EE spawn hell knight lord squad"
-		"EE spawn hell knight brute squad"
-		"EE spawn hell knight swordmaster squad"
-      }
-      body = {
-        type = NonHumanoid HUGE
-        material = ADA
-        weight = 1200
-        addBodyPart = {
-	      BACK 6
-		}
-      }
-      permanentEffects = {
-	    IMMOBILE 1
-        SLOWED 1
-        LIGHT_SOURCE 1
-        MAGIC_RESISTANCE 1
-        MELEE_VULNERABILITY 1
-        RANGED_RESISTANCE 1
-        POISON_RESISTANT 1
-        FIRE_RESISTANT 1
-        SLEEP_RESISTANT 1
-        REGENERATION 1
-      }
-      cantEquip = true
-      name = {
-        name = "hell portal"
-      }
-      chatReactionFriendly = "\"You can feel an evil aura surrounding the portal.\""
-      chatReactionHostile = "\"You can feel an evil aura surrounding the portal.\""
-      deathDescription = "destroyed"
-    }
-
-#---------------------------------------------------------
-#Rat faction
-#---------------------------------------------------------
-
-  "RAT_MAN"
-    {
-      viewId = { "rat_man" }
-      attr = {
-        DAMAGE 12
-        DEFENSE 12
-		DIGGING 20
-      }
-      body = {
-        type = Humanoid MEDIUM
-	    material = FLESH
-	    weight = 80
-      }
-      maxLevelIncrease = {
-        MELEE 1
-      }
-      permanentEffects = {
-        NIGHT_VISION 1
-        HATE_HUMANS 1
-		RIDER 1
-      }
-      name = {
-        name = "rat person"
-      }
-      chatReactionFriendly = "talks about cheese"
-      chatReactionHostile = "makes angry rat noises"
-	  inventory = {
-		{ type =  "WoodenShield" chance = 0.2 }
-		{ type =  "IronHelm", prefixChance = 0.02 chance = 0.04}
-		{ type =  "LeatherBoots" prefixChance = 0.02 chance = 0.04}
-		{ type =  "LeatherGloves" prefixChance = 0.02 chance = 0.04}
-		{ type =  "LeatherHelm" prefixChance = 0.02 chance = 0.04}
-		{ type =  "IronBoots" prefixChance = 0.02 chance = 0.04}
-		{ type =  "IronGloves" prefixChance = 0.02 chance = 0.04}
-	  }
-    }
-    "RAT_GENERAL" inherit "RAT_MAN"
-    {
-      viewId = { "rat_general" }
-      attr = {
-        DAMAGE 17
-        DEFENSE 21
-		MULTI_WEAPON 30
-      }
-      maxLevelIncrease = {
-        MELEE 4
-      }
-	  spellSchools = { "extra fighter" }
-      spells = {
-        "healing"
-      }
-      name = {
-        name = "rat general"
-	  }
-      chatReactionFriendly = "complains about surface dwellers"
-      chatReactionHostile = "makes angry rat noises"
-      inventory = {
-        { type =  "Sword" chance = 0.5 }
-		{ type =  "EE_Axe" chance = 0.5 }
-        { type =  "BattleAxe" chance = 0.5 }
-        { type =  "WarHammer" chance = 0.5 }
-        {  "ChainArmor"}
-        { type =  "IronHelm" chance = 0.5 }
-        { type =  "IronBoots" chance = 0.3 }
-        { type =  "Torch" chance = 0.3 }
-        {  "GoldPiece" 2 6 }
-      }
-    }
-    "RAT_ARCHER" inherit "RAT_MAN"
-    {
-      viewId = { "rat_bowman" }
-      attr = {
-        DAMAGE 11
-        DEFENSE 10
-        RANGED_DAMAGE 15
-      }
-      maxLevelIncrease = {
-        MELEE 2
-        ARCHERY 5
-      }
-      name = {
-        name = "rat archer"
-      }
-      chatReactionFriendly = "complains about it being too dark underground to shoot things"
-      chatReactionHostile = "makes angry rat noises"
-      inventory = {
-        {  "Bow"}
-        {  "Knife"}
-        {  "LeatherArmor"}
-        {  "LeatherBoots"}
-        { type =  "Torch" chance = 0.3 }
-        { type = Potion Heal {FLESH} chance = 0.7 }
-        {  "GoldPiece" 4 10 }
-        { Amulet RANGED_RESISTANCE 1 1 0.02}
-        { Amulet AMBUSH_SKILL 1 1 0.02}
-        { Amulet DISARM_TRAPS_SKILL 1 1 0.02}
-        { Amulet ELF_VISION 1 1 0.02}
-        { Amulet NIGHT_VISION 1 1 0.02}
-        { Amulet SWIMMING_SKILL 1 1 0.02}
-      }
-    }
-#---------------------------------------------------------
-#Miscellaneous modded creatures
-#---------------------------------------------------------
-    "ARACHNE"
-    {
-      viewId = { "arachne" }
-      attr = {
-        DAMAGE 46
-        DEFENSE 42 
-        SPELL_DAMAGE 32 
-        RANGED_DAMAGE 32 
-		LABORATORY 10
-        JEWELER 5
-      }
-      body = {
-        type = Humanoid LARGE
-        addBodyPart = {
-          LEG 6
-          TORSO 1
-		}
-        material = FLESH
-        weight = 480
-        intrinsicAttacks = {
-          TORSO {{{ Intrinsic { "bite_attack" } "fangs" 12 {
-            attackType = BITE
-            attackMsg = BITE
-            victimEffect = {0.5 Lasting POISON} } } }}
-        }
-	  }
-      gender = FEMALE
-      maxLevelIncrease = {
-        MELEE 4
-        SPELL 4
-        ARCHERY 2
-      }
-      spells = {
-        "escape"
-        "swap positions"
-        "pacify"
-      }
-      permanentEffects = {
-        RANGED_RESISTANCE 1
-        AMBUSH_SKILL 1
-        POISON_RESISTANT 1
-      }
-      name = {
-        name = "arachne"
-        firstNameGen = "FIRST_FEMALE"
-      }
-      chatReactionFriendly = "\"You look tasty, do you retain fluids?\""
-      chatReactionHostile = "\"Prepare to be food!\""
-      deathDescription = "slain"
-      inventory = {
-        {  "AdaSword" }
-        {  "AdaGloves" }
-        { Potion Heal {FLESH}}
-        {  "GoldPiece" 10 15 }
-      }
-    }
-    "COW_DEMON"
-    {
-      viewId = { "cow_demon" }
-      attr = {
-        DAMAGE 38
-        DEFENSE 40   
-      }
-      body = {
-        type = Humanoid HUGE
-        material = FLESH
-        weight = 620        
-      }
-      maxLevelIncrease = {
-        MELEE 3
-      }
-	  spellSchools = { "extra fighter" }
-      permanentEffects = {
-        RAGE 1
-        RANGED_RESISTANCE 1
-        REGENERATION 1
-		RIDER 1
-      }
-      name = {
-        name = "cow demon"
-        firstNameGen = "DEMON"
-      }
-      chatReactionFriendly = "\"Gruu...?\""
-      chatReactionHostile = "\"GRUUU!!!\""
-    }
-    "ARMORED_COW_DEMON" inherit "COW_DEMON"
-    {
-      viewId = { "armored_cow_demon" }
-      attr = {
-        DAMAGE 50
-        DEFENSE 65   
-      }
-      name = {
-        name = "cow demon lord"
-        firstNameGen = "DEMON"
-      }
-      chatReactionFriendly = "\"Gruu...?\""
-      chatReactionHostile = "\"GRUUU!!!\""
-      inventory = {
-        {  "EE_Fireblade"}
-        {  "ChainArmor"}
-        {  "LeatherBoots"}
-        { type =  "Torch" chance = 0.3 }
-        { type = Potion Heal {FLESH} chance = 0.7 }
-        {  "GoldPiece" 6 16 }
-      }
-    }
-    "BANSHEE" inherit "BASE_SPELL_CASTER_1"
-    {
-      viewId = { "banshee" }
-      attr = {
-        DEFENSE 30 
-        SPELL_DAMAGE 25  
-      }
-      maxLevelIncrease = {
-        SPELL 7
-      }
-      body = {
-        type = Humanoid LARGE
-        material = SPIRIT
-        weight = 0.1
-        intrinsicAttacks = {
-          TORSO {{{ Intrinsic { "fist_attack" } "spell" 4 {
-              attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = TOUCH victimEffect = {1.0 Lasting INSANITY} } } }}
-        }
-      }
-      gender = FEMALE
-	  hatedByEffect = HATE_UNDEAD
-      spells = {
-        "invisibility"        
-        "panic"
-      }
-      permanentEffects = {
-        NIGHT_VISION 1
-        MAGIC_VULNERABILITY 1
-        SUNLIGHT_VULNERABLE 1
-        SWIMMING_SKILL 1
-      }
-      cantEquip = true
-      name = {
-        name = "banshee"
-      }
-      chatReactionFriendly = "\"sobs uncontrollably\""
-      chatReactionHostile = "\"screams in an ear-shattering pitch\""
-    }
-    "B_GARGOYLE"
-    {
-      viewId = { "gargoyle" }
-      attr = {
-        DAMAGE 20
-        DEFENSE 30   
-      }
-      body = {
-        type = Humanoid LARGE
-        material = ROCK
-        weight = 480
-        addBodyPart = {
-          WING 2
-        }
-        intrinsicAttacks = {
-          ARM {{{ Intrinsic { "claws_attack" } "arm sword" 10 { attackType = HIT attackMsg = THRUST } }}}
-        }        
-      }
-      permanentEffects = {
-        SLOWED 1
-        RANGED_RESISTANCE 1
-        POISON_RESISTANT 1
-        FIRE_RESISTANT 1
-        SLEEP_RESISTANT 1
-      }
-      name = {
-        name = "gargoyle"
-      }
-      chatReactionFriendly = "\"....\""
-      chatReactionHostile = "\"....\""
-      deathDescription = "destroyed"
-    }
-    "GIANT"
-    {
-      viewId = { "giant" }
-      attr = {
-        DAMAGE 25
-        DEFENSE 30 
-        SPELL_DAMAGE 10  
-      }
-      body = {
-        type = Humanoid LARGE
-        material = FLESH
-        weight = 460
-      }
-      maxLevelIncrease = {
-        MELEE 7
-      }
-	  spellSchools = { "extra fighter" }
-      spells = {
-        "directed blast"
-        "shove"
-      }
-      permanentEffects = {
-        RANGED_RESISTANCE 1
-      }
-      name = {
-        name = "giant"
-        firstNameGen = "CYCLOPS"
-      }
-      chatReactionFriendly = "\"talks about annoying small people\""
-      chatReactionHostile = "\"makes angry giant noises\""
-      inventory = {
-        {  "HeavyClub" }
-        {  "GoldPiece" 30 50 }
-        { type = Glyph ARMOR ItemAttrBonus DEFENSE 5 chance = 0.1 }
-      }
-    }
-    "GORGON"
-    {
-      viewId = { "gorgon" }
-      attr = {
-        DAMAGE 32
-        DEFENSE 28 
-        SPELL_DAMAGE 38  
-	    LABORATORY 35
-      }
-      body = {
-        type = Humanoid LARGE
-        material = FLESH
-        weight = 180
-        intrinsicAttacks = {
-          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
-            attackType = BITE
-            attackMsg = BITE
-            victimEffect = {0.1 Lasting POISON} } }}}
-        }
-      }
-      gender = FEMALE
-      maxLevelIncrease = {
-        MELEE 5
-        SPELL 5
-      }
-	  spellSchools = { "extra shaman" }
-      spells = {
-        "healing"
-        "panic"
-        "EE snakes"
-      }
-      permanentEffects = {
-        AMBUSH_SKILL 1
-        POISON_RESISTANT 1
-      }
-      name = {
-        name = "gorgon"
-        firstNameGen = "FIRST_FEMALE"
-      }
-      chatReactionFriendly = "\"Don't get stiff on my account Hehe...\""
-      chatReactionHostile = "\"I'll make you a statue!\""
-      inventory = {
-        { type =  "EE_InvisibilityRobe"}
-        {  "IronStaff" }
-        { type = Glyph ARMOR LastingEffect COLD_RESISTANT chance = 0.2 }
-      }   
-    }
-    "HOBGOBLIN"
-    {
-      viewId = { "hobgoblin" }
-      attr = {
-        DAMAGE 15
-        DEFENSE 16 
-		LABORATORY 10
-        WORKSHOP 20
-        FORGE 20
-        JEWELER 20
-      }
-      body = {
-        type = Humanoid MEDIUM
-        material = FLESH
-        weight = 120
-        
-      }
-	  hatedByEffect = HATE_GREENSKINS
-      maxLevelIncrease = {
-        MELEE 4
-      }
-
-      permanentEffects = {
-        DISARM_TRAPS_SKILL 1
-		RIDER 1
-      }
-      name = {
-        name = "hobgoblin"
-        firstNameGen = "ORC"
-      }
-      chatReactionFriendly = "\"complains about other greenskins\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        {  "Spear"}
-		{ type =  "WoodenShield" chance = 0.2 }
-		{ type =  "IronHelm", prefixChance = 0.02 chance = 0.04}
-		{ type =  "LeatherBoots" prefixChance = 0.02 chance = 0.04}
-		{ type =  "LeatherGloves" prefixChance = 0.02 chance = 0.04}
-		{ type =  "LeatherHelm" prefixChance = 0.02 chance = 0.04}
-		{ type =  "IronBoots" prefixChance = 0.02 chance = 0.04}
-		{ type =  "IronGloves" prefixChance = 0.02 chance = 0.04}
-      }
-    }
-    "MUSHROOM_MAN"
-    {
-      viewId = { "mushroom_man" }
-      attr = {
-        DAMAGE 32
-        DEFENSE 30   
-      }
-      body = {
-        type = HumanoidLike LARGE
-        material = FLESH
-        weight = 300
-      }
-      maxLevelIncrease = {
-        MELEE 2
-      }
-      spells = {
-        "EE poison spores"
-      }
-      permanentEffects = {
-        SLOW_TRAINING 1
-        POISON_RESISTANT 1
-      }
-      cantEquip = true
-      name = {
-        name = "mushroom man"
-        pluralName = "mushroom men"
-      }
-      chatReactionFriendly = "\"flesh, tasty\""
-      chatReactionHostile = "\"MUSHRUUU!!!\""
-    }
-    "OGRE_FEMALE" inherit "OGRE"
-    {
-      viewId = { "ogre_female" }
-      gender = FEMALE
-      name = {
-        name = "ogre"
-        firstNameGen = "EE_ORC_FEMALE"
-      }
-      chatReactionFriendly = "\"complains about ogre males\""
-      chatReactionHostile = "\"Die!\""
-	}
-	"ORC_PRIMARCH_TRIBE"
-	{
-	  viewId = { "orc_primarch" }
-      hatedByEffect = HATE_GREENSKINS
-      attr = {
-        DAMAGE 54
-        DEFENSE 40 
-		WORKSHOP 40
-        FORGE 40
-		MULTI_WEAPON 40
-	}
-	  body = {
-        type = Humanoid LARGE
-        weight = 160
-	}
-	  permanentEffects = {
-		RIDER 1
-      }
-	  spellSchools = { "extra fighter" }
-      spells = {
-        "EE arm strike"
-		"EE wild swing"
-		"EE break through"
-		"EE air render"
-		"jump"
-		"EE throw sand"
-	}
-      name = {
-        name = "orc primarch"
-        firstNameGen = "ORC"
-	}
-      maxLevelIncrease = {
-        MELEE 3
-	}
-      chatReactionFriendly = "\"talks about inner-tribal relations\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        { type =  "EE_InfBattleAxe" prefixChance = 0.2 }
-		{ type =  "AdaBattleAxe" prefixChance = 0.2 }
-		{ type =  "EE_InfArmor" prefixChance = 0.2 }
-		{  "IronGloves"}
-		{  "IronBoots"}
-		{ type = Potion Heal {FLESH} countMin = 2 countMax = 4 }
-      }
-	}
-	"ORC_CAPTAIN_TRIBE"
-	{
-	  viewId = { "orc_captain" }
-      hatedByEffect = HATE_GREENSKINS
-      attr = {
-        DAMAGE 38
-        DEFENSE 28 
-		WORKSHOP 30
-        FORGE 30
-		MULTI_WEAPON 30
-	}
-	  body = {
-        type = Humanoid LARGE
-	}
-	  spellSchools = { "extra fighter" }
-      spells = {
-	    "shove"
-		"EE battle cry"
-		"EE knockdown"
-		"jump"
-	}
-      name = {
-        name = "orc captain"
-        firstNameGen = "ORC"
-	}
-       permanentEffects = {
-		RIDER 1
-      }
-      maxLevelIncrease = {
-        MELEE 4
-	}
-      chatReactionFriendly = "\"talks about training underlings\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        { type =  "BattleAxe" prefixChance = 0.05 chance = 0.5 }
-		{ type =  "EE_Axe" prefixChance = 0.05 chance = 0.5 }
-		{ type =  "ChainArmor" prefixChance = 0.05 }
-		{ type =  "IronHelm" prefixChance = 0.05 chance = 0.75 }
-		{ type =  "IronGloves" prefixChance = 0.05 chance = 0.75 }
-		{ type =  "IronBoots" prefixChance = 0.05 chance = 0.75 }
-		{ type = Potion Heal {FLESH} countMin = 2 countMax = 4 }
-		{ type = Potion Lasting BLIND chance = 0.4 }
-      }
-	}
-	"ORC_TRIBE"
-	{
-	  viewId = { "orc_wep" }
-      genderAlternatives = {
-        FEMALE { "orc_female" }
-	}
-      hatedByEffect = HATE_GREENSKINS
-      attr = {
-        DAMAGE 24
-        DEFENSE 20 
-		WORKSHOP 20
-        FORGE 20
-		MULTI_WEAPON 25
-	}
-	  body = {
-        type = Humanoid LARGE
-	}
-	  spellSchools = { "extra fighter" }
-      spells = {
-	    "shove"
-		"EE battle cry"
-	}
-      name = {
-        name = "orc"
-        firstNameGen = "ORC"
-	}
-      maxLevelIncrease = {
-        MELEE 4
-	}
-	permanentEffects = {
-		RIDER 1
-      }
-      chatReactionFriendly = "\"talks about fighting\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        { type =  "EE_Mace" prefixChance = 0.05 chance = 0.5 }
-		{ type =  "Sword" prefixChance = 0.05 chance = 0.5 }
-		{ type =  "ChainArmor" prefixChance = 0.05 }
-		{ type =  "LeatherHelm" prefixChance = 0.05 chance = 0.75 }
-		{ type =  "IronGloves" prefixChance = 0.05 chance = 0.75 }
-		{ type =  "LeatherBoots" prefixChance = 0.05 chance = 0.75 }
-		{ type = Potion Heal {FLESH} countMin = 0 countMax = 2 }
-		{ type = Potion Lasting BLIND chance = 0.1 }
-      }
-	}
-	"OGRE_CHAMPION_TRIBE"
-	{
-	  viewId = { "ogre_champion" }
-      genderAlternatives = {
-        FEMALE { "ogre_champion_female" }
-	}
-      hatedByEffect = HATE_GREENSKINS
-      attr = {
-        DAMAGE 38
-        DEFENSE 34 
-        WORKSHOP 25
-        FORGE 25
-    }
-	  body = {
-        type = Humanoid LARGE
-        weight = 160
-	}
-      permanentEffects = {
-        MAGIC_VULNERABILITY 1
-		RIDER 1
-	}
-      name = {
-        name = "ogre champion"
-        firstNameGen = "ORC"
-	}
-      maxLevelIncrease = {
-        MELEE 9
-	}
-      chatReactionFriendly = "\"talks about fighting\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        {  "BattleAxe"}
-		{  "ChainArmor"}
-		{  "IronHelm"}
-		{  "IronGloves"}
-		{  "IronBoots"}
-		{ type = Potion Heal {FLESH} countMin = 1 countMax = 3 }
-      }
-	}
-	"OGRE_TRIBE"
-	{
-	  viewId = { "ogre_wep" }
-      genderAlternatives = {
-        FEMALE { "ogre_female" }
-	}
-      hatedByEffect = HATE_GREENSKINS
-      attr = {
-        DAMAGE 32
-        DEFENSE 28 
-		WORKSHOP 25
-        FORGE 25
-	}
-	  body = {
-        type = Humanoid LARGE
-        weight = 160
-	}
-      permanentEffects = {
-        MAGIC_VULNERABILITY 1
-		RIDER 1
-	}
-      name = {
-        name = "ogre"
-        firstNameGen = "ORC"
-	}
-      maxLevelIncrease = {
-        MELEE 9
-	}
-      chatReactionFriendly = "\"talks about fighting\""
-      chatReactionHostile = "\"Die!\""
-      inventory = {
-        { type =  "HeavyClub" prefixChance = 0.05 }
-		{ type =  "ChainArmor" prefixChance = 0.05 }
-		{ type =  "LeatherHelm" prefixChance = 0.05 chance = 0.75 }
-		{ type =  "LeatherGloves" prefixChance = 0.05 chance = 0.75 }
-		{ type =  "IronBoots" prefixChance = 0.05 chance = 0.75 }
-		{ type = Potion Heal {FLESH} countMin = 0 countMax = 2 }
-      }
-	}
-"ORC_HEALER_TRIBE"
-  {
-    viewId = { "orc_shaman_wep" ColorId GREEN }
-    attr = {
-      DAMAGE 16
-      DEFENSE 12
-      SPELL_DAMAGE 26 
-	  LABORATORY 35
-    }
-    body = {
-      type = Humanoid LARGE
-    }
-    chatReactionFriendly = "talks about gross wounds"
-    chatReactionHostile = "\"Die!\""
-    maxLevelIncrease = {
-      MELEE 4
-      SPELL 7
-    }
-    spellSchools = { "extra healer" }
-	spells = {
-	  "advanced healing"
-	  "group healing"
-	  "magic missile"
-	}
-	       permanentEffects = {
-		RIDER 1
-      }
-    name = {
-      name = "orc healer"
-      firstNameGen = "ORC"
-    }
-    hatedByEffect = HATE_GREENSKINS
-    inventory = {
-      {  "IronStaff"}
-      {  "LeatherArmor"}
-	  {  "LeatherBoots"}
-    }
-  }
-    "ORC_FEMALE" inherit "ORC"
-    {
-      viewId = { "orc_female" }
-      gender = FEMALE
-      name = {
-        name = "orc"
-        firstNameGen = "EE_ORC_FEMALE"
-      }
-      chatReactionFriendly = "\"complains about orc males\""
-      chatReactionHostile = "\"Die!\""
-    }
-    "POSSESSED_BOOK"
-    {
-      viewId = { "possessed_book" }
-      attr = {
-        DAMAGE 10
-        DEFENSE 10 
-        SPELL_DAMAGE 20  
-      }
-      body = {
-        type = NonHumanoid SMALL
- 	    bodyParts = {
-		  HEAD 1
-        }
-        material = FLESH
-        weight = 5
-        intrinsicAttacks = {
-          HEAD {{{ Intrinsic { "bite_attack" } "nibble" 1 { attackType = BITE attackMsg = BITE } }}}
-        }
-      }
-	  spellSchools = { "mage" }
-      spells = {
-        "EE rapid magic missile"
-      }
-      permanentEffects = {
-        TELEPATHY 1
-        MAGIC_RESISTANCE 1
-        MELEE_VULNERABILITY 1
-        RANGED_RESISTANCE 1
-        POISON_RESISTANT 1
-        SLEEP_RESISTANT 1
-        FLYING 1
-      }
-      cantEquip = true
-      name = {
-        name = "spell book"
-      }
-      chatReactionFriendly = "\"floats around eerily\""
-      chatReactionHostile = "\"Flips its pages angrily\""
-      deathDescription = "destroyed"
-    }
-"WOLF_WARRIOR"
-  {
-    viewId = { "wolf_warrior" }
-    attr = {
-      DAMAGE 39
-      DEFENSE 29 
-	  SPELL_DAMAGE 30
-	  WORKSHOP 30
-	  FORGE 20
-    }
-    body = {
-      type = Humanoid LARGE
-    }
-      spells = {
-        "invisibility" "healing" "EE wolves" "haste"
-	}
-    maxLevelIncrease = {
-      MELEE 5
-    }
-    companions = {5 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
-    chatReactionFriendly = "curses all dungeons"
-    chatReactionHostile = "\"Die!\""
-    name = {
-      name = "wolf warrior"
-    }
-    hatedByEffect = HATE_HUMANS
-    inventory = {
-      { type =  "LeatherArmor" prefixChance = 1 }
-	  { type =  "LeatherGloves" prefixChance = 0.65 }
-	  { type =  "LeatherBoots" prefixChance = 0.65 }
-	  { type =  "IronHelm" chance = 0.5 prefixChance = 0.05 }
-      { type =  "WarHammer" prefixChance = 0.1 }
-      {  "GoldPiece" 18 22 }
-	  { Potion Heal {FLESH} 0 3 }
-    }
-  }
-    "SCREE_BIRD"
-    {
-      viewId = { "scree_bird" }
-      attr = {
-        DAMAGE 3
-        DEFENSE 4 
-        SPELL_DAMAGE 50
-      }
-      body = {
-        type = Bird SMALL
-        material = FLESH
-        weight = 4
-        intrinsicAttacks = {
-          HEAD {{{ Intrinsic { "bite_attack" } "spell" 1 {
-	        attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = TOUCH
-            victimEffect = {1.0 Fire{} }
-            attackerEffect = { Fire{} } } } }}
-        }
-      }
-      permanentEffects = {
-        SPEED 1
-        MAGIC_VULNERABILITY 1
-        MELEE_VULNERABILITY 1
-        RANGED_VULNERABILITY 1
-        FLYING 1
-      }
-      cantEquip = true
-      name = {
-        name = "scree bird"
-      }
-      chatReactionFriendly = "\"SCREE!\""
-      chatReactionHostile = "\"SCREE!\""
-      deathDescription = "murdered"
-    }
-    "SHARD_SPITTER"
-    {
-      viewId = { "shard_spitter" }
-      attr = {
-        DAMAGE 20
-        DEFENSE 32 
-        SPELL_DAMAGE 25  
-      }
-      body = {
-        type = HumanoidLike LARGE
-        material = FLESH
-        weight = 320
-        intrinsicAttacks = {
-          LEG {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } } }}
-        }
-      }
-      spells = {
-        "EE spit shards"
-      }
-      permanentEffects = {
-      }
-      cantEquip = true
-      name = {
-        name = "shard spitter"
-      }
-      chatReactionFriendly = "\"Guuuh...?\""
-      chatReactionHostile = "\"prepares to spit a rock at your face\""
-    }
-    "SPRITE"
-    {
-      viewId = { "sprite" }
-      attr = {
-        DAMAGE 1
-        DEFENSE 1  
-      }
-      body = {
-        type = Bird SMALL
-        material = SPIRIT
-        weight = 3
-      }
-      spells = {
-        "invisibility"
-      }
-      permanentEffects = {
-        SPEED 1
-        PEACEFULNESS 1
-        LIGHT_SOURCE 1
-        RANGED_RESISTANCE 1
-        FLYING 1
-		SPYING 1
-      }
-      cantEquip = true
-      name = {
-        name = "sprite"
-      }
-      chatReactionFriendly = "\"talks too quietly for you to hear\""
-      chatReactionHostile = "\"it flutters around agrily\""
-      deathDescription = "swatted"
-      noChase = true
-    }
-    "SQUIDHOLDER"
-    {
-      viewId = { "squidholder" }
-      attr = {
-        DAMAGE 30
-        DEFENSE 45 
-        SPELL_DAMAGE 55  
-      }
-      body = {
-        type = Humanoid LARGE
-        material = UNDEAD_FLESH
-        weight = 480
-        bodyParts = {
-          TORSO 1
-	      ARM 2
-		  HEAD 1
-		  BACK 1
-		}
-        intrinsicAttacks = {
-          TORSO {{{ Intrinsic { "bite_attack" }  "fangs" 14 { attackType = BITE attackMsg = BITE
-              victimEffect = {0.5 Lasting POISON} } }}}
-        }
-      }
-      maxLevelIncrease = {
-        MELEE 2
-        SPELL 6
-      }
-	  spellSchools = { "mage" }
-      spells = {
-        "fireball"
-        "healing"
-        "escape"
-        "magic missile"
-        "directed blast"
-      }
-      permanentEffects = {
-        TELEPATHY 1
-        MAGIC_RESISTANCE 1
-        RANGED_RESISTANCE 1
-        BAD_BREATH 1
-        POISON_RESISTANT 1
-        FIRE_RESISTANT 1
-        FLYING 1
-        REGENERATION 1
-      }
-      cantEquip = true
-      name = {
-        name = "squidholder"
-        firstNameGen = "DEITY"
-      }
-      chatReactionFriendly = "\"Slocsotak!\""
-      chatReactionHostile = "\"BEOSOLCAT!\""
-    }
-    "BENGAL_TIGER"
-    {
-      viewId = { "bengal_tiger" }
-      attr = {
-        DAMAGE 30
-        DEFENSE 25   
-      }
-      body = {
-        type = FourLegged LARGE
-        material = FLESH
-        weight = 100
-        intrinsicAttacks = {
-          LEG {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } }}}
-        }
-      }
-      permanentEffects = {
-        AMBUSH_SKILL 1
-		STEED 1
-      }
-      cantEquip = true
-      name = {
-        name = "bengal tiger"
-      }
-      chatReactionFriendly = "\"puuurrrr...\""
-      chatReactionHostile = "\"roars at you.\""
-    }
-    "ELEPHANT"
-    {
-      viewId = { "elephant" }
-      attr = {
-        DAMAGE 30
-        DEFENSE 38   
-      }
-      body = {
-        type = FourLegged HUGE
-        intrinsicAttacks = {
-          HEAD {{{ Intrinsic { "claws_attack" } "tusks" 10 { attackType = HIT attackMsg = THRUST } }}}
-        }
-        material = FLESH
-        weight = 10000        
-      }
-      permanentEffects = {
-        MELEE_RESISTANCE 1
-        SLOWED 1
-        SWIMMING_SKILL 1
-		STEED 1
-      }
-      cantEquip = true
-      name = {
-        name = "elephant"
-      }
-      chatReactionFriendly = "\"it says nothing, elephants can't talk\""
-      chatReactionHostile = "\"looks like it might charge you\""
-      noChase = true
-    }
-    "LION"
-    {
-      viewId = { "male_lion" }
-      attr = {
-        DAMAGE 26
-        DEFENSE 32   
-      }
-      body = {
-        type = FourLegged LARGE
-        material = FLESH
-        weight = 120
-        intrinsicAttacks = {
-          LEG {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } }}}
-        }
-      }
-      permanentEffects = {
-        AMBUSH_SKILL 1
-		STEED 1
-      }
-      cantEquip = true
-      name = {
-        name = "lion"
-      }
-      chatReactionFriendly = "\"puuurrrr...\""
-      chatReactionHostile = "\"roars aggresively\""
-    }
-    "LIONESS"
-    {
-      viewId = { "female_lion" }
-      attr = {
-        DAMAGE 23
-        DEFENSE 25   
-      }
-      body = {
-        type = FourLegged LARGE
-        material = FLESH
-        weight = 100
-        intrinsicAttacks = {
-          LEG {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } }}}
-        }
-      }
-      gender = FEMALE
-      permanentEffects = {
-        AMBUSH_SKILL 1
-		STEED 1
-      }
-      cantEquip = true
-      name = {
-        name = "lioness"
-        pluralName = "Lionesses"
-      }
-      chatReactionFriendly = "\"puuurrrr...\""
-      chatReactionHostile = "\"roars angrily at you\""
-    }
-    "CROCODILE"
-    {
-      viewId = { "crocodile" }
-      attr = {
-        DAMAGE 22
-        DEFENSE 23   
-      }
-      body = {
-        type = FourLegged LARGE
-        material = FLESH
-        weight = 100
-        intrinsicAttacks = {
-          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 { attackType = BITE attackMsg = BITE } }}}
-        }
-      }
-      permanentEffects = {
-        AMBUSH_SKILL 1
-		SWIMMING_SKILL 1
-		STEED 1
-      }
-      cantEquip = true
-      name = {
-        name = "crocodile"
-      }
-      chatReactionFriendly = "\"it says nothing, crocodiles can't talk\""
-      chatReactionHostile = "\"looks like it'll bite you.\""
-    }
-
-  "MUMMY_LORD" inherit "BASE_SPELL_CASTER_1"
-    {
-      viewId = { "mummy" ColorId GREEN }
-      attr = {
-        DAMAGE 20
-        DEFENSE 20 
-        SPELL_DAMAGE 20  
-      }
-      body = {
-        type = Humanoid LARGE
-        material = UNDEAD_FLESH
-        weight = 100
-        intrinsicAttacks = {
-          TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
-              attackType = HIT
-              attackMsg = TOUCH
-              victimEffect = {0.5 Lasting POISON}
-              attackerEffect = {Lasting RAGE} } }}}
-        }
-      }
-	  hatedByEffect = HATE_UNDEAD
-      maxLevelIncrease = {
-        MELEE 25
-        SPELL 10
-      }
-	  spellSchools = { "mage" }
-      spells = {
-        "magic missile"
-      }
-      permanentEffects = {
-        TELEPATHY 1
-        MAGIC_RESISTANCE 1
-        HATE_HUMANS 1
-      }
-      name = {
-        name = "mummy lord"
-        firstNameGen = "FIRST_MALE"
-      }
-      chatReactionFriendly = "\"Rrrrrr!\""
-      chatReactionHostile = "\"Pathetic!\""
-   }
-   "DUNGEON_MASTER"
-   {
-      viewId = { "keeper4" Rgb 58 106 156 255 }
-      attr = {
-        DAMAGE 10
-        DEFENSE 50 
-      }
-      body = {
-        type = Humanoid LARGE
-        weight = 400
-      }
-      name = {
-        name = "dungeon master"
-      }
-	  permanentEffects = {
-		RIDER 1
-      }
-   }
-   "VULTURE_ABOMINATION"
-   {
-      viewId = { "vulturemutation" }
-        attr = {
-          DAMAGE 25
-          DEFENSE 25
-        }
-      body = {
-      type = NonHumanoid MEDIUM
-      bodyParts = {
-        BACK 2
-        HEAD 2
-	    TORSO 3
-        WING 3
-        LEG 3
-        ARM 1
-      }	
-      weight = 25
-      intrinsicAttacks = { HEAD {{{ Intrinsic { "bite_attack" }  "Beak" 7 { attackType = BITE attackMsg = BITE } } } }}}
-	  permanentEffects = { POISON_RESISTANT 1 }
-	  name = { name = "vulture abomination" pluralName = "vulture abominations" groupName = "flock" }
-    }
-    "OCEAN_PORTAL"
-    {
-     viewId = { "ocean_portal" }
-     attr = {
-        DAMAGE 0
-        DEFENSE 30
-        SPELL_DAMAGE 60
-      }
-      body = {
-       type = NonHumanoid HUGE
-       material = ADA
-       weight = 1200
-       addBodyPart = {
-           BACK 6
-             } }
-      spellSchools = { "mage" }
-      spells = {
-        "EE bolt of water"
-        "EE summon water elementals"
-      }
-      permanentEffects = {
-        IMMOBILE 1
-        SLOWED 1
-        DARKNESS_SOURCE 1
-        MAGIC_RESISTANCE 1
-        MELEE_VULNERABILITY 1
-        RANGED_RESISTANCE 1
-        POISON_RESISTANT 1
-        FIRE_RESISTANT 1
-        SLEEP_RESISTANT 1
-        REGENERATION 1
-      }
-      cantEquip = true
-      name = {
-        name = "ocean portal"
-      }
-      chatReactionFriendly = "\"Water is constantly being shot at an immense pressure from inside the portal. \""
-      chatReactionHostile = "\"Water is constantly being shot at an immense pressure from inside the portal.\""
-      deathDescription = "destroyed"
-    }
-    "ADOXIE_EYE" 
-    {
-      viewId = { "adoxie_eye" }
-      attr = {
-        DAMAGE 25
-        DEFENSE 40 
-        SPELL_DAMAGE 40  
-      }
-      body = {
-        type = NonHumanoid HUGE
-        bodyParts = {
-          BACK 1
-	      HEAD 1
-          TORSO 1
-		}		
-        material = UNDEAD_FLESH
-        weight = 850        
-      }
-	  hatedByEffect = HATE_UNDEAD
-	  spellSchools = { "mage" }
-      spells = {
-        "magic missile"
-        "fireball"
-      }
-      permanentEffects = {
-        RAGE 1
-        DARKNESS_SOURCE 1
-        TELEPATHY 1
-        MAGIC_RESISTANCE 1
-        MELEE_VULNERABILITY 1
-        POISON_RESISTANT 1
-        FIRE_RESISTANT 1
-        SLEEP_RESISTANT 1
-        FLYING 1
-        NIGHT_VISION 1
-      }
-      cantEquip = true
-      name = {
-        name = "Adoxie's eye"
-        pluralName = "eyes"
-      }
-      chatReactionFriendly = "\"nothing, why did you think an eye could talk?\""
-      chatReactionHostile = "\"nothing, why did you think an eye could talk?\""
-      deathDescription = "destroyed"
-    }
-   "ADOXIE_HEAD_PLAYER" inherit "ADOXIE_HEAD" {
-    gender = FEMALE
-    permanentEffects = {
-      MAGIC_RESISTANCE 1
-      MELEE_RESISTANCE 1
-      RANGED_RESISTANCE 1
-      SLEEP_RESISTANT 1
-      FIRE_RESISTANT 1
-      FLYING 1
-    }
-    body = {
-      type = NonHumanoid HUGE
-      bodyParts = {
-        BACK 1
-        HEAD 1
-        TORSO 1
-      }
-      intrinsicAttacks = {
-        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 8 {
-            attackType = BITE
-            attackMsg = BITE
-            victimEffect = {0.3 Lasting POISON} } }}}
-      }
-	}
-  }
-   "AXEDIO_HEAD_PLAYER" inherit "ADOXIE_HEAD" {
-    gender = MALE
-    viewId = { "axedio_head" }
-      name = {
-        name = "Unholy god"
-        pluralName = "Axedios"
-      }
-    permanentEffects = {
-      MAGIC_RESISTANCE 1
-      MELEE_RESISTANCE 1
-      RANGED_RESISTANCE 1
-      SLEEP_RESISTANT 1
-      FIRE_RESISTANT 1
-      FLYING 1
-    }
-    spells = {
-      "EE axedio left hand"
-      "EE axedio right hand"
-      "EE axedio left foot"
-      "EE axedio right foot"
-    }
-    body = {
-      type = NonHumanoid HUGE
-      bodyParts = {
-        BACK 1
-        HEAD 1
-        TORSO 1
-      }
-      intrinsicAttacks = {
-        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 8 {
-            attackType = BITE
-            attackMsg = BITE
-            victimEffect = {0.3 Lasting POISON} } }}}
-      }
-	}
-  }
-  "AXEDIO_FOOT_LEFT" inherit "ADOXIE_FOOT_LEFT" {
-    viewId = { "axedio_foot_left" }
-      name = {
-        name = "Axedios left foot"
-        pluralName = "eyes"
-      }
-  }
-  "AXEDIO_FOOT_RIGHT" inherit "ADOXIE_FOOT_RIGHT" {
-    viewId = { "axedio_foot_right" }
-      name = {
-        name = "Axedio's right foot"
-        pluralName = "right feet"
-      }
-  }
-  "AXEDIO_HAND_LEFT" inherit "ADOXIE_LEFT_HAND" {
-    viewId = { "axedio_hand_left" }
-      name = {
-        name = "Axedio's left hand"
-        pluralName = "left hands"
-      }
-  }
-  "AXEDIO_HAND_RIGHT" inherit "ADOXIE_HAND_RIGHT" {
-    viewId = { "axedio_hand_right" }
-      name = {
-        name = "Axedio"
-        pluralName = "right_hands"
-      }
-  }
-
-  #Dark greenskins
- "DARK_ORC" inherit "ORC"
-    {
-      attr = {
-        DAMAGE 21
-        DEFENSE 14 
-      }
-      viewId = { "dark_orc" }
-      permanentEffects = {
-        FAST_TRAINING 1
-		SUNLIGHT_VULNERABLE 1
-		REGENERATION 1
-		RIDER 1
-      }
-    }
- "DARK_ORC_FEMALE" inherit "DARK_ORC"
-    {
-      viewId = { "dark_orc_female" }
-      gender = FEMALE
-      name = {
-        name = "orc"
-        firstNameGen = "EE_ORC_FEMALE"
-      }
-    }
- "DARK_OGRE" inherit "OGRE"
-    {
-      attr = {
-        DAMAGE 23
-        DEFENSE 18 
-      }
-      viewId = { "dark_ogre" }
-      permanentEffects = {
-        FAST_TRAINING 1
-        MAGIC_VULNERABILITY 1
-		SUNLIGHT_VULNERABLE 1
-		REGENERATION 1
-		RIDER 1
-      }
-    }
- "DARK_OGRE_FEMALE" inherit "DARK_OGRE"
-    {
-      viewId = { "dark_ogre_female" }
-      gender = FEMALE
-      name = {
-        name = "ogre"
-        firstNameGen = "EE_ORC_FEMALE"
-      }
-    }
- "DARK_GOBLIN" inherit "GOBLIN_ARTIFICER"
-    {
-      viewId = { "dark_goblin" }
-      permanentEffects = {
-        FAST_TRAINING 1
-        DISARM_TRAPS_SKILL 1
-		SUNLIGHT_VULNERABLE 1
-		REGENERATION 1
-		RIDER 1
-      }
-    }
- "DARK_HOBGOBLIN" inherit "HOBGOBLIN"
-    {
-      viewId = { "dark_hobgoblin" }
-      permanentEffects = {
-        FAST_TRAINING 1
-        DISARM_TRAPS_SKILL 1
-		SUNLIGHT_VULNERABLE 1
-		REGENERATION 1
-		RIDER 1
-      }
-    }
-  "LION_QUEEN"
-    {
-      viewId = { "lion_queen" }
-      attr = {
-        DAMAGE 23
-        DEFENSE 25   
-      }
-      body = {
-        type = Humanoid MEDIUM
-        intrinsicAttacks = {
-          ARM {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW }}} }
-        }
-      }
-      gender = FEMALE
-      permanentEffects = {
-        AMBUSH_SKILL 1
-		SPEED 1
-      }
-      maxLevelIncrease = {
-        MELEE 8
-      }
-      name = {
-        name = "lion queen"
-        pluralName = "lion queens"
-      }
-      inventory = {
-		  {  "AdaBoots" 1 1 0.03 }
-		  {  "EE_VenGloves" 1 1 0.03 }
-		  {  "AdaHelm" 1 1 0.03 }
-  		  { type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
-		  { type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
-		  { type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
-		  { type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
-		  { Potion Permanent SPEED 1 1 0.03 }
-		  { Potion RegrowBodyPart 1 1 1 0.03 }
-		  { Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
-      }	  
-    }
-#---------------------------------------------------------
-#New Creatures for goblin Tribe - Righteous August 2019
-#---------------------------------------------------------
-
-	"GIANT_CHICKEN"
-    {
-      viewId = { "giant_chicken" }
-      attr = {
-        DAMAGE 36
-        DEFENSE 18 
-      }
-      body = {
-        type = Bird LARGE
-        weight = 80
-      }
-      permanentEffects = {
-        RANGED_RESISTANCE 1
-		STEED 1
-      }
-      name = {
-        name = "giant chicken"
-      }
-	}
-	"BATTLE_CHICKEN"
-    {
-      viewId = { "chicken" }
-      attr = {
-        DAMAGE 22
-        DEFENSE 6 
-      }
-      body = {
-        type = Bird SMALL
-        weight = 3
-      }
-      permanentEffects = {
-		SPEED 1
-      }
-      name = {
-        name = "chicken"
-      }
-	      }
-    "GOLD_GOLEM"
-    {
-      viewId = { "gold_golem" }
-      attr = {
-        DAMAGE 34
-        DEFENSE 30 
-      }
-      body = {
-        type = HumanoidLike LARGE
-        material = SPIRIT
-      }
-      permanentEffects = {
-        MELEE_RESISTANCE 1
-        SLOWED 1
-      }
-      name = {
-        name = "gold golem"
-      }
-      inventory = {
-        { countMin = 30 countMax = 50 type =  "GoldPiece" chance = 1.0 }
-      }
-	}
-
-#---------------------------------------------------------
-#Goblin faction
-#---------------------------------------------------------
-
-    "ELITE_GOBLIN_GUARD"
-    {
-      viewId = { "elite_goblin_guard" }
-      attr = {
-        DAMAGE 30
-        DEFENSE 42 
-		FORGE 40
-      }
-      body = {
-        type = Humanoid MEDIUM
-      }
-      chatReactionFriendly = "talks about serving the king"
-      chatReactionHostile = "\"Die!\""
-	  permanentEffects = {
-        DISARM_TRAPS_SKILL 1
-		MELEE_RESISTANCE 1
-		RIDER 1
-	  }
-      maxLevelIncrease = {
-        MELEE 3
-      }
-      spellSchools = { "extra fighter" }
-      spells = { 
-	    "shove"
-        "EE battle cry"
-        "EE block"
-      }
-      name = {
-        name = "elite goblin guard"
-        firstNameGen = "ORC"
-      }
-      hatedByEffect = HATE_GREENSKINS
-      inventory = {
-        { type =  "Sword" prefixChance = 1 }
-        { countMin = 1 countMax = 2 type = Potion Heal {FLESH} chance = 0.4 }
-        {  "EE_DEFENSEAMULET" 1 1 0.03}
-        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
-        { Ring DAM_BONUS 1 1 0.03}
-        { Ring DEF_BONUS 1 1 0.03}
-        { Ring RAGE 1 1 0.03}
-      }
-    }
-    "GOBLIN_ARCHER" modify
+ "GOBLIN_ARCHER" modify
     {
       viewId = { "goblin_archer" }
       attr = {
@@ -4752,48 +1595,7 @@
         { Amulet SWIMMING_SKILL 1 1 0.05}
       }
 	}
-    "GOBLIN_BRUTE"
-    {
-      viewId = { "goblin_brute" }
-      attr = {
-        DAMAGE 44
-        DEFENSE 35  
-      }
-      body = {
-        type = Humanoid LARGE
-		material = FLESH
-        weight = 140
-      }
-      chatReactionFriendly = "talks about clubbing things"
-      chatReactionHostile = "\"Die!\""
-	  spellSchools = { "extra fighter" }
-      permanentEffects = {
-	    MELEE_RESISTANCE 1
-        RANGED_RESISTANCE 1
-		MAGIC_VULNERABILITY 1
-        REGENERATION 1
-		RIDER 1
-      }
-	  maxLevelIncrease = {
-        MELEE 3
-	  }
-      name = {
-        name = "goblin brute"
-        firstNameGen = "ORC"
-      }
-      hatedByEffect = HATE_GREENSKINS
-      inventory = {
-        {  "HeavyClub" }
-        {  "GoldPiece" 10 30 }
-        { type =  "LeatherArmor" chance = 0.8 }
-        { countMin = 1 countMax = 3 type = Potion Heal {FLESH} chance = 0.3 }
-        {  "EE_DEFENSEAMULET" 1 1 0.03}
-        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
-        { Ring DAM_BONUS 1 1 0.03}
-        { Ring DEF_BONUS 1 1 0.03}
-        { Ring RAGE 1 1 0.03}
-      }
-    }
+	
     "GOBLIN_CHICKENMANCER" modify
     {
       viewId = { "goblin_chickenmancer" }
@@ -4851,66 +1653,7 @@
         { Potion Lasting TELEPATHY 1 4 0.01}
       }
 	}
-	"GOBLIN_HIGH_PRIEST"
-    {
-      viewId = { "goblin_high_priest" }
-      attr = {
-        DAMAGE 22
-        DEFENSE 38 
-		SPELL_DAMAGE 34 
-      }
-      body = {
-        type = Humanoid MEDIUM
-      }
-	  spellSchools = { "extra goblin high priest" }
-      spells = {
-		 "expert healing"
-		 "EE summon goblin priests"
-		 "invisibility"
-		 "expert magic missile"
-		 "escape"
-		 "EE summon spirit"
-		 "EE regrow body part"
-	  }
-      chatReactionFriendly = "talks about establishing a goblin theocracy"
-      chatReactionHostile = "\"Die!\""
-      permanentEffects = {
-        DISARM_TRAPS_SKILL 1
-		MAGIC_RESISTANCE 1
-		RIDER 1
-      }
-	        maxLevelIncrease = {
-        MELEE 2
-        SPELL 7
-	  }
-      name = {
-        name = "goblin high priest"
-        firstNameGen = "ORC"
-      }
-      hatedByEffect = HATE_GREENSKINS
-      inventory = {
 
-        { type =  "LeatherArmor" prefixChance = 1 }
-        { type =  "LeatherBoots" chance = 0.8 prefixChance = 0.2 }
-        { type =  "LeatherGloves" chance = 0.3 prefixChance = 0.1 }
-        {  "EE_DEFENSEAMULET" 1 1 0.03}
-        { Potion Lasting 50 MAGIC_VULNERABILITY 1 4 0.01}
-        { Potion Lasting PEACEFULNESS 1 4 0.01}
-        { Potion Lasting POISON_RESISTANT 1 4 0.01}
-        { Potion DestroyEquipment 1 1 0.01}
-        { Potion Lasting 50 BLEEDING 1 4 0.01}
-        { Potion Lasting BLIND 1 4 0.01}
-        { Potion Lasting COLLAPSED 1 4 0.01}
-        { Potion Lasting FLYING 1 4 0.01}
-        { Potion Lasting INSANITY 1 4 0.01}
-        { Potion Lasting INVISIBLE 1 4 0.01}
-        { Potion Lasting 50 REGENERATION 1 4 0.01}
-        { Potion Lasting SLEEP 1 4 0.01}
-        { Potion Lasting SLOWED 1 4 0.01}
-        { Potion Lasting SPEED 1 4 0.01}
-        { Potion Lasting TELEPATHY 1 4 0.01}
-      }
-	}
 "GOBLIN_KING" modify
     {
       viewId = { "goblin_king" }
@@ -4963,61 +1706,6 @@
         { type = Glyph WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE} chance = 0.3 }
       }
 	}
-	"GOBLIN_LEPRECHAUN"
-    {
-      viewId = { "goblin_leprechaun" }
-      attr = {
-        DAMAGE 22
-        DEFENSE 28 
-		SPELL_DAMAGE 18 
-      }
-      body = {
-        type = Humanoid MEDIUM
-      }
-      spells = {
-		 "expert healing"
-		 "EE rapid magic missile"
-		 "escape"
-		 "EE summon gold golems"
-	  }
-      chatReactionFriendly = "talks about Gold"
-      chatReactionHostile = "\"Die!\""
-      permanentEffects = {
-        DISARM_TRAPS_SKILL 1
-		RIDER 1
-      }
-	        maxLevelIncrease = {
-        MELEE 2
-        SPELL 7
-	  }
-      name = {
-        name = "goblin leprechaun"
-        firstNameGen = "ORC"
-      }
-      hatedByEffect = HATE_GREENSKINS
-      inventory = {
-
-        { type =  "Robe" prefixChance = 1 }
-        { type =  "LeatherBoots" prefixChance = 0.4 }
-        { type =  "LeatherGloves" chance = 0.6 prefixChance = 0.4 }
-        {  "GoldPiece" 320 440 }
-        { Potion Lasting 50 MAGIC_VULNERABILITY 1 4 0.01}
-        { Potion Lasting PEACEFULNESS 1 4 0.01}
-        { Potion Lasting POISON_RESISTANT 1 4 0.01}
-        { Potion DestroyEquipment 1 1 0.01}
-        { Potion Lasting 50 BLEEDING 1 4 0.01}
-        { Potion Lasting BLIND 1 4 0.01}
-        { Potion Lasting COLLAPSED 1 4 0.01}
-        { Potion Lasting FLYING 1 4 0.01}
-        { Potion Lasting INSANITY 1 4 0.01}
-        { Potion Lasting INVISIBLE 1 4 0.01}
-        { Potion Lasting 50 REGENERATION 1 4 0.01}
-        { Potion Lasting SLEEP 1 4 0.01}
-        { Potion Lasting SLOWED 1 4 0.01}
-        { Potion Lasting SPEED 1 4 0.01}
-        { Potion Lasting TELEPATHY 1 4 0.01}
-      }
-	}
   "GOBLIN_MATRON" modify
     {
       viewId = { "goblin_matron" }
@@ -5051,6 +1739,7 @@
         {  "LeatherArmor"}
       }
     }
+	
 	"GOBLIN_PRIEST" modify
     {
       viewId = { "goblin_priest" }
@@ -5107,6 +1796,7 @@
         { Potion Lasting TELEPATHY 1 4 0.01}
       }
 	}
+	
     "GOBLIN_WARRIOR" modify
     {
       viewId = { "goblin_warrior" }
@@ -5215,12 +1905,3256 @@
         { Potion Lasting TELEPATHY 1 4 0.01}
       }
 	}
+	
+
+#######################
+##Extra enemies mod
+#######################
+
+#############
+#Base classes
+#############
+
+"EE_BASE_SPELL_CASTER_1"
+#Inherit for a large random inventory
+{
+  name = { name = "base class" }
+  viewId = { "gnome" }
+  attr = { DEFENSE 10 }
+  body = { type = Humanoid MEDIUM }
+  inventory = {
+    { type =  "IronStaff" prefixChance = 0.03 }
+    { Potion Lasting 50 MAGIC_VULNERABILITY 1 4 0.01}
+    { Potion Lasting 50 MELEE_VULNERABILITY 1 4 0.01}
+    { Potion Lasting PEACEFULNESS 1 4 0.01}
+    { Potion Lasting POISON 1 4 0.01}
+    { Potion Lasting POISON_RESISTANT 1 4 0.01}
+    { Amulet REGENERATION 1 1 0.01}
+    { Ring SPELL_DAMAGE 1 1 0.01}
+    { Amulet TELEPATHY 1 1 0.01}
+    { Amulet WARNING 1 1 0.01}
+    { Potion DestroyEquipment 1 1 0.01}
+    { Potion Heal {SPIRIT} 1 4 0.01}
+    { Potion Lasting 50 BLEEDING 1 4 0.01}
+    { Potion Lasting BLIND 1 4 0.01}
+    { Potion Lasting COLLAPSED 1 4 0.01}
+    { Potion Lasting FLYING 1 4 0.01}
+    { Potion Lasting INSANITY 1 4 0.01}
+    { Potion Lasting INVISIBLE 1 4 0.01}
+    { Potion Lasting 50 REGENERATION 1 4 0.01}
+    { Potion Lasting SLEEP 1 4 0.01}
+    { Potion Lasting SLOWED 1 4 0.01}
+    { Potion Lasting SPEED 1 4 0.01}
+    { Potion Lasting TELEPATHY 1 4 0.01}
+    { FireScroll 1 4 0.01}
+    { Ring FAST_CRAFTING 1 1 0.01}
+    { Ring FAST_TRAINING 1 1 0.01}
+    { Ring FIRE_RESISTANT 1 1 0.01}
+    { Ring MAGIC_RESISTANCE 1 1 0.01}
+    { Ring POISON_RESISTANT 1 1 0.01}
+    { Scroll Teleport 1 1 0.01}
+    { Ring RANGED_RESISTANCE 1 1 0.01}
+    { Ring RESTED 1 1 0.01}
+    { Ring SATIATED 1 1 0.01}
+    { Ring SLEEP_RESISTANT 1 1 0.01}
+    { Scroll CircularBlast 1 1 0.01}
+    { Scroll Deception 1 1 0.01}
+    { Scroll Escape{} 1 1 0.01}
+    { Scroll Lasting 50 FIRE_RESISTANT 1 1 0.01}
+  }
+}
+
+#---------------------------------------------------------
+#The KING
+#---------------------------------------------------------
+  "EE_ROYAL_KNIGHT" inherit "KNIGHT" {
+    viewId = { "knight" ColorId PURPLE } #Modded
+    inventory = {
+      {  "Sword"}
+      {  "ChainArmor"}
+      {  "LeatherBoots"}
+    }
+    attr = {
+      DAMAGE 45
+      DEFENSE 35
+    }
+    name = {
+      name = "royal knight"
+    }
+   }
+  "EE_ROYAL_ARCHER" inherit "ARCHER" {
+      viewId = { "archer" ColorId PURPLE } #Modded
+      attr = {
+      DAMAGE 22
+      DEFENSE 32
+      RANGED_DAMAGE 40
+    }
+    name = {
+      name = "royal archer"
+    }
+    inventory = {
+        {  "Bow"}
+        {  "Knife"}
+        {  "LeatherArmor"}
+        {  "LeatherBoots"}
+    }
+  }
+  "EE_ROYAL_PRIEST" inherit "PRIEST" {
+    viewId = { "priest" ColorId PURPLE } #Modded
+    attr = {
+      DAMAGE 15
+      DEFENSE 30
+      SPELL_DAMAGE 40
+    }
+    name = {
+      name = "royal priest"
+    }
+  }
+#---------------------------------------------------------
+#Centaur faction
+#---------------------------------------------------------
+		
+ "EE_CENTAUR_ARCHER"
+    {
+      viewId = { "centaur_archer" }
+      attr = {
+        DAMAGE 30
+        DEFENSE 36  
+        RANGED_DAMAGE 23 
+      }
+      body = {
+        type = Humanoid LARGE
+        addBodyPart = {
+          TORSO 1
+	      LEG 2
+        }
+        material = FLESH
+        weight = 600 
+      }
+      gender = FEMALE
+      maxLevelIncrease = {
+        MELEE 3
+        ARCHERY 7
+      }
+      permanentEffects = {
+        SPEED 1
+        HATE_GREENSKINS 1
+      }
+      name = {
+        name = "centaur archer"
+        pluralName = "centaurs"
+	    firstNameGen = "FIRST_FEMALE"
+      }
+      chatReactionFriendly = "\"curses all greenskins\""
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+        {  "ElvenSword"}
+        {  "LeatherArmor"}
+        {  "Bow"}
+        {  "GoldPiece" 2 6 }
+        {  "EE_DEFENSEAMULET" 1 1 0.03}
+        { Amulet RANGED_RESISTANCE 1 1 0.05}
+        { Amulet AMBUSH_SKILL 1 1 0.05}
+        { Amulet DISARM_TRAPS_SKILL 1 1 0.05}
+        { Amulet ELF_VISION 1 1 0.05}
+        { Amulet NIGHT_VISION 1 1 0.05}
+        { Amulet SWIMMING_SKILL 1 1 0.05}
+      }
+    }
+ "EE_CENTAUR_FARMER" inherit "EE_CENTAUR_ARCHER"
+    {
+      viewId = { "centaur_farmer" }
+      attr = {
+        DAMAGE 14
+        DEFENSE 14   
+      }
+      maxLevelIncrease = {
+        MELEE 3
+        ARCHERY 1
+      }
+      permanentEffects = {
+        SPEED 1
+        HATE_GREENSKINS 1
+        CROPS_SKILL 1
+      }
+      name = {
+        name = "centaur farmer"
+        pluralName = "Centaurs"
+	    firstNameGen = "FIRST_MALE"
+      }
+      chatReactionFriendly = "\"talks about farming\""
+      chatReactionHostile = "\"Stay Back!\""
+	  inventory = {
+        {  "FirstAidKit" 1 1 0.1}
+        { Potion Heal {FLESH} 1 4 0.2 }
+        {  "Torch" 1 1 0.1 }
+	  }
+    }
+ "EE_CENTAUR_HUNTER" inherit "EE_CENTAUR_ARCHER"
+    {
+      viewId = { "centaur_hunter" }
+      attr = {
+        DAMAGE 18
+        DEFENSE 18 
+        RANGED_DAMAGE 13 
+      }
+      gender = FEMALE
+      maxLevelIncrease = {
+        MELEE 2
+        ARCHERY 5
+      }
+      spells = {
+        "advanced healing"
+      }
+      name = {
+        name = "centaur hunter"
+        pluralName = "Centaurs"
+    	firstNameGen = "FIRST_FEMALE"
+      }
+      chatReactionFriendly = "\"talks about methods of trackings animals\""
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+        {  "Bow"}
+		{  "LeatherArmor"}
+        { Amulet RANGED_RESISTANCE 1 1 0.05}
+        { Amulet AMBUSH_SKILL 1 1 0.05}
+        { Amulet DISARM_TRAPS_SKILL 1 1 0.05}
+        { Amulet ELF_VISION 1 1 0.05}
+        { Amulet NIGHT_VISION 1 1 0.05}
+        { Amulet SWIMMING_SKILL 1 1 0.05}
+      }
+    }
+ "EE_CENTAUR_PRIESTESS" inherit "EE_CENTAUR_ARCHER"
+    {
+      viewId = { "centaur_priestess" }
+      attr = {
+        DAMAGE 18
+        DEFENSE 26 
+        SPELL_DAMAGE 36 
+      }
+      gender = FEMALE
+      maxLevelIncrease = {
+        MELEE 2
+        SPELL 4
+      }
+      permanentEffects = {
+        SPEED 1
+		TELEPATHY 1
+        HATE_GREENSKINS 1
+	  }
+      spells = {
+        "expert healing"
+		"group healing"
+		"advanced magic missile"
+		"EE advanced magic blast"
+		"advanced cure poison"
+		"cure blindness"
+      }
+      companions = {4 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
+      name = {
+        name = "centaur priestess"
+        pluralName = "Centaurs"
+    	firstNameGen = "FIRST_FEMALE"
+      }
+      chatReactionFriendly = "\"talks about centaur religion\""
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+        { type =  "IronStaff" prefixChance = 0.3}
+		{ type =  "Robe" prefixChance = 1.0 }
+        { Amulet RANGED_RESISTANCE 1 1 0.8}
+        { Ring ELF_VISION 1 1 0.2}
+        { Ring NIGHT_VISION 1 1 0.4}
+		{ Ring DEF_BONUS 1 1 0.8}
+        { Amulet REGENERATION 1 1 0.4}
+      }
+    }
+ "EE_CENTAUR_CHILD" inherit "EE_CENTAUR_ARCHER"
+    {
+      viewId = { "centaur_child" }
+      attr = {
+        DAMAGE 8
+        DEFENSE 8   
+      }
+      permanentEffects = {
+        SPEED 1
+      }
+      name = {
+        name = "centaur child"
+        pluralName = "centaur children"
+      }
+      chatReactionFriendly = "\"talks about playing in the fields\""
+      chatReactionHostile = "\"Don't hurt me!\""
+	  inventory = {
+        {  "FirstAidKit" 1 1 0.1}
+        { Potion Heal {FLESH} 1 4 0.2 }
+        {  "Torch" 1 1 0.1 }
+	  }
+    }
+ "EE_CENTAUR_KING" inherit "EE_CENTAUR_ARCHER"
+    {
+      viewId = { "centaur_king" }
+      attr = {
+        DAMAGE 43
+        DEFENSE 36   
+      }
+      maxLevelIncrease = {
+        MELEE 7
+      }
+	  spellSchools = { "extra fighter" }
+      name = {
+        name = "centaur king"
+        pluralName = "Centaurs"
+	    firstNameGen = "FIRST_MALE"
+      }
+      chatReactionFriendly = "\"curses all greenskin invaders\""
+      chatReactionHostile = "\"Die!\""
+      deathDescription = "slain"
+      inventory = {
+        { type =  "EE_VenLongSpear" prefixChance = 1 }
+        {  "AdaArmor" }
+        {  "AdaGloves" }
+		{  "AdaBoots" 1 1 0.03 }
+		{  "AdaHelm" 1 1 0.03 }
+  		{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
+		{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
+		{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
+		{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
+		{ Potion Permanent SPEED 1 1 0.03 }
+		{ Potion RegrowBodyPart 1 1 1 0.03 }
+		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
+        { Potion Heal {FLESH}}
+        {  "GoldPiece" 16 26 }
+      }
+    }
+ "EE_CENTAUR_KNIGHT" inherit "EE_CENTAUR_ARCHER"
+    {
+      viewId = { "centaur_knight" }
+      attr = {
+        DAMAGE 38
+        DEFENSE 38   
+		FORGE 15
+      }
+      maxLevelIncrease = {
+        MELEE 5
+      }
+	  spellSchools = { "extra fighter" }
+      name = {
+        name = "centaur knight"
+        pluralName = "Centaurs"
+	    firstNameGen = "FIRST_MALE"
+      }
+      chatReactionFriendly = "\"talks about slaying greenskins\""
+      chatReactionHostile = "\"Perish Fiend!\""
+      inventory = {
+        {  "Sword" }
+        {  "ChainArmor" }
+        {  "LeatherGloves" }
+        {  "EE_DEFENSEAMULET" 1 1 0.03}
+        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
+        { Ring DAM_BONUS 1 1 0.03}
+        { Ring DEF_BONUS 1 1 0.03}
+        { Ring RAGE 1 1 0.03}
+      }
+    }
+	
+#---------------------------------------------------------
+#Amazon faction
+#---------------------------------------------------------
+"EE_AMAZON_PESEANT"
+  {
+    viewId = { "peasant" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+	  DIGGING 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about amazon women"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+	  RIDER 1
+    }
+    name = {
+      name = "peasant"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+"EE_AMAZON"
+    {
+      viewId = { "amazon" }
+      attr = {
+        DAMAGE 20
+        DEFENSE 17
+		RANGED_DAMAGE 10
+		WORKSHOP 20
+        FORGE 20
+		DIGGING 30
+      }
+      body = {
+        type = Humanoid LARGE
+        material = FLESH
+        weight = 240
+        
+      }
+      gender = FEMALE
+	  hatedByEffect = HATE_HUMANS
+      maxLevelIncrease = {
+        MELEE 4
+        ARCHERY 3
+      }
+	  spellSchools = { "extra fighter" }
+      permanentEffects = {
+        FAST_TRAINING 1
+        ELF_VISION 1
+        HATE_UNDEAD 1
+        RANGED_RESISTANCE 1
+        DISARM_TRAPS_SKILL 1
+        REGENERATION 1
+		RIDER 1
+      }
+      name = {
+        name = "amazon"
+        pluralName = "amazons"
+        firstNameGen = "FIRST_FEMALE"
+      }
+      chatReactionFriendly = "\"talks about her god's many blessings\""
+      chatReactionHostile = "\"Die, fiend!\""
+      inventory = {
+        {  "Sword"}
+		{  "LeatherArmor"}
+		{  "WoodenShield"}
+		{ type = "Bow" chance = 0.3 }
+        {  "EE_DEFENSEAMULET" 1 1 0.03}
+        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
+		{ Potion Heal {FLESH} 1 2 0.3}
+        { Ring DAM_BONUS 1 1 0.03}
+        { Ring DEF_BONUS 1 1 0.03}
+        { Ring RAGE 1 1 0.03}
+      }
+    }
+	
+"EE_AMAZON_ARCHER" inherit "EE_AMAZON"
+    {
+      viewId = { "amazon_archer" }
+      attr = {
+        DAMAGE 22
+        DEFENSE 16  
+        RANGED_DAMAGE 32 
+      }
+      maxLevelIncrease = {
+        MELEE 2
+        ARCHERY 4
+      }
+      spells = {
+        "healing"
+        "haste"
+      }
+	  	  permanentEffects = {
+		RIDER 1
+      }
+      name = {
+        name = "amazon archer"
+        pluralName = "amazons"
+        firstNameGen = "FIRST_FEMALE"
+      }
+      chatReactionFriendly = "\"talks about tracking prey\""
+      chatReactionHostile = "\"Die, fiend!\""
+      inventory = {
+        {  "ElvenBow"}
+		{  "LeatherArmor" }
+		{  "LeatherBoots" }
+        { Amulet RANGED_RESISTANCE 1 1 0.05}
+        { Amulet AMBUSH_SKILL 1 1 0.05}
+        { Amulet DISARM_TRAPS_SKILL 1 1 0.05}
+        { Amulet ELF_VISION 1 1 0.05}
+        { Amulet NIGHT_VISION 1 1 0.05}
+        { Amulet SWIMMING_SKILL 1 1 0.05}
+		{ Ring SPEED 1 1 0.02 }
+      }
+    }
+	
+"EE_AMAZON_CHAMPION" inherit "EE_AMAZON"
+{
+  viewId = { "amazon_champion" }
+  attr = {
+	DAMAGE 38
+	DEFENSE 25   
+	FORGE 30
+	JEWELER 10
+	DIGGING 25
+  }
+  maxLevelIncrease = {
+	MELEE 5
+  }
+  spellSchools = { "extra fighter" }
+  name = {
+	name = "amazon champion"
+	pluralName = "amazons"
+	firstNameGen = "FIRST_FEMALE"
+  }
+	  permanentEffects = {
+	RIDER 1
+  }
+  chatReactionFriendly = "\"talks about honoring the gods.\""
+  chatReactionHostile = "\"Die, cretin!\""
+  inventory = {
+	{ type =  "BattleAxe" prefixChance = 0.1 }
+	{ type =  "ChainArmor" prefixChance = 0.1 }
+	{  "IronGloves"}
+	{  "IronBoots"}
+	{  "EE_DEFENSEAMULET" 1 1 0.3}
+	{ Potion Lasting 50 MELEE_RESISTANCE 1 1 0.3}
+	{ Potion Heal {FLESH} 1 3 0.4}
+	{ Ring DAM_BONUS 1 1 0.3}
+	{ Ring DEF_BONUS 1 1 0.3}
+	{ Ring RAGE 1 1 0.03}
+  }
+}
+
+"EE_AMAZON_ELDER" inherit "EE_AMAZON"
+{
+  viewId = { "amazon_elder" }
+  attr = {
+	DAMAGE 16
+	DEFENSE 16 
+	SPELL_DAMAGE 45  
+  }
+  maxLevelIncrease = {
+	MELEE 7
+	SPELL 10
+	ARCHERY 3
+  }
+  spellSchools = { "extra shaman" }
+  spells = {
+	"magic missile"
+	"slow"
+	"healing"
+	"advanced healing"
+	"EE summon spirit"
+  }
+  permanentEffects = {
+	FAST_TRAINING 1
+	ELF_VISION 1
+	RANGED_RESISTANCE 1
+	HATE_UNDEAD 1
+	DISARM_TRAPS_SKILL 1
+	REGENERATION 1
+	RIDER 1
+  }
+  companions = {5 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
+  name = {
+	name = "amazon elder"
+	pluralName = "amazons"
+	firstNameGen = "FIRST_FEMALE"
+  }
+  chatReactionFriendly = "\"talks about legends of old.\""
+  chatReactionHostile = "\"Die, fiend!\""
+  inventory = {
+	{ type =  "Robe" prefixChance = 1}
+	{  "IronStaff" }
+	{ type = Glyph ARMOR LastingEffect POISON_RESISTANT chance = 0.2 }
+  }   
+}
+
+"EE_AMAZON_QUEEN" inherit "EE_AMAZON"
+{
+  viewId = { "amazon_queen" }
+  attr = {
+	DAMAGE 42
+	DEFENSE 36 
+	SPELL_DAMAGE 35  
+  }
+  maxLevelIncrease = {
+	MELEE 9
+	SPELL 7
+	ARCHERY 3
+  }
+  spellSchools = { "extra fighter" }
+  spells = {
+	"healing"
+	"cure poison"
+	"damage bonus"
+	"defense bonus"
+	"pacify"
+  }
+  permanentEffects = {
+	FAST_TRAINING 1
+	ELF_VISION 1
+	MAGIC_RESISTANCE 1
+	RANGED_RESISTANCE 1
+	HATE_UNDEAD 1
+	DISARM_TRAPS_SKILL 1
+	REGENERATION 1
+	RIDER 1
+  }
+  name = {
+	name = "amazon queen"
+	pluralName = "amazons"
+	firstNameGen = "FIRST_FEMALE"
+  }
+  chatReactionFriendly = "\"complains about the teachings of the elders\""
+  chatReactionHostile = "\"Die, fiend!\""
+  inventory = {
+
+	{ type =  "AdaArmor" prefixChance = 0.05 }
+	{ type =  "AdaBoots" prefixChance = 0.05 }
+	{ type =  "AdaGloves" prefixChance = 0.05 }
+	{ type =  "AdaHelm" prefixChance = 0.05 }
+	{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
+	{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
+	{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
+	{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
+	{ Potion Permanent SPEED 1 1 0.4 }
+	{ Potion RegrowBodyPart 1 1 1 0.4 }
+  }
+}
+
+"EE_AMAZON_WAR_MAIDEN" inherit "EE_AMAZON"
+{
+  viewId = { "amazon_war_maiden" }
+  attr = {
+	DAMAGE 30
+	DEFENSE 20   
+  }
+  maxLevelIncrease = {
+	MELEE 3
+	SPELL 3
+	ARCHERY 2
+  }
+  spellSchools = { "extra fighter" }
+  permanentEffects = {
+	FAST_TRAINING 1
+	ELF_VISION 1
+	RANGED_RESISTANCE 1
+	HATE_UNDEAD 1
+	DISARM_TRAPS_SKILL 1
+	REGENERATION 1
+	RIDER 1
+  }
+  name = {
+	name = "amazon war maiden"
+	pluralName = "amazons"
+	firstNameGen = "FIRST_FEMALE"
+  }
+  chatReactionFriendly = "\"talks about combat training\""
+  chatReactionHostile = "\"Die!\""
+  inventory = {
+	{  "ElvenSword"}
+	{ type =  "ChainArmor" prefixChance = 0.05}
+	{  "IronGloves"}
+	{  "IronBoots"}
+	{  "GoldPiece" 2 6 }
+  }
+}
+
+#---------------------------------------------------------
+#Fairy faction
+#---------------------------------------------------------
+	
+"EE_AIR_FAIRY" inherit "EE_BASE_SPELL_CASTER_1"
+{
+  viewId = { "air_fairy" }
+  attr = {
+	DAMAGE 14
+	DEFENSE 15 
+	SPELL_DAMAGE 45  
+  }
+  body = {
+	type = Humanoid MEDIUM
+	material = FLESH
+	weight = 80
+	addBodyPart = {
+	  WING 2
+	}
+  }
+  gender = FEMALE
+  maxLevelIncrease = {
+	MELEE 3
+	SPELL 16
+  }
+  spellSchools = { "mage" }
+  spells = {
+	"EE elemental tea"
+	"EE choking vapor"
+	"EE arrow shield"
+	"EE magic blast"
+	"EE summon air elementals"
+  }
+  permanentEffects = {
+	ELF_VISION 1
+	SPEED 1
+	MAGIC_RESISTANCE 1
+	MELEE_VULNERABILITY 1
+	COLD_RESISTANT 1
+	FLYING 1
+  }
+  name = {
+	name = "air fairy"
+	pluralName = "fairies"
+	firstNameGen = "EE_PIXIE"
+  }
+  chatReactionFriendly = "\"talks about flying through clouds\""
+  chatReactionHostile = "\"Don't mess with Air Fairies!\""
+}
+"EE_DARK_FAIRY" inherit "EE_AIR_FAIRY"
+{
+  viewId = { "dark_fairy" }
+  spellSchools = { "mage" }
+  spells = {
+	"healing"
+	"EE blood curse"
+	"EE spiders"
+	"EE darkness"
+	"EE mana curse"
+  }
+  name = {
+	name = "dark fairy"
+	pluralName = "fairies"
+	firstNameGen = "EE_PIXIE"
+  }
+  chatReactionFriendly = "\"talks about the all-consuming void of darkness\""
+  chatReactionHostile = "\"The shadows will consume you!\""
+}
+"EE_DEMON_FAIRY" inherit "EE_AIR_FAIRY"
+{
+  viewId = { "demon_fairy" }
+  attr = {
+	DAMAGE 20
+	DEFENSE 16 
+	SPELL_DAMAGE 45  
+	LABORATORY 40
+	WORKSHOP 10
+	JEWELER 20
+  }
+  spellSchools = { "mage" }
+  spells = {
+	"healing"
+	"EE mind bolt"
+	"EE cause blindness"
+  }
+
+  name = {
+	name = "demon fairy"
+	pluralName = "fairies"
+	firstNameGen = "EE_PIXIE"
+  }
+  chatReactionFriendly = "\"talks about not wanting to become a succubus\""
+  chatReactionHostile = "\"Die, Whelp!\""
+}
+"EE_EARTH_FAIRY" inherit "EE_AIR_FAIRY"
+{
+  viewId = { "earth_fairy" }
+  spellSchools = { "mage" }
+  spells = {
+	"EE summon earth elementals"
+	"EE earth blast"
+	"EE elemental tea"
+	"EE spit shards"
+	"EE stone to mud"
+	"EE stone golems"
+  }
+  attr = append {
+	DIGGING 50
+	FORGE 35
+  }
+  name = {
+	name = "earth fairy"
+	pluralName = "fairies"
+	firstNameGen = "EE_PIXIE"
+  }
+  chatReactionFriendly = "\"talks about different kinds of metals\""
+  chatReactionHostile = "\"Don't mess with Earth Fairies!\""
+}
+"EE_ELECTRIC_FAIRY" inherit "EE_AIR_FAIRY"
+{
+  viewId = { "electric_fairy" }
+  spellSchools = { "mage" }
+  spells = {
+	"healing"
+	"EE cripple"
+	"magic missile"
+  }
+  name = {
+	name = "electric fairy"
+	pluralName = "fairies"
+	firstNameGen = "EE_PIXIE"
+  }
+  chatReactionFriendly = "\"talks about shocking people\""
+  chatReactionHostile = "\"Get Zapped!\""
+}
+"EE_FIRE_FAIRY" inherit "EE_AIR_FAIRY"
+{
+  viewId = { "fire_fairy" }
+  body = {
+	type = Humanoid MEDIUM
+	material = FLESH
+	weight = 80
+	addBodyPart = {
+	  WING 2
+	}		
+	intrinsicAttacks = {
+	  TORSO {{{ Intrinsic { "fist_attack" }  "fists" 5 {
+	  attackType = HIT attackMsg = SWING victimEffect = {1.0 Fire{}}} }}}
+	}
+  }	  spellSchools = { "mage" }
+  spells = {
+	"EE elemental tea"
+	"fireball"
+	"firewall"
+  }
+  permanentEffects = {
+	ELF_VISION 1
+	MAGIC_RESISTANCE 1
+	MELEE_VULNERABILITY 1
+	FLYING 1
+	FIRE_RESISTANT 1
+	SPEED 1
+  }
+  name = {
+	name = "fire fairy"
+	pluralName = "fairies"
+	firstNameGen = "EE_PIXIE"
+  }
+  chatReactionFriendly = "\"talks about burning things\""
+  chatReactionHostile = "\"BURN!\""
+}
+"EE_LIGHT_FAIRY" inherit "EE_AIR_FAIRY"
+{
+  viewId = { "light_fairy" }
+  spellSchools = { "mage" }
+  spells = {
+	"healing"
+	"directed blast"
+	"EE light"
+  }
+  name = {
+	name = "light fairy"
+	pluralName = "fairies"
+	firstNameGen = "EE_PIXIE"
+  }
+  chatReactionFriendly = "\"talks about helping people\""
+  chatReactionHostile = "\"I will smite you!\""
+}
+"EE_MAGIC_FAIRY" inherit "EE_AIR_FAIRY"
+{
+  viewId = { "magic_fairy" }
+  spellSchools = { "extra illusion" }
+  spells = {
+	"healing"
+	"expert magic missile"
+	"EE advanced rapid magic missile"
+	"EE snakes"
+	"EE telepathy"		
+  }
+  attr = append {
+	LABORATORY 40
+  }
+  name = {
+	name = "magic fairy"
+	pluralName = "fairies"
+	firstNameGen = "EE_PIXIE"
+  }
+  chatReactionFriendly = "\"talks about good tricks to play on people\""
+  chatReactionHostile = "\"Don't mess with Magic Fairies!\""
+}
+"EE_NATURE_FAIRY" inherit "EE_AIR_FAIRY"
+{
+  viewId = { "nature_fairy" }
+  spellSchools = { "extra shaman" }
+  spells = {
+	"healing"
+	"advanced healing"
+	"expert healing"
+	"EE wolves"
+	"EE bear"
+	"EE boar"
+  }
+  companions = {5 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
+  name = {
+	name = "nature fairy"
+	pluralName = "fairies"
+	firstNameGen = "EE_PIXIE"
+  }
+  chatReactionFriendly = "\"talks about growing plants\""
+  chatReactionHostile = "\"Don't mess with Nature Fairies!\""
+}
+"EE_WATER_FAIRY" inherit "EE_AIR_FAIRY"
+{
+  viewId = { "water_fairy" }
+  spellSchools = { "mage" }
+  spells = {
+	"EE elemental tea"
+	"EE choking vapor"
+	"EE summon water elementals"
+	"ice cone"
+	"EE acid blast"
+  }
+  attr = append {
+	LABORATORY 45
+  }
+  permanentEffects = {
+	ELF_VISION 1
+	MAGIC_RESISTANCE 1
+	MELEE_VULNERABILITY 1
+	SWIMMING_SKILL 1
+	FLYING 1
+	SPEED 1
+  }
+  name = {
+	name = "water fairy"
+	pluralName = "fairies"
+	firstNameGen = "EE_PIXIE"
+  }
+  chatReactionFriendly = "\"talks about fish and other water animals\""
+  chatReactionHostile = "\"Drown, fairy hater!\""
+}
+"EE_FAIRY_QUEEN"
+{
+  viewId = { "fairy_queen" }
+  attr = {
+	DAMAGE 34
+	DEFENSE 35 
+	SPELL_DAMAGE 55  
+  }
+  body = {
+	type = Humanoid MEDIUM
+	material = FLESH
+	weight = 80
+	addBodyPart = {
+	  WING 2
+	}
+  }
+  gender = FEMALE
+  maxLevelIncrease = {
+	SPELL 16
+  }
+  spellSchools = { "extra fairy lore" }
+  spells = {
+	"expert healing"
+	"EE expert rapid magic missile"
+	"expert magic missile"
+	"EE fae deception"
+	"EE fae melee boost"
+	"EE fae time twisting"
+	"EE fae illusion"
+	"EE fae escape"
+	"EE fae teleport"
+	"EE summon fae army"
+  }
+  permanentEffects = {
+	ELF_VISION 1
+	SPEED 1
+	MAGIC_RESISTANCE 1
+	RANGED_RESISTANCE 1
+	COLD_RESISTANT 1
+	FIRE_RESISTANT 1
+	FLYING 1
+  }
+  name = {
+	name = "Goddess Illusia"
+	pluralName = "fairies"
+  }
+  chatReactionFriendly = "\"talks about ancient fae magic\""
+  chatReactionHostile = "\"Magic consume you!\""
+  inventory = {
+
+	{ type =  "EE_VenShield" }
+	{ type =  "AdaArmor" prefixChance = 1 }
+	{  "AdaBoots" 1 1 0.03 }
+	{  "AdaGloves" 1 1 0.03 }
+	{  "AdaHelm" 1 1 0.03 }
+	{  "EE_IlluRing" }
+	{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
+	{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
+	{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
+	{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
+	{ Potion Permanent SPEED 1 1 0.03 }
+	{ Potion RegrowBodyPart 1 1 1 0.03 }
+	{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
+	{  "GoldPiece" 350 450 }
+	{ type = Glyph ARMOR LastingEffect MAGIC_RESISTANCE chance = 0.8 }
+	{ type = Glyph ARMOR LastingEffect ELF_VISION chance = 0.5 }
+	{ type = Glyph ARMOR LastingEffect SPEED chance = 0.8 }
+	{ type = Glyph ARMOR LastingEffect FLYING chance = 0.5 }
+  } 
+  }
+"EE_FAIRY_QUEEN_ILLUSION"
+{
+  viewId = { "fairy_queen" }
+  attr = {
+	DAMAGE 20
+	DEFENSE 5 
+	SPELL_DAMAGE 25
+  }
+  body = {
+	type = Humanoid MEDIUM
+	material = SPIRIT
+	weight = 80
+	addBodyPart = {
+	  WING 2
+  }
+  }
+  spells = {
+	"EE rapid magic missile"
+	"EE summon fae clone"
+  }
+  permanentEffects = {
+	ELF_VISION 1
+	SPEED 1
+	MAGIC_RESISTANCE 1
+	RANGED_RESISTANCE 1
+	COLD_RESISTANT 1
+	FIRE_RESISTANT 1
+	FLYING 1
+  }
+  gender = FEMALE
+  name = {
+	name = "Illusia's Illusion"
+	pluralName = "fairies"
+  }
+  chatReactionFriendly = "\"talks in the ancient spirit language.\""
+  chatReactionHostile = "\"talks in the ancient spirit language angrily.\"" 
+}
+"EE_FAIRY_QUEEN_ILLUSION_2"
+{
+  viewId = { "fairy_queen" }
+  attr = {
+	DAMAGE 20
+	DEFENSE 5 
+	SPELL_DAMAGE 25
+  }
+  body = {
+	type = Humanoid MEDIUM
+	material = SPIRIT
+	weight = 80
+	addBodyPart = {
+	  WING 2
+  }
+  }
+  spells = {
+	"EE rapid magic missile"
+  }
+  permanentEffects = {
+	ELF_VISION 1
+	SPEED 1
+	MAGIC_RESISTANCE 1
+	RANGED_RESISTANCE 1
+	COLD_RESISTANT 1
+	FIRE_RESISTANT 1
+	FLYING 1
+  }
+  gender = FEMALE
+  name = {
+	name = "Illusia's Illusion"
+	pluralName = "fairies"
+  }
+  chatReactionFriendly = "\"talks in the ancient spirit language.\""
+  chatReactionHostile = "\"talks in the ancient spirit language angrily.\"" 
+}
+	
+#---------------------------------------------------------
+#Dragon faction
+#---------------------------------------------------------
+
+	
+  "EE_ANCIENT_GREEN_DRAGON" inherit "GREEN_DRAGON"
+    {
+      viewId = { "ancient_greendragon" }
+      attr = {
+        DAMAGE 75
+        DEFENSE 60
+      }
+      name = {
+        name = "ancient green dragon"
+        pluralName = "dragons"
+        firstNameGen = "DRAGON"
+      }
+      chatReactionFriendly = "\"Pah viidost aal kos qahnaaraan, nuz ni dov piraak kinzon jot\""
+      chatReactionHostile = "\"Dinok Bo Fah Hi!\""
+      genderAlternatives = {
+        FEMALE { "ancient_reddragon" ColorId LIGHT_GREEN }
+	}
+  }
+  "EE_ANCIENT_RED_DRAGON" inherit "RED_DRAGON"
+    {
+      viewId = { "ancient_reddragon" }
+      attr = {
+        DAMAGE 75
+        DEFENSE 60
+      }
+      name = {
+        name = "ancient red dragon"
+        pluralName = "dragons"
+        firstNameGen = "DRAGON"
+      }
+      chatReactionFriendly = "\"Yol Lost Nid Grah-Zeymahzin... Nii Ag Pah\""
+      chatReactionHostile = "\"Ag Joor!\""
+      genderAlternatives = {
+        FEMALE { "ancient_reddragon" ColorId LIGHT_RED }
+	  }
+	}
+  "EE_YOUNG_RED_DRAGON" inherit "RED_DRAGON"
+    {
+      viewId = { "young_reddragon" }
+      attr = {
+        DAMAGE 35
+        DEFENSE 35
+      }
+      name = {
+        name = "young red dragon"
+        pluralName = "dragons"
+        firstNameGen = "DRAGON"
+      }
+      chatReactionFriendly = "\"Ag Muz Los Lot\""
+      chatReactionHostile = "\"ROOOAAAR!\""
+      inventory = {
+        {  "GoldPiece" 40 70 }
+      }
+      genderAlternatives = {
+        FEMALE { "young_reddragon" ColorId LIGHT_RED }
+	  }
+	}
+  "EE_YOUNG_GREEN_DRAGON" inherit "GREEN_DRAGON"
+    {
+      viewId = { "young_greendragon" }
+      attr = {
+        DAMAGE 35
+        DEFENSE 35
+      }
+      name = {
+        name = "young green dragon"
+        pluralName = "dragons"
+        firstNameGen = "DRAGON"
+      }
+      chatReactionFriendly = "\"Viidost Los Pruzah Fah Krii, Nuz Ni Fah Mey\""
+      chatReactionHostile = "\"ROOOAAAR!\""
+      inventory = {
+        {  "GoldPiece" 40 70 }
+      }
+      genderAlternatives = {
+        FEMALE { "young_greendragon" ColorId LIGHT_GREEN }
+      }
+	}
+ "EE_ZOMBIE_DRAGON"
+    {
+      viewId = { "zombiedragon" }
+      attr = {
+        DAMAGE 45
+        DEFENSE 45   
+      }
+      body = {
+        type = FourLegged HUGE
+        material = UNDEAD_FLESH
+        weight = 38500
+        addBodyPart = {
+          WING 2
+        }
+        intrinsicAttacks = {
+          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+              attackType = BITE
+              attackMsg = BITE
+              victimEffect = {0.5 Lasting POISON} } } }}
+        }
+	  }
+	  hatedByEffect = HATE_UNDEAD
+      spells = {
+        "deception"
+        "haste"
+        "cure poison"
+        "panic"
+      }
+      permanentEffects = {
+        SUNLIGHT_VULNERABLE 1
+        NIGHT_VISION 1
+        MELEE_RESISTANCE 1
+        BAD_BREATH 1
+        POISON_RESISTANT 1
+        SLEEP_RESISTANT 1
+        FLYING 1
+		STEED 1
+      }
+      cantEquip = true
+      name = {
+        name = "zombie dragon"
+        pluralName = "dragons"
+        firstNameGen = "DRAGON"
+      }
+      chatReactionFriendly = "\"Faaz Al Zu'u\""
+      chatReactionHostile = "\"Mindok Dii Faaz Joor!\""
+      deathDescription = "slain"
+    }
+ "EE_SPIRIT_DRAGON"
+    {
+      viewId = { "spirit_dragon" }
+      attr = {
+        DAMAGE 30
+        DEFENSE 30 
+        SPELL_DAMAGE 30  
+      }
+      body = {
+        type = FourLegged HUGE
+        material = SPIRIT
+        weight = 100
+        addBodyPart = {
+          WING 2
+        }
+        intrinsicAttacks = {
+          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 10 {
+              attackType = BITE
+              attackMsg = BITE
+              victimEffect = {0.1 Lasting INSANITY} } }}}
+        }
+	  }
+      spells = {
+        "deception"
+        "invisibility"
+      }
+      permanentEffects = {
+        TELEPATHY 1
+        MAGIC_VULNERABILITY 1
+        MELEE_RESISTANCE 1
+        POISON_RESISTANT 1
+        FIRE_RESISTANT 1
+        SLEEP_RESISTANT 1
+        FLYING 1
+		STEED 1
+      }
+      cantEquip = true
+      name = {
+        name = "spirit dragon"
+        pluralName = "dragon spirits"
+        firstNameGen = "DRAGON"
+      }
+      chatReactionFriendly = "\"Zii Aak Hi\""
+      chatReactionHostile = "\"Dur Hi!\""
+      deathDescription = "banished"
+    }
+ "EE_RED_DRAGONNEWT"
+    {
+      viewId = { "red_dragonewt" }
+      genderAlternatives = {
+        FEMALE { "red_dragonewt" ColorId LIGHT_RED }
+	  }
+      attr = {
+        DAMAGE 18
+        DEFENSE 18 
+        SPELL_DAMAGE 20 
+        RANGED_DAMAGE 12 
+        LABORATORY 15
+        WORKSHOP 15
+        FORGE 15
+        DIGGING 5
+      }
+      body = {
+        type = Humanoid LARGE
+        material = FLESH
+        weight = 380
+        addBodyPart = {
+          WING 2
+        }        
+      }
+      maxLevelIncrease = {
+        MELEE 3
+        SPELL 2
+        ARCHERY 2
+      }
+      spells = {
+        "fireball"
+      }
+      permanentEffects = {
+        MAGIC_RESISTANCE 1
+        RANGED_VULNERABILITY 1
+        FIRE_RESISTANT 1
+        FLYING 1
+		RIDER 1
+      }
+      name = {
+        name = "red dragonewt"
+        firstNameGen = "DOG"
+      }
+      chatReactionFriendly = "\"Dragons are scary\""
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+        {  "WoodenStaff"}
+        {  "LeatherArmor"}
+        {  "EE_DEFENSEAMULET" 1 1 0.03}
+        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
+        { Ring DAM_BONUS 1 1 0.03}
+        { Ring DEF_BONUS 1 1 0.03}
+        { Ring RAGE 1 1 0.03}
+      }
+    }
+ "EE_GREEN_DRAGONEWT" inherit "EE_RED_DRAGONNEWT"
+    {
+      viewId = { "green_dragonewt" }
+      genderAlternatives = {
+        FEMALE { "red_dragonewt" ColorId LIGHT_GREEN }
+	  }
+      body = {
+        type = Humanoid LARGE
+        material = FLESH
+        weight = 380
+        addBodyPart = {
+          WING 2
+        }
+        intrinsicAttacks = {
+          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+              attackType = BITE
+              attackMsg = BITE
+              victimEffect = {0.2 Lasting 50 BLEEDING} } }}}
+        }
+     }
+      spells = {
+        "cure poison"
+        "healing"
+      }
+      permanentEffects = {
+        MAGIC_RESISTANCE 1
+        RANGED_VULNERABILITY 1
+        POISON_RESISTANT 1
+        FLYING 1
+		RIDER 1
+      }
+      name = {
+        name = "green dragonewt"
+        firstNameGen = "DOG"
+      }
+      inventory = {
+        {  "LeatherArmor" }
+        {  "GoldPiece" 5 10 }
+        {  "EE_DEFENSEAMULET" 1 1 0.03}
+        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
+        { Ring DAM_BONUS 1 1 0.03}
+        { Ring DEF_BONUS 1 1 0.03}
+        { Ring RAGE 1 1 0.03}
+      }
+    }
+	
+    "EE_RED_DRAGONNEWT_WILDLIFE" inherit "EE_RED_DRAGONNEWT"
+	 {
+      noChase = true
+	 }
+	 
+#---------------------------------------------------------
+#Hell knight faction
+#---------------------------------------------------------
+
+    "EE_HELL_KNIGHT"
+    {
+      viewId = { "hell_knight" }
+      attr = {
+        DAMAGE 40
+        DEFENSE 45 
+        SPELL_DAMAGE 25  
+      }
+      body = {
+        type = HumanoidLike LARGE
+        material = FLESH
+        weight = 280
+        intrinsicAttacks = {
+          ARM {{{ Intrinsic { "sword" } "arm sword" 10 { attackType = HIT attackMsg = THRUST } }}}
+        }        
+      }
+	  spellSchools = { "extra fighter" }
+      spells = {
+        "fireball"
+        "damage bonus"
+	    "healing"
+      }
+      permanentEffects = {
+        NIGHT_VISION 1
+        MAGIC_RESISTANCE 1
+        RANGED_RESISTANCE 1
+        HATE_HUMANS 1
+        FIRE_RESISTANT 1
+		RIDER 1
+      }
+      name = {
+        name = "hell knight"
+        firstNameGen = "DEMON"
+      }
+      chatReactionFriendly = "\"!Dlrowrevo eht ot htaed\""
+      chatReactionHostile = "\"!Eid\""
+      deathDescription = "vanquished"
+      cantEquip = true
+	  inventory = {
+	    {  "EE_DEFENSEAMULET" 1 1 0.03}
+        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
+        { Ring DAM_BONUS 1 1 0.03}
+        { Ring DEF_BONUS 1 1 0.03}
+        { Ring RAGE 1 1 0.03}
+      }
+    }
+    "EE_HELL_KNIGHT_BRUTE" inherit "EE_HELL_KNIGHT"
+    {
+      viewId = { "hell_knight_brute" }
+      attr = {
+        DAMAGE 45
+        DEFENSE 50   
+        SPELL_DAMAGE 20
+      }
+	  spellSchools = { "extra fighter" }
+      spells = {
+        "damage bonus"
+        "firewall"
+      }
+      permanentEffects = {
+        NIGHT_VISION 1
+        MAGIC_RESISTANCE 1
+        MELEE_RESISTANCE 1
+        HATE_HUMANS 1
+        FIRE_RESISTANT 1
+		RIDER 1
+      }
+      name = {
+        name = "hell knight brute"
+        firstNameGen = "DEMON"
+      }
+      chatReactionFriendly = "\".Em ot emas lla ,krow ro thgif\""
+      chatReactionHostile = "\"!Llik\""
+    }
+    "EE_HELL_KNIGHT_LORD" inherit "EE_HELL_KNIGHT"
+    {
+      viewId = { "hell_knight_lord" }
+      attr = {
+        DAMAGE 50
+        DEFENSE 55 
+        SPELL_DAMAGE 35  
+      }
+	  spellSchools = { "extra fighter" }
+      spells = {
+        "fireball"
+        "firewall"
+        "escape"
+        "panic"
+        "defense bonus"
+      }
+      permanentEffects = {
+        NIGHT_VISION 1
+        MAGIC_RESISTANCE 1
+        RANGED_RESISTANCE 1
+        HATE_HUMANS 1
+        DISARM_TRAPS_SKILL 1
+        FIRE_RESISTANT 1
+		RIDER 1
+      }
+      name = {
+        name = "hell knight lord"
+        firstNameGen = "DEMON"
+      }
+      chatReactionFriendly = "\"!Dlrowrevo eht mialcer llahs stneicna eht\""
+      chatReactionHostile = "\"!Hsirep\""
+      inventory = {
+		  {  "AdaBoots" 1 1 0.1 }
+		  {  "AdaGloves" 1 1 0.1 }
+		  {  "EE_InfHelm" 1 1 0.1 }
+  		{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
+		{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
+		{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
+		{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
+		  { Potion Permanent SPEED 1 1 0.05 }
+		  { Potion RegrowBodyPart 1 1 1 0.05 }
+		  { Scroll Permanent DARKNESS_SOURCE 1 1 0.05 }
+      }
+    }
+    "EE_HELL_KNIGHT_SWORDMASTER" inherit "EE_HELL_KNIGHT"
+    {
+      viewId = { "hell_knight_swordmaster" }
+      attr = {
+        DAMAGE 50
+        DEFENSE 40 
+        SPELL_DAMAGE 40  
+      }
+      gender = FEMALE
+      maxLevelIncrease = {
+        MELEE 9
+        SPELL 4
+      }
+	  spellSchools = { "extra fighter" }
+      spells = {
+        "healing"
+        "deception"
+        "fireball"
+        "swap positions"
+      }
+      permanentEffects = {
+        NIGHT_VISION 1
+        MELEE_RESISTANCE 1
+        HATE_HUMANS 1
+        FIRE_RESISTANT 1
+		RIDER 1
+      }
+      name = {
+        name = "hell knight swordmaster"
+        firstNameGen = "DEMON"
+      }
+      chatReactionFriendly = "\"Tuc ot erehw wonk uoy fi seid gnihtyreve\""
+      chatReactionHostile = "\"!Era uoy gip eht ekil uoy tug ll'I\""
+    }
+    "EE_HELL_PORTAL"
+    {
+      viewId = { "hell_portal" }
+      attr = {
+        DAMAGE 0
+        DEFENSE 35
+        SPELL_DAMAGE 20   
+      }
+      spells = {
+        "EE magma bolt"
+        "EE fire shield"
+        "advanced fire elemental"
+		"EE spawn hell knights"
+		"EE spawn hell knight lord squad"
+		"EE spawn hell knight brute squad"
+		"EE spawn hell knight swordmaster squad"
+      }
+      body = {
+        type = NonHumanoid HUGE
+        material = ADA
+        weight = 1200
+        addBodyPart = {
+	      BACK 6
+		}
+      }
+      permanentEffects = {
+	    IMMOBILE 1
+        SLOWED 1
+        LIGHT_SOURCE 1
+        MAGIC_RESISTANCE 1
+        MELEE_VULNERABILITY 1
+        RANGED_RESISTANCE 1
+        POISON_RESISTANT 1
+        FIRE_RESISTANT 1
+        SLEEP_RESISTANT 1
+        REGENERATION 1
+      }
+      cantEquip = true
+      name = {
+        name = "hell portal"
+      }
+      chatReactionFriendly = "\"You can feel an evil aura surrounding the portal.\""
+      chatReactionHostile = "\"You can feel an evil aura surrounding the portal.\""
+      deathDescription = "destroyed"
+    }
+
+#---------------------------------------------------------
+#Rat faction
+#---------------------------------------------------------
+
+  "EE_RAT_MAN"
+    {
+      viewId = { "rat_man" }
+      attr = {
+        DAMAGE 12
+        DEFENSE 12
+		DIGGING 20
+      }
+      body = {
+        type = Humanoid MEDIUM
+	    material = FLESH
+	    weight = 80
+      }
+      maxLevelIncrease = {
+        MELEE 1
+      }
+      permanentEffects = {
+        NIGHT_VISION 1
+        HATE_HUMANS 1
+		RIDER 1
+      }
+      name = {
+        name = "rat person"
+      }
+      chatReactionFriendly = "talks about cheese"
+      chatReactionHostile = "makes angry rat noises"
+	  inventory = {
+		{ type =  "WoodenShield" chance = 0.2 }
+		{ type =  "IronHelm", prefixChance = 0.02 chance = 0.04}
+		{ type =  "LeatherBoots" prefixChance = 0.02 chance = 0.04}
+		{ type =  "LeatherGloves" prefixChance = 0.02 chance = 0.04}
+		{ type =  "LeatherHelm" prefixChance = 0.02 chance = 0.04}
+		{ type =  "IronBoots" prefixChance = 0.02 chance = 0.04}
+		{ type =  "IronGloves" prefixChance = 0.02 chance = 0.04}
+	  }
+    }
+    "EE_RAT_GENERAL" inherit "EE_RAT_MAN"
+    {
+      viewId = { "rat_general" }
+      attr = {
+        DAMAGE 17
+        DEFENSE 21
+		MULTI_WEAPON 30
+      }
+      maxLevelIncrease = {
+        MELEE 4
+      }
+	  spellSchools = { "extra fighter" }
+      spells = {
+        "healing"
+      }
+      name = {
+        name = "rat general"
+	  }
+      chatReactionFriendly = "complains about surface dwellers"
+      chatReactionHostile = "makes angry rat noises"
+      inventory = {
+        { type =  "Sword" chance = 0.5 }
+		{ type =  "EE_Axe" chance = 0.5 }
+        { type =  "BattleAxe" chance = 0.5 }
+        { type =  "WarHammer" chance = 0.5 }
+        {  "ChainArmor"}
+        { type =  "IronHelm" chance = 0.5 }
+        { type =  "IronBoots" chance = 0.3 }
+        { type =  "Torch" chance = 0.3 }
+        {  "GoldPiece" 2 6 }
+      }
+    }
+    "EE_RAT_ARCHER" inherit "EE_RAT_MAN"
+    {
+      viewId = { "rat_bowman" }
+      attr = {
+        DAMAGE 11
+        DEFENSE 10
+        RANGED_DAMAGE 15
+      }
+      maxLevelIncrease = {
+        MELEE 2
+        ARCHERY 5
+      }
+      name = {
+        name = "rat archer"
+      }
+      chatReactionFriendly = "complains about it being too dark underground to shoot things"
+      chatReactionHostile = "makes angry rat noises"
+      inventory = {
+        {  "Bow"}
+        {  "Knife"}
+        {  "LeatherArmor"}
+        {  "LeatherBoots"}
+        { type =  "Torch" chance = 0.3 }
+        { type = Potion Heal {FLESH} chance = 0.7 }
+        {  "GoldPiece" 4 10 }
+        { Amulet RANGED_RESISTANCE 1 1 0.02}
+        { Amulet AMBUSH_SKILL 1 1 0.02}
+        { Amulet DISARM_TRAPS_SKILL 1 1 0.02}
+        { Amulet ELF_VISION 1 1 0.02}
+        { Amulet NIGHT_VISION 1 1 0.02}
+        { Amulet SWIMMING_SKILL 1 1 0.02}
+      }
+    }
+#---------------------------------------------------------
+#Miscellaneous modded creatures
+#---------------------------------------------------------
+    "EE_ARACHNE"
+    {
+      viewId = { "arachne" }
+      attr = {
+        DAMAGE 46
+        DEFENSE 42 
+        SPELL_DAMAGE 32 
+        RANGED_DAMAGE 32 
+		LABORATORY 10
+        JEWELER 5
+      }
+      body = {
+        type = Humanoid LARGE
+        addBodyPart = {
+          LEG 6
+          TORSO 1
+		}
+        material = FLESH
+        weight = 480
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting POISON} } } }}
+        }
+	  }
+      gender = FEMALE
+      maxLevelIncrease = {
+        MELEE 4
+        SPELL 4
+        ARCHERY 2
+      }
+      spells = {
+        "escape"
+        "swap positions"
+        "pacify"
+      }
+      permanentEffects = {
+        RANGED_RESISTANCE 1
+        AMBUSH_SKILL 1
+        POISON_RESISTANT 1
+      }
+      name = {
+        name = "arachne"
+        firstNameGen = "FIRST_FEMALE"
+      }
+      chatReactionFriendly = "\"You look tasty, do you retain fluids?\""
+      chatReactionHostile = "\"Prepare to be food!\""
+      deathDescription = "slain"
+      inventory = {
+        {  "AdaSword" }
+        {  "AdaGloves" }
+        { Potion Heal {FLESH}}
+        {  "GoldPiece" 10 15 }
+      }
+    }
+    "EE_COW_DEMON"
+    {
+      viewId = { "cow_demon" }
+      attr = {
+        DAMAGE 38
+        DEFENSE 40   
+      }
+      body = {
+        type = Humanoid HUGE
+        material = FLESH
+        weight = 620        
+      }
+      maxLevelIncrease = {
+        MELEE 3
+      }
+	  spellSchools = { "extra fighter" }
+      permanentEffects = {
+        RAGE 1
+        RANGED_RESISTANCE 1
+        REGENERATION 1
+		RIDER 1
+      }
+      name = {
+        name = "cow demon"
+        firstNameGen = "DEMON"
+      }
+      chatReactionFriendly = "\"Gruu...?\""
+      chatReactionHostile = "\"GRUUU!!!\""
+    }
+    "EE_ARMORED_COW_DEMON" inherit "EE_COW_DEMON"
+    {
+      viewId = { "armored_cow_demon" }
+      attr = {
+        DAMAGE 50
+        DEFENSE 65   
+      }
+      name = {
+        name = "cow demon lord"
+        firstNameGen = "DEMON"
+      }
+      chatReactionFriendly = "\"Gruu...?\""
+      chatReactionHostile = "\"GRUUU!!!\""
+      inventory = {
+        {  "EE_Fireblade"}
+        {  "ChainArmor"}
+        {  "LeatherBoots"}
+        { type =  "Torch" chance = 0.3 }
+        { type = Potion Heal {FLESH} chance = 0.7 }
+        {  "GoldPiece" 6 16 }
+      }
+    }
+    "EE_BANSHEE" inherit "EE_BASE_SPELL_CASTER_1"
+    {
+      viewId = { "banshee" }
+      attr = {
+        DEFENSE 30 
+        SPELL_DAMAGE 25  
+      }
+      maxLevelIncrease = {
+        SPELL 7
+      }
+      body = {
+        type = Humanoid LARGE
+        material = SPIRIT
+        weight = 0.1
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "fist_attack" } "spell" 4 {
+              attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = TOUCH victimEffect = {1.0 Lasting INSANITY} } } }}
+        }
+      }
+      gender = FEMALE
+	  hatedByEffect = HATE_UNDEAD
+      spells = {
+        "invisibility"        
+        "panic"
+      }
+      permanentEffects = {
+        NIGHT_VISION 1
+        MAGIC_VULNERABILITY 1
+        SUNLIGHT_VULNERABLE 1
+        SWIMMING_SKILL 1
+      }
+      cantEquip = true
+      name = {
+        name = "banshee"
+      }
+      chatReactionFriendly = "\"sobs uncontrollably\""
+      chatReactionHostile = "\"screams in an ear-shattering pitch\""
+    }
+    "EE_GARGOYLE"
+    {
+      viewId = { "gargoyle" }
+      attr = {
+        DAMAGE 20
+        DEFENSE 30   
+      }
+      body = {
+        type = Humanoid LARGE
+        material = ROCK
+        weight = 480
+        addBodyPart = {
+          WING 2
+        }
+        intrinsicAttacks = {
+          ARM {{{ Intrinsic { "claws_attack" } "arm sword" 10 { attackType = HIT attackMsg = THRUST } }}}
+        }        
+      }
+      permanentEffects = {
+        SLOWED 1
+        RANGED_RESISTANCE 1
+        POISON_RESISTANT 1
+        FIRE_RESISTANT 1
+        SLEEP_RESISTANT 1
+      }
+      name = {
+        name = "gargoyle"
+      }
+      chatReactionFriendly = "\"....\""
+      chatReactionHostile = "\"....\""
+      deathDescription = "destroyed"
+    }
+    "EE_GIANT"
+    {
+      viewId = { "giant" }
+      attr = {
+        DAMAGE 25
+        DEFENSE 30 
+        SPELL_DAMAGE 10  
+      }
+      body = {
+        type = Humanoid LARGE
+        material = FLESH
+        weight = 460
+      }
+      maxLevelIncrease = {
+        MELEE 7
+      }
+	  spellSchools = { "extra fighter" }
+      spells = {
+        "directed blast"
+        "shove"
+      }
+      permanentEffects = {
+        RANGED_RESISTANCE 1
+      }
+      name = {
+        name = "giant"
+        firstNameGen = "CYCLOPS"
+      }
+      chatReactionFriendly = "\"talks about annoying small people\""
+      chatReactionHostile = "\"makes angry giant noises\""
+      inventory = {
+        {  "HeavyClub" }
+        {  "GoldPiece" 30 50 }
+        { type = Glyph ARMOR ItemAttrBonus DEFENSE 5 chance = 0.1 }
+      }
+    }
+    "EE_GORGON"
+    {
+      viewId = { "gorgon" }
+      attr = {
+        DAMAGE 32
+        DEFENSE 28 
+        SPELL_DAMAGE 38  
+	    LABORATORY 35
+      }
+      body = {
+        type = Humanoid LARGE
+        material = FLESH
+        weight = 180
+        intrinsicAttacks = {
+          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.1 Lasting POISON} } }}}
+        }
+      }
+      gender = FEMALE
+      maxLevelIncrease = {
+        MELEE 5
+        SPELL 5
+      }
+	  spellSchools = { "extra shaman" }
+      spells = {
+        "healing"
+        "panic"
+        "EE snakes"
+      }
+      permanentEffects = {
+        AMBUSH_SKILL 1
+        POISON_RESISTANT 1
+      }
+      name = {
+        name = "gorgon"
+        firstNameGen = "FIRST_FEMALE"
+      }
+      chatReactionFriendly = "\"Don't get stiff on my account Hehe...\""
+      chatReactionHostile = "\"I'll make you a statue!\""
+      inventory = {
+        { type =  "EE_InvisibilityRobe"}
+        {  "IronStaff" }
+        { type = Glyph ARMOR LastingEffect COLD_RESISTANT chance = 0.2 }
+      }   
+    }
+    "EE_HOBGOBLIN"
+    {
+      viewId = { "hobgoblin" }
+      attr = {
+        DAMAGE 15
+        DEFENSE 16 
+		LABORATORY 10
+        WORKSHOP 20
+        FORGE 20
+        JEWELER 20
+      }
+      body = {
+        type = Humanoid MEDIUM
+        material = FLESH
+        weight = 120
+        
+      }
+	  hatedByEffect = HATE_GREENSKINS
+      maxLevelIncrease = {
+        MELEE 4
+      }
+
+      permanentEffects = {
+        DISARM_TRAPS_SKILL 1
+		RIDER 1
+      }
+      name = {
+        name = "hobgoblin"
+        firstNameGen = "ORC"
+      }
+      chatReactionFriendly = "\"complains about other greenskins\""
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+        {  "Spear"}
+		{ type =  "WoodenShield" chance = 0.2 }
+		{ type =  "IronHelm", prefixChance = 0.02 chance = 0.04}
+		{ type =  "LeatherBoots" prefixChance = 0.02 chance = 0.04}
+		{ type =  "LeatherGloves" prefixChance = 0.02 chance = 0.04}
+		{ type =  "LeatherHelm" prefixChance = 0.02 chance = 0.04}
+		{ type =  "IronBoots" prefixChance = 0.02 chance = 0.04}
+		{ type =  "IronGloves" prefixChance = 0.02 chance = 0.04}
+      }
+    }
+    "EE_MUSHROOM_MAN"
+    {
+      viewId = { "mushroom_man" }
+      attr = {
+        DAMAGE 32
+        DEFENSE 30   
+      }
+      body = {
+        type = HumanoidLike LARGE
+        material = FLESH
+        weight = 300
+      }
+      maxLevelIncrease = {
+        MELEE 2
+      }
+      spells = {
+        "EE poison spores"
+      }
+      permanentEffects = {
+        SLOW_TRAINING 1
+        POISON_RESISTANT 1
+      }
+      cantEquip = true
+      name = {
+        name = "mushroom man"
+        pluralName = "mushroom men"
+      }
+      chatReactionFriendly = "\"flesh, tasty\""
+      chatReactionHostile = "\"MUSHRUUU!!!\""
+    }
+    "EE_OGRE_FEMALE" inherit "OGRE"
+    {
+      viewId = { "ogre_female" }
+      gender = FEMALE
+      name = {
+        name = "ogre"
+        firstNameGen = "EE_ORC_FEMALE"
+      }
+      chatReactionFriendly = "\"complains about ogre males\""
+      chatReactionHostile = "\"Die!\""
+	}
+	"EE_ORC_PRIMARCH_TRIBE"
+	{
+	  viewId = { "orc_primarch" }
+      hatedByEffect = HATE_GREENSKINS
+      attr = {
+        DAMAGE 54
+        DEFENSE 40 
+		WORKSHOP 40
+        FORGE 40
+		MULTI_WEAPON 40
+	}
+	  body = {
+        type = Humanoid LARGE
+        weight = 160
+	}
+	  permanentEffects = {
+		RIDER 1
+      }
+	  spellSchools = { "extra fighter" }
+      spells = {
+        "EE arm strike"
+		"EE wild swing"
+		"EE break through"
+		"EE air render"
+		"jump"
+		"EE throw sand"
+	}
+      name = {
+        name = "orc primarch"
+        firstNameGen = "ORC"
+	}
+      maxLevelIncrease = {
+        MELEE 3
+	}
+      chatReactionFriendly = "\"talks about inner-tribal relations\""
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+        { type =  "EE_InfBattleAxe" prefixChance = 0.2 }
+		{ type =  "AdaBattleAxe" prefixChance = 0.2 }
+		{ type =  "EE_InfArmor" prefixChance = 0.2 }
+		{  "IronGloves"}
+		{  "IronBoots"}
+		{ type = Potion Heal {FLESH} countMin = 2 countMax = 4 }
+      }
+	}
+	"EE_ORC_CAPTAIN_TRIBE"
+	{
+	  viewId = { "orc_captain" }
+      hatedByEffect = HATE_GREENSKINS
+      attr = {
+        DAMAGE 38
+        DEFENSE 28 
+		WORKSHOP 30
+        FORGE 30
+		MULTI_WEAPON 30
+	}
+	  body = {
+        type = Humanoid LARGE
+	}
+	  spellSchools = { "extra fighter" }
+      spells = {
+	    "shove"
+		"EE battle cry"
+		"EE knockdown"
+		"jump"
+	}
+      name = {
+        name = "orc captain"
+        firstNameGen = "ORC"
+	}
+       permanentEffects = {
+		RIDER 1
+      }
+      maxLevelIncrease = {
+        MELEE 4
+	}
+      chatReactionFriendly = "\"talks about training underlings\""
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+        { type =  "BattleAxe" prefixChance = 0.05 chance = 0.5 }
+		{ type =  "EE_Axe" prefixChance = 0.05 chance = 0.5 }
+		{ type =  "ChainArmor" prefixChance = 0.05 }
+		{ type =  "IronHelm" prefixChance = 0.05 chance = 0.75 }
+		{ type =  "IronGloves" prefixChance = 0.05 chance = 0.75 }
+		{ type =  "IronBoots" prefixChance = 0.05 chance = 0.75 }
+		{ type = Potion Heal {FLESH} countMin = 2 countMax = 4 }
+		{ type = Potion Lasting BLIND chance = 0.4 }
+      }
+	}
+	"EE_ORC_TRIBE"
+	{
+	  viewId = { "orc_wep" }
+      genderAlternatives = {
+        FEMALE { "orc_female" }
+	}
+      hatedByEffect = HATE_GREENSKINS
+      attr = {
+        DAMAGE 24
+        DEFENSE 20 
+		WORKSHOP 20
+        FORGE 20
+		MULTI_WEAPON 25
+	}
+	  body = {
+        type = Humanoid LARGE
+	}
+	  spellSchools = { "extra fighter" }
+      spells = {
+	    "shove"
+		"EE battle cry"
+	}
+      name = {
+        name = "orc"
+        firstNameGen = "ORC"
+	}
+      maxLevelIncrease = {
+        MELEE 4
+	}
+	permanentEffects = {
+		RIDER 1
+      }
+      chatReactionFriendly = "\"talks about fighting\""
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+        { type =  "EE_Mace" prefixChance = 0.05 chance = 0.5 }
+		{ type =  "Sword" prefixChance = 0.05 chance = 0.5 }
+		{ type =  "ChainArmor" prefixChance = 0.05 }
+		{ type =  "LeatherHelm" prefixChance = 0.05 chance = 0.75 }
+		{ type =  "IronGloves" prefixChance = 0.05 chance = 0.75 }
+		{ type =  "LeatherBoots" prefixChance = 0.05 chance = 0.75 }
+		{ type = Potion Heal {FLESH} countMin = 0 countMax = 2 }
+		{ type = Potion Lasting BLIND chance = 0.1 }
+      }
+	}
+	"EE_OGRE_CHAMPION_TRIBE"
+	{
+	  viewId = { "ogre_champion" }
+      genderAlternatives = {
+        FEMALE { "ogre_champion_female" }
+	}
+      hatedByEffect = HATE_GREENSKINS
+      attr = {
+        DAMAGE 38
+        DEFENSE 34 
+        WORKSHOP 25
+        FORGE 25
+    }
+	  body = {
+        type = Humanoid LARGE
+        weight = 160
+	}
+      permanentEffects = {
+        MAGIC_VULNERABILITY 1
+		RIDER 1
+	}
+      name = {
+        name = "ogre champion"
+        firstNameGen = "ORC"
+	}
+      maxLevelIncrease = {
+        MELEE 9
+	}
+      chatReactionFriendly = "\"talks about fighting\""
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+        {  "BattleAxe"}
+		{  "ChainArmor"}
+		{  "IronHelm"}
+		{  "IronGloves"}
+		{  "IronBoots"}
+		{ type = Potion Heal {FLESH} countMin = 1 countMax = 3 }
+      }
+	}
+	"EE_OGRE_TRIBE"
+	{
+	  viewId = { "ogre_wep" }
+      genderAlternatives = {
+        FEMALE { "ogre_female" }
+	}
+      hatedByEffect = HATE_GREENSKINS
+      attr = {
+        DAMAGE 32
+        DEFENSE 28 
+		WORKSHOP 25
+        FORGE 25
+	}
+	  body = {
+        type = Humanoid LARGE
+        weight = 160
+	}
+      permanentEffects = {
+        MAGIC_VULNERABILITY 1
+		RIDER 1
+	}
+      name = {
+        name = "ogre"
+        firstNameGen = "ORC"
+	}
+      maxLevelIncrease = {
+        MELEE 9
+	}
+      chatReactionFriendly = "\"talks about fighting\""
+      chatReactionHostile = "\"Die!\""
+      inventory = {
+        { type =  "HeavyClub" prefixChance = 0.05 }
+		{ type =  "ChainArmor" prefixChance = 0.05 }
+		{ type =  "LeatherHelm" prefixChance = 0.05 chance = 0.75 }
+		{ type =  "LeatherGloves" prefixChance = 0.05 chance = 0.75 }
+		{ type =  "IronBoots" prefixChance = 0.05 chance = 0.75 }
+		{ type = Potion Heal {FLESH} countMin = 0 countMax = 2 }
+      }
+	}
+"EE_ORC_HEALER_TRIBE"
+  {
+    viewId = { "orc_shaman_wep" ColorId GREEN }
+    attr = {
+      DAMAGE 16
+      DEFENSE 12
+      SPELL_DAMAGE 26 
+	  LABORATORY 35
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about gross wounds"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 4
+      SPELL 7
+    }
+    spellSchools = { "extra healer" }
+	spells = {
+	  "advanced healing"
+	  "group healing"
+	  "magic missile"
+	}
+	       permanentEffects = {
+		RIDER 1
+      }
+    name = {
+      name = "orc healer"
+      firstNameGen = "ORC"
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      {  "IronStaff"}
+      {  "LeatherArmor"}
+	  {  "LeatherBoots"}
+    }
+  }
+  
+    "EE_ORC_FEMALE" inherit "ORC"
+    {
+      viewId = { "orc_female" }
+      gender = FEMALE
+      name = {
+        name = "orc"
+        firstNameGen = "EE_ORC_FEMALE"
+      }
+      chatReactionFriendly = "\"complains about orc males\""
+      chatReactionHostile = "\"Die!\""
+    }
+	
+    "EE_POSSESSED_BOOK"
+    {
+      viewId = { "possessed_book" }
+      attr = {
+        DAMAGE 10
+        DEFENSE 10 
+        SPELL_DAMAGE 20  
+      }
+      body = {
+        type = NonHumanoid SMALL
+ 	    bodyParts = {
+		  HEAD 1
+        }
+        material = FLESH
+        weight = 5
+        intrinsicAttacks = {
+          HEAD {{{ Intrinsic { "bite_attack" } "nibble" 1 { attackType = BITE attackMsg = BITE } }}}
+        }
+      }
+	  spellSchools = { "mage" }
+      spells = {
+        "EE rapid magic missile"
+      }
+      permanentEffects = {
+        TELEPATHY 1
+        MAGIC_RESISTANCE 1
+        MELEE_VULNERABILITY 1
+        RANGED_RESISTANCE 1
+        POISON_RESISTANT 1
+        SLEEP_RESISTANT 1
+        FLYING 1
+      }
+      cantEquip = true
+      name = {
+        name = "spell book"
+      }
+      chatReactionFriendly = "\"floats around eerily\""
+      chatReactionHostile = "\"Flips its pages angrily\""
+      deathDescription = "destroyed"
+    }
+"EE_WOLF_WARRIOR"
+  {
+    viewId = { "wolf_warrior" }
+    attr = {
+      DAMAGE 39
+      DEFENSE 29 
+	  SPELL_DAMAGE 30
+	  WORKSHOP 30
+	  FORGE 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+      spells = {
+        "invisibility" "healing" "EE wolves" "haste"
+	}
+    maxLevelIncrease = {
+      MELEE 5
+    }
+    companions = {5 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "wolf warrior"
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { type =  "LeatherArmor" prefixChance = 1 }
+	  { type =  "LeatherGloves" prefixChance = 0.65 }
+	  { type =  "LeatherBoots" prefixChance = 0.65 }
+	  { type =  "IronHelm" chance = 0.5 prefixChance = 0.05 }
+      { type =  "WarHammer" prefixChance = 0.1 }
+      {  "GoldPiece" 18 22 }
+	  { Potion Heal {FLESH} 0 3 }
+    }
+  }
+    "EE_SCREE_BIRD"
+    {
+      viewId = { "scree_bird" }
+      attr = {
+        DAMAGE 3
+        DEFENSE 4 
+        SPELL_DAMAGE 50
+      }
+      body = {
+        type = Bird SMALL
+        material = FLESH
+        weight = 4
+        intrinsicAttacks = {
+          HEAD {{{ Intrinsic { "bite_attack" } "spell" 1 {
+	        attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = TOUCH
+            victimEffect = {1.0 Fire{} }
+            attackerEffect = { Fire{} } } } }}
+        }
+      }
+      permanentEffects = {
+        SPEED 1
+        MAGIC_VULNERABILITY 1
+        MELEE_VULNERABILITY 1
+        RANGED_VULNERABILITY 1
+        FLYING 1
+      }
+      cantEquip = true
+      name = {
+        name = "scree bird"
+      }
+      chatReactionFriendly = "\"SCREE!\""
+      chatReactionHostile = "\"SCREE!\""
+      deathDescription = "murdered"
+    }
+    "EE_SHARD_SPITTER"
+    {
+      viewId = { "shard_spitter" }
+      attr = {
+        DAMAGE 20
+        DEFENSE 32 
+        SPELL_DAMAGE 25  
+      }
+      body = {
+        type = HumanoidLike LARGE
+        material = FLESH
+        weight = 320
+        intrinsicAttacks = {
+          LEG {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } } }}
+        }
+      }
+      spells = {
+        "EE spit shards"
+      }
+      permanentEffects = {
+      }
+      cantEquip = true
+      name = {
+        name = "shard spitter"
+      }
+      chatReactionFriendly = "\"Guuuh...?\""
+      chatReactionHostile = "\"prepares to spit a rock at your face\""
+    }
+    "EE_SPRITE"
+    {
+      viewId = { "sprite" }
+      attr = {
+        DAMAGE 1
+        DEFENSE 1  
+      }
+      body = {
+        type = Bird SMALL
+        material = SPIRIT
+        weight = 3
+      }
+      spells = {
+        "invisibility"
+      }
+      permanentEffects = {
+        SPEED 1
+        PEACEFULNESS 1
+        LIGHT_SOURCE 1
+        RANGED_RESISTANCE 1
+        FLYING 1
+		SPYING 1
+      }
+      cantEquip = true
+      name = {
+        name = "sprite"
+      }
+      chatReactionFriendly = "\"talks too quietly for you to hear\""
+      chatReactionHostile = "\"it flutters around agrily\""
+      deathDescription = "swatted"
+      noChase = true
+    }
+    "EE_SQUIDHOLDER"
+    {
+      viewId = { "squidholder" }
+      attr = {
+        DAMAGE 30
+        DEFENSE 45 
+        SPELL_DAMAGE 55  
+      }
+      body = {
+        type = Humanoid LARGE
+        material = UNDEAD_FLESH
+        weight = 480
+        bodyParts = {
+          TORSO 1
+	      ARM 2
+		  HEAD 1
+		  BACK 1
+		}
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "bite_attack" }  "fangs" 14 { attackType = BITE attackMsg = BITE
+              victimEffect = {0.5 Lasting POISON} } }}}
+        }
+      }
+      maxLevelIncrease = {
+        MELEE 2
+        SPELL 6
+      }
+	  spellSchools = { "mage" }
+      spells = {
+        "fireball"
+        "healing"
+        "escape"
+        "magic missile"
+        "directed blast"
+      }
+      permanentEffects = {
+        TELEPATHY 1
+        MAGIC_RESISTANCE 1
+        RANGED_RESISTANCE 1
+        BAD_BREATH 1
+        POISON_RESISTANT 1
+        FIRE_RESISTANT 1
+        FLYING 1
+        REGENERATION 1
+      }
+      cantEquip = true
+      name = {
+        name = "squidholder"
+        firstNameGen = "DEITY"
+      }
+      chatReactionFriendly = "\"Slocsotak!\""
+      chatReactionHostile = "\"BEOSOLCAT!\""
+    }
+    "EE_BENGAL_TIGER"
+    {
+      viewId = { "bengal_tiger" }
+      attr = {
+        DAMAGE 30
+        DEFENSE 25   
+      }
+      body = {
+        type = FourLegged LARGE
+        material = FLESH
+        weight = 100
+        intrinsicAttacks = {
+          LEG {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } }}}
+        }
+      }
+      permanentEffects = {
+        AMBUSH_SKILL 1
+		STEED 1
+      }
+      cantEquip = true
+      name = {
+        name = "bengal tiger"
+      }
+      chatReactionFriendly = "\"puuurrrr...\""
+      chatReactionHostile = "\"roars at you.\""
+    }
+    "EE_ELEPHANT"
+    {
+      viewId = { "elephant" }
+      attr = {
+        DAMAGE 30
+        DEFENSE 38   
+      }
+      body = {
+        type = FourLegged HUGE
+        intrinsicAttacks = {
+          HEAD {{{ Intrinsic { "claws_attack" } "tusks" 10 { attackType = HIT attackMsg = THRUST } }}}
+        }
+        material = FLESH
+        weight = 10000        
+      }
+      permanentEffects = {
+        MELEE_RESISTANCE 1
+        SLOWED 1
+        SWIMMING_SKILL 1
+		STEED 1
+      }
+      cantEquip = true
+      name = {
+        name = "elephant"
+      }
+      chatReactionFriendly = "\"it says nothing, elephants can't talk\""
+      chatReactionHostile = "\"looks like it might charge you\""
+      noChase = true
+    }
+    "EE_LION"
+    {
+      viewId = { "male_lion" }
+      attr = {
+        DAMAGE 26
+        DEFENSE 32   
+      }
+      body = {
+        type = FourLegged LARGE
+        material = FLESH
+        weight = 120
+        intrinsicAttacks = {
+          LEG {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } }}}
+        }
+      }
+      permanentEffects = {
+        AMBUSH_SKILL 1
+		STEED 1
+      }
+      cantEquip = true
+      name = {
+        name = "lion"
+      }
+      chatReactionFriendly = "\"puuurrrr...\""
+      chatReactionHostile = "\"roars aggresively\""
+    }
+    "EE_LIONESS"
+    {
+      viewId = { "female_lion" }
+      attr = {
+        DAMAGE 23
+        DEFENSE 25   
+      }
+      body = {
+        type = FourLegged LARGE
+        material = FLESH
+        weight = 100
+        intrinsicAttacks = {
+          LEG {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } }}}
+        }
+      }
+      gender = FEMALE
+      permanentEffects = {
+        AMBUSH_SKILL 1
+		STEED 1
+      }
+      cantEquip = true
+      name = {
+        name = "lioness"
+        pluralName = "Lionesses"
+      }
+      chatReactionFriendly = "\"puuurrrr...\""
+      chatReactionHostile = "\"roars angrily at you\""
+    }
+    "EE_CROCODILE"
+    {
+      viewId = { "crocodile" }
+      attr = {
+        DAMAGE 22
+        DEFENSE 23   
+      }
+      body = {
+        type = FourLegged LARGE
+        material = FLESH
+        weight = 100
+        intrinsicAttacks = {
+          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 { attackType = BITE attackMsg = BITE } }}}
+        }
+      }
+      permanentEffects = {
+        AMBUSH_SKILL 1
+		SWIMMING_SKILL 1
+		STEED 1
+      }
+      cantEquip = true
+      name = {
+        name = "crocodile"
+      }
+      chatReactionFriendly = "\"it says nothing, crocodiles can't talk\""
+      chatReactionHostile = "\"looks like it'll bite you.\""
+    }
+
+  "EE_MUMMY_LORD" inherit "EE_BASE_SPELL_CASTER_1"
+    {
+      viewId = { "mummy" ColorId GREEN }
+      attr = {
+        DAMAGE 20
+        DEFENSE 20 
+        SPELL_DAMAGE 20  
+      }
+      body = {
+        type = Humanoid LARGE
+        material = UNDEAD_FLESH
+        weight = 100
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+              attackType = HIT
+              attackMsg = TOUCH
+              victimEffect = {0.5 Lasting POISON}
+              attackerEffect = {Lasting RAGE} } }}}
+        }
+      }
+	  hatedByEffect = HATE_UNDEAD
+      maxLevelIncrease = {
+        MELEE 25
+        SPELL 10
+      }
+	  spellSchools = { "mage" }
+      spells = {
+        "magic missile"
+      }
+      permanentEffects = {
+        TELEPATHY 1
+        MAGIC_RESISTANCE 1
+        HATE_HUMANS 1
+      }
+      name = {
+        name = "mummy lord"
+        firstNameGen = "FIRST_MALE"
+      }
+      chatReactionFriendly = "\"Rrrrrr!\""
+      chatReactionHostile = "\"Pathetic!\""
+   }
+   "EE_DUNGEON_MASTER"
+   {
+      viewId = { "keeper4" Rgb 58 106 156 255 }
+      attr = {
+        DAMAGE 10
+        DEFENSE 50 
+      }
+      body = {
+        type = Humanoid LARGE
+        weight = 400
+      }
+      name = {
+        name = "dungeon master"
+      }
+	  permanentEffects = {
+		RIDER 1
+      }
+   }
+   "EE_VULTURE_ABOMINATION"
+   {
+      viewId = { "vulturemutation" }
+        attr = {
+          DAMAGE 25
+          DEFENSE 25
+        }
+      body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        BACK 2
+        HEAD 2
+	    TORSO 3
+        WING 3
+        LEG 3
+        ARM 1
+      }	
+      weight = 25
+      intrinsicAttacks = { HEAD {{{ Intrinsic { "bite_attack" }  "Beak" 7 { attackType = BITE attackMsg = BITE } } } }}}
+	  permanentEffects = { POISON_RESISTANT 1 }
+	  name = { name = "vulture abomination" pluralName = "vulture abominations" groupName = "flock" }
+    }
+    "EE_OCEAN_PORTAL"
+    {
+     viewId = { "ocean_portal" }
+     attr = {
+        DAMAGE 0
+        DEFENSE 30
+        SPELL_DAMAGE 60
+      }
+      body = {
+       type = NonHumanoid HUGE
+       material = ADA
+       weight = 1200
+       addBodyPart = {
+           BACK 6
+             } }
+      spellSchools = { "mage" }
+      spells = {
+        "EE bolt of water"
+        "EE summon water elementals"
+      }
+      permanentEffects = {
+        IMMOBILE 1
+        SLOWED 1
+        DARKNESS_SOURCE 1
+        MAGIC_RESISTANCE 1
+        MELEE_VULNERABILITY 1
+        RANGED_RESISTANCE 1
+        POISON_RESISTANT 1
+        FIRE_RESISTANT 1
+        SLEEP_RESISTANT 1
+        REGENERATION 1
+      }
+      cantEquip = true
+      name = {
+        name = "ocean portal"
+      }
+      chatReactionFriendly = "\"Water is constantly being shot at an immense pressure from inside the portal. \""
+      chatReactionHostile = "\"Water is constantly being shot at an immense pressure from inside the portal.\""
+      deathDescription = "destroyed"
+    }
+    "EE_ADOXIE_EYE" 
+    {
+      viewId = { "adoxie_eye" }
+      attr = {
+        DAMAGE 25
+        DEFENSE 40 
+        SPELL_DAMAGE 40  
+      }
+      body = {
+        type = NonHumanoid HUGE
+        bodyParts = {
+          BACK 1
+	      HEAD 1
+          TORSO 1
+		}		
+        material = UNDEAD_FLESH
+        weight = 850        
+      }
+	  hatedByEffect = HATE_UNDEAD
+	  spellSchools = { "mage" }
+      spells = {
+        "magic missile"
+        "fireball"
+      }
+      permanentEffects = {
+        RAGE 1
+        DARKNESS_SOURCE 1
+        TELEPATHY 1
+        MAGIC_RESISTANCE 1
+        MELEE_VULNERABILITY 1
+        POISON_RESISTANT 1
+        FIRE_RESISTANT 1
+        SLEEP_RESISTANT 1
+        FLYING 1
+        NIGHT_VISION 1
+      }
+      cantEquip = true
+      name = {
+        name = "Adoxie's eye"
+        pluralName = "eyes"
+      }
+      chatReactionFriendly = "\"nothing, why did you think an eye could talk?\""
+      chatReactionHostile = "\"nothing, why did you think an eye could talk?\""
+      deathDescription = "destroyed"
+    }
+   "EE_ADOXIE_HEAD_PLAYER" inherit "ADOXIE_HEAD" {
+    gender = FEMALE
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      MELEE_RESISTANCE 1
+      RANGED_RESISTANCE 1
+      SLEEP_RESISTANT 1
+      FIRE_RESISTANT 1
+      FLYING 1
+    }
+    body = {
+      type = NonHumanoid HUGE
+      bodyParts = {
+        BACK 1
+        HEAD 1
+        TORSO 1
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 8 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+	}
+  }
+   "EE_AXEDIO_HEAD_PLAYER" inherit "ADOXIE_HEAD" {
+    gender = MALE
+    viewId = { "axedio_head" }
+      name = {
+        name = "Unholy god"
+        pluralName = "Axedios"
+      }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      MELEE_RESISTANCE 1
+      RANGED_RESISTANCE 1
+      SLEEP_RESISTANT 1
+      FIRE_RESISTANT 1
+      FLYING 1
+    }
+    spells = {
+      "EE axedio left hand"
+      "EE axedio right hand"
+      "EE axedio left foot"
+      "EE axedio right foot"
+    }
+    body = {
+      type = NonHumanoid HUGE
+      bodyParts = {
+        BACK 1
+        HEAD 1
+        TORSO 1
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 8 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+	}
+  }
+  "EE_AXEDIO_FOOT_LEFT" inherit "ADOXIE_FOOT_LEFT" {
+    viewId = { "axedio_foot_left" }
+      name = {
+        name = "Axedios left foot"
+        pluralName = "eyes"
+      }
+  }
+  "EE_AXEDIO_FOOT_RIGHT" inherit "ADOXIE_FOOT_RIGHT" {
+    viewId = { "axedio_foot_right" }
+      name = {
+        name = "Axedio's right foot"
+        pluralName = "right feet"
+      }
+  }
+  "EE_AXEDIO_HAND_LEFT" inherit "ADOXIE_LEFT_HAND" {
+    viewId = { "axedio_hand_left" }
+      name = {
+        name = "Axedio's left hand"
+        pluralName = "left hands"
+      }
+  }
+  "EE_AXEDIO_HAND_RIGHT" inherit "ADOXIE_HAND_RIGHT" {
+    viewId = { "axedio_hand_right" }
+      name = {
+        name = "Axedio"
+        pluralName = "right_hands"
+      }
+  }
+
+  #Dark greenskins
+ "EE_DARK_ORC" inherit "ORC"
+    {
+      attr = {
+        DAMAGE 21
+        DEFENSE 14 
+      }
+      viewId = { "dark_orc" }
+      permanentEffects = {
+        FAST_TRAINING 1
+		SUNLIGHT_VULNERABLE 1
+		REGENERATION 1
+		RIDER 1
+      }
+    }
+ "EE_DARK_ORC_FEMALE" inherit "EE_DARK_ORC"
+    {
+      viewId = { "dark_orc_female" }
+      gender = FEMALE
+      name = {
+        name = "orc"
+        firstNameGen = "EE_ORC_FEMALE"
+      }
+    }
+ "EE_DARK_OGRE" inherit "OGRE"
+    {
+      attr = {
+        DAMAGE 23
+        DEFENSE 18 
+      }
+      viewId = { "dark_ogre" }
+      permanentEffects = {
+        FAST_TRAINING 1
+        MAGIC_VULNERABILITY 1
+		SUNLIGHT_VULNERABLE 1
+		REGENERATION 1
+		RIDER 1
+      }
+    }
+ "EE_DARK_OGRE_FEMALE" inherit "EE_DARK_OGRE"
+    {
+      viewId = { "dark_ogre_female" }
+      gender = FEMALE
+      name = {
+        name = "ogre"
+        firstNameGen = "EE_ORC_FEMALE"
+      }
+    }
+ "EE_DARK_GOBLIN" inherit "GOBLIN_ARTIFICER"
+    {
+      viewId = { "dark_goblin" }
+      permanentEffects = {
+        FAST_TRAINING 1
+        DISARM_TRAPS_SKILL 1
+		SUNLIGHT_VULNERABLE 1
+		REGENERATION 1
+		RIDER 1
+      }
+    }
+ "EE_DARK_HOBGOBLIN" inherit "EE_HOBGOBLIN"
+    {
+      viewId = { "dark_hobgoblin" }
+      permanentEffects = {
+        FAST_TRAINING 1
+        DISARM_TRAPS_SKILL 1
+		SUNLIGHT_VULNERABLE 1
+		REGENERATION 1
+		RIDER 1
+      }
+    }
+  "EE_LION_QUEEN"
+    {
+      viewId = { "lion_queen" }
+      attr = {
+        DAMAGE 23
+        DEFENSE 25   
+      }
+      body = {
+        type = Humanoid MEDIUM
+        intrinsicAttacks = {
+          ARM {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW }}} }
+        }
+      }
+      gender = FEMALE
+      permanentEffects = {
+        AMBUSH_SKILL 1
+		SPEED 1
+      }
+      maxLevelIncrease = {
+        MELEE 8
+      }
+      name = {
+        name = "lion queen"
+        pluralName = "lion queens"
+      }
+      inventory = {
+		  {  "AdaBoots" 1 1 0.03 }
+		  {  "EE_VenGloves" 1 1 0.03 }
+		  {  "AdaHelm" 1 1 0.03 }
+  		  { type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
+		  { type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
+		  { type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
+		  { type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
+		  { Potion Permanent SPEED 1 1 0.03 }
+		  { Potion RegrowBodyPart 1 1 1 0.03 }
+		  { Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
+      }	  
+    }
+#---------------------------------------------------------
+#New Creatures for goblin Tribe - Righteous August 2019
+#---------------------------------------------------------
+
+	"EE_GIANT_CHICKEN"
+    {
+      viewId = { "giant_chicken" }
+      attr = {
+        DAMAGE 36
+        DEFENSE 18 
+      }
+      body = {
+        type = Bird LARGE
+        weight = 80
+      }
+      permanentEffects = {
+        RANGED_RESISTANCE 1
+		STEED 1
+      }
+      name = {
+        name = "giant chicken"
+      }
+	}
+	"EE_BATTLE_CHICKEN"
+    {
+      viewId = { "chicken" }
+      attr = {
+        DAMAGE 22
+        DEFENSE 6 
+      }
+      body = {
+        type = Bird SMALL
+        weight = 3
+      }
+      permanentEffects = {
+		SPEED 1
+      }
+      name = {
+        name = "chicken"
+      }
+	      }
+    "EE_GOLD_GOLEM"
+    {
+      viewId = { "gold_golem" }
+      attr = {
+        DAMAGE 34
+        DEFENSE 30 
+      }
+      body = {
+        type = HumanoidLike LARGE
+        material = SPIRIT
+      }
+      permanentEffects = {
+        MELEE_RESISTANCE 1
+        SLOWED 1
+      }
+      name = {
+        name = "gold golem"
+      }
+      inventory = {
+        { countMin = 30 countMax = 50 type =  "GoldPiece" chance = 1.0 }
+      }
+	}
+
+#---------------------------------------------------------
+#Goblin faction
+#---------------------------------------------------------
+
+  "EE_GOBLIN_HIGH_PRIEST"
+    {
+      viewId = { "goblin_high_priest" }
+      attr = {
+        DAMAGE 22
+        DEFENSE 38 
+		SPELL_DAMAGE 34 
+      }
+      body = {
+        type = Humanoid MEDIUM
+      }
+	  spellSchools = { "extra goblin high priest" }
+      spells = {
+		 "expert healing"
+		 "EE summon goblin priests"
+		 "invisibility"
+		 "expert magic missile"
+		 "escape"
+		 "EE summon spirit"
+		 "EE regrow body part"
+	  }
+      chatReactionFriendly = "talks about establishing a goblin theocracy"
+      chatReactionHostile = "\"Die!\""
+      permanentEffects = {
+        DISARM_TRAPS_SKILL 1
+		MAGIC_RESISTANCE 1
+		RIDER 1
+      }
+	        maxLevelIncrease = {
+        MELEE 2
+        SPELL 7
+	  }
+      name = {
+        name = "goblin high priest"
+        firstNameGen = "ORC"
+      }
+      hatedByEffect = HATE_GREENSKINS
+      inventory = {
+
+        { type =  "LeatherArmor" prefixChance = 1 }
+        { type =  "LeatherBoots" chance = 0.8 prefixChance = 0.2 }
+        { type =  "LeatherGloves" chance = 0.3 prefixChance = 0.1 }
+        {  "EE_DEFENSEAMULET" 1 1 0.03}
+        { Potion Lasting 50 MAGIC_VULNERABILITY 1 4 0.01}
+        { Potion Lasting PEACEFULNESS 1 4 0.01}
+        { Potion Lasting POISON_RESISTANT 1 4 0.01}
+        { Potion DestroyEquipment 1 1 0.01}
+        { Potion Lasting 50 BLEEDING 1 4 0.01}
+        { Potion Lasting BLIND 1 4 0.01}
+        { Potion Lasting COLLAPSED 1 4 0.01}
+        { Potion Lasting FLYING 1 4 0.01}
+        { Potion Lasting INSANITY 1 4 0.01}
+        { Potion Lasting INVISIBLE 1 4 0.01}
+        { Potion Lasting 50 REGENERATION 1 4 0.01}
+        { Potion Lasting SLEEP 1 4 0.01}
+        { Potion Lasting SLOWED 1 4 0.01}
+        { Potion Lasting SPEED 1 4 0.01}
+        { Potion Lasting TELEPATHY 1 4 0.01}
+      }
+	}
+
+
+    "EE_ELITE_GOBLIN_GUARD"
+    {
+      viewId = { "elite_goblin_guard" }
+      attr = {
+        DAMAGE 30
+        DEFENSE 42 
+		FORGE 40
+      }
+      body = {
+        type = Humanoid MEDIUM
+      }
+      chatReactionFriendly = "talks about serving the king"
+      chatReactionHostile = "\"Die!\""
+	  permanentEffects = {
+        DISARM_TRAPS_SKILL 1
+		MELEE_RESISTANCE 1
+		RIDER 1
+	  }
+      maxLevelIncrease = {
+        MELEE 3
+      }
+      spellSchools = { "extra fighter" }
+      spells = { 
+	    "shove"
+        "EE battle cry"
+        "EE block"
+      }
+      name = {
+        name = "elite goblin guard"
+        firstNameGen = "ORC"
+      }
+      hatedByEffect = HATE_GREENSKINS
+      inventory = {
+        { type =  "Sword" prefixChance = 1 }
+        { countMin = 1 countMax = 2 type = Potion Heal {FLESH} chance = 0.4 }
+        {  "EE_DEFENSEAMULET" 1 1 0.03}
+        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
+        { Ring DAM_BONUS 1 1 0.03}
+        { Ring DEF_BONUS 1 1 0.03}
+        { Ring RAGE 1 1 0.03}
+      }
+    }
+    "EE_GOBLIN_BRUTE"
+    {
+      viewId = { "goblin_brute" }
+      attr = {
+        DAMAGE 44
+        DEFENSE 35  
+      }
+      body = {
+        type = Humanoid LARGE
+		material = FLESH
+        weight = 140
+      }
+      chatReactionFriendly = "talks about clubbing things"
+      chatReactionHostile = "\"Die!\""
+	  spellSchools = { "extra fighter" }
+      permanentEffects = {
+	    MELEE_RESISTANCE 1
+        RANGED_RESISTANCE 1
+		MAGIC_VULNERABILITY 1
+        REGENERATION 1
+		RIDER 1
+      }
+	  maxLevelIncrease = {
+        MELEE 3
+	  }
+      name = {
+        name = "goblin brute"
+        firstNameGen = "ORC"
+      }
+      hatedByEffect = HATE_GREENSKINS
+      inventory = {
+        {  "HeavyClub" }
+        {  "GoldPiece" 10 30 }
+        { type =  "LeatherArmor" chance = 0.8 }
+        { countMin = 1 countMax = 3 type = Potion Heal {FLESH} chance = 0.3 }
+        {  "EE_DEFENSEAMULET" 1 1 0.03}
+        { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.03}
+        { Ring DAM_BONUS 1 1 0.03}
+        { Ring DEF_BONUS 1 1 0.03}
+        { Ring RAGE 1 1 0.03}
+      }
+    }
+	"EE_GOBLIN_LEPRECHAUN"
+    {
+      viewId = { "goblin_leprechaun" }
+      attr = {
+        DAMAGE 22
+        DEFENSE 28 
+		SPELL_DAMAGE 18 
+      }
+      body = {
+        type = Humanoid MEDIUM
+      }
+      spells = {
+		 "expert healing"
+		 "EE rapid magic missile"
+		 "escape"
+		 "EE summon gold golems"
+	  }
+      chatReactionFriendly = "talks about Gold"
+      chatReactionHostile = "\"Die!\""
+      permanentEffects = {
+        DISARM_TRAPS_SKILL 1
+		RIDER 1
+      }
+	        maxLevelIncrease = {
+        MELEE 2
+        SPELL 7
+	  }
+      name = {
+        name = "goblin leprechaun"
+        firstNameGen = "ORC"
+      }
+      hatedByEffect = HATE_GREENSKINS
+      inventory = {
+
+        { type =  "Robe" prefixChance = 1 }
+        { type =  "LeatherBoots" prefixChance = 0.4 }
+        { type =  "LeatherGloves" chance = 0.6 prefixChance = 0.4 }
+        {  "GoldPiece" 320 440 }
+        { Potion Lasting 50 MAGIC_VULNERABILITY 1 4 0.01}
+        { Potion Lasting PEACEFULNESS 1 4 0.01}
+        { Potion Lasting POISON_RESISTANT 1 4 0.01}
+        { Potion DestroyEquipment 1 1 0.01}
+        { Potion Lasting 50 BLEEDING 1 4 0.01}
+        { Potion Lasting BLIND 1 4 0.01}
+        { Potion Lasting COLLAPSED 1 4 0.01}
+        { Potion Lasting FLYING 1 4 0.01}
+        { Potion Lasting INSANITY 1 4 0.01}
+        { Potion Lasting INVISIBLE 1 4 0.01}
+        { Potion Lasting 50 REGENERATION 1 4 0.01}
+        { Potion Lasting SLEEP 1 4 0.01}
+        { Potion Lasting SLOWED 1 4 0.01}
+        { Potion Lasting SPEED 1 4 0.01}
+        { Potion Lasting TELEPATHY 1 4 0.01}
+      }
+	}
 
 #---------------------------------------------------------
 #Player Goblin faction
 #---------------------------------------------------------
   
-  "GOBLIN_PLAYER"
+  "EE_GOBLIN_PLAYER"
     {
       viewId = { "goblin_artificer" }
       attr = {
@@ -5247,7 +5181,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
     }
-    "ELITE_GOBLIN_GUARD_PLAYER"
+    "EE_ELITE_GOBLIN_GUARD_PLAYER"
     {
       viewId = { "elite_goblin_guard" }
       attr = {
@@ -5275,7 +5209,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
     }
-    "GOBLIN_ARCHER_PLAYER"
+    "EE_GOBLIN_ARCHER_PLAYER"
     {
       viewId = { "goblin_archer" }
       attr = {
@@ -5302,7 +5236,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
 	}
-    "GOBLIN_BRUTE_PLAYER"
+    "EE_GOBLIN_BRUTE_PLAYER"
       {
       viewId = { "goblin_brute" }
       attr = {
@@ -5331,7 +5265,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
     }
-    "GOBLIN_CHICKENMANCER_PLAYER"
+    "EE_GOBLIN_CHICKENMANCER_PLAYER"
     {
       viewId = { "goblin_chickenmancer" }
       attr = {
@@ -5359,7 +5293,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
 	}
-	"GOBLIN_HIGH_PRIEST_PLAYER"
+	"EE_GOBLIN_HIGH_PRIEST_PLAYER"
     {
       viewId = { "goblin_high_priest" }
       attr = {
@@ -5388,7 +5322,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
 	}
-    "GOBLIN_KABOOMER_PLAYER"
+    "EE_GOBLIN_KABOOMER_PLAYER"
     {
       body = {
         type = Humanoid MEDIUM
@@ -5422,7 +5356,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
     }
-	"GOBLIN_KING_PLAYER"
+	"EE_GOBLIN_KING_PLAYER"
     {
       viewId = { "goblin_king" }
       attr = {
@@ -5461,7 +5395,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
 	}
-  "GOBLIN_MATRON_PLAYER"
+  "EE_GOBLIN_MATRON_PLAYER"
     {
       viewId = { "goblin_matron" }
       attr = {
@@ -5491,7 +5425,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
     }
-	"GOBLIN_PRIEST_PLAYER"
+	"EE_GOBLIN_PRIEST_PLAYER"
     {
       viewId = { "goblin_priest" }
       attr = {
@@ -5518,7 +5452,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
 	}
-    "GOBLIN_WARRIOR_PLAYER"
+    "EE_GOBLIN_WARRIOR_PLAYER"
     {
       viewId = { "goblin_warrior" }
       attr = {
@@ -5545,7 +5479,7 @@
       }
       hatedByEffect = HATE_GREENSKINS
     }
-	"GOBLIN_WIZARD_PLAYER"
+	"EE_GOBLIN_WIZARD_PLAYER"
     {
       viewId = { "goblin_wizard" }
       attr = {
@@ -5575,17 +5509,50 @@
       hatedByEffect = HATE_GREENSKINS
 	}
 
-   "ZOMBIE_DARK" inherit "ZOMBIE"
+   "EE_ZOMBIE_DARK" inherit "ZOMBIE"
    {
      inventory = {}
      permanentEffects = { DARKNESS_SOURCE 1 }		
    }
+   
+  "EE_SKELETON"
+  {
+    viewId = { "skeleton" }
+    attr = {
+      DAMAGE 17
+      DEFENSE 13
+      RANGED_DAMAGE 5
+      DIGGING 50
+    }
+    body = {
+      type = Humanoid LARGE
+      material = BONE
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+      ARCHERY 4
+    }
+    aiType = RANGED
+    name = {
+      name = "skeleton"
+    }
+    hatedByEffect = HATE_UNDEAD
+	inventory = { # Modded
+        { type =  "Bow" chance = 0.3 }
+        {  "Knife" }
+        { type =  "WoodenShield" chance = 0.01 }
+      }
+  }	
+   
 	
 #--------------------------------
 # NPC Adventurers
 #--------------------------------
 
-"ADVENTURER_NPC_MELEE1" inherit "ADVENTURER"
+"EE_ADVENTURER_NPC_MELEE1" inherit "ADVENTURER"
    {
      attr = {
        DAMAGE 35
@@ -5628,7 +5595,7 @@
         {  "GoldPiece" 76 96 }
 	  }
     }
-"ADVENTURER_NPC_MELEE1_F" inherit "ADVENTURER_NPC_MELEE1"
+"EE_ADVENTURER_NPC_MELEE1_F" inherit "EE_ADVENTURER_NPC_MELEE1"
   {
     viewId = { "player_f" }
     gender = FEMALE
@@ -5638,7 +5605,7 @@
       fullTitle = true
      }
    }
-"ADVENTURER_NPC_MELEE2" inherit "ADVENTURER"
+"EE_ADVENTURER_NPC_MELEE2" inherit "ADVENTURER"
    {
      attr = {
        DAMAGE 47
@@ -5679,7 +5646,7 @@
         {  "GoldPiece" 124 164 }
 	  }
     }
-"ADVENTURER_NPC_MELEE2_F" inherit "ADVENTURER_NPC_MELEE2"
+"EE_ADVENTURER_NPC_MELEE2_F" inherit "EE_ADVENTURER_NPC_MELEE2"
   {
     viewId = { "player_f" }
     gender = FEMALE
@@ -5689,7 +5656,7 @@
       fullTitle = true
      }
    }
-"ADVENTURER_NPC_ARCHER1" inherit "ADVENTURER"
+"EE_ADVENTURER_NPC_ARCHER1" inherit "ADVENTURER"
    {
      attr = {
        DAMAGE 27
@@ -5728,7 +5695,7 @@
         {  "GoldPiece" 76 96 }
 	  }
     }
-"ADVENTURER_NPC_ARCHER1_F" inherit "ADVENTURER_NPC_ARCHER1"
+"EE_ADVENTURER_NPC_ARCHER1_F" inherit "EE_ADVENTURER_NPC_ARCHER1"
   {
     viewId = { "player_f" }
     gender = FEMALE
@@ -5738,7 +5705,7 @@
       fullTitle = true
      }
    }
-"ADVENTURER_NPC_SPELL1" inherit "ADVENTURER"
+"EE_ADVENTURER_NPC_SPELL1" inherit "ADVENTURER"
    {
      attr = {
        DAMAGE 23
@@ -5780,7 +5747,7 @@
         {  "GoldPiece" 76 96 }
 	  }
     }
-"ADVENTURER_NPC_SPELL1_F" inherit "ADVENTURER_NPC_SPELL1"
+"EE_ADVENTURER_NPC_SPELL1_F" inherit "EE_ADVENTURER_NPC_SPELL1"
   {
     viewId = { "player_f" }
     gender = FEMALE
@@ -5790,7 +5757,7 @@
       fullTitle = true
      }
    }
-  "MAGE_ADVENTURER_NPC_SPELL1" inherit "EE_MAGE_ADVENTURER"
+  "EE_MAGE_ADVENTURER_NPC_SPELL1" inherit "EE_MAGE_ADVENTURER"
     {
       attr = {
         DAMAGE 25
@@ -5845,7 +5812,7 @@
         {  "GoldPiece" 76 96 }
       }
     }
-  "MAGE_ADVENTURER_NPC_SPELL1_F" inherit "MAGE_ADVENTURER_NPC_SPELL1"
+  "EE_MAGE_ADVENTURER_NPC_SPELL1_F" inherit "EE_MAGE_ADVENTURER_NPC_SPELL1"
     {
       viewId = { "mage_adventurer_female" }
       gender = FEMALE
@@ -5855,7 +5822,7 @@
         fullTitle = true
       }
     }
-  "MAGE_ADVENTURER_NPC_SPELL2" inherit "EE_MAGE_ADVENTURER"
+  "EE_MAGE_ADVENTURER_NPC_SPELL2" inherit "EE_MAGE_ADVENTURER"
     {
       attr = {
         DAMAGE 31
@@ -5914,7 +5881,7 @@
         {  "GoldPiece" 124 164 }
       }
     }
-  "MAGE_ADVENTURER_NPC_SPELL2_F" inherit "MAGE_ADVENTURER_NPC_SPELL2"
+  "EE_MAGE_ADVENTURER_NPC_SPELL2_F" inherit "EE_MAGE_ADVENTURER_NPC_SPELL2"
     {
       viewId = { "mage_adventurer_female" }
       gender = FEMALE
@@ -5924,7 +5891,7 @@
         fullTitle = true
       }
     }
-  "RANGER_ADVENTURER_NPC_ARCHER1" inherit "EE_RANGER_ADVENTURER"
+  "EE_RANGER_ADVENTURER_NPC_ARCHER1" inherit "EE_RANGER_ADVENTURER"
     {
       attr = {
         DAMAGE 23
@@ -5957,7 +5924,7 @@
         {  "GoldPiece" 76 96 }
       }
 	}
-  "RANGER_ADVENTURER_NPC_ARCHER1_F" inherit "RANGER_ADVENTURER_NPC_ARCHER1"
+  "EE_RANGER_ADVENTURER_NPC_ARCHER1_F" inherit "EE_RANGER_ADVENTURER_NPC_ARCHER1"
     {
       viewId = { "ranger_adventurer_female" }
       gender = FEMALE
@@ -5967,7 +5934,7 @@
         fullTitle = true
        }
 	}
-  "RANGER_ADVENTURER_NPC_ARCHER2" inherit "EE_RANGER_ADVENTURER"
+  "EE_RANGER_ADVENTURER_NPC_ARCHER2" inherit "EE_RANGER_ADVENTURER"
     {
       attr = {
         DAMAGE 27
@@ -6002,7 +5969,7 @@
         {  "GoldPiece" 124 164 }
       }
 	}
-  "RANGER_ADVENTURER_NPC_ARCHER2_F" inherit "RANGER_ADVENTURER_NPC_ARCHER2"
+  "EE_RANGER_ADVENTURER_NPC_ARCHER2_F" inherit "EE_RANGER_ADVENTURER_NPC_ARCHER2"
     {
       viewId = { "ranger_adventurer_female" }
       gender = FEMALE
@@ -6012,7 +5979,7 @@
         fullTitle = true
        }
 	}
-  "RANGER_ADVENTURER_NPC_MELEE1" inherit "EE_RANGER_ADVENTURER"
+  "EE_RANGER_ADVENTURER_NPC_MELEE1" inherit "EE_RANGER_ADVENTURER"
     {
       viewId = { "ranger_adventurer" }
       attr = {
@@ -6049,7 +6016,7 @@
         {  "GoldPiece" 76 96 }
       }
 	}
-  "RANGER_ADVENTURER_NPC_MELEE1_F" inherit "RANGER_ADVENTURER_NPC_MELEE1"
+  "EE_RANGER_ADVENTURER_NPC_MELEE1_F" inherit "EE_RANGER_ADVENTURER_NPC_MELEE1"
     {
       viewId = { "ranger_adventurer_female" }
       gender = FEMALE
@@ -6059,7 +6026,7 @@
         fullTitle = true
        }
 	}
-  "RANGER_ADVENTURER_NPC_MELEE2" inherit "EE_RANGER_ADVENTURER"
+  "EE_RANGER_ADVENTURER_NPC_MELEE2" inherit "EE_RANGER_ADVENTURER"
     {
       viewId = { "ranger_adventurer" }
       attr = {
@@ -6095,7 +6062,7 @@
         {  "GoldPiece" 76 96 }
       }
 	}
-  "RANGER_ADVENTURER_NPC_MELEE2_F" inherit "RANGER_ADVENTURER_NPC_MELEE2"
+  "EE_RANGER_ADVENTURER_NPC_MELEE2_F" inherit "EE_RANGER_ADVENTURER_NPC_MELEE2"
     {
       viewId = { "ranger_adventurer_female" }
       gender = FEMALE
@@ -6105,7 +6072,7 @@
         fullTitle = true
        }
 	}
-  "WARRIOR_ADVENTURER_NPC_MELEE1" inherit "EE_WARRIOR_ADVENTURER"
+  "EE_WARRIOR_ADVENTURER_NPC_MELEE1" inherit "EE_WARRIOR_ADVENTURER"
     {
       viewId = { "warrior_adventurer" }
       attr = {
@@ -6141,7 +6108,7 @@
         {  "GoldPiece" 86 106 }
       }
     }
-  "WARRIOR_ADVENTURER_NPC_MELEE1_F" inherit "WARRIOR_ADVENTURER_NPC_MELEE1"
+  "EE_WARRIOR_ADVENTURER_NPC_MELEE1_F" inherit "EE_WARRIOR_ADVENTURER_NPC_MELEE1"
     {
       viewId = { "warrior_adventurer_female" }
       gender = FEMALE
@@ -6151,7 +6118,7 @@
         fullTitle = true
       }
 	}
-  "WARRIOR_ADVENTURER_NPC_MELEE2" inherit "EE_WARRIOR_ADVENTURER"
+  "EE_WARRIOR_ADVENTURER_NPC_MELEE2" inherit "EE_WARRIOR_ADVENTURER"
     {
       viewId = { "warrior_adventurer" }
       attr = {
@@ -6190,7 +6157,7 @@
         {  "GoldPiece" 124 184 }
       }
     }
-  "WARRIOR_ADVENTURER_NPC_MELEE2_F" inherit "WARRIOR_ADVENTURER_NPC_MELEE2"
+  "EE_WARRIOR_ADVENTURER_NPC_MELEE2_F" inherit "EE_WARRIOR_ADVENTURER_NPC_MELEE2"
     {
       viewId = { "warrior_adventurer_female" }
       gender = FEMALE
@@ -6200,7 +6167,7 @@
         fullTitle = true
       }
 	}
-  "BARBARIAN_ADVENTURER_NPC_MELEE1" inherit "EE_BARBARIAN_ADVENTURER"
+  "EE_BARBARIAN_ADVENTURER_NPC_MELEE1" inherit "EE_BARBARIAN_ADVENTURER"
     {
       attr = {
         DAMAGE 42
@@ -6241,7 +6208,7 @@
         {  "GoldPiece" 76 96 }
       }
     }
-  "BARBARIAN_ADVENTURER_NPC_MELEE1_F" inherit "BARBARIAN_ADVENTURER_NPC_MELEE1"
+  "EE_BARBARIAN_ADVENTURER_NPC_MELEE1_F" inherit "EE_BARBARIAN_ADVENTURER_NPC_MELEE1"
     {
       viewId = { "barbarian_female" }
       gender = FEMALE
@@ -6251,7 +6218,7 @@
         fullTitle = true
       }
 	}
-  "BARBARIAN_ADVENTURER_NPC_MELEE2" inherit "EE_BARBARIAN_ADVENTURER"
+  "EE_BARBARIAN_ADVENTURER_NPC_MELEE2" inherit "EE_BARBARIAN_ADVENTURER"
     {
       attr = {
         DAMAGE 58
@@ -6292,7 +6259,7 @@
         {  "GoldPiece" 164 194 }
       }
     }
-  "BARBARIAN_ADVENTURER_NPC_MELEE2_F" inherit "BARBARIAN_ADVENTURER_NPC_MELEE2"
+  "EE_BARBARIAN_ADVENTURER_NPC_MELEE2_F" inherit "EE_BARBARIAN_ADVENTURER_NPC_MELEE2"
     {
       viewId = { "barbarian_female" }
       gender = FEMALE
@@ -6302,7 +6269,7 @@
         fullTitle = true
       }
 	}
-  "BARBARIAN_ADVENTURER_NPC_MELEE3" inherit "EE_BARBARIAN_ADVENTURER"
+  "EE_BARBARIAN_ADVENTURER_NPC_MELEE3" inherit "EE_BARBARIAN_ADVENTURER"
     {
       attr = {
         DAMAGE 74
@@ -6344,7 +6311,7 @@
         {  "GoldPiece" 262 392 }
       }
     }
-  "BARBARIAN_ADVENTURER_NPC_MELEE3_F" inherit "BARBARIAN_ADVENTURER_NPC_MELEE3"
+  "EE_BARBARIAN_ADVENTURER_NPC_MELEE3_F" inherit "EE_BARBARIAN_ADVENTURER_NPC_MELEE3"
     {
       viewId = { "barbarian_female" }
       gender = FEMALE
@@ -6354,7 +6321,7 @@
         fullTitle = true
       }
 	}
-  "ASSASSIN_ADVENTURER_NPC_MELEE1" inherit "EE_ASSASSIN_ADVENTURER"
+  "EE_ASSASSIN_ADVENTURER_NPC_MELEE1" inherit "EE_ASSASSIN_ADVENTURER"
     {
       viewId = { "assassin" }
       attr = {
@@ -6394,7 +6361,7 @@
         {  "GoldPiece" 96 116 }
       }
     }
-  "ASSASSIN_ADVENTURER_NPC_MELEE1_F" inherit "ASSASSIN_ADVENTURER_NPC_MELEE1"
+  "EE_ASSASSIN_ADVENTURER_NPC_MELEE1_F" inherit "EE_ASSASSIN_ADVENTURER_NPC_MELEE1"
     {
       viewId = { "assassin_female" }
       gender = FEMALE
@@ -6404,7 +6371,7 @@
         fullTitle = true
       }
 	}
-  "ASSASSIN_ADVENTURER_NPC_MELEE2" inherit "EE_ASSASSIN_ADVENTURER"
+  "EE_ASSASSIN_ADVENTURER_NPC_MELEE2" inherit "EE_ASSASSIN_ADVENTURER"
     {
       viewId = { "assassin" }
       attr = {
@@ -6451,7 +6418,7 @@
         {  "GoldPiece" 144 184 }
       }
     }
-  "ASSASSIN_ADVENTURER_NPC_MELEE2_F" inherit "ASSASSIN_ADVENTURER_NPC_MELEE2"
+  "EE_ASSASSIN_ADVENTURER_NPC_MELEE2_F" inherit "EE_ASSASSIN_ADVENTURER_NPC_MELEE2"
     {
       viewId = { "assassin_female" }
       gender = FEMALE
@@ -6461,7 +6428,7 @@
         fullTitle = true
       }
 	}
-  "ASSASSIN_ADVENTURER_NPC_ARCHER1" inherit "EE_ASSASSIN_ADVENTURER"
+  "EE_ASSASSIN_ADVENTURER_NPC_ARCHER1" inherit "EE_ASSASSIN_ADVENTURER"
     {
       viewId = { "assassin" }
       attr = {
@@ -6501,7 +6468,7 @@
         {  "GoldPiece" 96 116 }
       }
     }
-  "ASSASSIN_ADVENTURER_NPC_ARCHER1_F" inherit "ASSASSIN_ADVENTURER_NPC_ARCHER1"
+  "EE_ASSASSIN_ADVENTURER_NPC_ARCHER1_F" inherit "EE_ASSASSIN_ADVENTURER_NPC_ARCHER1"
     {
       viewId = { "assassin_female" }
       gender = FEMALE
@@ -6511,7 +6478,7 @@
         fullTitle = true
       }
 	}
-  "ASSASSIN_ADVENTURER_NPC_ARCHER2" inherit "EE_ASSASSIN_ADVENTURER"
+  "EE_ASSASSIN_ADVENTURER_NPC_ARCHER2" inherit "EE_ASSASSIN_ADVENTURER"
     {
       viewId = { "assassin" }
       attr = {
@@ -6556,7 +6523,7 @@
         {  "GoldPiece" 144 184 }
       }
     }
-  "ASSASSIN_ADVENTURER_NPC_ARCHER2_F" inherit "ASSASSIN_ADVENTURER_NPC_ARCHER2"
+  "EE_ASSASSIN_ADVENTURER_NPC_ARCHER2_F" inherit "EE_ASSASSIN_ADVENTURER_NPC_ARCHER2"
     {
       viewId = { "assassin_female" }
       gender = FEMALE
@@ -6566,7 +6533,7 @@
         fullTitle = true
       }
 	}
-  "ASSASSIN_ADVENTURER_NPC_SPELL1" inherit "EE_ASSASSIN_ADVENTURER"
+  "EE_ASSASSIN_ADVENTURER_NPC_SPELL1" inherit "EE_ASSASSIN_ADVENTURER"
     {
       attr = {
         DAMAGE 34
@@ -6606,7 +6573,7 @@
         {  "GoldPiece" 96 116 }
       }
     }
-  "ASSASSIN_ADVENTURER_NPC_SPELL1_F" inherit "ASSASSIN_ADVENTURER_NPC_SPELL1"
+  "EE_ASSASSIN_ADVENTURER_NPC_SPELL1_F" inherit "EE_ASSASSIN_ADVENTURER_NPC_SPELL1"
     {
       viewId = { "assassin_female" }
       gender = FEMALE
@@ -6616,7 +6583,7 @@
         fullTitle = true
       }
 	}
-  "ASSASSIN_ADVENTURER_NPC_SPELL2" inherit "EE_ASSASSIN_ADVENTURER"
+  "EE_ASSASSIN_ADVENTURER_NPC_SPELL2" inherit "EE_ASSASSIN_ADVENTURER"
     {
       attr = {
         DAMAGE 38
@@ -6662,7 +6629,7 @@
         {  "GoldPiece" 144 184 }
       }
     }
-  "ASSASSIN_ADVENTURER_NPC_SPELL2_F" inherit "ASSASSIN_ADVENTURER_NPC_SPELL2"
+  "EE_ASSASSIN_ADVENTURER_NPC_SPELL2_F" inherit "EE_ASSASSIN_ADVENTURER_NPC_SPELL2"
     {
       viewId = { "assassin_female" }
       gender = FEMALE
@@ -6675,7 +6642,7 @@
 #------------------------
 #Ungrouped Misc Units
 #------------------------
-"BANDIT_LEADER"
+"EE_BANDIT_LEADER"
     {
       viewId = { "bandit_leader" }
       attr = {
@@ -6712,7 +6679,7 @@
       }
     }
 
-  "FIRE_SPHERE"
+  "EE_FIRE_SPHERE"
     {
       viewId = { "fireball" }
       attr = {
@@ -6733,7 +6700,7 @@
         name = "fire sphere"
       }
     }
-  "COMBAT_SUCCUBUS"
+  "EE_COMBAT_SUCCUBUS"
     {
       attr = {
         DAMAGE 16
@@ -6764,7 +6731,7 @@
         pluralName = "combat succubi"
       }
     }
-    "MILITIA_PLAYER"
+    "EE_MILITIA_PLAYER"
     {
       viewId = { "militia" }
       attr = {
@@ -6798,7 +6765,7 @@
 		{ type =  "IronGloves" prefixChance = 0.02 chance = 0.04}
       }
     }
-    "MILITIA"
+    "EE_MILITIA"
     {
       viewId = { "militia" }
       attr = {
@@ -6825,7 +6792,7 @@
 #---------------------
 #Player Dwarf Faction
 #---------------------
-  "DWARF_MILITIA"
+  "EE_DWARF_MILITIA"
     {
       viewId = { "dwarf_militia" }
       attr = {
@@ -6869,7 +6836,7 @@
         { Ring RAGE 1 1 0.03}
       }
     }
-  "DWARF_TOUGH" inherit "DWARF_MILITIA"
+  "EE_DWARF_TOUGH" inherit "EE_DWARF_MILITIA"
     {
       viewId = { "dwarf_fighter" }
       attr = {
@@ -6885,7 +6852,7 @@
         MELEE 5
       }
     }
-  "DWARF_WARRIOR" inherit "DWARF_MILITIA"
+  "EE_DWARF_WARRIOR" inherit "EE_DWARF_MILITIA"
     {
       viewId = { "dwarf" }
       attr = {
@@ -6901,7 +6868,7 @@
         MELEE 6
       }
     }
-  "ELITE_DWARF_WARRIOR" inherit "DWARF_MILITIA"
+  "EE_ELITE_DWARF_WARRIOR" inherit "EE_DWARF_MILITIA"
     {
       viewId = { "elite_dwarf_warrior" }
       attr = {
@@ -6917,7 +6884,7 @@
         MELEE 8
       }
     }
-  "DWARF_WORKER" inherit "DWARF"
+  "EE_DWARF_WORKER" inherit "DWARF"
     {
       viewId = { "dwarf_worker" }
       attr = {
@@ -6948,7 +6915,7 @@
 		{ type =  "IronGloves" prefixChance = 0.02 chance = 0.04}
       }
     }
-   "DWARF_MONK"
+   "EE_DWARF_MONK"
     {
       viewId = { "dwarf_monk" }
       attr = {
@@ -6981,7 +6948,7 @@
       chatReactionHostile = "\"Die!\""
       hatedByEffect = HATE_DWARVES
       }
-  "PLAYER_DWARF_FEMALE"
+  "EE_DWARF_FEMALE"
     {
       viewId = { "dwarf_female" }
       attr = {
@@ -7008,7 +6975,7 @@
       gender = FEMALE
       hatedByEffect = HATE_DWARVES
     }
-  "PLAYER_DWARF_FEMALE2"
+  "EE_DWARF_FEMALE2"
     {
       viewId = { "dwarf_female2" }
       attr = {
@@ -7035,7 +7002,7 @@
       gender = FEMALE
       hatedByEffect = HATE_DWARVES
     }
-  "PLAYER_DWARF_FEMALE3"
+  "EE_DWARF_FEMALE3"
     {
       viewId = { "dwarf_female3" }
       attr = {
@@ -7062,7 +7029,7 @@
       gender = FEMALE
       hatedByEffect = HATE_DWARVES
     }
-  "DWARF_QUEEN"
+  "EE_DWARF_QUEEN"
     {
       viewId = { "dwarf_queen" }
       attr = {
@@ -7112,7 +7079,7 @@
 #---------------------
 #Player Gnome Faction
 #---------------------
-  "GNOME_PLAYER"
+  "EE_GNOME"
     {
       viewId = { "gnome" } #Modded
       attr = {
@@ -7138,7 +7105,7 @@
         firstNameGen = "DWARF"
 	}
   }
-"GNOME_CHIEF_PLAYER"
+"EE_GNOME_CHIEF"
   {
     viewId = { "gnome_boss" }
     attr = {
@@ -7165,7 +7132,7 @@
       {  "Sword"}
 	 }
     }
-  "GNOME_ALCHEMIST_PLAYER"
+  "EE_GNOME_ALCHEMIST"
     {
       viewId = { "gnome_alchemist" }
       attr = {
@@ -7195,7 +7162,7 @@
         SPELL 7
       }
     }
-  "GNOME_CROSSBOWMAN_PLAYER"
+  "EE_GNOME_CROSSBOWMAN"
     {
       viewId = { "gnome_crossbowman" }
       attr = {
@@ -7222,7 +7189,7 @@
         firstNameGen = "DWARF"
 	  }
 	}
-  "GNOME_FIRE_MAGE_PLAYER"
+  "EE_GNOME_FIRE_MAGE"
     {
       viewId = { "gnome_fire_mage" }
       attr = {
@@ -7252,7 +7219,7 @@
       spellSchools = { "extra fire" }
 		spells = { "healing" }
 	}
-  "GNOME_FIRE_WIZARD_PLAYER"
+  "EE_GNOME_FIRE_WIZARD"
     {
       viewId = { "gnome_fire_wizard" }
       attr = {
@@ -7282,7 +7249,7 @@
       spellSchools = { "extra fire wizard" }
 		spells = { "healing" "fireball" "firewall" "EE fireblast" "EE fire shield" "fire elemental" }
     }
-  "GNOME_MAGE_PLAYER"
+  "EE_GNOME_MAGE"
     {
       viewId = { "gnome_mage" }
       attr = {
@@ -7311,7 +7278,7 @@
       }
       spellSchools = { "mage" }
     }
-  "GNOME_PRIEST_PLAYER"
+  "EE_GNOME_PRIEST"
     {
       viewId = { "gnome_priest" }
       attr = {
@@ -7337,7 +7304,7 @@
       spellSchools = { "extra healer" }
 		spells = { "healing" "magic missile" }
     }
-  "GNOME_WIZARD_PLAYER"
+  "EE_GNOME_WIZARD"
     {
       viewId = { "gnome_wizard" }
       attr = {
@@ -7371,7 +7338,7 @@
 #Ungrouped Misc Units
 #---------------------
     #Note: It is magic not sci-fi.
-    "GIANT_ROBOT"
+    "EE_GIANT_ROBOT"
     {
       viewId = { "giant_robot" }
       attr = {
@@ -7399,7 +7366,7 @@
         name = "giant contraption"
       }
     }
-    "POSSESSED_SWORD"
+    "EE_POSSESSED_SWORD"
     {
       viewId = { "sword" }
       attr = {
@@ -7430,7 +7397,7 @@
       deathDescription = "vanquished"
       cantEquip = true
     }
-    "GHOST_ARMOUR"
+    "EE_GHOST_ARMOUR"
     {
       viewId = { "chain_armor" }
       attr = {
@@ -7500,7 +7467,7 @@
       }
     }
 
-  "DISENCHANTER" inherit "LOST_SOUL"
+  "EE_DISENCHANTER" inherit "LOST_SOUL"
     {
       body = {
         type = NonHumanoid LARGE
@@ -7518,43 +7485,11 @@
         name = "disenchanter"
       }
     }
-  "SHADE"
-    {
-      viewId = { "shade" }
-      attr = {
-		DAMAGE 20
-        DEFENSE 15
-        SPELL_DAMAGE 20 
-	  }
-      body = {
-        type = NonHumanoid LARGE
-        material = SPIRIT
-        deathSound = SPELL_WORD_OF_POWER
-        intrinsicAttacks = {
-          TORSO {{{ Intrinsic { "bite_attack" } "fangs" 6 {
-              attackType = BITE
-              attackMsg = BITE
-              victimEffect = { 0.2 Lasting INSANITY}
-              attackerEffect = { Escape{} } } }}}
-        }
-	  }
-	  name = {
-        name = "shade"
-	  }
-      chatReactionFriendly = "\"it screeches in a horrid voice\""
-      chatReactionHostile = "\"it screeches in a horrid voice\""
-	  cantEquip = true
-      spells = { "EE rapid invisibility" }
-      permanentEffects = {
-		SPEED 1
-		TELEPATHY 1
-		}
-      }
 
 #------------------
 #Immigrant variants
 #------------------
-  "WINGED_IMP" inherit "IMP"
+  "EE_WINGED_IMP" inherit "IMP"
     {
       viewId = { "winged_imp" }
     }
@@ -7563,7 +7498,7 @@
 # Rat Men Keeper Player Faction - March 2020 RighteousSinner
 #-------------------------------------------------------------------------------------------
   
-   "RAT_WORKER_PLAYER"
+   "EE_RAT_WORKER"
     {
       viewId = { "rat_worker" }
       attr = {
@@ -7588,7 +7523,7 @@
       chatReactionFriendly = "complains about rat society"
       chatReactionHostile = "makes angry rat noises"
     }
-  "RAT_MAN_PLAYER"
+  "EE_RAT_MAN_RECRUIT"
     {
       viewId = { "rat_man" }
       attr = {
@@ -7613,7 +7548,7 @@
       chatReactionFriendly = "complains about rat society"
       chatReactionHostile = "makes angry rat noises"
     }
-  "RAT_SOLDIER_PLAYER" inherit "RAT_MAN_PLAYER"
+  "EE_RAT_SOLDIER" inherit "EE_RAT_MAN"
 	{
     viewId = { "rat_soldier" }
     attr = {
@@ -7636,7 +7571,7 @@
 	  firstNameGen = "DEMON"
       }
 	}
-  "RAT_LADY_PLAYER" inherit "RAT_MAN_PLAYER"
+  "EE_RAT_LADY" inherit "EE_RAT_MAN"
 	{
     viewId = { "rat_lady" }
     gender = FEMALE
@@ -7646,7 +7581,7 @@
       name = "rat woman"
       }
 	}
-  "RAT_KING_PLAYER" 
+  "EE_RAT_KING" 
 	{
     viewId = { "rat_king" }
     attr = {
@@ -7681,7 +7616,7 @@
 		{  "LeatherBoots" }
       }
 	}
-  "RAT_GENERAL_PLAYER"
+  "EE_RAT_GENERAL_RECRUIT"
     {
       viewId = { "rat_general" }
       attr = {
@@ -7712,7 +7647,7 @@
       chatReactionFriendly = "complains about surface dwellers"
       chatReactionHostile = "makes angry rat noises"
     }
-  "RAT_GLADIATOR_PLAYER"
+  "EE_RAT_GLADIATOR"
     {
       viewId = { "rat_gladiator" }
       attr = {
@@ -7744,7 +7679,7 @@
       chatReactionFriendly = "talks about combat"
       chatReactionHostile = "makes angry rat noises"
 	}
-  "RAT_ARCHER_PLAYER" inherit "RAT_MAN_PLAYER"
+  "EE_RAT_ARCHER_RECRUIT" inherit "EE_RAT_MAN"
     {
       viewId = { "rat_bowman" }
       attr = {
@@ -7767,7 +7702,7 @@
 ###################################################################################	
 #Monster variations for regular tribes (different inventory/some skill variation)
 ###################################################################################	
-"DWARF_MILITIA_TRIBE" inherit "DWARF_MILITIA"
+"EE_DWARF_MILITIA_TRIBE" inherit "EE_DWARF_MILITIA"
 {
       inventory = {
         { type =  "Sword" prefixChance = 0.05 }
@@ -7780,7 +7715,7 @@
         { type =  "EE_DwarvenBeer" chance = 0.1 }
       }
 }
-"DWARF_FIGHTER_TRIBE" inherit "DWARF_TOUGH"
+"EE_DWARF_FIGHTER_TRIBE" inherit "EE_DWARF_TOUGH"
 {
       attr = {
         DAMAGE 28
@@ -7798,7 +7733,7 @@
         { type =  "EE_DwarvenBeer" chance = 0.15 }
       }
 }
-"DWARF_WARRIOR_TRIBE" inherit "DWARF_WARRIOR"
+"EE_DWARF_WARRIOR_TRIBE" inherit "EE_DWARF_WARRIOR"
 {
       attr = {
         DAMAGE 30
@@ -7816,7 +7751,7 @@
         { type =  "EE_DwarvenBeer" chance = 0.2 }
       }
 }
-"ELITE_DWARF_WARRIOR_TRIBE" inherit "ELITE_DWARF_WARRIOR"
+"EE_ELITE_DWARF_WARRIOR_TRIBE" inherit "EE_ELITE_DWARF_WARRIOR"
 {
       attr = {
         DAMAGE 32
@@ -7835,7 +7770,7 @@
         { countMin = 1 countMax = 2 type =  "EE_DwarvenBeer" chance = 0.2 }
       }
 }
-"DWARF_WORKER_TRIBE" inherit "DWARF_WORKER"
+"EE_DWARF_WORKER_TRIBE" inherit "EE_DWARF_WORKER"
 {
       inventory = {
         {  "Spear" }
@@ -7847,7 +7782,7 @@
         { type =  "EE_DwarvenBeer" chance = 0.05 }
       }
 }
-"DWARF_MONK_TRIBE" inherit "DWARF_MONK"
+"EE_DWARF_MONK_TRIBE" inherit "EE_DWARF_MONK"
     {
       viewId = { "dwarf_monk" }
       attr = {
@@ -7869,7 +7804,7 @@
         {  "EE_DwarvenBeer" 2 4 }
       }
     }
-  "DWARF_QUEEN_TRIBE" inherit "DWARF_QUEEN"
+  "EE_DWARF_QUEEN_TRIBE" inherit "EE_DWARF_QUEEN"
     {
       attr = {
         DAMAGE 40
@@ -7899,7 +7834,8 @@
        { Potion Heal {FLESH} 2 3 }
       }
  	}
-	"DWARF_BARON_TRIBE" inherit "DWARF_BARON"
+	
+	"EE_DWARF_BARON_TRIBE" inherit "EE_DWARF_BARON"
 	{
       attr = {
         DAMAGE 36
@@ -7922,7 +7858,7 @@
 		{ Potion Heal {FLESH} 1 2 }
       }
 	}
-  "GUILDMASTER"
+  "EE_GUILDMASTER"
     {
       name = {
         name = "guildmaster"
@@ -7949,7 +7885,7 @@
         {  "Robe"}
       }
     }
-  "GUILDMASTER_F" inherit "GUILDMASTER"
+  "EE_GUILDMASTER_F" inherit "EE_GUILDMASTER"
     {
       viewId = { "guildmaster_female1" }
       gender = FEMALE
@@ -7960,7 +7896,7 @@
       }
       viewIdUpgrades = { { "guildmaster_female2" } { "guildmaster_female3" } { "guildmaster_female4" }}
     }
-  "SHIPMENT"
+  "EE_SHIPMENT"
     {
       viewId = { "caravan_cart" }
       name = {
@@ -7986,10 +7922,10 @@
         { countMin = 1000 countMax = 1000 type =  "WoodPlank" chance = 1.0 }
       }
     }
-  "SHIPMENT_START" inherit "SHIPMENT" {}
+  "EE_SHIPMENT_START" inherit "EE_SHIPMENT" {}
 
   #Kings and shadow kings
-  "KING"
+  "EE_KING"
 	  {
         name = {
         name = "King"
@@ -8041,7 +7977,7 @@
 		{  "GoldPiece" 876 1296 }
 	}
   }
-  "SHADOW_KING"
+  "EE_SHADOW_KING"
 	  {
         name = {
         name = "Shadow King"
@@ -8095,7 +8031,7 @@
 		{  "GoldPiece" 876 1296 }
     }
   }
-  "SHADOW_DUKE"
+  "EE_SHADOW_DUKE"
   {
     viewId = { "shadow_knightboss" }
     attr = {
@@ -8133,13 +8069,13 @@
     }
   }
   
-  "SHADOW_KNIGHT" inherit "ROYAL_KNIGHT" { name = { name = "Shadow Knight" } body = { material = UNDEAD_FLESH type = Humanoid LARGE } viewId = { "shadow_knight" } permanentEffects = { DARKNESS_SOURCE 1 RIDER 1} hatedByEffect = HATE_UNDEAD }
-  "SHADOW_PRIEST" inherit "ROYAL_PRIEST" { name = { name = "Shadow Priest" } body = { material = UNDEAD_FLESH type = Humanoid LARGE } viewId = { "shadow_priest" } permanentEffects = { DARKNESS_SOURCE 1 RIDER 1} hatedByEffect = HATE_UNDEAD }
-  "SHADOW_ARCHER" inherit "ROYAL_ARCHER" { name = { name = "Shadow Archer" } body = { material = UNDEAD_FLESH type = Humanoid LARGE } viewId = { "shadow_archer" } permanentEffects = { DARKNESS_SOURCE 1 RIDER 1} hatedByEffect = HATE_UNDEAD }
-  "SHADOW_SPIRIT" inherit "LOST_SOUL" { name = { name = "Spirit of Sorrow" } viewId = { "shadow_spirit_light" } permanentEffects = { LIGHT_SOURCE 1 } hatedByEffect = HATE_UNDEAD }
+  "EE_SHADOW_KNIGHT" inherit "EE_ROYAL_KNIGHT" { name = { name = "Shadow Knight" } body = { material = UNDEAD_FLESH type = Humanoid LARGE } viewId = { "shadow_knight" } permanentEffects = { DARKNESS_SOURCE 1 RIDER 1} hatedByEffect = HATE_UNDEAD }
+  "EE_SHADOW_PRIEST" inherit "EE_ROYAL_PRIEST" { name = { name = "Shadow Priest" } body = { material = UNDEAD_FLESH type = Humanoid LARGE } viewId = { "shadow_priest" } permanentEffects = { DARKNESS_SOURCE 1 RIDER 1} hatedByEffect = HATE_UNDEAD }
+  "EE_SHADOW_ARCHER" inherit "EE_ROYAL_ARCHER" { name = { name = "Shadow Archer" } body = { material = UNDEAD_FLESH type = Humanoid LARGE } viewId = { "shadow_archer" } permanentEffects = { DARKNESS_SOURCE 1 RIDER 1} hatedByEffect = HATE_UNDEAD }
+  "EE_SHADOW_SPIRIT" inherit "LOST_SOUL" { name = { name = "Spirit of Sorrow" } viewId = { "shadow_spirit_light" } permanentEffects = { LIGHT_SOURCE 1 } hatedByEffect = HATE_UNDEAD }
   
   
-"BANDIT_PUNK"
+"EE_BANDIT_PUNK"
   {
     viewId = { "bandit_punk" }
     attr = {
@@ -8181,7 +8117,7 @@
         {  "FirstAidKit" 1 1 0.1}
 	}
   }
-"BANDIT_OMALLY"
+"EE_BANDIT_OMALLY"
   {
     viewId = { "bandit_omally" }
     attr = {
@@ -8216,7 +8152,7 @@
 		{  "EE_DwarvenBeer" 4 6 }
 	}
   }
-"WILDMAN"
+"EE_WILDMAN"
   {
     viewId = { "wildman" }
     attr = {
@@ -8247,7 +8183,7 @@
       { Ring DEF_BONUS 1 1 0.03}
     }
   }
-"WILDMAN_WOMAN"
+"EE_WILDMAN_WOMAN"
   {
     viewId = { "wildman_woman" }
 	gender = FEMALE
@@ -8279,7 +8215,7 @@
       { Ring DEF_BONUS 1 1 0.03}
 	}
   }
-"WILDMAN_QUEEN"
+"EE_WILDMAN_QUEEN"
   {
     viewId = { "wildman_queen" }
 	gender = FEMALE
@@ -8319,13 +8255,13 @@
 
   #Fairy
   
-  "YELLOW_PARROT" inherit "RAVEN" { viewId = { "raven" ColorId YELLOW } name = { name = "yellow parrot" groupName = "flock" } }
-  "RED_PARROT" inherit "RAVEN" { viewId = { "raven" ColorId RED } name = { name = "red parrot" groupName = "flock" } }
-  "BLUE_PARROT" inherit "RAVEN" { viewId = { "raven" ColorId BLUE } name = { name = "blue parrot" groupName = "flock" }  }
-  "GREEN_PARROT" inherit "RAVEN" { viewId = { "raven" ColorId GREEN } name = { name = "green parrot" groupName = "flock" }  }
-  "NON_CASTING_UNICORN" inherit "UNICORN" { companions = {} }
+  "EE_YELLOW_PARROT" inherit "RAVEN" { viewId = { "raven" ColorId YELLOW } name = { name = "yellow parrot" groupName = "flock" } }
+  "EE_RED_PARROT" inherit "RAVEN" { viewId = { "raven" ColorId RED } name = { name = "red parrot" groupName = "flock" } }
+  "EE_BLUE_PARROT" inherit "RAVEN" { viewId = { "raven" ColorId BLUE } name = { name = "blue parrot" groupName = "flock" }  }
+  "EE_GREEN_PARROT" inherit "RAVEN" { viewId = { "raven" ColorId GREEN } name = { name = "green parrot" groupName = "flock" }  }
+  "EE_NON_CASTING_UNICORN" inherit "UNICORN" { companions = {} }
 
-"BUNNY"
+"EE_BUNNY"
   {
     viewId = { "bunny" }
     attr = {
@@ -8342,7 +8278,7 @@
       name = "bunny"
     }
   }
-"ELF_SOLDIER"
+"EE_ELF_SOLDIER"
   {
     viewId = { "elf_soldier" }
     attr = {
@@ -8380,7 +8316,7 @@
 	  { Potion Heal {FLESH} 0 2 }
     }
   }
-"ELF_KING"
+"EE_ELF_KING"
   {
     viewId = { "elf_king" }
     attr = {
@@ -8430,7 +8366,7 @@
       { type = Glyph WEAPON ItemAttrBonus DAMAGE 4 chance = 0.6 }
     }
   }
-"DARK_ELF_WITCHBLADE"
+"EE_DARK_ELF_WITCHBLADE"
   {
     viewId = { "dark_elf_witchblade" }
     attr = {
@@ -8471,7 +8407,7 @@
       { Ring RAGE 1 1 0.1}
     }
   }
-"DARK_ELF_ARCHER"
+"EE_DARK_ELF_ARCHER"
   {
     viewId = { "dark_elf_archer" }
     attr = {
@@ -8513,7 +8449,7 @@
 	  { Ring DEF_BONUS 1 1 0.1}
     }
   }
-"DARK_ELF_EMPRESS"
+"EE_DARK_ELF_EMPRESS"
   {
     viewId = { "dark_elf_empress" }
 	gender = FEMALE
@@ -8560,9 +8496,6 @@
     }
   }
   
-  #Worker that need the digging skill.
-  "SKELETON_PLAYER" inherit "SKELETON" { attr = append { DIGGING 50 } }
-
 ##########################
 #Ideas for Future modding#
 ##########################
