@@ -1,21 +1,43 @@
-  "BARN"
+######################################
+#Furniture shared with Adventurer mod
+######################################
+
+  "EE_SPIDER_WEB"
   {
-    name = "barn"
-    viewId = { "haypile" }
-	strength = 50
-	blockingEnemies = true
-    populationIncrease = { 1 none }
+    name = "spider web"
+    viewId = { "web_trap" }
+    entryType = Trap { Lasting ENTANGLED true }
+    usageType = BuiltinUsageId TRAIN
+    maxTraining = {
+      MELEE 12
+    }
     canBuildOutsideOfTerritory = true
   }
-  "CROPS" modify
+  "EE_SPIDER_PIT"
   {
-    usageType = UsageEffect "scythe " Chain
-	  { Chance 0.3 CreatureMessage {"scythe the field" "scythes the field"}
-	    Chance 0.1 Filter And { CreatureId "PESEANT_PLAYER" Not Indoors } DropItems {"sack"} 1
-	  }
-    usageTime = 20
+    name = "hole"
+    viewId = { "pit" }
+    blockingEnemies = true
+    tickType =  Pit
     canBuildOutsideOfTerritory = true
+    canSilentlyReplace = true
   }
+  "EE_SPIDER_MUD_WALL"
+  {
+    name = "wall"
+    viewId = { "mud_wall" }
+    blockingEnemies = true
+    blockVision = { NORMAL ELF }
+    strength = 80
+    usageType = UsageEffect "sleep in" Lasting SLEEP
+    tickType = Effect BedHeal()
+    bedType = CAGE
+    canBuildOutsideOfTerritory = true
+    canSilentlyReplace = true
+  }
+
+##############################################################
+
 
   "BOOKCASE_GOLD" modify append {
     name = "golden bookcase"
@@ -90,7 +112,7 @@
   blockVision = { NORMAL ELF }
   wall = true
   clearFogOfWar = true
-  itemDrop = {{{{"VenOre"} 1 { 16 28 }}}}
+  itemDrop = {{{{"EE_VenOre"} 1 { 16 28 }}}}
   strength2 = {
     500 BOULDER
     500 DIG
@@ -415,39 +437,6 @@
     freezeTo = "ICE"
     walkIntoFX = { WATER_SPLASH Rgb 82 148 255 255 }
   }
-  "KEEPER_SPIDER_WEB"
-  {
-    name = "spider web"
-    viewId = { "web_trap" }
-    entryType = Trap { Lasting ENTANGLED true }
-    usageType = BuiltinUsageId TRAIN
-    maxTraining = {
-      MELEE 12
-    }
-    canBuildOutsideOfTerritory = true
-  }
-  "KEEPER_SPIDER_PIT"
-  {
-    name = "hole"
-    viewId = { "pit" }
-    blockingEnemies = true
-    tickType =  Pit
-    canBuildOutsideOfTerritory = true
-    canSilentlyReplace = true
-  }
-  "KEEPER_SPIDER_MUD_WALL"
-  {
-    name = "wall"
-    viewId = { "mud_wall" }
-    blockingEnemies = true
-    blockVision = { NORMAL ELF }
-    strength = 80
-    usageType = UsageEffect "sleep in" Lasting SLEEP
-    tickType = Effect BedHeal()
-    bedType = CAGE
-    canBuildOutsideOfTerritory = true
-    canSilentlyReplace = true
-  }
   "CASTLE_WALL_GM"
   {
     name = "wall"
@@ -716,16 +705,16 @@
     viewId = { "herb1" }
     strength2 = { 10 DIG }
     fire = 100
-    itemDrop = {{{{"Berry1"} 1 { 1 }}}}
+    itemDrop = {{{{"EE_Berry1"} 1 { 1 }}}}
     usageType = UsageEffect "dig" DestroyWalls DIG	
   }
 
-  "HERB_2" inherit "HERB_1" { viewId = { "herb2" } itemDrop = {{{{"Berry2"} 1 { 1 }}}}}
-  "HERB_3" inherit "HERB_1" { viewId = { "herb3" } itemDrop = {{{{"Berry3"} 1 { 1 }}}}}
-  "HERB_4" inherit "HERB_1" { viewId = { "herb4" } itemDrop = {{{{"Berry4"} 1 { 1 }}}}}
-  "HERB_5" inherit "HERB_1" { viewId = { "herb5" } itemDrop = {{{{"Leaf1"} 1 { 1 }}}}}
-  "HERB_6" inherit "HERB_1" { viewId = { "herb6" } itemDrop = {{{{"Flower1"} 1 { 1 }}}}}
-  "HERB_7" inherit "HERB_1" { viewId = { "herb7" } itemDrop = {{{{"Flower2"} 1 { 1 }}}}}
+  "HERB_2" inherit "HERB_1" { viewId = { "herb2" } itemDrop = {{{{"EE_Berry2"} 1 { 1 }}}}}
+  "HERB_3" inherit "HERB_1" { viewId = { "herb3" } itemDrop = {{{{"EE_Berry3"} 1 { 1 }}}}}
+  "HERB_4" inherit "HERB_1" { viewId = { "herb4" } itemDrop = {{{{"EE_Berry4"} 1 { 1 }}}}}
+  "HERB_5" inherit "HERB_1" { viewId = { "herb5" } itemDrop = {{{{"EE_Leaf1"} 1 { 1 }}}}}
+  "HERB_6" inherit "HERB_1" { viewId = { "herb6" } itemDrop = {{{{"EE_Flower1"} 1 { 1 }}}}}
+  "HERB_7" inherit "HERB_1" { viewId = { "herb7" } itemDrop = {{{{"EE_Flower2"} 1 { 1 }}}}}
 
   
   

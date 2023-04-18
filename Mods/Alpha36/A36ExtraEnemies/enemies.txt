@@ -1,584 +1,32 @@
-  "RED_DRAGON" modify append {
-    biomes = { "VOLCANIC" }  
-    settlement = append {
-      type = Builtin CAVE "VOLCANIC_BRICK"
-      tribe = BANDIT
-    }
-  }
-  "UNICORN_HERD" modify append {
-    biomes = { "HERB_GRASSLAND" }  
-  }
-  "DRIADS" modify append {
-    biomes = { "HERB_GRASSLAND" }  
-  }
-  "ORC_VILLAGE" modify append {
-    biomes = { "ORC_VILLAGE"} 
-    settlement = {
-      type = Predefined { "village32" "WOOD_CITY_CASTLE" } 
-      tribe = GREENSKIN
-      inhabitants = {
-          leader = { { "ORC_CAPTAIN_TRIBE" } }
-          fighters = {
-            count = {42 56}
-            all = {
-              40 "ORC_CAPTAIN_TRIBE"
-              70 "ORC_HEALER_TRIBE"
-              100 "ORC_TRIBE"
-              60 "OGRE_TRIBE"
-              20 "HOBGOBLIN"
-			   5 "BARBARIAN_ADVENTURER_NPC_MELEE1"
-			   5 "BARBARIAN_ADVENTURER_NPC_MELEE1_F"
-			   3 "BARBARIAN_ADVENTURER_NPC_MELEE2"
-			   3 "BARBARIAN_ADVENTURER_NPC_MELEE2_F"
-			   3 "ASSASSIN_ADVENTURER_NPC_MELEE1"
-			   3 "ASSASSIN_ADVENTURER_NPC_MELEE1_F"
-          }
-        }
-        civilians = {
-          count = {16 20}
-          all = {
-            1 "GOBLIN_PLAYER"
-          }
-        }
-      }
-      locationNameGen = "TOWN"
-      race = "greenskins"
-      furniture = "roomFurniture"
-      outsideFeatures = "villageOutside"
-  }
-  config = {
-    immigrantInterval = 150
-    maxPopulation = 56
-    ghostProb = 0.1
-    spawnGhosts = 6
-  }
-  behaviour = {
-    minPopulation = 12
-    minTeamSize = 6
-    triggers = {
-      RoomTrigger "THRONE" 0.0003
-      SelfVictims
-      StolenItems
-      FinishOff
-      EnemyPopulation 18
-      NumConquered 6
-    }
-    attackBehaviour = KillLeader
-    ransom = 0.8 100
-  }
-  immigrants = {
-    {
-      ids = {"ORC_TRIBE"}
-      traits = {FIGHTER}
-      frequency = 1
-    }
-    {
-      ids = {"ORC_HEALER_TRIBE"}
-      traits = {FIGHTER}
-      frequency = 0.75
-    }
-    {
-      ids = {"OGRE_TRIBE"}
-      traits = {FIGHTER}
-      frequency = 0.45
-    }
-  }
-}
-"WARRIORS" modify append
+#Vanilla modifications
+
+"GOBLIN_CAVE" modify
 {
-  biomes = { "WARRIOR_TOWN"}
   settlement = {
-    type = Predefined { "castle32" "WOOD_CITY_CASTLE" } 
-    tribe = HUMAN
+    type = Builtin MINETOWN "DUNGEON"
+    tribe = BANDIT
     inhabitants = {
-      leader = { { "SHAMAN" } }
+      leader = { { "GOBLIN_WARRIOR" } }
       fighters = {
-        count = {32 44}
-        all = { 
-          80 "WARRIOR" 
-          60 "SHAMAN"
-          40 "WOLF_WARRIOR"
-		   5 "BARBARIAN_ADVENTURER_NPC_MELEE1"
-		   5 "BARBARIAN_ADVENTURER_NPC_MELEE1_F"
-		   3 "BARBARIAN_ADVENTURER_NPC_MELEE2"
-		   3 "BARBARIAN_ADVENTURER_NPC_MELEE2_F"
-		   1 "BARBARIAN_ADVENTURER_NPC_MELEE3"
-		   1 "BARBARIAN_ADVENTURER_NPC_MELEE3_F"
-        }
+        count = {8 14}
+        all = { 1 "GOBLIN_MATRON" 4 "GOBLIN_PLAYER" }
       }
     }
-    locationNameGen = "TOWN"
-    race = "humans"
-    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
-    lootItem = {TechBook "beast mutation"}
+    race = "cave goblins"
+    stockpiles = {{ "goodMushrooms" 20 }}
+    outsideFeatures = "dungeonOutside"
     furniture = "roomFurniture"
-    outsideFeatures = "castleOutside"
-  }
-  config = {
-    immigrantInterval = 150
-    maxPopulation = 48
-    ghostProb = 0.1
-    spawnGhosts = 6
+    surroundWithResources = 6    
   }
   behaviour = {
-    minPopulation = 28
-    minTeamSize = 6
-    triggers = {
-      RoomTrigger "THRONE" 0.0003
-      RoomTrigger "IMPALED_HEAD" 0.0001
-      SelfVictims
-      StolenItems
-      FinishOff
-      EnemyPopulation 35
-      NumConquered 12
-    }
+    minPopulation = 0
+    minTeamSize = 1
+    triggers = {SelfVictims StolenItems }
     attackBehaviour = KillLeader
-    ransom = 0.8 140
-  }
-  immigrants = {
-    {
-      ids = {"WARRIOR"}
-      traits = {FIGHTER}
-      frequency = 1
-    }
-    {
-      ids = {"SHAMAN"}
-      traits = {FIGHTER}
-      frequency = 0.75
-    }
-    {
-      ids = {"WOLF_WARRIOR"}
-      traits = {FIGHTER}
-      frequency = 0.45
-    }
+    ransom = 0.5 80
   }
 }
 
-"ELF_KINGDOM"
-{
-  biomes = { "ELF_FOREST"}
-  settlement = {
-    type = Predefined { "village32" "WOOD" } 
-    inhabitants = {
-      leader = { { "ELF_KING" } }
-      fighters = {
-        count = {46 52}
-        all = { 
-			60 "ELF_ARCHER" 
-			20 "ELF_LORD" 
-			80 "ELF_SOLDIER"
-			 5 "RANGER_ADVENTURER_NPC_ARCHER1"
-			 5 "RANGER_ADVENTURER_NPC_ARCHER1_F"
-			 3 "RANGER_ADVENTURER_NPC_ARCHER2"
-			 3 "RANGER_ADVENTURER_NPC_ARCHER2_F"
-			 5 "RANGER_ADVENTURER_NPC_MELEE1"
-			 5 "RANGER_ADVENTURER_NPC_MELEE1_F"
-			 3 "RANGER_ADVENTURER_NPC_MELEE2"
-			 3 "RANGER_ADVENTURER_NPC_MELEE2_F"
-		}
-      }
-      civilians = {
-        count = {20 26},
-        all = {
-          3 "ELF"
-          2 "ELF_CHILD"
-          1 "HORSE"
-        }
-      }
-    }
-    locationNameGen = "TOWN"
-    tribe = ELF
-    race = "elves"
-    stockpiles = {{ "gold" 180 "TREASURE_CHEST"}}
-    lootItem = {TechBook "master sorcery" }
-    furniture = "roomFurniture"
-  }
-  config = {
-    immigrantInterval = 200
-    maxPopulation = 58
-    ghostProb = 0.1
-    spawnGhosts = 4
-  }
-  behaviour = {
-    minPopulation = 32
-    minTeamSize = 6
-    triggers = {
-      RoomTrigger "THRONE" 0.0003
-      RoomTrigger "IMPALED_HEAD" 0.0001
-      SelfVictims
-      StolenItems
-      FinishOff
-      EnemyPopulation 48
-      NumConquered 16
-    }
-    attackBehaviour = KillLeader
-    ransom = 0.8 220
-  }
-  immigrants = {
-    {
-      ids = {"ELF_ARCHER"}
-      traits = {FIGHTER}
-      frequency = 0.8
-    }
-    {
-      ids = {"ELF_SOLDIER"}
-      traits = {FIGHTER}
-      frequency = 1
-    }
-  }
-}
-"ELF_VILLAGE"
-{
-  settlement = {
-    type = Builtin FORREST_VILLAGE "WOOD"
-    inhabitants = {
-      leader = { { "ELF_LORD" } }
-      fighters = {
-        count = {9 12}
-        all = { 4 "ELF_ARCHER" 1 "ELF_SOLDIER" }
-      }
-      civilians = {
-        count = {6 9},
-        all = {
-          1 "ELF"
-          1 "ELF_CHILD"
-          1 "HORSE"
-        }
-      }
-    }
-    locationNameGen = "TOWN"
-    tribe = ELF
-    race = "elves"
-    stockpiles = {{ "gold" 80 "TREASURE_CHEST"}}
-    furniture = "roomFurniture"
-  }
-  config = {
-    guardianInfo = "ELF_SOLDIER" 0.4 3 5
-    immigrantInterval = 200
-    maxPopulation = 18
-    ghostProb = 0.1
-    spawnGhosts = 4
-  }
-  behaviour = {
-    minPopulation = 4
-    minTeamSize = 4
-    triggers = {StolenItems}
-    attackBehaviour = KillLeader
-  }
-  immigrants = {
-    {
-      ids = {"ELF_ARCHER"}
-      traits = {FIGHTER}
-      frequency = 1
-    }
-  }
-}
-"ELF_VILLAGE_SHOP"
-{
-  settlement = {
-    type = Builtin FORREST_VILLAGE "WOOD"
-    inhabitants = {
-      leader = { { "ELF_LORD" } }
-      fighters = {
-        count = {9 12}
-        all = { 4 "ELF_ARCHER" 1 "ELF_SOLDIER" }
-      }
-      civilians = {
-        count = {6 9},
-        all = {
-          1 "ELF"
-          1 "ELF_CHILD"
-          1 "HORSE"
-        }
-      }
-    }
-    locationNameGen = "TOWN"
-    tribe = ELF
-    race = "elves"
-    stockpiles = {{ "gold" 100 "TREASURE_CHEST"}}
-    shopItems = {{8 16} "elfShop" }
-    furniture = "roomFurniture"
-  }
-  config = {
-    immigrantInterval = 200
-    maxPopulation = 18
-    ghostProb = 0.1
-    spawnGhosts = 4
-  }
-  behaviour = {
-    minPopulation = 4
-    minTeamSize = 4
-    triggers = {StolenItems}
-    attackBehaviour = KillLeader
-  }
-  immigrants = {
-    {
-      ids = {"ELF_ARCHER"}
-      traits = {FIGHTER}
-      frequency = 1
-    }
-  }
-}
-"DWARVES" modify append
-{
-  biomes = { "DWARF_MOUNTAIN_SMALL"}
-  settlement = {
-    type = Predefined { "mountain48" "CITY_DWARF" } 
-    tribe = DWARF
-    inhabitants = {
-      leader = { { "DWARF_BARON_TRIBE" } }
-      fighters = {
-        count = {38 46}
-        all = {
-          80 "ELITE_DWARF_WARRIOR_TRIBE"
-          100 "DWARF_WARRIOR_TRIBE"
-          60 "DWARF_FIGHTER_TRIBE"
-          40 "DWARF_MONK_TRIBE"
-		   5 "ADVENTURER_NPC_SPELL1"
-		   5 "ADVENTURER_NPC_SPELL1_F"
-		   5 "ADVENTURER_NPC_MELEE1"
-		   5 "ADVENTURER_NPC_MELEE1_F"
-		   3 "ADVENTURER_NPC_MELEE2"
-		   3 "ADVENTURER_NPC_MELEE2_F"
-		   5 "WARRIOR_ADVENTURER_NPC_MELEE1"
-		   5 "WARRIOR_ADVENTURER_NPC_MELEE1_F"
-		   3 "WARRIOR_ADVENTURER_NPC_MELEE2"
-		   3 "WARRIOR_ADVENTURER_NPC_MELEE2_F"
-        }
-      }
-      civilians = {
-        count = {18 26}
-        all = {
-          6 "PLAYER_DWARF_FEMALE"
-          6 "PLAYER_DWARF_FEMALE2"
-          6 "PLAYER_DWARF_FEMALE3"
-          1 "RAT"
-        }
-        uniques = { "DWARF_BLACKSMITH" }
-      }
-    }
-    locationNameGen = "TOWN"
-    race = "dwarves"
-    stockpiles = {{ "gold" 200 "TREASURE_CHEST"} {"minerals" 120 }}
-    shopItems = { {8 16} "dwarfShop" }
-    outsideFeatures = "dungeonOutside"
-    surroundWithResources = 12
-    furniture = "roomFurniture"
-     }
-    levelConnection = {
-      topLevel = MainEnemy 
-      levels = {
-        {ExtraEnemy { "DWARF_MARKET_SMALL" { 1 } } { 35 35 } BLACK_MARKET }
-        {ExtraEnemy { "DWARF_MINE" { 1 } } { 80 80 } BASIC }
-       }
-     }
-  config = {
-    immigrantInterval = 200
-    maxPopulation = 46
-    ghostProb = 0.1
-    spawnGhosts = 4
-  }
-  behaviour = {
-    minPopulation = 30
-    minTeamSize = 8
-    triggers = {
-      RoomTrigger "THRONE" 0.0003
-      RoomTrigger "IMPALED_HEAD" 0.0001
-      SelfVictims
-      StolenItems
-      FinishOff
-      EnemyPopulation 40
-      NumConquered 14
-    }
-    attackBehaviour = KillMembers 3
-    ransom = 0.8 280
-  }
-  immigrants = {
-    {
-      ids = {"DWARF_WARRIOR_TRIBE"}
-      traits = {FIGHTER}
-      frequency = 1
-    }
-    {
-      ids = {"ELITE_DWARF_WARRIOR_TRIBE"}
-      traits = {FIGHTER}
-      frequency = 0.75
-    }
-    {
-      ids = {"DWARF_MONK_TRIBE"}
-      traits = {FIGHTER}
-      frequency = 0.45
-    }
-  }
-}
-  "VILLAGE" modify append {
-    settlement = {
-    type = Builtin VILLAGE "TAINTED"
-      tribe = HUMAN
-      inhabitants = {
-        leader = { { "KNIGHT" } }
-        fighters = {
-          count = {4 8}
-          all = {
-            1 "KNIGHT"
-            1 "ARCHER"
-            1 "MILITIA" #Modded
-          }
-        }
-        civilians = {
-          count = {4 8}
-          all = {
-            1 "PESEANT"
-            1 "CHILD"
-            1 "DONKEY"
-            1 "HORSE"
-            1 "COW"
-            1 "PIG"
-            1 "DOG"
-          }
-        }
-      }
-      locationNameGen = "TOWN"
-      race = "humans"
-      shopItems = { {8 16 } "armory" }
-      furniture = "roomFurniture"
-    }
-  }
-"KNIGHTS" modify append {
-  biomes = { "CITY"} 
-  settlement = {
-    type = Builtin CASTLE2 "CITY_BRICK"
-    tribe = HUMAN
-    inhabitants = {
-      leader = { { "DUKE" } }
-      fighters = {
-        count = {12 17}
-        all = {
-          30 "PRIEST"
-          60 "KNIGHT"
-          30 "ARCHER"
-		   5 "ADVENTURER_NPC_MELEE1"
-		   5 "ADVENTURER_NPC_MELEE1_F"
-		   5 "WARRIOR_ADVENTURER_NPC_MELEE1"
-		   5 "WARRIOR_ADVENTURER_NPC_MELEE1_F"
-		   5 "MAGE_ADVENTURER_NPC_SPELL1"
-		   5 "MAGE_ADVENTURER_NPC_SPELL1_F"
-		   5 "RANGER_ADVENTURER_NPC_MELEE1"
-		   5 "RANGER_ADVENTURER_NPC_MELEE1_F"
-        }
-      }
-      civilians = {
-        count = {6 9}
-        all = {
-          1 "PESEANT"
-          1 "CHILD"
-          1 "DONKEY"
-          1 "HORSE"
-          1 "COW"
-          1 "PIG"
-          1 "DOG"
-        }
-      }
-    }
-    locationNameGen = "TOWN"
-    race = "humans"
-    stockpiles = {{ "gold" 140 "FLOOR_SPIKES_TRAP" } }  #Modded
-    shopItems = { {8 16 } "villageShop" }
-    furniture = "castleFurniture"
-    outsideFeatures = "castleOutside"
-  }
-}
-  "MINOTAUR"  modify append {
-  settlement = {
-    type = Builtin CAVE "MINOTAUR" #Modded
-    tribe = MONSTER
-    inhabitants = {
-      leader = { { "MINOTAUR" } }
-    }
-    locationName = "maze"
-    race = "monsters"
-    furniture = "roomFurniture"
-  }
-}
-  "DWARF_KINGDOM" {
-    biomes = { "DWARF_MOUNTAIN" }
-    settlement = {
-    type = Predefined { "mountain64" "CITY_DWARF" } 
-      tribe = DWARF
-      inhabitants = {
-        leader = { { "DWARF_QUEEN_TRIBE" } }
-        fighters = {
-          count = {54 66}
-          all = {
-           50 "DWARF_FIGHTER_TRIBE"
-           90 "DWARF_WARRIOR_TRIBE"
-           110 "ELITE_DWARF_WARRIOR_TRIBE"
-           70 "DWARF_MONK_TRIBE"
-           20 "DWARF_BARON_TRIBE"
-		   3 "ADVENTURER_NPC_MELEE2"
-		   3 "ADVENTURER_NPC_MELEE2_F"
-		   3 "WARRIOR_ADVENTURER_NPC_MELEE2"
-		   3 "WARRIOR_ADVENTURER_NPC_MELEE2_F"
-		   3 "BARBARIAN_ADVENTURER_NPC_MELEE2"
-		   3 "BARBARIAN_ADVENTURER_NPC_MELEE2_F"
-		   1 "BARBARIAN_ADVENTURER_NPC_MELEE3"
-		   1 "BARBARIAN_ADVENTURER_NPC_MELEE3_F"
-          }
-        }
-        civilians = {
-          count = {24 32}
-          all = {
-            3 "PLAYER_DWARF_FEMALE"
-            3 "PLAYER_DWARF_FEMALE2"
-            3 "PLAYER_DWARF_FEMALE3"
-            4 "DWARF_WORKER_TRIBE"
-            1 "RAT"
-          }
-        }
-      }
-      locationNameGen = "TOWN"
-      race = "dwarves"
-      stockpiles = {{ "gold" 200 "TREASURE_CHEST"} {"minerals" 600 }}
-      shopItems = { { 8 16 }  "dwarfShop" }
-      outsideFeatures = "dungeonOutside"
-      furniture = "dwarvenRoomFurniture" #Modded
-     }
-    levelConnection = {
-      topLevel = MainEnemy 
-      levels = {
-        {ExtraEnemy { "DWARF_MARKET" { 1 } } { 50 50 } BLACK_MARKET }
-        {ExtraEnemy { "DWARF_MINE" { 1 } } { 80 80 } BASIC }
-       }
-     }
-    config = {
-      immigrantInterval = 200
-      maxPopulation = 66
-      ghostProb = 0.1
-      spawnGhosts = 4
-     }
-    behaviour = {
-      minPopulation = 36
-      minTeamSize = 8
-      triggers = {
-        RoomTrigger "THRONE" 0.0003
-        RoomTrigger "IMPALED_HEAD" 0.0001
-        SelfVictims
-        StolenItems
-        FinishOff
-        EnemyPopulation 60
-        NumConquered 20
-      }
-      attackBehaviour = KillMembers 16
-      ransom = 0.8 420
-    }
-    immigrants = {
-      {
-        ids = { "DWARF_MILITIA_TRIBE" "DWARF_FIGHTER_TRIBE" "DWARF_WARRIOR_TRIBE" "ELITE_DWARF_WARRIOR_TRIBE" "DWARF_MONK_TRIBE"} #Modded
-        traits = {FIGHTER}
-        frequency = 1
-      }
-    }
-  }
   "ELVES" modify append {
     biomes = { "FOREST" } #Modded
     settlement = {
@@ -619,7 +67,7 @@
   }
   "ELEMENTALIST_ENTRY" modify append {
     settlement = {
-    type = Builtin TOWER "ELEMENTALIST"
+    type = Builtin TOWER "EE_ELEMENTALIST"
       tribe = HUMAN
       inhabitants = {
         fighters = {
@@ -643,14 +91,14 @@
           }
         }
       }
-      type = Builtin TOWER "ELEMENTALIST" #Modded
+      type = Builtin TOWER "EE_ELEMENTALIST" #Modded
       tribe = HUMAN
     }
     discoverable = false
   }
   "ELEMENTALIST" modify append {
     settlement = {
-    type = Builtin TOWER "ELEMENTALIST" #Modded
+    type = Builtin TOWER "EE_ELEMENTALIST" #Modded
       inhabitants = {
         leader = { { "ELEMENTALIST" } }
       }
@@ -660,7 +108,7 @@
   }
   "MAIN_DUNGEON_ENTRY" modify append {
     settlement = {
-    type = Builtin CAVE "DUNGEON_ENTRY" #Modded
+    type = Builtin CAVE "EE_DUNGEON_ENTRY" #Modded
       tribe = BANDIT
       inhabitants = {
         fighters = {
@@ -730,7 +178,7 @@
   }
 
   "SHELOB" modify append { #Modded
-    biomes = { "SPIDER_MOUNTAIN" }
+    biomes = { "EE_SPIDER_MOUNTAIN" }
     settlement = {
       type = Builtin VILLAGE "DUNGEON"
       tribe = SHELOB
@@ -761,9 +209,9 @@
     createOnBones = 0.6 { "DWARF_CAVE" "KOBOLD_CAVE" "OGRE_CAVE" "HARPY_CAVE" "OGRE_CAVE" "HARPY_CAVE"} #Modded
   }
   "CEMETERY" modify append { #Modded
-    biomes = { "HAUNTED_GRASSLAND" }
+    biomes = { "EE_HAUNTED_GRASSLAND" }
     settlement = {
-    type = Builtin CEMETERY "ZOMBIE"
+    type = Builtin CEMETERY "EE_ZOMBIE"
       inhabitants = {
         leader = {
         id = { "NECROMANCER" }
@@ -795,7 +243,7 @@
         fighters = {
           count = {1 2}
           all = {
-            1 "SKELETON_MAGE" #Modded
+            1 "EE_SKELETON_MAGE" #Modded
           }
         }
       }
@@ -940,7 +388,348 @@
     }
     discoverable = false
   }
-  "RAT_PEOPLE_CAVE" modify append {
+
+"DWARVES" modify append
+{
+  biomes = { "EE_DWARF_MOUNTAIN_SMALL"}
+  settlement = {
+    type = Predefined { "mountain48" "EE_CITY_DWARF" } 
+    tribe = DWARF
+    inhabitants = {
+      leader = { { "DWARF_BARON_TRIBE" } }
+      fighters = {
+        count = {38 46}
+        all = {
+          80 "ELITE_DWARF_WARRIOR_TRIBE"
+          100 "DWARF_WARRIOR_TRIBE"
+          60 "DWARF_FIGHTER_TRIBE"
+          40 "DWARF_MONK_TRIBE"
+		   5 "ADVENTURER_NPC_SPELL1"
+		   5 "ADVENTURER_NPC_SPELL1_F"
+		   5 "ADVENTURER_NPC_MELEE1"
+		   5 "ADVENTURER_NPC_MELEE1_F"
+		   3 "ADVENTURER_NPC_MELEE2"
+		   3 "ADVENTURER_NPC_MELEE2_F"
+		   5 "WARRIOR_ADVENTURER_NPC_MELEE1"
+		   5 "WARRIOR_ADVENTURER_NPC_MELEE1_F"
+		   3 "WARRIOR_ADVENTURER_NPC_MELEE2"
+		   3 "WARRIOR_ADVENTURER_NPC_MELEE2_F"
+        }
+      }
+      civilians = {
+        count = {18 26}
+        all = {
+          6 "PLAYER_DWARF_FEMALE"
+          6 "PLAYER_DWARF_FEMALE2"
+          6 "PLAYER_DWARF_FEMALE3"
+          1 "RAT"
+        }
+        uniques = { "DWARF_BLACKSMITH" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "dwarves"
+    stockpiles = {{ "gold" 200 "TREASURE_CHEST"} {"minerals" 120 }}
+    shopItems = { {8 16} "dwarfShop" }
+    outsideFeatures = "dungeonOutside"
+    surroundWithResources = 12
+    furniture = "roomFurniture"
+     }
+    levelConnection = {
+      topLevel = MainEnemy 
+      levels = {
+        {ExtraEnemy { "EE_DWARF_MARKET_SMALL" { 1 } } { 35 35 } BLACK_MARKET }
+        {ExtraEnemy { "EE_DWARF_MINE" { 1 } } { 80 80 } BASIC }
+       }
+     }
+  config = {
+    immigrantInterval = 200
+    maxPopulation = 46
+    ghostProb = 0.1
+    spawnGhosts = 4
+  }
+  behaviour = {
+    minPopulation = 30
+    minTeamSize = 8
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      StolenItems
+      FinishOff
+      EnemyPopulation 40
+      NumConquered 14
+    }
+    attackBehaviour = KillMembers 3
+    ransom = 0.8 280
+  }
+  immigrants = {
+    {
+      ids = {"DWARF_WARRIOR_TRIBE"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"ELITE_DWARF_WARRIOR_TRIBE"}
+      traits = {FIGHTER}
+      frequency = 0.75
+    }
+    {
+      ids = {"DWARF_MONK_TRIBE"}
+      traits = {FIGHTER}
+      frequency = 0.45
+    }
+  }
+}
+  "VILLAGE" modify append {
+    settlement = {
+    type = Builtin VILLAGE "EE_TAINTED"
+      tribe = HUMAN
+      inhabitants = {
+        leader = { { "KNIGHT" } }
+        fighters = {
+          count = {4 8}
+          all = {
+            1 "KNIGHT"
+            1 "ARCHER"
+            1 "MILITIA" #Modded
+          }
+        }
+        civilians = {
+          count = {4 8}
+          all = {
+            1 "PESEANT"
+            1 "CHILD"
+            1 "DONKEY"
+            1 "HORSE"
+            1 "COW"
+            1 "PIG"
+            1 "DOG"
+          }
+        }
+      }
+      locationNameGen = "TOWN"
+      race = "humans"
+      shopItems = { {8 16 } "armory" }
+      furniture = "roomFurniture"
+    }
+  }
+"KNIGHTS" modify append {
+  biomes = { "EE_CITY"} 
+  settlement = {
+    type = Builtin CASTLE2 "EE_CITY_BRICK"
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "DUKE" } }
+      fighters = {
+        count = {12 17}
+        all = {
+          30 "PRIEST"
+          60 "KNIGHT"
+          30 "ARCHER"
+		   5 "ADVENTURER_NPC_MELEE1"
+		   5 "ADVENTURER_NPC_MELEE1_F"
+		   5 "WARRIOR_ADVENTURER_NPC_MELEE1"
+		   5 "WARRIOR_ADVENTURER_NPC_MELEE1_F"
+		   5 "MAGE_ADVENTURER_NPC_SPELL1"
+		   5 "MAGE_ADVENTURER_NPC_SPELL1_F"
+		   5 "RANGER_ADVENTURER_NPC_MELEE1"
+		   5 "RANGER_ADVENTURER_NPC_MELEE1_F"
+        }
+      }
+      civilians = {
+        count = {6 9}
+        all = {
+          1 "PESEANT"
+          1 "CHILD"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+          1 "DOG"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 140 "FLOOR_SPIKES_TRAP" } }  #Modded
+    shopItems = { {8 16 } "villageShop" }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+}
+  "MINOTAUR"  modify append {
+  settlement = {
+    type = Builtin CAVE "EE_MINOTAUR" #Modded
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "MINOTAUR" } }
+    }
+    locationName = "maze"
+    race = "monsters"
+    furniture = "roomFurniture"
+  }
+}
+
+
+  "RED_DRAGON" modify append {
+    biomes = { "EE_VOLCANIC" }  
+    settlement = append {
+      type = Builtin CAVE "EE_VOLCANIC_BRICK"
+      tribe = BANDIT
+    }
+  }
+  "UNICORN_HERD" modify append {
+    biomes = { "EE_HERB_GRASSLAND" }  
+  }
+  "DRIADS" modify append {
+    biomes = { "EE_HERB_GRASSLAND" }  
+  }
+  "ORC_VILLAGE" modify append {
+    biomes = { "EE_ORC_VILLAGE"} 
+    settlement = {
+      type = Predefined { "village32" "EE_WOOD_CITY_CASTLE" } 
+      tribe = GREENSKIN
+      inhabitants = {
+          leader = { { "ORC_CAPTAIN_TRIBE" } }
+          fighters = {
+            count = {42 56}
+            all = {
+              40 "ORC_CAPTAIN_TRIBE"
+              70 "ORC_HEALER_TRIBE"
+              100 "ORC_TRIBE"
+              60 "OGRE_TRIBE"
+              20 "HOBGOBLIN"
+			   5 "BARBARIAN_ADVENTURER_NPC_MELEE1"
+			   5 "BARBARIAN_ADVENTURER_NPC_MELEE1_F"
+			   3 "BARBARIAN_ADVENTURER_NPC_MELEE2"
+			   3 "BARBARIAN_ADVENTURER_NPC_MELEE2_F"
+			   3 "ASSASSIN_ADVENTURER_NPC_MELEE1"
+			   3 "ASSASSIN_ADVENTURER_NPC_MELEE1_F"
+          }
+        }
+        civilians = {
+          count = {16 20}
+          all = {
+            1 "GOBLIN_PLAYER"
+          }
+        }
+      }
+      locationNameGen = "TOWN"
+      race = "greenskins"
+      furniture = "roomFurniture"
+      outsideFeatures = "villageOutside"
+  }
+  config = {
+    immigrantInterval = 150
+    maxPopulation = 56
+    ghostProb = 0.1
+    spawnGhosts = 6
+  }
+  behaviour = {
+    minPopulation = 12
+    minTeamSize = 6
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      SelfVictims
+      StolenItems
+      FinishOff
+      EnemyPopulation 18
+      NumConquered 6
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.8 100
+  }
+  immigrants = {
+    {
+      ids = {"ORC_TRIBE"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"ORC_HEALER_TRIBE"}
+      traits = {FIGHTER}
+      frequency = 0.75
+    }
+    {
+      ids = {"OGRE_TRIBE"}
+      traits = {FIGHTER}
+      frequency = 0.45
+    }
+  }
+}
+
+"WARRIORS" modify append
+{
+  biomes = { "EE_WARRIOR_TOWN"}
+  settlement = {
+    type = Predefined { "castle32" "EE_WOOD_CITY_CASTLE" } 
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "SHAMAN" } }
+      fighters = {
+        count = {32 44}
+        all = { 
+          80 "WARRIOR" 
+          60 "SHAMAN"
+          40 "WOLF_WARRIOR"
+		   5 "BARBARIAN_ADVENTURER_NPC_MELEE1"
+		   5 "BARBARIAN_ADVENTURER_NPC_MELEE1_F"
+		   3 "BARBARIAN_ADVENTURER_NPC_MELEE2"
+		   3 "BARBARIAN_ADVENTURER_NPC_MELEE2_F"
+		   1 "BARBARIAN_ADVENTURER_NPC_MELEE3"
+		   1 "BARBARIAN_ADVENTURER_NPC_MELEE3_F"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
+    lootItem = {TechBook "beast mutation"}
+    furniture = "roomFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 150
+    maxPopulation = 48
+    ghostProb = 0.1
+    spawnGhosts = 6
+  }
+  behaviour = {
+    minPopulation = 28
+    minTeamSize = 6
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      StolenItems
+      FinishOff
+      EnemyPopulation 35
+      NumConquered 12
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.8 140
+  }
+  immigrants = {
+    {
+      ids = {"WARRIOR"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"SHAMAN"}
+      traits = {FIGHTER}
+      frequency = 0.75
+    }
+    {
+      ids = {"WOLF_WARRIOR"}
+      traits = {FIGHTER}
+      frequency = 0.45
+    }
+  }
+}
+
+"RAT_PEOPLE_Z_LEVEL" modify append {
     settlement = {
     type = Builtin VAULT "DUNGEON"
       tribe = MONSTER
@@ -970,10 +759,258 @@
     }
   }
 
-########
-# Modded
-########
-"WARRIOR_CASTLE"
+
+###############################
+#Endles enemies - New tribes
+###############################
+
+"EE_ELF_KINGDOM"
+{
+  biomes = { "EE_ELF_FOREST"}
+  settlement = {
+    type = Predefined { "village32" "WOOD" } 
+    inhabitants = {
+      leader = { { "ELF_KING" } }
+      fighters = {
+        count = {46 52}
+        all = { 
+			60 "ELF_ARCHER" 
+			20 "ELF_LORD" 
+			80 "ELF_SOLDIER"
+			 5 "RANGER_ADVENTURER_NPC_ARCHER1"
+			 5 "RANGER_ADVENTURER_NPC_ARCHER1_F"
+			 3 "RANGER_ADVENTURER_NPC_ARCHER2"
+			 3 "RANGER_ADVENTURER_NPC_ARCHER2_F"
+			 5 "RANGER_ADVENTURER_NPC_MELEE1"
+			 5 "RANGER_ADVENTURER_NPC_MELEE1_F"
+			 3 "RANGER_ADVENTURER_NPC_MELEE2"
+			 3 "RANGER_ADVENTURER_NPC_MELEE2_F"
+		}
+      }
+      civilians = {
+        count = {20 26},
+        all = {
+          3 "ELF"
+          2 "ELF_CHILD"
+          1 "HORSE"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    tribe = ELF
+    race = "elves"
+    stockpiles = {{ "gold" 180 "TREASURE_CHEST"}}
+    lootItem = {TechBook "master sorcery" }
+    furniture = "roomFurniture"
+  }
+  config = {
+    immigrantInterval = 200
+    maxPopulation = 58
+    ghostProb = 0.1
+    spawnGhosts = 4
+  }
+  behaviour = {
+    minPopulation = 32
+    minTeamSize = 6
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      StolenItems
+      FinishOff
+      EnemyPopulation 48
+      NumConquered 16
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.8 220
+  }
+  immigrants = {
+    {
+      ids = {"ELF_ARCHER"}
+      traits = {FIGHTER}
+      frequency = 0.8
+    }
+    {
+      ids = {"ELF_SOLDIER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+"EE_ELF_VILLAGE"
+{
+  settlement = {
+    type = Builtin FORREST_VILLAGE "WOOD"
+    inhabitants = {
+      leader = { { "ELF_LORD" } }
+      fighters = {
+        count = {9 12}
+        all = { 4 "ELF_ARCHER" 1 "ELF_SOLDIER" }
+      }
+      civilians = {
+        count = {6 9},
+        all = {
+          1 "ELF"
+          1 "ELF_CHILD"
+          1 "HORSE"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    tribe = ELF
+    race = "elves"
+    stockpiles = {{ "gold" 80 "TREASURE_CHEST"}}
+    furniture = "roomFurniture"
+  }
+  config = {
+    guardianInfo = "ELF_SOLDIER" 0.4 3 5
+    immigrantInterval = 200
+    maxPopulation = 18
+    ghostProb = 0.1
+    spawnGhosts = 4
+  }
+  behaviour = {
+    minPopulation = 4
+    minTeamSize = 4
+    triggers = {StolenItems}
+    attackBehaviour = KillLeader
+  }
+  immigrants = {
+    {
+      ids = {"ELF_ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+"EE_ELF_VILLAGE_SHOP"
+{
+  settlement = {
+    type = Builtin FORREST_VILLAGE "WOOD"
+    inhabitants = {
+      leader = { { "ELF_LORD" } }
+      fighters = {
+        count = {9 12}
+        all = { 4 "ELF_ARCHER" 1 "ELF_SOLDIER" }
+      }
+      civilians = {
+        count = {6 9},
+        all = {
+          1 "ELF"
+          1 "ELF_CHILD"
+          1 "HORSE"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    tribe = ELF
+    race = "elves"
+    stockpiles = {{ "gold" 100 "TREASURE_CHEST"}}
+    shopItems = {{8 16} "elfShop" }
+    furniture = "roomFurniture"
+  }
+  config = {
+    immigrantInterval = 200
+    maxPopulation = 18
+    ghostProb = 0.1
+    spawnGhosts = 4
+  }
+  behaviour = {
+    minPopulation = 4
+    minTeamSize = 4
+    triggers = {StolenItems}
+    attackBehaviour = KillLeader
+  }
+  immigrants = {
+    {
+      ids = {"ELF_ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+  "EE_DWARF_KINGDOM" {
+    biomes = { "EE_DWARF_MOUNTAIN" }
+    settlement = {
+    type = Predefined { "mountain64" "EE_CITY_DWARF" } 
+      tribe = DWARF
+      inhabitants = {
+        leader = { { "DWARF_QUEEN_TRIBE" } }
+        fighters = {
+          count = {54 66}
+          all = {
+           50 "DWARF_FIGHTER_TRIBE"
+           90 "DWARF_WARRIOR_TRIBE"
+           110 "ELITE_DWARF_WARRIOR_TRIBE"
+           70 "DWARF_MONK_TRIBE"
+           20 "DWARF_BARON_TRIBE"
+		   3 "ADVENTURER_NPC_MELEE2"
+		   3 "ADVENTURER_NPC_MELEE2_F"
+		   3 "WARRIOR_ADVENTURER_NPC_MELEE2"
+		   3 "WARRIOR_ADVENTURER_NPC_MELEE2_F"
+		   3 "BARBARIAN_ADVENTURER_NPC_MELEE2"
+		   3 "BARBARIAN_ADVENTURER_NPC_MELEE2_F"
+		   1 "BARBARIAN_ADVENTURER_NPC_MELEE3"
+		   1 "BARBARIAN_ADVENTURER_NPC_MELEE3_F"
+          }
+        }
+        civilians = {
+          count = {24 32}
+          all = {
+            3 "PLAYER_DWARF_FEMALE"
+            3 "PLAYER_DWARF_FEMALE2"
+            3 "PLAYER_DWARF_FEMALE3"
+            4 "DWARF_WORKER_TRIBE"
+            1 "RAT"
+          }
+        }
+      }
+      locationNameGen = "TOWN"
+      race = "dwarves"
+      stockpiles = {{ "gold" 200 "TREASURE_CHEST"} {"minerals" 600 }}
+      shopItems = { { 8 16 }  "dwarfShop" }
+      outsideFeatures = "dungeonOutside"
+      furniture = "dwarvenRoomFurniture" #Modded
+     }
+    levelConnection = {
+      topLevel = MainEnemy 
+      levels = {
+        {ExtraEnemy { "EE_DWARF_MARKET" { 1 } } { 50 50 } BLACK_MARKET }
+        {ExtraEnemy { "EE_DWARF_MINE" { 1 } } { 80 80 } BASIC }
+       }
+     }
+    config = {
+      immigrantInterval = 200
+      maxPopulation = 66
+      ghostProb = 0.1
+      spawnGhosts = 4
+     }
+    behaviour = {
+      minPopulation = 36
+      minTeamSize = 8
+      triggers = {
+        RoomTrigger "THRONE" 0.0003
+        RoomTrigger "IMPALED_HEAD" 0.0001
+        SelfVictims
+        StolenItems
+        FinishOff
+        EnemyPopulation 60
+        NumConquered 20
+      }
+      attackBehaviour = KillMembers 16
+      ransom = 0.8 420
+    }
+    immigrants = {
+      {
+        ids = { "DWARF_MILITIA_TRIBE" "DWARF_FIGHTER_TRIBE" "DWARF_WARRIOR_TRIBE" "ELITE_DWARF_WARRIOR_TRIBE" "DWARF_MONK_TRIBE"} #Modded
+        traits = {FIGHTER}
+        frequency = 1
+      }
+    }
+  }
+  
+"EE_WARRIOR_CASTLE"
 {
   settlement = {
     type = Builtin CASTLE2 "WOOD_CASTLE"
@@ -1022,7 +1059,8 @@
 	  }
 	}
   }
-  "WARRIOR_VILLAGE" {
+  
+  "EE_WARRIOR_VILLAGE" {
     settlement = {
     type = Builtin VILLAGE "WOOD"
       tribe = HUMAN
@@ -1053,7 +1091,8 @@
         maxPopulation = 12
 	}
   }
-"DWARF_MARKET"
+  
+"EE_DWARF_MARKET"
 {
   settlement = {
     type = Builtin VILLAGE "DUNGEON"
@@ -1094,7 +1133,8 @@
     furniture = "roomFurniture"
   }
 }
-"DWARF_MARKET_SMALL"
+
+"EE_DWARF_MARKET_SMALL"
 {
   settlement = {
     type = Builtin VILLAGE "DUNGEON"
@@ -1135,7 +1175,8 @@
     furniture = "roomFurniture"
   }
 }
-"DWARF_MINE"
+
+"EE_DWARF_MINE"
 {
   settlement = {
     type = Builtin ANT_NEST "DUNGEON"
@@ -1164,7 +1205,8 @@
     furniture = "roomFurniture"
   }
 }
-  "CENTAUR_TOWN"
+
+  "EE_CENTAUR_TOWN"
   {
     discoverable = false
     settlement = {
@@ -1195,7 +1237,8 @@
         maxPopulation = 10
 	}
   }
-  "AMAZON_TOWN"
+  
+  "EE_AMAZON_TOWN"
   {
     discoverable = false
     settlement = {
@@ -1225,7 +1268,8 @@
         maxPopulation = 7
 	}
   }
-"WILDMEN_CAVE"
+  
+"EE_WILDMEN_CAVE"
 {
   settlement = {
     type = Builtin MINETOWN "DUNGEON"
@@ -1251,33 +1295,8 @@
     ransom = 0.5 80
   }
 }
-"GOBLIN_CAVE" modify
-{
-  settlement = {
-    type = Builtin MINETOWN "DUNGEON"
-    tribe = BANDIT
-    inhabitants = {
-      leader = { { "GOBLIN_WARRIOR" } }
-      fighters = {
-        count = {8 14}
-        all = { 1 "GOBLIN_MATRON" 4 "GOBLIN_PLAYER" }
-      }
-    }
-    race = "cave goblins"
-    stockpiles = {{ "goodMushrooms" 20 }}
-    outsideFeatures = "dungeonOutside"
-    furniture = "roomFurniture"
-    surroundWithResources = 6    
-  }
-  behaviour = {
-    minPopulation = 0
-    minTeamSize = 1
-    triggers = {SelfVictims StolenItems }
-    attackBehaviour = KillLeader
-    ransom = 0.5 80
-  }
-}
-"CROC_LAKE"
+
+"EE_CROC_LAKE"
 {
   discoverable = false
   settlement = {
@@ -1292,7 +1311,8 @@
     race = "crocodiles"
   }
 }
-  "AXEDIO_DUNGEON"
+
+  "EE_AXEDIO_DUNGEON"
   {
     settlement = {
       type = Builtin CAVE "BRICK"
@@ -1313,20 +1333,20 @@
       furniture = "adoxie"
     }
     levelConnection = {
-      topLevel = ExtraEnemy {"AXEDIO_SURFACE_BANDITS"}
+      topLevel = ExtraEnemy {"EE_AXEDIO_SURFACE_BANDITS"}
       levels = {
-        { ExtraEnemy { "AXEDIO_BANDITS" { 1 } } { 30 30 } DUNGEON }
-        { ExtraEnemy { "AXEDIO_LIZARDMEN" { 1 } } { 50 40 } DUNGEON }
-        { ExtraEnemy { "AXEDIO_CYCLOPS" { 1 } } { 20 20 } DUNGEON }
-        { ExtraEnemy { "AXEDIO_DWARVES" { 1 } } { 50 40 } MAZE }
-        { ExtraEnemy { "AXEDIO_DEMONS" { 1 } } { 50 40 } MAZE }
+        { ExtraEnemy { "EE_AXEDIO_BANDITS" { 1 } } { 30 30 } DUNGEON }
+        { ExtraEnemy { "EE_AXEDIO_LIZARDMEN" { 1 } } { 50 40 } DUNGEON }
+        { ExtraEnemy { "EE_AXEDIO_CYCLOPS" { 1 } } { 20 20 } DUNGEON }
+        { ExtraEnemy { "EE_AXEDIO_DWARVES" { 1 } } { 50 40 } MAZE }
+        { ExtraEnemy { "EE_AXEDIO_DEMONS" { 1 } } { 50 40 } MAZE }
         { MainEnemy { 30 30 } MINETOWN }
-        { ExtraEnemy { "AXEDIO_REWARD" { 1 } } { 30 30 } DUNGEON }
+        { ExtraEnemy { "EE_AXEDIO_REWARD" { 1 } } { 30 30 } DUNGEON }
       }
     }
   }
   
-"AXEDIO_REWARD"
+"EE_AXEDIO_REWARD"
 {
   settlement = {
     type = Builtin MINETOWN "BLACK"
@@ -1339,10 +1359,10 @@
   }
 }
   
-  "AXEDIO_DWARVES"
+  "EE_AXEDIO_DWARVES"
   {
     settlement = {
-      type = Builtin MINETOWN "SANDSTONE_WALL_DWARVEN"
+      type = Builtin MINETOWN "EE_SANDSTONE_WALL_DWARVEN"
       tribe = DARK_KEEPER
       inhabitants = {
         leader = { { "DWARF_BARON" } }
@@ -1374,10 +1394,10 @@
   }
   
 
-  "AXEDIO_SURFACE_BANDITS"
+  "EE_AXEDIO_SURFACE_BANDITS"
   {
     settlement = {
-      type = Builtin CAVE "DUNGEON_ENTRY"
+      type = Builtin CAVE "EE_DUNGEON_ENTRY"
       inhabitants = {
        leader = { { "BANDIT_LEADER" } }
         fighters = {
@@ -1392,7 +1412,7 @@
 	createOnBones = 0.1 { "KOBOLD_CAVE" }
   }
   
-  "AXEDIO_BANDITS"
+  "EE_AXEDIO_BANDITS"
   {
     settlement = {
       type = Builtin CAVE "BRICK"
@@ -1414,7 +1434,7 @@
 	  createOnBones = 0.1 { "KOBOLD_CAVE" }
   }
   
-  "AXEDIO_CYCLOPS" 
+  "EE_AXEDIO_CYCLOPS" 
 {
   settlement = {
     type = Builtin CAVE "WOOD_CASTLE"
@@ -1429,7 +1449,7 @@
   }
 }
   
-  "AXEDIO_DEMONS"
+  "EE_AXEDIO_DEMONS"
   {
     settlement = {
       type = Builtin VILLAGE "RUINS"
@@ -1447,10 +1467,10 @@
     }
   }
   
-  "AXEDIO_LIZARDMEN"
+  "EE_AXEDIO_LIZARDMEN"
   {
     settlement = {
-      type = Builtin VILLAGE "MUD"
+      type = Builtin VILLAGE "EE_MUD"
       tribe = LIZARD
       inhabitants = {
         leader = { { "LIZARDLORD" } }
@@ -1465,7 +1485,8 @@
     }
 	createOnBones = 0.1 { "VILLAGE" "ELVES" }
   }
-    "COW_DEMONS_ENTRY"
+  
+  "EE_COW_DEMONS_ENTRY"
   {
     settlement = {
       type = Builtin SMALL_MINETOWN "DUNGEON"
@@ -1483,7 +1504,8 @@
     }
     discoverable = false
   }
-  "COW_DUNGEON1"
+  
+  "EE_COW_DUNGEON1"
   {
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
@@ -1510,7 +1532,8 @@
       }
     }
   }
-  "COW_DUNGEON2"
+  
+  "EE_COW_DUNGEON2"
   {
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
@@ -1538,7 +1561,8 @@
       }
     }
   }
-  "COW_DEMONS"
+  
+  "EE_COW_DEMONS"
   {
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
@@ -1581,18 +1605,19 @@
       attackBehaviour = KillLeader
     }
     levelConnection = {
-      topLevel = ExtraEnemy {"COW_DEMONS_ENTRY"}
+      topLevel = ExtraEnemy {"EE_COW_DEMONS_ENTRY"}
       levels = {
-        { ExtraEnemy { "COW_DUNGEON1" { 2 4 } } { 60 40 } BASIC }
-        { ExtraEnemy { "COW_DUNGEON2" { 1 2 } } { 70 50 } BASIC }
+        { ExtraEnemy { "EE_COW_DUNGEON1" { 2 4 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_COW_DUNGEON2" { 1 2 } } { 70 50 } BASIC }
         { MainEnemy { 60 40 } MINETOWN }
       }
     }
   }
-  "DARK_ELF_EMPIRE" {
-    biomes = { "DARK_ELF_MOUNTAIN" }
+  
+  "EE_DARK_ELF_EMPIRE" {
+    biomes = { "EE_DARK_ELF_MOUNTAIN" }
     settlement = {
-    type = Predefined { "mountain48" "CITY_DWARF" }
+    type = Predefined { "mountain48" "EE_CITY_DWARF" }
       tribe = DARK_ELF
       inhabitants = {
         leader = { { "DARK_ELF_EMPRESS" } }
@@ -1632,10 +1657,11 @@
       furniture = "roomFurniture"
      }
   }
-  "GOBLIN_KING"
+  
+  "EE_GOBLIN_KING"
   {
     settlement = {
-      type = Builtin CASTLE2 "TAINTED"
+      type = Builtin CASTLE2 "EE_TAINTED"
       tribe = BANDIT
       inhabitants = {
         leader = {{ "GOBLIN_KING" }}
@@ -1666,19 +1692,20 @@
       furniture = "goblinProps"
      }
     levelConnection = {
-      topLevel = ExtraEnemy {"GOBLIN_ENTRY"}
+      topLevel = ExtraEnemy {"EE_GOBLIN_ENTRY"}
       levels = {
-        { ExtraEnemy { "GOBLIN_DUNGEON1" { 1 } } { 60 40 } BASIC }
-        { ExtraEnemy { "GOBLIN_DUNGEON2" { 1 } } { 70 50 } BASIC }
-        { ExtraEnemy { "GOBLIN_DUNGEON3" { 1 } } { 80 60 } BASIC }
+        { ExtraEnemy { "EE_GOBLIN_DUNGEON1" { 1 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_GOBLIN_DUNGEON2" { 1 } } { 70 50 } BASIC }
+        { ExtraEnemy { "EE_GOBLIN_DUNGEON3" { 1 } } { 80 60 } BASIC }
         { MainEnemy { 60 40 } BASIC }
       }
     }
   }
-  "GOBLIN_ENTRY"
+  
+  "EE_GOBLIN_ENTRY"
   {
     settlement = {
-      type = Builtin CASTLE2 "MUD"
+      type = Builtin CASTLE2 "EE_MUD"
       tribe = BANDIT
       inhabitants = {
          leader = { { "GOBLIN_WARRIOR" } }
@@ -1738,7 +1765,8 @@
       }
     }
   }
-   "GOBLIN_DUNGEON1"
+  
+  "EE_GOBLIN_DUNGEON1"
   {
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
@@ -1775,7 +1803,8 @@
       attackBehaviour = KillMembers 100
 	}
   }
-  "GOBLIN_DUNGEON2"
+  
+  "EE_GOBLIN_DUNGEON2"
   {
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
@@ -1812,7 +1841,7 @@
         attackBehaviour = KillMembers 100
       }
 	}
-    "GOBLIN_DUNGEON3"
+    "EE_GOBLIN_DUNGEON3"
     {
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
@@ -1850,10 +1879,10 @@
         attackBehaviour = KillMembers 100
 	  }
     }
-    "FAIRY_TOWER_ENTRY"
+    "EE_FAIRY_TOWER_ENTRY"
     {
     settlement = {
-      type = Predefined { "fairy_tower_entry" "FAIRY_BRICK" }
+      type = Predefined { "fairy_tower_entry" "EE_FAIRY_BRICK" }
       tribe = ELF
       locationName = "Goddess Illusia's Tower"
       inhabitants = {
@@ -1906,10 +1935,10 @@
         }
       }
     }
-    "FAIRY_TOWER_FLOOR"
+    "EE_FAIRY_TOWER_FLOOR"
     {
     settlement = {
-    type = Predefined { "fairy_tower_floor" "FAIRY_BRICK" }
+    type = Predefined { "fairy_tower_floor" "EE_FAIRY_BRICK" }
     tribe = ELF
     locationName = "Goddess Illusia's Tower"
     inhabitants = {
@@ -1962,11 +1991,12 @@
     }
   }
 }
-"TOWER_OF_ILLUSIA"
+
+"EE_TOWER_OF_ILLUSIA"
 {
-  biomes = { "ENCHANTED_FOREST" }
+  biomes = { "EE_ENCHANTED_FOREST" }
   settlement = {
-    type = Predefined { "fairy_tower_top" "FAIRY_BRICK" }
+    type = Predefined { "fairy_tower_top" "EE_FAIRY_BRICK" }
     tribe = ELF
     locationName = "Goddess Illusia's Tower"
     inhabitants = {
@@ -1996,9 +2026,9 @@
   }
   levelConnection = {
     direction = UP
-    topLevel = ExtraEnemy { "FAIRY_TOWER_ENTRY" }
+    topLevel = ExtraEnemy { "EE_FAIRY_TOWER_ENTRY" }
     levels = {
-      { ExtraEnemy { "FAIRY_TOWER_FLOOR" { 8 12 } } { 24 24 } BASIC }
+      { ExtraEnemy { "EE_FAIRY_TOWER_FLOOR" { 8 12 } } { 24 24 } BASIC }
       { MainEnemy { 18 18 } TOWER }
     }
   }
@@ -2032,10 +2062,11 @@
       }
     }
   }
-"ORC_MAIN" {
-  biomes = { "ORC_CLAN"} 
+  
+"EE_ORC_MAIN" {
+  biomes = { "EE_ORC_CLAN"} 
   settlement = {
-    type = Predefined { "castle32" "CITY_BRICK" }
+    type = Predefined { "castle32" "EE_CITY_BRICK" }
     tribe = GREENSKIN
     inhabitants = {
       leader = { { "ORC_PRIMARCH_TRIBE" } }
@@ -2071,9 +2102,10 @@
     outsideFeatures = "castleOutside"
   }
 }
-"ORC_MINOR" {
+
+"EE_ORC_MINOR" {
   settlement = {
-    type = Predefined { "castle1" "WOOD_CITY_CASTLE" }
+    type = Predefined { "castle1" "EE_WOOD_CITY_CASTLE" }
     tribe = GREENSKIN
     inhabitants = {
       leader = { { "ORC_PRIMARCH_TRIBE" } }
@@ -2106,7 +2138,8 @@
     outsideFeatures = "castleOutside"
   }
 }
-  "ORC_CITY_SHOP"
+
+"EE_ORC_CITY_SHOP"
   {
     settlement = {
     type = Builtin VILLAGE "WOOD"
@@ -2128,7 +2161,8 @@
         maxPopulation = 20
 	}
   }
-  "ORC_CITY_GROUP"
+  
+"EE_ORC_CITY_GROUP"
   {
     discoverable = false
     settlement = {
@@ -2151,7 +2185,8 @@
         maxPopulation = 20
 	}
   }
-  "HELL_DUNGEON1"
+  
+"EE_HELL_DUNGEON1"
   {
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
@@ -2185,11 +2220,12 @@
       ransom = 0.5 80
     }
   }
-  "CENTAURS"
+  
+"EE_CENTAURS"
   {
-  biomes = { "CENTAUR_PALACE" } 
+  biomes = { "EE_CENTAUR_PALACE" } 
   settlement = {
-    type = Predefined { "castle48" "CITY_BRICK" } 
+    type = Predefined { "castle48" "EE_CITY_BRICK" } 
     tribe = HUMAN
     inhabitants = {
       leader = {{ "CENTAUR_KING" }}
@@ -2235,7 +2271,8 @@
       }
     }
   }
-  "AMAZONS"
+  
+"EE_AMAZONS"
   {
     settlement = {
       type = Builtin VILLAGE "WOOD"
@@ -2275,7 +2312,8 @@
       attackBehaviour = KillLeader
     }
   }
-  "VULTURE_ABOMINATIONS"
+  
+"EE_VULTURE_ABOMINATIONS"
   {
     settlement = { 
       type = Builtin VILLAGE "DUNGEON"
@@ -2286,7 +2324,7 @@
           count = {25 30}
           all = {
             6 "VULTURE_ABOMINATION"
-            1 "EYE_SERVANT"
+            1 "EE_EYE_SERVANT"
           }
         }
       }
@@ -2311,11 +2349,12 @@
       direction = UP
       topLevel = MainEnemy
       levels = {
-        { ExtraEnemy { "IMPRISONED_FAIRY" { 1 } } { 28 16 } MINETOWN }
+        { ExtraEnemy { "EE_IMPRISONED_FAIRY" { 1 } } { 28 16 } MINETOWN }
       }
     }
   }
-  "IMPRISONED_FAIRY"
+  
+"EE_IMPRISONED_FAIRY"
   {
     settlement = {
       type = Builtin CAVE "DUNGEON"
@@ -2326,10 +2365,11 @@
     }
     discoverable = false
   }
-  "OCEAN_PORTAL"
+  
+"EE_OCEAN_PORTAL"
   {
     settlement = { 
-      type = Builtin CAVE "OCEAN_CAVE"
+      type = Builtin CAVE "EE_OCEAN_CAVE"
       inhabitants = {
         leader = { { "OCEAN_PORTAL" } }
         fighters = {
@@ -2354,7 +2394,8 @@
       }
     }
   }
-  "UNDEAD_SETTLEMENT"
+  
+"EE_UNDEAD_SETTLEMENT"
   {
     settlement = {
       type = Builtin VILLAGE "BRICK"
@@ -2370,7 +2411,7 @@
           count = {12 16}
           all = {
             1 "SKELETON"
-            1 "SKELETON_MAGE"
+            1 "EE_SKELETON_MAGE"
             1 "MUMMY"
             1 "ZOMBIE"
             1 "SKELETON_WARRIOR"
@@ -2400,10 +2441,11 @@
       }
     }
   }
-  "RAT_VILLAGE"
+  
+"EE_RAT_VILLAGE"
   {
     settlement = {
-      type = Builtin SMALL_VILLAGE "MUD"
+      type = Builtin SMALL_VILLAGE "EE_MUD"
       tribe = HUMAN
       inhabitants = {
         fighters = {
@@ -2430,11 +2472,12 @@
       furniture = "roomFurniture"
     }
   }
-  "DRAGONS"
+  
+"EE_DRAGONS"
   {
-    biomes = { "VOLCANIC" }  
+    biomes = { "EE_VOLCANIC" }  
     settlement = {
-      type = Builtin CASTLE2 "VOLCANIC_BRICK"
+      type = Builtin CASTLE2 "EE_VOLCANIC_BRICK"
       tribe = BANDIT
       race = "dragons"
       furniture = "randomTerrain"
@@ -2476,25 +2519,27 @@
       attackBehaviour = StealGold
     }
   }
-  "SHADOW_TEMPLE"
+  
+  "EE_SHADOW_TEMPLE"
   {
     settlement = {
-      type = Builtin TEMPLE "SHADOW_CITY_GRASS"
+      type = Builtin TEMPLE "EE_SHADOW_CITY_GRASS"
       tribe = HOSTILE
       locationName = "the shadow king"
       race = "shadow altar"
       inhabitants = {
-          leader = { { "SKELETON_MAGE" } }
+          leader = { { "EE_SKELETON_MAGE" } }
       }
       furniture = "shadow_altar"
     }
     discoverable = false
   }
-  "HELL_PORTAL"
+  
+  "EE_HELL_PORTAL"
   {
-    biomes = { "VOLCANIC" }  
+    biomes = { "EE_VOLCANIC" }  
     settlement = {
-      type = Builtin CAVE "VOLCANIC_BRICK"
+      type = Builtin CAVE "EE_VOLCANIC_BRICK"
       tribe = BANDIT
       inhabitants = {
         leader = { { "HELL_PORTAL" } }
@@ -2516,10 +2561,11 @@
       }
     }
   }
-  "LION_PRIDE"
+  
+  "EE_LION_PRIDE"
   {
     settlement = {
-      type = Builtin CAVE "MUD"
+      type = Builtin CAVE "EE_MUD"
       inhabitants = {
         leader = { { "LION_QUEEN" } }
         fighters = {
@@ -2550,11 +2596,12 @@
       attackBehaviour = KillMembers 10
     }
   }
-  "RATMEN"
+  
+  "EE_RATMEN"
   {
-    biomes = { "DARK_SWAMP" }
+    biomes = { "EE_DARK_SWAMP" }
     settlement = {
-      type = Builtin MINETOWN "MUD"
+      type = Builtin MINETOWN "EE_MUD"
       tribe = HUMAN
       inhabitants = {
         leader = { { "RAT_KING" } }
@@ -2580,17 +2627,18 @@
       lootItem = { TechBook "archery" }
     }
     levelConnection = {
-      topLevel = ExtraEnemy {"RATMEN_ENTRY"}
+      topLevel = ExtraEnemy {"EE_RATMEN_ENTRY"}
       levels = {
-        { ExtraEnemy { "RATMEN_DUNGEON" { 3 4 } } { 100 100 } BASIC }
+        { ExtraEnemy { "EE_RATMEN_DUNGEON" { 3 4 } } { 100 100 } BASIC }
         { MainEnemy { 80 80 } MINETOWN }
           }
       }
   }
-  "RATMEN_ENTRY"
+  
+  "EE_RATMEN_ENTRY"
   {
     settlement = {
-      type = Builtin VILLAGE "MUD"
+      type = Builtin VILLAGE "EE_MUD"
       tribe = HUMAN
       inhabitants = {
         leader = { { "RAT_GENERAL" } }
@@ -2629,7 +2677,8 @@
       }
     }
   }
-  "RATMEN_DUNGEON"
+  
+  "EE_RATMEN_DUNGEON"
   {
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
@@ -2658,7 +2707,8 @@
       }
     }
   }
-  "GORGON_CULT"
+  
+  "EE_GORGON_CULT"
   {
     settlement = {
       type = Builtin FORREST_COTTAGE "WOOD"
@@ -2691,7 +2741,8 @@
       }
     }
   }
-  "GARGOYLE_ENTRANCE"
+  
+  "EE_GARGOYLE_ENTRANCE"
   {
     settlement = {
       type = Builtin CAVE "DUNGEON"
@@ -2705,7 +2756,8 @@
       }
     }
   }
-  "DRAGON_NEWT_COTTAGE" inherit "HUMAN_COTTAGE"
+  
+  "EE_DRAGON_NEWT_COTTAGE" inherit "HUMAN_COTTAGE"
   {
   discoverable = false
   config = {
@@ -2714,7 +2766,7 @@
     maxPopulation = 3
   }
   settlement = append {
-    type =  Builtin COTTAGE "VOLCANIC_BRICK"
+    type =  Builtin COTTAGE "EE_VOLCANIC_BRICK"
     tribe = BANDIT
     inhabitants = {
       fighters = {
@@ -2726,10 +2778,11 @@
     outsideFeatures = "dungeonOutside"
     }
   }
-  "HELL_KNIGHT_ISLAND" inherit "DRAGON_NEWT_COTTAGE"
+  
+  "EE_HELL_KNIGHT_ISLAND" inherit "EE_DRAGON_NEWT_COTTAGE"
   {
   settlement = append {
-    type = Builtin MINETOWN "VOLCANIC_ISLAND"
+    type = Builtin MINETOWN "EE_VOLCANIC_ISLAND"
     outsideFeatures = "fireproof_chests"
     inhabitants = {
       fighters = {
@@ -2739,11 +2792,12 @@
       }
     }
   }
-  "CITY_BUILDING" inherit "HUMAN_COTTAGE"
+  
+  "EE_CITY_BUILDING" inherit "HUMAN_COTTAGE"
   {
     discoverable = false
     settlement = append {
-      type = Builtin COTTAGE "CITY_BRICK_GRASS"
+      type = Builtin COTTAGE "EE_CITY_BRICK_GRASS"
       inhabitants = {
       fighters = {
         count = {2 4}
@@ -2753,19 +2807,21 @@
     outsideFeatures = "dungeonOutside"
     }
   }  
-  "CITY_BUILDING2" inherit "HUMAN_COTTAGE"
+  
+  "EE_CITY_BUILDING2" inherit "HUMAN_COTTAGE"
   {
   discoverable = false
   settlement = append {
-    type = Builtin TOWER "CITY_BRICK_GRASS"
+    type = Builtin TOWER "EE_CITY_BRICK_GRASS"
     shopItems = { { 8 16 } "armory" }
     }
   }
-  "CITY_BARRACKS" inherit "WARRIOR_CASTLE"
+  
+  "EE_CITY_BARRACKS" inherit "EE_WARRIOR_CASTLE"
   {
   discoverable = false
   settlement = append {
-    type = Builtin CASTLE2 "CITY_BRICK"
+    type = Builtin CASTLE2 "EE_CITY_BRICK"
     shopItems = { { 8 16 } "armory" }
     }
 	config = { 
@@ -2774,11 +2830,12 @@
         maxPopulation = 10
 	}
   }
-  "CITY_GROUP"
+  
+  "EE_CITY_GROUP"
   {
     discoverable = false
     settlement = {
-    type = Builtin VILLAGE "CITY_BRICK_GRASS"
+    type = Builtin VILLAGE "EE_CITY_BRICK_GRASS"
     tribe = HUMAN
     inhabitants = {
       leader = { { "KNIGHT" } }
@@ -2796,10 +2853,11 @@
         maxPopulation = 5
 	}
   }
-  "CITY_GROUP_SHOP_BASE"
+  
+  "EE_CITY_GROUP_SHOP_BASE"
   {
     settlement = {
-    type = Builtin VILLAGE "CITY_BRICK_GRASS"
+    type = Builtin VILLAGE "EE_CITY_BRICK_GRASS"
     tribe = HUMAN #Lawful alignment
     inhabitants = {
       leader = { { "KNIGHT" } }
@@ -2817,10 +2875,11 @@
         maxPopulation = 3
 	}
   }
-  "SHADOW_GROUP_SHOP_BASE"
+  
+  "EE_SHADOW_GROUP_SHOP_BASE"
   {
     settlement = {
-    type = Builtin VILLAGE "SHADOW_CITY_GRASS"
+    type = Builtin VILLAGE "EE_SHADOW_CITY_GRASS"
     tribe = DARK_ELF #Evil alignment
     inhabitants = { 
         leader = { { "SHADOW_KNIGHT" } } 
@@ -2839,28 +2898,28 @@
 	}
   }
   
-  "CITY_GROUP_SHOP"  inherit "CITY_GROUP_SHOP_BASE" { settlement = append { shopItems = { { 30 } "chest" } } }
+  "EE_CITY_GROUP_SHOP"  inherit "EE_CITY_GROUP_SHOP_BASE" { settlement = append { shopItems = { { 30 } "chest" } } }
 
-  "ROYAL_BLACKSMITH" inherit "CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Blacksmith" shopItems = { { 20 } "royalIron" } } }
-  "ROYAL_SCRIBE" inherit "CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Scribe" shopItems = { { 20 } "royalScribeScrolls" } } }
-  "ROYAL_TANNER" inherit "CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Tanner" shopItems = { { 30 } "royalLeather" } } }
-  "ROYAL_BREWER" inherit "CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Brewer" shopItems = { { 20 } "royalBreweryPotions" } } }
-  "ROYAL_JEWELLER" inherit "CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Jeweller" shopItems = { { 10 } "royalJewellery" } } }
-  "ROYAL_TRAPSMITH" inherit "CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Trapsmith" shopItems = { { 20 } "royalTraps" } } }
+  "EE_ROYAL_BLACKSMITH" inherit "EE_CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Blacksmith" shopItems = { { 20 } "royalIron" } } }
+  "EE_ROYAL_SCRIBE" inherit "EE_CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Scribe" shopItems = { { 20 } "royalScribeScrolls" } } }
+  "EE_ROYAL_TANNER" inherit "EE_CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Tanner" shopItems = { { 30 } "royalLeather" } } }
+  "EE_ROYAL_BREWER" inherit "EE_CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Brewer" shopItems = { { 20 } "royalBreweryPotions" } } }
+  "EE_ROYAL_JEWELLER" inherit "EE_CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Jeweller" shopItems = { { 10 } "royalJewellery" } } }
+  "EE_ROYAL_TRAPSMITH" inherit "EE_CITY_GROUP_SHOP_BASE" { settlement = append { race = "Royal Trapsmith" shopItems = { { 20 } "royalTraps" } } }
   
-  "SHADOW_BLACKSMITH" inherit "SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Blacksmith" shopItems = { { 20 } "royalIron" } } }
-  "SHADOW_SCRIBE" inherit "SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Scribe" shopItems = { { 20 } "royalScribeScrolls" } } }
-  "SHADOW_TANNER" inherit "SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Tanner" shopItems = { { 30 } "royalLeather" } } }
-  "SHADOW_BREWER" inherit "SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Brewer" shopItems = { { 20 } "royalBreweryPotions" } } }
-  "SHADOW_JEWELLER" inherit "SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Jeweller" shopItems = { { 10 } "royalJewellery" } } }
-  "SHADOW_TRAPSMITH" inherit "SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Trapsmith" shopItems = { { 20 } "royalTraps" } } }
+  "EE_SHADOW_BLACKSMITH" inherit "EE_SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Blacksmith" shopItems = { { 20 } "royalIron" } } }
+  "EE_SHADOW_SCRIBE" inherit "EE_SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Scribe" shopItems = { { 20 } "royalScribeScrolls" } } }
+  "EE_SHADOW_TANNER" inherit "EE_SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Tanner" shopItems = { { 30 } "royalLeather" } } }
+  "EE_SHADOW_BREWER" inherit "EE_SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Brewer" shopItems = { { 20 } "royalBreweryPotions" } } }
+  "EE_SHADOW_JEWELLER" inherit "EE_SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Jeweller" shopItems = { { 10 } "royalJewellery" } } }
+  "EE_SHADOW_TRAPSMITH" inherit "EE_SHADOW_GROUP_SHOP_BASE" { settlement = append { race = "Shadow Trapsmith" shopItems = { { 20 } "royalTraps" } } }
 
- "KING"
+ "EE_KING"
   {
-  biomes = { "PALACE" }  
+  biomes = { "EE_PALACE" }  
   settlement = {
     tribe = HUMAN
-    type = Predefined { "castle64" "CITY_BRICK" }
+    type = Predefined { "castle64" "EE_CITY_BRICK" }
     inhabitants = {
       leader = { { "KING" } }
       fighters = {
@@ -2935,30 +2994,30 @@
   levelConnection = {
     topLevel = MainEnemy
     levels = {
-        { ExtraEnemy { "ROYAL_DUNGEON1" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON8" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON12" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON20" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON28" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON36" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON40" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON48" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON56" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON64" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON72" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON80" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON88" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON96" { 1 2 } } { 60 40 } BASIC }
-        { ExtraEnemy { "ROYAL_DUNGEON99" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON1" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON8" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON12" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON20" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON28" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON36" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON40" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON48" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON56" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON64" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON72" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON80" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON88" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON96" { 1 2 } } { 60 40 } BASIC }
+        { ExtraEnemy { "EE_ROYAL_DUNGEON99" { 1 2 } } { 60 40 } BASIC }
     }
   }
 }
 
-"SHADOW_KING" inherit "KING"
+"EE_SHADOW_KING" inherit "EE_KING"
 {
-  biomes = { "SHADOW_PALACE" }  
+  biomes = { "EE_SHADOW_PALACE" }  
   settlement = append {
-  type = Predefined { "castle64" "SHADOW_CITY_BRICK" }
+  type = Predefined { "castle64" "EE_SHADOW_CITY_BRICK" }
     tribe = DARK_ELF #Allied to dark elves and dark keepers
     inhabitants = {
       leader = { { "SHADOW_KING" } }
@@ -3002,12 +3061,12 @@
   }
 }
 
-"OMALLY_BANDITS"
+"EE_OMALLY_BANDITS"
   {
-    biomes = { "CITY_RUINS" }  
+    biomes = { "EE_CITY_RUINS" }  
     settlement = {
     tribe = BANDIT
-    type = Predefined { "ruins70" "BRICK_RUINS" }
+    type = Predefined { "ruins70" "EE_BRICK_RUINS" }
     inhabitants = {
       leader = { { "BANDIT_OMALLY" } }
       fighters = {
@@ -3056,11 +3115,12 @@
     }
   }
 }
-"COTTAGE_BANDIT_RUINS" inherit "COTTAGE_BANDITS"
+
+"EE_COTTAGE_BANDIT_RUINS" inherit "COTTAGE_BANDITS"
 {
   discoverable = false
   settlement = append {
-  type = Builtin COTTAGE "BRICK_RUINS"
+  type = Builtin COTTAGE "EE_BRICK_RUINS"
   }
 }
 
@@ -3075,10 +3135,10 @@
 
   #Start with base classes for the different types of dungeon
 
-  "ROYAL_DUNGEON_TYPE_1"
+  "EE_ROYAL_DUNGEON_TYPE_1"
   {
     settlement = {
-      type = Builtin MINETOWN "MUD"
+      type = Builtin MINETOWN "EE_MUD"
       tribe = MONSTER
       locationName = "royal dungeon level"
       race = "dwellers"
@@ -3147,7 +3207,8 @@
       }
     }
   }
-  "ROYAL_DUNGEON_TYPE_2"
+  
+  "EE_ROYAL_DUNGEON_TYPE_2"
   {
     settlement = {
       type = Builtin MINETOWN "WOOD_CASTLE"
@@ -3200,8 +3261,8 @@
             1 "OGRE_FEMALE"
             1 "SHARD_SPITTER"
             1 "SQUIDHOLDER"
-            1 "WARRIOR_HERO"
-            1 "THIEF_HERO"
+            1 "EE_WARRIOR_HERO"
+            1 "EE_THIEF_HERO"
             1 "DARK_ORC"
             1 "DARK_ORC_FEMALE"
             1 "DARK_OGRE"
@@ -3222,9 +3283,9 @@
             1 "ENT"
             1 "FIRE_ELEMENTAL"
             1 "FIRE_SPHERE"
-            1 "EYE_SERVANT"
+            1 "EE_EYE_SERVANT"
             1 "IRON_GOLEM"
-            1 "HEALING_TOTEM"
+            1 "EE_HEALING_TOTEM"
             1 "LAVA_GOLEM"
             1 "LOST_SOUL"
             1 "STONE_GOLEM"
@@ -3245,7 +3306,8 @@
       }
     }
   }
-  "ROYAL_DUNGEON_TYPE_3"
+  
+  "EE_ROYAL_DUNGEON_TYPE_3"
   {
     settlement = {
       type = Builtin MINETOWN "BRICK"
@@ -3281,9 +3343,9 @@
             1 "NATURE_FAIRY"
             1 "WATER_FAIRY"
             1 "GORGON"
-            1 "CLERIC_HERO"
-            1 "WIZARD_HERO"
-            1 "WIZARD_ADVENTURER"
+            1 "EE_CLERIC_HERO"
+            1 "EE_WIZARD_HERO"
+            1 "EE_WIZARD_ADVENTURER"
             1 "GOBLIN_CHICKENMANCER"
             1 "GOBLIN_HIGH_PRIEST"
             1 "GOBLIN_LEPRECHAUN"
@@ -3291,7 +3353,7 @@
             1 "NECROMANCER"
             1 "GOBLIN_PRIEST"
             1 "GOBLIN_WIZARD"
-            1 "SKELETON_MAGE"
+            1 "EE_SKELETON_MAGE"
             1 "ANT_QUEEN"
             1 "AUTOMATON"
             1 "GREEN_DRAGON"
@@ -3318,7 +3380,7 @@
     }
   }
 
-  "ROYAL_DUNGEON_TYPE_4"
+  "EE_ROYAL_DUNGEON_TYPE_4"
   {
     settlement = {
       type = Builtin MINETOWN "RUINS"
@@ -3353,48 +3415,48 @@
 
   #Split base class 2 into 2a and 2b
 
-  "ROYAL_DUNGEON_TYPE_2a" inherit "ROYAL_DUNGEON_TYPE_2" { settlement = append {type = Builtin MINETOWN "RUINS"}}
-  "ROYAL_DUNGEON_TYPE_2b" inherit "ROYAL_DUNGEON_TYPE_2" { settlement = append {type = Builtin MINETOWN "TAINTED"}}
+  "EE_ROYAL_DUNGEON_TYPE_2a" inherit "EE_ROYAL_DUNGEON_TYPE_2" { settlement = append {type = Builtin MINETOWN "RUINS"}}
+  "EE_ROYAL_DUNGEON_TYPE_2b" inherit "EE_ROYAL_DUNGEON_TYPE_2" { settlement = append {type = Builtin MINETOWN "EE_TAINTED"}}
   
   #Split base class 3 into 3a, 3b and 3c
   
-  "ROYAL_DUNGEON_TYPE_3a" inherit "ROYAL_DUNGEON_TYPE_3"
-     { settlement = append { type = Builtin MINETOWN "MINOTAUR" inhabitants = append { fighters = append { count = {5 9}}}}}
-  "ROYAL_DUNGEON_TYPE_3b" inherit "ROYAL_DUNGEON_TYPE_3"
+  "EE_ROYAL_DUNGEON_TYPE_3a" inherit "EE_ROYAL_DUNGEON_TYPE_3"
+     { settlement = append { type = Builtin MINETOWN "EE_MINOTAUR" inhabitants = append { fighters = append { count = {5 9}}}}}
+  "EE_ROYAL_DUNGEON_TYPE_3b" inherit "EE_ROYAL_DUNGEON_TYPE_3"
      { settlement = append { type = Builtin MINETOWN "SANDSTONE_WALL" inhabitants = append { fighters = append { count = {4 8}}}}}
-  "ROYAL_DUNGEON_TYPE_3c" inherit "ROYAL_DUNGEON_TYPE_3"
-     { settlement = append { type = Builtin MINETOWN "TAINTED" inhabitants = append { fighters = append { count = {3 7}}}}}
+  "EE_ROYAL_DUNGEON_TYPE_3c" inherit "EE_ROYAL_DUNGEON_TYPE_3"
+     { settlement = append { type = Builtin MINETOWN "EE_TAINTED" inhabitants = append { fighters = append { count = {3 7}}}}}
       
       
   #Define 100 levels of dungeons with increasing difficulty based on the base classes available.
   #This ensures that there is a continuous stream of enemies available getting gradually harder.  
       
-  "ROYAL_DUNGEON1" inherit "ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 1 } } } } }
-  "ROYAL_DUNGEON4" inherit "ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 7 } } } } }
-  "ROYAL_DUNGEON8" inherit "ROYAL_DUNGEON_TYPE_2" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 7 } } } } }
-  "ROYAL_DUNGEON12" inherit "ROYAL_DUNGEON_TYPE_2a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 13 } } } } }
-  "ROYAL_DUNGEON16" inherit "ROYAL_DUNGEON_TYPE_2b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 17 } } } } }
-  "ROYAL_DUNGEON20" inherit "ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 1 } } } } }
-  "ROYAL_DUNGEON24" inherit "ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 9 } } } } }
-  "ROYAL_DUNGEON28" inherit "ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 23 } } } } }
-  "ROYAL_DUNGEON32" inherit "ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 29 } } } } }
-  "ROYAL_DUNGEON36" inherit "ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 33 } } } } }
-  "ROYAL_DUNGEON40" inherit "ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 37 } } } } }
-  "ROYAL_DUNGEON44" inherit "ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 41 } } } } }
-  "ROYAL_DUNGEON48" inherit "ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 45 } } } } }
-  "ROYAL_DUNGEON52" inherit "ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 49 } } } } }
-  "ROYAL_DUNGEON56" inherit "ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 53 } } } } }
-  "ROYAL_DUNGEON60" inherit "ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 57 } } } } }
-  "ROYAL_DUNGEON64" inherit "ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 61 } } } } }
-  "ROYAL_DUNGEON68" inherit "ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 65 } } } } }
-  "ROYAL_DUNGEON72" inherit "ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 69 } } } } }
-  "ROYAL_DUNGEON76" inherit "ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 73 } } } } }
-  "ROYAL_DUNGEON80" inherit "ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 77 } } } } }
-  "ROYAL_DUNGEON84" inherit "ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 81 } } } } }
-  "ROYAL_DUNGEON88" inherit "ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 85 } } } } }
-  "ROYAL_DUNGEON92" inherit "ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 92 } } } } }
-  "ROYAL_DUNGEON96" inherit "ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 96 } } } } }
-  "ROYAL_DUNGEON99" inherit "ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 125 } } } } }
+  "EE_ROYAL_DUNGEON1" inherit "EE_ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 1 } } } } }
+  "EE_ROYAL_DUNGEON4" inherit "EE_ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 7 } } } } }
+  "EE_ROYAL_DUNGEON8" inherit "EE_ROYAL_DUNGEON_TYPE_2" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 7 } } } } }
+  "EE_ROYAL_DUNGEON12" inherit "EE_ROYAL_DUNGEON_TYPE_2a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 13 } } } } }
+  "EE_ROYAL_DUNGEON16" inherit "EE_ROYAL_DUNGEON_TYPE_2b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 17 } } } } }
+  "EE_ROYAL_DUNGEON20" inherit "EE_ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 1 } } } } }
+  "EE_ROYAL_DUNGEON24" inherit "EE_ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 9 } } } } }
+  "EE_ROYAL_DUNGEON28" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 23 } } } } }
+  "EE_ROYAL_DUNGEON32" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 29 } } } } }
+  "EE_ROYAL_DUNGEON36" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 33 } } } } }
+  "EE_ROYAL_DUNGEON40" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 37 } } } } }
+  "EE_ROYAL_DUNGEON44" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 41 } } } } }
+  "EE_ROYAL_DUNGEON48" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 45 } } } } }
+  "EE_ROYAL_DUNGEON52" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 49 } } } } }
+  "EE_ROYAL_DUNGEON56" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 53 } } } } }
+  "EE_ROYAL_DUNGEON60" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 57 } } } } }
+  "EE_ROYAL_DUNGEON64" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 61 } } } } }
+  "EE_ROYAL_DUNGEON68" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 65 } } } } }
+  "EE_ROYAL_DUNGEON72" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 69 } } } } }
+  "EE_ROYAL_DUNGEON76" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 73 } } } } }
+  "EE_ROYAL_DUNGEON80" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 77 } } } } }
+  "EE_ROYAL_DUNGEON84" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 81 } } } } }
+  "EE_ROYAL_DUNGEON88" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 85 } } } } }
+  "EE_ROYAL_DUNGEON92" inherit "EE_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 92 } } } } }
+  "EE_ROYAL_DUNGEON96" inherit "EE_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 96 } } } } }
+  "EE_ROYAL_DUNGEON99" inherit "EE_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 125 } } } } }
 ####################################################################
 
 ###########################
