@@ -1,4 +1,6 @@
-#Casino
+########################
+#From Casino mod
+########################
 
 Def SPINNER(spell, color, effects)
 {
@@ -26,7 +28,10 @@ End
 "5000_GOLD_DICE" SPINNER ("5000_GOLD_DICE", RED, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {10000} })
 
 
-#Farming
+########################
+#From Farming mod
+########################
+
 
   "BARN"
   {
@@ -49,7 +54,10 @@ End
     canBuildOutsideOfTerritory = true
   }
 
-#Haunted Ruins
+########################
+#From Haunted Ruins mod
+########################
+
 
   "FAKE_GRAVE"
   {
@@ -98,8 +106,11 @@ End
 				  }
 	  }
    }
-   
-#Spell Circles
+
+########################
+#Spell Circles mod
+########################
+
 
 Def SPELL(spell, color, effects)
 {
@@ -185,833 +196,9 @@ End
 	} Area 1 CircularBlast
 )
  
-#Modding Vanilla
- 
-  "BOOKCASE_GOLD" modify append {
-    name = "golden bookcase"
-    viewId = { "bookcase_gold" }
-    blockMovement = true
-    usageType = BuiltinUsageId STUDY
-    usageTime = 5
-    canHideHere = true
-    fire = 70
-    strength = 50
-    upgrade = "BOOKCASE_IRON"
-    maxTraining = {
-      SPELL 30 #Modded
-    }
-    requiresLight = true
-    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
-  }
-  
-  "RUIN_WALL" modify append {
-    name = "wall"
-    viewId = { "ruin_wall" }
-    blockMovement = true
-    blockVision = { NORMAL ELF }
-    wall = true
-    canBuildOutsideOfTerritory = true
-	strength = 200 #Modded
-    strength2 = {
-      100 BOULDER
-      100 DIG
-      300 HOSTILE_DIG
-
-    }
-  }
-  
-  "FLOOR_WOOD1" modify append {
-    name = "floor"
-    viewId = { "wood_floor2" }
-    fire = 50
-    luxury = 0.1
-    layer = FLOOR
-    canBuildOutsideOfTerritory = true #Modded
-  }
-  
-  "FLOOR_WOOD2" modify append {
-    viewId = { "wood_floor4" }
-  }
-
-  "FLOOR_STONE1" modify append {
-    name = "floor"
-    viewId = { "stone_floor1" }
-    luxury = 0.3
-    layer = FLOOR
-    canBuildOutsideOfTerritory = true  #Modded
-  }
-
-  "FLOOR_CARPET1" modify append{
-    name = "floor"
-    viewId = { "carpet_floor1" }
-    luxury = 0.7
-    layer = FLOOR
-    canBuildOutsideOfTerritory = true  #Modded
-  }
-  
-##########
-#Modded
-##########
-  "VENORACK_ORE"
-  {
-  name = "venorack ore"
-  viewId = { "venorack_ore" }
-  blockMovement = true
-  blockVision = { NORMAL ELF }
-  wall = true
-  clearFogOfWar = true
-  itemDrop = {{{{"VenOre"} 1 { 16 28 }}}}
-  strength2 = {
-    500 BOULDER
-    500 DIG
-    500 HOSTILE_DIG
-    
-  }
-  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
-  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
-  }
-  "RUINS"
-  {
-    name = "ruin wall"
-    viewId = { "ruin_wall" }
-    blockMovement = true
-    blockVision = { NORMAL ELF }
-    wall = true
-  }
-
-  "CAVE_BUSHES"
-  {
-    name = "cave bushes"
-    viewId = { "bush" }
-    strength2 = {
-      10 CUT
-    }
-    blockMovement = true
-    fire = 30
-    itemDrop = {{{{"WoodPlank"} 1 { 10 15 }}}}
-    tryDestroyFX = { WOOD_SPLINTERS }
-  }
-  
-  "CASTLE_A1" { name = "castle" viewId = { "castle_a1" } blockMovement = true  }
-  "CASTLE_A2" { name = "castle" viewId = { "castle_a2" } blockMovement = true }
-  "CASTLE_A3" { name = "castle" viewId = { "castle_a3" } blockMovement = true }
-  "CASTLE_A4" { name = "castle" viewId = { "castle_a4" } blockMovement = true }
-  "CASTLE_B1" { name = "castle" viewId = { "castle_b1" } blockMovement = true }
-  "CASTLE_B2" { name = "castle" viewId = { "castle_b2" } blockMovement = true }
-  "CASTLE_B3" { name = "castle" viewId = { "castle_b3" } blockMovement = true }
-  "CASTLE_B4" { name = "castle" viewId = { "castle_b4" } blockMovement = true }
-  "CASTLE_C1" { name = "castle" viewId = { "castle_c1" } blockMovement = true }
-  "CASTLE_C2" { name = "castle" viewId = { "castle_c2" } blockMovement = true }
-  "CASTLE_C3" { name = "castle" viewId = { "castle_c3" } blockMovement = true }
-  "CASTLE_C4" { name = "castle" viewId = { "castle_c4" } blockMovement = true }
-  "CASTLE_D1" { name = "castle" viewId = { "castle_d1" } blockMovement = true }
-  "CASTLE_D2" { name = "dungeon entrance" viewId = { "castle_d2" } }
-  "CASTLE_D3" { name = "dungeon entrance" viewId = { "castle_d3" } onBuilt = DOWN_STAIRS usageType = UsageEffect "use" Stairs }
-  "CASTLE_D4" { name = "castle" viewId = { "castle_d4" } blockMovement = true }
-  
-  "LAVA_ROCK" inherit "MUD"
-  {
-    viewId = { "lava_rock" }
-   }
-  "FLOOR_STONE1_COSMETIC" inherit "MUD"
-  {
-    name = "floor"
-    viewId = { "stone_floor1" }
-   }
-  "FLOOR_SWAMP1_COSMETIC" inherit "MUD"
-  {
-    viewId = { "swamp_hill" }
-   }
-  "FLOOR_STONE2_COSMETIC" inherit "MUD"
-  {
-    name = "floor"
-    viewId = { "stone_floor5" }
-   }
-  "FLOOR_WOOD1_COSMETIC" inherit "MUD"
-  {
-    name = "floor"
-    viewId = { "wood_floor2" }
-   }
-  "FLOOR_WOOD2_COSMETIC" inherit "MUD"
-  {
-    name = "floor"
-    viewId = { "wood_floor4" }
-   }
-  "ELVEN_RUG"
-  {
-    name = "elven rug of concealent"
-    viewId = { "floor_invi" }
-    layer = FLOOR
-    lastingEffect = ENEMY INVISIBLE 0
-    lightEmission = 20
-   }
-  "DWARVEN_REGENERATOR"
-  {
-    name = "dwarven regenerator"
-    viewId = { "floor_regen" }
-    layer = FLOOR
-    lastingEffect = ENEMY REGENERATION 0
-  }
-
-  "FALLING_RUBBLE_TRAP"
-  {
-    name = "falling rubble trap"
-    viewId = { "ruin_wall" }
-    layer = CEILING
-    entryType = Trap { Area 1 PlaceFurniture "RUBBLE" }
-    warning = true
-    constructMessage = SET_UP
-  }
-  "RUBBLE"
-  {
-    name = "rubble"
-    viewId = { "map_mountain2" }
-    constructMessage = none	
-    canSilentlyReplace = true #Allows remove construction to work
-    blockMovement = true
-	strength = 200
-    destroyedEffect = PlaceFurniture "STONES"
-    strength2 = {
-      200 BOULDER
-      200 DIG
-      200 HOSTILE_DIG
-      
-    }
-  }
-  "TAR_PIT"
-  {
-   name = "tar pit"
-   viewId = { "tar_pit" }
-   entryType = Trap { Name "tar" FirstSuccessful {  #Effect name is used when disarming the trap.
-	                     Filter LastingEffect FLYING CreatureMessage {"fly above the tar pit" "flies above the tar pit"}
-					     Lasting SLOWED
-					   }
-					 }
-   warning = true
-   constructMessage = SET_UP
-  }
-
-  "FLOOR_SPIKES_TRAP"
-  {
-    name = "floor_spikes trap"
-    viewId = { "floor_spikes_trap" }
-    entryType = Trap { Name "floor spike" FirstSuccessful { #Effect name is used when disarming the trap.
-	                     Filter LastingEffect FLYING CreatureMessage {"fly above the spikes" "flies above the spikes"}
-					     Lasting 50 BLEEDING
-					   }
-					 }
-    warning = true
-    constructMessage = SET_UP
-  }
-  "SEA_OF_BONES"
-  {
-    name = "The Sea of Bones"
-    viewId = { "bone_floor" }
-    layer = GROUND
-  }
-  "FLOOR_STONE3_JEWELED"
-  {
-    name = "jeweled floor"
-    viewId = { "stone_pattern1" }
-    luxury = 0.7
-    layer = FLOOR
-    canBuildOutsideOfTerritory = true
-  }
-  "FLOOR_STONE4_JEWELED"
-  {
-    name = "jeweled floor"
-    viewId = { "stone_pattern2" }
-    luxury = 0.7
-    layer = FLOOR
-    canBuildOutsideOfTerritory = true
-  }
-  "FLOOR_TAINTED1"
-  {
-    name = "floor"
-    viewId = { "tainted_tile" }
-    luxury = 0.5
-    layer = FLOOR
-    canBuildOutsideOfTerritory = true
-  }
-  "FLOOR_ZOMBIE1"
-  {
-    name = "floor"
-    viewId = { "zombie_stone_floor" }
-    luxury = 0.6
-    layer = GROUND
-  }
-  "FLOOR_ZOMBIE_CARPET1"
-  {
-    name = "carpet"
-    viewId = { "zombie_carpet" }
-    luxury = 0.6
-    layer = GROUND
-  }
-  "CORRUPTED_HILL" inherit "GRASS" 
-  {
-	name = "wasteland"
-    viewId = { "corrupted_hill" }
-  }
-  "MASS_GRAVE"
-  {
-    name = "mass grave"
-    viewId = { "impaled_head" }
-    wall = true
-  }
-  "LITTLE_SPIDER_WEB"
-  {
-    name = "spider web"
-    viewId = { "web_trap" }
-    strength = 1
-    blockingEnemies = true
-    destroyedEffect = { SummonEnemy "SPIDER" {1} none PlaceFurniture "BROKEN_WEB" }
-  }
-  "BIG_SPIDER_WEB"
-  {
-    name = "spider web"
-    viewId = { "web_trap" }
-    strength = 1
-    blockingEnemies = true
-    destroyedEffect =  { SummonEnemy "SHELOB" {1} none PlaceFurniture "CHEST" }
-  }
-  "BACKGROUND_RUBBLE"
-  {
-    name = "rubble"
-    viewId = { "map_mountain2" }
-    canHideHere = true
-    blockingEnemies = true
-	strength = 200
-    destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
-    destroyedEffect = PlaceFurniture "STONES"
-  }
-  "BACKGROUND_BOULDER"
-  {
-    name = "boulder"
-    viewId = { "boulder" }
-    canHideHere = true
-    blockingEnemies = true
-	strength = 200
-    tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
-    destroyedEffect = PlaceFurniture "STONES"
-  }
-  "HOLE"
-  {
-    name = "hole"
-    viewId = { "pit" }
-	strength = 50
-	blockingEnemies = true
-    destroyedEffect = PlaceFurniture "BRIDGE"	
-  }
-  "BROKEN_WEB"
-  {
-    name = "broken web"
-    viewId = { "web_trap" }
-  }
-  "DUNGEON_ENTRY" inherit "DOWN_STAIRS"
-  {
-    name = "dungeon entrance"
-    viewId = { "dungeon_entrance" }
-  }
-  "ELEMENTALIST_STAIRS_DOWN" inherit "DOWN_STAIRS"
-  {
-    name = "spiraling stairs"
-    viewId = { "down_staircase" Rgb 58 255 106 106 }
-  }
-  "ELEMENTALIST_STAIRS_UP" inherit "UP_STAIRS"
-  {
-    name = "spiraling stairs"
-    viewId = { "up_staircase" Rgb 58 255 106 106  }
-  }
-  "TAINTED_STAIRS_DOWN" inherit "DOWN_STAIRS"
-  {
-    name = "blood-red stairs"
-    viewId = { "down_staircase" Rgb 255 0 0 255 }
-  }
-  "TAINTED_STAIRS_UP" inherit "UP_STAIRS"
-  {
-    name = "blood-red stairs"
-    viewId = { "up_staircase" Rgb 255 0 0 255  }
-  }
-  "VOLC_WALL"
-  {
-    name = "wall"
-    viewId = { "volc_wall" }
-    blockMovement = true
-    blockVision = { NORMAL ELF }
-    wall = true
-  }
-  "VOLC_STONE_FLOOR"
-  {
-    name = "floor"
-    viewId = { "volc_stone_floor" }
-    luxury = 0.5
-    layer = GROUND
-  }
-
-  "TREE_WALL"
-  {
-    name = "tree wall"
-    viewId = { "tree_wall" }
-    blockMovement = true
-    blockVision = { NORMAL }
-    wall = true
-	strength = 100
-    summonedElement = "ENT"
-    fire = 100
-    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
-  }
-  "TAINTED_WALL"
-  {
-    name = "tainted wall"
-    viewId = { "tainted_wall" }
-    blockMovement = true
-    blockVision = { NORMAL ELF }
-    wall = true
-  }
-  "ZOMBIE_WALL"
-  {
-    name = "wall"
-    viewId = { "zombie_altar_wall" }
-    blockMovement = true
-    blockVision = { NORMAL ELF }
-    wall = true
-  }
-  "SHALLOW_WATER_COSMETIC"
-  {
-    name = "shallow water"
-    viewId = { "water" }
-    layer = GROUND
-    summonedElement = "WATER_ELEMENTAL"
-    freezeTo = "ICE"
-    walkIntoFX = { WATER_SPLASH Rgb 82 148 255 255 }
-  }
-  "KEEPER_SPIDER_WEB"
-  {
-    name = "spider web"
-    viewId = { "web_trap" }
-    entryType = Trap { Lasting ENTANGLED true }
-    usageType = BuiltinUsageId TRAIN
-    maxTraining = {
-      MELEE 12
-    }
-    canBuildOutsideOfTerritory = true
-  }
-  "KEEPER_SPIDER_PIT"
-  {
-    name = "hole"
-    viewId = { "pit" }
-    blockingEnemies = true
-    tickType =  Pit
-    canBuildOutsideOfTerritory = true
-    canSilentlyReplace = true
-  }
-  "KEEPER_SPIDER_MUD_WALL"
-  {
-    name = "wall"
-    viewId = { "mud_wall" }
-    blockingEnemies = true
-    blockVision = { NORMAL ELF }
-    strength = 80
-    usageType = UsageEffect "sleep in" Lasting SLEEP
-    tickType = Effect BedHeal()
-    bedType = CAGE
-    canBuildOutsideOfTerritory = true
-    canSilentlyReplace = true
-  }
-  "CASTLE_WALL_GM"
-  {
-    name = "wall"
-    viewId = { "castle_wall" }
-    blockMovement = true
-    blockVision = { NORMAL ELF }
-    strength2 = {
-      300 BOULDER
-      100 DIG
-      1900 HOSTILE_DIG
-      
-    }
-    canBuildOutsideOfTerritory = true
-  }
-  "WOOD_WALL_GM" inherit "CASTLE_WALL_GM"
-  {
-    viewId = { "wood_wall" }
-    summonedElement = "ENT"
-    fire = 100
-    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
-  }
-  "WOOD_DOOR_GM"
-  {
-    name = "wooden door"
-    viewId = { "wood_door_ew" }
-    blockingEnemies = true
-    canHideHere = true
-    blockVision = { NORMAL ELF }
-    fire = 50
-    strength = 80
-    clickType = LOCK
-    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
-    canBuildOutsideOfTerritory = true
-  }
-  "IRON_DOOR_GM"
-  {
-    name = "iron door"
-    viewId = { "iron_door_ew" }
-    blockingEnemies = true
-    canHideHere = true
-    blockVision = { NORMAL ELF }
-    strength = 160
-    clickType = LOCK
-    destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
-    canBuildOutsideOfTerritory = true
-  }
-  "ADA_DOOR_GM"
-  {
-    name = "adamantine door"
-    viewId = { "ada_door_ew" }
-    blockingEnemies = true
-    canHideHere = true
-    blockVision = { NORMAL ELF }
-    strength = 320
-    clickType = LOCK
-    requiredSupport = { { { E W } } { { N S } {"ada_door_ns"} } }
-    destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
-    canBuildOutsideOfTerritory = true
-  }
-  "IRON_ALTAR"
-  {
-    name = "iron hero altar"
-    viewId = { "iron_hero_altar" }
-    blockMovement = true
-    canHideHere = true
-    luxury = 0.7
-    strength = 50
-    populationIncrease = {1 none}
-    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
-  }
-  "GOLD_ALTAR"
-  {
-    name = "gold hero altar"
-    viewId = { "gold_hero_altar" }
-    blockMovement = true
-    canHideHere = true
-    luxury = 0.7
-    strength = 50
-    populationIncrease = {3 none}
-    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
-  }
-  "ADA_ALTAR"
-  {
-    name = "adamantine hero altar"
-    viewId = { "ada_hero_altar" }
-    blockMovement = true
-    canHideHere = true
-    luxury = 0.7
-    strength = 50
-    populationIncrease = {10 none}
-    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
-  }
-  "FIREPROOF_CHEST"
-  {
-    name = "chest"
-    viewId = { "chest" }
-    canHideHere = true
-    usageType = BuiltinUsageId CHEST
-  }
-  "LOCKED_CHEST"
-  {
-    name = "chest"
-    viewId = { "locked_chest" }
-    canHideHere = true
-    strength = 1
-    destroyedRemains = "TREASURE_CHEST"
-    usageType = UsageEffect "open"  {
-      ChooseRandom {
-    	  DropItems {"GoldPiece"} {15 25}
-    	  DropItems {"GoldPiece"} {15 25}
-		  SummonEnemy "RAT" {3 4} none
-      }
-	  FirstSuccessful {
-	    Filter LastingEffect DISARM_TRAPS_SKILL Message NORMAL "You disarm a trap on the chest using your disarming skills."
-		 {  
-          ChooseRandom {
-            Message NORMAL "The chest breaks open easily."
-            Message NORMAL "The chest resists and then suddenly breaks open."
-            Message NORMAL "The chest cracks along the top."
-          }
-          ChooseRandom {
-             { Chain {Message NORMAL "A blue gas leaks from the chest." Lasting HALLU}}
-             { Message NORMAL "The chest catches fire as you trigger the trap." Fire{} }
-             { Message NORMAL "A frost bolt hits you!" Ice{} }
-             { Message NORMAL "An acid ball splashes you!" Acid{} }
-             { Message NORMAL "You are stabbed by a needle!" Lasting POISON }
-             { Message NORMAL "A small device slits you open!" Lasting 50 BLEEDING }
-             { Message NORMAL "Something makes you cough!" Lasting PLAGUE }
-		  }
-		}
-      } 
-      DestroyWalls BASH
-	}
-  }
-
-  "TRAINING_WOOD_GM" inherit "TRAINING_WOOD" { canBuildOutsideOfTerritory = true }
-  "TRAINING_IRON_GM" inherit "TRAINING_IRON" { canBuildOutsideOfTerritory = true }
-  "TRAINING_ADA_GM" inherit "TRAINING_ADA" { canBuildOutsideOfTerritory = true }
-  "ARCHERY_RANGE_GM" inherit "ARCHERY_RANGE" { canBuildOutsideOfTerritory = true }
-  "FOUNTAIN_GM" inherit "FOUNTAIN" { canBuildOutsideOfTerritory = true }
-  "TORCH_N_GM" inherit "TORCH_N" {    requiredSupport = { { { } } } }
-  "TORCH_S_GM" inherit "TORCH_S" {    requiredSupport = { { { } } } }
-  "TORCH_E_GM" inherit "TORCH_E" {    requiredSupport = { { { } } } }
-  "TORCH_W_GM" inherit "TORCH_W" {    requiredSupport = { { { } } } }
-  "GROUND_TORCH_GM" inherit "GROUND_TORCH" { canBuildOutsideOfTerritory = true }
-  "TREE_TRUNK_GM" inherit "TREE_TRUNK"  { canBuildOutsideOfTerritory = true  onBuilt = SET_ON_FIRE fire = 1  xForgetAfterBuilding = true }
-  
-  #Palace
-  "TRAINING_WOOD_NO_BLOCK"
-  {
-	  name = "wooden training dummy"
-	  viewId = { "training_wood" }
-	  usageType = BuiltinUsageId TRAIN
-	  canHideHere = true
-	  maxTraining = {
-		MELEE 3
-	  }
-  }
-  "BOOKCASE_WOOD_NO_BLOCK"
-  {
-	name = "wooden bookcase"
-	viewId = { "bookcase_wood" }
-	usageType = BuiltinUsageId STUDY
-	usageTime = 5
-	canHideHere = true
-	maxTraining = {
-	SPELL 3
-	}
-  }
-
-  "CURSED_WALL" inherit "DUNGEON_WALL"
-  {
-    viewId = { "cursed_wall" }
-  }
-
-  #Fairies
-  "FEY_GRASS" inherit "GRASS"
-  {
-    viewId = { "fey_grass" }
-  }
-  "FEY_SAND" inherit "SAND"
-  {
-    viewId = { "fey_sand" }
-  }
-  "FEY_HILL" inherit "HILL"
-  {
-    viewId = { "fey_hill" }
-  }
-  "FEY_WALL" inherit "DUNGEON_WALL"
-  {
-    viewId = { "fey_wall" }
-  }
-  "FEY_WATER" inherit "WATER"
-  {
-    viewId = { "fey_water" }
-    freezeTo = "FEY_ICE"
-    fillPit = "FEY_WATER"
-	walkIntoFX = { WATER_SPLASH Rgb 142 83 209 255 }
-  }
-  "FEY_ICE" inherit "ICE" { meltInfo = { "FEY_WATER" }
-  }
-  "FEY_TREE31" inherit "CANIF_TREE" { viewId = { "fey_tree1" }}
-  "FEY_TREE32" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId LIGHT_BROWN }}
-  "FEY_TREE33" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId WHITE }}
-  "FEY_TREE34" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId YELLOW }}
-  "FEY_TREE35" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId RED }}
-  "FEY_TREE36" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId LIGHT_BLUE }}
-  "FEY_TREE37" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId LIGHT_GRAY }}
-  "FEY_TREE38" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId PURPLE }}
-  "FEY_TREE39" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId ORANGE }}
-  "FEY_TREE40" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId DARK_GRAY }}
-  "FEY_TREE41" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId WHITE }}
-  "FEY_TREE42" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId ORANGE_BROWN }}
-  "FEY_TREE43" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId BROWN }}
-  "FEY_TREE44" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId DARK_BROWN }} 
-  "FEY_TREE45" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  GRAY }}
-  "FEY_TREE46" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  ALMOST_GRAY }}
-  "FEY_TREE47" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId  ALMOST_BLACK }}
-  "FEY_TREE48" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  ALMOST_DARK_GRAY }}
-  "FEY_TREE49" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  BLACK }}
-  "FEY_TREE50" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  ALMOST_WHITE }}
-  "FEY_TREE51" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  GREEN }}
-  "FEY_TREE52" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  LIGHT_GREEN }}
-  "FEY_TREE53" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  DARK_GREEN }}
-  "FEY_TREE54" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  LIGHT_RED }}
-  "FEY_TREE55" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  PINK }}
-  "FEY_TREE56" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  BLUE }}
-  "FEY_TREE57" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  DARK_BLUE }}
-  "FEY_TREE58" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  SKY_BLUE }}
-  "FEY_TREE59" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId  VIOLET }}
- 
-  "FEY_TREE61" inherit "CANIF_TREE" { viewId = { "fey_tree2" }}
-  "FEY_TREE62" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_BROWN }}
-  "FEY_TREE63" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId WHITE }}
-  "FEY_TREE64" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId YELLOW }}
-  "FEY_TREE65" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId RED }}
-  "FEY_TREE66" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_BLUE }}
-  "FEY_TREE67" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_GRAY }}
-  "FEY_TREE68" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId PURPLE }}
-  "FEY_TREE69" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId ORANGE }}
-  "FEY_TREE70" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_GRAY }}
-  "FEY_TREE71" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId WHITE }}
-  "FEY_TREE72" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId ORANGE_BROWN }}
-  "FEY_TREE73" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId BROWN }}
-  "FEY_TREE74" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_BROWN }} 
-  "FEY_TREE75" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId GRAY }}
-  "FEY_TREE76" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_GRAY }}
-  "FEY_TREE77" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_BLACK }}
-  "FEY_TREE78" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_DARK_GRAY }}
-  "FEY_TREE79" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId BLACK }}
-  "FEY_TREE80" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_WHITE }}
-  "FEY_TREE81" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId GREEN }}
-  "FEY_TREE82" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId LIGHT_GREEN }}
-  "FEY_TREE83" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_GREEN }}
-  "FEY_TREE84" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_RED }}
-  "FEY_TREE85" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId PINK }}
-  "FEY_TREE86" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId BLUE }}
-  "FEY_TREE87" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_BLUE }}
-  "FEY_TREE88" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId SKY_BLUE }}
-  "FEY_TREE89" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId VIOLET }}
-
-  #Fairy and driad herbs
-  "HERB_1"
-  {
-    name = "herb"
-    viewId = { "herb1" }
-    strength2 = { 10 DIG }
-    fire = 100
-    itemDrop = {{{{"Berry1"} 1 { 1 }}}}
-    usageType = UsageEffect "dig" DestroyWalls DIG	
-  }
-
-  "HERB_2" inherit "HERB_1" { viewId = { "herb2" } itemDrop = {{{{"Berry2"} 1 { 1 }}}}}
-  "HERB_3" inherit "HERB_1" { viewId = { "herb3" } itemDrop = {{{{"Berry3"} 1 { 1 }}}}}
-  "HERB_4" inherit "HERB_1" { viewId = { "herb4" } itemDrop = {{{{"Berry4"} 1 { 1 }}}}}
-  "HERB_5" inherit "HERB_1" { viewId = { "herb5" } itemDrop = {{{{"Leaf1"} 1 { 1 }}}}}
-  "HERB_6" inherit "HERB_1" { viewId = { "herb6" } itemDrop = {{{{"Flower1"} 1 { 1 }}}}}
-  "HERB_7" inherit "HERB_1" { viewId = { "herb7" } itemDrop = {{{{"Flower2"} 1 { 1 }}}}}
-
-  
-  
-  #Swamp
-  "SWAMP_TREE1" inherit "CANIF_TREE" { viewId = { "swamp_tree1" ColorId GREEN }
-    viewLayer = TORCH1 }
-  "SWAMP_TREE2" inherit "CANIF_TREE" { viewId = { "swamp_tree2" ColorId GREEN }
-    viewLayer = TORCH1 }
-  "SWAMP_BUSH1" inherit "CANIF_TREE" { viewId = { "swamp_bush1" ColorId GREEN }
-    viewLayer = TORCH1 }
-  "SWAMP_REEDS" inherit "CANIF_TREE" { viewId = { "swamp_grass_reeds" ColorId GREEN }
-    viewLayer = TORCH1 }
-
-  "SWAMP_LILY_PAD1" 
-  {
-    name = "lily pads"
-    viewId = { "swamp_lily_pad1" }
-    viewLayer = TORCH1 
-	bridge = true 
-	removeNonFriendly = true
-    removeWithCreaturePresent = false
-    canBuildOutsideOfTerritory = true
-  }
-  "SWAMP_LILY_PADS2" 
-  {
-    name = "lily pads"
-    viewId = { "swamp_lily_pads2" }
-    viewLayer = TORCH1 
-	bridge = true 
-	removeNonFriendly = true
-    removeWithCreaturePresent = false
-    canBuildOutsideOfTerritory = true
-  }
-  "SWAMP_WATER_REEDS" 
-  {
-    name = "reeds"
-    viewId = { "swamp_water_reeds" }
-    viewLayer = TORCH1 
-	bridge = true 
-	removeNonFriendly = true
-    removeWithCreaturePresent = false
-    canBuildOutsideOfTerritory = true
-  }
-  "SWAMP_GRASS" inherit "GRASS"
-  {
-    viewId = { "swamp_grass" }
-  }
-  "SWAMP_HILL" inherit "HILL"
-  {
-    viewId = { "swamp_hill" }
-  }
-  "SWAMP_WATER"
-  {
-    name = "swamp water"
-    viewId = { "swamp_water" }
-    layer = GROUND
-    waterDepth = 1.5
-    entryType = Water
-    droppedItems = none
-    defaultBridge = "BRIDGE"
-    summonedElement = "WATER_ELEMENTAL"
-    freezeTo = "SWAMP_ICE"
-    fillPit = "SWAMP_WATER"
-    canSilentlyReplace = true
-    movementSet = {
-      traits = { FLY SWIM WADE }
-      forcibleTraits = { WALK }
-	}
-    walkIntoFX = { WATER_SPLASH Rgb 144 181 165 255 }
-  }
-  "SWAMP_ICE" inherit "ICE" { meltInfo = { "SWAMP_WATER" }
-  }
-  "DIRT_WALL"
-  {
-    name = "wall"
-    viewId = { "dirt_wall" }
-    blockMovement = true
-    blockVision = { NORMAL ELF }
-    wall = true
-  }
-  "ZOMBIE_SPAWNER"
-  {
-    name = "zombie spawner"
-    viewId = { "totem" Rgb 156 58 68 255 }
-    tickType = Effect Chance 0.05 SummonEnemy "ZOMBIE_DARK" { 1 4 } 50
-    blockMovement = true
-    canHideHere = true
-    strength = 100
-  }
-  "SHADOW_ALTAR"
-  {
-    name = "shadow altar"
-    viewId = { "shadow_altar" }
-    tickType = Effect Chance 0.08 SummonEnemy "SHADE" { 1 } 500
-    blockMovement = true
-    canHideHere = true
-	lightEmission = 20.0
-    strength = 200
-	destroyFX = { DESTROY_FURNITURE Rgb 15 15 15 255 }
-	destroyedEffect = { Message NORMAL "The Altar releases a streak of dark energy!" Area 5 IncreaseAttr DAMAGE 2 SummonEnemy "SHADE" {4} none }
-  }
-"BLOOD_WELL"
-{
-  name = "well of blood"
-  viewId = { "well" ColorId RED }
-  canHideHere = true
-  luxury = 0.7
-  usageType = UsageEffect "drink from"
-      {
-        CreatureMessage {"take a sip" "takes a sip"}
-		RegrowBodyPart 1
-      }
-  strength = 80
-  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
-}
-
+########################
+#Inscription mod
+########################
 
 "INSCRIPTION_TABLE" inherit "WORKSHOP"
 {
@@ -1019,7 +206,10 @@ End
   viewId = { "poetry_table" ColorId YELLOW }
 }
 
+########################
 #War with nature
+########################
+
 
   "CANIF_TREE" modify append {
     destroyedEffect = Filter Flag "WarWithNature" Chain {
@@ -1087,7 +277,9 @@ End
     } 
   }
 
+########################
 #Recycle Tiles
+########################
 
 "WOOD_WALL" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
 "WOOD_PILLAR" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 2 }}}} }
@@ -1178,6 +370,831 @@ End
 "GARGOYLE_TRAP" modify append { itemDrop = {{{{"Rock"} 1 { 1 20 }}}} }
 "TRAP_TRIGGER" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
 "DESTROY_WALLS_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+ 
+########################
+#Bonus mod mining
+########################
+
+  "VENORACK_ORE"
+  {
+  name = "venorack ore"
+  viewId = { "venorack_ore" }
+  blockMovement = true
+  blockVision = { NORMAL ELF }
+  wall = true
+  clearFogOfWar = true
+  itemDrop = {{{{"VenOre"} 1 { 16 28 }}}}
+  strength2 = {
+    500 BOULDER
+    500 DIG
+    500 HOSTILE_DIG
+    
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+  }
+  
+########################
+#Extra Enemies
+########################
+ 
+######################################
+#Furniture shared with Adventurer mod
+######################################
+
+  "BONUS_SPIDER_WEB"
+  {
+    name = "spider web"
+    viewId = { "web_trap" }
+    entryType = Trap { Lasting ENTANGLED true }
+    usageType = BuiltinUsageId TRAIN
+    maxTraining = {
+      MELEE 12
+    }
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_SPIDER_PIT"
+  {
+    name = "hole"
+    viewId = { "pit" }
+    blockingEnemies = true
+    tickType =  Pit
+    canBuildOutsideOfTerritory = true
+    canSilentlyReplace = true
+  }
+  "BONUS_SPIDER_MUD_WALL"
+  {
+    name = "wall"
+    viewId = { "mud_wall" }
+    blockingEnemies = true
+    blockVision = { NORMAL ELF }
+    strength = 80
+    usageType = UsageEffect "sleep in" Lasting SLEEP
+    tickType = Effect BedHeal()
+    bedType = CAGE
+    canBuildOutsideOfTerritory = true
+    canSilentlyReplace = true
+  }
+
+##############################################################
+
+
+  "BOOKCASE_GOLD" modify append {
+    name = "golden bookcase"
+    viewId = { "bookcase_gold" }
+    blockMovement = true
+    usageType = BuiltinUsageId STUDY
+    usageTime = 5
+    canHideHere = true
+    fire = 70
+    strength = 50
+    upgrade = "BOOKCASE_IRON"
+    maxTraining = {
+      SPELL 30 #Modded
+    }
+    requiresLight = true
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  }
+  
+  "RUIN_WALL" modify append {
+    name = "wall"
+    viewId = { "ruin_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+    wall = true
+    canBuildOutsideOfTerritory = true
+	strength = 200 #Modded
+    strength2 = {
+      100 BOULDER
+      100 DIG
+      300 HOSTILE_DIG
+
+    }
+  }
+  
+  "FLOOR_WOOD1" modify append {
+    name = "floor"
+    viewId = { "wood_floor2" }
+    fire = 50
+    luxury = 0.1
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true #Modded
+  }
+  
+  "FLOOR_WOOD2" modify append {
+    viewId = { "wood_floor4" }
+  }
+
+  "FLOOR_STONE1" modify append {
+    name = "floor"
+    viewId = { "stone_floor1" }
+    luxury = 0.3
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true  #Modded
+  }
+
+  "FLOOR_CARPET1" modify append{
+    name = "floor"
+    viewId = { "carpet_floor1" }
+    luxury = 0.7
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true  #Modded
+  }
+  
+##########
+#Modded
+##########
+
+  "BONUS_RUINS"
+  {
+    name = "ruin wall"
+    viewId = { "ruin_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+    wall = true
+  }
+
+  "BONUS_CAVE_BUSHES"
+  {
+    name = "cave bushes"
+    viewId = { "bush" }
+    strength2 = {
+      10 CUT
+    }
+    blockMovement = true
+    fire = 30
+    itemDrop = {{{{"WoodPlank"} 1 { 10 15 }}}}
+    tryDestroyFX = { WOOD_SPLINTERS }
+  }
+   
+  "BONUS_LAVA_ROCK" inherit "MUD"
+  {
+    viewId = { "lava_rock" }
+   }
+  "BONUS_FLOOR_STONE1_COSMETIC" inherit "MUD"
+  {
+    name = "floor"
+    viewId = { "stone_floor1" }
+   }
+  "BONUS_FLOOR_SWAMP1_COSMETIC" inherit "MUD"
+  {
+    viewId = { "swamp_hill" }
+   }
+  "BONUS_FLOOR_STONE2_COSMETIC" inherit "MUD"
+  {
+    name = "floor"
+    viewId = { "stone_floor5" }
+   }
+  "BONUS_FLOOR_WOOD1_COSMETIC" inherit "MUD"
+  {
+    name = "floor"
+    viewId = { "wood_floor2" }
+   }
+  "BONUS_FLOOR_WOOD2_COSMETIC" inherit "MUD"
+  {
+    name = "floor"
+    viewId = { "wood_floor4" }
+   }
+  "BONUS_ELVEN_RUG"
+  {
+    name = "elven rug of concealent"
+    viewId = { "floor_invi" }
+    layer = FLOOR
+    lastingEffect = ENEMY INVISIBLE 0
+    lightEmission = 20
+   }
+  "BONUS_DWARVEN_REGENERATOR"
+  {
+    name = "dwarven regenerator"
+    viewId = { "floor_regen" }
+    layer = FLOOR
+    lastingEffect = ENEMY REGENERATION 0
+  }
+
+  "BONUS_FALLING_RUBBLE_TRAP"
+  {
+    name = "falling rubble trap"
+    viewId = { "ruin_wall" }
+    layer = CEILING
+    entryType = Trap { Area 1 PlaceFurniture "BONUS_RUBBLE" }
+    warning = true
+    constructMessage = SET_UP
+  }
+  "BONUS_RUBBLE"
+  {
+    name = "rubble"
+    viewId = { "map_mountain2" }
+    constructMessage = none	
+    canSilentlyReplace = true #Allows remove construction to work
+    blockMovement = true
+	strength = 200
+    destroyedEffect = PlaceFurniture "STONES"
+    strength2 = {
+      200 BOULDER
+      200 DIG
+      200 HOSTILE_DIG
+      
+    }
+  }
+  "BONUS_TAR_PIT"
+  {
+   name = "tar pit"
+   viewId = { "tar_pit" }
+   entryType = Trap { Name "tar" FirstSuccessful {  #Effect name is used when disarming the trap.
+	                     Filter LastingEffect FLYING CreatureMessage {"fly above the tar pit" "flies above the tar pit"}
+					     Lasting SLOWED
+					   }
+					 }
+   warning = true
+   constructMessage = SET_UP
+  }
+
+  "BONUS_FLOOR_SPIKES_TRAP"
+  {
+    name = "floor_spikes trap"
+    viewId = { "floor_spikes_trap" }
+    entryType = Trap { Name "floor spike" FirstSuccessful { #Effect name is used when disarming the trap.
+	                     Filter LastingEffect FLYING CreatureMessage {"fly above the spikes" "flies above the spikes"}
+					     Lasting 50 BLEEDING
+					   }
+					 }
+    warning = true
+    constructMessage = SET_UP
+  }
+  "BONUS_SEA_OF_BONES"
+  {
+    name = "The Sea of Bones"
+    viewId = { "bone_floor" }
+    layer = GROUND
+  }
+  "BONUS_FLOOR_STONE3_JEWELED"
+  {
+    name = "jeweled floor"
+    viewId = { "stone_pattern1" }
+    luxury = 0.7
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_FLOOR_STONE4_JEWELED"
+  {
+    name = "jeweled floor"
+    viewId = { "stone_pattern2" }
+    luxury = 0.7
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_FLOOR_TAINTED1"
+  {
+    name = "floor"
+    viewId = { "tainted_tile" }
+    luxury = 0.5
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_FLOOR_ZOMBIE1"
+  {
+    name = "floor"
+    viewId = { "zombie_stone_floor" }
+    luxury = 0.6
+    layer = GROUND
+  }
+  "BONUS_FLOOR_ZOMBIE_CARPET1"
+  {
+    name = "carpet"
+    viewId = { "zombie_carpet" }
+    luxury = 0.6
+    layer = GROUND
+  }
+  "BONUS_CORRUPTED_HILL" inherit "GRASS" 
+  {
+	name = "wasteland"
+    viewId = { "corrupted_hill" }
+  }
+  "BONUS_MASS_GRAVE"
+  {
+    name = "mass grave"
+    viewId = { "impaled_head" }
+    wall = true
+  }
+  "BONUS_LITTLE_SPIDER_WEB"
+  {
+    name = "spider web"
+    viewId = { "web_trap" }
+    strength = 1
+    blockingEnemies = true
+    destroyedEffect = { SummonEnemy "SPIDER" {1} none PlaceFurniture "BONUS_BROKEN_WEB" }
+  }
+  "BONUS_BIG_SPIDER_WEB"
+  {
+    name = "spider web"
+    viewId = { "web_trap" }
+    strength = 1
+    blockingEnemies = true
+    destroyedEffect =  { SummonEnemy "SHELOB" {1} none PlaceFurniture "CHEST" }
+  }
+  "BONUS_BACKGROUND_RUBBLE"
+  {
+    name = "rubble"
+    viewId = { "map_mountain2" }
+    canHideHere = true
+    blockingEnemies = true
+	strength = 200
+    destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+    destroyedEffect = PlaceFurniture "STONES"
+  }
+  "BONUS_BACKGROUND_BOULDER"
+  {
+    name = "boulder"
+    viewId = { "boulder" }
+    canHideHere = true
+    blockingEnemies = true
+	strength = 200
+    tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+    destroyedEffect = PlaceFurniture "STONES"
+  }
+  "BONUS_HOLE"
+  {
+    name = "hole"
+    viewId = { "pit" }
+	strength = 50
+	blockingEnemies = true
+  }
+  "BONUS_BROKEN_WEB"
+  {
+    name = "broken web"
+    viewId = { "web_trap" }
+  }
+  "BONUS_DUNGEON_ENTRY" inherit "DOWN_STAIRS"
+  {
+    name = "dungeon entrance"
+    viewId = { "dungeon_entrance" }
+  }
+  "BONUS_ELEMENTALIST_STAIRS_DOWN" inherit "DOWN_STAIRS"
+  {
+    name = "spiraling stairs"
+    viewId = { "down_staircase" Rgb 58 255 106 106 }
+  }
+  "BONUS_ELEMENTALIST_STAIRS_UP" inherit "UP_STAIRS"
+  {
+    name = "spiraling stairs"
+    viewId = { "up_staircase" Rgb 58 255 106 106  }
+  }
+  "BONUS_TAINTED_STAIRS_DOWN" inherit "DOWN_STAIRS"
+  {
+    name = "blood-red stairs"
+    viewId = { "down_staircase" Rgb 255 0 0 255 }
+  }
+  "BONUS_TAINTED_STAIRS_UP" inherit "UP_STAIRS"
+  {
+    name = "blood-red stairs"
+    viewId = { "up_staircase" Rgb 255 0 0 255  }
+  }
+  "BONUS_VOLC_WALL"
+  {
+    name = "wall"
+    viewId = { "volc_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+    wall = true
+  }
+  "BONUS_VOLC_STONE_FLOOR"
+  {
+    name = "floor"
+    viewId = { "volc_stone_floor" }
+    luxury = 0.5
+    layer = GROUND
+  }
+
+  "BONUS_TREE_WALL"
+  {
+    name = "tree wall"
+    viewId = { "tree_wall" }
+    blockMovement = true
+    blockVision = { NORMAL }
+    wall = true
+	strength = 100
+    summonedElement = "ENT"
+    fire = 100
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  }
+  "BONUS_TAINTED_WALL"
+  {
+    name = "tainted wall"
+    viewId = { "tainted_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+    wall = true
+  }
+  "BONUS_ZOMBIE_WALL"
+  {
+    name = "wall"
+    viewId = { "zombie_altar_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+    wall = true
+  }
+  "BONUS_SHALLOW_WATER_COSMETIC"
+  {
+    name = "shallow water"
+    viewId = { "water" }
+    layer = GROUND
+    summonedElement = "WATER_ELEMENTAL"
+    freezeTo = "ICE"
+    walkIntoFX = { WATER_SPLASH Rgb 82 148 255 255 }
+  }
+  "BONUS_CASTLE_WALL_GM"
+  {
+    name = "wall"
+    viewId = { "castle_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+    strength2 = {
+      300 BOULDER
+      100 DIG
+      1900 HOSTILE_DIG
+      
+    }
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_WOOD_WALL_GM" inherit "BONUS_CASTLE_WALL_GM"
+  {
+    viewId = { "wood_wall" }
+    summonedElement = "ENT"
+    fire = 100
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  }
+  "BONUS_WOOD_DOOR_GM"
+  {
+    name = "wooden door"
+    viewId = { "wood_door_ew" }
+    blockingEnemies = true
+    canHideHere = true
+    blockVision = { NORMAL ELF }
+    fire = 50
+    strength = 80
+    clickType = LOCK
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_IRON_DOOR_GM"
+  {
+    name = "iron door"
+    viewId = { "iron_door_ew" }
+    blockingEnemies = true
+    canHideHere = true
+    blockVision = { NORMAL ELF }
+    strength = 160
+    clickType = LOCK
+    destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_ADA_DOOR_GM"
+  {
+    name = "adamantine door"
+    viewId = { "ada_door_ew" }
+    blockingEnemies = true
+    canHideHere = true
+    blockVision = { NORMAL ELF }
+    strength = 320
+    clickType = LOCK
+    requiredSupport = { { { E W } } { { N S } {"ada_door_ns"} } }
+    destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_IRON_ALTAR"
+  {
+    name = "iron hero altar"
+    viewId = { "iron_hero_altar" }
+    blockMovement = true
+    canHideHere = true
+    luxury = 0.7
+    strength = 50
+    populationIncrease = {1 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  }
+  "BONUS_GOLD_ALTAR"
+  {
+    name = "gold hero altar"
+    viewId = { "gold_hero_altar" }
+    blockMovement = true
+    canHideHere = true
+    luxury = 0.7
+    strength = 50
+    populationIncrease = {3 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  }
+  "BONUS_ADA_ALTAR"
+  {
+    name = "adamantine hero altar"
+    viewId = { "ada_hero_altar" }
+    blockMovement = true
+    canHideHere = true
+    luxury = 0.7
+    strength = 50
+    populationIncrease = {10 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  }
+  "BONUS_FIREPROOF_CHEST"
+  {
+    name = "chest"
+    viewId = { "chest" }
+    canHideHere = true
+    usageType = BuiltinUsageId CHEST
+  }
+  "BONUS_LOCKED_CHEST"
+  {
+    name = "chest"
+    viewId = { "locked_chest" }
+    canHideHere = true
+    strength = 1
+    destroyedRemains = "TREASURE_CHEST"
+    usageType = UsageEffect "open"  {
+      ChooseRandom {
+    	  DropItems {"GoldPiece"} {15 25}
+    	  DropItems {"GoldPiece"} {15 25}
+		  SummonEnemy "RAT" {3 4} none
+      }
+	  FirstSuccessful {
+	    Filter LastingEffect DISARM_TRAPS_SKILL Message NORMAL "You disarm a trap on the chest using your disarming skills."
+		 {  
+          ChooseRandom {
+            Message NORMAL "The chest breaks open easily."
+            Message NORMAL "The chest resists and then suddenly breaks open."
+            Message NORMAL "The chest cracks along the top."
+          }
+          ChooseRandom {
+             { Chain {Message NORMAL "A blue gas leaks from the chest." Lasting HALLU}}
+             { Message NORMAL "The chest catches fire as you trigger the trap." Fire{} }
+             { Message NORMAL "A frost bolt hits you!" Ice{} }
+             { Message NORMAL "An acid ball splashes you!" Acid{} }
+             { Message NORMAL "You are stabbed by a needle!" Lasting POISON }
+             { Message NORMAL "A small device slits you open!" Lasting 50 BLEEDING }
+             { Message NORMAL "Something makes you cough!" Lasting PLAGUE }
+		  }
+		}
+      } 
+      DestroyWalls BASH
+	}
+  }
+
+  "BONUS_TRAINING_WOOD_GM" inherit "TRAINING_WOOD" { canBuildOutsideOfTerritory = true }
+  "BONUS_TRAINING_IRON_GM" inherit "TRAINING_IRON" { canBuildOutsideOfTerritory = true }
+  "BONUS_TRAINING_ADA_GM" inherit "TRAINING_ADA" { canBuildOutsideOfTerritory = true }
+  "BONUS_ARCHERY_RANGE_GM" inherit "ARCHERY_RANGE" { canBuildOutsideOfTerritory = true }
+  "BONUS_FOUNTAIN_GM" inherit "FOUNTAIN" { canBuildOutsideOfTerritory = true }
+  "BONUS_TORCH_N_GM" inherit "TORCH_N" {    requiredSupport = { { { } } } }
+  "BONUS_TORCH_S_GM" inherit "TORCH_S" {    requiredSupport = { { { } } } }
+  "BONUS_TORCH_E_GM" inherit "TORCH_E" {    requiredSupport = { { { } } } }
+  "BONUS_TORCH_W_GM" inherit "TORCH_W" {    requiredSupport = { { { } } } }
+  "BONUS_GROUND_TORCH_GM" inherit "GROUND_TORCH" { canBuildOutsideOfTerritory = true }
+  "BONUS_TREE_TRUNK_GM" inherit "TREE_TRUNK"  { canBuildOutsideOfTerritory = true  onBuilt = SET_ON_FIRE fire = 1  xForgetAfterBuilding = true }
+  
+  #Palace
+  "BONUS_TRAINING_WOOD_NO_BLOCK"
+  {
+	  name = "wooden training dummy"
+	  viewId = { "training_wood" }
+	  usageType = BuiltinUsageId TRAIN
+	  canHideHere = true
+	  maxTraining = {
+		MELEE 3
+	  }
+  }
+  "BONUS_BOOKCASE_WOOD_NO_BLOCK"
+  {
+	name = "wooden bookcase"
+	viewId = { "bookcase_wood" }
+	usageType = BuiltinUsageId STUDY
+	usageTime = 5
+	canHideHere = true
+	maxTraining = {
+	SPELL 3
+	}
+  }
+
+  "BONUS_CURSED_WALL" inherit "DUNGEON_WALL"
+  {
+    viewId = { "cursed_wall" }
+  }
+
+  #Fairies
+  "BONUS_FEY_GRASS" inherit "GRASS"
+  {
+    viewId = { "fey_grass" }
+  }
+  "BONUS_FEY_SAND" inherit "SAND"
+  {
+    viewId = { "fey_sand" }
+  }
+  "BONUS_FEY_HILL" inherit "HILL"
+  {
+    viewId = { "fey_hill" }
+  }
+  "BONUS_FEY_WALL" inherit "DUNGEON_WALL"
+  {
+    viewId = { "fey_wall" }
+  }
+  "BONUS_FEY_WATER" inherit "WATER"
+  {
+    viewId = { "fey_water" }
+    freezeTo = "BONUS_FEY_ICE"
+    fillPit = "BONUS_FEY_WATER"
+	walkIntoFX = { WATER_SPLASH Rgb 142 83 209 255 }
+  }
+  "BONUS_FEY_ICE" inherit "ICE" { meltInfo = { "BONUS_FEY_WATER" } }
+  "BONUS_FEY_TREE31" inherit "CANIF_TREE" { viewId = { "fey_tree1" }}
+  "BONUS_FEY_TREE32" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId LIGHT_BROWN }}
+  "BONUS_FEY_TREE33" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId WHITE }}
+  "BONUS_FEY_TREE34" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId YELLOW }}
+  "BONUS_FEY_TREE35" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId RED }}
+  "BONUS_FEY_TREE36" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId LIGHT_BLUE }}
+  "BONUS_FEY_TREE37" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId LIGHT_GRAY }}
+  "BONUS_FEY_TREE38" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId PURPLE }}
+  "BONUS_FEY_TREE39" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId ORANGE }}
+  "BONUS_FEY_TREE40" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId DARK_GRAY }}
+  "BONUS_FEY_TREE41" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId WHITE }}
+  "BONUS_FEY_TREE42" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId ORANGE_BROWN }}
+  "BONUS_FEY_TREE43" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId BROWN }}
+  "BONUS_FEY_TREE44" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId DARK_BROWN }} 
+  "BONUS_FEY_TREE45" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  GRAY }}
+  "BONUS_FEY_TREE46" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  ALMOST_GRAY }}
+  "BONUS_FEY_TREE47" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId  ALMOST_BLACK }}
+  "BONUS_FEY_TREE48" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  ALMOST_DARK_GRAY }}
+  "BONUS_FEY_TREE49" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  BLACK }}
+  "BONUS_FEY_TREE50" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  ALMOST_WHITE }}
+  "BONUS_FEY_TREE51" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  GREEN }}
+  "BONUS_FEY_TREE52" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  LIGHT_GREEN }}
+  "BONUS_FEY_TREE53" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  DARK_GREEN }}
+  "BONUS_FEY_TREE54" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  LIGHT_RED }}
+  "BONUS_FEY_TREE55" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  PINK }}
+  "BONUS_FEY_TREE56" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  BLUE }}
+  "BONUS_FEY_TREE57" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  DARK_BLUE }}
+  "BONUS_FEY_TREE58" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  SKY_BLUE }}
+  "BONUS_FEY_TREE59" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId  VIOLET }}
+ 
+  "BONUS_FEY_TREE61" inherit "CANIF_TREE" { viewId = { "fey_tree2" }}
+  "BONUS_FEY_TREE62" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_BROWN }}
+  "BONUS_FEY_TREE63" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId WHITE }}
+  "BONUS_FEY_TREE64" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId YELLOW }}
+  "BONUS_FEY_TREE65" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId RED }}
+  "BONUS_FEY_TREE66" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_BLUE }}
+  "BONUS_FEY_TREE67" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_GRAY }}
+  "BONUS_FEY_TREE68" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId PURPLE }}
+  "BONUS_FEY_TREE69" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId ORANGE }}
+  "BONUS_FEY_TREE70" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_GRAY }}
+  "BONUS_FEY_TREE71" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId WHITE }}
+  "BONUS_FEY_TREE72" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId ORANGE_BROWN }}
+  "BONUS_FEY_TREE73" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId BROWN }}
+  "BONUS_FEY_TREE74" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_BROWN }} 
+  "BONUS_FEY_TREE75" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId GRAY }}
+  "BONUS_FEY_TREE76" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_GRAY }}
+  "BONUS_FEY_TREE77" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_BLACK }}
+  "BONUS_FEY_TREE78" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_DARK_GRAY }}
+  "BONUS_FEY_TREE79" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId BLACK }}
+  "BONUS_FEY_TREE80" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_WHITE }}
+  "BONUS_FEY_TREE81" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId GREEN }}
+  "BONUS_FEY_TREE82" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId LIGHT_GREEN }}
+  "BONUS_FEY_TREE83" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_GREEN }}
+  "BONUS_FEY_TREE84" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_RED }}
+  "BONUS_FEY_TREE85" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId PINK }}
+  "BONUS_FEY_TREE86" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId BLUE }}
+  "BONUS_FEY_TREE87" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_BLUE }}
+  "BONUS_FEY_TREE88" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId SKY_BLUE }}
+  "BONUS_FEY_TREE89" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId VIOLET }}
+
+  #Fairy and driad herbs
+  "BONUS_HERB_1"
+  {
+    name = "herb"
+    viewId = { "herb1" }
+    strength2 = { 10 DIG }
+    fire = 100
+    itemDrop = {{{{"BONUS_Berry1"} 1 { 1 }}}}
+    usageType = UsageEffect "dig" DestroyWalls DIG	
+  }
+
+  "BONUS_HERB_2" inherit "BONUS_HERB_1" { viewId = { "herb2" } itemDrop = {{{{"BONUS_Berry2"} 1 { 1 }}}}}
+  "BONUS_HERB_3" inherit "BONUS_HERB_1" { viewId = { "herb3" } itemDrop = {{{{"BONUS_Berry3"} 1 { 1 }}}}}
+  "BONUS_HERB_4" inherit "BONUS_HERB_1" { viewId = { "herb4" } itemDrop = {{{{"BONUS_Berry4"} 1 { 1 }}}}}
+  "BONUS_HERB_5" inherit "BONUS_HERB_1" { viewId = { "herb5" } itemDrop = {{{{"BONUS_Leaf1"} 1 { 1 }}}}}
+  "BONUS_HERB_6" inherit "BONUS_HERB_1" { viewId = { "herb6" } itemDrop = {{{{"BONUS_Flower1"} 1 { 1 }}}}}
+  "BONUS_HERB_7" inherit "BONUS_HERB_1" { viewId = { "herb7" } itemDrop = {{{{"BONUS_Flower2"} 1 { 1 }}}}}
+
+  
+  
+  #Swamp
+  "BONUS_SWAMP_TREE1" inherit "CANIF_TREE" { viewId = { "swamp_tree1" ColorId GREEN }
+    viewLayer = TORCH1 }
+  "BONUS_SWAMP_TREE2" inherit "CANIF_TREE" { viewId = { "swamp_tree2" ColorId GREEN }
+    viewLayer = TORCH1 }
+  "BONUS_SWAMP_BUSH1" inherit "CANIF_TREE" { viewId = { "swamp_bush1" ColorId GREEN }
+    viewLayer = TORCH1 }
+  "BONUS_SWAMP_REEDS" inherit "CANIF_TREE" { viewId = { "swamp_grass_reeds" ColorId GREEN }
+    viewLayer = TORCH1 }
+
+  "BONUS_SWAMP_LILY_PAD1" 
+  {
+    name = "lily pads"
+    viewId = { "swamp_lily_pad1" }
+    viewLayer = TORCH1 
+	bridge = true 
+	removeNonFriendly = true
+    removeWithCreaturePresent = false
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_SWAMP_LILY_PADS2" 
+  {
+    name = "lily pads"
+    viewId = { "swamp_lily_pads2" }
+    viewLayer = TORCH1 
+	bridge = true 
+	removeNonFriendly = true
+    removeWithCreaturePresent = false
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_SWAMP_WATER_REEDS" 
+  {
+    name = "reeds"
+    viewId = { "swamp_water_reeds" }
+    viewLayer = TORCH1 
+	bridge = true 
+	removeNonFriendly = true
+    removeWithCreaturePresent = false
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_SWAMP_GRASS" inherit "GRASS"
+  {
+    viewId = { "swamp_grass" }
+  }
+  "BONUS_SWAMP_HILL" inherit "HILL"
+  {
+    viewId = { "swamp_hill" }
+  }
+  "BONUS_SWAMP_WATER"
+  {
+    name = "swamp water"
+    viewId = { "swamp_water" }
+    layer = GROUND
+    waterDepth = 1.5
+    entryType = Water
+    droppedItems = none
+    defaultBridge = "BRIDGE"
+    summonedElement = "WATER_ELEMENTAL"
+    freezeTo = "BONUS_SWAMP_ICE"
+    fillPit = "BONUS_SWAMP_WATER"
+    canSilentlyReplace = true
+    movementSet = {
+      traits = { FLY SWIM WADE }
+      forcibleTraits = { WALK }
+	}
+    walkIntoFX = { WATER_SPLASH Rgb 144 181 165 255 }
+  }
+  "BONUS_SWAMP_ICE" inherit "ICE" { meltInfo = { "BONUS_SWAMP_WATER" }
+  }
+  "BONUS_DIRT_WALL"
+  {
+    name = "wall"
+    viewId = { "dirt_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+    wall = true
+  }
+  "BONUS_ZOMBIE_SPAWNER"
+  {
+    name = "zombie spawner"
+    viewId = { "totem" Rgb 156 58 68 255 }
+    tickType = Effect Chance 0.05 SummonEnemy "BONUS_ZOMBIE_DARK" { 1 4 } 50
+    blockMovement = true
+    canHideHere = true
+    strength = 100
+  }
+  "BONUS_SHADOW_ALTAR"
+  {
+    name = "shadow altar"
+    viewId = { "shadow_altar" }
+    tickType = Effect Chance 0.08 SummonEnemy "BONUS_SHADE" { 1 } 500
+    blockMovement = true
+    canHideHere = true
+	lightEmission = 20.0
+    strength = 200
+	destroyFX = { DESTROY_FURNITURE Rgb 15 15 15 255 }
+	destroyedEffect = { Message NORMAL "The Altar releases a streak of dark energy!" Area 5 IncreaseAttr DAMAGE 2 SummonEnemy "BONUS_SHADE" {4} none }
+  }
+  
+"BONUS_BLOOD_WELL"
+{
+  name = "well of blood"
+  viewId = { "well" ColorId RED }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect "drink from"
+      {
+        CreatureMessage {"take a sip" "takes a sip"}
+		RegrowBodyPart 1
+      }
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
 
 
 ####################

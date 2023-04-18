@@ -1,14 +1,61 @@
+##########################
+#Resources for bonus mod mining
+##########################
+
+"InfOre"
+  {
+    viewId = { "infernite_ore_pile" }
+	ownedEffect = LIGHT_SOURCE
+    name = "infernite ore"
+    itemClass = OTHER
+    price = 0
+    resourceId = "INFERNITE"
+    weight = 1
+	storageIds = {"equipment"}
+  }
+"VenOre"
+  {
+    viewId = { "venorack_ore_pile" }
+    name = "venorack ore"
+    itemClass = OTHER
+    price = 0
+    resourceId = "VEN"
+    weight = 0.5
+	storageIds = {"equipment"}
+  }
+
+#######################
+#Farming mod
+#######################
+
+ "sack"
+  {
+    viewId = { "sack" }
+    name = "sack of crops"
+    itemClass = OTHER
+    price = 0
+    resourceId = "CROPS"
+    weight = 5
+    storageIds = {"resources"}
+    effect = { Lasting SATIATED }
+   }
+
+
+###############
 #Hand torch mod
+###############
+
+
 "Torch" modify append
   {
     ownedEffect = TORCH_VISION
   }
 
-########
-#Modded
-########
+###################
+#Extra enemies mod
+###################
 
-"DEFENSEAMULET"
+"BONUS_DEFENSEAMULET"
   {
     viewId = { "amulet3" }
     shortName = "defense"
@@ -24,7 +71,7 @@
     storageIds = {"jewellery" "equipment"}
     equipmentGroup = "jewellery"
   }
-  "GamblingRod"
+  "BONUS_GamblingRod"
     {
       viewId = { "wooden_staff" }
       equipedViewId = { "wooden_staff_v" }
@@ -39,7 +86,7 @@
       effect = { Enhance ARMOR 3 Enhance ARMOR -3 Enhance ARMOR 2 Enhance ARMOR -2 Enhance ARMOR -1 Enhance ARMOR 1 }
     }
 
-  "Fireblade"
+  "BONUS_Fireblade"
     {
       viewId = { "fire_sword" }
 	  equipedViewId = { "fire_sword_v" }
@@ -66,10 +113,10 @@
         }
       }
       equipedEffect = { RAGE }
-      equipedAbility = { "fire shield" }
+      equipedAbility = { "BONUS_fire shield" }
 	  storageIds = {"equipment"}
     }
-  "InvisibilityRobe"
+  "BONUS_InvisibilityRobe"
     {
       viewId = { "robe" }
       name = "robe of vanishing"
@@ -83,7 +130,7 @@
       equipedAbility = { "invisibility" }
 	  storageIds = {"equipment"}
     }
-  "InvisibilityRing"
+  "BONUS_InvisibilityRing"
     {
       viewId = { "ring_green" }
       name = "invisibility ring"
@@ -94,7 +141,7 @@
       equipedAbility = { "invisibility" }
 	  storageIds = {"equipment"}
     }
-  "SpyingCrystal"
+  "BONUS_SpyingCrystal"
     {
       viewId = { "crystal1" }
       name = "spying crystal"
@@ -105,7 +152,7 @@
       effect = Lasting SPYING
 	  storageIds = {"equipment"}
     }
-  "DwarvenBeer"
+  "BONUS_DwarvenBeer"
     {
       viewId = { "dwarf_beer" }
       name = "dwarven beer"
@@ -116,7 +163,7 @@
       effect = { IncreaseAttr DAMAGE 1 Lasting INSANITY Lasting HALLU }
 	  storageIds = {"equipment"}
     }
-  "LongSpear"
+  "BONUS_LongSpear"
     {
       viewId = { "wood_spear" }
 	  equipedViewId = { "wood_spear_v" }
@@ -141,7 +188,7 @@
       maxUpgrades = 1
 	  storageIds = {"equipment"}
     }
-  "Axe" #Modded
+  "BONUS_Axe" #Modded
     {
       viewId = { "steel_battle_axe" }
 	  equipedViewId = { "steel_battle_axe_v" }
@@ -163,7 +210,7 @@
       maxUpgrades = 1
 	  storageIds = {"equipment"}
     }
-  "AdaAxe" #Modded
+  "BONUS_AdaAxe" #Modded
     {
       viewId = { "ada_battle_axe" }
 	  equipedViewId = { "ada_battle_axe_v" }
@@ -181,13 +228,13 @@
       }
       genPrefixes = {
         3 VictimEffect 0.6 Lasting 50 BLEEDING
-		1 SpellId "leg strike"
-		1 SpellId "arm strike"
+		1 SpellId "BONUS_leg strike"
+		1 SpellId "BONUS_arm strike"
       }
       maxUpgrades = 2
 	  storageIds = {"equipment"}
     }
-  "Mace"
+  "BONUS_Mace"
     {
       viewId = { "steel_spiked_mace" }
 	  equipedViewId = { "steel_spiked_mace_v" }
@@ -210,7 +257,7 @@
       maxUpgrades = 1
 	  storageIds = {"equipment"}
     }
-  "AdaMace"
+  "BONUS_AdaMace"
     {
       viewId = { "adamantite_spiked_mace" }
 	  equipedViewId = { "adamantite_spiked_mace_v" }
@@ -233,7 +280,7 @@
       maxUpgrades = 2
 	  storageIds = {"equipment"}
     }
-  "WonderMushroom"
+  "BONUS_WonderMushroom"
     {
       viewId = { "mushroom5" ColorId YELLOW }
       effectDescription = false
@@ -274,7 +321,7 @@
       }
 	  storageIds = {"equipment"}
     }
-  "SleepMushroom"
+  "BONUS_SleepMushroom"
     {
       viewId = { "mushroom1" ColorId YELLOW }
       effectDescription = false
@@ -290,7 +337,7 @@
       effect = Lasting SLEEP
 	  storageIds = {"equipment"}
     }
-  "Berry1"
+  "BONUS_Berry1"
     {
       viewId = { "berry1" }
       effectDescription = false
@@ -304,19 +351,19 @@
       effect = Lasting COLLAPSED
 	  storageIds = {"equipment"}
     }
-  "Berry2" inherit "Berry1"
+  "BONUS_Berry2" inherit "BONUS_Berry1"
     {
       viewId = { "berry2" }
       effect = Lasting SLOWED
       name = "strange berries"
     }
-  "Berry3" inherit "Berry1"
+  "BONUS_Berry3" inherit "BONUS_Berry1"
     {
       viewId = { "berry3" }
       effect = Lasting BLIND
       name = "cold plant"
     }
-  "Berry4" inherit "Berry1"
+  "BONUS_Berry4" inherit "BONUS_Berry1"
     {
       viewId = { "berry4" }
       name = "smelly herb"
@@ -332,7 +379,7 @@
         RegrowBodyPart 10
       }
     }
-  "Leaf1" inherit "Berry1"
+  "BONUS_Leaf1" inherit "BONUS_Berry1"
     {
       viewId = { "leaf1" }
       name = "leaf of herb"
@@ -342,20 +389,20 @@
 		Lasting SPEED
       }
     }
-  "Flower1" inherit "Berry1"
+  "BONUS_Flower1" inherit "BONUS_Berry1"
     {
       viewId = { "flower1" }
       effect = Lasting POISON
       name = "red flower"
     }
-  "Flower2" inherit "Berry1"
+  "BONUS_Flower2" inherit "BONUS_Berry1"
     {
       viewId = { "flower2" }
       effect = Escape{}
       name = "small flower"
     }
 	
-    "WandOfIce"
+    "BONUS_WandOfIce"
     {
         viewId = { "wooden_staff" }
 		equipedViewId = { "wooden_staff_v" }
@@ -374,7 +421,7 @@
         equipedAbility = { "ice cone" }
 		storageIds = {"equipment"}
       }
-    "RobesOfHell"
+    "BONUS_RobesOfHell"
     {
         viewId = { "robe" }
         name = "robes of hell"
@@ -389,7 +436,7 @@
         equipedAbility = { "firewall" }
 		storageIds = {"equipment"}
     }
-    "HeavenlyArmor"
+    "BONUS_HeavenlyArmor"
     {
         viewId = { "chain_armor" }
         shortName = "heavenly armor"
@@ -404,7 +451,7 @@
         equipedEffect = { MAGIC_RESISTANCE FLYING COLD_RESISTANT }
 		storageIds = {"equipment"}
     }
-    "SpearOfLizardmen"
+    "BONUS_SpearOfLizardmen"
     {
         viewId = { "spear" }
 		equipedViewId = { "spear_v" }
@@ -420,7 +467,7 @@
         equipedEffect = { SWIMMING_SKILL FAST_TRAINING SLEEP_RESISTANT RESTED NIGHT_VISION PLAGUE_RESISTANT }
 		storageIds = {"equipment"}
     }
-    "RingOfSubjection"
+    "BONUS_RingOfSubjection"
     {
         viewId = { "ring_green" }
         name = "ring of subjection"
@@ -432,7 +479,7 @@
         equipedAbility = { "pacify" }  
 		storageIds = {"equipment"}
     }
-  "IlluRing"
+  "BONUS_IlluRing"
     {
       viewId = { "ring_green" }
       name = "Ring of Illusia"
@@ -443,7 +490,7 @@
       equipedAbility = { "double trouble" }
 	  storageIds = {"equipment"}
     }
-    "BoneOfWizardry"
+    "BONUS_BoneOfWizardry"
     {
 		viewId = { "bone" }
 		name = "bone of wizardry"
@@ -454,7 +501,7 @@
 		itemClass =  CORPSE 
 		storageIds = {"equipment"}
     }
-	"StaffOfBleeding"
+	"BONUS_StaffOfBleeding"
 	{
 		viewId = { "iron_staff" }
 		equipedViewId = { "iron_staff_v" }
@@ -468,10 +515,10 @@
 		weaponInfo =  { attackType = SPELL attackMsg = WAVE meleeAttackAttr = SPELL_DAMAGE } 
 		maxUpgrades =  2 
 		equipedEffect = { BLEEDING REGENERATION }
-		equipedAbility = { "blood curse" }
+		equipedAbility = { "BONUS_blood curse" }
 		storageIds = {"equipment"}
 	}
-	"VampiricSword"
+	"BONUS_VampiricSword"
 	{
 		viewId = { "infernite_sword" }
 		equipedViewId = { "blood_sword_v" }
@@ -485,7 +532,7 @@
         weaponInfo =  { attackType = STAB attackMsg = THRUST attackerEffect = { Chance 0.2 Heal {FLESH} Heal {SPIRIT} RegrowBodyPart 1 } } 
 		storageIds = {"equipment"}
 	}
-	"OmallyKnife"
+	"BONUS_OmallyKnife"
 	{
 		viewId = { "knife" }
 		equipedViewId = { "knife_v" }
@@ -502,7 +549,7 @@
 		equipedEffect = { POISON_RESISTANT }	
 		storageIds = {"equipment"}
 	}
-	"Dagger"
+	"BONUS_Dagger"
 	{
 		viewId = { "knife" }
 		equipedViewId = { "knife_v" }
@@ -533,11 +580,11 @@
 #		modifiers =  { SPELL_DAMAGE 80 DEFENSE 80 } 
 #		weaponInfo =  { attackType = SPELL attackMsg = WAVE meleeAttackAttr = SPELL_DAMAGE } 
 #		equipedAbility = { "dungeon master wish" }
-#		equipedEffect = { SPEED POISON_RESISTANT FIRE_RESISTANT MELEE_RESISTANCE RANGED_RESISTANCE MAGIC_RESISTANCE }
+#		equipedEffect = { SPEED POISON_RESISTANT FIRE_RESISTANT MELBONUS_RESISTANCE RANGED_RESISTANCE MAGIC_RESISTANCE }
 #        wishedCount = { 0 } #Will crash the game. Stops it being wished for.
 #       storageIds = {"equipment"}
 #	}
-  "Net"
+  "BONUS_Net"
     {
       viewId = { "net" }
       name = "net"
@@ -550,36 +597,12 @@
       price = 20
 	  storageIds = {"equipment"}
     }
-#--------------
-#Resources
-#--------------
-"InfOre"
-  {
-    viewId = { "infernite_ore_pile" }
-	ownedEffect = LIGHT_SOURCE
-    name = "infernite ore"
-    itemClass = OTHER
-    price = 0
-    resourceId = "INFERNITE"
-    weight = 1
-	storageIds = {"equipment"}
-  }
-"VenOre"
-  {
-    viewId = { "venorack_ore_pile" }
-    name = "venorack ore"
-    itemClass = OTHER
-    price = 0
-    resourceId = "VEN"
-    weight = 0.5
-	storageIds = {"equipment"}
-  }
 
 #--------------
 #Armaments
 #--------------
 
-"VenSword"
+"BONUS_VenSword"
   {
     viewId = { "venorack_sword" }
 	equipedViewId = { "venorack_sword_v" }
@@ -597,7 +620,7 @@
 	  victimEffect = { 0.4 Lasting 50 POISON }
     }
     genPrefixes = {
-	  2 SpellId "poison bolt"
+	  2 SpellId "BONUS_poison bolt"
       2 VictimEffect 0.2 Lasting INSANITY
       3 LastingEffect RAGE
       3 JoinPrefixes {
@@ -613,7 +636,7 @@
     maxUpgrades = 1
 	storageIds = {"equipment"}
   }
-"VenBattleAxe"
+"BONUS_VenBattleAxe"
   {
     viewId = { "venorack_battle_axe" }
 	equipedViewId = { "venorack_battle_axe_v" }
@@ -632,10 +655,10 @@
       twoHanded = true
     }
     genPrefixes = {
-	  2 SpellId "poison bolt"
+	  2 SpellId "BONUS_poison bolt"
       3 LastingEffect RAGE
-	  2 SpellId "leg strike"
-	  2 SpellId "arm strike"
+	  2 SpellId "BONUS_leg strike"
+	  2 SpellId "BONUS_arm strike"
       1 JoinPrefixes {
         ItemAttrBonus DAMAGE 4
         LastingEffect INVISIBLE
@@ -645,7 +668,7 @@
     maxUpgrades = 1
 	storageIds = {"equipment"}
   }
-"VenWarHammer"
+"BONUS_VenWarHammer"
   {
     viewId = { "venorack_warhammer" }
 	equipedViewId = { "venorack_warhammer_v" }
@@ -664,10 +687,10 @@
       twoHanded = true
     }
     genPrefixes = {
-	  2 SpellId "poison bolt"
+	  2 SpellId "BONUS_poison bolt"
       3 VictimEffect 0.4 Lasting COLLAPSED
       3 LastingEffect RAGE
-	  2 SpellId "air render"
+	  2 SpellId "BONUS_air render"
       1 JoinPrefixes {
 			ItemAttrBonus DAMAGE 4
 			LastingEffect INVISIBLE
@@ -677,7 +700,7 @@
     maxUpgrades = 1
 	storageIds = {"equipment"}
   }
-  "VenLongSpear"
+  "BONUS_VenLongSpear"
     {
       viewId = { "venorack_spear" }
 	  equipedViewId = { "venorack_spear_v" }
@@ -697,7 +720,7 @@
 		victimEffect = { 0.4 Lasting POISON }
       }
       genPrefixes = {
-		2 SpellId "poison bolt"
+		2 SpellId "BONUS_poison bolt"
 		1 JoinPrefixes {
 			ItemAttrBonus DAMAGE 6
 			VictimEffect 0.1 Escape{}
@@ -708,7 +731,7 @@
       maxUpgrades = 1
 	  storageIds = {"equipment"}
     }
-  "VenAxe"
+  "BONUS_VenAxe"
     {
       viewId = { "venorack_battle_axe" }
 	  equipedViewId = { "venorack_battle_axe_v" }
@@ -727,7 +750,7 @@
       }
       genPrefixes = {
         3 LastingEffect RAGE
-		2 SpellId "poison bolt"
+		2 SpellId "BONUS_poison bolt"
 		3 JoinPrefixes {
 			ItemAttrBonus DAMAGE 4
 			LastingEffect HALLU
@@ -736,7 +759,7 @@
       maxUpgrades = 1
 	  storageIds = {"equipment"}
     }
-  "VenMace"
+  "BONUS_VenMace"
     {
       viewId = { "venorack_spiked_mace" }
 	  equipedViewId = { "venorack_spiked_mace_v" }
@@ -757,7 +780,7 @@
       genPrefixes = {
         3 VictimEffect 0.3 Lasting COLLAPSED
         3 LastingEffect RAGE
-		2 SpellId "poison bolt"
+		2 SpellId "BONUS_poison bolt"
 		1 JoinPrefixes {
 			ItemAttrBonus DAMAGE 4
 			LastingEffect INVISIBLE
@@ -767,7 +790,7 @@
       maxUpgrades = 1
 	  storageIds = {"equipment"}
     }
-"VenArmor"
+"BONUS_VenArmor"
   {
     viewId = { "venorack_armor" }
     shortName = "armor"
@@ -791,7 +814,7 @@
 	equipedEffect = { POISON_RESISTANT }
 	storageIds = {"equipment"}
   }
-"VenBoots"
+"BONUS_VenBoots"
   {
     viewId = { "venorack_boots" }
     shortName = "boots"
@@ -813,7 +836,7 @@
 	equipedEffect = { POISON_RESISTANT }
 	storageIds = {"equipment"}
   }
-"VenGloves"
+"BONUS_VenGloves"
   {
     viewId = { "venorack_gloves" }
     shortName = "gloves"
@@ -834,7 +857,7 @@
 	equipedEffect = { POISON_RESISTANT }
 	storageIds = {"equipment"}
   }
-"VenHelm"
+"BONUS_VenHelm"
   {
     viewId = { "venorack_helm" }
     shortName = "helm"
@@ -855,7 +878,7 @@
 	storageIds = {"equipment"}
 	equipedEffect = { POISON_RESISTANT }
   }
-"VenShield"
+"BONUS_VenShield"
   {
     viewId = { "venorack_shield" }
     shortName = "shield"
@@ -869,9 +892,9 @@
       DEFENSE 1
     }
     genPrefixes = {
-	  2 SpellId "regeneration"
-	  1 SpellId "weapon dodge"
-	  1 SpellId "arrow shield"
+	  2 SpellId "BONUS_regeneration"
+	  1 SpellId "BONUS_weapon dodge"
+	  1 SpellId "BONUS_arrow shield"
 	  4 JoinPrefixes {
 			ItemAttrBonus DEFENSE 2
 			ItemAttrBonus PARRY 1
@@ -881,7 +904,7 @@
 	equipedEffect = { POISON_RESISTANT }
 	storageIds = {"equipment"}
   }
-"InfSword"
+"BONUS_InfSword"
   {
     viewId = { "infernite_sword" }
 	equipedViewId = { "infernite_sword_v" }
@@ -901,8 +924,8 @@
     genPrefixes = {
       2 VictimEffect 0.1 Acid{}
       4 LastingEffect RAGE
-	  2 SpellId "arm strike"
-	  2 SpellId "leg strike"
+	  2 SpellId "BONUS_arm strike"
+	  2 SpellId "BONUS_leg strike"
       2 JoinPrefixes {
         ItemAttrBonus DAMAGE 5
         ItemAttrBonus DEFENSE -3
@@ -915,10 +938,10 @@
     equipedEffect = {FIRE_DAMAGE}
 	equipmentGroup = "infernite equipment"
     maxUpgrades = 1
-	equipedAbility = { "flaming strike" }
+	equipedAbility = { "BONUS_flaming strike" }
 	storageIds = {"equipment"}
   }
-"InfBattleAxe"
+"BONUS_InfBattleAxe"
   {
     viewId = { "infernite_battle_axe" }
 	equipedViewId = { "infernite_battle_axe_v" }
@@ -939,8 +962,8 @@
     genPrefixes = {
       2 VictimEffect 0.1 Acid{}
       4 LastingEffect RAGE
-	  2 SpellId "arm strike"
-	  2 SpellId "leg strike"
+	  2 SpellId "BONUS_arm strike"
+	  2 SpellId "BONUS_leg strike"
       2 JoinPrefixes {
         ItemAttrBonus DAMAGE 5
         ItemAttrBonus DEFENSE -3
@@ -952,10 +975,10 @@
     equipedEffect = {FIRE_DAMAGE}
 	equipmentGroup = "infernite equipment"
     maxUpgrades = 0
-	equipedAbility = { "flaming strike" }
+	equipedAbility = { "BONUS_flaming strike" }
 	storageIds = {"equipment"}
   }
-"InfWarHammer"
+"BONUS_InfWarHammer"
   {
     viewId = { "infernite_warhammer" }
 	equipedViewId = { "infernite_warhammer_v" }
@@ -976,7 +999,7 @@
     genPrefixes = {
       2 VictimEffect 0.4 Lasting COLLAPSED
       4 LastingEffect RAGE
-	  3 SpellId "break through"
+	  3 SpellId "BONUS_break through"
       2 JoinPrefixes {
         ItemAttrBonus DAMAGE 5
         ItemAttrBonus DEFENSE -3
@@ -988,10 +1011,10 @@
     ownedEffect = LIGHT_SOURCE
     equipedEffect = {FIRE_DAMAGE}
 	equipmentGroup = "infernite equipment"
-	equipedAbility = { "flaming strike" }
+	equipedAbility = { "BONUS_flaming strike" }
 	storageIds = {"equipment"}
   }
- "InfLongSpear"
+ "BONUS_InfLongSpear"
     {
       viewId = { "infernite_spear" }
 	  equipedViewId = { "infernite_spear_v" }
@@ -1026,10 +1049,10 @@
       ownedEffect = LIGHT_SOURCE
       equipedEffect = {FIRE_DAMAGE}
 	  equipmentGroup = "infernite equipment"
-	  equipedAbility = { "flaming strike" }
+	  equipedAbility = { "BONUS_flaming strike" }
 	  storageIds = {"equipment"}
     }
-  "InfAxe"
+  "BONUS_InfAxe"
     {
       viewId = { "infernite_battle_axe" }
 	  equipedViewId = { "infernite_battle_axe_v" }
@@ -1048,8 +1071,8 @@
       }
       genPrefixes = {
         3 LastingEffect RAGE
-		2 SpellId "leg strike"
-		2 SpellId "arm strike"
+		2 SpellId "BONUS_leg strike"
+		2 SpellId "BONUS_arm strike"
 		3 JoinPrefixes {
 			ItemAttrBonus DAMAGE 4
 			LastingEffect HALLU
@@ -1061,10 +1084,10 @@
       equipedEffect = {FIRE_DAMAGE}
 	  equipmentGroup = "infernite equipment"
       maxUpgrades = 0
-	  equipedAbility = { "flaming strike" }
+	  equipedAbility = { "BONUS_flaming strike" }
 	  storageIds = {"equipment"}
     }
-  "InfMace"
+  "BONUS_InfMace"
     {
       viewId = { "infernite_spiked_mace" }
 	  equipedViewId = { "infernite_spiked_mace_v" }
@@ -1085,7 +1108,7 @@
       genPrefixes = {
         3 VictimEffect 0.3 Lasting COLLAPSED
         3 LastingEffect RAGE
-		2 SpellId "break through"
+		2 SpellId "BONUS_break through"
 		1 JoinPrefixes {
 			ItemAttrBonus DAMAGE 6
 			LastingEffect RAGE
@@ -1099,10 +1122,10 @@
       equipedEffect = {FIRE_DAMAGE}
 	  equipmentGroup = "infernite equipment"
       maxUpgrades = 0
-	  equipedAbility = { "flaming strike" }
+	  equipedAbility = { "BONUS_flaming strike" }
 	  storageIds = {"equipment"}
     }
- "InfArmor"
+ "BONUS_InfArmor"
 	{
     viewId = { "infernite_armor" }
     shortName = "armor"
@@ -1122,10 +1145,10 @@
     ownedEffect = LIGHT_SOURCE
 	equipmentGroup = "infernite equipment"
     equipedEffect = { FIRE_RESISTANT }
-    equipedAbility = { "blowback" }
+    equipedAbility = { "BONUS_blowback" }
 	storageIds = {"equipment"}
 	}
-"InfBoots"
+"BONUS_InfBoots"
   {
     viewId = { "infernite_boots" }
     shortName = "boots"
@@ -1146,10 +1169,10 @@
     ownedEffect = LIGHT_SOURCE
 	equipmentGroup = "infernite equipment"
     equipedEffect = { FIRE_RESISTANT }
-    equipedAbility = { "blowback" }
+    equipedAbility = { "BONUS_blowback" }
 	storageIds = {"equipment"}
   }
-"InfGloves"
+"BONUS_InfGloves"
   {
     viewId = { "infernite_gloves" }
     shortName = "gloves"
@@ -1171,10 +1194,10 @@
     ownedEffect = LIGHT_SOURCE
 	equipmentGroup = "infernite equipment"
     equipedEffect = { FIRE_RESISTANT }
-    equipedAbility = { "blowback" }
+    equipedAbility = { "BONUS_blowback" }
 	storageIds = {"equipment"}
   }
-"InfHelm"
+"BONUS_InfHelm"
   {
     viewId = { "infernite_helm" }
     shortName = "helm"
@@ -1195,10 +1218,10 @@
     ownedEffect = LIGHT_SOURCE
 	equipmentGroup = "infernite equipment"
     equipedEffect = { FIRE_RESISTANT }
-    equipedAbility = { "blowback" }
+    equipedAbility = { "BONUS_blowback" }
 	storageIds = {"equipment"}
   }
-"InfShield"
+"BONUS_InfShield"
   {
     viewId = { "infernite_shield" }
     shortName = "shield"
@@ -1216,21 +1239,9 @@
     ownedEffect = LIGHT_SOURCE
 	equipmentGroup = "infernite equipment"
     equipedEffect = { FIRE_RESISTANT }
-    equipedAbility = { "blowback" }
+    equipedAbility = { "BONUS_blowback" }
 	storageIds = {"equipment"}
   }
-
- "sack"
-  {
-    viewId = { "sack" }
-    name = "sack of crops"
-    itemClass = OTHER
-    price = 0
-    resourceId = "CROPS"
-    weight = 5
-    storageIds = {"resources"}
-    effect = { Lasting SATIATED }
-   }
     
 ########################
 #Ideas for future items#

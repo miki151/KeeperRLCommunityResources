@@ -1,18 +1,28 @@
-"MUD" modify append
-  {
-    wall = "DIRT_WALL"
-    floorInside = "FLOOR_SWAMP1_COSMETIC"
-    water = {WATER}
-  } 
+########################
+#From haunted dungeon
+########################
 
-#Modded
   "HAUNTED"
   {
     wall = "RUIN_WALL"
     floorInside = "FLOOR"
     door = { "FAKE_GRAVE" 1.0 }
   }
-  "ELEMENTALIST"
+
+########################
+#From extra enemies mod
+########################
+
+
+"BONUS_MUD" inherit "MUD"
+  {
+    wall = "BONUS_DIRT_WALL"
+    floorInside = "BONUS_FLOOR_SWAMP1_COSMETIC"
+    water = {WATER}
+  } 
+
+#Modded
+  "BONUS_ELEMENTALIST"
     {
       wall = "CASTLE_WALL"
       floorInside = "FLOOR"
@@ -20,54 +30,54 @@
       prettyFloor = "FLOOR_CARPET1"
       door = { "IRON_DOOR" 1.0 }
       gate = { "IRON_GATE" 1.0 }
-	  upStairs = { "ELEMENTALIST_STAIRS_UP" }
-	  downStairs = { "ELEMENTALIST_STAIRS_DOWN" }
+	  upStairs = { "BONUS_ELEMENTALIST_STAIRS_UP" }
+	  downStairs = { "BONUS_ELEMENTALIST_STAIRS_DOWN" }
     }
-  "WOOD_CITY_CASTLE"
+  "BONUS_WOOD_CITY_CASTLE"
   {
   	  wall = "WOOD_WALL"
-      floorInside = "FLOOR_WOOD2_COSMETIC"
-      prettyFloor = "FLOOR_WOOD1_COSMETIC"
+      floorInside = "BONUS_FLOOR_WOOD2_COSMETIC"
+      prettyFloor = "BONUS_FLOOR_WOOD1_COSMETIC"
 	  door = { "IRON_DOOR" 1.0 }
       gate = { "IRON_GATE" 1.0 }
 	  water = { WATER }
 	  bridge = "BRIDGE"
   }
-  "BARRICADES"
+  "BONUS_BARRICADES"
     {
-      wall = "TREE_WALL"
+      wall = "BONUS_TREE_WALL"
       floorInside = "GRASS"
       door = { "GRASS" 1.0 }
     }
-  "TAINTED"
+  "BONUS_TAINTED"
     {
-      wall = "TAINTED_WALL"
+      wall = "BONUS_TAINTED_WALL"
 
       #These are commented out because they were crashing the cemetery
-      #floorInside = "FLOOR_TAINTED1"
-      #floorOutside = "FLOOR_TAINTED1"
-      #prettyFloor = "FLOOR_TAINTED1"
+      #floorInside = "BONUS_FLOOR_TAINTED1"
+      #floorOutside = "BONUS_FLOOR_TAINTED1"
+      #prettyFloor = "BONUS_FLOOR_TAINTED1"
 
       door = { "IRON_DOOR" 1.0 }
-	  upStairs = { "TAINTED_STAIRS_UP" }
-	  downStairs = { "TAINTED_STAIRS_DOWN" }
+	  upStairs = { "BONUS_TAINTED_STAIRS_UP" }
+	  downStairs = { "BONUS_TAINTED_STAIRS_DOWN" }
     }
-  "SANDSTONE_WALL_DWARVEN"
+  "BONUS_SANDSTONE_WALL_DWARVEN"
     {
       wall = "SANDSTONE"
       door = { "CHEST" 1.0 }
 	}
-  "DUNGEON_ENTRY"
+  "BONUS_DUNGEON_ENTRY"
     {
       wall = "MOUNTAIN"
       floorInside = "FLOOR"
       floorOutside = "FLOOR"
       door = { "WOOD_DOOR" 1.0 }
       gate = { "WOOD_GATE" 1.0 }
-      downStairs = { "DUNGEON_ENTRY" }
+      downStairs = { "BONUS_DUNGEON_ENTRY" }
     }
 	
-  "ROYAL_BRICK"
+  "BONUS_ROYAL_BRICK"
     {
       wall = "CASTLE_WALL"
       floorInside = "FLOOR"
@@ -79,7 +89,7 @@
 	  downStairs = { "DOWN_STAIRS" }
     }
 	
-  "ROYAL_MINOTAUR"
+  "BONUS_ROYAL_MINOTAUR"
     {
       wall = "CASTLE_WALL"
       floorInside = "FLOOR"
@@ -87,13 +97,13 @@
       prettyFloor = "FLOOR_CARPET1"
 	  door = { "WOOD_DOOR" 1.0 }
 	  gate = { "WOOD_GATE" 1.0 }
-	  upStairs = { "TAINTED_STAIRS_UP" }
-	  downStairs = { "TAINTED_STAIRS_DOWN" }
+	  upStairs = { "BONUS_TAINTED_STAIRS_UP" }
+	  downStairs = { "BONUS_TAINTED_STAIRS_DOWN" }
     }
 
-  "ROYAL_SANDSTONE_WALL"
+  "BONUS_ROYAL_SANDSTONE_WALL"
     {
-	  wall = "ZOMBIE_WALL"
+	  wall = "BONUS_ZOMBIE_WALL"
 	  floorInside = "FLOOR"
       floorOutside = "MUD"
 	  prettyFloor = "FLOOR_CARPET1"
@@ -103,19 +113,19 @@
 	  upStairs = {"UP_STAIRS_ROCK"}
     }
 
-  "ROYAL_TAINTED"
+  "BONUS_ROYAL_TAINTED"
     {
-      wall = "TAINTED_WALL"
+      wall = "BONUS_TAINTED_WALL"
 	  floorInside = "FLOOR"
       floorOutside = "MUD"
 	  prettyFloor = "FLOOR_CARPET1"
       door = { "IRON_DOOR" 1.0 }
 	  gate = { "IRON_GATE" 1.0 }
-	  upStairs = { "TAINTED_STAIRS_UP" }
-	  downStairs = { "TAINTED_STAIRS_DOWN" }
+	  upStairs = { "BONUS_TAINTED_STAIRS_UP" }
+	  downStairs = { "BONUS_TAINTED_STAIRS_DOWN" }
     }
 	
-  "MINOTAUR"
+  "BONUS_MINOTAUR"
     {
       wall = "CASTLE_WALL"
       floorInside = "FLOOR"
@@ -123,80 +133,86 @@
       prettyFloor = "FLOOR_CARPET1"
       door = { "FIRE_TRAP" 1.0 }
       gate = { "FIRE_TRAP" 1.0 }
-	  upStairs = { "TAINTED_STAIRS_UP" }
-	  downStairs = { "TAINTED_STAIRS_DOWN" }
+	  upStairs = { "BONUS_TAINTED_STAIRS_UP" }
+	  downStairs = { "BONUS_TAINTED_STAIRS_DOWN" }
 	  water = {WATER}
     }
 	
-  "OCEAN_CAVE"
+  "BONUS_OCEAN_CAVE"
     {
 	  wall = "MOUNTAIN"
-	  floorOutside = "SHALLOW_WATER_COSMETIC"
+	  floorOutside = "BONUS_SHALLOW_WATER_COSMETIC"
     }
-  "VOLCANIC_BRICK" inherit "BRICK"
+  "BONUS_VOLCANIC_BRICK" inherit "BRICK"
   {
-      floorOutside = "VOLC_STONE_FLOOR"
-      floorInside = "VOLC_STONE_FLOOR"
-      wall = "VOLC_WALL"
+      floorOutside = "BONUS_VOLC_STONE_FLOOR"
+      floorInside = "BONUS_VOLC_STONE_FLOOR"
+      wall = "BONUS_VOLC_WALL"
   }
-  "VOLCANIC_ISLAND" inherit "BRICK"
+  "BONUS_VOLCANIC_ISLAND" inherit "BRICK"
   {
-      floorOutside = "LAVA_ROCK"
-      floorInside = "LAVA_ROCK"
+      floorOutside = "BONUS_LAVA_ROCK"
+      floorInside = "BONUS_LAVA_ROCK"
   }
-  "CITY_BRICK" inherit "BRICK"
+  "BONUS_CITY_BRICK" inherit "BRICK"
   {
-      floorOutside = "FLOOR_STONE1_COSMETIC"
-      floorInside = "FLOOR_STONE1_COSMETIC"
+      floorOutside = "BONUS_FLOOR_STONE1_COSMETIC"
+      floorInside = "BONUS_FLOOR_STONE1_COSMETIC"
       prettyFloor = "FLOOR_CARPET1"
   }
-  "SHADOW_CITY_BRICK"
+  "BONUS_SHADOW_CITY_BRICK"
   {
-  	  wall = "ZOMBIE_WALL"
-	  floorOutside = "FLOOR_ZOMBIE1"
-      floorInside = "FLOOR_ZOMBIE1"
-      prettyFloor = "FLOOR_ZOMBIE_CARPET1"
+  	  wall = "BONUS_ZOMBIE_WALL"
+	  floorOutside = "BONUS_FLOOR_ZOMBIE1"
+      floorInside = "BONUS_FLOOR_ZOMBIE1"
+      prettyFloor = "BONUS_FLOOR_ZOMBIE_CARPET1"
 	  door = { "IRON_DOOR" 1.0 }
       gate = { "IRON_GATE" 1.0 }
-	  upStairs = { "TAINTED_STAIRS_UP" }
-	  downStairs = { "TAINTED_STAIRS_DOWN" }
+	  upStairs = { "BONUS_TAINTED_STAIRS_UP" }
+	  downStairs = { "BONUS_TAINTED_STAIRS_DOWN" }
 	  water = { LAVA }
 	  bridge = "STONE_BRIDGE"
   }
-    "SHADOW_CITY_GRASS" inherit "SHADOW_CITY_BRICK"
+  
+  "BONUS_SHADOW_CITY_GRASS" inherit "BONUS_SHADOW_CITY_BRICK"
   {
-  	  wall = "ZOMBIE_WALL"
-	  floorOutside = "CORRUPTED_HILL"
+  	  wall = "BONUS_ZOMBIE_WALL"
+	  floorOutside = "BONUS_CORRUPTED_HILL"
   }
-  "BRICK_RUINS" inherit "BRICK"
+  
+  "BONUS_BRICK_RUINS" inherit "BRICK"
   {
-      wall = "RUINS"
+      wall = "BONUS_RUINS"
   }
-  "CITY_BRICK_GRASS" inherit "BRICK"
+  
+  "BONUS_CITY_BRICK_GRASS" inherit "BRICK"
   {
       floorOutside = "GRASS"
-      floorInside = "FLOOR_STONE1_COSMETIC"
+      floorInside = "BONUS_FLOOR_STONE1_COSMETIC"
   }
-"CITY_DWARF"
+  
+"BONUS_CITY_DWARF"
   {
     wall = "MOUNTAIN"
-    floorInside = "FLOOR_STONE2_COSMETIC"
-    floorOutside = "FLOOR_STONE2_COSMETIC"
+    floorInside = "BONUS_FLOOR_STONE2_COSMETIC"
+    floorOutside = "BONUS_FLOOR_STONE2_COSMETIC"
 	prettyFloor = "FLOOR_CARPET2"
     door = { "IRON_DOOR" 1.0 }
     gate = { "IRON_GATE" 1.0 }
 	water = {LAVA}
 	bridge = "STONE_BRIDGE"
   }
-  "FAIRY_BRICK" inherit "BRICK"
+  
+  "BONUS_FAIRY_BRICK" inherit "BRICK"
   {
-  	  wall = "FEY_WALL"
-	  floorInside = "FLOOR_STONE1_COSMETIC"
+  	  wall = "BONUS_FEY_WALL"
+	  floorInside = "BONUS_FLOOR_STONE1_COSMETIC"
   }
-  "ZOMBIE"
+  
+  "BONUS_ZOMBIE"
     {
-      wall = "ZOMBIE_WALL"
+      wall = "BONUS_ZOMBIE_WALL"
       door = { "IRON_DOOR" 1.0 }
-	  upStairs = { "TAINTED_STAIRS_UP" }
-	  downStairs = { "TAINTED_STAIRS_DOWN" }
+	  upStairs = { "BONUS_TAINTED_STAIRS_UP" }
+	  downStairs = { "BONUS_TAINTED_STAIRS_DOWN" }
     }
