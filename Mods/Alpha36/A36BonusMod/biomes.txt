@@ -1,3 +1,7 @@
+###################
+#DESERTED RUINS MOD
+###################
+
 "DESERT"
   modify append {
 	whiteKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
@@ -8,51 +12,73 @@
 	whiteKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
 	darkKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
 }
+
+"GRASSLAND"
+  modify append {
+	whiteKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+	darkKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+}
+
+"FOREST"
+  modify append {
+	whiteKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+	darkKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+}
+
+"MOUNTAIN"
+  modify append {
+	whiteKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+	darkKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+}
+
+#####################################
+#From mushrooms+ mod, grassland only
+#####################################
+
 "GRASSLAND" modify append
 {
   items = "randomMushrooms"
+}
+
+#####################################
+#From Extra Enemies mod
+#####################################
+
+"GRASSLAND" modify append
+{
   darkKeeperEnemies = {
-    { id = "HUMAN_COTTAGE" count = { 3 5 } }
+    { id = "HUMAN_COTTAGE" count = { 2 3 } }
     { id = "COTTAGE_BANDITS" probability = 0.5 }
     { id = "CORPSES" probability = 0.2 }
     { id = "BLACKSMITH" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
     { id = "RUINS" probability = 0.5 }
-    { id = "WILDMEN_CAVE" count = { 0 2 } }
-	{ id = "CENTAUR_TOWN" }
-	{ id = "AMAZON_TOWN" }
-	{ id = "SHADOW_TEMPLE" probability = 0.1 }
+    { id = "BONUS_WILDMEN_CAVE" count = { 0 2 } }
+	{ id = "BONUS_CENTAUR_TOWN" }
+	{ id = "BONUS_AMAZON_TOWN" }
+	{ id = "BONUS_SHADOW_TEMPLE" probability = 0.1 }
   }
   whiteKeeperEnemies = {
     { id = "COTTAGE_BANDITS" count = { 3 5 } }
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
     { id = "RUINS" probability = 0.5 }
-    { id = "WILDMEN_CAVE" count = { 0 2 } }
-	{ id = "RAT_VILLAGE" }
+    { id = "BONUS_WILDMEN_CAVE" count = { 0 2 } }
+	{ id = "BONUS_RAT_VILLAGE" }
 	{ id = "GOBLIN_CAVE" }
-	{ id = "SHADOW_TEMPLE" probability = 0.1 }
+	{ id = "BONUS_SHADOW_TEMPLE" probability = 0.1 }
   }
-  darkKeeperBaseEnemies = {
-    { id = "TUTORIAL_VILLAGE" count = { 1 3 } }
-    { id = "DWARF_CAVE" }
-    { id = "BANDITS" }
-    { id = "ANTS_CLOSED_SMALL" }
-    { id = "KRAKEN" probability = 0.3 }
-    { id = "WILDMEN_CAVE" }
-    { id = "BOTTOMLESS_DUNGEON" }
+  darkKeeperBaseEnemies = append {
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "KRAKEN" }
   }
-  whiteKeeperBaseEnemies = {
-    { id = "DARK_ELF_CAVE" }
-    { id = "ORC_CAVE" }
-    { id = "COTTAGE_BANDITS" }
-    { id = "ANTS_CLOSED_SMALL" }
-    { id = "KRAKEN" probability = 0.3 }
-    { id = "WILDMEN_CAVE" }
-	{ id = "RAT_VILLAGE" }
-	{ id = "GOBLIN_CAVE" }
-    { id = "BOTTOMLESS_DUNGEON" }
+  whiteKeeperBaseEnemies = append {
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "KRAKEN" }
   }
+
 }
 "FOREST" modify append
 {
@@ -61,37 +87,29 @@
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
     { id = "RUINS" probability = 0.5 }
-    { id = "WILDMEN_CAVE" }
-	{ id = "AMAZON_TOWN" }
-	{ id = "SHADOW_TEMPLE" probability = 0.1 }
+    { id = "BONUS_WILDMEN_CAVE" }
+	{ id = "BONUS_AMAZON_TOWN" }
+	{ id = "BONUS_SHADOW_TEMPLE" probability = 0.1 }
   }
   whiteKeeperEnemies = {
-    { id = "WILDMEN_CAVE" }
-	{ id = "RAT_VILLAGE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+	{ id = "BONUS_RAT_VILLAGE" }
 	{ id = "GOBLIN_CAVE" }
     { id = "LIZARDMEN_COTTAGE" count = { 3 5 } }
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
     { id = "RUINS" probability = 0.5 }
-	{ id = "SHADOW_TEMPLE" probability = 0.1 }
+	{ id = "BONUS_SHADOW_TEMPLE" probability = 0.1 }
   }
-  darkKeeperBaseEnemies = {
-    { id = "WILDMEN_CAVE" }
-    { id = "TUTORIAL_VILLAGE" count = { 2 3 } }
-    { id = "ELVEN_COTTAGE" count = {2 3} }
-    { id = "COTTAGE_BANDITS" }
-    { id = "WITCH" probability = 0.2 }
-    { id = "BOTTOMLESS_DUNGEON" }
+  darkKeeperBaseEnemies = append {
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "KRAKEN" }
   }
-  whiteKeeperBaseEnemies = {
-    { id = "WILDMEN_CAVE" }
-	{ id = "RAT_VILLAGE" }
-	{ id = "GOBLIN_CAVE" }
-    { id = "DARK_ELF_CAVE" }
-    { id = "COTTAGE_ORCS" count = { 2 3}}
-    { id = "ANTS_CLOSED_SMALL" }
-    { id = "WITCH" probability = 0.2 }
-    { id = "BOTTOMLESS_DUNGEON" }
+  whiteKeeperBaseEnemies = append {
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "KRAKEN" }
   }
 }
 "MOUNTAIN" modify append
@@ -103,10 +121,10 @@
     { id = "BANDITS" }
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
-    { id = "WILDMEN_CAVE" probability = 0.4 }
-	{ id = "CENTAUR_TOWN" probability = 0.2 }
-	{ id = "AMAZON_TOWN" probability = 0.4}
-	{ id = "SHADOW_TEMPLE" probability = 0.1 }
+    { id = "BONUS_WILDMEN_CAVE" probability = 0.4 }
+	{ id = "BONUS_CENTAUR_TOWN" probability = 0.2 }
+	{ id = "BONUS_AMAZON_TOWN" probability = 0.4}
+	{ id = "BONUS_SHADOW_TEMPLE" probability = 0.1 }
     { id = "TUTORIAL_VILLAGE" count = { 0 2 } }
   }
   whiteKeeperEnemies = {
@@ -115,29 +133,50 @@
     { id = "BANDITS" }
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
-    { id = "WILDMEN_CAVE" count = { 0 2 } probability = 0.6 }
-	{ id = "RAT_VILLAGE" probability = 0.6 }
+    { id = "BONUS_WILDMEN_CAVE" count = { 0 2 } probability = 0.6 }
+	{ id = "BONUS_RAT_VILLAGE" probability = 0.6 }
 	{ id = "GOBLIN_CAVE" count = { 0 2 } }
-	{ id = "SHADOW_TEMPLE" probability = 0.1 }
+	{ id = "BONUS_SHADOW_TEMPLE" probability = 0.1 }
   }
-  darkKeeperBaseEnemies = {
-    { id = "WILDMEN_CAVE" count = { 2 3 } }
-    { id = "DWARF_CAVE" count = { 0 2 } }
-    { id = "TUTORIAL_VILLAGE" count = { 2 3 } }
-    { id = "BANDITS" count = { 1 2 } }
-    { id = "BOTTOMLESS_DUNGEON" }
+  darkKeeperBaseEnemies = append {
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "KRAKEN" }
   }
-  whiteKeeperBaseEnemies = {
-    { id = "WILDMEN_CAVE" }
-    { id = "DARK_ELF_CAVE" count = { 0 2 } }
-    { id = "BANDITS" count = { 1 2 } }
-	{ id = "RAT_VILLAGE" count = { 2 3 } }
-	{ id = "GOBLIN_CAVE" }
-    { id = "BOTTOMLESS_DUNGEON" }
+  whiteKeeperBaseEnemies = append {
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "KRAKEN" }
   }
 }
 
-"VOLCANIC"
+"DESERT" modify append {
+  darkKeeperBaseEnemies = append {
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "KRAKEN" }
+  }
+  whiteKeeperBaseEnemies = append {
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "KRAKEN" }
+  }
+}
+
+"SNOW" modify append {
+  darkKeeperBaseEnemies = append {
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "KRAKEN" }
+  }
+  whiteKeeperBaseEnemies = append {
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "BONUS_WILDMEN_CAVE" }
+    { id = "KRAKEN" }
+  }
+}
+
+"BONUS_VOLCANIC"
 {
   lakes = {
     size = {5 15}
@@ -145,16 +184,16 @@
   }
   overrideWaterType = "MAGMA"
   sandType = "MAGMA"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = {0}
   mountains = {
     lowlandRatio = 0.45
     hillRatio = 0.2
-    hill = "LAVA_ROCK"
-    grass = "LAVA_ROCK"
+    hill = "BONUS_LAVA_ROCK"
+    grass = "BONUS_LAVA_ROCK"
     mountain = "MAGMA"
     mountainDeep = "MAGMA"
-    mountainFloor = "LAVA_ROCK"
+    mountainFloor = "BONUS_LAVA_ROCK"
   }
   wildlife = {
     count = { 6 12 }
@@ -166,37 +205,37 @@
     {
       ratio = 0.01
       density = 0.05
-      onType = "LAVA_ROCK"
-      trees = "vegetationBurnt"
+      onType = "BONUS_LAVA_ROCK"
+      trees = "BONUS_vegetationBurnt"
     }
   }
   darkKeeperEnemies = {
-    { id = "DRAGON_NEWT_COTTAGE" count = { 3 4 } }
-    { id = "HELL_KNIGHT_ISLAND" count = { 2 3 } }
-	{ id = "SHADOW_TEMPLE" probability = 0.5 }
+    { id = "BONUS_DRAGON_NEWT_COTTAGE" count = { 3 4 } }
+    { id = "BONUS_HELL_KNIGHT_ISLAND" count = { 2 3 } }
+	{ id = "BONUS_SHADOW_TEMPLE" probability = 0.5 }
   }
   whiteKeeperEnemies = {
-    { id = "DRAGON_NEWT_COTTAGE" count = { 3 4 } }
-    { id = "HELL_KNIGHT_ISLAND" count = { 2 3 } }
-	{ id = "SHADOW_TEMPLE" probability = 0.5 }
+    { id = "BONUS_DRAGON_NEWT_COTTAGE" count = { 3 4 } }
+    { id = "BONUS_HELL_KNIGHT_ISLAND" count = { 2 3 } }
+	{ id = "BONUS_SHADOW_TEMPLE" probability = 0.5 }
   }
 }
 
-"ENCHANTED_FOREST"
+"BONUS_ENCHANTED_FOREST"
 {
   lakes = {
     size = {5}
     count = {3}
   }
-  overrideWaterType = "FEY_WATER"
-  sandType = "FEY_SAND"
-  items = "magicShrooms"
+  overrideWaterType = "BONUS_FEY_WATER"
+  sandType = "BONUS_FEY_SAND"
+  items = "BONUS_magicShrooms"
   itemCount = {50}
   mountains = {
     lowlandRatio = 0.85
     hillRatio = 0.05
-    hill = "FEY_HILL"
-    grass = "FEY_GRASS"
+    hill = "BONUS_FEY_HILL"
+    grass = "BONUS_FEY_GRASS"
     mountain = "MOUNTAIN"
     mountainDeep = "MOUNTAIN"
     mountainFloor = "FLOOR"
@@ -205,27 +244,27 @@
     count = { 30 40 }
     all = {
       1 "RAVEN"
-      1 "YELLOW_PARROT"
-      1 "RED_PARROT"
-      1 "BLUE_PARROT"
-      1 "GREEN_PARROT"
-      3 "SPRITE"
-      3 "BUNNY"
-	  3 "NON_CASTING_UNICORN"
+      1 "BONUS_YELLOW_PARROT"
+      1 "BONUS_RED_PARROT"
+      1 "BONUS_BLUE_PARROT"
+      1 "BONUS_GREEN_PARROT"
+      3 "BONUS_SPRITE"
+      3 "BONUS_BUNNY"
+	  3 "BONUS_NON_CASTING_UNICORN"
     }
   }
   forests = {
     {
       ratio = 0.9
       density = 0.3
-      onType = "FEY_GRASS"
-      trees = "vegetationFey"
+      onType = "BONUS_FEY_GRASS"
+      trees = "BONUS_vegetationFey"
     }
 	{
       ratio = 0.9
       density = 0.45
-      onType = "FEY_HILL"
-      trees = "vegetationFey"
+      onType = "BONUS_FEY_HILL"
+      trees = "BONUS_vegetationFey"
     }
   }
   darkKeeperEnemies = {
@@ -234,21 +273,21 @@
   }
 }
 
-"DARK_SWAMP"
+"BONUS_DARK_SWAMP"
 {
   lakes = {
     size = {5 24}
     count = { 8 14 }
   }
-  overrideWaterType = "SWAMP_WATER"
-  sandType = "SWAMP_HILL"
-  items = "magicShrooms"
+  overrideWaterType = "BONUS_SWAMP_WATER"
+  sandType = "BONUS_SWAMP_HILL"
+  items = "BONUS_magicShrooms"
   itemCount = {10}
   mountains = {
     lowlandRatio = 0.55
     hillRatio = 0.32
-    hill = "SWAMP_HILL"
-    grass = "SWAMP_GRASS"
+    hill = "BONUS_SWAMP_HILL"
+    grass = "BONUS_SWAMP_GRASS"
     mountain = "MOUNTAIN"
     mountainDeep = "MOUNTAIN2"
     mountainFloor = "FLOOR"
@@ -257,26 +296,26 @@
     {
       ratio = 0.99
       density = 0.25
-      onType = "SWAMP_WATER"
-      trees = "vegetationSwampWater"
+      onType = "BONUS_SWAMP_WATER"
+      trees = "BONUS_vegetationSwampWater"
     }
     {
       ratio = 0.99
       density = 0.25
-      onType = "SWAMP_GRASS"
-      trees = "vegetationSwampGrass"
+      onType = "BONUS_SWAMP_GRASS"
+      trees = "BONUS_vegetationSwampGrass"
     }
     {
       ratio = 0.99
       density = 0.35
-      onType = "SWAMP_HILL"
-      trees = "vegetationSwampGrass"
+      onType = "BONUS_SWAMP_HILL"
+      trees = "BONUS_vegetationSwampGrass"
     }
     {
       ratio = 0.9
       density = 0.25
       onType = "WATER"
-      trees = "vegetationSwampWater"
+      trees = "BONUS_vegetationSwampWater"
     }
   }
   wildlife = {
@@ -284,22 +323,22 @@
     all = {
       1 "RAT"
       1 "BLACK_RAT"
-      1 "GREEN_SPIDER"
+      1 "BONUS_GREEN_SPIDER"
     }
   }
   darkKeeperEnemies = {
-    { id = "RAT_VILLAGE" count = { 3 4 } }
-	{ id = "CROC_LAKE" count = { 1 3 } }
-	{ id = "SHADOW_TEMPLE" probability = 0.1 }
+    { id = "BONUS_RAT_VILLAGE" count = { 3 4 } }
+	{ id = "BONUS_CROC_LAKE" count = { 1 3 } }
+	{ id = "BONUS_SHADOW_TEMPLE" probability = 0.1 }
   }
   whiteKeeperEnemies = {
-    { id = "RAT_VILLAGE" count = { 3 4 } }
-	{ id = "CROC_LAKE" count = { 1 3 } }
-	{ id = "SHADOW_TEMPLE" probability = 0.1 }
+    { id = "BONUS_RAT_VILLAGE" count = { 3 4 } }
+	{ id = "BONUS_CROC_LAKE" count = { 1 3 } }
+	{ id = "BONUS_SHADOW_TEMPLE" probability = 0.1 }
   }
 }
 
-"CITY"
+"BONUS_CITY"
 {
   lakes = {
     size = {5 15}
@@ -307,7 +346,7 @@
   }
   overrideWaterType = "GRASS"
   sandType = "GRASS"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = { 6 12 }
   mountains = {
     lowlandRatio = 0.85
@@ -341,21 +380,22 @@
     }
   }
   darkKeeperEnemies = {
-    { id = "CITY_BUILDING" count = { 1 2 } }
-    { id = "CITY_BUILDING2" count = { 1 2 } }
-    { id = "CITY_BARRACKS" count = { 1 2 } }
-    { id = "CITY_GROUP" count = { 5 7 } }
-	{ id = "CITY_GROUP_SHOP" count = { 2 4 } }
+    { id = "BONUS_CITY_BUILDING" count = { 1 2 } }
+    { id = "BONUS_CITY_BUILDING2" count = { 1 2 } }
+    { id = "BONUS_CITY_BARRACKS" count = { 1 2 } }
+    { id = "BONUS_CITY_GROUP" count = { 5 7 } }
+	{ id = "BONUS_CITY_GROUP_SHOP" count = { 2 4 } }
   }
   whiteKeeperEnemies = {
-    { id = "CITY_BUILDING" count = { 1 2 } }
-    { id = "CITY_BUILDING2" count = { 1 2 } }
-    { id = "CITY_BARRACKS" count = { 1 2 } }
-    { id = "CITY_GROUP" count = { 5 7 } }
-	{ id = "CITY_GROUP_SHOP" count = { 2 4 } }
+    { id = "BONUS_CITY_BUILDING" count = { 1 2 } }
+    { id = "BONUS_CITY_BUILDING2" count = { 1 2 } }
+    { id = "BONUS_CITY_BARRACKS" count = { 1 2 } }
+    { id = "BONUS_CITY_GROUP" count = { 5 7 } }
+	{ id = "BONUS_CITY_GROUP_SHOP" count = { 2 4 } }
   }
 }
-"ORC_CLAN"
+
+"BONUS_ORC_CLAN"
 {
   lakes = {
     size = {5 15}
@@ -363,7 +403,7 @@
   }
   overrideWaterType = "GRASS"
   sandType = "GRASS"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = { 18 24 }
   mountains = {
     lowlandRatio = 0.80
@@ -397,17 +437,18 @@
     }
   }
   darkKeeperEnemies = {
-    { id = "ORC_MINOR" count = { 2 } }
-    { id = "ORC_CITY_SHOP" count = { 3 4 } }
-    { id = "ORC_CITY_GROUP" count = { 4 5 } }
+    { id = "BONUS_ORC_MINOR" count = { 2 } }
+    { id = "BONUS_ORC_CITY_SHOP" count = { 3 4 } }
+    { id = "BONUS_ORC_CITY_GROUP" count = { 4 5 } }
   }
   whiteKeeperEnemies = {
-    { id = "ORC_MINOR" count = { 2 } }
-    { id = "ORC_CITY_SHOP" count = { 3 4 } }
-    { id = "ORC_CITY_GROUP" count = { 4 5 } }
+    { id = "BONUS_ORC_MINOR" count = { 2 } }
+    { id = "BONUS_ORC_CITY_SHOP" count = { 3 4 } }
+    { id = "BONUS_ORC_CITY_GROUP" count = { 4 5 } }
   }
 }
-"ORC_VILLAGE"
+
+"BONUS_ORC_VILLAGE"
 {
   lakes = {
     size = {3 10}
@@ -415,7 +456,7 @@
   }
   overrideWaterType = "GRASS"
   sandType = "GRASS"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = { 18 24 }
   mountains = {
     lowlandRatio = 0.80
@@ -449,15 +490,16 @@
     }
   }
   darkKeeperEnemies = {
-    { id = "ORC_CITY_SHOP" count = { 3 4 } }
-    { id = "ORC_CITY_GROUP" count = { 7 8 } }
+    { id = "BONUS_ORC_CITY_SHOP" count = { 3 4 } }
+    { id = "BONUS_ORC_CITY_GROUP" count = { 7 8 } }
   }
   whiteKeeperEnemies = {
-    { id = "ORC_CITY_SHOP" count = { 3 4 } }
-    { id = "ORC_CITY_GROUP" count = { 7 8 } }
+    { id = "BONUS_ORC_CITY_SHOP" count = { 3 4 } }
+    { id = "BONUS_ORC_CITY_GROUP" count = { 7 8 } }
   }
 }
-"WARRIOR_TOWN"
+
+"BONUS_WARRIOR_TOWN"
 {
   lakes = {
     size = {3 10}
@@ -465,7 +507,7 @@
   }
   overrideWaterType = "GRASS"
   sandType = "GRASS"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = { 18 24 }
   mountains = {
     lowlandRatio = 0.80
@@ -499,15 +541,16 @@
     }
   }
   darkKeeperEnemies = {
-    { id = "WARRIOR_CASTLE" count = { 2 3 } }
-    { id = "WARRIOR_VILLAGE" count = { 7 8 } }
+    { id = "BONUS_WARRIOR_CASTLE" count = { 2 3 } }
+    { id = "BONUS_WARRIOR_VILLAGE" count = { 7 8 } }
   }
   whiteKeeperEnemies = {
-    { id = "ORC_CITY_SHOP" count = { 3 4 } }
-    { id = "ORC_CITY_GROUP" count = { 7 8 } }
+    { id = "BONUS_ORC_CITY_SHOP" count = { 3 4 } }
+    { id = "BONUS_ORC_CITY_GROUP" count = { 7 8 } }
   }
 }
-"PALACE"
+
+"BONUS_PALACE"
 {
   lakes = {
     size = {5 15}
@@ -515,7 +558,7 @@
   }
   overrideWaterType = "GRASS"
   sandType = "GRASS"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = { 6 12 }
   mountains = {
     lowlandRatio = 0.94
@@ -542,24 +585,24 @@
   }
   wildlife = { count = { 0 } all = { } }
   darkKeeperEnemies = {
-	{ id = "ROYAL_BLACKSMITH" count = { 1 } }
-	{ id = "ROYAL_TRAPSMITH" count = { 1 } }
-	{ id = "ROYAL_SCRIBE" count = { 1 } }
-	{ id = "ROYAL_TANNER" count = { 1 } }
-	{ id = "ROYAL_BREWER" count = { 1 } }
-	{ id = "ROYAL_JEWELLER" count = { 1 } }
+	{ id = "BONUS_ROYAL_BLACKSMITH" count = { 1 } }
+	{ id = "BONUS_ROYAL_TRAPSMITH" count = { 1 } }
+	{ id = "BONUS_ROYAL_SCRIBE" count = { 1 } }
+	{ id = "BONUS_ROYAL_TANNER" count = { 1 } }
+	{ id = "BONUS_ROYAL_BREWER" count = { 1 } }
+	{ id = "BONUS_ROYAL_JEWELLER" count = { 1 } }
   }
   whiteKeeperEnemies = {
-	{ id = "ROYAL_BLACKSMITH" count = { 1 } }
-	{ id = "ROYAL_TRAPSMITH" count = { 1 } }
-	{ id = "ROYAL_SCRIBE" count = { 1 } }
-	{ id = "ROYAL_TANNER" count = { 1 } }
-	{ id = "ROYAL_BREWER" count = { 1 } }
-	{ id = "ROYAL_JEWELLER" count = { 1 } }
+	{ id = "BONUS_ROYAL_BLACKSMITH" count = { 1 } }
+	{ id = "BONUS_ROYAL_TRAPSMITH" count = { 1 } }
+	{ id = "BONUS_ROYAL_SCRIBE" count = { 1 } }
+	{ id = "BONUS_ROYAL_TANNER" count = { 1 } }
+	{ id = "BONUS_ROYAL_BREWER" count = { 1 } }
+	{ id = "BONUS_ROYAL_JEWELLER" count = { 1 } }
   }
 }
 
-"CENTAUR_PALACE"
+"BONUS_CENTAUR_PALACE"
 {
   lakes = {
     size = {5 15}
@@ -567,7 +610,7 @@
   }
   overrideWaterType = "GRASS"
   sandType = "GRASS"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = { 6 12 }
   mountains = {
     lowlandRatio = 0.94
@@ -601,28 +644,28 @@
     }
   }
   darkKeeperEnemies = {
-	{ id = "CENTAUR_TOWN" count = { 6 7 } }
+	{ id = "BONUS_CENTAUR_TOWN" count = { 6 7 } }
   }
   whiteKeeperEnemies = {
-	{ id = "CENTAUR_TOWN" count = { 6 7 } }
+	{ id = "BONUS_CENTAUR_TOWN" count = { 6 7 } }
   }
 }
 
-"SHADOW_PALACE"
+"BONUS_SHADOW_PALACE"
 {
   lakes = {
     size = {5 15}
     count = {0}
   }
-  overrideWaterType = "CORRUPTED_HILL"
-  sandType = "CORRUPTED_HILL"
-  items = "magicShrooms"
+  overrideWaterType = "BONUS_CORRUPTED_HILL"
+  sandType = "BONUS_CORRUPTED_HILL"
+  items = "BONUS_magicShrooms"
   itemCount = { 16 32 }
   mountains = {
     lowlandRatio = 0.82
     hillRatio = 0.16
-    hill = "SWAMP_HILL"
-    grass = "CORRUPTED_HILL"
+    hill = "BONUS_SWAMP_HILL"
+    grass = "BONUS_CORRUPTED_HILL"
     mountain = "MOUNTAIN"
     mountainDeep = "MOUNTAIN2"
     mountainFloor = "FLOOR"
@@ -631,14 +674,14 @@
     {
       ratio = 0.9
       density = 0.08
-      onType = "CORRUPTED_HILL"
-      trees = "vegetationWastes"
+      onType = "BONUS_CORRUPTED_HILL"
+      trees = "BONUS_vegetationWastes"
     }
     {
       ratio = 0.99
       density = 0.12
-      onType = "SWAMP_HILL"
-      trees = "vegetationSwampGrass"
+      onType = "BONUS_SWAMP_HILL"
+      trees = "BONUS_vegetationSwampGrass"
     }
   }
   wildlife = {
@@ -646,81 +689,82 @@
     all = {
       2 "BAT"
       1 "BLACK_RAT"
-      1 "GREEN_SPIDER"
+      1 "BONUS_GREEN_SPIDER"
     }
   }
  darkKeeperEnemies = {
-	{ id = "SHADOW_BLACKSMITH" count = { 1 } }
-	{ id = "SHADOW_TRAPSMITH" count = { 1 } }
-	{ id = "SHADOW_SCRIBE" count = { 1 } }
-	{ id = "SHADOW_TANNER" count = { 1 } }
-	{ id = "SHADOW_BREWER" count = { 1 } }
-	{ id = "SHADOW_JEWELLER" count = { 1 } }
+	{ id = "BONUS_SHADOW_BLACKSMITH" count = { 1 } }
+	{ id = "BONUS_SHADOW_TRAPSMITH" count = { 1 } }
+	{ id = "BONUS_SHADOW_SCRIBE" count = { 1 } }
+	{ id = "BONUS_SHADOW_TANNER" count = { 1 } }
+	{ id = "BONUS_SHADOW_BREWER" count = { 1 } }
+	{ id = "BONUS_SHADOW_JEWELLER" count = { 1 } }
   }
   whiteKeeperEnemies = {
-	{ id = "SHADOW_BLACKSMITH" count = { 1 } }
-	{ id = "SHADOW_TRAPSMITH" count = { 1 } }
-	{ id = "SHADOW_SCRIBE" count = { 1 } }
-	{ id = "SHADOW_TANNER" count = { 1 } }
-	{ id = "SHADOW_BREWER" count = { 1 } }
-	{ id = "SHADOW_JEWELLER" count = { 1 } }
+	{ id = "BONUS_SHADOW_BLACKSMITH" count = { 1 } }
+	{ id = "BONUS_SHADOW_TRAPSMITH" count = { 1 } }
+	{ id = "BONUS_SHADOW_SCRIBE" count = { 1 } }
+	{ id = "BONUS_SHADOW_TANNER" count = { 1 } }
+	{ id = "BONUS_SHADOW_BREWER" count = { 1 } }
+	{ id = "BONUS_SHADOW_JEWELLER" count = { 1 } }
   }
 }
 
-"SPIDER_MOUNTAIN" inherit "MOUNTAIN"
+"BONUS_SPIDER_MOUNTAIN" inherit "MOUNTAIN"
 {
   forests = {
     {
       ratio = 0.3
       density = 0.5
       onType = "GRASS"
-      trees = "vegetationWebs"
+      trees = "BONUS_vegetationWebs"
     }
     {
       ratio = 0.8
       density = 0.5
       onType = "HILL"
-      trees = "vegetationWebs"
+      trees = "BONUS_vegetationWebs"
     }
   }
   keeperBiome = none
 }
   
-"HAUNTED_GRASSLAND" inherit "GRASSLAND"
+"BONUS_HAUNTED_GRASSLAND" inherit "GRASSLAND"
 {
   forests = {
     {
       ratio = 0.3
       density = 0.25
       onType = "GRASS"
-      trees = "vegetationHaunted"
+      trees = "BONUS_vegetationHaunted"
     }
     {
       ratio = 0.8
       density = 0.25
       onType = "HILL"
-      trees = "vegetationHaunted"
+      trees = "BONUS_vegetationHaunted"
     }
   }
   wildlife = {
     count = { 3 6 }
     all = {
-      5 "SKELETON"
+      5 "BONUS_SKELETON"
     }
   }
   darkKeeperEnemies = {
     { id = "CORPSES"count = {2} }
     { id = "RUINS" count = { 4 6 } }
-	{ id = "SHADOW_TEMPLE" count = { 0 2 } }
+	{ id = "BONUS_SHADOW_TEMPLE" count = { 0 2 } }
   }
   whiteKeeperEnemies = {
     { id = "CORPSES"count = {2} }
     { id = "RUINS" count = { 4 6 } }
-	{ id = "SHADOW_TEMPLE" count = { 0 2 } }
+	{ id = "BONUS_SHADOW_TEMPLE" count = { 0 2 } }
   }  
   keeperBiome = none
 }
-"CITY_RUINS"
+
+"BONUS_CITY_RUINS"
 {
   lakes = {
     size = {5 15}
@@ -728,7 +772,7 @@
   }
   overrideWaterType = "GRASS"
   sandType = "GRASS"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = { 6 12 }
   mountains = {
     lowlandRatio = 0.9
@@ -761,13 +805,14 @@
     }
   }
   darkKeeperEnemies = {
-    { id = "COTTAGE_BANDIT_RUINS" count = { 2 3 } }
+    { id = "BONUS_COTTAGE_BANDIT_RUINS" count = { 2 3 } }
   }
   whiteKeeperEnemies = {
-    { id = "COTTAGE_BANDIT_RUINS" count = { 2 3 } }
+    { id = "BONUS_COTTAGE_BANDIT_RUINS" count = { 2 3 } }
   }
 }
-"ELF_FOREST"
+
+"BONUS_ELF_FOREST"
 {
   lakes = {
     size = {10 20}
@@ -808,21 +853,22 @@
     }
   }
   darkKeeperEnemies = {
-    { id = "ELF_VILLAGE" count = { 3 5 } }
-	{ id = "ELF_VILLAGE_SHOP" count = { 2 4 } }
+    { id = "BONUS_ELF_VILLAGE" count = { 3 5 } }
+	{ id = "BONUS_ELF_VILLAGE_SHOP" count = { 2 4 } }
 	{ id = "ELVES" }
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
   }
   whiteKeeperEnemies = {
-    { id = "ELF_VILLAGE" count = { 3 5 } }
-	{ id = "ELF_VILLAGE_SHOP" count = { 3 4 } }
+    { id = "BONUS_ELF_VILLAGE" count = { 3 5 } }
+	{ id = "BONUS_ELF_VILLAGE_SHOP" count = { 3 4 } }
 	{ id = "ELVES" }
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
   }
 }
-"DWARF_MOUNTAIN"
+
+"BONUS_DWARF_MOUNTAIN"
 {
   lakes = {
     size = { 2 }
@@ -830,7 +876,7 @@
   }
   overrideWaterType = "HILL"
   sandType = "HILL"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = { 0 }
   mountains = {
     lowlandRatio = 0.77
@@ -846,7 +892,7 @@
       ratio = 0.90
       density = 0.08
       onType = "HILL"
-      trees = "vegetationDwarf"
+      trees = "BONUS_vegetationDwarf"
     }
   }
   wildlife = {
@@ -862,7 +908,8 @@
   whiteKeeperEnemies = {
   }
 }
-"DWARF_MOUNTAIN_SMALL"
+
+"BONUS_DWARF_MOUNTAIN_SMALL"
 {
   lakes = {
     size = { 2 }
@@ -870,7 +917,7 @@
   }
   overrideWaterType = "HILL"
   sandType = "HILL"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = { 0 }
   mountains = {
     lowlandRatio = 0.68
@@ -886,7 +933,7 @@
       ratio = 0.70
       density = 0.08
       onType = "HILL"
-      trees = "vegetationDwarf"
+      trees = "BONUS_vegetationDwarf"
     }
   }
   wildlife = {
@@ -904,7 +951,8 @@
     { id = "DWARF_CAVE" count = { 4 6 } }
   }
 }
-"DARK_ELF_MOUNTAIN"
+
+"BONUS_DARK_ELF_MOUNTAIN"
 {
   lakes = {
     size = { 2 }
@@ -912,7 +960,7 @@
   }
   overrideWaterType = "HILL"
   sandType = "HILL"
-  items = "magicShrooms"
+  items = "BONUS_magicShrooms"
   itemCount = { 0 }
   mountains = {
     lowlandRatio = 0.65
@@ -928,7 +976,7 @@
       ratio = 0.90
       density = 0.08
       onType = "HILL"
-      trees = "vegetationDwarf"
+      trees = "BONUS_vegetationDwarf"
     }
   }
   wildlife = {
@@ -947,14 +995,15 @@
     { id = "DARK_ELF_CAVE" count = { 2 3 } }
   }
 }
-"HERB_GRASSLAND" inherit "GRASSLAND"
+
+"BONUS_HERB_GRASSLAND" inherit "GRASSLAND"
 {
   forests = {
   {
       ratio = 0.3
       density = 0.25
       onType = "GRASS"
-      trees = "vegetationHerbs"
+      trees = "BONUS_vegetationHerbs"
     }
   }
   keeperBiome = none
