@@ -1,14 +1,6 @@
-#Spell Circles
-"true form"
-{
-  symbol = "O"
-  effect = Name "Trueform" RemovePermanent POLYMORPHED
-  targetSelf = true
-  cooldown = 100
-}
+#Spells for adventurer clases.
 
-#Other
-"rapid magic missile"
+"gnomish rapid magic missile"
   {
     symbol = "⥇"
     effect = Name "rapid magic missile" Damage SPELL_DAMAGE SPELL
@@ -16,173 +8,58 @@
     cooldown = 2
     sound = SPELL_BLAST
   }
-"advanced rapid magic missile"
-  {
-    upgrade = "rapid magic missile"
-    symbol = "⥇"
-    effect = Name "advanced rapid magic missile" Damage SPELL_DAMAGE SPELL
-    range = 6
-    cooldown = 2
-    sound = SPELL_BLAST
-  }
-"expert rapid magic missile"
-  {
-    upgrade = "advanced rapid magic missile"
-    symbol = "⥇"
-    effect = Name "expert rapid magic missile" Damage SPELL_DAMAGE SPELL
-    range = 8
-    cooldown = 1
-    sound = SPELL_BLAST
-  }
-"magic blast"
-  {
-	upgrade = "directed blast"
-    symbol = "💨"
-    effect = Name "magic blast" { Damage SPELL_DAMAGE SPELL Blast }
-    range = 6
-    endOnly = true
-    cooldown = 20
-    sound = SPELL_BLAST
-  }
-"advanced magic blast"
-  {
-    upgrade = "magic blast"
-    symbol = "💨"
-    effect = Name "advanced magic blast" { Damage SPELL_DAMAGE SPELL Blast }
-    range = 8
-    endOnly = true
-    cooldown = 16
-    sound = SPELL_BLAST
-  }
-"expert magic blast"
-  {
-    upgrade = "advanced magic blast"
-    symbol = "💨"
-    effect = Name "expert magic blast" { Damage SPELL_DAMAGE SPELL Blast }
-    range = 10
-    endOnly = true
-    cooldown = 12
-    sound = SPELL_BLAST
-  }
-"battle cry"
+"gnomish battle cry"
   {
     symbol = "💪"
-    effect = Name "battle cry" Lasting RAGE
+    effect = Name "battle cry" Lasting 20 RAGE
     cooldown = 90
     sound = SPELL_STR_BONUS
   }
-"summon contraption"
-  {
-   symbol = "👾"
-   effect = Name "summon contraption" Summon "GIANT_ROBOT" { 1 2 } 100
-   cooldown = 90
-   sound = SPELL_SUMMON_SPIRIT
-  }
-"summon automaton"
-  {
-   symbol = "👾"
-   effect = Name "summon automaton" Summon "AUTOMATON" { 1 2 } 100
-   cooldown = 90
-   sound = SPELL_SUMMON_SPIRIT
-  }
-"summon automaton army"
-  {
-   symbol = "👾!"
-   effect = Name "summon automaton army" Summon "AUTOMATON" { 14 18 } 100
-   cooldown = 3000
-   sound = SPELL_SUMMON_SPIRIT
-  }
-"repair"
-  {
-    symbol = "🔧"
-    effect = Name "repair" { RegrowBodyPart 1 Lasting SPEED }
-    range = 1
-    targetSelf = true
-    cooldown = 30
-    sound = SPELL_STR_BONUS
-  }
-"haste other"
-  {
-    symbol = "🏃"
-    effect = Name "haste other" Lasting SPEED
-    targetSelf = false
-    range = 3
-    cooldown = 110
-    sound = SPELL_SPEED_SELF
-  }
-"area haste"
-  {
-    upgrade = "haste other"
-    symbol = "🏃"
-    effect = Name "area haste" { Message NORMAL  "Time is altered." Area 2 Filter Not Enemy Lasting SPEED }
-    cooldown = 110
-    sound = SPELL_SPEED_SELF
-  }
-"defend other"
+"gnomish area defense bonus"
   {
     symbol = "🛡"
-    effect = Name "defend other" Lasting 50 DEF_BONUS
-    targetSelf = false
-    range = 3
+    effect = Name "area defense bonus" { Message NORMAL  "Spirit of Endurance invoked." Area 2 Filter Not Enemy Lasting 20 DEF_BONUS }
     cooldown = 70
     sound = SPELL_DEX_BONUS
   }
-"area defense bonus"
+"gnomish block"
   {
-    upgrade = "defend other"
     symbol = "🛡"
-    effect = Name "area defense bonus" { Message NORMAL  "Spirit of Endurance invoked." Area 2 Filter Not Enemy Lasting 50 DEF_BONUS }
+    effect = Name "block" Lasting 20 DEF_BONUS
     cooldown = 70
     sound = SPELL_DEX_BONUS
   }
-"block"
-  {
-    symbol = "🛡"
-    effect = Name "block" Lasting 50 DEF_BONUS
-    cooldown = 70
-    sound = SPELL_DEX_BONUS
-  }
-"friendly damage bonus"
+"gnomish area damage bonus"
   {
     symbol = "💪"
-    effect = Name "friendly damage bonus" Lasting 50 DAM_BONUS
-    targetSelf = false
-    range = 3
+    effect = Name "area damage bonus" { Message NORMAL  "Powers of violence called." Area 2 Filter Not Enemy Lasting 20 DAM_BONUS }
     cooldown = 70
     sound = SPELL_STR_BONUS
   }
-"area damage bonus"
-  {
-    symbol = "💪"
-    effect = Name "area damage bonus" { Message NORMAL  "Powers of violence called." Area 2 Filter Not Enemy Lasting 50 DAM_BONUS }
-    cooldown = 70
-    sound = SPELL_STR_BONUS
-  }
-"healing totem"
+"gnomish healing totem"
   {
     symbol = "¬+¬"
-    effect = Name "healing totem" Summon "HEALING_TOTEM" { 1 } 100
+    effect = Name "healing totem" Summon "GNOMEPLUS_HEALING_TOTEM" { 1 } 100
     cooldown = 250
     sound = SPELL_SUMMON_SPIRIT
   }
-"buff totem"
+"gnomish buff totem"
   {
     symbol = "¬💪¬"
-    effect = Name "buff totem" Summon "BUFF_TOTEM" { 1 2 } 100
+    effect = Name "buff totem" Summon "GNOMEPLUS_BUFF_TOTEM" { 1 2 } 100
     cooldown = 250
     sound = SPELL_SUMMON_SPIRIT
   }
-"magma bolt"
+"gnomish magma bolt"
   {
    symbol = "{🔥}"
-   effect = Name "magma bolt" { Fire{} Blast }
+   effect = Name "magma bolt" { Fire {} Blast }
    range = 6
    cooldown = 8
    sound = SPELL_FIRE_SPHERE_PET
   }
-"advanced firewall"
+"gnomish advanced firewall"
   {
-    upgrade = "firewall"
     symbol = "𝍔"
     effect = Name "advanced firewall"  CustomArea PlaceFurniture "FIRE_WALL" { { 0 -3 } { 0 -2 } { 0 -1 } {0 0} {0 1} {0 2} {0 3} {1 -2} {1 -1} {1 0} {1 1} {1 2} {-1 -2} {-1 -1} {-1 0} {-1 1} { -1 2 } }
     endOnly = true
@@ -190,69 +67,69 @@
     cooldown = 30
     sound = SPELL_BLAST
   }
-"expert firewall"
+"gnomish expert firewall"
   {
-    upgrade = "advanced firewall"
+    upgrade = "gnomish advanced firewall"
     symbol = "𝍔"
-    effect = Name "expert Firewall"  CustomArea PlaceFurniture "FIRE_WALL" { { 0 -4 } { 0 -3 }{ 0 -2 }{ 0 -1 }{ 0 0 }{ 0 1 }{ 0 2 }{ 0 3 }{ 0 4 }{ 1 -3 }{ 1 -2 }{ 1 -1 }{ 1 0 }{ 1 1 }{ 1 2 }{ 1 3 }{ -1 -3 }{ -1 -2 }{ -1 -1 }{ -1 0 }{ -1 1 }{ -1 2 }{ -1 3 }}
+    effect = Name "expert firewall"  CustomArea PlaceFurniture "FIRE_WALL" { { 0 -4 } { 0 -3 }{ 0 -2 }{ 0 -1 }{ 0 0 }{ 0 1 }{ 0 2 }{ 0 3 }{ 0 4 }{ 1 -3 }{ 1 -2 }{ 1 -1 }{ 1 0 }{ 1 1 }{ 1 2 }{ 1 3 }{ -1 -3 }{ -1 -2 }{ -1 -1 }{ -1 0 }{ -1 1 }{ -1 2 }{ -1 3 }}
     endOnly = true
     range = 6
     cooldown = 30
     sound = SPELL_BLAST
   }
-"advanced fireball"
+"gnomish advanced fireball"
   {
     upgrade = "fireball"
     symbol = "🔥"
-    effect = Name "advanced fireball" Fire{}
+    effect = Name "advanced fireball" Fire {}
     fx = {FIREBALL}
     range = 8
     cooldown = 20
     sound = SPELL_FIRE_SPHERE_PET
   }
-"expert fireball"
+"gnomish expert fireball"
   {
-    upgrade = "advanced fireball"
+    upgrade = "gnomish advanced fireball"
     symbol = "🔥"
-    effect = Name "expert fireball" Fire{}
+    effect = Name "expert fireball" Fire {}
     fx = {FIREBALL}
     range = 12
     cooldown = 10
     sound = SPELL_FIRE_SPHERE_PET
   }
-"fireblast"
+"gnomish fireblast"
   {
     symbol = "🔥💥"
-    effect = Name "fireblast" { Fire{} CircularBlast Blast }
+    effect = Name "fireblast" { Fire {} CircularBlast Blast }
     fx = {FIREBALL}
     range = 8
     cooldown = 30
     sound = SPELL_BLAST
   }
-"advanced fireblast"
+"gnomish advanced fireblast"
   {
-    upgrade = "fireblast"
+    upgrade = "gnomish fireblast"
     symbol = "🔥💥"
-    effect = Name "advanced fireblast" { Fire{} CircularBlast Blast }
+    effect = Name "advanced fireblast" { Fire {} CircularBlast Blast }
     fx = {FIREBALL}
     range = 10
     cooldown = 25
     sound = SPELL_BLAST
   }
-"expert fireblast"
+"gnomish expert fireblast"
   {
-    upgrade = "advanced fireblast"
+    upgrade = "gnomish advanced fireblast"
     symbol = "🔥💥"
-    effect = Name "expert fireblast" { Fire{} CircularBlast Blast }
+    effect = Name "expert fireblast" { Fire {} CircularBlast Blast }
     fx = {FIREBALL}
     range = 12
     cooldown = 20
     sound = SPELL_BLAST
   }
-"explosion"
+"gnomish explosion"
   {
     symbol = "🔥💣"
-    effect = Name "explosion" { Area 12 Filter Enemy Fire{} Area 12 Filter Enemy Blast Area 12 Filter Enemy Damage SPELL_DAMAGE SPELL 
+    effect = Name "explosion" { Area 12 Filter Enemy Fire {} Area 12 Filter Enemy Blast Area 12 Filter Enemy Damage SPELL_DAMAGE SPELL 
     CustomArea PlaceFurniture "FIRE_WALL" {{ 0 -12 }{ 0 -10}{ 0 -8 }{0 -6}{ 0 -4 }{0 -2 }{0 2 }{0 4 }{0 6 }{0 8 }{0 10}{ 0 12 }{2 -10}{ 2 -8}{ 2 -6}{ 2 -4}{ 2 -2}{ 2 0}{ 2 2}{ 2 4}{ 2 6}{ 2 8}{ 2 10}{ 4 8}{ 4 6}{ 4 4}{ 4 2}{ 4 0}{ 4 -2}{ 4 -4}{ 4 -6}{ 4 -8}{ 
     6 6}{ 6 4}{ 6 2}{ 6 0}{ 6 -2}{ 6 -4}{ 6 -6}{ 8 4}{ 8 2}{ 8 0}{ 8 -2}{ 8 -4}{ 10 2}{ 10 0}{ 10 -2}{ 12 0}{ -2 -10}{ -2 -8}{ -2 -6}{ -2 -4}{ -2 -2}{ -2 0}{ -2 2}{ -2 4}{ -2 6}{ -2 8}{ -2 10}{ -4 -8}{ -4 -6}{ -4 -4}{ -4 -2}{ -4 0}{ -4 2}{ -4 2}{ -4 4}{ -4 6}{ -4 8}{
     -6 6}{ -6 4}{ -6 2}{ -6 0}{ -6 -2}{ -6 -4}{ -6 -6}{ -8 4}{ -8 2}{ -8 0}{ -8 2}{ -8 4}{ -10 2}{ -10 0 }{-10 -2}{ -12 0}} }
@@ -260,205 +137,202 @@
     cooldown = 1500
     sound = SPELL_BLAST
   }
-"stone golem"
+"gnomish stone golem"
   {
    symbol = "👤"
    effect = Name "stone golem" Summon "STONE_GOLEM" { 1 2 } 100
    cooldown = 100
    sound = SPELL_SUMMON_SPIRIT
  }
-"stone golems"
+"gnomish stone golems"
  {
-   upgrade = "stone golem"
+   upgrade = "gnomish stone golem"
    symbol = "👤"
    effect = Name "stone golems" Summon "STONE_GOLEM" { 4 7 } 100
    cooldown = 100
    sound = SPELL_SUMMON_SPIRIT
  }
-"iron golem"
+"gnomish iron golem"
  {
    symbol = "👤"
    effect = Name "iron golem" Summon "IRON_GOLEM" { 1 2 } 100
    cooldown = 100
    sound = SPELL_SUMMON_SPIRIT
  }
-"iron golems"
+"gnomish iron golems"
  {
-   upgrade = "iron golem"
+   upgrade = "gnomish iron golem"
    symbol = "👤"
    effect = Name "iron golems" Summon "IRON_GOLEM" { 4 7 } 100
    cooldown = 100
    sound = SPELL_SUMMON_SPIRIT
  }
-"adamantine golem"
+"gnomish adamantine golem"
  {
    symbol = "o"
    effect = Name "adamantine golem" Summon "ADA_GOLEM" { 1 2 } 100
    cooldown = 100
    sound = SPELL_SUMMON_SPIRIT
  }
-"adamantine golems"
+"gnomish adamantine golems"
 {
-   upgrade = "adamantine golem"
+   upgrade = "gnomish adamantine golem"
    symbol = "oo"
    effect = Name "adamantine golems" Summon "ADA_GOLEM" { 4 7 } 100
    cooldown = 100
    sound = SPELL_SUMMON_SPIRIT
  }
- "snakes"
+ "gnomish snakes"
  {
    symbol = "🐍🐍"
    effect = Name "snakes" Summon "SNAKE" { 7 8 } 100
    cooldown = 100
    sound = SPELL_SUMMON_SPIRIT 
  }
-"spiders"
- {
-   symbol = "🕷"
-   effect = Name "spiders" Summon "SPIDER" { 2 3 } 100
-   cooldown = 100
-   sound = SPELL_SUMMON_SPIRIT
- }
-"poison spores"
- {
-   symbol = "☠"
-   range = 5
-   effect = Name "poison spores" Lasting POISON
-   cooldown = 20
-   sound = SPELL_AIR_BLAST
- }
-"blood curse"
+
+"gnomish blood curse"
  {
    symbol = "☛"
    range = 10
-   effect = Name "blood curse" Lasting 50 BLEEDING
+   effect = Name "blood curse" Lasting 20 BLEEDING
    cooldown = 125
    sound = SPELL_BLAST
  }  
-"freezing vines"
+ 
+"gnomish freezing vines"
  {
    symbol = "🙙"
    range = 10
-   effect = Name "freezing vines" { Message NORMAL  "Freezing vines burst from the ground."  Lasting FROZEN }
+   effect = Name "freezing vines" { Message NORMAL  "Freezing vines burst from the ground."  Lasting 20 FROZEN }
    cooldown = 70
    sound = SPELL_STR_BONUS
  }
-"resist magic"
+ 
+ "gnomish stone to mud"
+ {
+   symbol = "🕳"
+   effect = Name "stone to mud" Area 2 DestroyWalls DIG
+   cooldown = 500
+   sound = SPELL_AIR_BLAST
+ }
+
+ "gnomish regeneration" 
+  {
+    symbol = "+"
+    effect = Name "regeneration" Lasting 50 REGENERATION
+    cooldown = 50
+    sound = SPELL_DEX_BONUS
+  }
+
+ 
+"gnomish resist magic"
  {
    symbol = "O"
-   effect = Name "resist magic" Lasting 50 MAGIC_RESISTANCE
+   effect = Name "resist magic" Lasting 20 MAGIC_RESISTANCE
    cooldown = 80
    sound = SPELL_DEX_BONUS
  }
-"light"
- {
-   symbol = "🕯"
-   effect = Name "light" Lasting LIGHT_SOURCE
-   cooldown = 80
-   sound = SPELL_SUMMON_SPIRIT
- }
-"darkness"
+ 
+"gnomish darkness"
  {
    symbol = "☁"
    effect = Name "darkness" Lasting DARKNESS_SOURCE
    cooldown = 14
    sound = SPELL_SUMMON_SPIRIT
  }
-"wolves"
+ 
+"gnomish wolves"
  {
    symbol = "🐺"
    effect = Name "wolves" Summon "WOLF" { 5 6 } 100
    cooldown = 150
    sound = SPELL_SUMMON_SPIRIT
  }
-"bear"
+ 
+"gnomish bear"
  {
    symbol = "🐻"
    effect = Name "bear" Summon "CAVE_BEAR" { 3 4 } 100
    cooldown = 80
    sound = SPELL_SUMMON_SPIRIT
  }
-"boar"
+ 
+"gnomish boar"
  {
    symbol = "^"
    effect = Name "boar" Summon "BOAR" { 3 4 } 100
    cooldown = 50
    sound = SPELL_SUMMON_SPIRIT
  }
-"raven"
- {
-   symbol = "🐦"
-   effect = Name "raven" Summon "RAVEN" { 1 2 } 100
-   cooldown = 20
-   sound = SPELL_SUMMON_SPIRIT
- }
-"levitate"
- {
-   symbol = "^"
-   effect = Name "levitate" Lasting FLYING
-   cooldown = 175
-   sound = SPELL_SPEED_SELF
- }
-"fire shield"
+
+"gnomish fire shield"
  {
    symbol = "❂"
-   effect = Name "fire shield" Lasting 50 FIRE_RESISTANT
+   effect = Name "fire shield" Lasting 20 FIRE_RESISTANT
    cooldown = 100
    sound = SPELL_INVISIBILITY
  }
-"area fire shield"
+ 
+"gnomish area fire shield"
  {
-   upgrade = "fire shield"
+   upgrade = "gnomish fire shield"
    symbol = "❂"
-   effect = Name "area fire shield" { Message NORMAL  "Fire charm summoned." Area 3 Filter Not Enemy Lasting 50 FIRE_RESISTANT }
+   effect = Name "area fire shield" { Message NORMAL  "Fire charm summoned." Area 3 Filter Not Enemy Lasting 20 FIRE_RESISTANT }
    cooldown = 80
    sound = SPELL_INVISIBILITY
  }
-"telepathy"
+ 
+"gnomish telepathy"
  {
    symbol = "💭"
    effect = Name "telepathy" Lasting TELEPATHY
    cooldown = 175
    sound = SPELL_INVISIBILITY
  }
-"elf vision"
+ 
+"gnomish elf vision"
  {
    symbol = "👁"
    effect = Name "elf vision" Lasting ELF_VISION
    cooldown = 90
    sound = SPELL_SPEED_SELF
  }
-"weapon dodge"
+ 
+"gnomish weapon dodge"
  {
    symbol = "⇠⇢"
-   effect = Name "weapon dodge" Lasting 50 MELEE_RESISTANCE
+   effect = Name "weapon dodge" Lasting 20 MELEE_RESISTANCE
    cooldown = 90
    sound = SPELL_DEX_BONUS
  }
-"arrow shield"
+
+"gnomish arrow shield"
  {
    symbol = "➵◌"
-   effect = Name "arrow shield" Lasting 50 RANGED_RESISTANCE
+   effect = Name "arrow shield" Lasting 20 RANGED_RESISTANCE
    cooldown = 50
    sound = SPELL_DEX_BONUS
  }
-"cause blindness" 
+ 
+"gnomish cause blindness" 
  {
    symbol = "👀"
    range = 5
-   effect = Name "cause blindness" Lasting BLIND
+   effect = Name "cause blindness" Lasting 20 BLIND
    cooldown = 100
    sound = SPELL_DECEPTION
  }
-"cripple"
+ 
+"gnomish cripple"
  {
    symbol = "X"
    range = 5
-   effect = Name "cripple" Lasting COLLAPSED
+   effect = Name "cripple" Lasting 20 COLLAPSED
    cooldown = 120
    sound = SPELL_BLAST
  }
-"mind bolt" 
+ 
+"gnomish mind bolt"
  {
    symbol = "⇝"
    range = 1
@@ -466,462 +340,123 @@
    cooldown = 180
    sound = SPELL_BLAST
  }
-"advanced mind bolt"
+ 
+"gnomish advanced mind bolt"
  {
-   upgrade = "mind bolt"
+   upgrade = "gnomish mind bolt"
    symbol = "⇝"
    range = 6
    effect = Name "advanced mind bolt" Lasting INSANITY
    cooldown = 120
    sound = SPELL_BLAST
  }
-"arrow attraction"
- {
-   symbol = "🚶↩"
-   range = 5
-   effect = Name "arrow attraction" Lasting 50 RANGED_VULNERABILITY
-   cooldown = 60
-   sound = SPELL_BLAST
- }
-"mana curse"
+ 
+"gnomish mana curse"
  {
    symbol = "☞"
    range = 5
-   effect = Name "mana curse" Lasting 50 MAGIC_VULNERABILITY
+   effect = Name "mana curse" Lasting 20 MAGIC_VULNERABILITY
    cooldown = 60
    sound = SPELL_BLAST
  }
-"regrow body part"
+ 
+"gnomish regrow body part"
  {
    symbol = "⨢"
    effect = Name "regrow body part" RegrowBodyPart 1
    cooldown = 3000
    sound = SPELL_BLAST
  }
- "summon air elementals"
+ 
+ "gnomish summon air elementals"
  {
    symbol = "||"
    effect = Name "summon air elementals" Summon "AIR_ELEMENTAL" { 3 4 } 100
    cooldown = 200
    sound = SPELL_SUMMON_SPIRIT
  }
-"lesser eye servant"
+ 
+"gnomish eye servant"
  {
    symbol = "👁️"
-   effect = Name "lesser eye servant" Summon "LESSER_EYE_SERVANT" { 1 2 } 100
+   effect = Name "eye servant" Summon "GNOMEPLUS_EYE_SERVANT" { 1 2 } 100
+   cooldown = 80
+   sound = SPELL_SUMMON_SPIRIT
+ }
+ 
+ "gnomish lesser eye servant"
+ {
+   symbol = "👁️"
+   effect = Name "lesser eye servant" Summon "GNOMEPLUS_LESSER_EYE_SERVANT" { 1 2 } 100
    cooldown = 80
    sound = SPELL_SUMMON_SPIRIT 
  }
-"summon ocean portal"
- {
-   symbol = "@"
-   effect = Name "summon ocean portal" Summon "OCEAN_PORTAL" { 1 2 } 100
-   cooldown = 200
-   sound = SPELL_SUMMON_SPIRIT
- }
-"adoxie eye"
- {
-   symbol =  "(.)"
-   effect = Name "adoxie eye" Summon "ADOXIE_EYE" { 1 2 } 100
-   cooldown = 50
-   sound = SPELL_SUMMON_SPIRIT
- }
-"axedio right hand"
-{
-  symbol = "-."
-  effect = Name "axedio right hand" Summon "AXEDIO_HAND_RIGHT" { 1 } 50
-  cooldown = 50
-  sound = SPELL_SUMMON_SPIRIT
-}
-"axedio left hand"
-{
-  symbol = ".-"
-  effect = Name "axedio left hand" Summon "AXEDIO_HAND_LEFT" { 1 } 50
-  cooldown = 50
-  sound = SPELL_SUMMON_SPIRIT
-}
-"axedio left foot"
-{
-  symbol = "_|"
-  effect = Name "axedio left foot" Summon "AXEDIO_FOOT_LEFT" { 1 } 50
-  cooldown = 50
-  sound = SPELL_SUMMON_SPIRIT
-}
-"axedio right foot"
-{
-  symbol = "|_"
-  effect = Name "axedio right foot" Summon "AXEDIO_FOOT_RIGHT" { 1 } 50
-  cooldown = 50
-  sound = SPELL_SUMMON_SPIRIT
-}
-"eye servant"
- {
-   symbol = "👁️"
-   effect = Name "eye servant" Summon "EYE_SERVANT" { 1 2 } 100
-   cooldown = 80
-   sound = SPELL_SUMMON_SPIRIT
- }
-"summon skeletons"
+
+ 
+"gnomish summon skeletons"
  {
    symbol = "☠"
-   effect = Name "summon skeletons" Summon "SKELETON" { 1 5 } 100
+   effect = Name "summon skeletons" Summon "SKELETON_ARCHER" { 1 5 } 100
    cooldown = 70
    sound = SPELL_SUMMON_SPIRIT
  }
-"summon skeleton warriors"
+ 
+"gnomish summon skeleton warriors"
  {
-   upgrade = "summon skeletons"
+   upgrade = "gnomish summon skeletons"
    symbol = "☠"
    effect = Name "summon skeleton warriors" Summon "SKELETON_WARRIOR" { 1 5 } 100
    cooldown = 70
    sound = SPELL_SUMMON_SPIRIT
  }
-"summon skeleton mages"
+ 
+"gnomish summon skeleton mages"
  {
    symbol = "☠"
-   effect = Name "summon skeleton mages" Summon "SKELETON_MAGE" { 1 3 } 100
+   effect = Name "summon skeleton mages" Summon "GNOMEPLUS_SKELETON_MAGE" { 1 3 } 100
    cooldown = 70
    sound = SPELL_SUMMON_SPIRIT
  }
-"disenchantment bolt" 
- {
-   symbol = "⇝"
-   range = 10
-   effect = Name "disenchantment bolt" Enhance ARMOR -1
-   cooldown = 180
-   sound = SPELL_BLAST
-}
-"summon giant chickens"
- {
-   symbol = "🐔"
-   effect = Name "summon giant chickens" Summon "GIANT_CHICKEN" { 4 7 } 100
-   cooldown = 40
-   sound = SPELL_SUMMON_SPIRIT
- }
-"summon chickens"
- {
-   symbol = ".."
-   effect = Name "summon chickens" Summon "BATTLE_CHICKEN" { 4 7 } 100
-   cooldown = 20
-   sound = SPELL_SUMMON_SPIRIT
- }
-"summon goblin kaboomers"
- {
-   symbol = "👺"
-   effect = Name "summon goblin kaboomers" Summon "GOBLIN_KABOOMER" { 3 5 } 100
-   cooldown = 50
-   sound = SPELL_SUMMON_SPIRIT
- }
-"summon goblin priests"
- {
-   symbol = "✝"
-   effect = Name "summon goblin priests" Summon "GOBLIN_PRIEST" { 4 6 } 100
-   cooldown = 90
-   sound = SPELL_SUMMON_SPIRIT
- }
-"summon goblin warrior horde"
- {
-   symbol = "⚔"
-   effect = Name "summon goblin warrior horde" Summon "GOBLIN_WARRIOR" { 8 12 } 100
-   cooldown = 120
-   sound = SPELL_SUMMON_SPIRIT
- }
-"summon goblin horde"
- { 
-   symbol = "👺"
-   effect = Name "summon goblin horde" Summon "GOBLIN_WORKER" { 12 16 } 100
-   cooldown = 50
-   sound = SPELL_SUMMON_SPIRIT
- }
-"summon goblin archers"
- {
-   symbol = "🏹"
-   effect = Name "summon goblin archers" Summon "GOBLIN_ARCHER" { 5 7 } 100
-   cooldown = 90
-   sound = SPELL_SUMMON_SPIRIT
- }
-"summon goblin wizards"
- {
-   symbol = "🧙"
-   effect = Name "summon goblin wizards" Summon "GOBLIN_WIZARD" { 4 5 } 100
-   cooldown = 120
-   sound = SPELL_SUMMON_SPIRIT
- }
-  "goblin damage buff"
- {
-    symbol = "💪"
-    effect = Name "goblin damage buff" { Message NORMAL  "Goblin violence cast." Area 2 Filter Not Enemy Lasting 50 DAM_BONUS }
-    cooldown = 10
-    sound = SPELL_STR_BONUS
- }
-  "goblin defense buff"
- {
-    symbol = "🛡"
-    effect = Name "goblin defense buff" { Message NORMAL  "Goblin skin charm." Area 2 Filter Not Enemy Lasting 50 DEF_BONUS }
-    cooldown = 10
-    sound = SPELL_DEX_BONUS
- }
-"summon gold golems"
- {
-   symbol = "💰"
-   effect = Name "summon gold golems" Summon "GOLD_GOLEM" { 2 4 } 100
-   cooldown = 120
-   sound = SPELL_SUMMON_SPIRIT
- }
-"summon goblin guards"
- {
-   symbol = "⚔"
-   effect = Name "summon goblin guards" Summon "ELITE_GOBLIN_GUARD" { 5 7 } 100
-   cooldown = 120
-   sound = SPELL_SUMMON_SPIRIT
- }
-  "fae time twisting"
- {
-    symbol = "🏃"
-    effect = Name "fae time twisting" { Message NORMAL  "Time is commanded." Area 6 Filter Not Enemy Lasting SPEED Area 6 Filter Enemy Lasting SLOWED }
-    cooldown = 80
-    sound = SPELL_SPEED_SELF
-  }
-  "fae melee boost"
-  {
-    symbol = "🛡"
-    effect = Name "fae melee boost" { Message NORMAL  "Fae Spirit of Endurance invoked." Area 3 Filter Not Enemy Lasting 50 DEF_BONUS Area 3 Filter Not Enemy Lasting 50 DAM_BONUS }
-    cooldown = 30
-    sound = SPELL_DEX_BONUS
-  }
-  "fae illusion"
-  {
-    symbol = "🎭"
-    effect = Name "fae illusion" { Message NORMAL  "Magic concealment." Area 3 Filter Not Enemy Lasting INVISIBLE Area 1 Filter Not Enemy Deception Summon "FAIRY_QUEEN_ILLUSION" { 1 2 } 100 }
-    cooldown = 30
-    sound = SPELL_TELEPORT
-  }
-  "fae escape"
-  {
-    symbol ="✈️"
-    effect = Name "fae escape" { Message NORMAL  "Fae escape." Deception Summon "FAIRY_QUEEN_ILLUSION" { 1 2 } 100 Lasting INVISIBLE Escape{} }
-    cooldown = 30
-    sound = SPELL_TELEPORT
-  }
-  "fae teleport"
-  {
-    symbol = "🌀"
-    range = 12
-    effect = Name "fae teleport" { Message NORMAL  "Magic is commanded." Teleport Deception Summon "FAIRY_QUEEN_ILLUSION" { 1 2 } 100 Lasting INVISIBLE }
-    cooldown = 30
-	endOnly = true
-    sound = SPELL_DECEPTION
-  }
-  "fae deception"
-  {
-    symbol = "🎭"
-    effect = Name "fae deception" { Deception Summon "FAIRY_QUEEN_ILLUSION" { 1 2 } 100 }
-    cooldown = 5
-    sound = SPELL_INVISIBILITY
-  }
-"summon fae army"
-  {
-   symbol = "!!"
-   effect = Name "summon fae army" { Summon "AIR_FAIRY" { 2 3 } 100 Summon "DARK_FAIRY" { 2 3 } 100 Summon "EARTH_FAIRY" { 2 3 } 100 Summon "ELECTRIC_FAIRY" { 2 3 } 100 Summon "LIGHT_FAIRY" { 2 3 } 100 Summon "MAGIC_FAIRY" { 2 3 } 100 Summon "NATURE_FAIRY" { 2 3 } 100 Summon "WATER_FAIRY" { 2 3 } 100 }
-   cooldown = 200
-   sound = SPELL_SUMMON_SPIRIT
-  }
-"summon fae clone"
-  {
-   symbol = "🎭"
-   effect = Name "summon fae clone" Summon "FAIRY_QUEEN_ILLUSION_2" { 1 } 40
-   cooldown = 30
-   sound = SPELL_SUMMON_SPIRIT
-  }
-  "spin web"
-  {
-    symbol = "*"
-    effect = Name "spin web" PlaceFurniture "KEEPER_SPIDER_WEB"
-    cooldown = 0
-  }
-  "dig pit"
-  {
-    symbol = "O"
-    effect = Name "dig pit" PlaceFurniture "KEEPER_SPIDER_PIT"
-    cooldown = 0
-  }
-  "mud wall"
-  {
-    symbol = "="
-    effect = Name "mud wall" PlaceFurniture "KEEPER_SPIDER_MUD_WALL"
-    cooldown = 0
-  }
-  "hatch eggs"
-  {
-    symbol = "::"
-    effect = Name "hatch eggs" {
-		Summon "SPIDER" {3} 100
-		Summon "GREEN_SPIDER" {1} 100
-		Summon "RED_SPIDER" {1} 100
-	}
-    cooldown = 100
-  }
-  "breed dark spawn"
-  {
-    upgrade = "hatch eggs"
-    symbol = ";;"
-    effect = Name "breed dark spawn" {
-		Summon "SPIDER" {3} 100
-		Summon "GREEN_SPIDER" {1} 100
-		Summon "RED_SPIDER" {1} 100
-		Summon "BLUE_SPIDER" {1} 100
-		Summon "YELLOW_SPIDER" {1} 100
-	}
-    cooldown = 100
-  }
-  "breed horrors"
-  {
-    upgrade = "breed dark spawn"
-    symbol = ",,"
-    effect = Name "breed horrors" {
-		Summon "SPIDER" {1} 100
-		Summon "GREEN_SPIDER" {1} 100
-		Summon "RED_SPIDER" {1} 100
-		Summon "BLUE_SPIDER" {1} 100
-		Summon "YELLOW_SPIDER" {1} 100
-		Summon "PINK_SPIDER" {1} 100
-		Summon "LIGHT_BLUE_SPIDER" {1} 100
-		Summon "LIGHT_RED_SPIDER" {1} 100
-	}
-    cooldown = 100
-  }
-  "breed hell"
-  {
-    upgrade = "breed horrors"    
-    symbol = "**"
-    effect = Name "breed hell" {
-		Summon "SPIDER" {1} 100
-		Summon "GREEN_SPIDER" {1} 100
-		Summon "RED_SPIDER" {1} 100
-		Summon "BLUE_SPIDER" {1} 100
-		Summon "YELLOW_SPIDER" {1} 100
-		Summon "PINK_SPIDER" {1} 100
-		Summon "LIGHT_BLUE_SPIDER" {1} 100
-		Summon "LIGHT_RED_SPIDER" {1} 100
-		Summon "LIGHT_BROWN_SPIDER" {1} 100
-	}
-    cooldown = 100
-  }
- "regeneration" 
-  {
-    symbol = "+"
-    effect = Name "regeneration" Lasting 50 REGENERATION
-    cooldown = 50
-    sound = SPELL_DEX_BONUS
-  }
-"summon spirit"
+ 
+ "gnomish summon spirit"
   {
     symbol = "👾"
     effect = Name "summon spirit" Summon "SPIRIT" { 3 5 } 100
     cooldown = 100
     sound = SPELL_FIRE_SPHERE_PET
   }
-"summon rats"
-  {
-   symbol = "🐭"
-   effect = Name "summon rats" { Summon "RAT" { 3 6 } 100 Summon "BLACK_RAT" { 0 2 } 100 }
-   cooldown = 40
-   sound = SPELL_SUMMON_SPIRIT
-  }
-"poison bolt" 
- {
-   symbol = "☠"
-   range = 3
-   effect = Name "poison bolt" Lasting POISON
-   cooldown = 100
-   sound = SPELL_DECEPTION
- }
-"flaming strike"
-  {
-    symbol = "🔥☽"
-    effect = Name "flaming strike" { Fire{} Damage DAMAGE CUT }
-    fx = {FIREBALL}
-    range = 3
-    cooldown = 14
-    sound = SPELL_FIRE_SPHERE_PET
-  }
-"blowback"
-  {
-    symbol = "🔥💥"
-    effect = Name "blowback" { Fire{} CircularBlast }
-    fx = {FIREBALL}
-    cooldown = 60
-    sound = SPELL_BLAST
-  }
-"knockdown"
+
+"gnomish knockdown"
  {
    symbol = "X"
    range = 1
-   effect = Name "knockdown" Lasting COLLAPSED
+   effect = Name "knockdown" Lasting 20 COLLAPSED
    cooldown = 30
    sound = BLUNT_DAMAGE
  }
-"rapid invisibility"
+"gnomish advanced rapid invisibility"
  {
    symbol = "🕵️"
-   effect = Name "rapid invisibility" Lasting INVISIBLE
-   cooldown = 60
-   sound = SPELL_INVISIBILITY
- }
-"advanced rapid invisibility"
- {
-   symbol = "🕵️"
-   upgrade = "rapid invisibility"  
    effect = Name "advanced rapid invisibility" Lasting INVISIBLE
    cooldown = 30
    sound = SPELL_INVISIBILITY
  }
-"spawn hell knights"
-  {
-   symbol = "🔥⚔"
-   effect = Name "spawn hell knights" Summon "HELL_KNIGHT" { 3 5 } 0
-   cooldown = 100
-   sound = SPELL_SUMMON_SPIRIT
-  }
-"spawn hell knight lord squad"
-  {
-   symbol = "🔥⚔"
-   effect = Name "spawn hell knight lord squad" { Summon "HELL_KNIGHT_LORD" { 1 } 0 Summon "HELL_KNIGHT" { 5 7 } 0 }
-   cooldown = 400
-   sound = SPELL_SUMMON_SPIRIT
-  }
-"spawn hell knight brute squad"
-  {
-   symbol = "🔥⚔"
-   effect = Name "spawn hell knight brute squad" { Summon "HELL_KNIGHT_BRUTE" { 1 3 } 0 Summon "HELL_KNIGHT" { 3 5 } 0 }
-   cooldown = 350
-   sound = SPELL_SUMMON_SPIRIT
-  }
-"spawn hell knight swordmaster squad"
-  {
-   symbol = "🔥⚔"
-   effect = Name "spawn hell knight swordmaster squad" { Summon "HELL_KNIGHT_SWORDMASTER" { 1 3 } 0 Summon "HELL_KNIGHT" { 3 5 } 0 }
-   cooldown = 350
-   sound = SPELL_SUMMON_SPIRIT
-  }
-#------------------------------
-#Barbarian Skills Feb 2020
-#------------------------------
-"wild swing"
+
+"gnomish wild swing"
   {
     symbol = "🌀💥"
     effect = Name "wild swing" { Area 1 Damage DAMAGE CUT CircularBlast }
     cooldown = 2
     sound = BLADE_DAMAGE
   }
-"blood rage"
+"gnomish blood rage"
   {
     symbol = "💪"
-    effect = Name "blood rage" { Lasting RAGE Lasting SPEED Lasting INSANITY }
+    effect = Name "blood rage" { Lasting 20 RAGE Lasting SPEED Lasting INSANITY }
     cooldown = 90
     sound = SPELL_STR_BONUS
   }
-"air render"
+"gnomish air render"
   {
     symbol = "☽"
     effect = Name "air render" { Damage DAMAGE CUT }
@@ -930,14 +465,14 @@
 	endOnly = true
     sound = SPELL_AIR_BLAST
   }
-"martial blast"
+"gnomish martial blast"
   {
     symbol = "💥"
     effect = Name "martial blast" { Area 2 Blast }
     cooldown = 2
     sound = SPELL_AIR_BLAST
   }
-"martial strike"
+"gnomish martial strike"
   {
     symbol = "💥"
     effect = Name "martial strike" { Damage DAMAGE CUT Blast }
@@ -945,7 +480,7 @@
     cooldown = 20
     sound = BLUNT_DAMAGE
   }
-"break through"
+"gnomish break through"
   {
     symbol = "💥➭"
     effect = Name "break through" { Damage DAMAGE CUT DestroyWalls DIG }
@@ -953,7 +488,7 @@
     cooldown = 5
     sound = BLUNT_DAMAGE
   }
-"throw sand" 
+"gnomish throw sand" 
  {
    symbol = "△"
    range = 4
@@ -962,31 +497,31 @@
    sound = SHOOT_BOW
    message = "throws sand!" "throws sand!"
  }
-"decapitate"
+"gnomish decapitate"
  {
    symbol = "👱"
    range = 1
-   effect = Name "decapitate" { LoseBodyPart HEAD Lasting 50 BLEEDING }
+   effect = Name "decapitate" { LoseBodyPart HEAD Lasting 20 BLEEDING }
    cooldown = 200
    sound = BLADE_DAMAGE
  }
-"leg strike"
+"gnomish leg strike"
  {
    symbol = "👞"
    range = 1
-   effect = Name "leg strike" { LoseBodyPart LEG Lasting 50 BLEEDING }
+   effect = Name "leg strike" { LoseBodyPart LEG Lasting 20 BLEEDING }
    cooldown = 50
    sound = BLADE_DAMAGE
  }
-"arm strike"
+"gnomish arm strike"
  {
    symbol = "✋"
    range = 1
-   effect = Name "arm strike" { LoseBodyPart ARM Lasting 50 BLEEDING }
+   effect = Name "arm strike" { LoseBodyPart ARM Lasting 20 BLEEDING }
    cooldown = 50
    sound = BLADE_DAMAGE
  }
-"curse of rage"
+"gnomish curse of rage"
  {
    symbol = "😈"
    effect = Name "curse of rage" Description "increases your damage stat by 1, but also lowers your defense by 1" { IncreaseAttr DAMAGE 1 IncreaseAttr DEFENSE -1 }
@@ -994,7 +529,7 @@
    cooldown = 500
    sound = SPELL_WORD_OF_POWER
  }
-"heroic leap"
+"gnomish heroic leap"
 {
   symbol = "↷"
   effect = Name "heroic leap" { Jump CircularBlast }
@@ -1003,10 +538,8 @@
   endOnly = true
   message = "jump" "jumps"
 }
-#------------------------------
-#Assassin Skills Mar 2020
-#------------------------------
-"vitals strike" 
+
+"gnomish vitals strike" 
  {
    symbol = "🗡"
    range = 1
@@ -1015,27 +548,27 @@
    sound = BLADE_DAMAGE
    message = "go for vitals!" "goes for vitals!"
  }
-"advanced vitals strike" 
+"gnomish advanced vitals strike" 
  {
    symbol = "🗡"
-   upgrade = "vitals strike"
+   upgrade = "gnomish vitals strike"
    range = 1
    effect = Name "advanced vitals strike" Description "has a chance to deal insane damage, moderately high damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 80 STAB FixedDamage DAMAGE 200 STAB }
    cooldown = 70
    sound = BLADE_DAMAGE
    message = "go for vitals!" "goes for vitals!"
  }
-"expert vitals strike" 
+"gnomish expert vitals strike" 
  {
    symbol = "🗡"
-   upgrade = "advanced vitals strike"
+   upgrade = "gnomish advanced vitals strike"
    range = 1
    effect = Name "expert vitals strike" Description "has a chance to deal insane damage, high damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 100 STAB FixedDamage DAMAGE 250 STAB }
    cooldown = 60
    sound = BLADE_DAMAGE
    message = "go for vitals!" "goes for vitals!"
  }
-"assassinate" 
+"gnomish assassinate" 
  {
    symbol = "🗡"
    range = 1
@@ -1044,7 +577,7 @@
    sound = BLADE_DAMAGE
    message = "go for vitals!" "goes for vitals!"
  }
-"curse of risks"
+"gnomish curse of risks"
  {
    symbol = "😈"
    effect = Name "curse of risks" Description "Can either increase a random stat by 1 or decrease defense by 3 or 5" ChooseRandom { IncreaseAttr DAMAGE 1 IncreaseAttr SPELL_DAMAGE 1 IncreaseAttr RANGED_DAMAGE 1 IncreaseAttr DEFENSE 1 IncreaseAttr DEFENSE -3 IncreaseAttr DEFENSE -5 }
@@ -1052,7 +585,7 @@
    cooldown = 500
    sound = SPELL_WORD_OF_POWER
  }
- "shadow step"
+ "gnomish shadow step"
  {
    symbol = "⇢"
    effect = Name "shadow step" { Jump Deception }
@@ -1062,7 +595,7 @@
    endOnly = true
    message = "step through shadows" "steps through shadows"
  }
- "escape slash"
+ "gnomish escape slash"
  {
    symbol ="✈️☽"
    effect = Name "escape slash" { Damage DAMAGE CUT Escape{} }
@@ -1071,7 +604,7 @@
    sound = BLADE_DAMAGE
    message = "use magic in an attack" "uses magic in an attack"
  }
- "smoke bomb"
+ "gnomish smoke bomb"
  {
    symbol = "✈️💥"
    effect = Name "smoke bomb" { CircularBlast Lasting INVISIBLE Escape{} }
@@ -1079,7 +612,7 @@
    sound = SPELL_DECEPTION
    message = "throw a smoke bomb" "throws a smoke bomb"
  }
-"substitute"
+"gnomish substitute"
  {
    symbol = "⇅"
    effect = Name "substitute" { Deception SwapPosition Deception }
@@ -1088,7 +621,7 @@
    endOnly = true
    message = "use an ability" "uses an ability"
  }
- "double strike"
+ "gnomish double strike"
  {
    symbol = "☽☽"
    effect = Name "double strike" { Damage DAMAGE CUT Damage DAMAGE STAB }
@@ -1097,7 +630,7 @@
    sound = BLADE_DAMAGE
    message = "hit twice" "hits twice"
  }
- "armor strike"
+ "gnomish armor strike"
  {
    symbol = "💥🛡"
    effect = Name "armor strike" { Damage DAMAGE CUT Enhance ARMOR -1 }
@@ -1106,7 +639,7 @@
    sound = BLUNT_DAMAGE
    message = "damage an armor piece" "damages an armor piece"
  }
- "weapon strike"
+ "gnomish weapon strike"
  {
    symbol = "💥⚔"
    effect = Name "weapon strike" { Damage DAMAGE CUT Enhance WEAPON -1 }
@@ -1115,17 +648,17 @@
    sound = BLUNT_DAMAGE
    message = "damage a weapon" "damages a weapon"
  }
- "triple strike"
+ "gnomish triple strike"
  {
    symbol = "☽☽☽"
-   upgrade = "double strike"
+   upgrade = "gnomish double strike"
    effect = Name "triple strike" { Damage DAMAGE CUT Damage DAMAGE STAB Damage DAMAGE CUT }
    range = 1
    cooldown = 8
    sound = BLADE_DAMAGE
    message = "hit three times" "hits three times"
  }
- "throwing star"
+ "gnomish throwing star"
  {
    symbol = "✫"
    effect = Name "throwing star" Damage RANGED_DAMAGE STAB
@@ -1135,10 +668,10 @@
    sound = SHOOT_BOW
    message = "throw a star" "throws a star"
  }
- "advanced throwing star"
+ "gnomish advanced throwing star"
  {
    symbol = "✫"
-   upgrade = "throwing star"
+   upgrade = "gnomish throwing star"
    effect = Name "advanced throwing star" Damage RANGED_DAMAGE STAB
    range = 8
    cooldown = 0
@@ -1146,10 +679,10 @@
    sound = SHOOT_BOW
    message = "throw a star" "throws a star"
  }
- "expert throwing star"
+ "gnomish expert throwing star"
  {
    symbol = "✫"
-   upgrade = "advanced throwing star"
+   upgrade = "gnomish advanced throwing star"
    effect = Name "expert throwing star" Damage RANGED_DAMAGE STAB
    range = 10
    cooldown = 0
@@ -1157,10 +690,10 @@
    sound = SHOOT_BOW
    message = "throw a star" "throws a star"
  }
- "master throwing star"
+ "gnomish master throwing star"
  {
    symbol = "✫"
-   upgrade = "expert throwing star"
+   upgrade = "gnomish expert throwing star"
    effect = Name "master throwing star" Damage RANGED_DAMAGE STAB
    range = 12
    cooldown = 0
@@ -1168,7 +701,7 @@
    sound = SHOOT_BOW
    message = "throw a star" "throws a star"
  }
- "poison star"
+ "gnomish poison star"
  {
    symbol = "✦"
    effect = Name "poison star" { Damage RANGED_DAMAGE STAB Lasting POISON }
@@ -1178,10 +711,10 @@
    sound = SHOOT_BOW
    message = "throw a poison star" "throws a poison star"
  }
- "advanced poison star"
+ "gnomish advanced poison star"
  {
    symbol = "✦"
-   upgrade = "poison star"
+   upgrade = "gnomish poison star"
    effect = Name "advanced poison star" { Damage RANGED_DAMAGE STAB Lasting POISON }
    range = 8
    cooldown = 1
@@ -1189,28 +722,28 @@
    sound = SHOOT_BOW
    message = "throw a poison star" "throws a poison star"
  }
- "bleeding star"
+ "gnomish bleeding star"
  {
    symbol = "✷"
-   effect = Name "bleeding star" { Damage RANGED_DAMAGE STAB Lasting 50 BLEEDING }
+   effect = Name "bleeding star" { Damage RANGED_DAMAGE STAB Lasting 20 BLEEDING }
    range = 6
    cooldown = 1
    endOnly = true
    sound = SHOOT_BOW
    message = "throw a bleeding star" "throws a bleeding star"
  }
- "advanced bleeding star"
+ "gnomish advanced bleeding star"
  {
    symbol = "✷"
-   upgrade = "bleeding star"
-   effect = Name "advanced bleeding star" { Damage RANGED_DAMAGE STAB Lasting 50 BLEEDING }
+   upgrade = "gnomish bleeding star"
+   effect = Name "advanced bleeding star" { Damage RANGED_DAMAGE STAB Lasting 20 BLEEDING }
    range = 8
    cooldown = 1
    endOnly = true
    sound = SHOOT_BOW
    message = "throw a bleeding star" "throws a bleeding star"
  }
- "escape star"
+ "gnomish escape star"
  {
    symbol = "✲"
    effect = Name "escape star" { Damage RANGED_DAMAGE STAB Escape{} Lasting SPEED }
@@ -1220,7 +753,7 @@
    sound = SHOOT_BOW
    message = "throw an escape star" "throws an escape star"
  }
-  "double star"
+  "gnomish double star"
  {
    symbol = "✫✫"
    effect = Name "double star" { Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB }
@@ -1230,10 +763,10 @@
    sound = SHOOT_BOW
    message = "throw stars" "throws stars"
  }
-  "triple star"
+  "gnomish triple star"
  {
    symbol = "✫✫✫"
-   upgrade = "double star"
+   upgrade = "gnomish double star"
    effect = Name "triple star" { Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB }
    range = 8
    cooldown = 2
@@ -1241,14 +774,14 @@
    sound = SHOOT_BOW
    message = "throw stars" "throws stars"
  }
- "summon shades"
+ "gnomish summon shades"
  {
    symbol = "🕵"
-   effect = Name "summon shades" Summon "SHADE" { 3 4 } 100
+   effect = Name "summon shades" Summon "GNOMEPLUS_SHADE" { 3 4 } 100
    cooldown = 200
    sound = SPELL_SUMMON_SPIRIT
  }
-"shadow bolt"
+"gnomish shadow bolt"
   {
     symbol = "⥇"
     effect = Name "shadow bolt" { Damage SPELL_DAMAGE SPELL Escape{} Lasting INSANITY }
@@ -1257,41 +790,41 @@
 	endOnly = true
     sound = SPELL_BLAST
   }
-"advanced shadow bolt"
+"gnomish advanced shadow bolt"
   {
     symbol = "⥇"
-	upgrade = "shadow bolt"
+	upgrade = "gnomish shadow bolt"
     effect = Name "advanced shadow bolt" { Damage SPELL_DAMAGE SPELL Escape{} Lasting INSANITY }
     range = 9
     cooldown = 8
 	endOnly = true
     sound = SPELL_BLAST
   }
-"expert shadow bolt"
+"gnomish expert shadow bolt"
   {
     symbol = "⥇"
-	upgrade = "advanced shadow bolt"
+	upgrade = "gnomish advanced shadow bolt"
     effect = Name "expert shadow bolt" { Damage SPELL_DAMAGE SPELL Escape{} Lasting INSANITY }
     range = 10
     cooldown = 6
 	endOnly = true
     sound = SPELL_BLAST
   }
- "summon shadow clones"
+ "gnomish summon shadow clones"
   {
     symbol = "🕵"
-    effect = Name "summon shadow clones" Summon "SHADOW_CLONE" { 3 4 } 100
+    effect = Name "summon shadow clones" Summon "GNOMEPLUS_SHADOW_CLONE" { 3 4 } 100
     cooldown = 200
     sound = SPELL_SUMMON_SPIRIT
   }
- "summon shadow clone army"
+ "gnomish summon shadow clone army"
   {
     symbol = "🕵"
-    effect = Name "summon shadow clone army" Summon "SHADOW_CLONE" { 12 16 } 500
+    effect = Name "summon shadow clone army" Summon "GNOMEPLUS_SHADOW_CLONE" { 12 16 } 500
     cooldown = 1000
     sound = SPELL_SUMMON_SPIRIT
   }
- "web wall"
+ "gnomish web wall"
   {
     symbol = "🕸"
     effect = Name "web wall"  CustomArea PlaceFurniture "WEB_TRAP" {{ 0 -1}{ 0 0}{ 0 1 }}
@@ -1300,7 +833,7 @@
     cooldown = 30
     sound = none
   }
-"vanish"
+"gnomish vanish"
   {
     symbol = "🕵️"
     effect = Name "vanish" { Lasting INVISIBLE Teleport }
@@ -1309,140 +842,136 @@
 	endOnly = true
     sound = SPELL_TELEPORT
   }
-"split spirit"
+"gnomish split spirit"
   {
     symbol = "👤👤"
-    effect = Name "split spirit" { IncreaseAttr DAMAGE -4 IncreaseAttr SPELL_DAMAGE -4 IncreaseAttr RANGED_DAMAGE -4 IncreaseAttr DEFENSE -4 Summon "ASSASSIN_SPIRIT_CLONE" { 1 } 0 }
+    effect = Name "split spirit" { IncreaseAttr DAMAGE -4 IncreaseAttr SPELL_DAMAGE -4 IncreaseAttr RANGED_DAMAGE -4 IncreaseAttr DEFENSE -4 Summon "GNOMEPLUS_ASSASSIN_SPIRIT_CLONE" { 1 } 0 }
     cooldown = 500
     sound = SPELL_WORD_OF_POWER
   }
-#-------------------------
-#Water spells
-#-------------------------
-"elemental tea"
-#Healing with a defense bonus but a longer cooldown.
-{
-  symbol = "❤️"
-  effect = Name "elemental tea" Description "Provides healing, rest, morale and neutrition." {Lasting RESTED Lasting SATIATED Heal {FLESH} }
-  cooldown = 100
-  sound = SPELL_HEALING
-}
-"bolt of water"
-#Glorified magic missile
- {
-   symbol = "->"
-   effect = Name "bolt of water" Damage SPELL_DAMAGE SPELL
-   range = 7
-   cooldown = 40
-   sound = SPELL_BLAST
- }
-"water blast"
- {
-   symbol = "*>"
-   upgrade = "bolt of water"
-   effect = Name "water blast" { Damage SPELL_DAMAGE SPELL Blast }
-   range = 10
-   cooldown = 30
-   sound = SPELL_BLAST
- }
- "summon water elementals"
- {
-   symbol = "🕵"
-   effect = Name "summon water elementals" Summon "WATER_ELEMENTAL" { 3 4 } 100
-   cooldown = 200
-   sound = SPELL_SUMMON_SPIRIT
- }
- "choking vapor"
+  
+#Starter spells
+"gnomish poison bolt" 
  {
    symbol = "☠"
-   range = 10
-   effect = Name "choking vapor" EmitGas "POISON_GAS" 5
+   range = 3
+   effect = Name "poison bolt" Lasting POISON
    cooldown = 100
-   sound = SPELL_BLAST
+   sound = SPELL_DECEPTION
  }
  
- "acid blast"
- #More powerful acid bolt spell with a longer range but larger cooldown
+"gnomish haste other"
+  {
+    symbol = "🏃"
+    effect = Name "haste other" Lasting SPEED
+    targetSelf = false
+    range = 3
+    cooldown = 110
+    sound = SPELL_SPEED_SELF
+  }
+"gnomish defend other"
+  {
+    symbol = "🛡"
+    effect = Name "defend other" Lasting 50 DEF_BONUS
+    targetSelf = false
+    range = 3
+    cooldown = 70
+    sound = SPELL_DEX_BONUS
+  }
+  
+"gnomish friendly damage bonus"
+  {
+    symbol = "💪"
+    effect = Name "friendly damage bonus" Lasting 50 DAM_BONUS
+    targetSelf = false
+    range = 3
+    cooldown = 70
+    sound = SPELL_STR_BONUS
+  }
+"gnomish rapid invisibility"
  {
-   upgrade = "water blast"
-   symbol = "~~"
-   effect = Name "acid blast" { Damage SPELL_DAMAGE SPELL Blast Acid{} }
-   fx = {FLAMETHROWER ColorId YELLOW}
-   range = 10
-   cooldown = 20
+   symbol = "🕵️"
+   effect = Name "rapid invisibility" Lasting INVISIBLE
+   cooldown = 60
+   sound = SPELL_INVISIBILITY
  }
-#-------------------------
-#Earth spells
-#-------------------------
-#Elemental tea is taken from general spells
-#-------------------------
- "summon earth elementals"
- {
-   symbol = "🕵"
-   effect = Name "summon earth elementals" Summon "EARTH_ELEMENTAL" { 3 4 } 100
-   cooldown = 200
+"gnomish summon contraption"
+  {
+   symbol = "👾"
+   effect = Name "summon contraption" Summon "GNOMEPLUS_GIANT_ROBOT" { 1 2 } 100
+   cooldown = 90
    sound = SPELL_SUMMON_SPIRIT
- }
- "earth bolt"
- #More powerful acid bolt spell with a longer range but larger cooldown
- {
-   symbol = "->"
-   effect = Name "earth bolt" { Damage SPELL_DAMAGE SPELL Chance 0.2 Lasting 50 BLEEDING }
-   fx = {FLAMETHROWER ColorId YELLOW}
-   range = 10
-   cooldown = 20
- }
- 
- "earth blast"
- #More powerful acid bolt spell with a longer range but larger cooldown
- {
-   upgrade = "earth bolt"
-   symbol = "=>"
-   effect = Name "earth blast" { Damage SPELL_DAMAGE SPELL Blast Chance 0.3 Lasting 50 BLEEDING }
-   fx = {FLAMETHROWER ColorId YELLOW}
-   range = 10
-   cooldown = 20
- }
- 
- "spit shards"
- {
-   #Guaranteed bleeding 3 times a day
-   symbol = "!"
-   range = 7
-   effect = Name "spit shards" Lasting 50 BLEEDING
-   cooldown = 1000
-   sound = SPELL_BLAST
- }
- 
- "stone to mud"
- {
-   symbol = "🕳"
-   effect = Name "stone to mud" Area 2 DestroyWalls DIG
-   cooldown = 500
-   sound = SPELL_AIR_BLAST
- }
- "place castle"
- {
-   symbol = "O"
-   cooldown = 1
-   effect = Name "place castle"
-        Description "Places a castle facing south."
-		{                                           #X -Y
-	        CustomArea PlaceFurniture "CASTLE_A1" {{ -2 -3 }} 
-	        CustomArea PlaceFurniture "CASTLE_A2" {{ -1 -3 }}
-	        CustomArea PlaceFurniture "CASTLE_A3" {{  0 -3 }}
-  	        CustomArea PlaceFurniture "CASTLE_A4" {{  1 -3 }}
-	        CustomArea PlaceFurniture "CASTLE_B1" {{ -2 -2 }} 
-	        CustomArea PlaceFurniture "CASTLE_B2" {{ -1 -2 }}
-	        CustomArea PlaceFurniture "CASTLE_B3" {{  0 -2 }}
-	        CustomArea PlaceFurniture "CASTLE_B4" {{  1 -2 }}
-	        CustomArea PlaceFurniture "CASTLE_C1" {{ -2 -1 }} 
-	        CustomArea PlaceFurniture "CASTLE_C2" {{ -1 -1 }}
-	        CustomArea PlaceFurniture "CASTLE_C3" {{  0 -1 }}
-	        CustomArea PlaceFurniture "CASTLE_C4" {{  1 -1 }}
-	        CustomArea PlaceFurniture "CASTLE_D1" {{ -2  0 }}
-	        CustomArea PlaceFurniture "CASTLE_D2" {{ -1  0 }}
-	        CustomArea PlaceFurniture "CASTLE_D3" {{  0  0 }}
-	        CustomArea PlaceFurniture "CASTLE_D4" {{  1  0 }}
-	      }
- }
+  }
+"gnomish advanced rapid magic missile"
+  {
+    upgrade = "gnomish rapid magic missile"
+    symbol = "⥇"
+    effect = Name "advanced rapid magic missile" Damage SPELL_DAMAGE SPELL
+    range = 6
+    cooldown = 2
+    sound = SPELL_BLAST
+  }
+"gnomish summon automaton"
+  {
+   symbol = "👾"
+   effect = Name "summon automaton" Summon "AUTOMATON" { 1 2 } 100
+   cooldown = 90
+   sound = SPELL_SUMMON_SPIRIT
+  }
+"gnomish area haste"
+  {
+    upgrade = "gnomish haste other"
+    symbol = "🏃"
+    effect = Name "area haste" { Message NORMAL  "Time is altered." Area 2 Filter Not Enemy Lasting SPEED }
+    cooldown = 110
+    sound = SPELL_SPEED_SELF
+  }
+"gnomish magic blast"
+  {
+	upgrade = "directed blast"
+    symbol = "💨"
+    effect = Name "magic blast" { Damage SPELL_DAMAGE SPELL Blast }
+    range = 6
+    endOnly = true
+    cooldown = 20
+    sound = SPELL_BLAST
+  }
+  
+"gnomish advanced magic blast"
+  {
+    upgrade = "gnomish magic blast"
+    symbol = "💨"
+    effect = Name "BONUS_advanced magic blast" { Damage SPELL_DAMAGE SPELL Blast }
+    range = 8
+    endOnly = true
+    cooldown = 16
+    sound = SPELL_BLAST
+  }
+  
+"gnomish expert magic blast"
+  {
+    upgrade = "gnomish advanced magic blast"
+    symbol = "💨"
+    effect = Name "expert magic blast" { Damage SPELL_DAMAGE SPELL Blast }
+    range = 10
+    endOnly = true
+    cooldown = 12
+    sound = SPELL_BLAST
+  }
+"gnomish expert rapid magic missile"
+  {
+    upgrade = "gnomish advanced rapid magic missile"
+    symbol = "⥇"
+    effect = Name "expert rapid magic missile" Damage SPELL_DAMAGE SPELL
+    range = 8
+    cooldown = 1
+    sound = SPELL_BLAST
+  }
+"gnomish summon automaton army"
+  {
+   symbol = "👾!"
+   effect = Name "summon automaton army" Summon "AUTOMATON" { 10 11 } 100
+   cooldown = 3000
+   sound = SPELL_SUMMON_SPIRIT
+  }
+  
