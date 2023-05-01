@@ -15,6 +15,20 @@
   color = ColorId RED
 }
 
+"EG_WORLD_CANCER" {
+  name = "blessed seed"
+  adjective = "blessed seed"
+  description = "blessed seed"
+  addedMessage = "start" "starts" "being blessed seed"
+  removedMessage = YOUR "no longer blessed seed"
+  tickEffect = Area 0 Filter Or {FurnitureType "EG_GROWTH_FLOOR" FurnitureType "EG_GROWTH_FLOOR_FINISH"} PlaceFurniture "EG_GROWTH_FLOOR"
+  consideredBad = true
+  price = 2
+  fx = DEBUFF_RED
+  canWishFor = false
+  color = ColorId RED
+}
+
 "EG_BEYOND_LIMITS" {
   name = "released limits"
   adjective = "released limits"
@@ -55,6 +69,47 @@
 					  }
   tickEffect = Bleed 0.1 "exhaustion"
   combatConsumable = true
+  canWishFor = false
+  color = ColorId RED
+}
+
+"WATERCHECK" {
+  name = "watercheck"
+  adjective = "watercheck"
+  description = "watercheck"
+  addedMessage = "watercheck" "watercheck" "watercheck"
+  removedMessage = YOUR "watercheck"
+  tickEffect = Filter Area 0 Or {FurnitureType "WATER" FurnitureType "KRAKEN_WATER" FurnitureType "MAGMA"} Area 1 Lasting 1 INWATER
+  consideredBad = true
+  price = 2
+  fx = DEBUFF_RED
+  canWishFor = false
+  color = ColorId RED
+}
+
+"TENTACLE" {
+  name = "tentacle"
+  adjective = "tentacle"
+  description = "caught by tentacle"
+  addedMessage =  ARE "caught tentacle"
+  removedMessage = YOUR "no longer caught by tentacle"
+  endEffect = SetCreatureFlag "pull" false
+  consideredBad = true
+  price = 2
+  fx = DEBUFF_RED
+  canWishFor = false
+  color = ColorId RED
+}
+
+"INWATER" {
+  name = "submerged tentacle"
+  adjective = "submerged tentacle"
+  description = "treathened by submerged tentacle"
+  addedMessage =  ARE "treathened submerged tentacle"
+  removedMessage = YOUR "no longer treathened by submerged tentacle"
+  consideredBad = true
+  price = 2
+  fx = DEBUFF_RED
   canWishFor = false
   color = ColorId RED
 }

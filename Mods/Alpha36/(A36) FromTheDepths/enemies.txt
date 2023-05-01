@@ -174,7 +174,7 @@
 {
   biomes = { "FTD_GREAT_LAKE" }
   settlement = {
-    type = RandomLayout { "dungeon" { 38 28 } "ftd_flooder_caves"}
+    type = Builtin CAVE "DUNGEON"
     inhabitants = {
       leader = { { "FTD_CRUSTACEAN_CRAB_BEHEMOTH" } }
       fighters = {
@@ -185,20 +185,29 @@
         }
       }
     }
-    tribe = MONSTER
+    tribe = HOSTILE
     race = "Crustacean horde"
+  }
+  behaviour = {
+    minPopulation = 3
+    minTeamSize = 4
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillMembers 3
+    ransom = 0.8 320
   }
   config = {
     immigrantInterval = 1000
     maxPopulation = 10
-  }
-  createOnBones = 0.1 { "KOBOLD_CAVE" }
-    behaviour = {
-    minPopulation = 0
-    minTeamSize = 3
-    triggers = {Gold 500}
-    attackBehaviour = StealGold
-    ransom = 0.5 80
   }
   immigrants = { 
     {
@@ -215,8 +224,8 @@
   levelConnection = {
     topLevel = ExtraEnemy {"MAIN_DUNGEON_ENTRY"}
     levels = {
-      { ExtraEnemy { "FTD_CRUSTACEAN_CAVE_FLOOR" { 4 8 } } {40 30} BASIC }
-	  { MainEnemy {38 28} BASIC "Main Cave" }
+      { ExtraEnemy { "FTD_CRUSTACEAN_CAVE_FLOOR" { 2 4 } } {40 30} BASIC }
+	  { MainEnemy {38 28} BASIC }
     }
   }
 }
@@ -225,7 +234,7 @@
 {
   discoverable = false
   settlement = {
-    type = RandomLayout { "dungeon" { 38 28 } "ftd_flooder_caves"}
+    type = RandomLayout { "dungeon" { 38 28 } "default"}
     tribe = MONSTER
     furniture = "roomFurniture"
     shopItems = {{5 10} "dungeon" }

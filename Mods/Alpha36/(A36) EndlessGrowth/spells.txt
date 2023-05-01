@@ -396,6 +396,17 @@ End
   sound = SPELL_HEALING
 }
 
+"EG Altar TRANSFORM" 
+{
+  symbol = "🌱" 
+  effect = AI And{} 0 1 Name "Seed Flesh"  Description "Its body shall spread trouh the land." Chain {
+							   PlaceFurniture "EG_GROWTH_FLOOR"
+							   Caster Suicide TURN_INVISIBLE }
+  range = 1
+  cooldown = {50 100}
+  sound = SPELL_HEALING
+}
+
 "Harden Flesh" 
 {
   symbol = "🌱" 
@@ -749,6 +760,18 @@ OneTimeAbility("blessing of flesh", "Your flesh grows more holy.", {IncreaseAttr
   sound = SPELL_SUMMON_INSECTS
 }
 
+"gore_kraken_mechanics_player"
+{
+  symbol = "T"
+  effect = Name "send tendril" Description "Sends tendril to some direction" AI Enemy 0 1 AI Not Enemy 1 0 {
+    PlaceFurniture "EG_GORE_KRAKEN_MECHANIC"
+	Caster Lasting 60 IMMOBILE
+  }
+  range = 6
+  cooldown = {21 54}
+  sound = SPELL_STR_BONUS
+}
+
 "gore_kraken_mechanics"
 {
   symbol = "T"
@@ -763,14 +786,24 @@ OneTimeAbility("blessing of flesh", "Your flesh grows more holy.", {IncreaseAttr
 "gore_kraken_pull"
 {
   symbol = "⮄"
-  effect = Name "pull" Description "pulls" AI Enemy 0 1 AI Not Enemy 1 0 { Filter CreatureFlag "pull" {Chain{
+  effect = Name "pull" Description "pulls" AI Enemy 0 1 AI Not Enemy 1 0 {Filter CreatureFlag "pull" {Chain{
   SetCreatureFlag "pull" false
+    Filter LastingEffect INWATER {
+    Filter Not Or {LastingEffect SWIMMING_SKILL LastingEffect FLYING} {
+		RemoveLasting SUMMONED
+        Lasting 1 SUMMONED
+    }}}
   Caster PlaceFurniture "GORE_KRAKEN_BRIDGE"
   SwapPosition
   Area 1 RemoveFurniture "GORE_KRAKEN_BRIDGE"
-  Caster Lasting 1 SUMMONED}}
+  FixedDamage DAMAGE 5 CRUSH
+  SetCreatureFlag "can_go" false
+  SetCreatureFlag "in_water" false
+  RemoveLasting SUMMONED
+  Lasting 1 SUMMONED}
   Filter Not CreatureFlag "pull" {
   Lasting 1 IMMOBILE  
+  Lasting 2 TENTACLE  
   SetCreatureFlag "pull" true}}
   range = 1
   cooldown = {1}

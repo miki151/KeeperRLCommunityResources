@@ -935,14 +935,89 @@ End
         }
 }
 
-"EG_GROWTH_FLOOR"
+"EG_CULT_FLOOR"
 {
   name = "floor"
-  viewId = { "eg_gore_floorgrowth" }
+  viewId = { "eg_cult_tile_01" }
   fire = 50
   luxury = 0.2
   layer = FLOOR
-  tickType = Effect Chain {
+}
+
+"EG_SACRED_FOUNTAIN"
+{
+  name = "fountain"
+  viewId = { "eg_gore_altar_mountaintop" }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect "drink from"
+      {
+        CreatureMessage { "take a sip" "takes a sip"}
+		Filter Not Flag "EG_FOUNTAINDRUNK"{
+        SetFlag "EG_FOUNTAINDRUNK" true
+        Polymorph "EG_GORE_FLESHWRAITH_ADV" none}
+		Filter Flag "EG_FOUNTAINDRUNK"{
+		   Filter Not CreatureFlag "EG_FOUNTAINDRUNK"{
+		     Chain{
+					IncreaseAttr "BLESSED_FLESH" 1
+					ChooseRandom {
+                        IncreaseAttr SPELL_DAMAGE 1
+						IncreaseAttr DAMAGE 1
+						IncreaseAttr DEFENSE 1					
+						Permanent SWIMMING_SKILL
+						Permanent SPEED 
+						Permanent MAGIC_RESISTANCE
+						Permanent FIRE_RESISTANT
+						Permanent AMBUSH_SKILL	
+                        Permanent BLIND 	
+                        IncreaseAttr DIGGING 16		
+						AddBodyPart ARM 1 none
+						AddBodyPart LEG 1 none
+						AddBodyPart HEAD 1 none
+						AddBodyPart WING 1 none
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+						AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						IncreaseAttr MULTI_WEAPON 8	}
+				    Filter CreatureFlag "eg_better_spells"{
+					IncreaseAttr "BLESSED_FLESH" 1
+					ChooseRandom {
+                        IncreaseAttr SPELL_DAMAGE 1
+						IncreaseAttr DAMAGE 1
+						IncreaseAttr DEFENSE 1					
+						Permanent SWIMMING_SKILL
+						Permanent SPEED 
+						Permanent MAGIC_RESISTANCE
+						Permanent FIRE_RESISTANT
+						Permanent AMBUSH_SKILL	
+                        Permanent BLIND 	
+                        IncreaseAttr DIGGING 16	
+						AddBodyPart ARM 1 none
+						AddBodyPart LEG 1 none
+						AddBodyPart HEAD 1 none
+						AddBodyPart WING 1 none
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+						AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						IncreaseAttr MULTI_WEAPON 8	} }}
+				  SetCreatureFlag "EG_FOUNTAINDRUNK" true}
+                  Chain {
+                                 Heal { FLESH }
+		  						 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 10  
+								 RemoveLasting BLIND }}
+      }
+  summonedElement = "EG_BLOOD_PHANTOM"
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+Def GoreInfestation()
+{
+Chain {
      Area 1 Filter FurnitureType "MOUNTAIN" {
 	 RemoveFurniture "MOUNTAIN"
      PlaceFurniture "MOUNTAIN1_OVERGROWN"}
@@ -1051,7 +1126,18 @@ End
 	 Area 0 Filter FurnitureType "FLOWER3" {
 	 RemoveFurniture "FLOWER3"}
 	 Area 0 Filter FurnitureType "FLOWER3" {
-	 RemoveFurniture "FLOWER3"}
+	 RemoveFurniture "FLOWER3"}}}
+End 
+
+"EG_GROWTH_FLOOR"
+{
+  name = "floor"
+  viewId = { "eg_gore_floorgrowth" }
+  fire = 50
+  luxury = 0.2
+  layer = FLOOR
+  tickType = Effect Chain{
+     GoreInfestation()
 	 Chance 0.003 {PlaceFurniture "EG_INERT_GROWTH_TUMOR"}
 	 RemoveFurniture "EG_GROWTH_FLOOR"
 	 PlaceFurniture "EG_GROWTH_FLOOR_FINISH"
@@ -1089,6 +1175,34 @@ End
   tickType = Effect Filter Area 0 Not FurnitureType "EG_GROWTH_WALL" {
 	  Area 0 RemoveFurniture "EG_GROWTH_WALL"
 	  Area 0 PlaceFurniture  "EG_GROWTH_WALL_FIN"
+	  Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
+	  }
+  xForgetAfterBuilding = true
+  strength2 = {
+    100 BOULDER
+    15 DIG
+    100 HOSTILE_DIG
+  }
+  summonedElement = "EG_GORE_FLESHWRAITH"
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 90 38 51 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 90 38 51 255 }
+}
+
+"EG_GROWTH_WALL_BIOME"
+{
+  name = "flesh"
+  viewId = { "eg_gore_wallgrowth" }
+  blockMovement = true
+  blockAllVision = true
+  constructMessage = FILL_UP
+  viewLayer = FLOOR_BACKGROUND
+  wall = true
+  fire = 50
+  tickType = Effect Filter Area 0 Not FurnitureType "EG_GROWTH_WALL" {
+	  Area 0 RemoveFurniture "EG_GROWTH_WALL"
+	  Area 0 PlaceFurniture  "EG_GROWTH_WALL_FIN"
+	  Area 200 GoreInfestation()
 	  Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
 	  }
   xForgetAfterBuilding = true
@@ -1577,7 +1691,7 @@ End
   canHideHere = true
   tickType = Effect Filter Frequency 1 {
     RemoveFurniture "EG_GORE_KRAKEN_MECHANIC_TENDRIL"
-    Summon "EG_GORE_KRAKEN_TENDRIL" {1} none
+    Summon "EG_GORE_KRAKEN_TENDRIL" {1} 50
   }
 }
 
