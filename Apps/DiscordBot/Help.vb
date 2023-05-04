@@ -1,0 +1,48 @@
+﻿Imports Discord.Commands
+Imports Discord.WebSocket
+Imports System.Net
+Imports System.Net.Sockets
+Imports System.Text
+
+Public Class Help
+
+    Inherits ModuleBase(Of SocketCommandContext)
+    'In order to trigger a command, the user must type the prefix (|>) expected by the command handler, followed by the command name or alias.
+
+    <Command("help")>
+    <Summary("Looks up a page on the keeperRL wiki")>
+    Public Function HelpAsync() As Task
+        Return ReplyAsync("This bot looks up pages on the keeperRL wiki. Syntax: Help <topic>")
+    End Function
+
+    <Command("help")>
+    <Summary("Looks up a page on the keeperRL wiki")>
+    Public Function HelpAsync(search As String) As Task
+        Return ReplyAsync(GetPages(search))
+    End Function
+
+    Private Function GetPages(search As String)
+        Dim dir As String = "C:\PRJ\keeperrl_wiki\"
+        Dim ret As String = "Wiki pages: " + vbCrLf
+        Dim lst As New List(Of String)
+        For Each fil As String In IO.Directory.GetFiles(dir, "*.md", IO.SearchOption.AllDirectories)
+            Dim filDir As String = IO.Path.GetDirectoryName(fil)
+            If filDir.EndsWith("Missing") Then Continue For
+            If filDir.EndsWith("Idea") Then Continue For
+            If filDir.EndsWith("Unfinished") Then Continue For
+            If filDir.EndsWith("Modding") Then Continue For
+            Dim filName As String = IO.Path.GetFileNameWithoutExtension(fil)
+            If UCase(filName).Contains(UCase(search)) Then
+                lst.Add(filName)
+            End If
+        Next
+        If lst.Count = 0 Then Return "Wiki page not found."
+        For Each str As String In lst
+            ret = ret + "https://miki151.github.io/keeperrl_wiki/" + str + vbCrLf
+        Next
+        If ret.Length > 2000 Then ret = Left(ret, 2000)
+        Return ret
+    End Function
+
+End Class
+
