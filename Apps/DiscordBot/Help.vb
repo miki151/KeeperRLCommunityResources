@@ -60,7 +60,11 @@ Public Class Help
                 End If
             End If
             If UCase(filText).Contains(UCase(search)) Then
-                lst2.Add(URL + filName + vbCrLf)
+                If Source Then
+                    lst2.Add(URL + Replace(Replace(fil, dir, ""), "\", "/") + vbCrLf)
+                Else
+                    lst2.Add(URL + filName + vbCrLf)
+                End If
             End If
         Next
         If lst2.Count = 0 Then Return "Wiki pages not found."
@@ -71,7 +75,7 @@ Public Class Help
         If mentions Then
             ret = ret + vbCrLf + "Wiki pages (mentions): " + vbCrLf
             For Each str As String In lst2
-                ret = ret + URL + str + vbCrLf
+                ret = ret + str
             Next
         End If
         If ret.Length > 2000 Then ret = Left(ret, 1950) + "..."
