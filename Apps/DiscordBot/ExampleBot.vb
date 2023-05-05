@@ -13,7 +13,7 @@ Public Class ExampleBot
     ''' </summary>
     Private ReadOnly Property BotToken As String
         Get
-            Return "MTEwMzcwMTU0MjQ0OTcxMzIyMw.GpeiZG._j7eYP4GhOK3JY45r8Q29t_Y-JC0-xaA77Ul14"
+            Return IO.File.ReadAllText("C:\PRJ\DiscordBotToken.txt").Trim
         End Get
     End Property
 
