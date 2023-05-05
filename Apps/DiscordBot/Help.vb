@@ -10,25 +10,31 @@ Public Class Help
     'In order to trigger a command, the user must type the prefix (|>) expected by the command handler, followed by the command name or alias.
 
     <Command("help")>
-    <Summary("Looks up a page on the keeperRL wiki")>
+    <Summary("How to use this bot")>
     Public Function HelpAsync() As Task
-        Return ReplyAsync("This bot looks up pages on the keeperRL wiki. Syntax: Help <topic>")
+        Return ReplyAsync("This bot takes the following commands: wiki, page, code, mentions")
     End Function
 
-    <Command("help")>
-    <Summary("Looks up a page on the keeperRL wiki")>
-    Public Function HelpAsync(search As String) As Task
+    <Command("wiki")>
+    <Summary("Looks up a link for pages on the keeperRL wiki")>
+    Public Function WikiAsync(search As String) As Task
         Return ReplyAsync(GetPages(search, False, False))
     End Function
 
-    <Command("source")>
-    <Summary("Looks up a page on the keeperRL wiki")>
-    Public Function SourceAsync(search As String) As Task
+    <Command("page")>
+    <Summary("Finds github page for the keeperRL wiki")>
+    Public Function PageAsync(search As String) As Task
         Return ReplyAsync(GetPages(search, False, True))
     End Function
 
-    <Command("mentions")>
-    <Summary("Looks up a page on the keeperRL wiki")>
+    <Command("code")>
+    <Summary("Looks up a code file in the keeperRL source")>
+    Public Function CodeAsync(search As String) As Task
+        Return ReplyAsync(GetCode(search))
+    End Function
+
+    <Command("mention")>
+    <Summary("Looks up a pages that mention a text on the keeperRL wiki")>
     Public Function MentionAsync(search As String) As Task
         Return ReplyAsync(GetPages(search, True, False))
     End Function
@@ -81,6 +87,28 @@ Public Class Help
         If ret.Length > 2000 Then ret = Left(ret, 1950) + "..."
         Return ret
     End Function
+
+    Private Function GetCode(search As String)
+        Dim dir As String = "C:\PRJ\keeperrl\"
+        Dim ret As String = ""
+        Dim lst As New List(Of String)
+        Dim URL As String
+        URL = "https://github.com/miki151/keeperrl/blob/master/"
+        For Each fil As String In IO.Directory.GetFiles(dir, "*.*", IO.SearchOption.AllDirectories)
+            Dim filDir As String = IO.Path.GetDirectoryName(fil)
+            Dim filName As String = IO.Path.GetFileNameWithoutExtension(fil)
+            If UCase(filName).Contains(UCase(search)) Then
+                lst.Add(URL + Replace(Replace(fil, dir, ""), "\", "/") + vbCrLf)
+            End If
+        Next
+        ret = "KeeperRL source code (file names): " + vbCrLf
+        For Each str As String In lst
+            ret = ret + str
+        Next
+        If ret.Length > 2000 Then ret = Left(ret, 1950) + "..."
+        Return ret
+    End Function
+
 
 End Class
 
