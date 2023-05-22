@@ -1108,9 +1108,44 @@ End
     destroyedRemains = "TREASURE_CHEST"
     usageType = UsageEffect "open"  {
       ChooseRandom {
-    	  DropItems {"GoldPiece"} {15 25}
-    	  DropItems {"GoldPiece"} {15 25}
-		  SummonEnemy "RAT" {3 4} none
+    	  DropItems {"GoldPiece"} {35 55}
+    	  DropItems {"GoldPiece"} {55 75}
+	  DropItems {"AdoxiumOre"} {15 25}
+	  DropItems {"AdoxiumOre"} {25 45}
+	  DropItems {"AdaOre"} {15 25}
+	  DropItems {"AdaOre"} {25 45}
+	  DropItems {"InfOre"} {15 25}
+	  DropItems {"InfOre"} {25 55}
+	  DropItems {"VenOre"} {25 45}
+	  DropItems {"VenOre"} {35 55}
+	  #Gold and magic metals are treasure.  Iron, not so much.  ;-)
+	  DropItems {"IronStaff"} {1}
+	  DropItems {"IronStaff"} {1}
+	  #Two chances apiece for OK weapons.  Helps dial back the chance of getting artifacts or Bad Stuff.
+	  DropItems {"BONUS_Mace"} {1}
+	  DropItems {"BONUS_Mace"} {1}
+	  DropItems {"BONUS_Axe"} {1}
+	  DropItems {"BONUS_Axe"} {1}
+	  DropItems {"BONUS_LongSpear"} {1}
+	  DropItems {"BONUS_LongSpear"} {1}
+	  DropItems {"AdaWarHammer"} {1}
+	  DropItems {"DefenseAmulet"} {1}
+	  DropItems {Ring FIRE_RESISTANT} {1}
+	   #Nicer Stuff
+	  DropItems {"BONUS_VenLongSpear"} {1}
+	  DropItems {"BONUS_VenBattleAxe"} {1}
+	  DropItems {"ElvenBow"} {1}
+	  DropItems {"BONUS_AdaAxe"} {1}
+	  DropItems {"BONUS_AdaMace"} {1}
+	  DropItems {"BONUS_InfLongSpear"} {1}
+	  DropItems {"BONUS_InfBattleAxe"} {1}
+	  DropItems {Amulet DISARM_TRAPS_SKILL} {1}
+	  #Of course there's a chance to get a disarm-traps amulet.  Irony and all that.
+	  DropItems {Ring MELEE_RESISTANCE} {1}
+	  DropItems {Ring RANGED_RESISTANCE} {1}
+	  DropItems {Ring SPEED} {1}
+	  #There, see what greed will get you?
+	  SummonEnemy "BLACK_RAT" {4 5} none
       }
 	  FirstSuccessful {
 	    Filter LastingEffect DISARM_TRAPS_SKILL Message NORMAL "You disarm a trap on the chest using your disarming skills."
