@@ -1,0 +1,156 @@
+#Less-evil keepers
+
+"SST_WK_LIGHT_WARHORSE" inherit "WARHORSE"
+	{
+	#These warhorses enjoy running and have a shorter cooldown, but aren't that strong, so their armor isn't sturdy.  Best to set them up to get a kill.
+	attr = {
+	DAMAGE 36
+	SPELL_SPEED 20
+	DEFENSE 24
+	}
+	maxLevelIncrease = {
+	MELEE 7
+	}
+	
+	afterKilledSomeone ={
+	ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+      ApplyToSteed Polymorph "SST_WK_HUNTER" none
+	}
+ }
+ 
+ "SST_WK_HUNTER"
+ {
+ viewId = { "warhorse" }
+ #Hunting horses aren't much tougher than light warhorses...but they never. slow. down.  Put ranged units on them and you'll be as annoying as the Kherjits are in Mount & Blade.
+		attr = {
+		DAMAGE 38
+		DEFENSE 30
+		}
+		body = {
+		type = FourLegged LARGE
+		weight = 500
+		}
+		maxLevelIncrease = {
+		MELEE 7
+		}
+		permanentEffects = {
+		SPEED 1
+		STEED 1
+		SWIMMING_SKILL 1
+		}
+		 name = {
+		name = "hunting horse"
+		}
+ 
+ }
+ "SST_WK_HEAVY_WARHORSE" inherit "WARHORSE"
+ {
+ #These warhorses are built more for power than for speed.
+ #Total stats 45 after training may seem high, but they're intended to carry Teutonic Knights or similarly high-powered folks, and need to not be crippled in the bargain.
+ #Vanilla TEUTONs have 45 damage and 37 defense, after training, but before gear; generic sword +8 makes 53 damage and iron gear +13 on average makes it 50 defense.
+		attr = {
+		DAMAGE 38
+		DEFENSE 38
+		}
+		maxLevelIncrease = {
+		MELEE 7
+		}
+		
+		afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Polymorph "SST_WK_CHARGER" none
+	}
+ 
+ }
+ 
+ "SST_WK_CHARGER"
+ {
+	viewId = { "warhorse" }
+	attr = {
+	DAMAGE 40
+	DEFENSE 44
+	}
+	body = {
+      type = FourLegged LARGE
+      weight = 500
+	  #Ideally I'd have chargers grant a substantial damage bonus when they gallop. Until (and maybe after!) I work out how to do that, they lend a hoof.
+		intrinsicAttacks = {
+        LEG {{{ Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+		HEAD {{itemType = { Intrinsic { "bite_attack" }  "teeth" 5 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+	maxLevelIncrease = {
+		MELEE 7
+		}
+	permanentEffects = {
+      STEED 1
+      SWIMMING_SKILL 1
+    }
+	
+	chatReactionFriendly = "snorts confidently"
+    chatReactionHostile = "looks like it's about to kick you!"
+	petReaction = "nickers"
+	 name = {
+      name = "charger"
+    }
+	
+ }
+ 
+ #Fallen knights
+ 
+ "SST_FK_HORSE"
+ {
+	viewId = { "horse" }
+ #Horses raised and trained in and for the presence of Evil. Not as varied as Less-Evil, but still solid mounts.
+	attr = {
+      DAMAGE 28
+      DEFENSE 28
+    }
+	body = {
+      type = FourLegged LARGE
+      weight = 500
+    }
+	#Evil starter horses can't swim, unless you don't care for the LotR reference. Let me know.
+	permanentEffects = {
+      STEED 1
+    }
+	maxLevelIncrease = {
+		MELEE 7
+	}
+	name = {
+      name = "fell horse"
+    }
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Polymorph "SST_FK_WARHORSE" none
+	}
+ }
+ 
+ "SST_FK_WARHORSE"
+{
+	viewId = { "warhorse" }
+	attr = {
+      DAMAGE 38
+      DEFENSE 38
+    }
+	body = {
+      type = FourLegged LARGE
+      weight = 500
+	  intrinsicAttacks = {
+        LEG {{{ Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+		HEAD {{itemType = { Intrinsic { "bite_attack" }  "teeth" 5 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+    }
+    }
+	permanentEffects = {
+      STEED 1
+	  SWIMMING_SKILL 1
+    }
+	maxLevelIncrease = {
+		MELEE 7
+	}
+	
+	name = {
+	name = "fell warhorse"
+    }
+} 
+ 
