@@ -11,17 +11,22 @@
 	maxLevelIncrease = {
 	MELEE 7
 	}
-	
+	name = {
+		name = "light warhorse"
+	}
 	afterKilledSomeone ={
 	ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
       ApplyToSteed Polymorph "SST_WK_HUNTER" none
 	}
+	chatReactionFriendly = "seems like it wants a carrot"
+    chatReactionHostile = "looks like it would prefer to be elsewhere."
+	petReaction = "nickers"
  }
  
  "SST_WK_HUNTER"
  {
  viewId = { "warhorse" }
- #Hunting horses aren't much tougher than light warhorses...but they never. slow. down.  Put ranged units on them and you'll be as annoying as the Kherjits are in Mount & Blade.
+ #Hunting horses aren't much tougher than light warhorses...but they never. slow. down.  Put ranged units on them and you'll be as annoying as the Khergits are in Mount & Blade.
 		attr = {
 		DAMAGE 38
 		DEFENSE 30
@@ -38,9 +43,13 @@
 		STEED 1
 		SWIMMING_SKILL 1
 		}
-		 name = {
+		name = {
 		name = "hunting horse"
 		}
+		
+	chatReactionFriendly = "looks at you expectantly. Let's go!"
+    chatReactionHostile = "kicks dust at you." #Good job. You got to melee range on a Hunter...and chatted!
+	petReaction = "nickers"
  
  }
  "SST_WK_HEAVY_WARHORSE" inherit "WARHORSE"
@@ -60,6 +69,9 @@
 		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
 		ApplyToSteed Polymorph "SST_WK_CHARGER" none
 	}
+	chatReactionFriendly = "snuffles contentedly"
+    chatReactionHostile = "looks like it's about to kick you."
+	petReaction = "nickers"
  
  }
  
@@ -117,6 +129,9 @@
 	maxLevelIncrease = {
 		MELEE 7
 	}
+	chatReactionFriendly = "doesn't seem talkative."
+    chatReactionHostile = "looks like it wants to kick you."
+	petReaction = "snorts."
 	name = {
       name = "fell horse"
     }
@@ -128,7 +143,7 @@
  
  "SST_FK_WARHORSE"
 {
-	viewId = { "warhorse" }
+	viewId = { "fell_warhorse" }
 	attr = {
       DAMAGE 38
       DEFENSE 38
@@ -148,9 +163,122 @@
 	maxLevelIncrease = {
 		MELEE 7
 	}
-	
+	chatReactionFriendly = "neighs and looks ready to go fight something."
+    chatReactionHostile = "looks like it's about to kick you!"
+	petReaction = "snorts and stamps the ground."
 	name = {
 	name = "fell warhorse"
     }
 } 
+
+"SST_FK_WAR_WOLF"
+{
+	viewId = { "wolf" }
+	attr = {
+	DAMAGE 20
+	DEFENSE 15
+	}
+	#There's only so much you can do to armor a wolf that's also gonna carry an armored rider.  This is mostly training & breeding.
+	body = {
+      type = FourLegged MEDIUM
+      weight = 35
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+	#The stat-ups for war wolves already take some training into account. Steed training on dummies will likely represent time spent acclimating to your creatures,
+	#getting the tack well-fitted, and probably teaching the best available fighting skills as well.
+	maxLevelIncrease = {
+		MELEE 4
+	}
+	#In particular, war wolves don't go exploring around. This is why they aren't an inherit from WOLF.
+	permanentEffects = {
+      NIGHT_VISION 1
+      STEED 1
+	  SWARMER 1
+    } #War wolves might not be individually as impressive as a warg...but they *are* pack hunters.
+	
+	#War wolves are happy in their role
+	chatReactionFriendly = "barks happily."
+    chatReactionHostile = "growls angrily."
+	petReaction = "wags its tail happily."
+	
+    name = {
+      name = "war wolf"
+      pluralName = "wolves"
+      groupName = "pack"
+    }
+}
+
+"SST_FK_WARG"
+#These will need tech: no blatant magic and infernal crossbreeding like an evil wizard might do, but getting hyena and dire-wolf together isn't a joke.
+{
+	viewId = { "wargv2" } #Swishos' surplus sprites for the win! Thanks.
+	attr = {
+	DAMAGE 28
+	DEFENSE 26
+	}
+	body = {
+      type = FourLegged MEDIUM
+      weight = 45 #Wargs are bigger and heavier than wolves, but they use their legs for movement and support. Attack comes from the jaw.
+      intrinsicAttacks = {
+       HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 9 { attackType = BITE attackMsg = BITE} } }}
+      }
+    }
+	maxLevelIncrease = {
+		MELEE 7
+	}
+	permanentEffects = {
+      NIGHT_VISION 1
+      STEED 1
+    }
+	chatReactionFriendly = "emits a barking laugh."
+    chatReactionHostile = "eyes your throat and growls."
+	petReaction = "tries not to wag its tail, but clearly appreciates the attention."
+    name = {
+      name = "warg"
+      pluralName = "wargs"
+      groupName = "pack"
+    }
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Polymorph "SST_FK_WAR_WARG" none
+	}
+}
+
+"SST_FK_WAR_WARG"
+{
+viewId = { "war_warg" } #Swishos' surplus sprites for the win! Thanks.
+	attr = {
+	DAMAGE 35
+	DEFENSE 35
+	}
+	body = {
+      type = FourLegged MEDIUM
+      weight = 50 #War wargs are even bulkier.
+	  #Fully trained war warg bites for 50 melee attack, but only 40 DEF. Should be competitive in later-game.
+      intrinsicAttacks = {
+       HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 10 { attackType = BITE attackMsg = BITE} } }}
+      }
+    }
+	maxLevelIncrease = {
+		MELEE 5
+	}
+	permanentEffects = {
+      NIGHT_VISION 1
+      STEED 1
+    }
+	
+	chatReactionFriendly = "barks a confident laugh."
+    chatReactionHostile = "looks like it's about to tear your throat out!"
+	petReaction = "appreciates your assistance with its grooming."
+	#Remember! "its" is the possessive of "it"; "it's" is the contraction form of "it is".
+	
+    name = {
+      name = "war warg"
+      pluralName = "war wargs"
+      groupName = "pack"
+    }
+}
  
