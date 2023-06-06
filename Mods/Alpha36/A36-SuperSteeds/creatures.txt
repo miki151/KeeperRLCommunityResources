@@ -124,9 +124,9 @@
       type = FourLegged LARGE
       weight = 500
     }
-	#Evil starter horses can't swim, unless you don't care for the LotR reference. Let me know.
 	permanentEffects = {
       STEED 1
+	  SWIMMING_SKILL 1
     }
 	maxLevelIncrease = {
 		MELEE 7
@@ -172,6 +172,39 @@
 	name = "fell warhorse"
     }
 } 
+
+"SST_FK_VAMPHORSE"
+{
+	viewId = { "vamp_warhorse" }
+	attr = {
+		DAMAGE 38
+		DEFENSE 38
+	}
+	body = {
+      type = FourLegged LARGE
+	  material = UNDEAD_FLESH
+      weight = 500
+	  intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 5 { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } victimEffect = { 0.5 Lasting 50 BLEEDING  }} } isExtraAttack = true }}
+		LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+    }
+	}
+	maxLevelIncrease = {
+		MELEE 7
+	}
+	permanentEffects = {
+	  NIGHT_VISION 1
+      STEED 1
+	  RANGED_RESISTANCE 1
+    }
+	chatReactionFriendly = "silently gazes upon you with its glowing eyes."
+    chatReactionHostile = "fixes you with its fell gaze and bares its fangs..."
+	petReaction = "stamps the ground."
+	name = {
+	name = "vampiric warhorse"
+    }
+	hatedByEffect = HATE_UNDEAD
+}
 
 "SST_FK_WAR_WOLF"
 {
@@ -284,3 +317,20 @@ viewId = { "war_warg" } #Swishos' surplus sprites for the win! Thanks.
     }
 }
  
+ ###
+ #Vanilla steed training allotments
+ ###
+ "WARHORSE" modify append {maxLevelIncrease = { MELEE 3 } } #It's an experienced riding horse, not purpose-bred and raised.
+ 
+ #Dragons are good fighters, or at least consider themselves good fighters, already.  This helps reduce wing damage and allows for combat-XP benefit.
+ "GREEN_DRAGON" modify append {	 maxLevelIncrease = {MELEE 3} }
+ "RED_DRAGON" modify append {  maxLevelIncrease = {MELEE 3} }
+ "BLACK_DRAGON" modify append {	 maxLevelIncrease = {MELEE 3} }
+ "WHITE_DRAGON" modify append {	 maxLevelIncrease = {MELEE 3} }
+ "YELLOW_DRAGON" modify append { maxLevelIncrease = {MELEE 3} }
+ "BONE_DRAGON" modify append {	 maxLevelIncrease = {MELEE 3} }
+ 
+ #Ki-rin, last I checked, are a wise & good Chinese mythological creature. They shouldn't be easily captured, and don't seem like melee fighters.
+ "KIRIN" modify append { maxLevelIncrease = {MELEE 3 SPELL 3} spells = {"escape"} permanentEffects = { CAPTURE_RESISTANCE 1} }
+ 
+ #Yetis and Minotaurs seem like they're already solid combat mounts. If there's a good argument for buffing them, let me know.

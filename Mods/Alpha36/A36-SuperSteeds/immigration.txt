@@ -1,22 +1,21 @@
 
-#The idea is that the starter mounts are always available, for a reasonable fee. If they should count against pop-cap, can remove the NO_LIMIT.
-#Upgrade: tech requirements. { 0.0 TechId "equine husbandry" } or similar.
-
 "white_knight_stables"
 {
 	{
       ids = { "SST_WK_LIGHT_WARHORSE" }
       traits = { NO_LIMIT }
       requirements = {
-        { 1.0 CostInfo "WOOD" 5 }
+        { 1.0 CostInfo "GOLD" 50 }
+		{ 0.0 TechId "equine husbandry" }
       }
     }
-	#Zeroed training costs so I can actually get them into the field.  Will charge in use.
+
 	{
       ids = { "SST_WK_HEAVY_WARHORSE" }
       traits = { NO_LIMIT }
       requirements = {
-        { 1.0 CostInfo "WOOD" 10 }
+        { 1.0 CostInfo "GOLD" 75 }
+		{ 0.0 TechId "equine husbandry" }
       }
     }
 }
@@ -27,7 +26,8 @@
       ids = { "SST_FK_HORSE" }
       traits = { NO_LIMIT }
       requirements = {
-        { 1.0 CostInfo "WOOD" 10 }
+        { 1.0 CostInfo "GOLD" 50 }
+		{ 0.0 TechId "horsehandling" }
       }
     }
 	
@@ -35,7 +35,8 @@
       ids = { "SST_FK_WAR_WOLF" }
       traits = { NO_LIMIT }
       requirements = {
-        { 1.0 CostInfo "WOOD" 10 }
+        { 1.0 CostInfo "GOLD" 30 }
+		{ 0.0 TechId "war wolves" }
       }
     }
 	
@@ -43,7 +44,19 @@
       ids = { "SST_FK_WARG" }
       traits = { NO_LIMIT }
       requirements = {
-        { 1.0 CostInfo "WOOD" 10 }
+        { 1.0 CostInfo "GOLD" 60 }
+		{ 0.0 TechId "wargs" }
+      }
+    }
+	
+	{
+      ids = { "SST_FK_VAMPHORSE" }
+	  #Vamphorses seem plenty powerful enough to count against popcap.
+	  spawnLocation = FurnitureType "GRAVE" #They are undead, after all.  Best not to spawn outside!
+      requirements = {
+        { 0.0 TechId "vampiric warhorses" }
+		{ 0.0 CostInfo "CORPSE" 1}
+		{ 1.0 CostInfo "GOLD" 100 } #Immigration only shows the last CostInfo listed.  $100 is a little more important than 1 corpse.
       }
     }
 }
