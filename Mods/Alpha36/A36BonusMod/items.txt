@@ -1493,7 +1493,35 @@ End
     equipedAbility = { "BONUS_blowback" }
 	storageIds = {"armor" "equipment"}
   }
-    
+  
+"BONUS_Amazweihander" inherit "ElvenSword"
+ {
+    viewId = { "sword" ColorId LIGHT_GREEN }
+    equipedViewId = { "sword_v" ColorId LIGHT_GREEN } #Amazon gear seems Elven more often than not
+    name = "amazon greatsword"
+	shortName = "zweihander"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+	weight = 2
+	modifiers = {
+        DAMAGE 11
+	PARRY 2
+      }
+	price = 200
+	weaponInfo = {
+        attackType = CUT
+	twoHanded = true
+      }
+	genPrefixes = {
+	  1 SpellId "BONUS_weapon dodge"
+	  2 ItemAttrBonus DAMAGE 3
+          2 ItemAttrBonus DEFENSE 3
+    }
+	storageIds = {"weapons" "equipment"}
+        equipmentGroup = "iron equipment"
+ }
+
+  
 ########################
 #Ideas for future items#
 ########################
