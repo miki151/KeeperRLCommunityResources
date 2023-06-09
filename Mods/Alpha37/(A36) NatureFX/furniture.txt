@@ -1,0 +1,1344 @@
+"CANIF_TREE" modify
+
+# here modify means to tell the machine you changed this particular object's "key",
+# don't ask me what key is I have only vague idea, probably anything the machine consider unique and saved in memory,
+# append means you're not overwriting it entirely. - DeliveryService
+
+{
+  name = "tree"
+  viewId = { "canif_tree" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 20 40 }}}}
+  summonedElement = "ENT"
+  destroyFX = {  DESTROY_FURNITURE Rgb 120 87 46 255 }
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+"DECID_TREE" modify
+{
+  viewId = { "decid_tree" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 20 40 }}}}
+  summonedElement = "ENT"
+  destroyFX = {  DESTROY_FURNITURE Rgb 120 87 46 255 }
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+"TREE_SNOW" modify
+{
+  viewId = { "tree_snow" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 20 40 }}}}
+  summonedElement = "ENT"
+  destroyFX = {  DESTROY_FURNITURE Rgb 120 87 46 255 }
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+"PALM_TREE" modify
+{
+  viewId = { "palm_tree" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 20 40 }}}}
+  summonedElement = "ENT"
+  destroyFX = {  DESTROY_FURNITURE Rgb 120 87 46 255 }
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+"GUM_TREE" modify
+{
+  viewId = { "tree_gum" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 20 40 }}}}
+  summonedElement = "ENT"
+  destroyFX = {  DESTROY_FURNITURE Rgb 120 87 46 255 }
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+"CACTUS1" modify
+{
+  viewId = { "cactus1" }
+  name = "cactus"
+  blockVision = { NORMAL }
+  canHideHere = true
+  destroyedRemains = none
+  burntRemains = none
+  summonedElement = none
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 10
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 5 10 }}}}
+  destroyFX = {  DESTROY_FURNITURE Rgb 120 87 46 255 }
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+#These other cactus variants are new addition
+"CACTUS2" inherit "CACTUS1"
+{
+  viewId = { "cactus2" }
+}
+"CACTUS3" inherit "CACTUS1"
+{
+  viewId = { "cactus3" }
+}
+"TREE_TRUNK" modify append
+{
+  name = "tree trunk"
+  viewId = { "tree_trunk" }
+  canSilentlyReplace = false
+  canHideHere = true
+  destroyedRemains = none
+  burntRemains = none
+  summonedElement = none
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 10
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 5 10 }}}}
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  tryDestroyFX = { WOOD_SPLINTERS Rgb 120 87 46 255 }
+}
+"BURNT_TREE" modify append
+{
+  name = "burnt tree"
+  viewId = { "burnt_tree" }
+  canHideHere = true
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 10 15 }}}}
+  destroyFX = {  DESTROY_FURNITURE Rgb 120 87 46 255 }
+  tryDestroyFX = { WOOD_SPLINTERS Rgb 120 87 46 255 }
+}
+"STONES" modify
+{
+  name = "rocks"
+  viewId = { "stones" }
+  canHideHere = true
+  canSilentlyReplace = false
+  strength2 = {
+    500 BOULDER
+    30 DIG
+  }
+  #itemDrop = {{{{Simple "Rock"} 1 { 16 28 }}}}
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+
+"SANDSTONES" inherit "STONES"
+{
+  name = "rocks"
+  viewId = { "sandstones" }
+  canHideHere = true
+  canSilentlyReplace = false
+  strength2 = {
+    500 BOULDER
+    30 DIG
+  }
+  itemDrop = {{{{Simple "Rock"} 1 { 15 25 }}}}
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+"ICESTONES" inherit "STONES"
+{
+  name = "rocks"
+  viewId = { "icestones" }
+  canHideHere = true
+  canSilentlyReplace = false
+  strength2 = {
+    500 BOULDER
+    30 DIG
+  }
+  itemDrop = {{{{Simple "Rock"} 1 { 15 25 }}}}
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+"BUSH" modify
+{
+  name = "bush"
+  viewId = { "bush" }
+  strength2 = {
+    20 BOULDER
+    10 CUT
+  }
+  canHideHere = true
+  fire = 30
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 10 15 }}}}
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+"BUSH2" inherit "BUSH"
+{
+  viewId = { "bush2" }
+}
+
+###################################
+# Get Stone from digging mountain #
+###################################
+
+"MOUNTAIN" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 1 }}}}
+}
+"DUNGEON_WALL" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 7 8 }}}}
+}
+"MOUNTAIN2" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 2 3 }}}}
+}
+"DUNGEON_WALL2" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 11 13 }}}}
+}
+"SANDSTONE" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 1 2 }}}}
+}
+"SANDSTONE_WALL" modify append
+{
+  viewId = { "sandstone_wall" }
+  itemDrop = {{{{Simple "Rock"} 1 { 7 8 }}}}
+  builtOver = {"SANDSTONE"}
+}
+"RED_SANDSTONE" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 1 2 }}}}
+}
+"DELIVERYSERVICE_NFX_RED_SANDSTONE_WALL" inherit "DUNGEON_WALL"
+{
+  name = "red sandstone"
+  viewId = { "red_sandstone_wall" }
+  itemDrop = {{{{Simple "Rock"} 1 { 7 8 }}}}
+  builtOver = {"RED_SANDSTONE"}
+}
+"GLACIER" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 1 2 }}}}
+}
+"DELIVERYSERVICE_NFX_GLACIER_WALL" inherit "DUNGEON_WALL"
+{
+  viewId = { "glacier_wall" }
+  itemDrop = {{{{Simple "Rock"} 1 { 7 8 }}}}  
+  builtOver = {"GLACIER"}
+  destroyedEffect = Chain {
+  	DropItems { Scroll Enhance ARMOR 1 } { 1 } #DropItems { Simple "Rock" 1 } { 7 8 }
+ }
+}
+"MOUNTAIN_SKULLS" modify append
+{
+  name = "corpse mountain"
+  itemDrop = {{{{ Corpse } 1 { 3 5 }}}}
+}
+"WALL_SKULLS" modify append
+{
+  name = "corpse wall"
+  builtOver = {"MOUNTAIN_SKULLS"}
+  #itemDrop = {multiItems = {
+  #  {100} {
+  #    {Simple "Rock" 2 } 1 
+  #    {Corpse 5} 1 
+  #  }
+  #  {100} {
+  #    {Corpse 5} 1 
+  #    {Simple "Bone"} 0.5 
+  #  }
+  #}}
+  blockMovement = true
+  blockVision = { NORMAL ELF }
+  wall = true
+  xForgetAfterBuilding = true
+  luxury = 0.2
+  constructMessage = REINFORCE
+  canBuildOutsideOfTerritory = true
+  strength = 2000
+  strength2 = {
+    300 BOULDER
+    100 DIG
+    1900 HOSTILE_DIG
+  }
+  destroyedEffect = Chain {
+    DropItems { Corpse } { 3 5 } 
+    DropItems { Simple "Rock" } { 2 3 }
+  }
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 220 210 180 255 }
+}
+"STONE" modify append
+{
+  strength = 2000
+  itemDrop = {{{{Simple "Rock"} 1 { 160 280 }}}}
+}
+"DELIVERYSERVICE_NFX_GOLDEN_DUNGEON_WALL"
+{
+  name = "Gold Plated Wall"
+  viewId = { "DeliveryServiceGoldenDungeonWall" }
+  builtOver = {"DUNGEON_WALL"}
+  blockMovement = true
+  blockVision = { NORMAL ELF }
+  wall = true
+  luxury = 1
+  constructMessage = REINFORCE
+  canBuildOutsideOfTerritory = true
+  strength = 2000
+  strength2 = {
+    300 BOULDER
+    100 DIG
+    1900 HOSTILE_DIG
+  }
+  destroyedEffect = Chain {
+    DropItems { Simple "GoldPiece" } { 10 } 
+    DropItems { Simple "Rock" } { 7 8 }
+  }
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 220 210 180 255 }
+  populationIncrease = {0.25 none}
+}
+"DELIVERYSERVICE_NFX_GOLDEN_DUNGEON_WALL2" inherit "DELIVERYSERVICE_NFX_GOLDEN_DUNGEON_WALL"
+{
+  viewId = { "DeliveryServiceGoldenDungeonWall2" }
+  builtOver = {"DUNGEON_WALL2"}
+  destroyedEffect = Chain {
+    DropItems { Simple "GoldPiece" } { 10 } 
+    DropItems { Simple "Rock" } { 11 13 }
+  }
+}
+"DELIVERYSERVICE_NFX_GOLDEN_SANDSTONE_WALL" inherit "DELIVERYSERVICE_NFX_GOLDEN_DUNGEON_WALL"
+{
+  viewId = { "DeliveryServiceGoldenSandstoneWall" }
+  builtOver = {"SANDSTONE_WALL"}
+}
+"DELIVERYSERVICE_NFX_GOLDEN_RED_SANDSTONE_WALL" inherit "DELIVERYSERVICE_NFX_GOLDEN_DUNGEON_WALL"
+{
+  viewId = { "DeliveryServiceGoldenRedSandstoneWall" }
+  builtOver = {"DELIVERYSERVICE_NFX_RED_SANDSTONE_WALL"}
+}
+"DELIVERYSERVICE_NFX_GOLDEN_GLACIER_WALL" inherit "DELIVERYSERVICE_NFX_GOLDEN_DUNGEON_WALL"
+{
+  viewId = { "DeliveryServiceGoldenGlacierWall" }
+  builtOver = {"DELIVERYSERVICE_NFX_GLACIER_WALL"}
+}
+"DELIVERYSERVICE_NFX_GOLDEN_SKULLS_WALL" inherit "DELIVERYSERVICE_NFX_GOLDEN_DUNGEON_WALL"
+{
+  viewId = { "DeliveryServiceGoldenSkullsWall" }
+  builtOver = {"WALL_SKULLS"}
+  destroyedEffect = Chain {
+    DropItems { Simple "GoldPiece" } { 10 } 
+    DropItems { Simple "Rock" } { 2 3 }
+    DropItems { Corpse } { 3 5 }
+  }
+}
+"CASTLE_WALL" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 2 5 }}}}
+}
+"HIDDEN_CASTLE_DOOR" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 2 5 }}}}
+}
+"SNOW_WALL" modify append
+{
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  itemDrop = {{{{Simple "Rock"} 1 { 1 3 }}}}
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+  }
+}
+"WOOD_WALL" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 2 5 }}}}
+}
+"MUD_WALL" modify append
+{
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  itemDrop = {{{{Simple "Rock"} 1 { 1 3 }}}}
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+  }
+}
+"RUIN_WALL" modify append
+{
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  itemDrop = {{{{Simple "Rock"} 1 { 1 3 }}}}
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+  }
+}
+"BRIDGE" modify append
+{
+  name = "bridge"
+  viewId = { "bridge" }
+  overrideMovement = true
+  fire = 50
+  removeNonFriendly = true
+  removeWithCreaturePresent = false
+  bridge = true
+  canBuildOutsideOfTerritory = true
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+#################
+# Connected Pit #
+#################
+# It doesn't work as intended yet:
+# 1. bridge can't be built over it (because it is not on GROUND layer, if it is on GROUND layer, it can not be build in keeper mode)
+# 2. can't use other effects such as slowing units down (because it has to use Built in PIT tickType to support water and magma filling mechanic)
+# 3. can't use WalkIntoFX (Possibly because both of the previous reasons)
+# 4. can't be destroyed (Because it is using Built in PIT TickType that doesn't support destroying)
+# 5. can't be filled in either (Possibly because it is neither water/magma and not in GROUND layer)
+
+"PIT" modify
+{
+  name = "pit"
+  viewId = { "DeliveryServicePit" }	#This is modded to use other tileset, see tile.txt. to support connected structure.
+  droppedItems = { "sinks" "sink" }
+  #wall = true 				#Not sure what this does, it doesn't cause connected tile like wall does, that parameter is defined in tile.txt, I saw the cpp it seems to be used for roof or indoor.
+  #layer = FLOOR 			#this is so that it doesn't use furniture layer so it can be built over by bridge. But currently doesn't work
+  #defaultBridge = "BRIDGE" 		#Is not yet supported, it occupies furniture layer	
+  #strength = 40 			#Doesn't work as for now, since it uses Built in PIT ticktype.
+  strength2 = {
+    #1000 BOULDER
+    #100 CUT
+    70 DIG
+  }
+  #waterDepth = 1.5 			#I saw the cpp. it only used for mapping purpose
+  #entryType = Water			#It is used for unit vison I think. e.g Elf that can see through trees, while other units can't.
+  movementSet = {
+    traits = { FLY WALK }
+  }
+  walkIntoFX = { WATER_SPLASH Rgb 200 200 200 255 }
+  #xForgetAfterBuilding = false		#Unclaim, and disallow count as owned, prevents replacing after destroyed, hence can't destroy.
+  tickType = Pit
+  #tickType = Effect			#It is not supported yet since it has to use Built in PIT, to support water/magma filling mechanic
+  #  Filter And { Not LastingEffect FLYING Not BodyMaterial SPIRIT Not LastingEffect IMMOBILE} Chain {
+  #    Chance 0.1 Chain {
+  #      CreatureMessage "are stuck in the tar!" "is stuck in the tar!"
+  #      Lasting IMMOBILE
+  #    }
+  #    Filter Not LastingEffect IMMOBILE Chance 0.5 Chain {
+  #      CreatureMessage "are slowed down by the tar!" "is slowed down by the tar!"
+  #      Lasting SLOWED
+  #    }
+  #  }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = true
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"TAR"  modify append {
+  name = "tar"
+  viewId = { "tar" }
+  layer = GROUND
+  defaultBridge = "STONE_BRIDGE"
+  fillPit = "TAR"
+  tickType = Effect
+    Filter And { Not LastingEffect FLYING Not BodyMaterial SPIRIT Not LastingEffect IMMOBILE} Chain {
+      Chance 0.1 Chain {
+        CreatureMessage {"are stuck in the tar!" "is stuck in the tar!"}
+        Lasting IMMOBILE
+      }
+      Filter Not LastingEffect IMMOBILE Chance 0.5 Chain {
+        CreatureMessage {"are slowed down by the tar!" "is slowed down by the tar!"}
+        Lasting SLOWED
+      }
+    }
+}
+#####################################
+# Get resource from furnitures back #
+#####################################
+# Get back resource from furnitures, 50% to 100% of the cost
+# The ammount is random regardless of the skill used to dig/cut. the skills are used to determine how fast the work is done.
+
+"WORKSHOP" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 } #RGB 120 87 46 255 is Brown
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"FORGE" modify append
+{
+  itemDrop = {{{{Simple "IronOre"} 1 { 10 20 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 } #RGB 120 120 120 255 is Silver/Grey
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"LABORATORY" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 5 10 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 } #RGB 200 200 200 255 is Dark Gray
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 200 200 200 255 }
+}
+"JEWELLER" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 6 12 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"POETRY_TABLE" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 6 12 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"BOOKCASE_WOOD" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"BOOKCASE_IRON" modify append
+{
+  itemDrop = {{{{Simple "IronOre"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"BOOKCASE_GOLD" modify append
+{
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 }  #RGB 190 190 40 255 is Yellow/Gold
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"TRAINING_WOOD" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"TRAINING_IRON" modify append
+{
+  itemDrop = {{{{Simple "IronOre"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"TRAINING_ADA" modify append
+{
+  itemDrop = {{{{Simple "AdaOre"} 1 { 6 12 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 0 170 200 255 } #RGB 190 190 40 255 is Saturated Blue
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 0 170 200 255 }
+}
+"ARCHERY_RANGE" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"BED1" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 6 12 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"BED2" modify append
+{
+  itemDrop = {{{{Simple "IronOre"} 1 { 6 12 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"BED3" modify append
+{
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 6 12 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"GRAVE" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 3 5 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 200 200 200 255 }
+}
+"AUTOMATON_ENGINE_WOOD" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 25 50 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"AUTOMATON_ENGINE_IRON" modify append
+{
+  itemDrop = {{{{Simple "IronOre"} 1 { 25 50 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"AUTOMATON_ENGINE_ADA" modify append
+{
+  itemDrop = {{{{Simple "AdaOre"} 1 { 25 50 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 0 170 200 255 } #RGB 190 190 40 255 is Saturated Blue
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 0 170 200 255 }
+}
+"DEMON_SHRINE" modify append
+{
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 15 30 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"ANGEL_SHRINE" modify append
+{
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 15 30 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"COFFIN1" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"COFFIN2" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 200 200 200 255 }
+}
+"COFFIN3" modify append
+{
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"WOOD_DOOR" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 3 5 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"WOOD_GATE" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 4 8 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"IRON_DOOR" modify append
+{
+  itemDrop = {{{{Simple "IronOre"} 1 { 3 5 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"IRON_GATE" modify append
+{
+  itemDrop = {{{{Simple "IronOre"} 1 { 4 8 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"ADA_DOOR" modify append
+{
+  itemDrop = {{{{Simple "AdaOre"} 1 { 3 5 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 0 170 200 255 } #RGB 190 190 40 255 is Saturated Blue
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 0 170 200 255 }
+}
+"ADA_GATE" modify append
+{
+  itemDrop = {{{{Simple "AdaOre"} 1 { 4 8 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 0 170 200 255 } #RGB 190 190 40 255 is Saturated Blue
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 0 170 200 255 }
+}
+"WELL" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 4 8 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 200 200 200 255 }
+}
+"TERMITE_MOUND" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 2 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"FLOWER1" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 1 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"FLOWER2" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 1 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"FLOWER3" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 1 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"CROPS" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 2 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"PIGSTY" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 2 5 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"DINING_TABLE" modify append
+{
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 2 5 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"PRISON" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "IronOre"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"TORTURE_TABLE" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "IronOre"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"CANDELABRUM_N" modify append
+{
+  name = "candelabrum"
+  viewId = { "candelabrum_ns" }
+  luxury = 0.3
+  lightEmission = 8.2
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 2 5 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 190 190 40 255 }
+}
+"CANDELABRUM_S" modify append
+{
+  name = "candelabrum"
+  viewId = { "candelabrum_ns" }
+  luxury = 0.3
+  lightEmission = 8.2
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 2 5 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 190 190 40 255 }
+}
+"CANDELABRUM_E" modify append
+{
+  name = "candelabrum"
+  viewId = { "candelabrum_e" }
+  luxury = 0.3
+  lightEmission = 8.2
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 2 5 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 190 190 40 255 }
+}
+"CANDELABRUM_W" modify append
+{
+  name = "candelabrum"
+  viewId = { "candelabrum_w" }
+  luxury = 0.3
+  lightEmission = 8.2
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 2 5 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 190 190 40 255 }
+}
+"GROUND_TORCH" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 5 10 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 } 		
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"KEEPER_BOARD" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 7 15 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"FOUNTAIN" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "Rock"} 1 { 15 30 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+"WHIPPING_POST" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 10 20 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"GALLOWS" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 10 20 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+# Impaled head will give gold if destroyed, if it can be destroyed. 
+# it uses non physical item as resource cost called Prisoner head that's why.
+"IMPALED_HEAD" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 10 20 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"MINION_STATUE" modify append
+{
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 25 50 }}}}
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 190 190 40 255 }
+  strength2 = {
+    500 BOULDER
+    100 DIG
+  }
+}
+"STONE_MINION_STATUE" modify append
+{
+  canBuildOutsideOfTerritory = true
+  strength2 = {
+    500 BOULDER
+    100 DIG
+  }
+  itemDrop = {{{{Simple "Rock"} 1 { 100 250 }}}}
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+"ADOXIE_STATUE_TEMPLE" modify append
+{
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 100 250 }}}}
+  strength2 = {
+    500 BOULDER
+    100 DIG
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+"ADOXIE_STATUE" modify append
+{
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 100 250 }}}}
+  strength2 = {
+    500 BOULDER
+    100 DIG
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+"BARRICADE" modify append
+{
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  strength2 = {
+    80 DIG
+    80 CUT
+  }
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 15 30 }}}}
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"EYEBALL" modify append
+{
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 15 30 }}}}
+  destroyFX = { ROCK_CLOUD Rgb 120 87 46 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"HEALING_TOTEM" modify append
+{
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 30 60 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 190 190 40 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"PORTAL" modify append
+{
+  itemDrop = {{{{Simple "Rock"} 1 { 30 60 }}}}
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 200 200 200 255 }
+}
+#######################
+# BLACK MARKET PORTAL #
+#######################
+"DELIVERYSERVICE_NFX_INACTIVE_PORTAL_BLACKMARKET"
+{
+  name = "black market portal"
+  viewId = { "DeliveryServiceInactivePortalBlueCrystal" }
+  usageType = UsageEffect "use" Message NORMAL "It seems locked, it might need a certain key to open."
+}
+##############
+# GROWN TREE #
+##############
+"DELIVERYSERVICE_NFX_GROWN_DECID_TREE" inherit "CANIF_TREE"
+{
+#Silly Dev the names for vanilla tree icons are the other way around
+  name = "grown decid tree"
+  viewId = { "canif_tree" }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = false
+  luxury = 0.1
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  xForgetAfterBuilding = true
+}
+"DELIVERYSERVICE_NFX_GROWN_CANIF_TREE" inherit "CANIF_TREE"
+{
+  name = "grown canif tree"
+  viewId = { "decid_tree" }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = false
+  luxury = 0.1
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  xForgetAfterBuilding = true
+}
+"DELIVERYSERVICE_NFX_GROWN_GUM_TREE" inherit "CANIF_TREE"
+{
+  name = "grown gum tree"
+  viewId = { "tree_gum" }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = false
+  luxury = 0.1
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  xForgetAfterBuilding = true
+}
+"DELIVERYSERVICE_NFX_GROWN_PALM_TREE" inherit "CANIF_TREE"
+{
+  name = "grown palm tree"
+  viewId = { "palm_tree" }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = false
+  luxury = 0.1
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  xForgetAfterBuilding = true
+}
+"DELIVERYSERVICE_NFX_GROWN_SNOW_TREE" inherit "CANIF_TREE"
+{
+  name = "grown snow tree"
+  viewId = { "tree_snow" }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = false
+  luxury = 0.1
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  xForgetAfterBuilding = true
+}
+"DELIVERYSERVICE_NFX_GROWN_BUSH" inherit "BUSH"
+{
+  name = "grown bush"
+  viewId = { "bush" }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = false
+  luxury = 0.1
+  xForgetAfterBuilding = true
+}
+"DELIVERYSERVICE_NFX_GROWN_BUSH2" inherit "BUSH"
+{
+  name = "grown bush"
+  viewId = { "bush2" }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = false
+  luxury = 0.1
+  xForgetAfterBuilding = true
+}
+"DELIVERYSERVICE_NFX_GROWN_CACTUS1" inherit "CACTUS1"
+{
+  name = "grown cactus"
+  viewId = { "cactus1" }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = false
+  luxury = 0.1
+  xForgetAfterBuilding = true
+}
+"DELIVERYSERVICE_NFX_GROWN_CACTUS2" inherit "CACTUS1"
+{
+  name = "grown cactus"
+  viewId = { "cactus2" }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = false
+  luxury = 0.1
+  xForgetAfterBuilding = true
+}
+"DELIVERYSERVICE_NFX_GROWN_CACTUS3" inherit "CACTUS1"
+{
+  name = "grown cactus"
+  viewId = { "cactus3" }
+  canBuildOutsideOfTerritory = true
+  canSilentlyReplace = false
+  luxury = 0.1
+  xForgetAfterBuilding = true
+}
+#########################
+# FLOORS
+#########################
+
+"DELIVERYSERVICE_NFX_FLOOR_GOLD"
+{
+  name = "golden floor"
+  viewId = { "DeliveryServiceGoldenFloor" }
+  #canBuildOutsideOfTerritory = true
+  #xForgetAfterBuilding = true
+  strength2 = {
+    30 DIG
+    30 CUT
+  }
+  luxury = 1.0
+  layer = FLOOR
+  itemDrop = {{{{Simple "GoldPiece"} 1 { 10 }}}}
+  populationIncrease = {0.25 none}
+}
+"DELIVERYSERVICE_NFX_ROAD"
+{
+  name = "road"
+  viewId = { "DeliveryServiceRoad" }
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+  }
+  luxury = 0.1
+  itemDrop = {{{{Simple "Rock"} 1 { 1 2 }}}}
+}
+################
+# GROUND TERRAIN
+################
+"HILL" modify append
+{
+  name = "Stony hill"
+}
+#############################
+# SOKOBAN PATH FINDING CHANGE
+#############################
+#"SOKOBAN_HOLE" modify append
+#{
+#  name = "hole"
+#  viewId = { "sokoban_hole" }
+#  entryType = Sokoban
+#  overrideMovement = true
+#  movementSet = {
+#    forcibleTraits = { FLY SWIM WADE WALK }
+#  }
+#}
+#Isolated because it causes error. reported as an issue. #1647 on github
+
+
+"HIDDEN_CASTLE_DOOR" modify append
+{
+  name = "wall"
+  viewId = { "castle_wall" }
+  blockVision = { NORMAL ELF }
+  strength = 1
+  entryType = Effect Chain {
+      Message NORMAL "It was just an illusion!"
+      Fx { TELEPORT_OUT }
+      DestroyWalls BASH
+  }
+  overrideMovement = true
+  movementSet = {
+    forcibleTraits = { FLY SWIM WADE WALK }
+  }
+  itemDrop = {{{{Simple "Rock"} 1 { 5 }}}}
+  strength2 = {
+    300 BOULDER
+    100 DIG
+    1900 HOSTILE_DIG
+  }
+  #destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  #tryDestroyFX = { DESTROY_FURNITURE Rgb 200 200 200 255 }
+}

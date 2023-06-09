@@ -1,0 +1,254 @@
+"KEEPER_MAGE_ARCANE"
+  {
+    # Definitions in tiles.txt
+    viewId = { "arcane_keeper_1" }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+    viewIdUpgrades = { { "arcane_keeper_2" } { "arcane_keeper_3" } { "arcane_keeper_4" } }
+    name = {
+      # The name gets changed appropriately to Keeper and Adventurer
+      name = "wizard"
+      # Definitions in name_generator.h
+      firstNameGen = "FIRST_MALE"
+      # Creature is always referred to as [FirstName] the [Creature name]
+      fullTitle = true
+    }
+    body = {
+      # One of Humanoid, HumanoidLike, Bird, FourLegged and NonHumanoid
+      # size is one of SMALL, MEDIUM, LARGE and HUGE, influences stuff like pushing boulders and being pushed
+      type = Humanoid LARGE
+    }
+    # attr_type.h
+    attr = {
+      DAMAGE 12
+      DEFENSE 12
+      SPELL_DAMAGE 20
+	  LABORATORY 10
+    }   
+	permanentEffects = {
+      RIDER 1
+    }
+    # experience_type.h
+    maxLevelIncrease = {
+      MELEE 7
+      SPELL 12
+    }
+    aiType = RANGED
+    spellSchools = { "mage" }
+    spells = { "healing" }
+    inventory = {
+      # Here comes a list of items. The format of each element is defined in creature_inventory.h
+      { "Robe"}
+	  { "WoodenStaff" }
+      # Take a look a CYCLOPS for a more detailed example.
+    }
+  }
+  
+"KEEPER_MAGE_ARCANE_F" inherit "KEEPER_MAGE_ARCANE"
+  {
+    viewId = { "arcane_keeper_f1" }
+    gender = FEMALE
+    name = append {
+      firstNameGen = "FIRST_FEMALE"
+    }
+    viewIdUpgrades = { { "arcane_keeper_f2" } { "arcane_keeper_f3" } { "arcane_keeper_f4" }}
+  }
+	
+"KEEPER_MAGE_ARCANE_VILLIAN"
+  {
+    viewId = { "arcane_keeper_4" }
+	genderAlternatives = {
+      FEMALE { "arcane_keeper_f4" }  
+    }
+    attr = {
+      DAMAGE 32
+      DEFENSE 32
+	  SPELL_DAMAGE 32
+    }
+    body = {
+      type = Humanoid LARGE
+      droppedPartUpgrade = IncreaseAttr SPELL_DAMAGE 7
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      SPELL 3
+    }
+    name = {
+      name = "wizard"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "IronStaff" }
+      { type = Glyph ARMOR LastingEffect MAGIC_RESISTANCE chance = 0.3 }
+      { type = Glyph ARMOR LastingEffect SPEED chance = 0.3 }
+      { type = Glyph ARMOR LastingEffect NO_CARRY_LIMIT chance = 0.3 }
+      { type = Glyph WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE} chance = 0.3 }
+      { Potion Heal { FLESH } 3 5 }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 140 200 }
+    }
+  }
+  
+"ARCANIST"
+  {
+    viewId = { "arcanist" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 12
+      SPELL_DAMAGE 12
+	  LABORATORY 35
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about magic"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    permanentEffects ={
+      RIDER 1
+    }
+    name = {
+      name = "arcanist"
+      firstNameGen = "FIRST_MALE"
+    }
+    maxLevelIncrease = {
+      SPELL 12
+    }
+    spellSchools = { "mage" }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+  }
+  
+ 
+"ARCANIST_VILLAIN" inherit "ARCANIST"
+  {
+    attr = {
+      SPELL_DAMAGE 38
+      DEFENSE 30
+    }
+    inventory = {
+      { "IronStaff" }
+      { "LeatherArmor"}
+    }
+  }
+  
+"FOOTMAN"
+  {
+    viewId = { "footman" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      RIDER 1
+    }
+	maxLevelIncrease = {
+      MELEE 5
+      ARCHERY 3
+    }
+    name = {
+      name = "footman"
+	  firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "LeatherArmor"}
+      { "Club"}
+    }
+  }
+  
+"ARCANE_ARCANIST" inherit "ARCANIST"
+  {
+    viewId = { "arcane_arcanist" }
+  }
+  
+"ARCANE_ARCANIST_VILLAIN" inherit "ARCANE_ARCANIST"
+  {
+    attr = {
+      SPELL_DAMAGE 38
+      DEFENSE 30
+    }
+    inventory = {
+      { "IronStaff" }
+      { "LeatherArmor"}
+    }
+  } 
+"ARCANE_FOOTMAN" inherit "FOOTMAN"
+  {
+    viewId = { "arcane_footman" }
+  }
+  
+"ARCANE_CLERIC" inherit "CLERIC"
+  {
+    viewId = { "arcane_cleric" }
+	permanentEffects = append {
+      RIDER 1
+    }
+  }
+  
+"ARCANE_PRIEST_PLAYER" inherit "PRIEST_PLAYER"
+  {
+    viewId = { "arcane_priest" }
+	permanentEffects = append {
+      RIDER 1
+    }
+  }
+  
+"ARCANE_PRIEST" inherit "PRIEST"
+  {
+    viewId = { "arcane_priest" }
+	permanentEffects = append {
+      RIDER 1
+    }
+  }
+   
+"ARCANE_ARCHER_PLAYER" inherit "ARCHER_PLAYER"
+  {
+    viewId = { "arcane_archer" }
+  }
+  
+"ARCANE_ARCHER" inherit "ARCHER"
+  {
+    viewId = { "arcane_archer" }
+  }
+  
+"ARCANE_KNIGHT_PLAYER" inherit "KNIGHT_PLAYER"
+  {
+    viewId = { "arcane_knight" }
+  }
+  
+"ARCANE_KNIGHT" inherit "KNIGHT"
+  {
+    viewId = { "arcane_knight" }
+  }
+  
+
+"GOBLIN_SHAMAN_VILLAIN" inherit "GOBLIN_SHAMAN"
+  {
+    attr = {
+      SPELL_DAMAGE 35
+      DEFENSE 28
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+	companions = {4 false SPELL_DAMAGE 0.02 { "SPIRIT" }}
+    inventory = {
+      { "IronStaff" }
+      { "LeatherArmor"}
+    }
+  }
+  

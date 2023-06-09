@@ -1,0 +1,1147 @@
+########
+#Modded
+########
+
+  "GamblingRod"
+    {
+      viewId = { "wooden_staff" }
+      name = "armour gambling"
+      weight = 0.5
+      itemClass = TOOL
+      description = "Randomly channels defensive ability of worn armours into each other."
+      applyTime = 5
+      uses = 2
+      usedUpMsg = true
+      displayUses = true
+      effect = Chain { Enhance ARMOR 3 Enhance ARMOR -3 Enhance ARMOR 2 Enhance ARMOR -2 Enhance ARMOR -1 Enhance ARMOR 1 }
+    }
+
+  "Fireblade"
+    {
+      viewId = { "fire_sword" }
+      name = "Fireblade"
+      plural = "Fireblades"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 0.3
+      modifiers = {
+        DAMAGE 8
+      }
+      price = 1
+      weaponInfo = {
+        attackType = STAB
+        attackMsg = THRUST
+        victimEffect = { 1.0 Chain {Fire Enhance ARMOR -1} }
+        attackerEffect = {
+          Chain {
+            Lasting FIRE_RESISTANT
+            Lasting DAM_BONUS
+            Lasting LIGHT_SOURCE
+          }
+        }
+      }
+      equipedEffect = { RAGE }
+      equipedAbility = { "fire shield" }
+    }
+  "InvisibilityRobe"
+    {
+      viewId = { "robe" }
+      name = "robe of vanishing"
+      itemClass = ARMOR
+      equipmentSlot = BODY_ARMOR
+      weight = 2
+      price = 10
+      modifiers = {
+        DEFENSE 1
+      }
+      equipedAbility = { "invisibility" }
+    }
+  "Crossbow"
+    {
+      viewId = { "crossbow_1" }
+      name = "crossbow"
+      itemClass = RANGED_WEAPON
+      equipmentSlot = RANGED_WEAPON
+      rangedWeapon = RANGED_DAMAGE "arrow" {"arrow"} 8
+      weaponInfo = {
+        twoHanded = true
+      }
+      weight = 1
+      modifiers = {
+        RANGED_DAMAGE 20
+      }
+      price = 60
+    }
+  "InvisibilityRing"
+    {
+      viewId = { "ring_green" }
+      name = "invisibility ring"
+      itemClass = ARMOR
+      equipmentSlot = RINGS
+      weight = 2
+      price = 100
+      equipedAbility = { "invisibility" }
+    }
+  "SpyingCrystal"
+    {
+      viewId = { "crystal1" }
+      name = "spying crystal"
+      weight = 1
+      itemClass = TOOL
+      applyTime = 1
+      uses = 1
+      price = 100
+      effect = Lasting SPYING
+    }
+  "DwarvenBeer"
+    {
+      viewId = { "dwarf_beer" }
+      name = "dwarven beer"
+      weight = 0.3
+      itemClass = TOOL
+      description = "Permanently increases your attack by 1, but makes you insane and halucinate for a while in exchange."
+      uses = 1
+      price = 100
+      effect = Chain { IncreaseAttr DAMAGE 1 Lasting INSANITY Lasting HALLU }
+    }
+  "LongSpear"
+    {
+      viewId = { "wood_spear" }
+      name = "long spear"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 6
+      modifiers = {
+        DAMAGE 8
+        DEFENSE 2
+      }
+      price = 8
+      weaponInfo = {
+        attackType = STAB
+        attackMsg = THRUST
+      }
+      genPrefixes = {
+        1 VictimEffect 0.1 Lasting POISON
+        1 ItemAttrBonus DAMAGE 3
+        1 ItemAttrBonus DEFENSE 3
+      }
+      maxUpgrades = 1
+    }
+  "Axe" #Modded
+    {
+      viewId = { "steel_battle_axe" }
+      name = "iron axe"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 5
+      modifiers = {
+        DAMAGE 10
+      }
+      price = 30
+      weaponInfo = {
+        attackType = CUT
+      }
+      genPrefixes = {
+        1 VictimEffect 0.4 Lasting BLEEDING
+        1 LastingEffect RAGE
+      }
+      maxUpgrades = 1
+    }
+  "AdaAxe" #Modded
+    {
+      viewId = { "ada_battle_axe" }
+      shortName = "adamantine"
+      name = "adamantine axe"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 4
+      modifiers = {
+        DAMAGE 14
+      }
+      price = 80
+      weaponInfo = {
+        attackType = CUT
+      }
+      genPrefixes = {
+        3 VictimEffect 0.6 Lasting BLEEDING
+		1 SpellId "leg strike"
+		1 SpellId "arm strike"
+      }
+      maxUpgrades = 2
+    }
+  "Mace"
+    {
+      viewId = { "steel_spiked_mace" }
+      name = "spiked mace"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 5
+      modifiers = {
+        DAMAGE 9
+        DEFENSE 1
+      }
+      price = 30
+      weaponInfo = {
+        attackType = CRUSH
+      }
+      genPrefixes = {
+        1 VictimEffect 0.3 Lasting COLLAPSED
+        1 VictimEffect 0.3 Lasting BLEEDING
+      }
+      maxUpgrades = 1
+    }
+  "AdaMace"
+    {
+      viewId = { "adamantite_spiked_mace" }
+      name = "adamantine spiked mace"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 4
+      modifiers = {
+        DAMAGE 12
+        DEFENSE 2
+      }
+      price = 100
+      weaponInfo = {
+        attackType = CRUSH
+      }
+      genPrefixes = {
+        1 VictimEffect 0.5 Lasting COLLAPSED
+        1 VictimEffect 0.5 Lasting BLEEDING
+      }
+      maxUpgrades = 2
+    }
+  "WonderMushroom"
+    {
+      viewId = { "mushroom5" ColorId YELLOW }
+      effectDescription = false
+      name = "wonder mushroom"
+      description = "Wonder mushrooms do all sorts of different things."
+      weight =  1
+      price =  10 
+      itemClass =  FOOD
+      applyMsgFirstPerson = "eat the wonder mushroom"
+      applyMsgThirdPerson = "eats a wonder mushroom"
+      applySound = DYING_PIG
+      applyTime = 1
+      uses = 1
+      effect = Chain {
+        Lasting SATIATED
+        Chance 0.1 Enhance ARMOR 1
+        Chance 0.1 Enhance WEAPON -1
+        Chance 0.1 Deception
+        Chance 0.1 EmitPoisonGas 0.5
+        Chance 0.1 SummonEnemy "FLY" {3 7} none
+        Chance 0.1 SummonElement
+        Chance 0.1 IncreaseAttr SPELL_DAMAGE 1
+        Chance 0.1 PlaceFurniture "METEOR_SHOWER"
+        Chance 0.1 PlaceFurniture "EYEBALL"
+        Chance 0.1 PlaceFurniture "GIANT_MUSHROOM"
+        Chance 0.1 Lasting BLIND
+        Chance 0.1 Lasting PANIC
+        Chance 0.1 Lasting FROZEN
+        Chance 0.1 Lasting SLEEP_RESISTANT
+        Chance 0.1 Lasting MAGIC_CANCELLATION
+        Chance 0.1 Lasting REGENERATION
+        Chance 0.1 Lasting COLD_RESISTANT
+        Chance 0.1 Lasting POISON
+        Chance 0.1 Lasting ON_FIRE
+        Chance 0.1 Permanent RAGE
+        Chance 0.1 Permanent FAST_TRAINING
+        Chance 0.1 Permanent SWIMMING_SKILL
+      }
+    }
+  "SleepMushroom"
+    {
+      viewId = { "mushroom1" ColorId YELLOW }
+      effectDescription = false
+      name = "sleep mushroom"
+      description = "A great way to fix your sleep difficulties."
+      weight =  1
+      price =  10 
+      itemClass =  FOOD
+      applyMsgFirstPerson = "eat the sleep mushroom"
+      applyMsgThirdPerson = "eats a sleep mushroom"
+      applyTime = 1
+      uses = 1
+      effect = Lasting SLEEP
+    }
+  "Berry1"
+    {
+      viewId = { "berry1" }
+      effectDescription = false
+      name = "dark herb"
+      description = "A fresh herb."
+      weight =  1
+      price =  10 
+      itemClass =  FOOD
+      applyTime = 1
+      uses = 1
+      effect = Lasting COLLAPSED
+    }
+  "Berry2" inherit "Berry1"
+    {
+      viewId = { "berry2" }
+      effect = Lasting SLOWED
+      name = "strange berries"
+    }
+  "Berry3" inherit "Berry1"
+    {
+      viewId = { "berry3" }
+      effect = Lasting BLIND
+      name = "cold plant"
+    }
+  "Berry4" inherit "Berry1"
+    {
+      viewId = { "berry4" }
+      name = "smelly herb"
+      effect = Chain {
+        Heal FLESH
+        Heal SPIRIT
+        RemoveLasting POISON
+        RemoveLasting BLEEDING
+        RemoveLasting PLAGUE
+        RemoveLasting COLLAPSED
+        RemoveLasting SLOWED
+        RemoveLasting BLIND
+        RegrowBodyPart 10
+      }
+    }
+  "Leaf1" inherit "Berry1"
+    {
+      viewId = { "leaf1" }
+      name = "leaf of herb"
+      effect = Chain {
+        Heal FLESH
+        Heal SPIRIT
+		Lasting SPEED
+      }
+    }
+  "Flower1" inherit "Berry1"
+    {
+      viewId = { "flower1" }
+      effect = Lasting POISON
+      name = "red flower"
+    }
+  "Flower2" inherit "Berry1"
+    {
+      viewId = { "flower2" }
+      effect = Escape 
+      name = "small flower"
+    }
+	
+    "WandOfIce"
+    {
+        viewId = { "wooden_staff" }
+        effectDescription = false
+        name = "wand of ice"
+        plural = "wands of ice"
+        description = "A magic weapon that can shoot ice freezing enemies."
+        weight =  1.5 
+        price =  30 
+        itemClass =  WEAPON 
+        equipmentSlot =  WEAPON 
+        modifiers =  { SPELL_DAMAGE 4 } 
+        weaponInfo =  { attackType = SPELL attackMsg = WAVE meleeAttackAttr = SPELL_DAMAGE victimEffect = { 1.0 Lasting FROZEN } } 
+        maxUpgrades =  1 
+        equipedEffect = { COLD_RESISTANT }
+        equipedAbility = { "ice cone" }
+      }
+    "RobesOfHell"
+    {
+        viewId = { "robe" }
+        name = "robes of hell"
+        plural = "robes of hell"
+        weight =  2 
+        ownedEffect = DARKNESS_SOURCE
+        price =  10 
+        itemClass =  ARMOR 
+        equipmentSlot =  BODY_ARMOR 
+        modifiers =  { DEFENSE 5 } 
+        equipedEffect = { TELEPATHY NIGHT_VISION RAGE FIRE_RESISTANT MAGIC_RESISTANCE }
+        equipedAbility = { "firewall" }
+    }
+    "HeavenlyArmor"
+    {
+        viewId = { "chain_armor" }
+        shortName = "heavenly armor"
+        name = "heavenly armor"
+        weight =  15 
+        ownedEffect = LIGHT_SOURCE
+        price =  200
+        itemClass =  ARMOR 
+        equipmentSlot =  BODY_ARMOR 
+        modifiers =  { DEFENSE 10 } 
+        maxUpgrades = 0
+        equipedEffect = { MAGIC_RESISTANCE FLYING COLD_RESISTANT }
+    }
+    "SpearOfLizardmen"
+    {
+        viewId = { "spear" }
+        shortName = "Spear of Lizardmen"
+        name = "Spear of Lizardmen"
+        plural = "spears of lizardmen"
+        weight =  1.5 
+        price =  4 
+        itemClass =  WEAPON 
+        equipmentSlot =  WEAPON 
+        modifiers =  { DAMAGE 12 DEFENSE 3} 
+        weaponInfo =  { attackType = STAB attackMsg = THRUST } 
+        equipedEffect = { SWIMMING_SKILL FAST_TRAINING SLEEP_RESISTANT RESTED NIGHT_VISION PLAGUE_RESISTANT }
+    }
+    "RingOfSubjection"
+    {
+        viewId = { "ring_green" }
+        name = "ring of subjection"
+        plural = "rings of subjection"
+        weight =  2 
+        price =  100 
+        itemClass =  ARMOR 
+        equipmentSlot =  RINGS 
+        equipedAbility = { "pacify" }  
+    }
+  "IlluRing"
+    {
+      viewId = { "ring_green" }
+      name = "Ring of Illusia"
+      itemClass = ARMOR
+      equipmentSlot = RINGS
+      weight = 0.5
+      price = 1000
+      equipedAbility = { "double trouble" }
+    }
+    "BoneOfWizardry"
+    {
+		viewId = { "bone" }
+		name = "bone of wizardry"
+		plural = "bones of wizardry"
+		weight =  50 
+		ownedEffect = SPELL_DAMAGE
+		price =  0 
+		itemClass =  CORPSE 
+    }
+	"StaffOfBleeding"
+	{
+		viewId = { "iron_staff" }
+		name = "staff of blood"
+		plural = "starves of blood"
+		weight =  1.5 
+		price =  60 
+        itemClass =  WEAPON 
+        equipmentSlot =  WEAPON 
+		modifiers =  { SPELL_DAMAGE 8 } 
+		weaponInfo =  { attackType = SPELL attackMsg = WAVE meleeAttackAttr = SPELL_DAMAGE } 
+		maxUpgrades =  2 
+		equipedEffect = { BLEEDING REGENERATION }
+		equipedAbility = { "blood curse" }
+	}
+	"VampiricSword"
+	{
+		viewId = { "infernite_sword" }
+		name = "vampiric sword"
+		plural = "vampiric swords"
+		weight =  1.5 
+		price =  60 
+        itemClass =  WEAPON 
+        equipmentSlot =  WEAPON 
+		modifiers = { DAMAGE 11 }
+        weaponInfo =  { attackType = STAB attackMsg = THRUST attackerEffect = { Chance 0.2 Heal FLESH Heal SPIRIT RegrowBodyPart 1 } } 
+	}
+	"OmallyKnife"
+	{
+		viewId = { "knife" }
+		name = "O'mally's Knife"
+		plural = "O'mally's Knives"
+		weight = 1
+		price = 100
+		itemClass = WEAPON
+		equipmentSlot = WEAPON
+		modifiers = { DAMAGE 9 }
+		weaponInfo = { 
+		attackType = STAB
+        victimEffect = { 1.0 Chain { Lasting POISON Lasting BLEEDING } } }
+		equipedEffect = { POISON_RESISTANT }	
+	}
+	"Dagger"
+	{
+		viewId = { "knife" }
+		name = "Dagger"
+		weight = 1
+		price = 65
+		itemClass = WEAPON
+		equipmentSlot = WEAPON
+		modifiers = { DAMAGE 7 }
+		weaponInfo = { 
+		attackType = STAB
+        victimEffect = { 0.4 Lasting BLEEDING }
+	  }
+	}
+#Staff of dungeon master for creative mode. Cannot be wished for.
+#Musn't be given to anything in creature inventory that can be wished for.
+#	"StaffOfDungeonMaster"
+#	{
+#		viewId = { "iron_staff" }
+#		name = "staff of dungeon master"
+#		plural = "starves of dungeon master"
+#		weight = 1.5 
+#		price =  10000
+#        itemClass =  WEAPON 
+#        equipmentSlot =  WEAPON 
+#		modifiers =  { SPELL_DAMAGE 80 DEFENSE 80 } 
+#		weaponInfo =  { attackType = SPELL attackMsg = WAVE meleeAttackAttr = SPELL_DAMAGE } 
+#		equipedAbility = { "dungeon master wish" }
+#		equipedEffect = { SPEED POISON_RESISTANT FIRE_RESISTANT MELEE_RESISTANCE RANGED_RESISTANCE MAGIC_RESISTANCE }
+#        wishedCount = { 0 } #Will crash the game. Stops it being wished for.
+#	}
+  "Net"
+    {
+      viewId = { "net" }
+      name = "net"
+      itemClass = RANGED_WEAPON
+      equipmentSlot = RANGED_WEAPON
+      rangedWeapon = RANGED_DAMAGE "arrow" {"net30"} 4
+	  weaponInfo = {
+		victimEffect = { 1.0 Lasting TIED_UP }
+	  }
+      weight = 1
+      modifiers = {
+        RANGED_DAMAGE 5
+      }
+      price = 20
+    }
+#--------------
+#Resources
+#--------------
+"InfOre"
+  {
+    viewId = { "infernite_ore_pile" }
+	ownedEffect = LIGHT_SOURCE
+    name = "infernite ore"
+    itemClass = OTHER
+    price = 0
+    resourceId = "INF"
+    weight = 1
+  }
+"VenOre"
+  {
+    viewId = { "venorack_ore_pile" }
+    name = "venorack ore"
+    itemClass = OTHER
+    price = 0
+    resourceId = "VEN"
+    weight = 0.5
+  }
+
+#--------------
+#Armaments
+#--------------
+
+"VenSword"
+  {
+    viewId = { "venorack_sword" }
+    shortName = "sword"
+    name = "venorack sword"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.0
+    modifiers = {
+      DAMAGE 7
+    }
+    price = 16
+    weaponInfo = {
+      attackType = CUT
+	  victimEffect = { 0.4 Lasting POISON }
+    }
+    genPrefixes = {
+	  2 SpellId "poison bolt"
+      2 VictimEffect 0.2 Lasting INSANITY
+      3 LastingEffect RAGE
+      3 JoinPrefixes {
+        ItemAttrBonus DAMAGE 3
+        LastingEffect HALLU
+	  }
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 4
+        LastingEffect INVISIBLE
+		LastingEffect BLIND
+      }
+    }
+    maxUpgrades = 1
+  }
+"VenBattleAxe"
+  {
+    viewId = { "venorack_battle_axe" }
+    shortName = "axe"
+    name = "venorack battle axe"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 6
+    modifiers = {
+      DAMAGE 13
+    }
+    price = 80
+    weaponInfo = {
+      attackType = CUT
+	  victimEffect = { 0.4 Lasting POISON }
+      twoHanded = true
+    }
+    genPrefixes = {
+	  2 SpellId "poison bolt"
+      3 LastingEffect RAGE
+	  2 SpellId "leg strike"
+	  2 SpellId "arm strike"
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 4
+        LastingEffect INVISIBLE
+		LastingEffect BLIND
+      }
+    }
+    maxUpgrades = 1
+  }
+"VenWarHammer"
+  {
+    viewId = { "venorack_warhammer" }
+    shortName = "hammer"
+    name = "venorack war hammer"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 6
+    modifiers = {
+      DAMAGE 11
+    }
+    price = 60
+    weaponInfo = {
+      attackType = CRUSH
+	  victimEffect = { 0.4 Lasting POISON }
+      twoHanded = true
+    }
+    genPrefixes = {
+	  2 SpellId "poison bolt"
+      3 VictimEffect 0.4 Lasting COLLAPSED
+      3 LastingEffect RAGE
+	  2 SpellId "air render"
+      1 JoinPrefixes {
+			ItemAttrBonus DAMAGE 4
+			LastingEffect INVISIBLE
+			LastingEffect BLIND
+      }
+    }
+    maxUpgrades = 1
+  }
+  "VenLongSpear"
+    {
+      viewId = { "venorack_spear" }
+      shortName = "spear"
+      name = "venorack long spear"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 6
+      modifiers = {
+        DAMAGE 7
+        DEFENSE 2
+      }
+      price = 30
+      weaponInfo = {
+        attackType = STAB
+        attackMsg = THRUST
+		victimEffect = { 0.4 Lasting POISON }
+      }
+      genPrefixes = {
+		2 SpellId "poison bolt"
+		1 JoinPrefixes {
+			ItemAttrBonus DAMAGE 6
+			VictimEffect 0.1 Escape
+			}
+        2 ItemAttrBonus DAMAGE 3
+        2 ItemAttrBonus DEFENSE 3
+      }
+      maxUpgrades = 1
+    }
+  "VenAxe"
+    {
+      viewId = { "venorack_battle_axe" }
+      shortName = "axe"
+      name = "venorack axe"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 3.5
+      modifiers = {
+        DAMAGE 9
+      }
+      price = 40
+      weaponInfo = {
+        attackType = CUT
+		victimEffect = { 0.4 Lasting POISON }
+      }
+      genPrefixes = {
+        3 LastingEffect RAGE
+		2 SpellId "poison bolt"
+		3 JoinPrefixes {
+			ItemAttrBonus DAMAGE 4
+			LastingEffect HALLU
+		}
+      }
+      maxUpgrades = 1
+    }
+  "VenMace"
+    {
+      viewId = { "venorack_spiked_mace" }
+	  shortName = "mace"
+      name = "venorack spiked mace"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 5
+      modifiers = {
+        DAMAGE 8
+        DEFENSE 1
+      }
+      price = 40
+      weaponInfo = {
+        attackType = CRUSH
+		victimEffect = { 0.4 Lasting POISON }
+      }
+      genPrefixes = {
+        3 VictimEffect 0.3 Lasting COLLAPSED
+        3 LastingEffect RAGE
+		2 SpellId "poison bolt"
+		1 JoinPrefixes {
+			ItemAttrBonus DAMAGE 4
+			LastingEffect INVISIBLE
+			LastingEffect BLIND
+		}
+      }
+      maxUpgrades = 1
+    }
+"VenArmor"
+  {
+    viewId = { "venorack_armor" }
+    shortName = "armor"
+    name = "venorack armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 12
+    price = 100
+    modifiers = {
+      DEFENSE 4
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 3
+	  1 JoinPrefixes {
+			ItemAttrBonus DEFENSE 2
+			LastingEffect INVISIBLE
+			LastingEffect BLIND
+		}
+    }
+    maxUpgrades = 2
+	equipedEffect = { POISON_RESISTANT }
+  }
+"VenBoots"
+  {
+    viewId = { "venorack_boots" }
+    shortName = "boots"
+    name = "pair of venorack boots"
+    plural = "pairs of venorack boots"
+    itemClass = ARMOR
+    equipmentSlot = BOOTS
+    weight = 2
+    price = 30
+    modifiers = {
+      DEFENSE 1
+    }
+    genPrefixes = {
+      1 LastingEffect FLYING
+      1 LastingEffect FIRE_RESISTANT
+      3 ItemAttrBonus DEFENSE 3
+    }
+    maxUpgrades = 2
+	equipedEffect = { POISON_RESISTANT }
+  }
+"VenGloves"
+  {
+    viewId = { "venorack_gloves" }
+    shortName = "gloves"
+    name = "pair of venorack gloves"
+    plural = "pairs of venorack gloves"
+    itemClass = ARMOR
+    equipmentSlot = GLOVES
+    weight = 0.8
+    price = 30
+    modifiers = {
+      DEFENSE 1
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DAMAGE 3
+      1 ItemAttrBonus SPELL_DAMAGE 3
+    }
+    maxUpgrades = 2
+	equipedEffect = { POISON_RESISTANT }
+  }
+"VenHelm"
+  {
+    viewId = { "venorack_helm" }
+    shortName = "helm"
+    name = "venorack helm"
+    itemClass = ARMOR
+    equipmentSlot = HELMET
+    weight = 2.5
+    price = 30
+    modifiers = {
+      DEFENSE 2
+    }
+    genPrefixes = {
+      1 LastingEffect WARNING
+      1 LastingEffect TELEPATHY
+      3 ItemAttrBonus DEFENSE 3
+    }
+    maxUpgrades = 2
+	equipedEffect = { POISON_RESISTANT }
+  }
+"VenShield"
+  {
+    viewId = { "venorack_shield" }
+    shortName = "shield"
+    name = "venorack shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 1.4
+    price = 40
+    modifiers = {
+      PARRY 2
+      DEFENSE 1
+    }
+    genPrefixes = {
+	  2 SpellId "regeneration"
+	  1 SpellId "weapon dodge"
+	  1 SpellId "arrow shield"
+	  4 JoinPrefixes {
+			ItemAttrBonus DEFENSE 2
+			ItemAttrBonus PARRY 1
+		}
+	}
+    maxUpgrades = 2
+	equipedEffect = { POISON_RESISTANT }
+  }
+"InfSword"
+  {
+    viewId = { "infernite_sword" }
+    shortName = "sword"
+    name = "infernite sword"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 2
+    modifiers = {
+      DAMAGE 10
+    }
+    price = 18
+    weaponInfo = {
+      attackType = CUT
+	  victimEffect = { 1.0 Fire} 
+    }
+    genPrefixes = {
+      2 VictimEffect 0.1 Acid
+      4 LastingEffect RAGE
+	  2 SpellId "arm strike"
+	  2 SpellId "leg strike"
+      2 JoinPrefixes {
+        ItemAttrBonus DAMAGE 5
+        ItemAttrBonus DEFENSE -3
+      }
+    }
+    maxUpgrades = 1
+	equipedAbility = { "flaming strike" }
+  }
+"InfBattleAxe"
+  {
+    viewId = { "infernite_battle_axe" }
+    shortName = "axe"
+    name = "infernite battle axe"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 10
+    modifiers = {
+      DAMAGE 16
+    }
+    price = 140
+    weaponInfo = {
+      attackType = CUT
+	  victimEffect = { 1.0 Fire }
+      twoHanded = true
+    }
+    genPrefixes = {
+      2 VictimEffect 0.1 Acid
+      4 LastingEffect RAGE
+	  2 SpellId "arm strike"
+	  2 SpellId "leg strike"
+      2 JoinPrefixes {
+        ItemAttrBonus DAMAGE 5
+        ItemAttrBonus DEFENSE -3
+      }
+    }
+    maxUpgrades = 0
+	equipedAbility = { "flaming strike" }
+  }
+"InfWarHammer"
+  {
+    viewId = { "infernite_warhammer" }
+    shortName = "hammer"
+    name = "infernite war hammer"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 10
+    modifiers = {
+      DAMAGE 13
+    }
+    price = 90
+    weaponInfo = {
+      attackType = CRUSH
+	  victimEffect = { 1.0 Fire }
+      twoHanded = true
+    }
+    genPrefixes = {
+      2 VictimEffect 0.4 Lasting COLLAPSED
+      4 LastingEffect RAGE
+	  3 SpellId "break through"
+      2 JoinPrefixes {
+        ItemAttrBonus DAMAGE 5
+        ItemAttrBonus DEFENSE -3
+      }
+    }
+    maxUpgrades = 0
+	equipedAbility = { "flaming strike" }
+  }
+ "InfLongSpear"
+    {
+      viewId = { "infernite_spear" }
+      shortName = "spear"
+      name = "infernite long spear"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 9
+      modifiers = {
+        DAMAGE 9
+        DEFENSE 2
+      }
+      price = 50
+      weaponInfo = {
+        attackType = STAB
+        attackMsg = THRUST
+		victimEffect = { 1.0 Fire }
+      }
+      genPrefixes = {
+		2 VictimEffect 0.4 Lasting BLEEDING
+		4 LastingEffect RAGE
+		1 JoinPrefixes {
+			ItemAttrBonus DAMAGE 6
+			VictimEffect 0.1 Escape
+			}
+        2 ItemAttrBonus DAMAGE 3
+        2 ItemAttrBonus DEFENSE 3
+      }
+      maxUpgrades = 0
+	  equipedAbility = { "flaming strike" }
+    }
+  "InfAxe"
+    {
+      viewId = { "infernite_battle_axe" }
+      shortName = "axe"
+      name = "infernite axe"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 6
+      modifiers = {
+        DAMAGE 13
+      }
+      price = 70
+      weaponInfo = {
+        attackType = CUT
+		victimEffect = { 1.0 Fire }
+      }
+      genPrefixes = {
+        3 LastingEffect RAGE
+		2 SpellId "leg strike"
+		2 SpellId "arm strike"
+		3 JoinPrefixes {
+			ItemAttrBonus DAMAGE 4
+			LastingEffect HALLU
+		}
+      }
+      maxUpgrades = 0
+	  equipedAbility = { "flaming strike" }
+    }
+  "InfMace"
+    {
+      viewId = { "infernite_spiked_mace" }
+	  shortName = "mace"
+      name = "infernite spiked mace"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 6
+      modifiers = {
+        DAMAGE 11
+        DEFENSE 1
+      }
+      price = 70
+      weaponInfo = {
+        attackType = CRUSH
+		victimEffect = { 1.0 Fire }
+      }
+      genPrefixes = {
+        3 VictimEffect 0.3 Lasting COLLAPSED
+        3 LastingEffect RAGE
+		2 SpellId "break through"
+		1 JoinPrefixes {
+			ItemAttrBonus DAMAGE 6
+			LastingEffect RAGE
+			LastingEffect BLIND
+		}
+      }
+      maxUpgrades = 0
+	  equipedAbility = { "flaming strike" }
+    }
+ "InfArmor"
+	{
+    viewId = { "infernite_armor" }
+    shortName = "armor"
+    name = "infernite armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 15
+    price = 125
+    modifiers = {
+      DEFENSE 7
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 3
+    }
+    maxUpgrades = 1
+    equipedEffect = { FIRE_RESISTANT }
+    equipedAbility = { "blowback" }
+	}
+"InfBoots"
+  {
+    viewId = { "infernite_boots" }
+    shortName = "boots"
+    name = "pair of infernite boots"
+    plural = "pairs of infernite boots"
+    itemClass = ARMOR
+    equipmentSlot = BOOTS
+    weight = 3.5
+    price = 35
+    modifiers = {
+      DEFENSE 3
+    }
+    genPrefixes = {
+      1 LastingEffect SPEED
+    }
+    maxUpgrades = 1
+    equipedEffect = { FIRE_RESISTANT }
+    equipedAbility = { "blowback" }
+  }
+"InfGloves"
+  {
+    viewId = { "infernite_gloves" }
+    shortName = "gloves"
+    name = "pair of infernite gloves"
+    plural = "pairs of infernite gloves"
+    itemClass = ARMOR
+    equipmentSlot = GLOVES
+    weight = 1.2
+    price = 25
+    modifiers = {
+      DEFENSE 2
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DAMAGE 3
+      1 ItemAttrBonus SPELL_DAMAGE 3
+    }
+    maxUpgrades = 1
+    equipedEffect = { FIRE_RESISTANT }
+    equipedAbility = { "blowback" }
+  }
+"InfHelm"
+  {
+    viewId = { "infernite_helm" }
+    shortName = "helm"
+    name = "infernite helm"
+    itemClass = ARMOR
+    equipmentSlot = HELMET
+    weight = 3.5
+    price = 35
+    modifiers = {
+      DEFENSE 3 
+    }
+    genPrefixes = {
+      1 LastingEffect TELEPATHY
+      1 LastingEffect REGENERATION
+    }
+    maxUpgrades = 1
+    equipedEffect = { FIRE_RESISTANT }
+    equipedAbility = { "blowback" }
+  }
+"InfShield"
+  {
+    viewId = { "infernite_shield" }
+    shortName = "shield"
+    name = "infernite shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 2
+    price = 40
+    modifiers = {
+      PARRY 3
+      DEFENSE 3
+    }
+    maxUpgrades = 1
+    equipedEffect = { FIRE_RESISTANT }
+    equipedAbility = { "blowback" }
+  }
+    
+########################
+#Ideas for future items#
+########################
+# Elemental robe
+# Elemental sword
+# Dragon wing cloak
+# Helmet of Hate
+# Sword of Evil
+# Sword of Light
+# Defensive Pike
+# Force Staff (Directed blast spell)
+# Blood draining fencing foil
+# Bloodsword
+# Club of Light
+# Rod of Flame (fire spell etc.)
+# Sling
+# Throwing Stars
+# Wand of Fire
+# Wand of Ice
+# Wand of Rockblast
+# Mirror Shield
+# Shield of Displacement (teleport spell)
+# Elven Steel War Helm
+# Full elven steel plate armour
+# Thornmail
+# Crown of command
+# Helm of light
+# Robe of Darkness
+# Amulet of Teleportation
+# Ring of Free Action
+# Ring of Courage
+# Ring of Trap Detection
+# Amulet of Power
+# Ring of Darkness
+# Ring of Light
+# Ring of Ambush
+# Potion of garlic mixture
+# Terrain seeing potion
+# Potion of Hallucination
+# Scroll of Fire Ball
+# Scroll of mapping
+# Scroll of trap destruction
+# Scroll of blinding darkness
+# Scroll of knowledge
+# Scroll of Blinking
+# Tome of Alacrity
+# Tome of misfortune
+# Nets
+########################

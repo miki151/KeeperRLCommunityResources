@@ -1,0 +1,121 @@
+# The ids are there to modify, inherit, etc.
+# They also get ordered alphabetically, hence the 1, 2, ... in the front.
+
+#"4_gnomes"
+#{
+#  creatureId = { "GNOME" }
+#  tribeAlignment = LAWFUL
+#  immigrantGroups = {"gnomes"}
+#  technology = {
+#      "traps" "advanced traps"# "master traps"
+#      "automatons" "advanced automatons" "automaton brains"
+#      "pig breeding" "iron working" "alchemy" "incendiary alchemy" "distillation" 
+#  }
+#  initialTech = { "automatons" }
+#  baseNameGen = "TOWN"
+#  buildingGroups = {
+#      "structure" "doors" "floors" "storage" "zones" "throne" "beds"
+#      "pigsty" "crafting" "laboratory" "distillery" "automatons" "orders" "installations" "traps" "gnome_traps"
+#  }
+#  workshopGroups = { "gnomes" "basic" }
+#  description = "Seize the means of production and engineer traps, automatons and other contraptions."
+#  minionTraits = { LEADER WORKER NO_LIMIT }
+#  maxPopulation = 0
+#  populationString = "automatons"
+#  noLeader = true
+#  prisoners = false
+#}
+
+
+"1_dark_mage" modify append {
+	endlessEnemyGroups = { "basic" "difficulty" }
+}
+"2_dark_knight" modify append {
+	endlessEnemyGroups = { "basic" "difficulty" }
+}
+"3_white_knight" modify append {
+	endlessEnemyGroups = { "basic" "difficulty" }
+}
+"4_necromancer" modify append {
+	endlessEnemyGroups = { "basic" "difficulty" }
+}
+"5_gnomes" modify append {
+	endlessEnemyGroups = { "basic" "difficulty" }
+}
+  
+  
+  
+"diff_6_elven_council"
+{
+    creatureId = { "DIFF_ELF_COUNCIL_KEEPER" }
+    tribeAlignment = LAWFUL
+    immigrantGroups = {"diff_elves"}
+    technology = {
+        "alchemy" "advanced alchemy" "alchemical conversion"
+        "iron working" "jewellery" "two-handed weapons" "traps" "archery" "sorcery" "chicken breeding" "pig breeding" "cow breeding"
+        "advanced sorcery" "magical weapons" "master sorcery" "diff shady recruitment" "diff engineering" "worship" "distillation"
+    }
+	zLevelGroups = { "basic" "lawful" }
+    initialTech = { "sorcery" "archery" }
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "zones" "library" "throne" "beds" "pigsty" 
+        "training" "crafting" "poetry" "distillery" "jeweller" "laboratory" "prison" "orders" "installations" "magical_installations" "traps" "angel_shrine"
+    }
+    workshopGroups = { "diff_druid_conversion" }
+    description = "Can you keep them all alive?"
+	endlessEnemyGroups = { "basic" "difficulty" }
+# Special traits example, all traits are added
+   specialTraits = { ExtraTraining MELEE 2 AttrBonus DEFENSE 1 AttrBonus DAMAGE 1 }
+  }
+
+
+"diff_5_corruptmage"
+{
+    creatureId = { "DIFF_KEEPER_CORRUPTED" }
+    tribeAlignment = EVIL
+    immigrantGroups = {"imps" "diff_dark_keeper_hard"}
+    technology = {
+        "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
+        "chicken breeding" "pig breeding" "cow breeding" "iron working" "jewellery" "two-handed weapons" "traps" "archery" "sorcery"
+        "advanced sorcery" "magical weapons" "master sorcery" "demonology" "diff shady recruitment" "diff engineering" "distillation"
+    }
+	zLevelGroups = { "basic" "evil" }
+    initialTech = { "sorcery" }
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "zones" "library" "throne" "beds"  "pigsty" "coffins"
+        "training" "crafting" "distillery" "poetry" "jeweller" "laboratory" "demon_shrine" "prison" "orders" "installations" "magical_installations" "traps" 
+    }
+	endlessEnemyGroups = { "basic" "difficulty" }
+    workshopGroups = { "basic" }
+    description = "HARDER - Build and manage your dungeon, spread your evil corruption!"
+# Special traits example, all traits are added
+  specialTraits = { Lasting {SLOWED} ExtraTraining MELEE 6 Lasting {ELF_VISION} }
+  }
+  
+  "diff_7_antkeeper"
+{
+    creatureId = { "DIFF_ANT_QUEEN_KEEPER" }
+    tribeAlignment = EVIL
+    immigrantGroups = {"diff_ants"}
+    technology = {
+        "alchemy" "advanced alchemy" "beast mutation" "diff ant king" "diff third generation" "diff second generation" "diff first generation" ## "diff food refining"
+        "chicken breeding" "pig breeding" "cow breeding" "iron working" "two-handed weapons" "traps" "archery" "sorcery" "diff animal farms"
+        "advanced sorcery" "magical weapons" "master sorcery" "demonology" "diff shady recruitment" "distillation"
+    }
+	zLevelGroups = { "basic" "evil" }
+    initialTech = { "sorcery" }
+	endlessEnemyGroups = { "basic" "difficulty" }
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "zones" "library" "throne" "diff_ant_breeding" 
+        "training" "crafting" "diff_organic_pile" "poetry" "laboratory" "distillery" "demon_shrine" "orders" "installations" "magical_installations" "diff_pfood_processor" "traps"
+    }
+    workshopGroups = { "diff_ants" }
+    maxPopulation = 2
+    populationString = "ants"
+    noLeader = true
+    prisoners = false
+    description = "HARDER - Start with a small amount of ants and grow to be the biggest hive there is!"
+# Special traits example, all traits are added
+  specialTraits = { Lasting {SLOWED} Lasting {NIGHT_VISION} }
+  }
+

@@ -1,0 +1,862 @@
+# Each element is of the form:
+
+# "CreatureId" { CreatureAttributes }, see creature_attributes.h
+
+#######################################
+# GREENKINS HOBGOBLIN TRIBE
+#######################################
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_WARLORD"
+  {
+    viewId = { "DeliveryServiceHobgoblinWarlord1" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 40
+	  MULTI_WEAPON 50
+	  LABORATORY 30
+      WORKSHOP 30
+      FORGE 30
+	  FURNACE 30
+      JEWELER 30
+    }
+    name = {
+      name = "Hobgoblin Warlord"
+      firstNameGen = "ORC"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+      canCapture = true
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting 50 POISON} } }}}
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        LEG {{{ Intrinsic { "leg_attack" } "foot" 5 {
+            attackType = HIT
+            attackMsg = KICK } }}}
+      }
+      bodyParts = {
+        HEAD 1
+        TORSO 1
+        BACK 1
+	ARM 2
+	LEG 2
+      }
+    }
+#    deathEffect = Filter Not Flag "key_dropped" Chain {
+#      SetFlag "key_dropped" true
+#      DropItems { Simple "BlackMarketKey"} {1}
+#    }
+    viewIdUpgrades = { 
+	{ "DeliveryServiceHobgoblinWarlord2" } 
+	{ "DeliveryServiceHobgoblinWarlord3" } 
+	{ "DeliveryServiceHobgoblinWarlord4" }
+    }
+    maxLevelIncrease = {
+      MELEE 30
+      SPELL 10
+      ARCHERY 0
+    }
+    permanentEffects = {
+      AMBUSH_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      SWIMMING_SKILL 1
+      RANGED_RESISTANCE 1
+      WARNING 1
+	  RIDER 1
+    }
+    spellSchools = { "tactician" "warlord"}
+    spells = { "healing" "DeliveryServiceSpellProgenerate" }
+    inventory = {
+      { Simple "ChainArmor"}
+      { Simple "IronBoots"}
+      { Simple "Knife"}
+      { Simple "Knife"}
+#      { Simple "BOOK_MASTERY_FLESH_HEAL"}
+#      { Simple "BOOK_MASTERY_ENHANCEMENT"}
+      { Simple "GoldPiece" 16 26 }
+#      { Simple "MagicLamp" }
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_WARLORD_F" inherit "DELIVERYSERVICE_GH_HOBGOBLIN_WARLORD"
+  {
+    viewId = { "DeliveryServiceHobgoblinWarlordF1" }
+    viewIdUpgrades = { 
+	{ "DeliveryServiceHobgoblinWarlordF2" } 
+	{ "DeliveryServiceHobgoblinWarlordF3" } 
+	{ "DeliveryServiceHobgoblinWarlordF4" }
+    }
+    gender = FEMALE
+    name = {
+      name = "Hobgoblin Warlord"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      AMBUSH_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      SWIMMING_SKILL 1
+      RANGED_RESISTANCE 1
+      MELEE_RESISTANCE 1
+      WARNING 1
+	  RIDER 1
+    }
+    spells = { "healing" }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_WORKER"
+  {
+    viewId = { "DeliveryServiceHobgoblinWorker" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 15
+	  LABORATORY 30
+      WORKSHOP 30
+      FORGE 30
+	  FURNACE 30
+      JEWELER 30
+	  DIGGING 30
+    }
+    aiType = RANGED
+    noChase = true
+    name = {
+      name = "Hobgoblin Worker"
+      firstNameGen = "ORC"
+    }
+    body = {
+      type = Humanoid LARGE
+      canCapture = true
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting 50 POISON} } }}}
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        LEG {{{ Intrinsic { "leg_attack" } "foot" 5 {
+            attackType = HIT
+            attackMsg = KICK } }}}
+      }
+    }
+    hatedByEffect = HATE_GREENSKINS
+    chatReactionFriendly = "\"I am working!\""
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 3
+      SPELL 0
+      ARCHERY 0
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      NO_CARRY_LIMIT 1
+      SWIMMING_SKILL 1
+	  RIDER 1
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_WORKER_F" inherit "DELIVERYSERVICE_GH_HOBGOBLIN_WORKER"
+  {
+    viewId = { "DeliveryServiceHobgoblinWorkerF" }
+    gender = FEMALE
+    name = {
+      name = "Hobgoblin Worker"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      NO_CARRY_LIMIT 1
+      SWIMMING_SKILL 1
+	  RIDER 1
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_PUGILIST"
+  {
+    viewId = { "DeliveryServiceHobgoblinPugilist" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 15
+	  WORKSHOP 15
+      FORGE 15
+    }
+    name = {
+      name = "Hobgoblin Pugilist"
+      firstNameGen = "ORC"
+    }
+    body = {
+      type = Humanoid LARGE
+      canCapture = true
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting 50 POISON} } }}}
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 15 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {1.0 Lasting 50 MELEE_VULNERABILITY} } }}}
+        LEG {{{ Intrinsic { "leg_attack" } "foot" 15 {
+            attackType = HIT
+            attackMsg = KICK
+            victimEffect = {1.0 Lasting 50 MELEE_VULNERABILITY} } }}}
+      }
+    }
+    hatedByEffect = HATE_GREENSKINS
+    chatReactionFriendly = "\"We settle it with our fist!\""
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 5
+      SPELL 0
+      ARCHERY 0
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_PUGILIST_F" inherit "DELIVERYSERVICE_GH_HOBGOBLIN_PUGILIST"
+  {
+    viewId = { "DeliveryServiceHobgoblinPugilistF" }
+    gender = FEMALE
+    name = {
+      name = "Hobgoblin Pugilist"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+ }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_DUELIST"
+  {
+    viewId = { "DeliveryServiceHobgoblinDuelist" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 25
+	  WORKSHOP 15
+      FORGE 15
+    }
+    name = {
+      name = "Hobgoblin Duelist"
+      firstNameGen = "ORC"
+    }
+    body = {
+      type = Humanoid LARGE
+      canCapture = true
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting 50 POISON} } }}}
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        LEG {{{ Intrinsic { "leg_attack" } "foot" 5 {
+            attackType = HIT
+            attackMsg = KICK } }}}
+      }
+    }
+    hatedByEffect = HATE_GREENSKINS
+    chatReactionFriendly = "\"Through blade comes blood, through blood comes honor!\""
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 15
+      SPELL 0
+      ARCHERY 0
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      RANGED_RESISTANCE 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_DUELIST_F" inherit "DELIVERYSERVICE_GH_HOBGOBLIN_DUELIST"
+  {
+    viewId = { "DeliveryServiceHobgoblinDuelistF" }
+    gender = FEMALE
+    name = {
+      name = "Hobgoblin Duelist"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      RANGED_RESISTANCE 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_BERSERKER"
+  {
+    viewId = { "DeliveryServiceHobgoblinBerserker" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 20
+	  WORKSHOP 15
+      FORGE 15
+      MULTI_WEAPON 50
+    }
+    name = {
+      name = "Hobgoblin Berserker"
+      firstNameGen = "ORC"
+    }
+    body = {
+      type = Humanoid LARGE
+      canCapture = true
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting 50 POISON} } }}}
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        LEG {{{ Intrinsic { "leg_attack" } "foot" 5 {
+            attackType = HIT
+            attackMsg = KICK } }}}
+      }
+    }
+    hatedByEffect = HATE_GREENSKINS
+    chatReactionFriendly = "\"Graaarrgh!\""
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 10
+      SPELL 0
+      ARCHERY 0
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_BERSERKER_F" inherit "DELIVERYSERVICE_GH_HOBGOBLIN_BERSERKER"
+  {
+    viewId = { "DeliveryServiceHobgoblinBerserkerF" }
+    gender = FEMALE
+    name = {
+      name = "Hobgoblin Berserker"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+ }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_WARRIOR"
+  {
+    viewId = { "DeliveryServiceHobgoblinWarrior" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 35
+	  WORKSHOP 15
+      FORGE 15
+    }
+    name = {
+      name = "Hobgoblin Warrior"
+      firstNameGen = "ORC"
+    }
+    body = {
+      type = Humanoid LARGE
+      canCapture = true
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting 50 POISON} } }}}
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        LEG {{{ Intrinsic { "leg_attack" } "foot" 5 {
+            attackType = HIT
+            attackMsg = KICK } }}}
+      }
+    }
+    hatedByEffect = HATE_GREENSKINS
+    chatReactionFriendly = "\"We fight, we defend, we win.\""
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 20
+      SPELL 0
+      ARCHERY 0
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      RANGED_RESISTANCE 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_WARRIOR_F" inherit "DELIVERYSERVICE_GH_HOBGOBLIN_WARRIOR"
+  {
+    viewId = { "DeliveryServiceHobgoblinWarriorF" }
+    gender = FEMALE
+    name = {
+      name = "Hobgoblin Warrior"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      RANGED_RESISTANCE 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+ }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_JUGGERNAUT"
+  {
+    viewId = { "DeliveryServiceHobgoblinJuggernaut" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+	  WORKSHOP 15
+      FORGE 15
+      MULTI_WEAPON 50
+    }
+    name = {
+      name = "Hobgoblin Juggernaut"
+      firstNameGen = "ORC"
+    }
+    body = {
+      type = Humanoid LARGE
+      canCapture = true
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting 50 POISON} } }}}
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        LEG {{{ Intrinsic { "leg_attack" } "foot" 5 {
+            attackType = HIT
+            attackMsg = KICK } }}}
+      }
+    }
+    hatedByEffect = HATE_GREENSKINS
+    chatReactionFriendly = "\"Hermgh!!\""
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 20
+      SPELL 0
+      ARCHERY 0
+    }
+    permanentEffects = {
+      AMBUSH_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      SWIMMING_SKILL 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_JUGGERNAUT_F" inherit "DELIVERYSERVICE_GH_HOBGOBLIN_JUGGERNAUT"
+  {
+    viewId = { "DeliveryServiceHobgoblinJuggernautF" }
+    gender = FEMALE
+    name = {
+      name = "Hobgoblin Juggernaut"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      AMBUSH_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      SWIMMING_SKILL 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+ }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_GUARD"
+  {
+    viewId = { "DeliveryServiceHobgoblinGuard" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 45
+	  WORKSHOP 15
+      FORGE 15
+    }
+    name = {
+      name = "Hobgoblin Guard"
+      firstNameGen = "ORC"
+    }
+    body = {
+      type = Humanoid LARGE
+      canCapture = true
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting 50 POISON} } }}}
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        LEG {{{ Intrinsic { "leg_attack" } "foot" 5 {
+            attackType = HIT
+            attackMsg = KICK } }}}
+      }
+    }
+    hatedByEffect = HATE_GREENSKINS
+    chatReactionFriendly = "\"Shield Up!\""
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 25
+      SPELL 0
+      ARCHERY 0
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      RANGED_RESISTANCE 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_GUARD_F" inherit "DELIVERYSERVICE_GH_HOBGOBLIN_GUARD"
+  {
+    viewId = { "DeliveryServiceHobgoblinGuardF" }
+    gender = FEMALE
+    name = {
+      name = "Hobgoblin Guard"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      RANGED_RESISTANCE 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+ }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_REDROBE"
+  {
+    viewId = { "DeliveryServiceHobgoblinRedrobe" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 15
+      RANGED_DAMAGE 30
+	  WORKSHOP 15
+      FORGE 15
+    }
+    name = {
+      name = "Hobgoblin Redrobe"
+      firstNameGen = "ORC"
+    }
+    body = {
+      type = Humanoid LARGE
+      canCapture = true
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting 50 POISON} } }}}
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        LEG {{{ Intrinsic { "leg_attack" } "foot" 5 {
+            attackType = HIT
+            attackMsg = KICK } }}}
+      }
+    }
+    hatedByEffect = HATE_GREENSKINS
+    chatReactionFriendly = "\"...\""
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 5
+      SPELL 0
+      ARCHERY 25
+    }
+    permanentEffects = {
+      AMBUSH_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      SWIMMING_SKILL 1
+      MELEE_RESISTANCE 1
+      DISARM_TRAPS_SKILL 1
+      ELF_VISION 1
+      WARNING 1
+	  RIDER 1
+    }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_REDROBE_F" inherit "DELIVERYSERVICE_GH_HOBGOBLIN_REDROBE"
+  {
+    viewId = { "DeliveryServiceHobgoblinRedrobeF" }
+    gender = FEMALE
+    name = {
+      name = "Hobgoblin Redrobe"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      AMBUSH_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+      SWIMMING_SKILL 1
+      MELEE_RESISTANCE 1
+      DISARM_TRAPS_SKILL 1
+      ELF_VISION 1
+      WARNING 1
+	  RIDER 1
+    }
+ }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_ARTIFICER"
+  {
+    viewId = { "DeliveryServiceHobgoblinArtificer" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 15
+      SPELL_DAMAGE 25
+	  LABORATORY 50
+      WORKSHOP 50
+      FORGE 50
+      JEWELER 50
+    }
+    name = {
+      name = "Hobgoblin Artificer"
+      firstNameGen = "ORC"
+    }
+    body = {
+      type = Humanoid LARGE
+      canCapture = true
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting 50 POISON} } }}}
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        LEG {{{ Intrinsic { "leg_attack" } "foot" 5 {
+            attackType = HIT
+            attackMsg = KICK } }}}
+      }
+    }
+    hatedByEffect = HATE_GREENSKINS
+    chatReactionFriendly = "Talks about researching."
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 5
+      SPELL 7
+      ARCHERY 0
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+	  RIDER 1
+    }
+    spellSchools = {  "artificer" }
+  }
+
+"DELIVERYSERVICE_GH_HOBGOBLIN_ARTIFICER_F" inherit "DELIVERYSERVICE_GH_HOBGOBLIN_ARTIFICER"
+  {
+    viewId = { "DeliveryServiceHobgoblinArtificerF" }
+    gender = FEMALE
+    name = {
+      name = "Hobgoblin Artificer"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      COPULATION_SKILL 1
+      POISON_RESISTANT 1
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+	  RIDER 1
+    }
+ }
+
+#########################
+# LEGENDARY CHARACTERS
+#########################
+"DELIVERYSERVICE_GH_DJINN_IFRIT"
+  {
+    viewId = { "DeliveryServiceDjinnIfrit" }
+    attr = {
+      DEFENSE 100
+      SPELL_DAMAGE 150
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      canCapture = true
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "fist_attack" } "spell" 1 {
+            	attackType = HIT 
+		meleeAttackAttr = SPELL_DAMAGE 
+		attackMsg = SPELL 
+	} }}}
+      }
+    }
+    chatReactionFriendly = "\"Any wish?\""
+    chatReactionHostile = "\"HaHaHahh!! Any LAST WISH??\""
+    permanentEffects = {
+      FLYING 1
+      #INVULNERABLE 1
+      ACID_RESISTANT 1
+      POISON_RESISTANT 1
+      FIRE_RESISTANT 1
+	  RIDER 1
+    }
+    name = {
+      name = "Ifrit Djinn"
+    }
+    spells = { "grant wish" "godslayer" }
+    instantPrisoner = true
+  }
+
+"DELIVERYSERVICE_GH_RAMON_OF_FANTA_CRUZ"
+  {
+    viewId = { "DeliveryServiceRamonOfFantaCruz" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 30 
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "\"What.. wanna get steamrolled?\""
+    chatReactionHostile = "\"Fool! I can't die! Now die!\""
+    name = {
+      name = "Guardian of Fanta Cruz"
+      firstNameGen = "DELIVERYSERVICE_GH_NAME_RAMON"
+      fullTitle = true
+     }
+    deathEffect = Filter Not Flag "guardian_of_fanta_cruz_dead" Chain {
+      SetFlag "guardian_of_fanta_cruz_dead" true
+      #Message "SYSTEM: \"The Guardian of Fanta Cruz's body has ceases to live, rewriting the \'SOUL\' data.\""
+      Message NORMAL "\"Aargh! You beat me now, but I shall be baaaack!\""
+      PlaceFurniture "FIRE_WALL"
+    }
+    permanentEffects = {
+      AMBUSH_SKILL 1
+	  RIDER 1
+      FIRE_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      MELEE 30
+      SPELL 20
+      ARCHERY 20
+    }
+    spellSchools = { "fighter" "mage" }
+    spells = { "DeliveryServiceSummonIfrit" "expert healing" }
+    inventory = {
+      { Simple "FirstAidKit" 2 4 }
+      { Simple "Knife"}
+      { Simple "Sword"}
+      { Simple "LeatherGloves"}
+      { Simple "LeatherArmor"}
+      { Simple "LeatherHelm"}
+      #{ Simple "RING_ETERNAL_CONTRACT_SIGNET"}
+      { Simple "GoldPiece" 16 26 }
+    }
+  }
+"DELIVERYSERVICE_GH_RAMONA_OF_FANTA_CRUZ" inherit "DELIVERYSERVICE_GH_RAMON_OF_FANTA_CRUZ"
+  {
+    viewId = { "DeliveryServiceRamonaOfFantaCruz" }
+    gender = FEMALE
+    name = {
+      name = "Guardian of Fanta Cruz"
+      firstNameGen = "DELIVERYSERVICE_GH_NAME_RAMONA"
+      fullTitle = true
+     }
+  }
+  
+"SKELETON"
+  {
+    viewId = { "skeleton" }
+    attr = {
+      DAMAGE 17
+      DEFENSE 13
+      RANGED_DAMAGE 5
+    }
+    body = {
+      type = Humanoid LARGE
+      material = BONE
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+      ARCHERY 4
+    }
+    aiType = RANGED
+    name = {
+      name = "skeleton"
+    }
+    hatedByEffect = HATE_UNDEAD
+	inventory = { # Modded
+        { type =  "Bow" chance = 0.3 }
+        {  "Knife" }
+        { type =  "WoodenShield" chance = 0.01 }
+      }
+  }	

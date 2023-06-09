@@ -1,0 +1,634 @@
+###########################################
+#Code taken from external_enemies.h
+###########################################
+# constexpr int firstAttackDelay = 1800;
+# constexpr int attackInterval = 1200;
+# constexpr int attackVariation = 450;
+# constexpr int afterWinTurn = 15000;
+###########################################
+# CreatureList SERIAL(creatures);
+# AttackBehaviour SERIAL(behaviour);
+# string SERIAL(name);
+# Range SERIAL(attackTime);
+# int SERIAL(maxOccurences) = 1;
+###########################################
+# enemy.creatures.increaseBaseLevel({{ExperienceType::MELEE, max(0, attackTime / 1000 - 10)}})
+###########################################
+
+#################################################
+#Late endless mod
+#################################################
+
+"basic" modify
+{
+  {
+    {
+      all = { 1 "BANDIT" }
+      count = { 1 }
+      baseLevelIncrease = { MELEE -2 }
+    }
+    KillLeader
+    "a curious bandit"
+    { 10000 20000 }
+    1
+  }
+  {
+    {
+      all = { 1 "LIZARDMAN" }
+      count = { 1 }
+      baseLevelIncrease = { MELEE 1 }
+    }
+    KillLeader
+    "a lizardman scout"
+    { 10000 20000 }
+    1
+  }
+  {
+    {
+      all = { 1 "ANT_WORKER" }
+      count = { 3 5 }
+      baseLevelIncrease = { MELEE -2 }
+    }
+    KillLeader
+    "an ant patrol"
+    { 10000 15000 }
+    2
+  }
+  {
+    {
+      all = { 1 "LIZARDMAN" }
+      count = { 4 8 }
+      baseLevelIncrease = { MELEE 2 }
+    }
+    KillLeader
+    "a nest of lizardmen"
+    { 16000 25000 }
+    5
+  }
+  {
+    {
+      all = { 1 "BANDIT" }
+      count = { 3 5 }
+      baseLevelIncrease = { MELEE 9 }
+    }
+    KillLeader
+    "a gang of bandits"
+    { 18000 30000 }
+    10
+  }
+  {
+    {
+      all = { 1 "ANT_SOLDIER" }
+      count = { 3 5 }
+    }
+    KillLeader
+    "an ant soldier patrol"
+    { 15000 20000 }
+    1
+  }
+  {
+    {
+      all = { 1 "CLAY_GOLEM" }
+      count = { 3 5 }
+      baseLevelIncrease = { MELEE 3 }
+    }
+    KillLeader
+    "an alchemist's clay golems"
+    { 13000 20000 }
+    1
+  }
+  {
+    {
+      all = { 1 "STONE_GOLEM" }
+      count = { 3 5 }
+      baseLevelIncrease = { MELEE 3 }
+    }
+    KillLeader
+    "an alchemist's stone golems"
+    { 15000 22000 }
+    2
+  }
+  {
+    {
+      all = { 1 "ANT_SOLDIER" }
+      count = { 5 8 }
+      baseLevelIncrease = { MELEE 5 }
+    }
+    KillLeader
+    "an ant soldier patrol"
+    { 16000 22000 }
+    2
+  }
+  {
+    {
+      all = { 1 "ANT_SOLDIER" }
+      uniques = { "ANT_QUEEN" }
+      count = { 10 15 }
+      baseLevelIncrease = { MELEE 6 }
+    }
+    KillLeader
+    "an army of ants"
+    { 20000 25000 }
+    3
+  }
+  {
+    {
+      all = { 1 "ENT" }
+      count = { 4 8 }
+      baseLevelIncrease = { MELEE 3 }
+    }
+    KillLeader
+    "a group of ents"
+    { 17000 22000 }
+    2
+  }
+  {
+    {
+      all = { 1 "DWARF" }
+      count = { 4 8 }
+    }
+    KillLeader
+    "a band of dwarves"
+    { 17000 25000 }
+    3
+  }
+  {
+    {
+      all = { 1 "IRON_GOLEM" }
+      count = { 3 5 }
+      baseLevelIncrease = { MELEE 2 }
+    }
+    KillLeader
+    "an alchemist's iron golems"
+    { 19000 25000 }
+    3
+  }
+  {
+    {
+      all = { 1 "DWARF_FIGHTER" }
+      uniques = { "DWARF_BARON" }
+      count = { 10 13 }
+      inventory = { { Scroll Area 1 DestroyWalls DIG } }
+    }
+    KillLeader
+    "a dwarf tribe"
+    { 22000 35000 }
+    10
+  }
+  {
+    {
+      all = { 1 "ARCHER" }
+      count = { 4 8 }
+    }
+    KillLeader
+    "a patrol of archers"
+    { 16000 22000 }
+    3
+  }
+  {
+    {
+      all = { 1 "KNIGHT" }
+      count = { 1 }
+    }
+    KillLeader
+    "a lonely knight"
+    { 20000 26000 }
+    3
+  }
+  {
+    {
+      all = { 1 "WARRIOR" }
+      count = { 4 8 }
+      baseLevelIncrease = { MELEE 6 }
+    }
+    KillLeader
+    "a group of warriors"
+    { 16000 22000 }
+    3
+  }
+  {
+    {
+      all = { 1 "WARRIOR" }
+      uniques = { "SHAMAN" }
+      count = { 12 16 }
+      baseLevelIncrease = { MELEE 14 }
+      inventory = { { Scroll Area 1 DestroyWalls DIG } }
+    }
+    KillLeader
+    "an army of warriors"
+    { 28000 110000 }
+    100
+  }
+  {
+    {
+      all = {
+        4 "KNIGHT"
+        2 "ARCHER"
+        1 "PRIEST"
+      }
+      uniques = { "DUKE" }
+      count = { 12 16 }
+  #     baseLevelIncrease = { MELEE, 4}
+      inventory = { { Scroll Area 1 DestroyWalls DIG } }
+    }
+    KillLeader
+    "an army of knights"
+    { 30000 110000 }
+    100
+  }
+  {
+    {
+      all = { 1 "CYCLOPS" }
+      count = { 1 }
+    }
+    KillLeader
+    "a cyclops"
+    { 16000 30000 }
+    4
+  }
+  {
+    {
+      all = { 1 "WITCHMAN" }
+      count = { 1 }
+      baseLevelIncrease = { MELEE 20 }
+    }
+    KillLeader
+    "a witchman"
+    { 25000 50000 }
+    5
+  }
+  {
+    {
+      all = { 1 "MINOTAUR" }
+      count = { 1 }
+      baseLevelIncrease = { MELEE 20 }
+    }
+    KillLeader
+    "a minotaur"
+    { 25000 110000 }
+    100
+  }
+  {
+    {
+      all = { 1 "ELEMENTALIST" }
+      count = { 1 }
+    }
+    CampAndSpawn {
+      all = {
+        1 "WATER_ELEMENTAL"
+        1 "FIRE_ELEMENTAL"
+        1 "EARTH_ELEMENTAL"
+        1 "AIR_ELEMENTAL"
+      }
+      count = { 5 }
+    }
+    "an elementalist"
+    { 18000 24000 }
+    1
+  }
+  {
+    {
+      all = { 1 "GREEN_DRAGON" }
+      count = { 1 }
+      baseLevelIncrease = { MELEE 10 }
+    }
+    KillLeader
+    "a green dragon"
+    { 25000 50000 }
+    100
+  }
+  {
+    {
+      all = { 1 "RED_DRAGON" }
+      count = { 1 }
+      baseLevelIncrease = { MELEE 18 }
+    }
+    KillLeader
+    "a red dragon"
+    { 29000 110000 }
+    100
+  }
+  {
+    {
+      all = { 1 "BLACK_DRAGON" }
+      count = { 1 }
+      baseLevelIncrease = { MELEE 28 }
+    }
+    KillLeader
+    "a black dragon"
+    { 40000 110000 }
+    100
+  }
+  {
+    {
+      all = {
+        1 "ADVENTURER"
+        1 "ADVENTURER_F"
+      }
+      count = { 3 6 }
+      inventory = {{Scroll Area 1 DestroyWalls DIG}}
+      baseLevelIncrease = { MELEE 20 }
+    }
+    KillLeader
+    "a group of adventurers"
+    { 20000 35000 }
+    100
+  }
+  {
+    {
+      all = { 1 "TROLL" }
+      count = { 3 6 }
+      baseLevelIncrease = { MELEE 25 }
+    }
+    KillLeader
+    "a pack of trolls"
+    { 25000 60000 }
+    100
+  }
+
+#################################################
+#Bonus mod waves
+#################################################
+
+#Modded additions after turn 100000
+  {
+    {
+      all = { 1 "DEMON_DWELLER" }
+      count = {5 10}
+      baseLevelIncrease = { MELEE 25 }
+    }
+    KillLeader
+    "a pack of demons"
+    { 100000 500000 }
+    100
+  }
+  {
+    {
+      count = {4 5}
+      all = {
+        1 "SHELOB"
+        1 "BONUS_ARACHNE"
+        1 "SPECIAL_BMGN"
+      }
+    }
+    KillLeader
+    "a nest of spiders"
+    { 100000 500000 }
+    100
+  }
+  {
+    {
+      count = {3 7}
+      all = {
+        1 "HYDRA"
+	  }
+    }
+    KillLeader
+    "a nest of hydra"
+    { 100000 500000 }
+    100
+  }
+  {
+    {
+      count = {8 14}
+      all = {
+        1 "THIEF"
+	  }
+    }
+    KillLeader
+    "a den of thieves"
+    { 100000 500000 }
+    100
+  }
+  {
+    {
+       count = {16 32}
+       all = {
+	     2 "GOBLIN_CHICKENMANCER"
+		 2 "BONUS_GOBLIN_BRUTE"
+		 3 "GOBLIN_ARCHER"
+		 1 "BONUS_GOBLIN_HIGH_PRIEST"
+		 2 "GOBLIN_KABOOMER"
+		 2 "GOBLIN_PRIEST"
+		 2 "GOBLIN_WIZARD"
+		 3 "GOBLIN_WARRIOR"
+       }
+    }
+    KillLeader
+    "a goblin war army"
+    { 100000 500000 }
+    100
+  }
+  {
+    {
+      count = {15 18}
+      all = {
+        30 "BONUS_COW_DEMON"
+        10 "MINOTAUR"
+        5 "DEMON_LORD"
+      }
+    }
+    KillLeader
+    "a party of cow demons"
+    { 100000 500000 }
+    100
+  }
+  {
+    {
+      count = {5 10}
+      all = {
+        1 "BONUS_AIR_FAIRY"
+        1 "BONUS_DARK_FAIRY"
+        1 "BONUS_EARTH_FAIRY"
+        1 "BONUS_ELECTRIC_FAIRY"
+        1 "BONUS_MAGIC_FAIRY"
+        1 "BONUS_NATURE_FAIRY"
+        1 "BONUS_LIGHT_FAIRY"
+        1 "BONUS_WATER_FAIRY"
+      }
+    }
+    KillLeader
+    "some fairies"
+    { 100000 500000 }
+    100
+  }
+  {
+    {
+	  count = {22 30}
+	  all = {
+		20 "BONUS_HELL_KNIGHT"
+		14 "BONUS_HELL_KNIGHT_BRUTE"
+		10 "BONUS_HELL_KNIGHT_LORD"
+		12 "BONUS_HELL_KNIGHT_SWORDMASTER"
+	  }
+    }
+    KillLeader
+    "many wrathful hellknights"
+    { 100000 500000 }
+    100
+  }
+  {
+    {
+      count = {10 15}
+	  all = {
+		1 "BONUS_CENTAUR_ARCHER"
+		1 "BONUS_CENTAUR_FARMER"
+		1 "BONUS_CENTAUR_HUNTER"
+		1 "BONUS_CENTAUR_CHILD"
+		1 "BONUS_CENTAUR_KNIGHT"
+	  }
+    }
+    KillLeader
+    "a herd of centaurs"
+    { 100000 500000 }
+    100
+  }  
+  {
+    {
+	  count = {10 15}
+	  all = {
+		2 "BONUS_AMAZON"
+		1 "BONUS_AMAZON_ARCHER"
+		1 "BONUS_AMAZON_CHAMPION"
+		1 "BONUS_AMAZON_ELDER"
+		1 "BONUS_AMAZON_WAR_MAIDEN"
+	  }
+    }
+    KillLeader
+    "an attack party of amazons"
+    { 100000 500000 }
+    100
+  }  
+  {
+    {
+	  count = {25 30}
+	  all = {
+		6 "BONUS_VULTURE_ABOMINATION"
+		1 "BONUS_EYE_SERVANT"
+	  }
+    }
+    KillLeader
+    "many abominations"
+    { 100000 500000 }
+    100
+  }
+  {
+    {
+	  count = {12 16}
+	  all = {
+		1 "BONUS_SKELETON"
+		1 "BONUS_SKELETON_MAGE"
+		1 "SKELETON_WARRIOR"
+	  }
+    }
+    KillLeader
+    "a skeleton army"
+    { 100000 500000 }
+    100
+  } 
+  {
+    {
+	  count = {10 15}
+	  all = {
+		1 "BONUS_ANCIENT_RED_DRAGON"
+		1 "BONUS_ANCIENT_GREEN_DRAGON"
+		1 "WHITE_DRAGON"
+		1 "YELLOW_DRAGON"
+		1 "BLACK_DRAGON"
+		1 "GREEN_DRAGON"
+		1 "RED_DRAGON"
+		1 "BONE_DRAGON"
+		2 "BONUS_YOUNG_GREEN_DRAGON"
+		2 "BONUS_YOUNG_RED_DRAGON"
+		6 "BONUS_GREEN_DRAGONEWT"
+		6 "BONUS_RED_DRAGONNEWT"
+	  }
+    }
+    KillLeader
+    "a huge dragon invasion"
+    { 100000 500000 }
+    100
+  }
+  {
+    {
+	  count = {25 30}
+	  all = {
+		1 "ARCHER"
+		1 "BONUS_SKELETON"
+		1 "HARPY"
+		1 "ELF_ARCHER"
+		1 "DRIAD"
+		1 "BONUS_CENTAUR_ARCHER"
+		1 "BONUS_AMAZON_ARCHER"
+		1 "BONUS_RAT_ARCHER"
+		1 "GOBLIN_ARCHER"
+		1 "BONUS_CENTAUR_HUNTER"
+		1 "ADVENTURER"
+		1 "WITCHMAN"
+		1 "DEMON_DWELLER"
+		1 "KNIGHT"
+		1 "WARRIOR"
+		1 "OGRE"
+		1 "DWARF"
+		1 "BONUS_DWARF_FEMALE"
+		1 "LIZARDMAN"
+		1 "DARK_ELF_WARRIOR"
+		1 "WEREWOLF"
+		1 "ABOMINATION"
+		1 "BONUS_CENTAUR_KNIGHT"
+		1 "BONUS_AMAZON"
+		1 "BONUS_AMAZON_CHAMPION"
+		1 "BONUS_AMAZON_WAR_MAIDEN"
+		1 "BONUS_RED_DRAGONNEWT"
+		1 "BONUS_GREEN_DRAGONEWT"
+		1 "BONUS_HELL_KNIGHT"
+		1 "BONUS_HELL_KNIGHT_BRUTE"
+		1 "BONUS_HELL_KNIGHT_SWORDMASTER"
+		1 "BONUS_RAT_GENERAL"
+		1 "BONUS_ARACHNE"
+		1 "BONUS_COW_DEMON"
+		1 "BONUS_ARMORED_COW_DEMON"
+		1 "BONUS_BANSHEE"
+		1 "BONUS_GIANT"
+		1 "BONUS_MUSHROOM_MAN"
+		1 "BONUS_OGRE_FEMALE"
+		1 "BONUS_SHARD_SPITTER"
+		1 "BONUS_SQUIDHOLDER"
+		1 "BONUS_WARRIOR_HERO"
+		1 "BONUS_THIEF_HERO"
+		1 "BONUS_DARK_ORC"
+		1 "BONUS_DARK_ORC_FEMALE"
+		1 "BONUS_DARK_OGRE"
+		1 "BONUS_DARK_OGRE_FEMALE"
+		1 "BONUS_ELITE_GOBLIN_GUARD"
+		1 "BONUS_GOBLIN_BRUTE"
+		1 "GOBLIN_KABOOMER"
+		1 "GOBLIN_MATRON"
+		1 "GOBLIN_WARRIOR"
+		1 "BONUS_COMBAT_SUCCUBUS"
+		1 "SKELETON_WARRIOR"
+		1 "DWARF_FIGHTER"
+		1 "BONUS_DWARF_WARRIOR"
+		1 "BONUS_ELITE_DWARF_WARRIOR"
+		1 "ANT_SOLDIER"
+		1 "AIR_ELEMENTAL"
+		1 "EARTH_ELEMENTAL"
+		1 "ENT"
+		1 "FIRE_ELEMENTAL"
+		1 "BONUS_FIRE_SPHERE"
+		1 "BONUS_EYE_SERVANT"
+		1 "IRON_GOLEM"
+		1 "BONUS_HEALING_TOTEM"
+		1 "LAVA_GOLEM"
+		1 "LOST_SOUL"
+		1 "STONE_GOLEM"
+		1 "SNAKE"
+		1 "SPIDER"
+	  }
+    }
+    KillLeader
+    "a hostile dungeon force"
+    { 100000 500000 }
+    100
+  }
+}

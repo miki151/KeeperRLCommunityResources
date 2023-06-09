@@ -1,0 +1,193 @@
+"OV_CLEAVER"
+  {
+    viewId = { "ov_cleaver" }
+	equipedViewId = { "ov_cleaver_v" }
+    name = "cleaver"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      DAMAGE 8
+    }
+    price = 4
+    craftingCost = "IRON" 20
+    weaponInfo = {
+      attackType = CUT
+      victimEffect = {0.5 Fire{10}}
+    }
+    genPrefixes = {
+      1 VictimEffect 0.1 Lasting POISON
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 3
+        LastingEffect HALLU
+      }
+    }
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+  }
+  
+"OV_MYSTERY_MEATBALLS"
+  {
+    viewId = { "ov_meatballs" Rgb 0 0 0 0 }
+    shortName = "meatballs"
+    name = "mystery meatballs"
+    plural = "mystery meatballs"
+    blindName = "meatballs"
+    applyVerb = "eat" "eats"
+    fragile = false
+    weight = 0.3
+    effect = { IncreaseMorale 0.3 Heal { FLESH }}
+    price = 10
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"potions" "equipment"}
+  }
+ 
+"OV_FORGOTTEN_ESSENCE"
+  {
+    viewId = { "ov_forgotten_essence" }
+    shortName = "essence of forgotten god"
+    name = "essence of forgotten god"
+    plural = "essences of forgotten gods"
+    blindName = "essence"
+    applyVerb = "absorb" "absorbs"
+    fragile = false
+    weight = 0.3
+    effect = { AddSpellSchool "forgotten god" Chain {
+	Permanent POISON_RESISTANT 
+	Permanent ACID_RESISTANT 
+	Permanent COLD_RESISTANT 
+	Permanent FIRE_RESISTANT 
+	Permanent MELEE_RESISTANCE 
+	Permanent RANGED_RESISTANCE 
+	Permanent MAGIC_RESISTANCE 
+	Permanent CAPTURE_RESISTANCE 
+	Permanent NIGHT_VISION 
+	Permanent ARCHER_VISION 
+	IncreaseAttr DAMAGE 10
+	IncreaseAttr DEFENSE 10
+	IncreaseAttr SPELL_DAMAGE 10
+	IncreaseAttr RANGED_DAMAGE 10
+	IncreaseMaxLevel SPELL 12
+	IncreaseMaxLevel ARCHERY 12
+	IncreaseMaxLevel MELEE 12
+	AddTechnology "Infernal God"
+	}}
+    price = 100
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"potions" "equipment"}
+  }
+
+"ov_Scythle"
+  {
+    viewId = { "ov_scythle" }
+    equipedViewId = { "ov_scythle_v" }
+    name = "scythle"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      SPELL_DAMAGE 8
+    }
+    price = 4
+    craftingCost = "IRON" 20
+    weaponInfo = {
+      attackType = CUT
+	  attackMsg = WAVE
+      meleeAttackAttr = SPELL_DAMAGE
+      victimEffect = {0.5 Lasting 50 BLEEDING}
+    }
+    genPrefixes = {
+      1 VictimEffect 0.3 Fire { 25 }
+      1 VictimEffect 0.1 Lasting POISON
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 3
+        LastingEffect HALLU
+      }
+    }
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "iron equipment"
+  }
+  
+"ov_summon_succubus_queen_keeper"
+  {
+    name = "summon succubus queen"
+    viewId = { "scroll" }
+    weight = 1
+    price = 1
+    uses = 1
+    applyVerb = "read" "reads"
+    effect = Description "Call upon succubus queen" Name "summon succubus queen" Chain {
+								Summon "OV_PLEASURE_SUCCUBUS_QUEEN" {1} none
+								Filter Area 2 CreatureId "OV_PLEASURE_SUCCUBUS_QUEEN"
+								{
+								Area 2 AddMinionTrait LEADER
+								}
+    }
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"ov_summon_arch_paladin_keeper"
+  {
+    name = "summon fallen arch paladin"
+    viewId = { "scroll" }
+    weight = 1
+    price = 1
+    uses = 1
+    applyVerb = "read" "reads"
+    effect = Description "Call upon arch paladin" Name "summon fallen arch paladin" Chain {
+								Summon "OV_PLEASURE_PROPHET" {1} none
+								Filter Area 2 CreatureId "OV_PLEASURE_PROPHET"
+								{
+								Area 2  AddMinionTrait LEADER
+								}
+    }
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"ov_pz_corpse"
+  {
+    viewId = { "ov_rotten_corpse" }
+    name = "pleasure zombie corpse"
+    itemClass = CORPSE
+    price = 0
+    weight = 50
+    storageIds = {"corpses"}
+  }
+    
+"ov_ng_corpse"
+  {
+    viewId = { "ov_rotten_corpse" }
+    name = "netherghoul corpse"
+    itemClass = CORPSE
+    price = 0
+    weight = 50
+    storageIds = {"corpses"}
+  }
+  
+"ov_skull_staff" inherit "WoodenStaff"
+  {
+    viewId = { "ov_skull_staff" }
+    equipedViewId = { "ov_skull_staff_v" }
+    name = "skull staff"
+    modifiers = {
+      SPELL_DAMAGE 8
+    }
+    price = 60
+    craftingCost = "CORPSE" 40
+    equipedAbility = { "ov_group_mend_undead" }
+    genPrefixes = {
+      1 VictimEffect 1.0 Escape{}
+      1 VictimEffect 0.4 DestroyEquipment
+	  1 VictimEffect 0.2 Lasting INSANITY
+      1 VictimEffect 0.5 Fire{20}
+    }
+    maxUpgrades = 3
+    equipmentGroup = "artifact equipment"
+  } 

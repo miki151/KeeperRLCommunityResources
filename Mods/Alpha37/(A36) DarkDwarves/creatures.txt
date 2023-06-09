@@ -1,0 +1,165 @@
+"DARK_DWARF"
+  {
+    viewId = { "dark_dwarf_m" }
+    attr = {
+      DAMAGE  24
+      DEFENSE 18 
+	  DIGGING 30
+	  FORGE   20
+	  FURNACE 15
+    }
+    specialAttr = {
+      DEFENSE { -7 Name "when outdoors" Not Indoors }
+    }
+    body = {
+      type = Humanoid MEDIUM
+      weight = 90
+    }
+    name = {
+      name = "dark dwarf"
+      pluralName = "dark dwarves"
+      firstNameGen = "DWARF"
+    }
+    maxLevelIncrease = {
+      MELEE 2
+    }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      UNSTABLE 1
+	  RIDER 1
+    }
+    chatReactionFriendly = "curses all orcs"
+    chatReactionHostile = "\"Die!\""
+    hatedByEffect = HATE_DWARVES
+    inventory = {
+      { type = "Sword" }
+      { "LeatherArmor"}
+      { type = "LeatherHelm" chance = 0.5 }
+      { type = "LeatherBoots" chance = 0.3 }
+      { type = "Torch" chance = 0.3 }
+    }
+  }
+  
+"DARK_DWARF_PLAYER" inherit "DARK_DWARF"
+  {
+    viewId = { "dark_dwarf_civilian_m" }
+    name = append {
+      fullTitle = true
+    }
+    attr = append {
+      WORKSHOP 10
+      FORGE 10
+      LABORATORY 10
+      JEWELER 10
+    }
+    permanentEffects = {
+	  MAGIC_RESISTANCE 1
+      DISTILLATION_SKILL 1
+	  RIDER 1
+      CAN_DANCE 1
+    }
+    inventory = {}
+    specialAttr = {}
+    promotionGroup = "dark dwarf"
+    promotionCost = 0.25
+  }
+  
+"DARK_DWARF_PLAYER_F" inherit "DARK_DWARF_PLAYER"
+  {
+    viewId = { "dark_dwarf_civilian_f" }
+    gender = FEMALE
+  }
+  
+"DARK_DWARF_FIGHTER" inherit "DARK_DWARF"
+  {
+    viewId = { "dark_dwarf_fighter_m" }
+    attr = {
+      DAMAGE 31
+      DEFENSE 28
+    }
+    inventory = {
+      { type = "BattleAxe", alternative = "WarHammer" }
+      { "ChainArmor"}
+      { type = "IronHelm" chance = 0.5 }
+      { type = "IronBoots" chance = 0.3 }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 2 6 }
+    }
+  }
+  
+"DARK_DWARF_FEMALE" inherit "DARK_DWARF"
+  {
+    viewId = { "dark_dwarf_civilian_f" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 25 
+      DIGGING 25
+      WORKSHOP 25
+    }
+    gender = FEMALE
+  }
+  
+"DARK_DWARF_BARON" inherit "DARK_DWARF"
+  {
+    viewId = { "dark_dwarf_baron_m" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 28
+    }
+    maxLevelIncrease = {
+      MELEE 10
+    }
+    name = {
+      name = "dark dwarf baron"
+      firstNameGen = "DWARF"
+    }
+    body = append {
+      droppedPartUpgrade = IncreaseAttr DIGGING 20
+    }
+    inventory = {
+      { type = "BattleAxe", alternative = "WarHammer" prefixChance = 1 }
+      { Potion Heal { FLESH } 2 3 }
+      { type = "ChainArmor" prefixChance = 1 }
+      { "IronBoots"}
+      { "IronHelm"}
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 80 120 }
+      { type = Glyph ARMOR ItemAttrBonus DEFENSE 4 chance = 0.3 }
+      { type = Glyph WEAPON JoinPrefixes { LastingEffect BAD_BREATH VictimEffect 0.2 Lasting PANIC } chance = 0.3 }
+    }
+  }
+  
+"DARK_DWARF_BLACKSMITH" inherit "DARK_DWARF"
+  {
+    viewId = { "dark_dwarf_blacksmith_m" }
+    name = append {
+      name = "dark dwarf blacksmith"
+    }
+    aiType = RANGED
+    attr = append {
+      FORGE 50
+      FURNACE 40    
+    }
+    inventory = {}
+  }
+  
+"FERAL_RAT"
+  {
+    viewId = { "rat" }
+    attr = {
+      DAMAGE 2
+      DEFENSE 2 
+    }
+    body = {
+      type = FourLegged SMALL
+      weight = 1
+    }
+    permanentEffects = {
+      SPEED 1
+      STEED 1
+    }
+    noChase = true
+    name = {
+      name = "rat"
+    }
+  }

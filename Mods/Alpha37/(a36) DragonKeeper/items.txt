@@ -1,0 +1,116 @@
+
+########## MOD Content
+"ScaleGem"
+  {
+    viewId = { "hardscale" }
+    name = "scale hardening gem"
+    itemClass = OTHER
+    weight = 5
+    price = 50
+    ingredientType = "ScaleGem"
+    storageIds = {"jewellery" "equipment"}
+  }
+"TeethGem" inherit "ScaleGem"
+  {
+    viewId = { "sharpteeth" }
+    name = "deadly teeth gem"
+    ingredientType = "TeethGem"
+  }
+"SpellGem" inherit "ScaleGem"
+  {
+    viewId = { "arcaneblood" }
+    name = "arcane blood gem"
+    ingredientType = "SpellGem"
+  }
+"WingGem" inherit "ScaleGem"
+  {
+    viewId = { "winggrowth" }
+    name = "gem of wing growth"
+    ingredientType = "WingGem"
+  }
+"Javelin"
+  {
+    viewId = { "javelin" }
+    name = "javelin"
+    plural = "bunch of javelins"
+    itemClass = RANGED_WEAPON
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"throw javelin"}
+    weaponInfo = {
+      twoHanded = true
+    }
+    weight = 1
+    modifiers = {
+      RANGED_DAMAGE 5
+    }
+    price = 12
+    storageIds = {"bows" "weapons" "equipment"}
+  }
+"Tea" inherit "Moonshine"
+  {
+    viewId = { "tea" }
+    name = "cup of tea"
+    shortName = "tea"
+    plural = "pots of tea"
+    blindName = "cup"
+    description = "For the dapper dragon on the go."
+    effect = { IncreaseMorale 0.2 }
+  }
+"WingTea" inherit "Tea"
+  {
+    viewId = { "tea" }
+    name = "cup of tea testing wing growth"
+    effect = Chain {
+      Lasting FLYING
+      FirstSuccessful {
+        AddBodyPart WING 2 none
+      }
+    }
+  }
+"DragonFlightPotion" inherit "Tea"
+  {
+    viewId = { "potion1" Rgb 255 255 255 180 }
+    name = "Draconic Flight"
+    shortName = "Draconic Flight Potion"
+    plural = "potions"
+    blindName = "phial"
+    description = "Imbibe the spirits of your ancestors to soar."
+    effect = Chain {
+      Permanent FLYING
+      IncreaseAttr DEFENSE 2
+      FirstSuccessful {
+        AddBodyPart WING 2 none
+      }
+    }
+}
+"DragonScalesPotion" inherit "DragonFlightPotion"
+  {
+    viewId = { "potion1" Rgb 10 255 10 255 }
+    name = "Draconic Scales"
+    shortName = "Daraconic Scales Potion"
+    description = "Imbibe the spirits of your ancestors to strengthen your defences."
+    effect = Chain {
+      IncreaseAttr DEFENSE 3
+    }
+  }
+"DragonFerocityPotion" inherit "DragonFlightPotion"
+  {
+    viewId = { "potion1" Rgb 255 10 10 255 }
+    name = "Draconic Ferocity"
+    shortName = "Draconic Ferocity Potion"
+    description = "Imbibe the spirits of your ancestors to amplify your destructiveness."
+    effect = Chain {
+      IncreaseAttr DAMAGE 3
+    }
+  }
+"DragonMagicPotion" inherit "DragonFlightPotion"
+  {
+    viewId = { "potion1" Rgb 10 10 255 190 }
+    name = "Draconic Magic"
+    shortName = "Draconic Magic Potion"
+    description = "Imbibe the spirits of your ancestors to enhance your mystic abilities."
+    effect = Chain {
+      IncreaseAttr SPELL_DAMAGE 3
+    }
+  }
+########## MOD Content

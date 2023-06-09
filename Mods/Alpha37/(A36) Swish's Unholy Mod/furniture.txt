@@ -1,0 +1,148 @@
+"swish_bookcase_bone"
+{
+  name = "books of the dead"
+  viewId = { "swish_bookcase_bone" }
+  blockMovement = true
+  usageType = BuiltinUsageId STUDY
+  usageTime = 5
+  canHideHere = true
+  fire = 70
+  strength = 50
+  maxTraining = {
+    SPELL 3
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"swish_bookcase_boneadv"
+{
+  name = "books of the corrupt"
+  viewId = { "swish_bookcase_boneadv" }
+  blockMovement = true
+  usageType = BuiltinUsageId STUDY
+  usageTime = 5
+  canHideHere = true
+  fire = 70
+  strength = 50
+  upgrade = "swish_bookcase_bone"
+  maxTraining = {
+    SPELL 7
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"swish_bookcase_bonemaster"
+{
+  name = "books of the damned"
+  viewId = { "swish_bookcase_bonemaster" }
+  blockMovement = true
+  usageType = BuiltinUsageId STUDY
+  usageTime = 5
+  canHideHere = true
+  fire = 70
+  strength = 50
+  upgrade = "swish_bookcase_boneadv"
+  maxTraining = {
+    SPELL 20
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"swish_corrupt_shrine"
+{
+  name = "Corrupt Shrine"
+  viewId = { "swish_corrupt_shrine" }
+  blockMovement = true
+  usageTime = 5
+  luxury = 0.4
+  strength = 80
+  populationIncrease = { 1 6 }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"swish_demon_shrine30"
+{
+  name = "Eldritch Demon Shrine"
+  viewId = { "swish_demon_shrine30" }
+  blockMovement = true
+  usageTime = 5
+  usageType = BuiltinUsageId DEMON_RITUAL
+  luxury = 0.4
+  strength = 80
+  populationIncrease = { 1 none }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"PHYLACTERY" modify append
+{
+  viewId = { "swish_phylactery_gem" }
+}
+"PHYLACTERY_ACTIVE" modify append
+{
+  viewId = { "swish_phylactery_gem" }
+}
+"swish_skull_stone"
+{
+  name = "floor"
+  viewId = { "swish_skull_stone" }
+  luxury = 0.3
+  layer = FLOOR
+}
+"swish_vamp_shrine"
+{
+  name = "Vampyr Shrine"
+  viewId = { "swish_vamp_shrine" }
+  blockMovement = true
+  usageTime = 5
+  luxury = 0.4
+  strength = 80
+  populationIncrease = { 1 6 }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"swish_vampfloor1"
+{
+  name = "floor"
+  viewId = { "swish_vampfloor1" }
+  luxury = 0.3
+  layer = FLOOR
+}
+"swish_vampfloor2"
+{
+  name = "floor"
+  viewId = { "swish_vampfloor2" }
+  luxury = 0.3
+  layer = FLOOR
+}
+"swish_vamp_banner"
+{
+  name = "vampyr banner"
+  viewId = { "swish_vamp_banner" }
+  blockMovement = true
+  fire = 50
+  strength = 80
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"swish_blood_fountain"
+{
+  name = "blood fountain"
+  viewId = { "swish_blood_fountain" }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect "drink from"
+      {
+        CreatureMessage { "take a sip" "takes a sip"}
+        ChooseRandom {
+          Lasting SLEEP
+          Lasting SLOWED
+          Lasting BLIND
+          Lasting INVISIBLE
+          Lasting POISON
+          Lasting POISON_RESISTANT
+          Lasting FLYING
+          Lasting SPEED
+        }
+      }
+  summonedElement = "WATER_ELEMENTAL"
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
