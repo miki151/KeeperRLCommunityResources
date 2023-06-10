@@ -1,0 +1,60 @@
+"ov_pumpkins" {
+  CellularAutomaton(Set("OV_PUMPKINS"), 0.9)
+  Place(({1 1} Set("scarecrow") 1 On("OV_PUMPKINS")))
+}
+
+"ov_abyss_pumpkins" {
+  CellularAutomaton(Set("OV_ABYSS_PUMPKINS"), 0.9)
+  Place(({1 1} Set("scarecrow") 1 On("OV_ABYSS_PUMPKINS")))
+}
+
+Def ov_prisoncage1() {
+  Building("wood_wall", "wood_floor")
+  Border(BOTTOM, 3,
+    Border(TOP, 1,
+      Position(
+        MIDDLE,
+        {3 1},
+        {
+          Reset("wood_floor")
+          Margin(LEFT, 1,
+          Set("impaled_head", "no_corpse"),
+		  Border(RIGHT, 1,
+              Reset("wood_floor"))
+          )
+        }
+      )
+    )
+  )
+  Border(BOTTOM, 1,
+  Position(MIDDLE, {1 1}, Reset("wood_floor", "wood_door")))
+}
+End
+
+Def ov_prisoncage2() {
+  Building("wood_wall", "wood_floor")
+  Border(TOP, 3,
+    Border(BOTTOM, 1,
+      Position(
+        MIDDLE,
+        {3 1},
+        {
+          Reset("wood_floor")
+          Margin(RIGHT, 1,
+          Set("torture_table", "no_corpse"),
+		  Border(LEFT, 1,
+              Reset("wood_floor"))
+          )
+        }
+      )
+    )
+  )
+  Border(TOP, 1,
+  Position(MIDDLE, {1 1}, Reset("wood_floor", "wood_door")))
+}
+End
+
+"ov_prisoncage" Choose(
+  ov_prisoncage1(),
+  ov_prisoncage2()
+)

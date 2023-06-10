@@ -1,0 +1,145 @@
+##########DARK HEART##########
+  "DHK_KEEPERHEART"
+  {
+    name = "Dark Heart"
+    viewId = { "dhe_keeperheart" }
+    blockMovement = true
+    luxury = 1.0
+    lightEmission = 12
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+    strength = 200
+	tickType = Effect {
+    Area 2000 Filter CreatureId "DHK_KEEPER" { Lasting 500 SUMMONED  }
+    }
+    destroyedEffect = Chain { Message NORMAL "The Dark Heart has been destroyed!" }
+  }
+  "DHK_ENTRANCE"
+  {
+    name = "Dark Gate"
+    viewId = { "dhk_entrance" }
+    blockMovement = true
+    luxury = 1.0
+    lightEmission = 4
+    populationIncrease = {10 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+    strength = 80
+  }
+
+  "DHK_ENTRANCE2" inherit "DHK_ENTRANCE"
+  {
+  }
+
+  "DHK_ENTRANCE3" inherit "DHK_ENTRANCE"
+  {
+  }
+
+  "DHK_CHICKEN_COOP"
+  {
+    name = "chicken coop"
+    viewId = { "dhk_chicken_coop" }
+    blockMovement = true
+    tickType = Effect Chance 0.005 SummonEnemy "DHK_CHICKEN" {1} none
+    strength = 1
+    requiresLight = true
+  	destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  	usageFX = none
+  	usageType = UsageEffect "use" Chain {
+    CreatureMessage { "wait for chicken" "waits for chicken" }
+    }
+  }
+
+"DHK_SUMMONING"
+{
+  name = "summoning chamber"
+  viewId = { "dhk_summoning" }
+  blockMovement = true
+  luxury = 0.8
+  lightEmission = 8.2
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 228 214 20 255 }
+}
+
+"DHK_PILLAR"
+{
+  name = "summoning totem"
+  viewId = { "dhk_pillar" }
+  blockMovement = true
+  usageTime = 5
+  usageType = BuiltinUsageId DEMON_RITUAL
+  luxury = 0.4
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 228 214 20 255 }
+}
+
+"DHK_LAVA_TRAP"
+{
+  name = "magma trap"
+  viewId = { "trap" ColorId RED }
+  entryType = Trap { PlaceFurniture "MAGMA" }
+  warning = true
+  constructMessage = SET_UP
+}
+
+
+##########LIGHT HEART##########
+  "DHH_KEEPERHEART"
+  {
+    name = "Light Heart"
+    viewId = { "dhh_keeperheart" }
+    blockMovement = true
+    luxury = 1.0
+    lightEmission = 12
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+    strength = 200
+	tickType = Effect {
+    Area 2000 Filter CreatureId "DHH_KEEPER" { Heal { FLESH 0.5 } }
+    }
+    destroyedEffect = Chain { Message NORMAL "The Light Heart has been destroyed!" }
+  }
+
+  "DHH_POT"
+  {
+    name = "Gold Pot"
+    viewId = { "dhh_pot" }
+    blockMovement = true
+    luxury = 0.3
+    populationIncrease = {0.25 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+    strength = 20
+    itemDrop = {{{{Simple "GoldPiece"} 1 { 20 }}}}
+  }
+  "DHH_GOLDBAG"
+  {
+    name = "Bag of Gold"
+    viewId = { "dhh_goldbag" }
+    blockMovement = true
+    luxury = 0.7
+    populationIncrease = {0.5 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+    strength = 60
+    fire = 50
+    itemDrop = {{{{Simple "GoldPiece"} 1 { 40 }}}}
+  }
+	"DHH_KNIGHTSTATUE"
+	{
+	  name = "gold statue"
+	  viewId = { "dhh_knightstatue" }
+	  blockMovement = true
+	  canHideHere = true
+	  luxury = 5
+	  strength = 100
+	  populationIncrease = {2 none}
+	  lastingEffect = ALLY DEF_BONUS 2
+	  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+	  itemDrop = {{{{Simple "GoldPiece"} 1 { 150 }}}}
+	}
+
+	"DHH_ALTAR"
+	{
+	  name = "light heart altar"
+	  viewId = { "dhh_altar" }
+	  lastingEffect = ALLY REGENERATION 1 # ALLY/ENEMY LastingEffect radius
+	  blockMovement = true
+	  canHideHere = true
+	  strength = 100
+	}

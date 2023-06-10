@@ -1,0 +1,224 @@
+"ENTS_ALLY"
+{
+  settlement = {
+    type = Builtin FOREST "WOOD"
+    inhabitants = {
+      fighters = {
+        count = {7 10}
+        all = { 1 "ENT" }
+        uniques = { "ENT_WITH_DROP" "ENT_WITH_DROP" "ENT_WITH_DROP" }
+      }
+      civilians = {
+        count = 2
+        all = { 1 "CHILD_ENTS" }
+      }
+    }
+    tribe = HUMAN
+    race = "tree spirits"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+    alwaysMount = true
+  }
+  immigrants = { 
+    {
+      ids = { "ENT" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"ROGUE_ELEMENTALIST_FLOOR_1"
+{
+  settlement = {
+    inhabitants = {
+      fighters = {
+        count = {1 3}
+        all = {
+          1 "AIR_ELEMENTAL"
+          1 "WATER_ELEMENTAL"
+          1 "FIRE_ELEMENTAL"
+          1 "EARTH_ELEMENTAL"
+        }
+      }
+    }
+    type = Builtin TOWER "BRICK"
+    tribe = MONSTER
+  }
+  discoverable = false
+}
+
+"ROGUE_ELEMENTALIST_FLOOR_2"
+{
+  settlement = {
+    inhabitants = {
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "AIR_ELEMENTAL"
+          1 "WATER_ELEMENTAL"
+          1 "FIRE_ELEMENTAL"
+          1 "EARTH_ELEMENTAL"
+        }
+      }
+    }
+    type = Builtin TOWER "BRICK"
+    tribe = MONSTER
+  }
+  discoverable = false
+}
+
+"ROGUE_ELEMENTALIST_FLOOR_3"
+{
+  settlement = {
+    inhabitants = {
+      fighters = {
+        count = {3 5}
+        all = {
+          1 "AIR_ELEMENTAL"
+          1 "WATER_ELEMENTAL"
+          1 "FIRE_ELEMENTAL"
+          1 "EARTH_ELEMENTAL"
+        }
+      }
+    }
+    type = Builtin TOWER "BRICK"
+    tribe = MONSTER
+  }
+  discoverable = false
+}
+
+
+"ELEMENTALIST_ALLY"
+{
+  settlement = {
+    type = Builtin TOWER "BRICK"
+    inhabitants = {
+      leader = { { "ELEMENTALIST" } }
+	  fighters = {
+        count = {4 6}
+        all = {
+          1 "AIR_ELEMENTAL"
+          1 "WATER_ELEMENTAL"
+          1 "FIRE_ELEMENTAL"
+          1 "EARTH_ELEMENTAL"
+        }
+      }
+	}
+    tribe = HUMAN
+    furniture = "roomFurniture"
+  }
+  config = {
+    leaderAsFighter = true
+  }
+  levelConnection = {
+    direction = UP
+    topLevel = ExtraEnemy { "ELEMENTALIST_ENTRY" }
+    levels = {
+      { ExtraEnemy { "ROGUE_ELEMENTALIST_FLOOR_1" { 3 6 }} {4 4} TOWER }
+	  { ExtraEnemy { "ROGUE_ELEMENTALIST_FLOOR_2" { 3 6 }} {4 4} TOWER }
+	  { ExtraEnemy { "ROGUE_ELEMENTALIST_FLOOR_3" { 3 6 }} {4 4} TOWER }
+      { MainEnemy {5 5} TOWER }
+    }
+  }  
+  immigrants = { 
+    {
+      ids = { "EARTH_ELEMENTAL" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "FIRE_ELEMENTAL" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "WATER_ELEMENTAL" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "AIR_ELEMENTAL" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"WARRIORS_LAW"
+{
+  settlement = {
+    type = Builtin CASTLE2 "WOOD_CASTLE"
+    tribe = BANDIT
+    inhabitants = {
+      leader = { { "SHAMAN" } }
+      fighters = {
+        count = {7 10}
+        all = { 1 "WARRIOR" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
+    furniture = "roomFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+    ghostProb = 0.1
+    spawnGhosts = 6
+  }
+  behaviour = {
+    minPopulation = 3
+    minTeamSize = 5
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 2
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.8 140
+  }
+  immigrants = {
+    {
+      ids = {"WARRIOR"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+"DRIADS_ALLY"
+{
+  settlement = {
+    type = Builtin FOREST "WOOD"
+    inhabitants = {
+      leader = {{"DRIAD_LEADER"}}
+      fighters = {
+        count = {7 10}
+        all = { 1 "DRIAD" }
+      }
+    }
+    tribe = HUMAN
+    race = "dryads"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+  }
+  immigrants = { 
+    {
+      ids = { "DRIAD" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}

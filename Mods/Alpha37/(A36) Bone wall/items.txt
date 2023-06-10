@@ -1,0 +1,28 @@
+"Bone" modify
+  {
+    viewId = { "bone" }
+    name = "bone"
+    itemClass = CORPSE
+    price = 0
+	resourceId = "BONE"
+    weight = 5
+    storageIds = {"corpses"}
+  }
+  
+"Bone_Pack"
+  {
+    viewId = { "bone" }
+    shortName = "bone pack"
+    name = "packaged bones"
+    plural = "packaged bones"
+    blindName = "package"
+    applyVerb = "unpack" "unpacks"
+    fragile = true
+    weight = 0.3
+    effect = { AI Health 0 0.4 0 1 {DropItems { "Bone"} {50}}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"corpses" "equipment"}
+  }

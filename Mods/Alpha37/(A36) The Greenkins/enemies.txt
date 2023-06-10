@@ -1,0 +1,42 @@
+"DELIVERYSERVICE_GH_GUARDIAN_OF_FANTA_CRUZ_TOMB"
+{
+  settlement = {
+    type = Predefined { "DELIVERYSERVICE_GH_GUARDIAN_OF_FANTA_CRUZ_TOMB" "DUNGEON" }
+    #buildingId = "DELIVERYSERVICE_GH_GUARDIAN_OF_FANTA_CRUZ_TOMB"
+    closeToPlayer = false
+    dontConnectCave = true
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "DELIVERYSERVICE_GH_DJINN_IFRIT" } }
+      #fighters = {
+      #  count = {4 7}
+      #  all = {
+      #    100 "DJINN"
+      #  }
+      #}
+    }
+  }
+  config = {
+    #conquerCondition = NEVER
+    #immigrantInterval = 100
+    #maxPopulation = 9
+    leaderAsFighter = true
+  }
+  #immigrants = { 
+  #  {
+  #    ids = { "DJINN" }
+  #    traits = { FIGHTER }
+  #    frequency = 1
+  #  }
+  #}
+  behaviour = {
+    minPopulation = 1
+    minTeamSize = 1
+    triggers = {
+      Proximity
+      EnemyPopulation 10
+    }
+    attackBehaviour = KillMembers 9
+  }
+  discoverable = false
+}

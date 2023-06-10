@@ -1,0 +1,670 @@
+# Each element is of the form:
+
+# "CreatureId" { CreatureAttributes }, see creature_attributes.h
+"KEEPER_MAGE" modify
+  {
+    spells = append {"spell school keeper"}
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  }
+  
+"KEEPER_MAGE_F" modify
+  {
+    spells = append {"spell school keeper"}
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  } 
+  
+"KEEPER_KNIGHT" modify
+  {
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  }
+  
+"KEEPER_KNIGHT_F" modify
+  {
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  } 
+  
+"KEEPER_KNIGHT_WHITE" modify
+  {
+	permanentEffects = append { LIGHT_RESISTANT 1 }
+  } 
+  
+"KEEPER_KNIGHT_WHITE_F" modify
+  {
+	permanentEffects = append { LIGHT_RESISTANT 1 }
+  }
+  
+ "ANGEL" modify
+  {
+	permanentEffects = append { LIGHT_RESISTANT 1 }
+  }
+
+"CHERUB" modify
+  {
+	permanentEffects = append { LIGHT_RESISTANT 1 }
+  }
+
+"GALEAM" modify
+  {
+	permanentEffects = append { LIGHT_RESISTANT 1 }
+  }
+  
+"NECROMANCER" modify
+  {
+    spellSchools = { "necromancy" }
+	spells = append {"spell school sans necro"}
+    permanentEffects = append {NECROTIC_RESISTANT 1
+							   LIGHT_VULNERABILITY 1
+							   DARKNESS_RESISTANT 1}
+  }
+ 
+"NECROMANCER_F" modify
+  {
+    spellSchools = { "necromancy" }
+	spells = append {"spell school sans necro"}
+	permanentEffects = append {NECROTIC_RESISTANT 1
+							   LIGHT_VULNERABILITY 1
+							   DARKNESS_RESISTANT 1}
+  }
+ 
+"VAMPIRE_LORD" modify
+   {
+    spellSchools = { "necromancy" }
+	spells = { "spell school sans necro" }
+  }
+  
+"ZOMBIE_MAGE" modify
+  {
+    spells = append {"necro school"}
+    spellSchools = {}
+  }
+
+"GOBLIN_WIZARD" modify
+  { 
+    spells = append {"spell school"}
+    spellSchools = {}
+  }
+
+"GOBLIN_WIZARD_VILLAIN" modify
+  { 
+    spells = append {"spell school"}
+    spellSchools = {}
+  }
+  
+"ORC_MAGE" modify
+  { 
+    spells = append {"spell school"}
+    spellSchools = {}
+  } 
+  
+"WHITE_WIZARD" modify
+  {
+    spells = append {"spell school"}
+  }
+  
+"ADOXIE_PRIEST" modify
+  {
+    spellSchools = { "necromancy" "mage" "demon worship" "pyromancy"}
+    spells = { "expert necrotic blast" "mass necrotic resistance" "expert reanimate" "zombie companion" "magic cancellation" "summon hellish horde" 
+	"heal spirit group" "group healing" "directed blast" "escape" "magic missile" "healing" "advanced fire resistance" "advanced fire bolt" "firewall" 
+	"advanced fire damage" "bypass allies"}
+	maxLevelIncrease = {
+      MELEE 2
+      SPELL 12
+    }
+  } 
+  
+"ADVENTURER" modify
+  {
+    spells = append {"spell school" "random holy school"}
+  }
+  
+"ADVENTURER_F" modify
+  {
+    spells = append {"spell school" "random holy school"}
+  }
+  
+"ELEMENTALIST" modify
+  {
+    spells = append {  "fire resistance" "fire bolt" "rock resistance" "rock bolt" "water resistance" "water bolt" "air bolt" "air flying"}
+    spellSchools = { "hydromancy" "geomancy" "pyromancy" "aeromancy" }
+  }  
+  
+"WITCH" modify
+  {
+    spells = append {"spell school" "evil priest school"}
+  }
+  
+"GOBLIN_PRIEST" modify
+  { 
+    spells = append {"goblin priest school"}
+    spellSchools = {}
+  } 
+
+
+"SHAMAN" modify
+  {
+    spells = append {"barbarian shaman school"}
+    spellSchools = {}
+  } 
+  
+"GOBLIN_SHAMAN" modify
+  {
+    spells = append {"shaman school"}
+    spellSchools = {}
+  }   
+  
+"PRIEST_PLAYER" modify
+  { 
+    spells = append {"priest school"}
+    spellSchools = {}
+  }  
+
+"CLERIC" modify
+  { 
+    spells = append {"priest school"}
+    spellSchools = {}
+  } 
+  
+"PRIEST" modify
+  {
+     spells = append { "summon galeam" "summon cherub" "priest creature school"}
+  }
+  
+"DEMON_LORD" modify
+  {
+    spells = append {"summon succubus ME"}
+    spellSchools = {"demon worship"}
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  }
+  
+"SATAN" modify
+  {
+    spells = append {"summon succubus ME" "summon demon"}
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  }
+  
+"SUCCUBUS" modify
+  {
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  }  
+  
+"DEMON_DWELLER" modify
+  {
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  }    
+   
+"BALROG" modify
+  {
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  }    
+   
+"ICE_DEMON" modify
+  {
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  }    
+    
+"DEVIL" modify
+  {
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  }  
+  
+"DEVIL_VAULT" modify
+  {
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  } 
+  
+"ICE_DEMON" modify
+  {
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  } 
+  
+"WEREWOLF" modify
+  {
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+  } 
+  
+"KIRIN" modify
+  {
+    viewId = { "kirin" }
+    attr = {
+      LIGHTNING_DAMAGE 30
+      DEFENSE 30
+    }
+    body = {
+      type = FourLegged HUGE
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            meleeAttackAttr = LIGHTNING_DAMAGE
+            victimEffect = {0.3 Lasting 50 LIGHTING_DISCHARGE} } }}}
+      }
+      droppedPartUpgrade = Permanent MAGIC_RESISTANCE
+    }
+    permanentEffects = {
+	  LIGHTNING_IMMUNITY 1
+      RANGED_VULNERABILITY 1
+      STEED 1
+    }
+    name = {
+      name = "ki-rin"
+    }
+    spells = { "group healing" "elemental_storm_bolt" "mass defense bonus" "mass damage bonus" }
+  } 
+  
+"DEVIL_SUMMON" inherit "DEVIL_VAULT"
+  {
+    attr = {
+      DEFENSE 40
+      SPELL_DAMAGE 40
+    }
+	permanentEffects = append { DARKNESS_RESISTANT 1 }
+    deathEffect = {}
+  }
+  
+"ANGEL_SUMMON" inherit "ANGEL"
+  {
+    attr = {
+      DEFENSE 40
+	  DAMAGE 40
+    }
+    inventory = { }
+	permanentEffects = append { LIGHT_RESISTANT 1 }
+}
+
+"CHERUB_SUMMON" inherit "CHERUB"
+  {
+    attr = {
+      DEFENSE 5
+      RANGED_DAMAGE 25
+    }
+    spells = append {"shoot arrow"}	
+    inventory = {}
+  } 
+  
+"DRIAD_SUMMON" inherit "DRIAD"
+  {
+    attr = {
+      DAMAGE 6
+      DEFENSE 14
+      RANGED_DAMAGE 20
+    }
+    spells = append {"shoot arrow"}	
+    inventory = {}
+  } 
+
+"DEER_SUMMON" inherit "DEER"
+  {
+    attr = {
+      DAMAGE 15
+      DEFENSE 15
+    }
+    aiType = MELEE
+  }
+  
+"SKELETON_WARRIOR_SUMMON" inherit "SKELETON_WARRIOR"
+  {
+    viewId = { "skeleton_unarmed" }
+    attr = {
+      DEFENSE 20
+	  DAMAGE 20
+    }
+    inventory = { }
+}
+
+"SKELETAL_ABOMINATION_SUMMON" inherit "SKELETAL_ABOMINATION_PLAYER"
+{
+    attr = {
+      DEFENSE 40
+	  DAMAGE 40
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+      SLOWED 1
+    }
+    inventory = { }
+}
+  
+"GUARDIAN_GHOST"
+  {
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 4 {
+            attackType = HIT
+			meleeAttackAttr = SPELL_DAMAGE 
+            attackMsg = TOUCH
+            victimEffect = { 0.2 Lasting INSANITY}} }}}
+      }
+    }
+    viewId = { "ghost" }
+    attr = {
+      DEFENSE 30
+      SPELL_DAMAGE 20
+    }
+    permanentEffects = {
+      FLYING 1
+    }
+    chatReactionFriendly = "\"Wouuuouuu!!!\""
+    chatReactionHostile = "\"Wouuuouuu!!!\""
+    name = {
+      name = "guardian ghost"
+    }
+  }  
+  
+"ANCESTRAL_CHAMPION"
+  {
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 6 {
+            attackType = HIT
+			meleeAttackAttr = SPELL_DAMAGE 
+            attackMsg = TOUCH
+            victimEffect = { 0.2 Lasting INSANITY}} }}}
+      }
+    }
+    viewId = { "spirit" }
+    attr = {
+      DEFENSE 40
+      SPELL_DAMAGE 40
+    }
+    permanentEffects = {
+      FLYING 1
+    }
+    chatReactionFriendly = "\"Wouuuouuu!!!\""
+    chatReactionHostile = "\"Wouuuouuu!!!\""
+    name = {
+      name = "ghost champion"
+    }
+  }
+  
+"ICE_ELEMENTAL"
+  {
+    viewId = { "ice_demon" }
+    attr = {
+      DEFENSE 30
+      COLD_DAMAGE 10
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = ICE
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 10 {
+            attackType = HIT
+            attackMsg = SWING
+            meleeAttackAttr = COLD_DAMAGE
+        } }}}
+      }
+    }
+    name = {
+      name = "ice elemental"
+    }
+  }
+  
+"ILLUSION"
+  {
+    viewId = { "spirit" }
+    attr = {
+      DEFENSE 1
+      SPELL_DAMAGE 1
+    }
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "fist_attack" } "spell" 1 {
+            attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = SPELL } }}}
+      }
+    }
+    permanentEffects = {
+      FLYING 1
+      INVULNERABLE 1
+    }
+    chatReactionFriendly = "\"Wouuuouuu!!!\""
+    chatReactionHostile = "\"Wouuuouuu!!!\""
+    name = {
+      name = "illusion"
+    }
+  }
+  
+"STORM_ELEMENTAL"
+  {
+    viewId = { "storm_elemental" }
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+		TORSO {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT meleeAttackAttr = LIGHTNING_DAMAGE attackMsg = SWING } }}}
+      }
+    }
+    attr = {
+      LIGHTNING_DAMAGE 35
+      DEFENSE 15 
+    }
+    permanentEffects = {
+      FLYING 1
+      RANGED_RESISTANCE 1
+	  LIGHTNING_IMMUNITY 1
+    }
+    spells = { "circular blast" "elemental_storm_bolt" }
+    name = {
+      name = "storm elemental"
+    }
+    gender = IT
+  }
+
+"ACID_ELEMENTAL"
+  {
+    viewId = { "water_elemental" }
+    body = {
+      type = HumanoidLike LARGE
+      material = ACID
+      weight = 300
+      deathSound = none
+	  intrinsicAttacks = {
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = { 0.1 Acid{} } } }}}
+      }
+    }
+    attr = {
+      ACID_DAMAGE 25
+      DEFENSE 25
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+    }
+	spells = { "acid stream - elemental" }
+    name = {
+      name = "acid elemental"
+    }
+    gender = IT
+  }
+
+"HUECUVA"
+  {
+    viewId = { "Huecuva" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 16 
+    }
+    body = {
+      weight = 35
+      material = BONE
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all gods"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      SPELL 7
+    }
+	spells = {"dead priest school"}
+    permanentEffects = {
+      SUNLIGHT_VULNERABLE 1
+	  DARKNESS_RESISTANT 1
+	  LIGHT_VULNERABILITY 1
+    }
+    aiType = RANGED
+    name = {
+      name = "huecuva"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+
+"SHADOW_TERROR"
+  {
+    viewId = { "shadow_terror" }
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 8 {
+            attackType = HIT
+			meleeAttackAttr = SPELL_DAMAGE 
+            attackMsg = TOUCH
+            victimEffect = { 0.5 Lasting PANIC}} }}}}
+	}
+    attr = {
+      SPELL_DAMAGE 25
+      DEFENSE 15 
+    }
+    permanentEffects = {
+      FLYING 1
+	  DARKNESS_IMMUNITY 1
+	  LIGHT_VULNERABILITY 1
+    }
+    spells = { "ilusion invisibility" "teleport" }
+    name = {
+      name = "shadow terror"
+    }
+    gender = IT
+  }
+  
+"LIGHTBRINGER"
+  {
+    viewId = { "light_elemental" }
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 8 {
+            attackType = HIT
+			meleeAttackAttr = SPELL_DAMAGE 
+            attackMsg = TOUCH
+            victimEffect = { 0.5 Lasting PEACEFULNESS}}} }}}}
+    attr = {
+      SPELL_DAMAGE 15
+      DEFENSE 35 
+    }
+    permanentEffects = {
+      FLYING 1
+	  LIGHT_RESISTANT 1
+	  DARKNESS_VULNERABILITY 1
+	  LIGHT_IMMUNITY 1
+    }
+    spells = { "mass blindness" "mass pacify" }
+    name = {
+      name = "lightbringer"
+    }
+    gender = IT
+  }
+  
+"POLAR_BEAR_SUMMON_I" inherit "CAVE_BEAR"
+  {
+    viewId = { "polar_bear" }
+    permanentEffects = {}
+    name = {
+      name = "polar bear"
+    }
+  }
+
+"CAVE_BEAR_SUMMON_I" inherit "CAVE_BEAR"
+  {
+    permanentEffects = {}
+  }
+    
+"POLAR_BEAR_SUMMON_II" inherit "CAVE_BEAR"
+  {
+    viewId = { "polar_bear" }
+	attr = {
+      DAMAGE 30
+      DEFENSE 23 
+    }
+    permanentEffects = {}
+    name = {
+      name = "polar bear"
+    }
+  }
+    
+"CAVE_BEAR_SUMMON_II" inherit "CAVE_BEAR"
+  {
+	attr = {
+      DAMAGE 30
+      DEFENSE 23 
+    }
+    permanentEffects = {}
+  }
+  
+"POLAR_BEAR_SUMMON_III" inherit "CAVE_BEAR"
+  {
+    viewId = { "polar_bear" }
+	attr = {
+      DAMAGE 40
+      DEFENSE 28 
+    }
+    permanentEffects = {}
+    name = {
+      name = "polar bear"
+    }
+  }
+     
+"CAVE_BEAR_SUMMON_III" inherit "CAVE_BEAR"
+  {
+	attr = {
+      DAMAGE 40
+      DEFENSE 28 
+    }
+    permanentEffects = {}
+  }
+  
+"AVATAR_OF_BEARNESS"
+  {
+    viewId = { "avatar_of_bearness" }
+    attr = {
+      DAMAGE 60
+      DEFENSE 60
+	  MULTI_WEAPON 40
+    }
+    body = {
+      type = FourLegged LARGE
+      weight = 500
+      intrinsicAttacks = {
+        LEG {{{ Intrinsic { "claws_attack" } "claws" 20 { attackType = HIT attackMsg = CLAW } }}}
+      }
+    }
+	spells = { "jump" "circular blast" "summon bear" }
+    permanentEffects = {
+      EXPLORE_CAVES_SKILL 1
+      SPEED 1
+    }
+    name = {
+      name = "avatar of bearness"
+    }
+  }

@@ -1,0 +1,252 @@
+"swine_swines"
+{
+    {
+      ids = { "SWINE_THRALL" }
+      traits = { WORKER NO_LIMIT NO_LEISURE_ZONE NO_EQUIPMENT }
+      spawnLocation = NearLeader
+      keybinding = CREATE_IMP
+      sound = CREATE_IMP 2
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1 ExponentialCost "CORPSE" 1 1 4 }
+    }
+  }
+	  {
+      ids = { "SWINE_WRETCH" }
+      traits = { FIGHTER }
+	  frequency = 0.3
+      requirements = {
+        { 1.0 CostInfo "CORPSE" 1 }
+      }
+      specialTraits = {
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+		 { 0.06 { AttrBonus DAMAGE 7 Lasting { UNSTABLE }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+		 { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+	     { 0.03 { Lasting { BLIND } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+      }
+    }	
+  {
+      ids = { "SWINE_CRIPPLE" }
+      traits = { FIGHTER NO_EQUIPMENT }
+	  frequency = 0.6
+      requirements = {
+        { 0.0 TechId "ritual mutilation" }
+        { 0.1 AttractionInfo 1 {FurnitureType "SWINE_TRAINING"}}
+        { 1.0 CostInfo "CORPSE" 1 }
+      }
+      specialTraits = {
+	     { 0.05 { CompanionInfo 1 true none 0.1 { "PIG" }}}
+		 { 0.01 { CompanionInfo 1 true none 0.1 { "SWINE_WAR_PIG" }}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+		 { 0.06 { AttrBonus DAMAGE 7 Lasting { UNSTABLE }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.01 { CompanionInfo 2 true none 0.1 { "PIG" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+		 { 0.05 { ExtraTraining MELEE 4}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+		 { 0.05 { ExtraTraining MELEE 2}}
+		 { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.05 { ExtraTraining ARCHERY 4}}
+		 { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+		 { 0.03 { AttrBonus RANGED_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+	     { 0.03 { Lasting { BLIND } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr RANGED_DAMAGE 7 HatedBy HATE_ELVES }}
+      }
+    }	
+	  {
+      ids = { "SWINE_SUICIDER" }
+      traits = { FIGHTER NO_EQUIPMENT }
+	  frequency = 0.6
+      requirements = {
+        { 0.0 TechId "ritual mutilation" }
+        { 1.0 CostInfo "CORPSE" 1 }
+      }
+      specialTraits = {
+      }
+    }	
+  {
+      ids = { "SWINE_MANEATER" }
+      traits = { FIGHTER }
+	  frequency = 0.3
+      requirements = {
+        { 0.0 TechId "thralls and brutes" }
+        { 0.1 AttractionInfo 1 {FurnitureType "SWINE_TRAINING"}}
+        { 1.0 CostInfo "CORPSE" 4 }
+      }
+      specialTraits = {
+	     { 0.05 { CompanionInfo 1 true none 0.1 { "PIG" }}}
+		 { 0.01 { CompanionInfo 1 true none 0.1 { "SWINE_WAR_PIG" }}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+		 { 0.06 { AttrBonus DAMAGE 7 Lasting { UNSTABLE }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.01 { CompanionInfo 2 true none 0.1 { "PIG" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.10 { ExtraTraining SPELL 4}}
+		 { 0.05 { ExtraTraining MELEE 4}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+		 { 0.05 { ExtraTraining MELEE 2}}
+		 { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.05 { ExtraTraining ARCHERY 4}}
+		 { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+		 { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+	     { 0.03 { Lasting { BLIND } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+      }
+    }	
+	
+  {
+      ids = { "SWINE_HURLER" }
+      traits = { FIGHTER }
+	  frequency = 0.3
+      requirements = {
+        { 0.0 TechId "swine hunting party" }
+        { 0.1 AttractionInfo 1 {FurnitureType "SWINE_TRAINING"}}
+        { 1.0 CostInfo "CORPSE" 4 }
+      }
+      specialTraits = {
+	     { 0.05 { CompanionInfo 1 true none 0.1 { "PIG" }}}
+		 { 0.01 { CompanionInfo 1 true none 0.1 { "SWINE_WAR_PIG" }}}
+         { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+		 { 0.06 { AttrBonus RANGED_DAMAGE 7 Lasting { UNSTABLE }}}
+         { 0.03 { AttrBonus RANGED_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.02 { SpecialAttr RANGED_DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.01 { CompanionInfo 2 true none 0.1 { "PIG" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.10 { ExtraTraining SPELL 4}}
+		 { 0.05 { ExtraTraining ARCHERY 4}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+		 { 0.05 { ExtraTraining ARCHERY 2}}
+		 { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.05 { ExtraTraining MELEE 4}}
+		 { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+		 { 0.03 { AttrBonus RANGED_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+	     { 0.03 { Lasting { BLIND } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr RANGED_DAMAGE 7 HatedBy HATE_ELVES }}
+      }
+    }
+	
+  {
+      ids = { "SWINE_SIEGE" }
+      traits = { FIGHTER }
+	  frequency = 0.3
+      requirements = {
+        { 0.0 TechId "swine breeding" }
+        { 0.1 AttractionInfo 1 {FurnitureType "SWINE_TRAINING"}}
+        { 1.0 CostInfo "CORPSE" 10 }
+      }
+      specialTraits = {
+	     { 0.05 { CompanionInfo 1 true none 0.1 { "PIG" }}}
+		 { 0.01 { CompanionInfo 1 true none 0.1 { "SWINE_WAR_PIG" }}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+		 { 0.06 { AttrBonus DAMAGE 7 Lasting { UNSTABLE }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.01 { CompanionInfo 2 true none 0.1 { "PIG" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+		 { 0.05 { ExtraTraining MELEE 4}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+		 { 0.05 { ExtraTraining MELEE 2}}
+		 { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.05 { ExtraTraining MELEE 4}}
+		 { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+	     { 0.03 { Lasting { BLIND } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr RANGED_DAMAGE 7 HatedBy HATE_ELVES }}
+      }
+    }
+    {
+      ids = { "SWINE_SHAMAN" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "SWINE_MYSTIC_SKIN"}}
+        { 0.0 MinTurnRequirement 500 }
+		{ 1.0 CostInfo "CORPSE" 4 }
+      }
+      frequency = 0.3
+      specialTraits = {
+	     { 0.05 { CompanionInfo 1 true none 0.1 { "PIG" }}}
+		 { 0.01 { CompanionInfo 1 true none 0.1 { "SWINE_WAR_PIG" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.10 { ExtraTraining SPELL 4}}
+         { 0.15 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { WorkshopType "LABORATORY" }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }	
+}
+
+"swine_default_allies"
+{
+    {
+      ids = { "DARK_ELF_WARRIOR" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "DARK_ELVES_ALLY" } 3 FIGHTER }
+        { 1.0 CostInfo "GOLD" 20 }
+      }
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "GOBLIN_CAVE_ALLY" } 3 FIGHTER }
+        { 1.0 CostInfo "GOLD" 5 }
+      }
+    }
+    {
+      ids = { "HARPY" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "HARPY_CAVE" } 3 FIGHTER }
+        { 1.0 CostInfo "GOLD" 12 }
+      }
+    }
+    {
+      ids = { "VAMPIRE" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "Z_LEVEL_VAMPIRE_VAULT" } 0 FIGHTER }
+      }
+    }
+}

@@ -1,0 +1,49 @@
+  "GRAIN"
+  {
+    name = "plot of wheat"
+    viewId = { "farm_plot" ColorId LIGHT_BROWN }
+    tickType = Effect Chance 0.001 Chain { DestroyWalls BASH PlaceFurniture "CROPS" }
+    strength = 1
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "MUSHROOM_FARM"
+  {
+    name = "mushroom plot"
+    viewId = { "farm_plot" ColorId DARK_BROWN }
+    tickType = Effect Chance 0.001 Chain {
+	  DestroyWalls BASH
+      ChooseRandom {	  
+	    DropItems {Mushroom Lasting DEF_BONUS} {1 3}
+		DropItems {Mushroom Lasting DAM_BONUS} {1 3}
+		DropItems {Mushroom Lasting REGENERATION} {1 3}
+		DropItems {Mushroom Lasting NIGHT_VISION } {1 3}
+      }
+	}
+    strength = 1
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "TREE_FARM"
+  {
+    name = "sapling plot"
+    viewId = { "farm_plot" ColorId DARK_GREEN }
+    tickType = Effect Chance 0.001 PlaceFurniture "CANIF_TREE_FARMED"
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+ "CROPS" modify
+ {
+   destroyedEffect = Chain {
+     Chance 0.3 CreatureMessage "harvests the crops" "harvests the crops"
+	 DestroyWalls DIG
+     DropItems {Simple "Food" } {1}
+   }
+   strength2 = { 1 DIG }
+ }
+
+ "CANIF_TREE_FARMED" inherit "CANIF_TREE"
+ {
+   destroyedRemains = none
+   strength2 = { 70 DIG }
+ }

@@ -1,0 +1,252 @@
+"diff build turret"
+{
+	symbol = "🔨"
+	effect = Name "build turret" Area 1 Summon "DIFF_TURRET" { 1 } 100
+	cooldown = 400
+	sound = TRAP_ARMING
+	message = "build a turret" "builds a turret"
+}
+"diff destroy turret"
+{
+	symbol = "🔨"
+	effect = Name "destroy turret" Caster Suicide TURN_INVISIBLE
+	message = "destroy turret" "destroys turret"
+	cooldown = 1
+}
+"diff shoot arrow"
+{
+	symbol = ">"
+	effect = Name "shoot arrow" Damage RANGED_DAMAGE SPELL
+	message = "shoot arrow" "shoots arrow"
+	cooldown = 5
+}
+"diff expert teleport" 
+{
+	upgrade = "advanced teleport"
+    symbol = "🌀"
+    effect = Name "expert teleport" Teleport
+    range = 12
+    cooldown = 180
+    endOnly = true
+    sound = SPELL_TELEPORT
+	message = "teleport" "teleports"
+  }
+
+"diff advanced summon element"
+{
+  symbol = "??"
+  effect = SummonElement
+  cooldown = 30
+  sound = SPELL_SUMMON_SPIRIT
+}  
+  
+"diff expert summon elements"
+{
+    symbol = "🌀"
+    effect = Chain { Name "expert summon elements" SummonElement Summon "FIRE_ELEMENTAL" { 2 3 } 200 Summon "AIR_ELEMENTAL" { 1 3 } 300 }
+    range = 12
+    cooldown = 180
+    endOnly = true
+    sound = SPELL_SUMMON_SPIRIT
+	message = "summon elements" "summons elements"
+  }
+  
+"diff greek fire breath"
+{
+  symbol = "??"
+  effect = Name "greek fire breath" Fire
+  fx = {FLAMETHROWER ColorId RED}
+  range = 10
+  cooldown = 24
+  sound = SPELL_BLAST
+  message = "breathe fire!" "breathes fire!"
+}
+
+"diff opposing force"
+{
+  symbol = "?"
+  effect = Name "opposing force" Ice
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = 12
+  #sound = SPELL_FIRE_SPHERE_PET
+}
+
+"diff move turret"
+{
+    symbol = "🌀"
+    effect = Name "move turret" Teleport
+    range = 1
+    cooldown = 20
+    endOnly = true
+    sound = SPELL_TELEPORT
+	message = "move turret" "moves turret"
+  }
+"diff slowing vines"  
+  {
+    symbol = "🌱"
+    effect = Name "slowing vines" Chain { Area 4 Filter Enemy Lasting SLOWED Area 4 Filter Enemy Lasting ENTANGLED }
+    range = 6
+    cooldown = 60
+    sound = SPELL_SPEED_SELF
+  }
+"diff gorgon's snakes"
+  {
+    symbol = "🏌️‍"
+    effect = Name "gorgon's snakes" Chain { Area 8 Filter Enemy Lasting TIED_UP Area 8 Filter Enemy Lasting BLIND Area 8 Filter Enemy Lasting STUNNED }
+    cooldown = 30
+    sound = SPELL_SPEED_SELF
+  }
+"diff gorgon shield"
+  {
+    symbol = "🏌️‍"
+    effect = Name "gorgon shield" Chain { Area 3 Filter Enemy Lasting TIED_UP Area 3 Filter Enemy Lasting BLIND Area 3 Filter Enemy Lasting STUNNED }
+    cooldown = 120
+    sound = SPELL_SPEED_SELF
+  }
+"diff call on nature"
+  {
+    symbol = "🌲"
+    effect = Name "call on nature" Summon "ENT" { 3 6 } 100
+    cooldown = 120
+    sound = SPELL_FIRE_SPHERE_PET
+	message = "summon ents" "summons ents"
+  }
+"diff call on poison aspect"
+  {
+    symbol = "🐍"
+    effect = Name "call on poison aspect" Summon "SNAKE" { 8 12 } 100
+    cooldown = 120
+    sound = SPELL_FIRE_SPHERE_PET
+	message = "summon snakes" "summons snakes"
+  }
+"diff vine armor"
+  {
+    symbol = "🌲"
+    effect = Name "vine armor" Chain { Lasting RANGED_RESISTANCE Lasting MELEE_RESISTANCE }
+    cooldown = 120
+	message = "uses vines" "uses vines"
+  }
+"diff summon skeletons diff"
+  {
+	symbol = "💀"
+	effect = Name "summon skeletons" Summon "DIFF_SKELETON_ENDLESS" { 4 6 } 100
+	cooldown = 80
+	sound = SPELL_FIRE_SPHERE_PET
+  }
+"diff advanced summon skeletons"
+  {
+	upgrade = "diff summon skeletons diff"
+	symbol = "💀"
+	effect = Name "advanced summon skeletons" Summon "DIFF_SKELETON_ENDLESS" { 8 12 } 100
+	cooldown = 120
+	sound = SPELL_FIRE_SPHERE_PET
+  }
+"diff master summon skeletons"
+  {
+	upgrade = "diff advanced summon skeletons"
+	symbol = "💀"
+	effect = Name "master summon skeletons" Summon "DIFF_SKELETON_ENDLESS" { 12 16 } 100
+	cooldown = 100
+	sound = SPELL_FIRE_SPHERE_PET
+  }
+"diff summon vampire bodyguards"
+  {
+	symbol = "🧛‍"
+	effect = Name "summon vampire bodyguards" Summon "DIFF_VAMPIRE_ENDLESS" { 4 } 100
+	cooldown = 140 
+	sound = SPELL_FIRE_SPHERE_PET
+  }
+"diff summon vampires"
+  {
+	upgrade = "diff summon vampire bodyguards"
+	symbol = "🧛‍"
+	effect = Name "summon vampires" Summon "DIFF_VAMPIRE_ENDLESS" { 6 7 } 100
+	cooldown = 160 
+	sound = SPELL_FIRE_SPHERE_PET
+  }
+"diff raise zombies"
+  {
+	symbol = "🧠‍"
+	effect = Name "raise zombies" Summon "DIFF_ZOMBIE_ENDLESS" { 5 6 } 100
+	cooldown = 120
+	sound = SPELL_FIRE_SPHERE_PET
+  }
+"diff summon vampire horde"
+  {
+	upgrade = "diff summon vampires"
+	symbol = "🧛‍"
+	effect = Name "summon vampire horde" Summon "DIFF_VAMPIRE_ENDLESS" { 10 11 } 100
+	cooldown = 200
+	sound = SPELL_FIRE_SPHERE_PET
+  }
+  
+"diff lesser black dragon blindness"
+  {
+    symbol = "🙈"
+    effect = Name "lesser black dragon blindness" Area 15 Filter Enemy Lasting BLIND
+    cooldown = 35
+  }
+"diff flash powder"
+  {
+	symbol = "💨"
+	effect = Name "flash powder" Chain {Area 4 Filter Enemy Lasting BLIND Lasting INVISIBLE Lasting MELEE_VULNERABILITY}
+	cooldown = 120
+	sound = SPELL_BLAST
+  }
+"diff throw knife"
+  {
+	symbol = "🗡"
+	effect = Name "throw knife" Chain {Lasting MELEE_VULNERABILITY Damage RANGED_DAMAGE SPELL}
+	range = 7
+	endOnly = true
+	cooldown = 40
+  }
+"diff armor rot"
+  {
+	symbol = "🦠"
+	effect = Name "armor rot" Chain { Lasting RANGED_VULNERABILITY Lasting MELEE_VULNERABILITY Lasting POISON }
+	range = 6
+	endOnly = true
+	cooldown = 60
+  }
+"diff spores"
+  {
+    symbol = "🧶"
+	effect = Name "hallucinagetic spores" Lasting HALLU
+	range = 4
+	endOnly = true
+	cooldown = 70
+  }
+"diff desperate technique"
+  {
+	symbol = "🏃🏻"
+	effect = Name "desperate technique" Chain {Lasting SPEED Lasting BLEEDING Lasting MAGIC_RESISTANCE}
+	cooldown = 40
+  }
+"diff tranquility"
+  {
+	symbol = "🍀"
+	effect = Name "tranquility" Chain {Area 12 Filter Enemy Lasting PEACEFULNESS Area 6 Filter Enemy Lasting SLEEP}
+	cooldown = 240
+  }
+  #"diff place den"
+  #{
+	#symbol = "💨"
+	#effect = Name "place den" Chain { PlaceFurniture "DIFF_WOLFDEN" IncreaseMorale 0.01 }
+	#cooldown = 500
+	#sound = SPELL_BLAST
+  #}
+  
+  OneTimeAbility("diff place den", "Places a wolf den.", { PlaceFurniture "DIFF_WOLFDEN" IncreaseMorale 0.01 }, "💨")
+  
+  
+  #"diff summon altar"
+  #{
+	#symbol = "💨"
+	#effect = Name "summon altar" Chain { PlaceFurniture "DIFF_CURSED_ALTAR" IncreaseMorale 0.01 }
+	#cooldown = 1000
+	#sound = SPELL_BLAST
+  #}
+  
+  OneTimeAbility("diff summon altar", "Places a cursed altar.", { PlaceFurniture "DIFF_CURSED_ALTAR" IncreaseMorale 0.01 }, "💨")

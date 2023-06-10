@@ -1,0 +1,1110 @@
+#############################
+#Casino Mod
+#############################
+
+Def DICE(dice, name, cost)
+{
+
+	Furniture {{ dice } "GOLD" cost } name "Gamble" "Spin casino dice against the Djinn."
+	
+}
+End
+
+"dice"
+{
+	DICE("1_GOLD_DICE", "Gamble 1 gold" ,1)
+	DICE("2_GOLD_DICE", "Gamble 2 gold" ,2)
+	DICE("5_GOLD_DICE", "Gamble 5 gold" ,5)
+	DICE("10_GOLD_DICE", "Gamble 10 gold" ,10)
+	DICE("20_GOLD_DICE", "Gamble 20 gold" ,20)
+	DICE("50_GOLD_DICE", "Gamble 50 gold" ,50)
+	DICE("100_GOLD_DICE", "Gamble 100 gold" ,100)
+	DICE("200_GOLD_DICE", "Gamble 200 gold" ,200)
+	DICE("500_GOLD_DICE", "Gamble 500 gold" ,500)
+	DICE("1000_GOLD_DICE", "Gamble 1000 gold" ,1000)
+	DICE("2000_GOLD_DICE", "Gamble 2000 gold" ,2000)
+	DICE("5000_GOLD_DICE", "Gamble 5000 gold" ,5000)
+}
+
+#############################
+#From no digging mod
+#############################
+
+#Rockblast
+
+  "structure" modify append { { ImmediateDig "Rockblast (magic)" "Structure" "Destroy rock immediately using magic" none {TechId "rock blast"} } }
+
+
+#########################################
+#From unique gnomes and dwarven fort mods
+#########################################
+
+
+#prison_no_capture
+  "prison_no_capture"
+  {
+    { Furniture {{ "PRISON" }        "IRON" 15 }                   "Prison"            "Prison"
+        "Required to capture enemies." "PRISON" {} true}
+
+    { Furniture {{ "PRISON_BARS" }        "IRON" 5 }               "Prison bars"            "Prison"
+        "Used to secure prison." }
+
+    { Furniture {{ "PRISON_DOOR" }        "IRON" 30 }              "Prison door"            "Prison"
+        "Used to secure prison." }
+
+    { Furniture {{ "GALLOWS" }       "WOOD"  20 }                  "Gallows"           "Prison"
+        "For hanging prisoners."}
+
+    { Furniture {{ "BEAST_CAGE" } "WOOD" 8 }                       "Beast cage"        "Prison"
+        "Beasts sleep here."}
+  }
+
+#########################################
+#Spell circles mod
+#########################################
+
+Def CIRCLE(spell, name, cost, level)
+{
+
+	Furniture {{ spell } "GOLD" cost } name "Spell Circle" "A powerful spell circle, if you know how to use it."   none { TechId "spell circles" DungeonLevel level }
+	
+}
+End
+
+"spells"
+{
+	CIRCLE("SUMMON_HORSES", "Magic horses" ,200, 1)
+	CIRCLE("SUMMON_ARMOURY", "Mass Armoury", 500, 3)
+	CIRCLE("MINE_FIELD", "Minefield", 500, 7)
+	CIRCLE("SUMMON_ARTIFACT", "Artifact summoning", 1000, 10)
+	CIRCLE("TRANSFORM_DRAGON", "Dragonform circle", 700, 11)
+}
+
+#########################################
+#Absorber mod
+#########################################
+
+
+  "absorber"
+  {
+    { { Dig CutTree }                                        "Dig or cut tree"   "Structure"  
+      "" "DIG" { TechId "living" } true DIG_OR_CUT_TREES}
+    { Furniture {{ "MOUNTAIN" }             "STONE" 5 }      "Soft rock"         "Structure" "" none { TechId "living" }}
+    { Furniture {{ "MOUNTAIN2" }            "STONE" 10 }     "Hard rock"         "Structure" "" none { TechId "living" }}
+
+    { Furniture {{ "DUNGEON_WALL" "DUNGEON_WALL2" } "STONE" 3}       "Reinforce wall"    "Structure"
+      "Reinforced walls are better at stopping enemies from digging into your dungeon." none { TechId "living" }}
+
+    { Furniture {{ "PIT" }                        "STONE" 0 }      "Dig a pit"         "Structure"
+      "Dig a pit in the ground. Building next to water or lava will cause it to fill up." none { TechId "living" }}
+
+    { Furniture {{ "FILL_UP_WATER_FLOOR" }        "STONE" 20 }     "Fill lava or water" "Structure"
+      "" none { TechId "living" }}
+
+    { Furniture {{ "FLOOR" }              }               "Building interior" "Structure"
+      "" none { TechId "living" } false none true}
+
+    { Furniture {{ "WOOD_WALL" }                  "WOOD" 5 }       "Wooden wall"   "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." none { TechId "living" }}
+
+    { Furniture {{ "WOOD_PILLAR" }                "WOOD" 2 }       "Wooden pillar"     "Structure"
+      "Acts as roof support, but doesn't block movement." none { TechId "living" }}
+
+    { Furniture {{ "CASTLE_WALL" }                "STONE" 5 }      "Stone wall"    "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." none { TechId "living" }}
+
+    { Furniture {{ "CASTLE_PILLAR" }              "STONE" 2 }      "Stone pillar"      "Structure"
+      "Acts as roof support, but doesn't block movement." none { TechId "living" }}
+
+    { Furniture {{ "BRIDGE" }                     "WOOD" 5 }       "Wooden bridge"     "Structure"
+      "Build to pass over water. Will burn on lava." none { TechId "living" }}
+
+    { Furniture {{ "STONE_BRIDGE" }               "STONE" 5 }      "Stone bridge"      "Structure"
+      "Build to pass over water or lava." none { TechId "living" }}
+
+    { Furniture {{ "UP_STAIRS" }                  }              "Up stairs"       "Structure"
+      "Build to reach higher z-levels." none { TechId "living" }}
+
+    { Furniture {{ "DOWN_STAIRS" }                }              "Down stairs"       "Structure"
+      "Build to reach deeper z-levels." none { TechId "living" }}
+
+    { Furniture {{ "ARCHER_WALL" }                "STONE" 20 }     "Wall with arrowslits"  "Structure"
+      "Outdoor building with arrowslits." none { TechId "living" }}
+
+    { Furniture {{ "WOOD_DOOR" }                  "WOOD" 5 }       "Wooden door"       "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it."  "DOORS" { TechId "living" } true BUILD_DOOR}
+
+    { Furniture {{ "IRON_DOOR" }                  "IRON" 5 }       "Iron door"         "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." none { TechId "living" }}
+
+    { Furniture {{ "ADA_DOOR" }                   "ADA" 5 }        "Adamantine door"   "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." none { TechId "living" }}
+    { Furniture {{ "WOOD_GATE" }                  "WOOD" 8 }       "Wooden gate"       "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." none { TechId "living" }}
+    { Furniture {{ "IRON_GATE" }                  "IRON" 8 }       "Iron gate"         "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." none { TechId "living" }}
+    { Furniture {{ "ADA_GATE" }                   "ADA" 8 }        "Adamantine gate"   "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." none { TechId "living" }}
+
+    { Furniture {{ "FLOOR_WOOD1" }                "WOOD" 2 }       "Wooden"            "Floors"
+        "" "FLOORS" { TechId "living" } true BUILD_FLOOR}
+    { Furniture {{ "FLOOR_WOOD2" }                "WOOD" 2 }       "Wooden"            "Floors"
+         "" none { TechId "living" } true BUILD_FLOOR}
+    { Furniture {{ "FLOOR_STONE1" }               "STONE" 2 }      "Stone"             "Floors" "" none { TechId "living" }}
+    { Furniture {{ "FLOOR_STONE2" }               "STONE" 2 }      "Stone"             "Floors" "" none { TechId "living" }}
+    { Furniture {{ "FLOOR_CARPET1" }              "GOLD" 2 }       "Carpet"            "Floors" "" none { TechId "living" }}
+    { Furniture {{ "FLOOR_CARPET2" }              "GOLD" 2 }       "Carpet"            "Floors" "" none { TechId "living" }}
+    { DestroyLayers {FLOOR}                                    "Remove floor"      "Floors" "" none { TechId "living" }}
+
+    { Zone STORAGE_RESOURCES                                   "Resources"         "Storage" 
+        "Only wood, iron, granite, and adamantium can be stored here." "STORAGE" {}  true RESOURCE_STORAGE}
+
+    { Zone STORAGE_EQUIPMENT                                   "Equipment"         "Storage"
+        "All equipment for your minions can be stored here." none { TechId "storage" } false EQUIPMENT_STORAGE }
+
+    { Furniture {{ "TREASURE_CHEST" }             "WOOD" 5  }      "Treasure chest"    "Storage"
+        "All your gold is stored here."  none { TechId "storage" }}
+
+    { Furniture {{ "ARMOR_RACK" }                "WOOD" 15  }     "Armor rack"      "Storage"
+        "All your armor can be stored here."  none { TechId "storage" }}
+
+    { Furniture {{ "WEAPON_RACK" }                "WOOD" 15  }     "Weapon rack"      "Storage"
+        "All your weapons can be stored here." none { TechId "storage" } }
+
+    { Furniture {{ "BOW_RACK" }                "WOOD" 15  }        "Bow rack"      "Storage"
+        "All your ranged weapons can be stored here." none { TechId "storage" } }
+
+    { Furniture {{ "SCROLL_STORAGE"}              "WOOD" 15  }      "Scroll shelf"      "Storage"
+        "All your scrolls can be stored here." none { TechId "storage" } }
+
+    { Furniture {{ "POTION_STORAGE"}              "WOOD" 15  }      "Potion shelf"      "Storage"
+        "All your potions can be stored here." none { TechId "storage" } }
+
+    { Furniture {{ "JEWELLERY_STORAGE"}              "WOOD" 15  }   "Jewellery chest"      "Storage"
+        "All your jewellery can be stored here." none { TechId "storage" } }
+
+    { Furniture {{ "GRAVE" }                      "STONE" 5 }      "Grave"             "Storage"
+        "All corpses are stored here." none { TechId "storage" }}
+
+    { Furniture {{ "AUTOMATON_STORAGE" }                "WOOD" 15  }     "Automaton chest"   "Storage"
+        "All your automaton parts can be stored here." none { TechId "storage" }}
+
+    { Zone QUARTERS1                                           "Quarters 1"        "Zones"
+        "Designate separate quarters for chosen minions." "QUARTERS" { TechId "zones" } true}
+
+    { Zone QUARTERS2                                           "Quarters 2"        "Zones"
+        "Designate separate quarters for chosen minions." none { TechId "zones" } }
+
+    { Zone QUARTERS3                                           "Quarters 3"        "Zones"
+        "Designate separate quarters for chosen minions."none { TechId "zones" } }
+
+    { Zone LEISURE                                             "Leisure"           "Zones"
+        "Designate leisure zone where minions will hang out when they have nothing to do."none { TechId "zones" } }
+
+    { Zone GUARD1                                               "Guard area 1"        "Zones"
+        "Designate an area that minions will actively guard."none { TechId "zones" } }
+
+    { Zone GUARD2                                               "Guard area 2"        "Zones"
+        "Designate an area that minions will actively guard."none { TechId "zones" } }
+
+    { Zone GUARD3                                               "Guard area 3"        "Zones"
+        "Designate an area that minions will actively guard."none { TechId "zones" } }
+
+    { Furniture {{ "BOOKCASE_WOOD" }   "WOOD" 15 }                 "Wooden bookcase"   "Library"  
+        "Train your minions' magical powers here." "BOOKCASES" {TechId "sorcery"} true BUILD_LIBRARY }
+    
+    { Furniture {{ "BOOKCASE_IRON" }   "IRON" 15 }                 "Iron bookcase"     "Library"
+        "Train your minions' magical powers here." none          {TechId "advanced sorcery"} }
+ 
+    { Furniture {{ "BOOKCASE_GOLD" }   "GOLD" 15 }                 "Golden bookcase"   "Library"
+        "Train your minions' magical powers here." none           {TechId "master sorcery"}}
+
+    { Furniture {{ "BED1" }       "WOOD" 12 }                      "Basic bed"         "Living"
+        "Humanoid minions sleep here." "BEDS" {TechId "living"} true  BUILD_BED }
+ 
+    { Furniture {{ "BED2" }       "IRON" 12 }                      "Fine bed"          "Living"
+        "Humanoid minions sleep here." none {TechId "living"} }
+
+    { Furniture {{ "BED3" }       "GOLD" 12 }                      "Luxurious bed"     "Living"
+        "Humanoid minions sleep here." none {TechId "living"}}
+
+    { Furniture {{ "DINING_TABLE" }"WOOD" 5 }                      "Dining table"      "Living"
+        "A place to eat for humanoids"  none {TechId "living"}}
+
+    { Furniture {{ "HAYPILE" }     "WOOD" 5 }                      "Hay pile"          "Living"
+        "A place to eat for non-humanoids"  none {TechId "living"}}
+
+    { Furniture {{ "COFFIN1" }    "WOOD" 15 }                      "Basic coffin"      "Living"
+        "Undead creatures sleep here." none {TechId "living"}}
+
+    { Furniture {{ "COFFIN2" }    "STONE" 15 }                     "Fine coffin"       "Living"
+        "Undead creatures sleep here." none {TechId "living"}}
+
+    { Furniture {{ "COFFIN3" }    "GOLD" 15 }                      "Luxurious coffin"  "Living"
+        "Undead creatures sleep here." none {TechId "living"}}
+
+    { Furniture {{ "BEAST_CAGE" }  "WOOD" 5 }                      "Beast Cage"        "Living"
+        "Give your animals a place to live." none {TechId "living"} }
+
+    { Furniture {{ "CHICKEN_COOP" }     "WOOD" 5 }                 "Chicken coop"      "Living"
+        "" none {TechId "chicken breeding"}}
+    
+	{ Furniture {{ "PIGSTY" }     "WOOD" 5 }                       "Pigsty"            "Living"
+        "" none {TechId "pig breeding"}}
+    
+	{ Furniture {{ "COW_PEN" }     "WOOD" 5 }                      "Cow pen"           "Living"
+        "" none {TechId "cow breeding"}}
+    
+	{ Furniture {{ "ANIMAL_FENCE" } "WOOD" 1 }                     "Animal fence"      "Living"
+        "Require to keep farm animals from escaping." none {TechId "living"}}
+		
+    { Furniture {{ "TRAINING_WOOD" } "WOOD" 12 }                   "Wooden dummy"      "Training room"
+        "Train your minions' melee skills here." "TRAINING_DUMMIES" {TechId "storage"} true  TRAINING_ROOM}
+
+    { Furniture {{ "TRAINING_IRON" } "IRON" 12 }                   "Iron dummy"        "Training room"
+        "Train your minions' melee skills here."   none { TechId "iron working" } }
+
+    { Furniture {{ "TRAINING_ADA" }  "ADA"  12 }                   "Adamantine dummy"  "Training room"
+        "Train your minions' melee skills here."   none { TechId "iron working" }}
+
+    { Furniture {{ "ARCHERY_RANGE" } "WOOD" 12 }                   "Archery target"    "Training room"
+        "Train your minions' archery skills here." none { TechId "archery" }}
+
+    { Furniture {{ "WORKSHOP" }   "WOOD" 15 }                      "Workshop"          "Crafting"
+        "Produces leather equipment, traps, first-aid kits and other." "WORKSHOPS" { TechId "crafting" } true  BUILD_WORKSHOP}
+
+    { Furniture {{ "FORGE" }      "IRON" 20 }                      "Forge"             "Crafting"
+        "Produces metal weapons and armor."    none { TechId "iron working" }}
+
+    { Furniture {{ "LABORATORY" } "STONE" 10 }                     "Laboratory"        "Crafting"
+        "Produces magical potions."            none { TechId "alchemy" }}
+
+    { Furniture {{ "LABORATORY" } "STONE" 10 }                     "Embalmers"        "Crafting"
+        "Produces magical potions."            none { TechId "embalming" }}
+
+    { Furniture {{ "JEWELLER" }   "WOOD" 12 }                      "Jeweller"          "Crafting"
+        "Produces magical rings and amulets."  none { TechId "jewellery" }}
+
+    { Furniture {{ "POETRY_TABLE" } "WOOD" 12 }                    "Poetry table"       "Crafting"
+        "Allows writing poems." none { TechId "crafting" }}
+
+    { Furniture {{ "DISTILLERY" }   "IRON" 30 }                    "Distillery"       "Crafting"
+        "Allows making moonshine." none { TechId "distillation" }}
+
+    { Furniture {{ "MORGUE_TABLE" } "WOOD" 10 }                     "Morgue table"     "Crafting"
+        "Produces animated bodies."                            none { TechId "necromancy" } }
+
+    { Furniture {{ "FURNACE" }      "STONE" 50 }                   "Furnace"             "Crafting"
+        "Smelt and recycle unneeded items."    none { TechId "iron working" }}
+
+    { Furniture {{ "AUTOMATON_ENGINE_WOOD" } "WOOD" 50 }                "Wooden engine"   "Automaton engines"
+        ""            none { TechId "automatons" }}
+    { Furniture {{ "AUTOMATON_ENGINE_IRON" } "IRON" 50 }                "Iron engine"   "Automaton engines"
+        ""            none { TechId "automatons" }}
+    { Furniture {{ "AUTOMATON_ENGINE_ADA" } "ADA" 50 }                "Adamantine engine"   "Automaton engines"
+        ""            none { TechId "automatons" }}
+
+    { Furniture {{ "PRISON" }        "IRON" 15 }                   "Prison"            "Prison"
+        "Required to capture enemies." "PRISON" { TechId "prisons" } true}
+
+    { Furniture {{ "PRISON_BARS" }        "IRON" 5 }               "Prison bars"            "Prison"
+        "Used to secure prison." none { TechId "prisons" }}
+
+    { Furniture {{ "PRISON_DOOR" }        "IRON" 30 }              "Prison door"            "Prison"
+        "Used to secure prison." none { TechId "prisons" } }
+
+    { Furniture {{ "TORTURE_TABLE" } "IRON" 15 }                   "Torture table"     "Prison"
+        "Can be used to torture prisoners. Free population slot required for torturing." none { TechId "prisons" } }
+
+    { Furniture {{ "GALLOWS" }       "WOOD"  20 }                  "Gallows"           "Prison"
+        "For hanging prisoners." none { TechId "prisons" } }
+
+    { Furniture {{ "BEAST_CAGE" } "WOOD" 8 }                       "Beast cage"        "Prison"
+        "Beasts sleep here." none { TechId "prisons" } }
+
+    { ClaimTile                                                "Claim tile"        "Orders"
+        "Claim a dungeon tile as your own. Building anything on it has the same effect."  none {} }
+
+    { UnclaimTile                                                "Unclaim tile"        "Orders"
+        "Discard a tile in your dungeon, as well a any constructions it contains." none {}}
+
+    { Zone FETCH_ITEMS                                         "Fetch items"       "Orders"
+        "Order imps to fetch items from locations outside the dungeon. This is a one-time order." none {}}
+
+    { Zone PERMANENT_FETCH_ITEMS                               "Fetch items persistently" "Orders"
+        "Order imps to fetch items from locations outside the dungeon. This is a persistent order." none {}}
+
+    { Dispatch                                                 "Prioritize task"   "Orders"
+        "Click on an existing task to give it a high priority." "PRIORITIZE_TASK" {}}
+
+    { DestroyLayers {CEILING MIDDLE}                           "Remove construction" "Orders"
+        "" "REMOVE_CONSTRUCTION" {} false REMOVE_CONSTRUCTION }
+ 
+    { ForbidZone                                               "Forbid zone"      "Orders"
+        "Mark tiles to keep minions from entering." none {}}
+
+    { Furniture { types = { "THRONE" } cost = "GOLD" 500 limit = 1} "Throne" "Installations" ""  none   {DungeonLevel 10} }
+
+    { Furniture { types = { "PHYLACTERY" } cost = "GOLD" 500} "Phylactery" "Installations"
+        "Free your soul from your body."  none {TechId "necromancy"}}
+
+    { Furniture {{ "DEMON_SHRINE" } "GOLD" 30 }                    "Demon shrine"      "Installations"
+        "" none { TechId "demonology" }}
+
+    { Furniture {{ "ANGEL_SHRINE" } "GOLD" 30 }                    "Angel shrine"      "Installations"
+        "" none { TechId "worship" }}
+
+    { Furniture {{ "BARRICADE" }     "WOOD" 5 }                    "Barricade"         "Installations"
+        "Blocks enemy movement, but projectiles and spells can pass over it." none { TechId "installations" }}
+
+    { Furniture {{ "TORCH_N" "TORCH_E" "TORCH_S" "TORCH_W" }}          "Torch"             "Installations"
+        "Place it on tiles next to a wall." "TORCH" { TechId "living" } false BUILD_TORCH}
+
+    { Furniture {{ "CANDELABRUM_N" "CANDELABRUM_E" "CANDELABRUM_S" "CANDELABRUM_W" } "GOLD" 5 }
+        "Candelabrum"             "Installations"       "Place it on tiles next to a wall." none { TechId "installations" }}
+
+    { Furniture {{ "GROUND_TORCH" }  "WOOD" 10  }                  "Standing torch"    "Installations"
+        "" none { TechId "installations" } false BUILD_TORCH }
+
+    { Furniture {{ "PAINTING_N" "PAINTING_E" "PAINTING_S" "PAINTING_W" }} "Painting canvas"   "Installations"
+        "Place it on tiles next to a wall." none { TechId "installations" }}
+
+    { Furniture {{ "KEEPER_BOARD" }  "WOOD" 15 }                   "Message board"     "Installations"
+        "A board where you can leave a message for other players." none { TechId "installations" }}
+
+    { Furniture {{ "FOUNTAIN" }      "STONE" 30 }                  "Fountain"          "Installations" "" none { TechId "installations" }}
+
+    { Furniture {{ "WHIPPING_POST" } "WOOD"  20 }                  "Whipping post"     "Installations"
+        "A place to whip your minions if they need a morale boost." none { TechId "installations" }}
+
+    { Furniture {{ "IMPALED_HEAD" }  "PRISONER_HEAD" 1 true}       "Prisoner head"     "Installations"
+        "Impaled head of an executed prisoner. Aggravates enemies." none { TechId "installations" }}
+
+    { Furniture {{ "EYEBALL" }              "WOOD"   30 }                   "Eyeball"           "Installations"
+        "Makes the area around it visible." none { TechId "installations" }}
+
+    { Furniture {{ "PORTAL" }               "STONE"  60 }                   "Portal"            "Installations"
+        "Opens a connection if another portal is present." none { TechId "installations" }}
+
+    { Furniture {{ "HEALING_TOTEM" }        "GOLD"   60 }                   "Healing totem"     "Installations"
+        "Heals minions close by." none { TechId "installations" }}
+
+    { Furniture {{ "TERROR_TRAP" }         "WOOD" 20 }  "Terror trap"       "Traps"
+        "Causes the trespasser to panic." none                   { TechId "traps" }}
+
+    { Furniture {{ "POISON_GAS_TRAP" }     "WOOD" 20 }  "Gas trap"          "Traps"
+        "Releases a cloud of poisonous gas." none                { TechId "traps" }}
+
+    { Furniture {{ "ALARM_TRAP" }          "WOOD" 20 }  "Alarm trap"        "Traps"
+        "Summons all minions" none                               { TechId "traps" }}
+
+    { Furniture {{ "WEB_TRAP" }            "WOOD" 20 }  "Web trap"          "Traps"
+        "Immobilises the trespasser for some time." none         { TechId "traps" }}
+
+    { Furniture {{ "SURPRISE_TRAP" }       "WOOD" 20 }  "Surprise trap"     "Traps"
+        "Teleports nearby minions to deal with the trespasser." none { TechId "traps" }}
+    { Furniture {{ "FIRE_TRAP" }           "WOOD" 20 }  "Fire trap"         "Traps"
+        "Causes a tower of flame to errupt under the trespasser." none { TechId "traps" }}
+
+    { Furniture {{ "BOULDER_TRAP" }        "STONE" 120 }"Boulder trap"      "Traps"
+        "Causes a huge boulder to roll towards the enemy." none  { TechId "traps" }}
+
+    { Furniture {{ "BLAST_TRAP" }          "WOOD" 20 }  "Blast trap"        "Traps"
+        "Causes a huge boulder to roll towards the enemy." none  { TechId "traps" }}
+
+    { Furniture {{ "GARGOYLE_TRAP" }       "STONE" 20 }  "Gargoyle"          "Traps"
+        "Comes to life when an enemy comes near." none  { TechId "traps" }}
+
+    { Furniture {{ "TRAP_TRIGGER" }        "WOOD" 20 }  "Trap trigger"     "Traps"
+        "Triggers all other traps around it." none                   { TechId "advanced traps" }}
+    { Furniture {{ "DESTROY_WALLS_TRAP" }  "WOOD" 20 }  "Crumble trap"     "Traps"
+        "All walls up to two tiles away are destroyed." none         { TechId "advanced traps" }}
+  }
+
+
+#########################################
+#Outcasts mod
+#########################################
+
+
+  "outcasts"
+  {
+    { { Dig CutTree }                                        "Dig or cut tree"   "Structure" "" "DIG" {} true DIG_OR_CUT_TREES}
+    { ImmediateDig "Rockblast (magic)" "Structure" "Destroy rock immediately using magic" none {TechId "rock blast"} }	
+	
+    { Furniture {{ "MOUNTAIN" }             "STONE" 5 }      "Soft rock"         "Structure" "" none {}}
+    { Furniture {{ "MOUNTAIN2" }            "STONE" 10 }     "Hard rock"         "Structure" "" none {}}
+
+    { Furniture {{ "DUNGEON_WALL" "DUNGEON_WALL2" } "STONE" 3}       "Reinforce wall"    "Structure"
+      "Reinforced walls are better at stopping enemies from digging into your dungeon." none {}}
+
+    { Furniture {{ "PIT" }                        "STONE" 0 }      "Dig a pit"         "Structure"
+      "Dig a pit in the ground. Building next to water or lava will cause it to fill up." none {}}
+
+    { Furniture {{ "FILL_UP_WATER_FLOOR" }        "STONE" 20 }     "Fill lava or water" "Structure"
+      "" none {}}
+
+    { Furniture {{ "FLOOR" }              }               "Building interior" "Structure"
+      "" none {} false none true}
+
+    { Furniture {{ "WOOD_WALL" }                  "WOOD" 5 }       "Wooden wall"   "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." none {}}
+
+    { Furniture {{ "WOOD_PILLAR" }                "WOOD" 2 }       "Wooden pillar"     "Structure"
+      "Acts as roof support, but doesn't block movement." none {}}
+
+    { Furniture {{ "CASTLE_WALL" }                "STONE" 5 }      "Stone wall"    "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." none {}}
+
+    { Furniture {{ "CASTLE_PILLAR" }              "STONE" 2 }      "Stone pillar"      "Structure"
+      "Acts as roof support, but doesn't block movement." none {}}
+
+    { Furniture {{ "BRIDGE" }                     "WOOD" 5 }       "Wooden bridge"     "Structure"
+      "Build to pass over water. Will burn on lava." none {}}
+
+    { Furniture {{ "STONE_BRIDGE" }               "STONE" 5 }      "Stone bridge"      "Structure"
+      "Build to pass over water or lava." none {}}
+
+    { Furniture {{ "UP_STAIRS" }                  }              "Up stairs"       "Structure"
+      "Build to reach higher z-levels." none {}}
+
+    { Furniture {{ "DOWN_STAIRS" }                }              "Down stairs"       "Structure"
+      "Build to reach deeper z-levels." none {}}
+
+    { Furniture {{ "ARCHER_WALL" }                "STONE" 20 }     "Wall with arrowslits"  "Structure"
+      "Outdoor building with arrowslits." none {}}
+
+    { Furniture {{ "WOOD_DOOR" }                  "WOOD" 5 }       "Wooden door"       "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it."  "DOORS" {} true BUILD_DOOR}
+
+    { Furniture {{ "IRON_DOOR" }                  "IRON" 5 }       "Iron door"         "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." none {}}
+
+    { Furniture {{ "ADA_DOOR" }                   "ADA" 5 }        "Adamantine door"   "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." none {}}
+    { Furniture {{ "WOOD_GATE" }                  "WOOD" 8 }       "Wooden gate"       "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." none {}}
+    { Furniture {{ "IRON_GATE" }                  "IRON" 8 }       "Iron gate"         "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." none {}}
+    { Furniture {{ "ADA_GATE" }                   "ADA" 8 }        "Adamantine gate"   "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." none {}}
+
+    { Furniture {{ "FLOOR_WOOD1" }                "WOOD" 2 }       "Wooden"            "Floors"
+        "" "FLOORS" {} true BUILD_FLOOR}
+    { Furniture {{ "FLOOR_WOOD2" }                "WOOD" 2 }       "Wooden"            "Floors"
+         "" none {} true BUILD_FLOOR}
+    { Furniture {{ "FLOOR_STONE1" }               "STONE" 2 }      "Stone"             "Floors" "" none {}}
+    { Furniture {{ "FLOOR_STONE2" }               "STONE" 2 }      "Stone"             "Floors" "" none {}}
+    { Furniture {{ "FLOOR_CARPET1" }              "GOLD" 2 }       "Carpet"            "Floors" "" none {}}
+    { Furniture {{ "FLOOR_CARPET2" }              "GOLD" 2 }       "Carpet"            "Floors" "" none {}}
+    { DestroyLayers {FLOOR}                                    "Remove floor"      "Floors" "" none {}}
+
+    { Zone STORAGE_RESOURCES                                   "Resources"         "Storage" 
+        "Only wood, iron, granite, and adamantium can be stored here." "STORAGE" {}  true RESOURCE_STORAGE}
+
+    { Zone STORAGE_EQUIPMENT                                   "Equipment"         "Storage"
+        "All equipment for your minions can be stored here." none {} false EQUIPMENT_STORAGE }
+
+    { Furniture {{ "TREASURE_CHEST" }             "WOOD" 5  }      "Treasure chest"    "Storage"
+        "All your gold is stored here."  none {}}
+
+    { Furniture {{ "ARMOR_RACK" }                "WOOD" 15  }     "Armor rack"      "Storage"
+        "All your armor can be stored here."  none {}}
+
+    { Furniture {{ "WEAPON_RACK" }                "WOOD" 15  }     "Weapon rack"      "Storage"
+        "All your weapons can be stored here." none {} }
+
+    { Furniture {{ "BOW_RACK" }                "WOOD" 15  }        "Bow rack"      "Storage"
+        "All your ranged weapons can be stored here." none {} }
+
+    { Furniture {{ "SCROLL_STORAGE"}              "WOOD" 15  }      "Scroll shelf"      "Storage"
+        "All your scrolls can be stored here." none {} }
+
+    { Furniture {{ "POTION_STORAGE"}              "WOOD" 15  }      "Potion shelf"      "Storage"
+        "All your potions can be stored here." none {} }
+
+    { Furniture {{ "JEWELLERY_STORAGE"}              "WOOD" 15  }   "Jewellery chest"      "Storage"
+        "All your jewellery can be stored here." none {} }
+
+    { Furniture {{ "GRAVE" }                      "STONE" 5 }      "Grave"             "Storage"
+        "All corpses are stored here." none {}}
+
+    { Furniture {{ "AUTOMATON_STORAGE" }                "WOOD" 15  }     "Automaton chest"   "Storage"
+        "All your automaton parts can be stored here." none {}}
+
+    { Zone QUARTERS1                                           "Quarters 1"        "Zones"
+        "Designate separate quarters for chosen minions." "QUARTERS" {} true}
+
+    { Zone QUARTERS2                                           "Quarters 2"        "Zones"
+        "Designate separate quarters for chosen minions." none {} }
+
+    { Zone QUARTERS3                                           "Quarters 3"        "Zones"
+        "Designate separate quarters for chosen minions."none {} }
+
+    { Zone LEISURE                                             "Leisure"           "Zones"
+        "Designate leisure zone where minions will hang out when they have nothing to do."none {} }
+
+    { Zone GUARD1                                               "Guard area 1"        "Zones"
+        "Designate an area that minions will actively guard."none {} }
+
+    { Zone GUARD2                                               "Guard area 2"        "Zones"
+        "Designate an area that minions will actively guard."none {} }
+
+    { Zone GUARD3                                               "Guard area 3"        "Zones"
+        "Designate an area that minions will actively guard."none {} }
+
+    { Furniture {{ "BOOKCASE_WOOD" }   "WOOD" 15 }                 "Wooden bookcase"   "Library"  
+        "Train your minions' magical powers here." "BOOKCASES" {TechId "sorcery"} true BUILD_LIBRARY }
+    
+    { Furniture {{ "BOOKCASE_IRON" }   "IRON" 15 }                 "Iron bookcase"     "Library"
+        "Train your minions' magical powers here." none          {TechId "advanced sorcery"} }
+ 
+    { Furniture {{ "BOOKCASE_GOLD" }   "GOLD" 15 }                 "Golden bookcase"   "Library"
+        "Train your minions' magical powers here." none           {TechId "master sorcery"}}
+
+
+    { Furniture {{ "BED1" }       "WOOD" 12 }                      "Basic bed"         "Living"
+        "Humanoid minions sleep here." "BEDS" {} true  BUILD_BED }
+ 
+    { Furniture {{ "BED2" }       "IRON" 12 }                      "Fine bed"          "Living"
+        "Humanoid minions sleep here." none {} }
+
+    { Furniture {{ "BED3" }       "GOLD" 12 }                      "Luxurious bed"     "Living"
+        "Humanoid minions sleep here." none {}}
+
+    { Furniture {{ "DINING_TABLE" }"WOOD" 5 }                      "Dining table"      "Living"
+        "A place to eat for humanoids"  none {}}
+
+    { Furniture {{ "HAYPILE" }     "WOOD" 5 }                      "Hay pile"          "Living"
+        "A place to eat for non-humanoids"  none {}}
+
+    { Furniture {{ "COFFIN1" }    "WOOD" 15 }                      "Basic coffin"      "Living"
+        "Undead creatures sleep here." none {}}
+
+    { Furniture {{ "COFFIN2" }    "STONE" 15 }                     "Fine coffin"       "Living"
+        "Undead creatures sleep here." none {}}
+
+    { Furniture {{ "COFFIN3" }    "GOLD" 15 }                      "Luxurious coffin"  "Living"
+        "Undead creatures sleep here." none {}}
+
+    { Furniture {{ "BEAST_CAGE" }  "WOOD" 5 }                      "Beast Cage"        "Living"
+        "Give your animals a place to live." none {} }
+
+   
+	{ Furniture {{ "ANIMAL_FENCE" } "WOOD" 1 }                     "Animal fence"      "Living"
+        "Require to keep farm animals from escaping." none {}}
+		
+    { Furniture {{ "TRAINING_WOOD" } "WOOD" 12 }                   "Wooden dummy"      "Training room"
+        "Train your minions' melee skills here." "TRAINING_DUMMIES" {} true  TRAINING_ROOM}
+
+    { Furniture {{ "TRAINING_IRON" } "IRON" 12 }                   "Iron dummy"        "Training room"
+        "Train your minions' melee skills here."   none { TechId "iron working" } }
+
+    { Furniture {{ "TRAINING_ADA" }  "ADA"  12 }                   "Adamantine dummy"  "Training room"
+        "Train your minions' melee skills here."   none { TechId "iron working" }}
+
+    { Furniture {{ "ARCHERY_RANGE" } "WOOD" 12 }                   "Archery target"    "Training room"
+        "Train your minions' archery skills here." none { TechId "archery" }}
+
+    { Furniture {{ "WORKSHOP" }   "WOOD" 15 }                      "Workshop"          "Crafting"
+        "Produces leather equipment, traps, first-aid kits and other." "WORKSHOPS" {} true  BUILD_WORKSHOP}
+
+    { Furniture {{ "FORGE" }      "IRON" 20 }                      "Forge"             "Crafting"
+        "Produces metal weapons and armor."    none { TechId "iron working" }}
+
+    { Furniture {{ "LABORATORY" } "STONE" 10 }                     "Laboratory"        "Crafting"
+        "Produces magical potions."            none { TechId "alchemy" }}
+
+    { Furniture {{ "LABORATORY" } "STONE" 10 }                     "Embalmers"        "Crafting"
+        "Produces magical potions."            none { TechId "embalming" }}
+
+    { Furniture {{ "JEWELLER" }   "WOOD" 12 }                      "Jeweller"          "Crafting"
+        "Produces magical rings and amulets."  none { TechId "jewellery" }}
+
+    { Furniture {{ "POETRY_TABLE" } "WOOD" 12 }                    "Poetry table"       "Crafting"
+        "Allows writing poems." none {} }
+
+    { Furniture {{ "DISTILLERY" }   "IRON" 30 }                    "Distillery"       "Crafting"
+        "Allows making moonshine." none { TechId "distillation" }}
+
+    { Furniture {{ "MORGUE_TABLE" } "WOOD" 10 }                     "Morgue table"     "Crafting"
+        "Produces animated bodies."                            none { TechId "necromancy" } }
+
+    { Furniture {{ "FURNACE" }      "STONE" 50 }                   "Furnace"             "Crafting"
+        "Smelt and recycle unneeded items."    none { TechId "iron working" }}
+
+    { Furniture {{ "AUTOMATON_ENGINE_WOOD" } "WOOD" 50 }                "Wooden engine"   "Automaton engines"
+        ""            none { TechId "automatons" }}
+    { Furniture {{ "AUTOMATON_ENGINE_IRON" } "IRON" 50 }                "Iron engine"   "Automaton engines"
+        ""            none { TechId "automatons" }}
+    { Furniture {{ "AUTOMATON_ENGINE_ADA" } "ADA" 50 }                "Adamantine engine"   "Automaton engines"
+        ""            none { TechId "automatons" }}
+
+    { Furniture {{ "PRISON" }        "IRON" 15 }                   "Prison"            "Prison"
+        "Required to capture enemies." "PRISON" {} true}
+
+    { Furniture {{ "PRISON_BARS" }        "IRON" 5 }               "Prison bars"            "Prison"
+        "Used to secure prison." none {}}
+
+    { Furniture {{ "PRISON_DOOR" }        "IRON" 30 }              "Prison door"            "Prison"
+        "Used to secure prison." none {} }
+
+    { Furniture {{ "TORTURE_TABLE" } "IRON" 15 }                   "Torture table"     "Prison"
+        "Can be used to torture prisoners. Free population slot required for torturing." none {} }
+
+    { Furniture {{ "GALLOWS" }       "WOOD"  20 }                  "Gallows"           "Prison"
+        "For hanging prisoners." none {} }
+
+    { Furniture {{ "BEAST_CAGE" } "WOOD" 8 }                       "Beast cage"        "Prison"
+        "Beasts sleep here." none {} }
+
+    { ClaimTile                                                "Claim tile"        "Orders"
+        "Claim a dungeon tile as your own. Building anything on it has the same effect."  none {} }
+
+    { UnclaimTile                                                "Unclaim tile"        "Orders"
+        "Discard a tile in your dungeon, as well a any constructions it contains." none {}}
+
+    { Zone FETCH_ITEMS                                         "Fetch items"       "Orders"
+        "Order imps to fetch items from locations outside the dungeon. This is a one-time order." none {}}
+
+    { Zone PERMANENT_FETCH_ITEMS                               "Fetch items persistently" "Orders"
+        "Order imps to fetch items from locations outside the dungeon. This is a persistent order." none {}}
+
+    { Dispatch                                                 "Prioritize task"   "Orders"
+        "Click on an existing task to give it a high priority." "PRIORITIZE_TASK" {}}
+
+    { DestroyLayers {CEILING MIDDLE}                           "Remove construction" "Orders"
+        "" "REMOVE_CONSTRUCTION" {} false REMOVE_CONSTRUCTION }
+ 
+    { ForbidZone                                               "Forbid zone"      "Orders"
+        "Mark tiles to keep minions from entering." none {}}
+
+    { Furniture { types = { "THRONE" } cost = "GOLD" 500 limit = 1} "Throne" "Installations" ""  none   {DungeonLevel 10} }
+
+    { Furniture { types = { "PHYLACTERY" } cost = "GOLD" 500} "Phylactery" "Installations" "Free your soul from your body."  none {TechId "necromancy"}}
+
+
+    { Furniture {{ "DEMON_SHRINE" } "GOLD" 30 }                    "Demon shrine"      "Installations"
+        "" none { TechId "demonology" }}
+
+    { Furniture {{ "ANGEL_SHRINE" } "GOLD" 30 }                    "Angel shrine"      "Installations"
+        "" none { TechId "worship" }}
+
+
+    { Furniture {{ "BARRICADE" }     "WOOD" 5 }                    "Barricade"         "Installations"
+        "Blocks enemy movement, but projectiles and spells can pass over it." none {}}
+
+    { Furniture {{ "TORCH_N" "TORCH_E" "TORCH_S" "TORCH_W" }}          "Torch"             "Installations"
+        "Place it on tiles next to a wall." "TORCH" {} false BUILD_TORCH}
+
+    { Furniture {{ "CANDELABRUM_N" "CANDELABRUM_E" "CANDELABRUM_S" "CANDELABRUM_W" } "GOLD" 5 }
+        "Candelabrum"             "Installations"       "Place it on tiles next to a wall." none {}}
+
+    { Furniture {{ "GROUND_TORCH" }  "WOOD" 10  }                  "Standing torch"    "Installations"
+        "" none {} false BUILD_TORCH }
+
+    { Furniture {{ "PAINTING_N" "PAINTING_E" "PAINTING_S" "PAINTING_W" }} "Painting canvas"   "Installations"
+        "Place it on tiles next to a wall." none {}}
+
+    { Furniture {{ "KEEPER_BOARD" }  "WOOD" 15 }                   "Message board"     "Installations"
+        "A board where you can leave a message for other players." none {}}
+
+    { Furniture {{ "FOUNTAIN" }      "STONE" 30 }                  "Fountain"          "Installations" "" none {}}
+
+    { Furniture {{ "WHIPPING_POST" } "WOOD"  20 }                  "Whipping post"     "Installations"
+        "A place to whip your minions if they need a morale boost." none {}}
+
+    { Furniture {{ "IMPALED_HEAD" }  "PRISONER_HEAD" 1 true}       "Prisoner head"     "Installations"
+        "Impaled head of an executed prisoner. Aggravates enemies." none {}}
+
+    { Furniture {{ "EYEBALL" }              "WOOD"   30 }                   "Eyeball"           "Installations"
+        "Makes the area around it visible." none {}}
+
+    { Furniture {{ "PORTAL" }               "STONE"  60 }                   "Portal"            "Installations"
+        "Opens a connection if another portal is present." none {}}
+
+    { Furniture {{ "HEALING_TOTEM" }        "GOLD"   60 }                   "Healing totem"     "Installations"
+        "Heals minions close by." none {}}
+
+    { Furniture {{ "TERROR_TRAP" }         "WOOD" 20 }  "Terror trap"       "Traps"
+        "Causes the trespasser to panic." none                   { TechId "traps" }}
+
+    { Furniture {{ "POISON_GAS_TRAP" }     "WOOD" 20 }  "Gas trap"          "Traps"
+        "Releases a cloud of poisonous gas." none                { TechId "traps" }}
+
+    { Furniture {{ "ALARM_TRAP" }          "WOOD" 20 }  "Alarm trap"        "Traps"
+        "Summons all minions" none                               { TechId "traps" }}
+
+    { Furniture {{ "WEB_TRAP" }            "WOOD" 20 }  "Web trap"          "Traps"
+        "Immobilises the trespasser for some time." none         { TechId "traps" }}
+
+    { Furniture {{ "SURPRISE_TRAP" }       "WOOD" 20 }  "Surprise trap"     "Traps"
+        "Teleports nearby minions to deal with the trespasser." none { TechId "traps" }}
+    { Furniture {{ "FIRE_TRAP" }           "WOOD" 20 }  "Fire trap"         "Traps"
+        "Causes a tower of flame to errupt under the trespasser." none { TechId "traps" }}
+
+    { Furniture {{ "BOULDER_TRAP" }        "STONE" 120 }"Boulder trap"      "Traps"
+        "Causes a huge boulder to roll towards the enemy." none  { TechId "traps" }}
+
+    { Furniture {{ "BLAST_TRAP" }          "WOOD" 20 }  "Blast trap"        "Traps"
+        "Causes a huge boulder to roll towards the enemy." none  { TechId "traps" }}
+
+    { Furniture {{ "GARGOYLE_TRAP" }       "STONE" 20 }  "Gargoyle"          "Traps"
+        "Comes to life when an enemy comes near." none  { TechId "traps" }}
+
+    { Furniture {{ "TRAP_TRIGGER" }        "WOOD" 20 }  "Trap trigger"     "Traps"
+        "Triggers all other traps around it." none                   { TechId "advanced traps" }}
+    { Furniture {{ "DESTROY_WALLS_TRAP" }  "WOOD" 20 }  "Crumble trap"     "Traps"
+        "All walls up to two tiles away are destroyed." none         { TechId "advanced traps" }}
+  }  
+  "crafting"
+  modify append {
+    { Furniture {{ "INSCRIPTION_TABLE" }   "GOLD" 4 }                      "Inscription Table"          "Crafting"
+        "Produces scrolls." none { TechId "magic inscription" }}
+
+  }
+
+
+#########################################
+#Specific to bonus mod
+#########################################
+
+
+  "floors" modify {
+  
+    { Furniture {{ "FLOOR_WOOD1" }                "WOOD" 2 }       "Wooden"            "Floors"
+        "" "FLOORS" {} true BUILD_FLOOR}
+    { Furniture {{ "FLOOR_WOOD2" }                "WOOD" 2 }       "Wooden"            "Floors"
+        "" none {} true BUILD_FLOOR}
+    { Furniture {{ "FLOOR_STONE1" }               "STONE" 2 }      "Stone"             "Floors" }
+    { Furniture {{ "FLOOR_STONE2" }               "STONE" 2 }      "Stone"             "Floors" }
+    { Furniture {{ "BONUS_FLOOR_STONE3_JEWELED" }               "STONE" 4 }      "Jeweled"           "Floors" } #Modded
+    { Furniture {{ "BONUS_FLOOR_STONE4_JEWELED" }               "STONE" 4 }      "Jeweled"           "Floors" } #Modded
+    { Furniture {{ "FLOOR_CARPET1" }              "GOLD" 2 }       "Carpet"            "Floors" }
+    { Furniture {{ "FLOOR_CARPET2" }              "GOLD" 2 }       "Carpet"            "Floors" }
+    { DestroyLayers {FLOOR}                                      "Remove floor"      "Floors" }
+
+  }
+
+  "traps" modify append {
+  		
+    #Modded Traps        
+    { Furniture {{ "BONUS_FLOOR_SPIKES_TRAP" } "IRON" 20}    "Floor Spikes trap" "Traps"
+        "Causes a group of spikes to spring up from the floor under the trespasser." none { TechId "traps" }}
+
+    { Furniture {{  "BONUS_TAR_PIT" } "STONE" 5}             "Tar pit"          "Traps"
+        "Slows down interlopers." none                           { TechId "traps" }}
+
+    { Furniture {{  "BONUS_FALLING_RUBBLE_TRAP" }  "STONE" 20} "Falling rubble trap" "Traps"
+        "Rubble will fall down around them." none                { TechId "traps" }}
+
+  }
+
+  #Extra floors for white knights
+  "white knight floors"
+  {
+    { Furniture {{ "FLOOR_WOOD1" }                "WOOD" 2 }       "Wooden"            "Floors"
+        "" "FLOORS" {} true BUILD_FLOOR}
+    { Furniture {{ "FLOOR_WOOD2" }                "WOOD" 2 }       "Wooden"            "Floors"
+        "" none {} true BUILD_FLOOR}
+    { Furniture {{ "FLOOR_STONE1" }               "STONE" 2 }      "Stone"             "Floors" }
+    { Furniture {{ "FLOOR_STONE2" }               "STONE" 2 }      "Stone"             "Floors" }
+    { Furniture {{ "FLOOR_CARPET1" }              "GOLD" 2 }       "Carpet"            "Floors" }
+    { Furniture {{ "FLOOR_CARPET2" }              "GOLD" 2 }       "Carpet"            "Floors" }
+    { Furniture { types = { "BONUS_ELVEN_RUG" } cost = "GOLD" 50 limit = 1 }                "Elven rug of concealment" "Floors"
+	              "Standing on the rug will make you invisible. You only have one of these items and it costs 50 gold."}
+    { Furniture { types = { "BONUS_DWARVEN_REGENERATOR" } cost = "GOLD" 50 limit = 2}     "Dwarven regenerator" "Floors"
+	              "Standing on the regenerator will heal you. You only have two of these items and they cost 50 gold each."}	
+    { DestroyLayers {FLOOR}                                      "Remove floor"      "Floors" }
+  }
+
+  #Sandbox
+  "sandbox"
+  {
+    { ImmediateDig "Immediate Dig"   "Structure" }
+    { CutTree  "Order cut trees"   "Structure" }
+    { Furniture {{ "MOUNTAIN" }                   "STONE" 0}      "Soft rock"         "Structure" }
+    { Furniture {{ "MOUNTAIN2" }                  "STONE" 0}     "Hard rock"         "Structure" }
+    { Furniture {{ "DUNGEON_WALL" "DUNGEON_WALL2" } "STONE" 0}       "Reinforce wall"    "Structure"
+      "Reinforced walls are better at stopping enemies from digging into your dungeon."}
+    { Furniture {{ "PIT" }                        "STONE" 0}      "Dig a pit"         "Structure"
+      "Dig a pit in the ground. Building next to water or lava will cause it to fill up." }
+    { Furniture {{ "WOOD_WALL" }                  "WOOD" 0}       "Wooden building"   "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+    { Furniture {{ "CASTLE_WALL" }                "STONE" 0}      "Stone building"    "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+    { Furniture {{ "BRIDGE" }                     "WOOD" 0}       "Bridge"            "Structure"
+      "Build to pass over water of lava." }
+    { Furniture {{ "DOWN_STAIRS" }                }              "Down stairs"       "Structure"
+      "Build down z-levels." }
+    { PlaceMinion "Place minion" "Structure" ""   } 
+    { PlaceItem   "Place item"   "Structure" ""   } 
+    { Furniture {{ "WOOD_DOOR" }                  "WOOD" 0}       "Wooden door"       "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it."  none {} true BUILD_DOOR}
+    { Furniture {{ "IRON_DOOR" }                  "IRON" 0}       "Iron door"         "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it." }
+    { Furniture {{ "ADA_DOOR" }                   "ADA" 0}        "Adamantine door"   "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it."}
+    { Furniture {{ "WOOD_GATE" }                  "WOOD" 0}       "Wooden gate"       "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it."}
+    { Furniture {{ "IRON_GATE" }                  "IRON" 0}       "Iron gate"         "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it."}
+    { Furniture {{ "ADA_GATE" }                   "ADA" 0}        "Adamantine gate"   "Doors"
+      "Stops enemies. Your minions can pass freely unless you lock it."}
+    { Furniture {{ "FLOOR_WOOD1" }                "WOOD" 0}       "Wooden"            "Floors"
+        "" "FLOORS" {} true BUILD_FLOOR}
+    { Furniture {{ "FLOOR_WOOD2" }                "WOOD" 0}       "Wooden"            "Floors"
+        "" none {} true BUILD_FLOOR}
+    { Furniture {{ "FLOOR_STONE1" }               "STONE" 0}      "Stone"             "Floors" }
+    { Furniture {{ "FLOOR_STONE2" }               "STONE" 0}      "Stone"             "Floors" }
+    { Furniture {{ "FLOOR_CARPET1" }              "GOLD" 0}       "Carpet"            "Floors" }
+    { Furniture {{ "FLOOR_CARPET2" }              "GOLD" 0}       "Carpet"            "Floors" }
+    { DestroyLayers {FLOOR}                                    "Remove floor"      "Floors" }
+    { Zone STORAGE_RESOURCES                                   "Resources"         "Storage" 
+        "Only wood, iron, granite, and adamantium can be stored here." "STORAGE" {} true RESOURCE_STORAGE}
+    { Zone STORAGE_EQUIPMENT                                   "Equipment"         "Storage"
+        "All equipment for your minions can be stored here." none {} false EQUIPMENT_STORAGE }
+    { Furniture {{ "TREASURE_CHEST" }             "WOOD" 0 }      "Treasure chest"    "Storage"
+        "All your gold is stored here." }
+    { Furniture {{ "GRAVE" }                      "STONE" 0}      "Grave"             "Storage"
+        "All corpses are stored here."}
+ 
+    { Zone QUARTERS1                                           "Quarters 1"        "Quarters"
+        "Designate separate quarters for chosen minions." "QUARTERS" {} true}
+    { Zone QUARTERS2                                           "Quarters 2"        "Quarters"
+        "Designate separate quarters for chosen minions."}
+    { Zone QUARTERS3                                           "Quarters 3"        "Quarters"
+        "Designate separate quarters for chosen minions."}
+    { Zone LEISURE                                             "Leisure"           "Quarters"
+        "Designate leisure zone where minions will hang out when they have nothing to do."}
+	
+    { Furniture {{ "CHEST" } "WOOD" 0}                          "Mysterious Chest"   "Loot"  
+        "Give players some random loot." none }
+
+    { Furniture {{ "LOOT_COFFIN" } "WOOD" 0}                    "Mysterious Coffin"  "Loot"  
+        "Give players some random loot." none }
+
+	
+    { Furniture {{ "BOOKCASE_WOOD" }   "WOOD" 0}                 "Wooden bookcase"   "Library"  
+        "Train your minions' magical powers here." "BOOKCASES"          {TechId "sorcery"} true BUILD_LIBRARY }
+
+    { Furniture {{ "BOOKCASE_IRON" }   "IRON" 0}                 "Iron bookcase"     "Library"
+        "Train your minions' magical powers here." none          {TechId "advanced sorcery"} }
+
+    { Furniture {{ "BOOKCASE_GOLD" }   "GOLD" 0}                 "Golden bookcase"   "Library"
+        "Train your minions' magical powers here." none           {TechId "master sorcery"}}
+		
+    { Furniture { types = { "THRONE" } cost = "GOLD" 500 limit = 1} "Throne" "Installations" ""  none   {DungeonLevel 10} }
+
+    { Furniture {{ "BED1" }       "WOOD" 0}                      "Basic bed"         "Living"
+        "Humanoid minions sleep here." "BEDS" {} true  BUILD_BED }
+ 
+    { Furniture {{ "BED2" }       "IRON" 0}                      "Fine bed"          "Living"
+        "Humanoid minions sleep here." }
+
+    { Furniture {{ "BED3" }       "GOLD" 0}                      "Luxurious bed"     "Living"
+        "Humanoid minions sleep here."}
+
+    { Furniture {{ "BEAST_CAGE" } "WOOD" 0}                       "Beast cage"        "Living"
+        "Beasts sleep here."}
+
+    { Furniture {{ "PIGSTY" }     "WOOD" 0}                       "Pigsty"            "Living"
+        "" none {TechId "pig breeding"}}
+
+    { Furniture {{ "COFFIN1" }    "WOOD" 0}                      "Basic coffin"      "Living"
+        "Undead creatures sleep here."}
+
+    { Furniture {{ "COFFIN2" }    "STONE" 0}                     "Fine coffin"       "Living"
+        "Undead creatures sleep here."}
+
+    { Furniture {{ "COFFIN3" }    "GOLD" 0}                      "Luxurious coffin"  "Living"
+        "Undead creatures sleep here."}
+
+    { Furniture {{ "TRAINING_WOOD" } "WOOD" 0}                   "Wooden dummy"      "Training room"
+        "Train your minions' melee skills here." "TRAINING_DUMMIES" {} true  TRAINING_ROOM}
+
+    { Furniture {{ "TRAINING_IRON" } "IRON" 0}                   "Iron dummy"        "Training room"
+        "Train your minions' melee skills here."   none { TechId "iron working" } }
+
+    { Furniture {{ "TRAINING_ADA" }  "ADA" 0}                   "Adamantine dummy"  "Training room"
+        "Train your minions' melee skills here."   none { TechId "iron working" }}
+
+    { Furniture {{ "ARCHERY_RANGE" } "WOOD" 0}                   "Archery target"    "Training room"
+        "Train your minions' archery skills here." none { TechId "archery" }}
+
+    { Furniture {{ "WORKSHOP" }   "WOOD" 0}                      "Workshop"          "Crafting"
+        "Produces leather equipment, traps, first-aid kits and other." "WORKSHOPS" {} true  BUILD_WORKSHOP}
+
+    { Furniture {{ "FORGE" }      "IRON" 0}                      "Forge"             "Crafting"
+        "Produces metal weapons and armor."    none { TechId "iron working" }}
+
+    { Furniture {{ "LABORATORY" } "STONE" 0}                     "Laboratory"        "Crafting"
+        "Produces magical potions."            none { TechId "alchemy" }}
+
+    { Furniture {{ "JEWELLER" }   "WOOD" 0}                      "Jeweller"          "Crafting"
+        "Produces magical rings and amulets."  none { TechId "jewellery" }}
+
+    { Furniture {{ "DEMON_SHRINE" } "GOLD" 30 }                    "Demon shrine"      "Installations"
+        "Summon demons and other wicked spirits." none { TechId "demonology" }}
+
+    { Furniture {{ "PRISON" }        "IRON" 0}                   "Prison"            "Prison"
+        "Required to capture enemies." "PRISON" {} true}
+
+    { Furniture {{ "TORTURE_TABLE" } "IRON" 0}                   "Torture table"     "Prison"
+        "Can be used to torture prisoners. Free population slot required for torturing."}
+
+    { ClaimTile                                                "Claim tile"        "Orders"
+        "Claim a dungeon tile as your own. Building anything on it has the same effect." }
+
+    { Zone FETCH_ITEMS                                         "Fetch items"       "Orders"
+        "Order imps to fetch items from locations outside the dungeon. This is a one-time order."}
+
+    { Zone PERMANENT_FETCH_ITEMS                               "Fetch items persistently" "Orders"
+        "Order imps to fetch items from locations outside the dungeon. This is a persistent order."}
+
+    { Dispatch                                                 "Prioritize task"   "Orders"
+        "Click on an existing task to give it a high priority." "PRIORITIZE_TASK" }
+
+    { DestroyLayers {CEILING MIDDLE}                           "Remove construction" "Orders"
+        "" "REMOVE_CONSTRUCTION" {} false REMOVE_CONSTRUCTION }
+ 
+    { ForbidZone                                               "Forbind zone"      "Orders"
+        "Mark tiles to keep minions from entering."}
+
+    { Furniture {{ "BARRICADE" }     "WOOD" 0}                 "Barricade"         "Installations"
+        "Blocks enemy movement, but projectiles and spells can pass over it." }
+
+    { Furniture {{ "TORCH_N" "TORCH_E" "TORCH_S" "TORCH_W" }}          "Torch"             "Installations"
+        "Place it on tiles next to a wall." "TORCH" {} false BUILD_TORCH}
+
+    { Furniture {{ "CANDELABRUM_N" "CANDELABRUM_E" "CANDELABRUM_S" "CANDELABRUM_W" } "GOLD" 0}
+        "Candelabrum"             "Installations"       "Place it on tiles next to a wall." }
+
+    { Furniture {{ "GROUND_TORCH" }  "WOOD" 0 }                  "Standing torch"    "Installations"
+        "" none {} false BUILD_TORCH }
+
+    { Furniture {{ "KEEPER_BOARD" }  "WOOD" 0}                   "Message board"     "Installations"
+        "A board where you can leave a message for other players." }
+
+    { Furniture {{ "FOUNTAIN" }      "STONE" 0}                  "Fountain"          "Installations" }
+
+    { Furniture {{ "WHIPPING_POST" } "WOOD" 0}                  "Whipping post"     "Installations"
+        "A place to whip your minions if they need a morale boost." }
+
+    { Furniture {{ "GALLOWS" }       "WOOD" 0}                  "Gallows"           "Installations"
+        "For hanging prisoners."}
+
+    { Furniture {{ "IMPALED_HEAD" }  "PRISONER_HEAD" 1 true}       "Prisoner head"     "Installations"
+        "Impaled head of an executed prisoner. Aggravates enemies."}
+
+    { Furniture {{ "EYEBALL" }              "WOOD" 0}                   "Eyeball"           "Installations"
+        "Makes the area around it visible."}
+
+    { Furniture {{ "MINION_STATUE" }        "GOLD"   0}                  "Golden statue"     "Installations" ""}
+    { Furniture {{ "STONE_MINION_STATUE" }  "STONE"  0}                  "Stone statue"      "Installations" ""}
+    { Furniture {{ "PORTAL" }               "STONE"  0}                   "Portal"            "Installations"
+        "Opens a connection if another portal is present."}
+    { Furniture {{ "TUTORIAL_ENTRANCE" } }                  "Tutorial Entrance"           "Installations"}
+
+    { Furniture {{ "TERROR_TRAP" }             "GOLD"   0} "Terror trap" "Traps" }
+    { Furniture {{ "POISON_GAS_TRAP" }         "GOLD"   0} "Poison gas trap" "Traps" }
+    { Furniture {{ "ALARM_TRAP" }              "GOLD"   0} "Alarm trap" "Traps" }
+    { Furniture {{ "WEB_TRAP" }                "GOLD"   0} "Web trap" "Traps" }
+    { Furniture {{ "BOULDER_TRAP" }            "GOLD"   0} "Boulder trap" "Traps" }
+    { Furniture {{ "BONUS_TAR_PIT" }                 "GOLD"   0} "Tar trap" "Traps" }
+    { Furniture {{ "BONUS_FALLING_RUBBLE_TRAP" }     "GOLD"   0} "Rubble trap" "Traps" }
+    { Furniture {{ "SURPRISE_TRAP" }           "GOLD"   0} "Surprise trap" "Traps" }
+    { Furniture {{ "FIRE_TRAP" }               "GOLD"   0} "Fire trap" "Traps" }
+    { Furniture {{ "BONUS_FLOOR_SPIKES_TRAP" }       "GOLD"   0} "Spikes trap" "Traps" }
+	CIRCLE("SUMMON_HORSES", "Magic horses" ,0, 0)
+	CIRCLE("SUMMON_ARMOURY", "Mass Armoury", 0, 0)
+	CIRCLE("MINE_FIELD", "Minefield", 0, 0)
+	CIRCLE("SUMMON_ARTIFACT", "Artifact summoning", 0, 0)
+	CIRCLE("TRANSFORM_DRAGON", "Dragonform circle", 0, 0)
+
+  }
+
+  #Elementalist keeper
+  "elemental"
+  {
+  
+    { Furniture {{ "BOOKCASE_GOLD" }   "GOLD" 15 }                 "Golden bookcase"   "Sorcery"
+        "Train your minions' magical powers here."             none {TechId "master sorcery"}}
+
+    { Furniture {{ "LABORATORY" } "STONE" 10 }                     "Cauldron"          "Sorcery"
+        "Produces magical potions."                            none {TechId "alchemy" }}
+  }
+
+  #Necromancer keeper
+  "necromancer"
+  {
+    { Furniture {{ "TRAINING_WOOD" } "WOOD" 12 }                   "Wooden dummy"      "Combat"
+        "Train your minions' melee skills here." "TRAINING_DUMMIES" {} true  TRAINING_ROOM}
+    { Furniture {{ "TRAINING_IRON" } "IRON" 12 }                   "Iron dummy"        "Combat"
+        "Train your minions' melee skills here."   none { TechId "iron working" } }
+	{ Furniture {{ "TRAINING_ADA" }  "ADA"  12 }                   "Adamantine dummy"  "Combat"
+        "Train your minions' melee skills here."   none { TechId "iron working" }}
+    { Furniture {{ "ARCHERY_RANGE" } "WOOD" 12 }                   "Archery target"    "Combat"
+        "Train your minions' archery skills here." none {} true  TRAINING_ROOM}
+	{ Furniture {{ "WORKSHOP" }   "WOOD" 15 }                      "Workshop"          "Crafting"
+        "Produces Wooden equipment and torches." "WORKSHOPS" {} true  BUILD_WORKSHOP}
+    { Furniture {{ "LABORATORY" } "STONE" 10 }                     "Cauldron"          "Crafting"
+        "Allows you to make potions to regrow lost limbs." none {TechId "regrow limbs" }}
+    { Furniture {{ "FORGE" } "IRON" 20 } "Forge"                                       "Crafting"
+        "Produces metal weapons and armor."    none { TechId "iron working" }}
+    { Furniture { types = { "BONUS_BLOOD_WELL" } cost = "GOLD" 500 limit = 1} "Well of blood" "Installations" ""  none   {DungeonLevel 5 TechId "regrow limbs" } }
+    { Furniture { types = { "THRONE" } cost = "GOLD" 500 limit = 4} "Throne" "Installations" ""  none   {DungeonLevel 10} }
+  }
+
+  #Just archery
+  "archery"
+  {
+    { Furniture {{ "ARCHERY_RANGE" } "WOOD" 12 }                   "Archery target"    "Training room"
+        "Train your minions' archery skills here." none { TechId "archery" }}
+  }
+  #Goblin Keeper
+  "goblin_magical_installations"
+  {
+    { Furniture {{ "EYEBALL" }              "WOOD"   30 }                   "Eyeball"           "Installations"
+        "Makes the area around it visible."}
+
+    { Furniture { types = { "MINION_STATUE" } cost = "GOLD" 50 limit = 50 } "Golden statue"     "Installations" ""}
+    { Furniture {{ "STONE_MINION_STATUE" }  "STONE"  250 }                  "Stone statue"      "Installations" ""}
+    { Furniture {{ "PORTAL" }               "STONE"  60 }                   "Portal"            "Installations"
+        "Opens a connection if another portal is present."}
+    { Furniture {{ "HEALING_TOTEM" }        "GOLD"   60 }                   "Healing totem"     "Installations"
+        "Heals minions close by."}
+#    { Furniture {{ "BLEEDING_TOTEM" }       "GOLD"   60 }                   "Bleeding totem"     "Installations"
+#        "Causes enemies close by to bleed."}
+  }
+  
+  "pigsty" modify
+  {
+    { Furniture {{ "CHICKEN_COOP" }     "WOOD" 5 }                 "Chicken coop"      "Farming"
+        "" none {TechId "chicken breeding"}}
+    { Furniture {{ "PIGSTY" }     "WOOD" 5 }                       "Pigsty"            "Farming"
+        "" none {TechId "pig breeding"}}
+    { Furniture {{ "COW_PEN" }     "WOOD" 5 }                      "Cow pen"           "Farming"
+        "" none {TechId "cow breeding"}}
+    { Furniture {{ "ANIMAL_FENCE" } "WOOD" 1 }                     "Animal fence"      "Farming"
+        "Require to keep farm animals from escaping." }
+    { Furniture {{ "BARN" }    "CROPS" 20 }                        "Barn"              "Farming"
+        "Allocate crops to increase food supply." none }
+    { Furniture {{ "CROPS" }  "CROPS" 2 }                          "Field"             "Farming"
+        "Plant crops to make a crop field." none }
+    { DestroyLayers {FLOOR}                                        "Remove field"      "Farming" }
+    { Furniture {{ "BEAST_CAGE" }  "WOOD" 5 }                      "Livestock Cage"    "Farming"
+        "Give your goats, horses and donkeys a place to live." none }
+  }
+
+  "pigsty_no_crops"
+  {
+    { Furniture {{ "CHICKEN_COOP" }     "WOOD" 5 }                 "Chicken coop"      "Farming"
+        "" none {TechId "chicken breeding"}}
+    { Furniture {{ "PIGSTY" }     "WOOD" 5 }                       "Pigsty"            "Farming"
+        "" none {TechId "pig breeding"}}
+    { Furniture {{ "COW_PEN" }     "WOOD" 5 }                      "Cow pen"           "Farming"
+        "" none {TechId "cow breeding"}}
+    { Furniture {{ "ANIMAL_FENCE" } "WOOD" 1 }                     "Animal fence"      "Farming"
+        "Require to keep farm animals from escaping." }
+  }

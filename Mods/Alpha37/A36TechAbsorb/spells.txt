@@ -1,0 +1,232 @@
+"animal form"
+  {
+    symbol = "⇝"
+    effect = Name "animal form" Description "Change into a lower animal"
+	     Chain {
+		     Heal { SPIRIT }
+			 FirstSuccessful {
+				  Chance 0.3 Polymorph "KANGAROO" 20
+				  Chance 0.5 Polymorph "WOLF" 20
+				  Polymorph "POLAR_BEAR" 20
+			}
+	    }
+  message = "" ""
+  cooldown = 1
+}
+
+"impart animal form"
+  {
+    symbol = "⇝"
+    range = 1
+    effect = Name "impart animal form" Description "Give your animal form to a different creature (You lose it)."
+	Chain {
+		Area 1 RemoveAbility "animal form"
+		Area 1 RemoveAbility "impart animal form"
+		GrantAbility "animal form"
+		GrantAbility "impart animal form"
+	}
+    message = "" ""
+    cooldown = 30
+}
+  
+"chaos form"
+{
+  symbol = "⇝"
+  effect = Name "chaos form" Description "Change into a random monster" Chain { Heal { SPIRIT } Polymorph none 20 }
+  message = "" ""
+  cooldown = 1
+}  
+
+"impart chaos form"
+  {
+    symbol = "⇝"
+	range = 1
+    effect = Name "impart chaos form" Description "Give your chaos form to a different creature (You lose it)."
+	Chain {
+		Area 1 RemoveAbility "chaos form"
+		Area 1 RemoveAbility "impart chaos form"
+		GrantAbility "chaos form"
+		GrantAbility "impart chaos form"
+    }
+    message = "" ""
+    cooldown = 1
+}
+
+"monster form"
+  {
+    symbol = "⇝"
+    effect = Name "monster form" Description "Change into a tough monster" Chain { Heal { SPIRIT }
+        FirstSuccessful {
+          Chance 0.3 Polymorph "KNIGHT" 20
+          Chance 0.5 Polymorph "MINOTAUR" 20
+          Polymorph "CYCLOPS" 20
+        }
+	}
+	cooldown = 1
+    message = "" ""
+  }
+
+"impart monster form"
+  {
+    range = 1
+    symbol = "⇝"
+    effect = Name "impart monster form" Description "Give your monster form to a different creature (You lose it)."
+	Chain {
+		Area 1 RemoveAbility "monster form"
+		Area 1 RemoveAbility "impart monster form"
+		GrantAbility "monster form"
+		GrantAbility "impart monster form"
+    }
+    message = "" ""
+    cooldown = 30
+}
+
+"absorb life technology"
+  {
+    symbol = "[]"
+	cooldown = 300
+    effect = Name "Absorb life" Description "Absorb life technologies from your defeated enemies"
+	         Chain {
+    				    Filter Flag "living"                AddTechnology "living"
+	    				Filter Flag "storage"				AddTechnology "storage"
+		    			Filter Flag "prisons"				AddTechnology "prisons"
+			    		Filter Flag "zones"					AddTechnology "zones"
+						Filter Not Flag "living"
+						    Filter Not Flag "storage"
+						        Filter Not Flag "prisons"
+						           Filter Not Flag "zones"
+    						           Filter Not Flag "advanced sorcery"
+	    					               CreatureMessage { "need dead creatures to feed off." "needs more dead creatures." }
+					}
+    sound = SPELL_BLAST
+  }
+    
+"abosrb magic"
+  {
+    symbol = "[]"
+	cooldown = 300
+    effect = Name "Absorb alchemy" Description "Absorb alchemy technologies from your defeated enemies"
+	         Chain {
+	   		    		Filter Flag "advanced sorcery"		AddTechnology "advanced sorcery"
+		    			Filter Flag "master sorcery"		AddTechnology "master sorcery"
+						Filter Flag "alchemy"				AddTechnology "alchemy"
+						Filter Flag "alchemical conversion"	AddTechnology "alchemical conversion"
+	    				Filter Flag "incendiary alchemy"	AddTechnology "incendiary alchemy"
+		    			Filter Flag "advanced alchemy"		AddTechnology "advanced alchemy"
+					}					
+    sound = SPELL_BLAST
+  }
+
+"abosrb dark magic"
+  {
+    symbol = "[]"
+	cooldown = 300
+    effect = Name "Absorb dark magic" Description "Absorb dark magic technologies from your defeated enemies"
+	         Chain {
+						Filter Flag "demonology"			AddTechnology "demonology"
+						Filter Flag "necromancy"			AddTechnology "necromancy"
+						Filter Flag "advanced necromancy"	AddTechnology "advanced necromancy"
+						Filter Flag "master necromancy"		AddTechnology "master necromancy"
+					}					
+    sound = SPELL_BLAST
+  }
+
+"abosrb liquid powers"
+  {
+    symbol = "[]"
+	cooldown = 300
+    effect = Name "Absorb liquid powers" Description "Absorb liquid technologies from your defeated enemies"
+	         Chain {
+						Filter Flag "distillation"			AddTechnology "distillation"
+						Filter Flag "embalming"				AddTechnology "embalming"
+						Filter Flag "advanced embalming"	AddTechnology "advanced embalming"
+						Filter Flag "master embalming"		AddTechnology "master embalming"
+					}					
+    sound = SPELL_BLAST
+  }
+
+"abosrb automoton powers"
+  {
+    symbol = "[]"
+	cooldown = 300
+    effect = Name "Abosrb automoton powers" Description "Abosrb automoton technologies from your defeated enemies"
+	         Chain {  
+						Filter Flag "automatons"			AddTechnology "automatons"
+						Filter Flag "advanced automatons"	AddTechnology "advanced automatons"
+						Filter Flag "automaton brains"		AddTechnology "automaton brains"
+						Filter Flag "aerodynamics"			AddTechnology "aerodynamics"
+					}					
+    sound = SPELL_BLAST
+  }
+
+"abosrb beast skills"
+  {
+    symbol = "[]"
+	cooldown = 300
+    effect = Name "Abosrb beast skills" Description "Abosrb beast technologies from your defeated enemies"
+	         Chain {  
+						Filter Flag "chicken breeding"		AddTechnology "chicken breeding"
+						Filter Flag "pig breeding"			AddTechnology "pig breeding"
+						Filter Flag "cow breeding"			AddTechnology "cow breeding"
+						Filter Flag "beast mutation"		AddTechnology "beast mutation"
+					}					
+    sound = SPELL_BLAST
+  }
+
+"abosrb human skills"
+  {
+    symbol = "[]"
+	cooldown = 300
+    effect = Name "Abosrb human skills" Description "Abosrb human technologies from your defeated enemies"
+	         Chain {  
+				    	Filter Flag "crafting"				AddTechnology "crafting"
+					    Filter Flag "installations"			AddTechnology "installations"
+						Filter Flag "chivalry"				AddTechnology "chivalry"
+						Filter Flag "humanoid mutation"		AddTechnology "humanoid mutation"
+					}					
+    sound = SPELL_BLAST
+  }
+
+"abosrb weapons skills"
+  {
+    symbol = "[]"
+	cooldown = 300
+    effect = Name "Abosrb weapon skills" Description "Abosrb weapon technologies from your defeated enemies"
+	         Chain {  
+						Filter Flag "two-handed weapons"	AddTechnology "two-handed weapons"
+						Filter Flag "archery"				AddTechnology "archery"
+						Filter Flag "magical weapons"		AddTechnology "magical weapons"
+						Filter Flag "iron working"			AddTechnology "iron working"
+					}					
+    sound = SPELL_BLAST
+  }
+
+"abosrb lore"
+  {
+    symbol = "[]"
+	cooldown = 300
+    effect = Name "Abosrb lore" Description "Abosrb lore from your defeated enemies"
+	         Chain {  
+						Filter Flag "goblin_lore"			AddTechnology "goblin_lore"
+						Filter Flag "worship"				AddTechnology "worship"
+					}					
+    sound = SPELL_BLAST
+  }
+
+"abosrb crafts"
+  {
+    symbol = "[]"
+	cooldown = 300
+    effect = Name "Abosrb crafts" Description "Abosrb crafts from your defeated enemies"
+	         Chain {  
+						Filter Flag "traps"					AddTechnology "traps"
+						Filter Flag "advanced traps"		AddTechnology "advanced traps"
+						Filter Flag "jewellery"				AddTechnology "jewellery"
+					}					
+    sound = SPELL_BLAST
+  }
+
+
+
+
+

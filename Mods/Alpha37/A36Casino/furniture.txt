@@ -1,0 +1,26 @@
+Def SPELL(spell, color, effects)
+{
+  viewId = { "dice" ColorId color }
+  name = "dice" 
+  layer = CEILING
+  constructMessage = none
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  tickType = Effect { effects RemoveFurniture spell  PlaceFurniture "TREASURE_CHEST"}
+}
+End
+
+"1_GOLD_DICE" SPELL ("1_GOLD_DICE", GREEN, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {2} })
+"2_GOLD_DICE" SPELL ("2_GOLD_DICE", GREEN, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {4} })
+"5_GOLD_DICE" SPELL ("5_GOLD_DICE", GREEN, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {10} })
+"10_GOLD_DICE" SPELL ("10_GOLD_DICE", YELLOW, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {20} })
+"20_GOLD_DICE" SPELL ("20_GOLD_DICE", YELLOW, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {40} })
+"50_GOLD_DICE" SPELL ("50_GOLD_DICE", YELLOW, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {100} })
+"100_GOLD_DICE" SPELL ("100_GOLD_DICE", BLUE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {200} })
+"200_GOLD_DICE" SPELL ("200_GOLD_DICE", BLUE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {400} })
+"500_GOLD_DICE" SPELL ("500_GOLD_DICE", BLUE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {1000} })
+"1000_GOLD_DICE" SPELL ("1000_GOLD_DICE", PURPLE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {2000} })
+"2000_GOLD_DICE" SPELL ("2000_GOLD_DICE", WHITE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {4000} })
+"5000_GOLD_DICE" SPELL ("5000_GOLD_DICE", RED, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {10000} })
+
+

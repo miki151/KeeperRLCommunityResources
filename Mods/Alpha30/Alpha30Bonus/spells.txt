@@ -1,0 +1,1439 @@
+"rapid magic missile"
+  {
+    symbol = "⥇"
+    effect = Name "rapid magic missile" Damage SPELL_DAMAGE SPELL
+    range = 4
+    cooldown = 2
+    sound = SPELL_BLAST
+  }
+"advanced rapid magic missile"
+  {
+    upgrade = "rapid magic missile"
+    symbol = "⥇"
+    effect = Name "advanced rapid magic missile" Damage SPELL_DAMAGE SPELL
+    range = 6
+    cooldown = 2
+    sound = SPELL_BLAST
+  }
+"expert rapid magic missile"
+  {
+    upgrade = "advanced rapid magic missile"
+    symbol = "⥇"
+    effect = Name "expert rapid magic missile" Damage SPELL_DAMAGE SPELL
+    range = 8
+    cooldown = 1
+    sound = SPELL_BLAST
+  }
+"magic blast"
+  {
+	upgrade = "directed blast"
+    symbol = "💨"
+    effect = Name "magic blast" Chain { Damage SPELL_DAMAGE SPELL Blast }
+    range = 6
+    endOnly = true
+    cooldown = 20
+    sound = SPELL_BLAST
+  }
+"advanced magic blast"
+  {
+    upgrade = "magic blast"
+    symbol = "💨"
+    effect = Name "advanced magic blast" Chain { Damage SPELL_DAMAGE SPELL Blast }
+    range = 8
+    endOnly = true
+    cooldown = 16
+    sound = SPELL_BLAST
+  }
+"expert magic blast"
+  {
+    upgrade = "advanced magic blast"
+    symbol = "💨"
+    effect = Name "expert magic blast" Chain { Damage SPELL_DAMAGE SPELL Blast }
+    range = 10
+    endOnly = true
+    cooldown = 12
+    sound = SPELL_BLAST
+  }
+"battle cry"
+  {
+    symbol = "💪"
+    effect = Name "battle cry" Lasting RAGE
+    cooldown = 90
+    sound = SPELL_STR_BONUS
+  }
+"summon contraption"
+  {
+   symbol = "👾"
+   effect = Name "summon contraption" Summon "GIANT_ROBOT" { 1 2 } 100
+   cooldown = 90
+   sound = SPELL_SUMMON_SPIRIT
+  }
+"summon automaton"
+  {
+   symbol = "👾"
+   effect = Name "summon automaton" Summon "AUTOMATON" { 1 2 } 100
+   cooldown = 90
+   sound = SPELL_SUMMON_SPIRIT
+  }
+"summon automaton army"
+  {
+   symbol = "👾!"
+   effect = Name "summon automaton army" Summon "AUTOMATON" { 14 18 } 100
+   cooldown = 3000
+   sound = SPELL_SUMMON_SPIRIT
+  }
+"repair"
+  {
+    symbol = "🔧"
+    effect = Name "repair" Chain { RegrowBodyPart 1 Lasting SPEED }
+    range = 1
+    targetSelf = true
+    cooldown = 30
+    sound = SPELL_STR_BONUS
+  }
+"haste other"
+  {
+    symbol = "🏃"
+    effect = Name "haste other" Lasting SPEED
+    targetSelf = false
+    range = 3
+    cooldown = 110
+    sound = SPELL_SPEED_SELF
+  }
+"area haste"
+  {
+    upgrade = "haste other"
+    symbol = "🏃"
+    effect = Name "area haste" Chain { Message "Time is altered." Area 2 Filter Not Enemy Lasting SPEED }
+    cooldown = 110
+    sound = SPELL_SPEED_SELF
+  }
+"defend other"
+  {
+    symbol = "🛡"
+    effect = Name "defend other" Lasting DEF_BONUS
+    targetSelf = false
+    range = 3
+    cooldown = 70
+    sound = SPELL_DEX_BONUS
+  }
+"area defense bonus"
+  {
+    upgrade = "defend other"
+    symbol = "🛡"
+    effect = Name "area defense bonus" Chain { Message "Spirit of Endurance invoked." Area 2 Filter Not Enemy Lasting DEF_BONUS }
+    cooldown = 70
+    sound = SPELL_DEX_BONUS
+  }
+"block"
+  {
+    symbol = "🛡"
+    effect = Name "block" Lasting DEF_BONUS
+    cooldown = 70
+    sound = SPELL_DEX_BONUS
+  }
+"friendly damage bonus"
+  {
+    symbol = "💪"
+    effect = Name "friendly damage bonus" Lasting DAM_BONUS
+    targetSelf = false
+    range = 3
+    cooldown = 70
+    sound = SPELL_STR_BONUS
+  }
+"area damage bonus"
+  {
+    symbol = "💪"
+    effect = Name "area damage bonus" Chain { Message "Powers of violence called." Area 2 Filter Not Enemy Lasting DAM_BONUS }
+    cooldown = 70
+    sound = SPELL_STR_BONUS
+  }
+"healing totem"
+  {
+    symbol = "¬+¬"
+    effect = Name "healing totem" Summon "HEALING_TOTEM" { 1 } 100
+    cooldown = 250
+    sound = SPELL_SUMMON_SPIRIT
+  }
+"buff totem"
+  {
+    symbol = "¬💪¬"
+    effect = Name "buff totem" Summon "BUFF_TOTEM" { 1 2 } 100
+    cooldown = 250
+    sound = SPELL_SUMMON_SPIRIT
+  }
+"magma bolt"
+  {
+   symbol = "{🔥}"
+   effect = Name "magma bolt" Chain { Fire Blast }
+   fx = FIREBALL
+   range = 6
+   cooldown = 8
+   sound = SPELL_FIRE_SPHERE_PET
+  }
+"advanced firewall"
+  {
+    upgrade = "firewall"
+    symbol = "𝍔"
+    effect = Name "advanced firewall"  CustomArea PlaceFurniture "FIRE_WALL" { 0 -3 0 -2 0 -1 0 0 0 1 0 2 0 3 1 -2 1 -1 1 0 1 1 1 2 -1 -2 -1 -1 -1 0 -1 1 -1 2 }
+    endOnly = true
+    range = 4
+    cooldown = 30
+    sound = SPELL_BLAST
+  }
+"expert firewall"
+  {
+    upgrade = "advanced firewall"
+    symbol = "𝍔"
+    effect = Name "expert firewall"  CustomArea PlaceFurniture "FIRE_WALL" { 0 -4 0 -3 0 -2 0 -1 0 0 0 1 0 2 0 3 0 4 1 -3 1 -2 1 -1 1 0 1 1 1 2 1 3 -1 -3 -1 -2 -1 -1 -1 0 -1 1 -1 2 -1 3 }
+    endOnly = true
+    range = 6
+    cooldown = 30
+    sound = SPELL_BLAST
+  }
+"advanced fireball"
+  {
+    upgrade = "fireball"
+    symbol = "🔥"
+    effect = Name "advanced fireball" Fire
+    fx = FIREBALL
+    range = 8
+    cooldown = 20
+    sound = SPELL_FIRE_SPHERE_PET
+  }
+"expert fireball"
+  {
+    upgrade = "advanced fireball"
+    symbol = "🔥"
+    effect = Name "expert fireball" Fire
+    fx = FIREBALL
+    range = 12
+    cooldown = 10
+    sound = SPELL_FIRE_SPHERE_PET
+  }
+"fireblast"
+  {
+    symbol = "🔥💥"
+    effect = Name "fireblast" Chain { Fire CircularBlast Blast }
+    fx = FIREBALL
+    range = 8
+    cooldown = 30
+    sound = SPELL_BLAST
+  }
+"advanced fireblast"
+  {
+    upgrade = "fireblast"
+    symbol = "🔥💥"
+    effect = Name "advanced fireblast" Chain { Fire CircularBlast Blast }
+    fx = FIREBALL
+    range = 10
+    cooldown = 25
+    sound = SPELL_BLAST
+  }
+"expert fireblast"
+  {
+    upgrade = "advanced fireblast"
+    symbol = "🔥💥"
+    effect = Name "expert fireblast" Chain { Fire CircularBlast Blast }
+    fx = FIREBALL
+    range = 12
+    cooldown = 20
+    sound = SPELL_BLAST
+  }
+"explosion"
+  {
+    symbol = "🔥💣"
+    effect = Name "explosion" Chain { Area 12 Filter Enemy Fire Area 12 Filter Enemy Blast Area 12 Filter Enemy Damage SPELL_DAMAGE SPELL 
+    CustomArea PlaceFurniture "FIRE_WALL" { 0 -12 0 -10 0 -8 0 -6 0 -4 0 -2 0 2 0 4 0 6 0 8 0 10 0 12 2 -10 2 -8 2 -6 2 -4 2 -2 2 0 2 2 2 4 2 6 2 8 2 10 4 8 4 6 4 4 4 2 4 0 4 -2 4 -4 4 -6 4 -8 
+    6 6 6 4 6 2 6 0 6 -2 6 -4 6 -6 8 4 8 2 8 0 8 -2 8 -4 10 2 10 0 10 -2 12 0 -2 -10 -2 -8 -2 -6 -2 -4 -2 -2 -2 0 -2 2 -2 4 -2 6 -2 8 -2 10 -4 -8 -4 -6 -4 -4 -4 -2 -4 0 -4 2 -4 2 -4 4 -4 6 -4 8
+    -6 6 -6 4 -6 2 -6 0 -6 -2 -6 -4 -6 -6 -8 4 -8 2 -8 0 -8 2 -8 4 -10 2 -10 0 -10 -2 -12 0} }
+    fx = FIREBALL
+    cooldown = 1500
+    sound = SPELL_BLAST
+  }
+"stone golem"
+  {
+   symbol = "👤"
+   effect = Name "stone golem" Summon "STONE_GOLEM" { 1 2 } 100
+   cooldown = 100
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"stone golems"
+ {
+   upgrade = "stone golem"
+   symbol = "👤"
+   effect = Name "stone golems" Summon "STONE_GOLEM" { 4 7 } 100
+   cooldown = 100
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"iron golem"
+ {
+   symbol = "👤"
+   effect = Name "iron golem" Summon "IRON_GOLEM" { 1 2 } 100
+   cooldown = 100
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"iron golems"
+ {
+   upgrade = "iron golem"
+   symbol = "👤"
+   effect = Name "iron golems" Summon "IRON_GOLEM" { 4 7 } 100
+   cooldown = 100
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"adamantine golem"
+ {
+   symbol = "o"
+   effect = Name "adamantine golem" Summon "ADA_GOLEM" { 1 2 } 100
+   cooldown = 100
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"adamantine golems"
+{
+   upgrade = "adamantine golem"
+   symbol = "oo"
+   effect = Name "adamantine golems" Summon "ADA_GOLEM" { 4 7 } 100
+   cooldown = 100
+   sound = SPELL_SUMMON_SPIRIT
+ }
+ "snakes"
+ {
+   symbol = "🐍🐍"
+   effect = Name "snakes" Summon "SNAKE" { 7 8 } 100
+   cooldown = 100
+   sound = SPELL_SUMMON_SPIRIT 
+ }
+"spiders"
+ {
+   symbol = "🕷"
+   effect = Name "spiders" Summon "SPIDER" { 2 3 } 100
+   cooldown = 100
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"poison spores"
+ {
+   symbol = "☠"
+   range = 5
+   effect = Name "poison spores" Lasting POISON
+   cooldown = 20
+   sound = SPELL_AIR_BLAST
+ }
+"blood curse"
+ {
+   symbol = "☛"
+   range = 10
+   effect = Name "blood curse" Lasting BLEEDING
+   cooldown = 125
+   sound = SPELL_BLAST
+ }  
+"freezing vines"
+ {
+   symbol = "🙙"
+   range = 10
+   effect = Name "freezing vines" Chain { Message "Freezing vines burst from the ground."  Lasting FROZEN }
+   cooldown = 70
+   sound = SPELL_STR_BONUS
+ }
+"resist magic"
+ {
+   symbol = "O"
+   effect = Name "resist magic" Lasting MAGIC_RESISTANCE
+   cooldown = 80
+   sound = SPELL_DEX_BONUS
+ }
+"light"
+ {
+   symbol = "🕯"
+   effect = Name "light" Lasting LIGHT_SOURCE
+   cooldown = 80
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"darkness"
+ {
+   symbol = "☁"
+   effect = Name "darkness" Lasting DARKNESS_SOURCE
+   cooldown = 14
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"wolves"
+ {
+   symbol = "🐺"
+   effect = Name "wolves" Summon "WOLF" { 5 6 } 100
+   cooldown = 150
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"bear"
+ {
+   symbol = "🐻"
+   effect = Name "bear" Summon "CAVE_BEAR" { 3 4 } 100
+   cooldown = 80
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"boar"
+ {
+   symbol = "^"
+   effect = Name "boar" Summon "BOAR" { 3 4 } 100
+   cooldown = 50
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"raven"
+ {
+   symbol = "🐦"
+   effect = Name "raven" Summon "RAVEN" { 1 2 } 100
+   cooldown = 20
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"levitate"
+ {
+   symbol = "^"
+   effect = Name "levitate" Lasting FLYING
+   cooldown = 175
+   sound = SPELL_SPEED_SELF
+ }
+"fire shield"
+ {
+   symbol = "❂"
+   effect = Name "fire shield" Lasting FIRE_RESISTANT
+   cooldown = 100
+   sound = SPELL_INVISIBILITY
+ }
+"area fire shield"
+ {
+   upgrade = "fire shield"
+   symbol = "❂"
+   effect = Name "area fire shield" Chain { Message "Fire charm summoned." Area 3 Filter Not Enemy Lasting FIRE_RESISTANT }
+   cooldown = 80
+   sound = SPELL_INVISIBILITY
+ }
+"telepathy"
+ {
+   symbol = "💭"
+   effect = Name "telepathy" Lasting TELEPATHY
+   cooldown = 175
+   sound = SPELL_INVISIBILITY
+ }
+"elf vision"
+ {
+   symbol = "👁"
+   effect = Name "elf vision" Lasting ELF_VISION
+   cooldown = 90
+   sound = SPELL_SPEED_SELF
+ }
+"weapon dodge"
+ {
+   symbol = "⇠⇢"
+   effect = Name "weapon dodge" Lasting MELEE_RESISTANCE
+   cooldown = 90
+   sound = SPELL_DEX_BONUS
+ }
+"arrow shield"
+ {
+   symbol = "➵◌"
+   effect = Name "arrow shield" Lasting RANGED_RESISTANCE
+   cooldown = 50
+   sound = SPELL_DEX_BONUS
+ }
+"cause blindness" 
+ {
+   symbol = "👀"
+   range = 5
+   effect = Name "cause blindness" Lasting BLIND
+   cooldown = 100
+   sound = SPELL_DECEPTION
+ }
+"cripple"
+ {
+   symbol = "X"
+   range = 5
+   effect = Name "cripple" Lasting COLLAPSED
+   cooldown = 120
+   sound = SPELL_BLAST
+ }
+"mind bolt" 
+ {
+   symbol = "⇝"
+   range = 1
+   effect = Name "mind bolt" Lasting INSANITY
+   cooldown = 180
+   sound = SPELL_BLAST
+ }
+"advanced mind bolt"
+ {
+   upgrade = "mind bolt"
+   symbol = "⇝"
+   range = 6
+   effect = Name "advanced mind bolt" Lasting INSANITY
+   cooldown = 120
+   sound = SPELL_BLAST
+ }
+"arrow attraction"
+ {
+   symbol = "🚶↩"
+   range = 5
+   effect = Name "arrow attraction" Lasting RANGED_VULNERABILITY
+   cooldown = 60
+   sound = SPELL_BLAST
+ }
+"mana curse"
+ {
+   symbol = "☞"
+   range = 5
+   effect = Name "mana curse" Lasting MAGIC_VULNERABILITY
+   cooldown = 60
+   sound = SPELL_BLAST
+ }
+"regrow body part"
+ {
+   symbol = "⨢"
+   effect = Name "regrow body part" RegrowBodyPart 1
+   cooldown = 3000
+   sound = SPELL_BLAST
+ }
+ "summon air elementals"
+ {
+   symbol = "||"
+   effect = Name "summon air elementals" Summon "AIR_ELEMENTAL" { 3 4 } 100
+   cooldown = 200
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"lesser eye servant"
+ {
+   symbol = "👁️"
+   effect = Name "lesser eye servant" Summon "LESSER_EYE_SERVANT" { 1 2 } 100
+   cooldown = 80
+   sound = SPELL_SUMMON_SPIRIT 
+ }
+"summon ocean portal"
+ {
+   symbol = "@"
+   effect = Name "summon ocean portal" Summon "OCEAN_PORTAL" { 1 2 } 100
+   cooldown = 200
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"adoxie eye"
+ {
+   symbol =  "(.)"
+   effect = Name "adoxie eye" Summon "ADOXIE_EYE" { 1 2 } 100
+   cooldown = 50
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"axedio right hand"
+{
+  symbol = "-."
+  effect = Name "axedio right hand" Summon "AXEDIO_HAND_RIGHT" { 1 } 50
+  cooldown = 50
+  sound = SPELL_SUMMON_SPIRIT
+}
+"axedio left hand"
+{
+  symbol = ".-"
+  effect = Name "axedio left hand" Summon "AXEDIO_HAND_LEFT" { 1 } 50
+  cooldown = 50
+  sound = SPELL_SUMMON_SPIRIT
+}
+"axedio left foot"
+{
+  symbol = "_|"
+  effect = Name "axedio left foot" Summon "AXEDIO_FOOT_LEFT" { 1 } 50
+  cooldown = 50
+  sound = SPELL_SUMMON_SPIRIT
+}
+"axedio right foot"
+{
+  symbol = "|_"
+  effect = Name "axedio right foot" Summon "AXEDIO_FOOT_RIGHT" { 1 } 50
+  cooldown = 50
+  sound = SPELL_SUMMON_SPIRIT
+}
+"eye servant"
+ {
+   symbol = "👁️"
+   effect = Name "eye servant" Summon "EYE_SERVANT" { 1 2 } 100
+   cooldown = 80
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon skeletons"
+ {
+   symbol = "☠"
+   effect = Name "summon skeletons" Summon "SKELETON" { 1 5 } 100
+   cooldown = 70
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon skeleton warriors"
+ {
+   upgrade = "summon skeletons"
+   symbol = "☠"
+   effect = Name "summon skeleton warriors" Summon "SKELETON_WARRIOR" { 1 5 } 100
+   cooldown = 70
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon skeleton mages"
+ {
+   symbol = "☠"
+   effect = Name "summon skeleton mages" Summon "SKELETON_MAGE" { 1 3 } 100
+   cooldown = 70
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"disenchantment bolt" 
+ {
+   symbol = "⇝"
+   range = 10
+   effect = Name "disenchantment bolt" Enhance ARMOR -1
+   cooldown = 180
+   sound = SPELL_BLAST
+}
+"summon giant chickens"
+ {
+   symbol = "🐔"
+   effect = Name "summon giant chickens" Summon "GIANT_CHICKEN" { 4 7 } 100
+   cooldown = 40
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon chickens"
+ {
+   symbol = ".."
+   effect = Name "summon chickens" Summon "BATTLE_CHICKEN" { 4 7 } 100
+   cooldown = 20
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon goblin kaboomers"
+ {
+   symbol = "👺"
+   effect = Name "summon goblin kaboomers" Summon "GOBLIN_KABOOMER" { 3 5 } 100
+   cooldown = 50
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon goblin priests"
+ {
+   symbol = "✝"
+   effect = Name "summon goblin priests" Summon "GOBLIN_PRIEST" { 4 6 } 100
+   cooldown = 90
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon goblin warrior horde"
+ {
+   symbol = "⚔"
+   effect = Name "summon goblin warrior horde" Summon "GOBLIN_WARRIOR" { 8 12 } 100
+   cooldown = 120
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon goblin horde"
+ { 
+   symbol = "👺"
+   effect = Name "summon goblin horde" Summon "GOBLIN" { 12 16 } 100
+   cooldown = 50
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon goblin archers"
+ {
+   symbol = "🏹"
+   effect = Name "summon goblin archers" Summon "GOBLIN_ARCHER" { 5 7 } 100
+   cooldown = 90
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon goblin wizards"
+ {
+   symbol = "🧙"
+   effect = Name "summon goblin wizards" Summon "GOBLIN_WIZARD" { 4 5 } 100
+   cooldown = 120
+   sound = SPELL_SUMMON_SPIRIT
+ }
+  "goblin damage buff"
+ {
+    symbol = "💪"
+    effect = Name "goblin damage buff" Chain { Message "Goblin violence cast." Area 2 Filter Not Enemy Lasting DAM_BONUS }
+    cooldown = 10
+    sound = SPELL_STR_BONUS
+ }
+  "goblin defense buff"
+ {
+    symbol = "🛡"
+    effect = Name "goblin defense buff" Chain { Message "Goblin skin charm." Area 2 Filter Not Enemy Lasting DEF_BONUS }
+    cooldown = 10
+    sound = SPELL_DEX_BONUS
+ }
+"summon gold golems"
+ {
+   symbol = "💰"
+   effect = Name "summon gold golems" Summon "GOLD_GOLEM" { 2 4 } 100
+   cooldown = 120
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"summon goblin guards"
+ {
+   symbol = "⚔"
+   effect = Name "summon goblin guards" Summon "ELITE_GOBLIN_GUARD" { 5 7 } 100
+   cooldown = 120
+   sound = SPELL_SUMMON_SPIRIT
+ }
+  "fae time twisting"
+ {
+    symbol = "🏃"
+    effect = Name "fae time twisting" Chain { Message "Time is commanded." Area 6 Filter Not Enemy Lasting SPEED Area 6 Filter Enemy Lasting SLOWED }
+    cooldown = 80
+    sound = SPELL_SPEED_SELF
+  }
+  "fae melee boost"
+  {
+    symbol = "🛡"
+    effect = Name "fae melee boost" Chain { Message "Fae Spirit of Endurance invoked." Area 3 Filter Not Enemy Lasting DEF_BONUS Area 3 Filter Not Enemy Lasting DAM_BONUS }
+    cooldown = 30
+    sound = SPELL_DEX_BONUS
+  }
+  "fae illusion"
+  {
+    symbol = "🎭"
+    effect = Name "fae illusion" Chain { Message "Magic concealment." Area 3 Filter Not Enemy Lasting INVISIBLE Area 1 Filter Not Enemy Deception Summon "FAIRY_QUEEN_ILLUSION" { 1 2 } 100 }
+    cooldown = 30
+    sound = SPELL_TELEPORT
+  }
+  "fae escape"
+  {
+    symbol ="✈️"
+    effect = Name "fae escape" Chain { Message "Fae escape." Deception Summon "FAIRY_QUEEN_ILLUSION" { 1 2 } 100 Lasting INVISIBLE Escape }
+    cooldown = 30
+    sound = SPELL_TELEPORT
+  }
+  "fae teleport"
+  {
+    symbol = "🌀"
+    range = 12
+    effect = Name "fae teleport" Chain { Message "Magic is commanded." Teleport Deception Summon "FAIRY_QUEEN_ILLUSION" { 1 2 } 100 Lasting INVISIBLE }
+    cooldown = 30
+	endOnly = true
+    sound = SPELL_DECEPTION
+  }
+  "fae deception"
+  {
+    symbol = "🎭"
+    effect = Name "fae deception" Chain { Deception Summon "FAIRY_QUEEN_ILLUSION" { 1 2 } 100 }
+    cooldown = 5
+    sound = SPELL_INVISIBILITY
+  }
+"summon fae army"
+  {
+   symbol = "!!"
+   effect = Name "summon fae army" Chain { Summon "AIR_FAIRY" { 2 3 } 100 Summon "DARK_FAIRY" { 2 3 } 100 Summon "EARTH_FAIRY" { 2 3 } 100 Summon "ELECTRIC_FAIRY" { 2 3 } 100 Summon "LIGHT_FAIRY" { 2 3 } 100 Summon "MAGIC_FAIRY" { 2 3 } 100 Summon "NATURE_FAIRY" { 2 3 } 100 Summon "WATER_FAIRY" { 2 3 } 100 }
+   cooldown = 200
+   sound = SPELL_SUMMON_SPIRIT
+  }
+"summon fae clone"
+  {
+   symbol = "🎭"
+   effect = Name "summon fae clone" Summon "FAIRY_QUEEN_ILLUSION_2" { 1 } 40
+   cooldown = 30
+   sound = SPELL_SUMMON_SPIRIT
+  }
+  "spin web"
+  {
+    symbol = "*"
+    effect = Name "spin web" PlaceFurniture "KEEPER_SPIDER_WEB"
+    cooldown = 0
+  }
+  "dig pit"
+  {
+    symbol = "O"
+    effect = Name "dig pit" PlaceFurniture "KEEPER_SPIDER_PIT"
+    cooldown = 0
+  }
+  "mud wall"
+  {
+    symbol = "="
+    effect = Name "mud wall" PlaceFurniture "KEEPER_SPIDER_MUD_WALL"
+    cooldown = 0
+  }
+  "hatch eggs"
+  {
+    symbol = "::"
+    effect = Name "hatch eggs" Chain {
+		Summon "SPIDER" {3} 100
+		Summon "GREEN_SPIDER" {1} 100
+		Summon "RED_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+  "breed dark spawn"
+  {
+    upgrade = "hatch eggs"
+    symbol = ";;"
+    effect = Name "breed dark spawn" Chain {
+		Summon "SPIDER" {3} 100
+		Summon "GREEN_SPIDER" {1} 100
+		Summon "RED_SPIDER" {1} 100
+		Summon "BLUE_SPIDER" {1} 100
+		Summon "YELLOW_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+  "breed horrors"
+  {
+    upgrade = "breed dark spawn"
+    symbol = ",,"
+    effect = Name "breed horrors" Chain {
+		Summon "SPIDER" {1} 100
+		Summon "GREEN_SPIDER" {1} 100
+		Summon "RED_SPIDER" {1} 100
+		Summon "BLUE_SPIDER" {1} 100
+		Summon "YELLOW_SPIDER" {1} 100
+		Summon "PINK_SPIDER" {1} 100
+		Summon "LIGHT_BLUE_SPIDER" {1} 100
+		Summon "LIGHT_RED_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+  "breed hell"
+  {
+    upgrade = "breed horrors"    
+    symbol = "**"
+    effect = Name "breed hell" Chain {
+		Summon "SPIDER" {1} 100
+		Summon "GREEN_SPIDER" {1} 100
+		Summon "RED_SPIDER" {1} 100
+		Summon "BLUE_SPIDER" {1} 100
+		Summon "YELLOW_SPIDER" {1} 100
+		Summon "PINK_SPIDER" {1} 100
+		Summon "LIGHT_BLUE_SPIDER" {1} 100
+		Summon "LIGHT_RED_SPIDER" {1} 100
+		Summon "LIGHT_BROWN_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+ "regeneration" 
+  {
+    symbol = "+"
+    effect = Name "regeneration" Lasting REGENERATION
+    cooldown = 50
+    sound = SPELL_DEX_BONUS
+  }
+"summon spirit"
+  {
+    symbol = "👾"
+    effect = Name "summon spirit" Summon "SPIRIT" { 3 5 } 100
+    cooldown = 100
+    sound = SPELL_FIRE_SPHERE_PET
+  }
+"summon rats"
+  {
+   symbol = "🐭"
+   effect = Name "summon rats" Chain { Summon "RAT" { 3 6 } 100 Summon "BLACK_RAT" { 0 2 } 100 }
+   cooldown = 40
+   sound = SPELL_SUMMON_SPIRIT
+  }
+"poison bolt" 
+ {
+   symbol = "☠"
+   range = 3
+   effect = Name "poison bolt" Lasting POISON
+   cooldown = 100
+   sound = SPELL_DECEPTION
+ }
+"flaming strike"
+  {
+    symbol = "🔥☽"
+    effect = Name "flaming strike" Chain { Fire Damage DAMAGE CUT }
+    fx = FIREBALL
+    range = 3
+    cooldown = 14
+    sound = SPELL_FIRE_SPHERE_PET
+  }
+"blowback"
+  {
+    symbol = "🔥💥"
+    effect = Name "blowback" Chain { Fire CircularBlast }
+    fx = FIREBALL
+    cooldown = 60
+    sound = SPELL_BLAST
+  }
+"knockdown"
+ {
+   symbol = "X"
+   range = 1
+   effect = Name "knockdown" Lasting COLLAPSED
+   cooldown = 30
+   sound = BLUNT_DAMAGE
+ }
+"rapid invisibility"
+ {
+   symbol = "🕵️"
+   effect = Name "rapid invisibility" Lasting INVISIBLE
+   cooldown = 60
+   sound = SPELL_INVISIBILITY
+ }
+"advanced rapid invisibility"
+ {
+   symbol = "🕵️"
+   upgrade = "rapid invisibility"  
+   effect = Name "advanced rapid invisibility" Lasting INVISIBLE
+   cooldown = 30
+   sound = SPELL_INVISIBILITY
+ }
+"spawn hell knights"
+  {
+   symbol = "🔥⚔"
+   effect = Name "spawn hell knights" Summon "HELL_KNIGHT" { 3 5 } 0
+   cooldown = 100
+   sound = SPELL_SUMMON_SPIRIT
+  }
+"spawn hell knight lord squad"
+  {
+   symbol = "🔥⚔"
+   effect = Name "spawn hell knight lord squad" Chain { Summon "HELL_KNIGHT_LORD" { 1 } 0 Summon "HELL_KNIGHT" { 5 7 } 0 }
+   cooldown = 400
+   sound = SPELL_SUMMON_SPIRIT
+  }
+"spawn hell knight brute squad"
+  {
+   symbol = "🔥⚔"
+   effect = Name "spawn hell knight brute squad" Chain { Summon "HELL_KNIGHT_BRUTE" { 1 3 } 0 Summon "HELL_KNIGHT" { 3 5 } 0 }
+   cooldown = 350
+   sound = SPELL_SUMMON_SPIRIT
+  }
+"spawn hell knight swordmaster squad"
+  {
+   symbol = "🔥⚔"
+   effect = Name "spawn hell knight swordmaster squad" Chain { Summon "HELL_KNIGHT_SWORDMASTER" { 1 3 } 0 Summon "HELL_KNIGHT" { 3 5 } 0 }
+   cooldown = 350
+   sound = SPELL_SUMMON_SPIRIT
+  }
+#------------------------------
+#Barbarian Skills Feb 2020
+#------------------------------
+"wild swing"
+  {
+    symbol = "🌀💥"
+    effect = Name "wild swing" Chain { Area 1 Damage DAMAGE CUT CircularBlast }
+    cooldown = 2
+    sound = BLADE_DAMAGE
+  }
+"blood rage"
+  {
+    symbol = "💪"
+    effect = Name "blood rage" Chain { Lasting RAGE Lasting SPEED Lasting INSANITY }
+    cooldown = 90
+    sound = SPELL_STR_BONUS
+  }
+"air render"
+  {
+    symbol = "☽"
+    effect = Name "air render" Chain { Damage DAMAGE CUT }
+	range = 3
+    cooldown = 12
+	endOnly = true
+    sound = SPELL_AIR_BLAST
+  }
+"martial blast"
+  {
+    symbol = "💥"
+    effect = Name "martial blast" Chain { Area 2 Blast }
+    cooldown = 2
+    sound = SPELL_AIR_BLAST
+  }
+"martial strike"
+  {
+    symbol = "💥"
+    effect = Name "martial strike" Chain { Damage DAMAGE CUT Blast }
+	range = 4
+    cooldown = 20
+    sound = BLUNT_DAMAGE
+  }
+"break through"
+  {
+    symbol = "💥➭"
+    effect = Name "break through" Chain { Damage DAMAGE CUT DestroyWalls DIG }
+	range = 1
+    cooldown = 5
+    sound = BLUNT_DAMAGE
+  }
+"throw sand" 
+ {
+   symbol = "△"
+   range = 4
+   effect = Name "throw sand" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 1 CUT }
+   cooldown = 10
+   sound = SHOOT_BOW
+   message = "throws sand!" "throws sand!"
+ }
+"decapitate"
+ {
+   symbol = "👱"
+   range = 1
+   effect = Name "decapitate" Chain { LoseBodyPart HEAD Lasting BLEEDING }
+   cooldown = 200
+   sound = BLADE_DAMAGE
+ }
+"leg strike"
+ {
+   symbol = "👞"
+   range = 1
+   effect = Name "leg strike" Chain { LoseBodyPart LEG Lasting BLEEDING }
+   cooldown = 50
+   sound = BLADE_DAMAGE
+ }
+"arm strike"
+ {
+   symbol = "✋"
+   range = 1
+   effect = Name "arm strike" Chain { LoseBodyPart ARM Lasting BLEEDING }
+   cooldown = 50
+   sound = BLADE_DAMAGE
+ }
+"curse of rage"
+ {
+   symbol = "😈"
+   effect = Name "curse of rage" Description "increases your damage stat by 1, but also lowers your defense by 1" Chain { IncreaseAttr DAMAGE 1 IncreaseAttr DEFENSE -1 }
+   targetSelf = true
+   cooldown = 500
+   sound = SPELL_WORD_OF_POWER
+ }
+"heroic leap"
+{
+  symbol = "↷"
+  effect = Name "heroic leap" Chain { Jump CircularBlast }
+  range = 3
+  cooldown = 10
+  endOnly = true
+  message = "jump" "jumps"
+}
+#------------------------------
+#Assassin Skills Mar 2020
+#------------------------------
+"vitals strike" 
+ {
+   symbol = "🗡"
+   range = 1
+   effect = Name "vitals strike" Description "has a chance to deal high damage, moderate damage, low damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 20 STAB FixedDamage DAMAGE 60 STAB FixedDamage DAMAGE 180 STAB }
+   cooldown = 80
+   sound = BLADE_DAMAGE
+   message = "go for vitals!" "goes for vitals!"
+ }
+"advanced vitals strike" 
+ {
+   symbol = "🗡"
+   upgrade = "vitals strike"
+   range = 1
+   effect = Name "advanced vitals strike" Description "has a chance to deal insane damage, moderately high damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 80 STAB FixedDamage DAMAGE 200 STAB }
+   cooldown = 70
+   sound = BLADE_DAMAGE
+   message = "go for vitals!" "goes for vitals!"
+ }
+"expert vitals strike" 
+ {
+   symbol = "🗡"
+   upgrade = "advanced vitals strike"
+   range = 1
+   effect = Name "expert vitals strike" Description "has a chance to deal insane damage, high damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 100 STAB FixedDamage DAMAGE 250 STAB }
+   cooldown = 60
+   sound = BLADE_DAMAGE
+   message = "go for vitals!" "goes for vitals!"
+ }
+"assassinate" 
+ {
+   symbol = "🗡"
+   range = 1
+   effect = Name "assassinate" Description "causes massive damage to a single target" FixedDamage DAMAGE 350 CUT 
+   cooldown = 200
+   sound = BLADE_DAMAGE
+   message = "go for vitals!" "goes for vitals!"
+ }
+"curse of risks"
+ {
+   symbol = "😈"
+   effect = Name "curse of risks" Description "Can either increase a random stat by 1 or decrease defense by 3 or 5" ChooseRandom { IncreaseAttr DAMAGE 1 IncreaseAttr SPELL_DAMAGE 1 IncreaseAttr RANGED_DAMAGE 1 IncreaseAttr DEFENSE 1 IncreaseAttr DEFENSE -3 IncreaseAttr DEFENSE -5 }
+   targetSelf = true
+   cooldown = 500
+   sound = SPELL_WORD_OF_POWER
+ }
+ "shadow step"
+ {
+   symbol = "⇢"
+   effect = Name "shadow step" Chain { Jump Deception }
+   range = 6
+   cooldown = 10
+   sound = SPELL_DECEPTION
+   endOnly = true
+   message = "step through shadows" "steps through shadows"
+ }
+ "escape slash"
+ {
+   symbol ="✈️☽"
+   effect = Name "escape slash" Chain { Damage DAMAGE CUT Escape }
+   range = 1
+   cooldown = 4
+   sound = BLADE_DAMAGE
+   message = "use magic in an attack" "uses magic in an attack"
+ }
+ "smoke bomb"
+ {
+   symbol = "✈️💥"
+   effect = Name "smoke bomb" Chain { CircularBlast Lasting INVISIBLE Escape }
+   cooldown = 100
+   sound = SPELL_DECEPTION
+   message = "throw a smoke bomb" "throws a smoke bomb"
+ }
+"substitute"
+ {
+   symbol = "⇅"
+   effect = Name "substitute" Chain { Deception SwapPosition Deception }
+   range = 1
+   cooldown = 30
+   endOnly = true
+   message = "use an ability" "uses an ability"
+ }
+ "double strike"
+ {
+   symbol = "☽☽"
+   effect = Name "double strike" Chain { Damage DAMAGE CUT Damage DAMAGE STAB }
+   range = 1
+   cooldown = 8
+   sound = BLADE_DAMAGE
+   message = "hit twice" "hits twice"
+ }
+ "armor strike"
+ {
+   symbol = "💥🛡"
+   effect = Name "armor strike" Chain { Damage DAMAGE CUT Enhance ARMOR -1 }
+   range = 1
+   cooldown = 4
+   sound = BLUNT_DAMAGE
+   message = "damage an armor piece" "damages an armor piece"
+ }
+ "weapon strike"
+ {
+   symbol = "💥⚔"
+   effect = Name "weapon strike" Chain { Damage DAMAGE CUT Enhance WEAPON -1 }
+   range = 1
+   cooldown = 4
+   sound = BLUNT_DAMAGE
+   message = "damage a weapon" "damages a weapon"
+ }
+ "triple strike"
+ {
+   symbol = "☽☽☽"
+   upgrade = "double strike"
+   effect = Name "triple strike" Chain { Damage DAMAGE CUT Damage DAMAGE STAB Damage DAMAGE CUT }
+   range = 1
+   cooldown = 8
+   sound = BLADE_DAMAGE
+   message = "hit three times" "hits three times"
+ }
+ "throwing star"
+ {
+   symbol = "✫"
+   effect = Name "throwing star" Damage RANGED_DAMAGE STAB
+   range = 6
+   cooldown = 0
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw a star" "throws a star"
+ }
+ "advanced throwing star"
+ {
+   symbol = "✫"
+   upgrade = "throwing star"
+   effect = Name "advanced throwing star" Damage RANGED_DAMAGE STAB
+   range = 8
+   cooldown = 0
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw a star" "throws a star"
+ }
+ "expert throwing star"
+ {
+   symbol = "✫"
+   upgrade = "advanced throwing star"
+   effect = Name "expert throwing star" Damage RANGED_DAMAGE STAB
+   range = 10
+   cooldown = 0
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw a star" "throws a star"
+ }
+ "master throwing star"
+ {
+   symbol = "✫"
+   upgrade = "expert throwing star"
+   effect = Name "master throwing star" Damage RANGED_DAMAGE STAB
+   range = 12
+   cooldown = 0
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw a star" "throws a star"
+ }
+ "poison star"
+ {
+   symbol = "✦"
+   effect = Name "poison star" Chain { Damage RANGED_DAMAGE STAB Lasting POISON }
+   range = 6
+   cooldown = 1
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw a poison star" "throws a poison star"
+ }
+ "advanced poison star"
+ {
+   symbol = "✦"
+   upgrade = "poison star"
+   effect = Name "advanced poison star" Chain { Damage RANGED_DAMAGE STAB Lasting POISON }
+   range = 8
+   cooldown = 1
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw a poison star" "throws a poison star"
+ }
+ "bleeding star"
+ {
+   symbol = "✷"
+   effect = Name "bleeding star" Chain { Damage RANGED_DAMAGE STAB Lasting BLEEDING }
+   range = 6
+   cooldown = 1
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw a bleeding star" "throws a bleeding star"
+ }
+ "advanced bleeding star"
+ {
+   symbol = "✷"
+   upgrade = "bleeding star"
+   effect = Name "advanced bleeding star" Chain { Damage RANGED_DAMAGE STAB Lasting BLEEDING }
+   range = 8
+   cooldown = 1
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw a bleeding star" "throws a bleeding star"
+ }
+ "escape star"
+ {
+   symbol = "✲"
+   effect = Name "escape star" Chain { Damage RANGED_DAMAGE STAB Escape Lasting SPEED }
+   range = 8
+   cooldown = 1
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw an escape star" "throws an escape star"
+ }
+  "double star"
+ {
+   symbol = "✫✫"
+   effect = Name "double star" Chain { Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB }
+   range = 8
+   cooldown = 2
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw stars" "throws stars"
+ }
+  "triple star"
+ {
+   symbol = "✫✫✫"
+   upgrade = "double star"
+   effect = Name "triple star" Chain { Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB }
+   range = 8
+   cooldown = 2
+   endOnly = true
+   sound = SHOOT_BOW
+   message = "throw stars" "throws stars"
+ }
+ "summon shades"
+ {
+   symbol = "🕵"
+   effect = Name "summon shades" Summon "SHADE" { 3 4 } 100
+   cooldown = 200
+   sound = SPELL_SUMMON_SPIRIT
+ }
+"shadow bolt"
+  {
+    symbol = "⥇"
+    effect = Name "shadow bolt" Chain { Damage SPELL_DAMAGE SPELL Escape Lasting INSANITY }
+    range = 8
+    cooldown = 10
+	endOnly = true
+    sound = SPELL_BLAST
+  }
+"advanced shadow bolt"
+  {
+    symbol = "⥇"
+	upgrade = "shadow bolt"
+    effect = Name "advanced shadow bolt" Chain { Damage SPELL_DAMAGE SPELL Escape Lasting INSANITY }
+    range = 9
+    cooldown = 8
+	endOnly = true
+    sound = SPELL_BLAST
+  }
+"expert shadow bolt"
+  {
+    symbol = "⥇"
+	upgrade = "advanced shadow bolt"
+    effect = Name "expert shadow bolt" Chain { Damage SPELL_DAMAGE SPELL Escape Lasting INSANITY }
+    range = 10
+    cooldown = 6
+	endOnly = true
+    sound = SPELL_BLAST
+  }
+ "summon shadow clones"
+  {
+    symbol = "🕵"
+    effect = Name "summon shadow clones" Summon "SHADOW_CLONE" { 3 4 } 100
+    cooldown = 200
+    sound = SPELL_SUMMON_SPIRIT
+  }
+ "summon shadow clone army"
+  {
+    symbol = "🕵"
+    effect = Name "summon shadow clone army" Summon "SHADOW_CLONE" { 12 16 } 500
+    cooldown = 1000
+    sound = SPELL_SUMMON_SPIRIT
+  }
+ "web wall"
+  {
+    symbol = "🕸"
+    effect = Name "web wall"  CustomArea PlaceFurniture "WEB_TRAP" { 0 -1 0 0 0 1 }
+    endOnly = true
+    range = 4
+    cooldown = 30
+    sound = none
+  }
+"vanish"
+  {
+    symbol = "🕵️"
+    effect = Name "vanish" Chain { Lasting INVISIBLE Teleport }
+    range = 8
+    cooldown = 100
+	endOnly = true
+    sound = SPELL_TELEPORT
+  }
+"split spirit"
+  {
+    symbol = "👤👤"
+    effect = Name "split spirit" Chain { IncreaseAttr DAMAGE -4 IncreaseAttr SPELL_DAMAGE -4 IncreaseAttr RANGED_DAMAGE -4 IncreaseAttr DEFENSE -4 Summon "ASSASSIN_SPIRIT_CLONE" { 1 } 0 }
+    cooldown = 500
+    sound = SPELL_WORD_OF_POWER
+  }
+#-------------------------
+#Water spells
+#-------------------------
+"elemental tea"
+#Healing with a defense bonus but a longer cooldown.
+{
+  symbol = "❤️"
+  effect = Name "elemental tea" Description "Provides healing, rest, morale and neutrition." Chain {Lasting RESTED Lasting SATIATED Heal FLESH} 
+  cooldown = 100
+  sound = SPELL_HEALING
+}
+"bolt of water"
+#Glorified magic missile
+ {
+   symbol = "->"
+   effect = Name "bolt of water" Damage SPELL_DAMAGE SPELL
+   range = 7
+   cooldown = 40
+   sound = SPELL_BLAST
+ }
+"water blast"
+ {
+   symbol = "*>"
+   upgrade = "bolt of water"
+   effect = Name "water blast" Chain { Damage SPELL_DAMAGE SPELL Blast }
+   range = 10
+   cooldown = 30
+   sound = SPELL_BLAST
+ }
+ "summon water elementals"
+ {
+   symbol = "🕵"
+   effect = Name "summon water elementals" Summon "WATER_ELEMENTAL" { 3 4 } 100
+   cooldown = 200
+   sound = SPELL_SUMMON_SPIRIT
+ }
+ "choking vapor"
+ {
+   symbol = "☠"
+   range = 10
+   effect = Name "choking vapor" EmitPoisonGas 5
+   cooldown = 100
+   sound = SPELL_BLAST
+ }
+ 
+ "acid blast"
+ #More powerful acid bolt spell with a longer range but larger cooldown
+ {
+   upgrade = "water blast"
+   symbol = "~~"
+   effect = Name "acid blast" Chain { Damage SPELL_DAMAGE SPELL Blast Acid }
+   fx = ACID
+   range = 10
+   cooldown = 20
+ }
+#-------------------------
+#Earth spells
+#-------------------------
+#Elemental tea is taken from general spells
+#-------------------------
+ "summon earth elementals"
+ {
+   symbol = "🕵"
+   effect = Name "summon earth elementals" Summon "EARTH_ELEMENTAL" { 3 4 } 100
+   cooldown = 200
+   sound = SPELL_SUMMON_SPIRIT
+ }
+ "earth bolt"
+ #More powerful acid bolt spell with a longer range but larger cooldown
+ {
+   symbol = "->"
+   effect = Name "earth bolt" Chain { Damage SPELL_DAMAGE SPELL Chance 0.2 Lasting BLEEDING }
+   fx = ACID
+   range = 10
+   cooldown = 20
+ }
+ 
+ "earth blast"
+ #More powerful acid bolt spell with a longer range but larger cooldown
+ {
+   upgrade = "earth bolt"
+   symbol = "=>"
+   effect = Name "earth blast" Chain { Damage SPELL_DAMAGE SPELL Blast Chance 0.3 Lasting BLEEDING }
+   fx = ACID
+   range = 10
+   cooldown = 20
+ }
+ 
+ "spit shards"
+ {
+   #Guaranteed bleeding 3 times a day
+   symbol = "!"
+   range = 7
+   effect = Name "spit shards" Lasting BLEEDING
+   cooldown = 1000
+   sound = SPELL_BLAST
+ }
+ 
+ "stone to mud"
+ {
+   symbol = "🕳"
+   effect = Name "stone to mud" Area 2 DestroyWalls DIG
+   cooldown = 500
+   sound = SPELL_AIR_BLAST
+ }
+ "place castle"
+ {
+   symbol = "O"
+   cooldown = 1
+   effect = Name "place castle"
+        Description "Places a castle facing south."
+		Chain {                                     #X -Y
+	        CustomArea PlaceFurniture "CASTLE_A1" { -2 -3 } 
+	        CustomArea PlaceFurniture "CASTLE_A2" { -1 -3 }
+	        CustomArea PlaceFurniture "CASTLE_A3" {  0 -3 }
+  	        CustomArea PlaceFurniture "CASTLE_A4" {  1 -3 }
+	        CustomArea PlaceFurniture "CASTLE_B1" { -2 -2 } 
+	        CustomArea PlaceFurniture "CASTLE_B2" { -1 -2 }
+	        CustomArea PlaceFurniture "CASTLE_B3" {  0 -2 }
+	        CustomArea PlaceFurniture "CASTLE_B4" {  1 -2 }
+	        CustomArea PlaceFurniture "CASTLE_C1" { -2 -1 } 
+	        CustomArea PlaceFurniture "CASTLE_C2" { -1 -1 }
+	        CustomArea PlaceFurniture "CASTLE_C3" {  0 -1 }
+	        CustomArea PlaceFurniture "CASTLE_C4" {  1 -1 }
+	        CustomArea PlaceFurniture "CASTLE_D1" { -2  0 } 
+	        CustomArea PlaceFurniture "CASTLE_D2" { -1  0 }
+	        CustomArea PlaceFurniture "CASTLE_D3" {  0  0 }
+	        CustomArea PlaceFurniture "CASTLE_D4" {  1  0 }
+	      }
+ }
