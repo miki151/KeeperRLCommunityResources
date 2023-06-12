@@ -1,0 +1,211 @@
+Def resetcosmos()
+SetFlag "cosmos_01" false
+SetFlag "cosmos_02" false
+SetFlag "cosmos_03" false
+SetFlag "cosmos_04" false
+SetFlag "cosmos_05" false
+SetFlag "cosmos_06" false
+SetFlag "cosmos_07" false
+SetFlag "cosmos_08" false
+End
+
+Def countcosmos()
+Filter Flag "cosmos_07" {
+    Filter Not Flag "cosmos_08" {
+           SetFlag "cosmos_08" true
+        }
+    }
+Filter Flag "cosmos_06" {
+    Filter Not Flag "cosmos_07" {
+           SetFlag "cosmos_07" true
+        }
+    }
+Filter Flag "cosmos_05" {
+    Filter Not Flag "cosmos_06" {
+           SetFlag "cosmos_06" true
+        }
+    }
+Filter Flag "cosmos_04" {
+    Filter Not Flag "cosmos_05" {
+           SetFlag "cosmos_05" true
+        }
+    }
+Filter Flag "cosmos_03" {
+    Filter Not Flag "cosmos_04" {
+           SetFlag "cosmos_04" true
+        }
+    }
+Filter Flag "cosmos_02" {
+    Filter Not Flag "cosmos_03" {
+           SetFlag "cosmos_03" true
+        }
+    }
+Filter Flag "cosmos_01" {
+    Filter Not Flag "cosmos_02" {
+           SetFlag "cosmos_02" true
+        }
+    }
+Filter Not Flag "cosmos_01" {
+       SetFlag "cosmos_01" true
+    }
+	
+End
+
+"cs_star_omen"
+{
+  symbol = "⭐"
+  effect = Summon "CS_COSMOS_LIGHT_SUICIDE" {3 7} 100
+  cooldown = {30 61}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"cs_drain"
+{
+  symbol = "🗡️"
+  effect = MinDistanceFromStrongEnemy(2) Name "sacrifice" Description "Sacrifices the creature" Chain {
+            Filter Area 0 Not Enemy {
+			Filter Not Area 0 Or {CreatureId "CS_DRAINED_BEAST" CreatureId "CS_DRAINED_HUMAN" CreatureId "CS_DRAINED_GREENSKIN" CreatureId "CS_DRAINED_DWARF" CreatureId "CS_DRAINED_ELF" HatedBy HATE_ELVES HatedBy HATE_DWARVES HatedBy HATE_GREENSKINS HatedBy HATE_HUMANS} {
+			Suicide TURN_INVISIBLE	
+			Summon "CS_DRAINED_BEAST" 1 none
+						countcosmos()	}
+			Filter Area 0 Or {CreatureId "CS_COSMOS_LIGHT" CreatureId "CS_COSMOS_LIGHT_SUICIDE" CreatureId "CS_COSMOS_BEAST" CreatureId "CS_DRAINED_BEAST" CreatureId "CS_DRAINED_HUMAN" CreatureId "CS_DRAINED_GREENSKIN" CreatureId "CS_DRAINED_DWARF" CreatureId "CS_DRAINED_ELF"} {
+			Suicide TURN_INVISIBLE}
+			Filter Area 0 HatedBy HATE_HUMANS {
+			Suicide TURN_INVISIBLE	
+			Summon "CS_DRAINED_HUMAN" 1 none
+						countcosmos()	}
+			Filter Area 0 HatedBy HATE_GREENSKINS {
+			Suicide TURN_INVISIBLE	
+			Summon "CS_DRAINED_GREENSKIN" 1 none
+						countcosmos()	}
+			Filter Area 0 HatedBy HATE_DWARVES {
+			Suicide TURN_INVISIBLE	
+			Summon "CS_DRAINED_DWARF" 1 none
+						countcosmos()	}
+			Filter Area 0 HatedBy HATE_ELVES {
+			Suicide TURN_INVISIBLE	
+			Summon "CS_DRAINED_ELF" 1 none
+						countcosmos()	}	
+			}}
+  endOnly = true
+  range = 1
+  cooldown = 200
+  sound = SPELL_BLAST
+}
+
+"cs_detonate_drained"
+{
+  symbol = "✨"
+  effect =  Name "detonate drained" Description "detonates the drained" Chain {
+            Filter Area 0 Not Enemy {
+			Filter Area 0 HatedBy HATE_DRAINED {
+			Chain{
+            Area 2 {Damage SPELL_DAMAGE SPELL
+	        Lasting 100 CS_TEMPORAL_DISRUPTION
+	        Blast
+			}}}}}
+  endOnly = true
+  range = 8
+  cooldown = 20
+  sound = SPELL_BLAST
+}
+
+Def TryStarMissile()
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"are hit by the missile" "is hit by the missile"}
+      Damage SPELL_DAMAGE SPELL
+	  Chance 0.2 Lasting 5 IMMOBILE
+	  Chance 0.4 Lasting 5 COLLAPSED
+	  Chance 0.6 Lasting 5 SLOWED
+    },
+    CreatureMessage {"are spared by the missile" "is spared by the missile"}
+  )
+End
+
+"cs_falling_star"
+{
+  symbol = "⭐"
+  effect = MinDistanceFromStrongEnemy(2) Name "falling star" Description "his castoff pieces shall serve as our weapon"
+      TryStarMissile()
+  maxHits = 1
+  projectileViewId = {"cs_missile_star"}
+  range = 4
+  cooldown = 20
+  sound = SPELL_BLAST
+}
+
+"cs_advanced_falling_star"
+{
+  upgrade = "cs_falling_star"
+  symbol = "🌟"
+  effect = MinDistanceFromStrongEnemy(2) Name "falling star" Description "his castoff pieces shall serve as our weapon"
+      TryStarMissile()
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = 10
+  sound = SPELL_BLAST
+}
+
+"cs_expert_falling_star"
+{
+  upgrade = "cs_advanced_falling_star"
+  symbol = "⭐🌟"
+  effect = MinDistanceFromStrongEnemy(2) Name "falling star" Description "his castoff pieces shall serve as our weapon"
+      TryStarMissile()
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = 5
+  sound = SPELL_BLAST
+}
+
+"cs_mirrage"
+{
+  symbol = "🎭"
+  effect = Name "mirrage" Chain {Deception Lasting 30 DEF_BONUS}
+  cooldown = 60
+  sound = SPELL_DECEPTION
+}
+
+"cs_nova"
+{
+  symbol = "⭐✨"
+  effect = Name "nova" Description "his wrath shall save us!" Chain{
+      Area 1 {Damage SPELL_DAMAGE SPELL
+	  Chance 0.2 Lasting 5 IMMOBILE
+	  Chance 0.4 Lasting 5 COLLAPSED
+	  Chance 0.6 Lasting 5 SLOWED
+	  Blast}}
+  cooldown = 50
+  sound = SPELL_BLAST
+}
+
+"cs_advanced_nova"
+{
+  upgrade = "cs_nova"
+  symbol = "🌟✨"
+  effect = Name "nova" Description "his wrath shall save us!" Chain{
+      Area 2 {Damage SPELL_DAMAGE SPELL
+	  Chance 0.4 Lasting 5 IMMOBILE
+	  Chance 0.6 Lasting 5 COLLAPSED
+	  Chance 0.8 Lasting 5 SLOWED
+	  Blast
+	  Escape {}}}
+  cooldown = 50
+  sound = SPELL_BLAST
+}
+
+"cs_expert_nova"
+{
+  upgrade = "cs_advanced_nova"
+  symbol = "⭐🌟✨"
+  effect = Name "nova" Description "his wrath shall save us!" Chain{
+      Area 3 {Damage SPELL_DAMAGE SPELL
+	  Chance 0.6 Lasting 15 IMMOBILE
+	  Chance 0.8 Lasting 15 COLLAPSED
+	  Chance 1.0 Lasting 15 SLOWED
+	  Blast
+	  Escape {}}}
+  cooldown = 50
+  sound = SPELL_BLAST
+}

@@ -1,0 +1,88 @@
+"AUTUMN_GRASS"
+{
+  name = "grass"
+  viewId = { "au_grass" }
+  layer = GROUND
+}
+
+"AUTUMN_BUSH"
+{
+  name = "bush"
+  viewId = { "au_bush" }
+  strength2 = {
+    20 BOULDER
+    10 CUT
+  }
+  canHideHere = true
+  fire = 30
+  itemDrop = {{{{"WoodPlank"} 1 { 2 4 }}}}
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+"AUTUMN_CANIF_TREE"
+{
+  name = "tree"
+  viewId = { "au_canif_tree" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+  itemDrop = {{{{"WoodPlank"} 1 { 8 14 }}}}
+  summonedElement = "ENT"
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+
+"AUTUMN_FLOWER1"
+{
+  name = "flower"
+  viewId = { "au_flower1" }
+  canSilentlyReplace = true
+}
+
+"AUTUMN_FLOWER2" inherit "AUTUMN_FLOWER1"
+{
+  viewId = { "au_flower2" }
+}
+
+"AUTUMN_FLOWER3" inherit "AUTUMN_FLOWER1"
+{
+  viewId = { "au_flower3" }
+}
+
+"AUTUMN_TREE_SAPLING" inherit "AUTUMN_BUSH"
+{
+  name = "tree sapling"
+  viewId = { "au_tree_sapling" }
+}
+
+"AUTUMN_TREE4" inherit "AUTUMN_CANIF_TREE"
+{
+  viewId = { "au_tree4" }
+}
+
+
+"AUTUMN_TREE3" inherit "AUTUMN_CANIF_TREE"
+{
+  viewId = { "au_tree3" }
+  destroyedRemains = "swish_trunk3"
+}
+
+"AUTUMN_TREE2" inherit "AUTUMN_CANIF_TREE"
+
+{
+  viewId = { "au_tree2" }
+}
+
+"AUTUMN_TREE1" inherit "AUTUMN_CANIF_TREE"
+{
+  viewId = { "au_tree1" }
+}
+
+"FLOOR" modify append {
+  builtOver = append {"swish_grass_jungle" "AUTUMN_GRASS"}
+}

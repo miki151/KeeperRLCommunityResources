@@ -1,0 +1,72 @@
+"swish_rival_necro"
+{
+  settlement = {
+    type = RandomLayout { "z_level_castle" { 80 80 } "default" }
+    tribe = MONSTER
+    furniture = "roomFurniture"
+    inhabitants = {
+      leader = { { "swish_lich" } }
+      fighters = {
+        count = {20}
+        all = { 
+           100 "swish_skeleton_warrior"
+           40  "swish_armoured_skeleton"
+           10  "swish_skeleton_rogue"
+           5  "swish_skeleton_wizard"
+              }
+      }
+    }
+  }
+}
+"shade_lair"
+{
+  settlement = {
+    type = Builtin VAULT "DUNGEON"
+    tribe = MONSTER
+    furniture = "roomFurniture"
+    inhabitants = {
+      leader = { { "swish_shade" } }
+      fighters = {
+        count = {10}
+        all = { 1 "swish_shade" }
+      }
+    }
+  }
+  createOnBones = 1.0 { "DWARVES" }
+}
+"helsing_hideout"
+{
+  settlement = {
+    type = Builtin VILLAGE "WOOD"
+    inhabitants = {
+      leader = { { "swish_vamp_hunter" } }
+      fighters = {
+        count = {2 5}
+        all = {
+          2 "swish_vamp_hunter"
+          1 "swish_vamp_cbowhunter"
+        }
+      }
+      civilians = {
+        count = {3 6}
+        all = {
+          1 "PRIEST"
+        }
+      }
+    }
+    race = "humans"
+    tribe = HUMAN
+    shopItems = {{16 20} "armory" }
+  }
+  config = {
+    leaderAsFighter = true
+    spawnGhosts = 1
+    ghostProb = 0.03
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 2
+    triggers = {RoomTrigger "swish_vamp_shrine" 0.005}
+    attackBehaviour = KillMembers 4
+  }
+}

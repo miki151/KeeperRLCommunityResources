@@ -1,0 +1,223 @@
+# Here come levels for all keeper types
+# At every depth the game chooses a random level that's available
+
+ALL modify {
+
+  #Modded depth 1
+  {
+    type = FullZLevel {
+      enemy = "GARGOYLE_ENTRANCE"
+    }
+	minDepth = 0
+	maxDepth = 1
+  }
+
+
+  # This is a filled level that can appear at all depths (after depth 10)
+  {
+    type = FullZLevel {
+    }
+	minDepth = 11 # Modded
+  }
+  {
+    type = FullZLevel {
+      # You can optionally add an EnemyId. The player will dig down right into their base.
+      # Warning: some enemies might not work
+      enemy = "RAT_CAVE"
+    }
+    # Possible depths for this level, inclusive. The first level when you dig down is 1.
+    minDepth = 2
+    maxDepth = 4
+  }
+  {
+    type = FullZLevel {
+      # You can optionally add an EnemyId. The player will dig down right into their base.
+      # Warning: some enemies might not work
+      enemy = "RAT_PEOPLE_CAVE"
+      # The probability that the enemy will immediately attack when uncovered. 
+      # Make sure the enemy has behaviour defined in enemies.txt.
+      attackChance = 0.3
+    }
+    # Possible depths for this level, inclusive. The first level when you dig down is 1.
+    minDepth = 3
+    maxDepth = 7
+  }
+  {
+    type = FullZLevel {
+      # You can optionally add an EnemyId. The player will dig down right into their base.
+      # Warning: some enemies might not work
+      enemy = "BLACK_RATS"
+    }
+    # Possible depths for this level, inclusive. The first level when you dig down is 1.
+    minDepth = 5
+  }
+  { # adamantium, the ores are added automatically around the golems
+    type = FullZLevel {
+      enemy = "ADA_GOLEMS"
+    }
+    minDepth = 11 #Modded
+  }
+
+#Modded fixed levels
+  { type = FullZLevel { enemy = "KOBOLD_CAVE" } minDepth = 3 maxDepth = 3}
+  { type = FullZLevel { enemy = "BANDITS" } minDepth = 3 maxDepth = 3}
+  { type = FullZLevel { enemy = "DARK_ELVES_ENTRY" } minDepth = 5 maxDepth = 5}
+  { type = FullZLevel { enemy = "GNOMES_ENTRY" } minDepth = 5 maxDepth = 5}
+  { type = FullZLevel { enemy = "CYCLOPS" } minDepth = 8 maxDepth = 8}
+  { type = FullZLevel { enemy = "GREEN_DRAGON" } minDepth = 9 maxDepth = 9}
+  { type = FullZLevel { enemy = "RED_DRAGON" } minDepth = 9 maxDepth = 9}
+  { type = FullZLevel { enemy = "MINOTAUR" } minDepth = 11 maxDepth = 11}
+  { type = FullZLevel { enemy = "SHELOB" } minDepth = 11 maxDepth = 11}
+
+#Scaled enemies from level 12 to 99.
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON12" } minDepth = 12 maxDepth = 16}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON16" } minDepth = 16 maxDepth = 20}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON20" } minDepth = 20 maxDepth = 24}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON24" } minDepth = 24 maxDepth = 28}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON28" } minDepth = 28 maxDepth = 32}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON32" } minDepth = 32 maxDepth = 36}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON36" } minDepth = 36 maxDepth = 40}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON40" } minDepth = 40 maxDepth = 44}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON44" } minDepth = 44 maxDepth = 48}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON48" } minDepth = 48 maxDepth = 52}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON52" } minDepth = 52 maxDepth = 56}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON56" } minDepth = 56 maxDepth = 60}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON60" } minDepth = 60 maxDepth = 64}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON64" } minDepth = 64 maxDepth = 70}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON68" } minDepth = 68 maxDepth = 74}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON72" } minDepth = 72 maxDepth = 78}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON76" } minDepth = 76 maxDepth = 82}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON80" } minDepth = 80 maxDepth = 86}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON84" } minDepth = 84 maxDepth = 90}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON88" } minDepth = 88 maxDepth = 94}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON92" } minDepth = 92 maxDepth = 98}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON96" } minDepth = 96 maxDepth = 100}
+  { type = FullZLevel { enemy = "ROYAL_DUNGEON99" } minDepth = 99 maxDepth = 200}
+  {
+    # A level full of water with some islands
+    type = WaterZLevel {
+      waterType = "WATER"
+      creatures = {
+        # Total no of creatures on this level. All are hostile
+        count = {10 11}
+        all = {
+          # The number is the weight, i.e. rats are twice as many as elementals
+          2 "RAT"
+          1 "WATER_ELEMENTAL"
+        }
+      }
+    }
+    minDepth = 7
+    maxDepth = 10
+    width = 60
+  }
+
+#Modded Magma level
+  {
+    type = WaterZLevel {
+      waterType = "MAGMA"
+      creatures = {
+        count = {10 11}
+        all = {
+          10 "FIRE_ELEMENTAL"
+          1 "YOUNG_RED_DRAGON"
+        }
+      }
+    }
+    minDepth = 11
+    width = 60
+  }
+
+#Modded deep Magma level
+  {
+    type = WaterZLevel {
+      waterType = "MAGMA"
+      creatures = {
+        count = {10 11}
+        all = {
+          5 "RED_DRAGON"
+          5 "YOUNG_RED_DRAGON"
+        }
+      }
+    }
+    minDepth = 15
+    width = 60
+  }
+
+#Modded sea of bones
+  {
+    type = WaterZLevel {
+      waterType = "SEA_OF_BONES"
+      creatures = {
+        count = {50 51}
+        all = {
+          2 "MUMMY"
+          2 "SKELETON"
+          2 "VAMPIRE"
+          2 "BAT"
+          2 "ZOMBIE"
+		  2 "ABOMINATION"
+		  2 "BANSHEE"
+		  2 "LOST_SOUL"
+          2 "MUMMY_LORD"
+		  2 "SPIRIT_DRAGON"
+		  2 "ZOMBIE_DRAGON"
+        }
+      }
+    }
+    minDepth = 10
+    width = 60
+  }
+
+#Modded Hell Knight Level
+  {
+    type = FullZLevel {
+      enemy = "HELL_DUNGEON1"
+      attackChance = 1.0
+    }
+    minDepth = 12
+  }
+}
+
+# White and dark keepers (modded)
+# Here come levels specific to white keepers
+LAWFUL modify {
+  {
+    type = FullZLevel {
+      enemy = "DARK_ELF_CAVE"
+      attackChance = 0.6
+    }
+    minDepth = 6
+	maxDepth = 9
+  }
+  { type = FullZLevel { enemy = "OGRE_CAVE" } minDepth = 7 maxDepth = 7}
+  { type = FullZLevel { enemy = "HARPY_CAVE" } minDepth = 7 maxDepth = 7}
+  {
+    type = FullZLevel {
+      enemy = "DARK_ELF_CAVE"
+    }
+    minDepth = 11
+  }
+  { type = FullZLevel { enemy = "OGRE_CAVE" } minDepth = 7 maxDepth = 7}
+  { type = FullZLevel { enemy = "HARPY_CAVE" } minDepth = 7 maxDepth = 7}
+}
+
+# Here come levels specific to dark keepers
+EVIL modify {
+  {
+    type = FullZLevel {
+      enemy = "DWARF_CAVE"
+    }
+    minDepth = 6
+	maxDepth = 9
+  }
+  {
+    type = FullZLevel {
+      enemy = "DWARF_CAVE"
+      attackChance = 0.6
+    }
+    minDepth = 11
+  }
+  { type = FullZLevel { enemy = "ANTS_OPEN" } minDepth = 7 maxDepth = 7}
+  { type = FullZLevel { enemy = "TEMPLE" } minDepth = 7 maxDepth = 7}
+}

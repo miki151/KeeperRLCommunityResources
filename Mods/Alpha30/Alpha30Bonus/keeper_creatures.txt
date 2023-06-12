@@ -1,0 +1,237 @@
+# The ids are there to modify, inherit, etc.
+# They also get ordered alphabetically, hence the 1, 2, ... in the front.
+
+"2_dark_knight" modify {
+    immigrantGroups = append {"dark_knight_modded" "neutral_allies" "dark_allies_extended" }
+    technology = append { "simplistic animations" "magic contraptions" }
+    initialTech = { "iron working" }
+    workshopGroups = append { "basic_Bonus_Mod" "traps_Bonus_Mod"  "techBooks" }
+    description = "(Challenge) The dark knight keeper is better at melee combat but worse at spell casting."
+  }
+#Dark mages come after dark knights as sometimes bits of the GUI get duplicated the other way round.
+"1_dark_mage" modify {
+    immigrantGroups = append {"dark_keeper_modded" "neutral_allies" "dark_allies_extended" }
+    technology = append { "simplistic animations" "magic contraptions" "dragon taming" "demonic alliance" }
+    workshopGroups = append { "basic_Bonus_Mod" "traps_Bonus_Mod" "techBooks" }
+  }
+"3_white_knight" modify {
+    immigrantGroups = append { "white_keeper_modded" "neutral_allies" "white_allies_extended" }
+    technology = append { "simplistic animations" "magic contraptions" "legendary heroes" "royal jewellery" "unicorn taming" }
+    workshopGroups = append { "white knights workshop" "basic_Bonus_Mod" "traps_Bonus_Mod" }
+    description = "(Hard) Be on the side of the good!"
+  }
+
+
+#####################
+#Extra modded Keepers
+#####################
+"3a_gnome_wizards"
+  {
+    creatureId = { "GNOME_CHIEF" }
+    tribeAlignment = EVIL
+    immigrantGroups = {"gnome_wizards"}
+    technology = {
+        "alchemy" "advanced alchemy" "alchemical conversion" "traps"
+        "pig breeding" "iron working" "simplistic animations"
+		"magic contraptions" "jewellery" "gnomish jewellery" "gnomish alchemy"
+		"sorcery" "advanced sorcery" "master sorcery" "archery" "gnome wizards"
+    }
+    initialTech = { "sorcery" "archery" }
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "library" "throne" "beds" "pigsty"
+        "archery" "crafting" "prison" "orders" "installations" "magical_installations" "traps"
+    }
+    workshopGroups = { "gnomish" }
+    description = "(Challenge) Manage a tribe of gnome wizards."
+    specialTraits = {
+      ExtraTraining ARCHERY 8
+	}
+   }
+"1a_dark_mage_easy"
+{
+    #Modded
+    creatureId = { "KEEPER_MAGE_EASY" "KEEPER_MAGE_F_EASY" }
+    tribeAlignment = EVIL
+    immigrantGroups = {"dark_keeper_easy_mode" "neutral_allies" "dark_allies_extended" }
+    technology = {
+         "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
+        "pig breeding" "iron working" "simplistic animations"
+		"magic contraptions" "jewellery" "two-handed weapons" "traps" "archery" "sorcery"
+        "advanced sorcery" "magical weapons" "master sorcery" "demonology" "dragon taming" "demonic alliance"
+    }
+    initialTech = { "sorcery" }
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "zones" "library" "throne" "beds" "beast_cage" "pigsty" "coffins"
+        "training" "crafting" "laboratory" "jeweller" "poetry" "demon_shrine" "prison" "orders" "installations" "magical_installations" "traps"
+    }
+    workshopGroups = { "basic" "traps" "basic_Bonus_Mod" "traps_Bonus_Mod"  "techBooks"  }
+    description = "(Easy) Play in easy mode and get a big bonus on all immigrants. But you have to wear a silly green robe."
+  }
+#Modded
+"1b_dark_mage_hard"
+  {
+    creatureId = { "KEEPER_MAGE_HARD" "KEEPER_MAGE_F_HARD" }
+    tribeAlignment = EVIL
+    immigrantGroups = {"dark_keeper_hard_mode" "neutral_allies" "dark_allies_extended" }
+    technology = {
+        "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
+        "pig breeding" "iron working" "simplistic animations" "magic contraptions" "jewellery"
+		"two-handed weapons" "traps" "archery" "sorcery"
+        "advanced sorcery" "magical weapons" "master sorcery" "demonology" "dragon taming" "demonic alliance" "absorbtion"
+    }
+    initialTech = { "sorcery" }
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "zones" "library" "throne" "beds" "beast_cage" "pigsty" "coffins"
+        "training" "crafting" "laboratory" "jeweller" "poetry" "demon_shrine" "prison" "orders" "installations" "magical_installations" "traps"
+    }
+    workshopGroups = { "basic" "traps" "basic_Bonus_Mod" "traps_Bonus_Mod" "techBooks" }
+    description = "(Hard) Play in hard mode and test your skills to the limit for experienced players. You get to wear a cool purple robe."
+  }
+"5_BonusDev_elementalist" 
+  {
+    creatureId = { "ELEMENTALIST" }
+    tribeAlignment = LAWFUL
+    immigrantGroups = {"elementals" "neutral_allies" "white_allies_basic" "white_allies_extended" }
+    technology = {
+        "alchemy" "iron working" "advanced alchemy" "elite alchemy" "alchemical conversion"
+		"sorcery" "advanced sorcery" "master sorcery"
+		"basic earth magic" "master earth magic" "elite earth magic"
+		"basic forest magic" "master forest magic" "elite forest magic"
+		"basic fire magic" "master fire magic" "elite fire magic"
+		"basic metalic magic" "simplistic animations"
+		"magic contraptions" "master metalic magic" "elite metalic magic"
+    }
+    initialTech = { "iron working" "alchemy" "advanced alchemy" "sorcery" "advanced sorcery" "master sorcery"}
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "elemental" "zones" "throne" "orders" "installations"
+		"magical_installations"
+    }
+    workshopGroups = {"elements"}
+    description = "(Challenge) Summon an army from your raw resources that can take over the map."
+  }
+"4_BonusDev_vampire_lord"  
+  {
+    creatureId = { "VAMPIRE_LORD" }
+    tribeAlignment = EVIL
+    immigrantGroups = {"necromancer" "neutral_allies" "dark_allies_extended" "dark_allies_basic" }
+    technology = {
+        "regrow limbs" "pig breeding" "iron working" "simplistic animations"
+		"two-handed weapons" "sorcery"
+        "advanced sorcery" "magical weapons" "master sorcery" "archery"
+		"zombie hoards"  "mummy hoards" "skeleton hoards"  "vampire hoards"
+		"lord of war" "lord of magic" "lord of speed" "lord of resistance" }
+    initialTech = { "sorcery" "archery" }
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "zones" "library" "pigsty" "coffins"
+        "prison" "orders" "installations" "magical_installations" "necromancer"
+    }
+    workshopGroups = { "necromancer" }
+    description = "(Challenge) Fight using an undead army!"
+    #Better than a standard vampire lord. He was losing limbs too much.
+    specialTraits = {
+      Lasting { TELEPATHY }
+      Lasting { FIRE_RESISTANT }
+      ExtraBodyPart WING 2
+      AttrBonus DAMAGE 5
+      AttrBonus SPELL_DAMAGE 5
+      AttrBonus RANGED_DAMAGE 5
+      AttrBonus DEFENSE 5
+    }
+  }
+"6_BonusDev_dwarf_queen"
+  {
+    creatureId = { "DWARF_QUEEN" }
+    tribeAlignment = LAWFUL
+    immigrantGroups = {"dwarven" "neutral_allies" "white_allies_basic" "white_allies_extended" }
+    technology = {
+        "alchemy" "advanced alchemy" "alchemical conversion" "pig breeding" "iron working" "simplistic animations"
+        "magic contraptions" "jewellery" "two-handed weapons" "traps" "redemption" "basic nobility" "dwarven monks"
+		"advanced nobility" "elite nobility"  "master jewellery" "dwarven alchemy" "marriage of convenience"
+    }
+    initialTech = { "iron working" "traps" }
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "zones" "throne" "beds" "crafting" "laboratory" "jeweller" "poetry" "pigsty" "dwarven"
+        "dwarven training" "orders" "installations" "magical_installations" "traps"
+    }
+    workshopGroups = {"dwarven"}
+    description = "(Hard) Play a tribe of dwarves and maximise melee combat."
+  }
+"7_BonusDev_goblin_king"
+  {
+    creatureId = { "GOBLIN_KING_PLAYER" }
+    tribeAlignment = EVIL
+    immigrantGroups = {"goblin" "neutral_allies" "dark_allies_extended" "dark_allies_basic" }
+    technology = {
+        "alchemy" "alchemical conversion" "pig breeding" "iron working" "jewellery" 
+		"two-handed weapons" "traps" "archery" "sorcery" "advanced sorcery" "magical weapons" 
+		"master sorcery" "matron womb mutation" "advanced womb mutation" "elite womb mutation" "master womb mutation"     
+		"litter womb mutation" "horde womb mutation" "goblin glyph crafting" "legendary goblin priests"
+    }
+    initialTech = { "iron working" "alchemy" "sorcery" "traps" }
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "zones" "library" "throne" "beds" "pigsty"
+        "training" "crafting" "laboratory" "jeweller" "poetry" "prison" "orders" "installations" "goblin_magical_installations" "traps"
+    }
+    workshopGroups = { "goblin" "traps" "traps_Bonus_Mod" }
+    description = "(Challenge) Breed an army of goblins and overrun the land with numbers!" #Modded
+  }
+#  {
+#    creatureId = { "KEEPER_SPIDER" }
+#    tribeAlignment = EVIL
+#    immigrantGroups = { "spirit"
+#	}
+#    technology = { "spin webs"
+#    }
+#    initialTech = { "spin webs"
+#	}
+#    buildingGroups = { "spider"
+#    }
+#    workshopGroups = {
+#	}
+#   description =
+#	  "NOTE: SPIDER KEEPER IS JUST A MAXED ADVENTURER
+#	   ========================================="
+#  }
+
+#"8_BonusDev_adventurer_guild"
+#  {
+#    creatureId = { "GUILDMASTER" "GUILDMASTER_F"}
+#    tribeAlignment = LAWFUL
+#    immigrantGroups = { "guildmaster"
+#	}
+#    technology = {
+#        "distinction" "reputation" "renown" "fame" "alchemy" "advanced alchemy" "iron working" "jewellery"
+#		"two-handed weapons" "archery" "sorcery" "advanced sorcery" "magical weapons" "master sorcery"
+#	}
+#    initialTech = {
+#	}
+#    buildingGroups = {
+#        "guildmaster" "floors" "orders"
+#    }
+#    workshopGroups = { "basic" }
+#    description = "Manage an adventurer guild and defeat evil."
+#  }
+
+"9_BonusDev_dungeon_master"
+  {
+    creatureId = { "DUNGEON_MASTER" }
+    tribeAlignment = EVIL
+    immigrantGroups = {"sandbox"}
+    technology = {
+        "alchemy" "simplistic animations" "magic contraptions" "advanced alchemy" "alchemical conversion"
+		"humanoid mutation" "beast mutation" "pig breeding" "iron working" "jewellery" "two-handed weapons"
+		"traps" "archery" "sorcery" "advanced sorcery" "magical weapons" "master sorcery" "demonology" "dragon taming"
+		"demonic alliance"
+    }
+    initialTech = {
+        "alchemy" "simplistic animations" "magic contraptions" "advanced alchemy" "alchemical conversion"
+		"humanoid mutation" "beast mutation" "pig breeding" "iron working" "jewellery" "two-handed weapons"
+		"traps" "archery" "sorcery" "advanced sorcery" "magical weapons" "master sorcery" "demonology"
+		"dragon taming" "demonic alliance"
+	}
+    buildingGroups = {
+        "sandbox" "throne"
+    }
+    workshopGroups = { "sandbox" }
+    description = "Play a sandbox game where you can build and do whatever you like in a creative mode."
+  }

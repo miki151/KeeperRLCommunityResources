@@ -1,0 +1,124 @@
+ "HALFLING"
+    {
+      viewId = { "halfling" }
+      genderAlternatives = {
+		FEMALE { "halfling_female" }
+		}
+      attr = {
+        DAMAGE 10
+        DEFENSE 15  
+        RANGED_DAMAGE 25 
+      }
+      body = {
+        type = Humanoid SMALL
+        material = FLESH
+        weight = 50
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT meleeAttackAttr = DAMAGE attackMsg = PUNCH } }}}
+        }
+	  }
+      skills = {
+        "WORKSHOP" 0.5
+        "JEWELER" 0.5
+      }
+      permanentEffects = {
+        DISARM_TRAPS_SKILL 1
+      }
+      name = {
+        name = "halfling"
+        firstNameGen = "FIRST_MALE"
+      }
+      chatReactionFriendly = "\"Time to eat.\""
+      chatReactionHostile = "\"Leave me alone!\""
+      inventory = { { "sling" } }
+
+    }
+ "HALFLING_CHIEF" inherit "HALFLING"
+   {
+      viewId = { "halfling_chief" }
+      name = {
+        name = "halfling chief"
+        firstNameGen = "FIRST_MALE"
+      }
+   }
+ 
+ "GREMLIN"
+    {
+      viewId = { "gremlin" }
+      attr = {
+        DAMAGE 20
+        DEFENSE 30   
+      }
+      body = {
+        type = Humanoid MEDIUM
+        material = FLESH
+        weight = 30
+        intrinsicAttacks = {
+          LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 20 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+          HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 20 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+        }
+	  }
+      permanentEffects = {
+        SPEED 1
+        RAGE 1
+        NIGHT_VISION 1
+        AMBUSH_SKILL 1
+      }
+      name = {
+        name = "gremlin"
+        firstNameGen = "DEMON"
+      }
+      chatReactionFriendly = "\"Grrrerk!\""
+      chatReactionHostile = "\"Graaaaaaa!\""
+    }
+ "GREMLIN_CHIEF" inherit "GREMLIN"
+   {
+      viewId = { "gremlin_chief" }
+      name = {
+        name = "gremlin chief"
+        firstNameGen = "DEMON"
+      }
+   }
+ "DRUID"
+    {
+      viewId = { "druid" }
+      attr = {
+        DAMAGE 20
+        DEFENSE 35 
+        SPELL_DAMAGE 35  
+      }
+      body = {
+        type = Humanoid MEDIUM
+        material = FLESH
+        weight = 20
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT meleeAttackAttr = DAMAGE attackMsg = PUNCH } }}}
+        }
+	  }
+      spells = {
+        "healing"
+        "magic missile"
+        "haste"
+      }
+      permanentEffects = {
+        FAST_TRAINING 1
+        TELEPATHY 1
+      }
+      name = {
+        name = "druid"
+        firstNameGen = "FIRST_MALE"
+      }
+	  inventory = { { "WoodenStaff" } }
+      chatReactionFriendly = "\"The woods are life.\""
+      chatReactionHostile = "\"The woods are death.\""
+    }
+  "DRUID_CHIEF" inherit "DRUID"
+   {
+      viewId = { "druid_chief" }
+      name = {
+        name = "druid chief"
+        firstNameGen = "FIRST_MALE"
+      }
+   }

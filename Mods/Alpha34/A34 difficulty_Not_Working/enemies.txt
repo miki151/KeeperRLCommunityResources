@@ -1,0 +1,420 @@
+"DIFF_DWARF_CITADEL"
+  {
+    settlement = {
+      type = Predefined { "diff_dwarf_citadel" "DUNGEON" }
+      tribe = DWARF
+      inhabitants = {
+        fighters = {
+          count = {10 12}
+          all = { 1 "DWARF_FIGHTER" }
+        }
+        civilians = {
+          count = {8 10}
+          all = { 1 "DWARF_FEMALE" }
+        }
+      }
+      race = "dwarves"
+      stockpiles = {{ "minerals" 500}}
+	  shopItems = {{12 20} "diff_dwarvencitadel" }
+      outsideFeatures = "diff_dwarvencitadelOutside"
+      furniture = "diff_dwarvencitadelInside"
+      surroundWithResources = 10  
+    }
+	config = {
+      immigrantInterval = 100
+      maxPopulation = 32
+      ghostProb = 0.1
+      spawnGhosts = 6
+    }
+    behaviour = {
+      minPopulation = 6
+      minTeamSize = 5
+      triggers = { SelfVictims StolenItems MiningInProximity }
+      attackBehaviour = KillLeader
+      ransom = 0.9 500
+    }
+	immigrants = {
+      {
+        ids = {"DWARF_FIGHTER"}
+        traits = {FIGHTER}
+		specialTraits = {
+			{1.0 {AttrBonus DAMAGE 4 Lasting {NIGHT_VISION} }}
+		}
+        frequency = 1
+		spawnLocation = InsideTerritory
+      }
+    }
+	levelConnection = {
+	topLevel = ExtraEnemy {"DUNGEON2"}
+    levels = {
+      { ExtraEnemy { "GORGON_DIFF" { 1 } } {45 30} BASIC "Gorgon's Rest" }
+	  { MainEnemy {60 40} BASIC "Dwarf Citadel" }
+	  { ExtraEnemy { "DIFF_CRYPT" { 1 } } {45 30} BASIC "Catacombs" }
+    }
+  }
+  }
+  
+  
+  "DIFF_DARK_ELF_CITADEL"
+  {
+    settlement = {
+	  type = Predefined { "diff_dwarf_citadel" "DUNGEON" }
+      tribe = DARK_ELF
+      inhabitants = {
+		leader = { { "DIFF_DARK_ELF_LORD_CITADEL" } }
+        fighters = {
+          count = {10 12}
+          all = { 1 "DIFF_DARK_ELF_WARRIOR_CITADEL" }
+        }
+        civilians = {
+          count = {7 10}
+          all = { 1 "DARK_ELF" }
+        }
+      }
+      race = "dark elves"
+      stockpiles = {{ "minerals" 400}}
+	  shopItems = {{15 22} "diff_dwarvencitadel" }
+      outsideFeatures = "diff_dwarvencitadelOutside"
+      furniture = "diff_dwarvencitadelInside"
+      surroundWithResources = 8  
+	  dontConnectCave = true
+    }
+	config = {
+      immigrantInterval = 100
+      maxPopulation = 32
+      ghostProb = 0.1
+      spawnGhosts = 6
+    }
+    behaviour = {
+      minPopulation = 6
+      minTeamSize = 5
+      triggers = { SelfVictims StolenItems MiningInProximity }
+      attackBehaviour = KillLeader
+      ransom = 0.9 500
+    }
+	immigrants = {
+      {
+        ids = {"DARK_ELF_WARRIOR"}
+        traits = {FIGHTER}
+		specialTraits = {
+			{1.0 {AttrBonus DAMAGE 6 Lasting {NIGHT_VISION}}}
+		}
+        frequency = 1
+		spawnLocation = InsideTerritory
+      }
+    }	
+  }
+  "DIFF_DARK_ELF_CAVE_HARD"
+  {
+    settlement = {
+      type = Builtin MINETOWN "DUNGEON"
+      tribe = DARK_ELF
+      inhabitants = {
+		leader = { { "DIFF_DARK_ELF_LORD_ENDLESS" } }
+        fighters = {
+          count = {5 9}
+          all = { 1 "DARK_ELF_WARRIOR" }
+          baseLevelIncrease = { MELEE 7 }
+        }
+        civilians = {
+          count = {3 7}
+          all = { 1 "DARK_ELF" }
+        }
+      }
+      race = "dark elves"
+      stockpiles = {{ "minerals" 120 }}
+      outsideFeatures = "dungeonOutside"
+      furniture = "roomFurniture"
+      surroundWithResources = 6    
+	  dontConnectCave = true
+	  closeToPlayer = true
+    }
+    behaviour = {
+      minPopulation = 0
+      minTeamSize = 3
+      triggers = {SelfVictims StolenItems MiningInProximity}
+      attackBehaviour = KillLeader
+      ransom = 0.5 80
+    }
+	config = {
+      immigrantInterval = 200
+      maxPopulation = 22
+    }
+    immigrants = {
+      {
+        ids = {"DARK_ELF_WARRIOR"}
+		traits = {FIGHTER}
+        frequency = 1
+      }
+      {
+        ids = {"DARK_ELF"}
+        frequency = 0.3
+      }
+    }
+  }
+  "GORGON_DIFF"
+  {
+    settlement = {
+      type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+      tribe = MONSTER
+      inhabitants = {
+        leader = { { "GORGON_DIFF" } }
+        fighters = {
+          count = {8 12}
+          all = {
+            1 "DIFF_ADVENTURER_ENDLESS_BIG"
+            3 "DIFF_ADVENTURER_ENDLESS"
+          }
+        }
+        civilians = {
+          count = {2 3}
+          all = {
+            1 "COW"
+            1 "PIG"
+          }
+        }
+      }
+      locationNameGen = "TOWN"
+      race = "monsters"
+      stockpiles = {{ "gold" 340 "TREASURE_CHEST" }}
+      shopItems = {{8 15} "villageShop" }
+      furniture = "castleFurniture"
+      outsideFeatures = "castleOutside"
+    }
+    config = {
+      immigrantInterval = 400
+      maxPopulation = 17
+      ghostProb = 0.1
+      spawnGhosts = 6
+    }
+    behaviour = {
+      minPopulation = 4
+      minTeamSize = 2
+      triggers = {
+        SelfVictims
+        NumConquered 2
+        StolenItems
+        FinishOff
+        Proximity
+      }
+      attackBehaviour = KillLeader
+      ransom = 0.9 600
+    }
+    immigrants = {
+      {
+        ids = {"DIFF_ADVENTURER_ENDLESS"}
+        traits = {FIGHTER}
+        frequency = 1
+      }
+      {
+        ids = {"DIFF_ADVENTURER_ENDLESS_BIG"}
+        traits = {FIGHTER}
+        frequency = 0.4
+      }
+    }
+	createOnBones = 1.0 { "KNIGHTS" }
+  }
+
+  "DIFF_FIRE_WIZARD"
+  {
+    settlement = {
+      type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+      tribe = HUMAN
+      inhabitants = {
+        leader = { { "DIFF_FIRE_WIZARD_ENDLESS" } }
+        fighters = {
+          count = {10 20}
+          all = { 4 "LAVA_GOLEM" 1 "FIRE_ELEMENTAL" }
+        }
+      }
+      locationNameGen = "TOWN"
+      race = "humans"
+      stockpiles = {{ "gold" 200 "TREASURE_CHEST" }}
+      furniture = "roomFurniture"
+      outsideFeatures = "castleOutside"
+    }
+    config = {
+      immigrantInterval = 150
+      maxPopulation = 28
+      ghostProb = 0.1
+      spawnGhosts = 6
+    }
+    behaviour = {
+      minPopulation = 4
+      minTeamSize = 5
+      triggers = {
+        RoomTrigger "THRONE" 0.0003
+        SelfVictims
+        NumConquered 2
+        StolenItems
+        FinishOff
+        Proximity
+      }
+      attackBehaviour = KillLeader
+      ransom = 0.8 140
+    }
+    immigrants = {
+      {
+        ids = {"FIRE_ELEMENTAL"}
+        traits = {FIGHTER}
+        frequency = 0.4
+      }
+	  {
+        ids = {"LAVA_GOLEM"}
+        traits = {FIGHTER}
+        frequency = 0.6
+      }
+    }
+  }
+  
+  
+  "DIFF_MAGI"
+  {
+    settlement = {
+      type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+      tribe = MONSTER
+      inhabitants = {
+        leader = { { "DIFF_MAGI" } }
+        fighters = {
+          count = {12 20}
+          all = { 3 "DIFF_ORC_MAGE_ENDLESS" 1 "DIFF_ORC_SHAMAN_ENDLESS" }
+        }
+      }
+      locationNameGen = "TOWN"
+      race = "orcs"
+      stockpiles = {{ "gold" 422 "TREASURE_CHEST" }}
+	  shopItems = {{10 14}  "dungeon" }
+      furniture = "diff_dwarvencitadelOutside"
+      outsideFeatures = "castleOutside"
+    }
+    config = {
+      immigrantInterval = 120
+      maxPopulation = 28
+      ghostProb = 0.1
+      spawnGhosts = 6
+    }
+    behaviour = {
+      minPopulation = 4
+      minTeamSize = 5
+      triggers = {
+        RoomTrigger "THRONE" 0.0003
+		RoomTrigger "IMPALED_HEAD" 0.3
+        SelfVictims
+        NumConquered 2
+        StolenItems
+        FinishOff
+        Proximity
+      }
+      attackBehaviour = KillLeader
+      ransom = 0.8 140
+    }
+    immigrants = {
+      {
+        ids = {"DIFF_ORC_MAGE_ENDLESS"}
+        traits = {FIGHTER}
+        frequency = 0.6
+      }
+	  {
+        ids = {"DIFF_ORC_SHAMAN_ENDLESS"}
+        traits = {FIGHTER}
+        frequency = 0.4
+      }
+    }
+  }
+  
+  
+  "DIFF_GREATERDRAGON"
+  {
+    settlement = {
+      type = Builtin CAVE "DUNGEON"
+      inhabitants = {
+        leader = { { "DIFF_GREATER_DRAGON" } }
+      }
+      tribe = MONSTER
+      race = "dragon"
+      shopItems = {{5 10} "diff_greaterdragonCave" }
+    }
+    config = {
+      leaderAsFighter = true
+      ghostProb = 0.03
+      spawnGhosts = 1
+    }
+    behaviour = {
+      minPopulation = 0
+      minTeamSize = 1
+      triggers = {
+        EnemyPopulation 25
+        NumConquered 3
+        StolenItems
+        FinishOff
+        Proximity
+      }
+      attackBehaviour = KillMembers 16
+    }
+    createOnBones = 1.0 { "KNIGHTS" "DWARVES" "ELEMENTALIST" "GREEN_DRAGON" "WARRIORS" }
+  }
+  
+  
+  
+  "DIFF_CRYPT"
+  {
+    settlement = {
+	  type = Predefined { "diff_crypt" "DUNGEON" }
+      tribe = MONSTER
+      inhabitants = {
+        fighters = {
+          count = {14 21}
+          all = { 5 "DIFF_SKELETON_ENDLESS" 1 "DIFF_VAMPIRE_ENDLESS" 1 "DIFF_MUMMY_ENDLESS" }
+        }
+        leader = { { "DIFF_TRUEVAMPIRE_ENDLESS" } }
+      }
+      race = "undead"
+      stockpiles = {{ "minerals" 700}}
+	  shopItems = {{9 12} "diff_crypt" }
+      outsideFeatures = "diff_cryptOutside"
+      furniture = "diff_cryptInside"
+      surroundWithResources = 10  
+    }
+	config = {
+      immigrantInterval = 100
+      maxPopulation = 32
+      ghostProb = 0.1
+      spawnGhosts = 6
+    }
+    behaviour = {
+      minPopulation = 5
+      minTeamSize = 4
+      triggers = { SelfVictims StolenItems }
+      attackBehaviour = KillLeader
+    }
+	immigrants = {
+      {
+        ids = {"DIFF_SKELETON_ENDLESS"}
+        traits = {FIGHTER}
+		specialTraits = {
+			{1.0 {AttrBonus DAMAGE 4 Lasting {NIGHT_VISION} }}
+		}
+        frequency = 0.4
+		spawnLocation = InsideTerritory
+      }
+	  {
+        ids = {"DIFF_ZOMBIE_ENDLESS"}
+        traits = {FIGHTER}
+		specialTraits = {
+			{1.0 {AttrBonus DAMAGE 4 Lasting {NIGHT_VISION} }}
+		}
+        frequency = 0.4
+		spawnLocation = InsideTerritory
+      }
+	  {
+        ids = {"DIFF_VAMPIRE_ENDLESS"}
+        traits = {FIGHTER}
+		specialTraits = {
+			{1.0 {AttrBonus DAMAGE 4 Lasting {NIGHT_VISION} }}
+		}
+        frequency = 0.2
+		spawnLocation = InsideTerritory
+      }
+    }
+  }
+

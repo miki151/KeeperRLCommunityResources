@@ -1,0 +1,103 @@
+"spin web" {
+    symbol = "*"
+    effect = PlaceFurniture "KEEPER_SPIDER_WEB"
+    cooldown = 0
+  }
+
+"dig pit" {
+    symbol = "O"
+    effect = PlaceFurniture "KEEPER_SPIDER_PIT"
+    cooldown = 0
+  }
+  
+"mud wall" {
+    symbol = "#"
+    effect = PlaceFurniture "KEEPER_SPIDER_MUD_WALL"
+    cooldown = 0
+  }
+
+"hatch eggs" {
+    symbol = "::"
+    effect = Chain {
+		Summon "SPIDER" {3} 100
+		Summon "GREEN_SPIDER" {1} 100
+		Summon "RED_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+
+"breed dark spawn" {
+    upgrade = "hatch eggs"
+    symbol = "::"
+    effect = Chain {
+		Summon "SPIDER" {3} 100
+		Summon "GREEN_SPIDER" {1} 100
+		Summon "RED_SPIDER" {1} 100
+		Summon "BLUE_SPIDER" {1} 100
+		Summon "YELLOW_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+
+"breed horrors" {
+    upgrade = "breed dark spawn"
+    symbol = "::"
+    effect = Chain {
+		Summon "SPIDER" {1} 100
+		Summon "GREEN_SPIDER" {1} 100
+		Summon "RED_SPIDER" {1} 100
+		Summon "BLUE_SPIDER" {1} 100
+		Summon "YELLOW_SPIDER" {1} 100
+		Summon "PINK_SPIDER" {1} 100
+		Summon "LIGHT_BLUE_SPIDER" {1} 100
+		Summon "LIGHT_RED_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+
+"breed hell" {
+    upgrade = "breed horrors"    
+    symbol = "::"
+    effect = Chain {
+		Summon "SPIDER" {1} 100
+		Summon "GREEN_SPIDER" {1} 100
+		Summon "RED_SPIDER" {1} 100
+		Summon "BLUE_SPIDER" {1} 100
+		Summon "YELLOW_SPIDER" {1} 100
+		Summon "PINK_SPIDER" {1} 100
+		Summon "LIGHT_BLUE_SPIDER" {1} 100
+		Summon "LIGHT_RED_SPIDER" {1} 100
+		Summon "LIGHT_BROWN_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+
+"cause blindness" {
+    symbol = "👀"
+    range = 5
+    effect = Lasting BLIND
+    cooldown = 100
+    sound = SPELL_DECEPTION
+  }
+
+"cripple" {
+    symbol = "X"
+    range = 5
+    effect = Lasting COLLAPSED
+    cooldown = 120
+    sound = SPELL_BLAST
+  }
+
+"weapon dodge" {
+    symbol = "⇠⇢"
+    effect = Lasting MELEE_RESISTANCE
+    cooldown = 90
+    sound = SPELL_DEX_BONUS
+  }
+
+"regeneration" {
+    symbol = "+"
+    effect = Lasting REGENERATION
+    cooldown = 50
+    sound = SPELL_DEX_BONUS
+  }

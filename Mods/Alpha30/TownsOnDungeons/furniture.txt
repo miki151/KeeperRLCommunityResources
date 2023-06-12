@@ -1,0 +1,267 @@
+  "DUNGEON_EASY"
+  {
+    name = "dungeon entrance"
+    viewId = { "easy_dungeon" }
+    canHideHere = true
+    xForgetAfterBuilding = true
+    usageType = UsageEffect "use" Chain { Filter Not Flag "Gladiator1" PlayerMessage "You overhear a spectator smirk about you still training to be a gladiator." HIGH Stairs }
+  }
+  "DUNGEON_MEDIUM" inherit "DOWN_STAIRS"
+  {
+    name = "dungeon entrance"
+    viewId = { "medium_dungeon" }
+    canHideHere = true
+    xForgetAfterBuilding = true
+    usageType = UsageEffect "use" Chain {
+	  Filter Flag "Gladiator2" Stairs
+	  Filter Not Flag "Gladiator2" PlayerMessage "You are blocked by an invisible barrier. You need to be a decent gladiator to train here." HIGH
+	}
+  }
+  "DUNGEON_HARD" inherit "DOWN_STAIRS"
+  {
+    name = "dungeon entrance"
+    viewId = { "hard_dungeon" }
+    canHideHere = true
+    xForgetAfterBuilding = true
+	usageType = UsageEffect "use" Chain {
+	  Filter Flag "Gladiator3" Stairs
+	  Filter Not Flag "Gladiator3" PlayerMessage "Purple energy knocks you back as you try to enter. You need to prove yourself in the arena first." HIGH
+    }
+  }
+ "FRIENDLY_PRIEST"
+  {
+    name = "arena priest"
+    viewId = { "priest" }
+    usageType = UsageEffect "request healing from" Chain { Filter Flag "Gladiator1" Chain {
+	  PlayerMessage "The priest waves his hand over you." HIGH
+      Heal FLESH
+     } 
+	 Filter Not Flag "Gladiator1" PlayerMessage "\"These services are reserved for gladiators. Get lost!\"." HIGH
+	}
+  }
+ "UGLY_SHAMAN"
+  {
+    name = "arena shaman"
+    viewId = { "shaman" }
+    usageType = UsageEffect "request materialisation from" Chain { Filter Flag "Gladiator1" Chain {
+	  PlayerMessage "The shaman summons spirit energy." HIGH
+	    Heal SPIRIT
+     } 
+	 Filter Not Flag "Gladiator1" PlayerMessage "\"You're not tough enough, become a gladiator first.\"." HIGH
+	}
+  }
+ "HELPFUL_WITCH"
+  {
+    name = "arena witch"
+    viewId = { "witch" }
+    usageType = UsageEffect "request restoration from" Chain { Filter Flag "Gladiator1" Chain {
+	  PlayerMessage "The witch utters a spell to restore damaged limbs." HIGH
+	    RegrowBodyPart 1
+     } 
+	 Filter Not Flag "Gladiator1" PlayerMessage "\"Sports people only, sorry love.\"." HIGH
+	}
+  }
+ "BANDIT_WARLORD"
+  {
+    name = "bandit warlord"
+    viewId = { "bandit" }
+    usageType = UsageEffect "request sports from" FirstSuccessful {
+	    Filter Not Flag "Gladiator1"
+		  Chain { PlayerMessage "The bandit summoner summons an opponent from his army." HIGH SummonEnemy "BANDIT" {1} none SetFlag "Gladiator1" true Escape}
+	    Filter Not Flag "Gladiator1.1"
+		  Chain { PlayerMessage "The bandit summoner summons an opponent from his army." HIGH SummonEnemy "BANDIT" {2 3} none SetFlag "Gladiator1.1" true Escape}
+	    Filter Not Flag "Gladiator1.2"
+		  Chain { PlayerMessage "The bandit summoner summons an opponent from his army." HIGH SummonEnemy "THIEF" {1} none SetFlag "Gladiator1.2" true Escape}
+	    Filter Not Flag "Gladiator1.3"
+		  Chain { PlayerMessage "The bandit summoner summons an opponent from his army." HIGH SummonEnemy "BANDIT" {4 5} none SetFlag "Gladiator1.3" true Escape}
+	    Filter Not Flag "Gladiator1.4"
+		  Chain { PlayerMessage "The bandit summoner summons an opponent from his army." HIGH SummonEnemy "THIEF" {3 4} none SetFlag "Gladiator1.4" true Escape}
+	    Filter Not Flag "Gladiator1.5"
+		  Chain { PlayerMessage "The bandit summoner summons an opponent from his army." HIGH SummonEnemy "THIEF" {4 5} none SetFlag "Gladiator1.5" true Escape}
+	    Filter Not Flag "Gladiator1.6"
+		  Chain { PlayerMessage "The bandit summoner summons an opponent from his army." HIGH SummonEnemy "THIEF" {4 5} none SetFlag "Gladiator1.6" true Escape}
+		PlayerMessage "\"Dude, you already killed half my army. take it easy!\"." HIGH
+	  }
+  }
+ "DWARF_GENERAL"
+  {
+    name = "dwarf general"
+    viewId = { "dwarf_baron" }
+    usageType = UsageEffect "request sports from" FirstSuccessful {
+	    Filter Not Flag "Gladiator2"
+		  Chain { PlayerMessage "The dwarf summoner summons an opponent from his army." HIGH SummonEnemy "DWARF_FIGHTER" {1} none SetFlag "Gladiator2" true SetFlag "Gladiator1" true Escape}
+	    Filter Not Flag "Gladiator2.1"
+		  Chain { PlayerMessage "The dwarf summoner summons an opponent from his army." HIGH SummonEnemy "DWARF_FIGHTER" {2} none SetFlag "Gladiator2.1" true Escape}
+	    Filter Not Flag "Gladiator2.2"
+		  Chain { PlayerMessage "The dwarf summoner summons an opponent from his army." HIGH SummonEnemy "DWARF_FIGHTER" {3} none SetFlag "Gladiator2.2" true Escape}
+	    Filter Not Flag "Gladiator2.3"
+		  Chain { PlayerMessage "The dwarf summoner summons an opponent from his army." HIGH SummonEnemy "DWARF_FIGHTER" {4} none SetFlag "Gladiator2.3" true Escape}
+	    Filter Not Flag "Gladiator2.4"
+		  Chain { PlayerMessage "The dwarf summoner summons an opponent from his army." HIGH SummonEnemy "DWARF_FIGHTER" {5} none SetFlag "Gladiator2.4" true Escape}
+	    Filter Not Flag "Gladiator2.5"
+		  Chain { PlayerMessage "The dwarf summoner summons an opponent from his army." HIGH SummonEnemy "DWARF_FIGHTER" {7 10} none SetFlag "Gladiator2.5" true Escape}
+	    Filter Not Flag "Gladiator2.6"
+		  Chain { PlayerMessage "The dwarf summoner summons an opponent from his army." HIGH SummonEnemy "DWARF_FIGHTER" {10 15} none SetFlag "Gladiator2.6" true Escape}
+		PlayerMessage "\"The dwarves have learnt their lesson. We won't challenge you again here, friend.\"." HIGH
+    }
+  }
+ "BEAST_MAN"
+  {
+    name = "beastlord"
+    viewId = { "werewolf" }
+    usageType = UsageEffect "request sports from" FirstSuccessful {
+	    Filter Not Flag "Gladiator3"
+		  Chain { PlayerMessage "The beast summoner summons an opponent from his army." HIGH SummonEnemy "MINOTAUR" {1} none SetFlag "Gladiator3" true SetFlag "Gladiator1" true Escape}
+	    Filter Not Flag "Gladiator3.1"
+		  Chain { PlayerMessage "The beast summoner summons an opponent from his army." HIGH SummonEnemy "ABOMINATION" {1} none SetFlag "Gladiator3.1" true Escape}
+	    Filter Not Flag "Gladiator3.2"
+		  Chain { PlayerMessage "The beast summoner summons an opponent from his army." HIGH SummonEnemy "MINOTAUR" {3} none SetFlag "Gladiator3.2" true Escape}
+	    Filter Not Flag "Gladiator3.3"
+		  Chain { PlayerMessage "The beast summoner summons an opponent from his army." HIGH SummonEnemy "ABOMINATION" {3} none SetFlag "Gladiator3.3" true Escape}
+	    Filter Not Flag "Gladiator3.4"
+		  Chain { PlayerMessage "The beast summoner summons an opponent from his army." HIGH SummonEnemy "ABOMINATION" {4} none SetFlag "Gladiator3.4" true Escape}
+	    Filter Not Flag "Gladiator3.5"
+		  Chain { PlayerMessage "The beast summoner summons an opponent from his army." HIGH SummonEnemy "ABOMINATION" {5 7} none SetFlag "Gladiator3.5" true Escape}
+	    Filter Not Flag "Gladiator3.6"
+		  Chain { PlayerMessage "The beast summoner summons an opponent from his army." HIGH SummonEnemy "ABOMINATION" {8 11} none SetFlag "Gladiator3.6" true Escape}
+		PlayerMessage "\"Those beasts cost money, I lose when they lose. You keep winning. I quit.\"." HIGH
+    }
+  }
+ "HALFLING_SPECTATOR"
+  {
+    name = "arena spectator"
+    viewId = { "halfling" }
+    usageType = UsageEffect "insult"  FirstSuccessful {
+	  Filter Not Flag "Gladiator1" ChooseRandom {
+	    PlayerMessage "\"Run along pussy cat.\"." HIGH
+	    PlayerMessage "\"Your mummy warned you not to come here!\"." HIGH
+	    PlayerMessage "\"Pfft!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator1.1" ChooseRandom {
+	    PlayerMessage "\"Very funny. Get a real job you loser.\"." HIGH
+	    PlayerMessage "\"At least I can afford my own weapons and armour without working in a circus.\"." HIGH
+	    PlayerMessage "\"Boo hoo! I need to earn money in an arena. Please cut off my head for enterainment. Clown!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator1.2" ChooseRandom {
+	    PlayerMessage "\"Yeah, ok, I can take it.\"." HIGH
+	    PlayerMessage "\"No, no, I think you're cool.\"." HIGH
+	    PlayerMessage "\"Never mind.\"." HIGH
+      }
+	  Filter Not Flag "Gladiator1.3" ChooseRandom {
+	    PlayerMessage "\"Wooah! Chill out!\"." HIGH
+	    PlayerMessage "\"Calm down, its ok.\"." HIGH
+	    PlayerMessage "\"OK OK!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator1.4" ChooseRandom {
+	    PlayerMessage "\"I wouldn't mess with you dude.\"." HIGH
+	    PlayerMessage "\"No mate, you're to tough for me.\"." HIGH
+	    PlayerMessage "\"That was him being mouthy earlier not me!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator1.5" ChooseRandom {
+	    PlayerMessage "\"OK! I'm sorry!\"." HIGH
+	    PlayerMessage "The spectator gulps." HIGH
+	    PlayerMessage "\"Please forgive me sir!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator1.6" ChooseRandom {
+	    PlayerMessage "The spectator begins sobbing..." HIGH
+	    PlayerMessage "The spectator says nothing and there is an odd smell in the air." HIGH
+	    PlayerMessage "\"Your're right, please let me go!\"." HIGH
+      }
+	  Chain {
+	    RemoveFurniture "HALFLING_SPECTATOR"
+	    PlayerMessage "The spectator farts loudly and runs off." HIGH
+	  }
+	}
+  }
+ "GREMLIN_SPECTATOR"
+ {
+     name = "arena spectator"
+     viewId = { "gremlin" }
+     usageType = UsageEffect "insult"  FirstSuccessful {
+	  Filter Not Flag "Gladiator2" ChooseRandom {
+	    PlayerMessage "\"Run along pussy cat.\"." HIGH
+	    PlayerMessage "\"Your mummy warned you not to come here!\"." HIGH
+	    PlayerMessage "\"Pfft!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator2.1" ChooseRandom {
+	    PlayerMessage "\"Very funny. Get a real job you loser.\"." HIGH
+	    PlayerMessage "\"At least I can afford my own weapons and armour without working in a circus.\"." HIGH
+	    PlayerMessage "\"Boo hoo! I need to earn money in an arena. Please cut off my head for enterainment. Clown!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator2.2" ChooseRandom {
+	    PlayerMessage "\"Yeah, ok, I can take it.\"." HIGH
+	    PlayerMessage "\"No, no, I think you're cool.\"." HIGH
+	    PlayerMessage "\"Never mind.\"." HIGH
+      }
+	  Filter Not Flag "Gladiator2.3" ChooseRandom {
+	    PlayerMessage "\"Wooah! Chill out!\"." HIGH
+	    PlayerMessage "\"Calm down, its ok.\"." HIGH
+	    PlayerMessage "\"OK OK!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator2.4" ChooseRandom {
+	    PlayerMessage "\"I wouldn't mess with you dude.\"." HIGH
+	    PlayerMessage "\"No mate, you're to tough for me.\"." HIGH
+	    PlayerMessage "\"That was him being mouthy earlier not me!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator2.5" ChooseRandom {
+	    PlayerMessage "\"OK! I'm sorry!\"." HIGH
+	    PlayerMessage "The spectator gulps." HIGH
+	    PlayerMessage "\"Please forgive me sir!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator2.6" ChooseRandom {
+	    PlayerMessage "The spectator begins sobbing..." HIGH
+	    PlayerMessage "The spectator says nothing and there is an odd smell in the air." HIGH
+	    PlayerMessage "\"Your're right, please let me go!\"." HIGH
+      }
+	  Chain {
+	    RemoveFurniture "GREMLIN_SPECTATOR"
+	    PlayerMessage "The spectator farts loudly and runs off." HIGH
+	  }
+	}
+  }
+ "DRUID_SPECTATOR"
+ {
+     name = "arena spectator"
+     viewId = { "druid" }
+    usageType = UsageEffect "insult"  FirstSuccessful {
+	  Filter Not Flag "Gladiator3" ChooseRandom {
+	    PlayerMessage "\"Run along pussy cat.\"." HIGH
+	    PlayerMessage "\"Your mummy warned you not to come here!\"." HIGH
+	    PlayerMessage "\"Pfft!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator3.1" ChooseRandom {
+	    PlayerMessage "\"Very funny. Get a real job you loser.\"." HIGH
+	    PlayerMessage "\"At least I can afford my own weapons and armour without working in a circus.\"." HIGH
+	    PlayerMessage "\"Boo hoo! I need to earn money in an arena. Please cut off my head for enterainment. Clown!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator3.2" ChooseRandom {
+	    PlayerMessage "\"Yeah, ok, I can take it.\"." HIGH
+	    PlayerMessage "\"No, no, I think you're cool.\"." HIGH
+	    PlayerMessage "\"Never mind.\"." HIGH
+      }
+	  Filter Not Flag "Gladiator3.3" ChooseRandom {
+	    PlayerMessage "\"Wooah! Chill out!\"." HIGH
+	    PlayerMessage "\"Calm down, its ok.\"." HIGH
+	    PlayerMessage "\"OK OK!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator3.4" ChooseRandom {
+	    PlayerMessage "\"I wouldn't mess with you dude.\"." HIGH
+	    PlayerMessage "\"No mate, you're to tough for me.\"." HIGH
+	    PlayerMessage "\"That was him being mouthy earlier not me!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator3.5" ChooseRandom {
+	    PlayerMessage "\"OK! I'm sorry!\"." HIGH
+	    PlayerMessage "The spectator gulps." HIGH
+	    PlayerMessage "\"Please forgive me sir!\"." HIGH
+      }
+	  Filter Not Flag "Gladiator3.6" ChooseRandom {
+	    PlayerMessage "The spectator begins sobbing..." HIGH
+	    PlayerMessage "The spectator says nothing and there is an odd smell in the air." HIGH
+	    PlayerMessage "\"Your're right, please let me go!\"." HIGH
+      }
+	  Chain {
+	    RemoveFurniture "DRUID_SPECTATOR"
+	    PlayerMessage "The spectator farts loudly and runs off." HIGH
+	  }
+	}
+  }

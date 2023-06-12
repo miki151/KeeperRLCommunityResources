@@ -1,0 +1,65 @@
+"GNOME" modify append { companions = {1 false none 0.01 { "GNOME_HUSBAND" }} }
+"KEEPER_MAGE" modify append { companions = {1 false none 0.01 { "SUCCUBUS" }} }
+"KEEPER_MAGE_F" modify append { companions = {1 false none 0.01 { "SUCCUBUS" }} }
+"KEEPER_KNIGHT" modify append { companions = {1 false none 0.01 { "WIZARD_COMPANION" }} }
+"KEEPER_KNIGHT_F" modify append { companions = {1 false none 0.01 { "WIZARD_COMPANION" }} }
+"KEEPER_KNIGHT_WHITE" modify append { companions = {1 false none 0.01 { "ANGEL_COMPANION" }} }
+"KEEPER_KNIGHT_WHITE_F" modify append { companions = {1 false none 0.01 { "ANGEL_COMPANION" }} }
+"NECROMANCER" modify append { companions = {1 false none 0.01 { "LOST_SOUL" }} }
+"NECROMANCER_F" modify append { companions = {1 false none 0.01 { "LOST_SOUL" }} }
+"DWARF_PLAYER" modify append { companions = {1 false none 0.01 { "DWARF_COMPANION" }} }
+"DWARF_PLAYER_F" modify append { companions = {1 false none 0.01 { "DWARF_COMPANION" }} }
+"GOBLIN_KEEPER" modify append { companions = {1 false none 0.01 { "GOBLIN_PRIEST" }} }
+"ZOMBIE_WORKER" modify append { companions = {2 false none 0.01 { "FLY" }} }
+"CYCLOPS_PLAYER" modify append { companions = {1 false none 0.01 { "CYCLOPS_COMPANION" }} }
+
+#No corpse. A couple of bones.
+"FLY" modify append { body = append { material = BONE } }
+
+"DWARF_COMPANION" inherit "DWARF"
+  {
+    viewId = { "dwarf_fighter" }
+  }
+  
+"WIZARD_COMPANION"
+  {
+    viewId = { "keeper4" ColorId PURPLE }
+	spells = { "magic missile"}
+    attr = {
+      DAMAGE 20
+      DEFENSE 25
+      SPELL_DAMAGE 25
+    }
+    aiType = RANGED
+	    name = {
+      name = "wizard"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+  }
+  
+"CYCLOPS_COMPANION"
+  {
+    viewId = { "cyclops" }
+    attr = {
+      DAMAGE 28
+      DEFENSE 28
+    }
+    body = {
+      type = Humanoid LARGE
+      weight = 400
+    }
+    name = {
+      name = "wife"
+      pluralName = "wives"
+      firstNameGen = "CYCLOPS"
+    }
+  }
+  
+  
+"ANGEL_COMPANION" inherit "ANGEL" { inventory = { } } 
+
+"GNOME_HUSBAND" inherit "GNOME_CHIEF" { inventory = { } name = { name = "husband" } }

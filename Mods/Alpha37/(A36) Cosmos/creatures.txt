@@ -1,0 +1,381 @@
+# keepers
+"CS_COSMOS_PROPHET"
+  {
+    # Definitions in tiles.txt
+    viewId = { "cs_cultist_cosmos_emissary_01" }
+	viewIdUpgrades = { { "cs_cultist_cosmos_emissary_02" } { "cs_cultist_cosmos_emissary_03" } { "cs_cultist_cosmos_emissary_04" } }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+      name = {
+      name = "High Priest"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    # attr_type.h
+    attr = {
+      DAMAGE 12
+      DEFENSE 12
+      SPELL_DAMAGE 20
+	  LABORATORY 20
+	  
+    }
+    maxLevelIncrease = {
+      MELEE 7
+      SPELL 12
+    }
+	    permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+    aiType = RANGED
+    spellSchools = {  "Cosmos Chosen"  }
+    inventory = {
+      { "Robe"}
+      { "IronStaff" }
+    }
+
+  }
+  
+"CS_COSMOS_PROPHET_F" inherit "CS_COSMOS_PROPHET"
+  {
+    viewId = { "cs_cultist_cosmos_emissary_01_f" }
+	viewIdUpgrades = { { "cs_cultist_cosmos_emissary_02_f" } { "cs_cultist_cosmos_emissary_03_f" } { "cs_cultist_cosmos_emissary_04_f" } }
+    
+    gender = FEMALE
+    name = append {
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+ 
+ 
+ # CRYSTAL
+  "CS_DRAINED_HUMAN"
+  {
+    viewId = { "cs_drained_human" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 6
+	  DIGGING 15
+	  FORGE 15
+      FURNACE 15
+	  WORKSHOP 15
+      JEWELER 15
+    }
+    body = {
+      type = Humanoid LARGE
+	  material = SPIRIT
+    }
+    chatReactionFriendly = "..."
+    chatReactionHostile = "\"...\""
+    permanentEffects = {
+	  LIGHT_SOURCE 1
+	  CS_WORKER 1
+      MAGIC_RESISTANCE 1
+	  CS_TEMPORAL_DISRUPTION 1
+    }
+	cantEquip = true
+    name = {
+      name = "Drained"
+    }
+	hatedByEffect = HATE_DRAINED
+	deathEffect = PlaceFurniture "CS_DRAINED_CORPSE_HUMAN"
+    }
+
+  "CS_DRAINED_GREENSKIN" inherit   "CS_DRAINED_HUMAN"
+  {
+    viewId = { "cs_drained_greenskin" }
+	deathEffect = PlaceFurniture "CS_DRAINED_CORPSE_GREENSKIN"
+  }
+
+  "CS_DRAINED_DWARF" inherit   "CS_DRAINED_HUMAN"
+  {
+    viewId = { "cs_drained_dwarf" }
+	deathEffect = PlaceFurniture "CS_DRAINED_CORPSE_DWARF"
+  }
+
+  "CS_DRAINED_ELF" inherit "CS_DRAINED_HUMAN"
+  {
+    viewId = { "cs_drained_elf" }
+	deathEffect = PlaceFurniture "CS_DRAINED_CORPSE_ELF"
+  }
+  
+  "CS_DRAINED_BEAST" inherit "CS_DRAINED_HUMAN"
+  {
+    body = {
+      type = FourLegged LARGE
+	  material = SPIRIT
+	  xCanPickUpItems = true
+    }
+	cantEquip = true
+    viewId = { "cs_drained_beast" }
+	deathEffect = PlaceFurniture "CS_DRAINED_CORPSE_BEAST"
+  }
+  
+"CS_COSMOS_BEAST"
+  {
+    viewId = { "cs_cosmos_beast" }
+    attr = {
+      DAMAGE 27
+      DEFENSE 29 
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = SPIRIT
+	  intrinsicAttacks = {
+        ARM {{{ Intrinsic { "touch_attack" } "touch" 8 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 0.1 Lasting 50 CS_TEMPORAL_DISRUPTION} } }}}
+      }
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+      REGENERATION 1
+	  TELEPATHY 1
+	  LIGHT_SOURCE 1
+    }
+	spells = { "cs_drain" "heal spirit" }
+    name = {
+      name = "beast of cosmos"
+    }
+  }
+
+"CS_COSMOS_LIGHT"
+  {
+    viewId = { "cs_cosmos_light" }
+    attr = {
+      DAMAGE 13
+      DEFENSE 14 
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 4 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 0.1 Lasting 50 CS_TEMPORAL_DISRUPTION} } }}}
+      }
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+      REGENERATION 1
+	  TELEPATHY 1
+	  LIGHT_SOURCE 1
+	  FLYING 1
+    }
+	spells = { "heal spirit" }
+    name = {
+      name = "light of cosmos"
+    }
+  }
+
+"CS_COSMOS_LIGHT_SUICIDE" inherit "CS_COSMOS_LIGHT"
+  {
+    body = {
+      type = NonHumanoid MEDIUM
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 4 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 1.0 Lasting 50 CS_TEMPORAL_DISRUPTION}
+			 attackerEffect = {Suicide DIE} } }}}
+      }
+    }
+  }
+  
+"CS_ELEMENTAL"
+  {
+    viewId = { "cs_crystal_elemental" }
+    body = {
+      type = HumanoidLike LARGE
+      material = CS_MGEHYE
+      weight = 500
+      deathSound = none
+    }
+    attr = {
+      DAMAGE 40
+      DEFENSE 15 
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+    }
+    name = {
+      name = "crystal elemental"
+    }
+    gender = IT
+  }  
+  
+ # cultists 
+  "CS_CULTIST"
+  {
+    viewId = { "cs_cultist" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 8
+	  DIGGING 25
+	  FORGE 25
+      FURNACE 25
+	  WORKSHOP 25
+      JEWELER 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "Cultist"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "Robe"}
+    }
+  }
+ 
+  "CS_CULTIST_F" inherit "CS_CULTIST"
+  {
+    viewId = { "cs_cultist_f" }
+    name = {
+      name = "Cultist"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  }
+  
+  "CS_CULTIST_DEFENDER"
+  {
+    viewId = { "cs_cultist_defender" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 18
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 6
+    }
+    name = {
+      name = "Cultist defender"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "Robe"}
+      { "LeatherHelm"}
+    }
+  }
+  
+  "CS_CULTIST_DEFENDER_F" inherit "CS_CULTIST_DEFENDER"
+  {
+    viewId = { "cs_cultist_defender_f" }
+    name = {
+      name = "Cultist defender"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  }
+  
+  "CS_CULTIST_RITUALIST"
+  {
+    viewId = { "cs_cultist_ritualist" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 11
+	  SPELL_DAMAGE 18
+	  LABORATORY 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      SPELL 6
+    }
+    spellSchools = { "Cosmos Embrace" }
+    name = {
+      name = "Cultist Ritualist"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+	inventory = {
+      { "Robe"}
+      { "IronStaff" }
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+  "CS_CULTIST_RITUALIST_F" inherit "CS_CULTIST_RITUALIST"
+  {
+    viewId = { "cs_cultist_ritualist_f" }
+    name = {
+      name = "Cultist Ritualist"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+  }  
+  
+  "CS_CULTIST_ARCHER"
+  {
+    viewId = { "cs_cultist_archer" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 14
+	  RANGED_DAMAGE 14
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+	aiType = RANGED
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 2
+      ARCHERY 6
+    }
+    name = {
+      name = "Cultist Archer"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "Robe"}	
+      { "Bow"}
+    }
+  }
+  
+  "CS_CULTIST_ARCHER_F" inherit "CS_CULTIST_ARCHER"
+  {
+    viewId = { "cs_cultist_archer_f" }
+    name = {
+      name = "Cultist Archer"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  }

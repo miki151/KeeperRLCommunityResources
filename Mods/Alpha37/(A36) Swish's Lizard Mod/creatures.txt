@@ -1,0 +1,352 @@
+"kroak"
+  {
+    viewId = { "kroak" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 30
+      SPELL_DAMAGE 30
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    spellSchools = { "kroak" }
+    spells = { "summon micro raptors" }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      RANGED_RESISTANCE 1
+      SLEEP_RESISTANT 1
+      FIRE_RESISTANT 1
+      FLYING 1
+    }
+    name = {
+      name = "elder kroak"
+      pluralName = "kroaks"
+      fullTitle = true
+    }
+    maxLevelIncrease = {
+      SPELL 12
+    }
+  }
+"raptor"
+  {
+    viewId = { "raptor" }
+    attr = {
+      DAMAGE 55
+      DEFENSE 35
+    }
+    body = {
+      type = NonHumanoid HUGE
+      addBodyPart = {
+        TORSO 1
+        HEAD 1
+        ARM 2
+        LEG 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+      FIRE_RESISTANT 1
+      MELEE_RESISTANCE 1
+    }
+    name = {
+      name = "carnosaur"
+    }
+  }
+"armoured_raptor"
+  {
+    viewId = { "armoured_raptor" }
+    attr = {
+      DAMAGE 55
+      DEFENSE 45
+    }
+    body = {
+      type = NonHumanoid HUGE
+      addBodyPart = {
+        TORSO 1
+        HEAD 1
+        ARM 2
+        LEG 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+      FIRE_RESISTANT 1
+      MAGIC_VULNERABILITY 1
+      RANGED_VULNERABILITY 1
+    }
+    name = {
+      name = "ancient carnosaur"
+    }
+  }
+"micro_raptor"
+  {
+    viewId = { "micro_raptor" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+    }
+    body = {
+      type = NonHumanoid SMALL
+      addBodyPart = {
+        TORSO 1
+        HEAD 1
+        ARM 2
+        LEG 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 4 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+      SPEED 2
+    }
+    name = {
+      name = "micro raptor"
+    }
+  }
+"anky"
+  {
+    viewId = { "anky" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 40
+    }
+    body = {
+      type = FourLegged HUGE
+      addBodyPart = {
+        HEAD 1
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "touch_attack" } "tail" 15 {
+            attackType = STAB
+            attackMsg = SWING } }}}
+      }
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      MAGIC_VULNERABILITY 1
+      MELEE_RESISTANCE 1
+    }
+    name = {
+      name = "ankylosaur"
+    }
+  }
+"terrordactyl"
+    {
+      viewId = { "terrordactyl" }
+      attr = {
+        DAMAGE 30
+        DEFENSE 24
+      }
+      body = {
+        type = FourLegged HUGE
+        addBodyPart = {
+          WING 2
+        }
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "touch_attack" } "tail" 4 {
+              attackType = STAB
+              attackMsg = THRUST } }}}
+        }
+      }
+      permanentEffects = {
+        POISON_RESISTANT 1
+        RANGED_VULNERABILITY 1
+      }
+      name = {
+        name = "terrordactyl"
+      }
+	  hatedByEffect = HATE_DRAGONS
+    }
+"crested_skint"
+    {
+      viewId = { "crested_skint" }
+      attr = {
+        DAMAGE 15
+        DEFENSE 13
+      }
+      body = {
+        type = Humanoid SMALL
+      }
+      permanentEffects = {
+        SWIMMING_SKILL 1
+        SPEED 1
+      }
+      name = {
+        name = "crested gecko"
+      }
+    }
+"skink_worker"
+    {
+      viewId = { "skink_worker" }
+      attr = {
+        DAMAGE 6
+        DEFENSE 12 
+		DIGGING 10
+      }
+      body = {
+        type = Humanoid SMALL
+      }
+      aiType = RANGED
+      noChase = true
+      cantEquip = true
+      permanentEffects = {
+        SWIMMING_SKILL 1
+        SPEED 1
+        NO_CARRY_LIMIT 1
+      }
+      name = {
+        name = "gecko worker"
+      }
+    }
+"skink_crafter"
+    {
+      viewId = { "skink_crafter" }
+      attr = {
+        DAMAGE 6
+        DEFENSE 12 
+		WORKSHOP 30
+        FORGE 30
+        JEWELER 30
+      }
+      body = {
+        type = Humanoid SMALL
+      }
+      aiType = RANGED
+      noChase = true
+      cantEquip = true
+      permanentEffects = {
+        SWIMMING_SKILL 1
+        SPEED 1
+      }
+      name = {
+        name = "gecko crafter"
+      }
+    }
+"lizardman_warrior"
+  {
+    viewId = { "lizardman_warrior" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 19
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    maxLevelIncrease = {
+      MELEE 5
+    }
+    name = {
+      name = "lizardman warrior"
+    }
+  }
+"lizardman_heavy_warrior"
+  {
+    viewId = { "lizardman_heavy_warrior" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 25 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    maxLevelIncrease = {
+      MELEE 8
+    }
+    name = {
+      name = "heavy lizardman warrior"
+    }
+  }
+"lizardman_shaman"
+  {
+    viewId = { "lizardman_shaman" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 19
+      SPELL_DAMAGE 30 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    spellSchools = { "lizard_shaman" }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+    }
+    maxLevelIncrease = {
+      SPELL 7
+    }
+    name = {
+      name = "lizardman shaman"
+    }
+  }
+"lizardman_general"
+  {
+    viewId = { "lizardman_general" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 30 
+	  FORGE 50
+    }
+    body = {
+      type = Humanoid LARGE
+      weight = 400
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      MELEE_RESISTANCE 1
+      MAGIC_VULNERABILITY 1
+      FIRE_RESISTANT 1
+    }
+    name = {
+      name = "lizardman general"
+    }
+    maxLevelIncrease = {
+      MELEE 8
+    }
+  }
+"swish_lizardman"
+  {
+    viewId = { "swish_lizardman" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 14 
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.1 Lasting POISON} } }}}
+      }
+    }
+    permanentEffects = {
+      SPEED 1
+      POISON_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      MELEE 5
+    }
+    chatReactionFriendly = "curses all humans"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "lizardman"
+      pluralName = "lizardmen"
+    }
+    inventory = {
+      { "LeatherArmor"}
+      { "GoldPiece" 2 4 }
+    }
+  }

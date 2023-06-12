@@ -1,0 +1,33 @@
+  "KEEPER_SPIDER_WEB"
+  {
+    name = "spider web"
+    viewId = { "web_trap" }
+    entryType = Trap { Lasting ENTANGLED true }
+    usageType = BuiltinUsageId TRAIN
+    maxTraining = {
+      MELEE 12
+    }
+    canBuildOutsideOfTerritory = true
+  }
+  "KEEPER_SPIDER_PIT"
+  {
+    name = "hole"
+    viewId = { "pit" }
+    blockingEnemies = true
+    tickType = Builtin PIT
+    canBuildOutsideOfTerritory = true
+    canSilentlyReplace = true
+  }
+  "KEEPER_SPIDER_MUD_WALL"
+  {
+    name = "wall"
+    viewId = { "mud_wall" }
+    blockingEnemies = true
+    blockVision = { NORMAL ELF }
+    strength = 80
+	usageType = UsageEffect "sleep in" Lasting SLEEP
+    tickType = Builtin BED
+    bedType = CAGE
+    canBuildOutsideOfTerritory = true
+    canSilentlyReplace = true
+  }

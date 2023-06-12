@@ -1,0 +1,124 @@
+"KEEPER_GRAVE_KNIGHT"
+  {
+    viewId = { "grave_knight_m01" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 14
+      MULTI_WEAPON 30
+	  MORGUE 10
+      LABORATORY 10
+      FURNACE 15
+      FORGE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "grave knight"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "grave_knight_m02" } { "grave_knight_m03" } { "grave_knight_m04" }}
+    permanentEffects = {
+      RIDER 1
+	  SUNLIGHT_VULNERABLE 1
+    }
+    maxLevelIncrease = {
+      MELEE 12
+      SPELL 3
+    }
+    spellSchools = { "fighter" "grave knight" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+"KEEPER_GRAVE_KNIGHT_F" inherit "KEEPER_GRAVE_KNIGHT"
+  {
+    viewId = { "grave_knight_f01" }
+    gender = FEMALE
+    name = {
+      name = "grave knight"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "grave_knight_f02" } { "grave_knight_f03" } { "grave_knight_f04" }}
+  }
+
+"GRAVE_KNIGHT"
+  {
+    viewId = { "grave_knight_m03" }
+    attr = {
+      DAMAGE 41
+      DEFENSE 33
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      MELEE 4
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+	  SUNLIGHT_VULNERABLE 1
+      RIDER 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+	spells = { "advanced animate corpses" }
+    name = {
+      name = "grave knight"
+      firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_UNDEAD
+	inventory = {
+      { "Sword"}
+      { "GK_ChainArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+	  { type = Glyph ARMOR LastingEffect DARKNESS_SOURCE chance = 0.7 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+  
+"GRAVE_KNIGHT_DUKE"
+  {
+    viewId = { "grave_knight_m04" }
+    attr = {
+      DAMAGE 53
+      DEFENSE 42
+    }
+    body = {
+      type = Humanoid LARGE
+      droppedPartUpgrade = IncreaseAttr DAMAGE 7
+    }
+    permanentEffects = {
+	  RIDER 1
+	  SUNLIGHT_VULNERABLE 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    name = {
+      name = "Fallen Duke"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+	spellSchools = { "fighter" }
+    spells = { "healing" "advanced animate corpses" }
+    hatedByEffect = HATE_UNDEAD
+    inventory = {
+      { type = "BattleAxe" prefixChance = 1 }
+      { "GK_ChainArmor"}
+      { "IronHelm"}
+      { "IronBoots"}
+      { Potion Heal { FLESH } 3 5 }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 140 200 }
+    }
+  }

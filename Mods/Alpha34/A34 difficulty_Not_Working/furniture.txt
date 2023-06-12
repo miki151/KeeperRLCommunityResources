@@ -1,0 +1,204 @@
+"MUD_EXAMPLE"
+{
+  name = "mud"
+  viewId = { "mud" }
+  layer = GROUND
+}
+
+"DIFF_ORGANIC_PILE"
+{
+  name = "organic pile"
+  viewId = { "diff_organic_pile" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 80
+}
+
+"DIFF_CRAFTING_ALTAR"
+{
+  name = "crafting altar"
+  viewId = { "altar" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 80
+}
+
+"DIFF_PFPILE1"
+{
+  name = "Food Processor"
+  viewId = { "coffin1" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  tickType = Effect Chance 0.002 DropItems {Simple "DIFF_ProcFood"} { 1 2 } 
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+}
+
+"DIFF_SEALER_GORGON"
+{
+  name = "Gorgon Stair Sealer"
+  viewId = { "coffin2" }
+  blockMovement = true
+  luxury = 0.7
+  strength = 180
+  fire = 300
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  destroyedRemains = "DOWN_STAIRS"
+  destroyedEffect = Chain { Message CRITICAL "The statue pulses with mana!" SummonEnemy "GORGON_DIFF" {1} none SummonEnemy "DIFF_SKELETON_ENDLESS" { 3 6 } none } 
+}
+
+"DIFF_SPAWNER_COFFIN1"
+{
+  name = "fine coffin"
+  viewId = { "coffin2" }
+  blockMovement = true
+  tickType = Effect Chance 0.009 SummonEnemy "DIFF_SKELETON_ENDLESS" { 1 2 } none
+  luxury = 0.3
+  fire = 50
+  strength = 100
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DIFF_SPAWNER_COFFIN2"
+{
+  name = "fine coffin"
+  viewId = { "coffin2" }
+  blockMovement = true
+  tickType = Effect Chance 0.012 SummonEnemy "DIFF_ZOMBIE_ENDLESS" { 1 2 } none
+  luxury = 0.3
+  fire = 50
+  strength = 100
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DIFF_SPAWNER_COFFIN3"
+{
+  name = "luxurious coffin"
+  viewId = { "coffin3" }
+  blockMovement = true
+  tickType = Effect Chance 0.007 SummonEnemy "DIFF_VAMPIRE_ENDLESS" { 1 2 } none
+  luxury = 0.3
+  fire = 50
+  strength = 100
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DIFF_LOOT_COFFIN2"
+{
+  name = "fine coffin"
+  viewId = { "coffin2" }
+  canHideHere = true
+  usageType = BuiltinUsageId COFFIN
+  fire = 50
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"DIFF_CHEST_MIMIC_D" {
+  name = "chest"
+  viewId = { "chest" }
+  canHideHere = true
+  fire = 50
+  strength = 30
+  usageType = UsageEffect "open" Chain {
+    CreatureMessage "open the chest" "opens the chest"
+	ChooseRandom {
+	Chain { 
+	Message HIGH "The chest is fake!"
+	SummonEnemy "DIFF_MIMIC_D" { 1 } none
+	DestroyWalls BASH
+	}
+	ChooseRandom { DropItems {"ChainArmor"} 1
+      DropItems {"IronBoots"} 1
+      DropItems {"IronHelm"} 1
+      DropItems {"LeatherArmor"} 1
+      DropItems {"LeatherBoots"} 1
+      DropItems {"LeatherGloves"} 1
+	 }
+	}
+	}
+}
+
+"DIFF_ZOMBIE_CORPSE"
+{
+  name = "rotting zombie corpse"
+  viewId = { "diff_corpse_notmine" }
+  fire = 50
+  strength = 80
+  warning = true
+  xForgetAfterBuilding = true
+  tickType = Effect Chain { Chance 0.47 Chain { Chance 0.25 SummonEnemy "DIFF_ZOMBIE_ENDLESS_LESSER" { 1 } none Area 1 EmitGas "POISON_GAS" 0.4 } Chance 0.2 DestroyWalls BASH }
+  usageType = UsageEffect "destroy" { DestroyWalls BASH }
+}
+
+"DIFF_CURSED_LIGHT"
+{
+  name = "cursed defense light"
+  viewId = { "diff_cursed_light" }
+  lightEmission = 6.2
+  canHideHere = true
+  warning = true
+  xForgetAfterBuilding = true
+  tickType = Effect Chance 0.27 Chain { ChooseRandom { SummonEnemy "DIFF_ORC_MAGE_ENDLESS_LESSER" { 2 4 } 25 SummonEnemy "DIFF_DARK_ELF_WARRIOR_CITADEL_LESSER" { 1 2 } 30 SummonEnemy "DIFF_TRUEVAMPIRE_LESSER" { 1 } 25 } }
+  usageType = UsageEffect "destroy" { DestroyWalls BASH }
+  fire = 50
+  strength = 80
+}
+
+"DIFF_WOLFDEN"
+{
+  name = "a wolf den"
+  viewId = { "diff_wolfden_30" }
+  canHideHere = true
+  xForgetAfterBuilding = true
+  warning = true
+  tickType = Effect Chance 0.07 Chain { SummonEnemy "DIFF_WOLF" { 2 3 } none Chance 0.05 SummonEnemy "DIFF_WOLFBETA" { 1 } none }
+  usageType = UsageEffect "destroy" { DestroyWalls BASH }
+  fire = 50
+  strength = 80
+}
+
+"DIFF_CURSED_ALTAR"
+{
+  name = "cursed altar"
+  viewId = { "cursed_altar_diff_noglow" }
+  canHideHere = true
+  xForgetAfterBuilding = true
+  warning = true
+  tickType = Effect Chance 0.07 Chain { ChooseRandom { SummonEnemy "DIFF_SKELETON_ENDLESS" { 4 6 } none SummonEnemy "DIFF_VAMPIRE_ENDLESS" { 2 4 } none SummonEnemy "DIFF_ORC_MAGE_ENDLESS" { 2 4 } none } SummonEnemy "DIFF_ZOMBIE_ENDLESS" { 3 6 } none Chance 0.02 Chain { PlaceFurniture "DIFF_UPGRADED_CURSED_ALTAR" DestroyWalls BASH } }
+  usageType = UsageEffect "destroy" { DestroyWalls BASH }
+  fire = 50
+  strength = 80
+}
+
+"DIFF_UPGRADED_CURSED_ALTAR"
+{
+  name = "evil cursed altar"
+  viewId = { "cursed_altar_diff" }
+  canHideHere = true
+  xForgetAfterBuilding = true
+  warning = true
+  tickType = Effect Chance 0.07 Chain { ChooseRandom { SummonEnemy "DIFF_DARK_ELF_WARRIOR_CITADEL" { 2 4 } none SummonEnemy "DIFF_VAMPIRE_LORD_ENDLESS" { 1 2 } none SummonEnemy "DIFF_WITCH_ENDLESS" { 3 5 } none } SummonEnemy "DIFF_ZOMBIE_ENDLESS" {4 8} none }
+  usageType = UsageEffect "destroy" { DestroyWalls BASH }
+  fire = 50
+  strength = 80
+}
+
+"DIFF_ADA_STATUE"
+{
+  name = "adamantium statue"
+  viewId = { "stone_minion_statue" Rgb 159 181 186 255 }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {2 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}

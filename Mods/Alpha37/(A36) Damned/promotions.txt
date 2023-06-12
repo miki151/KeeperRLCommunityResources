@@ -1,0 +1,235 @@
+"demons" {
+    "possesion" {"dm_pentagram_icon"}
+        Description "Let them in."
+        {
+          Filter Not CreatureFlag "is_possesed" {
+		  IncreaseMaxLevel MELEE 3
+		  IncreaseAttr DAMAGE 2
+          IncreaseAttr DEFENSE 3
+		  SetCreatureName "Possesed" 
+		  AddSpellSchool "Possessed"
+		  SetViewId {"dm_demoncult_servus"}
+		  
+		  Filter CreatureFlag "is_sorcerer" {
+		  SetCreatureName "Corrupt Knight" 
+          SetViewId {"dm_demoncult_servilis"}}}
+		  
+		  Filter CreatureFlag "is_demonologist" {
+		  SetCreatureName "Antipaladin" 
+		  AddSpellSchool "Tempered Possession"
+          SetViewId {"dm_demoncult_beatus_servus"}}
+
+		  Filter CreatureFlag "is_arch_demonologist" {
+		  SetCreatureName "Arch Antipaladin" 
+		  AddSpellSchool "Tempered Possession"
+          SetViewId {"dm_demoncult_servus_sacerdos"}}
+
+          Filter CreatureFlag "is_ritualist" {
+		  SetCreatureName "Antipaladin Master" 
+		  AddSpellSchool "Tempered Possession"
+          SetViewId {"dm_demoncult_servus_sacerdos_ultima"}}		  
+		  
+		  
+		  Filter CreatureFlag "is_possesed" {
+		  Filter Not CreatureFlag "is_mad" {
+		  IncreaseMaxLevel MELEE 3
+		  IncreaseAttr DAMAGE 2
+          IncreaseAttr DEFENSE 1
+		  SetCreatureName "Berzerk"
+		  SetViewId {"dm_demoncult_demens_servus"}
+		  
+		  Filter CreatureFlag "is_sorcerer" {
+		  SetCreatureName "Powerhungry Sorcerer" 
+          SetViewId {"dm_demoncult_potentia_servi_esurientem"}}
+		  
+		  Filter CreatureFlag "is_demonologist" {
+		  SetCreatureName "Infernal Knight" 
+		  AddSpellSchool "Tempered Possession"
+          SetViewId {"dm_demoncult_servus_eques"}
+		  Filter Not CreatureFlag "is_flying" {
+		  AddBodyPart WING 2 none Permanent FLYING
+		  SetCreatureFlag "is_flying" true}}
+		  
+		  Filter CreatureFlag "is_ritualist" {
+		  SetCreatureName "Infernal Knight Captain" 
+		  AddSpellSchool "Tempered Possession"
+          SetViewId {"dm_demoncult_servus_eques_ultima"}
+		  Filter Not CreatureFlag "is_flying" {
+		  AddBodyPart WING 2 none Permanent FLYING
+		  SetCreatureFlag "is_flying" true}}
+		  }
+
+		  Filter CreatureFlag "is_mad" {
+		  Filter Not CreatureFlag "is_degenerated" {
+		  IncreaseMaxLevel MELEE 3
+		  IncreaseAttr DAMAGE 2
+          IncreaseAttr DEFENSE 1
+		  SetCreatureName "Degenerated Vessel"
+		  SetViewId {"dm_demoncult_degenerem_servum"}
+		  
+		  Filter CreatureFlag "is_sorcerer" {
+		  SetCreatureName "Lost Sorcerer" 
+          SetViewId {"dm_demoncult_maledictus_servus"}}}
+		  
+		 Filter CreatureFlag "is_demonologist" {
+		  SetCreatureName "Infernal Knight Brute" 
+		  AddSpellSchool "Tempered Possession"
+          SetViewId {"dm_demoncult_servus_eques_demento"}
+		  Filter Not CreatureFlag "is_flying" {
+		  AddBodyPart WING 2 none Permanent FLYING
+		  SetCreatureFlag "is_flying" true}}}
+
+		  Filter CreatureFlag "is_degenerated" {
+		  Filter Not CreatureFlag "is_twisted" {
+		  IncreaseMaxLevel MELEE 3
+		  IncreaseAttr DAMAGE 2
+          IncreaseAttr DEFENSE 1
+		  SetCreatureName "Unrecognizable Vessel"
+		  SetViewId {"dm_demoncult_perversa_servus"}}	
+
+		  Filter CreatureFlag "is_sorcerer" {
+		  SetCreatureName "Ascended Sorcerer" 
+          SetViewId {"dm_demoncult_maledictus_servus_ultima"}}}	 
+		  
+		  Filter CreatureFlag "is_twisted" {
+		  IncreaseMaxLevel MELEE 3
+		  IncreaseAttr DAMAGE 2
+          IncreaseAttr DEFENSE 1
+		  SetCreatureName "Twisted Vessel"
+		  SetViewId {"dm_demoncult_ultima_perversa_servus"}}		  
+		  }	 
+
+
+		  Filter CreatureFlag "is_mad" { 
+		  SetCreatureFlag "is_twisted" true
+		  }
+		  Filter CreatureFlag "is_possesed" { 
+		  SetCreatureFlag "is_mad" true
+		  }
+		  SetCreatureFlag "is_possesed" true		  
+        }
+	    
+    "spellcaster" {"iron_staff"}
+        Description "Increases max spell training level by 3, adds 14 spell damage when applied for the first time."
+        {
+		  IncreaseAttr LABORATORY 8
+		  
+          Filter Not CreatureFlag "is_sorcerer" { 
+		  IncreaseAttr SPELL_DAMAGE 16
+          IncreaseMaxLevel SPELL 3
+          AddSpellSchool "Gloria ad Inferos"
+          SetCreatureName "Sorcerer" 
+          SetViewId {"dm_demoncult_sorcerer"}
+		  IncreaseAttr DEMON_WORSHIP 30
+		  IncreaseAttr DEMON_RITUAL 20
+		  
+		  Filter CreatureFlag "is_possesed" {
+		  SetCreatureName "Corrupt Knight" 
+          SetViewId {"dm_demoncult_servilis"}}
+		  
+		  Filter CreatureFlag "is_mad" {
+		  SetCreatureName "Powerhungry Sorcerer" 
+          SetViewId {"dm_demoncult_potentia_servi_esurientem"}}
+		  
+		  Filter CreatureFlag "is_degenerated" {
+		  SetCreatureName "Lost Sorcerer" 
+          SetViewId {"dm_demoncult_maledictus_servus"}}  
+		  
+		  Filter CreatureFlag "is_twisted" {
+		  SetCreatureName "Ascended Sorcerer" 
+          SetViewId {"dm_demoncult_maledictus_servus_ultima"}}}		  	 
+		  
+		  Filter CreatureFlag "is_sorcerer" { 
+		  Filter Not CreatureFlag "is_demonologist" {
+		  IncreaseAttr SPELL_DAMAGE 2
+          IncreaseMaxLevel SPELL 3
+          AddSpellSchool "Gloria ad Inferos"
+          SetCreatureName "Demonologist" 
+          SetViewId {"dm_demoncult_demonologist"}
+		  IncreaseAttr DEMON_WORSHIP 20
+		  IncreaseAttr  DEMON_RITUAL 10}
+		  
+		  Filter CreatureFlag "is_possesed" {
+		  SetCreatureName "Antipaladin" 
+          SetViewId {"dm_demoncult_beatus_servus"}
+		  AddSpellSchool "Tempered Possession"
+		  }
+		  
+		  Filter CreatureFlag "is_mad" {
+		  SetCreatureName "Infernal Knight" 
+          SetViewId {"dm_demoncult_servus_eques"}
+		  AddSpellSchool "Tempered Possession"
+		  Filter Not CreatureFlag "is_flying" {
+		  AddBodyPart WING 2 none Permanent FLYING
+		  SetCreatureFlag "is_flying" true}}
+		  
+		  Filter CreatureFlag "is_degenerated" {
+		  SetCreatureName "Infernal Knight Brute" 
+          SetViewId {"dm_demoncult_servus_eques_demento"}
+		  AddSpellSchool "Tempered Possession"
+		  Filter Not CreatureFlag "is_flying" {
+		  AddBodyPart WING 2 none Permanent FLYING
+		  SetCreatureFlag "is_flying" true}}
+		   
+		  }
+		  
+		  Filter CreatureFlag "is_demonologist" { 
+		  Filter Not CreatureFlag "is_arch_demonologist" {
+		  IncreaseAttr SPELL_DAMAGE 2
+          IncreaseMaxLevel SPELL 3
+          SetCreatureName "Demonologist" 
+          SetViewId {"dm_demoncult_arch_demonologist"}
+		  IncreaseAttr DEMON_WORSHIP 20
+		  IncreaseAttr DEMON_RITUAL 10
+		  
+		  Filter CreatureFlag "is_possesed" {
+		  SetCreatureName "Antipaladin Captain" 
+		  AddSpellSchool "Tempered Possession"
+          SetViewId {"dm_demoncult_servus_sacerdos"}}
+		  
+		  Filter CreatureFlag "is_mad" {
+		  SetCreatureName "Infernal Knight Captain" 
+		  AddSpellSchool "Tempered Possession"
+          SetViewId {"dm_demoncult_servus_eques_ultima"}
+		  Filter Not CreatureFlag "is_flying" {
+		  AddBodyPart WING 2 none Permanent FLYING
+		  SetCreatureFlag "is_flying" true}
+		  }}}
+		  
+		  Filter CreatureFlag "is_arch_demonologist" {
+		  Filter Not CreatureFlag "is_ritualist" {
+		  IncreaseAttr SPELL_DAMAGE 2
+          IncreaseMaxLevel SPELL 3
+          SetCreatureName "Ritualist" 
+          SetViewId {"dm_demoncult_Ritual_master"}
+		  IncreaseAttr DEMON_WORSHIP 20
+		  IncreaseAttr DEMON_RITUAL 10}
+		  
+		  Filter CreatureFlag "is_possesed" {
+		  SetCreatureName "Antipaladin Master" 
+		  AddSpellSchool "Tempered Possession"
+          SetViewId {"dm_demoncult_servus_sacerdos_ultima"}}
+		  		  
+		  }
+		  		  
+		  Filter CreatureFlag "is_ritualist" {
+		  IncreaseAttr SPELL_DAMAGE 2
+          IncreaseMaxLevel SPELL 3
+          SetCreatureName "Ritual Master" 
+          SetViewId {"dm_demoncult_Ritual_master"}
+		  IncreaseAttr DEMON_WORSHIP 20
+		  IncreaseAttr DEMON_RITUAL 10}
+		  
+		  Filter CreatureFlag "is_arch_demonologist" { 
+		  SetCreatureFlag "is_ritualist" true
+		  }		  
+		  Filter CreatureFlag "is_demonologist" { 
+		  SetCreatureFlag "is_arch_demonologist" true
+		  }
+		  Filter CreatureFlag "is_sorcerer" { 
+		  SetCreatureFlag "is_demonologist" true
+		  }
+		  SetCreatureFlag "is_sorcerer" true
+		  }
+		  
+} 
