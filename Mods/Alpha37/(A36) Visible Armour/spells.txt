@@ -1,0 +1,30 @@
+"animate corpses" modify
+{
+  symbol = "👤"
+  effect = Name "animate corpses" Area 100 Filter Not Enemy {
+  AnimateItems 3 5 {10 20} CORPSE
+  Filter CreatureFlag "animated" {Polymorph "ZOMBIE" none}
+  SetCreatureFlag "animated" false}
+  cooldown = {50 201}
+}
+
+"advanced animate corpses" modify
+{
+  upgrade = "animate corpses"
+  symbol = "👤"
+  effect = Name "advanced animate corpses" Area 100 Filter Not Enemy {
+  AnimateItems 6 5 {30 50} CORPSE
+  Filter CreatureFlag "animated" {Polymorph "ZOMBIE" none}
+  SetCreatureFlag "animated" false}
+  cooldown = {50 201}
+}
+"place_torch"
+{
+  symbol = "𝍔"
+  effect =  Name "firewall" Chain {CustomArea {Area 0 Filter FurnitureType "MOUNTAIN2" {SetCreatureFlag "found_mountain" true}} { {1 1} }
+                                   Filter CreatureFlag "found_mountain" {Area 0 PlaceFurniture "TORCH_N"}
+								   SetCreatureFlag "found_mountain" false}
+  endOnly = true
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+}
