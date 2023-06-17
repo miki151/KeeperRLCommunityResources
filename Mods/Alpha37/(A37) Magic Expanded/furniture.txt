@@ -1,0 +1,32 @@
+"ME_ACID"
+{
+  name = "acid"
+  viewId = { "me_acid" }
+  bloodCountdown = 30
+  layer = FLOOR
+  waterDepth = 0.5
+  entryType = Water
+  droppedItems = { "melts" "melt" "You hear a splash, and then sizzle." }
+  defaultBridge = "STONE_BRIDGE"
+  tickType = Effect
+    Filter And { Not LastingEffect FLYING Not BodyMaterial SPIRIT } {
+        CreatureMessage { "are burned by acid!" "is burned by acid!"}
+        Acid{1}
+    }
+  summonedElement = "WATER_ELEMENTAL"
+  freezeTo = "ME_ACID"
+  fillPit = "ME_ACID"
+  canSilentlyReplace = true
+  movementSet = {
+    traits = { FLY SWIM WADE }
+    forcibleTraits = { WALK }
+  }
+  walkIntoFX = { WATER_SPLASH Rgb 82 148 255 255 }
+}
+
+"MAGIC_GRASS"
+{
+  name = "grass"
+  viewId = { "grass" }
+  layer = FLOOR
+}
