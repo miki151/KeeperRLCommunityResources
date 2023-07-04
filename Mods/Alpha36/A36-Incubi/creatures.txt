@@ -1,0 +1,54 @@
+
+"INCUBUS" inherit "SUCCUBUS" #Might as well keep 'em balanced...
+{
+	viewId = { "incubus" }
+	gender = MALE
+	
+	chatReactionFriendly = "stretches gloriously, hoping you enjoy the view."
+    chatReactionHostile = "\"I know things that are much more fun than fighting.  Let me show you...\""
+	petReaction = "smiles invitingly and moves your hand someplace more interesting."
+	
+	name = {
+      name = "incubus"
+      pluralName = "incubi"
+    }
+}
+
+"COMBAT_INCUBUS" #Pretty much copied from BonusMod.  Thanks.
+{
+	attr = {
+        DAMAGE 16
+        DEFENSE 25
+        SPELL_DAMAGE 5 
+      }
+      viewId = { "cmbt_incubus" }
+      body = {
+        type = Humanoid LARGE
+        material = SPIRIT
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+              attackType = HIT
+              attackMsg = TOUCH
+              victimEffect = {1.0 Lasting PEACEFULNESS} } }}}
+        }
+        addBodyPart = {
+          WING 2
+        }
+      }
+	  
+	  chatReactionFriendly = "stretches and flexes gloriously, confident you're enjoying the view."
+      chatReactionHostile = "\"Naughty naughty. It's time for you to take a nap.\""
+	  petReaction = "smiles proudly and encourages you to fully appreciate his physique."
+	  
+	  maxLevelIncrease = { MELEE 7 } #Defense 32, Damage 23, plus gear, plus combat XP.
+	  
+      permanentEffects = {
+        COPULATION_SKILL 1
+		RIDER 1
+      }
+      gender = MALE
+      name = {
+        name = "combat incubus"
+        pluralName = "combat incubi"
+      }
+}
