@@ -3555,6 +3555,105 @@
   "BONUS_ROYAL_DUNGEON99" inherit "BONUS_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 125 } } } } }
 ####################################################################
 
+###
+#CSeven trying to make fairies more commonplace (feels like they're Illusia, rescue the Demon Fairy from the Abominations, or None)
+#Fairies get pretty powerful if converted, so no need to have them repopulate
+###
+
+"BONUS_VEN_FAIRIES" #shamelessly rip off vanilla Adamantine Golems, but helps with syntax.
+#Took until z11 to have these folks show up in testing, but they were only eligible to show up at z5 and below.
+#(Further testing demonstrated that 3 piles per appearance is overkill.)
+{
+  settlement = {
+    type = Builtin VAULT "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {2 3}
+        all = {
+		1 "BONUS_DARK_FAIRY"
+		3 "BONUS_EARTH_FAIRY"
+		}
+      }
+    }
+    tribe = ANT
+    race = "underground fairies"
+    dontConnectCave = true
+    surroundWithResources = 2
+    extraResources = "VENORACK_ORE"
+	}
+	
+	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 30% chance to go Hostile)
+	behaviour = {
+	minPopulation = 0
+    	minTeamSize = 1
+	attackBehaviour = StealGold
+    	ransom = 0.5 80
+	}
+}
+
+"BONUS_ADOXIUM_FAIRIES"
+{
+settlement = {
+    type = Builtin VAULT "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {3 5}
+        all = {
+		2 "BONUS_DARK_FAIRY" #Living next to all this adoxium hasn't done the poor fairy much good
+		3 "BONUS_EARTH_FAIRY"
+		1 "BONUS_DEMON_FAIRY" #Living next to all this adoxium REALLY hasn't done this poor fairy much good at all!
+		1 "BONUS_MAGIC_FAIRY" #Adoxium may be named for the Evil God, but it IS good for magic...
+		}
+      }
+    }
+    tribe = ANT
+    race = "underground fairies"
+    dontConnectCave = true
+    surroundWithResources = 2
+    extraResources = "ADOXIUM_ORE"
+	}
+	
+	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 50% chance to go Hostile)
+	behaviour = {
+	minPopulation = 0
+    	minTeamSize = 1
+	attackBehaviour = StealGold
+    	ransom = 0.5 80
+	}
+
+}
+
+"BONUS_INF_FAIRIES"
+{
+settlement = {
+    type = Builtin VAULT "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {3 5}
+        all = {
+		3 "BONUS_FIRE_FAIRY" #It's burny metal! Yay!
+		1 "BONUS_EARTH_FAIRY"
+		}
+      }
+    }
+    tribe = ANT
+    race = "underground fairies"
+    dontConnectCave = true
+    surroundWithResources = 2
+    extraResources = "INFERNITE_ORE"
+	}
+	
+	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 10% chance to go Hostile)
+	behaviour = {
+	minPopulation = 0
+    	minTeamSize = 1
+	attackBehaviour = StealGold
+    ransom = 0.5 80
+	}
+
+}
+
+
 ###########################
 #Ideas for future villains#
 ###########################
