@@ -1,0 +1,599 @@
+Def TryTrowFlame()
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"were hit by the flaming projectile" "was hit by the flaming projectile"}
+      Damage FIRE_DAMAGE SHOOT
+      Fire{}
+    },
+    CreatureMessage {"were missed by the flaming projectile" "was missed by the flaming projectile"}
+  )
+End
+
+Def TryTrowFlameOverlord()
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"were hit by the flaming projectile" "was hit by the flaming projectile"}
+      Damage FIRE_DAMAGE SPELL
+      Fire{}
+    },
+    CreatureMessage {"were missed by the flaming projectile" "was missed by the flaming projectile"}
+  )
+End
+
+Def OverlordsCommand()
+    Area 10
+    Filter Not Enemy
+    {
+    Heal { FLESH }
+    Lasting 40 DAM_BONUS 
+    Lasting 40 DEF_BONUS 
+    }
+End
+
+Def Pittance()
+    ChooseRandom {
+        DropItems {"GoldPiece"} {1 3}
+        DropItems {"Rock"} {1 3}
+        DropItems {"IronOre"} {1 3}
+        DropItems {"WoodPlank"} {1 3}
+    }
+End
+
+Def ArmRabble()
+    ChooseRandom {
+        DropItems {"Club"} {1 2} 
+        DropItems {"WoodenShield"} {1 2}
+    }
+End
+
+ 
+"ov_throw_flame"
+{
+  symbol = "🔥"
+  effect = MinDistanceFromStrongEnemy(2) Name "Ovelord Flames" Description "Trow a Flame" 
+           TryTrowFlame()
+  fx = {FIREBALL}
+  range = 6
+  cooldown = 1
+  sound = SPELL_BLAST
+}
+
+"ov_stalker_blink"
+{
+  symbol = "🌀"
+  effect = Teleport
+  range = 3
+  cooldown = 10
+  endOnly = true
+  sound = SPELL_TELEPORT
+}
+
+############
+# Overlord #
+############
+
+"ov_ovelord_flames"
+{
+  symbol = "🔥"
+  effect = MinDistanceFromStrongEnemy(2) Name "Ovelord Flames" Description "Trow a Flame"  
+			TryTrowFlameOverlord()
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = 5
+  sound = SPELL_BLAST
+}
+
+"ov_ovelord_flamethover"
+{
+  symbol = "🐲"
+  effect = Name "Ovelord Flamethover" Fire {}
+  fx = {FLAMETHROWER ColorId LIGHT_RED}
+  range = 8
+  cooldown = 30
+  sound = SPELL_BLAST
+}
+
+"ov_ovelord_inferno"
+{
+  symbol = "💥"
+  effect =  Name "Ovelord Inferno" CustomArea PlaceFurniture "FIRE_WALL" { {-2 -1}{-1 -2} {-1 -1} {0 -2} {0 -1} {1 -1} {1 -2}  {2 -1} {2 -2} {2 0} {1 0} {0 0} {-1 0} {-2 0} {2 1} {2 2} {1 1} {1 2} {0 1} {0 2} {-1 1} {-1 2} {-2 1} }
+  cooldown = 50
+  sound = SPELL_AIR_BLAST
+  message = "Unleashes Inferno!" "Unleashes Inferno!"
+}
+
+#######################
+# Overlord Domination #
+#######################
+
+"ov_ovelord_slow"
+{
+  symbol = "🐢"
+  effect = Lasting 20 SLOWED
+  range = 3
+  cooldown = 30
+  sound = SPELL_SPEED_SELF
+}
+
+"ov_ovelord_frenzy"
+{
+  symbol = "☠"
+  effect = Lasting 40 RAGE
+  range = 3
+  cooldown = 30
+  sound = SPELL_SPEED_SELF
+}
+
+"ov_ovelord_shield"
+{
+  symbol = "🛡"
+  effect = Name "Ovelord Shield" Lasting 40 DEF_BONUS
+  cooldown = 80
+  endOnly = true
+  sound = SPELL_DEX_BONUS
+}
+
+"ov_overlord_command"
+{
+  symbol = "👾"
+  effect = Name "Overlords Command" OverlordsCommand()
+  cooldown = 80
+  sound = SPELL_DEX_BONUS
+}
+
+################
+# Elder Minion #
+################
+
+"ov_skull_lantern"
+{
+  symbol = "☠"
+  effect =  Name "Skull Lantern" CustomArea PlaceFurniture "OV_SKULL_LANTERN" { {0 0} }
+  range = 1
+  cooldown = 100
+  sound = SPELL_TELEPORT
+  message = "Evil always find a way!" "Evil always find a way!"
+}
+
+"ov_summon_eyeball"
+{
+  symbol = "☠"
+  effect =  Name "Summon Eyeball" CustomArea PlaceFurniture "EYEBALL" { {0 0} }
+  range = 1
+  cooldown = 100
+  sound = SPELL_TELEPORT
+  message = "Evil sees you!" "Evil sees you!"
+}
+
+"ov_pack_mule"
+{
+  symbol = "🛡"
+  effect = Name "Pack Mule" Lasting 40 NO_CARRY_LIMIT
+  targetSelf = true
+  range = 1
+  cooldown = 80
+  sound = SPELL_DEX_BONUS
+}
+
+"ov_mass_pack_mule"
+{
+  symbol = "🛡"
+  effect = Name "Mass Pack Mule" Area 10 Filter Not Enemy  Lasting NO_CARRY_LIMIT
+  targetSelf = true
+  range = 1
+  cooldown = 80
+  sound = SPELL_DEX_BONUS
+}
+
+"ov_secret_stash"
+{
+  symbol = "❤️"
+  effect =  Name "Secret Stash" DropItems {"Moonshine"} {1 2}
+  targetSelf = true
+  cooldown = 300
+}
+
+"ov_pittance"
+{
+  symbol = "❤️"
+  effect = Name "Pittance" Pittance()
+  targetSelf = true
+  cooldown = 300
+}
+
+"ov_arm_the_rabble"
+{
+  symbol = "❤️"
+  effect =  Name "Arm the Rabble" ArmRabble()
+  targetSelf = true
+  cooldown = 300
+}
+
+#################
+# Pleasure cult #
+#################
+
+"ov_sedative_cloud"
+{
+  symbol = "🌫"
+  effect = Name "Sedative Cloud" Description "Creates a sedative cloud." Area 2 Filter DistanceD none 3.2 EmitGas "ov_sedatives" 1
+  cooldown = 120
+}
+
+"ov_advanced_sedative_cloud"
+{
+  upgrade = "ov_sedative_cloud"
+  symbol = "🌫"
+  effect = Name "Sedative Cloud" Description "Creates a sedative cloud." Area 4 Filter DistanceD none 3.2 EmitGas "ov_sedatives" 1
+  cooldown = 120
+}
+
+"ov_summon_pleasure_zombie"
+{
+  symbol = "❤️"
+  effect = Name "Summon Lover" Summon "OV_PLEASURE_ZOMBIE" { 1 } 30
+  cooldown = 100
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"ov_advanced_summon_pleasure_zombie"
+{
+  upgrade = "ov_summon_pleasure_zombie"
+  symbol = "❤️"
+  effect = Name "Summon Harem" Summon "OV_PLEASURE_ZOMBIE" { 2 4 } 30
+  cooldown = 100
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"ov_promote_succubus"
+{
+  symbol = "❤️"
+  effect = Name "Promote Succubus" Description "Promote common succubi to be the queen attendants!"
+      Filter CreatureId "SUCCUBUS"{
+       SetViewId {"ov_PleasureSuccubus"} 
+       AddSpellSchool "Pleasure Succubus"
+  }
+  range = 5
+  endOnly = true
+  targetSelf = true
+  cooldown = 50
+}
+
+"ov_summon_succubus_I"
+{
+  symbol = "❤️"
+  effect = Name "Summon Succubus" Summon "OV_PLEASURE_SUCCUBUS" { 1 } 30
+  cooldown = 100
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"ov_summon_succubus_II"
+{
+  upgrade = "ov_summon_succubus_I"
+  symbol = "❤️"
+  effect = Name "Summon Succubus" Summon "OV_PLEASURE_SUCCUBUS" { 1 } 60
+  cooldown = 100
+  sound = SPELL_SUMMON_INSECTS
+}
+
+####################
+# Corrupt Halfling #
+####################
+
+"ov_summon_evil_pumpkin_I"
+{
+  symbol = "❤️"
+  effect = Name "Bad Pumpkin" Summon "OV_EVIL_PUMPKIN" { 1 } 30
+  cooldown = 100
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"ov_summon_evil_pumpkin_II"
+{
+  upgrade = "ov_summon_evil_pumpkin_I"
+  symbol = "☠☠"
+  effect = Name "Bad Pumpkin Patch" Summon "OV_EVIL_PUMPKIN" { 2 3 } 30
+  cooldown = 100
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"ov_summon_evil_pumpkin_III"
+{
+  upgrade = "ov_summon_evil_pumpkin_II"
+  symbol = "☠☠☠"
+  effect = Name "Bad Pumpkin Field" Summon "OV_EVIL_PUMPKIN" { 4 6 } 30
+  cooldown = 100
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"ov_summon_evil_pumpkin_IV"
+{
+  upgrade = "ov_summon_evil_pumpkin_III"
+  symbol = "☠☠☠☠"
+  effect = Name "Pumpkinpocalypse!" Summon "OV_EVIL_PUMPKIN" { 7 9 } 30
+  cooldown = 100
+  sound = SPELL_SUMMON_INSECTS
+}
+
+#Animals
+
+"ov_spider_web"
+{
+  symbol = "☠"
+  effect =  Name "Throw Web" CustomArea PlaceFurniture "WEB_TRAP" { {0 0} }
+  range = 3
+  cooldown = 100
+  sound = SPELL_TELEPORT
+  message = "Throws a web!" "Throws a web!"
+}
+
+#################
+# Forgotten God #
+#################
+
+"ov_forgotten_god_teleport"
+{
+  symbol = "🌀"
+  effect = Chain {
+  Teleport
+  CustomArea PlaceFurniture "FIRE_WALL" { {-1 -1}{0 -1} {1 -1} {1 0} {0 0} {-1 0} {1 1} {0 1}  {-1 1}}}
+  range = 3
+  cooldown = 20
+  endOnly = true
+  sound = SPELL_TELEPORT
+}
+
+"ov_forgotten_god_call_forth_flames"
+{
+  symbol = "🔥"
+  upgrade = "ov_ovelord_flamethover"
+  effect = Name "Forgotten God call forth the flames" Description "Call forth the flames" Chain { PlaceFurniture "FIRE_WALL" Fire {}}
+  fx = {FLAMETHROWER ColorId LIGHT_RED}
+  range = 6
+  cooldown = 30
+  sound = SPELL_BLAST
+}
+
+"ov_forgotten_god_flames"
+{
+  symbol = "🔥"
+  upgrade = "ov_ovelord_flames"
+  effect = MinDistanceFromStrongEnemy(2) Name "Forgotten God Flames" Description "Trow a Flame" 
+  Chain { 
+	TryTrowFlameOverlord() 
+	Chance 0.01 Suicide DIE
+	}
+  fx = {FIREBALL}
+  range = 8
+  cooldown = 1
+  sound = SPELL_BLAST
+}
+
+"ov_forgotten_god_presence"
+{
+  symbol = "👾"
+  upgrade = "ov_overlord_command"
+  effect = Name "Forgotten God Presence" Description "Unveil your power" Chain {
+  Area 10 Filter Enemy { Lasting 10 PANIC Lasting 10 OV_LOW_MORALE Chance 0.01 Suicide DIE }
+  OverlordsCommand()}
+  fx = {FIREBALL}
+  cooldown = 80
+  sound = SPELL_BLAST
+}
+
+"ov_forgotten_god_greeting"
+{
+  symbol = "🏠"
+  range = 10
+  effect = Name "invisible visitor greeting" Description "Special greeting for invisible visitors"
+    Filter And { Attacker InTerritory LastingEffect INVISIBLE } AI And{} 0 1 {
+      PlayerMessage CRITICAL "The world shall remeber me, i will remind it of what it feared!"
+    }
+  cooldown = 100000
+  message = "" ""
+}
+
+"ov_forgotten_god_inferno"
+{
+  symbol = "💥"
+  upgrade = "ov_ovelord_inferno"
+  effect =  Name "forgotten god inferno" Area 4 {PlaceFurniture "FIRE_WALL" Fire {}}
+  cooldown = 30
+  sound = SPELL_AIR_BLAST
+  message = "Unleashes Inferno!" "Unleashes Inferno!"
+}
+
+"ov_forgotten_god_wither"
+{
+  symbol = "🐢"
+  upgrade = "ov_ovelord_slow"
+  effect = Chain {
+           Lasting 10 SLOWED 
+           Lasting 10 MAGIC_VULNERABILITY 
+           Lasting 10 MELEE_VULNERABILITY
+           Lasting 10 RANGED_VULNERABILITY
+		   }
+  range = 3
+  cooldown = 30
+  sound = SPELL_SPEED_SELF
+}
+
+"ov_forgotten_god_blessing"
+{
+  symbol = "☠"
+  upgrade = "ov_ovelord_frenzy"
+  effect = Chain {
+           Lasting 20 RAGE 
+           Lasting 20 DEF_BONUS 
+		   Lasting 20 DAM_BONUS
+		   }
+  range = 8
+  endOnly = true
+  cooldown = 30
+  sound = SPELL_SPEED_SELF
+}
+
+"ov_forgotten_god_shield"
+{
+  symbol = "🛡"
+  upgrade = "ov_ovelord_shield"
+  effect = Name "forgotten god shield" Lasting 10 INVULNERABLE
+  cooldown = 100
+  sound = SPELL_DEX_BONUS
+}
+
+"ov_forgotten_god_army"
+{
+  symbol = "🐝"
+  effect = Name "call forth your army"
+  Chain {
+	Summon "OV_FG_WRAITH_REAPER" { 1 } 100
+	Summon "OV_FG_WRAITH_COMMANDER" { 1 } 100
+	Summon "OV_FG_WRAITH_SWORDSMAN" { 1 2 } 100 
+	Summon "OV_FG_WRAITH_CROSSBOWMAN" { 1 2 } 100
+  }
+  cooldown = 100
+  sound = SPELL_SUMMON_SPIRIT
+}
+
+"ov_forgotten_god_invastion"
+{
+  symbol = "☠"
+  effect =  Name "forgotten god invastion" CustomArea PlaceFurniture "OV_ABYSS_RIFT" { {0 0} }
+  range = 1
+  cooldown = 3000
+  sound = SPELL_TELEPORT
+  message = "We shall conquer this world!" "We shall conquer this world!"
+}
+
+"ov_wraith_reaper_evil_presence"
+{
+  symbol = "😱"
+  effect = MinDistanceFromStrongEnemy(2) Name "Evil Presence" Description "Unveil your nature" 
+  Chain{
+    Lasting 10 PANIC
+	Lasting 10 OV_LOW_MORALE
+	Damage SPELL_DAMAGE SPELL
+	}
+  range = 5
+  cooldown = 50
+  sound = SPELL_STR_BONUS
+}
+
+"ov_poison"
+{
+  symbol = "☠"
+  effect = Name "poison" Lasting 25 POISON
+  range = 4
+  cooldown = {5 21}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"ov_advanced_poison"
+{
+  upgrade = "ov_poison"
+  symbol = "☠"
+  effect = Name "poison" Area 1 Lasting 25 POISON
+  range = 8
+  cooldown = {5 21}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"ov_expert_poison"
+{
+  upgrade = "ov_advanced_poison"
+  symbol = "☠"
+  effect = Name "poison" Area 2 Lasting 25 POISON
+  range = 12
+  cooldown = {5 21}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"ov_mend_undead"
+{
+  symbol = "💀"
+  effect = Name "mend undead" Filter Or { BodyMaterial UNDEAD_FLESH
+      And {BodyMaterial BONE }}
+  {
+	RegrowBodyPart 5
+  }
+  range = 4
+  targetSelf = true
+  cooldown = {10 31}
+  sound = SPELL_HEALING
+  message = "fixed the undead" "fixes the undead"
+  type = ABILITY
+}
+
+"ov_advanced_mend_undead"
+{
+  upgrade = "ov_mend_undead"
+  symbol = "💀"
+  effect = Name "mend undead" Filter Or { BodyMaterial UNDEAD_FLESH
+      And {BodyMaterial BONE }}
+  {
+	RegrowBodyPart 10
+  }
+  range = 8
+  targetSelf = true
+  cooldown = {10 31}
+  sound = SPELL_HEALING
+  message = "fixed the undead" "fixes the undead"
+  type = ABILITY
+}
+
+"ov_expert_mend_undead"
+{
+  upgrade = "ov_advanced_mend_undead"
+  symbol = "💀"
+  effect = Name "mend undead" Filter Or { BodyMaterial UNDEAD_FLESH
+      And {BodyMaterial BONE }}
+  {
+	RegrowBodyPart 15
+  }
+  range = 12
+  targetSelf = true
+  cooldown = {10 31}
+  sound = SPELL_HEALING
+  message = "fixed the undead" "fixes the undead"
+  type = ABILITY
+}
+
+"ov_group_mend_undead"
+{
+  symbol = "💀"
+  effect = Name "mend undead" Area 2 Filter Not Enemy {Filter Or { BodyMaterial UNDEAD_FLESH
+      And {BodyMaterial BONE }}
+  {
+	RegrowBodyPart 5
+  }}
+  cooldown = {25 51}
+  sound = SPELL_HEALING
+}
+
+"ov_summon_skulls"
+{
+  symbol = "🐝"
+  effect = Name "dark dreams" ChooseRandom {
+								Summon "OV_SKULL_RAT_SUMMON" {1 3} 50
+								Summon "OV_SKULL_RAT_ARCHER_SUMMON" {1 3} 50
+								Summon "OV_SKULL_BOAR_SUMMON" {1} 50
+								Summon "OV_SKULL_STAG_SUMMON" {1} 50
+								}
+  cooldown = {30 61}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+OneTimeAbility("ov_darkness_source", "become darkness source.", Permanent DARKNESS_SOURCE, "🎯")
+
+
+"ov_forestation"
+{
+  symbol = "🌲"
+  effect = Name "forestation" Area 8 Chance 0.25 ChooseRandom {
+								PlaceFurniture "CANIF_TREE"
+								PlaceFurniture "DECID_TREE"
+								}
+  cooldown = {500 1000}
+  sound = SPELL_HEALING
+}

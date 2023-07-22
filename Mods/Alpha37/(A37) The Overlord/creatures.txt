@@ -1,0 +1,2452 @@
+################
+# The Overlord #
+################
+
+"OV_KEEPER_OVERLORD"
+  {
+    viewId = { "ov_overlord_keeper_m1" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+	  FIRE_DAMAGE 20
+      SPELL_DAMAGE 10
+	  MULTI_WEAPON 40
+	  LABORATORY 10
+	  FURNACE 15
+      FORGE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "overlord"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "ov_overlord_keeper_m2" } { "ov_overlord_keeper_m3" } { "ov_overlord_keeper_m4" }}
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 7
+      SPELL 12
+    }
+	companions = {2 true DAMAGE 0.01 { "OV_BROWN_MINION" }}
+    hatedByEffect = HATE_HUMANS
+    spellSchools = { "fighter" "Overlord" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm" }
+      { "Sword" }
+    }
+  }
+
+
+"OV_KEEPER_OVERLORD_F" inherit "OV_KEEPER_OVERLORD"
+  {
+    viewId = { "ov_overlord_keeper_f1" }
+    gender = FEMALE
+    name = {
+      name = "overlord"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "ov_overlord_keeper_f2" } { "ov_overlord_keeper_f3" } { "ov_overlord_keeper_f4" }}
+    }
+#################
+# Brown Minions #
+#################
+
+"OV_BROWN_MINION"
+  {
+    viewId = { "ov_minion_brown" }
+    attr = {
+      DAMAGE 14
+	  RANGED_DAMAGE 8
+      DEFENSE 12
+      DIGGING 20
+      WORKSHOP 35
+	  JEWELER 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+      
+    }
+    chatReactionFriendly = "what is this"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Brown minion"
+      firstNameGen = "ORC"
+    }
+    maxLevelIncrease = {
+      MELEE 5
+	  ARCHERY 5
+    }
+    inventory = {
+	  { type = "Torch" chance = 0.3 }
+      { type = "Bow" chance = 0.05 }
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+
+"OV_BROWN_MINION_BRUTE"
+  {
+    viewId = { "ov_minion_brown_brute" }
+    attr = {
+      DAMAGE 22
+	  RANGED_DAMAGE 16
+      DEFENSE 24
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "I am STRONG"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Minion Brute"
+      firstNameGen = "ORC"
+    }
+    maxLevelIncrease = {
+      MELEE 12
+	  ARCHERY 12
+    }
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+
+
+"OV_BROWN_MINION_ELDER"
+  {
+    viewId = { "ov_minion_brown_elder" }
+    attr = {
+      SPELL_DAMAGE 14
+      DAMAGE 20
+      DEFENSE 12
+	  LABORATORY 35
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "Evil always find a way"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Brown minion"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      SLOWED 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    spellSchools = { "Elder Minion" }
+    spells = { "deception" }
+    maxLevelIncrease = {
+      SPELL 10
+      ARCHERY 8
+    }
+    inventory = {
+      { "Robe"}
+    }
+  }
+
+################
+# Blue Minions #
+################
+
+"OV_BLUE_MINION"
+  {
+    viewId = { "ov_minion_blue" }
+    attr = {
+      DAMAGE 8
+      SPELL_DAMAGE 10
+      DEFENSE 10
+	  LABORATORY 10
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "me heal you"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Blue minion"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      SPELL 7
+    }
+    aiType = RANGED
+    spells = { "advanced healing" }
+    inventory = {
+      { "LeatherArmor"}
+    }
+  }
+
+"OV_BLUE_MINION_ELDER"
+  {
+    viewId = { "ov_minion_blue_elder" }
+    attr = {
+      DAMAGE 6
+      SPELL_DAMAGE 20
+      DEFENSE 8
+	  LABORATORY 45
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "Evil will outlast this storm"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Blue minion"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      SWIMMING_SKILL 1
+      SLOWED 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    spellSchools = { "Elder Minion" }
+    maxLevelIncrease = {
+      SPELL 10
+      ARCHERY 8
+    }
+    spells = { "advanced healing" "deception" }
+    inventory = {
+      { "Robe"}
+    }
+  }
+
+"OV_NECRO_MINION"
+  {
+    viewId = { "ov_minion_pale" }
+    attr = {
+      DAMAGE 12
+      SPELL_DAMAGE 14
+      DEFENSE 14
+	  LABORATORY 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "Dont fear the reaper."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Pale minion"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+	RIDER 1
+    }
+    maxLevelIncrease = {
+      SPELL 11
+    }
+    aiType = RANGED
+    spells = { "animate corpses" "advanced healing" }
+    inventory = {
+      { "LeatherArmor"}
+    }
+  }
+
+###############
+# Red Minions #
+###############
+
+"OV_RED_MINION"
+  {
+    viewId = { "ov_minion_red" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 12
+	  FIRE_DAMAGE 16
+	  FURNACE 15
+      FORGE 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {1.0 Fire{10}} } }}}
+                         }
+     	   }
+    name = {
+      name = "Red minion"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    spells = {
+      "ov_throw_flame"
+    }
+    chatReactionFriendly = "burny burn"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 4
+      ARCHERY 4
+    }
+    inventory = {
+      { "LeatherArmor"}
+    }
+  }
+
+"OV_FORGE_MINION"
+  {
+    viewId = { "ov_minion_red_forgemaster" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 16
+	  FIRE_DAMAGE 20
+	  FURNACE 30
+      FORGE 30
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {1.0 Fire{10}} } }}}
+                         }
+     	   }
+    name = {
+      name = "Forgemaster minion"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    spells = {
+      "ov_throw_flame"
+    }
+    chatReactionFriendly = "Flames and Steel"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 10
+      ARCHERY 10
+    }
+    inventory = {
+      { "LeatherArmor"}
+    }
+  }
+
+
+"OV_RED_MINION_ELDER"
+  {
+    viewId = { "ov_minion_red_elder" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 10
+      SPELL_DAMAGE 14
+	  FIRE_DAMAGE 18
+	  FURNACE 20
+      FORGE 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {1.0 Fire{10}} } }}}
+                         }
+     	   }
+    name = {
+      name = "Red minion"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+      SLOWED 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    spellSchools = { "Elder Minion" }
+    spells = { "deception" "ov_throw_flame" }
+    chatReactionFriendly = "Evil always burns a way"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      ARCHERY 8
+      SPELL 10
+    }
+    inventory = {
+      { "Robe"}
+    }
+  }
+  
+#################
+# Green Minions #
+#################
+
+"OV_GREEN_MINION"
+  {
+    viewId = { "ov_minion_green" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "bite_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {0.1 Lasting POISON} } }}}
+
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 8 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+    }
+    chatReactionFriendly = "me smell so good"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+	  AMBUSH_SKILL 1
+      POISON_RESISTANT 1
+	  RIDER 1
+    }
+    name = {
+      name = "Green minion"
+      firstNameGen = "ORC"
+    }
+    maxLevelIncrease = {
+      MELEE 7
+    }
+    spells = {
+      "invisibility"
+    }
+    inventory = {
+      { "LeatherArmor"}
+    }
+  }
+
+"OV_STALKER_MINION"
+  {
+    viewId = { "ov_minion_green_stalker" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 16
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "bite_attack" } "fists" 11 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {0.2 Lasting POISON} } }}}
+
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 14 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.6 Lasting POISON} } }}}
+      }
+    }
+    chatReactionFriendly = "me smell so good"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+	  AMBUSH_SKILL 1
+      POISON_RESISTANT 1
+	  RIDER 1
+    }
+    name = {
+      name = "Stalker minion"
+      firstNameGen = "ORC"
+    }
+    maxLevelIncrease = {
+      MELEE 11
+    }
+    spells = {
+      "invisibility" 
+      "ov_stalker_blink"
+    }
+    inventory = {
+      { "LeatherArmor"}
+    }
+  }
+
+"OV_GREEN_MINION_ELDER"
+  {
+    viewId = { "ov_minion_green_elder" }
+    attr = {
+      SPELL_DAMAGE 14
+      DAMAGE 12
+      DEFENSE 8
+	  LABORATORY 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "bite_attack" } "fists" 5 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {0.1 Lasting POISON} } }}}
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 8 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+    }
+    chatReactionFriendly = "Evil smells so good"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+	  AMBUSH_SKILL 1
+      POISON_RESISTANT 1
+      SLOWED 1
+	  RIDER 1
+    }
+    name = {
+      name = "Green minion"
+      firstNameGen = "ORC"
+    }
+    spellSchools = { "Elder Minion" }
+    spells = { "deception" "invisibility" }
+    maxLevelIncrease = {
+      SPELL 10
+      ARCHERY 8
+    }
+
+    inventory = {
+      { "Robe"}
+    }
+  }
+
+##################
+# Mutant Minions #
+##################
+
+"OV_BROWN_MINION_MUTANT"
+  {
+    viewId = { "ov_minion_brown_mutant" }
+    attr = {
+      DAMAGE 22
+      DEFENSE 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "bite_attack" } "fists" 8 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 10 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+    chatReactionFriendly = "Urgh... haa.."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Mutated Minion"
+      firstNameGen = "ORC"
+    }
+    maxLevelIncrease = {
+    }
+    inventory = {
+    }
+}
+
+"OV_BLUE_MINION_MUTANT"
+  {
+    viewId = { "ov_minion_brown_mutant" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "bite_attack" } "fists" 8 {
+            attackType = HIT
+            attackMsg = SWING } }}}
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 10 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+    chatReactionFriendly = "Urgh... haa.."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Mutated Minion"
+      firstNameGen = "ORC"
+    }
+    spells = { "healing" }
+    maxLevelIncrease = {
+    }
+    inventory = {
+    }
+}
+
+"OV_RED_MINION_MUTANT"
+  {
+    viewId = { "ov_minion_red_mutant" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 22
+	  FIRE_DAMAGE 22
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "bite_attack" } "fists" 6 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {1.0 Fire{10}} } }}}
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 8 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {1.0 Fire{10}} } }}}
+      }
+    }
+    chatReactionFriendly = "Urgh... haa.."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Mutated Minion"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+	  RIDER 1
+    }
+    spells = { "ov_throw_flame" }
+    maxLevelIncrease = {
+    }
+    inventory = {
+    }
+}
+
+"OV_GREEN_MINION_MUTANT"
+  {
+    viewId = { "ov_minion_red_mutant" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "bite_attack" } "fists" 6 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {0.1 Lasting POISON} } }}}
+
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 8 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+    }
+    chatReactionFriendly = "Urgh... haa.."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Mutated Minion"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+	  AMBUSH_SKILL 1
+      POISON_RESISTANT 1
+	  RIDER 1
+    }
+    spells = { "summon flies" }
+    maxLevelIncrease = {
+    }
+    inventory = {
+    }
+}
+
+############
+# Red Dawn #
+############
+
+"OV_PLEASURE_ZOMBIE"
+  {
+    viewId = { "ov_PleasureZombie" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 17
+	  DIGGING 10
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SEXUALY_DISEASED_UNDEAD_FLESH
+    }
+    chatReactionFriendly = "Yooouu willll en.. jooyy it"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      SWARMER 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    name = {
+      name = "zombie"
+    }
+	deathEffect = DropItems {"ov_pz_corpse"} {1}
+    hatedByEffect = HATE_UNDEAD
+    inventory = {
+    }
+}
+
+"OV_PLEASURE_CULTIST_M"
+  {
+    viewId = { "ov_PleasureCultist_02" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 13
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "You will enjoy it"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 4
+    }
+	name = {
+      name = "cultist"
+      firstNameGen = "FIRST_MALE"
+    }
+	permanentEffects = {
+	  RIDER 1
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Club"}
+      { "Robe"}
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 2 8 }
+    }
+}
+
+"OV_PLEASURE_CULTIST_F" inherit "OV_PLEASURE_CULTIST_M"
+  {
+    viewId = { "ov_PleasureCultist_01" }
+    gender = FEMALE
+    permanentEffects = {
+      COPULATION_SKILL 1
+	  RIDER 1
+    }
+	name = {
+      name = "cultist"
+      firstNameGen = "FIRST_FEMALE"
+    }
+}
+
+"OV_PLEASURE_PROPHET"
+  {
+    viewId = { "ov_PleasureProphet" }
+    attr = {
+      DAMAGE 41
+      DEFENSE 33
+      SPELL_DAMAGE 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      MELEE 8
+	  SPELL 8
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      MAGIC_RESISTANCE 1
+	  RIDER 1
+    }
+	name = {
+      name = "arch paladin"
+      firstNameGen = "FIRST_MALE"
+    }
+    chatReactionFriendly = "More vine More Women!"
+    chatReactionHostile = "\"Die!\""
+    deathEffect = Filter Not Flag "key_dropped" {
+      SetFlag "key_dropped" true
+      DropItems {Scroll Summon "OV_PLEASURE_SUCCUBUS_QUEEN" {1} none} {1}
+    }
+    hatedByEffect = HATE_HUMANS
+	spellSchools = { "red dawn" }
+    spells = { "defense bonus" }
+   inventory = {
+      { "IronStaff" }
+      { "ChainArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 6 16 }
+	  }
+}
+
+"OV_PLEASURE_PROPHET_KEEPER" inherit "OV_PLEASURE_PROPHET"
+  {
+   inventory = {
+      { "IronStaff" }
+      { "ChainArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 6 16 }
+	  { "ov_summon_succubus_queen_keeper" }
+               }
+  }
+
+"OV_PLEASURE_PALADIN_PLAYER"
+  {
+    viewId = { "ov_PleasureFallenPaladin" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 16 
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      MELEE 7
+    }
+    chatReactionFriendly = "More vine More Women!"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+    }
+    name = {
+      name = "paladin"
+      firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_HUMANS
+	spells = { "healing" }
+  }
+  
+"OV_PLEASURE_PALADIN" inherit "OV_PLEASURE_PALADIN_PLAYER"
+  {
+    attr = {
+      DAMAGE 41
+      DEFENSE 33
+    }
+    maxLevelIncrease = {
+      MELEE 4
+    }
+  }
+  
+"OV_PLEASURE_PRIEST_PLAYER"
+  {
+    viewId = { "ov_PleasureFallenPriest" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 16 
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "More vine More Women!"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      SPELL 8
+    }
+    aiType = RANGED
+    name = {
+      name = "priest"
+      firstNameGen = "FIRST_MALE"
+    }
+	companions = {1 true SPELL_DAMAGE 0.01 { "OV_PLEASURE_SUCCUBUS" }}
+    spellSchools = { "red dawn" }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+"OV_PLEASURE_PRIEST" inherit "OV_PLEASURE_PRIEST_PLAYER"
+  {
+    attr = {
+      DAMAGE 14
+      DEFENSE 10
+      SPELL_DAMAGE 22
+    }
+  } 
+
+"OV_HUNTING_DOG" inherit "DOG"
+  {
+    aiType = MELEE
+  }
+  
+"OV_PLEASURE_THRILLSEEKER_PLAYER"
+  {
+    viewId = { "ov_pleasure_thrillseeker" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 8
+      RANGED_DAMAGE 10 
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      ARCHER_VISION 1
+      RIDER 1
+	  MAGIC_VULNERABILITY 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    spellSchools = { "archer" }
+	companions = {3 true RANGED_DAMAGE 0.01 { "OV_HUNTING_DOG" }}
+    maxLevelIncrease = {
+      ARCHERY 12
+    }
+    aiType = RANGED
+    name = {
+      name = "thrillseeker"
+      firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+"OV_PLEASURE_THRILLSEEKER" inherit "OV_PLEASURE_THRILLSEEKER_PLAYER"
+  {
+    attr = {
+      DAMAGE 22
+      DEFENSE 27
+      RANGED_DAMAGE 35
+    }
+	maxLevelIncrease = {
+      ARCHERY 4
+    }
+  } 
+  
+"OV_PLEASURE_SUCCUBUS_QUEEN"
+  {
+    attr = {
+      DEFENSE 41
+      SPELL_DAMAGE 10
+    }
+    viewId = { "ov_PleasureSuccubus_Queen" }
+    name = {
+      name = "succubus queen"
+      firstNameGen = "DEMON"
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = {1.0 Lasting PEACEFULNESS} } }}}
+      }
+      addBodyPart = {
+        WING 2
+      }
+    }
+    maxLevelIncrease = {
+      MELEE 3
+      SPELL 10
+    }
+    spellSchools = { "Pleasure Succubus Queen" }
+    permanentEffects = {
+      COPULATION_SKILL 1
+	  RIDER 1
+    }
+    gender = FEMALE
+    aiType = RANGED
+}
+
+"OV_PLEASURE_SUCCUBUS_QUEEN_KEEPER" inherit "OV_PLEASURE_SUCCUBUS_QUEEN"
+  {
+   inventory = {
+      { "IronStaff" }
+      { "ChainArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { SPIRIT } chance = 0.7 }
+      { "GoldPiece" 6 16 }
+	  { "ov_summon_arch_paladin_keeper" }
+    }	
+}
+
+"OV_PLEASURE_SUCCUBUS" inherit "SUCCUBUS"
+  {
+    viewId = { "ov_PleasureSuccubus" }
+    spellSchools = { "Pleasure Succubus" }
+}
+
+"OV_IRON_DROP" inherit "OV_PLEASURE_ZOMBIE"
+  {
+  deathEffect = Chain {
+      DropItems { "Sword"} {10}
+	  DropItems { "ChainArmor"} {10}
+	  DropItems { "IronShield"} {10}
+	  DropItems { "IronBoots"} {10}
+	  DropItems { "IronGloves"} {10}
+	  DropItems { "IronHelm"} {10}
+	  }
+}
+
+#####################
+# Corrupted Hobbits #
+#####################
+
+"OV_CORRUPTED_HOBBIT"
+  {
+    viewId = { "ov_halfling" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about drinking and feasting"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      DISTILLATION_SKILL 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "Halfling"
+      firstNameGen = "HALFLING_MALE"
+    }
+  }
+  
+"OV_CORRUPTED_HOBBIT_F" inherit "OV_CORRUPTED_HOBBIT"
+  {
+    viewId = { "ov_halfling_f" }
+    gender = FEMALE
+    name = {
+      name = "Halfling"
+      firstNameGen = "HALFLING_FEMALE"
+    }
+}
+
+"OV_CORRUPTED_HOBBIT_WARRIOR"
+  {
+    viewId = { "ov_halfling_spearman" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 18
+	  WORKSHOP 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about drinking and feasting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Halfling Maurader"
+      firstNameGen = "HALFLING_MALE"
+    }
+    permanentEffects = {
+	RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 7
+    }
+	spellSchools = { "fighter" }
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+      { type = Potion Heal { FLESH } chance = 0.2 }
+      { "GoldPiece" 2 8 }
+      { type = "Torch" chance = 0.3 }
+    }
+  }
+
+"OV_CORRUPTED_HOBBIT_CROSSBOWMAN"
+  {
+    viewId = { "ov_halfling_crossbowman" }
+    attr = {
+      DAMAGE 14
+      RANGED_DAMAGE 16
+      DEFENSE 18
+	  WORKSHOP 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about drinking and feasting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Halfling Manhunter"
+      firstNameGen = "HALFLING_MALE"
+    }
+    permanentEffects = {
+	RIDER 1
+    }
+    spellSchools = { "archer" }
+    maxLevelIncrease = {
+      MELEE 4
+      ARCHERY 7
+    }
+    inventory = {
+      { "Crossbow"}
+      { "LeatherArmor"}
+      { type = Potion Heal { FLESH } chance = 0.2 }
+      { "GoldPiece" 2 8 }
+      { type = "Torch" chance = 0.3 }
+    }
+  }
+  
+"OV_CORRUPTED_HALFLING_CHEF"
+  {
+    viewId = { "ov_halfling_cook" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 18
+	  SPELL_DAMAGE 8
+	  LABORATORY 55
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about drinking and feasting"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+	RIDER 1
+    }
+	maxLevelIncrease = {
+	  MELEE 7
+      SPELL 12	
+    }
+	spellSchools = { "Halfling Chef" }
+    name = {
+      name = "Halfling Chef"
+      firstNameGen = "HALFLING_MALE"
+    }
+	inventory = {
+      { "OV_CLEAVER" }
+      { "LeatherArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+  
+"OV_CORRUPTED_HALFLING_CHEF_PLAYER" inherit "OV_CORRUPTED_HALFLING_CHEF"
+  {  
+  }
+  
+"OV_CORRUPTED_HOBBIT_PROTECTOR"
+  {
+    viewId = { "ov_halfling_protector" }
+    attr = {
+      DAMAGE 28
+      DEFENSE 33
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      MELEE 12
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+    chatReactionFriendly = "talks about drinking and feasting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Halfling Protector"
+	  firstNameGen = "HALFLING_MALE"
+    }
+	spellSchools = { "fighter" }
+    inventory = {
+      { "Sword"}
+      { "ChainArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+
+"OV_CORRUPTED_HOBBIT_HERO"
+  {
+    viewId = { "ov_halfling_king" }
+    attr = {
+      DAMAGE 32
+      DEFENSE 31 
+    }
+    body = {
+      type = Humanoid LARGE
+      weight = 400
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      RANGED_RESISTANCE 1
+      COLLAPSED 1
+      MELEE_RESISTANCE 1
+    }
+    name = {
+      name = "halfling king"
+      firstNameGen = "HALFLING_MALE"
+    }
+    maxLevelIncrease = {
+      MELEE 5
+    }
+    inventory = {
+      { "WarHammer"}
+      { "ChainArmor" }
+      { "IronHelm" }
+      { "IronBoots" }
+      # You can either list the values in the order defined in SERIALIZE_ALL or 
+      { "GoldPiece" 40 80 }
+      # Put them in any order in the format "key = value"
+      { countMin = 10 countMax = 15 type = "GoldPiece" chance = 0.1}
+      { type = Glyph ARMOR ItemAttrBonus DEFENSE 3 chance = 0.3 }
+      { type = Glyph WEAPON ItemAttrBonus DAMAGE 3 chance = 0.3 }
+      { type = Glyph RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 chance = 0.3 }
+    }
+  }
+
+"OV_CORRUPTED_HOBBIT_HERO_PLAYER"
+  {
+    viewId = { "ov_halfling_king" }
+    attr = {
+      DAMAGE 28
+      DEFENSE 28
+    }
+    body = {
+      type = Humanoid LARGE
+      weight = 400
+      droppedPartUpgrade = IncreaseAttr DEFENSE 5
+    }
+	permanentEffects = {
+      POISON_RESISTANT 1
+      RANGED_RESISTANCE 1
+      COLLAPSED 1
+      MELEE_RESISTANCE 1
+	  RIDER 1
+    }
+    name = {
+      name = "halfling king"
+      firstNameGen = "HALFLING_MALE"
+    }
+    maxLevelIncrease = {
+      MELEE 16
+    }
+  }
+  
+"OV_CORRUPTED_HOBBIT_PLAYER" inherit "OV_CORRUPTED_HOBBIT"
+    {
+    attr = append {
+	  DIGGING 15
+	  FURNACE 10
+      WORKSHOP 25
+      FORGE 25
+      LABORATORY 25
+	  JEWELER 25
+    }
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+	  RIDER 1
+    }
+  }
+  
+"OV_CORRUPTED_HOBBIT_F_PLAYER" inherit "OV_CORRUPTED_HOBBIT_F"
+  {
+    attr = append {
+	  DIGGING 15
+	  FURNACE 10
+      WORKSHOP 25
+      FORGE 25
+      LABORATORY 25
+	  JEWELER 25
+    }
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+	  RIDER 1
+    }
+}
+
+"OV_CORRUPTED_HALFLING_PUMPKINMACER_PLAYER"
+  {
+    viewId = { "ov_halfling_pumpkinmancer" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 12
+	  SPELL_DAMAGE 10
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "pumpkins? PUMPKINS!"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+	RIDER 1
+    }
+	maxLevelIncrease = {
+	  MELEE 2
+      SPELL 8	
+    }
+	spellSchools = { "Pumpkinmancer" }
+    name = {
+      name = "Halfling Pumpkinmancer"
+      firstNameGen = "HALFLING_MALE"
+    }
+    inventory = {
+      { "Club" }
+      { "LeatherArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+
+"OV_CORRUPTED_HALFLING_PUMPKINMACER" inherit "OV_CORRUPTED_HALFLING_PUMPKINMACER_PLAYER"
+  {
+
+  }
+    
+"OV_PESEANT_PRISONER" inherit "PESEANT"
+  {
+      permanentEffects = append {
+      UNSTABLE 1
+    }
+  }
+  
+"OV_EVIL_PUMPKIN"
+  {
+    viewId = { "ov_evil_pumpkin" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 11 
+           }
+	  body = {
+      type = NonHumanoid MEDIUM
+	    bodyParts = {
+        ARM 1
+        TORSO 1
+        LEG 2
+		      }
+      weight = 35
+      intrinsicAttacks = {
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+    }
+    name = {
+      name = "evil pumpkin"
+    }
+  }
+
+#####################
+# Corrupted Hobbits #
+#####################
+
+"OV_HOBBIT"
+  {
+    viewId = { "ov_halfling_pure" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about drinking and feasting"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      DISTILLATION_SKILL 1
+	  UNSTABLE 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "Halfling"
+      firstNameGen = "HALFLING_MALE"
+    }
+  }
+  
+"OV_HOBBIT_F" inherit "OV_HOBBIT"
+  {
+    viewId = { "ov_halfling_f_pure" }
+    gender = FEMALE
+    name = {
+      name = "Halfling"
+      firstNameGen = "HALFLING_FEMALE"
+    }
+}
+
+"OV_HOBBIT_MAYOR" inherit "OV_HOBBIT"
+  {
+    viewId = { "ov_halfling_mayor_pure" }
+	attr = {
+	  SPELL_DAMAGE 10
+	  SPELL_SPEED 10
+      DAMAGE 10
+      DEFENSE 10
+    }
+    maxLevelIncrease = {
+	  MELEE 4
+      SPELL 10	
+    }
+	spellSchools = { "chickenmancy" }
+    name = {
+      name = "Halfling"
+      firstNameGen = "HALFLING_FEMALE"
+    }
+	inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+      { type = Potion Heal { FLESH } chance = 0.2 }
+      { "GoldPiece" 2 8 }
+      { type = "Torch" chance = 0.3 }
+    }
+}
+"OV_HOBBIT_WARRIOR"
+  {
+    viewId = { "ov_halfling_spearman_pure" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 18
+	  WORKSHOP 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about drinking and feasting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Halfling Millitia"
+      firstNameGen = "HALFLING_MALE"
+    }
+    permanentEffects = {
+	RIDER 1
+	UNSTABLE 1
+    }
+    maxLevelIncrease = {
+      MELEE 7
+    }
+	spellSchools = { "fighter" }
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+      { type = Potion Heal { FLESH } chance = 0.2 }
+      { "GoldPiece" 2 8 }
+      { type = "Torch" chance = 0.3 }
+    }
+  }
+
+"OV_HOBBIT_CROSSBOWMAN"
+  {
+    viewId = { "ov_halfling_crossbowman_pure" }
+    attr = {
+      DAMAGE 14
+      RANGED_DAMAGE 16
+      DEFENSE 18
+	  WORKSHOP 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about drinking and feasting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Halfling Crossbowman"
+      firstNameGen = "HALFLING_MALE"
+    }
+    permanentEffects = {
+	RIDER 1
+	UNSTABLE 1
+    }
+    spellSchools = { "archer" }
+    maxLevelIncrease = {
+      MELEE 4
+      ARCHERY 7
+    }
+    inventory = {
+      { "Crossbow"}
+      { "LeatherArmor"}
+      { type = Potion Heal { FLESH } chance = 0.2 }
+      { "GoldPiece" 2 8 }
+      { type = "Torch" chance = 0.3 }
+    }
+  }
+  
+"OV_HALFLING_CHEF"
+  {
+    viewId = { "ov_halfling_cook_pure" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 18
+	  SPELL_DAMAGE 8
+	  LABORATORY 55
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about drinking and feasting"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+	RIDER 1
+	UNSTABLE 1
+    }
+	maxLevelIncrease = {
+	  MELEE 7
+      SPELL 12	
+    }
+	spellSchools = { "Halfling Chef" }
+    name = {
+      name = "Halfling Chef"
+      firstNameGen = "HALFLING_MALE"
+    }
+	inventory = {
+      { "OV_CLEAVER" }
+      { "LeatherArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+"OV_HALFLING_CHEF_PLAYER" inherit "OV_HALFLING_CHEF"
+  {  
+  }
+###########
+# Animals #
+###########
+
+"OV_SALAMANDER"
+  {
+    viewId = { "ov_salamander" }
+    attr = {
+      DAMAGE 11
+      DEFENSE 18
+    }
+    body = {
+	  type = FourLegged MEDIUM
+      weight = 35
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+	  FIRE_IMMUNITY 1
+      STEED 1
+    }
+    noChase = true
+    petReaction = "hisses"
+    name = {
+      name = "salamander"
+      pluralName = "salamanders"
+      firstNameGen = "DOG"
+      groupName = "pack"
+    }
+  }
+  
+"OV_SPIDER"
+  {
+    viewId = { "spider" }
+    attr = {
+      DAMAGE 9
+      DEFENSE 13 
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 8
+        TORSO 1
+      }
+      weight = 35
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "bite_attack" } "fangs" 1 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.1 Lasting POISON} } }}}
+      }
+    }
+	permanentEffects = {
+      POISON_RESISTANT 1
+      RANGED_RESISTANCE 1
+      STEED 1
+    }
+    noChase = true
+    petReaction = "clicks"
+	spells = {
+      "ov_spider_web"
+    }
+    name = {
+      name = "spider"
+	  pluralName = "spiders"
+      firstNameGen = "DOG"
+      groupName = "swarm"
+    }
+  }
+
+"OV_PIG_RIDING" inherit "PIG" 
+  {
+    viewId = { "pig" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 12 
+    }
+    body = {
+      type = FourLegged MEDIUM
+      weight = 150
+      deathSound = DYING_PIG
+    }
+    permanentEffects = {
+      STEED 1
+    }
+  }
+###################
+# FORGOTTEN ABYSS #
+###################
+
+"OV_FORGOTTEN_GOD"
+  {
+    viewId = { "ov_forgotten_god" }
+    attr = {
+      DAMAGE 87
+      DEFENSE 96
+	  FIRE_DAMAGE 84
+    }
+    body = {
+      type = NonHumanoid HUGE
+      material = SPIRIT
+      xCanPickUpItems = true
+      bodyParts = {
+        BACK 1
+        TORSO 1
+		ARM 1
+      }
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 12 {
+            attackType = HIT
+            attackMsg = CLAW
+            victimEffect = {0.01 Suicide DIE 1.0 Fire{50}} } }}}
+      }
+      drops = {{ "OV_FORGOTTEN_ESSENCE" } 1}
+      droppedPartUpgrade = GrantAbility "poison breath"
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+	  ACID_RESISTANT 1
+	  COLD_RESISTANT 1
+	  FIRE_IMMUNITY 1
+	  MELEE_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+	  MAGIC_RESISTANCE 1
+	  CAPTURE_RESISTANCE 1
+      IMMOBILE 1
+	  NIGHT_VISION 1
+	  ARCHER_VISION 1
+    }
+    name = {
+      name = "Forgotten God"
+    }
+	spellSchools = { "forgotten god" }
+    spells = {"ov_forgotten_god_greeting"}
+    inventory = {
+      { "GoldPiece" 600 1000 }
+      { type = Glyph WEAPON VictimEffect 0.2 Suicide DIE chance = 0.3 }
+      { type = Glyph WEAPON VictimEffect 0.3 Suicide DIE chance = 0.3 }
+      { type = Glyph WEAPON VictimEffect 0.4 Suicide DIE chance = 0.3 }
+    }
+  }
+  
+"OV_FG_WRAITH_SWORDSMAN"
+  {
+    viewId = { "ov_wraith_swordsman" }
+    attr = {
+      DAMAGE 27
+      DEFENSE 23
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 8
+    }
+    name = {
+      name = "wraith swordsman"
+    }
+    hatedByEffect = HATE_UNDEAD
+	inventory = {
+      { "Sword"}
+      { "ChainArmor"}
+      { type = "IronHelm" chance = 0.5 }
+      { type = "IronBoots" chance = 0.3 }
+      { "GoldPiece" 2 6 }
+    }
+  }
+  
+"OV_FG_WRAITH_CROSSBOWMAN"
+  {
+    viewId = { "ov_wraith_crossbowman" }
+    attr = {
+      RANGED_DAMAGE 27
+	  DAMAGE 12
+      DEFENSE 18
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      ARCHERY 8
+    }
+    name = {
+      name = "wraith crossbowman"
+    }
+    spells = {"shoot arrow"}	
+    hatedByEffect = HATE_UNDEAD
+	inventory = {
+	  { "Club"}
+      { "Crossbow"}
+      { "ChainArmor"}
+      { type = "IronHelm" chance = 0.5 }
+      { type = "IronBoots" chance = 0.3 }
+      { "GoldPiece" 2 6 }
+    }
+  }
+  
+"OV_FG_WRAITH_COMMANDER"
+  {
+    viewId = { "ov_wraith_commander" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 28
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 12
+    }
+    name = {
+      name = "wraith commander"
+    }
+	spells = {"rally" "bolster"}
+    hatedByEffect = HATE_UNDEAD
+	inventory = {
+	  { "Sword"}
+      { "ChainArmor"}
+      { type = "IronHelm" chance = 0.5 }
+      { type = "IronBoots" chance = 0.3 }
+      { "GoldPiece" 4 12 }
+    }
+  }
+  
+"OV_FG_WRAITH_REAPER"
+  {
+    viewId = { "ov_wraith_reaper" }
+    attr = {
+      SPELL_DAMAGE 27
+	  DAMAGE 12
+      DEFENSE 14
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      SPELL 8
+    }
+    name = {
+      name = "wraith reaper"
+    }
+    spells = {"teleport" "heal spirit" "ov_wraith_reaper_evil_presence"}	
+    hatedByEffect = HATE_UNDEAD
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm" }
+      { "ov_Scythle" }
+    }
+  }
+ 
+"OV_ABYSS_PUMPKIN"
+  {
+    viewId = { "ov_abyss_evil_pumpkin" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 11 
+           }
+	  body = {
+      type = NonHumanoid MEDIUM
+	    bodyParts = {
+        ARM 1
+        TORSO 1
+        LEG 2
+		      }
+      weight = 35
+      intrinsicAttacks = {
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+	  FIRE_IMMUNITY 1
+      EXPLORE_NOCTURNAL_SKILL 1
+    }
+    name = {
+      name = "abyss pumpkin"
+    }
+  }
+  
+###############
+# Netherghoul #
+###############
+
+"OV_NETHERGHUL_HUMAN_M"
+  {
+    viewId = { "ov_netherghul_human_m" }
+    attr = {
+      DAMAGE 16
+	  FIRE_DAMAGE 18
+	  RANGED_DAMAGE 8
+      DEFENSE 14 
+      FURNACE 10
+      WORKSHOP 5
+      FORGE 5
+    }
+    body = {
+      type = Humanoid LARGE
+	  material = NETHERGHOUL_FLESH
+    }
+    maxLevelIncrease = {
+      MELEE 8
+	  ARCHERY 4
+    }
+    chatReactionFriendly = "i have returned"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+	  FIRE_IMMUNITY 1
+    }
+	spells = {
+      "ov_throw_flame"
+	  "healing"
+    }
+	companions = {2 true DAMAGE 0.01 { "OV_BROWN_MINION" }}
+    name = {
+      name = "netherghul"
+      firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+    hatedByEffect = HATE_UNDEAD
+	deathEffect = DropItems {"ov_ng_corpse"} {1}
+  }
+  
+"OV_NETHERGHUL_HUMAN_F" inherit "OV_NETHERGHUL_HUMAN_M"
+  {
+    viewId = { "ov_netherghul_human_f" }
+    name = {
+      name = "netherghul"
+      firstNameGen = "FIRST_FEMALE"
+    }
+  gender = FEMALE
+  }
+    
+"OV_NETHERGHUL_GOBLIN_M" inherit "OV_NETHERGHUL_HUMAN_M"
+  {
+    viewId = { "ov_netherghul_goblin_m" }  
+    attr = {
+      DAMAGE 20
+	  FIRE_DAMAGE 18
+	  RANGED_DAMAGE 8
+      DEFENSE 10 
+      WORKSHOP 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  material = NETHERGHOUL_FLESH
+    }
+    name = {
+      name = "netherghul"
+      firstNameGen = "ORC"
+    }
+  gender = FEMALE
+  }
+  
+"OV_NETHERGHUL_GOBLIN_F" inherit "OV_NETHERGHUL_GOBLIN_M"
+  {
+    viewId = { "ov_netherghul_goblin_f" } 
+	attr = {
+      DAMAGE 18
+	  FIRE_DAMAGE 16
+	  RANGED_DAMAGE 8
+      DEFENSE 8 
+      WORKSHOP 18
+    }
+    name = {
+      name = "netherghul"
+      firstNameGen = "ORC"
+    }
+  permanentEffects = {
+	  COPULATION_SKILL 1
+      RIDER 1
+	  FIRE_IMMUNITY 1
+    }
+  gender = FEMALE
+  }
+    
+"OV_NETHERGHUL_ELF_M" inherit "OV_NETHERGHUL_HUMAN_M"
+  {
+    viewId = { "ov_netherghul_elf_m" }  
+    attr = {
+      DAMAGE 14
+	  RANGED_DAMAGE 16
+	  FIRE_DAMAGE 18
+      DEFENSE 10 
+      WORKSHOP 20
+    }
+	permanentEffects = {
+	  ELF_VISION 1
+      RIDER 1
+	  FIRE_IMMUNITY 1
+    }   
+    maxLevelIncrease = {
+      MELEE 4
+	  ARCHERY 12
+    }	
+    body = {
+      type = Humanoid MEDIUM
+	  material = NETHERGHOUL_FLESH
+    }
+    name = {
+      name = "netherghul"
+      firstNameGen = "FIRST_MALE"
+    }
+  }
+    
+"OV_NETHERGHUL_ELF_F" inherit "OV_NETHERGHUL_ELF_M"
+  {
+    viewId = { "ov_netherghul_elf_f" }
+    name = {
+      name = "netherghul"
+      firstNameGen = "FIRST_FEMALE"
+    }
+  gender = FEMALE
+  }
+      
+"OV_NETHERGHUL_DARK_ELF_M" inherit "OV_NETHERGHUL_HUMAN_M"
+  {
+    viewId = { "ov_netherghul_dark_elf_m" }  
+    attr = {
+      DAMAGE 16
+	  FIRE_DAMAGE 20
+	  RANGED_DAMAGE 10
+      DEFENSE 14 
+    }
+	permanentEffects = {
+	  NIGHT_VISION 1
+	  MAGIC_RESISTANCE 1
+      RIDER 1
+	  FIRE_IMMUNITY 1
+    }   
+    body = {
+      type = Humanoid MEDIUM
+	  material = NETHERGHOUL_FLESH
+    }
+    name = {
+      name = "netherghul"
+      firstNameGen = "FIRST_MALE"
+    }
+  }
+    
+"OV_NETHERGHUL_DARK_ELF_F" inherit "OV_NETHERGHUL_DARK_ELF_M"
+  {
+    viewId = { "ov_netherghul_dark_elf_f" }
+    name = {
+      name = "netherghul"
+      firstNameGen = "FIRST_FEMALE"
+    }
+  gender = FEMALE
+  } 
+
+"OV_NETHERGHUL_DWARF_M" inherit "OV_NETHERGHUL_HUMAN_M"
+  {
+    viewId = { "ov_netherghul_dwarf_m" }
+    attr = {
+      DAMAGE 20
+	  FIRE_DAMAGE 10
+	  RANGED_DAMAGE 4
+      DEFENSE 16
+      FURNACE 20
+      FORGE 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+      weight = 90
+	  material = NETHERGHOUL_FLESH
+    }
+    maxLevelIncrease = {
+      MELEE 12
+	  ARCHERY 2
+    }
+    permanentEffects = {
+	  MAGIC_VULNERABILITY 1
+      RIDER 1
+	  FIRE_IMMUNITY 1
+    }
+  }
+  
+"OV_NETHERGHUL_DWARF_F" inherit "OV_NETHERGHUL_DWARF_M"
+  {
+    viewId = { "ov_netherghul_dwarf_f" }
+    name = {
+      name = "netherghul"
+      firstNameGen = "FIRST_FEMALE"
+    }
+  gender = FEMALE
+  }
+  
+"OV_NETHERGHUL_GNOME_M" inherit "OV_NETHERGHUL_HUMAN_M"
+  {
+    viewId = { "ov_netherghul_gnome_m" }
+    attr = {
+      DAMAGE 12
+	  FIRE_DAMAGE 10
+      DEFENSE 13
+      DIGGING 10 
+      FURNACE 10
+      WORKSHOP 30
+      FORGE 30
+      LABORATORY 30
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  material = NETHERGHOUL_FLESH
+    }
+    maxLevelIncrease = {
+      MELEE 6
+	  ARCHERY 6
+    }
+	spells = {
+      "ov_throw_flame"
+	  "healing"
+	  "repair automaton"
+    }
+    permanentEffects = {
+	  DISTILLATION_SKILL 1
+      RIDER 1
+	  FIRE_IMMUNITY 1
+    }
+  }
+  
+"OV_NETHERGHUL_GNOME_F" inherit "OV_NETHERGHUL_GNOME_M"
+  {
+    viewId = { "ov_netherghul_gnome_f" }
+    name = {
+      name = "netherghul"
+      firstNameGen = "FIRST_FEMALE"
+    }
+  gender = FEMALE
+  }
+  
+####################
+# corrupted forest #
+####################
+"OV_BONE_SLAVE"
+  {
+    viewId = { "ov_skeleton" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 15 
+      DIGGING 15
+    }
+    body = {
+      type = Humanoid LARGE
+      material = BONE
+    }
+    aiType = RANGED
+    noChase = true
+    chatReactionFriendly = "..."
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+	  SUNLIGHT_VULNERABLE 1
+      RIDER 1
+      NO_CARRY_LIMIT 1
+    }
+    name = {
+      name = "skeleton"
+    }
+  }
+"OV_OBERON"
+  {
+    viewId = { "ov_oberon" }
+    name = {
+      name = "oberon"
+    }
+    body = {
+      type = HumanoidLike HUGE
+      material = WOOD
+    }
+    # attr_type.h
+    attr = {
+      DAMAGE 35
+      DEFENSE 25
+      SPELL_DAMAGE 20
+    }
+    permanentEffects = {
+	  SUNLIGHT_VULNERABLE 1
+      ELF_VISION 1
+	  REGENERATION 1
+      RANGED_RESISTANCE 1
+      CAPTURE_RESISTANCE 1
+      SLOWED 1
+    }
+    maxLevelIncrease = {
+      MELEE 7
+      SPELL 12
+    }
+	cantEquip = true
+    aiType = RANGED
+    spellSchools = { "skull stag" }
+    spells = { "ov_summon_skulls" "ov_group_mend_undead" "ov_darkness_source" "ov_forestation"}
+  }
+  
+"OV_SKULL_RAT"
+  {
+    viewId = { "ov_the_skull_rat_no_bow" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+      DIGGING 20
+      WORKSHOP 35
+	  JEWELER 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  material = UNDEAD_FLESH
+    }
+    chatReactionFriendly = "father dreams..."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "skull rat"
+	  pluralName = "skull rats"
+    }
+    maxLevelIncrease = {
+      MELEE 5
+    }
+	permanentEffects = {
+	  NIGHT_VISION 1 
+	  POISON_RESISTANT 1
+	  RIDER 1
+    }
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"OV_SKULL_RAT_ARCHER"
+  {
+    viewId = { "ov_the_skull_rat" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 12
+      RANGED_DAMAGE 16
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  material = UNDEAD_FLESH
+    }
+    chatReactionFriendly = "father dreams..."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "skull rat archer"
+	  pluralName = "skull rat archers"
+    }
+	permanentEffects = {
+	  ELF_VISION 1
+      NO_FRIENDLY_FIRE 1
+	  NIGHT_VISION 1 
+	  POISON_RESISTANT 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      ARCHERY 5
+    }
+    inventory = {
+      { "Bow"}
+      { "LeatherArmor"}
+    }
+  }
+
+"OV_SKULL_BOAR"
+  {
+    viewId = { "ov_skull_boar" }
+    attr = {
+      DAMAGE 28
+      DEFENSE 28
+      DIGGING 20
+      FURNACE 25
+      WORKSHOP 15
+      FORGE 15
+      LABORATORY 15
+      JEWELER 15
+    }
+    body = {
+      type = Humanoid LARGE
+	  material = UNDEAD_FLESH
+      weight = 400
+      droppedPartUpgrade = IncreaseAttr DEFENSE 5
+    }
+	permanentEffects = {
+	  NIGHT_VISION 1 
+	  POISON_RESISTANT 1
+	  RIDER 1
+    }
+	chatReactionFriendly = "father dreams..."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "skull boar"
+      pluralName = "skull boars"
+    }
+    maxLevelIncrease = {
+      MELEE 8
+    }
+  }
+  
+"OV_SKULL_STAG"
+  {
+    viewId = { "ov_the_skull_stag" }
+    attr = {
+      SPELL_DAMAGE 14
+      DAMAGE 8
+      DEFENSE 12
+	  LABORATORY 35
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  material = UNDEAD_FLESH
+    }
+    chatReactionFriendly = "father dreams..."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "skull stag"
+	  pluralName = "skull stags"
+    }
+    permanentEffects = {
+	  NIGHT_VISION 1 
+	  POISON_RESISTANT 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    spellSchools = { "skull stag" }
+    maxLevelIncrease = {
+      SPELL 8
+    }
+    inventory = {
+	  { "ov_skull_staff"}
+      { "Robe"}
+    }
+  }
+
+"OV_CORRUPTED_UNICORN"
+  {
+    viewId = { "ov_corrupted_unicorn" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 20
+      SPELL_DAMAGE 20
+    }
+    body = {
+      type = FourLegged LARGE
+	  droppedPartUpgrade = SpecialAttr DAMAGE 10 Spellcaster
+      weight = 500
+      intrinsicAttacks = {
+        HEAD {{{"UnicornHorn"}}}
+      }
+     }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+	  DARKNESS_SOURCE 1
+      MAGIC_RESISTANCE 1
+      STEED 1
+    }
+    aiType = RANGED
+    companions = {5 false SPELL_DAMAGE 0.05 { "OV_ELVEN_GHOST" "LOST_SOUL" }}
+    spells = { "healing" "heal spirit" }
+    chatReactionFriendly = "\"mhhhhhrrrr!\""
+    chatReactionHostile = "\"mhhhhhrrrr!\""
+    petReaction = "neighs"
+    name = {
+      name = "unicorn"
+      firstNameGen = "DEITY"
+      groupName = "herd"
+    }
+  }
+"OV_ELVEN_GHOST"
+  {
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "sword" } "spectral sword" 8 {
+            attackType = CUT
+            attackMsg = SWING
+            meleeAttackAttr = SPELL_DAMAGE
+			victimEffect = { 0.2 Lasting INSANITY}
+            attackerEffect = {Suicide DIE} } }}}
+      }
+    }
+    viewId = { "ov_elf_ghost" }
+    attr = {
+      DEFENSE 25
+      SPELL_DAMAGE 15 
+    }
+    permanentEffects = {
+      FLYING 1
+    }
+	cantEquip = true
+    chatReactionFriendly = "\"Wouuuouuu!!!\""
+    chatReactionHostile = "\"Wouuuouuu!!!\""
+    name = {
+      name = "ghost"
+    }
+  }
+  
+  "OV_SKULL_RAT_SUMMON" inherit "OV_SKULL_RAT"
+  {
+  	  cantEquip = true
+      inventory = {}
+  }
+  
+  "OV_SKULL_RAT_ARCHER_SUMMON" inherit "OV_SKULL_RAT_ARCHER"
+  {
+      spells = { "shoot arrow" }
+	  cantEquip = true
+      inventory = {}
+  } 
+  
+  "OV_SKULL_BOAR_SUMMON" inherit "OV_SKULL_BOAR"
+  {
+      inventory = {}
+	  cantEquip = true
+  }
+  
+  "OV_SKULL_STAG_SUMMON" inherit "OV_SKULL_STAG"
+  {
+      inventory = {}
+	  cantEquip = true
+  }
+
+  "OV_OBERON_VILLIAN" inherit "OV_OBERON"
+  {
+    permanentEffects = {
+	  SUNLIGHT_VULNERABLE 1
+	  DARKNESS_SOURCE 1
+      ELF_VISION 1
+	  REGENERATION 1
+      RANGED_RESISTANCE 1
+      CAPTURE_RESISTANCE 1
+      SLOWED 1
+    }
+  } 
+  
+  "OV_SKULL_RAT_VILLIAN" inherit "OV_SKULL_RAT"
+  {
+    permanentEffects = append {
+	  DARKNESS_SOURCE 1
+    }
+  }
+  
+  "OV_SKULL_RAT_ARCHER_VILLIAN" inherit "OV_SKULL_RAT_ARCHER"
+  {
+    permanentEffects = append {
+	  DARKNESS_SOURCE 1
+    }
+  } 
+  
+  "OV_SKULL_BOAR_VILLIAN" inherit "OV_SKULL_BOAR"
+  {
+    permanentEffects = append {
+	  DARKNESS_SOURCE 1
+    }
+  }
+  
+  "OV_SKULL_STAG_VILLIAN" inherit "OV_SKULL_STAG"
+  {
+    permanentEffects = append {
+	  DARKNESS_SOURCE 1
+    }
+  }
+  
+  "OV_SKULL_STAG_LEADER_VILLIAN" inherit "OV_SKULL_STAG"
+  {
+    attr = {
+      SPELL_DAMAGE 20
+      DAMAGE 14
+      DEFENSE 18
+	  LABORATORY 40
+    }  
+    inventory = {
+	  { "Cornuthaum1" }
+	  { Potion Lasting INVISIBLE }
+      { Potion Lasting POISON }
+	  { "ov_skull_staff"}
+      { "Robe"}
+	  { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+	  { "GoldPiece" 6 16 }
+    }
+  }
+  
+  "OV_BROWN_MINION_ELDER_VILLIAN" inherit "OV_BROWN_MINION_ELDER"
+  {
+
+  }
+  
+  "OV_BLUE_MINION_ELDER_VILLIAN" inherit "OV_BLUE_MINION_ELDER"
+  {
+
+  } 
+  
+  "OV_RED_MINION_ELDER_VILLIAN" inherit "OV_RED_MINION_ELDER"
+  {
+
+  }
+  
+  "OV_GREEN_MINION_ELDER_VILLIAN" inherit "OV_GREEN_MINION_ELDER"
+  {
+
+  }
+  

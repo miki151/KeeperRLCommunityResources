@@ -1,0 +1,203 @@
+"repair gel"
+{
+  symbol = "🔧"
+  effect = Name "repair gel" Lasting 10 "GRADUAL_REPAIRS"
+  range = 1
+  targetSelf = true
+  cooldown = 15
+  sound = TRAP_ARMING
+  message = "repair the automaton" "repairs the automaton"
+  type = ABILITY
+}
+
+"acid dig"
+{
+  symbol = "🜅"
+  effect = Name "acid dig" Chain {DestroyWalls DIG Acid{}}
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = 90
+  message = "spit acid!" "spits acid!"
+}
+
+"Freezing Gel"
+{
+  symbol = "🧊"
+  effect =  Name "Freezing Gel" PlaceFurniture "GLACIER"
+  endOnly = true
+  range = 1
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+}
+
+"overclock_speed_other"
+{
+  symbol = "🔧"
+  effect = Name "overclock other" Chain {Lasting 50 SPEED Lasting 50 OVERCLOCK EmitGas "FOG" 1}
+  range = 1
+  targetSelf = false
+  cooldown = 30
+  sound = TRAP_ARMING
+  message = "overclock the automaton" "overclock the automaton"
+  type = ABILITY
+}
+
+"cryo stream5"
+	{
+	  symbol = "🜅🧊"
+	  effect = Name "cryo stream" Chain { Ice{} Damage COLD_DAMAGE SPELL }
+	  fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+	  range = 8
+	  cooldown = 4
+	  message = "spit cryo!" "spits cryo!"
+	  type = ABILITY
+	}
+	
+"cryo bomb5"
+	{
+	  symbol = "🧊"
+	  effect = Name "cryo bomb"   Chain { Ice{} Damage COLD_DAMAGE SPELL }
+	  fx = {FIREBALL ColorId LIGHT_BLUE}
+	  range = 8
+	  cooldown = 5
+	  sound = SPELL_FIRE_SPHERE_PET
+	  type = ABILITY
+	}
+	
+"acid stream5"
+	{
+	  symbol = "🜅🛢️"
+	  effect = Name "acid stream" Chain { Acid{} Damage ACID_DAMAGE SPELL }
+	  fx = {FLAMETHROWER ColorId YELLOW}
+	  range = 8
+	  cooldown = 4
+	  message = "spit acid!" "spits acid!"
+	  type = ABILITY
+	}
+	
+"acid bomb5"
+	{
+	  symbol = "🛢️"
+	  effect = Name "acid bomb"   Chain { Acid{} Damage ACID_DAMAGE SPELL }
+	  fx = {FIREBALL ColorId YELLOW}
+	  range = 8
+	  cooldown = 5
+	  sound = SPELL_FIRE_SPHERE_PET
+	  type = ABILITY
+	}
+	
+"cryoacid stream"
+	{
+	  symbol = "🜅🧊🛢️"
+	  effect = Name "cryoacid stream" Chain {Ice{} Damage COLD_DAMAGE SPELL Acid{} Damage ACID_DAMAGE SPELL }
+	  fx = {FLAMETHROWER ColorId PURPLE}
+	  range = 6
+	  cooldown = 5
+	  message = "spit burning cryo and fire!" "spits burning cryo and fire!"
+	  type = ABILITY
+	}
+	
+"cryoacid bomb"
+	{
+	  symbol = "🧊🛢️"
+	  effect = Name "cryoacid bomb" Chain {Acid{} Damage ACID_DAMAGE SPELL Ice{} Damage COLD_DAMAGE SPELL }
+	  fx = {FIREBALL ColorId ORANGE}
+	  range = 6
+	  cooldown = 25
+	  sound = SPELL_FIRE_SPHERE_PET
+	  type = ABILITY
+	}
+	
+"shoot acid arrow"
+{
+  upgrade = "shoot arrow"
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(4) Name "shoot acid arrow" Description "Shoots an acid arrow"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage {"are hit by the arrow" "is hit by the arrow"}
+          Damage RANGED_DAMAGE SHOOT Acid{}
+        },
+        CreatureMessage {"are spared by the arrow" "is spared by the arrow"}
+      )
+  range = 7
+  cooldown = 1
+  maxHits = 1
+  projectileViewId = {"arrow"}
+  message = "shoot an acidic arrow" "shoots an acidic arrow"
+  type = ABILITY
+}
+	
+"shoot cryo arrow"
+{
+  upgrade = "shoot arrow"
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(4) Name "shoot cryo arrow" Description "Shoots an cryo arrow"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage {"are hit by the arrow" "is hit by the arrow"}
+          Damage RANGED_DAMAGE SHOOT Ice{}
+        },
+        CreatureMessage {"are spared by the arrow" "is spared by the arrow"}
+      )
+  range = 7
+  cooldown = 1
+  maxHits = 1
+  projectileViewId = {"arrow"}
+  message = "shoot an freezing arrow" "shoots an freezing arrow"
+  type = ABILITY
+}
+
+"acidic jumpsmash"
+	{
+	  upgrade = "jumpsmash"
+	  symbol = "👟🛢️"
+	  effect = Chain
+	  {
+		Jump
+		CircularBlast {Filter Enemy Damage ACID_DAMAGE SPELL Acid{}}
+		EmitGas "ACID_GAS" 1
+	  }
+	  range = 3
+	  cooldown = 10
+	  sound = SPELL_AIR_BLAST
+	  message = "jumpsmash" "jumpsmashes"
+	  type = ABILITY
+	}
+
+"cryo jumpsmash"
+	{
+	  upgrade = "jumpsmash"
+	  symbol = "👟🧊"
+	  effect = Chain
+	  {
+		Jump
+		CircularBlast {Filter Enemy Damage COLD_DAMAGE SPELL Ice{}}
+		EmitGas "CRYO_GAS" 1
+	  }
+	  range = 3
+	  cooldown = 10
+	  sound = SPELL_AIR_BLAST
+	  message = "jumpsmash" "jumpsmashes"
+	  type = ABILITY
+	}
+
+"acidic coolant"
+	{
+	  symbol = "🛢️"
+	  effect =  Name "went acidic coolant" EmitGas "ACID_GAS" 1
+      cooldown = 30
+	  sound = SPELL_AIR_BLAST
+	  message = "went heat" "wents heat"
+	  type = ABILITY
+	}
+
+"coolant"
+	{
+	  symbol = "🧊"
+	  effect =  Name "went coolant"	EmitGas "CRYO_GAS" 1
+      cooldown = 30
+	  sound = SPELL_AIR_BLAST
+	  message = "went heat" "wents heat"
+	  type = ABILITY
+	}

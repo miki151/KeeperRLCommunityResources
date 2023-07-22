@@ -1,0 +1,235 @@
+"INS_CHEWING_SPOT"
+{
+  name = "chewing spot"
+  viewId = { "ins_chewing_spot" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 80
+  requiresLight = true
+  usageFX = WORKSHOP
+}
+
+"INS_STORAGE"
+{
+  name = "storage"
+  viewId = { "storage_resources" }
+  canHideHere = true
+  fire = 50
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"equipment" "resources" "corpses" "gold" "potions" "scrolls" "jewellery" "upgrades" "armor" "bows" "weapons" "automaton_parts"}
+  hidesItems = false
+  canBuildOutsideOfTerritory = true
+}
+
+"INS_BED01"
+{
+  name = "nest"
+  viewId = { "insect_nest" }
+  usageType = UsageEffect "sleep in" Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  fire = 50
+  strength = 40
+  bedType = CAGE
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  upgrade = "BEAST_CAGE"
+}
+
+"INS_BLACK_NECTAR_ANT"
+{
+  viewId = { "ins_ant_nectar" }
+  blockMovement = true
+  name = "Black Nectar Ant"
+  usageFX = none
+  diningFurniture = true
+  populationIncrease = { 5 20 }
+    usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 40
+  requiresLight = true
+  usageType = UsageEffect "eat from" Filter Not Humanoid {
+    CreatureMessage { "eat a nectar" "eats a nectar"}
+    Lasting SATIATED
+  }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+
+"INS_DUNGEON_WALL"
+{
+  name = "wall"
+  viewId = { "dungeon_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  viewLayer = FLOOR_BACKGROUND
+  xForgetAfterBuilding = true
+  luxury = 0.2
+  constructMessage = REINFORCE
+  builtOver = {"MOUNTAIN"}
+  canBuildOutsideOfTerritory = true
+  strength2 = {
+    300 BOULDER
+    100 DIG
+    1900 HOSTILE_DIG
+  }
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 220 210 180 255 }
+}
+"INS_DUNGEON_WALL2" inherit "INS_DUNGEON_WALL"
+{
+  viewId = { "dungeon_wall2" }
+  builtOver = {"MOUNTAIN2"}
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+
+"INS_MUD_FENCE"
+{
+  name = "mud fence"
+  viewId = { "mud_fence_" }
+  movementSet = {
+    traits = { WALK }
+    blockingFarmAnimals = true
+	blockingEnemies = true
+    blockingPrisoners = true
+  }
+  strength = 10
+  wall = true
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"INS_MITE_COOP"
+{
+  name = "mite coop"
+  viewId = { "mud" }
+  tickType = Effect Chance 0.05 Filter
+    And {
+      IsClosedOffPigsty
+      CanCreatureEnter
+      Area 1 Not CreatureId "INS_MITE_PLANT"
+    }
+    Summon "INS_MITE_PLANT" 1 1500
+  populationIncrease = { 0.25 40 true }
+}
+
+"INS_SLAVE_PEN"
+{
+  name = "prison tile"
+  viewId = { "mud" }
+  tickType = Effect BedHeal()
+  usageType = UsageEffect "sleep in" Lasting SLEEP
+  bedType = PRISON
+  layer = FLOOR
+}
+
+"INS_SCAVENGED_AUTOMATON_ENGINE_WOOD"
+{
+  name = "wooden automaton engine"
+  viewId = { "ins_scavenged_automaton_fuel" Rgb 180 140 55 255 }
+  canHideHere = true
+  strength = 50
+  blockMovement = true
+  populationIncrease = { 1 4 }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"INS_SCAVENGED_AUTOMATON_ENGINE_IRON"
+{
+  name = "iron automaton engine"
+  viewId = { "ins_scavenged_automaton_fuel" Rgb 140 148 148 255 }
+  canHideHere = true
+  strength = 50
+  blockMovement = true
+  populationIncrease = { 1 16 }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"INS_SCAVENGED_AUTOMATON_ENGINE_ADA"
+{
+  name = "adamantine automaton engine"
+  viewId = { "ins_scavenged_automaton_fuel" Rgb 148 189 189 255 }
+  canHideHere = true
+  strength = 50
+  blockMovement = true
+  populationIncrease = { 1 none }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"INS_SCAVENGED_AUTOMATON_TRAP"
+{
+  name = "automaton trap"
+  viewId = { "automaton_storage" }
+  blockMovement = true
+  tickType = Trap 1 {
+    Def SummonSALVAGEDAUTOMATON() {
+      Message HIGH "The automaton comes to life!"
+      Summon "INS_SALVAGED_AUTOMATON_TRAP" 1 20
+    } End
+    SummonSALVAGEDAUTOMATON()
+    SummonSALVAGEDAUTOMATON()
+    SummonSALVAGEDAUTOMATON()
+    SummonSALVAGEDAUTOMATON()
+  }
+  strength = 40
+  warning = true
+  constructMessage = SET_UP
+}
+
+"INS_BOOKCASE_WOOD" inherit "BOOKCASE_WOOD"
+{
+  viewId = { "ins_bookcase_wood" }
+}
+
+"INS_BOOKCASE_IRON" inherit "BOOKCASE_IRON"
+{
+  viewId = { "ins_bookcase_iron" }
+  upgrade = "INS_BOOKCASE_WOOD"
+}
+
+"INS_BOOKCASE_GOLD" inherit "BOOKCASE_GOLD"
+{
+  viewId = { "ins_bookcase_gold" }
+  upgrade = "INS_BOOKCASE_IRON"
+}
+
+"INS_TRAINING_WOOD" inherit "TRAINING_WOOD"
+{
+  viewId = { "ins_training_wood" }
+}
+
+"INS_TRAINING_IRON" inherit "TRAINING_IRON"
+{
+  viewId = { "ins_training_iron" }
+  upgrade = "INS_TRAINING_WOOD"
+}
+
+"INS_TRAINING_ADA" inherit "TRAINING_ADA"
+{
+  viewId = { "ins_training_ada" }
+  upgrade = "INS_TRAINING_IRON"
+}
+
+"INS_DUNGEON_WALL_ADV" inherit "DUNGEON_WALL"
+{
+  viewId = { "ins_dungeon_wall" }
+}
+
+"INS_DUNGEON_WALL2_ADV" inherit "DUNGEON_WALL2"
+{
+  viewId = { "ins_dungeon_wall2" }
+}
+
+"INS_ENDOMORPH_GUARD_POST_CHEST" inherit "ARMOR_CHEST"
+{
+  usageType = UsageEffect "open" {
+    CreatureMessage { "open the chest" "opens the chest"}
+    CreatureMessage { "find some corpses inside" "finds some corpses inside"}
+    DropItems {"Skeleton"} {10 20}
+    RemoveFurniture "INS_ENDOMORPH_GUARD_POST_CHEST"
+  }
+}

@@ -1,0 +1,713 @@
+"dark_lord"
+{
+   {
+      ids = { "DARK_ORC" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.01 { ExtraBodyPart HEAD 1}}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "DARK_ORC_SCOUT" }
+      traits = { FIGHTER }
+      frequency = 0.9
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1" }}
+        { 0.0 Pregnancy }
+        { 1.0 TechId "archery" }
+      }
+      specialTraits = {
+         { 0.02 { SpecialAttr RANGED_DAMAGE 20 CreatureStatus CIVILIAN }}
+         { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.05 { Lasting { RANGED_VULNERABILITY } }}
+         { 0.05 { SpecialAttr RANGED_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { Lasting { BAD_BREATH } }}
+    }
+    }
+    {
+      ids = { "DARK_ORC_MAGE" }
+      traits = { FIGHTER }
+      spawnLocation = Pregnancy
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+        { 0.0 Pregnancy }
+        { 1.0 TechId "sorcery" }
+      } 
+      specialTraits = {
+         { 1.0 { CompanionInfo 1 true none 0.1 { "BAT" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.10 { ExtraTraining SPELL 4}}
+         { 0.05 { AttrBonus LABORATORY 20}}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+       }
+    }
+   {
+      ids = { "DARK_IMP" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      spawnLocation = NearLeader
+      sound = CREATE_IMP 2
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1.0 ExponentialCost "GOLD" 30 5 4 }
+      }
+   }
+    {
+      ids = { "DARK_GOBLIN_MATRON" }
+      traits = { FIGHTER WORKER NO_LIMIT INCREASE_POPULATION NO_AUTO_EQUIPMENT }
+      spawnLocation = NearLeader
+      requirements = {
+        { 1.0 CostInfo "GOLD" 60 }
+      }
+    }
+    {
+      ids = { "DARK_ORC_SHAMAN" }
+      traits = { FIGHTER }
+      spawnLocation = Pregnancy
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+        { 0.0 Pregnancy }
+        { 1.0 TechId "sorcery" }
+      }
+      specialTraits = {
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.10 { ExtraTraining SPELL 4}}
+         { 0.05 { AttrBonus LABORATORY 20}}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+        }
+    }
+    {
+      ids = { "DARK_ORC_HEALER" }
+      traits = { FIGHTER }
+      spawnLocation = Pregnancy
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+        { 0.0 Pregnancy }
+        { 1.0 TechId "sorcery" }
+      }
+      specialTraits = {
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.10 { ExtraTraining SPELL 4}}
+         { 0.05 { AttrBonus LABORATORY 20}}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+        }
+    }
+    {
+      ids = { "DARK_OGRE" }
+      traits = { FIGHTER }
+      spawnLocation = Pregnancy
+      requirements = {
+          { 1.0 TechId "two-handed weapons" }
+        { 0.0 Pregnancy }
+      }
+      frequency = 0.5
+    }
+    {
+      ids = { "Dark_Dwarf_Blacksmith" }
+      traits = { FIGHTER WORKER }
+      consumeIds = true
+      spawnLocation = NearLeader
+      requirements = {
+        { 1.0 TechId "iron working" }
+        { 1.0 CostInfo "GOLD" 150 }
+      }
+    }
+    {
+      ids = { "DARK_ANT_QUEEN" }
+      traits = { FIGHTER WORKER NO_LIMIT INCREASE_POPULATION DOESNT_TRIGGER }
+      consumeIds = true
+      spawnLocation = NearLeader
+      requirements = {
+        { 1.0 TechId "digging crew" }
+        { 1.0 CostInfo "GOLD" 100 }
+      }
+    }
+    {
+      ids = { "DARK_ANT_WORKER" }
+      traits = { FIGHTER WORKER DOESNT_TRIGGER }
+      spawnLocation = NearLeader
+      groupSize = {2} 
+      frequency = 0.4
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "NEST"}}
+        { 1.0 TechId "digging crew" }
+        { 1.0 CostInfo "GOLD" 10 }
+      }
+    }
+    DarkRecruits ()
+    {
+      ids = { "GNOLL_QUEEN" "THE_CHILD" }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = Pregnancy
+      requirements = {
+        { 0.0 TechId "humanoid mutation" }
+        { 0.0 Pregnancy }
+        { 1.0 CostInfo "GOLD" 100 }
+      }
+      specialTraits = {
+         { 0.1 { Lasting { INSANITY }}}
+       }
+    }
+    {
+      ids = { "DRACONIAN" "SHELOBB" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      consumeIds = true
+      spawnLocation = Pregnancy
+      requirements = {
+        { 0.0 TechId "beast mutation" }
+        { 0.0 Pregnancy }
+        { 1.0 CostInfo "GOLD" 100 }
+      }
+    }
+    {
+      ids = { "DARK_HOUND" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 0.3
+      groupSize = {2 6}
+      
+      requirements = {
+        { 0.0 SunlightState NIGHT }
+        { 0.1 AttractionInfo 1 {FurnitureType "BEAST_CAGE" FurnitureType "NEST" }}
+      }
+    }
+    {
+      ids = { "WEREBAT" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 0.3
+      requirements = {
+        { 0.0 MinTurnRequirement 2000 }
+        { 1.0 TechId "iron working" }
+      }
+      specialTraits = {
+         { 1.0 { SpecialAttr DAMAGE 7 Name "at night" Night }}
+         { 0.1 { SpecialAttr DAMAGE 5 HatedBy HATE_HUMANS }}
+         { 0.1 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { Lasting { INSANITY }}}
+         { 0.1 { Lasting { HATE_UNDEAD }}}
+         { 0.3 { Lasting { AMBUSH_SKILL } }}
+         { 0.1 { Lasting { ENTERTAINER } }}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "DARK_MOLE" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 0.3
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BEAST_CAGE" FurnitureType "NEST" }}
+      }
+    }
+}
+"dark_orcs"
+{
+      {
+      ids = { "DARK_ORC_PLAYER" }
+      traits = { LEADER WORKER FIGHTER }
+      invisible = true
+      noAuto = true
+      initialRecruitment = 11
+      spawnLocation = NearLeader
+    }
+      {
+      ids = { "DARK_GOBLIN_MATRON" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT }
+      spawnLocation = NearLeader
+      requirements = {
+        { 1.0 ExponentialCost "GOLD" 30 5 0 }
+      }
+    }
+     {
+      ids = { "DARK_ORC_PLAYER2" }
+      traits = { LEADER WORKER FIGHTER }
+      frequency = 0.5
+      spawnLocation = Pregnancy
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+        { 0.0 Pregnancy }
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.01 { ExtraBodyPart HEAD 1}}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+}
+"matangdom"
+{
+   {
+      ids = { "INFECTED_PESEANT_PLAYER" "INFECTED_CHILD_PLAYER" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      spawnLocation = NearLeader
+      sound = CREATE_IMP 2
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1.0 ExponentialCost "GOLD" 30 5 4 }
+      }
+    }
+    {
+      ids = { "MYCOLOGIST" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+      }
+      specialTraits = {
+        { 0.05 { OneOfTraits { Lasting { FAST_CRAFTING } Lasting { SLOW_CRAFTING } } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining MELEE 2}}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "MATANGO" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining MELEE 2}}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "MATANGDINGO" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 0.4
+    }
+    WhiteRecruits()
+}
+"demons"
+{
+   {
+      ids = { "CULTISTMAN" "CULTISTWOMAN" }
+      traits = { FIGHTER WORKER NO_LIMIT NO_AUTO_EQUIPMENT }
+      spawnLocation = NearLeader
+      sound = CREATE_IMP 2
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1.0 ExponentialCost "GOLD" 30 5 4 }
+      }
+    }
+    {
+      ids = { "CULTISTKID" }
+      traits = { FIGHTER }
+      frequency = 0.9
+      spawnLocation = Pregnancy
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1" }}
+        { 0.0 Pregnancy }
+      }
+    }
+    {
+      ids = { "HELLBOAR" }
+      traits = { FIGHTER }
+      frequency = 0.6
+      groupSize = {3 9}
+      
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "BEAST_CAGE" FurnitureType "NEST"}}
+        { 0.0 CostInfo "DEMON_PIETY" 100 }
+      }
+    }
+    {
+      ids = { "LOST_SOUL" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "WOOD_DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 300 }
+      }
+    }
+    {
+      ids = { "ICE_DEMON" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.3
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "WOOD_DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 1000 }
+      }
+      specialTraits = {
+        { 1.0 { SpecialAttr DAMAGE 12 HatedBy HATE_HUMANS }}
+      }
+    }
+    {
+      ids = { "DOPPLEGANGER" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "WOOD_DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 3000 }
+      }
+    }
+    {
+      ids = { "DEMON_DWELLER" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "WOOD_DEMON_SHRINE"}}
+        { 1.0 TechId "advanced demonology" }
+        { 0.0 CostInfo "DEMON_PIETY" 3000 }
+      }
+    }
+    {
+      ids = { "DEMON_LORD" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "WOOD_DEMON_SHRINE"}}
+        { 1.0 TechId "advanced demonology" }
+        { 0.0 CostInfo "DEMON_PIETY" 3000 }
+      }
+    }
+    {
+      ids = { "DEVIL" "DEVIL" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      consumeIds = true
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "WOOD_DEMON_SHRINE"}}
+        { 1.0 TechId "advanced demonology" }
+        { 0.0 CostInfo "DEMON_PIETY" 5000 }
+      }
+    }
+    {
+      ids = { "SATAN" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      consumeIds = true
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "WOOD_DEMON_SHRINE"}}
+        { 1.0 TechId "master demonology" }
+        { 0.0 CostInfo "DEMON_PIETY" 7000 }
+      }
+    }
+    {
+      ids = { "BALROG" }
+      traits = { FIGHTER }
+      consumeIds = true
+      frequency = 0.3
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "WOOD_DEMON_SHRINE"}}
+        { 1.0 TechId "master demonology" }
+        { 0.0 CostInfo "DEMON_PIETY" 10000 }
+      }
+    }
+    {
+      ids = { "SPIRIT" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "WOOD_DEMON_SHRINE"}}
+        { 1.0 TechId "master demonology" }
+        { 0.0 CostInfo "DEMON_PIETY" 8000 }
+      }
+    }
+}
+"crow clan"
+{
+   {
+      ids = { "CROW_HARPY" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      spawnLocation = NearLeader
+      sound = CREATE_IMP 2
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1.0 ExponentialCost "GOLD" 30 5 4 }
+      }
+   }
+    {
+      ids = { "RAVEN" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 0.3
+      groupSize = {2 6}
+      
+      requirements = {
+        { 0.0 SunlightState NIGHT }
+        { 0.1 AttractionInfo 1 {FurnitureType "BEAST_CAGE" FurnitureType "NEST" }}
+      }
+    }
+    {
+      ids = { "CROW_BEAR" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 0.3
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BEAST_CAGE" FurnitureType "NEST" }}
+      }
+    }
+   {
+      ids = { "KARASU_FOOTMAN" }
+      traits = { FIGHTER }
+      frequency = 0.75
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.01 { ExtraBodyPart HEAD 1}}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+   {
+      ids = { "KARASU_ARCHER" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+        { 1.0 TechId "archery" }
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.01 { ExtraBodyPart HEAD 1}}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "CROW_HARPY_DOCTOR" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+        { 1.0 TechId "sorcery" }
+      } 
+      specialTraits = {
+         { 0.5 { CompanionInfo 1 true none 0.1 { "RAVEN" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.10 { ExtraTraining SPELL 4}}
+         { 0.05 { AttrBonus LABORATORY 20}}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+       }
+    }
+    {
+      ids = { "CROW_HARPY_SMITH" }
+      traits = { FIGHTER }
+      spawnLocation = NearLeader
+      frequency = 0.5
+      requirements = {
+        { 1.0 TechId "iron working" }
+      }
+    }
+   {
+      ids = { "KARASU_SOLDIER" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+        { 1.0 TechId "iron working" }
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.01 { ExtraBodyPart HEAD 1}}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+   {
+      ids = { "KARASU_MARKSMAN" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+        { 1.0 TechId "archery" }
+        { 1.0 TechId "iron working" }
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.01 { ExtraBodyPart HEAD 1}}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "KARASU_TENGU" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BED1"}}
+        { 1.0 TechId "sorcery" }
+        { 1.0 TechId "iron working" }
+      } 
+      specialTraits = {
+         { 0.5 { CompanionInfo 1 true none 0.1 { "RAVEN" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.10 { ExtraTraining SPELL 4}}
+         { 0.05 { AttrBonus LABORATORY 20}}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+       }
+    }
+    WhiteRecruits()
+    {
+      ids = { "YATAGARASU" }
+      traits = { FIGHTER }
+      consumeIds = true
+      frequency = 0.3
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "ANGEL_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 10000 }
+      }
+    }
+}

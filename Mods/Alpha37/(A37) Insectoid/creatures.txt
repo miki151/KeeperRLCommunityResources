@@ -1,0 +1,2578 @@
+"ANT_WORKER" modify append
+  {
+ 	hatedByEffect = HATE_INSECTS 
+  }
+  
+"ANT_SOLDIER" modify append
+  {
+  	hatedByEffect = HATE_INSECTS 
+  } 
+  
+"ANT_QUEEN" modify append
+  {
+ 	hatedByEffect = HATE_INSECTS 
+  } 
+  
+"FLY" modify append
+  {
+ 	hatedByEffect = HATE_INSECTS 
+  }  
+  
+"SHELOB" modify append
+  {
+ 	hatedByEffect = HATE_INSECTS 
+  } 
+  
+"SPIDER" modify append
+  {
+ 	hatedByEffect = HATE_INSECTS 
+  } 
+  
+# Black Ants
+  
+"INS_ANT_LARVA"
+  {
+    viewId = { "ins_ant_larva" }
+    attr = {
+      DEFENSE 10
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+	  RANGED_VULNERABILITY 1
+	  MELEE_VULNERABILITY 1
+      COLLAPSED 1
+    }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant larva"
+    }
+  }
+
+"INS_BLACK_ANT_WORKER"
+  {
+    viewId = { "ins_ant_worker" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 16
+      DIGGING 20 
+	  INS_CHEWING_ATTR 10
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+	  intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 3 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+      deathSound = none
+    }
+	spells = { "spawn as 150 larva" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant"
+    }
+  }
+
+"INS_BLACK_ANT_WORKER_NO_LARVA" inherit "INS_BLACK_ANT_WORKER"
+  {
+	spells = { }
+  }
+
+"INS_BLACK_ANT_SUICIDER"
+  {
+    viewId = { "ins_ant_suicider" }
+    attr = {
+      ACID_DAMAGE 40
+      DEFENSE 16
+      DIGGING 20 
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+	  intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "self destruct" 1 {
+          attackType = HIT
+          meleeAttackAttr = ACID_DAMAGE
+          attackMsg = THRUST
+          itselfMessage = true
+          victimEffect = {1.0 Acid{30} }
+          attackerEffect = {CircularBlast Area 1 Acid{30} Suicide DIE  Damage ACID_DAMAGE HIT DestroyWalls DIG} } }}}
+      }
+      deathSound = none
+    }
+	spells = { "spawn as 300 larva" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant suicider"
+    }
+  }
+
+"INS_BLACK_ANT_SUICIDER_NO_LARVA" inherit "INS_BLACK_ANT_SUICIDER"
+  {
+	spells = { }
+  }
+
+"INS_BLACK_ANT_WARRIOR"
+  {
+    viewId = { "ins_ant_warrior" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+	spells = { "spawn as 300 larva" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant soldier"
+    }
+  }
+
+"INS_BLACK_ANT_WARRIOR_NO_LARVA" inherit "INS_BLACK_ANT_WARRIOR"
+  {
+	spells = { }
+  }
+  
+"INS_BLACK_ANT_GHOST"
+  {
+    viewId = { "ins_ant_ghost" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+	permanentEffects = {
+	  INVISIBLE 1
+    }
+	spells = { "spawn as 450 larva" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant ghost"
+    }
+  }
+
+"INS_BLACK_ANT_GHOST_NO_LARVA" inherit "INS_BLACK_ANT_GHOST"
+  {
+	spells = { }
+  }
+  
+"INS_BLACK_ANT_JUMPER"
+  {
+    viewId = { "ins_ant_jumper" }
+    attr = {
+      DAMAGE 40
+      DEFENSE 15
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+	permanentEffects = {
+	  SPEED 1
+    }
+	spells = { "spawn as 300 larva" "jump" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant jumper"
+    }
+  }
+
+"INS_BLACK_ANT_JUMPER_NO_LARVA" inherit "INS_BLACK_ANT_JUMPER"
+  {
+	spells = { "jump" }
+  }
+  
+"INS_BLACK_ANT_GLIDER"
+  {
+    viewId = { "ins_ant_glider" }
+    attr = {
+      DAMAGE 40
+      DEFENSE 15
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+	permanentEffects = {
+	  SPEED 1
+    }
+	spells = { "spawn as 450 larva" "INS_GLIDE" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant jumper"
+    }
+  }
+
+"INS_BLACK_ANT_GLIDER_NO_LARVA" inherit "INS_BLACK_ANT_GLIDER"
+  {
+	spells = { "INS_GLIDE" }
+  }
+
+"INS_BLACK_ANT_DRIVER"
+  {
+    viewId = { "ins_ant_driver" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 40
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+	permanentEffects = {
+	  TELEPATHY 1
+	  DRIVER_ANT 1
+	  REGENERATION 1
+	  MELEE_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+	  HIGH_MORALE 1
+    }
+	spells = { "spawn as 600 larva" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant driver"
+    }
+  }
+
+"INS_BLACK_ANT_DRIVER_NO_LARVA" inherit "INS_BLACK_ANT_DRIVER"
+  {
+	spells = { }
+  }
+
+"INS_BLACK_ANT_SPRAYER"
+  {
+    viewId = { "ins_ant_sprayer" }
+    attr = {
+	  ACID_DAMAGE 20
+      DAMAGE 15
+      DEFENSE 20
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+	spells = { "spawn as 450 larva" "INS_ACID_STEAM" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant sprayer"
+    }
+  } 
+
+"INS_BLACK_ANT_SPRAYER_NO_LARVA" inherit "INS_BLACK_ANT_SPRAYER"
+  {
+	spells = { "INS_ACID_STEAM" }
+  }
+  
+"INS_BLACK_ANT_SCIZOR"
+  {
+    viewId = { "ins_ant_scizor" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = { 0.1 Lasting 50 BLEEDING  } } }}}
+      }
+	  droppedPartUpgrade = IncreaseAttr DAMAGE 1
+    }
+	permanentEffects = {
+	  SPEED 1
+    }
+	spells = { "spawn as 450 larva" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant scizor"
+    }
+  }
+
+"INS_BLACK_ANT_SCIZOR_NO_LARVA" inherit "INS_BLACK_ANT_SCIZOR"
+  {
+	spells = { }
+  }
+
+"INS_BLACK_ANT_CLICKER"
+  {
+    viewId = { "ins_ant_clicker" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+	spells = { "Ins_Click" "spawn as 450 larva" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant clicker"
+    }
+  }
+
+"INS_BLACK_ANT_CLICKER_NO_LARVA" inherit "INS_BLACK_ANT_CLICKER"
+  {
+	spells = { "Ins_Click" }
+  }
+    
+"INS_BLACK_ANT_GUARDIAN"
+  {
+    viewId = { "ins_ant_guardian" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 40
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid LARGE
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+	permanentEffects = {
+	  RANGED_RESISTANCE 1
+	  MELEE_RESISTANCE 1
+      SLOWED 1
+    }
+	spells = { "spawn as 450 larva" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant guardian"
+    }
+  }
+
+"INS_BLACK_ANT_GUARDIAN_NO_LARVA" inherit "INS_BLACK_ANT_GUARDIAN"
+  {
+	spells = { }
+  }
+    
+"INS_BLACK_ANT_DINOSAUR"
+  {
+    viewId = { "ins_ant_dinosaur" }
+    attr = {
+      DAMAGE 30
+	  MULTI_WEAPON 30
+      DEFENSE 40
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid HUGE
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+		 TORSO {{{ Intrinsic { "bite_attack" } "stinger" 8 {
+            attackType = HIT
+            attackMsg = PUNCH
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+    }
+	permanentEffects = {
+	  RANGED_RESISTANCE 1
+	  MELEE_RESISTANCE 1
+    }
+	spells = { "spawn as 600 larva" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant dinosaur"
+    }
+  }
+
+"INS_BLACK_ANT_DINOSAUR_NO_LARVA" inherit "INS_BLACK_ANT_DINOSAUR"
+  {
+	spells = { }
+  }
+        
+"INS_BLACK_ANT_QUEEN"
+  {
+    viewId = { "ins_ant_queen" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 26
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+      droppedPartUpgrade = { AddCompanion 6 true none 0.1 { "INS_BLACK_ANT_WORKER" } }
+    }
+    gender = FEMALE
+	spells = { "spawn as 600 larva" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant queen"
+    }
+  }
+
+"INS_BLACK_ANT_QUEEN_NO_LARVA" inherit "INS_BLACK_ANT_QUEEN"
+  {
+	spells = { }
+  }
+    
+"INS_BLACK_ANT_MAN"
+  {
+    viewId = { "ins_ant_man" }
+    attr = {
+      DAMAGE 20
+	  RANGED_DAMAGE 20
+      DEFENSE 20
+      DIGGING 20 
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+	maxLevelIncrease = {
+      MELEE 10
+	  ARCHERY 10 
+    }
+	spells = { "spawn as 600 larva" }	
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant-man"
+    }
+  }
+
+"INS_BLACK_ANT_MAN_NO_LARVA" inherit "INS_BLACK_ANT_MAN"
+  {
+	spells = { }
+  }
+      
+"INS_MITE_PLANT"
+  {
+    viewId = { "ins_ant_mite_plant" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 7 
+    }
+    aiType = RANGED
+    body = {
+	  material = MITE_FLESH
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 8
+        TORSO 1
+      }
+      minionFood = true
+    }
+	deathEffect = DropItems { "INS_MITE_CORPSE" } {1}
+    noChase = true
+    chatReactionFriendly = "\"Clicks\""
+    petReaction = "\"Clicks!\""
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "mite"
+    }
+  }  
+  
+"INS_MITE_BLOOD"
+  {
+    viewId = { "ins_ant_mite_blood" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 7 
+    }
+    aiType = RANGED
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 8
+        TORSO 1
+      }
+      minionFood = true
+	  intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "bite_attack" } "fangs" 8 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting 50 BLEEDING} } }}}
+      }
+    }
+    noChase = true
+    chatReactionFriendly = "\"Clicks\""
+    petReaction = "\"Clicks!\""
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "mite"
+    }
+  }  
+  
+# Black Ant-men
+
+"INS_BLACK_ANT_MAN_KEEPER_PRINCESS"
+  {
+    # Definitions in tiles.txt
+    viewId = { "ins_ant_man_queen01" }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+    viewIdUpgrades = { { "ins_ant_man_queen02" } { "ins_ant_man_queen03" } { "ins_ant_man_queen04" } }
+    name = {
+      name = "princess"
+      firstNameGen = "INSECTOID"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+	gender = FEMALE
+    attr = {
+      DAMAGE 10
+	  SPELL_DAMAGE 10
+      DEFENSE 10
+      SPELL_SPEED 20
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+      SPELL 12
+    }
+    aiType = RANGED
+    spellSchools = { "ant-princess" }
+    spells = { "healing" }
+    inventory = {
+      # Here comes a list of items. The format of each element is defined in creature_inventory.h
+      { "Robe"}
+      { "WoodenStaff" }
+      # Take a look a CYCLOPS for a more detailed example.
+    }
+  }
+  
+"INS_BLACK_ANT_MAN_KEEPER"
+  {
+    # Definitions in tiles.txt
+    viewId = { "ins_ant_man_keeper01" }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+    viewIdUpgrades = { { "ins_ant_man_keeper02" } { "ins_ant_man_keeper03" } { "ins_ant_man_keeper04" } }
+    name = {
+      name = "revolutionary"
+      firstNameGen = "INSECTOID"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+    attr = {
+      DAMAGE 10
+	  RANGED_DAMAGE 10
+      DEFENSE 10
+      SPELL_SPEED 20
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      ARCHERY 7
+      SPELL 12
+    }
+    aiType = RANGED
+    spellSchools = { "antvolutionary" }
+    spells = { "healing" }
+    inventory = {
+      # Here comes a list of items. The format of each element is defined in creature_inventory.h
+      { "Robe"}
+      { "WoodenStaff" }
+      # Take a look a CYCLOPS for a more detailed example.
+    }
+  }
+  
+"INS_BLACK_ANT_MAN_KEEPER_F" inherit "INS_BLACK_ANT_MAN_KEEPER"
+  {
+    gender = FEMALE
+    name = append {
+      name = "revolutionary"
+      firstNameGen = "INSECTOID"
+      fullTitle = true
+    }
+  }
+  
+"INS_BLACK_ANT_MAN_WORKER"
+  {
+    viewId = { "ins_ant_man" }
+    attr = {
+      DAMAGE 16
+	  MULTI_WEAPON 5
+      DEFENSE 14
+      DIGGING 20 
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+    chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED	
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "ant-man worker"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+      
+"INS_BLACK_ANT_MAN_CRAFTSMAN"
+  {
+    viewId = { "ins_ant_man_craftsman" }
+    attr = {
+      DAMAGE 10
+	  MULTI_WEAPON 5
+      DEFENSE 10 
+      FURNACE 25
+      WORKSHOP 30
+      FORGE 30
+      JEWELER 30
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }	
+	permanentEffects = {
+      RIDER 1
+    }
+	chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "ant-man craftsman"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+                
+"INS_BLACK_ANT_MAN_WARRIOR"
+  {
+    viewId = { "ins_ant_man_warrior" }
+    attr = {
+      DAMAGE 12
+	  MULTI_WEAPON 10
+      DEFENSE 18
+      FURNACE 5
+      WORKSHOP 15
+      FORGE 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }	
+	chatReactionFriendly = "talks about fighting"
+    chatReactionHostile = "\"Die!\""
+	maxLevelIncrease = {
+	MELEE 7
+	}
+    name = {
+      name = "ant-man warrior"
+	  firstNameGen = "INSECTOID"
+    }
+	hatedByEffect = HATE_INSECTS
+	inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+
+"INS_BLACK_ANT_MAN_REVOLUTIONARY" inherit "INS_BLACK_ANT_MAN_WARRIOR"
+  {
+    viewId = { "ins_ant_man_revolutinary" }
+    specialAttr = {
+      DEFENSE { 10 Not InTerritory }
+      DAMAGE { 10 Not InTerritory }
+    }
+    attr = {
+      DAMAGE 12
+	  MULTI_WEAPON 10
+      DEFENSE 18
+      FURNACE 5
+      WORKSHOP 15
+      FORGE 15
+    }
+	maxLevelIncrease = {
+	MELEE 12
+	}
+    name = {
+      name = "ant-man revolutionary"
+      firstNameGen = "INSECTOID"
+    }
+  }
+
+"INS_BLACK_ANT_MAN_ROYAL_GUARD" inherit "INS_BLACK_ANT_MAN_WARRIOR"
+  {
+    viewId = { "ins_ant_man_royal_guard" }
+    specialAttr = {
+      DEFENSE { 10 InTerritory }
+      DAMAGE { 10 InTerritory }
+    }
+    attr = {
+      DAMAGE 12
+	  MULTI_WEAPON 10
+      DEFENSE 18
+      FURNACE 5
+      WORKSHOP 15
+      FORGE 15
+    }
+	maxLevelIncrease = {
+	MELEE 12
+	}
+    name = {
+      name = "ant-man revolutionary"
+      firstNameGen = "INSECTOID"
+    }
+  }
+    
+"INS_BLACK_ANT_MAN_CROSSBOWMAN" 
+  {
+    viewId = { "ins_ant_man_crossbowman" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 12
+      RANGED_DAMAGE 14
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+    chatReactionFriendly = "talks about bows and arrows"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "ant-man crossbowman"
+	  firstNameGen = "INSECTOID"
+    }
+    spellSchools = { "archer" }
+    maxLevelIncrease = {
+      ARCHERY 7
+    }
+    hatedByEffect = HATE_INSECTS
+    inventory = {
+      { "Bow"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"INS_BLACK_ANT_MAN_WIZARD"
+  {
+    viewId = { "ins_ant_man_wizard" }
+    attr = {
+      DAMAGE 5
+	  MULTI_WEAPON 5
+      DEFENSE 10
+      SPELL_DAMAGE 16
+      LABORATORY 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+    chatReactionFriendly = "talks about magic"
+    chatReactionHostile = "\"Die!\""
+	maxLevelIncrease = {
+	SPELL 9
+	}
+    name = {
+      name = "ant-man wizard"
+	  firstNameGen = "INSECTOID"
+    }
+	spellSchools = { "ant mage" }
+	hatedByEffect = HATE_INSECTS
+    inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"INS_BLACK_ANT_MAN_ALCHEMIST"
+  {
+    viewId = { "ins_ant_man_alchemist" }
+    attr = {
+      DAMAGE 5
+	  MULTI_WEAPON 5
+      DEFENSE 10
+      RANGED_DAMAGE 10
+	  FIRE_DAMAGE 20
+      LABORATORY 35
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+	companions = {4 true FIRE_DAMAGE 0.01 { "INS_BLACK_ANT_BOMBER" }}
+    chatReactionFriendly = "talks about alchemy"
+    chatReactionHostile = "\"Die!\""
+	maxLevelIncrease = {
+	ARCHERY 18
+	}
+    name = {
+      name = "ant-man alchemist"
+	  firstNameGen = "INSECTOID"
+    }
+	spellSchools = { "ant alchemist" }
+	hatedByEffect = HATE_INSECTS
+    inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"INS_BLACK_ANT_MAN_PRIEST"
+  {
+    viewId = { "ins_ant_man_priest" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 8
+	  SPELL_SPEED 8
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+    chatReactionFriendly = "talks about faith"
+    chatReactionHostile = "\"Die!\""
+	maxLevelIncrease = {
+	SPELL 9
+	}
+    name = {
+      name = "ant-man priest"
+	  firstNameGen = "INSECTOID"
+    }
+    spells = { "healing" }
+    spellSchools = { "healer" }
+	hatedByEffect = HATE_INSECTS
+    inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+  }
+
+"INS_BLACK_ANT_MAN_HERDER" 
+  {
+    viewId = { "ins_ant_man_herder" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 12
+      RANGED_DAMAGE 14
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+    chatReactionFriendly = "talks about feral ants"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "ant-man herder"
+	  firstNameGen = "INSECTOID"
+    }
+    maxLevelIncrease = {
+	  MELEE 3
+      ARCHERY 3
+    }
+	companions = {8 true none 0.1 { "INS_BLACK_ANT_WARRIOR_NO_LARVA" }}
+    hatedByEffect = HATE_INSECTS
+    inventory = {
+	  { "Club"}
+      { "Bow"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"INS_BLACK_ANT_BOMBER"
+  {
+    viewId = { "ins_ant_worker_bomb" }
+    attr = {
+      FIRE_DAMAGE 10
+      DEFENSE 8
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+	  intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "self destruct" 1 {
+          attackType = HIT
+          meleeAttackAttr = FIRE_DAMAGE
+          attackMsg = THRUST
+          itselfMessage = true
+          victimEffect = {1.0 Fire{30}}
+          attackerEffect = {CircularBlast Area 1 Fire{30} Suicide DIE  Damage FIRE_DAMAGE HIT DestroyWalls DIG}}}}}
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+    BLIND 1
+	TELEPATHY 1
+    }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant bomb carrier"
+    }
+  }
+  
+"INS_BLACK_ANT_STEED"
+  {
+    viewId = { "ins_ant_warrior_tamed" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+      DIGGING 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+	permanentEffects = {
+      STEED 1
+    }
+	spells = { "warhorse_haste" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant mount"
+    }
+  }
+   
+###########################
+####   Tribal Wasps    ####  
+###########################
+
+"INS_WASP_MAN_TRIBESMAN"
+  {
+    viewId = { "ins_wasp" }
+    attr = {
+      DAMAGE 12
+	  MULTI_WEAPON 5
+      DEFENSE 8
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "waspfolk"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+
+"INS_WASP_MAN_TRIBESMAN_WARRIOR"
+  {
+    viewId = { "ins_wasp_tribal" }
+    attr = {
+      DAMAGE 16
+	  MULTI_WEAPON 10
+      DEFENSE 16
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 6
+    }
+    inventory = {
+      { "Spear" }
+	  { "Spear" }
+      { "LeatherArmor"}
+    }
+	spells = { "damage bonus" }
+    name = {
+      name = "waspfolk hunter"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+
+"INS_WASP_MAN_TRIBESMAN_CHIEFTAIN"
+  {
+    viewId = { "ins_wasp_maneater" }
+    attr = {
+      DAMAGE 22
+	  MULTI_WEAPON 10
+      DEFENSE 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 8
+    }
+    inventory = {
+      { "Spear" }
+	  { "Spear" }
+      { "LeatherArmor"}
+    }
+	spells = { "damage bonus" }
+    name = {
+      name = "waspfolk chieftain"
+	  firstNameGen = "INSECTOID"
+    }
+  }      
+      
+"INS_WASP_MAN_TRIBESMAN_SHAMAN"
+  {
+    viewId = { "ins_wasp_bone_shaman" }
+    attr = {
+	  MULTI_WEAPON 5
+      DAMAGE 5
+      DEFENSE 6
+      SPELL_DAMAGE 16
+      LABORATORY 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }
+	companions = {2 false SPELL_DAMAGE 0.02 { "SKELETON_WOLF" }}
+	permanentEffects = {
+      RIDER 1
+	  DISTILLATION_SKILL 1
+    }
+	maxLevelIncrease = {
+      SPELL 8
+    }
+    spellSchools = { "waspfolk shaman" }
+	hatedByEffect = HATE_INSECTS
+	inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+    name = {
+      name = "waspfolk shaman"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+             
+############################
+####  Civilized Wasps   ####  
+############################
+
+"INS_WASP_MAN_CITIZEN"
+  {
+    viewId = { "ins_wasp_citizen" }
+    attr = {
+      DAMAGE 12
+	  MULTI_WEAPON 5
+      DEFENSE 8
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "waspfolk"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+
+"INS_WASP_MAN_DANCER"
+  {
+    viewId = { "ins_wasp_dancer" }
+    attr = {
+      DAMAGE 12
+	  MULTI_WEAPON 5
+      DEFENSE 8
+    }
+	gender = FEMALE
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+	  ENTERTAINER 1
+    }
+	spells = { "jump" "swap positions" "shove" "pacify" }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "waspfolk raqisa"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+        
+"INS_WASP_MAN_CRAFTING"
+  {
+    viewId = { "ins_wasp_craftsman" }
+    attr = {
+      DAMAGE 12
+	  MULTI_WEAPON 5
+      DEFENSE 8
+	  FURNACE 25
+      WORKSHOP 30
+      FORGE 30
+      JEWELER 30
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }	
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "waspfolk alharfi"
+	  firstNameGen = "INSECTOID"
+    }
+  } 
+    
+"INS_WASP_MAN_GUARD"
+  {
+    viewId = { "ins_wasp_guard" }
+    attr = {
+      DAMAGE 16
+	  MULTI_WEAPON 5
+      DEFENSE 12
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 8
+    }
+    inventory = {
+      { "Spear"}
+      { "LeatherArmor"}
+    }
+	spellSchools = { "waspfolk thug" }
+    name = {
+      name = "waspfolk safaah"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+      
+"INS_WASP_MAN_RAIDER"
+  {
+    viewId = { "ins_wasp_raider" }
+    attr = {
+      DAMAGE 12
+	  MULTI_WEAPON 5
+      DEFENSE 12
+	  RANGED_DAMAGE 16
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+	  ARCHERY 7
+    }
+    inventory = {
+      { "Spear"}
+	  { "Bow"}
+      { "LeatherArmor"}
+    }
+	spellSchools = { "archer" }
+    name = {
+      name = "waspfolk raydar"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+     
+"INS_WASP_MAN_LOYAL"
+  {
+    viewId = { "ins_wasp_immortal" }
+    attr = {
+      DAMAGE 18
+	  MULTI_WEAPON 5
+      DEFENSE 12
+	  RANGED_DAMAGE 16
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 8
+	  ARCHERY 7
+    }
+    inventory = {
+      { "Spear"}
+	  { "Bow"}
+      { "LeatherArmor"}
+    }
+	spellSchools = { "waspfolk thug" "archer" }
+    name = {
+      name = "waspfolk wafi"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+      
+"INS_WASP_MAN_MAGE"
+  {
+    viewId = { "ins_wasp_visier" }
+    attr = {
+	  MULTI_WEAPON 5
+      DAMAGE 5
+      DEFENSE 10
+      SPELL_DAMAGE 16
+      LABORATORY 35
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+	  DISTILLATION_SKILL 1
+    }
+	maxLevelIncrease = {
+      SPELL 8
+    }
+    spellSchools = { "waspfolk hakim" }
+	hatedByEffect = HATE_INSECTS
+	inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+    name = {
+      name = "waspfolk hakim"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+     
+"INS_WASP_MAN_ASSASIN"
+  {
+    viewId = { "ins_wasp_assasin" }
+    attr = {
+      DAMAGE 16
+	  MULTI_WEAPON 5
+      DEFENSE 12
+	  SPELL_SPEED 5
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 7
+	  SPELL 7
+    }
+    inventory = {
+      { "Spear"}
+      { "LeatherArmor"}
+    }
+	spellSchools = { "illusion" }
+    name = {
+      name = "waspfolk qatil"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+  
+"INS_WASP_MAN_KEEPER"
+  {
+    # Definitions in tiles.txt
+    viewId = { "ins_wasp_godblooded_01" }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+    viewIdUpgrades = { { "ins_wasp_godblooded_02" } { "ins_wasp_godblooded_03" } { "ins_wasp_godblooded_04" } }
+    name = {
+      name = "waspfolk aljabaar"
+	  firstNameGen = "INSECTOID"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }
+    attr = {
+      DAMAGE 12
+      DEFENSE 12
+	  MULTI_WEAPON 5
+      SPELL_DAMAGE 20
+      LABORATORY 10
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 7
+      SPELL 12
+    }
+    aiType = RANGED
+    spellSchools = { "waspfolk aljabaar" }
+    spells = { "healing" "directed blast" }
+    inventory = {
+      { "Robe"}
+      { "WoodenStaff" }
+    }
+  }
+  
+"INS_WASP_MAN_KEEPER_F" inherit "INS_WASP_MAN_KEEPER"
+  {
+    gender = FEMALE
+  }  	
+
+"INS_WASP_ADOXIE_HAND_LEFT"
+  {
+    viewId = { "adoxie_hand_left" }
+    attr = {
+      DEFENSE 15
+      SPELL_DAMAGE 15
+    }
+    gender = IT
+    body = {
+      type = NonHumanoid HUGE
+      material = SPIRIT
+      bodyParts = {
+        BACK 1
+        TORSO 1
+      }
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "leg_attack" } "foot" 1 {
+            attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = PUNCH } }}}
+      }
+    }
+    permanentEffects = {
+      FLYING 1
+    }
+    name = {
+      name = "Adoxie's Left Hand"
+      pluralName = "Hands"
+      fullTitle = true
+    }
+    chatReactionFriendly = "\"nothing, why did you think a hand could talk?\""
+    chatReactionHostile = "\"nothing, why did you think a hand could talk?\""
+    deathDescription = "destroyed"
+  }
+  
+"INS_WASP_ADOXIE_HAND_RIGHT" inherit "INS_WASP_ADOXIE_HAND_LEFT"
+  {
+    viewId = { "adoxie_hand_right" }
+    name = {
+      name = "Adoxie's Right Hand"
+      pluralName = "Hands"
+      fullTitle = true
+    }
+  }
+  
+"INS_WASP_MAN_DEMONBRED"
+  {
+    viewId = { "ins_wasp_devilbred" }
+    attr = {
+      DAMAGE 25
+	  MULTI_WEAPON 5
+	  SPELL_DAMAGE 25
+      DEFENSE 30
+    }
+    body = {
+      type = Humanoid LARGE
+      addBodyPart = {
+        WING 4
+		ARM 2
+      }
+     }
+    permanentEffects = {
+	  FIRE_DAMAGE 1
+	  FIRE_IMMUNITY 1
+      FLYING 1
+      MAGIC_RESISTANCE 1
+      SPELL_DAMAGE 1
+    }
+    spellSchools = { "fire" }
+    spells = { "directed blast" }
+    chatReactionFriendly = "\"Kneel before us!\""
+    chatReactionHostile = "\"Face your death!\""
+    name = {
+      name = "Demonbred Waspfolk"
+      firstNameGen = "DEMON"
+    }
+    maxLevelIncrease = {
+	  MELEE 8
+      SPELL 8
+    }
+    inventory = {
+      { type = Glyph ARMOR LastingEffect MAGIC_RESISTANCE chance = 0.3 }
+      { type = Glyph ARMOR LastingEffect SPEED chance = 0.3 }
+      { type = Glyph ARMOR LastingEffect NO_CARRY_LIMIT chance = 0.3 }
+      { type = Glyph WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE} chance = 0.3 }
+    }
+  }
+  
+"INS_WASP_GIANT"
+  {
+    viewId = { "ins_wasp_animal" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 16
+      MULTI_WEAPON 5
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      weight = 10
+      bodyParts = {
+        LEG 6
+		WING 2
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 4 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+		 TORSO {{{ Intrinsic { "bite_attack" } "stinger" 2 {
+            attackType = HIT
+            attackMsg = PUNCH
+            victimEffect = {0.3 Lasting POISON} } }}}
+       }
+	}
+    name = {
+      name = "giant wasp"
+    }
+	permanentEffects = {
+      STEED 1
+    }
+	hatedByEffect = HATE_INSECTS
+  }
+   
+"INS_BLACK_ANT_WASP"
+  {
+    viewId = { "ins_ant_wasp" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+      MULTI_WEAPON 5
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+	  xCanPickUpItems = true
+      bodyParts = {
+        LEG 6
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 9 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+		TORSO {{{ Intrinsic { "bite_attack" } "stinger" 8 {
+            attackType = HIT
+            attackMsg = PUNCH
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+    }
+	permanentEffects = {
+      EXPLORE_NOCTURNAL_SKILL 1
+	  STEED 1
+    }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "giant ant wasp"
+    }
+  }
+  
+"INS_BLACK_ANT_MAN_SLAVE"
+  {
+    viewId = { "ins_ant_man_slave" }
+    attr = {
+      DAMAGE 16
+	  MULTI_WEAPON 5
+      DEFENSE 14
+      DIGGING 20 
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+    chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED	
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "ant-man slave"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+
+"INS_WASP_MAN_SLAVE"
+  {
+    viewId = { "ins_wasp_slave" }
+    attr = {
+      DAMAGE 12
+	  MULTI_WEAPON 5
+      DEFENSE 8
+	  DIGGING 10
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "waspfolk slave"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+         
+############################
+####       Mantis       ####  
+############################
+
+"INS_MANTIS_EUNUCH"
+  {
+    viewId = { "ins_mantis_eunuch" }
+	gender = MALE
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+	  DIGGING 5
+    }
+    body = {
+      type = Humanoid SMALL
+	  addBodyPart = {
+		WING 2
+      }
+      deathSound = none
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+	hatedByEffect = HATE_INSECTS
+    spells = { "ins_mantis_claws" }
+    name = {
+      name = "mantid eunuch"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+    
+"INS_MANTIS_WOMAN_MAIDEN"
+  {
+    viewId = { "ins_mantis_maiden" }
+	gender = FEMALE
+    attr = {
+      DAMAGE 12
+      DEFENSE 18
+    }
+	specialAttr = {
+      DAMAGE { 4 Name "when bloodied" Kills 10 }
+    }
+    body = {
+      type = Humanoid LARGE
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 4
+    }
+    inventory = {
+      { "Spear"}
+      { "LeatherArmor"}
+    }
+	spellSchools = { "mantid warrior" }
+	spells = { "ins_mantis_claws" }
+    name = {
+      name = "mantid maiden"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+  
+"INS_MANTIS_WOMAN_HUNTRESS"
+  {
+    viewId = { "ins_mantis_huntress" }
+	gender = FEMALE
+    attr = {
+      DAMAGE 6
+	  RANGED_DAMAGE 10
+      DEFENSE 22
+    }
+	specialAttr = {
+      RANGED_DAMAGE { 4 Name "when bloodied" Kills 10 }
+    }
+    body = {
+      type = Humanoid LARGE
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      ARCHERY 7
+	  MELEE 3
+    }
+    aiType = RANGED
+    inventory = {
+      { "Spear"}
+	  { "Bow"}
+      { "LeatherArmor"}
+    }
+	spellSchools = { "archer" }
+	spells = { "ins_mantis_claws" }
+    name = {
+      name = "mantid maiden"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+    
+"INS_MANTIS_WOMAN_AMAZON"
+  {
+    viewId = { "ins_mantis_amazon" }
+	gender = FEMALE
+    attr = {
+      DAMAGE 14
+      DEFENSE 20
+    }
+	specialAttr = {
+      DAMAGE { 4 Name "when bloodied" Kills 10 }
+    }
+    body = {
+      type = Humanoid LARGE
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 8
+    }
+    inventory = {
+      { "Spear"}
+      { "ChainArmor"}
+    }
+	spellSchools = { "mantid warrior" }
+	spells = { "ins_mantis_claws" }
+    name = {
+      name = "mantid brave"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+  
+"INS_MANTIS_WOMAN_DELPHI"
+  {
+    viewId = { "ins_mantis_delphi" }
+	gender = FEMALE
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 16 
+    }
+    body = {
+      type = Humanoid LARGE
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      SPELL 7
+	  MELEE 3
+    }
+    aiType = RANGED
+    inventory = {
+      { "WoodenStaff"}
+      { "Robe"}
+    }
+	spellSchools = { "mantid warrior" }
+	spells = { "ins_mantis_claws" }
+    name = {
+      name = "mantid delphi"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+  
+"INS_MANTIS_WOMAN_KEEPER"
+  {
+    viewId = { "ins_mantis_matriarch_01" }
+	gender = FEMALE
+    attr = {
+      DAMAGE 18
+      DEFENSE 24
+      FURNACE 15
+      FORGE 10
+    }
+	specialAttr = {
+      DAMAGE { 4 Name "when bloodied" Kills 10 }
+    }
+    body = {
+      type = Humanoid LARGE
+      deathSound = none
+    }	
+	hatedByEffect = HATE_INSECTS
+    name = {
+      name = "mantid matriarch"
+	  firstNameGen = "INSECTOID"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "ins_mantis_matriarch_02" } { "ins_mantis_matriarch_03" } { "ins_mantis_matriarch_04" }}
+    permanentEffects = {
+      RIDER 1
+	  MAGIC_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+	  ACID_RESISTANT 1
+	  COLD_RESISTANT 1
+	  FIRE_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      MELEE 12
+    }
+    spellSchools = { "mantid warrior" "fighter" }
+    spells = { "healing" "ins_mantis_claws" }
+    inventory = {
+      { "ChainArmor"}
+      { "LeatherHelm"}
+      { "Spear"}
+    }
+  }
+  
+####################
+#### Entomorphs ####  
+####################
+
+"INS_ENTOMORPH_PEASEANT_01"
+  {
+    viewId = { "ins_entomorph_peasant_01" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 17 
+	  DIGGING 8
+    }
+    body = {
+      type = NonHumanoid LARGE
+	  bodyParts = {
+        LEG 4
+		ARM 1
+        HEAD 1
+        TORSO 1
+      }
+      drops = {
+        none 20
+        { "Ins_Endomorph_Gland" } 1
+      }
+	  intrinsicAttacks = {
+	    HEAD {{{ Intrinsic { "bite_attack" } "fangs" 3 { attackType = BITE attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    spells = { "ins_endomorph_claw_1" }
+    name = {
+      name = "Entomorph"
+    }
+  }  
+  
+"INS_ENTOMORPH_PEASEANT_02"
+  {
+    viewId = { "ins_entomorph_peasant_02" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 11 
+	  DIGGING 8
+    }
+    body = {
+      type = NonHumanoid LARGE
+	  bodyParts = {
+        LEG 5
+		ARM 2
+        HEAD 1
+        TORSO 1
+      }
+      drops = {
+        none 20
+        { "Ins_Endomorph_Gland" } 1
+      }
+	  intrinsicAttacks = {
+	    HEAD {{{ Intrinsic { "bite_attack" } "fangs" 3 { attackType = BITE attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  SPEED 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    name = {
+      name = "Entomorph"
+    }
+  }  
+   
+"INS_ENTOMORPH_PEASEANT_03"
+  {
+    viewId = { "ins_entomorph_peasant_03" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 14
+	  DIGGING 8
+    }
+    body = {
+      type = NonHumanoid LARGE
+	  bodyParts = {
+        LEG 2
+		ARM 1
+        HEAD 1
+        TORSO 1
+      }
+      drops = {
+        none 20
+        { "Ins_Endomorph_Gland" } 1
+      }
+	  intrinsicAttacks = {
+	    HEAD {{{ Intrinsic { "bite_attack" } "fangs" 3 { attackType = BITE attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  POISON_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    spells = { "ins_endomorph_sting" }
+    name = {
+      name = "Entomorph"
+    }
+  }  
+  
+"INS_ENTOMORPH_PEASEANT_04"
+  {
+    viewId = { "ins_entomorph_peasant_04" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 14
+	  DIGGING 8
+    }
+    body = {
+      type = NonHumanoid LARGE
+	  bodyParts = {
+		ARM 2
+        LEG 6
+		HEAD 1
+        TORSO 1
+      }
+      drops = {
+        none 20
+        { "Ins_Endomorph_Gland" } 1
+      }
+	  intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 8 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  SPIDER_SKILL 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    name = {
+      name = "Entomorph"
+    }
+  }      
+ 
+"INS_ENTOMORPH_PEASEANT_05"
+  {
+    viewId = { "ins_entomorph_peasant_05" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 14
+	  DIGGING 8
+    }
+    body = {
+      type = NonHumanoid LARGE
+	  bodyParts = {
+		ARM 5
+        LEG 2
+		HEAD 1
+        TORSO 1
+      }
+      drops = {
+        none 20
+        { "Ins_Endomorph_Gland" } 1
+      }
+	  intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 4 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  SPIDER_SKILL 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    name = {
+      name = "Entomorph"
+    }
+  } 
+  
+"INS_ENTOMORPH_PEASEANT_06"
+  {
+    viewId = { "ins_entomorph_peasant_06" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 17 
+	  DIGGING 8
+    }
+    body = {
+      type = NonHumanoid LARGE
+	  bodyParts = {
+        LEG 2
+		ARM 2
+        HEAD 1
+        TORSO 1
+      }
+      drops = {
+        none 20
+        { "Ins_Endomorph_Gland" } 1
+      }
+	  intrinsicAttacks = {
+	    HEAD {{{ Intrinsic { "bite_attack" } "fangs" 3 { attackType = BITE attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    spells = { "ins_endomorph_claw_1" }
+    name = {
+      name = "Entomorph"
+    }
+  }  
+  
+"INS_ENTOMORPH_PEASEANT_07"
+  {
+    viewId = { "ins_entomorph_peasant_07" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+	  DIGGING 8
+    }
+    body = {
+      type = NonHumanoid LARGE
+	  bodyParts = {
+        LEG 4
+		ARM 2
+        HEAD 1
+        TORSO 1
+		BACK 1
+      }
+      drops = {
+        none 20
+        { "Ins_Endomorph_Gland" } 1
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    spells = { "jump" }
+    name = {
+      name = "Entomorph"
+    }
+  }  
+    
+"INS_ENTOMORPH_KNIGHT"
+  {
+    viewId = { "ins_entomorph_knight" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 16 
+	  DIGGING 8
+    }
+    body = {
+      type = NonHumanoid LARGE
+	  bodyParts = {
+        LEG 4
+		ARM 2
+        HEAD 1
+        TORSO 1
+      }
+      drops = {
+        none 20
+        { "Ins_Endomorph_Gland" } 1
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    name = {
+      name = "Entomorph"
+    }
+  }  
+
+"INS_ENTOMORPH_ARCHER"
+  {
+    viewId = { "ins_entomorph_archer" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 11 
+	  DIGGING 8
+    }
+    body = {
+      type = NonHumanoid LARGE
+	  bodyParts = {
+        LEG 6
+		ARM 2
+        HEAD 1
+        TORSO 1
+      }
+      drops = {
+        none 20
+        { "Ins_Endomorph_Gland" } 1
+      }
+	  intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 2 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+    }
+    permanentEffects = {
+	  SWARMER 1
+	  SPEED 1
+	  SPIDER_SKILL 1
+    }
+    maxLevelIncrease = {
+      MELEE 3
+    }
+    name = {
+      name = "Entomorph"
+    }
+  }  
+     
+####################
+#### Fly People ####  
+####################
+  
+"INS_FLY_MAN_WORKER"
+  {
+    viewId = { "ins_fly_scavenger" }
+	genderAlternatives = {
+      FEMALE { "ins_fly_scavenger" }
+	  FEMALE { "ins_fly_foreman" }
+	  MALE { "ins_fly_foreman" }
+    }
+    attr = {
+      DAMAGE 8
+	  MULTI_WEAPON 4
+      DEFENSE 13
+      DIGGING 10 
+      FURNACE 10
+      WORKSHOP 25
+      FORGE 25
+      LABORATORY 25
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		WING 2
+      }
+      deathSound = none
+	  droppedPartUpgrade = GrantAbility "ins_repair_undead"
+    }
+	permanentEffects = {
+	  DISTILLATION_SKILL 1
+      RIDER 1
+	  FLYING 1
+    }
+    chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED	
+	hatedByEffect = HATE_INSECTS
+	spells = { "repair automaton" "ins_fly_restart" }
+    name = {
+      name = "fly-man"
+	  firstNameGen = "INSECTOID"
+    }
+  }
+           
+############################
+#### Salvaged automaton ####  
+############################
+
+"INS_SALVAGED_HELICOPTER" inherit "HELICOPTER"
+  {
+    viewId = { "autopter_corpus_scavenged" Rgb 180 140 55 255 }
+    permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_AUTOMATON" inherit "AUTOMATON"
+  {
+    viewId = { "automaton_scavenged" Rgb 204 202 196 255 }
+    permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+   }
+"INS_SALVAGED_AUTOMATON_CORPUS_WOOD" inherit "AUTOMATON_CORPUS_WOOD"
+  {
+    viewId = { "automaton_corpus_scavenged" Rgb 180 140 55 255 }
+    permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+ 
+"INS_SALVAGED_AUTOMATON_WOOD_WORKER" inherit "INS_SALVAGED_AUTOMATON_CORPUS_WOOD"
+  {
+    automatonParts = {
+      {"AutomatonLegsWood" }
+      {"AutomatonDrillWood" }
+    }
+  }
+  
+"INS_SALVAGED_LIGHT_AUTOMATON_CORPUS_WOOD" inherit "LIGHT_AUTOMATON_CORPUS_WOOD"
+  {
+    viewId = { "automaton_corpus_scavenged_light" Rgb 180 140 55 255 }
+    permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+
+"INS_SALVAGED_AUTOMATON_CORPUS_IRON" inherit "AUTOMATON_CORPUS_IRON"
+  {
+    permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_AUTOMATON_TRAP"
+  {
+    viewId = { "automaton" Rgb 204 202 196 255 }
+    attr = {
+      DAMAGE 40
+      DEFENSE 40 
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+	  UNSTABLE 1
+	  INS_UNRELIABLE 1
+	  INSANITY 1
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = IRON
+    }
+    name = {
+      name = "automaton"
+    }
+  }
+  
+"INS_SALVAGED_AUTOMATON_WORKER_IRON" inherit "INS_SALVAGED_AUTOMATON_CORPUS_IRON"
+  {
+    automatonParts = {
+      {"AutomatonLegsIron" }
+      {"AutomatonDrillIron" }
+    }
+  }
+  
+"INS_SALVAGED_HEAVY_AUTOMATON_CORPUS_IRON" inherit "HEAVY_AUTOMATON_CORPUS_IRON"
+  {
+    viewId = { "automaton_corpus_scavenged_heavy" Rgb 140 148 148 255 }
+    permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_LIGHT_AUTOMATON_CORPUS_IRON" inherit "LIGHT_AUTOMATON_CORPUS_IRON"
+  {
+    viewId = { "automaton_corpus_scavenged_light" Rgb 140 148 148 255 }
+    permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_AUTOMATON_CORPUS_ADA" inherit "AUTOMATON_CORPUS_ADA"
+  {
+    viewId = { "automaton_corpus_scavenged" Rgb 148 189 189 255 }
+    permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_AUTOMATON_WORKER_ADA" inherit "AUTOMATON_WORKER_ADA"
+  {
+    automatonParts = {
+      {"AutomatonLegsAda" }
+      {"AutomatonDrillAda" }
+    }
+  }
+  
+"INS_SALVAGED_HEAVY_AUTOMATON_CORPUS_ADA" inherit "HEAVY_AUTOMATON_CORPUS_ADA"
+  {
+    viewId = { "automaton_corpus_scavenged_heavy" Rgb 148 189 189 255 }
+	permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_LIGHT_AUTOMATON_CORPUS_ADA" inherit "LIGHT_AUTOMATON_CORPUS_ADA"
+  {
+    viewId = { "automaton_corpus_scavenged_light" Rgb 148 189 189 255 }
+	permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_AUTOMATON_CORPUS_INFERNITE" inherit "AUTOMATON_CORPUS_INFERNITE"
+  {
+    viewId = { "automaton_corpus_scavenged" Rgb 220 148 148 255 }
+	permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_HEAVY_AUTOMATON_CORPUS_INFERNITE" inherit "HEAVY_AUTOMATON_CORPUS_INFERNITE"
+  {
+    viewId = { "automaton_corpus_scavenged_heavy" Rgb 220 148 148 255 }
+	permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_LIGHT_AUTOMATON_CORPUS_INFERNITE" inherit "LIGHT_AUTOMATON_CORPUS_INFERNITE"
+  {
+    viewId = { "automaton_corpus_scavenged_light" Rgb 220 148 148 255 }
+	permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_AUTOMATON_CORPUS_ADOXIUM" inherit "AUTOMATON_CORPUS_ADOXIUM"
+  {
+    viewId = { "automaton_corpus_scavenged" Rgb 220 148 220 255 }
+	permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_HEAVY_AUTOMATON_CORPUS_ADOXIUM" inherit "HEAVY_AUTOMATON_CORPUS_ADOXIUM"
+  {
+    viewId = { "automaton_corpus_scavenged_heavy" Rgb 220 148 220 255 }
+	permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }
+  
+"INS_SALVAGED_LIGHT_AUTOMATON_CORPUS_ADOXIUM" inherit "LIGHT_AUTOMATON_CORPUS_ADOXIUM"
+  {
+    viewId = { "automaton_corpus_scavenged_light" Rgb 220 148 220 255 }
+	permanentEffects = append { 
+								INS_UNRELIABLE 1 
+								UNSTABLE 1}
+  }

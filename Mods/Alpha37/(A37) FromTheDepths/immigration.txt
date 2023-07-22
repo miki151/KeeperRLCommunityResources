@@ -1,0 +1,449 @@
+"ftd_deepone"
+{
+    {
+      ids = { "FTD_DEEP_PESEANT" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      spawnLocation = NearLeader
+      keybinding = CREATE_IMP
+      sound = CREATE_IMP 2
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1 ExponentialCost "GOLD" 60 5 4 }
+      }
+    }
+	
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER NO_LIMIT NO_EQUIPMENT }
+      spawnLocation = NearLeader
+      invisible = true
+      noAuto = true
+      initialRecruitment = 1
+    }
+	
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.0007
+      requirements = {
+	    { 0.0 TechId "depth's reunion" }
+        { 0.1 AttractionInfo 1 {FurnitureType "FTD_FISHTRAP" FurnitureType "FTD_DEEP_ONE_STATUE"}}
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { Lasting { BLIND } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+	
+    {
+      ids = { "FTD_DEEP_ONE_ANCIENT" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.0007
+      requirements = {
+	  	{0.0 TechId "depth's reunion" }
+        {0.01 AttractionInfo 4 { FurnitureType "FTD_DEEP_ONE_STATUE_GOLD"}}
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { Lasting { BLIND } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+	
+    {
+      ids = { "FTD_CRUSTACEAN_CRAB" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.0007
+      requirements = {
+	  	{0.0 TechId "chitinous horde" }
+        {0.01 AttractionInfo 1 { FurnitureType "FTD_CRUSTACEAN_LURE"}}
+		{1.0 CostInfo "CORPSE" 20 }
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining MELEE 2}}
+		 { 0.05 { Lasting { FTD_RAVENOUS } }}
+         { 0.03 { AttrBonus DEFENSE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.03 { AttrBonus DEFENSE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+	
+    {
+      ids = {"FTD_CRUSTACEAN_LOBSTER"}
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.0007
+      requirements = {
+	  	{0.0 TechId "chitinous horde" }
+        {0.01 AttractionInfo 1 { FurnitureType "FTD_CRUSTACEAN_LURE"}}
+		{1.0 CostInfo "CORPSE" 20 }
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining MELEE 2}}
+		 { 0.05 { Lasting { FTD_RAVENOUS } }}
+         { 0.03 { AttrBonus DEFENSE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.03 { AttrBonus DEFENSE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+	
+    {
+      ids = {"FTD_CRUSTACEAN_CRAB_BEHEMOTH"}
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.0002
+      requirements = {
+	  	{0.0 TechId "chitinous horde" }
+        {0.01 AttractionInfo 4 { FurnitureType "FTD_CRUSTACEAN_LURE"}}
+		{1.0 CostInfo "CORPSE" 40 }
+      }
+      specialTraits = {
+         { 0.02 { CompanionInfo 1 true none 0.1 { "FTD_CRUSTACEAN_CRAB" }}}
+		 { 0.01 { CompanionInfo 2 true none 0.1 { "FTD_CRUSTACEAN_CRAB" }}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining MELEE 2}}
+		 { 0.05 { Lasting { FTD_RAVENOUS } }}
+         { 0.03 { AttrBonus DEFENSE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.03 { AttrBonus DEFENSE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+
+    {
+      ids = { "FTD_DEEP_ONE_HYBRID_FERAL" }
+      traits = { FIGHTER DOESNT_TRIGGER NO_EQUIPMENT}
+	  spawnLocation = Pregnancy
+      requirements = {
+	    { 1.0 TechId "depth's reunion" }
+        { 0.0 Pregnancy }
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { Lasting { BLIND } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+		
+    {
+      ids = { "FTD_DEEP_ONE_HYBRID" }
+      traits = { FIGHTER }
+	  spawnLocation = Pregnancy
+      requirements = {
+	    { 1.0 TechId "depth's reunion" }
+        { 0.0 Pregnancy }
+        { 0.0 AttractionInfo 1 {FurnitureType "WORKSHOP" FurnitureType "FORGE" FurnitureType "JEWELLER" FurnitureType "DISTILLERY" FurnitureType "FURNACE"}}
+      }
+      specialTraits = {
+         { 0.05 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { CompanionInfo 2 true none 0.1 { "FTD_CRAB" }}}
+		 { 0.05 { AttrBonus FORGE 20 Lasting { INSANITY } }}
+		 { 0.05 { AttrBonus WORKSHOP 20 Lasting { INSANITY } }}
+		 { 0.05 { AttrBonus FORGE 20 Lasting { INSANITY } }}
+         { 0.03 { AttrBonus FORGE 10 Lasting { AGGRAVATES }}}
+		 { 0.03 { AttrBonus FURNACE 10 Lasting { AGGRAVATES }}}
+		 { 0.03 { AttrBonus WORKSHOP 10 Lasting { AGGRAVATES }}}
+		 { 0.03 { AttrBonus JEWELER 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+      }
+    }
+		
+    {
+      ids = { "FTD_DEEP_ONE_HYBRID_ENFONCER" }
+      traits = { FIGHTER }
+	  spawnLocation = Pregnancy
+      requirements = {
+	    { 1.0 TechId "depth's reunion" }
+        { 0.0 Pregnancy }
+        { 0.0 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { Lasting { BLIND } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+	
+    {
+      ids = { "FTD_DEEP_ONE_HYBRID_PRIEST" }
+      traits = { FIGHTER }
+	  spawnLocation = Pregnancy
+      requirements = {
+	    { 1.0 TechId "depth's reunion" }
+        { 0.0 Pregnancy }
+        { 0.0 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" }}
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.10 { ExtraTraining SPELL 4}}
+		 { 0.05 { ExtraTraining MELEE 2}}
+		 { 0.05 { AttrBonus LABORATORY 20 Lasting { BLIND } }}
+		 { 0.05 { AttrBonus LABORATORY 20 Lasting { INSANITY } }}
+		 { 0.05 { AttrBonus LABORATORY 20 Lasting { AGGRAVATES } }}
+		 { 0.03 { AttrBonus SPELL_DAMAGE 13 Lasting { INSANITY }}}
+		 { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { Lasting { BLIND } }}
+		 { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+	
+    {
+      ids = { "FTD_DEEP_ONE_HYBRID_APOTHECARY" }
+      traits = { FIGHTER }
+	  spawnLocation = Pregnancy
+      requirements = {
+	    { 1.0 TechId "depth's reunion" }
+        { 0.0 Pregnancy }
+        { 0.0 AttractionInfo 1 {FurnitureType "LABORATORY"}}
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.10 { ExtraTraining SPELL 4}}
+		 { 0.05 { ExtraTraining MELEE 2}}
+		 { 0.05 { AttrBonus LABORATORY 20 Lasting { BLIND } }}
+		 { 0.05 { AttrBonus LABORATORY 20 Lasting { INSANITY } }}
+		 { 0.05 { AttrBonus LABORATORY 20 Lasting { AGGRAVATES } }}
+		 { 0.03 { AttrBonus SPELL_DAMAGE 13 Lasting { INSANITY }}}
+		 { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { Lasting { BLIND } }}
+		 { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+		
+	{
+      ids = { "FTD_DEEP_ONE_HYBRID_ARCHER" }
+      traits = { FIGHTER }
+	  spawnLocation = Pregnancy
+      requirements = {
+	    { 1.0 TechId "depth's reunion" }
+        { 0.0 Pregnancy }
+        { 0.0 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+		 { 0.05 { ExtraTraining MELEE 2}}
+		 { 0.05 { AttrBonus LABORATORY 10} }
+		 { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.05 { ExtraTraining ARCHERY 2}}
+		 { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+		 { 0.03 { AttrBonus RANGED_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+	     { 0.03 { Lasting { BLIND } }}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr RANGED_DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr RANGED_DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+	
+    {
+      ids = { "FTD_GIANT_CRAB" }
+      traits = { FIGHTER }
+      requirements = {
+	  	{0.0 TechId "depth's worship" }
+	    { 0.0 FurnitureType "BEAST_CAGE" }
+        { 0.0 CostInfo "DEMON_PIETY" 150 }
+      }
+    }
+	
+    {
+      ids = { "FTD_DRODGHER" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      requirements = {
+	  	{0.0 TechId "depth's worship" }
+	    { 0.0 FurnitureType "BEAST_CAGE" }
+        { 0.0 CostInfo "DEMON_PIETY" 200 }
+      }
+    }
+	
+	{
+      ids = { "EG_SHOGGOTH" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      spawnLocation = FurnitureType "FTD_DEEP_ONE_EFFIGY"
+      requirements = {
+	  	{ 0.0 TechId "depth's worship" }
+        { 0.3 AttractionInfo 1 {FurnitureType "FTD_DEEP_ONE_EFFIGY"}}
+        { 0.0 CostInfo "DEMON_PIETY" 450 }
+      }
+	  specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "FTD_CRAB" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.10 { ExtraTraining SPELL 4}}
+		 { 0.05 { ExtraTraining MELEE 2}}
+		 { 0.03 { AttrBonus SPELL_DAMAGE 13 Lasting { INSANITY }}}
+		 { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+		 { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+		 { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+		 { 0.02 { Lasting { HATE_ELVES } }}
+		 { 0.05 { Lasting { HATE_GREENSKINS } }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_GREENSKINS }}
+		 { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+		 { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_GREENSKINS }}
+      }
+    }
+}
+
+"dark_keeper" modify append
+{
+	 {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { WORKER FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "FTD_DEEP_ONES_ALLY" } 3 FIGHTER }
+        { 1.0 CostInfo "GOLD" 20 }
+      }
+    }
+}
+
+"ftd_default_allies"
+{
+    {
+      ids = { "DARK_ELF_WARRIOR" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "DARK_ELVES_ALLY" } 3 FIGHTER }
+        { 1.0 CostInfo "GOLD" 20 }
+      }
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "GOBLIN_CAVE_ALLY" } 3 FIGHTER }
+        { 1.0 CostInfo "GOLD" 5 }
+      }
+    }
+    {
+      ids = { "HARPY" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "HARPY_CAVE" } 3 FIGHTER }
+        { 1.0 CostInfo "GOLD" 12 }
+      }
+    }
+    {
+      ids = { "VAMPIRE" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "Z_LEVEL_VAMPIRE_VAULT" } 0 FIGHTER }
+      }
+    }
+}

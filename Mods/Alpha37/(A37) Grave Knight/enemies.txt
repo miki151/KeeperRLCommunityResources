@@ -1,0 +1,92 @@
+"GRAVE_KNIGHTS"
+{
+  biome =  "GK_SWAMP" 
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+    tribe = DARK_ELF
+    inhabitants = {
+      leader = { { "GRAVE_KNIGHT_DUKE" } }
+      fighters = {
+        count = {12 17}
+        all = {
+		  1 "GRAVE_KNIGHT"
+          3 "SKELETON_WARRIOR"
+          1 "SKELETON_ARCHER"
+        }
+		uniques = { "BONE_DRAGON" }
+		expLevelIncrease = {
+          MELEE 10
+          SPELL 10
+          ARCHERY 10
+        }
+      }
+      civilians = {
+        count = {3 6}
+
+        all = {
+          1 "RAT"
+        }
+      }
+      steeds = {
+        all = { 10 "SKELETON_WOLF" }
+      }
+    }
+    locationNameGen = "EVIL_TOWN_GK"
+    race = "grave knight"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {
+        {10 15} "villageShop" 
+        {10 15} "grave knight"
+    }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  otherEnemy = "CEMETERY"
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 26
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+  }
+  behaviour = {
+    minPopulation = 7
+    minTeamSize = 10
+    ambushChance = 0.05
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"GRAVE_KNIGHT"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+    {
+      ids = {"SKELETON_ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"SKELETON_WARRIOR"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "DUNGEON1" { 1 3 } } {60 40} BASIC }
+    }
+  }
+}

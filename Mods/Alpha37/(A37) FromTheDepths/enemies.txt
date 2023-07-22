@@ -1,0 +1,407 @@
+"FTD_PIRATES"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = {{ "FTD_PIRATE_CAPTAIN" }}
+      fighters = {
+        count = {4 9}
+        all = { 1 "FTD_PIRATE" }
+      }
+    }
+    tribe = BANDIT
+    race = "bandits"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Gold 500}
+    attackBehaviour = StealGold
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_PIRATE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_COTTAGE_PIRATES" inherit "FTD_PIRATES"
+{
+  createOnBones = 1.0 { "HUMAN_COTTAGE" }
+}
+
+"FTD_DEEP_ONES_LESSER"
+{
+  biome = "FTD_GREAT_LAKE"
+  settlement = {
+    type = Builtin CAVE "FTD_FLOODED_CAVE"
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE" } }
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "FTD_DEEP_ONE"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "deep ones"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Gold 500}
+    attackBehaviour = StealGold
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_HYBRID_COTTAGE"
+{
+  settlement = {
+    type = Builtin COTTAGE "WOOD"
+    tribe = MONSTER
+    crops = Crops()
+    inhabitants = {
+	  leader = { { "FTD_DEEP_ONE_HYBRID" } }
+      fighters = {
+        count = {2 4}
+        all = { 1 "FTD_DEEP_ONE_HYBRID" }
+      }
+      civilians = {
+        count = {3 7},
+        all = {
+          1 "HORSE"
+          1 "DONKEY"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    race = "humans"
+    furniture = "roomFurniture"
+  }
+}
+
+"FTD_HYBRID_CASTLE"
+{
+  settlement = {
+    type = Builtin CASTLE2 "WOOD_CASTLE"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE_FIRSTBORN_NPC" } }
+      fighters = {
+        count = {7 10}
+        all = { 2 "FTD_DEEP_ONE_HYBRID_ENFONCER"
+		        2 "FTD_DEEP_ONE_HYBRID_ARCHER"
+				1 "FTD_DEEP_ONE_HYBRID_PRIEST"
+                1 "FTD_DEEP_ONE_HYBRID_APOTHECARY" }
+      }
+	  civilians = {
+        count = {3 7},
+        all = { 1 "FTD_DEEP_ONE_HYBRID" }
+        }
+      }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
+    furniture = "roomFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+    ghostProb = 0.1
+    spawnGhosts = 6
+  }
+  behaviour = {
+    minPopulation = 3
+    minTeamSize = 5
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 2
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.8 140
+  }
+  immigrants = {
+    {
+      ids = {"FTD_DEEP_ONE_HYBRID_ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"FTD_DEEP_ONE_HYBRID_ENFONCER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "FTD_DEEP_ONES_CAVE_FLOOR" { 1 2 } } {40 40} MAZE }
+    }
+  }
+}
+
+"FTD_CRUSTACEAN_CAVE"
+{
+  biome = "FTD_GREAT_LAKE"
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = { { "FTD_CRUSTACEAN_CRAB_BEHEMOTH" } }
+      fighters = {
+        count = {15 20}
+        all = {
+		  3 "FTD_CRUSTACEAN_CRAB"
+          2 "FTD_CRUSTACEAN_LOBSTER"
+        }
+      }
+    }
+    tribe = HOSTILE
+    race = "Crustacean horde"
+  }
+  behaviour = {
+    minPopulation = 3
+    minTeamSize = 4
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillMembers 3
+    ransom = 0.8 320
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_CRUSTACEAN_CRAB" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "FTD_CRUSTACEAN_LOBSTER" }
+      traits = { FIGHTER }
+      frequency = 0.5
+    }
+  } 
+  levelConnection = {
+    topLevel = ExtraEnemy {"MAIN_DUNGEON_ENTRY"}
+    levels = {
+      { ExtraEnemy { "FTD_CRUSTACEAN_CAVE_FLOOR" { 2 4 } } {40 30} BASIC }
+	  { MainEnemy {38 28} BASIC }
+    }
+  }
+}
+
+"FTD_CRUSTACEAN_CAVE_FLOOR"
+{
+  discoverable = false
+  settlement = {
+    type = RandomLayout { "dungeon" { 38 28 } "default"}
+    tribe = MONSTER
+    furniture = "roomFurniture"
+    shopItems = {{5 10} "dungeon" }
+    inhabitants = {
+      fighters = {
+        count = {10 15}
+        all = {
+		  3 "FTD_CRUSTACEAN_CRAB"
+          2 "FTD_CRUSTACEAN_LOBSTER"
+        }
+      }
+    }
+  }
+}
+
+"FTD_CRUSTACEAN_CAVE_LESSER"
+{
+  biome = "FTD_GREAT_LAKE"
+  settlement = {
+    type = Builtin CAVE "FTD_FLOODED_CAVE"
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE" } }
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "FTD_DEEP_ONE"
+        }
+      }
+    }
+    tribe = MONSTER
+	furniture = "roomFurniture"
+    race = "deep ones"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Gold 500}
+    attackBehaviour = StealGold
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_DEEP_ONES_ENEMY"
+{
+  biome = "FTD_GREAT_LAKE" 
+  settlement = {
+    type = RandomLayout { "dungeon" { 38 28 } "ftd_flooder_caves"}
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE_ANCIENT" } }
+      fighters = {
+        count = {15 20}
+        all = {
+		  3 "FTD_DEEP_ONE"
+          2 "FTD_DEEP_ONE_HYBRID_FERAL"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "Crustacean horde"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Gold 500}
+    attackBehaviour = StealGold
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "FTD_DEEP_ONE_HYBRID_FERAL" }
+      traits = { FIGHTER }
+      frequency = 0.5
+    }
+  } 
+  levelConnection = {
+    topLevel = ExtraEnemy {"MAIN_DUNGEON_ENTRY"}
+    levels = {
+      { ExtraEnemy { "FTD_CRUSTACEAN_CAVE_FLOOR" { 4 8 } } {40 30} BASIC }
+	  { MainEnemy {38 28} BASIC "Main Cave" }
+    }
+  }
+}
+
+"FTD_DEEP_ONES_CAVE_FLOOR"
+{
+  discoverable = false
+  settlement = {
+    type = RandomLayout { "dungeon" { 38 28 } "ftd_flooder_caves"}
+    tribe = MONSTER
+    furniture = "roomFurniture"
+    shopItems = {{5 10} "dungeon" }
+    inhabitants = {
+      fighters = {
+        count = {10 15}
+        all = {
+		  3 "FTD_DEEP_ONE_HYBRID_FERAL"
+          2 "FTD_DEEP_ONE"
+        }
+      }
+    }
+  }
+}
+
+"FTD_DEEP_ONES_ALLY"
+{
+  biome = "FTD_GREAT_LAKE" 
+  settlement = {
+    type = RandomLayout { "dungeon" { 38 28 } "ftd_flooder_caves"}
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE_ANCIENT" } }
+      fighters = {
+        count = {6 8}
+        all = {
+          1 "FTD_DEEP_ONE"
+      }
+    }}
+    tribe = GREENSKIN
+    race = "Crustacean horde"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Gold 500}
+    attackBehaviour = StealGold
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  } 
+  levelConnection = {
+    topLevel = ExtraEnemy {"MAIN_DUNGEON_ENTRY"}
+    levels = {
+      { ExtraEnemy { "DUNGEON1" { 2 4 } } {60 40} BASIC }
+      { ExtraEnemy { "DUNGEON2" { 1 2 } } {60 40} BASIC }
+      { MainEnemy {60 40} MINETOWN }
+    }
+  }
+}
+

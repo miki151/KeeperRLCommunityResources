@@ -1,0 +1,550 @@
+"AutomatonHeadCaelidite" inherit "AutomatonHeadWood"
+  {
+    viewId = { "autom_head1" ColorId GREEN }
+      upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "a humanoid head"
+      Description "Allows using equipment. Moderately armoured."
+      {
+        MakeHumanoid
+        AddBodyPart HEAD 1 none
+		IncreaseAttr DEFENSE 9
+		Permanent ARCHER_VISION
+        AddAutomatonPart 2 "humanoid" { "installed_head1" ColorId GREEN}
+      }
+    storageIds = {"automaton_parts" "equipment"}
+    upgradeType = {ARMOR}
+  }
+"AutomatonHeadJothnite" inherit "AutomatonHeadWood"
+  {
+    viewId = { "autom_head1" ColorId LIGHT_BLUE }
+      upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "a humanoid head"
+      Description "Allows using equipment. Moderately armoured."
+      {
+        MakeHumanoid
+        AddBodyPart HEAD 1 none
+		IncreaseAttr DEFENSE 9
+		Permanent ARCHER_VISION
+        AddAutomatonPart 2 "humanoid" { "installed_head1" ColorId LIGHT_BLUE}
+      }
+    storageIds = {"automaton_parts" "equipment"}
+    upgradeType = {ARMOR}
+  }
+####
+"AutomatonEliminatorHeadCaelidite" inherit "AutomatonHeadWood"
+  {
+    viewId = { "autom_head2" ColorId GREEN }
+      upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "a humanoid head"
+      Description "Allows using equipment. Allows using melee training."
+      {
+        MakeHumanoid
+        AddBodyPart HEAD 1 none
+		IncreaseMaxLevel MELEE 9
+		Permanent ARCHER_VISION
+        AddAutomatonPart 2 "humanoid" { "installed_head1" ColorId GREEN}
+      }
+    storageIds = {"automaton_parts" "equipment"}
+    upgradeType = {ARMOR}
+  }
+"AutomatonEliminatorHeadJothnite" inherit "AutomatonHeadWood"
+  {
+    viewId = { "autom_head2" ColorId LIGHT_BLUE }
+      upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "a humanoid head"
+      Description "Allows using equipment. Allows using melee training."
+      {
+        MakeHumanoid
+        AddBodyPart HEAD 1 none
+		IncreaseMaxLevel MELEE 9
+		Permanent ARCHER_VISION
+        AddAutomatonPart 2 "humanoid" { "installed_head1" ColorId LIGHT_BLUE}
+      }
+    storageIds = {"automaton_parts" "equipment"}
+    upgradeType = {ARMOR}
+  }
+####
+"AutomatonSniperHeadCaelidite" inherit "AutomatonHeadWood"
+  {
+    viewId = { "autom_head3" ColorId GREEN }
+      upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "a humanoid head"
+      Description "Allows using equipment. Allows using ranged training."
+      {
+        MakeHumanoid
+        AddBodyPart HEAD 1 none
+		IncreaseMaxLevel ARCHERY 9
+		Permanent ARCHER_VISION
+        AddAutomatonPart 2 "humanoid" { "installed_head1" ColorId GREEN}
+      }
+    storageIds = {"automaton_parts" "equipment"}
+    upgradeType = {ARMOR}
+  }
+"AutomatonSniperHeadJothnite" inherit "AutomatonHeadWood"
+  {
+    viewId = { "autom_head3" ColorId LIGHT_BLUE }
+      upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "a humanoid head"
+      Description "Allows using equipment. Allows using ranged training."
+      {
+        MakeHumanoid
+        AddBodyPart HEAD 1 none
+		IncreaseMaxLevel ARCHERY 9
+		Permanent ARCHER_VISION
+        AddAutomatonPart 2 "humanoid" { "installed_head1" ColorId LIGHT_BLUE}
+      }
+    storageIds = {"automaton_parts" "equipment"}
+    upgradeType = {ARMOR}
+  }
+####
+"AutomatonComputingHeadCaelidite" inherit "AutomatonHeadWood"
+  {
+    viewId = { "autom_head4" ColorId GREEN }
+      upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "a humanoid head"
+      Description "Allows using equipment. Allows using spell training."
+      {
+        MakeHumanoid
+        AddBodyPart HEAD 1 none
+		IncreaseMaxLevel SPELL 9
+		Permanent ARCHER_VISION
+        AddAutomatonPart 2 "humanoid" { "installed_head1" ColorId GREEN}
+      }
+    storageIds = {"automaton_parts" "equipment"}
+    upgradeType = {ARMOR}
+  }
+"AutomatonComputingHeadJothnite" inherit "AutomatonHeadWood"
+  {
+    viewId = { "autom_head4" ColorId LIGHT_BLUE }
+      upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "a humanoid head"
+      Description "Allows using equipment. Allows using spell training."
+      {
+        MakeHumanoid
+        AddBodyPart HEAD 1 none
+		IncreaseMaxLevel SPELL 9
+		Permanent ARCHER_VISION
+        AddAutomatonPart 2 "humanoid" { "installed_head1" ColorId LIGHT_BLUE}
+      }
+    storageIds = {"automaton_parts" "equipment"}
+    upgradeType = {ARMOR}
+  }
+####
+"AutomatonClampArmCaelidite"  inherit "AutomatonClampArmWood" 
+  {
+	viewId = { "autom_clamp" ColorId GREEN }
+	upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Caelidite clamp arms"
+      Description "Turns the automaton into a Worker with a clamps. Cant dig."
+      {
+			AddMinionTrait WORKER
+            Filter Not CreatureFlag "have_clamps_c" {
+			GrantAbility "repair gel"
+			SetCreatureFlag "have_clamp_c" true}
+			IncreaseAttr WORKSHOP 25
+			IncreaseAttr FORGE 25
+			IncreaseAttr LABORATORY 25
+			IncreaseAttr JEWELER 25
+			IncreaseAttr AUTOMATONFORGE 25
+			IncreaseAttr SUPERAUTOMATONFORGE 25
+            AddAutomatonPart 1 "clamp" {"installed_clamp" ColorId GREEN}
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+
+"AutomatonClampArmJothnite"  inherit "AutomatonClampArmWood" 
+  {
+	viewId = { "autom_clamp" ColorId LIGHT_BLUE }
+	upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Jothnite clamp arms"
+      Description "Turns the automaton into a Worker with a clamps. Cant dig."
+      {
+			AddMinionTrait WORKER
+            Filter Not CreatureFlag "have_clamps_j" {
+			GrantAbility "overclock_speed_other"
+			SetCreatureFlag "have_clamps_j" true}
+			IncreaseAttr WORKSHOP 25
+			IncreaseAttr FORGE 25
+			IncreaseAttr LABORATORY 25
+			IncreaseAttr JEWELER 25
+			IncreaseAttr AUTOMATONFORGE 25
+			IncreaseAttr SUPERAUTOMATONFORGE 25
+            AddAutomatonPart 1 "clamp" {"installed_clamp" ColorId LIGHT_BLUE}
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+####
+"AutomatonDrillArmCaelidite" inherit "AutomatonDrillArmWood"
+  {
+	viewId = { "autom_drill" ColorId GREEN }
+	  upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "a Caelidite drill"
+      Description "Turns the automaton into a Worker with a drill. Cant craft."
+      {
+	  		AddBodyPart ARM 1 { Intrinsic { "rock" } "drill" 5 { 
+			attackType = CRUSH 
+			meleeAttackAttr = ACID_DAMAGE  
+			attackMsg = SWING  
+	        victimEffect = { 1.0 Acid{}}}}
+			IncreaseAttr ACID_DAMAGE 6
+			IncreaseAttr DIGGING 40
+			AddMinionTrait WORKER
+			Filter Not CreatureFlag "have_drill_c" {
+			GrantAbility "acid dig"
+			SetCreatureFlag "have_drill_c" true}
+            AddAutomatonPart 2 "drill" { "installed_drill" ColorId GREEN }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}	  
+  }
+"AutomatonDrillArmJothnite" inherit "AutomatonDrillArmWood"
+  {
+	viewId = { "autom_drill" ColorId LIGHT_BLUE }
+	  upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "a Jothnite drill"
+      Description "Turns the automaton into a Worker with a drill. Cant craft."
+      {
+	  		AddBodyPart ARM 1 { Intrinsic { "rock" } "drill" 5 { 
+			attackType = CRUSH 
+			meleeAttackAttr = COLD_DAMAGE  
+			attackMsg = SWING  
+	        victimEffect = { 1.0 Ice{}}}}
+			IncreaseAttr COLD_DAMAGE 6
+			IncreaseAttr DIGGING 40
+			AddMinionTrait WORKER
+			Filter Not CreatureFlag "have_drill_c" {
+			GrantAbility "Freezing Gel"
+			SetCreatureFlag "have_drill_c" true}
+            AddAutomatonPart 2 "drill" { "installed_drill" ColorId LIGHT_BLUE }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}	  
+  }
+####
+"AutomatonHumanoidArmsCaelidite"	inherit "AutomatonHumanoidArmsWood"
+  {
+	viewId = { "autom_humanoidarms" ColorId GREEN }
+	  upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Caelidite arms"
+      Description "Humanoid Automaton Arm. Increases Damage +18 and Defence +6."
+      {
+			IncreaseAttr ACID_DAMAGE 8		    
+			Filter CreatureFlag "have_arms" IncreaseAttr MULTI_WEAPON 5
+            SetCreatureFlag "have_arms" true
+			IncreaseAttr DEFENSE 6
+			AddBodyPart ARM 2 { Intrinsic { "fist_attack" } "fists" 5 { 
+			attackType = HIT 
+			meleeAttackAttr = ACID_DAMAGE  
+			attackMsg = SWING  
+			victimEffect = {1.0 Acid{}}}}
+            AddAutomatonPart 1 "melee" { "installed_humanoidarms" ColorId GREEN }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+
+"AutomatonHumanoidArmsJothnite"	inherit "AutomatonHumanoidArmsWood"
+  {
+	viewId = { "autom_humanoidarms" ColorId LIGHT_BLUE }
+	  upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Jothnite arms"
+      Description "Humanoid Automaton Arm. Increases Damage +18 and Defence +6."
+      {
+			IncreaseAttr COLD_DAMAGE 8		    
+			Filter CreatureFlag "have_arms" IncreaseAttr MULTI_WEAPON 5
+            SetCreatureFlag "have_arms" true
+			IncreaseAttr DEFENSE 6
+			AddBodyPart ARM 2 { Intrinsic { "fist_attack" } "fists" 5 { 
+			attackType = HIT 
+			meleeAttackAttr = COLD_DAMAGE  
+			attackMsg = SWING  
+			victimEffect = {1.0 Ice{}}}}
+            AddAutomatonPart 1 "melee" { "installed_humanoidarms" ColorId LIGHT_BLUE }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+    
+#### 
+"AutomatonSwordArmLeftCaelidite" inherit "AutomatonSwordArmLeftWood"
+  {
+	viewId = { "autom_swordarm1" ColorId GREEN }
+	  upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Caelidite swordarms"
+      Description "Left Automaton Swordarm. Adds +12 damage and 35 bleeding affect also sets enemy on fire."
+      {
+	    IncreaseAttr ACID_DAMAGE 4
+		Filter CreatureFlag "have_swords" IncreaseAttr MULTI_WEAPON 10
+        SetCreatureFlag "have_swords" true
+		AddBodyPart ARM 2 { Intrinsic { "sword" } "sword" 8 { 
+		attackType = CUT 
+		meleeAttackAttr = ACID_DAMAGE  
+		attackMsg = SWING  
+	    victimEffect = { 35 Lasting 50 BLEEDING 1.0 Acid{}}}}
+		AddAutomatonPart 2 "melee" { "installed_swordarm1" ColorId GREEN }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+"AutomatonSwordArmLeftJothnite" inherit "AutomatonSwordArmLeftWood"
+  {
+	viewId = { "autom_swordarm1" ColorId LIGHT_BLUE }
+	  upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Jothnite swordarms"
+      Description "Left Automaton Swordarm. Adds +12 damage and 35 bleeding affect also sets enemy on fire."
+      {
+	    IncreaseAttr COLD_DAMAGE 4
+		Filter CreatureFlag "have_swords" IncreaseAttr MULTI_WEAPON 10
+        SetCreatureFlag "have_swords" true
+		AddBodyPart ARM 2 { Intrinsic { "sword" } "sword" 8 { 
+		attackType = CUT 
+		meleeAttackAttr = COLD_DAMAGE  
+		attackMsg = SWING  
+	    victimEffect = { 35 Lasting 50 BLEEDING 1.0 Ice{}}}}
+		AddAutomatonPart 2 "melee" { "installed_swordarm1" ColorId LIGHT_BLUE }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+    
+############
+"AutomatonFlameThrowerCaelidite" inherit "AutomatonFlameThrowerWood"
+  {
+	  viewId = { "autom_flamethrower" ColorId GREEN }
+	  upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Caelidite flamethower"
+      Description "Flame Thrower Arm. Grants the \"acidfire stream\" ability. Add a second arm to also grant the \"acidfire bomb\" ability and +15 acid and fire damage."
+		{
+				Filter Not CreatureFlag "is_acidinfe" GrantAbility "acidfire stream"
+				Filter Not CreatureFlag "is_acidinfe" IncreaseAttr ACID_DAMAGE 15
+				Filter CreatureFlag "is_acidinfe" IncreaseAttr ACID_DAMAGE 15
+				Filter Not CreatureFlag "is_acidinfe" IncreaseAttr FIRE_DAMAGE 15
+				Filter CreatureFlag "is_acidinfe" IncreaseAttr FIRE_DAMAGE 15
+				Filter CreatureFlag "is_acidinfe" GrantAbility "acidfire bomb"
+                SetCreatureFlag "is_acidinfe" true
+				AddAutomatonPart 1 "ranged" { "installed_acidthrower" ColorId GREEN }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+  
+"AutomatonFlameThrowerJothnite" inherit "AutomatonFlameThrowerWood"
+  {
+	  viewId = { "autom_flamethrower" ColorId LIGHT_BLUE }
+	  upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Jothnite flamethower"
+      Description "Flame Thrower Arm. Grants the \"cryofire stream\" ability. Add a second arm to also grant the \"cryofire bomb\" ability and +15 cryo and fire damage."
+		{
+				Filter Not CreatureFlag "is_cryoinfe" GrantAbility "cryofire stream"
+				Filter Not CreatureFlag "is_cryoinfe" IncreaseAttr COLD_DAMAGE 15
+				Filter CreatureFlag "is_cryoinfe" IncreaseAttr COLD_DAMAGE 15
+				Filter Not CreatureFlag "is_cryoinfe" IncreaseAttr FIRE_DAMAGE 15
+				Filter CreatureFlag "is_cryoinfe" IncreaseAttr FIRE_DAMAGE 15
+				Filter CreatureFlag "is_cryoinfe" GrantAbility "cryofire bomb"
+                SetCreatureFlag "is_cryoinfe" true
+				AddAutomatonPart 1 "ranged" { "installed_flamethrower" ColorId LIGHT_BLUE }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+####
+"AutomatonAcidThrowerCaelidite" inherit "AutomatonAcidThrowerWood"
+  {
+	viewId = { "autom_acidthrower" ColorId GREEN }
+	upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+    Name "Caelidite acidthower"
+	Description "Acid Thrower Arm. Grants the \"acid stream\" ability. Add a second arm to also grant the \"acid bomb\" ability and +30 acid damage."
+		{
+				Filter Not CreatureFlag "is_acidcae" GrantAbility "acid stream5"
+				Filter Not CreatureFlag "is_acidcae" IncreaseAttr ACID_DAMAGE 45
+				Filter CreatureFlag "is_acidcae" IncreaseAttr ACID_DAMAGE 45
+				Filter CreatureFlag "is_acidcae" GrantAbility "acid bomb5"
+                SetCreatureFlag "is_acidcae" true
+				AddAutomatonPart 1 "ranged" { "installed_acidthrower" ColorId GREEN }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+  
+"AutomatonAcidThrowerJothnite" inherit "AutomatonAcidThrowerWood"
+  {
+	viewId = { "autom_acidthrower" ColorId LIGHT_BLUE }
+	upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+    Name "Jothnite acidthower"
+	Description "Acid Thrower Arm. Grants the \"cryoacid stream\" ability. Add a second arm to also grant the \"cryoacid bomb\" ability and +15 acid and cold damage."
+		{
+				Filter Not CreatureFlag "is_cryoacid" GrantAbility "cryoacid stream"
+				Filter Not CreatureFlag "is_cryoacid" IncreaseAttr ACID_DAMAGE 15
+				Filter CreatureFlag "is_cryoacid" IncreaseAttr ACID_DAMAGE 15
+				Filter Not CreatureFlag "is_cryoacid" IncreaseAttr COLD_DAMAGE 15
+				Filter CreatureFlag "is_cryoacid" IncreaseAttr COLD_DAMAGE 15
+				Filter CreatureFlag "is_cryoacid" GrantAbility "cryoacid bomb"
+                SetCreatureFlag "is_cryoacid" true
+				AddAutomatonPart 1 "ranged" { "installed_acidthrower" ColorId LIGHT_BLUE }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+####
+"AutomatonCryoThrowerCaelidite" inherit "AutomatonCryoThrowerWood"
+  {
+	viewId = { "autom_cryothrower" ColorId GREEN }
+	upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+    Name "Caelidite cryothower"
+	Description "Cryo Thrower Arm. Add a second arm to also grant the \"cryoacid bomb\" ability and +15 acid and cold damage."
+		{
+				Filter Not CreatureFlag "is_cryoacid" GrantAbility "cryoacid stream"
+				Filter Not CreatureFlag "is_cryoacid" IncreaseAttr ACID_DAMAGE 15
+				Filter CreatureFlag "is_cryoacid" IncreaseAttr ACID_DAMAGE 15
+				Filter Not CreatureFlag "is_cryoacid" IncreaseAttr COLD_DAMAGE 15
+				Filter CreatureFlag "is_cryoacid" IncreaseAttr COLD_DAMAGE 15
+				Filter CreatureFlag "is_cryoacid" GrantAbility "cryoacid bomb"
+                SetCreatureFlag "is_cryoacid" true
+				AddAutomatonPart 1 "ranged" { "installed_cryothrower" ColorId GREEN }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+"AutomatonCryoThrowerJothnite" inherit "AutomatonCryoThrowerWood"
+  {
+	viewId = { "autom_cryothrower" ColorId LIGHT_BLUE }
+	upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+    Name "Jothnite cryothower"
+	Description "Cryo Thrower Arm. Grants the \"cryo stream\" ability. Add a second arm to also grant the \"cryo bomb\" ability and +30 cryo damage."
+		{
+				Filter Not CreatureFlag "is_cryojoth" GrantAbility "cryo stream5"
+				Filter Not CreatureFlag "is_cryojoth" IncreaseAttr COLD_DAMAGE 45
+				Filter CreatureFlag "is_cryojoth" IncreaseAttr COLD_DAMAGE 45
+				Filter CreatureFlag "is_cryojoth" GrantAbility "cryo bomb5"
+                SetCreatureFlag "is_cryojoth" true
+				AddAutomatonPart 1 "ranged" { "installed_cryothrower" ColorId LIGHT_BLUE }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+####
+"AutomatonArrowGunCaelidite" inherit "AutomatonArrowGunWood"
+  {
+	viewId = { "autom_arrowgun" ColorId GREEN }
+	upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Caelidite arrowgun"
+		Description "Arrow Gun Arm. Shoots arrows. Add a second arm to increase ranged damage + 30, also splashes enemy with acid."
+		{
+				Filter Not CreatureFlag "is_arrowguninfe" GrantAbility "shoot acid arrow"
+				Filter Not CreatureFlag "is_arrowguninfe" IncreaseAttr RANGED_DAMAGE 30
+				Filter CreatureFlag "is_arrowguninfe" IncreaseAttr RANGED_DAMAGE 30
+                SetCreatureFlag "is_arrowguninfe" true
+				AddAutomatonPart 1 "ranged"  { "installed_arrowgun" ColorId RED }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+  
+"AutomatonArrowGunJothnite" inherit "AutomatonArrowGunWood"
+  {
+	viewId = { "autom_arrowgun" ColorId LIGHT_BLUE }
+	upgradeInfo = AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Jothnite arrowgun"
+		Description "Arrow Gun Arm. Shoots arrows. Add a second arm to increase ranged damage + 30, also freezes enemy."
+		{
+				Filter Not CreatureFlag "is_arrowguninfe" GrantAbility "shoot cryo arrow"
+				Filter Not CreatureFlag "is_arrowguninfe" IncreaseAttr RANGED_DAMAGE 30
+				Filter CreatureFlag "is_arrowguninfe" IncreaseAttr RANGED_DAMAGE 30
+                SetCreatureFlag "is_arrowguninfe" true
+				AddAutomatonPart 1 "ranged"  { "installed_arrowgun" ColorId LIGHT_BLUE }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+    
+####
+"AutomatonLegs2Caelidite" inherit "AutomatonLegs2Wood"
+  {
+	viewId = { "autom_legs2" ColorId GREEN  }
+    upgradeInfo = AUTOMATONS_LOWER AssembledCreatureEffect
+      Name "infernite legs"
+	  Description "Set of Automaton Legs Slightly Armoured +3.  Allows mobility. Second set grants the \"Blazing Jumpsmash\" ability and removes SLOWED."
+		{
+			AddBodyPart LEG 2 none
+			IncreaseAttr DEFENSE 3
+			FirstSuccessful 
+			{
+				RemovePermanent IMMOBILE
+				GrantAbility "acidic jumpsmash"
+			}
+        AddAutomatonPart 0 "" { "installed_legs2" ColorId GREEN  }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+"AutomatonLegs2Jothnite" inherit "AutomatonLegs2Wood"
+  {
+	viewId = { "autom_legs2" ColorId LIGHT_BLUE  }
+    upgradeInfo = AUTOMATONS_LOWER AssembledCreatureEffect
+      Name "Jothnite legs"
+	  Description "Set of Automaton Legs Slightly Armoured +3.  Allows mobility. Second set grants the \"Blazing Jumpsmash\" ability and removes SLOWED."
+		{
+			AddBodyPart LEG 2 none
+			IncreaseAttr DEFENSE 3
+			FirstSuccessful 
+			{
+				RemovePermanent IMMOBILE
+				GrantAbility "cryo jumpsmash"
+			}
+        AddAutomatonPart 0 "" { "installed_legs2" ColorId LIGHT_BLUE  }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+####
+"AutomatonTracksCaelidite" inherit "AutomatonTracksWood"
+  {
+	viewId = { "autom_tracks" ColorId GREEN  }
+	name = "armoured automaton tracks"
+	shortName = "Caelidite tracks"
+	weight = 6
+    upgradeInfo = AUTOMATONS_LOWER AssembledCreatureEffect
+      Name "infernite tracks"
+		Description "A set of armoured tracks that increases an automaton's speed. Adds defence +8. Second pair gives automaton pernament SPEED and went heat abbility."
+		{
+			AddBodyPart LEG 2 none
+			IncreaseAttr DEFENSE 8
+			FirstSuccessful 
+			{
+				RemovePermanent IMMOBILE
+				Chain{
+				Permanent STEADY
+				GrantAbility "acidic coolant"}
+			}
+        AddAutomatonPart 0 "" { "installed_tracks" ColorId GREEN  }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+"AutomatonTracksJothnite" inherit "AutomatonTracksWood"
+  {
+	viewId = { "autom_tracks" ColorId LIGHT_BLUE  }
+	name = "armoured automaton tracks"
+	shortName = "Jothnite tracks"
+	weight = 6
+    upgradeInfo = AUTOMATONS_LOWER AssembledCreatureEffect
+      Name "infernite tracks"
+		Description "A set of armoured tracks that increases an automaton's speed. Adds defence +8. Second pair gives automaton pernament SPEED and went heat abbility."
+		{
+			AddBodyPart LEG 2 none
+			IncreaseAttr DEFENSE 8
+			FirstSuccessful 
+			{
+				RemovePermanent IMMOBILE
+				Chain{
+				Permanent STEADY
+				GrantAbility "coolant"}
+			}
+        AddAutomatonPart 0 "" { "installed_tracks" ColorId LIGHT_BLUE  }
+      }
+    upgradeType = {ARMOR}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+####

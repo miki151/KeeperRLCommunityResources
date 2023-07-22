@@ -1,0 +1,353 @@
+"INS_FERAL_WASPMEN_WILD_CAVE"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+	  leader = { { "INS_WASP_MAN_TRIBESMAN_CHIEFTAIN" } }
+      fighters = {
+        count = {4 9}
+        all = {
+          50 "INS_WASP_MAN_TRIBESMAN_WARRIOR"
+        }
+		uniques = {
+          "INS_WASP_MAN_TRIBESMAN_SHAMAN"
+        }
+		expLevelIncrease = {
+          SPELL 4
+        }
+      }
+    }
+    tribe = BANDIT
+    race = "Feral Waspmen"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  immigrants = { 
+    {
+      ids = { "INS_WASP_MAN_TRIBESMAN_WARRIOR" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 5
+	ambushChance = 0.05
+	triggers = {
+	                RoomTrigger "THRONE" 0.0003
+                    RoomTrigger "THRONE_HUMAN" 0.0003
+                    RoomTrigger "IMPALED_HEAD" 0.0001
+					RoomTrigger "ANGEL_SHRINE" 0.0001
+	 	            EnemyPopulation 13
+					AggravatingMinions
+					SelfVictims
+                    FinishOff
+                    AggravatingMinions}
+    attackBehaviour = KillMembers 4
+    ransom = 0.5 80
+  }
+}
+
+"INS_FERAL_WASPMEN_EVIL_CAVE"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+	  leader = { { "INS_WASP_MAN_TRIBESMAN_CHIEFTAIN" } }
+      fighters = {
+        count = {4 9}
+        all = {
+          50 "INS_WASP_MAN_TRIBESMAN_WARRIOR"
+        }
+		uniques = {
+          "INS_WASP_MAN_TRIBESMAN_SHAMAN"
+        }
+		expLevelIncrease = {
+          SPELL 4
+        }
+      }
+    }
+    tribe = GREENSKIN
+    race = "Feral Waspmen"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  immigrants = { 
+    {
+      ids = { "INS_WASP_MAN_TRIBESMAN_WARRIOR" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 5
+	ambushChance = 0.05
+	triggers = {
+	                RoomTrigger "THRONE" 0.0003
+                    RoomTrigger "THRONE_HUMAN" 0.0003
+                    RoomTrigger "IMPALED_HEAD" 0.0001
+					RoomTrigger "ANGEL_SHRINE" 0.0001
+	 	            EnemyPopulation 13
+					AggravatingMinions
+					SelfVictims
+                    FinishOff
+                    AggravatingMinions}
+    attackBehaviour = KillMembers 4
+    ransom = 0.5 80
+  }
+}
+
+"INS_FLY_HOLE"
+{
+  settlement = {
+    type = Builtin MINETOWN "DUNGEON"
+    tribe = GNOME
+    inhabitants = {
+      leader = { { "INS_FLY_MAN_WORKER" } }
+      fighters = {
+        count = {8 14}
+        all = {
+          12 "INS_SALVAGED_AUTOMATON_WORKER_ADA"
+          25 "INS_SALVAGED_AUTOMATON"
+          50 "INS_SALVAGED_AUTOMATON_WORKER_IRON"
+          100 "INS_SALVAGED_AUTOMATON_WOOD_WORKER"
+        }
+	  }
+	  civilians = {
+        count = {2 3}
+        all = { 1 "INS_FLY_MAN_WORKER" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "gnomes"
+    shopItems = {{10 18} "gnomeShop" }
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+  }
+  levelConnection = {
+    topLevel = ExtraEnemy {"INS_FLY_HOLE_ENTRY"}
+    levels = {
+      { ExtraEnemy { "DUNGEON1" { 2 4 } } {40 30} BASIC }
+      { ExtraEnemy { "DUNGEON2" 1 } {40 30} BASIC }
+      { MainEnemy {60 40} MINETOWN }
+    }
+  }
+}
+
+"INS_FLY_HOLE_ENTRY"
+{
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DUNGEON"
+    tribe = GNOME
+    inhabitants = {
+      fighters = {
+        count = {3 7}
+        all = { 1 "INS_SALVAGED_AUTOMATON" }
+      }
+    }
+    race = "gnomes"
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+  }
+  discoverable = false
+}
+
+"INS_ENDOMORPH_RUIN"
+{
+  settlement = {
+    type = RandomLayout { "village" { 20 15 } "village"}
+    tribe = MONSTER
+    inhabitants = {
+      fighters = {
+        count = {4 8}
+        all = {
+          1 "INS_ENTOMORPH_PEASEANT_01"
+		  1 "INS_ENTOMORPH_PEASEANT_02"
+		  1 "INS_ENTOMORPH_PEASEANT_03"
+		  1 "INS_ENTOMORPH_PEASEANT_04"
+		  1 "INS_ENTOMORPH_PEASEANT_05"
+		  1 "INS_ENTOMORPH_PEASEANT_06"
+		  1 "INS_ENTOMORPH_PEASEANT_07"
+        }
+      }
+    }
+    race = "infected"
+    stockpiles = {
+      { "gold" 50 "TREASURE_CHEST" }
+    }
+    crops = Crops()
+    furniture = "roomFurniture"
+  }
+  config = {
+    immigrantInterval = 50
+    maxPopulation = 12
+  }
+  immigrants = { 
+    {
+      ids = { "INS_ENTOMORPH_PEASEANT_01" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "INS_ENTOMORPH_PEASEANT_02" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "INS_ENTOMORPH_PEASEANT_03" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "INS_ENTOMORPH_PEASEANT_04" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "INS_ENTOMORPH_PEASEANT_05" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "INS_ENTOMORPH_PEASEANT_06" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "INS_ENTOMORPH_PEASEANT_07" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 5
+	ambushChance = 0.05
+    triggers = {
+					AggravatingMinions
+					SelfVictims
+                    FinishOff
+                    AggravatingMinions}
+    attackBehaviour = KillMembers 4
+    ransom = 0.5 80
+  }
+}
+
+"INS_ENDOMORPH_GUARD_POST"
+{
+  settlement = {
+    type = RandomLayout { "guard_post" { 14 14 } "default"}
+    tribe = MONSTER
+    inhabitants = {
+      fighters = {
+        combatExperience = -12
+        count = {3 5}
+        all = {
+          1 "INS_ENTOMORPH_KNIGHT"
+          1 "INS_ENTOMORPH_ARCHER"
+        }
+      }
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = UP
+    levels = {
+      { ExtraEnemy { "INS_ENDOMORPH_GUARD_POST2" {1} } {10 10} BASIC }
+      { ExtraEnemy { "INS_ENDOMORPH_GUARD_POST3" {1} } {10 10} BASIC }
+    }
+  }
+}
+
+"INS_ENDOMORPH_GUARD_POST2"
+{
+  settlement = {
+    type = RandomLayout { "guard_post_floor2" { 5 7 } "guard_post_floor2"}
+    tribe = MONSTER
+  }
+}
+
+"INS_ENDOMORPH_GUARD_POST3"
+{
+  settlement = {
+    type = RandomLayout { "guard_post_floor3" { 4 4 } "ins_endo_guard_post"}
+    tribe = MONSTER
+  }
+}
+
+"INS_MANTID"
+{
+  settlement = {
+    type = Builtin CASTLE2 "WOOD_CASTLE"
+    tribe = HUMAN
+	inhabitants = {
+		leader = {
+        id = { "INS_MANTIS_WOMAN_KEEPER" }
+        expLevelIncrease = {
+          MELEE 8
+        }
+      }
+      fighters = {
+        count = {12 17}
+		uniques = { "INS_MANTIS_WOMAN_DELPHI" }
+        all = {
+          3 "INS_MANTIS_WOMAN_MAIDEN"
+          1 "INS_MANTIS_WOMAN_HUNTRESS"
+        }
+		expLevelIncrease = {
+          SPELL 6
+		  MELEE 6
+		  ARCHERY 6
+        }
+      }
+      civilians = {
+        count = {6 9}
+        uniques = { "FATHER_OBLIVION" }
+        all = {
+          1 "INS_MANTIS_EUNUCH"
+        }
+      }
+	 }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
+    furniture = "roomFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+    ghostProb = 0.1
+    spawnGhosts = 6
+  }
+  behaviour = {
+    ambushChance = 0.1
+    minPopulation = 3
+    minTeamSize = 5
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 2
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.8 140
+  }
+  immigrants = {
+    {
+      ids = {"INS_MANTIS_WOMAN_MAIDEN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}

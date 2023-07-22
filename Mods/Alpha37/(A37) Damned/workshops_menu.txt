@@ -1,0 +1,124 @@
+"demon_rituals"
+{
+  "DEMON_RITUALS"
+  {
+      { item = {Assembled{ "DM_DEMONCULT_PESTIS" "pestis" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 10 cost = "DM_DEMON_FAVOR" 10 applyImmediately = true }
+	  { item = {Assembled{ "DM_DEMONCULT_MILITUS" "militus" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 10 cost = "DM_DEMON_FAVOR" 20 applyImmediately = true }
+	  { item = {Assembled{ "DM_DEMONCULT_MILES_VOLANTEM" "miles volantem" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 10 cost = "DM_DEMON_FAVOR" 20 applyImmediately = true }
+	  { item = {Assembled{ "DM_DEMONCULT_ASPICIENTIS" "aspicientis" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 10 cost = "DM_DEMON_FAVOR" 20 applyImmediately = true }
+	  { item = {Assembled{ "DM_DEMONCULT_FUROR" "furor" {NO_LIMIT NO_EQUIPMENT DOESNT_TRIGGER FIGHTER} {BALSAM} 3 }}
+        work = 10 cost = "DM_DEMON_FAVOR" 20 applyImmediately = true }
+	  { item = {Assembled{ "DM_DEMONCULT_PESTIS_BLOAT" "pestis bloat" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 10 cost = "DM_DEMON_FAVOR" 20 applyImmediately = true }
+	  { item = {Assembled{ "DM_DEMONCULT_SOMNUM_EXTERRERI" "somnum exterreri" {NO_LIMIT NO_EQUIPMENT FIGHTER} {BALSAM} 3 }}
+        work = 10 cost = "DM_DEMON_FAVOR" 20 applyImmediately = true }
+	  { item = {Assembled{ "DM_DEMONCULT_OBSIDIO" "obsidio" {NO_LIMIT NO_EQUIPMENT FIGHTER} {BALSAM} 3 }}
+        work = 10 cost = "DM_DEMON_FAVOR" 40 applyImmediately = true }
+	  { item = {Assembled{ "DM_DEMONCULT_VOLANS_TERROREM" "volans terrorem" {NO_LIMIT NO_EQUIPMENT FIGHTER} {BALSAM} 3 }}
+        work = 10 cost = "DM_DEMON_FAVOR" 40 applyImmediately = true }		
+	  { item = {Assembled{ "DM_DEMONCULT_GULA" "gula" {NO_LIMIT NO_EQUIPMENT FIGHTER} {BALSAM} 3 }}
+        work = 10 cost = "DM_DEMON_FAVOR" 40 applyImmediately = true }		
+		
+		
+	  {{Balsam Name "Fiery Suicide" 
+	      Chain{
+	      IncreaseAttr "FIRE_DAMAGE" 10
+	      AddBodyPart HEAD 1
+          { Intrinsic { "touch_attack" } "self destruct" 1 {
+          attackType = HIT
+          meleeAttackAttr = FIRE_DAMAGE
+          attackMsg = THRUST
+          itselfMessage = true
+          victimEffect = {1.0 Suicide DIE}
+          attackerEffect = {CircularBlast Area 1 Fire{30} Suicide DIE}}}}}                                                                                 				         10 "DM_DEMON_FAVOR" 3 "dark blessings"}    		
+	  {{Balsam Name "Vile Suicide" 
+	  	  Chain{
+	      IncreaseAttr "FIRE_DAMAGE" 10
+	      AddBodyPart HEAD 1
+          { Intrinsic { "touch_attack" } "self destruct" 1 {
+          attackType = HIT
+          meleeAttackAttr = FIRE_DAMAGE
+          attackMsg = THRUST
+          itselfMessage = true
+          victimEffect = {1.0 Suicide DIE}
+		  attackerEffect = {CircularBlast Area 1 EmitGas "POISON_GAS" 0.5 Acid{30} Suicide DIE}}}}}                                                                                  10 "DM_DEMON_FAVOR" 3 "dark blessings"}     	  
+	  {{Balsam Name " Greater Fiery Suicide"
+	      Chain{	  
+	      IncreaseAttr "ACID_DAMAGE" 10
+	      AddBodyPart HEAD 1
+          { Intrinsic { "touch_attack" } "self destruct" 1 {
+          attackType = HIT
+          meleeAttackAttr = ACID_DAMAGE
+          attackMsg = THRUST
+          itselfMessage = true
+          victimEffect = {1.0 Suicide DIE}
+          attackerEffect = {CircularBlast Area 2 Fire{60} Suicide DIE}}}}}                                                                                 				         10 "DM_DEMON_FAVOR" 3 "greater dark blessings"}    		
+	  {{Balsam Name "Greater Vile Suicide" 
+	  	  Chain{
+	      IncreaseAttr "ACID_DAMAGE" 10
+	      AddBodyPart HEAD 1
+          { Intrinsic { "touch_attack" } "self destruct" 1 {
+          attackType = HIT
+          meleeAttackAttr = ACID_DAMAGE
+          attackMsg = THRUST
+          itselfMessage = true
+          victimEffect = {1.0 Suicide DIE}
+		  attackerEffect = {CircularBlast Area 1 EmitGas "POISON_GAS" 1.0 Acid{60} Suicide DIE}}}}}                                                                              10 "DM_DEMON_FAVOR" 3 "greater dark blessings"}     	  
+	  {{Balsam IncreaseAttr "DIGGING"      8 }                                                                                  						                         10 "DM_DEMON_FAVOR" 3 "dark blessings"}	
+	  {{Balsam IncreaseMaxLevel MELEE 3}                                                                                      						                             10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+	  {{Balsam IncreaseMaxLevel SPELL 3}                                                                                   						                                 10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+	  {{Balsam IncreaseMaxLevel ARCHERY 3}                                                                                     						                             10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+	  {{Balsam Permanent TELEPATHY}                                                                                         						                             10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+      {{Balsam Name "lesser damage bonus"        IncreaseAttr DAMAGE        3}                                                  						                         10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+      {{Balsam Name "lesser defense bonus"       IncreaseAttr DEFENSE       3}                                          					                                     10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+      {{Balsam Name "lesser ranged damage bonus" IncreaseAttr RANGED_DAMAGE 3}                                            						                                 10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+      {{Balsam Name "lesser spell damage bonus"  IncreaseAttr  SPELL_DAMAGE 3}                                                 						                             10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+	  {{Balsam {AddBodyPart WING 2 none Permanent FLYING}}                                                                         						                         10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+      {{Balsam AddBodyPart ARM 2 none}                                                                                               						                     10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+	  {{Balsam AddBodyPart LEG 2 none}                                                                                               						                     10 "DM_DEMON_FAVOR" 3 "dark blessings"}
+      {{Balsam IncreaseAttr "LABORATORY" 10}}
+      {{Balsam IncreaseAttr "FORGE" 10}}
+      {{Balsam IncreaseAttr "WORKSHOP" 10}}
+      {{Balsam IncreaseAttr "MULTI_WEAPON" 10}                                                                                							                         20 "DM_DEMON_FAVOR" 3 "greater dark blessings"}	
+      {{Balsam RemovePermanent INSANITY}                                                                                    						                             20 "DM_DEMON_FAVOR" 3 "greater dark blessings"}	
+      {{Balsam Name "greater damage bonus"        IncreaseAttr DAMAGE        6}                                             						                             20 "DM_DEMON_FAVOR" 3 "greater dark blessings"}	
+      {{Balsam Name "greater defense bonus"       IncreaseAttr DEFENSE       6}                                             						                             20 "DM_DEMON_FAVOR" 3 "greater dark blessings"}	
+      {{Balsam Name "greater ranged damage bonus" IncreaseAttr RANGED_DAMAGE 6}                                             						                             20 "DM_DEMON_FAVOR" 3 "greater dark blessings"}	
+      {{Balsam Name "greater spell damage bonus"  IncreaseAttr  SPELL_DAMAGE 6}                                                 						                         20 "DM_DEMON_FAVOR" 3 "greater dark blessings"}	
+	  {{Balsam Chain { IncreaseAttr "FIRE_DAMAGE" 10
+	           AddSpellSchool "Flame Controller"}}                                                                              						                         30 "DM_DEMON_FAVOR" 3 "eye of fallen one"}	
+	  {{Balsam AddSpellSchool "Frenzied Beast"}                                                                                                                                  30 "DM_DEMON_FAVOR" 3 "eye of fallen one"}		
+	  {{Balsam Chain { AddSpellSchool "Failed Lord"																																		
+	           AddCompanion 4 false none 0.002 { "DM_DEMONCULT_PESTIS" }} }                                                                                                        30 "DM_DEMON_FAVOR" 3 "eye of fallen one"}	
+	  {{Balsam AddSpellSchool "Lord of Lies"}                                                                                                                                   30 "DM_DEMON_FAVOR" 3 "eye of fallen one"}	  
+	  {{Balsam AddSpellSchool "Slave Caretaker"}                                                                                                                                 30 "DM_DEMON_FAVOR" 3 "eye of fallen one"}
+	  {{Balsam Name "One´s promise" Filter Not Enemy {IncreaseMaxLevel MELEE 3 IncreaseMaxLevel SPELL 3 IncreaseMaxLevel ARCHERY 3}}                                             30 "DM_DEMON_FAVOR" 3 "eye of fallen one"}
+	  {{Balsam Name "One´s blessing" Filter Not Enemy {IncreaseAttr DAMAGE 3 IncreaseAttr DEFENSE 3 IncreaseAttr RANGED_DAMAGE 3 IncreaseAttr  SPELL_DAMAGE 3}}                  30 "DM_DEMON_FAVOR" 3 "eye of fallen one"}
+	  {{Balsam IncreaseMaxLevel MELEE 6}                                                                                      						                             10 "DM_DEMON_FAVOR" 3 "twillight of the world"}
+	  {{Balsam IncreaseMaxLevel SPELL 6}                                                                                   						                                 10 "DM_DEMON_FAVOR" 3 "twillight of the world"}
+	  {{Balsam IncreaseMaxLevel ARCHERY 6}                                                                                   						                             10 "DM_DEMON_FAVOR" 3 "twillight of the world"}     
+	  {{Balsam IncreaseAttr DIGGING 15 }                                                                                  						                             10 "DM_DEMON_FAVOR" 3 "twillight of the world"}	
+      {{Balsam Name "greatest damage bonus"        IncreaseAttr DAMAGE        9}                                             						                             20 "DM_DEMON_FAVOR" 3 "twillight of the world"}	
+      {{Balsam Name "greatest defense bonus"       IncreaseAttr DEFENSE       9}                                             						                             20 "DM_DEMON_FAVOR" 3 "twillight of the world"}	
+      {{Balsam Name "greatest ranged damage bonus" IncreaseAttr RANGED_DAMAGE 9}                                             						                             20 "DM_DEMON_FAVOR" 3 "twillight of the world"}	
+      {{Balsam Name "greatest spell damage bonus"  IncreaseAttr  SPELL_DAMAGE 9}                                                 						                         20 "DM_DEMON_FAVOR" 3 "twillight of the world"}	
+	  
+	  
+      {{"GoldPiece"}                           1        "DM_DEMON_FAVOR" 10      "demons boons"}
+      {{"WoodPlank"}                           1        "DM_DEMON_FAVOR" 10      "demons boons"}
+      {{"IronOre"}                             1        "DM_DEMON_FAVOR" 10      "demons boons"}
+      {{"AdaOre"}                              1        "DM_DEMON_FAVOR" 10      "demons boons"}
+      {{"Rock"}                                1        "DM_DEMON_FAVOR" 10      "demons boons"}
+	  {{"InferniteOre"}                        1        "DM_DEMON_FAVOR" 10      "demons boons"}  
+  }
+  "DEMON_WORSHIP"
+  {
+      {{"DM_DEMON_FAVOR"}          15        }
+	  {{"DM_DEMON_FAVOR"}          0       "CORPSE" 10}
+
+  }
+}

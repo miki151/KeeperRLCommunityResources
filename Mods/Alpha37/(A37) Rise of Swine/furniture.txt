@@ -1,0 +1,142 @@
+"SWINE_BED1"
+{
+  name = "hay pile"
+  viewId = { "swine_wheatbed" }
+  usageType = UsageEffect "sleep in" Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  fire = 50
+  strength = 40
+  upgrade = "BED1"
+  bedType = BED
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"SWINE_BED2"
+{
+  name = "beast hay pile"
+  viewId = { "swine_wheatbed" }
+  usageType = UsageEffect "sleep in" Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  fire = 50
+  strength = 40
+  upgrade = "BEAST_CAGE"
+  bedType = CAGE
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"SWINE_TRAINING"
+{
+  name = "training dummy"
+  viewId = { "swine_dummy" }
+  blockMovement = true
+  usageType = BuiltinUsageId TRAIN
+  fire = 50
+  canHideHere = true
+  strength = 80
+  maxTraining = {
+    MELEE 99
+	ARCHERY 99
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"SWINE_WORKSHOP"
+{
+  name = "workshop"
+  viewId = { "swine_crafts" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 80
+  requiresLight = true
+  usageFX = WORKSHOP
+}
+
+"SWINE_CAULDRON"
+{
+  name = "grub cauldron"
+  viewId = { "swine_cauldron" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 80
+  requiresLight = true
+  usageFX = WORKSHOP
+}
+
+"SWINE_CORPSE_PIT"
+{
+  name = "Corpse Pit"
+  viewId = { "swine_corpse_pit" }
+  emptyViewId = { "swine_corpse_pit_empty" }
+  canHideHere = true
+  tickType = Effect BedHeal()
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  storageIds = {"corpses"}
+  hidesItems = true
+}
+
+"SWINE_BREEDING_PIT"
+{
+  name = "Pit"
+  viewId = { "mud" }
+  tickType = Effect Chance 0.05 Filter
+    And {
+      IsClosedOffPigsty
+      CanCreatureEnter
+      Area 1 Not CreatureId "SWINE_HUMAN_CATTLE"
+    }
+    Summon "SWINE_HUMAN_CATTLE" 1 1000
+  populationIncrease = { 0.25 4 true }
+}
+
+"SWINE_FLOOR"
+{
+  name = "floor"
+  viewId = { "mud" }
+  fire = 50
+  luxury = 0.1
+  layer = FLOOR
+}
+
+"SWINE_MYSTIC_SKIN"
+{
+  name = "wooden bookcase"
+  viewId = { "swine_mystic_skin" }
+  blockMovement = true
+  usageType = BuiltinUsageId STUDY
+  usageTime = 5
+  canHideHere = true
+  fire = 70
+  upgrade = "BOOKCASE_WOOD"
+  strength = 50
+  maxTraining = {
+    SPELL 6
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"SWINE_TABLE"
+{
+  name = "dinning table"
+  viewId = { "swine_dinner" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = { 1 none }
+  usageFX = none
+  diningFurniture = true
+  usageType = UsageEffect "eat from" Filter Humanoid {
+    CreatureMessage { "eat a steaming pig" "eats a steaming pig"}
+    Lasting SATIATED
+  }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
