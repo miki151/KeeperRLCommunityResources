@@ -1198,7 +1198,14 @@
       }
     }
     {
-      ids = { "ARTISAN" }
+      ids = { "INS_MANTIS_BEAST" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 60 }
+      }
+    }
+    {
+      ids = { "INS_MANTIS_TECHNITIS" }
       traits = { FIGHTER NO_AUTO_EQUIPMENT }
       frequency = 0.7
       requirements = {
@@ -1246,6 +1253,36 @@
       frequency = 0.7
       requirements = {
         { 0.1 AttractionInfo 1 {FurnitureType "INS_TRAINING_IRON"}}
+      }
+      specialTraits = {
+        { 0.10 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 6 {
+                attackType = BITE
+                attackMsg = BITE} } } }
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining ARCHERY 2}}
+        { 0.05 { ExtraTraining MELEE 2}}
+        { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+        { 0.03 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+        { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+        { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+        { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+		{ 0.02 { Lasting { HATE_HUMANS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "INS_MANTIS_ÁTIMO" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "INS_TRAINING_IRON"}}
+        { 0.0 TechId "alchemy" }
       }
       specialTraits = {
         { 0.10 { ExtraIntrinsicAttack
@@ -1363,25 +1400,6 @@
       requirements = {
         { 0.0 RecruitmentInfo { "TEUTONS" } 3 FIGHTER }
         { 1.0 CostInfo "GOLD" 150 }
-      }
-    }
-    {
-      ids = { "DOG" }
-      traits = { FIGHTER DOESNT_TRIGGER NO_LIMIT }
-      frequency = 0.1
-    }
-    {
-      ids = { "HORSE_CAN_TRAIN" }
-      traits = { NO_LIMIT }
-      requirements = {
-        { 1.0 CostInfo "GOLD" 30 }
-      }
-    }
-    {
-      ids = { "DONKEY" "COW" "GOAT" }
-      traits = { NO_LIMIT INCREASE_POPULATION INCREASE_POPULATION}
-      requirements = {
-        { 1.0 CostInfo "GOLD" 50 }
       }
     }
     {

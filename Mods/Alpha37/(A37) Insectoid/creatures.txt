@@ -789,6 +789,9 @@
         ARM 2
       }
       deathSound = none
+    }
+    maxLevelIncrease = {
+      FORGE 10
     }	
 	permanentEffects = {
       RIDER 1
@@ -1355,6 +1358,9 @@
     }
 	permanentEffects = {
       RIDER 1
+    }
+    maxLevelIncrease = {
+      FORGE 10
     }	
 	hatedByEffect = HATE_INSECTS
     name = {
@@ -1809,6 +1815,38 @@
 ############################
 ####       Mantis       ####  
 ############################
+"INS_MANTIS_BEAST"
+  {
+    viewId = { "ins_mantis_animal" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 24 
+    }
+    body = {
+      type = NonHumanoid LARGE
+      weight = 235
+      bodyParts = {
+        HEAD 1  
+        LEG 4
+        ARM 2
+        BACK 1
+        TORSO 1
+      }
+      intrinsicAttacks = {
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      STEED 1
+    }
+    name = {
+      name = "mantis"
+      pluralName = "mantises"
+      firstNameGen = "DOG"
+    }
+  }
 
 "INS_MANTIS_EUNUCH"
   {
@@ -1828,12 +1866,45 @@
     }
 	permanentEffects = {
       RIDER 1
+      FLYING 1
     }
 	hatedByEffect = HATE_INSECTS
     spells = { "ins_mantis_claws" }
     name = {
       name = "mantid eunuch"
 	  firstNameGen = "INSECTOID"
+    }
+  }
+
+"INS_MANTIS_TECHNITIS"
+  {
+    viewId = { "ins_mantis_male_technitis" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 18
+      FURNACE 25
+      WORKSHOP 30
+      FORGE 30
+      JEWELER 30
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    maxLevelIncrease = {
+      FORGE 10
+    }
+	permanentEffects = {
+      RIDER 1
+      FLYING 1
+    }
+	hatedByEffect = HATE_INSECTS
+    spells = { "ins_mantis_claws" }
+    name = {
+      name = "artisan"
+      firstNameGen = "FIRST_MALE"
     }
   }
     
@@ -2020,7 +2091,36 @@
       { "Spear"}
     }
   }
-  
+
+"INS_MANTIS_ÁTIMO"
+  {
+    viewId = { "ins_mantis_dishonorable" }
+	gender = FEMALE
+    attr = {
+      DAMAGE 20
+      DEFENSE 14
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all law enforcement"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 8
+      ARCHERY 8
+    }
+    name = {
+      name = "átimo"
+    }
+	spellSchools = { "mantid átimo" }
+    hatedByEffect = HATE_INSECTS
+    inventory = {
+      { "Knife"}
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { type = "Torch" chance = 0.3 }
+      { type = "Bow" chance = 0.05 }
+    }
+  }  
 ####################
 #### Entomorphs ####  
 ####################
@@ -2389,6 +2489,9 @@
 	  DISTILLATION_SKILL 1
       RIDER 1
 	  FLYING 1
+    }
+    maxLevelIncrease = {
+      FORGE 10
     }
     chatReactionFriendly = "talks about crafting"
     chatReactionHostile = "\"Die!\""

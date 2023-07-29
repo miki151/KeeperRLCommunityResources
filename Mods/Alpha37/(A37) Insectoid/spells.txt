@@ -193,3 +193,36 @@ OneTimeAbility("ins_endomorph_sting", "Endomorph stinger.", {  AddBodyPart ARM 1
   message = "fixed the undead" "fixes the undead"
   type = ABILITY
 }
+
+"ins_venom_strike"
+{
+  symbol = "⚕"
+  effect = Name "venom strike" Chain { Damage DAMAGE STAB Lasting 50 POISON }
+  range = 1
+  cooldown = {25 51}
+  sound = SPELL_CURE_POISON
+}
+
+"ins_ambush"
+{
+  symbol = "🏃"
+  effect = Name "ambush" Chain { Lasting 10 SPEED Lasting 10 INVISIBLE Lasting 10 DAM_BONUS}
+  cooldown = {30 61}
+  sound = SPELL_SPEED_SELF
+}
+
+"ins_mines"
+{
+  symbol = "🔧"
+  effect = Name "lay mine" PlaceFurniture "BLAST_TRAP"
+  cooldown = {150 400}
+  sound = SPELL_METEOR_SHOWER
+}
+
+"ins_escape"
+{
+  symbol = "✈️"
+  effect = Name "escape" AI Health 0.6 1.0 1 1 { Escape {}}
+  cooldown = {50 101}
+  sound = SPELL_TELEPORT
+}
