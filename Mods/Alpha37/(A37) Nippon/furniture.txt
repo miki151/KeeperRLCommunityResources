@@ -1,0 +1,213 @@
+"JP_CALIGRAPHY_TABLE"
+{
+  name = "caligraphy table"
+  viewId = { "jp_caligraphy_table" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 80
+  requiresLight = true
+}
+
+"NIPPON_TRAINING_WOOD"
+{
+  name = "wooden training dummy"
+  viewId = { "jp_training_wood" }
+  blockMovement = true
+  usageType = BuiltinUsageId TRAIN
+  fire = 50
+  canHideHere = true
+  strength = 80
+  maxTraining = {
+    MELEE 3
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_TRAINING_IRON"
+{
+  name = "iron training dummy"
+  viewId = { "jp_training_iron" }
+  blockMovement = true
+  usageType = BuiltinUsageId TRAIN
+  canHideHere = true
+  strength = 80
+  upgrade = "NIPPON_TRAINING_WOOD"
+  maxTraining = {
+    MELEE 7
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"NIPPON_TRAINING_ADA"
+{
+  name = "adamantine training dummy"
+  viewId = { "jp_training_ada" }
+  blockMovement = true
+  usageType = BuiltinUsageId TRAIN
+  canHideHere = true
+  strength = 80
+  upgrade = "NIPPON_TRAINING_IRON"
+  maxTraining = {
+    MELEE 99
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"NIPPON_BOOKCASE_WOOD"
+{
+  name = "wooden bookcase"
+  viewId = { "jp_bookcase_wood" }
+  blockMovement = true
+  usageType = BuiltinUsageId STUDY
+  usageTime = 5
+  canHideHere = true
+  fire = 70
+  strength = 50
+  maxTraining = {
+    SPELL 3
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"NIPPON_BOOKCASE_IRON"
+{
+  name = "iron bookcase"
+  viewId = { "jp_bookcase_iron" }
+  blockMovement = true
+  usageType = BuiltinUsageId STUDY
+  usageTime = 5
+  canHideHere = true
+  fire = 70
+  strength = 50
+  upgrade = "NIPPON_BOOKCASE_WOOD"
+  maxTraining = {
+    SPELL 7
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"NIPPON_BOOKCASE_GOLD"
+{
+  name = "golden bookcase"
+  viewId = { "jp_bookcase_gold" }
+  blockMovement = true
+  usageType = BuiltinUsageId STUDY
+  usageTime = 5
+  canHideHere = true
+  fire = 70
+  strength = 50
+  upgrade = "NIPPON_BOOKCASE_IRON"
+  maxTraining = {
+    SPELL 99
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"NIPPON_TORII"
+{
+  name = "TORII"
+  viewId = { "jp_torii_gate" }
+  tickType = Effect { Area 4 Filter Not Enemy Lasting 10 MAGIC_RESISTANCE}
+  blockMovement = true
+  canHideHere = true
+  strength = 100
+  fire = 100
+  destroyedRemains = "NIPPON_DESTROYED_TORII"
+  burntRemains = "NIPPON_DESTROYED_TORII"
+}
+
+"NIPPON_DESTROYED_TORII"
+{
+  name = "DESTROYED TORII"
+  viewId = { "jp_torii_gate_broken" }
+  tickType = Effect { Area 4 Filter Not Enemy {Lasting 10 NIPPON_LOW_MORALE}
+                             Chance 0.005 SummonEnemy "JP_EVIL_SPIRIT" {1} none }
+  blockMovement = true
+  canHideHere = true
+  strength = 100
+  fire = 100
+}
+
+"NIPPON_SHRINE" inherit "DEMON_SHRINE"
+{
+  name = "shrine"
+  viewId = { "jp_shrine" }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"NIPPON_SHIKIGAMI_FIRE" inherit "STONE_BRIDGE"
+{
+  tickType = Effect {Area 0 Filter Not LastingEffect SHIKIGAMI_TRANSFORM{ {Area 2 {Filter CreatureId "NIPPON_SHIKIGAMI" {
+					Polymorph "NIPPON_SHIKIGAMI_FIRE" none 
+					Caster Lasting 30 SHIKIGAMI_TRANSFORM}}}}
+                    RemoveFurniture "NIPPON_SHIKIGAMI_FIRE"
+  }
+}
+
+"NIPPON_SAKURA_01"
+{
+  name = "sakura"
+  viewId = { "jp_sakura_01" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  luxury = 0.7
+  populationIncrease = { 1 none }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+  itemDrop = {{{{"WoodPlank"} 1 { 8 14 }}}}
+  summonedElement = "ENT"
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+
+"NIPPON_SAKURA_02"
+{
+  name = "sakura"
+  viewId = { "jp_sakura_02" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  luxury = 0.7
+  populationIncrease = { 1 none }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+  itemDrop = {{{{"WoodPlank"} 1 { 8 14 }}}}
+  summonedElement = "ENT"
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+
+"NIPPON_SAKURA_03"
+{
+  name = "sakura"
+  viewId = { "jp_sakura_03" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  luxury = 0.7
+  populationIncrease = { 1 none }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+  itemDrop = {{{{"WoodPlank"} 1 { 8 14 }}}}
+  summonedElement = "ENT"
+  tryDestroyFX = { WOOD_SPLINTERS }
+}

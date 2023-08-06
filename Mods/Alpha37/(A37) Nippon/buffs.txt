@@ -1,0 +1,69 @@
+"SHIKIGAMI_TRANSFORM" {
+  name = "fresh transformation"
+  adjective = "exhausted"
+  description = "exhausted"
+  addedMessage = ARE "exhausted"
+  removedMessage = ARE "no longer exhausted"
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId RED
+}
+
+"RAN_DAM_BONUS" ATTR_BUFF(RANGED_DAMAGE, "damage", 3, "dangerous", 20)
+
+
+
+"NIPPON_FIRE_SPELL" {
+  name = "fire damage"
+  adjective = "deals fire damage"
+  description = "Talisman is used."
+  startEffect = IncreaseAttr SPELL_DAMAGE 3
+  endEffect = IncreaseAttr SPELL_DAMAGE -3
+  addedMessage = "deal" "deals" "fire damage"
+  removedMessage = "no longer" "no longer" "used"
+  color = ColorId RED
+  price = 50
+  modifyDamageAttr = SPELL_DAMAGE FIRE_DAMAGE
+}
+
+"NIPPON_ACID_SPELL" {
+  name = "acid damage"
+  adjective = "deals acid damage"
+  description = "Talisman is used."
+  startEffect = IncreaseAttr SPELL_DAMAGE 3
+  endEffect = IncreaseAttr SPELL_DAMAGE -3
+  addedMessage = "deal" "deals" "acid damage"
+  removedMessage = "no longer" "no longer" "used"
+  color = ColorId YELLOW
+  price = 50
+  modifyDamageAttr = SPELL_DAMAGE ACID_DAMAGE
+}
+
+"NIPPON_COLD_SPELL" {
+  name = "cold damage"
+  adjective = "deals cold damage"
+  description = "Talisman is used."
+  startEffect = IncreaseAttr SPELL_DAMAGE 3
+  endEffect = IncreaseAttr SPELL_DAMAGE -3
+  addedMessage = "deal" "deals" "cold damage"
+  removedMessage = "no longer" "no longer" "used"
+  color = ColorId LIGHT_BLUE
+  price = 50
+  modifyDamageAttr = SPELL_DAMAGE COLD_DAMAGE
+}
+
+"NIPPON_LOW_MORALE" {
+  name = "low morale"
+  adjective = "shaken"
+  description = "Makes creatures less efficient in training and work"
+  addedMessage = YOUR "spirits are shaken"
+  removedMessage = YOUR "mood goes back to normal"
+  tickEffect = Lasting 1 SLOWED
+  efficiencyMultiplier = 0.7
+  fx = DEBUFF_RED
+  color = ColorId RED
+  price = 10
+}
+
+
+"HATE_DEMONS" HATE("demons")

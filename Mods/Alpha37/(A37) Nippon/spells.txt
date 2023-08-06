@@ -1,0 +1,573 @@
+#################################################################################################################################
+#                                                       onmyoji                                                                 #
+#################################################################################################################################
+
+"shikigami of fire"
+{
+  symbol = "🔥"
+  effect = Name "flame shikigami" AI Enemy 0 1 AI Not Enemy 1 0 { Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM 
+                    Caster Area 2 {Chain{ Filter CreatureId "NIPPON_SHIKIGAMI" {
+					Polymorph "NIPPON_SHIKIGAMI_FIRE" none 
+					Caster Lasting 30 SHIKIGAMI_TRANSFORM}}}}
+  cooldown = {30 61}
+  range = 8
+  endOnly = true
+  targetSelf = true
+  sound = SPELL_SPEED_SELF
+}
+
+"explosive shikigami"
+{
+  symbol = "🔥"
+  effect = Name "explosive shikigami" AI Enemy 0 1 AI Not Enemy 1 0 { Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM 
+                    Caster Area 2 {Chain{ Filter CreatureId "NIPPON_SHIKIGAMI" {
+					Polymorph "NIPPON_SHIKIGAMI_KAMIKADZE" none 
+					Caster Lasting 30 SHIKIGAMI_TRANSFORM}}}}
+  cooldown = {30 61}
+  range = 8
+  endOnly = true
+  targetSelf = true
+  sound = SPELL_SPEED_SELF
+}
+
+"healing shikigami"
+{
+  symbol = "💕"
+  effect = Name "healing shikigami" Chain{Heal { FLESH 0.00001} 
+                    Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM  
+                    Caster Area 2 { Filter CreatureId "NIPPON_SHIKIGAMI" {
+					Polymorph "NIPPON_SHIKIGAMI_HEALBOT" none 
+					Caster Lasting 30 SHIKIGAMI_TRANSFORM}}}
+  cooldown = {30 61}
+  range = 8
+  endOnly = true
+  targetSelf = true
+  sound = SPELL_SPEED_SELF
+}
+
+"barrier shikigami"
+{
+  symbol = "🛡"
+  effect = Name "barrier shikigami" AI Enemy 0 1 AI Not Enemy 1 0 { Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM 
+                    Caster Area 2 {Chain{ Filter CreatureId "NIPPON_SHIKIGAMI" {
+					Polymorph "NIPPON_SHIKIGAMI_BARRIER" none 
+					Caster Lasting 30 SHIKIGAMI_TRANSFORM}}}}
+  cooldown = {30 61}
+  range = 8
+  endOnly = true
+  targetSelf = true
+  sound = SPELL_SPEED_SELF
+}
+
+"damage shikigami"
+{
+  symbol = "🛡"
+  effect = Name "slaughter shikigami" AI Enemy 0 1 AI Not Enemy 1 0 { Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM 
+                    Caster Area 2 {Chain{ Filter CreatureId "NIPPON_SHIKIGAMI" {
+					Polymorph "NIPPON_SHIKIGAMI_SLAUGHTER" none 
+					Caster Lasting 30 SHIKIGAMI_TRANSFORM}}}}
+  cooldown = {30 61}
+  range = 8
+  endOnly = true
+  targetSelf = true
+  sound = SPELL_SPEED_SELF
+}
+
+"mimicry shikigami"
+{
+  symbol = "🛡"
+  effect = Name "mimicry shikigami" AI Enemy 0 1 AI Not Enemy 1 0 { Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM 
+                    Caster Area 2 {Chain{ Filter CreatureId "NIPPON_SHIKIGAMI" {
+					Polymorph none 30 
+					Caster Lasting 30 SHIKIGAMI_TRANSFORM}}}}
+  cooldown = {30 61}
+  range = 8
+  endOnly = true
+  targetSelf = true
+  sound = SPELL_SPEED_SELF
+}
+
+"emergency shikigami"
+{
+  symbol = "👾"
+  effect = Name "emergency shikigami" Summon "NIPPON_SHIKIGAMI" { 2 } 30
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+OneTimeAbility("more shikigami", "Gains more shikigami.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "NIPPON_SHIKIGAMI" } }, "🧛")
+OneTimeAbility("even more shikigami", "Gains more shikigami.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "NIPPON_SHIKIGAMI" } }, "🧛")
+OneTimeAbility("mass of shikigami", "Gains more shikigami.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "NIPPON_SHIKIGAMI" } }, "🧛")
+OneTimeAbility("talisman cration", "increases ability to scribe talismans.", { IncreaseAttr TALISMAN 10 }, "🧛")
+OneTimeAbility("greater talisman cration", "increases ability to scribe talismans.", { IncreaseAttr TALISMAN 10 }, "🧛")
+
+#################################################################################################################################
+#                                                shikigami spells                                                               #
+#################################################################################################################################
+
+"shikigami healing"
+{
+  symbol = "💕"
+  effect = Name "healing" Area 2 Filter Not Enemy Heal { FLESH }
+  cooldown = {10}
+  sound = SPELL_HEALING
+}
+
+"shikigami defense"
+{
+  symbol = "🛡"
+  effect = Name "mass defense bonus" Area 10 Filter Not Enemy Lasting 40 DEF_BONUS
+  cooldown = {10}
+  sound = SPELL_DEX_BONUS
+}
+
+"shikigami damage"
+{
+  symbol = "💪"
+  effect = Name "mass damage bonus" Area 10 Filter Not Enemy Lasting 40 DAM_BONUS
+  cooldown = {10}
+  sound = SPELL_STR_BONUS
+}
+
+"shikigami summon"
+{
+  symbol = "⇝"
+  effect = Name "summoned shikigami" Description "" AI And{} 0 1 Lasting 30 SUMMONED
+  message = "" ""
+  cooldown = 1
+}
+
+#################################################################################################################################
+#                                                       samurai                                                                 #
+#################################################################################################################################
+
+"samurai_bolster"
+{
+  symbol = "🛡"
+  effect = Name "bolster" Area 1 Filter Not Enemy {Filter CreatureId "NIPPON_SAMURAI" {Filter CreatureId "NIPPON_SAMURAI_ARCHER" {Lasting 40 DEF_BONUS }}}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"samurai_rally"
+{
+  symbol = "💪"
+  effect = Name "rally" Area 1 Filter Not Enemy {Filter CreatureId "NIPPON_SAMURAI" {Filter CreatureId "NIPPON_SAMURAI_ARCHER" {Lasting 40 DAM_BONUS }}}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"ranged damage bonus"
+{
+  symbol = "🎯"
+  effect = Name "ranged damage bonus" Lasting 40 RAN_DAM_BONUS
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"samurai_archer_rally"
+{
+  symbol =  "🎯"
+  effect = Name "rally" Area 1 Filter Not Enemy {Filter CreatureId "NIPPON_SAMURAI" {Filter CreatureId "NIPPON_SAMURAI_ARCHER" {Lasting 40 RAN_DAM_BONUS }}}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+#################################################################################################################################
+#                                                         shinobi                                                               #
+#################################################################################################################################
+
+"shinobi ambush"
+{
+  symbol = "🏃"
+  effect = Name "ambush" Chain { Lasting 10 SPEED Lasting 10 INVISIBLE Lasting 10 DAM_BONUS}
+  cooldown = {30 61}
+  sound = SPELL_SPEED_SELF
+}
+
+"advanced shinobi ambush"
+{
+  upgrade = "shinobi ambush"
+  symbol = "🏃"
+  effect = Name "ambush" Chain { Lasting 20 SPEED Lasting 20 INVISIBLE Lasting 20 DAM_BONUS}
+  cooldown = {30 61}
+  sound = SPELL_SPEED_SELF
+}
+
+"expert shinobi ambush"
+{
+  upgrade = "advanced shinobi ambush"
+  symbol = "🏃"
+  effect = Name "ambush" Chain { Lasting 30 SPEED Lasting 30 INVISIBLE Lasting 30 DAM_BONUS}
+  cooldown = {30 61}
+  sound = SPELL_SPEED_SELF
+}
+
+"shinobi escape"
+{
+  symbol = "✈️"
+  effect = Name "escape" AI Health 0.6 1.0 1 1 { Escape {4} Area 2 Filter DistanceD none 3.2 EmitGas "FOG" 1}
+  cooldown = {50 101}
+  sound = SPELL_TELEPORT
+}
+
+"advanced shinobi escape"
+{
+  upgrade = "shinobi escape"
+  symbol = "✈️"
+  effect = Name "escape" AI Health 0.6 1.0 1 1 { Escape {6} Area 3 Filter DistanceD none 3.2 EmitGas "FOG" 1}
+  cooldown = {50 101}
+  sound = SPELL_TELEPORT
+}
+
+"expert shinobi escape"
+{
+  upgrade = "advanced shinobi escape"
+  symbol = "✈️"
+  effect = Name "escape" AI Health 0.6 1.0 1 1 { Escape {8} Area 4 Filter DistanceD none 3.2 EmitGas "FOG" 1}
+  cooldown = {50 101}
+  sound = SPELL_TELEPORT
+}
+
+"shinobi mines"
+{
+  symbol = "🔧"
+  effect = Name "lay slowing trap" PlaceFurniture "WEB_TRAP"
+  cooldown = {150 400}
+  sound = SPELL_METEOR_SHOWER
+}
+
+"advanced shinobi mines"
+{
+  symbol = "🔧"
+  effect = Name "lay posionous gas grap" PlaceFurniture "POISON_GAS_TRAP"
+  cooldown = {150 400}
+  sound = SPELL_METEOR_SHOWER
+}
+
+"expert shinobi mines"
+{
+  symbol = "🔧"
+  effect = Name "lay blast trap" PlaceFurniture "BLAST_TRAP"
+  cooldown = {150 400}
+  sound = SPELL_METEOR_SHOWER
+}
+
+"shinobi sapper"
+{
+  symbol = "X"
+  effect = Name "dig" DestroyWalls DIG
+  range = 1
+  cooldown = 25
+  blockedByWall = false
+}
+
+#################################################################################################################################
+#                                                          benkei                                                               #
+#################################################################################################################################
+
+"monk purification"
+{
+  symbol = "❤️"
+  effect = Name "purification"      Chain {
+                                    Lasting 40 DEF_BONUS
+									RemoveLasting POISON
+                                    RemoveLasting PLAGUE
+									Heal { FLESH }}
+  cooldown = {10 31}
+  sound = SPELL_HEALING
+}
+
+OneTimeAbility("minor monk resistance", "Gains monk resistances", { Permanent FIRE_RESISTANT Permanent COLD_RESISTANT Permanent ACID_RESISTANT }, "🧛")
+OneTimeAbility("mayor monk resistance", "Gains monk resistances", { Permanent MELEE_RESISTANCE Permanent RANGED_RESISTANCE Permanent MAGIC_RESISTANCE }, "🧛")
+
+#################################################################################################################################
+#                                                    buraddomonku                                                               #
+#################################################################################################################################
+
+"blood monk purification"
+{
+  symbol = "❤️"
+  effect = Name "purification" Chain {
+                                    Lasting 40 DAM_BONUS
+									RemoveLasting POISON
+                                    RemoveLasting PLAGUE
+									Heal { FLESH }}
+  cooldown = {30 81}
+  sound = SPELL_HEALING
+}
+
+#################################################################################################################################
+#                                                corrupted daimyo                                                               #
+#################################################################################################################################
+
+"corrupted daimyo heal"
+{
+  symbol = "✴"
+  effect = Name "heal spirit" Heal { SPIRIT }
+  targetSelf = true
+  cooldown = {10 31}
+  sound = SPELL_HEALING
+}
+
+"corrupted daimyo panic"
+{
+  symbol = "😱"
+  effect = Name "dark presence" Area 2 Filter Enemy Lasting PANIC
+  cooldown = {51 102}
+  sound = SPELL_STR_BONUS
+}
+
+"corrupted advanced daimyo panic"
+{
+  upgrade = "corrupted daimyo panic"
+  symbol = "😱"
+  effect = Name "dark presence" Area 4 Filter Enemy Lasting PANIC
+  cooldown = {51 102}
+  sound = SPELL_STR_BONUS
+}
+
+"corrupted daimyo animate corpses"
+{
+  symbol = "👤"
+  effect = Name "animate corpses" Area 100 Filter Not Enemy {
+  AnimateItems 3 5 {10 20} CORPSE
+  Filter CreatureFlag "animated" { ChooseRandom {
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU_ARCHER" none
+                                                }}
+  SetCreatureFlag "animated" false}
+  cooldown = {50 201}
+}
+
+"corrupted daimyo advanced animate corpses"
+{
+  upgrade = "corrupted daimyo animate corpses"
+  symbol = "👤"
+  effect = Name "animate corpses" Area 100 Filter Not Enemy {
+  AnimateItems 6 5 {30 50} CORPSE
+  Filter CreatureFlag "animated" { ChooseRandom {
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_ASHIGARU_ARCHER" none
+                                                }}
+  SetCreatureFlag "animated" false}
+  cooldown = {50 201}
+}
+
+OneTimeAbility("akuma no daimyō bodyguard", "Gains an bodyguard.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "JP_EVIL_SPIRIT" } }, "🧛")
+OneTimeAbility("akuma no daimyō another bodyguard", "Gains an bodyguard.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "JP_EVIL_SPIRIT" } }, "🧛")
+
+"corrupted daimyo eternal life"
+{
+  symbol = "🛡"
+  effect = Name "secret of immortality" AI Health 0.6 1.0 1 1 { Lasting 10 LIFE_SAVED}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"corrupted daimyo advanced eternal life"
+{
+  upgrade = "corrupted daimyo eternal life"
+  symbol = "🛡"
+  effect = Name "secret of immortality" AI Health 0.6 1.0 1 1 { Lasting 20 LIFE_SAVED}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+
+#################################################################################################################################
+#                                                       talismans                                                               #
+#################################################################################################################################
+
+"NIPPON_SLOW_TALISMAN"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "slow talisman" Description "Use slow talisman"
+  Chain {
+	  Lasting SLOWED
+	  Caster {SetCreatureFlag "slow_talisman" false}
+      Caster Caster RemoveAbility NIPPON_SLOW_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId LIGHT_BROWN }
+  range = 4
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_MAGIC_RESISTANCE_TALISMAN"
+{
+  symbol = "⥇"
+  effect = Name "magic resistance talisman" Description "Use magic resistance talisman"
+  Chain {
+	  Lasting 20 FIRE_RESISTANT
+	  Lasting 20 COLD_RESISTANT
+	  Lasting 20 ACID_RESISTANT
+	  Lasting 20 MAGIC_RESISTANCE
+	  Caster {SetCreatureFlag "magic_resistance_talisman" false}
+      Caster RemoveAbility NIPPON_MAGIC_RESISTANCE_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId WHITE }
+  range = 4
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_MATERIAL_RESISTANCE_TALISMAN"
+{
+  symbol = "⥇"
+  effect = Name "material resistance talisman" Description "Use material resistance talisman"
+  Chain {
+	  Lasting 20 MELEE_RESISTANCE
+	  Lasting 20 RANGED_RESISTANCE
+	  Caster {SetCreatureFlag "material_resistance_talisman" false}
+      Caster RemoveAbility NIPPON_MATERIAL_RESISTANCE_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId WHITE }
+  range = 4
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_WAR_TALISMAN"
+{
+  symbol = "⥇"
+  effect = Name "war talisman" Description "Use slow talisman"
+  Chain {
+	  Lasting 20 DAM_BONUS
+	  Lasting 20 DEF_BONUS
+	  Caster {SetCreatureFlag "war_talisman" false}
+      Caster RemoveAbility NIPPON_WAR_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId PINK }
+  range = 4
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+Def TryAttackTalisman(DamageType , TrainingType, AreaSize, TrueOrNot, aremessage, ismessage )
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {aremessage ismessage}
+	  SetCreatureFlag "frienldlyfire" TrueOrNot
+	  Filter CreatureFlag "frienldlyfire" {
+		Area AreaSize {Damage DamageType TrainingType}
+	  } 
+	  Filter Not CreatureFlag "frienldlyfire"
+	  {
+		Filter Enemy { Area AreaSize {Damage DamageType TrainingType}}
+	  } 
+    },
+    CreatureMessage {aremessage ismessage}
+  )
+End
+
+"NIPPON_FIRE_ATTACK_TALISMAN"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire talisman" Description "Use fire talisman"
+  Chain {
+	  { Caster Lasting 0 "NIPPON_FIRE_SPELL"}
+      TryAttackTalisman(SPELL_DAMAGE, SPELL, 0, true, "are hit by the talisman", "is hit by the talisman")
+	  Caster {SetCreatureFlag "fire_attack_talisman" false}
+      Caster RemoveAbility NIPPON_FIRE_ATTACK_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId RED }
+  range = 4
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_ACID_ATTACK_TALISMAN"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "acid talisman" Description "Use acid talisman"
+  Chain {
+	  { Caster Lasting 0 "NIPPON_ACID_SPELL"}
+      TryAttackTalisman(SPELL_DAMAGE, SPELL, 0, true, "are hit by the talisman", "is hit by the talisman")
+	  Caster {SetCreatureFlag "acid_attack_talisman" false}
+      Caster RemoveAbility NIPPON_ACID_ATTACK_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId YELLOW }
+  range = 4
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_COLD_ATTACK_TALISMAN"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "acid talisman" Description "Use acid talisman"
+  Chain {
+	  { Caster Lasting 0 "NIPPON_COLD_SPELL"}
+      TryAttackTalisman(SPELL_DAMAGE, SPELL, 0, true, "are hit by the talisman", "is hit by the talisman")
+	  Caster {SetCreatureFlag "cold_attack_talisman" false}
+      Caster RemoveAbility NIPPON_COLD_ATTACK_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId LIGHT_BLUE }
+  range = 4
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_RESTORATION_TALISMAN"
+{
+  symbol = "⥇"
+  effect = Name "restoration talisman" Description "Use restoration talisman"
+  Chain {
+	  Lasting 40 REGENERATION
+	  Caster {SetCreatureFlag "restoration_talisman" false}
+      Caster RemoveAbility NIPPON_RESTORATION_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId GREEN }
+  range = 4
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_PURIFICATION_TALISMAN"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "purification talisman" Description "Use purification talisman"
+  Chain {
+      Filter HatedBy HATE_UNDEAD { Chance 0.25 Suicide DIE}
+      Filter HatedBy HATE_DEMONS { Chance 0.25 Suicide DIE}
+	  Lasting MAGIC_CANCELLATION
+	  Caster {SetCreatureFlag "purification_talisman" false}
+      Caster RemoveAbility NIPPON_SLOW_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId PURPLE }
+  range = 4
+  cooldown = {100 301}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_ELEMENTAL_TALISMAN"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "summon kami talisman" Description "Use summon kami talisman"
+  Chain {
+	  SummonElement
+	  Area 4 Filter Not Enemy {
+	  Filter CreatureId "FIRE_ELEMENTAL" { Polymorph "NIPPON_FIRE_KAMI" none}
+	  Filter CreatureId "AIR_ELEMENTAL" { Polymorph "NIPPON_AIR_KAMI" none}
+	  Filter CreatureId "WATER_ELEMENTAL" { Polymorph "NIPPON_WATER_KAMI" none}
+	  Filter CreatureId "EARTH_ELEMENTAL" { Polymorph "NIPPON_EARTH_KAMI" none}
+	  }
+	  Caster {SetCreatureFlag "kami_talisman" false}
+      Caster RemoveAbility NIPPON_ELEMENTAL_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId BLACK }
+  range = 4
+  cooldown = {100 301}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_HOLD_TALISMAN"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "imprisonment talisman" Description "Use imprisonment talisman"
+  Chain {
+	  Lasting 10 IMMOBILE
+	  Caster {SetCreatureFlag "stun_talisman" false}
+      Caster RemoveAbility NIPPON_HOLD_TALISMAN}
+  projectileViewId = {"jp_talisman_single" ColorId BROWN }
+  range = 4
+  cooldown = {100 301}
+  sound = SPELL_BLAST
+}
