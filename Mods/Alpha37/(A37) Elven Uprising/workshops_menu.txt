@@ -1,0 +1,78 @@
+"elf morgue"
+{
+  "MORGUE"
+  {
+      { item = {Assembled{ "UE_ELF_ZOMBIE_WORKER" "zombie" {NO_LIMIT FIGHTER WORKER} {BALSAM} 3}}
+        work = 6 cost = "CORPSE" 1 applyImmediately = true}
+      { item = {Assembled{ "UE_GHOUL" "ghoul" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 12 cost = "CORPSE" 2 applyImmediately = true}
+      { item = {Assembled{ "UE_BROKEN_MIND" "broken mind" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 16 cost = "CORPSE" 3 applyImmediately = true}
+      { item = {Assembled{ "UE_BUTCHER_WARRIOR" "butcher" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 8 cost = "CORPSE" 1 applyImmediately = true}
+      { item = {Assembled{ "UE_BUTCHER_ARCHER" "butcher archer" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 8 cost = "CORPSE" 1 applyImmediately = true}
+      { item = {Assembled{ "SKELETON_WOLF" "skeleton wolf" {NO_LIMIT FIGHTER} {BALSAM} 1 }}
+        work = 4 cost = "CORPSE" 1 applyImmediately = true}
+	  { item = {Assembled{ "BONE_DRAGON" "bone dragon" {NO_LIMIT FIGHTER} {BALSAM} 7}}
+        work = 100 requireIngredient = "dragon_corpse" applyImmediately = true tech = "master necromancy"}
+  }
+  "LABORATORY"
+  {
+      {{Balsam AddBodyPart HEAD 1 none}     2 "GOLD" 3 "embalming"}
+      {{Balsam {AddBodyPart WING 2 none Permanent FLYING}}     4 "GOLD" 3 "embalming"}
+      {{Balsam Permanent TELEPATHY}         4 "GOLD" 3 "embalming"}
+      {{Balsam RemovePermanent SLOWED}      4 "GOLD" 3 "embalming"}
+      {{Balsam Permanent SWARMER}           4 "GOLD" 3 "embalming"}
+      {{Balsam Permanent NO_CARRY_LIMIT}    4 "GOLD" 3 "embalming"}
+      {{Balsam IncreaseAttr DIGGING        25}                    4 "GOLD" 3 "embalming"}
+      {{Balsam IncreaseMaxLevel MELEE       3}                    4 "GOLD" 3 "embalming"}
+      {{Balsam IncreaseMaxLevel SPELL       3}                    4 "GOLD" 3 "embalming"}
+      {{Balsam IncreaseMaxLevel ARCHERY     3}                    4 "GOLD" 3 "embalming"}
+      {{Balsam Name "lesser damage bonus"        IncreaseAttr DAMAGE        3}   4 "GOLD" 3 "embalming"}
+      {{Balsam Name "lesser defense bonus"       IncreaseAttr DEFENSE       3}   4 "GOLD" 3 "embalming"}
+      {{Balsam Name "lesser ranged damage bonus" IncreaseAttr RANGED_DAMAGE 3}   4 "GOLD" 3 "embalming"}
+      {{Balsam Name "lesser spell damage bonus"  IncreaseAttr  SPELL_DAMAGE 3}   4 "GOLD" 3 "embalming"}
+      {{Balsam SpecialAttr DEFENSE    5  InTerritory}             4 "GOLD" 3 "embalming"}
+      {{Balsam Permanent DARKNESS_SOURCE}   4 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "Limited life, damage boost" Description "Life limited to 2000 turns, +10 damage."
+          { Lasting 2000 SUMMONED  IncreaseAttr DAMAGE 10 }}        8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "Limited life, defense boost" Description "Life limited to 2000 turns, +10 defense."
+          { Lasting 2000 SUMMONED  IncreaseAttr DEFENSE 10 }}       8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "Limited life, ranged damage boost" Description "Life limited to 2000 turns, +10 ranged damage."
+          { Lasting 2000 SUMMONED  IncreaseAttr RANGED_DAMAGE 10 }} 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "Limited life, spell damage boost" Description "Life limited to 2000 turns, +10 spell damage."
+          { Lasting 2000 SUMMONED  IncreaseAttr SPELL_DAMAGE 10 }}  8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Permanent FAST_CRAFTING}                           8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Permanent FAST_TRAINING}                           8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "greater damage bonus"        IncreaseAttr DAMAGE        5} 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "greater defense bonus"       IncreaseAttr DEFENSE       5} 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "greater ranged damage bonus" IncreaseAttr RANGED_DAMAGE 5} 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "greater spell damage bonus"  IncreaseAttr  SPELL_DAMAGE 5} 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam IncreaseAttr MORGUE 25}                8 "GOLD" 5 "advanced embalming"}
+      {{Balsam IncreaseAttr LABORATORY 25}            8 "GOLD" 5 "advanced embalming"}
+      {{Balsam IncreaseAttr FORGE 25}                 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam IncreaseAttr WORKSHOP 25}            8 "GOLD" 5 "advanced embalming"}
+      {{Balsam { AddBodyPart ARM 2 none IncreaseAttr MULTI_WEAPON 25 }}
+          8 "GOLD" 5 "advanced embalming"}
+      {{Balsam SpecialAttr DEFENSE       15 InTerritory}           12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DAMAGE        15 CreatureStatus LEADER} 12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DAMAGE        15 Spellcaster }          12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DEFENSE       15 Not Humanoid }         12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DEFENSE       15 HatedBy HATE_DWARVES}  12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DAMAGE        15 HatedBy HATE_DWARVES}  12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr RANGED_DAMAGE 15 HatedBy HATE_DWARVES}  12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DEFENSE       15 HatedBy HATE_HUMANS}   12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DAMAGE        15 HatedBy HATE_HUMANS}   12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr RANGED_DAMAGE 15 HatedBy HATE_HUMANS}   12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DEFENSE       15 HatedBy HATE_DRAGONS}  12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DAMAGE        15 HatedBy HATE_DRAGONS}  12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr RANGED_DAMAGE 15 HatedBy HATE_DRAGONS}  12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DEFENSE       15 HatedBy HATE_ELVES}    12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr DAMAGE        15 HatedBy HATE_ELVES}    12 "GOLD" 10 "master embalming"}
+      {{Balsam SpecialAttr RANGED_DAMAGE 15 HatedBy HATE_ELVES}    12 "GOLD" 10 "master embalming"}
+  }
+}
+
+# Add more groups here, remember that you need to add your new group to your keeper in keeper_creatures.txt
+
