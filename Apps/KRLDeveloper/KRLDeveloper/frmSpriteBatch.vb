@@ -14,6 +14,14 @@
             WriteFile(bmp, Imaging.PixelFormat.Format4bppIndexed, count, 24)
             WriteFile(bmp, Imaging.PixelFormat.Format8bppIndexed, count, 24)
             WriteFile(bmp, Imaging.PixelFormat.Format16bppRgb555, count, 24)
+            WriteFile(bmp, Imaging.PixelFormat.Format1bppIndexed, count, 16)
+            WriteFile(bmp, Imaging.PixelFormat.Format4bppIndexed, count, 16)
+            WriteFile(bmp, Imaging.PixelFormat.Format8bppIndexed, count, 16)
+            WriteFile(bmp, Imaging.PixelFormat.Format16bppRgb555, count, 16)
+            WriteFile(bmp, Imaging.PixelFormat.Format1bppIndexed, count, 8)
+            WriteFile(bmp, Imaging.PixelFormat.Format4bppIndexed, count, 8)
+            WriteFile(bmp, Imaging.PixelFormat.Format8bppIndexed, count, 8)
+            WriteFile(bmp, Imaging.PixelFormat.Format16bppRgb555, count, 8)
         Next
     End Sub
 
