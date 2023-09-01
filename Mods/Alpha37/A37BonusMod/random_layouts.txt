@@ -1,0 +1,68 @@
+Def WorldMapFeatures2() {
+  Filter(On("set_mountain"), {Set("MOUNTAIN") {Set("map_mountain_bg1") Choose(Set("map_mountain1"),
+      Set("map_mountain2"), Set("map_mountain3"), Set("map_mountain4"), Set("map_mountain5"))}})	  
+  Filter(On("set_mountain_snow"), {Set("MOUNTAIN") Choose(Set("map_mountain_snow1"), Set("map_mountain_snow2"),
+      Set("map_mountain_snow3"), Set("map_mountain_snow4"), Set("map_mountain_snow5"))})
+  Filter(On("set_water"), {Choose(0.7 Set("map_water1"), Set("map_water2"), Set("map_water3"), Set("map_water5"))})
+  Filter(On("set_sand"), {Set("DESERT") Choose(0.7 Set("map_sand1"), Set("map_sand2"))})
+  Filter(On("set_snow"), {Set("SNOW") Choose(0.7 Set("map_snow1"), Set("map_snow2"))})
+  Filter(On("set_swamp"), {Set("SWAMP") Choose(0.7 Set("map_swamp1"), Set("map_swamp2"), Set("map_swamp3"), Set("map_swamp4"))})
+  Filter(
+	On("set_grass"),
+	    {
+		Choose(
+		      0.7 Set("GRASSLAND"),
+			  Set("BONUS_ENCHANTED_FOREST"),
+			  Set("BONUS_DARK_SWAMP"),
+			  Set("BONUS_ORC_VILLAGE"),
+			  Set("BONUS_ORC_CLAN"),
+			  Set("BONUS_WARRIOR_TOWN"),		  
+			  Set("BONUS_PALACE"),
+			  Set("BONUS_CENTAUR_PALACE"),
+			  Set("BONUS_HAUNTED_GRASSLAND"),
+			  Set("BONUS_ELF_FOREST"),
+			  Set("BONUS_HERB_GRASSLAND")
+			)
+		Choose(0.7 Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))				
+		}
+    )
+  Filter(
+	On("set_hills"),
+	    {
+		Choose(
+		      0.7 Set("BONUS_HILLS"),
+			  Set("BONUS_VOLCANIC"),
+			  Set("BONUS_CITY"),
+			  Set("BONUS_SHADOW_PALACE"),
+			  Set("BONUS_SPIDER_MOUNTAIN"),
+			  Set("BONUS_CITY_RUINS"),
+			  Set("BONUS_DWARF_MOUNTAIN"),
+			  Set("BONUS_DWARF_MOUNTAIN_SMALL"),
+			  Set("BONUS_DARK_ELF_MOUNTAIN"),
+			)
+		Set("map_mountain_bg1")
+		}
+    )
+
+End
+
+"world_map" modify {
+  NoiseMap(0.65, {
+    (0.8, 1.0, Reset("set_water"))
+    (0.74, 0.8, Reset("set_sand"))
+    (0.4, 0.74, Reset("set_grass"))
+    (0.0, 0.4, Reset("set_hills"))
+    (0.0, 0.2, Reset("set_mountain"))
+  })
+  CellularAutomaton(Filter(Not On("set_mountain"), Reset("set_water")), 0.35)
+  Border(TOP, 23, Filter(Or(On("set_water"), On("set_sand")), Reset("set_snow")))
+  Margin(BOTTOM, 23, Filter(Or(On("set_water"), On("set_sand")), Filter(On("set_water"), Reset("set_sand"))),
+      Filter(On("set_sand"), Reset("set_swamp")))
+  NoiseMap(0.65, {
+    (0.0, 0.2, Filter(On("set_snow"), Set("set_mountain_snow")))
+  })
+  WorldMapFeatures2()
+  WorldMapConnections()
+  WorldMapTrees()
+}
+

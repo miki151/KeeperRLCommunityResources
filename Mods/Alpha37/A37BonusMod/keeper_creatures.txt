@@ -7,10 +7,11 @@
 
 "2_dark_knight" modify {
     immigrantGroups = append {"dark_knight_modded" "neutral_allies" "dark_allies_extended" }
-    technology = append { "simplistic animations" "magic contraptions" "rock blast" "combat succubus" }
+    technology = append { "simplistic animations" "magic contraptions" "rock blast" "combat succubus" "advanced smithy" }
     initialTech = { "iron working" }
-    workshopGroups = append { "basic_Bonus_Mod"   "techBooks" }
+    workshopGroups = append { "basic_Bonus_Mod"   "techBooks" "fell armory" }
     description = "(Challenge) The dark knight keeper is better at melee combat but worse at spell casting."
+	villainGroups = append { BONUS_EVIL }
 	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
   }
 #Dark mages come after dark knights as sometimes bits of the GUI get duplicated the other way round.
@@ -18,14 +19,16 @@
     immigrantGroups = append {"dark_keeper_modded" "neutral_allies" "dark_allies_extended" }
     technology = append { "simplistic animations" "magic contraptions" "dragon taming" "demonic alliance" "rock blast" "combat succubus"}
     workshopGroups = append { "basic_Bonus_Mod" "techBooks" }
+	villainGroups = append { BONUS_EVIL }
 	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
   }
 "3_white_knight" modify {
     immigrantGroups = append { "white_keeper_modded" "neutral_allies" "white_allies_extended" }
-    technology = append { "simplistic animations" "magic contraptions" "legendary heroes" "royal jewellery" "unicorn taming" "rock blast" }
-    workshopGroups = append { "white knights workshop" "basic_Bonus_Mod" }
+    technology = append { "simplistic animations" "magic contraptions" "legendary heroes" "royal jewellery" "unicorn taming" "rock blast" "advanced smithy" }
+    workshopGroups = append { "white knights workshop" "basic_Bonus_Mod" "law armory" }
     description = "(Hard) Be on the side of the good!"
 	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
+	villainGroups = append { BONUS_LAWFUL }
   }
   
 "5_gnomes" modify
@@ -33,11 +36,12 @@
     technology = append { "jewellery" "sorcery" "advanced sorcery" "master sorcery"
 	                      "simplistic animations" "magic contraptions" "rock blast"
 						  "gnomish smithy" "gnomish alchemy" "gnomish jewellery" "magic inscription"}
-        prisoners = true
+    prisoners = true
 	immigrantGroups = append {"animations"}
 	workshopGroups = append {"gnomish" }
 	buildingGroups = append { "library" "crafting" "laboratory" "jeweller" "prison_no_capture" }
 	credit = { "GOLD" 20 "WOOD" 2000 "STONE" 5 "IRON" 5 "ADA" 5 }
+	villainGroups = append { BONUS_LAWFUL }
 }
 
 "6_dwarves" modify
@@ -52,16 +56,18 @@
 	credit = { "GOLD" 398 "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
     technology = append { "simplistic animations" "magic contraptions" 
 		 "master jewellery" "dwarven alchemy" "magic inscription" "rock blast" "traps" }
-	
+	villainGroups = append { BONUS_LAWFUL }	
 }
 
-"7_goblins" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} }
-"8_zombies" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} }
+"7_goblins" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 } villainGroups = append { BONUS_EVIL } }
+
+"8_zombies" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" } immigrantGroups = append {"animations"} 	villainGroups = append { BONUS_EVIL } }
+
 "9_cyclops" modify { technology = append { "simplistic animations" "magic contraptions" "rock blast" }
                      immigrantGroups = append {"animations"}
                      prisoners = true
                      buildingGroups = append { "prison_no_capture" }	
-
+                     villainGroups = append { BONUS_EVIL }
 }
 
 ############################################
@@ -88,9 +94,10 @@
 		"magical_installations"
     }
     workshopGroups = {"elements"}
-    description = "(Challenge) Summon an army from your raw resources that can take over the map."
+    description = "(Easy) Summon an army from your raw resources that can take over the map."
     zLevelGroups = { "basic" "lawful" }
 	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 }
+    villainGroups = { LAWFUL_ADVENTURER LAWFUL_COTTAGES BONUS_LAWFUL }	
   }
 "4_BonusDev_vampire_lord"  
   {
@@ -122,6 +129,7 @@
     }
     zLevelGroups = { "basic" "evil" }
 	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CORPSE" 5 }
+    villainGroups = { EVIL_ADVENTURER EVIL_COTTAGES BONUS_EVIL }
   }
 
 "9_BonusDev_dungeon_master"
@@ -147,6 +155,7 @@
     workshopGroups = { "sandbox" }
     description = "Play a sandbox game where you can build and do whatever you like in a creative mode."
     zLevelGroups = { "basic" "evil" }
+    villainGroups = { EVIL_ADVENTURER EVIL_COTTAGES BONUS_EVIL }
   }
   
 ############################################
@@ -179,6 +188,7 @@
   description = "The absorber is a creature that can learn forms, shape shift and absorb technologies of fallen foes. Warnining: This creature cannot build, recruit, cut or dig until it has learnt those concepts by absorbing them after killing things."
   minionTraits = { LEADER WORKER FIGHTER NO_LIMIT }
   flags = { "abomination_upgrades" }
+  villainGroups = { EVIL_ADVENTURER EVIL_COTTAGES BONUS_EVIL }
 }
   
 ############################################
@@ -209,6 +219,7 @@
   noLeader = true
   specialTraits = { Lasting { FOUNDER } }
   credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 }
+  villainGroups = { LAWFUL_ADVENTURER LAWFUL_COTTAGES BONUS_LAWFUL }  
 }
 
 ############################################
@@ -260,6 +271,23 @@
 "9_cyclops" modify { buildingGroups = append { "dice" } }
 
 
+#Easy and hard mode
+"9.1_dark_mage_easy" inherit "1_dark_mage"
+{
+    creatureId = { "BONUS_KEEPER_MAGE_EASY" "BONUS_KEEPER_MAGE_F_EASY" }
+    immigrantGroups = {"dark_keeper_easy_mode" "neutral_allies" "dark_allies_extended" }
+    description = "(Easy) Play a dark mage in easy mode and get a big bonus on all immigrants. But you have to wear a silly green robe."
+}
+
+"9.2_dark_mage_hard" inherit "1_dark_mage"
+{
+    creatureId = { "BONUS_KEEPER_MAGE_HARD" "BONUS_KEEPER_MAGE_F_HARD" }
+    immigrantGroups  = {"dark_keeper_hard_mode" "neutral_allies" "dark_allies_extended" }
+    description = "(Hard) Play a dark mage in hard mode and test your skills to the limit for experienced players. You get to wear a cool purple robe."
+}
+
+
+
 #Badly implememnted. Need rework.
 ######################################################################################
 #"3a_gnome_wizards"
@@ -287,50 +315,7 @@
 #	}
 #  }
 #
-#"1a_dark_mage_easy"
-#{
-#    #Modded
-#    creatureId = { "KEEPER_MAGE_EASY" "KEEPER_MAGE_F_EASY" }
-#    tribeAlignment = EVIL
-#    immigrantGroups = {"dark_keeper_easy_mode" "neutral_allies" "dark_allies_extended" }
-#    technology = {
-#         "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
-#        "pig breeding" "iron working" "simplistic animations"
-#		"magic contraptions" "jewellery" "two-handed weapons" "traps" "archery" "sorcery"
-#        "advanced sorcery" "magical weapons" "master sorcery" "demonology" "dragon taming" "demonic alliance"
-#        "magic inscription" "chicken breeding" "cow breeding"
-#    }
-#    initialTech = { "sorcery" }
-#    buildingGroups = {
-#        "structure" "doors" "floors" "storage" "zones" "library" "throne" "beds" "pigsty" "coffins"
-#        "training" "crafting" "laboratory" "jeweller" "poetry" "demon_shrine" "prison" "orders" "installations" "magical_installations" "traps"
-#    }
-#    workshopGroups = { "basic" "basic_Bonus_Mod" "techBooks"  }
-#    description = "(Easy) Play in easy mode and get a big bonus on all immigrants. But you have to wear a silly green robe."
-#    zLevelGroups = { "basic" "evil" }
-#  }
-#
-#"1b_dark_mage_hard"
-#  {
-#    creatureId = { "KEEPER_MAGE_HARD" "KEEPER_MAGE_F_HARD" }
-#    tribeAlignment = EVIL
-#    immigrantGroups = {"dark_keeper_hard_mode" "neutral_allies" "dark_allies_extended" }
-#    technology = {
-#        "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
-#        "pig breeding" "iron working" "simplistic animations" "magic contraptions" "jewellery"
-#		"two-handed weapons" "traps" "archery" "sorcery"
-#        "advanced sorcery" "magical weapons" "master sorcery" "demonology" "dragon taming" "demonic alliance" "absorbtion"
-#        "magic inscription" "chicken breeding" "cow breeding"
-#    }
-#    initialTech = { "sorcery" }
-#    buildingGroups = {
-#        "structure" "doors" "floors" "storage" "zones" "library" "throne" "beds" "pigsty" "coffins"
-#        "training" "crafting" "laboratory" "jeweller" "poetry" "demon_shrine" "prison" "orders" "installations" "magical_installations" "traps"
-#    }
-#    workshopGroups = { "basic" "basic_Bonus_Mod" "techBooks" }
-#    description = "(Hard) Play in hard mode and test your skills to the limit for experienced players. You get to wear a cool purple robe."
-#    zLevelGroups = { "basic" "evil" }
-#  }
+
 #"6_BonusDev_dwarf_queen"
 #  {
 #    creatureId = { "DWARF_QUEEN" }

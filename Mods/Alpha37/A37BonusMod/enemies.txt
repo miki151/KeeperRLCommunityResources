@@ -11,6 +11,7 @@
 
 "BOTTOMLESS_DUNGEON"
 {
+ biome = "MOUNTAIN"
  settlement = {
     closeToPlayer = true
     type = Builtin CEMETERY "RUINS"
@@ -58,6 +59,7 @@
 
 "HAUNTED_DUNGEON"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin CAVE "HAUNTED"
     tribe = MONSTER
@@ -81,6 +83,7 @@
 
 "GOBLIN_CAVE" modify
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin MINETOWN "DUNGEON"
     tribe = BANDIT
@@ -107,7 +110,7 @@
 }
 
   "ELVES" modify append {
-    biomes = { "FOREST" } #Modded
+    biome = "FOREST"
     settlement = {
       type = Builtin CASTLE2 "WOOD" #Modded
       inhabitants = {
@@ -145,6 +148,7 @@
 	}
   }
   "ELEMENTALIST_ENTRY" modify append {
+    biome = "FOREST"
     settlement = {
     type = Builtin TOWER "BONUS_ELEMENTALIST"
       tribe = HUMAN
@@ -158,6 +162,7 @@
     discoverable = false
   }
   "ELEMENTALIST_FLOOR" modify append {
+    biome = "FOREST"
     settlement = {
       inhabitants = {
         fighters = {
@@ -176,6 +181,7 @@
     discoverable = false
   }
   "ELEMENTALIST" modify append {
+    biome = "FOREST"  
     settlement = {
     type = Builtin TOWER "BONUS_ELEMENTALIST" #Modded
       inhabitants = {
@@ -186,6 +192,7 @@
     }
   }
   "MAIN_DUNGEON_ENTRY" modify append {
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin CAVE "BONUS_DUNGEON_ENTRY" #Modded
       tribe = BANDIT
@@ -199,6 +206,7 @@
   }
 
   "NO_AGGRO_BANDITS" modify append {
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin CAVE "DUNGEON"
       inhabitants = {
@@ -218,6 +226,7 @@
 	}
   }
   "DUNGEON1" modify append {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -257,7 +266,7 @@
   }
 
   "SHELOB" modify append { #Modded
-    biomes = { "BONUS_SPIDER_MOUNTAIN" }
+    biome = "BONUS_SPIDER_MOUNTAIN"
     settlement = {
       type = Builtin VILLAGE "DUNGEON"
       tribe = SHELOB
@@ -288,16 +297,14 @@
     createOnBones = 0.6 { "DWARF_CAVE" "KOBOLD_CAVE" "OGRE_CAVE" "HARPY_CAVE" "OGRE_CAVE" "HARPY_CAVE"} #Modded
   }
   "CEMETERY" modify append { #Modded
-    biomes = { "BONUS_HAUNTED_GRASSLAND" }
+    biome = "BONUS_HAUNTED_GRASSLAND"
     settlement = {
     type = Builtin CEMETERY "BONUS_ZOMBIE"
       inhabitants = {
         leader = {
         id = { "NECROMANCER" }
-          baseLevelIncrease = {
-            MELEE 3
-            SPELL 7
-          } }
+			combatExperience = 7
+		}
         fighters = {
           count = {8 12}
           all = { 1 "ZOMBIE" 1 "BONUS_SKELETON" }
@@ -316,6 +323,7 @@
     }
   }
   "CEMETERY_ENTRY" modify append {
+    biome = "FOREST"
     settlement = {
     type = Builtin CEMETERY "BRICK"
       inhabitants = {
@@ -334,6 +342,7 @@
     discoverable = false
   }
   "RUINS" modify append {
+    biome = "FOREST"
     settlement = {
     type = Builtin COTTAGE "RUINS"
       tribe = MONSTER
@@ -362,6 +371,7 @@
     }
   }
   "HUMAN_COTTAGE" modify append {
+    biome = "FOREST"
     settlement = {
     type = Builtin COTTAGE "WOOD"
       tribe = HUMAN
@@ -392,6 +402,7 @@
     }
   }
   "LIZARDMEN_COTTAGE" modify append {
+    biome = "FOREST"
     settlement = {
     type = Builtin FORREST_COTTAGE "WOOD"
       tribe = BANDIT #Modded
@@ -407,6 +418,7 @@
     createOnBones = 1.0 { "ELVEN_COTTAGE" }
   }
   "DWARF_CAVE" modify append { #Modded
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin SMALL_MINETOWN "DUNGEON"
       tribe = DWARF
@@ -450,6 +462,7 @@
 	}
   }
   "RAT_CAVE" modify append {
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin VAULT "DUNGEON"
       inhabitants = {
@@ -470,7 +483,7 @@
 
 "DWARVES" modify append
 {
-  biomes = { "BONUS_DWARF_MOUNTAIN_SMALL"}
+  biome = "BONUS_DWARF_MOUNTAIN_SMALL"
   settlement = {
     type = Predefined { "mountain48" "BONUS_CITY_DWARF" } 
     tribe = DWARF
@@ -561,6 +574,7 @@
   }
 }
   "VILLAGE" modify append {
+	biome = "FOREST"
     settlement = {
     type = Builtin VILLAGE "BONUS_TAINTED"
       tribe = HUMAN
@@ -594,7 +608,7 @@
     }
   }
 "KNIGHTS" modify append {
-  biomes = { "BONUS_CITY"} 
+  biome = "BONUS_CITY"
   settlement = {
     type = Builtin CASTLE2 "BONUS_CITY_BRICK"
     tribe = HUMAN
@@ -638,6 +652,7 @@
   }
 }
   "MINOTAUR"  modify append {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin CAVE "BONUS_MINOTAUR" #Modded
     tribe = MONSTER
@@ -651,21 +666,21 @@
 }
 
 
-  "RED_DRAGON" modify append {
-    biomes = { "BONUS_VOLCANIC" }  
+"RED_DRAGON" modify append {
+    biome = "BONUS_VOLCANIC"
     settlement = append {
       type = Builtin CAVE "BONUS_VOLCANIC_BRICK"
       tribe = BANDIT
     }
   }
   "UNICORN_HERD" modify append {
-    biomes = { "BONUS_HERB_GRASSLAND" }  
+    biome = "BONUS_HERB_GRASSLAND"
   }
   "DRIADS" modify append {
-    biomes = { "BONUS_HERB_GRASSLAND" }  
+    biome = "BONUS_HERB_GRASSLAND"
   }
   "ORC_VILLAGE" modify append {
-    biomes = { "BONUS_ORC_VILLAGE"} 
+    biome = "BONUS_ORC_VILLAGE"
     settlement = {
       type = Predefined { "village32" "BONUS_WOOD_CITY_CASTLE" } 
       tribe = GREENSKIN
@@ -740,7 +755,7 @@
 
 "WARRIORS" modify append
 {
-  biomes = { "BONUS_WARRIOR_TOWN"}
+  biome = "BONUS_WARRIOR_TOWN"
   settlement = {
     type = Predefined { "castle32" "BONUS_WOOD_CITY_CASTLE" } 
     tribe = HUMAN
@@ -809,6 +824,7 @@
 }
 
 "RAT_PEOPLE_Z_LEVEL" modify append {
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin VAULT "DUNGEON"
       tribe = MONSTER
@@ -845,7 +861,7 @@
 
 "BONUS_ELF_KINGDOM"
 {
-  biomes = { "BONUS_ELF_FOREST"}
+  biome = "BONUS_ELF_FOREST"
   settlement = {
     type = Predefined { "village32" "WOOD" } 
     inhabitants = {
@@ -918,6 +934,7 @@
 }
 "BONUS_ELF_VILLAGE"
 {
+  biome = "FOREST"
   settlement = {
     type = Builtin FORREST_VILLAGE "WOOD"
     inhabitants = {
@@ -964,6 +981,7 @@
 }
 "BONUS_ELF_VILLAGE_SHOP"
 {
+  biome = "FOREST"
   settlement = {
     type = Builtin FORREST_VILLAGE "WOOD"
     inhabitants = {
@@ -1010,7 +1028,7 @@
 }
 
   "BONUS_DWARF_KINGDOM" {
-    biomes = { "BONUS_DWARF_MOUNTAIN" }
+    biome = "BONUS_DWARF_MOUNTAIN"
     settlement = {
     type = Predefined { "mountain64" "BONUS_CITY_DWARF" } 
       tribe = DWARF
@@ -1091,6 +1109,7 @@
   
 "BONUS_WARRIOR_CASTLE"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin CASTLE2 "WOOD_CASTLE"
     tribe = HUMAN
@@ -1140,6 +1159,7 @@
   }
   
   "BONUS_WARRIOR_VILLAGE" {
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin VILLAGE "WOOD"
       tribe = HUMAN
@@ -1173,6 +1193,7 @@
   
 "BONUS_DWARF_MARKET"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin VILLAGE "DUNGEON"
     tribe = DWARF
@@ -1215,6 +1236,7 @@
 
 "BONUS_DWARF_MARKET_SMALL"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin VILLAGE "DUNGEON"
     tribe = DWARF
@@ -1257,6 +1279,7 @@
 
 "BONUS_DWARF_MINE"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin ANT_NEST "DUNGEON"
     tribe = DWARF
@@ -1287,6 +1310,7 @@
 
   "BONUS_CENTAUR_TOWN"
   {
+    biome = "FOREST"
     discoverable = false
     settlement = {
     type = Builtin VILLAGE "WOOD"
@@ -1319,6 +1343,7 @@
   
   "BONUS_AMAZON_TOWN"
   {
+    biome = "MOUNTAIN"
     discoverable = false
     settlement = {
     type = Builtin VILLAGE "WOOD"
@@ -1350,8 +1375,9 @@
   
 "BONUS_WILDMAN_ENTRY"
 {
+  biome = "FOREST"
   settlement = {
-    type = Builtin CAVE "BONUS_ROYAL_SANDSTONE_WALL"
+    type = Builtin VILLAGE "BONUS_ROYAL_SANDSTONE_WALL"
     tribe = BANDIT
   }
   config = {
@@ -1361,6 +1387,7 @@
   
 "BONUS_WILDMEN_CAVE"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin MINETOWN "BONUS_ROYAL_SANDSTONE_WALL"
     tribe = HOSTILE
@@ -1394,6 +1421,7 @@
 
 "BONUS_CROC_LAKE"
 {
+  biome = "SWAMP"
   discoverable = false
   settlement = {
     type = RandomLayout { "hydra" { 20 20 } "default"}
@@ -1410,6 +1438,7 @@
 
   "BONUS_AXEDIO_DUNGEON"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CAVE "BRICK"
       tribe = MONSTER
@@ -1444,6 +1473,7 @@
   
 "BONUS_AXEDIO_REWARD"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin MINETOWN "BLACK"
     tribe = MONSTER
@@ -1457,6 +1487,7 @@
   
   "BONUS_AXEDIO_DWARVES"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "BONUS_SANDSTONE_WALL_DWARVEN"
       tribe = DARK_KEEPER
@@ -1467,9 +1498,7 @@
           all = {
             1 "DWARF"
           }
-          baseLevelIncrease = {
-            MELEE 10
-          }
+		  combatExperience = 10
         }
         civilians = {
           count = {3 5}
@@ -1488,10 +1517,10 @@
       furniture = "BONUS_emptyChests"
     }
   }
-  
 
   "BONUS_AXEDIO_SURFACE_BANDITS"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CAVE "BONUS_DUNGEON_ENTRY"
       inhabitants = {
@@ -1510,6 +1539,7 @@
   
   "BONUS_AXEDIO_BANDITS"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CAVE "BRICK"
       inhabitants = {
@@ -1517,9 +1547,7 @@
         fighters = {
           count = {10 11}
           all = { 1 "BANDIT" }
-          baseLevelIncrease = {
-            MELEE 10
-          }
+          combatExperience = 7
         }
       }
       tribe = BANDIT
@@ -1530,8 +1558,9 @@
 	  createOnBones = 0.1 { "KOBOLD_CAVE" }
   }
   
-  "BONUS_AXEDIO_CYCLOPS" 
+"BONUS_AXEDIO_CYCLOPS" 
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin CAVE "WOOD_CASTLE"
     inhabitants = {
@@ -1545,8 +1574,9 @@
   }
 }
   
-  "BONUS_AXEDIO_DEMONS"
+"BONUS_AXEDIO_DEMONS"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin VILLAGE "RUINS"
       inhabitants = {
@@ -1565,6 +1595,7 @@
   
   "BONUS_AXEDIO_LIZARDMEN"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin VILLAGE "BONUS_MUD"
       tribe = LIZARD
@@ -1584,6 +1615,7 @@
   
   "BONUS_COW_DEMONS_ENTRY"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin SMALL_MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -1603,6 +1635,7 @@
   
   "BONUS_COW_DUNGEON1"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -1631,6 +1664,7 @@
   
   "BONUS_COW_DUNGEON2"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -1660,6 +1694,7 @@
   
   "BONUS_COW_DEMONS"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -1711,7 +1746,7 @@
   }
   
   "BONUS_DARK_ELF_EMPIRE" {
-    biomes = { "BONUS_DARK_ELF_MOUNTAIN" }
+    biome = "BONUS_DARK_ELF_MOUNTAIN"
     settlement = {
     type = Predefined { "mountain48" "BONUS_CITY_DWARF" }
       tribe = DARK_ELF
@@ -1756,6 +1791,7 @@
   
   "BONUS_GOBLIN_KING"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CASTLE2 "BONUS_TAINTED"
       tribe = BANDIT
@@ -1800,6 +1836,7 @@
   
   "BONUS_GOBLIN_ENTRY"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CASTLE2 "BONUS_MUD"
       tribe = BANDIT
@@ -1864,6 +1901,7 @@
   
   "BONUS_GOBLIN_DUNGEON1"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = BANDIT
@@ -1902,6 +1940,7 @@
   
   "BONUS_GOBLIN_DUNGEON2"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = BANDIT
@@ -2031,8 +2070,10 @@
         }
       }
     }
-    "BONUS_FAIRY_TOWER_FLOOR"
-    {
+
+"BONUS_FAIRY_TOWER_FLOOR"
+{
+    biome = "FOREST"
     settlement = {
     type = Predefined { "fairy_tower_floor" "BONUS_FAIRY_BRICK" }
     tribe = ELF
@@ -2090,7 +2131,7 @@
 
 "BONUS_TOWER_OF_ILLUSIA"
 {
-  biomes = { "BONUS_ENCHANTED_FOREST" }
+  biome = "BONUS_ENCHANTED_FOREST"
   settlement = {
     type = Predefined { "fairy_tower_top" "BONUS_FAIRY_BRICK" }
     tribe = ELF
@@ -2160,7 +2201,7 @@
   }
   
 "BONUS_ORC_MAIN" {
-  biomes = { "BONUS_ORC_CLAN"} 
+  biome = "BONUS_ORC_CLAN"
   settlement = {
     type = Predefined { "castle32" "BONUS_CITY_BRICK" }
     tribe = GREENSKIN
@@ -2200,6 +2241,7 @@
 }
 
 "BONUS_ORC_MINOR" {
+  biome = "FOREST"
   settlement = {
     type = Predefined { "castle1" "BONUS_WOOD_CITY_CASTLE" }
     tribe = GREENSKIN
@@ -2237,6 +2279,7 @@
 
 "BONUS_ORC_CITY_SHOP"
   {
+    biome = "FOREST"
     settlement = {
     type = Builtin VILLAGE "WOOD"
     tribe = GREENSKIN
@@ -2260,6 +2303,7 @@
   
 "BONUS_ORC_CITY_GROUP"
   {
+    biome = "FOREST"
     discoverable = false
     settlement = {
     type = Builtin VILLAGE "WOOD"
@@ -2284,6 +2328,7 @@
   
 "BONUS_HELL_DUNGEON1"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -2318,8 +2363,8 @@
   }
   
 "BONUS_CENTAURS"
-  {
-  biomes = { "BONUS_CENTAUR_PALACE" } 
+{
+  biome = "BONUS_CENTAUR_PALACE"
   settlement = {
     type = Predefined { "castle48" "BONUS_CITY_BRICK" } 
     tribe = HUMAN
@@ -2370,6 +2415,7 @@
   
 "BONUS_AMAZONS"
   {
+    biome = "FOREST"
     settlement = {
       type = Builtin VILLAGE "WOOD"
       inhabitants = {
@@ -2411,6 +2457,7 @@
   
 "BONUS_VULTURE_ABOMINATIONS"
   {
+    biome = "MOUNTAIN"
     settlement = { 
       type = Builtin VILLAGE "DUNGEON"
       tribe = MONSTER
@@ -2452,6 +2499,7 @@
   
 "BONUS_IMPRISONED_FAIRY"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CAVE "DUNGEON"
       inhabitants = {
@@ -2464,6 +2512,7 @@
   
 "BONUS_OCEAN_PORTAL"
   {
+    biome = "MOUNTAIN"
     settlement = { 
       type = Builtin CAVE "BONUS_OCEAN_CAVE"
       inhabitants = {
@@ -2493,16 +2542,15 @@
   
 "BONUS_UNDEAD_SETTLEMENT"
   {
+    biome = "FOREST"
     settlement = {
       type = Builtin VILLAGE "BRICK"
       tribe = MONSTER
       inhabitants = {
         leader = {
         id = { "BONUS_NECROMANCER" }
-          baseLevelIncrease = {
-            MELEE 3
-            SPELL 7
-          } }
+			combatExperience = 7
+		}
         fighters = {
           count = {12 16}
           all = {
@@ -2540,6 +2588,7 @@
   
 "BONUS_RAT_VILLAGE"
   {
+    biome = "FOREST"
     settlement = {
       type = Builtin SMALL_VILLAGE "BONUS_MUD"
       tribe = HUMAN
@@ -2571,7 +2620,7 @@
   
 "BONUS_DRAGONS"
   {
-    biomes = { "BONUS_VOLCANIC" }  
+    biome = "BONUS_VOLCANIC"
     settlement = {
       type = Builtin CASTLE2 "BONUS_VOLCANIC_BRICK"
       tribe = BANDIT
@@ -2618,6 +2667,7 @@
   
   "BONUS_SHADOW_TEMPLE"
   {
+    biome = "FOREST"
     settlement = {
       type = Builtin TEMPLE "BONUS_SHADOW_CITY_GRASS"
       tribe = HOSTILE
@@ -2633,7 +2683,7 @@
   
   "BONUS_HELL_PORTAL"
   {
-    biomes = { "BONUS_VOLCANIC" }  
+    biome = "BONUS_VOLCANIC"
     settlement = {
       type = Builtin CAVE "BONUS_VOLCANIC_BRICK"
       tribe = BANDIT
@@ -2695,7 +2745,7 @@
   
   "BONUS_RATMEN"
   {
-    biomes = { "BONUS_DARK_SWAMP" }
+    biome = "BONUS_DARK_SWAMP"
     settlement = {
       type = Builtin MINETOWN "BONUS_MUD"
       tribe = HUMAN
@@ -2806,6 +2856,7 @@
   
   "BONUS_GORGON_CULT"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin FORREST_COTTAGE "WOOD"
       tribe = MONSTER
@@ -3012,7 +3063,7 @@
 
  "BONUS_KING"
   {
-  biomes = { "BONUS_PALACE" }  
+  biome = "BONUS_PALACE" 
   settlement = {
     tribe = HUMAN
     type = Predefined { "castle64" "BONUS_CITY_BRICK" }
@@ -3111,7 +3162,7 @@
 
 "BONUS_SHADOW_KING" inherit "BONUS_KING"
 {
-  biomes = { "BONUS_SHADOW_PALACE" }  
+  biome = "BONUS_SHADOW_PALACE"
   settlement = append {
   type = Predefined { "castle64" "BONUS_SHADOW_CITY_BRICK" }
     tribe = DARK_ELF #Allied to dark elves and dark keepers
@@ -3159,7 +3210,7 @@
 
 "BONUS_OMALLY_BANDITS"
   {
-    biomes = { "BONUS_CITY_RUINS" }  
+    biome = "BONUS_CITY_RUINS"
     settlement = {
     tribe = BANDIT
     type = Predefined { "ruins70" "BONUS_BRICK_RUINS" }
@@ -3527,33 +3578,132 @@
   #Define 100 levels of dungeons with increasing difficulty based on the base classes available.
   #This ensures that there is a continuous stream of enemies available getting gradually harder.  
       
-  "BONUS_ROYAL_DUNGEON1" inherit "BONUS_ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 1 } } } } }
-  "BONUS_ROYAL_DUNGEON4" inherit "BONUS_ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 7 } } } } }
-  "BONUS_ROYAL_DUNGEON8" inherit "BONUS_ROYAL_DUNGEON_TYPE_2" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 7 } } } } }
-  "BONUS_ROYAL_DUNGEON12" inherit "BONUS_ROYAL_DUNGEON_TYPE_2a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 13 } } } } }
-  "BONUS_ROYAL_DUNGEON16" inherit "BONUS_ROYAL_DUNGEON_TYPE_2b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 17 } } } } }
-  "BONUS_ROYAL_DUNGEON20" inherit "BONUS_ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 1 } } } } }
-  "BONUS_ROYAL_DUNGEON24" inherit "BONUS_ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 9 } } } } }
-  "BONUS_ROYAL_DUNGEON28" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 23 } } } } }
-  "BONUS_ROYAL_DUNGEON32" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 29 } } } } }
-  "BONUS_ROYAL_DUNGEON36" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 33 } } } } }
-  "BONUS_ROYAL_DUNGEON40" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 37 } } } } }
-  "BONUS_ROYAL_DUNGEON44" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 41 } } } } }
-  "BONUS_ROYAL_DUNGEON48" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 45 } } } } }
-  "BONUS_ROYAL_DUNGEON52" inherit "BONUS_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 49 } } } } }
-  "BONUS_ROYAL_DUNGEON56" inherit "BONUS_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 53 } } } } }
-  "BONUS_ROYAL_DUNGEON60" inherit "BONUS_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 57 } } } } }
-  "BONUS_ROYAL_DUNGEON64" inherit "BONUS_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 61 } } } } }
-  "BONUS_ROYAL_DUNGEON68" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 65 } } } } }
-  "BONUS_ROYAL_DUNGEON72" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 69 } } } } }
-  "BONUS_ROYAL_DUNGEON76" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 73 } } } } }
-  "BONUS_ROYAL_DUNGEON80" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 77 } } } } }
-  "BONUS_ROYAL_DUNGEON84" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 81 } } } } }
-  "BONUS_ROYAL_DUNGEON88" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 85 } } } } }
-  "BONUS_ROYAL_DUNGEON92" inherit "BONUS_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 92 } } } } }
-  "BONUS_ROYAL_DUNGEON96" inherit "BONUS_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 96 } } } } }
-  "BONUS_ROYAL_DUNGEON99" inherit "BONUS_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 125 } } } } }
+  "BONUS_ROYAL_DUNGEON1" inherit "BONUS_ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { 			combatExperience = 1 } } } }
+  "BONUS_ROYAL_DUNGEON4" inherit "BONUS_ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { combatExperience = 7 } } } }
+  "BONUS_ROYAL_DUNGEON8" inherit "BONUS_ROYAL_DUNGEON_TYPE_2" { settlement = append { inhabitants = append { fighters = append { combatExperience = 7 } } } }
+  "BONUS_ROYAL_DUNGEON12" inherit "BONUS_ROYAL_DUNGEON_TYPE_2a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 13 } } } }
+  "BONUS_ROYAL_DUNGEON16" inherit "BONUS_ROYAL_DUNGEON_TYPE_2b" { settlement = append { inhabitants = append { fighters = append { combatExperience = 17 } } } }
+  "BONUS_ROYAL_DUNGEON20" inherit "BONUS_ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { combatExperience = 1 } } } }
+  "BONUS_ROYAL_DUNGEON24" inherit "BONUS_ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { combatExperience = 9 } } } }
+  "BONUS_ROYAL_DUNGEON28" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 23 } } } }
+  "BONUS_ROYAL_DUNGEON32" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 29 } } } }
+  "BONUS_ROYAL_DUNGEON36" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 33 } } } }
+  "BONUS_ROYAL_DUNGEON40" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 37 } } } }
+  "BONUS_ROYAL_DUNGEON44" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 41 } } } }
+  "BONUS_ROYAL_DUNGEON48" inherit "BONUS_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 45 } } } }
+  "BONUS_ROYAL_DUNGEON52" inherit "BONUS_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { combatExperience = 49 } } } }
+  "BONUS_ROYAL_DUNGEON56" inherit "BONUS_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { combatExperience = 53 } } } }
+  "BONUS_ROYAL_DUNGEON60" inherit "BONUS_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { combatExperience = 57 } } } }
+  "BONUS_ROYAL_DUNGEON64" inherit "BONUS_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { combatExperience = 61 } } } }
+  "BONUS_ROYAL_DUNGEON68" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 65 } } } }
+  "BONUS_ROYAL_DUNGEON72" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 69 } } } }
+  "BONUS_ROYAL_DUNGEON76" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 73 } } } }
+  "BONUS_ROYAL_DUNGEON80" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 77 } } } }
+  "BONUS_ROYAL_DUNGEON84" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 81 } } } }
+  "BONUS_ROYAL_DUNGEON88" inherit "BONUS_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 85 } } } }
+  "BONUS_ROYAL_DUNGEON92" inherit "BONUS_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { combatExperience = 92 } } } }
+  "BONUS_ROYAL_DUNGEON96" inherit "BONUS_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { combatExperience = 96 } } } }
+  "BONUS_ROYAL_DUNGEON99" inherit "BONUS_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { combatExperience = 125 } } } }
 ####################################################################
+
+###
+#CSeven trying to make fairies more commonplace (feels like they're Illusia, rescue the Demon Fairy from the Abominations, or None)
+#Fairies get pretty powerful if converted, so no need to have them repopulate
+###
+
+"BONUS_VEN_FAIRIES" #shamelessly rip off vanilla Adamantine Golems, but helps with syntax.
+#Took until z11 to have these folks show up in testing, but they were only eligible to show up at z5 and below.
+#(Further testing demonstrated that 3 piles per appearance is overkill.)
+{
+  settlement = {
+    type = Builtin VAULT "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {2 3}
+        all = {
+		1 "BONUS_DARK_FAIRY"
+		3 "BONUS_EARTH_FAIRY"
+		}
+      }
+    }
+    tribe = ANT
+    race = "underground fairies"
+    dontConnectCave = true
+    surroundWithResources = 2
+    extraResources = "VENORACK_ORE"
+	}
+	
+	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 30% chance to go Hostile)
+	behaviour = {
+	minPopulation = 0
+    	minTeamSize = 1
+	attackBehaviour = StealGold
+    	ransom = 0.5 80
+	}
+}
+
+"BONUS_ADOXIUM_FAIRIES"
+{
+settlement = {
+    type = Builtin VAULT "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {3 5}
+        all = {
+		2 "BONUS_DARK_FAIRY" #Living next to all this adoxium hasn't done the poor fairy much good
+		3 "BONUS_EARTH_FAIRY"
+		1 "BONUS_DEMON_FAIRY" #Living next to all this adoxium REALLY hasn't done this poor fairy much good at all!
+		1 "BONUS_MAGIC_FAIRY" #Adoxium may be named for the Evil God, but it IS good for magic...
+		}
+      }
+    }
+    tribe = ANT
+    race = "underground fairies"
+    dontConnectCave = true
+    surroundWithResources = 2
+    extraResources = "ADOXIUM_ORE"
+	}
+	
+	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 50% chance to go Hostile)
+	behaviour = {
+	minPopulation = 0
+    	minTeamSize = 1
+	attackBehaviour = StealGold
+    	ransom = 0.5 80
+	}
+
+}
+
+"BONUS_INF_FAIRIES"
+{
+settlement = {
+    type = Builtin VAULT "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {3 5}
+        all = {
+		3 "BONUS_FIRE_FAIRY" #It's burny metal! Yay!
+		1 "BONUS_EARTH_FAIRY"
+		}
+      }
+    }
+    tribe = ANT
+    race = "underground fairies"
+    dontConnectCave = true
+    surroundWithResources = 2
+    extraResources = "INFERNITE_ORE"
+	}
+	
+	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 10% chance to go Hostile)
+	behaviour = {
+	minPopulation = 0
+    	minTeamSize = 1
+	attackBehaviour = StealGold
+    ransom = 0.5 80
+	}
+
+}
+
 
 ###########################
 #Ideas for future villains#
