@@ -214,18 +214,18 @@
     gender = FEMALE
     attr = {
 	  DAMAGE 10
-      DEFENSE 10
-      SPELL_DAMAGE 35
-	  LABORATORY 30
+      DEFENSE 50
+      SPELL_DAMAGE 50
+	  PARRY 30
     }
 	spells = { "magic missile" }
     spellSchools = { "adventurer ancient magic" "adventurer fire wizard" }
     maxLevelIncrease = {
-      SPELL 16
+      SPELL 100
+	  MELEE 20
     }
     permanentEffects = {
       MAGIC_RESISTANCE 1
-	  RIDER 1
     }
     chatReactionFriendly = "rambles some philosophy about the price of magic"
     chatReactionHostile  = "\"The war shall be won!\""
@@ -251,10 +251,9 @@
       type = Humanoid LARGE
     }
     attr = {
-      DAMAGE 25
-      DEFENSE 25
-	  WORKSHOP 25
-	  FORGE 25
+      DAMAGE 50
+      DEFENSE 50
+	  PARRY 50
     }
 
     spellSchools = { "adventurer fighter" }
@@ -263,11 +262,10 @@
 	  "damage bonus"
     }
     maxLevelIncrease = {
-      MELEE 13
+      MELEE 500
     }
     permanentEffects = {
       MELEE_RESISTANCE 1
-	  RIDER 1
     }
     chatReactionFriendly = "speaks of bringing justice to all evil"
     chatReactionHostile  = "\"We are taking you down!\""
@@ -286,14 +284,13 @@
       type = Humanoid SMALL
       }
     attr = {
-	  DAMAGE 25
-      RANGED_DAMAGE 25
-      DEFENSE 25
-	  WORKSHOP 30
+	  DAMAGE 70
+      RANGED_DAMAGE 70
+      DEFENSE 30
       }
     maxLevelIncrease = {
-      ARCHERY 20
-      MELEE 3
+      ARCHERY 500
+      MELEE 500
 	  SPELL 7
       }
     spellSchools = { "adventurer dark stealth" }
@@ -304,7 +301,6 @@
       AMBUSH_SKILL 1
       SWIMMING_SKILL 1
       DISARM_TRAPS_SKILL 1
-	  RIDER 1
       }
     chatReactionFriendly = "chats about when she robbed a shop"
     chatReactionHostile  = "\"A knife awaits your back my friend!\""
@@ -312,27 +308,28 @@
       inventory = {
         {  "Bow" }
         { type =  "Knife" prefixChance = 1}
-        { Amulet RANGED_RESISTANCE 1 1 0.05}
-        { Amulet AMBUSH_SKILL 1 1 0.05}
-        { Amulet DISARM_TRAPS_SKILL 1 1 0.05}
-        { Amulet ELF_VISION 1 1 0.05}
-        { Amulet NIGHT_VISION 1 1 0.05}
-        { Amulet SWIMMING_SKILL 1 1 0.05}
+        { Amulet RANGED_RESISTANCE 1 1}
+        { Amulet AMBUSH_SKILL 1 1}
+        { Amulet DISARM_TRAPS_SKILL 1 1}
+        { Amulet ELF_VISION 1 1}
+        { Amulet NIGHT_VISION 1 1}
+        { Amulet SWIMMING_SKILL 1 1}
       }
   }
 
   "ADVENTURERS_WIZARD_ADVENTURER" inherit "ADVENTURERS_WIZARD_HERO"
     {
     maxLevelIncrease = {
-      SPELL 20 }
+      SPELL 500
+	  }
     }
 	
   "ADVENTURERS_WARRIOR_ADVENTURER"
     {
       viewId = { "warrior_adventurer" }
       attr = {
-        DAMAGE 20
-        DEFENSE 24 
+        DAMAGE 50
+        DEFENSE 50
       }
       body = {
         type = Humanoid LARGE
@@ -344,10 +341,9 @@
        }
       permanentEffects = {
         AMBUSH_SKILL 1
-		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 18
+        MELEE 500
         SPELL 12
       }
       hatedByEffect = HATE_HUMANS
@@ -376,9 +372,9 @@
     {
       viewId = { "mage_adventurer" }
       attr = {
-        DAMAGE 15
-        DEFENSE 20
-		SPELL_DAMAGE 20
+        DAMAGE 50
+        DEFENSE 50
+		SPELL_DAMAGE 50
       }
       body = {
         type = Humanoid LARGE
@@ -390,10 +386,9 @@
        }
       permanentEffects = {
         AMBUSH_SKILL 1
-		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 7
+    	MELEE 500
         SPELL 24
       }
       hatedByEffect = HATE_HUMANS
@@ -427,9 +422,9 @@
     {
       viewId = { "ranger_adventurer" }
       attr = {
-        DAMAGE 15
+        DAMAGE 20
         DEFENSE 20
-		RANGED_DAMAGE 12
+		RANGED_DAMAGE 100
       }
       body = {
         type = Humanoid LARGE
@@ -442,11 +437,10 @@
       permanentEffects = {
         AMBUSH_SKILL 1
 		ELF_VISION 1
-		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 12
-        ARCHERY 20
+        MELEE 20
+        ARCHERY 500
       }
       hatedByEffect = HATE_HUMANS
       spellSchools = { "adventurer fighter" }
@@ -478,8 +472,8 @@
     {
       viewId = { "barbarian" }
       attr = {
-        DAMAGE 26
-        DEFENSE 18 
+        DAMAGE 80
+        DEFENSE 30
       }
       body = {
         type = Humanoid LARGE
@@ -491,10 +485,9 @@
        }
       permanentEffects = {
         REGENERATION 1
-		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 30
+        MELEE 500
       }
       hatedByEffect = HATE_HUMANS
       spellSchools = { "adventurer fighter" "adventurer barbarian" }
@@ -523,10 +516,10 @@
     {
       viewId = { "assassin" }
       attr = {
-        DAMAGE 30
-        DEFENSE 15
-		RANGED_DAMAGE 20
-		SPELL_DAMAGE 20
+        DAMAGE 75
+        DEFENSE 35
+		RANGED_DAMAGE 40
+		SPELL_DAMAGE 40
       }
       body = {
         type = Humanoid LARGE
@@ -540,11 +533,10 @@
         AMBUSH_SKILL 1
         SWIMMING_SKILL 1
         DISARM_TRAPS_SKILL 1
-		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 12
-		ARCHERY 12
+        MELEE 500
+		ARCHERY 500
 		SPELL 12
       }
       spellSchools = { "adventurer assassination" "adventurer assassin magic" "adventurer assassin star arts" }
@@ -557,6 +549,7 @@
 		{  "LeatherArmor"}
 		{  "LeatherGloves"}
         {  "LeatherBoots"}
+        {  "WoodenStaff"}		
         {  "GoldPiece" 26 36 }
       }
     }
@@ -577,10 +570,10 @@
       FEMALE { "assassin_female" }
 	}
       attr = {
-        DAMAGE 40
-        DEFENSE 28
-		RANGED_DAMAGE 40
-		SPELL_DAMAGE 40
+        DAMAGE 80
+        DEFENSE 20
+		RANGED_DAMAGE 100
+		SPELL_DAMAGE 100
       }
       body = {
         type = Humanoid LARGE
@@ -605,18 +598,15 @@
       FEMALE { "assassin_female" }
 	}
       attr = {
-        DAMAGE 52
-        DEFENSE 36
-		RANGED_DAMAGE 52
-		SPELL_DAMAGE 52
+        DAMAGE 100
+        DEFENSE 20
+		RANGED_DAMAGE 100
+		SPELL_DAMAGE 100
       }
       body = {
         type = Humanoid LARGE
 		material = SPIRIT
       }
-	 permanentEffects = {
-		RIDER 1
-	  }
       name = {
         name = "shadow clone"
       }
@@ -642,14 +632,14 @@
         FAST_TRAINING 1
       }
       maxLevelIncrease = {
-        MELEE 12
+        MELEE 500
       }
 	  spells = { "adventurer spin web" "adventurer dig pit" "adventurer mud wall" }
       spellSchools = { "adventurer spider" }
       gender = FEMALE
       attr = {
-        DAMAGE 30
-        DEFENSE 30
+        DAMAGE 50
+        DEFENSE 50
       }
     }
   "ADVENTURERS_CLERIC_HERO"
@@ -665,9 +655,8 @@
     }
     attr = {
 	  DAMAGE 5
-      SPELL_DAMAGE 15
-      DEFENSE 40
-	  JEWELER 30
+      SPELL_DAMAGE 80
+      DEFENSE 80
     }
     spellSchools = { "adventurer healer" "adventurer high priest" }
     spells = {
@@ -675,11 +664,10 @@
     }
     permanentEffects = {
       RANGED_RESISTANCE 1
-	  RIDER 1
     }
     maxLevelIncrease = {
-      SPELL 15
-	  MELEE 3
+      SPELL 500
+	  MELEE 500
     }
     chatReactionFriendly = "talks at length about his goddess"
     chatReactionHostile  = "\"Your afterlife will be horrible!\""
@@ -697,9 +685,9 @@
     {
       viewId = { "necromancer" }
       attr = {
-        DAMAGE 16
-        DEFENSE 35
-        SPELL_DAMAGE 30 
+        DAMAGE 20
+        DEFENSE 70
+        SPELL_DAMAGE 70
       }
       body = {
         type = Humanoid LARGE
@@ -709,7 +697,7 @@
         name = "necromancer"
       }
       maxLevelIncrease = {
-        MELEE 3
+        MELEE 500
         SPELL 12
       }
       permanentEffects = {
@@ -717,7 +705,6 @@
         POISON_RESISTANT 1
         SLEEP_RESISTANT 1
         DARKNESS_SOURCE 1
-		RIDER 1
       }
       spellSchools = { "adventurer necromancy" }
       spells = { "deception" "adventurer summon skeletons" }
