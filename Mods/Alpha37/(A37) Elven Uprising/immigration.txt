@@ -99,6 +99,41 @@
          
       }
     }
+	{
+      ids = { "FE_ELF_ARCHER" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+      }
+      specialTraits = {
+	    { 0.01 { CompanionInfo 1 true none 0.1 { "WOLF" }}}
+        { 0.15 { SpecialAttr RANGED_DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+        { 0.05 { SpecialAttr RANGED_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+        { 0.05 { Lasting { RANGED_VULNERABILITY } }}
+        { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+        { 0.02 { Lasting { HATE_DWARVES } }}
+		{ 0.02 { Lasting { HATE_GREENSKINS } }}
+        { 0.02 { Lasting { HATE_HUMANS } }}
+        { 0.10 { ExtraTraining ARCHERY 2}}
+		{ 0.05 { ExtraTraining ARCHERY 4}}
+        { 0.10 { ExtraTraining MELEE 2}}
+		{ 0.05 { ExtraTraining MELEE 4}}
+        { 0.03 { Lasting { BAD_BREATH } }}
+		{ 0.03 { AttrBonus RANGED_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+	{
+      ids = { "FE_WEREWOLF_ELF" }
+      traits = { FIGHTER }
+      frequency = 0.15
+      requirements = {
+	    { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+        { 0.0 TechId "Blessing of the full moon" }
+		{ 0.0 MinTurnRequirement 2000 }
+      }
+    }
     {
       ids = { "FE_DRUID" }
       traits = { FIGHTER }
@@ -123,31 +158,6 @@
          { 0.02 { Lasting { HATE_GREENSKINS } }}
 		 { 0.05 { Lasting { HATE_DWARVES } }}
 		 { 0.03 { Lasting { BAD_BREATH } }}
-      }
-    }
-    {
-      ids = { "FE_ELF_ARCHER" }
-      traits = { FIGHTER }
-      frequency = 0.5
-      requirements = {
-        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
-      }
-      specialTraits = {
-	    { 0.01 { CompanionInfo 1 true none 0.1 { "WOLF" }}}
-        { 0.15 { SpecialAttr RANGED_DAMAGE 8 HatedBy HATE_DRAGONS }}
-        { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
-        { 0.05 { SpecialAttr RANGED_DAMAGE 6 Name "when riding steed" Attacker Rider }}
-        { 0.05 { Lasting { RANGED_VULNERABILITY } }}
-        { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
-        { 0.02 { Lasting { HATE_DWARVES } }}
-		{ 0.02 { Lasting { HATE_GREENSKINS } }}
-        { 0.02 { Lasting { HATE_HUMANS } }}
-        { 0.10 { ExtraTraining ARCHERY 2}}
-		{ 0.05 { ExtraTraining ARCHERY 4}}
-        { 0.10 { ExtraTraining MELEE 2}}
-		{ 0.05 { ExtraTraining MELEE 4}}
-        { 0.03 { Lasting { BAD_BREATH } }}
-		{ 0.03 { AttrBonus RANGED_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
       }
     }
     {
@@ -214,23 +224,31 @@
         { 0.0 CostInfo "DEMON_PIETY" 900 }
       }
     }
-	{
-      ids = { "FE_WEREWOLF_ELF" }
-      traits = { FIGHTER }
-      frequency = 0.15
-      requirements = {
-	    { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
-        { 0.0 TechId "Blessing of the full moon" }
-		{ 0.0 MinTurnRequirement 2000 }
-      }
-    }
     {
-      ids = { "FE_GREAT_WOLF" }
+      ids = { "FE_ASCENDED_DRUID" }
       traits = { FIGHTER }
-      frequency = 0.15
+      frequency = 0.3
       requirements = {
-        { 0.0 TechId "Blessing of the full moon" }
-		{ 0.0 MinTurnRequirement 2000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_IRON"}}
+        { 0.3 AttractionInfo 3 {FurnitureType "FE_WILDS_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 1200 }
+      }
+      specialTraits = {
+         { 0.15 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 4 AttrBonus DEFENSE -4}}
+         { 0.01 { CompanionInfo 1 true none 0.1 { "WOLF" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.03 { Lasting { RIDER } SpecialAttr SPELL_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.10 { ExtraTraining SPELL 2}}
+		 { 0.05 { ExtraTraining SPELL 4}}
+         { 0.05 { AttrBonus LABORATORY 20}}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.02 { Lasting { HATE_GREENSKINS } }}
+		 { 0.05 { Lasting { HATE_DWARVES } }}
+		 { 0.03 { Lasting { BAD_BREATH } }}
       }
     }
     {
@@ -241,13 +259,21 @@
       }
 	}
     {
+      ids = { "FE_GREAT_WOLF" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 0.15
+      requirements = {
+        { 0.0 TechId "Blessing of the full moon" }
+		{ 0.0 MinTurnRequirement 2000 }
+      }
+    }
+    {
       ids = { "FE_DEER" "FE_DOE" }
       traits = { NO_LIMIT }
       requirements = {
         { 1.0 CostInfo "GOLD" 30 }
       }
     }
-	
     {
       ids = { "TEUTON" }
       traits = { FIGHTER }
@@ -302,6 +328,32 @@
 		 { 0.01 { Lasting { ENTERTAINER } }}
       }
     }
+	{
+      ids = { "DE_GLADIATOR" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "DOG" }}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_DWARVES }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { ELF_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.02 { Lasting { HATE_GREENSKINS } }}
+         { 0.02 { Lasting { HATE_DWARVES } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
     {
       ids = { "DE_SOLIDER" }
       traits = { FIGHTER }
@@ -328,31 +380,35 @@
          { 0.03 { Lasting { BAD_BREATH } }}
          { 0.01 { Lasting { ENTERTAINER } }}
       }
-    }
-    {
-      ids = { "DE_MYSTIC" }
+    }    
+	{
+      ids = { "DE_BLADE_DANCER" }
       traits = { FIGHTER }
-      frequency = 0.3
+      frequency = 0.2
       requirements = {
-        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
-        { 0.0 MinTurnRequirement 500 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
       }
       specialTraits = {
          { 0.01 { CompanionInfo 1 true none 0.1 { "DOG" }}}
-         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
-         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
-         { 0.03 { Lasting { RIDER } SpecialAttr SPELL_DAMAGE 6 Name "when riding steed" Attacker Rider }}
-         { 0.10 { ExtraTraining SPELL 4}}
-         { 0.05 { AttrBonus LABORATORY 20 }}
-         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
-         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { ELF_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
          { 0.02 { Lasting { HATE_GREENSKINS } }}
          { 0.02 { Lasting { HATE_HUMANS } }}
-		 { 0.05 { Lasting { ELF_VISION } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
          { 0.01 { Lasting { ENTERTAINER } }}
       }
     }
-    {
+	{
       ids = { "DE_ARCHER" }
       traits = { FIGHTER }
       frequency = 0.3
@@ -379,11 +435,134 @@
       }
     }
     {
-      ids = { "DE_GLADIATOR" }
+      ids = { "DE_MYSTIC" }
       traits = { FIGHTER }
+      frequency = 0.3
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "DOG" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.03 { Lasting { RIDER } SpecialAttr SPELL_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.15 { ExtraTraining SPELL 1}}
+         { 0.10 { ExtraTraining SPELL 2}}
+         { 0.07 { ExtraTraining SPELL 3}}
+         { 0.05 { ExtraTraining SPELL 4}}
+         { 0.05 { AttrBonus LABORATORY 20 }}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_GREENSKINS } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+		 { 0.05 { Lasting { ELF_VISION } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+	{
+      ids = { "DE_SUMMONER" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_IRON" FurnitureType "DEMON_SHRINE"}}
+        { 0.0 TechId "demonology" }
+        { 0.0 MinTurnRequirement 1500 }
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "DOG" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.03 { Lasting { RIDER } SpecialAttr SPELL_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.15 { ExtraTraining SPELL 1}}
+         { 0.10 { ExtraTraining SPELL 2}}
+         { 0.07 { ExtraTraining SPELL 3}}
+         { 0.05 { ExtraTraining SPELL 4}}
+         { 0.05 { AttrBonus LABORATORY 20 }}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_GREENSKINS } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+		 { 0.05 { Lasting { ELF_VISION } }}
+         { 0.01 { Lasting { COPULATION_SKILL } }}
+      }
+    }
+    {
+      ids = { "DE_DEMON_IMP_SUMMON" }
+      traits = { NO_EQUIPMENT NO_LIMIT NO_LEISURE_ZONE FIGHTER }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+      requirements = {
+        { 0.0 TechId "demonology" }
+        { 0.0 CostInfo "DEMON_PIETY" 250 }
+      }
+    }
+    {
+      ids = { "SUCCUBUS" }
+      traits = { NO_EQUIPMENT NO_LIMIT NO_LEISURE_ZONE FIGHTER }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+      requirements = {
+        { 0.0 TechId "demonology" }
+        { 0.0 CostInfo "DEMON_PIETY" 500 }
+      }
+    }
+	{
+      ids = { "DE_DEMON_MINION_SUMMON" }
+      traits = { NO_EQUIPMENT NO_LIMIT NO_LEISURE_ZONE FIGHTER }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+      requirements = {
+        { 0.0 TechId "demonology" }
+        { 0.0 CostInfo "DEMON_PIETY" 1000 }
+      }
+    }
+    DarkRecruits()
+}
+
+
+"he_peseants"
+{
+    {
+      ids = { "HE_ELF_PEASANT" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      keybinding = CREATE_IMP
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1 ExponentialCost "GOLD" 30 5 4 }
+      }
+	  specialTraits = {
+         { 0.05 { CompanionInfo 1 true none 0.1 { "HE_CHILD" }}}
+		 { 0.05 { Lasting { ENTERTAINER } }}
+		 }
+    }
+}
+
+"he_elves"
+{
+    {
+      ids = { "HE_CRAFTSMAN" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
       frequency = 0.7
       requirements = {
-        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
+      }
+      specialTraits = {
+         { 0.05 { OneOfTraits { Lasting { FAST_CRAFTING } Lasting { SLOW_CRAFTING } } }}
+         { 0.03 { AttrBonus WORKSHOP 20 Lasting { INSANITY } }}
+         { 0.03 { AttrBonus FORGE 20 Lasting { INSANITY } }}
+		 { 0.03 { AttrBonus JEWELER 20 Lasting { INSANITY } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+		 { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "HE_LEGIONARE" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
       }
       specialTraits = {
          { 0.01 { CompanionInfo 1 true none 0.1 { "DOG" }}}
@@ -402,6 +581,55 @@
          { 0.02 { Lasting { HATE_GREENSKINS } }}
          { 0.02 { Lasting { HATE_HUMANS } }}
          { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "HE_LIGIONARE_CROSSBOWMAN" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      requirements = {
+        { 0.0 MinTurnRequirement 2000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.3 AttractionInfo 1 {ItemIndex RANGED_WEAPON}}
+      }
+      specialTraits = {
+	     { 0.01 { CompanionInfo 1 true none 0.1 { "DOG" }}}
+         { 0.02 { SpecialAttr RANGED_DAMAGE 20 CreatureStatus CIVILIAN }}
+         { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.05 { Lasting { RANGED_VULNERABILITY } }}
+         { 0.05 { SpecialAttr RANGED_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.02 { Lasting { HATE_GREENSKINS } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.05 { Lasting { BAD_BREATH } }}
+		 { 0.05 { Lasting { ELF_VISION } }}
+      }
+    }
+    {
+      ids = { "DE_MYSTIC" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo 1 true none 0.1 { "DOG" }}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.03 { Lasting { RIDER } SpecialAttr SPELL_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.10 { ExtraTraining SPELL 4}}
+         { 0.05 { AttrBonus LABORATORY 20 }}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_GREENSKINS } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+		 { 0.05 { Lasting { ELF_VISION } }}
          { 0.01 { Lasting { ENTERTAINER } }}
       }
     }

@@ -1,0 +1,103 @@
+"NIPPON_VILLAGE"
+{
+  settlement = {
+    type = RandomLayout { "nippon_village" { 25 25 } "nippon_shrine"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = {{"NIPPON_PESEANT"}}
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "NIPPON_PESEANT"
+        }
+      }
+      civilians = {
+        count = {3 7}
+        all = {
+          1 "NIPPON_PESEANT_CHILD_FEMALE"
+          1 "NIPPON_PESEANT_CHILD_MALE"
+          1 "DONKEY_STEED"
+          1 "COW"
+          1 "PIG"
+          1 "GOAT_STEED"
+        }
+      }
+    }
+    race = "humans"
+    stockpiles = {
+      { "gold" 50 "TREASURE_CHEST" }
+    }
+    crops = Crops()
+    furniture = "roomFurniture"
+  }
+  config = {
+    alwaysMount = true
+  }
+}
+
+
+"NIPPON_BUDDHIST_GOOD"
+{
+  settlement = {
+    type = RandomLayout { "nippon_buddhist" { 25 25 } "nippon_shrine"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "NIPPON_BENKEI_LEADER" } }
+      fighters = {
+        count = {6 9}
+        all = {
+          1 "NIPPON_BENKEI"
+        }
+      }
+      civilians = {
+        count = {2 5}
+        uniques = { "HORSE" }
+        all = {
+          1 "NIPPON_MONK"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 26
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 7
+    minTeamSize = 10
+    ambushChance = 0.05
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"NIPPON_BENKEI"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"NIPPON_MONK"}
+      traits = {}
+      frequency = 1
+    }
+  }
+  }
+}

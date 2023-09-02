@@ -84,7 +84,7 @@
 	  RIDER 1
     }
     maxLevelIncrease = {
-      ARCHERY 7
+      ARCHERY 8
     }
 	spellSchools = { "archer" }
     name = {
@@ -123,8 +123,8 @@
 	  DISARM_TRAPS_SKILL 1
     }
     maxLevelIncrease = {
-      ARCHERY 7
-	  SPELL 7
+      ARCHERY 8
+	  SPELL 8
     }
 	spellSchools = { "archer" "hunt lord" }
 	companions = {2 true none 0.01 { "WOLF" }}
@@ -159,7 +159,7 @@
 	  RIDER 1
     }
     maxLevelIncrease = {
-      MELEE 7
+      MELEE 8
 
     }
 	spellSchools = { "fighter" }
@@ -204,6 +204,7 @@
   {
     viewId = { "fe_druid" }
     attr = {
+      DAMAGE 8
       DEFENSE 10
       SPELL_DAMAGE 20 
 	  LABORATORY 35
@@ -221,7 +222,7 @@
     }
 	spellSchools = { "druid" }
     maxLevelIncrease = {
-      SPELL 12
+      SPELL 8
     }
     name = {
       name = "druid"
@@ -233,6 +234,37 @@
       { type = "WoodenStaff" prefixChance = 1 }
       { "LeatherArmor"}
       { "GoldPiece" 80 120 }
+    }
+  }
+ 
+"FE_ASCENDED_DRUID"
+  {
+    viewId = { "fe_ascended_druid" }
+    body = {
+      type = HumanoidLike HUGE
+      material = WOOD
+    }
+    attr = {
+      DAMAGE 35
+      DEFENSE 40
+      SPELL_DAMAGE 20 
+	  LABORATORY 35
+    }
+    permanentEffects = {
+      ELF_VISION 1
+      RANGED_RESISTANCE 1
+      SLOWED 1
+    }
+	spellSchools = { "druid" }
+    maxLevelIncrease = {
+      SPELL 8
+    }
+    chatReactionFriendly = "i am one with nature"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "ascended druid"
+	  pluralName = "ascended druids"
+	  firstNameGen = "FOREST ELF MALE"
     }
   }
   
@@ -978,6 +1010,7 @@
       RIDER 1
 	  NIGHT_VISION 1
 	  MAGIC_RESISTANCE 1
+	  FIRE_IMMUNITY 1
     }
     maxLevelIncrease = {
       MELEE 12
@@ -1089,6 +1122,68 @@
 	hatedByEffect = HATE_ELVES
   }
   
+"DE_GLADIATOR"
+  {
+    viewId = { "de_gl1_novice" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all law enforcement"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      MELEE 12
+    }
+    name = {
+      name = "gladiator"
+    }
+	spellSchools = { "gladiator" }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Club"}
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { type = "Torch" chance = 0.3 }
+      { type = "Bow" chance = 0.05 }
+    }
+  }  
+   
+"DE_SOLIDER"
+  {
+    viewId = { "de_wr1_warrior" }
+    attr = {
+      DAMAGE 22
+      DEFENSE 20 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      NIGHT_VISION 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 8
+    }
+	spellSchools = { "dark elf solider" }
+    name = {
+      name = "solider"
+      pluralName = "soliders"
+	  firstNameGen = "DARK ELF MALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { "ElvenSword"}
+      { "LeatherArmor"}
+      { "GoldPiece" 2 6 }
+    }
+  }
+  
 "DE_ARCHER"
   {
     viewId = { "de_ar1_warrior_archer" }
@@ -1124,36 +1219,40 @@
       { "GoldPiece" 2 6 }
     }
   }
-   
-"DE_SOLIDER"
+  
+"DE_BLADE_DANCER"
   {
-    viewId = { "de_wr1_warrior" }
+    viewId = { "de_sp1_blade_dancer" }
     attr = {
-      DAMAGE 22
-      DEFENSE 20 
+      DAMAGE 26
+	  MULTI_WEAPON 15
+      DEFENSE 7
     }
     body = {
       type = Humanoid MEDIUM
     }
-    chatReactionFriendly = "curses all dwarves"
+    chatReactionFriendly = "do you like my dance?"
     chatReactionHostile = "\"Die!\""
     permanentEffects = {
       MAGIC_RESISTANCE 1
       NIGHT_VISION 1
 	  RIDER 1
+	  ENTERTAINER 1
     }
     maxLevelIncrease = {
-      MELEE 12
+      MELEE 8
     }
-	spellSchools = { "dark elf solider" }
+	gender = FEMALE
+	spellSchools = { "dark elf blade dancer" }
     name = {
-      name = "solider"
-      pluralName = "soliders"
-	  firstNameGen = "DARK ELF MALE"
+      name = "blade dancer"
+      pluralName = "blade dancers"
+	  firstNameGen = "DARK ELF FEMALE"
     }
     hatedByEffect = HATE_ELVES
     inventory = {
       { "ElvenSword"}
+	  { "ElvenSword"}
       { "LeatherArmor"}
       { "GoldPiece" 2 6 }
     }
@@ -1171,7 +1270,7 @@
     body = {
       type = Humanoid MEDIUM
     }
-    chatReactionFriendly = "curses all dwarves"
+    chatReactionFriendly = "feel the might of flames"
     chatReactionHostile = "\"Die!\""
     permanentEffects = {
       MAGIC_RESISTANCE 1
@@ -1180,7 +1279,7 @@
     }
 	spellSchools = { "dark elf mystic" }
     maxLevelIncrease = {
-      SPELL 12
+      SPELL 8
     }
     name = {
       name = "mystic"
@@ -1194,32 +1293,329 @@
       { "GoldPiece" 80 120 }
     }
   }
-
-"DE_GLADIATOR"
+  
+"DE_SUMMONER"
   {
-    viewId = { "de_gl1_novice" }
+    viewId = { "de_sm1_summoner" }
+    attr = {
+      DEFENSE 10
+      SPELL_DAMAGE 8
+      SPELL_SPEED  6 
+    }
+    aiType = RANGED
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "demons are my slaves"
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      NIGHT_VISION 1
+      RIDER 1
+    }
+	deathEffect = Filter Not CreatureFlag "de_banishment"{
+	Filter CreatureFlag "2 imps" { SummonEnemy "DE_DEMON_IMP" {2} none}
+	Filter CreatureFlag "4 imps" { SummonEnemy "DE_DEMON_IMP" {2} none}
+	Filter CreatureFlag "2 minions" { SummonEnemy "DE_DEMON_MINION" {2} none}
+	}
+	spellSchools = { "dark elf mystic" }
+    maxLevelIncrease = {
+      SPELL 8
+    }
+    name = {
+      name = "summoner"
+	  pluralName = "summoners"
+	  firstNameGen = "DARK ELF MALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { type = "WoodenStaff" prefixChance = 1 }
+      { "LeatherArmor"}
+      { "GoldPiece" 80 120 }
+    }
+  }
+ 
+"DE_DEMON_IMP"
+  {
+    viewId = { "de_demon_imp" }
+    attr = {
+      DEFENSE 5
+      DAMAGE 8
+	  SPELL_DAMAGE 2
+    }
+    hatedByEffect = HATE_DEMON_SUMMON
+    body = {
+      type = Humanoid SMALL
+      material = SPIRIT
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 4 { attackType = HIT attackMsg = CLAW } }}}
+      }
+    }
+    noChase = true
+    cantEquip = true
+    chatReactionFriendly = "yes master?"
+    chatReactionHostile = "\"Die!\""
+    spells = { "fire missile" } 
+    permanentEffects = {
+	FIRE_IMMUNITY 1
+	SPEED 1
+    }
+    name = {
+      name = "imp"
+    }
+  }
+
+"DE_DEMON_IMP_COMPANION" inherit "DE_DEMON_IMP"
+  {
+    spells = append { "imp strenght" } 
+  }	
+
+"DE_DEMON_IMP_SUMMON" inherit "DE_DEMON_IMP"
+  {
+    viewId = { "de_demon_imp" }
+  }	
+  
+"DE_DEMON_SUCCUBUS" inherit "SUCCUBUS"
+  {
+    viewId = { "de_demon_succubus" }
+  }	
+  
+"DE_DEMON_SUCCUBUS_SUMMON" inherit "DE_DEMON_SUCCUBUS"
+  {
+	deathEffect = Chance 0.25 SummonEnemy "DE_DEMON_SUCCUBUS" {1} none
+  }	
+  
+"DE_DEMON_MINION"
+  {
+    viewId = { "de_demon_minion" }
     attr = {
       DAMAGE 16
-      DEFENSE 10
+      DEFENSE 14 
+	  SPELL_DAMAGE 6
     }
     body = {
       type = Humanoid LARGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }}}
+      }
     }
-    chatReactionFriendly = "curses all law enforcement"
+    hatedByEffect = HATE_DEMON_SUMMON
+    noChase = true
+    cantEquip = true
+    chatReactionFriendly = "yes master?"
     chatReactionHostile = "\"Die!\""
-    maxLevelIncrease = {
-      MELEE 12
+    spells = { "fire missile" } 
+    permanentEffects = {
+	FIRE_IMMUNITY 1
+	MELEE_RESISTANCE 1
+	MAGIC_RESISTANCE 1
+	RANGED_RESISTANCE 1
     }
     name = {
-      name = "gladiator"
+      name = "imp"
     }
-	spellSchools = { "gladiator" }
-    hatedByEffect = HATE_HUMANS
-    inventory = {
-      { "Club"}
-      { type = Potion Heal { FLESH } chance = 0.7 }
-      { type = "Torch" chance = 0.3 }
-      { type = "Bow" chance = 0.05 }
-    }
-  }  
+  }
+
+"DE_DEMON_MINION_COMPANION" inherit "DE_DEMON_MINION"
+  {
+    spells = append { "demon strenght" } 
+  }
+
+"DE_DEMON_MINION_SUMMON" inherit "DE_DEMON_MINION"
+  {
+	deathEffect = Chance 0.25 SummonEnemy "DE_DEMON_MINION" {1} none
+  }	
   
+  ##############
+  #  high elf  #
+  ############## 
+
+"HE_AUTOCRAT"
+  {
+    viewId = { "he_autocrath_01" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+      MULTI_WEAPON 40
+      FURNACE 15
+      FORGE 10
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    name = {
+      name = "high lord"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "he_autocrath_02" } { "he_autocrath_03" } { "he_autocrath_04" }}
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      MELEE 12
+      SPELL 3
+    }
+    hatedByEffect = HATE_ELVES
+    spellSchools = { "high lords elegance" "high lords art" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+  
+"HE_AUTOCRAT_F" inherit "HE_AUTOCRAT"
+  {
+    gender = FEMALE
+    name = {
+      name = "knight"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+  }
+  
+"HE_ELF_PEASANT"
+  {
+    viewId = { "he_male" }
+    genderAlternatives = {
+      FEMALE { "he_female" }
+    }
+    attr = {
+      DAMAGE 14
+      DEFENSE 6 
+	  DIGGING 5
+	  JEWELER 5
+	  WORKSHOP 5
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+	  RIDER 1
+    }
+    name = {
+      name = "elf"
+      pluralName = "elves"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+  
+"HE_CHILD"
+  {
+    viewId = { "he_child" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 6 
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    aiType = RANGED
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      ELF_VISION 1
+    }
+    name = {
+      name = "child"
+      pluralName = "children"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+  
+"HE_CRAFTSMAN"
+  {
+    viewId = { "he_craftmaster" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10 
+	  WORKSHOP 30
+	  FORGE 30
+	  JEWELER 30
+	  FURNACE 25
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+	permanentEffects = {
+      ELF_VISION 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      FORGE 10
+    }
+    aiType = RANGED
+    name = {
+      name = "craftmaster"
+      firstNameGen = "FOREST ELF FEMALE"
+    }
+	hatedByEffect = HATE_ELVES
+  }
+  
+"HE_LEGIONARE"
+  {
+    viewId = { "he_legionare" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 14 
+      FURNACE 10
+      WORKSHOP 5
+      FORGE 5
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    maxLevelIncrease = {
+      MELEE 7
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+    }
+    name = {
+      name = "legionare"
+      firstNameGen = "FIRST_MALE"
+    }
+	hatedByEffect = HATE_ELVES
+  }
+
+"HE_LIGIONARE_CROSSBOWMAN"
+  {
+    viewId = { "he_legionare_crossbowman" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+      RANGED_DAMAGE 10 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    permanentEffects = {
+      ARCHER_VISION 1
+      RIDER 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    spellSchools = { "archer" }
+    maxLevelIncrease = {
+      MELEE 4
+      ARCHERY 7
+    }
+    aiType = RANGED
+    name = {
+      name = "legionare crossbowman"
+      firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_ELVES
+  }

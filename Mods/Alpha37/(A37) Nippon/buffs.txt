@@ -1,3 +1,10 @@
+Def NipponCurseProgress()
+Filter LastingEffect NIPPON_CURSE_STRONG { Lasting 100 NIPPON_CURSE_RAMPANT }
+Filter LastingEffect NIPPON_CURSE        { Lasting 100 NIPPON_CURSE_STRONG }
+Filter LastingEffect NIPPON_CURSE_WEAK   { Lasting 100 NIPPON_CURSE }
+Filter LastingEffect NIPPON_CURSE_MINOR  { Lasting 100 NIPPON_CURSE_WEAK }
+End
+
 "SHIKIGAMI_TRANSFORM" {
   name = "fresh transformation"
   adjective = "exhausted"
@@ -10,8 +17,6 @@
 }
 
 "RAN_DAM_BONUS" ATTR_BUFF(RANGED_DAMAGE, "damage", 3, "dangerous", 20)
-
-
 
 "NIPPON_FIRE_SPELL" {
   name = "fire damage"
@@ -58,12 +63,354 @@
   description = "Makes creatures less efficient in training and work"
   addedMessage = YOUR "spirits are shaken"
   removedMessage = YOUR "mood goes back to normal"
-  tickEffect = Lasting 1 SLOWED
   efficiencyMultiplier = 0.7
   fx = DEBUFF_RED
   color = ColorId RED
   price = 10
 }
 
-
 "HATE_DEMONS" HATE("demons")
+
+"NIPPON_CURSE_MINOR" {
+  name = "minor curse"
+  adjective = "is cursed"
+  description = "is cursed,"
+  startEffect = Chain {
+					Filter Or  {Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -2  IncreaseAttr DEFENSE -2 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 2  IncreaseAttr DEFENSE 2 }
+					  }
+  endEffect =  Chain {
+					Filter Or  {Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 2  IncreaseAttr DEFENSE -2 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -2  IncreaseAttr DEFENSE 2 }
+					  }
+  addedMessage = "curse" "curses" "take hold"
+  removedMessage = "curse" "curses" "fade"
+  color = ColorId RED
+  fx = DEBUFF_RED
+  price = 50
+}
+
+"NIPPON_CURSE_WEAK" {
+  name = "weak curse"
+  adjective = "is cursed"
+  description = "is cursed,"
+  startEffect = Chain {
+                    RemoveLasting NIPPON_CURSE_MINOR
+					Filter Or  {Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -4  IncreaseAttr DEFENSE -4 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 4  IncreaseAttr DEFENSE 4 }
+					  }
+  endEffect =  Chain {
+                    Lasting 100 NIPPON_CURSE_MINOR
+					Filter Or  {Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 4  IncreaseAttr DEFENSE 4 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -4  IncreaseAttr DEFENSE -4 }
+					  }
+  addedMessage = "curse" "curses" "take hold"
+  removedMessage = "curse" "curses" "fade"
+  color = ColorId RED
+  fx = DEBUFF_RED
+  price = 50
+}
+
+"NIPPON_CURSE" {
+  name = "curse"
+  adjective = "is cursed"
+  description = "is cursed,"
+  startEffect = Chain {
+                    RemoveLasting NIPPON_CURSE_WEAK
+					Filter Or  {Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -6  IncreaseAttr DEFENSE -6 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 8  IncreaseAttr DEFENSE 8 }
+					  }
+  endEffect =  Chain {
+                    Lasting 100 NIPPON_CURSE_WEAK
+					Filter Or  {Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 6 IncreaseAttr DEFENSE 6  }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -8 IncreaseAttr DEFENSE -8  }
+					  }
+
+  tickEffect = Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ Lasting 10 UNSTABLE }
+  addedMessage = "curse" "curses" "take hold"
+  removedMessage = "curse" "curses" "fade"
+  color = ColorId RED
+  fx = DEBUFF_RED
+  price = 50
+}
+
+"NIPPON_CURSE_STRONG" {
+  name = "minor curse"
+  adjective = "is cursed"
+  description = "is cursed,"
+  startEffect = Chain {
+                    RemoveLasting NIPPON_CURSE
+					Filter Or  {Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -8 IncreaseAttr DEFENSE 8 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 12 IncreaseAttr DEFENSE 12 }
+					  }
+  endEffect =  Chain {
+                    Lasting 100 NIPPON_CURSE
+					Filter Or  {Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 8 IncreaseAttr DEFENSE 8 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -12 IncreaseAttr DEFENSE -12 }
+					  }
+
+  tickEffect = Lasting 10 UNSTABLE 
+  addedMessage = "curse" "curses" "take hold"
+  removedMessage = "curse" "curses" "fade"
+  color = ColorId RED
+  fx = DEBUFF_RED
+  price = 50
+}
+
+"NIPPON_CURSE_RAMPANT" {
+  name = "rampant curse"
+  adjective = "is cursed"
+  description = "is cursed,"
+  startEffect = Chain {
+                    RemoveLasting NIPPON_CURSE_STRONG
+					Filter Or { Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 12 IncreaseAttr DEFENSE 12 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 12 IncreaseAttr DEFENSE 12 }
+					  }
+  endEffect =  Chain {
+                    Lasting 100 NIPPON_CURSE_STRONG
+					Filter Or { Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -12 IncreaseAttr DEFENSE -12 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -12 IncreaseAttr DEFENSE -12 }
+					  }
+
+  tickEffect =  Chain { 
+					Lasting 10 INSANITY 
+					Filter Or  {Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ Bleed 0.03 "cursed" }
+					  }
+  addedMessage = "curse" "curses" "take hold"
+  removedMessage = "curse" "curses" "fade"
+  color = ColorId RED
+  fx = DEBUFF_RED
+  price = 50
+}
+
+"NIPPON_CURSE_OVERWHELMING" {
+  name = "overwhelming curse"
+  adjective = "is cursed"
+  description = "is cursed,"
+  startEffect = Chain {
+                    RemoveLasting NIPPON_CURSE_RAMPANT
+					Filter Or { Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 14 IncreaseAttr DEFENSE 14 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE 14 IncreaseAttr DEFENSE 14 }
+					  }
+  endEffect =  Chain {
+                    Lasting 100 NIPPON_CURSE_RAMPANT
+					Filter Or { Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -14 IncreaseAttr DEFENSE -14 }
+					Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ IncreaseAttr DAMAGE -14 IncreaseAttr DEFENSE -14 }
+					  }
+  tickEffect =  Chain { 
+					Lasting 10 INSANITY 
+					Filter Or  {Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ Bleed 0.03 "cursed" }
+					  }
+  addedMessage = "curse" "curses" "take hold"
+  removedMessage = "curse" "curses" "fade"
+  color = ColorId RED
+  fx = DEBUFF_RED
+  price = 50
+}
+
+"NIPPON_CURSE_CONSIMUNG" {
+  name = "consumed by curse"
+  adjective = "is consumed by curse"
+  description = "is consumed by curse,"
+  startEffect = Chain {
+                    RemoveLasting NIPPON_CURSE_OVERWHELMING
+                    Filter Gender MALE ChooseRandom {
+					Chain {
+							SetViewId {"jp_noroi_umare_01"}
+							SetCreatureName "noroi umare" 
+							IncreaseAttr DAMAGE 18
+							IncreaseAttr DEFENSE 32
+							Permanent REGENERATION
+							Permanent NIGHT_VISION
+							Permanent PSYCHIATRY 
+							Permanent RANGED_RESISTANCE
+							Permanent MELEE_RESISTANCE
+					       }
+					Chain {
+							SetViewId {"jp_noroi_umare_04"}
+							SetCreatureName "noroi umare"
+							IncreaseAttr DAMAGE 14
+							IncreaseAttr DEFENSE 14
+							IncreaseAttr SPELL_DAMAGE 8
+	                        IncreaseAttr SPELL_SPEED 8
+							Permanent NIGHT_VISION
+							Permanent PSYCHIATRY 
+							GrantAbility "poison resistance"
+							GrantAbility "cure poison"
+							GrantAbility "poison breath"
+							GrantAbility "summon flies"
+					       }
+						   Chain {
+							SetViewId {"jp_noroi_umare_07"}
+							SetCreatureName "noroi umare"
+							IncreaseAttr DAMAGE 14
+							IncreaseAttr DEFENSE 20
+							IncreaseAttr SPELL_DAMAGE 8
+	                        IncreaseAttr SPELL_SPEED 8
+							Permanent REGENERATION
+							Permanent NIGHT_VISION
+							Permanent PSYCHIATRY 
+							GrantAbility "jump"
+							GrantAbility "pull"
+							GrantAbility "dig"
+					       }
+						   Chain {
+							SetViewId {"jp_noroi_umare_08"}
+							SetCreatureName "noroi umare"
+							IncreaseAttr DAMAGE 20
+							IncreaseAttr DEFENSE 20
+							IncreaseAttr SPELL_DAMAGE 8
+	                        IncreaseAttr SPELL_SPEED 8
+							Permanent BLIND 
+							Permanent NIGHT_VISION
+							Permanent TELEPATHY
+							Permanent SPEED
+					       }}						   
+                    Filter Gender FEMALE ChooseRandom {
+					Chain {
+							SetViewId {"jp_noroi_umare_02"}
+							SetCreatureName "noroi umare" 
+							IncreaseAttr DAMAGE 24
+							IncreaseAttr DEFENSE 14
+							Permanent REGENERATION
+							Permanent NIGHT_VISION
+							Permanent PSYCHIATRY 
+							Permanent SPEED
+							GrantAbility "jump"
+					       }
+					Chain {
+							SetViewId {"jp_noroi_umare_03"}
+							SetCreatureName "noroi umare"
+							IncreaseAttr DAMAGE 16
+							IncreaseAttr DEFENSE 16
+							IncreaseAttr SPELL_DAMAGE 8
+	                        IncreaseAttr SPELL_SPEED 8
+							Permanent NIGHT_VISION
+							Permanent PSYCHIATRY 
+							GrantAbility "blink"
+							GrantAbility "invisibility"
+							GrantAbility "panic"
+							GrantAbility "pull"
+					       }
+						   Chain {
+							SetViewId {"jp_noroi_umare_05"}
+							SetCreatureName "noroi umare"
+							IncreaseAttr DAMAGE 22
+							IncreaseAttr DEFENSE 22
+							Permanent REGENERATION
+							Permanent NIGHT_VISION
+							Permanent PSYCHIATRY 
+							GrantAbility "defense bonus"
+							GrantAbility "haste"
+					       }
+						   Chain {
+							SetCreatureName "noroi umare" 
+							IncreaseAttr DAMAGE 16
+							IncreaseAttr DEFENSE 28
+							Permanent REGENERATION
+							Permanent NIGHT_VISION
+							Permanent RANGED_RESISTANCE
+							Permanent MELEE_RESISTANCE
+							Permanent PSYCHIATRY 
+							GrantAbility "defense bonus"
+							GrantAbility "NIPPON_NOROI_UMARE_CACKLE"
+					       }}
+					
+					  }
+  tickEffect =  Chain { 
+					Lasting 10 INSANITY
+					  }
+  addedMessage = "curse" "curses" "take over"
+  removedMessage = "curse" "curses" "fade"
+  color = ColorId RED
+  fx = DEBUFF_RED
+  price = 50
+}
+
+"NIPPON_GHOST_LAMP" {
+  name = "ghostlight"
+  description = "Dead are lured to your light."
+  addedMessage = ARE "glowing"
+  removedMessage = ARE "no longer glowing"
+  adjective = "glowing"
+  tickEffect = Chain { Lasting 1 LIGHT_SOURCE
+				Chance 0.005 ChooseRandom {
+								Summon "LOST_SOUL" 1 50
+								Summon "LOST_SOUL" 1 50
+								SummonEnemy "LOST_SOUL" 1 50}}
+  combatConsumable = true
+  price = 12
+  fx = BUFF_BLUE
+  color = ColorId PINK
+}
+
+"NIPPON_ONI_MASK" {
+  name = "oni mask"
+  adjective = "is possed by the mask"
+  description = "is possed by the mask,"
+  startEffect = Filter Or { Not CreatureId "NIPPON_ONI" Not CreatureId "NIPPON_KIJO"}{
+					Chain {
+						GrantAbility "NIPPON_ONI_MASK_CLOUD_WALKING"
+						GrantAbility "NIPPON_ONI_MASK_SHATTER"
+						GrantAbility "NIPPON_ONI_MASK_BURNING_CLAWS"
+						GrantAbility "NIPPON_ONI_MASK_EAT_MALICE"
+						}}
+  endEffect =  Filter Or { Not CreatureId "NIPPON_ONI" Not CreatureId "NIPPON_KIJO"}{
+					Chain {
+						Lasting 100 NIPPON_CURSE_RAMPANT
+						RemoveAbility "NIPPON_ONI_MASK_CLOUD_WALKING"
+						RemoveAbility "NIPPON_ONI_MASK_SHATTER"
+						RemoveAbility "NIPPON_ONI_MASK_BURNING_CLAWS"
+						RemoveAbility "NIPPON_ONI_MASK_EAT_MALICE"
+						}}
+  addedMessage = "mask" "mask" "take hold"
+  removedMessage = "mask" "mask" "is taken off"
+  color = ColorId RED
+  price = 50
+}
+
+"NIPPON_ONRYO_MASK" {
+  name = "onryo mask"
+  adjective = "is possed by the mask"
+  description = "is possed by the mask,"
+  startEffect = Chain {
+						GrantAbility "NIPPON_ONRYO_MASK_CACKLE"
+						GrantAbility "NIPPON_ONRYO_MASK_CURSE_HIM"
+						}
+  endEffect =  Chain {
+						Lasting 100 NIPPON_CURSE_RAMPANT
+						RemoveAbility "NIPPON_ONRYO_MASK_CACKLE"
+						RemoveAbility "NIPPON_ONRYO_MASK_CURSE_HIM"
+						}
+  addedMessage = "mask" "mask" "take hold"
+  removedMessage = "mask" "mask" "is taken off"
+  color = ColorId RED
+  price = 50
+}
+
+"NIPPON_OFFERING_CONSUMED" {
+  name = "offering consumed"
+  adjective = "offering consumed"
+  description = "Gives a +5 damage and defence bonus"
+  addedMessage = "is satisfied with the offering" "seems satisfied with the offering" ""
+  removedMessage = "no longer satisfied with the offering" "no longer seems satisfied with the offering" ""  
+  startEffect = Chain {IncreaseAttr SPELL_DAMAGE 5 IncreaseAttr DAMAGE 5 IncreaseAttr DEFENSE 5}
+  endEffect = Chain {IncreaseAttr SPELL_DAMAGE -5 IncreaseAttr DAMAGE -5 IncreaseAttr DEFENSE -5}
+  combatConsumable = true
+  fx = BUFF_PINK
+  color = ColorId PINK
+  price = 200
+}
+
+"NIPPON_AMANOJAKU_RAGE" {
+  name = "rage"
+  adjective = "raging"
+  description = "raging"
+  addedMessage = ARE "raging"
+  removedMessage = ARE "no longer raging"
+  startEffect = Chain { IncreaseAttr DAMAGE 5 IncreaseAttr DEFENSE -5}
+  endEffect = Chain { IncreaseAttr DAMAGE -5 IncreaseAttr DEFENSE 5}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId RED
+}

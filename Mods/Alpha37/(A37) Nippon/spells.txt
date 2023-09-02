@@ -1,8 +1,38 @@
+
+Def NipponCurseProgress()
+Filter LastingEffect NIPPON_CURSE_STRONG { Lasting 100 NIPPON_CURSE_RAMPANT }
+Filter LastingEffect NIPPON_CURSE        { Lasting 100 NIPPON_CURSE_STRONG }
+Filter LastingEffect NIPPON_CURSE_WEAK   { Lasting 100 NIPPON_CURSE }
+Filter LastingEffect NIPPON_CURSE_MINOR  { Lasting 100 NIPPON_CURSE_WEAK }
+End
+
+Def NipponCurseDescrease()
+Filter LastingEffect NIPPON_CURSE_WEAK         { RemoveLasting NIPPON_CURSE_WEAK Lasting 100 NIPPON_CURSE_MINOR }
+Filter LastingEffect NIPPON_CURSE              { RemoveLasting NIPPON_CURSE Lasting 100 NIPPON_CURSE_WEAK }
+Filter LastingEffect NIPPON_CURSE_STRONG       { RemoveLasting NIPPON_CURSE_STRONG Lasting 100 NIPPON_CURSE }
+Filter LastingEffect NIPPON_CURSE_RAMPANT      { RemoveLasting NIPPON_CURSE_RAMPANT Lasting 100 NIPPON_CURSE_STRONG }
+Filter LastingEffect NIPPON_CURSE_OVERWHELMING { RemoveLasting NIPPON_CURSE_RAMPANT Lasting 100 NIPPON_CURSE_RAMPANT }4
+Filter Or { Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{
+Filter LastingEffect NIPPON_CURSE_CONSIMUNG { RemoveLasting NIPPON_CURSE_RAMPANT Lasting 100 NIPPON_CURSE_OVERWHELMING }}
+End
+
+Def OneTimeAbilityName(SpellCodeName, SpellDesc, SpellEffect, SpellSymbol, SpellName)
+SpellCodeName
+{
+  effect = AI And{} 0 1 Name SpellName Description SpellDesc {
+    SpellEffect
+    RemoveAbility SpellCodeName
+  }
+  symbol = SpellSymbol
+  cooldown = 1
+}
+End
+
 #################################################################################################################################
 #                                                       onmyoji                                                                 #
 #################################################################################################################################
 
-"shikigami of fire"
+"NIPPON_SHIKIGAMI_OF_FIRE"
 {
   symbol = "🔥"
   effect = Name "flame shikigami" AI Enemy 0 1 AI Not Enemy 1 0 { Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM 
@@ -16,7 +46,7 @@
   sound = SPELL_SPEED_SELF
 }
 
-"explosive shikigami"
+"NIPPON_EXPLOSIVE_SHIKIGAMI"
 {
   symbol = "🔥"
   effect = Name "explosive shikigami" AI Enemy 0 1 AI Not Enemy 1 0 { Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM 
@@ -30,7 +60,7 @@
   sound = SPELL_SPEED_SELF
 }
 
-"healing shikigami"
+"NIPPON_HEALING_SHIKIGAMI"
 {
   symbol = "💕"
   effect = Name "healing shikigami" Chain{Heal { FLESH 0.00001} 
@@ -45,7 +75,7 @@
   sound = SPELL_SPEED_SELF
 }
 
-"barrier shikigami"
+"NIPPON_BARRIER_SHIKIGAMI"
 {
   symbol = "🛡"
   effect = Name "barrier shikigami" AI Enemy 0 1 AI Not Enemy 1 0 { Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM 
@@ -59,7 +89,7 @@
   sound = SPELL_SPEED_SELF
 }
 
-"damage shikigami"
+"NIPPON_DAMAGE_SHIKIGAMI"
 {
   symbol = "🛡"
   effect = Name "slaughter shikigami" AI Enemy 0 1 AI Not Enemy 1 0 { Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM 
@@ -73,12 +103,24 @@
   sound = SPELL_SPEED_SELF
 }
 
-"mimicry shikigami"
+"NIPPON_MIMICRY_SHIKIGAMI"
 {
   symbol = "🛡"
   effect = Name "mimicry shikigami" AI Enemy 0 1 AI Not Enemy 1 0 { Caster Filter Not LastingEffect SHIKIGAMI_TRANSFORM 
                     Caster Area 2 {Chain{ Filter CreatureId "NIPPON_SHIKIGAMI" {
-					Polymorph none 30 
+					ChooseRandom {
+						Polymorph "NIPPON_KYUKETSU_INKU" 30
+						Polymorph "NIPPON_ONI" 30
+						Polymorph "NIPPON_KIJO" 30
+						Polymorph "NIPPON_FIRE_KANSEN" 30
+						Polymorph "NIPPON_EARTH_KANSEN" 30
+						Polymorph "NIPPON_WATER_KANSEN" 30
+						Polymorph "NIPPON_AIR_KANSEN" 30
+						Polymorph "ICE_DEMON" 30
+						Polymorph "SUCCUBUS" 30
+						Polymorph "DEVIL_VAULT" 30
+						Polymorph "DEMON_DWELLER" 30
+						} 
 					Caster Lasting 30 SHIKIGAMI_TRANSFORM}}}}
   cooldown = {30 61}
   range = 8
@@ -87,25 +129,34 @@
   sound = SPELL_SPEED_SELF
 }
 
-"emergency shikigami"
+"NIPPON_EMERGENCY_SHIKIGAMI"
 {
   symbol = "👾"
-  effect = Name "emergency shikigami" Summon "NIPPON_SHIKIGAMI" { 2 } 30
-  cooldown = {30 81}
+  effect = Name "prepare shikigami" Summon "NIPPON_SHIKIGAMI" { 1 } 60
+  cooldown = {10 60}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-OneTimeAbility("more shikigami", "Gains more shikigami.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "NIPPON_SHIKIGAMI" } }, "🧛")
-OneTimeAbility("even more shikigami", "Gains more shikigami.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "NIPPON_SHIKIGAMI" } }, "🧛")
-OneTimeAbility("mass of shikigami", "Gains more shikigami.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "NIPPON_SHIKIGAMI" } }, "🧛")
-OneTimeAbility("talisman cration", "increases ability to scribe talismans.", { IncreaseAttr TALISMAN 10 }, "🧛")
-OneTimeAbility("greater talisman cration", "increases ability to scribe talismans.", { IncreaseAttr TALISMAN 10 }, "🧛")
+"NIPPON_GREATER_EMERGENCY_SHIKIGAMI"
+{
+  upgrade = "NIPPON_EMERGENCY_SHIKIGAMI"
+  symbol = "👾"
+  effect = Name "prepare shikigami" Summon "NIPPON_SHIKIGAMI" { 2 } 60
+  cooldown = {10 60}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+OneTimeAbilityName("NIPPON_MORE_SHIKIGAMI", "Gains more shikigami.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "NIPPON_SHIKIGAMI" } }, "🧛", "more shikigami")
+OneTimeAbilityName("NIPPON_EVEN_MORE_SHIKIGAMI", "Gains more shikigami.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "NIPPON_SHIKIGAMI" } }, "🧛", "even more shikigami")
+OneTimeAbilityName("NIPPON_MASS_OF_SHIKIGAMI", "Gains more shikigami.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "NIPPON_SHIKIGAMI" } }, "🧛", "mass of shikigami")
+OneTimeAbilityName("NIPPON_TALISMAN_CRATION", "increases ability to scribe talismans.", { IncreaseAttr TALISMAN 10 }, "🧛", "talisman cration")
+OneTimeAbilityName("NIPPON_GREATER_TALISMAN_CRATION", "increases ability to scribe talismans.", { IncreaseAttr TALISMAN 10 }, "🧛", "greater talisman cration")
 
 #################################################################################################################################
 #                                                shikigami spells                                                               #
 #################################################################################################################################
 
-"shikigami healing"
+"NIPPON_SHIKIGAMI_HEALING"
 {
   symbol = "💕"
   effect = Name "healing" Area 2 Filter Not Enemy Heal { FLESH }
@@ -113,7 +164,7 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_HEALING
 }
 
-"shikigami defense"
+"NIPPON_SHIKIGAMI_DEFENSE"
 {
   symbol = "🛡"
   effect = Name "mass defense bonus" Area 10 Filter Not Enemy Lasting 40 DEF_BONUS
@@ -121,7 +172,7 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_DEX_BONUS
 }
 
-"shikigami damage"
+"NIPPON_SHIKIGAMI_DAMAGE"
 {
   symbol = "💪"
   effect = Name "mass damage bonus" Area 10 Filter Not Enemy Lasting 40 DAM_BONUS
@@ -129,19 +180,13 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_STR_BONUS
 }
 
-"shikigami summon"
-{
-  symbol = "⇝"
-  effect = Name "summoned shikigami" Description "" AI And{} 0 1 Lasting 30 SUMMONED
-  message = "" ""
-  cooldown = 1
-}
+OneTimeAbilityName("NIPPON_SHIKIGAMI_SUMMON", "Gains more shikigami.", { AI And{} 0 1 Lasting 30 SUMMONED }, "🧛", "shikigami summon")
 
 #################################################################################################################################
 #                                                       samurai                                                                 #
 #################################################################################################################################
 
-"samurai_bolster"
+"NIPPON_SAMURAI_BOLSTER"
 {
   symbol = "🛡"
   effect = Name "bolster" Area 1 Filter Not Enemy {Filter CreatureId "NIPPON_SAMURAI" {Filter CreatureId "NIPPON_SAMURAI_ARCHER" {Lasting 40 DEF_BONUS }}}
@@ -149,7 +194,7 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_DEX_BONUS
 }
 
-"samurai_rally"
+"NIPPON_SAMURAI_RALLY"
 {
   symbol = "💪"
   effect = Name "rally" Area 1 Filter Not Enemy {Filter CreatureId "NIPPON_SAMURAI" {Filter CreatureId "NIPPON_SAMURAI_ARCHER" {Lasting 40 DAM_BONUS }}}
@@ -157,15 +202,15 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_DEX_BONUS
 }
 
-"ranged damage bonus"
+"NIPPON_RANGED_DAMAGE_BONUS"
 {
   symbol = "🎯"
-  effect = Name "ranged damage bonus" Lasting 40 RAN_DAM_BONUS
+  effect = Name "NIPPON_RANGED_DAMAGE_BONUS" Lasting 40 RAN_DAM_BONUS
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"samurai_archer_rally"
+"NIPPON_SAMURAI_ARCHER_RALLY"
 {
   symbol =  "🎯"
   effect = Name "rally" Area 1 Filter Not Enemy {Filter CreatureId "NIPPON_SAMURAI" {Filter CreatureId "NIPPON_SAMURAI_ARCHER" {Lasting 40 RAN_DAM_BONUS }}}
@@ -177,7 +222,7 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
 #                                                         shinobi                                                               #
 #################################################################################################################################
 
-"shinobi ambush"
+"NIPPON_SHINOBI_AMBUSH"
 {
   symbol = "🏃"
   effect = Name "ambush" Chain { Lasting 10 SPEED Lasting 10 INVISIBLE Lasting 10 DAM_BONUS}
@@ -185,25 +230,25 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_SPEED_SELF
 }
 
-"advanced shinobi ambush"
+"NIPPON_ADVANCED_SHINOBI_AMBUSH"
 {
-  upgrade = "shinobi ambush"
+  upgrade = "NIPPON_SHINOBI_AMBUSH"
   symbol = "🏃"
   effect = Name "ambush" Chain { Lasting 20 SPEED Lasting 20 INVISIBLE Lasting 20 DAM_BONUS}
   cooldown = {30 61}
   sound = SPELL_SPEED_SELF
 }
 
-"expert shinobi ambush"
+"NIPPON_EXPERT_SHINOBI_AMBUSH"
 {
-  upgrade = "advanced shinobi ambush"
+  upgrade = "NIPPON_ADVANCED_SHINOBI_AMBUSH"
   symbol = "🏃"
   effect = Name "ambush" Chain { Lasting 30 SPEED Lasting 30 INVISIBLE Lasting 30 DAM_BONUS}
   cooldown = {30 61}
   sound = SPELL_SPEED_SELF
 }
 
-"shinobi escape"
+"NIPPON_SHINOBI_ESCAPE"
 {
   symbol = "✈️"
   effect = Name "escape" AI Health 0.6 1.0 1 1 { Escape {4} Area 2 Filter DistanceD none 3.2 EmitGas "FOG" 1}
@@ -211,25 +256,25 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_TELEPORT
 }
 
-"advanced shinobi escape"
+"NIPPON_ADVANCED_SHINOBI_ESCAPE"
 {
-  upgrade = "shinobi escape"
+  upgrade = "NIPPON_SHINOBI_ESCAPE"
   symbol = "✈️"
   effect = Name "escape" AI Health 0.6 1.0 1 1 { Escape {6} Area 3 Filter DistanceD none 3.2 EmitGas "FOG" 1}
   cooldown = {50 101}
   sound = SPELL_TELEPORT
 }
 
-"expert shinobi escape"
+"NIPPON_EXPERT_SHINOBI_ESCAPE"
 {
-  upgrade = "advanced shinobi escape"
+  upgrade = "NIPPON_ADVANCED_SHINOBI_ESCAPE"
   symbol = "✈️"
   effect = Name "escape" AI Health 0.6 1.0 1 1 { Escape {8} Area 4 Filter DistanceD none 3.2 EmitGas "FOG" 1}
   cooldown = {50 101}
   sound = SPELL_TELEPORT
 }
 
-"shinobi mines"
+"NIPPON_SHINOBI_MINES"
 {
   symbol = "🔧"
   effect = Name "lay slowing trap" PlaceFurniture "WEB_TRAP"
@@ -237,7 +282,7 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_METEOR_SHOWER
 }
 
-"advanced shinobi mines"
+"NIPPON_ADVANCED_SHINOBI_MINES"
 {
   symbol = "🔧"
   effect = Name "lay posionous gas grap" PlaceFurniture "POISON_GAS_TRAP"
@@ -245,7 +290,7 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_METEOR_SHOWER
 }
 
-"expert shinobi mines"
+"NIPPON_EXPERT_SHINOBI_MINES"
 {
   symbol = "🔧"
   effect = Name "lay blast trap" PlaceFurniture "BLAST_TRAP"
@@ -253,7 +298,7 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_METEOR_SHOWER
 }
 
-"shinobi sapper"
+"NIPPON_SHINOBI_SAPPER"
 {
   symbol = "X"
   effect = Name "dig" DestroyWalls DIG
@@ -266,7 +311,7 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
 #                                                          benkei                                                               #
 #################################################################################################################################
 
-"monk purification"
+"NIPPON_MONK_PURIFICATION"
 {
   symbol = "❤️"
   effect = Name "purification"      Chain {
@@ -278,14 +323,14 @@ OneTimeAbility("greater talisman cration", "increases ability to scribe talisman
   sound = SPELL_HEALING
 }
 
-OneTimeAbility("minor monk resistance", "Gains monk resistances", { Permanent FIRE_RESISTANT Permanent COLD_RESISTANT Permanent ACID_RESISTANT }, "🧛")
-OneTimeAbility("mayor monk resistance", "Gains monk resistances", { Permanent MELEE_RESISTANCE Permanent RANGED_RESISTANCE Permanent MAGIC_RESISTANCE }, "🧛")
+OneTimeAbilityName("NIPPON_MINOR_MONK_RESISTANCE", "Gains monk resistances", { Permanent FIRE_RESISTANT Permanent COLD_RESISTANT Permanent ACID_RESISTANT }, "🧛", "monk resistances")
+OneTimeAbilityName("NIPPON_MAYOR_MONK_RESISTANCE", "Gains monk resistances", { Permanent MELEE_RESISTANCE Permanent RANGED_RESISTANCE Permanent MAGIC_RESISTANCE }, "🧛", "monk resistances")
 
 #################################################################################################################################
 #                                                    buraddomonku                                                               #
 #################################################################################################################################
 
-"blood monk purification"
+"NIPPON_BLOOD_MONK_PURIFICATION"
 {
   symbol = "❤️"
   effect = Name "purification" Chain {
@@ -296,90 +341,6 @@ OneTimeAbility("mayor monk resistance", "Gains monk resistances", { Permanent ME
   cooldown = {30 81}
   sound = SPELL_HEALING
 }
-
-#################################################################################################################################
-#                                                corrupted daimyo                                                               #
-#################################################################################################################################
-
-"corrupted daimyo heal"
-{
-  symbol = "✴"
-  effect = Name "heal spirit" Heal { SPIRIT }
-  targetSelf = true
-  cooldown = {10 31}
-  sound = SPELL_HEALING
-}
-
-"corrupted daimyo panic"
-{
-  symbol = "😱"
-  effect = Name "dark presence" Area 2 Filter Enemy Lasting PANIC
-  cooldown = {51 102}
-  sound = SPELL_STR_BONUS
-}
-
-"corrupted advanced daimyo panic"
-{
-  upgrade = "corrupted daimyo panic"
-  symbol = "😱"
-  effect = Name "dark presence" Area 4 Filter Enemy Lasting PANIC
-  cooldown = {51 102}
-  sound = SPELL_STR_BONUS
-}
-
-"corrupted daimyo animate corpses"
-{
-  symbol = "👤"
-  effect = Name "animate corpses" Area 100 Filter Not Enemy {
-  AnimateItems 3 5 {10 20} CORPSE
-  Filter CreatureFlag "animated" { ChooseRandom {
-                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
-                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
-                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
-                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
-                                                  Polymorph "NIPPON_BONE_ASHIGARU_ARCHER" none
-                                                }}
-  SetCreatureFlag "animated" false}
-  cooldown = {50 201}
-}
-
-"corrupted daimyo advanced animate corpses"
-{
-  upgrade = "corrupted daimyo animate corpses"
-  symbol = "👤"
-  effect = Name "animate corpses" Area 100 Filter Not Enemy {
-  AnimateItems 6 5 {30 50} CORPSE
-  Filter CreatureFlag "animated" { ChooseRandom {
-                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
-                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
-                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
-                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
-                                                  Polymorph "NIPPON_ASHIGARU_ARCHER" none
-                                                }}
-  SetCreatureFlag "animated" false}
-  cooldown = {50 201}
-}
-
-OneTimeAbility("akuma no daimyō bodyguard", "Gains an bodyguard.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "JP_EVIL_SPIRIT" } }, "🧛")
-OneTimeAbility("akuma no daimyō another bodyguard", "Gains an bodyguard.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "JP_EVIL_SPIRIT" } }, "🧛")
-
-"corrupted daimyo eternal life"
-{
-  symbol = "🛡"
-  effect = Name "secret of immortality" AI Health 0.6 1.0 1 1 { Lasting 10 LIFE_SAVED}
-  cooldown = {30 81}
-  sound = SPELL_DEX_BONUS
-}
-
-"corrupted daimyo advanced eternal life"
-{
-  upgrade = "corrupted daimyo eternal life"
-  symbol = "🛡"
-  effect = Name "secret of immortality" AI Health 0.6 1.0 1 1 { Lasting 20 LIFE_SAVED}
-  cooldown = {30 81}
-  sound = SPELL_DEX_BONUS
-}
-
 
 #################################################################################################################################
 #                                                       talismans                                                               #
@@ -531,7 +492,7 @@ End
       Filter HatedBy HATE_DEMONS { Chance 0.25 Suicide DIE}
 	  Lasting MAGIC_CANCELLATION
 	  Caster {SetCreatureFlag "purification_talisman" false}
-      Caster RemoveAbility NIPPON_SLOW_TALISMAN}
+      Caster RemoveAbility NIPPON_PURIFICATION_TALISMAN}
   projectileViewId = {"jp_talisman_single" ColorId PURPLE }
   range = 4
   cooldown = {100 301}
@@ -545,10 +506,10 @@ End
   Chain {
 	  SummonElement
 	  Area 4 Filter Not Enemy {
-	  Filter CreatureId "FIRE_ELEMENTAL" { Polymorph "NIPPON_FIRE_KAMI" none}
-	  Filter CreatureId "AIR_ELEMENTAL" { Polymorph "NIPPON_AIR_KAMI" none}
-	  Filter CreatureId "WATER_ELEMENTAL" { Polymorph "NIPPON_WATER_KAMI" none}
-	  Filter CreatureId "EARTH_ELEMENTAL" { Polymorph "NIPPON_EARTH_KAMI" none}
+	  Filter CreatureId "FIRE_ELEMENTAL"  { SetCreatureName "Fire Kami" GrantAbility "fire breath"}
+	  Filter CreatureId "AIR_ELEMENTAL"   { SetCreatureName "Air Kami" GrantAbility "fog cloud"}
+	  Filter CreatureId "WATER_ELEMENTAL" { SetCreatureName "Water Kami" GrantAbility "deception"}
+	  Filter CreatureId "EARTH_ELEMENTAL" { SetCreatureName "Earth Kami" GrantAbility "dig"}
 	  }
 	  Caster {SetCreatureFlag "kami_talisman" false}
       Caster RemoveAbility NIPPON_ELEMENTAL_TALISMAN}
@@ -569,5 +530,832 @@ End
   projectileViewId = {"jp_talisman_single" ColorId BROWN }
   range = 4
   cooldown = {100 301}
+  sound = SPELL_BLAST
+}
+
+#################################################################################################################################
+#                                                       noroi-shi                                                               #
+#################################################################################################################################
+
+
+"NIPPON_NOROI-SHI_LEAD_FEET"
+{
+  symbol = "🐢"
+  effect = Name "lead feet curse" Chain {Lasting 100 SLOWED NipponCurseProgress()}
+  range = 9
+  endOnly = true
+  cooldown = {43 84}
+  sound = SPELL_SPEED_SELF
+}
+
+"NIPPON_NOROI-SHI_LEAD_FEET_ADVANCED"
+{
+  upgrade = "NIPPON_NOROI-SHI_LEAD_FEET"
+  symbol = "🐢"
+  effect = Name "lead feet curse" Chain {Lasting 100 COLLAPSED NipponCurseProgress()}
+  range = 9
+  endOnly = true
+  cooldown = {43 84}
+  sound = SPELL_SPEED_SELF
+}
+
+"NIPPON_NOROI-SHI_REANIMATE"
+{
+  symbol = "👤"
+  effect = Name "animate corpses" Area 100 Filter Not Enemy {
+  AnimateItems 2 4 {10 20} CORPSE
+  Filter CreatureFlag "animated" { ChooseRandom {
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_ASHIGARU_ARCHER" none
+                                                }}
+  SetCreatureFlag "animated" false
+  Caster NipponCurseProgress()}
+  cooldown = {50 201}
+}
+
+"NIPPON_NOROI-SHI_ADVANCED_REANIMATE"
+{
+  upgrade = "NIPPON_NOROI-SHI_REANIMATE"
+  symbol = "👤👤"
+  effect = Name "animate corpses" Area 100 Filter Not Enemy {
+  AnimateItems 3 5 {20 30} CORPSE
+  Filter CreatureFlag "animated" { ChooseRandom {
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_ASHIGARU_ARCHER" none
+                                                }}
+  SetCreatureFlag "animated" false
+  Caster NipponCurseProgress()}
+  cooldown = {50 201}
+}
+
+"NIPPON_NOROI-SHI_HEAL"
+{
+  symbol = "✴"
+  effect = Name "cursed healing" Description "may malice hold you together"
+  Chain {
+      Heal { SPIRIT }
+	  Heal { FLESH }
+	  Filter Or { BodyMaterial UNDEAD_FLESH BodyMaterial BONE BodyMaterial ROCK BodyMaterial CLAY BodyMaterial WOOD BodyMaterial IRON BodyMaterial LAVA BodyMaterial ADA BodyMaterial GOLD BodyMaterial ICE BodyMaterial INFERNITE BodyMaterial ADOXIUM}{ RegrowBodyPart 10 }
+	  NipponCurseProgress()
+	  }
+  range = 1
+  targetSelf = true
+  cooldown = {10 31}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_NOROI-SHI_ADVANCED_HEAL"
+{
+  upgrade = "NIPPON_NOROI-SHI_HEAL"
+  symbol = "✴"
+  effect = Name "cursed healing" Description "may malice hold you together"
+  Chain {
+      Heal { SPIRIT }
+	  Heal { FLESH }
+	  Filter Or { BodyMaterial UNDEAD_FLESH BodyMaterial BONE BodyMaterial ROCK BodyMaterial CLAY BodyMaterial WOOD BodyMaterial IRON BodyMaterial LAVA BodyMaterial ADA BodyMaterial GOLD BodyMaterial ICE BodyMaterial INFERNITE BodyMaterial ADOXIUM}{ RegrowBodyPart 10 }
+	  NipponCurseProgress()
+	  }
+  range = 4
+  targetSelf = true
+  cooldown = {10 31}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_NOROI-SHI_GROUP_HEAL"
+{
+  symbol = "✴✴"
+  effect = Name "mass cursed healing" Description "may malice hold you together"
+  Area 2 Filter Not Enemy { 
+  Chain {
+      Heal { SPIRIT }
+	  Heal { FLESH }
+	  Filter Or { BodyMaterial UNDEAD_FLESH BodyMaterial BONE BodyMaterial ROCK BodyMaterial CLAY BodyMaterial WOOD BodyMaterial IRON BodyMaterial LAVA BodyMaterial ADA BodyMaterial GOLD BodyMaterial ICE BodyMaterial INFERNITE BodyMaterial ADOXIUM}{ RegrowBodyPart 10 }
+	  NipponCurseProgress()
+	  }}
+  targetSelf = true
+  cooldown = {25 51}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_NOROI-SHI_UNLEASH_MALICE"
+{
+  symbol = "🐝"
+  effect = Name "unleash curse" Description "malice claim you" AI Or{ LastingEffect NIPPON_CURSE_WEAK LastingEffect NIPPON_CURSE LastingEffect NIPPON_CURSE_STRONG LastingEffect NIPPON_CURSE_RAMPANT} 1 -1 Chain {
+    Filter LastingEffect NIPPON_CURSE_WEAK    {Summon "JP_EVIL_SPIRIT" {1 2} 100 RemoveLasting NIPPON_CURSE_WEAK Lasting 100 NIPPON_CURSE_MINOR }
+    Filter LastingEffect NIPPON_CURSE         {Summon "JP_EVIL_SPIRIT" {2 3} 100 RemoveLasting NIPPON_CURSE Lasting 100 NIPPON_CURSE_WEAK }
+    Filter LastingEffect NIPPON_CURSE_STRONG  {Summon "JP_EVIL_SPIRIT" {3 4} 100 RemoveLasting NIPPON_CURSE_STRONG Lasting 100 NIPPON_CURSE }
+    Filter LastingEffect NIPPON_CURSE_RAMPANT {Summon "JP_EVIL_SPIRIT" {4 5} 100 RemoveLasting NIPPON_CURSE_RAMPANT Lasting 100 NIPPON_CURSE_STRONG }
+	}
+  cooldown = {61 100}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"NIPPON_NOROI-SHI_UNLEASH_MALICE_ADVANCED"
+{
+  upgrade = "NIPPON_NOROI-SHI_UNLEASH_MALICE"
+  symbol = "🐝"
+  effect = Name "unleash curse" Description "malice claim you" AI Or{LastingEffect NIPPON_CURSE_MINOR LastingEffect NIPPON_CURSE_WEAK LastingEffect NIPPON_CURSE LastingEffect NIPPON_CURSE_STRONG LastingEffect NIPPON_CURSE_RAMPANT} 1 -1 Chain {
+    Filter LastingEffect NIPPON_CURSE_WEAK    {Summon "JP_EVIL_SPIRIT" {2 3} 100 RemoveLasting NIPPON_CURSE_WEAK Lasting 100 NIPPON_CURSE_MINOR }
+    Filter LastingEffect NIPPON_CURSE         {Summon "JP_EVIL_SPIRIT" {3 4} 100 RemoveLasting NIPPON_CURSE Lasting 100 NIPPON_CURSE_WEAK }
+    Filter LastingEffect NIPPON_CURSE_STRONG  {Summon "JP_EVIL_SPIRIT" {4 5} 100 RemoveLasting NIPPON_CURSE_STRONG Lasting 100 NIPPON_CURSE }
+    Filter LastingEffect NIPPON_CURSE_RAMPANT {Summon "JP_EVIL_SPIRIT" {5 6} 100 RemoveLasting NIPPON_CURSE_RAMPANT Lasting 100 NIPPON_CURSE_STRONG }
+	}
+  range = 1
+  targetSelf = true
+  cooldown = {61 100}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"NIPPON_NOROI-SHI_UNLEASH_MALICE_EXPERT"
+{
+  upgrade = "NIPPON_NOROI-SHI_UNLEASH_MALICE_ADVANCED"
+  symbol = "🐝"
+  effect = Name "unleash curse" Description "malice claim you" AI Or{LastingEffect NIPPON_CURSE_MINOR LastingEffect NIPPON_CURSE_WEAK LastingEffect NIPPON_CURSE LastingEffect NIPPON_CURSE_STRONG LastingEffect NIPPON_CURSE_RAMPANT} 1 -1 Chain {
+    Filter LastingEffect NIPPON_CURSE_WEAK    {Summon "JP_EVIL_SPIRIT" {3 4} 100 RemoveLasting NIPPON_CURSE_WEAK Lasting 100 NIPPON_CURSE_MINOR }
+    Filter LastingEffect NIPPON_CURSE         {Summon "JP_EVIL_SPIRIT" {4 5} 100 RemoveLasting NIPPON_CURSE Lasting 100 NIPPON_CURSE_WEAK }
+    Filter LastingEffect NIPPON_CURSE_STRONG  {Summon "JP_EVIL_SPIRIT" {5 6} 100 RemoveLasting NIPPON_CURSE_STRONG Lasting 100 NIPPON_CURSE }
+    Filter LastingEffect NIPPON_CURSE_RAMPANT {Summon "JP_EVIL_SPIRIT" {6 7} 100 RemoveLasting NIPPON_CURSE_RAMPANT Lasting 100 NIPPON_CURSE_STRONG }
+	}
+  range = 4
+  targetSelf = true
+  cooldown = {61 100}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"NIPPON_NOROI-SHI_MIASMA_BREATH"
+{
+  symbol = "🚬"
+  effect = Name "miasma breath" Area 1 Chain {EmitGas "NIPPON_MIASMA_SMOKE" 1 NipponCurseProgress()}
+  fx = {FLAMETHROWER ColorId BLACK}
+  range = 4
+  cooldown = {15 31}
+  message = "breathe miasma!" "breathes miasma!"
+}
+
+"NIPPON_NOROI-SHI_MIASMA_CLOUD"
+{
+  symbol = "🌫"
+  range = 8
+  effect = Name "miasma fog" Description "Creates a miasma cloud." Chain {Area 6 Filter DistanceD none 3.2 EmitGas "NIPPON_MIASMA_SMOKE" 1 NipponCurseProgress()}
+  cooldown = {30 61}
+}
+
+#################################################################################################################################
+#                                                noroi umare                                                                    #
+#################################################################################################################################
+
+
+"NIPPON_NOROI_UMARE_CACKLE"
+{
+  symbol = "😱"
+  effect = Name "mad laughter" Area 5 Filter Enemy Chance 0.3 {Lasting 50 PANIC Lasting 50 NIPPON_LOW_MORALE}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+
+#################################################################################################################################
+#                                                       oni                                                                     #
+#################################################################################################################################
+
+
+"NIPPON_ONI_CLOUD_WALKING"
+{
+  symbol = "💥"
+  effect = Name "cloud walk" Lasting 40 FLYING
+  cooldown = {80 142}
+  sound = SPELL_DEX_BONUS
+}
+
+"NIPPON_ONI_SHATTER"
+{
+  symbol = "X"
+  effect = Name "shatter" Area 2 Chain {
+								DestroyWalls DIG
+								Damage DAMAGE HIT}
+  range = 7
+  cooldown = 10
+  blockedByWall = false
+}
+
+"NIPPON_ONI_BURNING_CLAWS"
+{
+  symbol = "🔥"
+  effect = Name "burning claws" Lasting 40 FIRE_DAMAGE
+  cooldown = {31 80}
+  sound = SPELL_DEX_BONUS
+}
+
+"NIPPON_ONI_EAT_MALICE"
+{
+  symbol = "🐝"
+  effect = Name "devour curse" Description "malice is my nurishment" AI Or{ LastingEffect NIPPON_CURSE_WEAK LastingEffect NIPPON_CURSE LastingEffect NIPPON_CURSE_STRONG LastingEffect NIPPON_CURSE_RAMPANT} 1 -1 Chain {
+    Filter LastingEffect NIPPON_CURSE_WEAK    {	Caster NipponCurseProgress() Caster Heal { SPIRIT } Caster Lasting 100 MELEE_RESISTANCE
+												RemoveLasting NIPPON_CURSE_WEAK Lasting 100 NIPPON_CURSE_MINOR }
+    Filter LastingEffect NIPPON_CURSE         {	Caster NipponCurseProgress() Caster Heal { SPIRIT } Caster Lasting 100 MELEE_RESISTANCE
+												RemoveLasting NIPPON_CURSE Lasting 100 NIPPON_CURSE_WEAK }
+    Filter LastingEffect NIPPON_CURSE_STRONG  {	Caster NipponCurseProgress() Caster Heal { SPIRIT } Caster Lasting 100 MELEE_RESISTANCE
+												RemoveLasting NIPPON_CURSE_STRONG Lasting 100 NIPPON_CURSE }
+    Filter LastingEffect NIPPON_CURSE_RAMPANT {	Caster NipponCurseProgress() Caster Heal { SPIRIT } Caster Lasting 100 MELEE_RESISTANCE
+												RemoveLasting NIPPON_CURSE_RAMPANT Lasting 100 NIPPON_CURSE_STRONG }
+	}
+  range = 4
+  cooldown = {61 100}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"NIPPON_ONI_ANIMATE_WEAPONS"
+{
+  symbol = "⚔️"
+  effect = Name "awaken weapons" Description "malice will give them life" AI Or{ LastingEffect NIPPON_CURSE_WEAK  LastingEffect NIPPON_CURSE LastingEffect NIPPON_CURSE_STRONG  LastingEffect NIPPON_CURSE_RAMPANT} 1 -1 Chain {
+    Filter LastingEffect NIPPON_CURSE_WEAK    {	Area 5 {AnimateItems 5 5 {80 100} WEAPON}
+												RemoveLasting NIPPON_CURSE_WEAK Lasting 100 NIPPON_CURSE_MINOR }
+    Filter LastingEffect NIPPON_CURSE         {	Area 5 {AnimateItems 5 5 {80 100} WEAPON}
+												RemoveLasting NIPPON_CURSE Lasting 100 NIPPON_CURSE_WEAK }
+    Filter LastingEffect NIPPON_CURSE_STRONG  {	Area 5 {AnimateItems 5 5 {80 100} WEAPON}
+												RemoveLasting NIPPON_CURSE_STRONG Lasting 100 NIPPON_CURSE }
+    Filter LastingEffect NIPPON_CURSE_RAMPANT {	Area 5 {AnimateItems 5 5 {80 100} WEAPON}
+												RemoveLasting NIPPON_CURSE_RAMPANT Lasting 100 NIPPON_CURSE_STRONG }
+    Filter CreatureFlag "animated" {
+	                                SetCreatureName "possesed weapon"
+									NipponCurseProgress()
+                                    IncreaseAttr DAMAGE 6
+                                    IncreaseAttr DEFENSE 6
+                                    SetCreatureFlag "animated" false}}
+  cooldown = {50 201}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"NIPPON_ONI_SHAPESHIFT"
+{
+  symbol = "🐻"
+  effect = Name "shapeshift" Description "Change into a human!" AI And{} 1 -1 {
+    ChooseRandom {
+      Polymorph "NIPPON_PESEANT_CHILD_FEMALE" 30
+      Polymorph "NIPPON_PESEANT_CHILD_MALE" 30	  
+      Polymorph "NIPPON_PESEANT" 30
+      Polymorph "NIPPON_PESEANT_FEMALE" 30	  
+      Polymorph "NIPPON_CITY_DWELLER" 30
+      Polymorph "NIPPON_CITY_DWELLER_FEMALE" 30	  
+      Polymorph "NIPPON_PROSTITUTE" 30
+      Polymorph "NIPPON_HIGH_PROSTITUTE" 30	
+      Polymorph "NIPPON_SWORDSMITH" 30
+      Polymorph "NIPPON_ASHIGARU" 30	
+      Polymorph "NIPPON_SAMURAI" 30
+      Polymorph "NIPPON_SAMURAI_FEMALE" 30	
+      Polymorph "NIPPON_SHINOBI" 30	
+      Polymorph "NIPPON_KUNOICHI" 30	
+      Polymorph "NIPPON_MONK" 30	
+      Polymorph "NIPPON_BENKEI" 30
+      Polymorph "NIPPON_BENKEI_LEADER" 30	
+      Polymorph "NIPPON_BURADDOMONKU" 30	
+      Polymorph "NIPPON_BURADDOMONKU_LEADER" 30	
+      Polymorph "NIPPON_RONIN" 30	
+	  }
+    IncreaseAttr DAMAGE 31
+    IncreaseAttr DEFENSE 32
+    IncreaseAttr SPELL_SPEED 5
+	GrantAbility "NIPPON_NOROI-SHI_HEAL"
+	GrantAbility "NIPPON_NOROI-SHI_HEAL"         
+	GrantAbility "NIPPON_NOROI-SHI_UNLEASH_MALICE"  
+	GrantAbility "NIPPON_ONI_EAT_MALICE"            
+	GrantAbility "NIPPON_ONI_BURNING_CLAWS"         
+	GrantAbility "NIPPON_NOROI-SHI_MIASMA_BREATH"   
+	GrantAbility "NIPPON_ONI_SHATTER"             
+  }
+  message = "" ""
+  cooldown = {100 300}
+}
+
+"NIPPON_ONI_SHAPESHIFT_2"
+{
+  upgrade = "NIPPON_ONI_SHAPESHIFT"
+  symbol = "🐻"
+  effect = Name "shapeshift" Description "Change into a human!" AI And{} 1 -1 {
+    ChooseRandom {
+      Polymorph "NIPPON_PESEANT_CHILD_FEMALE" 30
+      Polymorph "NIPPON_PESEANT_CHILD_MALE" 30	  
+      Polymorph "NIPPON_PESEANT" 30
+      Polymorph "NIPPON_PESEANT_FEMALE" 30	  
+      Polymorph "NIPPON_CITY_DWELLER" 30
+      Polymorph "NIPPON_CITY_DWELLER_FEMALE" 30	  
+      Polymorph "NIPPON_PROSTITUTE" 30
+      Polymorph "NIPPON_HIGH_PROSTITUTE" 30	
+      Polymorph "NIPPON_SWORDSMITH" 30
+      Polymorph "NIPPON_ASHIGARU" 30	
+      Polymorph "NIPPON_SAMURAI" 30
+      Polymorph "NIPPON_SAMURAI_FEMALE" 30	
+      Polymorph "NIPPON_SHINOBI" 30	
+      Polymorph "NIPPON_KUNOICHI" 30	
+      Polymorph "NIPPON_MONK" 30	
+      Polymorph "NIPPON_BENKEI" 30
+      Polymorph "NIPPON_BENKEI_LEADER" 30	
+      Polymorph "NIPPON_BURADDOMONKU" 30	
+      Polymorph "NIPPON_BURADDOMONKU_LEADER" 30	
+      Polymorph "NIPPON_RONIN" 30	
+	  }
+    IncreaseAttr DAMAGE 31
+    IncreaseAttr DEFENSE 32
+    IncreaseAttr SPELL_SPEED 5
+	GrantAbility "NIPPON_NOROI-SHI_HEAL"
+	GrantAbility "NIPPON_NOROI-SHI_HEAL"         
+	GrantAbility "NIPPON_NOROI-SHI_UNLEASH_MALICE"  
+	GrantAbility "NIPPON_ONI_EAT_MALICE"            
+	GrantAbility "NIPPON_ONI_BURNING_CLAWS"         
+	GrantAbility "NIPPON_NOROI-SHI_MIASMA_BREATH"   
+	GrantAbility "NIPPON_ONI_SHATTER"        
+	GrantAbility "NIPPON_NOROI-SHI_REANIMATE" 	
+  }
+  message = "" ""
+  cooldown = {100 300}
+}
+
+"NIPPON_ONI_SHAPESHIFT_3"
+{
+  upgrade = "NIPPON_ONI_SHAPESHIFT_2"
+  symbol = "🐻"
+  effect = Name "shapeshift" Description "Change into a human!" AI And{} 1 -1 {
+    ChooseRandom {
+      Polymorph "NIPPON_PESEANT_CHILD_FEMALE" 30
+      Polymorph "NIPPON_PESEANT_CHILD_MALE" 30	  
+      Polymorph "NIPPON_PESEANT" 30
+      Polymorph "NIPPON_PESEANT_FEMALE" 30	  
+      Polymorph "NIPPON_CITY_DWELLER" 30
+      Polymorph "NIPPON_CITY_DWELLER_FEMALE" 30	  
+      Polymorph "NIPPON_PROSTITUTE" 30
+      Polymorph "NIPPON_HIGH_PROSTITUTE" 30	
+      Polymorph "NIPPON_SWORDSMITH" 30
+      Polymorph "NIPPON_ASHIGARU" 30	
+      Polymorph "NIPPON_SAMURAI" 30
+      Polymorph "NIPPON_SAMURAI_FEMALE" 30	
+      Polymorph "NIPPON_SHINOBI" 30	
+      Polymorph "NIPPON_KUNOICHI" 30	
+      Polymorph "NIPPON_MONK" 30	
+      Polymorph "NIPPON_BENKEI" 30
+      Polymorph "NIPPON_BENKEI_LEADER" 30	
+      Polymorph "NIPPON_BURADDOMONKU" 30	
+      Polymorph "NIPPON_BURADDOMONKU_LEADER" 30	
+      Polymorph "NIPPON_RONIN" 30	
+	  }
+	Permanent FIRE_IMMUNITY
+    IncreaseAttr DAMAGE 31
+    IncreaseAttr DEFENSE 32
+    IncreaseAttr SPELL_SPEED 5
+	GrantAbility "NIPPON_NOROI-SHI_HEAL"
+	GrantAbility "NIPPON_NOROI-SHI_HEAL"         
+	GrantAbility "NIPPON_NOROI-SHI_UNLEASH_MALICE"  
+	GrantAbility "NIPPON_ONI_EAT_MALICE"            
+	GrantAbility "NIPPON_ONI_BURNING_CLAWS"         
+	GrantAbility "NIPPON_NOROI-SHI_MIASMA_BREATH"   
+	GrantAbility "NIPPON_ONI_SHATTER"        
+	GrantAbility "NIPPON_NOROI-SHI_REANIMATE" 	
+	GrantAbility "fire trap" 	
+  }
+  message = "" ""
+  cooldown = {100 300}
+}
+
+"NIPPON_ONI_SHAPESHIFT_4"
+{
+  upgrade = "NIPPON_ONI_SHAPESHIFT_3"
+  symbol = "🐻"
+  effect = Name "shapeshift" Description "Change into a human!" AI And{} 1 -1 {
+    ChooseRandom {
+      Polymorph "NIPPON_PESEANT_CHILD_FEMALE" 30
+      Polymorph "NIPPON_PESEANT_CHILD_MALE" 30	  
+      Polymorph "NIPPON_PESEANT" 30
+      Polymorph "NIPPON_PESEANT_FEMALE" 30	  
+      Polymorph "NIPPON_CITY_DWELLER" 30
+      Polymorph "NIPPON_CITY_DWELLER_FEMALE" 30	  
+      Polymorph "NIPPON_PROSTITUTE" 30
+      Polymorph "NIPPON_HIGH_PROSTITUTE" 30	
+      Polymorph "NIPPON_SWORDSMITH" 30
+      Polymorph "NIPPON_ASHIGARU" 30	
+      Polymorph "NIPPON_SAMURAI" 30
+      Polymorph "NIPPON_SAMURAI_FEMALE" 30	
+      Polymorph "NIPPON_SHINOBI" 30	
+      Polymorph "NIPPON_KUNOICHI" 30	
+      Polymorph "NIPPON_MONK" 30	
+      Polymorph "NIPPON_BENKEI" 30
+      Polymorph "NIPPON_BENKEI_LEADER" 30	
+      Polymorph "NIPPON_BURADDOMONKU" 30	
+      Polymorph "NIPPON_BURADDOMONKU_LEADER" 30	
+      Polymorph "NIPPON_RONIN" 30	
+	  }
+	Permanent FIRE_IMMUNITY
+    IncreaseAttr DAMAGE 31
+    IncreaseAttr DEFENSE 32
+    IncreaseAttr SPELL_SPEED 5
+	GrantAbility "NIPPON_NOROI-SHI_HEAL"
+	GrantAbility "NIPPON_NOROI-SHI_HEAL"         
+	GrantAbility "NIPPON_NOROI-SHI_UNLEASH_MALICE"  
+	GrantAbility "NIPPON_ONI_EAT_MALICE"            
+	GrantAbility "NIPPON_ONI_BURNING_CLAWS"         
+	GrantAbility "NIPPON_NOROI-SHI_MIASMA_BREATH"   
+	GrantAbility "NIPPON_ONI_SHATTER"        
+	GrantAbility "NIPPON_NOROI-SHI_REANIMATE" 	
+	GrantAbility "fire trap" 	
+	GrantAbility "fire breath" 	
+  }
+  message = "" ""
+  cooldown = {100 300}
+}
+
+"NIPPON_ONI_SHAPESHIFT_5"
+{
+  upgrade = "NIPPON_ONI_SHAPESHIFT_4"
+  symbol = "🐻"
+  effect = Name "shapeshift" Description "Change into a human!" AI And{} 1 -1 {
+    ChooseRandom {
+      Polymorph "NIPPON_PESEANT_CHILD_FEMALE" 30
+      Polymorph "NIPPON_PESEANT_CHILD_MALE" 30	  
+      Polymorph "NIPPON_PESEANT" 30
+      Polymorph "NIPPON_PESEANT_FEMALE" 30	  
+      Polymorph "NIPPON_CITY_DWELLER" 30
+      Polymorph "NIPPON_CITY_DWELLER_FEMALE" 30	  
+      Polymorph "NIPPON_PROSTITUTE" 30
+      Polymorph "NIPPON_HIGH_PROSTITUTE" 30	
+      Polymorph "NIPPON_SWORDSMITH" 30
+      Polymorph "NIPPON_ASHIGARU" 30	
+      Polymorph "NIPPON_SAMURAI" 30
+      Polymorph "NIPPON_SAMURAI_FEMALE" 30	
+      Polymorph "NIPPON_SHINOBI" 30	
+      Polymorph "NIPPON_KUNOICHI" 30	
+      Polymorph "NIPPON_MONK" 30	
+      Polymorph "NIPPON_BENKEI" 30
+      Polymorph "NIPPON_BENKEI_LEADER" 30	
+      Polymorph "NIPPON_BURADDOMONKU" 30	
+      Polymorph "NIPPON_BURADDOMONKU_LEADER" 30	
+      Polymorph "NIPPON_RONIN" 30	
+	  }
+	Permanent FIRE_IMMUNITY
+    IncreaseAttr DAMAGE 31
+    IncreaseAttr DEFENSE 32
+    IncreaseAttr SPELL_SPEED 5
+	GrantAbility "NIPPON_NOROI-SHI_HEAL"
+	GrantAbility "NIPPON_NOROI-SHI_HEAL"         
+	GrantAbility "NIPPON_NOROI-SHI_UNLEASH_MALICE"  
+	GrantAbility "NIPPON_ONI_EAT_MALICE"            
+	GrantAbility "NIPPON_ONI_BURNING_CLAWS"         
+	GrantAbility "NIPPON_NOROI-SHI_MIASMA_BREATH"   
+	GrantAbility "NIPPON_ONI_SHATTER"        
+	GrantAbility "NIPPON_NOROI-SHI_REANIMATE" 	
+	GrantAbility "fire trap" 	
+	GrantAbility "fire breath" 	
+	GrantAbility "NIPPON_ONI_ANIMATE_WEAPONS"
+  }
+  message = "" ""
+  cooldown = {100 300}
+}
+
+
+#################################################################################################################################
+#                                                corrupted daimyo                                                               #
+#################################################################################################################################
+
+
+"NIPPON_PICK_OFFERING"
+{
+  symbol = "🐔"
+  effect = Name "pick offering" Description "I want this child!"  Chain{
+    Filter CreatureId "NIPPON_PESEANT_CHILD_FEMALE"{Polymorph "NIPPON_OFFERING_FEMALE" none}
+    Filter CreatureId "NIPPON_PESEANT_CHILD_MALE"{Polymorph "NIPPON_OFFERING_MALE" none}
+	}
+  range = 5
+  endOnly = true
+  targetSelf = true
+  cooldown = {30 61}
+  message = "play a trick!" "plays a trick!"
+}
+
+"NIPPON_CORRUPTED_DAIMYO_HEAL"
+{
+  symbol = "✴"
+  effect = Name "daimyo gift"  Chain {
+      Heal { SPIRIT }
+	  Heal { FLESH }
+	  Filter Or { BodyMaterial UNDEAD_FLESH BodyMaterial BONE BodyMaterial ROCK BodyMaterial CLAY BodyMaterial WOOD BodyMaterial IRON BodyMaterial LAVA BodyMaterial ADA BodyMaterial GOLD BodyMaterial ICE BodyMaterial INFERNITE BodyMaterial ADOXIUM}{ RegrowBodyPart 10 }
+	  NipponCurseProgress()
+	  Lasting 50 DAM_BONUS
+	  Lasting 50 DEF_BONUS
+	  }
+  range = 1
+  targetSelf = true
+  cooldown = {30 61}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_CORRUPTED_DAIMYO_PANIC"
+{
+  symbol = "😱"
+  effect = Name "dark presence" Area 2 Filter Enemy Chance 0.5 {Lasting PANIC NipponCurseProgress()}
+  cooldown = {51 102}
+  sound = SPELL_STR_BONUS
+}
+
+"NIPPON_CORRUPTED_ADVANCED_DAIMYO_PANIC"
+{
+  upgrade = "NIPPON_CORRUPTED_DAIMYO_PANIC"
+  symbol = "😱"
+  effect = Name "dark presence" Area 4 Filter Enemy Chain {Lasting PANIC NipponCurseProgress()}
+  cooldown = {51 102}
+  sound = SPELL_STR_BONUS
+}
+
+"NIPPON_CORRUPTED_DAIMYO_ANIMATE_CORPSES"
+{
+  symbol = "👤"
+  effect = Name "animate corpses" Area 100 Filter Not Enemy {
+  AnimateItems 3 5 {10 20} CORPSE
+  Filter CreatureFlag "animated" { ChooseRandom {
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU_ARCHER" none
+                                                }
+												NipponCurseProgress()
+												}
+  SetCreatureFlag "animated" false}
+  cooldown = {50 201}
+}
+
+"NIPPON_CORRUPTED_DAIMYO_ADVANCED_ANIMATE_CORPSES"
+{
+  upgrade = "NIPPON_CORRUPTED_DAIMYO_ANIMATE_CORPSES"
+  symbol = "👤"
+  effect = Name "animate corpses" Area 100 Filter Not Enemy {
+  AnimateItems 6 5 {30 50} CORPSE
+  Filter CreatureFlag "animated" { ChooseRandom {
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_BONE_ASHIGARU" none
+                                                  Polymorph "NIPPON_ASHIGARU_ARCHER" none
+                                                }
+												NipponCurseProgress()}
+  SetCreatureFlag "animated" false}
+  cooldown = {50 201}
+}
+
+"NIPPON_CORRUPTED_DAIMYO_ETERNAL_LIFE"
+{
+  symbol = "🛡"
+  effect = Name "secret of immortality" AI Health 0.6 1.0 1 1 Chain { Lasting 100 LIFE_SAVED NipponCurseProgress()}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"NIPPON_CORRUPTED_DAIMYO_ADVANCED_ETERNAL_LIFE"
+{
+  upgrade = "NIPPON_CORRUPTED_DAIMYO_ETERNAL_LIFE"
+  symbol = "🛡"
+  effect = Name "secret of immortality" AI Health 0.6 1.0 1 1 Chain { Lasting 100 LIFE_SAVED NipponCurseProgress()}
+  cooldown = {15 41}
+  sound = SPELL_DEX_BONUS
+}
+
+OneTimeAbilityName("NIPPON_CORRUPTED_DAIMYO_BODYGUARD", "Gains an bodyguard.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "JP_EVIL_SPIRIT" } }, "🧛", "bodyguards")
+OneTimeAbilityName("NIPPON_CORRUPTED_DAIMYO_ANOTHER_BODYGUARD", "Gains an bodyguard.", { AddCompanion 1 false SPELL_DAMAGE 0.002 { "JP_EVIL_SPIRIT" } }, "🧛", "bodyguards")
+
+
+#################################################################################################################################
+#                                                    Cursed Items                                                               #
+#################################################################################################################################
+
+
+"NIPPON_CURSE_OX"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "ushi no koku mairi" Description "curse has been prepared, unleash it, twist them."
+  Chain {
+			NipponCurseProgress()
+			NipponCurseProgress()
+			NipponCurseProgress()
+			NipponCurseProgress()
+			NipponCurseProgress()
+			NipponCurseProgress()
+			NipponCurseProgress()
+			NipponCurseProgress()
+			NipponCurseProgress()
+			NipponCurseProgress()
+			NipponCurseProgress()
+			NipponCurseProgress()
+			Summon "JP_EVIL_SPIRIT" 4 100
+	        Caster {SetCreatureFlag "nippon_curse_ox" false}
+			Caster RemoveAbility NIPPON_CURSE_OX
+			}
+  range = 4
+  cooldown = {100 301}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_BLOODSUCKING_INK"
+{
+  symbol = "⥇"
+  effect = Name "cursed ink" Chain {
+									Caster Lasting 25 BLEEDING 
+									Summon "NIPPON_KYUKETSU_INKU" 1 100}
+  projectileViewId = {"jp_talisman_single" ColorId WHITE }
+  range = 4
+  cooldown = {40 91}
+  sound = SPELL_BLAST
+}
+
+"NIPPON_ONI_MASK_CLOUD_WALKING"
+{
+  symbol = "💥"
+  effect = Name "cloud walk" Chain {Lasting 40 FLYING NipponCurseProgress()}
+  cooldown = {160 284}
+  sound = SPELL_DEX_BONUS
+}
+
+"NIPPON_ONI_MASK_SHATTER"
+{
+  symbol = "X"
+  effect = Name "shatter" Chain { Area 2 Chain {
+								DestroyWalls DIG
+								Damage DAMAGE HIT}
+								Caster NipponCurseProgress()}
+  range = 7
+  cooldown = 10
+  blockedByWall = false
+}
+
+"NIPPON_ONI_MASK_BURNING_CLAWS"
+{
+  symbol = "🔥"
+  effect = Name "burning claws" Chain { Lasting 40 FIRE_DAMAGE NipponCurseProgress()}
+  cooldown = {62 160}
+  sound = SPELL_DEX_BONUS
+}
+
+"NIPPON_ONI_MASK_EAT_MALICE"
+{
+  symbol = "🐝"
+  effect = Name "devour curse" Description "malice is my nurishment" AI Or{ LastingEffect NIPPON_CURSE_WEAK LastingEffect NIPPON_CURSE LastingEffect NIPPON_CURSE_STRONG LastingEffect NIPPON_CURSE_RAMPANT} 1 -1 Chain {
+    Filter LastingEffect NIPPON_CURSE_WEAK    {	Caster NipponCurseProgress()	Caster NipponCurseProgress() Caster Heal { SPIRIT } Caster Lasting 100 MELEE_RESISTANCE
+												RemoveLasting NIPPON_CURSE_WEAK Lasting 100 NIPPON_CURSE_MINOR }
+    Filter LastingEffect NIPPON_CURSE         {	Caster NipponCurseProgress()	Caster NipponCurseProgress() Caster Heal { SPIRIT } Caster Lasting 100 MELEE_RESISTANCE
+												RemoveLasting NIPPON_CURSE Lasting 100 NIPPON_CURSE_WEAK }
+    Filter LastingEffect NIPPON_CURSE_STRONG  {	Caster NipponCurseProgress()	Caster NipponCurseProgress() Caster Heal { SPIRIT } Caster Lasting 100 MELEE_RESISTANCE
+												RemoveLasting NIPPON_CURSE_STRONG Lasting 100 NIPPON_CURSE }
+    Filter LastingEffect NIPPON_CURSE_RAMPANT {	Caster NipponCurseProgress()	Caster NipponCurseProgress() Caster Heal { SPIRIT } Caster Lasting 100 MELEE_RESISTANCE
+												RemoveLasting NIPPON_CURSE_RAMPANT Lasting 100 NIPPON_CURSE_STRONG }
+	}
+  range = 4
+  cooldown = {122 200}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"NIPPON_SACRIFICAL_KNIFE"
+{
+  symbol = "🗡️"
+  effect = MinDistanceFromStrongEnemy(2) Name "sacrifice" Description "Sacrifices the creature to gain inspiration" Chain {
+            Filter Area 0 CreatureStatus PRISONER {
+			Filter Area 0 HatedBy HATE_HUMANS {
+			Suicide DIE	
+			IncreaseAttr "WORKSHOP" 2
+			IncreaseAttr "FORGE" 2
+			IncreaseAttr "LABORATORY" 2
+			IncreaseAttr "JEWELER" 2
+			IncreaseAttr FURNACE 4
+			Caster Permanent UNSTABLE
+			Caster NipponCurseProgress()}
+			Filter Area 0 HatedBy HATE_GREENSKINS {
+			Suicide DIE	
+			IncreaseAttr "WORKSHOP" 2
+			IncreaseAttr "FORGE" 2
+			IncreaseAttr "LABORATORY" 2
+			IncreaseAttr "JEWELER" 2
+			IncreaseAttr FURNACE 4
+			Caster Permanent UNSTABLE
+			Caster NipponCurseProgress()}
+			Filter Area 0 HatedBy HATE_DWARVES {
+			Suicide DIE	
+			IncreaseAttr "WORKSHOP" 2
+			IncreaseAttr "FORGE" 2
+			IncreaseAttr "LABORATORY" 2
+			IncreaseAttr "JEWELER" 2
+			IncreaseAttr FURNACE 4
+			Caster Permanent UNSTABLE
+			Caster NipponCurseProgress()}
+			Filter Area 0 HatedBy HATE_ELVES {
+			Suicide DIE	
+			IncreaseAttr "WORKSHOP" 2
+			IncreaseAttr "FORGE" 2
+			IncreaseAttr "LABORATORY" 2
+			IncreaseAttr "JEWELER" 2
+			IncreaseAttr FURNACE 4
+			Caster Permanent UNSTABLE
+			Caster NipponCurseProgress()}
+			}}
+  endOnly = true
+  range = 1
+  cooldown = 200
+  sound = SPELL_BLAST
+}
+
+"NIPPON_ONRYO_MASK_CACKLE"
+{
+  symbol = "😱"
+  effect = Name "mad laughter" Chain {Caster NipponCurseProgress() Area 5 Filter Enemy Chance 0.3 {Lasting 50 PANIC Lasting 50 NIPPON_LOW_MORALE}}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"NIPPON_ONRYO_MASK_CURSE_HIM"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "bestow curse" Description "Bestows an curse" Chain {
+      Caster NipponCurseProgress() 
+	  NipponCurseProgress()}
+  endOnly = true
+  range = 4
+  cooldown = {21 42}
+  sound = SPELL_BLAST
+}
+
+#################################################################################################################################
+#                                                        hinigami                                                               #
+#################################################################################################################################
+
+
+"NIPPON_HINNAGAMI_GREED"
+{
+  symbol = "⥇"
+  effect = Name "greed" Description "your ritches is there." AI And{} 0 1 {
+  ChooseRandom {
+        DropItems {"GoldPiece"} {5 10}
+        DropItems {"Rock"} {1 5}
+        DropItems {"IronOre"} {1 5}
+        DropItems {"WoodPlank"} {1 5}
+        DropItems {"AdaOre"} {1 5}
+        DropItems {"AdoxiumOre"} {1 5}
+        DropItems {"InferniteOre"} {1 5}
+			}}
+  cooldown = {150 301}
+}
+
+"NIPPON_HINNAGAMI_HEAL"
+{
+  symbol = "✴"
+  effect = Name "healing" Description "may you live longer"
+  Chain {
+      Heal { SPIRIT }
+	  Heal { FLESH }
+	  Filter Or { BodyMaterial UNDEAD_FLESH BodyMaterial BONE BodyMaterial ROCK BodyMaterial CLAY BodyMaterial WOOD BodyMaterial IRON BodyMaterial LAVA BodyMaterial ADA BodyMaterial GOLD BodyMaterial ICE BodyMaterial INFERNITE BodyMaterial ADOXIUM}{ RegrowBodyPart 10 }
+	  }
+  range = 4
+  cooldown = {50 110}
+  sound = SPELL_BLAST
+}
+
+
+#################################################################################################################################
+#                                                        offering                                                               #
+#################################################################################################################################
+
+"NIPPON_OFFER_YOURSELF"
+{
+  symbol = "$"
+  effect = Name "offer yourself" Filter LastingEffect NIPPON_OFFERING_CONSUMED {Filter Or { HatedBy HATE_UNDEAD HatedBy HATE_DEMONS }{ 
+								Chain {
+									Heal { SPIRIT }
+									Heal { FLESH }
+									Filter Or { BodyMaterial UNDEAD_FLESH BodyMaterial BONE BodyMaterial ROCK BodyMaterial CLAY BodyMaterial WOOD BodyMaterial IRON BodyMaterial LAVA BodyMaterial ADA BodyMaterial GOLD BodyMaterial ICE BodyMaterial INFERNITE BodyMaterial ADOXIUM}{ RegrowBodyPart 10 }
+								}
+								Lasting 100 NIPPON_OFFERING_CONSUMED
+								Caster Suicide DIE }}
+  range = 1
+  targetSelf = false
+  cooldown = 150
+}
+
+
+#################################################################################################################################
+#                                                        Amanojaku                                                               #
+#################################################################################################################################
+
+"NIPPON_AMANOJAKU_RAGE"
+{
+  symbol = "💪"
+  effect = Name "rage" Lasting 40 NIPPON_AMANOJAKU_RAGE
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"NIPPON_AMANOJAKU_DARK_URGE"
+{
+  symbol = "☠"
+  effect = Name "dark urge" AI Enemy 1 -1  { Chance 0.5 Lasting 2 INSANITY}
+  range = 4
+  cooldown = {5 21}
   sound = SPELL_BLAST
 }

@@ -87,6 +87,53 @@ OneTimeAbility("arcanist promotion", "Promotes mystic intro Arcanist.", { SetVie
 OneTimeAbility("sorcerer promotion", "Promotes arcanist intro Sorcerer.", { SetViewId {"de_sr3_sorcerer"} SetCreatureName "sorcerer" }, "🎖️")
 OneTimeAbility("gladiator veterancy", "Gladiator survived long enought to become veteran.", { SetViewId {"de_gl2_veteran"}}, "🎖️")
 OneTimeAbility("gladiator champion", "Gladiator proved himself to be a champion.", { SetViewId {"de_gl3_champion"}}, "🎖️")
+OneTimeAbility("blade mistress promotion", "Promotes solider intro Blade Mistress.", { SetViewId {"de_sp2_blade_mistress"} SetCreatureName "blade mistress" }, "🎖️")
+OneTimeAbility("blade princess promotion", "Promotes solider intro Blade Princess.", { SetViewId {"de_sp3_blade_princess"} SetCreatureName "blade princess" }, "🎖️")
+OneTimeAbility("demonologist promotion", "Promotes mystic intro Demonologist.", { SetViewId {"de_sm2_demonologist"} SetCreatureName "demonologist" }, "🎖️")
+OneTimeAbility("hellbinder promotion", "Promotes arcanist intro Hellbinder.", { SetViewId {"de_sm3_hellbinder"} SetCreatureName "hellbinder" }, "🎖️")
+
+OneTimeAbility("imp fammiliars", "They shall follow you forever.", {SetCreatureFlag "2 imps" true AddCompanion 2 true SPELL_DAMAGE 0.002 { "DE_DEMON_IMP"}}, "🧛")
+OneTimeAbility("more imp fammiliars", "They shall follow you forever.", {SetCreatureFlag "4 imps" true AddCompanion 2 true SPELL_DAMAGE 0.002 { "DE_DEMON_IMP"}}, "🧛")
+OneTimeAbility("demon fammiliars", "They shall follow you forever.", {SetCreatureFlag "2 minions" true AddCompanion 2 true SPELL_DAMAGE 0.002 { "DE_DEMON_MINION"}}, "🧛")
+OneTimeAbility("imp strenght",   "They shall follow you forever.", {IncreaseAttr DEFENSE 5 IncreaseAttr DAMAGE 8 IncreaseAttr SPELL_DAMAGE 2}, "🧛")
+OneTimeAbility("demon strenght",   "They shall follow you forever.", {IncreaseAttr DEFENSE 14 IncreaseAttr DAMAGE 16 IncreaseAttr SPELL_DAMAGE 6}, "🧛")
+OneTimeAbility("sure contract",   "They shall not harm your friends.", {SetCreatureFlag "de_banishment" true}, "🧛")
+
+
+"de_imps"
+{
+  symbol = "👾"
+  effect = Name "summon imps" Summon "DE_DEMON_IMP_SUMMON" { 4 8 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"de_imps_more"
+{
+  upgrade = "de_imps"
+  symbol = "👾"
+  effect = Name "summon imps" Summon "DE_DEMON_IMP_SUMMON" { 8 16 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"de_minions"
+{
+  symbol = "👾"
+  effect = Name "summon imps" Summon "DE_DEMON_MINION_SUMMON" { 1 2 } 100
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"de_banisment"
+{
+  symbol = "ℒ"
+  effect = Name "lesser banishment" Description "Banishes imps that have gone rogue" { Filter HatedBy HATE_DEMON_SUMMON Suicide TURN_INVISIBLE  }
+  range = 6
+  cooldown = {81 132}
+  endOnly = true
+  sound = SPELL_FIRE_SPHERE_PET
+}
 
 "de_intimidate"
 {
@@ -112,4 +159,80 @@ OneTimeAbility("gladiator champion", "Gladiator proved himself to be a champion.
   maxHits = 1
   message = "trows an net" "trows an net"
   type = ABILITY
+}
+
+Def TryFireMissile()
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"are hit by the missile" "is hit by the missile"}
+      Damage SPELL_DAMAGE SPELL Fire{5}
+	  Caster Lasting 0 "ELF_FIRE_SPELL"
+    },
+    CreatureMessage {"are spared by the missile" "is spared by the missile"}
+  )
+End
+
+"elf fire resistance"
+{
+  symbol = "🔥"
+  effect = Name "fire resistance" Lasting 40 FIRE_IMMUNITY
+  cooldown = {50 101}
+  sound = SPELL_CURE_POISON
+}
+
+"elf advanced fire resistance"
+{
+  upgrade = "elf fire resistance"
+  symbol = "🔥"
+  effect = Name "fire resistance" Lasting 40 FIRE_IMMUNITY
+  targetSelf = true
+  range = 1
+  cooldown = {50 101}
+  sound = SPELL_CURE_POISON
+}
+
+"elf master fire resistance"
+{
+  upgrade = "elf advanced fire resistance"
+  symbol = "🔥"
+  effect = Name "fire resistance" Area 10 Filter Not Enemy Lasting 40 FIRE_IMMUNITY
+  targetSelf = true
+  range = 1
+  cooldown = {50 101}
+  sound = SPELL_CURE_POISON
+}
+
+"fire missile"
+{
+  symbol = "🔥"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire missile" Description "Shoots a fire missile"
+      TryFireMissile()
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"advanced fire missile"
+{
+  upgrade = "fire missile"
+  symbol = "🔥"
+  effect = MinDistanceFromStrongEnemy(2) Name "advanced fire missile" Description "Shoots a fire missile"
+      TryFireMissile()
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"expert fire missile"
+{
+  upgrade = "advanced fire missile"
+  symbol = "🔥"
+  effect = MinDistanceFromStrongEnemy(2) Name "expert fire missile" Description "Shoots a fire missile"
+      TryFireMissile()
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = {5 21}
+  sound = SPELL_BLAST
 }

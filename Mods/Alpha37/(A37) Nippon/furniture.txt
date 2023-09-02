@@ -10,6 +10,18 @@
   requiresLight = true
 }
 
+"JP_MALICE_TABLE"
+{
+  name = "curse workshop"
+  viewId = { "jp_malice_table" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 80
+  requiresLight = true
+}
+
 "NIPPON_TRAINING_WOOD"
 {
   name = "wooden training dummy"
@@ -110,10 +122,25 @@
 
 "NIPPON_TORII"
 {
-  name = "TORII"
+  name = "torii"
   viewId = { "jp_torii_gate" }
-  tickType = Effect { Area 4 Filter Not Enemy Lasting 10 MAGIC_RESISTANCE}
+  tickType = Effect Chain { Area 4 Filter Not Enemy Lasting 10 MAGIC_RESISTANCE}
   blockMovement = true
+  canBuildOutsideOfTerritory = true
+  canHideHere = true
+  strength = 100
+  fire = 100
+  destroyedRemains = "NIPPON_DESTROYED_TORII"
+  burntRemains = "NIPPON_DESTROYED_TORII"
+}
+
+"NIPPON_DEFILED_TORII"
+{
+  name = "defiled torii"
+  viewId = { "jp_torii_gate" }
+  tickType = Effect Chain { Area 4 Filter Enemy Lasting 10 MAGIC_VULNERABILITY}
+  blockMovement = true
+  canBuildOutsideOfTerritory = true
   canHideHere = true
   strength = 100
   fire = 100
@@ -123,11 +150,12 @@
 
 "NIPPON_DESTROYED_TORII"
 {
-  name = "DESTROYED TORII"
+  name = "destroyed torii"
   viewId = { "jp_torii_gate_broken" }
-  tickType = Effect { Area 4 Filter Not Enemy {Lasting 10 NIPPON_LOW_MORALE}
+  tickType = Effect Chain { Area 4 Filter Not Enemy {Lasting 10 NIPPON_LOW_MORALE}
                              Chance 0.005 SummonEnemy "JP_EVIL_SPIRIT" {1} none }
   blockMovement = true
+  canBuildOutsideOfTerritory = true
   canHideHere = true
   strength = 100
   fire = 100
@@ -140,15 +168,6 @@
   destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
 }
 
-"NIPPON_SHIKIGAMI_FIRE" inherit "STONE_BRIDGE"
-{
-  tickType = Effect {Area 0 Filter Not LastingEffect SHIKIGAMI_TRANSFORM{ {Area 2 {Filter CreatureId "NIPPON_SHIKIGAMI" {
-					Polymorph "NIPPON_SHIKIGAMI_FIRE" none 
-					Caster Lasting 30 SHIKIGAMI_TRANSFORM}}}}
-                    RemoveFurniture "NIPPON_SHIKIGAMI_FIRE"
-  }
-}
-
 "NIPPON_SAKURA_01"
 {
   name = "sakura"
@@ -156,7 +175,7 @@
   canHideHere = true
   blockVision = { NORMAL }
   luxury = 0.7
-  populationIncrease = { 1 none }
+  populationIncrease = { 0.5 8 }
   destroyedRemains = "TREE_TRUNK"
   burntRemains = "BURNT_TREE"
   dissolveTo = "BURNT_TREE"
@@ -164,6 +183,7 @@
     100 BOULDER
     70 CUT
   }
+  canBuildOutsideOfTerritory = true
   fire = 100
   itemDrop = {{{{"WoodPlank"} 1 { 8 14 }}}}
   summonedElement = "ENT"
@@ -177,7 +197,7 @@
   canHideHere = true
   blockVision = { NORMAL }
   luxury = 0.7
-  populationIncrease = { 1 none }
+  populationIncrease = { 0.5 8 }
   destroyedRemains = "TREE_TRUNK"
   burntRemains = "BURNT_TREE"
   dissolveTo = "BURNT_TREE"
@@ -185,6 +205,7 @@
     100 BOULDER
     70 CUT
   }
+  canBuildOutsideOfTerritory = true
   fire = 100
   itemDrop = {{{{"WoodPlank"} 1 { 8 14 }}}}
   summonedElement = "ENT"
@@ -198,7 +219,7 @@
   canHideHere = true
   blockVision = { NORMAL }
   luxury = 0.7
-  populationIncrease = { 1 none }
+  populationIncrease = { 0.5 8 }
   destroyedRemains = "TREE_TRUNK"
   burntRemains = "BURNT_TREE"
   dissolveTo = "BURNT_TREE"
@@ -206,8 +227,137 @@
     100 BOULDER
     70 CUT
   }
+  canBuildOutsideOfTerritory = true
   fire = 100
   itemDrop = {{{{"WoodPlank"} 1 { 8 14 }}}}
   summonedElement = "ENT"
   tryDestroyFX = { WOOD_SPLINTERS }
+}
+
+"NIPPON_BUDDHA_STATUE_GOLD"
+{
+  name = "gold statue"
+  viewId = { "jp_buddha_statue_gold" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = { 2 8 }
+  tickType = Effect Chain { Area 2 Lasting 10 PEACEFULNESS}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"NIPPON_BUDDHA_STATUE_STONE"
+{
+  name = "stone statue"
+  viewId = { "jp_buddha_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 50
+  populationIncrease = { 1 4 }
+  tickType = Effect Chain { Area 2 Lasting 10 PEACEFULNESS}
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"NIPPON_RESOURCE_CHEST"
+{
+  name = "chest"
+  viewId = { "chest" }
+  canHideHere = true
+  usageType = UsageEffect "open" {
+    CreatureMessage { "open the chest" "opens the chest"}
+    CreatureMessage { "find some stuff inside" "finds some stuff inside"}
+    ChooseRandom {
+      DropItems {"GoldPiece"} 25
+      DropItems {"GoldPiece"} 50
+      DropItems {"GoldPiece"} 75
+    }
+    ChooseRandom {
+      DropItems {"WoodPlank"} 10
+      DropItems {"WoodPlank"} 15
+      DropItems {"WoodPlank"} 20
+    }
+    ChooseRandom {
+      DropItems {"IronOre"} 10
+      DropItems {"IronOre"} 15
+      DropItems {"IronOre"} 20
+    }
+    ChooseRandom {
+      DropItems {"Rock"} 10
+      DropItems {"Rock"} 15
+      DropItems {"Rock"} 20
+    }
+    RemoveFurniture "NIPPON_RESOURCE_CHEST"
+  }
+  fire = 50
+  strength = 30
+  destroyedRemains = "OPENED_CHEST"
+}
+
+"NIPPON_TALISMAN_CHEST"
+{
+  name = "chest"
+  viewId = { "chest" }
+  canHideHere = true
+  usageType = UsageEffect "open" {
+    CreatureMessage { "open the chest" "opens the chest"}
+    CreatureMessage { "find some stuff inside" "finds some stuff inside"}
+    ChooseRandom {
+      DropItems {"GoldPiece"} 75
+      DropItems {"GoldPiece"} 100
+      DropItems {"GoldPiece"} 125
+    }
+    ChooseRandom {
+      DropItems {"NIPPON_PURIFICATION_TALISMAN"} 1
+      DropItems {"NIPPON_HOLD_TALISMAN"} 1
+      DropItems {"NIPPON_RESTORATION_TALISMAN"} 1
+    }
+    RemoveFurniture "NIPPON_TALISMAN_CHEST"
+  }
+  fire = 50
+  strength = 30
+  destroyedRemains = "OPENED_CHEST"
+}
+
+"NIPPON_WEAPON_CHEST"
+{
+  name = "chest"
+  viewId = { "chest" }
+  canHideHere = true
+  usageType = UsageEffect "open" {
+    CreatureMessage { "open the chest" "opens the chest"}
+    CreatureMessage { "find some stuff inside" "finds some stuff inside"}
+    ChooseRandom {
+      DropItems {"GoldPiece"} 25
+      DropItems {"GoldPiece"} 50
+      DropItems {"GoldPiece"} 75
+    }
+    ChooseRandom {
+      DropItems {"LeatherArmor"} 1
+      DropItems {"LeatherBoots"} 1
+      DropItems {"LeatherGloves"} 1
+    }
+    ChooseRandom {
+      DropItems {"Bow"} 1
+      DropItems {"Nippon_Spear"} 1
+      DropItems {"Nippon_Bokken"} 1
+    }
+    RemoveFurniture "NIPPON_WEAPON_CHEST"
+  }
+  fire = 50
+  strength = 30
+  destroyedRemains = "OPENED_CHEST"
+}
+
+"NIPPON_LANTERN_PRINCESS"
+{
+  name = "rantanpurinsesu"
+  viewId = { "jp_lantern_princess" }
+  luxury = 0.3
+  lightEmission = 8.2
+  tickType = Effect {
+    Area 4 Filter Enemy Lasting 10 NIPPON_LOW_MORALE
+    Area 4 Filter Not Enemy Lasting 10 HIGH_MORALE
+  }
 }

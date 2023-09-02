@@ -34,7 +34,6 @@
       MELEE 12
       SPELL 3
     }
-    companions = {2 false SPELL_DAMAGE 0.02 { "NIPPON_SHIKIGAMI" }}
 	gender = MALE
     spells = { "healing" }
     spellSchools = { "bushido" }
@@ -128,6 +127,44 @@
     hatedByEffect = HATE_HUMANS
   }
     
+"NIPPON_PESEANT_CHILD_MALE"
+  {
+    viewId = { "jp_samurai_peasant_child_01" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 8 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "\"plaaaaay!\""
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      RIDER 1
+    }
+    name = {
+      name = "child"
+      pluralName = "children"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    gender = MALE
+    aiType = RANGED
+    hatedByEffect = HATE_HUMANS
+  }	
+    
+"NIPPON_PESEANT_CHILD_FEMALE" inherit "NIPPON_PESEANT_CHILD_MALE" 
+  {
+    viewId = { "jp_samurai_peasant_child_02" }
+    name = {
+      name = "child"
+      pluralName = "children"
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+    gender = FEMALE
+    hatedByEffect = HATE_HUMANS
+  }	
+  
 ##################
 #  City Dweller  # 
 ##################
@@ -310,9 +347,8 @@
     name = {
       name = "ashigaru"
       pluralName = "ashigaru unit"
-      firstNameGen = "JAPANESE_FEMALE"
+      firstNameGen = "JAPANESE_MALE"
     }
-    spellSchools = { "archer" }
     hatedByEffect = HATE_HUMANS
     inventory = {
       { "Nippon_Spear"}
@@ -344,7 +380,7 @@
     name = {
       name = "ashigaru"
       pluralName = "ashigaru unit"
-      firstNameGen = "JAPANESE_FEMALE"
+      firstNameGen = "JAPANESE_MALE"
     }
     spellSchools = { "archer" }
     hatedByEffect = HATE_HUMANS
@@ -511,7 +547,7 @@
       type = Humanoid LARGE
     }
     maxLevelIncrease = {
-      SPELL 12
+      SPELL 8
     }
     gender = MALE
     aiType = RANGED
@@ -567,7 +603,7 @@
     aiType = RANGED
     chatReactionFriendly = "\"Wouuuouuu!!!\""
     chatReactionHostile = "\"Wouuuouuu!!!\""
-    spells = { "shikigami summon" }
+    spells = { "NIPPON_SHIKIGAMI_SUMMON" }
     name = {
       name = "shikigami"
     }
@@ -590,13 +626,13 @@
 			attackMsg = SPELL
 			victimEffect = {0.5 Fire{50}}}}}}}}
     permanentEffects = {
-	  SUMMONED 30
+	  
 	  SPEED 1
       FLYING 1
       MAGIC_VULNERABILITY 1
 	  FIRE_IMMUNITY 1 
     }
-    spells = { "shikigami summon" }
+    spells = { "NIPPON_SHIKIGAMI_SUMMON" }
     gender = IT
     chatReactionFriendly = "\"Wouuuouuu!!!\""
     chatReactionHostile = "\"Wouuuouuu!!!\""
@@ -629,7 +665,7 @@
           attackerEffect = { Suicide DIE} } }}}
       }}
     permanentEffects = {
-	  SUMMONED 30
+	  
 	  SPEED 1
       FLYING 1
       MAGIC_VULNERABILITY 1
@@ -654,14 +690,14 @@
       material = SPIRIT
     }
     permanentEffects = {
-	  SUMMONED 30
+	  
 	  SPEED 1
       FLYING 1
       MAGIC_VULNERABILITY 1
     }
     gender = IT
     aiType = RANGED
-    spells = { "shikigami healing" "shikigami summon" }
+    spells = { "NIPPON_SHIKIGAMI_HEALING" "NIPPON_SHIKIGAMI_SUMMON" }
     chatReactionFriendly = "\"Wouuuouuu!!!\""
     chatReactionHostile = "\"Wouuuouuu!!!\""
     name = {
@@ -680,14 +716,14 @@
       material = SPIRIT
     }
     permanentEffects = {
-	  SUMMONED 30
+	  
 	  SPEED 1
       FLYING 1
       MAGIC_VULNERABILITY 1
     }
     gender = IT
     aiType = RANGED
-    spells = { "shikigami defense" "shikigami summon" }
+    spells = { "NIPPON_SHIKIGAMI_DEFENSE" "NIPPON_SHIKIGAMI_SUMMON" }
     chatReactionFriendly = "\"Wouuuouuu!!!\""
     chatReactionHostile = "\"Wouuuouuu!!!\""
     name = {
@@ -706,14 +742,14 @@
       material = SPIRIT
     }
     permanentEffects = {
-	  SUMMONED 30
+	  
 	  SPEED 1
       FLYING 1
       MAGIC_VULNERABILITY 1
     }
     gender = IT
     aiType = RANGED
-    spells = { "shikigami damage" }
+    spells = { "NIPPON_SHIKIGAMI_DAMAGE" }
     chatReactionFriendly = "\"Wouuuouuu!!!\""
     chatReactionHostile = "\"Wouuuouuu!!!\""
     name = {
@@ -825,17 +861,6 @@
       name = "fire kami"
     }
     spells = { "fire breath" }
-    permanentEffects = append {
-      SUMMONED 100
-    }
-  }
-
-"NIPPON_FIRE_KAMI_NO_DIE" inherit "FIRE_ELEMENTAL"
-  {
-  name = {
-      name = "fire kami"
-    }
-    spells = { "fire breath" }
   }
 
 "NIPPON_EARTH_KAMI" inherit "EARTH_ELEMENTAL"
@@ -844,28 +869,6 @@
       name = "earth kami"
     }
     spells = { "dig" }
-    permanentEffects = append {
-      SUMMONED 100
-    }
-  }
-  
-"NIPPON_EARTH_KAMI_NO_DIE" inherit "EARTH_ELEMENTAL"
-  {
-  name = {
-      name = "earth kami"
-    }
-    spells = { "dig" }
-  }
-  
-"NIPPON_WATER_KAMI_NO_DIE" inherit "WATER_ELEMENTAL"
-  {
-  name = {
-      name = "water kami"
-    }
-    spells = { "deception" }
-    permanentEffects = append {
-      SUMMONED 100
-    }
   }
   
 "NIPPON_WATER_KAMI" inherit "WATER_ELEMENTAL"
@@ -874,38 +877,21 @@
       name = "water kami"
     }
     spells = { "deception" }
-    permanentEffects = append {
-      SUMMONED 100
-    }
   }
   
-"NIPPON_AIR_KAMI_NO_DIE" inherit "AIR_ELEMENTAL"
-  {
-  name = {
-      name = "air kami"
-    }
-    spells = { "fog cloud" }
-    permanentEffects = append {
-      SUMMONED 100
-    }
-  }
-
 "NIPPON_AIR_KAMI" inherit "AIR_ELEMENTAL"
   {
   name = {
       name = "air kami"
     }
     spells = { "fog cloud" }
-    permanentEffects = append {
-      SUMMONED 100
-    }
   }
 
 #################################################################################################################################
 #                                                       evil japan                                                              #
 #################################################################################################################################
 
-"NIPPON_KEEPER_corrupted_DAIMYO"
+"NIPPON_KEEPER_CORRUPTED_DAIMYO"
   {
     viewId = { "jp_corrupted_daimyo_01" }
     attr = {
@@ -913,6 +899,7 @@
       DEFENSE 14
       SPELL_DAMAGE 6
       MULTI_WEAPON 40
+	  MALICE 12
       FURNACE 15
       FORGE 10
     }
@@ -921,13 +908,14 @@
       material = SPIRIT
     }
     name = {
-      name = "akuma no daimyō"
+      name = "akuma no daimyo"
       firstNameGen = "JAPANESE_MALE"
       fullTitle = true
     }
     viewIdUpgrades = { { "jp_corrupted_daimyo_02" } { "jp_corrupted_daimyo_03" } { "jp_corrupted_daimyo_04" }}
     permanentEffects = {
       RIDER 1
+	  NIPPON_CURSE_MINOR 1
     }
     gender = MALE
     maxLevelIncrease = {
@@ -936,14 +924,24 @@
     }
     hatedByEffect = HATE_DEMONS
     spellSchools = { "bushido" }
-    spells = { "corrupted daimyo heal" }
+    spells = { "NIPPON_CORRUPTED_DAIMYO_HEAL" }
     inventory = {
       { "LeatherArmor"}
       { "LeatherHelm"}
       { "Nippon_Katana"}
     }
   }
-
+  
+"NIPPON_KEEPER_CORRUPTED_DAIMYO_F" inherit "NIPPON_KEEPER_CORRUPTED_DAIMYO"
+  {
+    viewId = { "jp_corrupted_daimyo_01_f" }
+    gender = FEMALE
+    name = append {
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+    viewIdUpgrades = { { "jp_corrupted_daimyo_02_f" } { "jp_corrupted_daimyo_03_f" } { "jp_corrupted_daimyo_04_f" }}
+  }
+  
 ###########
 # footman #
 ###########
@@ -963,6 +961,7 @@
     chatReactionHostile = "\"Die!\""
     permanentEffects = {
 	RIDER 1
+	NIPPON_CURSE_MINOR 1
     }
     maxLevelIncrease = {
       MELEE 7
@@ -973,7 +972,6 @@
       firstNameGen = "JAPANESE_MALE"
       pluralName = "cursed ashigaru unit"
     }
-    spellSchools = { "archer" }
     hatedByEffect = HATE_UNDEAD
     inventory = {
       { "Nippon_Spear"}
@@ -998,6 +996,7 @@
     chatReactionHostile = "\"Die!\""
     permanentEffects = {
 	RIDER 1
+	NIPPON_CURSE_MINOR 1
     }
     maxLevelIncrease = {
       ARCHERY 7
@@ -1016,6 +1015,143 @@
       { "GoldPiece" 2 6 }
     }
   }
+
+########################
+#  Norowareta Samurai  #
+########################
+
+"NIPPON_NOROWARETA_SAMURAI"
+  {
+    viewId = { "jp_norowareta_samurai" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 18
+      FURNACE 10
+      WORKSHOP 5
+      FORGE 5
+	  TALISMAN 5
+	  SPELL_DAMAGE 5
+    }
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_FLESH
+    }
+    maxLevelIncrease = {
+      MELEE 9
+    }
+    chatReactionFriendly = "for honor!"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+      REGENERATION 1
+	  NIPPON_CURSE_MINOR 1
+    }
+    gender = IT
+    name = {
+      name = "norowareta  samurai"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    spellSchools = { "bushido" }
+    hatedByEffect = HATE_DEMONS
+	inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Nippon_Katana"}
+    }
+  }
+
+"NIPPON_NOROWARETA_SAMURAI_ARCHER"
+  {
+    viewId = { "jp_norowareta_samurai_archer" }
+    attr = {
+      DAMAGE 16
+	  RANGED_DAMAGE 22
+      DEFENSE 18
+      FURNACE 10
+      WORKSHOP 5
+      FORGE 5
+	  TALISMAN 5
+	  SPELL_DAMAGE 5
+    }
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_FLESH
+    }
+    maxLevelIncrease = {
+      ARCHERY 9
+    }
+    chatReactionFriendly = "for honor!"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+      REGENERATION 1
+	  NIPPON_CURSE_MINOR 1
+    }
+    gender = IT
+    name = {
+      name = "norowareta samurai"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    spellSchools = { "kyujutsu" }
+    hatedByEffect = HATE_DEMONS
+	inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Nippon_Katana"}
+    }
+  }
+
+###############
+#  noroi-shi  #
+###############
+
+"NIPPON_NOROI-SHI"
+  {
+    viewId = { "jp_noroi-shi" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 18 
+	  MALICE 10
+	  LABORATORY 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      SPELL 8
+    }
+    gender = MALE
+    aiType = RANGED
+    chatReactionFriendly = "curses all elves"
+    chatReactionHostile = "\"Die!\""
+    spellSchools = {"noroi-shi"}
+    spells = { "heal spirit" }
+    companions = {2 false SPELL_DAMAGE 0.02 { "JP_EVIL_SPIRIT" }}
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+	  PSYCHIATRY 1
+    }
+    name = {
+      name = "noroi-shi"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "WoodenStaff"}
+      { "Robe"}
+      { "GoldPiece" 2 6 }
+    }
+}
+
+"NIPPON_NOROI-SHI_FEMALE" inherit "NIPPON_NOROI-SHI"
+{
+    gender = FEMALE
+    name = {
+      name = "noroi-shi"
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+}
 
 ###########
 #  akuma  #
@@ -1039,6 +1175,7 @@
     permanentEffects = {
       FLYING 1
       MAGIC_VULNERABILITY 1
+	  NIPPON_CURSE_MINOR 1
     }
     gender = IT
     hatedByEffect = HATE_DEMONS
@@ -1049,6 +1186,211 @@
     }
   }
 
+#########
+#  Oni  #
+#########
+
+"NIPPON_ONI"
+  {
+    viewId = { "jp_oni" }
+    attr = {
+      DAMAGE 32
+      DEFENSE 31
+	  SPELL_SPEED 5
+	  MALICE 8
+    }
+    body = {
+      type = Humanoid HUGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        ARM  {{ itemType = { Intrinsic { "claws_attack" } "claws" 12 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 4 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+      weight = 400
+      droppedPartUpgrade = IncreaseAttr SPELL_SPEED 5
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+	  RIDER 1
+	  NIPPON_CURSE_MINOR 1
+    }
+    name = {
+      name = "oni"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    maxLevelIncrease = {
+      MELEE 12
+	  SPELL 8
+    }
+    hatedByEffect = HATE_DEMONS
+    spellSchools = { "oni" }
+    inventory = {
+      { "WarHammer"}
+      { "ChainArmor" }
+      { "IronHelm" }
+      { "IronBoots" }
+      # You can either list the values in the order defined in SERIALIZE_ALL or 
+      { "GoldPiece" 40 80 }
+      # Put them in any order in the format "key = value"
+      { countMin = 10 countMax = 15 type = "GoldPiece" chance = 0.1}
+      { type = Glyph ARMOR ItemAttrBonus DEFENSE 3 chance = 0.3 }
+      { type = Glyph WEAPON ItemAttrBonus DAMAGE 3 chance = 0.3 }
+      { type = Glyph RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 chance = 0.3 }
+    }
+  }
+
+"NIPPON_KIJO"
+  {
+    viewId = { "jp_oni" }
+    attr = {
+      DAMAGE 32
+      DEFENSE 31
+	  SPELL_SPEED 5
+	  MALICE 8
+    }
+    body = {
+      type = Humanoid HUGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        ARM  {{ itemType = { Intrinsic { "claws_attack" } "claws" 12 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 4 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+      weight = 400
+      droppedPartUpgrade = IncreaseAttr SPELL_SPEED 5
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+	  RIDER 1
+	  NIPPON_CURSE_MINOR 1
+    }
+    name = {
+      name = "oni"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    maxLevelIncrease = {
+      MELEE 8
+	  SPELL 12
+    }
+    hatedByEffect = HATE_DEMONS
+    spellSchools = { "oni" }
+    inventory = {
+      { "WarHammer"}
+      { "ChainArmor" }
+      { "IronHelm" }
+      { "IronBoots" }
+      # You can either list the values in the order defined in SERIALIZE_ALL or 
+      { "GoldPiece" 40 80 }
+      # Put them in any order in the format "key = value"
+      { countMin = 10 countMax = 15 type = "GoldPiece" chance = 0.1}
+      { type = Glyph ARMOR ItemAttrBonus DEFENSE 3 chance = 0.3 }
+      { type = Glyph WEAPON ItemAttrBonus DAMAGE 3 chance = 0.3 }
+      { type = Glyph RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 chance = 0.3 }
+    }
+  }
+  
+  
+###############
+#  Amanojaku  #
+###############
+ 
+"NIPPON_AMANOJAKU"
+  {
+    viewId = { "jp_amanojaku" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 14
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        ARM  {{ itemType = { Intrinsic { "claws_attack" } "claws" 6 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 2 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    chatReactionFriendly = "i want blood!"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+	RIDER 1
+	NIPPON_CURSE_MINOR 1
+	FIRE_IMMUNITY 1
+    }
+    maxLevelIncrease = {
+      MELEE 8
+	  SPELL 3
+    }
+    gender = MALE
+    name = {
+      name = "amanojaku"
+      pluralName = "amanojaku horde"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    spellSchools = { "amanojaku" }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Nippon_Spear"}
+      { "LeatherArmor"}
+      { "GoldPiece" 2 6 }
+    }
+  }
+
+ 
+############
+#  kansen  #
+############
+
+"NIPPON_FIRE_KANSEN" inherit "FIRE_ELEMENTAL"
+  {
+  viewId = { "jp_fire_kansen" }
+  permanentEffects = append {
+	  NIPPON_CURSE_MINOR 1
+    }
+  name = {
+      name = "fire kansen"
+    }
+    spells = { "fire breath" }
+  }
+  
+"NIPPON_EARTH_KANSEN" inherit "EARTH_ELEMENTAL"
+  {
+  viewId = { "jp_earth_kansen" }
+  permanentEffects = append {
+	  NIPPON_CURSE_MINOR 1
+    }
+  name = {
+      name = "earth kansen"
+    }
+    spells = { "dig" }
+  }
+  
+"NIPPON_WATER_KANSEN" inherit "WATER_ELEMENTAL"
+  {
+  viewId = { "jp_water_kansen" }
+  permanentEffects = append {
+	  NIPPON_CURSE_MINOR 1
+    }
+  name = {
+      name = "water kansen"
+    }
+    spells = { "deception" }
+  }
+
+  
+"NIPPON_AIR_KANSEN" inherit "AIR_ELEMENTAL"
+  {
+  viewId = { "jp_air_kansen" }
+  permanentEffects = append {
+	  NIPPON_CURSE_MINOR 1
+    }
+  name = {
+      name = "air kansen"
+    }
+    spells = { "fog cloud" }
+  }
+  
+#################
+#  Gashadokuro  #
+#################
 
 "NIPPON_GASHADOKURO" 
   {
@@ -1068,6 +1410,7 @@
       MELEE_RESISTANCE 1
       SLOWED 1
       REGENERATION 1
+	  NIPPON_CURSE_MINOR 1
     }
     gender = IT
 	hatedByEffect = HATE_UNDEAD
@@ -1083,11 +1426,146 @@
       DEFENSE 20 
     }
   }
+  
+###############
+#  hinnagami  #
+###############
 
+"NIPPON_HINNAGAMI"
+  {
+    viewId = { "jp_hinnagami_01" }
+    genderAlternatives = {
+      FEMALE { "jp_hinnagami_02" }
+      FEMALE { "jp_hinnagami_03" }
+    }
+    permanentEffects = {
+      FLYING 1
+    }
+    attr = {
+      DEFENSE 10
+      SPELL_SPEED 2
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    chatReactionFriendly = "talks about greed"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "hinnagami"
+    }
+    gender = FEMALE
+    spellSchools = { "hinnagami" }
+    hatedByEffect = HATE_DEMONS
+  }
+  
+###################
+#  Kyūketsu inku  #
+###################
+ 
+"NIPPON_KYUKETSU_INKU"
+  {
+    viewId = { "jp_inkbeast" }
+    attr = {
+      DEFENSE 30
+      DAMAGE 30
+    }
+	specialAttr = {
+      DAMAGE { 10 LastingEffect BLEEDING }
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = WATER
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 10 {
+            attackType = HIT
+            attackMsg = CLAW
+            victimEffect = {0.3 Lasting 25 BLEEDING} } }}}
+        } 
+      }
+    hatedByEffect = HATE_DEMONS
+    name = {
+      name = "kyuketsu inku"
+    }
+  } 
+   
+##############
+#  Offering  #
+###############
+ 
+"NIPPON_OFFERING_MALE"
+  {
+    viewId = { "jp_offering_child_m" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 8 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "\"please, no...!\""
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	ENTERTAINER 1
+	NIPPON_LOW_MORALE 1
+	UNSTABLE 1
+	DISTILLATION_SKILL 1
+    }
+	spells = { "NIPPON_OFFER_YOURSELF" }
+    name = {
+      name = "offering"
+      pluralName = "offerings"
+    }
+    hatedByEffect = HATE_HUMANS
+  }  
+    
+"NIPPON_OFFERING_FEMALE" inherit "NIPPON_OFFERING_MALE" 
+  {
+    viewId = { "jp_offering_child_f" }
+    name = {
+      name = "offering"
+      pluralName = "offerings"
+    }
+    gender = FEMALE
+    hatedByEffect = HATE_HUMANS
+  }	  
+  
 #################################################################################################################################
 #                                                         allies                                                                #
 #################################################################################################################################
 
+
+##########
+#  monk  # 
+##########
+
+"NIPPON_MONK"
+  {
+    viewId = { "jp_buddhist_monk" }
+    attr = {
+      DAMAGE 8
+	  SPELL_DAMAGE 5
+      DEFENSE 14
+      DIGGING 5
+      WORKSHOP 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "this work never ands"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      RIDER 1
+    }
+    gender = MALE
+    aiType = RANGED
+    name = {
+      name = "peasant"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
 
 ##################
 #  Warrior Monk  #
@@ -1303,11 +1781,6 @@
   }
   
 "SUCCUBUS" modify append
-  {
-    hatedByEffect = HATE_DEMONS
-  }
-  
-"LOST_SOUL" modify append
   {
     hatedByEffect = HATE_DEMONS
   }
