@@ -861,23 +861,33 @@
         { type =  "ADVENTURERS_DwarvenBeer" chance = 0.1 }
     }
   }
-  
-    "ADVENTURERS_MINOTAUR" inherit "MINOTAUR" {
-    inventory = {
-		{ type =  "ADVENTURERS_VenBattleAxe" prefixChance = 0.1 }
-		{  "AdaArmor" 1 1 0.03 }
-		{  "AdaBoots" 1 1 0.03 }
-		{  "AdaGloves" 1 1 0.03 }
-		{  "AdaHelm" 1 1 0.03 }
-		{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
-		{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
-		{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
-		{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
-		{ Potion Permanent SPEED 1 1 0.03 }
-		{ Potion RegrowBodyPart 1 1 1 0.03 }
-		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
-      }
-    }
+
+	"ADVENTURERS_MINOTAUR" {
+		viewId = { "minotaur" }
+        attr = {
+          DAMAGE 50
+          DEFENSE 50
+        }
+		permanentEffects = {
+		  RANGED_RESISTANCE 1
+		}
+		body = {
+		  type = Humanoid LARGE
+		  weight = 400
+		}
+		maxLevelIncrease = {
+		  MELEE 500
+		}
+		name = {
+		  name = "minotaur"
+		}
+		inventory = {
+			{ Potion Heal {FLESH} 4 5 }
+			{ Potion Name "All day speed" Lasting 3600 SPEED 2 3 }
+			{ Potion RegrowBodyPart 5}
+			{ Scroll Permanent DARKNESS_SOURCE}
+		  }
+	}
 	
     "ADVENTURERS_CYCLOPS" inherit "CYCLOPS" {
     inventory = {
@@ -896,3 +906,15 @@
       }
     }	
 
+"ADVENTURERS_IMMORTAL_DEATH" inherit "DEATH" {
+	spells = { "adventurer magic wish" }
+        permanentEffects = append {
+           INVULNERABLE 1
+           FLYING 1
+           REGENERATION 1
+           POISON_RESISTANT 1
+           FIRE_IMMUNITY 1
+           SPEED 1
+        }
+	body = append { type = Humanoid HUGE }
+}
