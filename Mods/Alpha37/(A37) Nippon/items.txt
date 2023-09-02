@@ -1,8 +1,59 @@
+
 Def NipponCurseProgress()
-Filter LastingEffect NIPPON_CURSE_STRONG { Lasting 100 NIPPON_CURSE_RAMPANT }
-Filter LastingEffect NIPPON_CURSE        { Lasting 100 NIPPON_CURSE_STRONG }
-Filter LastingEffect NIPPON_CURSE_WEAK   { Lasting 100 NIPPON_CURSE }
-Filter LastingEffect NIPPON_CURSE_MINOR  { Lasting 100 NIPPON_CURSE_WEAK }
+Filter LastingEffect     NIPPON_CURSE_RAMPANT      { Lasting 100 NIPPON_CURSE_OVERWHELMING NipponCurseRemoveallOverwhelming()}
+Filter LastingEffect     NIPPON_CURSE_STRONG       { Lasting 100 NIPPON_CURSE_RAMPANT NipponCurseRemoveallRampant()}
+Filter LastingEffect     NIPPON_CURSE              { Lasting 100 NIPPON_CURSE_STRONG NipponCurseRemoveallStrong()}
+Filter LastingEffect     NIPPON_CURSE_WEAK         { Lasting 100 NIPPON_CURSE NipponCurseRemoveallAverage()}
+Filter LastingEffect     NIPPON_CURSE_MINOR        { Lasting 100 NIPPON_CURSE_WEAK NipponCurseRemoveallWeak()}
+Filter And { Not LastingEffect NIPPON_CURSE_MINOR Not LastingEffect NIPPON_CURSE_WEAK Not LastingEffect NIPPON_CURSE Not LastingEffect NIPPON_CURSE_STRONG Not LastingEffect NIPPON_CURSE_RAMPANT}      {NipponCurseRemoveallMinor() Lasting 100 NIPPON_CURSE_MINOR }
+End
+
+Def NipponCurseRemoveallMinor()
+RemoveLasting NIPPON_CURSE_WEAK 
+RemoveLasting NIPPON_CURSE
+RemoveLasting NIPPON_CURSE_STRONG 
+RemoveLasting NIPPON_CURSE_RAMPANT
+RemoveLasting NIPPON_CURSE_OVERWHELMING 
+End
+
+Def NipponCurseRemoveallWeak()
+RemoveLasting NIPPON_CURSE_MINOR 
+RemoveLasting NIPPON_CURSE
+RemoveLasting NIPPON_CURSE_STRONG 
+RemoveLasting NIPPON_CURSE_RAMPANT
+RemoveLasting NIPPON_CURSE_OVERWHELMING 
+End
+
+Def NipponCurseRemoveallAverage()
+RemoveLasting NIPPON_CURSE_MINOR 
+RemoveLasting NIPPON_CURSE_WEAK 
+RemoveLasting NIPPON_CURSE_STRONG 
+RemoveLasting NIPPON_CURSE_RAMPANT
+RemoveLasting NIPPON_CURSE_OVERWHELMING 
+End
+
+Def NipponCurseRemoveallStrong()
+RemoveLasting NIPPON_CURSE_MINOR 
+RemoveLasting NIPPON_CURSE_WEAK 
+RemoveLasting NIPPON_CURSE
+RemoveLasting NIPPON_CURSE_RAMPANT
+RemoveLasting NIPPON_CURSE_OVERWHELMING 
+End
+
+Def NipponCurseRemoveallRampant()
+RemoveLasting NIPPON_CURSE_MINOR 
+RemoveLasting NIPPON_CURSE_WEAK 
+RemoveLasting NIPPON_CURSE
+RemoveLasting NIPPON_CURSE_STRONG 
+RemoveLasting NIPPON_CURSE_OVERWHELMING 
+End
+
+Def NipponCurseRemoveallOverwhelming()
+RemoveLasting NIPPON_CURSE_MINOR 
+RemoveLasting NIPPON_CURSE_WEAK 
+RemoveLasting NIPPON_CURSE
+RemoveLasting NIPPON_CURSE_STRONG 
+RemoveLasting NIPPON_CURSE_RAMPANT
 End
 
 #################################################################################################################################
