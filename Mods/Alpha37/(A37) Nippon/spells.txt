@@ -1,6 +1,7 @@
 
 Def NipponCurseProgress()
-Filter And { Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ Filter LastingEffect     NIPPON_CURSE_RAMPANT      {Chain {Permanent NIPPON_CURSE_OVERWHELMING Permanent INSANITY}} }
+Filter And { Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ Filter LastingEffect     NIPPON_CURSE_RAMPANT      {Chain {Permanent NIPPON_CURSE_CONSIMUNG Permanent INSANITY}} }
+Filter LastingEffect     NIPPON_CURSE_RAMPANT      {Lasting 100 NIPPON_CURSE_OVERWHELMING }
 Filter LastingEffect     NIPPON_CURSE_STRONG       {Lasting 100 NIPPON_CURSE_RAMPANT }
 Filter LastingEffect     NIPPON_CURSE              {Lasting 100 NIPPON_CURSE_STRONG }
 Filter LastingEffect     NIPPON_CURSE_WEAK         {Lasting 100 NIPPON_CURSE }
@@ -1011,17 +1012,16 @@ End
 #                                                corrupted daimyo                                                               #
 #################################################################################################################################
 
-
 "NIPPON_PICK_OFFERING"
 {
   symbol = "🐔"
   effect = Name "pick offering" Description "I want this child!"  Chain{
-    Filter CreatureId "NIPPON_PESEANT_CHILD_FEMALE"{Polymorph "NIPPON_OFFERING_FEMALE" none}
-    Filter CreatureId "NIPPON_PESEANT_CHILD_MALE"{Polymorph "NIPPON_OFFERING_MALE" none}
+    Filter LastingEffect NIPPON_OFFERING_FEMALE Polymorph "NIPPON_OFFERING_FEMALE" none
+    Filter LastingEffect NIPPON_OFFERING_MALE   Polymorph "NIPPON_OFFERING_MALE" none
 	}
   range = 5
   endOnly = true
-  targetSelf = true
+  
   cooldown = {30 61}
   message = "play a trick!" "plays a trick!"
 }
