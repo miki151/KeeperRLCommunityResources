@@ -28,7 +28,7 @@
     Private Sub WriteFile(ByVal bmp As Bitmap, format As Imaging.PixelFormat, ByRef count As Integer, size As Integer)
         bmp = bmp.Clone(New Rectangle(0, 0, bmp.Width, bmp.Height), format)
         bmp = New Bitmap(bmp, New Size(size, size))
-        For f = 0 To 23
+        For f = 0 To size - 1
             bmp.MakeTransparent(bmp.GetPixel(0, f))
             bmp.MakeTransparent(bmp.GetPixel(size - 1, f))
             bmp.MakeTransparent(bmp.GetPixel(f, size - 1))
