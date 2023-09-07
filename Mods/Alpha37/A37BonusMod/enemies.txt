@@ -61,7 +61,7 @@
 {
   biome = "MOUNTAIN"
   settlement = {
-    type = Builtin CAVE "HAUNTED"
+    type = Builtin CAVE "BONUS_HAUNTED"
     tribe = MONSTER
     locationName = "ruins"
     race = "remains"
@@ -1373,11 +1373,11 @@
 	}
   }
   
-"BONUS_WILDMAN_ENTRY"
+"BONUS_WILDMAN_ENTRY_HIDDEN"
 {
   biome = "FOREST"
   settlement = {
-    type = Builtin VILLAGE "BONUS_ROYAL_SANDSTONE_WALL"
+    type = Builtin CEMETERY "BONUS_CAVE"
     tribe = BANDIT
   }
   config = {
@@ -1385,7 +1385,19 @@
   }  
 }
   
-"BONUS_WILDMEN_CAVE"
+"BONUS_WILDMAN_ENTRY_OPEN"
+{
+  biome = "MOUNTAIN"
+  settlement = {
+    type = Builtin MINETOWN "BONUS_ROYAL_SANDSTONE_WALL"
+    tribe = BANDIT
+  }
+  config = {
+    conquerCondition = NEVER
+  }  
+}
+  
+"BONUS_WILDMEN_CAVE_HIDDEN"
 {
   biome = "MOUNTAIN"
   settlement = {
@@ -1412,7 +1424,17 @@
     ransom = 0.5 80
   }
   levelConnection = {
-	topLevel = ExtraEnemy {"BONUS_WILDMAN_ENTRY"}
+	topLevel = ExtraEnemy {"BONUS_WILDMAN_ENTRY_HIDDEN"}
+	levels = {
+	  { MainEnemy {40 40} BASIC }
+	}
+  }  
+}
+
+"BONUS_WILDMEN_CAVE_OPEN" inherit "BONUS_WILDMEN_CAVE_HIDDEN"
+{
+  levelConnection = {
+	topLevel = ExtraEnemy {"BONUS_WILDMAN_ENTRY_OPEN"}
 	levels = {
 	  { MainEnemy {40 40} BASIC }
 	}
@@ -1878,9 +1900,10 @@
       triggers = {
         RoomTrigger "THRONE" 0.0003
         SelfVictims
+		Resource "GOLD" 500
       }
-      attackBehaviour = StealGold
-      ransom = 0.9 100
+     attackBehaviour = StealResource "GOLD"	  
+     ransom = 0.9 100
     }
     immigrants = {
       {
@@ -2659,10 +2682,10 @@
       minPopulation = 5
       minTeamSize = 4
       triggers = {
-        Gold 2000
+		Resource "GOLD" 2000
       }
-      attackBehaviour = StealGold
-    }
+     attackBehaviour = StealResource "GOLD"
+	 }
   }
   
   "BONUS_SHADOW_TEMPLE"
@@ -3244,9 +3267,9 @@
       FinishOff
       EnemyPopulation 60
       NumConquered 20
-      Gold 1000
-    }
-    attackBehaviour = StealGold
+      Resource "GOLD" 2000
+	}
+    attackBehaviour = StealResource "GOLD"
     ransom = 0.9 340
   }
   immigrants = {
@@ -3635,10 +3658,9 @@
 	
 	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 30% chance to go Hostile)
 	behaviour = {
-	minPopulation = 0
-    	minTeamSize = 1
-	attackBehaviour = StealGold
-    	ransom = 0.5 80
+		minPopulation = 0
+		minTeamSize = 1
+		attackBehaviour = StealResource "GOLD"
 	}
 }
 
@@ -3666,12 +3688,11 @@ settlement = {
 	
 	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 50% chance to go Hostile)
 	behaviour = {
-	minPopulation = 0
+		minPopulation = 0
     	minTeamSize = 1
-	attackBehaviour = StealGold
-    	ransom = 0.5 80
+		attackBehaviour = StealResource "GOLD"
+		ransom = 0.5 80
 	}
-
 }
 
 "BONUS_INF_FAIRIES"
@@ -3696,10 +3717,10 @@ settlement = {
 	
 	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 10% chance to go Hostile)
 	behaviour = {
-	minPopulation = 0
+		minPopulation = 0
     	minTeamSize = 1
-	attackBehaviour = StealGold
-    ransom = 0.5 80
+		attackBehaviour = StealResource "GOLD"
+		ransom = 0.5 80
 	}
 
 }
