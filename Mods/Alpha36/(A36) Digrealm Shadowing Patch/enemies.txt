@@ -1,0 +1,908 @@
+"NO_AGGRO_BANDITS" modify 
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {4 10}
+        all = { 2 "BANDIT" 
+		1 "DGR_HIGHWAYMAN"}
+      }
+    }
+	tribe = BANDIT
+    race = "bandits"
+  }
+  immigrants = { 
+      {
+        ids = { "BANDIT" }
+        traits = { FIGHTER }
+        frequency = 1
+      }
+	  
+	  {
+        ids = { "DGR_HIGHWAYMAN" }
+        traits = { FIGHTER }
+        frequency = 0.5
+      }
+    }
+}
+
+
+
+"RED_DRAGON" modify
+{
+	biomes = {"DGR_VOLCANO"}
+	settlement = append {
+		type = Builtin CAVE "DGR_LAVACAVE"
+	}
+}
+
+"BLACK_DRAGON" modify
+{
+	biomes = {"DGR_SWAMP"}
+}
+
+"KNIGHTS" modify
+{
+	settlement = append {
+		inhabitants = append {
+			fighters = append {
+				count = {12 17}
+				all = append {
+				2 "DGR_GUARDNPC"
+				1 "DGR_PALADINNPC"
+				1 "DGR_CLERICNPC"
+				}
+			}
+		}
+	}
+}
+  
+  "DGR_BIRDFOLK"
+    {
+    settlement = {
+      type = Builtin FORREST_VILLAGE "WOOD"
+      inhabitants = {
+        fighters = {
+          count = {6 9}
+          all = { 
+			1 "DGR_BIRDFOLK_WARRIOR" 
+			1 "DGR_BIRDFOLK_ARCHER"
+			}
+        }
+        civilians = {
+          count = {6 9},
+          all = { 1 "DGR_BIRDFOLK_VILLAGER" }
+        }
+      }
+      locationNameGen = "TOWN"
+      tribe = ELF
+      race = "birdfolk"
+      stockpiles = {{ "gold" 10 "TREASURE_CHEST"}}
+      lootItem = {TechBook "archery"}
+      furniture = "roomFurniture"
+    }
+    config = {
+      immigrantInterval = 500
+      maxPopulation = 20
+    }
+    behaviour = {
+      minPopulation = 4
+      minTeamSize = 4
+      triggers = {Gold 150}
+      attackBehaviour = KillMembers 5
+    }
+    immigrants = {
+      {
+        ids = {"DGR_BIRDFOLK_WARRIOR"}
+        traits = {FIGHTER}
+        frequency = 2
+      }
+	  {
+        ids = {"DGR_BIRDFOLK_ARCHER"}
+        traits = {FIGHTER}
+        frequency = 1
+      }
+    }
+}
+
+  "DGR_RAFFLESIA"
+    {
+	biomes = {"DGR_SWAMP"}
+    settlement = {
+      type = Builtin FOREST "WOOD"
+      tribe = MONSTER
+	  race = "rafflesia"
+      inhabitants = {
+        leader = { { "DGR_RAFFLESIA" } }
+        fighters = {
+          count = {5 8}
+          all = {
+            1 "DGR_SEEDLING"
+          }
+        }
+       }
+	}
+}
+
+"DGR_SLIME_CAVE"
+  {
+    settlement = {
+      type = Builtin ANT_NEST "DUNGEON"
+      tribe = MONSTER
+      inhabitants = {
+        fighters = {
+          count = {4 10}
+          all = { 
+		  5 "DGR_SLIME"
+		  3 "DGR_TOXISLIME"
+		  2 "DGR_MOLD_SLIME"
+		  1 "DGR_NIMBLESLIME"
+		  1 "DGR_GIANTSLIME"
+		  }
+        }
+      }
+      race = "slimes"
+    }
+}
+  
+  "DGR_CHURCH"
+  {
+    settlement = {
+      type = Predefined {"dgr_church" "DGR_TEMPBRICK"}
+      tribe = HUMAN
+      inhabitants = {
+        leader = { { "DGR_ARCHBISHOPNPC" } }
+        fighters = {
+          count = {14 20}
+          all = {
+            3 "PRIEST"
+            1 "DGR_BISHOPNPC"
+            3 "DGR_GUARDNPC"
+			1 "DGR_FRIARNPC"
+			2 "DGR_CLERICNPC"
+			2 "DGR_TEMPLARNPC"
+			1 "DGR_CRUSADERNPC"
+			1 "DGR_PALADINNPC"
+			1 "ANGEL"
+			1 "DGR_ARCHANGELNPC"
+          }
+        }
+        civilians = {
+          count = {6 9}
+          all = {
+            3 "PESEANT"
+            3 "CHILD"
+            3 "DONKEY"
+            3 "HORSE"
+            3 "COW"
+            3 "PIG"
+            3 "DOG"
+          }
+        }
+      }
+      locationNameGen = "TOWN"
+      race = "humans"
+      stockpiles = {{ "gold" 150 "TREASURE_CHEST" }}
+      furniture = "dgr_churchFurniture"
+      outsideFeatures = "castleOutside"
+    }
+    config = {
+      immigrantInterval = 300
+      maxPopulation = 26
+      ghostProb = 0.1
+      spawnGhosts = 6
+    }
+    behaviour = {
+      minPopulation = 12
+      minTeamSize = 10
+      triggers = {
+        RoomTrigger "THRONE" 0.0003
+        RoomTrigger "IMPALED_HEAD" 0.0001
+        SelfVictims
+        NumConquered 3
+        StolenItems
+        FinishOff
+        Proximity
+      }
+      attackBehaviour = KillLeader
+    }
+    immigrants = {
+      { ids = {"PRIEST"}  traits = {FIGHTER} frequency = 1 }
+      { ids = {"DGR_BISHOPNPC"} traits = {FIGHTER} frequency = 0.7 }
+	  { ids = {"DGR_GUARDNPC"} traits = {FIGHTER} frequency = 1 }
+	  { ids = {"DGR_FRIARNPC"} traits = {FIGHTER} frequency = 0.7 }
+	  { ids = {"DGR_CLERICNPC"} traits = {FIGHTER} frequency = 1 }
+	  { ids = {"DGR_TEMPLARNPC"} traits = {FIGHTER} frequency = 0.7 }
+	  { ids = {"DGR_CRUSADERNPC"} traits = {FIGHTER} frequency = 0.8 }
+	  { ids = {"DGR_PALADINNPC"} traits = {FIGHTER} frequency = 0.7 }
+	  { ids = {"ANGEL"} traits = {FIGHTER} frequency = 0.5 }
+	  { ids = {"DGR_ARCHANGELNPC"} traits = {FIGHTER} frequency = 0.3 }
+    }
+}
+
+  "DGR_BLUE_DRAGON" inherit "RED_DRAGON"
+  {
+	biomes = {"DGR_HILLS"}
+    settlement = {
+      type = Builtin CASTLE2 "BRICK"
+      inhabitants = {
+        leader = { { "DGR_BLUE_DRAGON" } }
+      }
+      race = "dragon"
+      tribe = MONSTER
+	  shopItems = {{16 20} "dragonCave" }
+    }
+    createOnBones = 1.0 { "KNIGHTS" "DGR_CHURCH" "DWARVES" "GREEN_DRAGON" "WARRIORS" }
+}
+  
+  "DGR_HILL_GIANTS"
+  {
+	biomes = { "DGR_HILLS" } 
+    settlement = {
+      type = Builtin CASTLE2 "WOOD_CASTLE"
+      tribe = MONSTER
+      inhabitants = {
+        fighters = {
+          count = {2 4}
+          all = {
+            1 "DGR_HILL_GIANT"
+          }
+        }
+      }
+      race = "hill giants"
+      furniture = "dungeonOutside"
+    }
+    behaviour = {
+	  minPopulation = 1
+      minTeamSize = 1
+      triggers = {EnemyPopulation 12}
+      attackBehaviour = KillMembers 5
+  }
+  createOnBones = 1.0 { "WARRIORS" }
+}
+
+  
+  "DGR_MAGIC_DRAGON"
+{
+  settlement = {
+    type = Predefined {"dgr_magicrift" "DGR_MAGICRIFT"}
+    inhabitants = {
+        leader = { { "DGR_MAGIC_DRAGON" } }
+		fighters = {
+          count = {10 20}
+          all = { 1 "DGR_ARCANE_SPIRIT" }
+		}
+      }
+    race = "dragon"
+    tribe = MONSTER
+  }
+  config = {
+    leaderAsFighter = true
+    ghostProb = 0.03
+    spawnGhosts = 1
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 10
+    triggers = {
+      EnemyPopulation 25
+      NumConquered 3
+      FinishOff
+    }
+	attackBehaviour = CampAndSpawn {
+      count = {5 10}
+      all = {
+        1 "DGR_ARCANE_SPIRIT"
+      }
+    }
+  }
+  levelConnection = {
+      topLevel = ExtraEnemy { "DGR_MAGICRIFT_MATERIAL" }
+      levels = {
+        {MainEnemy {40 40} BASIC }
+      }
+	}
+}
+  
+    "DGR_MAGICRIFT_MATERIAL"
+  {
+    settlement = {
+      type = Predefined {"dgr_owrift" "DGR_MAGICRIFT"}
+      tribe = MONSTER
+      race = "magic rift"
+	  inhabitants = {
+        fighters = {
+          count = {5 10}
+          all = { 1 "DGR_ARCANE_SPIRIT" }
+        }
+      }
+    }
+    discoverable = false
+}
+  
+    "DGR_BEASTKIN_HERD"
+  {
+    settlement = {
+      type = Builtin MINETOWN "DUNGEON"
+      tribe = DARK_ELF
+      inhabitants = {
+        leader = { { "DGR_BEASTKIN_WARLORDNPC" } }
+        fighters = {
+          count = {15 30}
+          all = {
+            5 "DGR_CAPRID_WARRIORNPC"
+            4 "DGR_CAPRID_ARCHERNPC"
+            3 "DGR_URSINE_WARDENNPC"
+			3 "DGR_URSINE_RAMPAGERNPC"
+			4 "DGR_LAPINE_HUNTRESSNPC"
+			4 "DGR_LAPINE_STALKERNPC"
+			4 "DGR_VULPINE_SPELLBLADENPC"
+			3 "DGR_VULPINE_ARCANISTNPC"
+			2 "WEREWOLF"
+			1 "WOLF"
+			1 "CAVE_BEAR"
+			1 "DGR_BLACK_BEAR"
+			1 "DGR_TIGER"
+			1 "DGR_EAGLE"
+			1 "DGR_LION"
+			1 "SNAKE"
+			1 "SPIDER"
+          }
+		  uniques = { "DGR_SHELOBPLAYER" "DGR_RAFFLESIA"}
+        }
+        civilians = {
+          count = {7 10}
+          all = {
+            1 "DGR_TALPID"
+          }
+        }
+      }
+      race = "beastfolk"
+      stockpiles = {{ "gold" 100 "TREASURE_CHEST" }}
+      furniture =  "dgr_beastFurniture" 
+    }
+    config = {
+      immigrantInterval = 200
+      maxPopulation = 30
+      ghostProb = 0.1
+      spawnGhosts = 8
+    }
+	levelConnection = {
+      topLevel = ExtraEnemy { "DGR_BEASTKIN_TOWN" }
+      levels = {
+        {MainEnemy {80 80} MINETOWN }
+      }
+	}
+    behaviour = {
+      minPopulation = 15
+      minTeamSize = 20
+      triggers = {
+        RoomTrigger "THRONE" 0.1
+        RoomTrigger "IMPALED_HEAD" 0.001
+        SelfVictims
+        NumConquered 3
+        StolenItems
+        FinishOff
+        Proximity
+      }
+      attackBehaviour = KillMembers 16
+    }
+    immigrants = {
+      { ids = {"DGR_CAPRID_WARRIORNPC"}  traits = {FIGHTER} frequency = 1 }
+      { ids = {"DGR_CAPRID_ARCHERNPC"} traits = {FIGHTER} frequency = 1 }
+	  { ids = {"DGR_URSINE_WARDENNPC"} traits = {FIGHTER} frequency = 0.6 }
+	  { ids = {"DGR_URSINE_RAMPAGERNPC"} traits = {FIGHTER} frequency = 0.7 }
+	  { ids = {"DGR_LAPINE_HUNTRESSNPC"} traits = {FIGHTER} frequency = 0.7 }
+	  { ids = {"DGR_LAPINE_STALKERNPC"} traits = {FIGHTER} frequency = 0.7 }
+	  { ids = {"DGR_VULPINE_SPELLBLADENPC"} traits = {FIGHTER} frequency = 0.8 }
+	  { ids = {"DGR_VULPINE_ARCANISTNPC"} traits = {FIGHTER} frequency = 0.7 }
+    }
+}
+  
+      "DGR_BEASTKIN_TOWN"
+  {
+    settlement = {
+      type = Builtin VILLAGE "WOOD_CASTLE"
+      tribe = DARK_ELF
+      inhabitants = {
+        fighters = {
+          count = {8 16}
+          all = {
+            5 "DGR_CAPRID_WARRIORNPC"
+            4 "DGR_CAPRID_ARCHERNPC"
+            3 "DGR_URSINE_WARDENNPC"
+			3 "DGR_URSINE_RAMPAGERNPC"
+			4 "DGR_LAPINE_HUNTRESSNPC"
+			4 "DGR_LAPINE_STALKERNPC"
+			4 "DGR_VULPINE_SPELLBLADENPC"
+			3 "DGR_VULPINE_ARCANISTNPC"
+			2 "WEREWOLF"
+			1 "WOLF"
+			1 "CAVE_BEAR"
+			1 "DGR_BLACK_BEAR"
+			1 "DGR_TIGER"
+			1 "DGR_EAGLE"
+			1 "DGR_LION"
+			1 "SNAKE"
+			1 "SPIDER"
+          }
+        }
+      }
+      race = "beastfolk"
+      furniture = "dgr_beastFurniture" 
+      outsideFeatures = "dungeonOutside"
+    }
+}
+  
+  "DGR_HAUNTED_CASTLE"
+  {
+    settlement = {
+      type = Builtin CASTLE2 "BRICK"
+      tribe = MONSTER
+      inhabitants = {
+        leader = { { "DGR_SPECTER_LORD" } }
+        fighters = {
+          count = {10 15}
+          all = {
+            1 "LOST_SOUL"
+			1 "ZOMBIE"
+			1 "SKELETON"
+            5 "DGR_ANIMATED_ARMOR"
+            5 "DGR_ANIMATED_SWORD"
+          }
+        }
+      }
+      locationNameGen = "TOWN"
+      race = "specters"
+      stockpiles = {{ "gold" 40 "TREASURE_CHEST" }}
+      furniture = "castleFurniture" 
+      outsideFeatures = "castleOutside"
+    }
+}
+  
+  "DGR_YETI"
+  {
+	biomes = { "SNOW" } 
+    settlement = {
+      type = Builtin CAVE "GLACIER"
+      inhabitants = {
+        leader = { { "DGR_YETI" } }
+      }
+      race = "yeti"
+      tribe = HOSTILE
+      shopItems = {{5 10} "dgr_yetiItems"}
+    }
+    config = {
+      leaderAsFighter = true
+      spawnGhosts = 1
+      ghostProb = 0.03
+    }
+    behaviour = {
+      minPopulation = 0
+      minTeamSize = 1
+      triggers = {EnemyPopulation 13}
+      attackBehaviour = KillMembers 5
+    }
+}
+  
+  "DGR_MYCONIDS"
+  {
+    settlement = {
+      type = Builtin VAULT "DUNGEON" 
+      tribe = GNOME
+      inhabitants = {
+        fighters = {
+          count = {2 4}
+          all = { 1 "DGR_MYCONID" }
+        }
+      }
+      closeToPlayer = true
+      dontConnectCave = true
+    }
+    discoverable = false
+}
+  
+  "DGR_GHAST"
+  {
+    settlement = {
+      type = Builtin VAULT "DUNGEON"
+      tribe = MONSTER
+      inhabitants = {
+        fighters = {
+          count = {4 8}
+          all = { 1 "DGR_GHAST_ENEMY" }
+        }
+      }
+    }
+    discoverable = false
+}
+  
+  "DGR_SHOGGOTH"
+  {
+    settlement = {
+      type = Builtin VAULT "DUNGEON"
+      tribe = MONSTER
+      inhabitants = {
+        fighters = {
+          count = {1}
+          all = { 1 "DGR_SHOGGOTH" }
+        }
+      }
+    }
+    discoverable = false
+}
+  
+  "DGR_QUMIR"
+  {
+	biomes = {"DESERT"}
+    settlement = {
+      type = Builtin ANT_NEST "SANDSTONE"
+      inhabitants = {
+        civilians = {
+          count = {5 10}
+          all = { 1 "DGR_QUMIR_WORKER" }
+        }
+        fighters = {
+          count = {5 10}
+          all = { 1 "DGR_QUMIR" }
+        }
+      }
+      tribe = ANT
+      race = "qumir"
+    }
+    config = {
+      immigrantInterval = 500
+      maxPopulation = 15
+    }
+    behaviour = {
+      minPopulation = 1
+      minTeamSize = 4
+      triggers = { MiningInProximity }
+      attackBehaviour = KillLeader
+    }
+    immigrants = {
+      {
+        ids = {"DGR_QUMIR_WORKER"}
+        frequency = 1
+      }
+      {
+        ids = {"DGR_QUMIR"}
+        traits = {FIGHTER}
+        frequency = 1
+      }
+    }
+}
+  
+  "DGR_QUMIR_SMALL"
+{
+  settlement = {
+    type = Builtin ANT_NEST "SANDSTONE"
+    inhabitants = {
+      civilians = {
+        count = {2 5}
+        all = { 1 "DGR_QUMIR_WORKER" }
+      }
+      fighters = {
+        count = {2 4}
+        all = { 1 "DGR_QUMIR" }
+      }
+    }
+    tribe = ANT
+    race = "qumir"
+    dontConnectCave = true
+    closeToPlayer = true
+    surroundWithResources = 6
+  }
+}
+
+  "DGR_FROST_GIANTS"
+  {
+    biomes = {"SNOW"}
+    settlement = {
+      type = Builtin CASTLE2 "DGR_GRAYBRICK"
+      tribe = MONSTER
+      inhabitants = {
+        leader = { { "DGR_FROST_GIANT_EVERLASTING" } }
+        fighters = {
+          count = {6 10}
+          all = { 
+		  4 "DGR_FROST_GIANT"
+		  1 "DGR_FROST_WARG"}
+        }
+      }
+      race = "frost giants"
+      stockpiles = {{ "gold" 100 "TREASURE_CHEST" }}
+      furniture =  "roomFurniture" 
+    }
+    config = {
+      immigrantInterval = 300
+      maxPopulation = 10
+      ghostProb = 0.1
+      spawnGhosts = 6
+    }
+    behaviour = {
+      minPopulation = 5
+      minTeamSize = 6
+      triggers = {
+        RoomTrigger "THRONE" 0.0003
+        RoomTrigger "IMPALED_HEAD" 0.0001
+        SelfVictims
+        StolenItems
+      }
+      attackBehaviour = KillLeader
+      ransom = 0.8 200
+    }
+    immigrants = {
+      {
+        ids = {"DGR_FROST_GIANT"}
+        traits = {FIGHTER}
+        frequency = 0.7
+      }
+	  {
+        ids = {"DGR_FROST_WARG"}
+        traits = {FIGHTER}
+        frequency = 0.5
+      }
+    }
+  }
+  
+"DGR_CULT_ABOVE"
+{
+  settlement = {
+    type = Predefined {"dgr_cultswamp" "DGR_TEMPBRICK"}
+    tribe = MONSTER
+    inhabitants = {
+      fighters = {
+        count = {1 2}
+        all = { 1 "DGR_CULTIST" }
+      }
+    }
+    race = "eldritch cult"
+    furniture = "dungeonOutside" 
+  }
+  discoverable = false
+}
+
+"DGR_CULTDUNGEON"
+{
+  settlement = {
+    type = Predefined {"dgr_cultdungeon" "DGR_CULTDUNGEON"}
+    tribe = MONSTER
+    furniture = "dgr_cultDungeon" 
+    race = "eldritch cult"
+    inhabitants = {
+      fighters = {
+        count = {15 20}
+        all = {
+          100 "DGR_DEEP_ONE"
+		  100 "DGR_GHAST"
+          5 "DGR_SHOGGOTH"
+          5 "DGR_BHOLE"
+		  5 "DGR_BYAKHEE"
+		  5 "DGR_DARK_YOUNG"
+		  100 "DGR_SHAMBLER"
+		  5 "DGR_ELDER_THING"
+		  30 "DGR_HUNTING_HORROR"
+		  5 "DGR_MI-GO"
+		  5 "DGR_MOON-BEAST"
+		  75 "DGR_TENTACLE"
+          20 "STONE_GOLEM"
+          20 "IRON_GOLEM"
+          50 "SPIDER"
+          50 "FLY"
+          50 "DGR_FLYING_EYE"
+        }
+      }
+    }
+   }
+  discoverable = false
+}
+
+"DGR_CULTBOSS"
+{
+  settlement = {
+    type = Predefined {"dgr_cultboss" "DGR_CULTDUNGEON"}
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "DGR_YELLOWKING" } }
+    }
+    race = "eldritch cult"
+  }
+  levelConnection = {
+    topLevel = ExtraEnemy {"DGR_CULT_ABOVE"}
+    levels = {
+	  { ExtraEnemy { "DGR_CULTDUNGEON" { 2 }} {80 80} BASIC "???" true false }
+      { MainEnemy {60 40} BASIC none true }
+	  { ExtraEnemy { "DGR_CULTLOOT" { 1 } } {20 20} BASIC "???" true false }
+    }
+  }
+}
+
+"DGR_CULTLOOT"
+{
+  settlement = {
+    type = Predefined {"dgr_lootroom" "DGR_LOOTROOM"}
+    tribe = MONSTER
+    furniture = "dgr_lootRoom" 
+    race = "eldritch cult"
+    inhabitants = {
+      fighters = {
+        count = {1}
+        all = {
+          1 "RAT"
+        }
+      }
+    }
+  }
+  discoverable = false
+}
+
+"DGR_PHARANTS" inherit "ANTS_CLOSED"
+{
+  biomes = {"DESERT"}
+  settlement = {
+    type = Builtin ANT_NEST "SANDSTONE"
+    inhabitants = {
+      leader = { { "DGR_PHARQUEEN" } }
+      civilians = {
+        count = {8 12}
+        all = { 1 "DGR_PHARWORKER" }
+      }
+      fighters = {
+        count = {10 15}
+        all = { 
+		4 "DGR_PHARSOLDIER"
+		1 "DGR_PHARQUEEN"
+		}
+      }
+    }
+    surroundWithResources = 5
+    tribe = ANT
+    race = "ants"
+  }
+  createOnBones = 0.1 { "DWARVES" }
+  behaviour = {
+	  minPopulation = 4
+	  minTeamSize = 3
+	  triggers = {
+		  Proximity
+		  FinishOff
+	  }
+	  attackBehaviour = KillMembers 2
+  }
+}
+
+"DGR_PHARANTS_SMALL"
+{
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DUNGEON"
+    inhabitants = {
+      civilians = {
+        count = {4 7}
+        all = { 1 "DGR_PHARWORKER" }
+      }
+      fighters = {
+        count = {4 7}
+        all = { 1 "DGR_PHARSOLDIER" }
+      }
+    }
+    tribe = ANT
+    race = "ants"
+    surroundWithResources = 6
+  }
+}
+
+"DGR_JAWANTS" inherit "ANTS_CLOSED"
+{
+  biomes = {"DGR_SWAMP"}
+  settlement = {
+    type = Builtin ANT_NEST "DUNGEON" 
+    inhabitants = {
+      leader = { { "DGR_JAWQUEEN" } }
+      civilians = {
+        count = {3 5}
+        all = { 1 "DGR_JAWWORKER" }
+      }
+      fighters = {
+        count = {3 5}
+        all = { 
+		1 "DGR_JAWSOLDIER"
+		}
+      }
+    }
+    surroundWithResources = 5
+    tribe = ANT
+    race = "ants"
+  }
+}
+
+"DGR_JAWANTS_SMALL"
+{
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DUNGEON"
+    inhabitants = {
+      civilians = {
+        count = {2 4}
+        all = { 1 "DGR_PHARWORKER" }
+      }
+      fighters = {
+        count = {2 4}
+        all = { 1 "DGR_PHARSOLDIER" }
+      }
+    }
+    tribe = ANT
+    race = "ants"
+    surroundWithResources = 6
+  }
+}
+
+"DGR_JAWANTS_SMALL_CLOSED"
+{
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DUNGEON"
+    inhabitants = {
+      civilians = {
+        count = {2 4}
+        all = { 1 "DGR_PHARWORKER" }
+      }
+      fighters = {
+        count = {2 4}
+        all = { 1 "DGR_PHARSOLDIER" }
+      }
+    }
+    tribe = ANT
+    race = "ants"
+	dontConnectCave = true
+    closeToPlayer = true
+    surroundWithResources = 6
+  }
+}
+
+"DGR_VOLCKOBOLDS"
+{
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DGR_LAVACAVE"
+    tribe = DWARF
+    inhabitants = {
+      fighters = {
+        count = {3 7}
+        all = { 1 "KOBOLD" }
+      }
+    }
+    race = "kobolds"
+    stockpiles = {{ "minerals" 60 }}
+  }
+}
+
+"DGR_REDWYRMS"
+{
+  settlement = {
+    type = Builtin CAVE "DGR_LAVACAVE"
+    inhabitants = {
+      fighters = {
+        count = {3 6}
+        all = { 
+		1 "DGR_RED_WYRM"
+		1 "DGR_RED_WHELP"
+		}
+      }
+    }
+    race = "young dragons"
+    tribe = MONSTER
+  }
+  config = {
+    leaderAsFighter = true
+    ghostProb = 0.03
+    spawnGhosts = 1
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {
+      EnemyPopulation 20
+    }
+    attackBehaviour = KillMembers 5
+  }
+}
+
