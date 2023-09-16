@@ -1,0 +1,699 @@
+"MAGMA" modify
+{
+	freezeTo = "DGR_LAVAFLOOR2"
+}
+
+"DGR_LAVA" inherit "MAGMA"
+{
+	name = "lava"
+	fillPit = "DGR_LAVA"
+}
+
+"DGR_GROUND_STONE1" inherit "FLOOR_STONE1"
+{
+  name = "floor"
+  viewId = { "stone_floor1" }
+  luxury = 0.3
+  layer = GROUND
+}
+
+"DGR_NEST"
+  {
+    name = "nest"
+    viewId = { "dgr_nest" }
+    usageType = UsageEffect "sleep in" Lasting SLEEP
+    tickType = Effect BedHeal()
+    canHideHere = true
+    fire = 50
+    strength = 10
+    bedType = BED
+  }
+  
+"DGR_BARREL"
+  {
+	name = "barrel"
+    viewId = { "dgr_barrel" }
+    blockMovement = true
+    strength = 10
+	fire = 100
+    destroyFX = { DESTROY_FURNITURE Rgb 109 73 79 255 }
+	}
+	
+"DGR_BARREL_BROKEN"
+ {
+	name = "broken barrel"
+    viewId = { "dgr_barrel_broken" }
+    summonedElement = "ENT"
+    tryDestroyFX = { WOOD_SPLINTERS }
+    canHideHere = true
+	}
+"DGR_ANGEL_ALTAR" inherit "DEMON_SHRINE"
+  {
+    name = "altar"
+    viewId = { "dgr_angel_altar" }
+    strength = 60
+    destroyFX = { DESTROY_FURNITURE Rgb 161 172 172 255 }
+  }
+
+"DGR_ANGEL_SANCTUARY" inherit "DEMON_SHRINE"
+  {
+    name = "sanctuary"
+    viewId = { "dgr_angel_sanctuary" }
+    luxury = 0.6
+    strength = 100
+    destroyFX = { DESTROY_FURNITURE Rgb 187 187 187 255 }
+  }
+  
+    "DGR_SLIME_CORE"
+  {
+    name = "slime core"
+    viewId = { "dgr_slime_core" }
+    blockMovement = true
+    usageType = BuiltinUsageId STUDY
+    canHideHere = true
+    strength = 80
+    maxTraining = {
+	  SPELL 12
+    }
+    requiresLight = true
+    lightEmission = 9
+    destroyFX = { DESTROY_FURNITURE Rgb 78 160 33 255 }
+  }
+    "DGR_TRAINING_SKULL"
+  {
+    name = "skull training dummy"
+    viewId = { "dgr_training_skull" }
+    blockMovement = true
+    usageType = BuiltinUsageId TRAIN
+    canHideHere = true
+    strength = 80
+    maxTraining = {
+      MELEE 12
+    }
+    requiresLight = true
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  }
+    "DGR_SLIME_FLOOR"
+  {
+    name = "slime floor"
+    viewId = { "dgr_slime_floor" }
+    luxury = 0.5
+    layer = FLOOR
+    lastingEffect = ALLY REGENERATION 0
+  }
+    "DGR_MAGIC_WALL"
+  {
+    name = "wall"
+    viewId = { "dgr_magic_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+
+	canBuildOutsideOfTerritory = true
+    wall = true
+	lightEmission = 7
+    strength2 = {
+      600 BOULDER
+      300 DIG
+      1900 HOSTILE_DIG
+    }
+  }
+    "DGR_MAGICFLOOR"
+  {
+    name = "floor"
+    viewId = { "dgr_magicfloor" }
+    layer = GROUND
+  }
+
+  "DGR_MAGICFLOOR_EXTRA"
+  {
+    name = "floor"
+    viewId = { "dgr_magicfloor" }
+    layer = FLOOR
+    tickType = Effect {
+    PlaceFurniture "DGR_MAGICFLOOR_EXTRA_FIN"
+    }
+  }
+  
+  "DGR_MAGICFLOOR_EXTRA_FIN"
+  {
+    name = "floor"
+    viewId = { "dgr_magicfloor" }
+    layer = FLOOR
+	lastingEffect = ALLY REGENERATION 0
+  }
+    "DGR_MAGIC_RIFT"
+  {
+    name = "magic rift"
+    viewId = { "dgr_magic_rift" }
+    canHideHere = true
+    xForgetAfterBuilding = true
+    usageType = UsageEffect "enter" Stairs
+  onBuilt = UP_STAIRS
+  }
+  
+  "DGR_WALL_SKELETON_N"
+  {
+    name = "wall-mounted skeleton"
+    viewId = { "dgr_wall_skeleton_n" }
+    layer = CEILING
+    viewLayer = TORCH1
+    attachmentDir = N
+	luxury = 0.1
+    requiredSupport = { { { N } } }
+    canBuildOutsideOfTerritory = true
+  }
+    "DGR_BONE_PILE"
+  {
+    name = "bone pile"
+    viewId = { "dgr_bone_pile" }
+    luxury = 0.1
+  }
+  "DGR_EVILBANNER1"
+  {
+    name = "banner"
+    viewId = { "dgr_evilbanner1" }
+    layer = CEILING
+    viewLayer = TORCH1
+    attachmentDir = N
+	luxury = 0.2
+    requiredSupport = { { { N } } }
+    canBuildOutsideOfTerritory = true
+  }
+  "DGR_EVILBANNER2" inherit "DGR_EVILBANNER1"
+  {
+    viewId = { "dgr_evilbanner2" }
+  }
+  "DGR_GOODBANNER1" inherit "DGR_EVILBANNER1"
+  {
+    viewId = { "dgr_goodbanner1" }
+  }
+  "DGR_GOODBANNER2" inherit "DGR_EVILBANNER1"
+  {
+    viewId = { "dgr_goodbanner2" }
+  }
+  "DGR_PILLAR"
+  {
+	name = "pillar"
+    viewId = { "dgr_pillar" }
+    blockMovement = true
+    strength = 50
+	luxury = 0.2
+    destroyFX = { DESTROY_FURNITURE Rgb 150 150 150 255 }
+  }
+  "DGR_STOOL"
+  {
+    name = "stool"
+    viewId = { "dgr_stool" }
+    luxury = 0.1
+  }
+  "DGR_TABLE"
+  {
+	name = "table"
+    viewId = { "dgr_table" }
+    blockMovement = true
+    strength = 10
+	fire = 100
+	luxury = 0.2
+    destroyFX = { DESTROY_FURNITURE Rgb 134 90 50 255 }
+    destroyedRemains = "DGR_TABLE_BROKEN"
+	}
+	"DGR_TABLE_BROKEN"
+ {
+	name = "broken table"
+    viewId = { "dgr_table_broken" }
+    summonedElement = "ENT"
+    tryDestroyFX = { WOOD_SPLINTERS }
+    canHideHere = true
+	}
+	"DGR_LECTERN"
+  {
+	name = "lectern"
+    viewId = { "dgr_lectern" }
+    blockMovement = true
+    strength = 50
+	luxury = 0.2
+    destroyFX = { DESTROY_FURNITURE Rgb 150 150 150 255 }
+  }
+   "DGR_CRATE" inherit "DGR_BARREL"
+  {
+	name = "crate"
+    viewId = { "dgr_crate" }
+    destroyFX = { DESTROY_FURNITURE Rgb 134 90 50 255 }
+	}
+	"DGR_CRATE_BROKEN" inherit "DGR_TABLE_BROKEN"
+	{
+	name = "broken crate"
+	}
+	
+  "DGR_WALL_CHAIN"
+  {
+    name = "wall chains"
+    viewId = { "dgr_wall_chains" }
+    layer = CEILING
+    viewLayer = TORCH1
+    attachmentDir = N
+    requiredSupport = { { { N } } }
+    canBuildOutsideOfTerritory = true
+  }
+  
+  "DGR_HUNTING_TROPHY"
+  {
+    name = "gruesome display"
+    viewId = { "dgr_hunting_trophy" }
+    canHideHere = true
+    luxury = 0.7
+    strength = 20
+    populationIncrease = {1 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 148 148 148 255 }
+  }
+  
+  "DGR_GOLD_PILE"
+  {
+    name = "gold pile"
+    viewId = { "dgr_gold_pile" }
+    usageType = UsageEffect "sleep in" Lasting SLEEP
+    tickType = Effect BedHeal()
+    canHideHere = true
+    fire = 50
+    strength = 40
+	upgrade = "BEAST_CAGE"
+    bedType = CAGE
+	luxury = 0.5
+    destroyFX = { DESTROY_FURNITURE Rgb 228 214 20 255 }
+	itemDrop = {{{{Simple "GoldPiece"} 1 { 10 }}}}
+  }
+  
+  "DGR_DRAGON_HOARD"
+  {
+    name = "dragon hoard"
+    viewId = { "dgr_dragon_hoard" }
+    canHideHere = true
+	usageType = UsageEffect "sit on" Chain { CreatureMessage {"sit on the hoard" "sits on the hoard"} Audience none }
+    luxury = 1.0
+    strength = 150
+    populationIncrease = {10 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+	itemDrop = {{{{Simple "GoldPiece"} 1 { 800 1100 }}}}
+	lastingEffect = ALLY SATIATED 3 # ALLY/ENEMY LastingEffect radius
+  }
+  
+  "DGR_DRAGON_OBELISK"
+  {
+    name = "dragon obelisk"
+    viewId = { "dgr_dragon_obelisk" }
+    blockMovement = true
+    usageTime = 5
+    luxury = 0.3
+    strength = 80
+    destroyFX = { DESTROY_FURNITURE Rgb 129 96 96 255 }
+  }
+  
+  "DGR_TRAINING_DRAGONSTEEL"
+  {
+    name = "dragonsteel training dummy"
+    viewId = { "dgr_train_dragonsteel" }
+    blockMovement = true
+    usageType = BuiltinUsageId TRAIN
+    canHideHere = true
+    strength = 100
+    upgrade = "TRAINING_IRON"
+    maxTraining = {
+      MELEE 25
+    }
+    requiresLight = true
+    destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  }
+  
+  "DGR_TRAINING_EXORITE"
+  {
+    name = "exorite training dummy"
+    viewId = { "dgr_train_exorite" }
+    blockMovement = true
+    usageType = BuiltinUsageId TRAIN
+    canHideHere = true
+    strength = 140
+    upgrade = "DGR_TRAINING_DRAGONSTEEL"
+    maxTraining = {
+      MELEE 40
+    }
+    requiresLight = true
+    destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  }
+  "DGR_HATCHERY"
+  {
+    name = "hatchery"
+    viewId = { "dgr_hatchery" }
+	populationIncrease = {1 none}
+    luxury = 0.2
+    strength = 10
+  }
+  "DGR_IMP_HOLE"
+  {
+    name = "imp hole"
+    viewId = { "dgr_imp_hole" }
+	canBuildOutsideOfTerritory = true
+	blockMovement = true
+	populationIncrease = {2 2}
+    strength = 10
+  }
+  "DGR_IMP_STATUE" inherit "MINION_STATUE"
+  {
+    viewId = { "dgr_imp_statue" }
+    populationIncrease = {2 5}
+  }
+  "DGR_STONE_IMP_STATUE" inherit "STONE_MINION_STATUE"
+  {
+    viewId = { "dgr_stone_imp_statue" }
+    populationIncrease = {1 5}
+  }
+    "DGR_FENCE_GATE"
+  {
+    name = "fence door"
+    viewId = { "dgr_fencegate" }
+    blockingEnemies = true
+    canHideHere = true
+    fire = 50
+    strength = 120
+    clickType = LOCK
+    destroyFX = { DESTROY_FURNITURE Rgb 114 114 114 255 }
+  }
+    "DGR_FENCE"
+  {
+    name = "fence"
+    viewId = { "dgr_fence" }
+    blockMovement = true
+    strength = 120
+    destroyFX = { DESTROY_FURNITURE Rgb 114 114 114 255 }
+  }
+  "DGR_GRAY_WALL" inherit "CASTLE_WALL"
+  {
+    viewId = { "dgr_gray_wall" }
+  }
+  
+  "DGR_STAR_PILLAR"
+  {
+    name = "star pillar"
+    viewId = { "dgr_star_pillar" }
+    blockMovement = true
+    strength = 200
+    destroyFX = { DESTROY_FURNITURE Rgb 171 136 190 255 }
+  }
+  
+  "DGR_BRAIN_CYLINDER_SPAWN"
+  {  
+  name = "brain cylinder"
+  viewId = { "dgr_brain_cylinder" }
+  blockMovement = true
+  canHideHere = true
+  strength = 100
+  tickType = Effect {
+    RemoveFurniture "DGR_BRAIN_CYLINDER_SPAWN"
+    PlaceFurniture "DGR_BRAIN_CYLINDER"
+   }
+  }
+  
+  "DGR_BRAIN_CYLINDER"
+  {
+  name = "brain cylinder"
+  viewId = { "dgr_brain_cylinder" }
+  lastingEffect = ALLY TELEPATHY 9
+  blockMovement = true
+  canHideHere = true
+  strength = 100
+  }  
+
+  "DGR_VOID_JAR"
+  {
+    name = "void jar"
+    viewId = { "dgr_void_jar" }
+    blockMovement = true
+    canHideHere = true
+    luxury = 0.3
+    strength = 30
+    populationIncrease = {2 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 130 96 141 255 }
+  }
+
+  "DGR_SWAMPWATER"
+{
+  name = "water"
+  viewId = { "dgr_swampwater" }
+  bloodCountdown = 30
+  layer = GROUND
+  waterDepth = 100
+  entryType = Water
+  droppedItems = { "sinks" "sink" "You hear a splash." }
+  defaultBridge = "BRIDGE"
+  summonedElement = "WATER_ELEMENTAL"
+  freezeTo = "ICE"
+  fillPit = "DGR_SWAMPWATER"
+  canSilentlyReplace = true
+  movementSet = {
+    traits = { FLY SWIM }
+    forcibleTraits = { WALK }
+  }
+  walkIntoFX = { WATER_SPLASH Rgb 46 62 44 255 }
+  tickType = Effect Chance 0.0000001 EmitGas "FOG" 1.0
+}
+
+"DGR_SWAMPGRASS"
+{
+  name = "grass"
+  viewId = { "dgr_swampgrass" }
+  layer = GROUND
+  tickType = Effect Chance 0.0000001 EmitGas "FOG" 1.0
+}
+
+"DGR_SWAMPTREE"
+{
+  name = "tree"
+  viewId = { "dgr_swamptree" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 50
+  itemDrop = {{{{Simple "WoodPlank"} 1 { 8 14 }}}}
+  summonedElement = "ENT"
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+
+"DGR_SWAMPPLANT"
+{
+  name = "plant"
+  viewId = { "dgr_swampplant" }
+  canHideHere = true
+  strength2 = {
+    20 BOULDER
+    10 CUT
+  }
+  fire = 50
+  summonedElement = "ENT"
+}
+
+"DGR_PIT"
+{
+  name = "pit"
+  viewId = { "dgr_pit" }
+  layer = GROUND
+  droppedItems = { "falls" "fall" "The item falls and is lost." }
+  tickType = Pit
+  movementSet = {
+    traits = { FLY }
+  }
+}
+
+"DGR_EXORITE_ORE"
+{
+  name = "exorite"
+  viewId = { "dgr_exorite" }
+  blockMovement = true
+  blockVision = { NORMAL ELF }
+  wall = true
+  clearFogOfWar = true
+  itemDrop = {{{{Simple "DGR_Exorite"} 1 { 3 6 }}}}
+  strength2 = {
+    400 BOULDER
+    450 DIG
+    450 HOSTILE_DIG
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+
+"DGR_EXORITE_DOOR"
+{
+  name = "exorite door"
+  viewId = { "dgr_exo_door_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  blockVision = { NORMAL ELF }
+  strength = 700
+  clickType = LOCK
+  requiredSupport = { { { E W } } { { N S } {"dgr_exo_door_ns"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DGR_EXORITE_GATE"
+{
+  name = "exorite gate"
+  viewId = { "dgr_exo_gate_w" }
+  blockingEnemies = true
+  canHideHere = true
+  blockVision = { NORMAL ELF }
+  strength = 800
+  clickType = LOCK
+  requiredSupport = { { { W } } { { N } {"dgr_exo_gate_n"} } { { E } {"dgr_exo_gate_e"} } { { S } {"dgr_exo_gate_s"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DGR_ASHFLOOR"
+{
+  name = "ash"
+  viewId = { "dgr_ashfloor" }
+  layer = GROUND
+}
+
+"DGR_LAVAFLOOR"
+{
+  name = "igneous rock"
+  viewId = { "dgr_lavafloor" }
+  layer = GROUND
+}
+
+"DGR_LAVAFLOOR2"
+{
+  name = "igneous rock"
+  viewId = { "dgr_lavafloor2" }
+  layer = GROUND
+}
+
+"DGR_MOUND"
+{
+  name = "mound"
+  viewId = { "dgr_mound" }
+  canHideHere = true
+  strength = 10
+  destroyFX = { DESTROY_FURNITURE Rgb 135 135 135 255 }
+  usageType = UsageEffect "unearth" Chain {
+	  CreatureMessage {"start digging" "starts digging"}
+	  DestroyWalls BASH
+	  ChooseRandom {
+		Message NORMAL "...nothing interesting."
+		Message NORMAL "...nothing interesting."
+		Message NORMAL "...nothing interesting."
+		Chain {
+			CreatureMessage {"find something!" "finds something!"}
+			ChooseRandom {
+				DropItems {Simple "GoldPiece"} {5 10}
+				DropItems {Simple "Rock"} {5 15}
+				DropItems {Simple "IronOre"} {5 15}
+				DropItems {Simple "WoodPlank"} {20 50}
+				DropItems {Simple "Skeleton"} {1}
+				DropItems {Simple "Bone"} {1}
+				DropItems {Simple "GoldPiece"} {5 10}
+				DropItems {Simple "Rock"} {5 15}
+				DropItems {Simple "IronOre"} {5 15}
+				DropItems {Simple "WoodPlank"} {20 50}
+				DropItems {Simple "Skeleton"} {1}
+				DropItems {Simple "Bone"} {1}
+				DropItems {Simple "Knife"} {1}
+				DropItems {Simple "Spear"} {1}
+				DropItems {Simple "Sword"} {1}
+				DropItems {Simple "BattleAxe"} {1}
+				DropItems {Simple "WarHammer"} {1}
+				DropItems {Simple "Club"} {1}
+				DropItems {Simple "HeavyClub"} {1}
+				DropItems {Simple "WoodenStaff"} {1}
+				DropItems {Simple "Bow"} {1}
+				DropItems {Simple "Robe"} {1}
+				DropItems {Simple "LeatherGloves"} {1}
+				DropItems {Simple "IronGloves"} {1}
+				DropItems {Simple "LeatherArmor"} {1}
+				DropItems {Simple "LeatherHelm"} {1}
+				DropItems {Simple "WoodenShield"} {1}
+				DropItems {Simple "IronShield"} {1}
+				DropItems {Simple "ChainArmor"} {1}
+				DropItems {Simple "IronHelm"} {1}
+				DropItems {Simple "Cornuthaum1"} {1}
+				DropItems {Simple "LeatherBoots"} {1}
+				DropItems {Simple "IronBoots"} {1}
+				DropItems {Simple "DefenseAmulet"} {1}
+				DropItems {Simple "FirstAidKit"} {1}
+				DropItems {Simple "DGR_Katana"} {1}
+				DropItems {Simple "DGR_BoneSword"} {1}
+				DropItems {Simple "DGR_BoneArmor"} {1}
+				DropItems {Simple "DGR_BoneBattleAxe"} {1}
+				DropItems {Simple "DGR_BoneBoots"} {1}
+				DropItems {Simple "DGR_BoneGloves"} {1}
+				DropItems {Simple "DGR_BoneHelm"} {1}
+				DropItems {Simple "DGR_BoneShield"} {1}
+				DropItems {Simple "DGR_BoneWarHammer"} {1}
+				DropItems {Simple "DGR_Kris"} {1}
+				DropItems {Simple "DGR_Turban"} {1}
+				DropItems {Simple "DGR_Exorite"} {5 10}
+				DropItems {Potion Heal {FLESH}} {1}
+				DropItems {Potion Lasting SLEEP} {1}
+				DropItems {Potion Lasting SLOWED} {1}
+				DropItems {Potion Lasting BLIND} {1}
+				DropItems {Potion Lasting INVISIBLE} {1}
+				DropItems {Potion Lasting POISON} {1}
+				DropItems {Potion Lasting POISON_RESISTANT} {1}
+				DropItems {Potion Lasting FLYING} {1}
+				DropItems {Potion Lasting SPEED} {1}
+				DropItems {Potion Lasting 40 DAM_BONUS} {1}
+				DropItems {Potion Lasting 40 DEF_BONUS} {1}
+				DropItems {Potion Lasting 40 REGENERATION} {1}
+				DropItems {Potion Lasting RAGE} {1}
+				DropItems {Potion Lasting PANIC} {1}
+				DropItems {Amulet WARNING} {1}
+				DropItems {Amulet NIGHT_VISION} {1}
+				DropItems {Amulet ELF_VISION} {1}
+				DropItems {Ring POISON_RESISTANT} {1}
+				DropItems {Ring FIRE_RESISTANT} {1}
+				DropItems {Ring COLD_RESISTANT} {1}
+			}
+		}
+		Chain {
+			CreatureMessage {"disturbed something!" "disturbed something!"}
+			ChooseRandom {
+				SummonEnemy "RAT_SOLDIER" {1} none
+				SummonEnemy "SPIRIT" {1} none
+				SummonEnemy "CLAY_GOLEM" {1} none
+				SummonEnemy "SKELETON" {1} none
+				SummonEnemy "KOBOLD" {1} none
+				SummonEnemy "RAT" {1} none
+				SummonEnemy "BLACK_RAT" {1} none
+				SummonEnemy "SPIDER" {1} none
+				SummonEnemy "ANT_SOLDIER" {1} none
+				SummonEnemy "ANT_WORKER" {1} none
+				SummonEnemy "SNAKE" {1} none
+				SummonEnemy "EARTH_ELEMENTAL" {1} none
+				SummonEnemy "DGR_TOXISLIME" {1} none
+				SummonEnemy "DGR_SLIME" {1} none
+				SummonEnemy "DGR_NIMBLESLIME" {1} none
+				SummonEnemy "DGR_GIANTSLIME" {1} none
+				SummonEnemy "DGR_ARCANOSLIME" {1} none
+				SummonEnemy "DGR_IRON_SLIME" {1} none
+				SummonEnemy "DGR_MOLD_SLIME" {1} none
+				SummonEnemy "DGR_TALPID" {1} none
+				SummonEnemy "DGR_GHAST_ENEMY" {1} none
+				SummonEnemy "DGR_TENTACLE" {1} none
+				SummonEnemy "DGR_QUMIR" {1} none
+				SummonEnemy "DGR_QUMIR_WORKER" {1} none
+				SummonEnemy "DGR_BANSHEE" {1} none
+				SummonEnemy "DGR_MYCONID" {1} none
+				SummonEnemy "DGR_PHARSOLDIER" {1} none
+				SummonEnemy "DGR_PHARWORKER" {1} none
+				SummonEnemy "DGR_JAWWORKER" {1} none
+				SummonEnemy "DGR_JAWSOLDIER" {1} none
+				Summon "DGR_DIGGLE" {1} none
+			}
+		}
+	  }
+  }
+  
+}
+
