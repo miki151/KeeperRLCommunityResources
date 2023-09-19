@@ -1,0 +1,1 @@
+    Public Property template <typename T> DefaultType(const T&) { As String
