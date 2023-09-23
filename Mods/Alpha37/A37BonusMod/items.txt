@@ -66,7 +66,7 @@ Def MAGIC_WEAPON_PREFIXES()
       1 LastingEffect ACID_VULNERABILITY
       1 LastingEffect MAGIC_VULNERABILITY
       1 LastingEffect PANIC
-      1 JoinPrefixes { ItemAttrBonus SPELL_DAMAGE 20 AttackerEffect Suicide DIE }
+      1 JoinPrefixes { ItemAttrBonus SPELL_DAMAGE 20 AttackerEffect Suicide DIE } #This can be good for ranged-casting, just don't hit anyone with it
 	}
 End
 
@@ -119,7 +119,7 @@ Def HELM_PREFIXES()
       1 LastingEffect INSANITY
       1 LastingEffect PEACEFULNESS
       1 LastingEffect LIGHT_SOURCE
-      #1 LastingEffect SLEEP #Effectively a kill.  No.
+      #1 LastingEffect SLEEP #Effectively a kill: you can't order it removed, or remove it, without killing the wearer.  No.
       1 LastingEffect PANIC
       1 LastingEffect RAGE
       1 LastingEffect HALLU
@@ -148,7 +148,7 @@ Def ARMOUR_PREFIXES()
     genPrefixes =
 	{
       1 ItemAttrBonus DEFENSE 5
-      1 LastingEffect PLAGUE
+      1 LastingEffect PLAGUE #For folks with regen, plague-resistant, or undead, this is worth considering as a bio-warfare tool.
       1 LastingEffect CAPTURE_RESISTANCE
       1 LastingEffect POISON_RESISTANT
       1 LastingEffect FIRE_RESISTANT
@@ -173,7 +173,7 @@ Def ARMOUR_PREFIXES()
       1 LastingEffect INVISIBLE
       #1 LastingEffect ENTANGLED #No.
       #1 LastingEffect TIED_UP #No.
-      #1 LastingEffect IMMOBILE # NO.
+      #1 LastingEffect IMMOBILE # NO. These break AI characters; they can't fight, and even if captured can't be processed for conversion.
       1 LastingEffect PREGNANT
       1 LastingEffect SATIATED
       1 LastingEffect SPYING
