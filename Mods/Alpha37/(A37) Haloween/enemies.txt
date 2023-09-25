@@ -1,0 +1,51 @@
+"HALLOWEEN_WITCH_OF_THE_EAST"
+{
+  settlement = {
+    type = Builtin CASTLE2 "BRICK"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "HALLOWEEN_WITCH" } }
+      fighters = {
+        count = {7 10}
+        all = { 1 "HALLOWEEN_FLYING_MONKEY" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
+    furniture = "roomFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+    ghostProb = 0.1
+    spawnGhosts = 6
+    prisoners = true
+  }
+  behaviour = {
+    ambushChance = 0.1
+    minPopulation = 3
+    minTeamSize = 5
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 2
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.8 140
+  }
+  immigrants = {
+    {
+      ids = {"HALLOWEEN_FLYING_MONKEY"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
