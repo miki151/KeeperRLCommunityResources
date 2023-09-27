@@ -470,3 +470,83 @@
       groupName = "pack"
     }
   }
+
+"HALLOWEEN_SLASHER"
+  {
+    viewId = { "halloween_slasher_01" }
+    genderAlternatives = {
+      MALE { "halloween_slasher_02" }
+      MALE { "halloween_slasher_03" }
+      MALE { "halloween_slasher_04" }
+      MALE { "halloween_slasher_05" }
+    }
+    attr = {
+      DAMAGE 41
+      DEFENSE 33
+	  SPELL_SPEED 4
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      MELEE 12
+	  SPELL 4
+    }
+    permanentEffects = {
+      RIDER 1
+	  HALLOWEEN_BLOODY_EUPHORIA 1
+      UNSTABLE 1
+    }
+    chatReactionFriendly = "!carve them UP!"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "slasher"
+    }
+    afterKilledSomeone = {
+      Lasting 100 HIGH_MORALE
+    }
+    spells = { "HALOWEEN_SCARE" "panic" "haste" "swap positions" "HALOWEEN_TRIP" }
+    gender = MALE
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Sword"}
+      { "ChainArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+
+"HALLOWEEN_PLAGUE_ZOMBIE"
+  {
+    viewId = { "halloween_plague_zombie_01" }
+    genderAlternatives = {
+      MALE { "halloween_plague_zombie_02" }
+      FEMALE { "halloween_plague_zombie_01" }
+      FEMALE { "halloween_plague_zombie_02" }
+    }
+    attr = {
+      DAMAGE 14
+      DEFENSE 17 
+	  DIGGING 8
+    }
+    body = {
+      type = Humanoid LARGE
+      material = HALLOWEEN_UNDEAD_PLAGUE_FLESH
+      drops = {
+        { "HALLOWEEN_PLAGUE_ZOMBIE_CORPSE" } 1
+      }
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+	  SWARMER 1
+    }
+    name = {
+      name = "zombie"
+    }
+    afterKilledSomeone = {
+       GrantAbility "halloween plague zombie spawn"
+    }
+    hatedByEffect = HATE_UNDEAD
+  }

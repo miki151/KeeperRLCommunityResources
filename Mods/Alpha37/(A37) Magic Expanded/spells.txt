@@ -1,4 +1,17 @@
-Def TryMagicAttack(DamageType , TrainingType, AreaSize, TrueOrNot, aremessage, ismessage )
+
+Def MagExOneTimeAbility(SpellName01,SpellName02, SpellDesc, SpellEffect, SpellSymbol)
+SpellName01
+{
+  effect = AI And{} 0 1 Name SpellName02 Description SpellDesc {
+    SpellEffect
+    RemoveAbility SpellName01
+  }
+  symbol = SpellSymbol
+  cooldown = 1
+}
+End
+
+Def MagExTryMagicAttack(DamageType , TrainingType, AreaSize, TrueOrNot, aremessage, ismessage )
   TryNoFriendlyFire(
     {
       CreatureMessage {aremessage ismessage}
@@ -15,192 +28,394 @@ Def TryMagicAttack(DamageType , TrainingType, AreaSize, TrueOrNot, aremessage, i
   )
 End
 
-"elemental_storm_bolt"
-{
-  symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
-      TryMagicAttack(LIGHTNING_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
-  projectileViewId = {"blast" ColorId PURPLE }
-  range = 12
-  cooldown = {4}
-  sound = SPELL_BLAST
-}
+# toximancy spells
 
-# lightning spells
-"lightning bolt"
+"magex_poison_bolt"
 {
   symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
-  Chain {
-	  { Caster Lasting 0 "LIGHTNING_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")}
-  projectileViewId = {"blast" ColorId PURPLE }
-  range = 4
-  cooldown = {2 16}
-  sound = SPELL_BLAST
-}
-
-"advanced lightning bolt"
-{
-  upgrade = "lightning bolt"
-  symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
-  Chain {
-	  { Caster Lasting 0 "LIGHTNING_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")}
-  projectileViewId = {"blast" ColorId PURPLE }
+  effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
+  Chain { Area 1 Lasting 50 POISON}
+  projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 8
   cooldown = {2 16}
   sound = SPELL_BLAST
 }
 
-"expert lightning bolt"
+"magex_advanced_poison_bolt"
 {
-  upgrade = "advanced lightning bolt"
+  upgrade = "magex_poison_bolt"
   symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
-  Chain {
-	  { Caster Lasting 0 "LIGHTNING_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")}
-  projectileViewId = {"blast" ColorId PURPLE }
+  effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
+  Chain { Area 2 Lasting 50 POISON}
+  projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 12
   cooldown = {2 16}
   sound = SPELL_BLAST
 }
 
-"lightning charge"
+"magex_expert_poison_bolt"
+{
+  upgrade = "magex_advanced_poison_bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
+  Chain { Area 3 Lasting 50 POISON}
+  projectileViewId = {"magex_bubble_blast" ColorId GREEN }
+  range = 16
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"magex_mass_cure_poison"
+{
+  upgrade = "advanced cure poison"
+  symbol = "⚕"
+  effect = Name "mass cure poison" Area 10 Filter Not Enemy RemoveLasting POISON
+  cooldown = {30 81}
+  sound = SPELL_CURE_POISON
+}
+
+"magex_mass_poison_resisntance"
+{
+  upgrade = "poison resistance"
+  symbol = "🐍"
+  effect = Name "mass poison resistance" Area 10 Filter Not Enemy Lasting POISON_RESISTANT
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"magex_advanced_poison_breath"
+{
+  upgrade = "poison breath"
+  symbol = "☠"
+  effect = Name "poison breath" Area 2 EmitGas "POISON_GAS" 0.5
+  fx = {FLAMETHROWER ColorId GREEN}
+  range = 6
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+  message = "breathe poison!" "breathes poison!"
+}
+
+"magex_expert_poison_breath"
+{
+  upgrade = "magex_advanced_poison_breath"
+  symbol = "☠"
+  effect = Name "poison breath" Area 3 EmitGas "POISON_GAS" 0.5
+  fx = {FLAMETHROWER ColorId GREEN}
+  range = 8
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+  message = "breathe poison!" "breathes poison!"
+}
+
+"magex_poison_cloud"
+{
+  symbol = "🌫"
+  effect = Name "poisionous fog" Description "Creates a poisionous cloud." Area 4 Filter DistanceD none 3.2 EmitGas "POISON_GAS" 1
+  cooldown = {30 61}
+}
+
+MagExOneTimeAbility("magex_poison_resistance_self","poison resistance self", "Becomes resistant to poison.", Permanent POISON_RESISTANT, "🎯")
+
+# lightning spells
+
+"magex_elemental_storm_bolt"
 {
   symbol = "⥇"
-  effect = Lasting 30 LIGHTING_DISCHARGE
+  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a magex_lightning_bolt"
+      MagExTryMagicAttack(MAGEX_LIGHTNING_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
+  projectileViewId = {"magex_blast" ColorId PURPLE }
+  range = 12
+  cooldown = {4}
+  sound = SPELL_BLAST
+}
+
+# plague spells
+
+"magex_cure_plague"
+{
+  symbol = "⚕"
+  effect = Name "cure plague" RemoveLasting PLAGUE
+  cooldown = {25 51}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"magex_plague_bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
+  Chain { Area 1 EmitGas "MAGEX_PLAGUE_WIND" 0.25 }
+  projectileViewId = {"magex_bubble_blast" ColorId GREEN }
+  range = 8
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"magex_advanced_plague_bolt"
+{
+  upgrade = "magex_plague_bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
+  Chain { Area 2 EmitGas "MAGEX_PLAGUE_WIND" 0.30 }
+  projectileViewId = {"magex_bubble_blast" ColorId GREEN }
+  range = 12
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"magex_expert_plague_bolt"
+{
+  upgrade = "magex_advanced_plague_bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
+  Chain { Area 3 EmitGas "MAGEX_PLAGUE_WIND" 0.35 }
+  projectileViewId = {"magex_bubble_blast" ColorId GREEN }
+  range = 16
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"magex_mass_cure_plague"
+{
+  upgrade = "magex_cure_plague"
+  symbol = "⚕"
+  effect = Name "mass cure plague" Area 10 Filter Not Enemy RemoveLasting PLAGUE
+  cooldown = {30 81}
+  sound = SPELL_CURE_POISON
+}
+
+"magex_plague_resistance"
+{
+  symbol = "🐍"
+  effect = Lasting PLAGUE_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"magex_mass_plague_resisntance"
+{
+  upgrade = "magex_plague_resistance"
+  symbol = "🐍"
+  effect = Name "mass plague resistance" Area 10 Filter Not Enemy Lasting PLAGUE_RESISTANT
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"magex_plague_breath"
+{
+  symbol = "☠"
+  effect = Name "plague breath" Area 2 EmitGas "MAGEX_PLAGUE_WIND" 0.75
+  fx = {FLAMETHROWER ColorId GREEN}
+  range = 6
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+  message = "breathe plague!" "breathes plague!"
+}
+
+"magex_advanced_plague_breath"
+{
+  upgrade = "magex_plague_breath"
+  symbol = "☠"
+  effect = Name "plague breath" Area 3 EmitGas "MAGEX_PLAGUE_WIND" 0.80
+  fx = {FLAMETHROWER ColorId GREEN}
+  range = 8
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+  message = "breathe plague!" "breathes plague!"
+}
+
+"magex_expert_plague_breath"
+{
+  upgrade = "magex_advanced_plague_breath"
+  symbol = "☠"
+  effect = Name "plague breath" Area 4 EmitGas "MAGEX_PLAGUE_WIND" 0.85
+  fx = {FLAMETHROWER ColorId GREEN}
+  range = 10
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+  message = "breathe plague!" "breathes plague!"
+}
+
+MagExOneTimeAbility("magex_plague_resistance_self","plague resistance self", "Becomes resistant to poison.", Permanent PLAGUE_RESISTANT, "🎯")
+
+# lightning spells
+"magex_lightning_bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
+  Chain {
+	  { Caster Lasting 0 "MAGEX_LIGHTNING_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")}
+  projectileViewId = {"magex_blast" ColorId PURPLE }
+  range = 4
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"magex_advanced_lightning_bolt"
+{
+  upgrade = "magex_lightning_bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
+  Chain {
+	  { Caster Lasting 0 "MAGEX_LIGHTNING_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")}
+  projectileViewId = {"magex_blast" ColorId PURPLE }
+  range = 8
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"magex_expert_lightning_bolt"
+{
+  upgrade = "magex_advanced_lightning_bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a lightning bolt"
+  Chain {
+	  { Caster Lasting 0 "MAGEX_LIGHTNING_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")}
+  projectileViewId = {"magex_blast" ColorId PURPLE }
+  range = 12
+  cooldown = {2 16}
+  sound = SPELL_BLAST
+}
+
+"magex_lightning_charge"
+{
+  symbol = "⥇"
+  effect = Name "lightning charge" Lasting 30 MAGEX_LIGHTING_DISCHARGE
   cooldown = {50 101}
   targetSelf = true
   range = 6
   sound = SPELL_CURE_POISON
 }
 
-"lightning resistance"
+"magex_lightning_resistance"
 {
   symbol = "🛡"
-  effect = Name "lightning resistance" Lasting 40 LIGHTNING_RESISTANT
+  effect = Name "lightning resistance" Lasting 40 MAGEX_LIGHTNING_RESISTANT
   cooldown = {50 101}
   sound = SPELL_CURE_POISON
 }
 
-"advanced lightning resistance"
+"magex_advanced_lightning_resistance"
 {
-  upgrade = "lightning resistance"
+  upgrade = "magex_lightning_resistance"
   symbol = "🛡"
-  effect = Name "lightning resistance" Lasting 40 LIGHTNING_RESISTANT
-  cooldown = {50 101}
-  targetSelf = true
-  range = 1
-  sound = SPELL_CURE_POISON
-}
-
-"mass lightning resistance"
-{
-  upgrade = "advanced lightning resistance"
-  symbol = "🛡"
-  effect = Name "lightning resistance" Area 10 Filter Not Enemy Lasting 40 LIGHTNING_RESISTANT
+  effect = Name "lightning resistance" Lasting 40 MAGEX_LIGHTNING_RESISTANT
   cooldown = {50 101}
   targetSelf = true
   range = 1
   sound = SPELL_CURE_POISON
 }
 
-"lightning damage"
+"magex_mass_lightning_resistance"
+{
+  upgrade = "magex_advanced_lightning_resistance"
+  symbol = "🛡"
+  effect = Name "mass lightning resistance" Area 10 Filter Not Enemy Lasting 40 MAGEX_LIGHTNING_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"magex_lightning_damage"
 {
   symbol = "💪"
-  effect = Name "lightning damage" Lasting 40 LIGHTNING_DAMAGE
+  effect = Name "lightning damage" Lasting 40 MAGEX_LIGHTNING_DAMAGE
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"advanced lightning damage"
+"magex_advanced_lightning_damage"
 {
-  upgrade = "lightning damage"
+  upgrade = "magex_lightning_damage"
   symbol = "💪"
-  effect = Name "lightning damage" Lasting 40 LIGHTNING_DAMAGE
+  effect = Name "lightning damage" Lasting 40 MAGEX_LIGHTNING_DAMAGE
   targetSelf = true
   range = 1
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"mass lightning damage"
+"magex_mass_lightning_damage"
 {
-  upgrade = "advanced lightning damage"
+  upgrade = "magex_advanced_lightning_damage"
   symbol = "💪"
-  effect = Name "mass lightning damage" Area 10 Filter Not Enemy Lasting 40 LIGHTNING_DAMAGE
+  effect = Name "mass lightning damage" Area 10 Filter Not Enemy Lasting 40 MAGEX_LIGHTNING_DAMAGE
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
  
-"storm elemental"
+"magex_storm_elemental"
 {
   symbol = "👾"
-  effect = Name "storm elemental" Summon "STORM_ELEMENTAL" { 1 2 } 100
+  effect = Name "storm elemental" Summon "MAGEX_STORM_ELEMENTAL" { 1 2 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"advanced storm elemental"
+"magex_advanced_storm_elemental"
 {
-  upgrade = "storm elemental"
+  upgrade = "magex_storm_elemental"
   symbol = "👾"
-  effect = Name "storm elemental" Summon "STORM_ELEMENTAL" { 2 4 } 100
+  effect = Name "storm elemental" Summon "MAGEX_STORM_ELEMENTAL" { 2 4 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-OneTimeAbility("lightning resistance self", "Becomes resistant to lightning.", Permanent LIGHTNING_RESISTANT, "🎯")
+MagExOneTimeAbility("magex_lightning_resistance_self","lightning resistance self", "Becomes resistant to lightning.", Permanent MAGEX_LIGHTNING_RESISTANT, "🎯")
 
 # fire spells
-"fire bolt"
+"magex_fire_bolt"
 {
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "fire ball" Description "Shoots a fire ball"
   Chain {
-	  { Caster Lasting 0 "FIRE_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ball", "is hit by the ball")
+	  { Caster Lasting 0 "MAGEX_FIRE_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ball", "is hit by the ball")
 	  Filter Enemy { Fire {}}}
-  projectileViewId = {"blast" ColorId RED }
+  projectileViewId = {"magex_blast" ColorId RED }
   range = 2
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"advanced fire bolt"
+"magex_advanced_fire_bolt"
 {
-  upgrade = "fire bolt"
+  upgrade = "magex_fire_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "fire ball" Description "Shoots a fire ball"
   Chain {
-	  { Caster Lasting 0 "FIRE_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 1, true, "are hit by the ball", "is hit by the ball")
+	  { Caster Lasting 0 "MAGEX_FIRE_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 1, true, "are hit by the ball", "is hit by the ball")
 	  Filter Enemy { Fire {}}}
-  projectileViewId = {"blast" ColorId RED }
+  projectileViewId = {"magex_blast" ColorId RED }
   range = 4
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"expert fire bolt"
+"magex_expert_fire_bolt"
 {
-  upgrade = "advanced fire bolt"
+  upgrade = "magex_advanced_fire_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "fire ball" Description "Shoots a fire ball"
   Chain {
-	  { Caster Lasting 0 "FIRE_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 2, true, "are hit by the ball", "is hit by the ball")
+	  { Caster Lasting 0 "MAGEX_FIRE_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 2, true, "are hit by the ball", "is hit by the ball")
 	  Filter Enemy { Fire {}}}
-  projectileViewId = {"blast" ColorId RED }
+  projectileViewId = {"magex_blast" ColorId RED }
   range = 8
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"fire resistance"
+"magex_fire_resistance"
 {
   symbol = "🛡"
   effect = Name "fire resistance" Lasting 40 FIRE_RESISTANT
@@ -208,9 +423,9 @@ OneTimeAbility("lightning resistance self", "Becomes resistant to lightning.", P
   sound = SPELL_CURE_POISON
 }
 
-"advanced fire resistance"
+"magex_advanced_fire_resistance"
 {
-  upgrade = "fire resistance"
+  upgrade = "magex_fire_resistance"
   symbol = "🛡"
   effect = Name "fire resistance" Lasting 40 FIRE_RESISTANT
   cooldown = {50 101}
@@ -219,18 +434,18 @@ OneTimeAbility("lightning resistance self", "Becomes resistant to lightning.", P
   sound = SPELL_CURE_POISON
 }
 
-"mass fire resistance"
+"magex_mass_fire_resistance"
 {
-  upgrade = "advanced fire resistance"
+  upgrade = "magex_advanced_fire_resistance"
   symbol = "🛡"
-  effect = Name "fire resistance" Area 10 Filter Not Enemy Lasting 40 FIRE_RESISTANT
+  effect = Name "mass fire resistance" Area 10 Filter Not Enemy Lasting 40 FIRE_RESISTANT
   cooldown = {50 101}
   targetSelf = true
   range = 1
   sound = SPELL_CURE_POISON
 }
 
-"fire damage"
+"magex_fire_damage"
 {
   symbol = "💪"
   effect = Name "fire damage" Lasting 40 FIRE_DAMAGE
@@ -240,7 +455,7 @@ OneTimeAbility("lightning resistance self", "Becomes resistant to lightning.", P
 
 "advanced fire damage"
 {
-  upgrade = "fire damage"
+  upgrade = "magex_fire_damage"
   symbol = "💪"
   effect = Name "fire damage" Lasting 40 FIRE_DAMAGE
   targetSelf = true
@@ -249,7 +464,7 @@ OneTimeAbility("lightning resistance self", "Becomes resistant to lightning.", P
   sound = SPELL_STR_BONUS
 }
 
-"mass fire damage"
+"magex_mass_fire_damage"
 {
   upgrade = "advanced fire damage"
   symbol = "💪"
@@ -258,54 +473,54 @@ OneTimeAbility("lightning resistance self", "Becomes resistant to lightning.", P
   sound = SPELL_STR_BONUS
 }
 
-OneTimeAbility("fire resistance self", "Becomes resistant to fire.", Permanent FIRE_RESISTANT, "🎯")
+MagExOneTimeAbility("magex_fire_resistance_self","fire resistance self", "Becomes resistant to fire.", Permanent FIRE_RESISTANT, "🎯")
 
 # ice spells
-"ice bolt"
+"magex_ice_bolt"
 {
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "ice shard" Description "Shoots a ice shard"
   Chain {
-	  { Caster Lasting 0 "COLD_DAMAGE"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the shard", "is hit by the shard")
+	  { Caster Lasting 0 "MAGEX_COLD_DAMAGE"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the shard", "is hit by the shard")
 	  Filter Enemy { Ice {}}}
-  projectileViewId = {"core_blast" ColorId LIGHT_BLUE }
+  projectileViewId = {"magex_core_blast" ColorId LIGHT_BLUE }
   range = 4
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"advanced ice bolt"
+"magex_advanced_ice_bolt"
 {
-  upgrade = "ice bolt"
+  upgrade = "magex_ice_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "ice shard" Description "Shoots a ice shard"
   Chain {
-	  { Caster Lasting 0 "COLD_DAMAGE"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the shard", "is hit by the shard")
+	  { Caster Lasting 0 "MAGEX_COLD_DAMAGE"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the shard", "is hit by the shard")
 	  Filter Enemy { Ice {}}}
-  projectileViewId = {"core_blast" ColorId LIGHT_BLUE }
+  projectileViewId = {"magex_core_blast" ColorId LIGHT_BLUE }
   range = 8
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"expert ice bolt"
+"magex_expert_ice_bolt"
 {
-  upgrade = "advanced ice bolt"
+  upgrade = "magex_advanced_ice_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "ice shard" Description "Shoots a ice shard"
   Chain {
-	  { Caster Lasting 0 "COLD_DAMAGE"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the shard", "is hit by the shard")
+	  { Caster Lasting 0 "MAGEX_COLD_DAMAGE"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the shard", "is hit by the shard")
 	  Filter Enemy { Ice {}}}
-  projectileViewId = {"core_blast" ColorId LIGHT_BLUE }
+  projectileViewId = {"magex_core_blast" ColorId LIGHT_BLUE }
   range = 12
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"ice resistance"
+"magex_ice_resistance"
 {
   symbol = "🛡"
   effect = Name "ice resistance" Lasting 40 COLD_RESISTANT
@@ -313,9 +528,9 @@ OneTimeAbility("fire resistance self", "Becomes resistant to fire.", Permanent F
   sound = SPELL_CURE_POISON
 }
 
-"advanced ice resistance"
+"magex_advanced_ice_resistance"
 {
-  upgrade = "ice resistance"
+  upgrade = "magex_ice_resistance"
   symbol = "🛡"
   effect = Name "ice resistance" Lasting 40 COLD_RESISTANT
   cooldown = {50 101}
@@ -324,9 +539,9 @@ OneTimeAbility("fire resistance self", "Becomes resistant to fire.", Permanent F
   sound = SPELL_CURE_POISON
 }
 
-"mass ice resistance"
+"magex_mass_ice_resistance"
 {
-  upgrade = "advanced ice resistance"
+  upgrade = "magex_advanced_ice_resistance"
   symbol = "🛡"
   effect = Name "ice resistance" Area 10 Filter Not Enemy Lasting 40 COLD_RESISTANT
   cooldown = {50 101}
@@ -335,98 +550,98 @@ OneTimeAbility("fire resistance self", "Becomes resistant to fire.", Permanent F
   sound = SPELL_CURE_POISON
 }
 
-"ice damage"
+"magex_ice_damage"
 {
   symbol = "💪"
-  effect = Name "ice damage" Lasting 40 COLD_DAMAGE
+  effect = Name "ice damage" Lasting 40 MAGEX_COLD_DAMAGE
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"advanced ice damage"
+"magex_advanced_ice_damage"
 {
-  upgrade = "ice damage"
+  upgrade = "magex_ice_damage"
   symbol = "💪"
-  effect = Name "ice damage" Lasting 40 COLD_DAMAGE
+  effect = Name "ice damage" Lasting 40 MAGEX_COLD_DAMAGE
   targetSelf = true
   range = 1
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"mass ice damage"
+"magex_mass_ice_damage"
 {
-  upgrade = "advanced ice damage"
+  upgrade = "magex_advanced_ice_damage"
   symbol = "💪"
-  effect = Name "mass ice damage" Area 10 Filter Not Enemy Lasting 40 COLD_DAMAGE
+  effect = Name "mass ice damage" Area 10 Filter Not Enemy Lasting 40 MAGEX_COLD_DAMAGE
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"ice elemental"
+"magex_ice_elemental"
 {
   symbol = "👾"
-  effect = Name "ice elemental" Summon "ICE_ELEMENTAL" { 1 2 } 100
+  effect = Name "ice elemental" Summon "MAGEX_ICE_ELEMENTAL" { 1 2 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
-"advanced ice elemental"
+"magex_advanced_ice_elemental"
 {
-  upgrade = "ice elemental"
+  upgrade = "magex_ice_elemental"
   symbol = "👾"
-  effect = Name "ice elemental" Summon "ICE_ELEMENTAL" { 2 4 } 100
+  effect = Name "ice elemental" Summon "MAGEX_ICE_ELEMENTAL" { 2 4 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-OneTimeAbility("cold resistance self", "Becomes resistant to cold.", Permanent COLD_RESISTANT, "🎯")
+MagExOneTimeAbility("magex_cold_resistance_self", "cold resistance self", "Becomes resistant to cold.", Permanent COLD_RESISTANT, "🎯")
 
 # acid spells
-"acid bolt"
+"magex_acid_bolt"
 {
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "acid splash" Description "Shoots a acid shard"
   Chain {
-	  { Caster Lasting 0 "ACID_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the splash", "is hit by the splash")
+	  { Caster Lasting 0 "MAGEX_ACID_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the splash", "is hit by the splash")
 	  Filter Enemy { Acid {}}}
-  projectileViewId = {"bubble_blast" ColorId GREEN }
+  projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 4
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"advanced acid bolt"
+"magex_advanced_acid_bolt"
 {
-  upgrade = "acid bolt"
+  upgrade = "magex_acid_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "acid splash" Description "Shoots a acid splash"
   Chain {
-	  { Caster Lasting 0 "ACID_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the splash", "is hit by the splash")
+	  { Caster Lasting 0 "MAGEX_ACID_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the splash", "is hit by the splash")
 	  Filter Enemy { Acid {}}}
-  projectileViewId = {"bubble_blast" ColorId GREEN }
+  projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 8
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"expert acid bolt"
+"magex_expert_acid_bolt"
 {
-  upgrade = "advanced acid bolt"
+  upgrade = "magex_advanced_acid_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "acid splash" Description "Shoots a acid splash"
   Chain {
-	  { Caster Lasting 0 "ACID_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the splash", "is hit by the splash")
+	  { Caster Lasting 0 "MAGEX_ACID_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the splash", "is hit by the splash")
 	  Filter Enemy { Acid {}}}
-  projectileViewId = {"bubble_blast" ColorId GREEN }
+  projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 12
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"acid resistance"
+"magex_acid_resistance"
 {
   symbol = "🛡"
   effect = Name "acid resistance" Lasting 40 ACID_RESISTANT
@@ -434,9 +649,9 @@ OneTimeAbility("cold resistance self", "Becomes resistant to cold.", Permanent C
   sound = SPELL_CURE_POISON
 }
 
-"advanced acid resistance"
+"magex_advanced_acid_resistance"
 {
-  upgrade = "acid resistance"
+  upgrade = "magex_acid_resistance"
   symbol = "🛡"
   effect = Name "acid resistance" Lasting 40 ACID_RESISTANT
   cooldown = {50 101}
@@ -445,9 +660,9 @@ OneTimeAbility("cold resistance self", "Becomes resistant to cold.", Permanent C
   sound = SPELL_CURE_POISON
 }
 
-"mass acid resistance"
+"magex_mass_acid_resistance"
 {
-  upgrade = "advanced acid resistance"
+  upgrade = "magex_advanced_acid_resistance"
   symbol = "🛡"
   effect = Name "acid resistance" Area 10 Filter Not Enemy Lasting 40 ACID_RESISTANT
   cooldown = {50 101}
@@ -456,54 +671,54 @@ OneTimeAbility("cold resistance self", "Becomes resistant to cold.", Permanent C
   sound = SPELL_CURE_POISON
 }
 
-"acid damage"
+"magex_acid_damage"
 {
   symbol = "💪"
-  effect = Name "acid damage" Lasting 40 ACID_DAMAGE
+  effect = Name "acid damage" Lasting 40 MAGEX_ACID_DAMAGE
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"advanced acid damage"
+"magex_advanced_acid_damage"
 {
-  upgrade = "acid damage"
+  upgrade = "magex_acid_damage"
   symbol = "💪"
-  effect = Name "acid damage" Lasting 40 ACID_DAMAGE
+  effect = Name "acid damage" Lasting 40 MAGEX_ACID_DAMAGE
   targetSelf = true
   range = 1
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"mass acid damage"
+"magex_mass_acid_damage"
 {
-  upgrade = "advanced acid damage"
+  upgrade = "magex_advanced_acid_damage"
   symbol = "💪"
-  effect = Name "mass acid damage" Area 10 Filter Not Enemy Lasting 40 ACID_DAMAGE
+  effect = Name "mass acid damage" Area 10 Filter Not Enemy Lasting 40 MAGEX_ACID_DAMAGE
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"acid elemental"
+"magex_acid_elemental"
 {
   symbol = "👾"
-  effect = Name "acid elemental" Summon "ACID_ELEMENTAL" { 1 2 } 100
+  effect = Name "acid elemental" Summon "MAGEX_ACID_ELEMENTAL" { 1 2 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
-"advanced acid elemental"
+"magex_advanced_acid_elemental"
 {
-  upgrade = "acid elemental"
+  upgrade = "magex_acid_elemental"
   symbol = "👾"
-  effect = Name "acid elemental" Summon "ACID_ELEMENTAL" { 2 4 } 100
+  effect = Name "acid elemental" Summon "MAGEX_ACID_ELEMENTAL" { 2 4 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"acid stream - elemental"
+"magex_acid_stream-elemental"
 {
   symbol = "🜅"
-  effect = Name "acid stream" Chain{ Acid{} Damage ACID_DAMAGE SHOOT PlaceFurniture "ME_ACID" }
+  effect = Name "acid stream" Chain{ Acid{} Damage ACID_DAMAGE SHOOT PlaceFurniture "MAGEX_ACID" }
   fx = {FLAMETHROWER ColorId YELLOW}
   range = 4
   cooldown = {15 31}
@@ -511,205 +726,205 @@ OneTimeAbility("cold resistance self", "Becomes resistant to cold.", Permanent C
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"acid stream leaves"
+"magex_acid_stream_leaves"
 {
   symbol = "🜅"
-  effect = Name "acid stream" Chain{{ Caster Lasting 0 "ACID_SPELL"} Acid{} PlaceFurniture "ME_ACID" Damage SPELL_DAMAGE SPELL}
+  effect = Name "acid stream" Chain{{ Caster Lasting 0 "MAGEX_ACID_SPELL"} Acid{} PlaceFurniture "MAGEX_ACID" Damage SPELL_DAMAGE SPELL}
   fx = {FLAMETHROWER ColorId YELLOW}
   range = 4
   cooldown = {15 31}
   message = "spit acid!" "spits acid!"
 }
 
-OneTimeAbility("acid resistance self", "Becomes resistant to acid.", Permanent ACID_RESISTANT, "🎯")
+MagExOneTimeAbility("magex_acid_resistance_self", "acid resistance self", "Becomes resistant to acid.", Permanent ACID_RESISTANT, "🎯")
 
 # dark spells
-"dark bolt"
+"magex_dark_bolt"
 {
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "Invoke Darkness" Description "invokes darkness in form of ray"
   Chain {
-	  { Caster Lasting 0 "DARKNESS_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
+	  { Caster Lasting 0 "MAGEX_DARKNESS_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
 	  Filter Enemy { Lasting 5 PANIC }}
-  projectileViewId = {"blast" ColorId BLACK }
+  projectileViewId = {"magex_blast" ColorId BLACK }
   range = 4
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"advanced dark bolt"
+"magex_advanced_dark_bolt"
 {
-  upgrade = "dark bolt"
+  upgrade = "magex_dark_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "Invoke Darkness" Description "invokes darkness in form of ray"
   Chain {
-	  { Caster Lasting 0 "DARKNESS_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
+	  { Caster Lasting 0 "MAGEX_DARKNESS_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
 	  Filter Enemy { Lasting 5 PANIC }}
-  projectileViewId = {"blast" ColorId BLACK }
+  projectileViewId = {"magex_blast" ColorId BLACK }
   range = 8
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"expert dark bolt"
+"magex_expert_dark_bolt"
 {
-  upgrade = "advanced dark bolt"
+  upgrade = "magex_advanced_dark_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "invoke Darkness" Description "invokes darkness in form of ray"
   Chain {
-	  { Caster Lasting 0 "DARKNESS_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
+	  { Caster Lasting 0 "MAGEX_DARKNESS_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
 	  Filter Enemy { Lasting 5 PANIC }}
-  projectileViewId = {"blast" ColorId BLACK }
+  projectileViewId = {"magex_blast" ColorId BLACK }
   range = 10
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"dark resistance"
+"magex_dark_resistance"
 {
   symbol = "🛡"
-  effect = Name "darkness resistance" Lasting 40 DARKNESS_RESISTANT
+  effect = Name "darkness resistance" Lasting 40 MAGEX_DARKNESS_RESISTANT
   cooldown = {50 101}
   sound = SPELL_CURE_POISON
 }
 
-"advanced dark resistance"
+"magex_advanced_dark_resistance"
 {
-  upgrade = "dark resistance"
+  upgrade = "magex_dark_resistance"
   symbol = "🛡"
-  effect = Name "darkness resistance" Lasting 40 DARKNESS_RESISTANT
-  cooldown = {50 101}
-  targetSelf = true
-  range = 1
-  sound = SPELL_CURE_POISON
-}
-
-"mass dark resistance"
-{
-  upgrade = "advanced dark resistance"
-  symbol = "🛡"
-  effect = Name "darkness resistance" Area 10 Filter Not Enemy Lasting 40 DARKNESS_RESISTANT
+  effect = Name "darkness resistance" Lasting 40 MAGEX_DARKNESS_RESISTANT
   cooldown = {50 101}
   targetSelf = true
   range = 1
   sound = SPELL_CURE_POISON
 }
 
-"dark damage"
+"magex_mass_dark_resistance"
+{
+  upgrade = "magex_advanced_dark_resistance"
+  symbol = "🛡"
+  effect = Name "mass darkness resistance" Area 10 Filter Not Enemy Lasting 40 MAGEX_DARKNESS_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"magex_dark_damage"
 {
   symbol = "💪"
-  effect = Name "darkness damage" Lasting 40 DARKNESS_DAMAGE
+  effect = Name "darkness damage" Lasting 40 MAGEX_DARKNESS_DAMAGE
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"advanced dark damage"
+"magex_advanced_dark_damage"
 {
-  upgrade = "dark damage"
+  upgrade = "magex_dark_damage"
   symbol = "💪"
-  effect = Name "darkness damage" Lasting 40 DARKNESS_DAMAGE
+  effect = Name "darkness damage" Lasting 40 MAGEX_DARKNESS_DAMAGE
   targetSelf = true
   range = 1
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"mass dark damage"
+"magex_mass_dark_damage"
 {
-  upgrade = "advanced dark damage"
+  upgrade = "magex_advanced_dark_damage"
   symbol = "💪"
-  effect = Name "mass darkness damage" Area 10 Filter Not Enemy Lasting 40 DARKNESS_DAMAGE
+  effect = Name "mass darkness damage" Area 10 Filter Not Enemy Lasting 40 MAGEX_DARKNESS_DAMAGE
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"dark elemental"
+"magex_dark_elemental"
 {
   symbol = "👾"
-  effect = Name "dark elemental" Summon "SHADOW_TERROR" { 1 2 } 100
+  effect = Name "shadow terror" Summon "MAGEX_SHADOW_TERROR" { 1 2 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
-"advanced dark elemental"
+"magex_advanced_dark_elemental"
 {
-  upgrade = "dark elemental"
+  upgrade = "magex_dark_elemental"
   symbol = "👾"
-  effect = Name "dark elemental" Summon "SHADOW_TERROR" { 2 4 } 100
+  effect = Name "shadow terror" Summon "MAGEX_SHADOW_TERROR" { 2 4 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"dark shere"
+"magex_dark_shere"
 {
   symbol = "🌫"
-  effect = Name "night sphere" Description "Creates a sphere of life sapping darkness." Area 4 Filter DistanceD none 3.2 EmitGas "DARKNESS_GAS" 1
+  effect = Name "night sphere" Description "Creates a sphere of life sapping darkness." Area 4 Filter DistanceD none 3.2 EmitGas "MAGEX_DARKNESS_GAS" 1
   range = 8
   cooldown = {30 61}
 }
 
-OneTimeAbility("dark resistance self", "Becomes resistant to darkness.", Permanent DARKNESS_RESISTANT, "🎯")
+MagExOneTimeAbility("magex_dark_resistance_self","dark resistance self", "Becomes resistant to darkness.", Permanent MAGEX_DARKNESS_RESISTANT, "🎯")
 
 # light spells
-"light bolt"
+"magex_light_bolt"
 {
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "Invoke light" Description "invokes light in form of ray"
   Chain {
-	  { Caster Lasting 0 "LIGHT_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
+	  { Caster Lasting 0 "MAGEX_LIGHT_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
 	  Filter Enemy { Lasting 5 BLIND }}
-  projectileViewId = {"blast" ColorId YELLOW }
+  projectileViewId = {"magex_blast" ColorId YELLOW }
   range = 4
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"advanced light bolt"
+"magex_advanced_light_bolt"
 {
-  upgrade = "light bolt"
+  upgrade = "magex_light_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "Invoke light" Description "invokes light in form of ray"
   Chain {
-	  { Caster Lasting 0 "LIGHT_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
+	  { Caster Lasting 0 "MAGEX_LIGHT_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
 	  Filter Enemy { Lasting 5 BLIND }}
-  projectileViewId = {"blast" ColorId YELLOW }
+  projectileViewId = {"magex_blast" ColorId YELLOW }
   range = 8
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"expert light bolt"
+"magex_expert_light_bolt"
 {
-  upgrade = "advanced light bolt"
+  upgrade = "magex_advanced_light_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "invoke light" Description "invokes light in form of ray"
   Chain {
-	  { Caster Lasting 0 "LIGHT_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
+	  { Caster Lasting 0 "MAGEX_LIGHT_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the ray", "is hit by the ray")
 	  Filter Enemy { Lasting 5 BLIND }}
-  projectileViewId = {"blast" ColorId YELLOW }
+  projectileViewId = {"magex_blast" ColorId YELLOW }
   range = 10
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"light resistance"
+"magex_light_resistance"
 {
   symbol = "🛡"
-  effect = Name "light resistance" Lasting 40 LIGHT_RESISTANT
+  effect = Name "light resistance" Lasting 40 MAGEX_LIGHT_RESISTANT
   cooldown = {50 101}
   sound = SPELL_CURE_POISON
 }
 
 "advanced light resistance"
 {
-  upgrade = "light resistance"
+  upgrade = "magex_light_resistance"
   symbol = "🛡"
-  effect = Name "light resistance" Lasting 40 LIGHT_RESISTANT
+  effect = Name "light resistance" Lasting 40 MAGEX_LIGHT_RESISTANT
   cooldown = {50 101}
   targetSelf = true
   range = 1
@@ -720,136 +935,136 @@ OneTimeAbility("dark resistance self", "Becomes resistant to darkness.", Permane
 {
   upgrade = "advanced light resistance"
   symbol = "🛡"
-  effect = Name "light resistance" Area 10 Filter Not Enemy Lasting 40 LIGHT_RESISTANT
+  effect = Name "light resistance" Area 10 Filter Not Enemy Lasting 40 MAGEX_LIGHT_RESISTANT
   cooldown = {50 101}
   targetSelf = true
   range = 1
   sound = SPELL_CURE_POISON
 }
 
-"light damage"
+"magex_light_damage"
 {
   symbol = "💪"
-  effect = Name "light damage" Lasting 40 LIGHT_DAMAGE
+  effect = Name "light damage" Lasting 40 MAGEX_LIGHT_DAMAGE
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"advanced light damage"
+"magex_advanced_light_damage"
 {
-  upgrade = "light damage"
+  upgrade = "magex_light_damage"
   symbol = "💪"
-  effect = Name "light damage" Lasting 40 LIGHT_DAMAGE
+  effect = Name "light damage" Lasting 40 MAGEX_LIGHT_DAMAGE
   targetSelf = true
   range = 1
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"mass light damage"
+"magex_mass_light_damage"
 {
-  upgrade = "advanced light damage"
+  upgrade = "magex_advanced_light_damage"
   symbol = "💪"
-  effect = Name "mass light damage" Area 10 Filter Not Enemy Lasting 40 LIGHT_DAMAGE
+  effect = Name "mass light damage" Area 10 Filter Not Enemy Lasting 40 MAGEX_LIGHT_DAMAGE
   cooldown = {30 81}
   sound = SPELL_STR_BONUS
 }
 
-"light elemental"
+"magex_light_elemental"
 {
   symbol = "👾"
-  effect = Name "light elemental" Summon "LIGHTBRINGER" { 1 2 } 100
+  effect = Name "call lightbringer" Summon "MAGEX_LIGHTBRINGER" { 1 2 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"advanced light elemental"
+"magex_advanced_light_elemental"
 {
-  upgrade = "light elemental"
+  upgrade = "magex_light_elemental"
   symbol = "👾"
-  effect = Name "light elemental" Summon "LIGHTBRINGER" { 2 4 } 100
+  effect = Name "call lightbringer" Summon "MAGEX_LIGHTBRINGER" { 2 4 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-OneTimeAbility("light resistance self", "Becomes resistant to light.", Permanent LIGHT_RESISTANT, "🎯")
+MagExOneTimeAbility("magex_light_resistance_self", "light resistance self", "Becomes resistant to light.", Permanent MAGEX_LIGHT_RESISTANT, "🎯")
 
 # earth spells
-"rock bolt"
+"magex_rock_bolt"
 {
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "throw rock" Description "conjures and flying rock to hit the enemy"
   Chain {
-	  { Caster Lasting 0 "DAMAGE_SPELL"}
-	  { Caster Lasting 0 "EARTHPOWER"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the boulder", "is hit by the boulder")}
-  projectileViewId = {"core_blast" ColorId BROWN }
+	  { Caster Lasting 0 "MAGEX_DAMAGE_SPELL"}
+	  { Caster Lasting 0 "MAGEX_EARTHPOWER"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the boulder", "is hit by the boulder")}
+  projectileViewId = {"magex_core_blast" ColorId BROWN }
   range = 4
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"advanced rock bolt"
+"magex_advanced_rock_bolt"
 {
-  upgrade = "rock bolt"
+  upgrade = "magex_rock_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "throw rock" Description "conjures and flying rock to hit the enemy"
   Chain {
-	  { Caster Lasting 0 "DAMAGE_SPELL"}
-	  { Caster Lasting 0 "EARTHPOWER"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the boulder", "is hit by the boulder")}
-  projectileViewId = {"core_blast" ColorId BROWN }
+	  { Caster Lasting 0 "MAGEX_DAMAGE_SPELL"}
+	  { Caster Lasting 0 "MAGEX_EARTHPOWER"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the boulder", "is hit by the boulder")}
+  projectileViewId = {"magex_core_blast" ColorId BROWN }
   range = 8
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"expert rock bolt"
+"magex_expert_rock_bolt"
 {
-  upgrade = "advanced rock bolt"
+  upgrade = "magex_advanced_rock_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "throw rock" Description "conjures and flying rock to hit the enemy"
   Chain {
-	  { Caster Lasting 0 "DAMAGE_SPELL"}
-	  { Caster Lasting 0 "EARTHPOWER"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the boulder", "is hit by the boulder")}
-  projectileViewId = {"core_blast" ColorId BROWN }
+	  { Caster Lasting 0 "MAGEX_DAMAGE_SPELL"}
+	  { Caster Lasting 0 "MAGEX_EARTHPOWER"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the boulder", "is hit by the boulder")}
+  projectileViewId = {"magex_core_blast" ColorId BROWN }
   range = 12
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"rock resistance"
+"magex_rock_resistance"
 {
   symbol = "🛡"
-  effect = Name "stoneskin" Lasting 40 STONESKIN
+  effect = Name "stoneskin" Lasting 40 MAGEX_STONESKIN
   cooldown = {50 101}
   sound = SPELL_CURE_POISON
 }
 
-"advanced rock resistance"
+"magex_advanced_rock_resistance"
 {
-  upgrade = "rock resistance"
+  upgrade = "magex_rock_resistance"
   symbol = "🛡"
-  effect = Name "stoneskin" Lasting 40 STONESKIN
-  cooldown = {50 101}
-  targetSelf = true
-  range = 1
-  sound = SPELL_CURE_POISON
-}
-
-"mass rock resistance"
-{
-  upgrade = "advanced rock resistance"
-  symbol = "🛡"
-  effect = Name "stoneskin" Area 10 Filter Not Enemy Lasting 40 STONESKIN
+  effect = Name "stoneskin" Lasting 40 MAGEX_STONESKIN
   cooldown = {50 101}
   targetSelf = true
   range = 1
   sound = SPELL_CURE_POISON
 }
 
-"rock elemental"
+"magex_mass_rock_resistance"
+{
+  upgrade = "magex_advanced_rock_resistance"
+  symbol = "🛡"
+  effect = Name "stoneskin" Area 10 Filter Not Enemy Lasting 40 MAGEX_STONESKIN
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"magex_rock_elemental"
 {
   symbol = "👾"
   effect = Name "earth elemental" Summon "EARTH_ELEMENTAL" { 1 2 } 100
@@ -857,16 +1072,16 @@ OneTimeAbility("light resistance self", "Becomes resistant to light.", Permanent
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"advanced rock elemental"
+"magex_advanced_rock_elemental"
 {
-  upgrade = "earth elemental"
+  upgrade = "magex_rock_elemental"
   symbol = "👾"
   effect = Name "earth elemental" Summon "EARTH_ELEMENTAL" { 2 4 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"rock dig"
+"magex_rock_dig"
 {
   symbol = "X"
   effect = Name "dig" DestroyWalls DIG
@@ -875,9 +1090,9 @@ OneTimeAbility("light resistance self", "Becomes resistant to light.", Permanent
   blockedByWall = false
 }
 
-"advanced rock dig"
+"magex_advanced_rock_dig"
 {
-  upgrade = "rock dig"
+  upgrade = "magex_rock_dig"
   symbol = "X"
   effect = Name "dig" DestroyWalls DIG
   range = 2
@@ -885,9 +1100,9 @@ OneTimeAbility("light resistance self", "Becomes resistant to light.", Permanent
   blockedByWall = false
 }
 
-"expert rock dig"
+"magex_expert_rock_dig"
 {
-  upgrade = "advanced rock dig"
+  upgrade = "magex_advanced_rock_dig"
   symbol = "X"
   effect = Name "dig" Area 1 DestroyWalls DIG
   range = 2
@@ -895,7 +1110,7 @@ OneTimeAbility("light resistance self", "Becomes resistant to light.", Permanent
   blockedByWall = false
 }
 
-"rock summon mountain"
+"magex_rock_summon_mountain"
 {
   symbol = "𝍔"
   effect =  Name "summon mountain" CustomArea PlaceFurniture "MOUNTAIN" { {0 -2} {0 -1} {0 0} {0 1} {0 2} }
@@ -905,9 +1120,9 @@ OneTimeAbility("light resistance self", "Becomes resistant to light.", Permanent
   sound = SPELL_BLAST
 }
 
-"advanced rock summon mountain"
+"magex_advanced_rock_summon_mountain"
 {
-  upgrade = "rock summon mountain"
+  upgrade = "magex_rock_summon_mountain"
   symbol = "𝍔"
   effect =  Name "summon mountain" CustomArea PlaceFurniture "MOUNTAIN2" { {0 -2} {0 -1} {0 0} {0 1} {0 2} }
   endOnly = true
@@ -917,48 +1132,48 @@ OneTimeAbility("light resistance self", "Becomes resistant to light.", Permanent
 }
 
 # water spells
-"water bolt"
+"magex_water_bolt"
 {
   symbol = "⥇"
   effect = Name "water whip" Description "conjures a steam of water and uses it like whip on the enemy"
   Chain {
-	  { Caster Lasting 0 "DAMAGE_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the whip", "is hit by the whip")}
-  projectileViewId = {"bubble_blast" ColorId BLUE }
+	  { Caster Lasting 0 "MAGEX_DAMAGE_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the whip", "is hit by the whip")}
+  projectileViewId = {"magex_bubble_blast" ColorId BLUE }
   range = 2
   cooldown = {0 10}
   sound = SPELL_BLAST
 }
 
-"advanced water bolt"
+"magex_advanced_water_bolt"
 {
-  upgrade = "water bolt"
+  upgrade = "magex_water_bolt"
   symbol = "⥇"
   effect = Name "water whip" Description "conjures a steam of water and uses it like whip on the enemy"
   Chain {
-	  { Caster Lasting 0 "DAMAGE_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the whip", "is hit by the whip")}
-  projectileViewId = {"bubble_blast" ColorId BLUE }
+	  { Caster Lasting 0 "MAGEX_DAMAGE_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the whip", "is hit by the whip")}
+  projectileViewId = {"magex_bubble_blast" ColorId BLUE }
   range = 4
   cooldown = {0 10}
   sound = SPELL_BLAST
 }
 
-"expert water bolt"
+"magex_expert_water_bolt"
 {
-  upgrade = "advanced water bolt"
+  upgrade = "magex_advanced_water_bolt"
   symbol = "⥇"
   effect = Name "water whip" Description "conjures a steam of water and uses it like whip on the enemy"
   Chain {
-	  { Caster Lasting 0 "DAMAGE_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the whip", "is hit by the whip")}
-  projectileViewId = {"bubble_blast" ColorId BLUE }
+	  { Caster Lasting 0 "MAGEX_DAMAGE_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the whip", "is hit by the whip")}
+  projectileViewId = {"magex_bubble_blast" ColorId BLUE }
   range = 6
   cooldown = {0 10}
   sound = SPELL_BLAST
 }
 
-"water resistance"
+"magex_water_resistance"
 {
   symbol = "🛡"
   effect = Name "water breathing" Lasting 40 SWIMMING_SKILL
@@ -966,9 +1181,9 @@ OneTimeAbility("light resistance self", "Becomes resistant to light.", Permanent
   sound = SPELL_CURE_POISON
 }
 
-"advanced water resistance"
+"magex_advanced_water_resistance"
 {
-  upgrade = "water resistance"
+  upgrade = "magex_water_resistance"
   symbol = "🛡"
   effect = Name "water breathing" Lasting 40 SWIMMING_SKILL
   cooldown = {50 101}
@@ -977,18 +1192,18 @@ OneTimeAbility("light resistance self", "Becomes resistant to light.", Permanent
   sound = SPELL_CURE_POISON
 }
 
-"mass water resistance"
+"magex_mass_water_resistance"
 {
-  upgrade = "advanced water resistance"
+  upgrade = "magex_advanced_water_resistance"
   symbol = "🛡"
-  effect = Name "water breathing" Area 10 Filter Not Enemy Lasting 40 SWIMMING_SKILL
+  effect = Name "mass water breathing" Area 10 Filter Not Enemy Lasting 40 SWIMMING_SKILL
   cooldown = {50 101}
   targetSelf = true
   range = 1
   sound = SPELL_CURE_POISON
 }
 
-"water elemental"
+"magex_water_elemental"
 {
   symbol = "👾"
   effect = Name "water elemental" Summon "WATER_ELEMENTAL" { 1 2 } 100
@@ -996,74 +1211,74 @@ OneTimeAbility("light resistance self", "Becomes resistant to light.", Permanent
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"advanced water elemental"
+"magex_advanced_water_elemental"
 {
-  upgrade = "water elemental"
+  upgrade = "magex_water_elemental"
   symbol = "👾"
   effect = Name "water elemental" Summon "WATER_ELEMENTAL" { 2 4 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"Flood"
+"magex_flood"
 {
   symbol = "𝍔"
-  effect =  Name "flood" Description "conjures an water to flood area around caster" Area 1 { Chain{
+  effect =  Name "Flood" Description "conjures an water to flood area around caster" Area 1 { Chain{
 									{Filter Area 0 FurnitureType "SHALLOW_WATER2" {PlaceFurniture "SHALLOW_WATER1" }}
 									{Filter Area 0 FurnitureType "SHALLOW_WATER1" {PlaceFurniture "WATER"}}
 									{Filter Area 0 Not And {FurnitureType "WATER" FurnitureType "SHALLOW_WATER1" FurnitureType "SHALLOW_WATER2"} {PlaceFurniture "SHALLOW_WATER2"}}
 									Shove}}
   endOnly = true
   range = 0
-  cooldown = {25 50}
+  cooldown = {100 200}
   sound = SPELL_BLAST
 }
 
-"Advanced Flood"
+"magex_advanced_flood"
 {
-  upgrade = "Flood"
+  upgrade = "magex_flood"
   symbol = "𝍔"
-  effect =  Name "flood" Description "conjures an water to flood area around caster" Area 2 { Chain{
+  effect =  Name "Flood" Description "conjures an water to flood area around caster" Area 2 { Chain{
 									{Filter Area 0 FurnitureType "SHALLOW_WATER2" {PlaceFurniture "SHALLOW_WATER1" }}
 									{Filter Area 0 FurnitureType "SHALLOW_WATER1" {PlaceFurniture "WATER"}}
 									{Filter Area 0 Not And {FurnitureType "WATER" FurnitureType "SHALLOW_WATER1" FurnitureType "SHALLOW_WATER2"} {PlaceFurniture "SHALLOW_WATER2"}}
 									Shove}}
   endOnly = true
   range = 0
-  cooldown = {25 50}
+  cooldown = {100 200}
   sound = SPELL_BLAST
 }
 
-"Expert Flood"
+"magex_expert_flood"
 {
-  upgrade = "Flood"
+  upgrade = "magex_flood"
   symbol = "𝍔"
-  effect =  Name "flood" Description "conjures an water to flood area around caster" Area 3 { Chain{
+  effect =  Name "magex_flood" Description "conjures an water to flood area around caster" Area 3 { Chain{
 									{Filter Area 0 FurnitureType "SHALLOW_WATER2" {PlaceFurniture "SHALLOW_WATER1" }}
 									{Filter Area 0 FurnitureType "SHALLOW_WATER1" {PlaceFurniture "WATER"}}
 									{Filter Area 0 Not And {FurnitureType "WATER" FurnitureType "SHALLOW_WATER1" FurnitureType "SHALLOW_WATER2"} {PlaceFurniture "SHALLOW_WATER2"}}
 									Shove}}
   endOnly = true
   range = 0
-  cooldown = {25 50}
+  cooldown = {100 200}
   sound = SPELL_BLAST
 }
 
-"drowning chant"
+"magex_drowning chant"
 {
   symbol = "⥇"
-  effect = Lasting 30 DROWNING
+  effect = Lasting 30 MAGEX_DROWNING
   cooldown = {50 101}
   targetSelf = true
   range = 6
   sound = SPELL_CURE_POISON
 }
 
-OneTimeAbility("water resistance self", "Becomes able to breathe in water.", Permanent SWIMMING_SKILL, "🎯")
+MagExOneTimeAbility("magex_water_resistance_self", "water resistance self", "Becomes able to breathe in water.", Permanent SWIMMING_SKILL, "🎯")
 
 # transmuter
 
-"Polymorph"
+"magex_polymorph"
 {
   symbol = "🐣"
   effect = Name "Polymorph" Description "Turn yourself or someone into a chicken temporarily!" AI Health 0 0.4 0 1 {
@@ -1078,7 +1293,23 @@ OneTimeAbility("water resistance self", "Becomes able to breathe in water.", Per
   type = ABILITY
 }
 
-"advanced shapeshift"
+"magex_advanced_polymorph"
+{
+  upgrade = "magex_polymorph"
+  symbol = "🐣"
+  effect = Name "magex_polymorph" Description "Turn yourself or someone into a chicken temporarily!" AI Health 0 0.4 0 1 {
+    Polymorph "CHICKEN" 10
+	EmitGas "FOG" 0.5
+  }
+  targetSelf = true
+  endOnly = true
+  range = 4
+  cooldown = {30 101}
+  message = "puff" "puff"
+  type = ABILITY
+}
+
+"magex_advanced_shapeshift"
 {
   upgrade = "shapeshift"
   symbol = "⇝"
@@ -1090,283 +1321,399 @@ OneTimeAbility("water resistance self", "Becomes able to breathe in water.", Per
   cooldown = 1
 }
 
-"advanced Polymorph"
-{
-  upgrade = "Polymorph"
-  symbol = "🐣"
-  effect = Name "Polymorph" Description "Turn yourself or someone into a chicken temporarily!" AI Health 0 0.4 0 1 {
-    Polymorph "CHICKEN" 10
-	EmitGas "FOG" 0.5
-  }
-  targetSelf = true
-  endOnly = true
-  range = 4
-  cooldown = {30 101}
-  message = "puff" "puff"
-  type = ABILITY
-}
-
 # necromancer
 
-"necrotic blast"
+"magex_necrotic_blast"
 {
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "necrotic blast" Description "Shoots a mass of necrotic energy"
   Chain {
-	  { Caster Lasting 0 "NECROTIC_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")
-	  Filter Enemy {Lasting 5 NECROTIC_SATURATION}}
-  projectileViewId = {"core_blast" ColorId RED }
+	  { Caster Lasting 0 "MAGEX_NECROTIC_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")
+	  Filter Enemy {Lasting 5 MAGEX_NECROTIC_SATURATION}}
+  projectileViewId = {"magex_core_blast" ColorId RED }
   range = 8
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"advanced necrotic blast"
+"magex_advanced_necrotic_blast"
 {
-  upgrade = "necrotic blast"
+  upgrade = "magex_necrotic_blast"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "necrotic blast" Description "Shoots a mass of necrotic energy"
   Chain {
-	  { Caster Lasting 0 "NECROTIC_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")
-	  Filter Enemy {Lasting 5 NECROTIC_SATURATION}}
-  projectileViewId = {"core_blast" ColorId RED }
+	  { Caster Lasting 0 "MAGEX_NECROTIC_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")
+	  Filter Enemy {Lasting 5 MAGEX_NECROTIC_SATURATION}}
+  projectileViewId = {"magex_core_blast" ColorId RED }
   range = 10
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"expert necrotic blast"
+"magex_expert_necrotic_blast"
 {
-  upgrade = "advanced necrotic blast"
+  upgrade = "magex_advanced_necrotic_blast"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "necrotic blast" Description "Shoots a mass of necrotic energy"
   Chain {
-	  { Caster Lasting 0 "NECROTIC_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")
-	  Filter Enemy {Lasting 5 NECROTIC_SATURATION}}
-  projectileViewId = {"core_blast" ColorId RED }
+	  { Caster Lasting 0 "MAGEX_NECROTIC_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")
+	  Filter Enemy {Lasting 5 MAGEX_NECROTIC_SATURATION}}
+  projectileViewId = {"magex_core_blast" ColorId RED }
   range = 12
   cooldown = {5 21}
   sound = SPELL_BLAST
 }
 
-"necrotic resistance"
+"magex_necrotic_resistance"
 {
   symbol = "🛡"
-  effect = Name "necrotic resistance" Lasting 40 NECROTIC_RESISTANT
+  effect = Name "necrotic resistance" Lasting 40 MAGEX_NECROTIC_RESISTANT
   cooldown = {50 101}
   sound = SPELL_CURE_POISON
 }
 
-"advanced necrotic resistance"
+"magex_advanced_necrotic_resistance"
 {
-  upgrade = "necrotic resistance"
+  upgrade = "magex_necrotic_resistance"
   symbol = "🛡"
-  effect = Name "necrotic resistance" Lasting 40 NECROTIC_RESISTANT
-  cooldown = {50 101}
-  targetSelf = true
-  range = 1
-  sound = SPELL_CURE_POISON
-}
-
-"mass necrotic resistance"
-{
-  upgrade = "advanced necrotic resistance"
-  symbol = "🛡"
-  effect = Name "necrotic resistance" Area 10 Filter Not Enemy Lasting 40 NECROTIC_RESISTANT
+  effect = Name "necrotic resistance" Lasting 40 MAGEX_NECROTIC_RESISTANT
   cooldown = {50 101}
   targetSelf = true
   range = 1
   sound = SPELL_CURE_POISON
 }
 
-OneTimeAbility("necrotic resistance self", "Becomes resistant to necrosis.", Permanent NECROTIC_RESISTANT, "🎯")
+"magex_mass_necrotic_resistance"
+{
+  upgrade = "magex_advanced_necrotic_resistance"
+  symbol = "🛡"
+  effect = Name "mass necrotic resistance" Area 10 Filter Not Enemy Lasting 40 MAGEX_NECROTIC_RESISTANT
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
 
-"reanimate"
+MagExOneTimeAbility("magex_necrotic_resistance_self", "necrotic resistance self", "Becomes resistant to necrosis.", Permanent MAGEX_NECROTIC_RESISTANT, "🎯")
+
+"magex_reanimate"
 {
   symbol = "👤"
-  effect = Name "animate corpses" AnimateItems 3 5 {10 20} CORPSE
+  effect = Name "animate zombies" Area 100 Filter Not Enemy {
+  AnimateItems 3 5 100 CORPSE
+  Filter CreatureFlag "animated" ChooseRandom {	Polymorph "ZOMBIE" none
+												Polymorph "MAGEX_SKELETON_REANIMATE" none}
+  SetCreatureFlag "animated" false}
   cooldown = {50 201}
 }
 
-"advanced reanimate"
+"magex_advanced_reanimate"
 {
-  upgrade = "reanimate"
+  upgrade = "magex_reanimate"
   symbol = "👤"
-  effect = Name "advanced animate corpses" AnimateItems 6 5 {30 50} CORPSE
+  effect =  Name "animate zombies" Area 100 Filter Not Enemy {
+  AnimateItems 5 7 100 CORPSE
+  Filter CreatureFlag "animated" ChooseRandom {	Polymorph "ZOMBIE" none
+												Polymorph "MAGEX_SKELETON_REANIMATE" none}
+  SetCreatureFlag "animated" false}
   cooldown = {50 201}
 }
 
-"expert reanimate"
+"magex_exper_reanimate"
 {
-  upgrade = "advanced reanimate"
+  upgrade = "magex_advanced_reanimate"
   symbol = "👤"
-  effect = Name "expert animate corpses" AnimateItems 9 5 {50 80} CORPSE
+  effect =  Name "animate corpses" Area 100 Filter Not Enemy {
+  AnimateItems 7 9 100 CORPSE
+  Filter CreatureFlag "animated" ChooseRandom {	Polymorph "ZOMBIE" none
+												Polymorph "MAGEX_SKELETON_REANIMATE" none}
+  SetCreatureFlag "animated" false}
   cooldown = {50 201}
 }
 
-OneTimeAbility("zombie companion", "adds a zombie companion", AddCompanion 2 false none 0.1 {"ZOMBIE"}, "🎯")
-OneTimeAbility("advanced zombie companion", "adds a zombie companion", AddCompanion 2 false none 0.1 {"ZOMBIE"}, "🎯")
-OneTimeAbility("expert zombie companion", "adds a zombie companion", AddCompanion 2 false none 0.1 {"ZOMBIE"}, "🎯")
+MagExOneTimeAbility("magex_undead_companion", "undead companion", "adds a zombie companion", AddCompanion 2 false none 0.1 {"ZOMBIE" "MAGEX_SKELETON_REANIMATE"}, "🎯")
+MagExOneTimeAbility("magex_more_undead_companion", "undead companion", "adds a zombie companion", AddCompanion 2 false none 0.1 {"ZOMBIE" "MAGEX_SKELETON_REANIMATE"}, "🎯")
+MagExOneTimeAbility("undead companion", "undead companion", "adds a zombie companion", AddCompanion 2 false none 0.1 {"ZOMBIE" "MAGEX_SKELETON_REANIMATE"}, "🎯")
 
 
-# chaos spells
+# wild spells
 
-"chaos bolt"
+"magex_wild_bolt"
 {
   symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "chaos blast" Description "Shoots a chaos blast"
+  effect = MinDistanceFromStrongEnemy(2) Name "wild blast" Description "Shoots a chaos blast"
   Chain {
-	  { ChooseRandom {
-	  Caster Lasting 0 "FIRE_SPELL"
-	  Caster Lasting 0 "LIGHTNING_SPELL"
-	  Caster Lasting 0 "ACID_SPELL"
-	  Caster Lasting 0 "DARKNESS_SPELL"
-	  Caster Lasting 0 "NECROTIC_SPELL"
-	  Caster Lasting 0 "LIGHT_SPELL"
-	  Caster Lasting 0 "COLD_SPELL"
-	  Caster Lasting 0 "DAMAGE_SPELL"
-	  Caster Lasting 0 "SPELL_SPELL"}
-	  }
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")}
-  projectileViewId = {"core_blast" ColorId PINK }
+      Caster Filter CreatureFlag "magex_wild_magic" {
+	  ChooseRandom {
+	  Caster Lasting 0 "MAGEX_FIRE_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHTNING_SPELL"
+	  Caster Lasting 0 "MAGEX_ACID_SPELL"
+	  Caster Lasting 0 "MAGEX_DARKNESS_SPELL"
+	  Caster Lasting 0 "MAGEX_NECROTIC_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHT_SPELL"
+	  Caster Lasting 0 "MAGEX_COLD_SPELL"
+	  Caster Lasting 0 "MAGEX_DAMAGE_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  }} 
+      Caster Filter Not CreatureFlag "magex_wild_magic" {
+	  ChooseRandom {
+	  Caster Lasting 0 "MAGEX_FIRE_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHTNING_SPELL"
+	  Caster Lasting 0 "MAGEX_ACID_SPELL"
+	  Caster Lasting 0 "MAGEX_DARKNESS_SPELL"
+	  Caster Lasting 0 "MAGEX_NECROTIC_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHT_SPELL"
+	  Caster Lasting 0 "MAGEX_COLD_SPELL"
+	  Caster Lasting 0 "MAGEX_DAMAGE_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  Damage SPELL_DAMAGE SPELL
+	  }}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")}
+  projectileViewId = {"magex_core_blast" ColorId PINK }
   range = 6
   cooldown = {4 32}
   sound = SPELL_BLAST
 }
 
-"advanced chaos bolt"
+"magex_advanced_wild_bolt"
 {
-  upgrade = "chaos bolt"
+  upgrade = "magex_wild_bolt"
   symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "chaos blast" Description "Shoots a chaos blast"
+  effect = MinDistanceFromStrongEnemy(2) Name "wild blast" Description "Shoots a chaos blast"
   Chain {
-	  { ChooseRandom {
-	  Caster Lasting 0 "FIRE_SPELL"
-	  Caster Lasting 0 "LIGHTNING_SPELL"
-	  Caster Lasting 0 "ACID_SPELL"
-	  Caster Lasting 0 "DARKNESS_SPELL"
-	  Caster Lasting 0 "NECROTIC_SPELL"
-	  Caster Lasting 0 "LIGHT_SPELL"
-	  Caster Lasting 0 "COLD_SPELL"
-	  Caster Lasting 0 "DAMAGE_SPELL"
-	  Caster Lasting 0 "SPELL_SPELL"}
-	  }
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")}
-  projectileViewId = {"core_blast" ColorId PINK }
+      Caster Filter CreatureFlag "magex_wild_magic" {
+	  ChooseRandom {
+	  Caster Lasting 0 "MAGEX_FIRE_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHTNING_SPELL"
+	  Caster Lasting 0 "MAGEX_ACID_SPELL"
+	  Caster Lasting 0 "MAGEX_DARKNESS_SPELL"
+	  Caster Lasting 0 "MAGEX_NECROTIC_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHT_SPELL"
+	  Caster Lasting 0 "MAGEX_COLD_SPELL"
+	  Caster Lasting 0 "MAGEX_DAMAGE_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  }} 
+      Caster Filter Not CreatureFlag "magex_wild_magic" {
+	  ChooseRandom {
+	  Caster Lasting 0 "MAGEX_FIRE_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHTNING_SPELL"
+	  Caster Lasting 0 "MAGEX_ACID_SPELL"
+	  Caster Lasting 0 "MAGEX_DARKNESS_SPELL"
+	  Caster Lasting 0 "MAGEX_NECROTIC_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHT_SPELL"
+	  Caster Lasting 0 "MAGEX_COLD_SPELL"
+	  Caster Lasting 0 "MAGEX_DAMAGE_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  Damage SPELL_DAMAGE SPELL
+	  }}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")}
+  projectileViewId = {"magex_core_blast" ColorId PINK }
   range = 9
   cooldown = {4 32}
   sound = SPELL_BLAST
 }
 
-"expert chaos bolt"
+"magex_expert_wild_bolt"
 {
-  upgrade = "advanced chaos bolt"
+  upgrade = "magex_advanced_wild_bolt"
   symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "chaos blast" Description "Shoots a chaos blast"
+  effect = MinDistanceFromStrongEnemy(2) Name "wild blast" Description "Shoots a chaos blast"
   Chain {
-	  { ChooseRandom {
-	  Caster Lasting 0 "FIRE_SPELL"
-	  Caster Lasting 0 "LIGHTNING_SPELL"
-	  Caster Lasting 0 "ACID_SPELL"
-	  Caster Lasting 0 "DARKNESS_SPELL"
-	  Caster Lasting 0 "NECROTIC_SPELL"
-	  Caster Lasting 0 "LIGHT_SPELL"
-	  Caster Lasting 0 "COLD_SPELL"
-	  Caster Lasting 0 "DAMAGE_SPELL"
-	  Caster Lasting 0 "SPELL_SPELL"}
-	  }
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")}
-  projectileViewId = {"core_blast" ColorId PINK }
+      Caster Filter CreatureFlag "magex_wild_magic" {
+	  ChooseRandom {
+	  Caster Lasting 0 "MAGEX_FIRE_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHTNING_SPELL"
+	  Caster Lasting 0 "MAGEX_ACID_SPELL"
+	  Caster Lasting 0 "MAGEX_DARKNESS_SPELL"
+	  Caster Lasting 0 "MAGEX_NECROTIC_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHT_SPELL"
+	  Caster Lasting 0 "MAGEX_COLD_SPELL"
+	  Caster Lasting 0 "MAGEX_DAMAGE_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  }} 
+      Caster Filter Not CreatureFlag "magex_wild_magic" {
+	  ChooseRandom {
+	  Caster Lasting 0 "MAGEX_FIRE_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHTNING_SPELL"
+	  Caster Lasting 0 "MAGEX_ACID_SPELL"
+	  Caster Lasting 0 "MAGEX_DARKNESS_SPELL"
+	  Caster Lasting 0 "MAGEX_NECROTIC_SPELL"
+	  Caster Lasting 0 "MAGEX_LIGHT_SPELL"
+	  Caster Lasting 0 "MAGEX_COLD_SPELL"
+	  Caster Lasting 0 "MAGEX_DAMAGE_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  Caster Lasting 0 "MAGEX_SPELL_SPELL"
+	  Damage SPELL_DAMAGE SPELL
+	  }}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")}
+  projectileViewId = {"magex_core_blast" ColorId PINK }
   range = 15
   cooldown = {4 32}
   sound = SPELL_BLAST
 }
 
-"chaos elemental"
+"magex_wild_elemental"
 {
   symbol = "👾"
-  effect = Name "chaos summoning" ChooseRandom {
-  Summon "STORM_ELEMENTAL" { 1 2 } 100
-  Summon "ACID_ELEMENTAL" { 1 2 } 100
+  effect = Name "wild summoning" Chain {
+  Caster Filter CreatureFlag "magex_wild_magic" {
+  ChooseRandom {
+  Summon "MAGEX_STORM_ELEMENTAL" { 1 2 } 100
+  Summon "MAGEX_ACID_ELEMENTAL" { 1 2 } 100
   Summon "EARTH_ELEMENTAL" { 1 2 } 100
   Summon "FIRE_ELEMENTAL" { 1 2 } 100 
   Summon "WATER_ELEMENTAL" { 1 2 } 100
   Summon "AIR_ELEMENTAL" { 1 2 } 100
-  Summon "LIGHTBRINGER" { 1 2 } 100
-  Summon "SHADOW_TERROR" { 1 2 } 100 }
+  Summon "MAGEX_LIGHTBRINGER" { 1 2 } 100
+  Summon "MAGEX_SHADOW_TERROR" { 1 2 } 100 
+  }}
+  Caster Filter Not CreatureFlag "magex_wild_magic" {
+  ChooseRandom {
+  Summon "MAGEX_STORM_ELEMENTAL" { 1 2 } 100
+  Summon "MAGEX_ACID_ELEMENTAL" { 1 2 } 100
+  Summon "EARTH_ELEMENTAL" { 1 2 } 100
+  Summon "FIRE_ELEMENTAL" { 1 2 } 100 
+  Summon "WATER_ELEMENTAL" { 1 2 } 100
+  Summon "AIR_ELEMENTAL" { 1 2 } 100
+  Summon "MAGEX_LIGHTBRINGER" { 1 2 } 100
+  Summon "MAGEX_SHADOW_TERROR" { 1 2 } 100 
+  ChooseRandom {
+  SummonEnemy "MAGEX_STORM_ELEMENTAL" { 1 2 } 100
+  SummonEnemy "MAGEX_ACID_ELEMENTAL" { 1 2 } 100
+  SummonEnemy "EARTH_ELEMENTAL" { 1 2 } 100
+  SummonEnemy "FIRE_ELEMENTAL" { 1 2 } 100 
+  SummonEnemy "WATER_ELEMENTAL" { 1 2 } 100
+  SummonEnemy "AIR_ELEMENTAL" { 1 2 } 100
+  SummonEnemy "MAGEX_LIGHTBRINGER" { 1 2 } 100
+  SummonEnemy "MAGEX_SHADOW_TERROR" { 1 2 } 100 
+  }}}}
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"advanced chaos elemental"
+"magex_advanced_wild_elemental"
 {
-  upgrade = "chaos elemental"
+  upgrade = "magex_wild_elemental"
   symbol = "👾"
-  effect = Name "chaos summoning" ChooseRandom {
-  Summon "STORM_ELEMENTAL" { 2 4 } 100
-  Summon "ACID_ELEMENTAL" { 2 4 } 100
+  effect = Name "wild summoning" Chain {
+  Caster Filter CreatureFlag "magex_wild_magic" {
+  ChooseRandom {
+  Summon "MAGEX_STORM_ELEMENTAL" { 2 4 } 100
+  Summon "MAGEX_ACID_ELEMENTAL" { 2 4 } 100
   Summon "EARTH_ELEMENTAL" { 2 4 } 100
   Summon "FIRE_ELEMENTAL" { 2 4 } 100 
   Summon "WATER_ELEMENTAL" { 2 4 } 100
   Summon "AIR_ELEMENTAL" { 2 4 } 100
-  Summon "LIGHTBRINGER" { 2 4 } 100
-  Summon "SHADOW_TERROR" { 2 4 } 100 }
+  Summon "MAGEX_LIGHTBRINGER" { 2 4 } 100
+  Summon "MAGEX_SHADOW_TERROR" { 2 4 } 100 
+  }}
+  Caster Filter Not CreatureFlag "magex_wild_magic" {
+  ChooseRandom {
+  Summon "MAGEX_STORM_ELEMENTAL" { 2 4 } 100
+  Summon "MAGEX_ACID_ELEMENTAL" { 2 4 } 100
+  Summon "EARTH_ELEMENTAL" { 2 4 } 100
+  Summon "FIRE_ELEMENTAL" { 2 4 } 100 
+  Summon "WATER_ELEMENTAL" { 2 4 } 100
+  Summon "AIR_ELEMENTAL" { 2 4 } 100
+  Summon "MAGEX_LIGHTBRINGER" { 2 4 } 100
+  Summon "MAGEX_SHADOW_TERROR" { 2 4 } 100 
+  ChooseRandom {
+  SummonEnemy "MAGEX_STORM_ELEMENTAL" { 2 4 } 100
+  SummonEnemy "MAGEX_ACID_ELEMENTAL" { 2 4 } 100
+  SummonEnemy "EARTH_ELEMENTAL" { 2 4 } 100
+  SummonEnemy "FIRE_ELEMENTAL" { 2 4 } 100 
+  SummonEnemy "WATER_ELEMENTAL" { 2 4 } 100
+  SummonEnemy "AIR_ELEMENTAL" { 2 4 } 100
+  SummonEnemy "MAGEX_LIGHTBRINGER" { 2 4 } 100
+  SummonEnemy "MAGEX_SHADOW_TERROR" { 2 4 } 100 
+  }}}}
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"expert chaos elemental"
+"magex_expert_wild_elemental"
 {
-  upgrade = "advanced chaos elemental"
+  upgrade = "magex_advanced_wild_elemental"
   symbol = "👾"
-  effect = Name "chaos summoning" ChooseRandom {
-  Summon "STORM_ELEMENTAL" { 3 6 } 100
-  Summon "ACID_ELEMENTAL" { 3 6 } 100
+  effect = Name "wild summoning" Chain {
+  Caster Filter CreatureFlag "magex_wild_magic" {
+  ChooseRandom {
+  Summon "MAGEX_STORM_ELEMENTAL" { 3 6 } 100
+  Summon "MAGEX_ACID_ELEMENTAL" { 3 6 } 100
   Summon "EARTH_ELEMENTAL" { 3 6 } 100
   Summon "FIRE_ELEMENTAL" { 3 6 } 100 
   Summon "WATER_ELEMENTAL" { 3 6 } 100
   Summon "AIR_ELEMENTAL" { 3 6 } 100
-  Summon "LIGHTBRINGER" { 3 6 } 100
-  Summon "SHADOW_TERROR" { 3 6 } 100 }
+  Summon "MAGEX_LIGHTBRINGER" { 3 6 } 100
+  Summon "MAGEX_SHADOW_TERROR" { 3 6 } 100 
+  }}
+  Caster Filter Not CreatureFlag "magex_wild_magic" {
+  ChooseRandom {
+  Summon "MAGEX_STORM_ELEMENTAL" { 3 6 } 100
+  Summon "MAGEX_ACID_ELEMENTAL" { 3 6 } 100
+  Summon "EARTH_ELEMENTAL" { 3 6 } 100
+  Summon "FIRE_ELEMENTAL" { 3 6 } 100 
+  Summon "WATER_ELEMENTAL" { 3 6 } 100
+  Summon "AIR_ELEMENTAL" { 3 6 } 100
+  Summon "MAGEX_LIGHTBRINGER" { 3 6 } 100
+  Summon "MAGEX_SHADOW_TERROR" { 3 6 } 100 
+  ChooseRandom {
+  SummonEnemy "MAGEX_STORM_ELEMENTAL" { 3 6 } 100
+  SummonEnemy "MAGEX_ACID_ELEMENTAL" { 3 6 } 100
+  SummonEnemy "EARTH_ELEMENTAL" { 3 6 } 100
+  SummonEnemy "FIRE_ELEMENTAL" { 3 6 } 100 
+  SummonEnemy "WATER_ELEMENTAL" { 3 6 } 100
+  SummonEnemy "AIR_ELEMENTAL" { 3 6 } 100
+  SummonEnemy "MAGEX_LIGHTBRINGER" { 3 6 } 100
+  SummonEnemy "MAGEX_SHADOW_TERROR" { 3 6 } 100 
+  }}}}
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"chaos teleport"
+"magex_wild_teleport"
 {
   symbol = "👁️"
-  effect = Name "chaos teleport" Escape { 2 }
+  effect = Name "wild teleport" Escape { 3 }
   range = 3
   cooldown = {25 50}
   endOnly = true
   sound = SPELL_TELEPORT
 }
 
-"advanced chaos teleport"
+"magex_advanced_wild_teleport"
 {
-  upgrade = "chaos teleport"
+  upgrade = "magex_wild_teleport"
   symbol = "👁️"
-  effect = Name "chaos teleport" Escape { 4 }
+  effect = Name "wild teleport" Escape { 4 }
   range = 6
   cooldown = {25 50}
   endOnly = true
   sound = SPELL_TELEPORT
 }
 
-"expert chaos teleport"
+"magex_wild_expert_teleport"
 {
-  upgrade = "advanced chaos teleport"
+  upgrade = "magex_advanced_wild_teleport"
   symbol = "👁️"
-  effect = Name "chaos teleport" Escape { 8 }
+  effect = Name "wild teleport" Escape { 8 }
   range = 9
   cooldown = {25 50}
   endOnly = true
   sound = SPELL_TELEPORT
 }
-"chaos polymorph"
+"magex_wild_polymorph"
 {
   symbol = "⇝"
   effect = Name "chatic polymorph" Description "Change into a random monster" Polymorph none 20
@@ -1375,9 +1722,9 @@ OneTimeAbility("expert zombie companion", "adds a zombie companion", AddCompanio
   cooldown = {25 50}
 }
 
-"advanced chaos polymorph"
+"magex_advanced_wild_polymorph"
 {
-  upgrade = "chaos polymorph"
+  upgrade = "magex_wild_polymorph"
   symbol = "⇝"
   effect = Name "chatic polymorph" Description "Change into a random monster" Polymorph none 30
   message = "was transtormed!" "were transtormed!"
@@ -1385,9 +1732,9 @@ OneTimeAbility("expert zombie companion", "adds a zombie companion", AddCompanio
   cooldown = {25 50}
 }
 
-"expert chaos polymorph"
+"magex_expert_wild_polymorph"
 {
-  upgrade = "advanced chaos polymorph"
+  upgrade = "magex_advanced_wild_polymorph"
   symbol = "⇝"
   effect = Name "chatic polymorph" Description "Change into a random monster" Polymorph none 40
   message = "was transtormed!" "were transtormed!"
@@ -1395,20 +1742,184 @@ OneTimeAbility("expert zombie companion", "adds a zombie companion", AddCompanio
   cooldown = {25 50}
 }
 
-OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent CHAOS_SPEED, "🎯")
+MagExOneTimeAbility("magex_wild_resistance_self", "chaos resistance self", "Becomes touched by chaos.", SetCreatureFlag "magex_wild_magic" true, "🎯")
 
-# illusionism
+# fell spells
+"magex_fell_bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fell blast" Description "Shoots a fell blast"
+  Chain {
+	  { Caster Lasting 0 "MAGEX_FELL_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the blast", "is hit by the blast")
+	  Caster Chain {
+					RegrowBodyPart 1
+					Heal { FLESH  0.05}}}
+  projectileViewId = {"magex_blast" ColorId GREEN }
+  range = 2
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
 
-"ilusion invisibility"
+"magex_advanced_fell_bolt"
+{
+  upgrade = "magex_fell_bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fell blast" Description "Shoots a fell blast"
+  Chain {
+	  { Caster Lasting 0 "MAGEX_FELL_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 1, true, "are hit by the blast", "is hit by the blast")
+	  Caster Chain {
+					RegrowBodyPart 1
+					Heal { FLESH  0.05}}}
+  projectileViewId = {"magex_blast" ColorId GREEN }
+  range = 4
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"magex_expert_fell_bolt"
+{
+  upgrade = "magex_advanced_fell_bolt"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fell blast" Description "Shoots a fell blast"
+  Chain {
+	  { Caster Lasting 0 "MAGEX_FELL_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 2, true, "are hit by the blast", "is hit by the blast")
+	  Caster Chain {
+					RegrowBodyPart 1
+					Heal { FLESH  0.05}}}
+  projectileViewId = {"magex_blast" ColorId GREEN }
+  range = 8
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"magex_fell_infusion"
+{
+  symbol = "🛡"
+  effect = Name "fell infusion" Chain {RemoveLasting MAGEX_FELL_WITHRAWAL Lasting 40 MAGEX_FELL_INFUSION}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"magex_advanced_fell_infusion"
+{
+  upgrade = "magex_fell_infusion"
+  symbol = "🛡"
+  effect = Name "fell infusion" Chain {RemoveLasting MAGEX_FELL_WITHRAWAL Lasting 40 MAGEX_FELL_INFUSION}
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"magex_mass_fell_infusion"
+{
+  upgrade = "magex_advanced_fell_infusion"
+  symbol = "🛡"
+  effect = Name "mass fell infusion" Area 10 Filter Not Enemy Name "magex_fell_infusion" Chain {RemoveLasting MAGEX_FELL_WITHRAWAL Lasting 40 MAGEX_FELL_INFUSION}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"magex_fell_power_overwhelming"
+{
+  symbol = "🔥"
+  effect = Name "power overwhelming" Chain {RemoveLasting MAGEX_FELL_WITHRAWAL Lasting 40 MAGEX_FELL_POWER_OVERWHELMING}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"magex_fell_meteor"
+{
+  symbol = "☄"
+  effect = Name "fell meteor" Chain {			{ Caster Lasting 0 "MAGEX_FELL_SPELL"}
+												Area 1 {DestroyWalls DIG 
+												Damage SPELL_DAMAGE SPELL }
+												Summon "MAGEX_FELL_GEODE_LESSER" 1 100}
+  cooldown = {30 81}
+  endOnly = true
+  range = 8
+  sound = SPELL_METEOR_SHOWER
+}
+
+"magex_advanced_fell_meteor"
+{
+  upgrade = "magex_fell_meteor"
+  symbol = "☄"
+  effect = Name "fell meteor" Chain {			{ Caster Lasting 0 "MAGEX_FELL_SPELL"}
+												Area 1 {DestroyWalls DIG 
+												Damage SPELL_DAMAGE SPELL }
+												Summon "MAGEX_FELL_GEODE" 1 100}
+  cooldown = {30 81}
+  endOnly = true
+  range = 8
+  sound = SPELL_METEOR_SHOWER
+}
+
+"magex_expert_fell_meteor"
+{
+  upgrade = "magex_advanced_fell_meteor"
+  symbol = "☄"
+  effect = Name "fell meteor" Chain {			{ Caster Lasting 0 "MAGEX_FELL_SPELL"}
+												Area 1 {DestroyWalls DIG 
+												Damage SPELL_DAMAGE SPELL }
+												Summon "MAGEX_FELL_GEODE_GREATER" 1 100}
+  cooldown = {30 81}
+  endOnly = true
+  range = 8
+  sound = SPELL_METEOR_SHOWER
+}
+
+"magex_fell_portal"
+{
+  symbol = "🗡️"
+  effect = MinDistanceFromStrongEnemy(2) Name "open portal" Description "Sacrifices the creature to open an portal" Chain {
+            Filter Area 0 Not Enemy {
+			Suicide DIE	
+			PlaceFurniture "MAGEX_FELL_PORTAL"}}
+  endOnly = true
+  range = 1
+  cooldown = 200
+  sound = SPELL_BLAST
+}
+
+"magex_fell_binding"
+{
+  symbol = "🗡️"
+  effect = MinDistanceFromStrongEnemy(2) Name "open portal" Description "Sacrifices the creature to bin summoned creature" Chain {
+            Filter Area 0 Not Enemy {
+			Suicide DIE	
+			GrantAbility "magex_fell_binding_act"}}
+  endOnly = true
+  range = 1
+  cooldown = 200
+  sound = SPELL_BLAST
+}
+
+"magex_fell_binding_act"
+{
+  symbol = "⚕"
+  effect = Name "bind summon" Chain{RemoveLasting SUMMONED 
+									Caster RemoveAbility "magex_fell_binding_act"}
+  cooldown = {25 51}
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+# Illusionism
+
+"magex_ilusion_invisibility"
 {
   symbol = "🕵️"
   effect = Name "invisibility" Lasting 40 INVISIBLE
   cooldown = {30 81}
   sound = SPELL_DEX_BONUS
 }
-"advanced ilusion invisibility"
+"magex_advanced_ilusion_invisibility"
 {
-  upgrade = "ilusion invisibility"
+  upgrade = "magex_ilusion_invisibility"
   symbol = "🕵️"
   effect = Name "invisibility" Lasting 40 INVISIBLE
   targetSelf = true
@@ -1417,16 +1928,16 @@ OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent C
   sound = SPELL_DEX_BONUS
 }
 
-"mass ilusion invisibility"
+"magex_mass_ilusion_invisibility"
 {
-  upgrade = "advanced ilusion invisibility"
+  upgrade = "magex_advanced_ilusion_invisibility"
   symbol = "🕵️"
   effect = Name "mass invisibility" Area 10 Filter Not Enemy Lasting 40 INVISIBLE
   cooldown = {30 81}
   sound = SPELL_DEX_BONUS
 }
 
-"advanced deception"
+"magex_advanced_deception"
 {
   upgrade = "deception"
   symbol = "🎭"
@@ -1436,42 +1947,42 @@ OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent C
   sound = SPELL_DECEPTION
 }
 
-"mass deception"
+"magex_mass_deception"
 {
-  upgrade = "advanced deception"
+  upgrade = "magex_advanced_deception"
   symbol = "🕵️"
-  effect = Name "mass deception" Area 10 Filter Not Enemy Deception
+  effect = Name "magex_mass_deception" Area 10 Filter Not Enemy Deception
   cooldown = {30 81}
   sound = SPELL_DEX_BONUS
 }
 
-"summon illusion"
+"magex_summon_illusion"
 {
   symbol = "👾"
-  effect = Name "ilusion" Summon "ILLUSION" { 2 4 } 5
+  effect = Name "ilusion" Summon "MAGEX_ILLUSION" { 2 4 } 5
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"advanced summon illusion"
+"magex_advanced_summon_illusion"
 {
-  upgrade = "summon illusion"
+  upgrade = "magex_summon_illusion"
   symbol = "👾"
-  effect = Name "ilusion" Summon "ILLUSION" { 4 8 } 10
+  effect = Name "ilusion" Summon "MAGEX_ILLUSION" { 4 8 } 10
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"expert summon illusion"
+"magex_expert_summon_illusion"
 {
-  upgrade = "advanced summon illusion"
+  upgrade = "magex_advanced_summon_illusion"
   symbol = "👾"
-  effect = Name "ilusion" Summon "ILLUSION" { 6 12 } 15
+  effect = Name "ilusion" Summon "MAGEX_ILLUSION" { 6 12 } 15
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"illusion fog"
+"magex_illusion_fog"
 {
   symbol = "🌫"
   effect = Name "fog" Description "Creates a fog cloud." Area 2 Filter DistanceD none 3.2 EmitGas "FOG" 1
@@ -1479,18 +1990,18 @@ OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent C
   cooldown = {30 61}
 }
 
-"advanced illusion fog"
+"magex_advanced_illusion_fog"
 {
-  upgrade = "illusion fog"
+  upgrade = "magex_illusion_fog"
   symbol = "🌫"
   effect = Name "fog" Description "Creates a fog cloud." Area 4 Filter DistanceD none 3.2 EmitGas "FOG" 1
   range = 6
   cooldown = {30 61}
 }
 
-"expert illusion fog"
+"magex_expert_illusion_fog"
 {
-  upgrade = "advanced illusion fog"
+  upgrade = "magex_advanced_illusion_fog"
   symbol = "🌫"
   effect = Name "fog" Description "Creates a fog cloud." Area 6 Filter DistanceD none 3.2 EmitGas "FOG" 1
   range = 8
@@ -1498,7 +2009,7 @@ OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent C
 }
 # enchantment
 
-"advanced panic"
+"magex_advanced_panic"
 {
   upgrade = "panic"
   symbol = "😱"
@@ -1508,9 +2019,9 @@ OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent C
   sound = SPELL_STR_BONUS
 }
 
-"mass panic"
+"magex_mass_panic"
 {
-  upgrade = "advanced panic"
+  upgrade = "magex_advanced_panic"
   symbol = "😱"
   effect = Name "mass invisibility" Area 10 Filter Enemy Lasting 40 PANIC
   cooldown = {30 81}
@@ -1528,61 +2039,61 @@ OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent C
   sound = SPELL_STR_BONUS
 }
 
-"mass pacify"
+"magex_mass_pacify"
 {
   upgrade = "advanced pacify"
   symbol = "☮"
-  effect = Name "mass pacify" Area 10 Filter Enemy Lasting 40 PEACEFULNESS
+  effect = Name "magex_mass_pacify" Area 10 Filter Enemy Lasting 40 PEACEFULNESS
   cooldown = {30 81}
   sound = SPELL_DEX_BONUS
 }
 
 # air spells
-"air bolt"
+"magex_air_bolt"
 {
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "wind blast" Description "Shoots a wind blast"
   Chain {
-	  { Caster Lasting 0 "DAMAGE_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
+	  { Caster Lasting 0 "MAGEX_DAMAGE_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
 	  Chain {Shove}}
-  projectileViewId = {"blast" ColorId LIGHT_GREEN }
+  projectileViewId = {"magex_blast" ColorId LIGHT_GREEN }
   range = 2
   cooldown = {2 12}
   sound = SPELL_BLAST
 }
 
-"advanced air bolt"
+"magex_advanced_air_bolt"
 {
-  upgrade = "air bolt"
+  upgrade = "magex_air_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "wind blast" Description "Shoots a wind blast"
   Chain {
-	  { Caster Lasting 0 "DAMAGE_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
+	  { Caster Lasting 0 "MAGEX_DAMAGE_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
 	  Chain {Shove Shove}}
-  projectileViewId = {"blast" ColorId LIGHT_GREEN }
+  projectileViewId = {"magex_blast" ColorId LIGHT_GREEN }
   range = 4
   cooldown = {2 12}
   sound = SPELL_BLAST
 }
 
-"expert air bolt"
+"magex_expert_air_bolt"
 {
-  upgrade = "advanced air bolt"
+  upgrade = "magex_advanced_air_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "wind blast" Description "Shoots a wind blast"
   Chain {
-	  { Caster Lasting 0 "DAMAGE_SPELL"}
-      TryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
+	  { Caster Lasting 0 "MAGEX_DAMAGE_SPELL"}
+      MagExTryMagicAttack(SPELL_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
 	  Chain {Shove Shove}}
-  projectileViewId = {"blast" ColorId LIGHT_GREEN }
+  projectileViewId = {"magex_blast" ColorId LIGHT_GREEN }
   range = 6
   cooldown = {2 12}
   sound = SPELL_BLAST
 }
 
-"air flying"
+"magex_air_flying"
 {
   symbol = "X"
   effect = Name "flying" Lasting 40 FLYING
@@ -1590,29 +2101,29 @@ OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent C
   sound = SPELL_CURE_POISON
 }
 
-"advanced air flying"
+"magex_advanced_air_flying"
 {
-  upgrade = "air flying"
+  upgrade = "magex_air_flying"
   symbol = "X"
-  effect = Name "lightning resistance" Lasting 40 FLYING
+  effect = Name "flying" Lasting 40 FLYING
   cooldown = {50 101}
   targetSelf = true
   range = 1
   sound = SPELL_CURE_POISON
 }
 
-"mass air flying"
+"magex_mass_air_flying"
 {
-  upgrade = "advanced air flying"
+  upgrade = "magex_advanced_air_flying"
   symbol = "X"
-  effect = Name "lightning resistance" Area 10 Filter Not Enemy Lasting 40 FLYING
+  effect = Name "magex_lightning_resistance" Area 10 Filter Not Enemy Lasting 40 FLYING
   cooldown = {50 101}
   targetSelf = true
   range = 1
   sound = SPELL_CURE_POISON
 }
  
-"air elemental"
+"magex_air_elemental"
 {
   symbol = "👾"
   effect = Name "air elemental" Summon "AIR_ELEMENTAL" { 1 2 } 100
@@ -1620,16 +2131,16 @@ OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent C
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"advanced air elemental"
+"magex_advanced_air_elemental"
 {
-  upgrade = "air elemental"
+  upgrade = "magex_air_elemental"
   symbol = "👾"
   effect = Name "air elemental" Summon "AIR_ELEMENTAL" { 2 4 } 100
   cooldown = {30 81}
   sound = SPELL_FIRE_SPHERE_PET
 }
 
-"air strong wind"
+"magex_air_strong_wind"
 {
   symbol = "✈️"
   effect = Name "strong wind" Escape {2}
@@ -1638,9 +2149,9 @@ OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent C
   sound = SPELL_TELEPORT
 }
 
-"advanced air strong wind"
+"magex_advanced_air_strong_wind"
 {
-  upgrade = "air strong wind"
+  upgrade = "magex_air_strong_wind"
   symbol = "✈️"
   effect = Name "strong wind" Escape {}
   cooldown = {50 101}
@@ -1648,41 +2159,41 @@ OneTimeAbility("chaos resistance self", "Becomes touched by chaos.", Permanent C
   sound = SPELL_TELEPORT
 }
 
-OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
+MagExOneTimeAbility("magex_air_flying_self", "air flying self", "Becomes flying.", Permanent FLYING, "🎯")
 
 # demonology
 
-"summon succubus ME"
+"magex_summon_succubus"
 {
   symbol = "👾"
   effect = Name "succubus" Summon "SUCCUBUS" { 1 2 } 100
-  cooldown = {30 81}
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon demon"
+"magex_summon_demon"
 {
   symbol = "👾"
   effect = Name "demon" Summon "DEMON_DWELLER" { 1 2 } 100
-  cooldown = {30 81}
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon devil"
+"magex_summon_devil"
 {
   symbol = "👾"
-  effect = Name "devil" Summon "DEVIL_SUMMON" { 1 2 } 100
-  cooldown = {30 81}
+  effect = Name "devil" Summon "MAGEX_DEVIL_SUMMON" { 1 2 } 100
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon hellish horde"
+"magex_summon_hellish_horde"
 {
   symbol = "👾"
   effect = Name "hellish horde" Chain {
 				Summon "SUCCUBUS" { 3 4 } 50
 				Summon "DEMON_DWELLER" { 2 3 } 50
-				Summon "DEVIL_SUMMON" { 1 2 } 50
+				Summon "MAGEX_DEVIL_SUMMON" { 1 2 } 50
 				}
   cooldown = {150 300}
   sound = SPELL_SUMMON_SPIRIT
@@ -1690,37 +2201,37 @@ OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
 
 # angeology
 
-"summon galeam"
+"magex_summon_galeam"
 {
   symbol = "👾"
   effect = Name "galeam" Summon "GALEAM" { 1 2 } 100
-  cooldown = {30 81}
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon cherub"
+"magex_summon_cherub"
 {
   symbol = "👾"
-  effect = Name "cherub" Summon "CHERUB_SUMMON" { 1 2 } 100
-  cooldown = {30 81}
+  effect = Name "cherub" Summon "MAGEX_CHERUB_SUMMON" { 1 2 } 100
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon angel"
+"magex_summon_angel"
 {
   symbol = "👾"
   effect = Name "angel" Summon "ANGEL" { 1 2 } 100
-  cooldown = {30 81}
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon angelic host"
+"magex_summon_angelic_host"
 {
   symbol = "👾"
   effect = Name "angelic host" Chain {
-				Summon "CHERUB_SUMMON" { 3 4 } 50
+				Summon "MAGEX_CHERUB_SUMMON" { 3 4 } 50
 				Summon "GALEAM" { 2 3 } 50
-				Summon "ANGEL_SUMMON" { 1 2 } 50
+				Summon "MAGEX_ANGEL_SUMMON" { 1 2 } 50
 				}
   cooldown = {150 300}
   sound = SPELL_SUMMON_SPIRIT
@@ -1728,23 +2239,23 @@ OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
 
 # shamanism
 
-"summon spirits"
+"magex_summon_spirits"
 {
   symbol = "👾"
   effect = Name "spirit" Summon "SPIRIT" { 1 2 } 100
-  cooldown = {30 81}
+  cooldown = {15 51}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"advanced summon spirits"
+"magex_advanced_summon_spirits"
 {
   symbol = "👾"
   effect = Name "spirit" Summon "SPIRIT" { 2 4 } 100
-  cooldown = {30 81}
+  cooldown = {15 51}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon spirit tribe"
+"magex_summon_spirit_tribe"
 {
   symbol = "👾"
   effect = Name "spirit tribe" Chain {
@@ -1758,7 +2269,7 @@ OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"mass slow"
+"magex_mass_slow"
 {
   upgrade = "slow"
   symbol = "🐢"
@@ -1769,75 +2280,75 @@ OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
 
 # ancestor worship
 
-"summon ghost"
+"magex_summon_ghost"
 {
   symbol = "👾"
   effect = Name "ghost" Summon "LOST_SOUL" { 2 4 } 100
-  cooldown = {30 81}
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
 "advanced summon ghosts"
 {
-  upgrade = "summon ghost"
+  upgrade = "magex_summon_ghost"
   symbol = "👾"
-  effect = Name "spirit" Summon "GUARDIAN_GHOST" { 1 2 } 100
-  cooldown = {30 81}
+  effect = Name "spirit" Summon "MAGEX_GUARDIAN_GHOST" { 1 2 } 100
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon ghost champion"
+"magex_summon_ghost_champion"
 {
   symbol = "👾"
-  effect = Name "ghost champion" Summon "ANCESTRAL_CHAMPION" { 1 2 } 100
-  cooldown = {30 81}
+  effect = Name "ghost champion" Summon "MAGEX_ANCESTRAL_CHAMPION" { 1 2 } 100
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon ghost house"
+"magex_summon_ghost_house"
 {
   symbol = "👾"
   effect = Name "ghost house" Chain {
 				Summon "LOST_SOUL" { 6 8 } 50
-				Summon "GUARDIAN_GHOST" { 2 3 } 50
-				Summon "ANCESTRAL_CHAMPION" { 1 2 } 50
+				Summon "MAGEX_GUARDIAN_GHOST" { 2 3 } 50
+				Summon "MAGEX_ANCESTRAL_CHAMPION" { 1 2 } 50
 				}
   cooldown = {150 300}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"mass blindness"
+"magex_mass_blindness"
 {
   upgrade = "blindness"
   symbol = "☮"
-  effect = Name "mass blindness" Area 10 Filter Enemy Lasting 5 BLIND
+  effect = Name "magex_mass_blindness" Area 10 Filter Enemy Lasting 5 BLIND
   cooldown = {10 21}
   sound = SPELL_DEX_BONUS
 }
 
 # nature worship
 
-"summon deer"
+"magex_summon_deer"
 {
   symbol = "👾"
-  effect = Name "deer" Summon "DEER_SUMMON" { 1 2 } 100
-  cooldown = {30 81}
+  effect = Name "deer" Summon "MAGEX_DEER_SUMMON" { 1 2 } 100
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon driad"
+"magex_summon_driad"
 {
   symbol = "👾"
-  effect = Name "driad" Summon "DRIAD_SUMMON" { 1 2 } 100
-  cooldown = {30 81}
+  effect = Name "driad" Summon "MAGEX_DRIAD_SUMMON" { 1 2 } 100
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon ent"
+"magex_summon_ent"
 {
   symbol = "👾"
   effect = Name "ent" Summon "ENT" { 1 2 } 100
-  cooldown = {30 81}
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
@@ -1845,20 +2356,20 @@ OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
 {
   symbol = "👾"
   effect = Name "nature vengance" Chain {
-				Summon "DEER_SUMMON" { 3 4 } 50
-				Summon "DRIAD_SUMMON" { 2 3 } 50
+				Summon "MAGEX_DEER_SUMMON" { 3 4 } 50
+				Summon "MAGEX_DRIAD_SUMMON" { 2 3 } 50
 				Summon "ENT" { 1 2 } 50
 				}
   cooldown = {150 300}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"grow tree"
+"magex_grow_tree"
 {
   symbol = "𝍔"
   effect =  Name "natures growth" Chain {
 			Area 3 {
-				PlaceFurniture "MAGIC_GRASS"} 
+				PlaceFurniture "MAGEX_GRASS"} 
 			Area 3 {
 				Chance 0.6								
 			ChooseRandom { 
@@ -1877,13 +2388,13 @@ OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
   sound = SPELL_BLAST
 }
 
-"grow forest"
+"magex_grow_forest"
 {
-  upgrade = "grow tree"
+  upgrade = "magex_grow_tree"
   symbol = "𝍔"
   effect =  Name "natures growth" Chain {
 			Area 6 {
-				PlaceFurniture "MAGIC_GRASS"} 
+				PlaceFurniture "MAGEX_GRASS"} 
 			Area 6 {
 				Chance 0.6								
 			ChooseRandom { 
@@ -1904,43 +2415,43 @@ OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
 
 # death worship
 
-"summon skeletal wolf"
+"magex_summon_skeletal_wolf"
 {
   symbol = "👾"
   effect = Name "skeletal wolf" Summon "SKELETON_WOLF" { 1 2 } 100
-  cooldown = {30 81}
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon skeleton"
+"magex_summon_skeleton"
 {
   symbol = "👾"
-  effect = Name "skeleton" Summon "SKELETON_WARRIOR_SUMMON" { 1 2 } 100
-  cooldown = {30 81}
+  effect = Name "skeleton" Summon "MAGEX_SKELETON_WARRIOR_SUMMON" { 1 2 } 100
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon skeleton king"
+"magex_summon_skeleton_king"
 {
   symbol = "👾"
-  effect = Name "skeleton king" Summon "SKELETAL_ABOMINATION_SUMMON" { 1 2 } 100
-  cooldown = {30 81}
+  effect = Name "skeleton king" Summon "MAGEX_SKELETAL_ABOMINATION_SUMMON" { 1 2 } 100
+  cooldown = {81 132}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon graveyard"
+"magex_summon_graveyard"
 {
   symbol = "👾"
   effect = Name "graveyard rising" Chain {
 				Summon "SKELETON_WOLF" { 3 4 } 50
-				Summon "SKELETON_WARRIOR_SUMMON" { 2 3 } 50
-				Summon "SKELETAL_ABOMINATION_SUMMON" { 1 2 } 50
+				Summon "MAGEX_SKELETON_WARRIOR_SUMMON" { 2 3 } 50
+				Summon "MAGEX_SKELETAL_ABOMINATION_SUMMON" { 1 2 } 50
 				}
   cooldown = {150 300}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"repair undead"
+"magex_repair_undead"
 {
   symbol = "💀"
   effect = Name "fix undead" Filter Or { BodyMaterial UNDEAD_FLESH
@@ -1956,9 +2467,9 @@ OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
   type = ABILITY
 }
 
-"advanced repair undead"
+"magex_advanced_repair_undead"
 {
-  upgrade = "repair undead"
+  upgrade = "magex_repair_undead"
   symbol = "💀"
   effect = Name "fix undead" Filter Or { BodyMaterial UNDEAD_FLESH
       And {BodyMaterial BONE }}
@@ -1973,9 +2484,9 @@ OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
   type = ABILITY
 }
 
-"mass repair undead"
+"magex_mass_repair_undead"
 {
-  upgrade = "advanced repair undead"
+  upgrade = "magex_advanced_repair_undead"
   symbol = "💀"
   effect = Name "mass fix undead" Area 10 Filter Not Enemy Filter Or { BodyMaterial UNDEAD_FLESH
       And {BodyMaterial BONE }}
@@ -1990,270 +2501,452 @@ OneTimeAbility("air flying self", "Becomes flying.", Permanent FLYING, "🎯")
   type = ABILITY
 }
 
+# rot worship
+
+"magex_summon_zombie"
+{
+  symbol = "👾"
+  effect = Name "zombie" Summon "SWARMER_ZOMBIE" { 1 2 } 100
+  cooldown = {50 81}
+  sound = SPELL_SUMMON_SPIRIT
+}
+
+"magex_advanced_summon_zombie"
+{
+  symbol = "👾"
+  effect = Name "zombie" Summon "SWARMER_ZOMBIE" { 2 4 } 100
+  cooldown = {50 81}
+  sound = SPELL_SUMMON_SPIRIT
+}
+
+"magex_expert_summon_zombie"
+{
+  symbol = "👾"
+  effect = Name "zombie" Summon "SWARMER_ZOMBIE" { 4 6 } 100
+  cooldown = {50 81}
+  sound = SPELL_SUMMON_SPIRIT
+}
+
+"magex_hordes_of_rot"
+{
+  symbol = "👾"
+  effect = Name "hordes of rot" Chain { 
+										Summon "MAGEX_ABOMINATION_SUMMON" 1 50 
+										Summon "SWARMER_ZOMBIE" { 8 12 } 50 }
+  cooldown = {150 300}
+  sound = SPELL_SUMMON_SPIRIT
+}
+
+MagExOneTimeAbility("magex_zombie_companion", "zombie companion", "adds a zombie companion", AddCompanion 1 false none 0.1 {"SWARMER_ZOMBIE"}, "🎯")
+MagExOneTimeAbility("magex_more_zombie_companion", "zombie companion", "adds a zombie companion", AddCompanion 1 false none 0.1 {"SWARMER_ZOMBIE"}, "🎯")
+MagExOneTimeAbility("magex_even_more_zombie_companion", "zombie companion", "adds a zombie companion", AddCompanion 1 false none 0.1 {"SWARMER_ZOMBIE"}, "🎯")
+MagExOneTimeAbility("magex_much_more_zombie_companion", "zombie companion", "adds a zombie companion", AddCompanion 1 false none 0.1 {"SWARMER_ZOMBIE"}, "🎯")
+MagExOneTimeAbility("magex_too_much_zombie_companion", "zombie companion", "adds a zombie companion", AddCompanion 1 false none 0.1 {"SWARMER_ZOMBIE"}, "🎯")
+
+
 # bear worship
 
-"summon bear"
+"magex_summon_bear"
 {
   symbol = "🐻"
   effect = Name "bear" ChooseRandom { 
-										Summon "CAVE_BEAR_SUMMON_I" { 1 2 } 100
-										Summon "POLAR_BEAR_SUMMON_I" { 1 2 } 100
+										Summon "MAGEX_CAVE_BEAR_SUMMON_I" { 1 2 } 100
+										Summon "MAGEX_POLAR_BEAR_SUMMON_I" { 1 2 } 100
 									}
-  cooldown = {30 81}
+  cooldown = {15 51}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon advanced bear"
+"magex_advanced_summon_bear"
 {
-  upgrade = "summon bear"
+  upgrade = "magex_summon_bear"
   symbol = "🐻"
   effect = Name "bear" ChooseRandom { 
-										Summon "CAVE_BEAR_SUMMON_II" { 1 2 } 100
-										Summon "POLAR_BEAR_SUMMON_II" { 1 2 } 100
+										Summon "MAGEX_CAVE_BEAR_SUMMON_II" { 1 2 } 100
+										Summon "MAGEX_POLAR_BEAR_SUMMON_II" { 1 2 } 100
 									}
-  cooldown = {30 81}
+  cooldown = {15 51}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"summon expert bear"
+"magex_expert_summon_bear"
 {
-  upgrade = "summon advanced bear"
+  upgrade = "magex_advanced_summon_bear"
   symbol = "🐻"
   effect = Name "bear" ChooseRandom { 
-										Summon "CAVE_BEAR_SUMMON_III" { 1 2 } 100
-										Summon "POLAR_BEAR_SUMMON_III" { 1 2 } 100
+										Summon "MAGEX_CAVE_BEAR_SUMMON_III" { 1 2 } 100
+										Summon "MAGEX_POLAR_BEAR_SUMMON_III" { 1 2 } 100
 									}
 
-  cooldown = {30 81}
+  cooldown = {15 51}
   sound = SPELL_SUMMON_SPIRIT
 }
 
-"bearscape invasion"
+"magex_bearscape_invasion"
 {
   symbol = "🐻"
-  effect = Name "Avatar of Bearness" Summon "AVATAR_OF_BEARNESS" { 1 2 } 100
-  cooldown = {30 81}
+  effect = Name "Avatar of Bearness" Summon "MAGEX_AVATAR_OF_BEARNESS" { 1 2 } 100
+  cooldown = {150 300}
   sound = SPELL_SUMMON_SPIRIT
 }
 
 
-"advanced berserker"
+"magex_advanced_berserker"
 {
   upgrade = "berserker"
   symbol = "🐻"
   effect = Name "berskerker" Description "Change into a bear!" AI Health 0 0.4 0 1 {
-    Polymorph "AVATAR_OF_BEARNESS" 30
+    Polymorph "MAGEX_AVATAR_OF_BEARNESS" 30
   }
   message = "" ""
   cooldown = 100
 }
+
+# the emperor worship
+
+"magex_heretic"
+{
+  symbol = "🕶️"
+  effect = Name "herecy" Chain {Damage SPELL_DAMAGE SPELL Lasting 40 MAGEX_HERETIC}
+  cooldown = {31 81}
+  range = 5
+}
+
+"magex_advanced_heretic"
+{
+  upgrade = "magex_heretic"
+  symbol = "🛡️"
+  effect = Name "herecy" Chain {Damage SPELL_DAMAGE SPELL Lasting 80 MAGEX_HERETIC}
+  cooldown = {31 81}
+  range = 5
+}
+
+"magex_expert_heretic"
+{
+  upgrade = "magex_advanced_heretic"
+  symbol = "🛡️"
+  effect = Name "herecy" Chain {Damage SPELL_DAMAGE SPELL Lasting 120 MAGEX_HERETIC}
+  cooldown = {31 81}
+  range = 5
+}
+
+"magex_mass_heretic"
+{
+  upgrade = "magex_expert_heretic"
+  symbol = "🛡"
+  effect = Name "herecy" Area 10 Filter Enemy Chain {Damage SPELL_DAMAGE SPELL Lasting 120 MAGEX_HERETIC}
+  cooldown = {30 81}
+  range = 5
+  sound = SPELL_DEX_BONUS
+}
+
+"magex_summon_reforged"
+{
+  symbol = "Ω"
+  effect = Name "emperors warriors" Summon "MAGEX_REFORGED" 1 100
+  cooldown = {15 51}
+  sound = SPELL_SUMMON_SPIRIT
+}
+
+"magex_advanced_summon_reforged"
+{
+  upgrade = "magex_summon_reforged"
+  symbol = "Ω"
+  effect = Name "emperors warriors" Summon "MAGEX_REFORGED" 2 100
+  cooldown = {15 51}
+  sound = SPELL_SUMMON_SPIRIT
+}
+
+"magex_expert_summon_reforged"
+{
+  upgrade = "magex_advanced_summon_reforged"
+  symbol = "Ω"
+  effect = Name "emperors warriors" Summon "MAGEX_REFORGED" 3 100
+  cooldown = {15 51}
+  sound = SPELL_SUMMON_SPIRIT
+}
+
+"magex_reforge"
+{
+  symbol = "⇝"
+  effect = Name "reforge" Description "Change human into an reforged" AI And {} 0 0 {
+    Area 0 Filter HatedBy HATE_HUMANS {Polymorph "MAGEX_REFORGED" none}
+  }
+  range = 1
+  cooldown = {500 750}
+  sound = SPELL_SUMMON_SPIRIT
+}
+
+"magex_die_heretic"
+{
+  symbol = "ℒ"
+  effect = Name "die heretic" Description "Causes magical and fire damage" Chain{Damage DAMAGE HIT 
+																				 Filter LastingEffect MAGEX_HERETIC{Damage DAMAGE HIT}}
+  range = 1
+  cooldown = {5 21}
+  endOnly = true
+  message = "attack heretic!" "attacks heretic!"
+}
+
 # add spell
 
-OneTimeAbility("priest creature school", "gets random spell school.", { 
+MagExOneTimeAbility("magex_priest_creature_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "death cult"
-	AddSpellSchool "demon worship"
-	AddSpellSchool "angel worship" 
-	AddSpellSchool "angel worship" 
-	AddSpellSchool "angel worship" 
-	AddSpellSchool "angel worship" 
+	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex demon worship"
+	AddSpellSchool "magex angel worship" 
+	AddSpellSchool "magex angel worship" 
+	AddSpellSchool "magex angel worship" 
+	AddSpellSchool "magex angel worship" 
+	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex the emperor worship"
  }}, "🧛")
  
-OneTimeAbility("priest school", "gets random spell school.", { 
+MagExOneTimeAbility("magex_priest_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "ancestor worship"
-	AddSpellSchool "ancestor worship"
-	AddSpellSchool "nature worship"
-	AddSpellSchool "nature worship"
-	AddSpellSchool "shamanism"
-	AddSpellSchool "shamanism"
-	AddSpellSchool "death cult"
-	AddSpellSchool "bear worship"
-	AddSpellSchool "demon worship"
-	AddSpellSchool "angel worship" 
-	AddSpellSchool "angel worship" 
-	AddSpellSchool "angel worship" 
-	AddSpellSchool "angel worship" 
+	AddSpellSchool "magex ancestor worship"
+	AddSpellSchool "magex ancestor worship"
+	AddSpellSchool "magex nature worship"
+	AddSpellSchool "magex nature worship"
+	AddSpellSchool "magex shamanism"
+	AddSpellSchool "magex shamanism"
+	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex rot cult"
+	AddSpellSchool "magex bear worship"
+	AddSpellSchool "magex demon worship"
+	AddSpellSchool "magex angel worship" 
+	AddSpellSchool "magex angel worship" 
+	AddSpellSchool "magex angel worship" 
+	AddSpellSchool "magex angel worship" 
+	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex the emperor worship"
  }}, "🧛")
 
-OneTimeAbility("evil priest school", "gets random spell school.", { 
+MagExOneTimeAbility("magex_evil_priest_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "ancestor worship"
-	AddSpellSchool "ancestor worship"
-	AddSpellSchool "nature worship"
-	AddSpellSchool "death cult"
-	AddSpellSchool "death cult"
-	AddSpellSchool "shamanism"
-	AddSpellSchool "shamanism"	
-	AddSpellSchool "bear worship"
-	AddSpellSchool "angel worship"
-	AddSpellSchool "demon worship" 
-	AddSpellSchool "demon worship" 
-	AddSpellSchool "demon worship" 
-	AddSpellSchool "demon worship" 
+	AddSpellSchool "magex ancestor worship"
+	AddSpellSchool "magex ancestor worship"
+	AddSpellSchool "magex nature worship"
+	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex rot cult"
+	AddSpellSchool "magex rot cult"
+	AddSpellSchool "magex shamanism"
+	AddSpellSchool "magex shamanism"	
+	AddSpellSchool "magex bear worship"
+	AddSpellSchool "magex angel worship"
+	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex demon worship" 
+	AddSpellSchool "magex demon worship" 
+	AddSpellSchool "magex demon worship" 
+	AddSpellSchool "magex demon worship" 
  }}, "🧛")
 
-OneTimeAbility("goblin priest school", "gets random spell school.", { 
+MagExOneTimeAbility("magex_goblin_priest_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "death cult"
-	AddSpellSchool "death cult"
-	AddSpellSchool "angel worship"
-	AddSpellSchool "demon worship" 
-	AddSpellSchool "demon worship" 
-	AddSpellSchool "demon worship" 
-	AddSpellSchool "demon worship" 
+	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex angel worship"
+	AddSpellSchool "magex demon worship" 
+	AddSpellSchool "magex demon worship" 
+	AddSpellSchool "magex demon worship" 
+	AddSpellSchool "magex demon worship" 
  }}, "🧛")
 
-OneTimeAbility("shaman school", "gets random spell school.", { 
+MagExOneTimeAbility("magex_shaman_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "ancestor worship"
-	AddSpellSchool "ancestor worship"
-	AddSpellSchool "bear worship"
-	AddSpellSchool "nature worship"
-	AddSpellSchool "nature worship"
-	AddSpellSchool "shamanism"
-	AddSpellSchool "shamanism"	 
-	AddSpellSchool "shamanism"
-	AddSpellSchool "shamanism"	 
+	AddSpellSchool "magex ancestor worship"
+	AddSpellSchool "magex ancestor worship"
+	AddSpellSchool "magex rot cult"
+	AddSpellSchool "magex rot cult"
+	AddSpellSchool "magex bear worship"
+	AddSpellSchool "magex nature worship"
+	AddSpellSchool "magex nature worship"
+	AddSpellSchool "magex shamanism"
+	AddSpellSchool "magex shamanism"	 
+	AddSpellSchool "magex shamanism"
+	AddSpellSchool "magex shamanism"	 
  }}, "🧛")
 
-OneTimeAbility("barbarian shaman school", "gets random spell school.", { 
+MagExOneTimeAbility("magex_barbarian_shaman_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "ancestor worship"
-	AddSpellSchool "nature worship"
-	AddSpellSchool "shamanism"
-	AddSpellSchool "bear worship"
-	AddSpellSchool "bear worship"
-	AddSpellSchool "bear worship"
-	AddSpellSchool "bear worship"
-	AddSpellSchool "bear worship"
-	AddSpellSchool "bear worship"	
+	AddSpellSchool "magex ancestor worship"
+	AddSpellSchool "magex nature worship"
+	AddSpellSchool "magex shamanism"
+	AddSpellSchool "magex rot cult"
+	AddSpellSchool "magex bear worship"
+	AddSpellSchool "magex bear worship"
+	AddSpellSchool "magex bear worship"
+	AddSpellSchool "magex bear worship"
+	AddSpellSchool "magex bear worship"
+	AddSpellSchool "magex bear worship"	
  }}, "🧛")
  
-OneTimeAbility("dead priest school", "gets random spell school.", { 
+MagExOneTimeAbility("magex_dead_priest_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "ancestor worship"
-	AddSpellSchool "ancestor worship"
-	AddSpellSchool "demon worship"
-	AddSpellSchool "demon worship"
-	AddSpellSchool "shamanism"
-	AddSpellSchool "shamanism"	
-	AddSpellSchool "bear worship"
-	AddSpellSchool "nature worship"
-	AddSpellSchool "angel worship"
-	AddSpellSchool "death cult"
-	AddSpellSchool "death cult"
-	AddSpellSchool "death cult"
-	AddSpellSchool "death cult"
+	AddSpellSchool "magex ancestor worship"
+	AddSpellSchool "magex ancestor worship"
+	AddSpellSchool "magex demon worship"
+	AddSpellSchool "magex demon worship"
+	AddSpellSchool "magex shamanism"
+	AddSpellSchool "magex shamanism"	
+	AddSpellSchool "magex bear worship"
+	AddSpellSchool "magex nature worship"
+	AddSpellSchool "magex angel worship"
+	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex rot cult"
+	AddSpellSchool "magex rot cult"
+	AddSpellSchool "magex rot cult"
+	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex death cult"
  }}, "🧛")
 
-OneTimeAbility("random holy school", "gets random spell school.", { 
+MagExOneTimeAbility("magex_random_holy_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "ancestor worship"
-	AddSpellSchool "demon worship"
-	AddSpellSchool "shamanism"	
-	AddSpellSchool "bear worship"
-	AddSpellSchool "nature worship"
-	AddSpellSchool "angel worship"
-	AddSpellSchool "death cult"
+	AddSpellSchool "magex ancestor worship"
+	AddSpellSchool "magex demon worship"
+	AddSpellSchool "magex shamanism"	
+	AddSpellSchool "magex bear worship"
+	AddSpellSchool "magex nature worship"
+	AddSpellSchool "magex angel worship"
+	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex rot cult"
  }}, "🧛")
  
-OneTimeAbility("dwarf school", "gets random spell school.", { 
+MagExOneTimeAbility("magex_dwarf_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
- 	AddSpellSchool "luxomancy"
+ 	AddSpellSchool "magex toximancy"
+ 	AddSpellSchool "magex plaguemancy"
+ 	AddSpellSchool "magex luxomancy"
 	AddSpellSchool "mage"
-	AddSpellSchool "electromancy"
-	AddSpellSchool "pyromancy"
-	AddSpellSchool "cryomancy"
-	AddSpellSchool "corossiomancy"
-	AddSpellSchool "umbramancy"
-	AddSpellSchool "geomancy"
-	AddSpellSchool "hydromancy"
-	AddSpellSchool "transmutation"
-	AddSpellSchool "illusionism"
-	AddSpellSchool "💀 necromancy"
+	AddSpellSchool "magex electromancy"
+	AddSpellSchool "magex pyromancy"
+	AddSpellSchool "magex cryomancy"
+	AddSpellSchool "magex corossiomancy"
+	AddSpellSchool "magex umbramancy"
+	AddSpellSchool "magex geomancy"
+	AddSpellSchool "magex hydromancy"
+	AddSpellSchool "magex transmutation"
+	AddSpellSchool "magex illusionism"
+	AddSpellSchool "magex necromancy"
+	AddSpellSchool "magex fell sorcery"
  }}, "🧛")
  
  
-OneTimeAbility("spell school", "gets random spell school.", { 
+MagExOneTimeAbility("magex_spell_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
- 	AddSpellSchool "luxomancy"
+ 	AddSpellSchool "magex toximancy"
+ 	AddSpellSchool "magex plaguemancy"
+ 	AddSpellSchool "magex wild sorcery"
+ 	AddSpellSchool "magex luxomancy"
 	AddSpellSchool "mage"
-	AddSpellSchool "electromancy"
-	AddSpellSchool "pyromancy"
-	AddSpellSchool "cryomancy"
-	AddSpellSchool "corossiomancy"
-	AddSpellSchool "umbramancy"
-	AddSpellSchool "geomancy"
-	AddSpellSchool "hydromancy"
-	AddSpellSchool "transmutation"
-	AddSpellSchool "illusionism"
-	AddSpellSchool "💀 necromancy"
+	AddSpellSchool "magex electromancy"
+	AddSpellSchool "magex pyromancy"
+	AddSpellSchool "magex cryomancy"
+	AddSpellSchool "magex corossiomancy"
+	AddSpellSchool "magex umbramancy"
+	AddSpellSchool "magex geomancy"
+	AddSpellSchool "magex hydromancy"
+	AddSpellSchool "magex transmutation"
+	AddSpellSchool "magex illusionism"
+	AddSpellSchool "magex necromancy"
+	AddSpellSchool "magex fell sorcery"
 	AddSpellSchool "dwarf"
  }}, "🧛")
  
-OneTimeAbility("spell school keeper", "gets random spell school.", { 
+MagExOneTimeAbility("magex_keeper_spell_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
- 	AddSpellSchool "luxomancy"
-	AddSpellSchool "electromancy"
-	AddSpellSchool "pyromancy"
-	AddSpellSchool "cryomancy"
-	AddSpellSchool "corossiomancy"
-	AddSpellSchool "umbramancy"
-	AddSpellSchool "geomancy"
-	AddSpellSchool "hydromancy"
-	AddSpellSchool "transmutation"
-	AddSpellSchool "illusionism"
-	AddSpellSchool "💀 necromancy"
+ 	AddSpellSchool "magex toximancy"
+ 	AddSpellSchool "magex plaguemancy"
+ 	AddSpellSchool "magex wild sorcery"
+ 	AddSpellSchool "magex luxomancy"
+	AddSpellSchool "magex electromancy"
+	AddSpellSchool "magex pyromancy"
+	AddSpellSchool "magex cryomancy"
+	AddSpellSchool "magex corossiomancy"
+	AddSpellSchool "magex umbramancy"
+	AddSpellSchool "magex geomancy"
+	AddSpellSchool "magex hydromancy"
+	AddSpellSchool "magex transmutation"
+	AddSpellSchool "magex illusionism"
+	AddSpellSchool "magex necromancy"
+	AddSpellSchool "magex fell sorcery"
 	AddSpellSchool "dwarf"
  }}, "🧛")
  
-OneTimeAbility("spell school sans necro", "gets random spell school.", { 
+MagExOneTimeAbility("magex_keeper_spell_school_sans_necro", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
- 	AddSpellSchool "umbramancy"
-	AddSpellSchool "umbramancy"
-	AddSpellSchool "umbramancy"
-	AddSpellSchool "luxomancy"
-	AddSpellSchool "luxomancy"
-	AddSpellSchool "illusionism"
-	AddSpellSchool "illusionism"
-	AddSpellSchool "cryomancy"
-	AddSpellSchool "cryomancy"
-	AddSpellSchool "corossiomancy"
-	AddSpellSchool "corossiomancy"
+ 	AddSpellSchool "magex toximancy"
+ 	AddSpellSchool "magex plaguemancy"
+ 	AddSpellSchool "magex toximancy"
+ 	AddSpellSchool "magex plaguemancy"
+ 	AddSpellSchool "magex toximancy"
+ 	AddSpellSchool "magex plaguemancy"
+ 	AddSpellSchool "magex wild sorcery"
+ 	AddSpellSchool "magex wild sorcery"
+ 	AddSpellSchool "magex umbramancy"
+	AddSpellSchool "magex umbramancy"
+	AddSpellSchool "magex umbramancy"
+	AddSpellSchool "magex luxomancy"
+	AddSpellSchool "magex luxomancy"
+	AddSpellSchool "magex illusionism"
+	AddSpellSchool "magex illusionism"
+	AddSpellSchool "magex cryomancy"
+	AddSpellSchool "magex cryomancy"
+	AddSpellSchool "magex corossiomancy"
+	AddSpellSchool "magex corossiomancy"
 	AddSpellSchool "mage"
-	AddSpellSchool "electromancy"
-	AddSpellSchool "pyromancy"
-	AddSpellSchool "geomancy"
-	AddSpellSchool "hydromancy"
-	AddSpellSchool "transmutation"
+	AddSpellSchool "magex electromancy"
+	AddSpellSchool "magex pyromancy"
+	AddSpellSchool "magex geomancy"
+	AddSpellSchool "magex hydromancy"
+	AddSpellSchool "magex transmutation"
+	AddSpellSchool "magex fell sorcery"
+	AddSpellSchool "magex fell sorcery"
 	AddSpellSchool "dwarf"
  }}, "🧛")
  
- OneTimeAbility("necro school", "gets random spell school.", { 
+ MagExOneTimeAbility("magex_necro_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
- 	AddSpellSchool "💀 necromancy"
-	AddSpellSchool "💀 necromancy"
-	AddSpellSchool "💀 necromancy"
+ 	AddSpellSchool "magex necromancy"
+	AddSpellSchool "magex necromancy"
+	AddSpellSchool "magex necromancy"
+ 	AddSpellSchool "magex toximancy"
+ 	AddSpellSchool "magex plaguemancy"
+ 	AddSpellSchool "magex toximancy"
+ 	AddSpellSchool "magex plaguemancy"
+ 	AddSpellSchool "magex toximancy"
+ 	AddSpellSchool "magex plaguemancy"
+	AddSpellSchool "magex fell sorcery"
+	AddSpellSchool "magex fell sorcery"
+	AddSpellSchool "magex fell sorcery"
 	AddSpellSchool "zombie mage"
  	AddSpellSchool "zombie mage"
 	AddSpellSchool "zombie mage"
-	AddSpellSchool "umbramancy"
-	AddSpellSchool "umbramancy"
-	AddSpellSchool "umbramancy"
-	AddSpellSchool "luxomancy"
-	AddSpellSchool "luxomancy"
-	AddSpellSchool "luxomancy"
-	AddSpellSchool "illusionism"
-	AddSpellSchool "illusionism"
+	AddSpellSchool "magex umbramancy"
+	AddSpellSchool "magex umbramancy"
+	AddSpellSchool "magex umbramancy"
+	AddSpellSchool "magex luxomancy"
+	AddSpellSchool "magex luxomancy"
+	AddSpellSchool "magex luxomancy"
+	AddSpellSchool "magex illusionism"
+	AddSpellSchool "magex illusionism"
 	AddSpellSchool "mage"
-	AddSpellSchool "electromancy"
-	AddSpellSchool "pyromancy"
-	AddSpellSchool "cryomancy"
-	AddSpellSchool "corossiomancy"
-	AddSpellSchool "geomancy"
-	AddSpellSchool "hydromancy"
-	AddSpellSchool "transmutation"
+ 	AddSpellSchool "magex wild sorcery"
+	AddSpellSchool "magex electromancy"
+	AddSpellSchool "magex pyromancy"
+	AddSpellSchool "magex cryomancy"
+	AddSpellSchool "magex corossiomancy"
+	AddSpellSchool "magex geomancy"
+	AddSpellSchool "magex hydromancy"
+	AddSpellSchool "magex transmutation"
 	AddSpellSchool "dwarf"
  }}, "🧛")
  
@@ -2266,7 +2959,7 @@ OneTimeAbility("spell school sans necro", "gets random spell school.", {
  "healing" modify
 { 
   symbol = "❤️"
-  effect = Filter Not LastingEffect NECROTIC_SATURATION Heal { FLESH }
+  effect = Filter Not LastingEffect MAGEX_NECROTIC_SATURATION Heal { FLESH }
   cooldown = {10 31}
   sound = SPELL_HEALING
 }
@@ -2274,7 +2967,7 @@ OneTimeAbility("spell school sans necro", "gets random spell school.", {
 {
   upgrade = "healing"
   symbol = "❤️"
-  effect = Name "advanced healing" Filter Not LastingEffect NECROTIC_SATURATION  Heal { FLESH }
+  effect = Name "advanced healing" Filter Not LastingEffect MAGEX_NECROTIC_SATURATION  Heal { FLESH }
   range = 1
   targetSelf = true
   cooldown = {10 31}
@@ -2284,7 +2977,7 @@ OneTimeAbility("spell school sans necro", "gets random spell school.", {
 {
   upgrade = "advanced healing"
   symbol = "❤️"
-  effect = Name "expert healing" Filter Not LastingEffect NECROTIC_SATURATION  Heal { FLESH }
+  effect = Name "expert healing" Filter Not LastingEffect MAGEX_NECROTIC_SATURATION  Heal { FLESH }
   targetSelf = true
   range = 4
   cooldown = {10 31}
@@ -2293,7 +2986,7 @@ OneTimeAbility("spell school sans necro", "gets random spell school.", {
 "group healing" modify
 {
   symbol = "💕"
-  effect = Name "group healing" Area 2 Filter Not Enemy {Filter Not LastingEffect NECROTIC_SATURATION Heal { FLESH }}
+  effect = Name "group healing" Area 2 Filter Not Enemy {Filter Not LastingEffect MAGEX_NECROTIC_SATURATION Heal { FLESH }}
   cooldown = {25 51}
   sound = SPELL_HEALING
 }
