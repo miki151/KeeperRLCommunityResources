@@ -2,7 +2,7 @@
     "melee fighter" {"sword"}
         Description "Increases max melee training level by 3."
         {
-          IncreaseMaxLevel MELEE 3
+          IncreaseMaxLevel  DAMAGE  3
         }
 
     "archer" {"bow"}
@@ -10,17 +10,17 @@
         {
           Filter Not CreatureFlag "is_archer" IncreaseAttr RANGED_DAMAGE 14
           SetCreatureFlag "is_archer" true
-          IncreaseMaxLevel ARCHERY 3
+          IncreaseMaxLevel RANGED_DAMAGE  3
           AddSpellSchool "archer"
         }
     
     "spellcaster" {"iron_staff"}
         Description "Increases max spell training level by 3, adds 14 spell damage when applied for the first time."
         {
-          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr SPELL_DAMAGE 14
+          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr  SPELL_DAMAGE 14
           SetCreatureFlag "is_spellcaster" true
-          IncreaseMaxLevel SPELL 3
-          AddSpellSchool "deep"
+          IncreaseMaxLevel  SPELL_DAMAGE  3
+          AddSpellSchool "tdd_deep"
         }
     
     "artisan" {"forge"}
@@ -37,8 +37,8 @@
     "melee fighter" {"sword"}
         Description "Increases max melee training level by 3."
         {
-          IncreaseMaxLevel MELEE 3
-          AddSpellSchool "dark fighter"
+          IncreaseMaxLevel  DAMAGE  3
+          AddSpellSchool "tdd_dark_fighter"
           Filter Gender MALE SetViewId {"dark_orc"}
         }
 
@@ -47,9 +47,9 @@
         {
           Filter Not CreatureFlag "is_archer" IncreaseAttr RANGED_DAMAGE 14
           SetCreatureFlag "is_archer" true
-          IncreaseMaxLevel MELEE 1
-          IncreaseMaxLevel ARCHERY 3
-          IncreaseMaxLevel SPELL 2
+          IncreaseMaxLevel  DAMAGE  1
+          IncreaseMaxLevel RANGED_DAMAGE  3
+          IncreaseMaxLevel  SPELL_DAMAGE  2
           SetViewId {"dark_orcscout"}
           AddSpellSchool "archer"
           AddSpellSchool "illusion"
@@ -59,10 +59,10 @@
     "spellcaster" {"iron_staff"}
         Description "Increases max spell training level by 3, adds 14 spell damage when applied for the first time."
         {
-          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr SPELL_DAMAGE 14
+          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr  SPELL_DAMAGE 14
           SetCreatureFlag "is_spellcaster" true
-          IncreaseMaxLevel SPELL 3
-          AddSpellSchool "deep"
+          IncreaseMaxLevel  SPELL_DAMAGE  3
+          AddSpellSchool "tdd_deep"
           AddSpellSchool "fire"
           Filter Gender MALE SetViewId {"dark_orcshaman"}
 
@@ -83,8 +83,8 @@
     "dame" {"mushroom6"}
         Description "Matango grows into a dame."
         {
-          IncreaseMaxLevel MELEE 3
-          AddSpellSchool "matango dame"
+          IncreaseMaxLevel  DAMAGE  3
+          AddSpellSchool "tdd_matango_dame"
         }
 
     "driad" {"mushroom5"}
@@ -92,69 +92,69 @@
         {
           Filter Not CreatureFlag "is_archer" IncreaseAttr RANGED_DAMAGE 14
           SetCreatureFlag "is_archer" true
-          IncreaseMaxLevel ARCHERY 3
-          AddSpellSchool "matango driad"
+          IncreaseMaxLevel RANGED_DAMAGE  3
+          AddSpellSchool "tdd_matango_driad"
         }
     
       "mage" {"mushroom4"}
         Description "Matango grows into a mage."
         {
-          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr SPELL_DAMAGE 14
+          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr  SPELL_DAMAGE 14
           SetCreatureFlag "is_spellcaster" true
-          IncreaseMaxLevel SPELL 3
-          AddSpellSchool "matango mage"
+          IncreaseMaxLevel  SPELL_DAMAGE  3
+          AddSpellSchool "tdd_matango_mage"
         }
         
       "priest" {"mushroom3"}
         Description "Matango grows into a priest."
         {
-          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr SPELL_DAMAGE 14
+          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr  SPELL_DAMAGE 14
           SetCreatureFlag "is_spellcaster" true
-          IncreaseMaxLevel SPELL 3
-          AddSpellSchool "matango priest"
+          IncreaseMaxLevel  SPELL_DAMAGE  3
+          AddSpellSchool "tdd_matango_priest"
         }
 
       "priestess" {"mushroom2"}
         Description "Matango grows into a priestess."
         {
-          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr SPELL_DAMAGE 14
+          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr  SPELL_DAMAGE 14
           SetCreatureFlag "is_spellcaster" true
-          IncreaseMaxLevel SPELL 3
-          AddSpellSchool "matango priestess"
+          IncreaseMaxLevel  SPELL_DAMAGE  3
+          AddSpellSchool "tdd_matango_priestess"
         }
 
     "elemental" {"mushroom1"}
         Description "Matango grows into an elemental."
         {
-          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr SPELL_DAMAGE 14
+          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr  SPELL_DAMAGE 14
           SetCreatureFlag "is_spellcaster" true
-          IncreaseMaxLevel SPELL 3
-          AddSpellSchool "matango elemental"
+          IncreaseMaxLevel  SPELL_DAMAGE  3
+          AddSpellSchool "tdd_matango_elemental"
         }
 }
 "cult" {
     "demon berserker" {"battle_axe"}
         Description "child learns how to be a berserker."
         {
-          AddSpellSchool "berserker school"
+          AddSpellSchool "tdd_berserker_school"
         }
 
     "demon knight" {"sword"}
         Description "childe learns how to be a knight."
         {
-          AddSpellSchool "knight school"
+          AddSpellSchool "tdd_knight_school"
         }
     
       "demon witch" {"iron_staff"}
         Description "child learns how to be a witch."
         {
-          AddSpellSchool "witch school"
+          AddSpellSchool "tdd_witch_school"
         }
         
       "demon smith" {"war_hammer"}
         Description "child learns how to be a smith."
         {
-          AddSpellSchool "smith school"
+          AddSpellSchool "tdd_smith_school"
         }
 
 }
@@ -162,7 +162,7 @@
     "melee fighter" {"sword"}
         Description "Increases max melee training level by 3."
         {
-          IncreaseMaxLevel MELEE 3
+          IncreaseMaxLevel  DAMAGE  3
         }
 
     "archer" {"bow"}
@@ -170,15 +170,15 @@
         {
           Filter Not CreatureFlag "is_archer" IncreaseAttr RANGED_DAMAGE 14
           SetCreatureFlag "is_archer" true
-          IncreaseMaxLevel ARCHERY 3
+          IncreaseMaxLevel RANGED_DAMAGE  3
         }
     
     "spellcaster" {"iron_staff"}
         Description "Increases max spell training level by 3, adds 14 spell damage when applied for the first time."
         {
-          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr SPELL_DAMAGE 14
+          Filter Not CreatureFlag "is_spellcaster" IncreaseAttr  SPELL_DAMAGE 14
           SetCreatureFlag "is_spellcaster" true
-          IncreaseMaxLevel SPELL 3
+          IncreaseMaxLevel  SPELL_DAMAGE  3
         }
     
     "artisan" {"forge"}

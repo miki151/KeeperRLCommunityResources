@@ -1,0 +1,188 @@
+"wizchtech_shoot_blaster"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(2) Name "shoot blaster" Description "Shoots from blaster"
+      TryNoFriendlyFire(
+        {
+		 Chain  {
+          CreatureMessage {"are hit by the blast" "is hit by the blast"}
+          Damage RANGED_DAMAGE SHOOT
+		  Acid{30}
+		        }
+        },
+        CreatureMessage {"are spared by the blast" "is spared by the blast"}
+      )
+  range = 10
+  cooldown = 4
+  maxHits = 1
+  projectileViewId = {"wizchtech_blast"}
+  message = "shoot from blaster" "shoots from blaster"
+  type = ABILITY
+}
+
+"wizchtech_shoot_inferno_blaster"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(2) Name "shoot inferno blaster with explosive missile" Description "Shoots from inferno blaster explosive missile"
+      TryNoFriendlyFire(
+        {
+		 Chain  {
+		 Area 1 {
+          CreatureMessage {"are hit by the blast" "is hit by the blast"}
+          Damage RANGED_DAMAGE SHOOT
+		  Fire{30}}
+		        }
+        },
+        CreatureMessage {"are spared by the blast" "is spared by the blast"}
+      )
+  range = 10
+  cooldown = 4
+  maxHits = 2
+  projectileViewId = {"wizchtech_blast"}
+  message = "shoot from blaster" "shoots from blaster"
+  type = ABILITY
+}
+
+"wizchtech_surgery"
+{
+  symbol = "❤️"
+  effect = Name "surgery" Chain {
+    Heal { FLESH } 
+    RegrowBodyPart 10
+  }
+  range = 1
+  targetSelf = true
+  cooldown = 50
+  sound = SPELL_HEALING
+}
+
+"wiztech_shoot_red_dragon_blaster"
+{
+  symbol = "🐲"
+  effect = Name "shoot red dragon blaster" Description "Shoots from blaster"
+      TryNoFriendlyFire(
+        {
+		 Chain  {
+          CreatureMessage {"are hit by the blast" "is hit by the blast"}
+          Damage FIRE_DAMAGE SHOOT
+		  Fire{30}
+		        }
+        },
+        CreatureMessage {"are spared by the blast" "is spared by the blast"}
+      )
+  fx = {FLAMETHROWER ColorId LIGHT_RED}
+  range = 4
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+  message = "breathe fire!" "breathes fire!"
+}
+
+"wiztech_shoot_green_dragon_blaster"
+{
+  symbol = "🐲"
+  effect = Name "shoot green dragon blaster" Description "Shoots from blaster"
+      TryNoFriendlyFire(
+        {
+		 Chain  {
+          CreatureMessage {"are hit by the blast" "is hit by the blast"}
+          Damage RANGED_DAMAGE SHOOT
+		  EmitGas "POISON_GAS" 0.5
+		        }
+        },
+        CreatureMessage {"are spared by the blast" "is spared by the blast"}
+      )
+  fx = {FLAMETHROWER ColorId GREEN}
+  range = 4
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+  message = "breathe poison!" "breathes poison!"
+}
+
+"wiztech_shoot_black_dragon_blaster"
+{
+  symbol = "🐲"
+  effect = Name "shoot black dragon blaster" Description "Shoots from blaster"
+      TryNoFriendlyFire(
+        {
+		 Chain  {
+          CreatureMessage {"are hit by the blast" "is hit by the blast"}
+          Damage COLD_DAMAGE SHOOT
+		  Ice{30} }
+        },
+        CreatureMessage {"are spared by the blast" "is spared by the blast"}
+      )
+  fx = {FLAMETHROWER ColorId WHITE}
+  range = 4
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+  message = "breathe black fog!" "breathes black fog!"
+}
+
+"wiztech_shoot_yellow_dragon_blaster"
+{
+  symbol = "🐲"
+  effect = Name "shoot yellow dragon blaster" Description "Shoots from blaster"
+      TryNoFriendlyFire(
+        {
+		 Chain  {
+          CreatureMessage {"are hit by the blast" "is hit by the blast"}
+          Damage ACID_DAMAGE SHOOT
+		  Acid{30}
+		        }
+        },
+        CreatureMessage {"are spared by the blast" "is spared by the blast"}
+      )
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+  message = "breathe acid!" "breathes acid!"
+}
+
+"wiztech_accident_puke"
+{
+  symbol = "🌫"
+  effect = Name "puke" Chain {Acid {25} Lasting PLAGUE}
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = 5
+  message = "spit acid!" "spits acid!"
+}
+
+"wiztech_adrenaline"
+{
+  symbol = "🏃"
+  effect = Chain {Lasting 40 SPEED Lasting 40 DAM_BONUS}
+  cooldown = {30 61}
+  sound = SPELL_SPEED_SELF
+}
+
+"wiztech_puke"
+{
+  symbol = "🌫"
+  effect = Name "acidic puke" Chain {Acid {25} Damage ACID_DAMAGE SHOOT}
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = 5
+  message = "spit acid!" "spits acid!"
+}
+
+"wiztech_flame_puke"
+{
+  symbol = "🌫"
+  effect = Name "acidic puke" Chain {Fire {25} Damage FIRE_DAMAGE SHOOT}
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = 5
+  message = "spit burning liquid!" "spits burning liquid!"
+}
+
+"wiztech_cold_puke"
+{
+  symbol = "🌫"
+  effect = Name "acidic puke" Chain {Ice {25} Damage COLD_DAMAGE SHOOT}
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = 5
+  message = "spit freezing liquid!" "spits freezing liquid!"
+}

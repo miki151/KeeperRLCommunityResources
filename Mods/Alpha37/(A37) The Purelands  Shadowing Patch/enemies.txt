@@ -1,0 +1,334 @@
+"swish_tiki_small"
+{
+  biome = "swish_jungle" 
+  settlement = {
+    type = Builtin COTTAGE "MUD"
+    crops = Crops()
+    tribe = ANT
+    inhabitants = {
+      fighters = {
+        count = {5 8}
+        all = { 
+          2 "swish_tiki_monster"
+          1 "swish_tiki_blowdart"
+              }
+      }
+    }
+    race = "Groks"
+    furniture = "roomFurniture"
+    outsideFeatures = "villageOutside"
+  }
+}
+"swish_tiki_capital"
+{
+  biome = "swish_jungle" 
+  settlement = {
+    type = Predefined { "castle1" "MUD" } 
+    crops = Crops()
+    tribe = ANT
+    inhabitants = {
+      leader = { { "swish_tiki_boss" } }
+      fighters = {
+        count = {15 20}
+        all = { 
+          2 "swish_tiki_monster"
+          1 "swish_tiki_blowdart"
+              }
+      }
+    }
+    race = "Groks"
+    furniture = "roomFurniture"
+    outsideFeatures = "villageOutside"
+  }
+}
+"sloth_mother"
+{
+  settlement = {
+    type = Builtin FOREST "WOOD"
+    crops = none
+    inhabitants = {
+      leader = {{"swish_sloth"}}
+      fighters = {
+        count = {1 2}
+        all = {
+          1 "swish_sloth_juvenile"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "sloths"
+  }
+}
+"swish_dragon_closed"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = { { "RED_DRAGON" } }
+    }
+    tribe = MONSTER
+    race = "dragon"
+    shopItems = {{16 20} "dragonCave"}
+    dontConnectCave = true
+    surroundWithResources = 10
+    furniture = "swish_dragoncave"
+  }
+}
+"swish_newts_closed"
+{
+  settlement = {
+    type = Builtin MINETOWN "DUNGEON"
+    inhabitants = {
+      leader = { { "swish_fire_newt" } }
+      fighters = {
+        count = {6 9}
+        all = {
+          1 "swish_fire_newt"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "fire newts"
+    dontConnectCave = true
+    closeToPlayer = true
+    surroundWithResources = 4
+  }
+}
+"swish_firecrabs_closed"
+{
+  settlement = {
+    type = Builtin MINETOWN "DUNGEON"
+    inhabitants = {
+      leader = { { "swish_infernite_hermit" } }
+      fighters = {
+        count = {3 4}
+        all = {
+          1 "swish_infernite_hermit"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "fire crabs"
+    dontConnectCave = true
+    closeToPlayer = true
+    surroundWithResources = 4
+  }
+}
+"swish_samurai_village"
+{
+  settlement = {
+    type = Builtin VILLAGE "WOOD"
+    crops = Crops()
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "swish_samurai_civ" } }
+      fighters = {
+        count = {3 6}
+        all = {
+          1 "swish_samurai_civ"
+          1 "swish_samurai_civ2"
+          1 "swish_samurai_peasant"
+        }
+      }
+      civilians = {
+        count = {7 10}
+        all = {
+          2 "swish_samurai_peasantf"
+          2 "swish_samurai_peasant"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {
+      { "gold" 50 "TREASURE_CHEST" }
+    }
+    furniture = "roomFurniture"
+  }
+  config = {
+    spawnGhosts = 4
+    ghostProb = 0.1
+  }
+}
+"swish_samurai_daimyo"
+{
+  biome = "swish_cherry_blossom" 
+  settlement = {
+    type = Predefined { "castle1" "WOOD" } 
+    crops = Crops()
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "swish_samurai_daimyo" } }
+      fighters = {
+        count = {10 15}
+        all = {
+          1 "swish_samurai_heavy"
+          2 "swish_samurai"
+          1 "swish_samurai_civ"
+          1 "swish_samurai_civ2"
+        }
+      }
+      civilians = {
+        count = {15 20}
+        all = {
+          2 "swish_samurai_peasantf"
+          2 "swish_samurai_peasant"
+          1 "swish_samurai_female"
+          1 "swish_samurai_female2"
+          1 "swish_samurai_female3"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {
+      { "gold" 150 "TREASURE_CHEST" }
+    }
+    furniture = "roomFurniture"
+  }
+  behaviour = {
+    minPopulation = 12
+    minTeamSize = 10
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  config = {
+    spawnGhosts = 4
+    ghostProb = 0.1
+  }
+}
+"swish_samurai_shogan"
+{
+  biome = "swish_cherry_blossom" 
+  settlement = {
+    type = Predefined { "castle1" "BRICK" }  
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "swish_samurai_shogan" } }
+      fighters = {
+        count = {20 25}
+        all = {
+          1 "swish_samurai_daimyo"
+          2 "swish_samurai_heavy"
+          3 "swish_samurai"
+          2 "swish_samurai_civ"
+          2 "swish_samurai_civ2"
+        }
+      }
+      civilians = {
+        count = {20 25}
+        all = {
+          2 "swish_samurai_female"
+          2 "swish_samurai_female2"
+          2 "swish_samurai_female3"
+          2 "swish_samurai_peasantf"
+          2 "swish_samurai_peasant"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 500 "TREASURE_CHEST" }}
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  behaviour = {
+    minPopulation = 12
+    minTeamSize = 10
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  config = {
+    spawnGhosts = 4
+    ghostProb = 0.1
+  }
+}
+"swish_kobold_village"
+{
+  biome = "swish_volcanic" 
+  settlement = {
+    type = Builtin COTTAGE "MUD"
+    crops = none
+    tribe = ANT
+    inhabitants = {
+      leader = { { "ECHI_CHIEFTEN" } }
+      fighters = {
+        count = {7 9}
+        all = { 
+          1 "ECHI_KOBOLD"
+              }
+      }
+    }
+    race = "Kobold"
+    furniture = "roomFurniture"
+    outsideFeatures = "villageOutside"
+  }
+}
+"swish_adox_golems"
+{
+  settlement = {
+    type = Builtin VAULT "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {8 9}
+        all = { 1 "swish_adoxium_golem" }
+      }
+    }
+    tribe = ANT
+    race = "adoxium golems"
+    dontConnectCave = true
+    surroundWithResources = 2
+    extraResources = "ADOXIUM_ORE"
+  }
+}
+"swish_hell_gate"
+{
+  biome = "swish_hell" 
+  settlement = {
+    type = Builtin EMPTY "BRICK"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "swish_hell_gate" } }
+      fighters = {
+        count = {8 11}
+        all = { 
+          9 "swish_ripper_demon"
+          6 "swish_slasher_demon"
+          1 "swish_spiked_horrorPL"
+              }
+      }
+    }
+    dontBuildRoad = true
+  }
+}

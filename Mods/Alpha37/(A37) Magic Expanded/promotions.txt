@@ -2,7 +2,7 @@
     "melee fighter" {"sword"}
         Description "Increases max melee training level by 3."
         {
-          IncreaseMaxLevel MELEE 3
+          IncreaseMaxLevel DAMAGE 3
           Filter Gender MALE SetViewId {"dwarf_fighter"}
           Filter Gender FEMALE SetViewId {"dwarf_fighter_f"}
         }
@@ -12,7 +12,7 @@
         {
           Filter Not CreatureFlag "is_archer" IncreaseAttr RANGED_DAMAGE 14
           SetCreatureFlag "is_archer" true
-          IncreaseMaxLevel ARCHERY 3
+          IncreaseMaxLevel RANGED_DAMAGE 3
           SetViewId {"dwarf_crossbowman"}
           AddSpellSchool "archer"
           Filter Gender MALE SetViewId {"dwarf_crossbowman"}
@@ -27,7 +27,7 @@
 		  Filter CreatureFlag "is_spellcaster" SetCreatureFlag "1 upgrade dwarf" true
           Filter Not CreatureFlag "is_spellcaster" IncreaseAttr SPELL_DAMAGE 14
           SetCreatureFlag "is_spellcaster" true
-          IncreaseMaxLevel SPELL 3
+          IncreaseMaxLevel SPELL_DAMAGE 3
           AddSpellSchool "dwarf"
           Filter Gender MALE SetViewId {"dwarf_mage"}
           Filter Gender FEMALE SetViewId {"dwarf_mage_f"}

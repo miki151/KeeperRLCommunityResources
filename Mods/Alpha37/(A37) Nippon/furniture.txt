@@ -32,7 +32,7 @@
   canHideHere = true
   strength = 80
   maxTraining = {
-    MELEE 3
+    DAMAGE 3
   }
   requiresLight = true
   destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
@@ -48,7 +48,7 @@
   strength = 80
   upgrade = "NIPPON_TRAINING_WOOD"
   maxTraining = {
-    MELEE 7
+    DAMAGE 7
   }
   requiresLight = true
   destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
@@ -63,7 +63,7 @@
   strength = 80
   upgrade = "NIPPON_TRAINING_IRON"
   maxTraining = {
-    MELEE 99
+    DAMAGE 99
   }
   requiresLight = true
   destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
@@ -80,7 +80,7 @@
   fire = 70
   strength = 50
   maxTraining = {
-    SPELL 3
+    SPELL_DAMAGE 3
   }
   requiresLight = true
   destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
@@ -97,7 +97,7 @@
   strength = 50
   upgrade = "NIPPON_BOOKCASE_WOOD"
   maxTraining = {
-    SPELL 7
+    SPELL_DAMAGE 7
   }
   requiresLight = true
   destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
@@ -114,10 +114,76 @@
   strength = 50
   upgrade = "NIPPON_BOOKCASE_IRON"
   maxTraining = {
-    SPELL 99
+    SPELL_DAMAGE 99
   }
   requiresLight = true
   destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"NIPPON_CALIGRAPHY_TRAINING"
+{
+  name = "calligraphy practice table"
+  viewId = { "jp_caligraphy_training_table" }
+  blockMovement = true
+  usageType = BuiltinUsageId TRAIN
+  fire = 50
+  canHideHere = true
+  strength = 80
+  maxTraining = {
+    TALISMAN 99
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_CUSE_TRAINING"
+{
+  name = "cursed tree"
+  viewId = { "jp_tree_curse" }
+  blockMovement = true
+  usageType = BuiltinUsageId TRAIN
+  canHideHere = true
+  strength = 80
+  maxTraining = {
+    TALISMAN 99
+  }
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  canBuildOutsideOfTerritory = true
+  fire = 100
+  itemDrop = {{{{"WoodPlank"} 1 { 8 14 }}}}
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  summonedElement = "ENT"
+  tryDestroyFX = { WOOD_SPLINTERS }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_ICE_SCULPTURE"
+{
+  name = "ice sculpture"
+  viewId = { "jp_ice_scuplture" }
+  blockMovement = true
+  usageType = BuiltinUsageId TRAIN
+  canHideHere = true
+  strength = 80
+  maxTraining = {
+    COLD_DAMAGE 99
+  }
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  canBuildOutsideOfTerritory = true
+  fire = 1
+  summonedElement = "ICE_DEMON"
+  requiresLight = true
+  destroyFX = { ROCK_CLOUD Rgb 112 178 178 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 112 178 178 255 }
 }
 
 "NIPPON_TORII"
@@ -234,6 +300,14 @@
   tryDestroyFX = { WOOD_SPLINTERS }
 }
 
+"NIPPON_RED_SPIDER_LILY"
+{
+  name = "flower"
+  viewId = { "jp_red_spider_lilly" }
+  canSilentlyReplace = true
+  removeInstantly = true
+}
+
 "NIPPON_BUDDHA_STATUE_GOLD"
 {
   name = "gold statue"
@@ -269,26 +343,27 @@
     CreatureMessage { "open the chest" "opens the chest"}
     CreatureMessage { "find some stuff inside" "finds some stuff inside"}
     ChooseRandom {
-      DropItems {"GoldPiece"} 25
-      DropItems {"GoldPiece"} 50
-      DropItems {"GoldPiece"} 75
+      DropItems {"GoldPiece"} 5
+      DropItems {"GoldPiece"} 10
+      DropItems {"GoldPiece"} 15
     }
     ChooseRandom {
+      DropItems {"WoodPlank"} 5
       DropItems {"WoodPlank"} 10
       DropItems {"WoodPlank"} 15
-      DropItems {"WoodPlank"} 20
     }
     ChooseRandom {
+      DropItems {"IronOre"} 5
       DropItems {"IronOre"} 10
       DropItems {"IronOre"} 15
-      DropItems {"IronOre"} 20
     }
     ChooseRandom {
+      DropItems {"Rock"} 5
       DropItems {"Rock"} 10
       DropItems {"Rock"} 15
-      DropItems {"Rock"} 20
     }
     RemoveFurniture "NIPPON_RESOURCE_CHEST"
+    PlaceFurniture "OPENED_CHEST"
   }
   fire = 50
   strength = 30
@@ -304,16 +379,12 @@
     CreatureMessage { "open the chest" "opens the chest"}
     CreatureMessage { "find some stuff inside" "finds some stuff inside"}
     ChooseRandom {
-      DropItems {"GoldPiece"} 75
-      DropItems {"GoldPiece"} 100
-      DropItems {"GoldPiece"} 125
-    }
-    ChooseRandom {
       DropItems {"NIPPON_PURIFICATION_TALISMAN"} 1
       DropItems {"NIPPON_HOLD_TALISMAN"} 1
       DropItems {"NIPPON_RESTORATION_TALISMAN"} 1
     }
     RemoveFurniture "NIPPON_TALISMAN_CHEST"
+    PlaceFurniture "OPENED_CHEST"
   }
   fire = 50
   strength = 30
@@ -344,10 +415,32 @@
       DropItems {"Nippon_Bokken"} 1
     }
     RemoveFurniture "NIPPON_WEAPON_CHEST"
+    PlaceFurniture "OPENED_CHEST"
   }
   fire = 50
   strength = 30
   destroyedRemains = "OPENED_CHEST"
+}
+
+"NIPPON_SWORDSMITH_CHEST" inherit "NIPPON_WEAPON_CHEST"
+{
+  usageType = UsageEffect "open chest" {
+    CreatureMessage { "open the chest" "opens the chest"}
+    CreatureMessage { "find an item inside" "finds an item inside"}
+    ChooseRandom {
+      DropItems {Glyph WEAPON ItemAttrBonus DAMAGE 2} 1
+      DropItems {Glyph WEAPON ItemAttrBonus DAMAGE 3} 1
+      DropItems {Glyph WEAPON ItemAttrBonus DAMAGE 4} 1
+      DropItems {Glyph WEAPON ItemAttrBonus DAMAGE 5} 1
+      DropItems {Glyph WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE}} 1
+	  DropItems {Glyph WEAPON SpecialAttr DAMAGE 5 Name "at night" Night} 1
+	  DropItems {Glyph WEAPON VictimEffect 0.3 Lasting FROZEN } 1
+	  DropItems {Glyph WEAPON VictimEffect 0.3 Lasting 50 BLEEDING } 1
+	  DropItems {Glyph WEAPON VictimEffect 0.3 Acid{30}} 1
+    }
+    RemoveFurniture "NIPPON_SWORDSMITH_CHEST"
+    PlaceFurniture "OPENED_CHEST"
+  }
 }
 
 "NIPPON_LANTERN_PRINCESS"
@@ -360,4 +453,26 @@
     Area 4 Filter Enemy Lasting 10 NIPPON_LOW_MORALE
     Area 4 Filter Not Enemy Lasting 10 HIGH_MORALE
   }
+}
+
+"NIPPON_BANDIT_BED"
+{
+  name = "bandit bed"
+  viewId = { "jp_bandit_bed" }
+  usageType = UsageEffect "sleep in bed" Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  fire = 50
+  strength = 40
+  bedType = BED
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_SHRINE_STAIRS"
+{
+  viewId = { "jp_shrine" }
+  name = "shrine"
+  canHideHere = true
+  constructMessage = none
+  usageType = UsageEffect "use portal" {Stairs Fx { TELEPORT_OUT }}
 }

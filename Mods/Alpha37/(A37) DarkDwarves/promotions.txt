@@ -1,9 +1,9 @@
-"dark dwarf" {
+"DD_DARK_DWARF" {
     "melee fighter" {"sword"}
         Description "Increases max melee training level by 3."
         {
 		  AddSpellSchool "fighter"
-          IncreaseMaxLevel MELEE 3
+          IncreaseMaxLevel DAMAGE  3
           Filter Gender MALE SetViewId {"dark_dwarf_fighter_m"}
           Filter Gender FEMALE SetViewId {"dark_dwarf_fighter_f"}
         }
@@ -13,7 +13,7 @@
         {
           Filter Not CreatureFlag "is_archer" IncreaseAttr RANGED_DAMAGE 14
           SetCreatureFlag "is_archer" true
-          IncreaseMaxLevel ARCHERY 3
+          IncreaseMaxLevel RANGED_DAMAGE 3
           AddSpellSchool "archer"
           Filter Gender MALE SetViewId {"dark_dwarf_crossbowman_m"}
           Filter Gender FEMALE SetViewId {"dark_dwarf_crossbowman_f"}
@@ -27,8 +27,8 @@
 		  IncreaseAttr FIRE_DAMAGE 14
 		  }
           SetCreatureFlag "is_spellcaster" true
-          IncreaseMaxLevel SPELL 3
-          AddSpellSchool "dark dwarf"
+          IncreaseMaxLevel SPELL_DAMAGE 3
+          AddSpellSchool "DD_DARK_DWARF"
           Filter Gender MALE SetViewId {"dark_dwarf_mage_m"}
           Filter Gender FEMALE SetViewId {"dark_dwarf_mage_f"}
         }

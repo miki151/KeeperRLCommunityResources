@@ -1,12 +1,12 @@
 Def TomeSpellLevel ()
 {
 Filter Not CreatureFlag "tome_training" {
-					    IncreaseMaxLevel SPELL 3
+					    IncreaseMaxLevel SPELL_DAMAGE 3
 						IncreaseAttr SPELL_DAMAGE 2
 						SetCreatureFlag "tome_training" true								
 						}
 Filter CreatureFlag "tome_training" {
-                        Chance 0.05 IncreaseMaxLevel SPELL 1
+                        Chance 0.05 IncreaseMaxLevel SPELL_DAMAGE 1
 						Chance 0.05 IncreaseAttr SPELL_DAMAGE 1
 					    Chance 0.05 IncreaseAttr SPELL_SPEED 1					
 						}
@@ -44,7 +44,7 @@ End
     weight = 0.3
     effect = { 
 			   TomeSpellLevel ()
-			   AddSpellSchool "elementalist"
+			   AddSpellSchool "LT_ELEMENTALIST"
 			   AddCompanion 5 false SPELL_DAMAGE 0.1 { "FIRE_ELEMENTAL" "AIR_ELEMENTAL" "WATER_ELEMENTAL" "EARTH_ELEMENTAL" }}
     price = 100
     burnTime = 1
@@ -103,7 +103,7 @@ End
     weight = 0.3
     effect = { 
 			   TomeSpellLevel ()
-			   AddSpellSchool "witch" }
+			   AddSpellSchool "LT_WITCH" }
     price = 100
     burnTime = 1
     uses = 1
@@ -218,7 +218,7 @@ End
     weight = 0.3
     effect = { 
 			   TomeSpellLevel ()
-			   AddSpellSchool "Priest"}
+			   AddSpellSchool "LT_PRIEST"}
     price = 100
     burnTime = 1
     uses = 1
@@ -237,7 +237,7 @@ End
     weight = 0.3
     effect = { 
 			   TomeSpellLevel ()
-			   AddSpellSchool "Shaman"
+			   AddSpellSchool "LT_SHAMAN"
 			   AddCompanion 7 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
     price = 100
     burnTime = 1
@@ -257,7 +257,7 @@ End
     weight = 0.3
     effect = { 
 			   TomeSpellLevel ()
-			   AddSpellSchool "Sorcerer"}
+			   AddSpellSchool "LT_SORCERER"}
     price = 100
     burnTime = 1
     uses = 1
@@ -276,7 +276,7 @@ End
     weight = 0.3
     effect = { 
 			   TomeSpellLevel ()
-			   AddSpellSchool "Elf Lord"}
+			   AddSpellSchool "LT_ELF_LORD"}
     price = 100
     burnTime = 1
     uses = 1
@@ -295,7 +295,7 @@ End
     weight = 0.3
     effect = { 
 			   TomeSpellLevel ()
-			   AddSpellSchool "Adoxie Priest"}
+			   AddSpellSchool "LT_ADOXIE_PRIEST"}
     price = 100
     burnTime = 1
     uses = 1

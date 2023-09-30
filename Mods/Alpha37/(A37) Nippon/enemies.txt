@@ -6,7 +6,7 @@
     inhabitants = {
       leader = {{"NIPPON_PESEANT"}}
       fighters = {
-        count = {2 4}
+        count = {4 6}
         all = {
           1 "NIPPON_PESEANT"
         }
@@ -35,9 +35,9 @@
   }
 }
 
-
 "NIPPON_BUDDHIST_GOOD"
 {
+  biome = "GRASSLAND_JAPAN"
   settlement = {
     type = RandomLayout { "nippon_buddhist" { 25 25 } "nippon_shrine"}
     tribe = HUMAN
@@ -58,7 +58,7 @@
       }
     }
     locationNameGen = "TOWN"
-    race = "humans"
+    race = "budhists"
     stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
   }
   config = {
@@ -99,5 +99,383 @@
       frequency = 1
     }
   }
+}
+
+"NIPPON_BUDDHIST_EVIL"
+{
+  biome = "GRASSLAND_JAPAN"
+  settlement = {
+    type = RandomLayout { "nippon_buddhist" { 25 25 } "nippon_shrine"}
+    tribe = DARK_ELF
+    inhabitants = {
+      leader = { { "NIPPON_BURADDOMONKU_LEADER" } }
+      fighters = {
+        count = {6 9}
+        all = {
+          1 "NIPPON_BURADDOMONKU"
+        }
+      }
+      civilians = {
+        count = {2 5}
+        uniques = { "HORSE" }
+        all = {
+          1 "NIPPON_MONK"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "budhists"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 26
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 7
+    minTeamSize = 10
+    ambushChance = 0.05
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"NIPPON_BURADDOMONKU"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"NIPPON_MONK"}
+      traits = {}
+      frequency = 1
+    }
+  }
+}
+
+"NIPPON_SWORDSMITH"
+{
+  settlement = {
+    type = RandomLayout { "blacksmith" { 8 12 } "blacksmith"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "NIPPON_SWORDSMITH" } }
+      fighters = {
+        count = {2 5}
+        all = {
+          1 "NIPPON_ASHIGARU"
+          1 "NIPPON_ASHIGARU_ARCHER"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    furniture = "forge"
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = DOWN
+    levels = {
+      { ExtraEnemy { "NIPPON_SWORDSMITH_CELLAR" {1} } {10 10} BASIC }
+    }
+  }
+}
+
+"NIPPON_EVIL_SWORDSMITH"
+{
+  settlement = {
+    type = RandomLayout { "blacksmith" { 8 12 } "blacksmith"}
+    tribe = DARK_ELF
+    inhabitants = {
+      leader = { { "NIPPON_MAD_SWORDSMITH" } }
+      fighters = {
+        count = {4 8}
+        all = {
+          1 "JP_EVIL_SPIRIT"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    furniture = "forge"
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = DOWN
+    levels = {
+      { ExtraEnemy { "NIPPON_SWORDSMITH_CELLAR" {1} } {10 10} BASIC }
+    }
+  }
+}
+
+"NIPPON_SWORDSMITH_CELLAR"
+{
+  settlement = {
+    type = RandomLayout { "blacksmith_cellar" { 4 4 } "nippon_swordsmith"}
+    tribe = HUMAN
+  }
+}
+
+"NIPPON_DIVINE_REALM_ENTRY" inherit "ELEMENTALIST_ENTRY"
+{
+  settlement = append {
+    type = Builtin TOWER "NIPPON_SHRINE"
+  }
+}
+
+"NIPPON_DIVINE_REALM"
+{
+  settlement = {
+    type = Predefined { "wizard_tower" "NIPPON_DIVINE_REALM" } 
+    inhabitants = {
+      leader = { { "NIPPON_SHINREI" } }
+      fighters = {
+        count = {5 7}
+        all = { 1 "NIPPON_FIRE_KAMI" 
+				1 "NIPPON_EARTH_KAMI"
+				1 "NIPPON_WATER_KAMI"
+				1 "NIPPON_AIR_KAMI" }
+      }
+    }
+    tribe = BANDIT
+    furniture = "trees"
+  }
+  levelConnection = {
+    direction = UP
+    topLevel = ExtraEnemy { "NIPPON_DIVINE_REALM" }
+    levels = {
+      { MainEnemy {20 20} BASIC "An divine realm" true }
+    }
+  }
+}
+
+"NIPPON_BANDIT_VILLAGE"
+{
+  biome = "GRASSLAND_JAPAN"
+  settlement = {
+    type = RandomLayout { "NipponBanditVillage" { 25 25 } "nippon_shrine"}
+    tribe = BANDIT
+    inhabitants = {
+      leader = {
+	  id = {"NIPPON_RONIN"}
+      expLevelIncrease = {  DAMAGE 4 }}
+      fighters = {
+        count = {6 9}
+        all = {
+          4 "NIPPON_GOTO"
+          2 "NIPPON_MITSUTYO-SHA"
+          1 "NIPPON_TOKOZU"
+        }
+      }
+      civilians = {
+        count = {2 3}
+        all = {
+          1 "DONKEY_STEED"
+          1 "COW"
+          1 "PIG"
+          1 "GOAT_STEED"
+        }
+      }
+    }
+    race = "bandits"
+    stockpiles = {
+      { "gold" 50 "TREASURE_CHEST" }
+    }
+    furniture = "roomFurniture"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 9
+    prisoners = true
+  }
+  immigrants = {
+    {
+      ids = { "NIPPON_GOTO" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+  behaviour = {
+    ambushChance = 0.05
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+}
+
+"NIPPON_BANDIT_CAVE"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = {{ "NIPPON_TOKOZU" }}
+      fighters = {
+        count = {4 9}
+        all = { 8 "NIPPON_GOTO" 
+				1 "NIPPON_MITSUTYO-SHA" }
+      }
+    }
+    tribe = BANDIT
+    race = "bandits"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+    prisoners = true
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+  immigrants = {
+    {
+      ids = { "NIPPON_GOTO" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"NIPPON_BANDIT_COTTAGE" inherit "NIPPON_BANDIT_CAVE"
+{
+  biome = "GRASSLAND_JAPAN"
+  createOnBones = 1.0 { "HUMAN_COTTAGE" }
+}
+
+"NIPPON_BANDIT_FORT"
+{
+  biome = "GRASSLAND_JAPAN"
+  settlement = {
+    type = Builtin CASTLE2 "WOOD_CASTLE"
+    tribe = BANDIT
+    inhabitants = {
+      leader = {
+	  id = {"NIPPON_RONIN"}
+      expLevelIncrease = {  DAMAGE 9 }}
+      fighters = {
+        count = {7 13}
+        all = {
+          4 "NIPPON_GOTO"
+          2 "NIPPON_MITSUTYO-SHA"
+          1 "NIPPON_TOKOZU"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "bandits"
+    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
+    furniture = "nippon_bandit"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+    ghostProb = 0.1
+    spawnGhosts = 6
+    prisoners = true
+  }
+  behaviour = {
+    ambushChance = 0.1
+    minPopulation = 3
+    minTeamSize = 5
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 2
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+	  Resource "GOLD" 500
+    }
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.8 140
+  }
+  immigrants = {
+    {
+      ids = {"NIPPON_GOTO"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"NIPPON_MITSUTYO-SHA"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+    {
+      ids = {"NIPPON_TOKOZU"}
+      traits = {FIGHTER}
+      frequency = 0.25
+    }
+  }
+}
+
+"NIPPON_JUKI_ONNA_ENTRY" inherit "MAIN_DUNGEON_ENTRY"
+{
+  settlement = append {
+    type = Builtin CAVE "GLACIER"
+  }
+}
+
+"NIPPON_JUKI_ONNA" inherit "RED_DRAGON"
+{
+  biome = "SNOW"
+  settlement = append {
+    type = Builtin CAVE "GLACIER"
+    inhabitants = {
+      leader = { { "NIPPON_JUKI_ONNA" } }
+      fighters = {
+        count = {2 4}
+        all = {
+          4 "NIPPON_ICE_DEMON"
+        }
+      }
+    }
+  }
+  createOnBones = none
+  levelConnection = {
+    direction = UP
+    topLevel = ExtraEnemy { "WHITE_DRAGON_ENTRY" }
+    levels = {
+      { MainEnemy {30 20} DUNGEON }
+    }
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 8
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 1
+    minTeamSize = 2
+    triggers = {
+	  EnemyPopulation 13 
+	  AggravatingMinions
+      SelfVictims
+      NumConquered 2
+      FinishOff
+      Proximity
+			}
+    attackBehaviour = KillMembers 4
+  }
+  immigrants = {
+    {
+      ids = { "NIPPON_ICE_DEMON" }
+      traits = { FIGHTER }
+      frequency = 0.5
+    }
   }
 }

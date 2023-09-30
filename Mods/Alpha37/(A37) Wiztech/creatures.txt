@@ -1,0 +1,323 @@
+"WIZCHTECH_LARGE_BASE"
+  {
+    viewId = { "wizchtech_large_base_1" }
+    genderAlternatives = {
+      IT { "wizchtech_large_base_2" }
+      IT { "wizchtech_large_base_3" }
+    }
+    attr = {
+      DEFENSE 24
+    }
+    body = {
+      type = NonHumanoid HUGE
+      material = FLESH
+      xCanPickUpItems = true
+      bodyParts = {
+	    HEAD 1
+        BACK 1
+        TORSO 1
+      }
+    }
+    permanentEffects = {
+      IMMOBILE 1
+	  ACID_RESISTANT 1
+    }
+    name = {
+      name = "Leiche"
+    }
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+    gender = IT
+  }
+  
+"WIZCHTECH_MEDIUM_BASE"
+  {
+    viewId = { "wizchtech_medium_base_1" }
+    genderAlternatives = {
+      IT { "wizchtech_medium_base_2" }
+    }
+    attr = {
+      DEFENSE 24
+    }
+    body = {
+      type = NonHumanoid LARGE
+      material = FLESH
+      xCanPickUpItems = true
+      bodyParts = {
+	    HEAD 1
+        BACK 1
+        TORSO 1
+      }
+    }
+    permanentEffects = {
+      IMMOBILE 1
+	  ACID_RESISTANT 1
+    }
+    name = {
+      name = "Leiche"
+    }
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+    gender = IT
+  }
+ 
+"WIZCHTECH_SOLIDER_BRUTE"
+  {
+    viewId = { "wizchtech_large_brute" }
+    attr = {
+	  DAMAGE 12
+      DEFENSE 24
+    }
+    body = {
+      type = NonHumanoid LARGE
+      material = FLESH
+      xCanPickUpItems = true
+      bodyParts = {
+	    HEAD 1
+        BACK 1
+        TORSO 1
+		ARM 2
+      }
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 8 {
+            attackType = HIT
+            attackMsg = SWING} }}}
+      }
+    }
+    name = {
+      name = "Leiche"
+    }
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+	permanentEffects = {
+	  ACID_RESISTANT 1
+    }
+    gender = IT
+  }
+  
+  
+"WIZCHTECH_SOLIDER_BLASTER"
+  {
+    viewId = { "wizchtech_large_blaster" }
+    attr = {
+	  DAMAGE 12
+      DEFENSE 24
+	  RANGED_DAMAGE 30
+    }
+    body = {
+      type = NonHumanoid LARGE
+      material = FLESH
+      xCanPickUpItems = true
+      bodyParts = {
+	    HEAD 1
+        BACK 1
+        TORSO 1
+		ARM 1
+      }
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 8 {
+            attackType = HIT
+            attackMsg = SWING} }}}
+      }
+    }
+	permanentEffects = {
+	  ACID_RESISTANT 1
+    }
+	spells = { "wizchtech_shoot_blaster" }
+    name = {
+      name = "Leiche"
+    }
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+    gender = IT
+  }
+
+
+"WIZCHTECH_DRACHEN_BASE"
+  {
+    viewId = { "wizchtech_pseudo_dragon_base" }
+    attr = {
+      DAMAGE 45
+      DEFENSE 47
+      ACID_DAMAGE 40
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+      drops = {{ "YellowDragonScales" } 1}
+    }
+    permanentEffects = {
+      ACID_IMMUNITY 1
+      BLIND 1
+      TELEPATHY 1
+	  IMMOBILE 1
+      RANGED_VULNERABILITY 1
+      CAPTURE_RESISTANCE 1
+      STEED 1
+      REGENERATION 1
+    }
+    name = {
+      name = "drachen"
+      firstNameGen = "DRAGON"
+      stackName = "drachen"
+    }
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+    spells = { "healing" "haste" "black dragon blindness" "acid stream" "dragon greeting"}
+    hatedByEffect = HATE_DRAGONS
+    inventory = {
+      { "GoldPiece" 120 200 }
+      { type = Glyph WEAPON VictimEffect 0.3 Acid{30} chance = 0.1 }
+      { type = Glyph WEAPON VictimEffect 0.3 Lasting 50 BLEEDING chance = 0.3 }
+      { type = Glyph WEAPON LastingEffect ENTERTAINER chance = 0.3 }
+      { type = Glyph ARMOR ItemAttrBonus DEFENSE 3 chance = 0.3 }
+      { type = Glyph WEAPON ItemAttrBonus DAMAGE 3 chance = 0.3 }
+      { type = Glyph RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 chance = 0.3 }
+    }
+    gender = IT
+    steedAchievement = "rode_dragon"
+  }
+
+"WIZCHTECH_PROPPELER"
+  {
+    viewId = { "wizchtech_medium_propeller_head" }
+    attr = {
+      DAMAGE 9
+      DEFENSE 13 
+	  MULTI_WEAPON 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+	    ARM 3
+        LEG 4
+        TORSO 1
+      }
+      weight = 0.3
+      deathSound = none
+      intrinsicAttacks = {
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+      }
+    }
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+	permanentEffects = {
+	  ACID_RESISTANT 1
+    }
+    gender = IT
+    name = {
+      name = "propellerkopf"
+    }
+  }
+  
+"WIZCHTECH_MEISTER"
+  {
+    viewId = { "wizchtech_Mesiter_1" }
+	genderAlternatives = {
+	  MALE { "wizchtech_Mesiter_2" }
+      MALE { "wizchtech_Mesiter_3" }
+	  MALE { "wizchtech_Mesiter_4" }
+      FEMALE { "wizchtech_Mesiter_1" }
+	  FEMALE { "wizchtech_Mesiter_2" }
+      FEMALE { "wizchtech_Mesiter_3" }
+	  FEMALE { "wizchtech_Mesiter_4" }
+    }
+    attr = {
+      DAMAGE 12
+      DEFENSE 13 
+	  RANGED_DAMAGE 15
+      DIGGING 10 
+      FURNACE 10
+      WORKSHOP 25
+      FORGE 25
+      LABORATORY 25
+	  WIZCHTECH_SURGERY 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    aiType = RANGED
+    chatReactionFriendly = "talks about digging"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "meister"
+    }
+	permanentEffects = {
+      NIGHT_VISION 1
+      DISTILLATION_SKILL 1
+      RIDER 1
+      SLOW_TRAINING 1
+	  ACID_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE   12
+      SPELL_DAMAGE   12
+      FORGE   12
+	  RANGED_DAMAGE 12
+    }
+    spells = { "wizchtech_surgery" }
+	inventory = {
+      { "Robe"}
+	  { "WIZCHTECH_BLASTER" }
+    }
+  }
+  
+"WIZCHTECH_CLONING_ACCIDENT"
+  {
+    viewId = { "wizchtech_malformant_01" }
+	genderAlternatives = {
+      IT { "wizchtech_malformant_02" }
+	  IT { "wizchtech_malformant_03" }
+    }
+    attr = {
+      DAMAGE 13
+      DEFENSE 9
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+	  ACID_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 3
+    }
+	spells = { "wiztech_accident_puke" }
+	gender = IT
+    name = {
+      name = "Ausfall"
+    }
+  }
+  
+"WIZCHTECH_ACID_SLIME"
+  {
+    viewId = { "wizchtech_acid_slime" }
+    body = {
+      type = NonHumanoid LARGE
+      material = TOXIC_SLIME
+      weight = 300
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 1 Acid{30}}} }}}
+      }
+    }
+    attr = {
+      DAMAGE 10
+      DEFENSE 3 
+    }
+	aiType = RANGED
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      SWIMMING_SKILL 1
+	  ACID_RESISTANT 1
+    }
+    name = {
+      name = "acid slime"
+    }
+    gender = IT
+  }

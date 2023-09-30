@@ -2161,6 +2161,145 @@ MagExOneTimeAbility("magex_wild_resistance_self", "chaos resistance self", "Beco
 
 MagExOneTimeAbility("magex_air_flying_self", "air flying self", "Becomes flying.", Permanent FLYING, "🎯")
 
+
+
+# nymphomancy
+
+"magex_pacify"
+{
+  symbol = "☮"
+  effect = Name "pacify" Lasting 5 PEACEFULNESS
+  range = 4
+  cooldown = {5 21}
+  endOnly = true
+  sound = SPELL_STR_BONUS
+}
+
+"magex_advanced_pacify"
+{
+  upgrade = "magex_pacify"
+  symbol = "☮"
+  effect = Name "pacify" Lasting 5 PEACEFULNESS
+  range = 4
+  cooldown = {5 21}
+  endOnly = true
+  sound = SPELL_STR_BONUS
+}
+
+"magex_expert_pacify"
+{
+  upgrade = "magex_advanced_pacify"
+  symbol = "☮"
+  effect = Name "pacify" Lasting 5 PEACEFULNESS
+  range = 4
+  cooldown = {5 21}
+  endOnly = true
+  sound = SPELL_STR_BONUS
+}
+
+"magex_horny"
+{
+  symbol = "🔥"
+  effect = Name "enhance copulation" Description "Bestows copulation to female creatures made of flesh" Filter And {Gender FEMALE BodyMaterial FLESH }{Lasting 50 COPULATION_SKILL}
+  range = 4
+  cooldown = {24 85}
+  endOnly = true
+  sound = SPELL_STR_BONUS
+}
+
+"magex_advanced_horny"
+{
+  upgrade = "magex_horny"
+  symbol = "🔥"
+  effect = Name "enhance copulation" Description "Bestows copulation to female creatures"  Filter Gender FEMALE Lasting 50 COPULATION_SKILL
+  range = 4
+  cooldown = {24 85}
+  endOnly = true
+  sound = SPELL_STR_BONUS
+}
+
+"magex_expert_horny"
+{
+  upgrade = "magex_advanced_horny"
+  symbol = "🔥"
+  effect = Name "enhance copulation" Description "Bestows copulation"  Lasting 50 COPULATION_SKILL
+  range = 4
+  cooldown = {24 85}
+  endOnly = true
+  sound = SPELL_STR_BONUS
+}
+
+"magex_mass_horny"
+{
+  upgrade = "magex_expert_horny"
+  symbol = "🛡"
+  effect = Name "mass enhance copulation" Description "Bestows copulation"  Lasting 50 COPULATION_SKILL
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"magex_harem_I"
+{
+  symbol = "❤️"
+  effect = Name "Summon Harem" Summon "SUCCUBUS" { 1 2 } 100
+  cooldown =  { 110 200 }
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"magex_harem_II"
+{
+  upgrade = "magex_harem_I"
+  symbol = "❤️"
+  effect = Name "Summon Harem" Summon "SUCCUBUS" { 2 3 } 100
+  cooldown =  { 110 200 }
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"magex_harem_III"
+{
+  upgrade = "magex_harem_II"
+  symbol = "❤️"
+  effect = Name "Summon Harem" Summon "SUCCUBUS" { 2 4 } 100
+  cooldown =  { 110 200 } 
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"mages_aphrodisiac_cloud"
+{
+  symbol = "🌫"
+  effect = Name "aphrodisiac" Description "Creates a aphrodisiac cloud." Area 4 Filter DistanceD none 3.2 EmitGas "MAGEX_APHRODISIAC" 1
+  cooldown = {30 61}
+}
+
+MagExOneTimeAbility("magex_copulate_self", "copulate self", "Becomes able to copulate.", Permanent COPULATION_SKILL, "🎯")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # demonology
 
 "magex_summon_succubus"
@@ -2692,261 +2831,261 @@ MagExOneTimeAbility("magex_too_much_zombie_companion", "zombie companion", "adds
 
 MagExOneTimeAbility("magex_priest_creature_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "magex death cult"
-	AddSpellSchool "magex demon worship"
-	AddSpellSchool "magex angel worship" 
-	AddSpellSchool "magex angel worship" 
-	AddSpellSchool "magex angel worship" 
-	AddSpellSchool "magex angel worship" 
-	AddSpellSchool "magex the emperor worship"
-	AddSpellSchool "magex the emperor worship"
-	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_demon_worship"
+	AddSpellSchool "magex_angel_worship" 
+	AddSpellSchool "magex_angel_worship" 
+	AddSpellSchool "magex_angel_worship" 
+	AddSpellSchool "magex_angel_worship" 
+	AddSpellSchool "magex_the_emperor_worship"
+	AddSpellSchool "magex_the_emperor_worship"
+	AddSpellSchool "magex_the_emperor_worship"
  }}, "🧛")
  
 MagExOneTimeAbility("magex_priest_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "magex ancestor worship"
-	AddSpellSchool "magex ancestor worship"
-	AddSpellSchool "magex nature worship"
-	AddSpellSchool "magex nature worship"
-	AddSpellSchool "magex shamanism"
-	AddSpellSchool "magex shamanism"
-	AddSpellSchool "magex death cult"
-	AddSpellSchool "magex rot cult"
-	AddSpellSchool "magex bear worship"
-	AddSpellSchool "magex demon worship"
-	AddSpellSchool "magex angel worship" 
-	AddSpellSchool "magex angel worship" 
-	AddSpellSchool "magex angel worship" 
-	AddSpellSchool "magex angel worship" 
-	AddSpellSchool "magex the emperor worship"
-	AddSpellSchool "magex the emperor worship"
-	AddSpellSchool "magex the emperor worship"
+	AddSpellSchool "magex_ancestor_worship"
+	AddSpellSchool "magex_ancestor_worship"
+	AddSpellSchool "magex_nature_worship"
+	AddSpellSchool "magex_nature_worship"
+	AddSpellSchool "magex_shamanism"
+	AddSpellSchool "magex_shamanism"
+	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_demon_worship"
+	AddSpellSchool "magex_angel_worship" 
+	AddSpellSchool "magex_angel_worship" 
+	AddSpellSchool "magex_angel_worship" 
+	AddSpellSchool "magex_angel_worship" 
+	AddSpellSchool "magex_the_emperor_worship"
+	AddSpellSchool "magex_the_emperor_worship"
+	AddSpellSchool "magex_the_emperor_worship"
  }}, "🧛")
 
 MagExOneTimeAbility("magex_evil_priest_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "magex ancestor worship"
-	AddSpellSchool "magex ancestor worship"
-	AddSpellSchool "magex nature worship"
-	AddSpellSchool "magex death cult"
-	AddSpellSchool "magex death cult"
-	AddSpellSchool "magex rot cult"
-	AddSpellSchool "magex rot cult"
-	AddSpellSchool "magex shamanism"
-	AddSpellSchool "magex shamanism"	
-	AddSpellSchool "magex bear worship"
-	AddSpellSchool "magex angel worship"
-	AddSpellSchool "magex the emperor worship"
-	AddSpellSchool "magex the emperor worship"
-	AddSpellSchool "magex demon worship" 
-	AddSpellSchool "magex demon worship" 
-	AddSpellSchool "magex demon worship" 
-	AddSpellSchool "magex demon worship" 
+	AddSpellSchool "magex_ancestor_worship"
+	AddSpellSchool "magex_ancestor_worship"
+	AddSpellSchool "magex_nature_worship"
+	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_shamanism"
+	AddSpellSchool "magex_shamanism"	
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_angel_worship"
+	AddSpellSchool "magex_the_emperor_worship"
+	AddSpellSchool "magex_the_emperor_worship"
+	AddSpellSchool "magex_demon_worship" 
+	AddSpellSchool "magex_demon_worship" 
+	AddSpellSchool "magex_demon_worship" 
+	AddSpellSchool "magex_demon_worship" 
  }}, "🧛")
 
 MagExOneTimeAbility("magex_goblin_priest_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "magex death cult"
-	AddSpellSchool "magex death cult"
-	AddSpellSchool "magex the emperor worship"
-	AddSpellSchool "magex angel worship"
-	AddSpellSchool "magex demon worship" 
-	AddSpellSchool "magex demon worship" 
-	AddSpellSchool "magex demon worship" 
-	AddSpellSchool "magex demon worship" 
+	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_the_emperor_worship"
+	AddSpellSchool "magex_angel_worship"
+	AddSpellSchool "magex_demon_worship" 
+	AddSpellSchool "magex_demon_worship" 
+	AddSpellSchool "magex_demon_worship" 
+	AddSpellSchool "magex_demon_worship" 
  }}, "🧛")
 
 MagExOneTimeAbility("magex_shaman_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "magex ancestor worship"
-	AddSpellSchool "magex ancestor worship"
-	AddSpellSchool "magex rot cult"
-	AddSpellSchool "magex rot cult"
-	AddSpellSchool "magex bear worship"
-	AddSpellSchool "magex nature worship"
-	AddSpellSchool "magex nature worship"
-	AddSpellSchool "magex shamanism"
-	AddSpellSchool "magex shamanism"	 
-	AddSpellSchool "magex shamanism"
-	AddSpellSchool "magex shamanism"	 
+	AddSpellSchool "magex_ancestor_worship"
+	AddSpellSchool "magex_ancestor_worship"
+	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_nature_worship"
+	AddSpellSchool "magex_nature_worship"
+	AddSpellSchool "magex_shamanism"
+	AddSpellSchool "magex_shamanism"	 
+	AddSpellSchool "magex_shamanism"
+	AddSpellSchool "magex_shamanism"	 
  }}, "🧛")
 
 MagExOneTimeAbility("magex_barbarian_shaman_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "magex ancestor worship"
-	AddSpellSchool "magex nature worship"
-	AddSpellSchool "magex shamanism"
-	AddSpellSchool "magex rot cult"
-	AddSpellSchool "magex bear worship"
-	AddSpellSchool "magex bear worship"
-	AddSpellSchool "magex bear worship"
-	AddSpellSchool "magex bear worship"
-	AddSpellSchool "magex bear worship"
-	AddSpellSchool "magex bear worship"	
+	AddSpellSchool "magex_ancestor_worship"
+	AddSpellSchool "magex_nature_worship"
+	AddSpellSchool "magex_shamanism"
+	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_bear_worship"	
  }}, "🧛")
  
 MagExOneTimeAbility("magex_dead_priest_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "magex ancestor worship"
-	AddSpellSchool "magex ancestor worship"
-	AddSpellSchool "magex demon worship"
-	AddSpellSchool "magex demon worship"
-	AddSpellSchool "magex shamanism"
-	AddSpellSchool "magex shamanism"	
-	AddSpellSchool "magex bear worship"
-	AddSpellSchool "magex nature worship"
-	AddSpellSchool "magex angel worship"
-	AddSpellSchool "magex the emperor worship"
-	AddSpellSchool "magex rot cult"
-	AddSpellSchool "magex rot cult"
-	AddSpellSchool "magex rot cult"
-	AddSpellSchool "magex death cult"
-	AddSpellSchool "magex death cult"
-	AddSpellSchool "magex death cult"
-	AddSpellSchool "magex death cult"
+	AddSpellSchool "magex_ancestor_worship"
+	AddSpellSchool "magex_ancestor_worship"
+	AddSpellSchool "magex_demon_worship"
+	AddSpellSchool "magex_demon_worship"
+	AddSpellSchool "magex_shamanism"
+	AddSpellSchool "magex_shamanism"	
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_nature_worship"
+	AddSpellSchool "magex_angel_worship"
+	AddSpellSchool "magex_the_emperor_worship"
+	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_death_cult"
  }}, "🧛")
 
 MagExOneTimeAbility("magex_random_holy_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
-	AddSpellSchool "magex ancestor worship"
-	AddSpellSchool "magex demon worship"
-	AddSpellSchool "magex shamanism"	
-	AddSpellSchool "magex bear worship"
-	AddSpellSchool "magex nature worship"
-	AddSpellSchool "magex angel worship"
-	AddSpellSchool "magex death cult"
-	AddSpellSchool "magex the emperor worship"
-	AddSpellSchool "magex rot cult"
+	AddSpellSchool "magex_ancestor_worship"
+	AddSpellSchool "magex_demon_worship"
+	AddSpellSchool "magex_shamanism"	
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_nature_worship"
+	AddSpellSchool "magex_angel_worship"
+	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_the_emperor_worship"
+	AddSpellSchool "magex_rot_cult"
  }}, "🧛")
  
 MagExOneTimeAbility("magex_dwarf_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
- 	AddSpellSchool "magex toximancy"
- 	AddSpellSchool "magex plaguemancy"
- 	AddSpellSchool "magex luxomancy"
+ 	AddSpellSchool "magex_toximancy"
+ 	AddSpellSchool "magex_plaguemancy"
+ 	AddSpellSchool "magex_luxomancy"
 	AddSpellSchool "mage"
-	AddSpellSchool "magex electromancy"
-	AddSpellSchool "magex pyromancy"
-	AddSpellSchool "magex cryomancy"
-	AddSpellSchool "magex corossiomancy"
-	AddSpellSchool "magex umbramancy"
-	AddSpellSchool "magex geomancy"
-	AddSpellSchool "magex hydromancy"
-	AddSpellSchool "magex transmutation"
-	AddSpellSchool "magex illusionism"
-	AddSpellSchool "magex necromancy"
-	AddSpellSchool "magex fell sorcery"
+	AddSpellSchool "magex_electromancy"
+	AddSpellSchool "magex_pyromancy"
+	AddSpellSchool "magex_cryomancy"
+	AddSpellSchool "magex_corossiomancy"
+	AddSpellSchool "magex_umbramancy"
+	AddSpellSchool "magex_geomancy"
+	AddSpellSchool "magex_hydromancy"
+	AddSpellSchool "magex_transmutation"
+	AddSpellSchool "magex_illusionism"
+	AddSpellSchool "magex_necromancy"
+	AddSpellSchool "magex_fell_sorcery"
  }}, "🧛")
  
  
 MagExOneTimeAbility("magex_spell_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
- 	AddSpellSchool "magex toximancy"
- 	AddSpellSchool "magex plaguemancy"
- 	AddSpellSchool "magex wild sorcery"
- 	AddSpellSchool "magex luxomancy"
+ 	AddSpellSchool "magex_toximancy"
+ 	AddSpellSchool "magex_plaguemancy"
+ 	AddSpellSchool "magex_wild_sorcery"
+ 	AddSpellSchool "magex_luxomancy"
 	AddSpellSchool "mage"
-	AddSpellSchool "magex electromancy"
-	AddSpellSchool "magex pyromancy"
-	AddSpellSchool "magex cryomancy"
-	AddSpellSchool "magex corossiomancy"
-	AddSpellSchool "magex umbramancy"
-	AddSpellSchool "magex geomancy"
-	AddSpellSchool "magex hydromancy"
-	AddSpellSchool "magex transmutation"
-	AddSpellSchool "magex illusionism"
-	AddSpellSchool "magex necromancy"
-	AddSpellSchool "magex fell sorcery"
+	AddSpellSchool "magex_electromancy"
+	AddSpellSchool "magex_pyromancy"
+	AddSpellSchool "magex_cryomancy"
+	AddSpellSchool "magex_corossiomancy"
+	AddSpellSchool "magex_umbramancy"
+	AddSpellSchool "magex_geomancy"
+	AddSpellSchool "magex_hydromancy"
+	AddSpellSchool "magex_transmutation"
+	AddSpellSchool "magex_illusionism"
+	AddSpellSchool "magex_necromancy"
+	AddSpellSchool "magex_fell_sorcery"
 	AddSpellSchool "dwarf"
  }}, "🧛")
  
 MagExOneTimeAbility("magex_keeper_spell_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
- 	AddSpellSchool "magex toximancy"
- 	AddSpellSchool "magex plaguemancy"
- 	AddSpellSchool "magex wild sorcery"
- 	AddSpellSchool "magex luxomancy"
-	AddSpellSchool "magex electromancy"
-	AddSpellSchool "magex pyromancy"
-	AddSpellSchool "magex cryomancy"
-	AddSpellSchool "magex corossiomancy"
-	AddSpellSchool "magex umbramancy"
-	AddSpellSchool "magex geomancy"
-	AddSpellSchool "magex hydromancy"
-	AddSpellSchool "magex transmutation"
-	AddSpellSchool "magex illusionism"
-	AddSpellSchool "magex necromancy"
-	AddSpellSchool "magex fell sorcery"
+ 	AddSpellSchool "magex_toximancy"
+ 	AddSpellSchool "magex_plaguemancy"
+ 	AddSpellSchool "magex_wild_sorcery"
+ 	AddSpellSchool "magex_luxomancy"
+	AddSpellSchool "magex_electromancy"
+	AddSpellSchool "magex_pyromancy"
+	AddSpellSchool "magex_cryomancy"
+	AddSpellSchool "magex_corossiomancy"
+	AddSpellSchool "magex_umbramancy"
+	AddSpellSchool "magex_geomancy"
+	AddSpellSchool "magex_hydromancy"
+	AddSpellSchool "magex_transmutation"
+	AddSpellSchool "magex_illusionism"
+	AddSpellSchool "magex_necromancy"
+	AddSpellSchool "magex_fell_sorcery"
 	AddSpellSchool "dwarf"
  }}, "🧛")
  
 MagExOneTimeAbility("magex_keeper_spell_school_sans_necro", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
- 	AddSpellSchool "magex toximancy"
- 	AddSpellSchool "magex plaguemancy"
- 	AddSpellSchool "magex toximancy"
- 	AddSpellSchool "magex plaguemancy"
- 	AddSpellSchool "magex toximancy"
- 	AddSpellSchool "magex plaguemancy"
- 	AddSpellSchool "magex wild sorcery"
- 	AddSpellSchool "magex wild sorcery"
- 	AddSpellSchool "magex umbramancy"
-	AddSpellSchool "magex umbramancy"
-	AddSpellSchool "magex umbramancy"
-	AddSpellSchool "magex luxomancy"
-	AddSpellSchool "magex luxomancy"
-	AddSpellSchool "magex illusionism"
-	AddSpellSchool "magex illusionism"
-	AddSpellSchool "magex cryomancy"
-	AddSpellSchool "magex cryomancy"
-	AddSpellSchool "magex corossiomancy"
-	AddSpellSchool "magex corossiomancy"
+ 	AddSpellSchool "magex_toximancy"
+ 	AddSpellSchool "magex_plaguemancy"
+ 	AddSpellSchool "magex_toximancy"
+ 	AddSpellSchool "magex_plaguemancy"
+ 	AddSpellSchool "magex_toximancy"
+ 	AddSpellSchool "magex_plaguemancy"
+ 	AddSpellSchool "magex_wild_sorcery"
+ 	AddSpellSchool "magex_wild_sorcery"
+ 	AddSpellSchool "magex_umbramancy"
+	AddSpellSchool "magex_umbramancy"
+	AddSpellSchool "magex_umbramancy"
+	AddSpellSchool "magex_luxomancy"
+	AddSpellSchool "magex_luxomancy"
+	AddSpellSchool "magex_illusionism"
+	AddSpellSchool "magex_illusionism"
+	AddSpellSchool "magex_cryomancy"
+	AddSpellSchool "magex_cryomancy"
+	AddSpellSchool "magex_corossiomancy"
+	AddSpellSchool "magex_corossiomancy"
 	AddSpellSchool "mage"
-	AddSpellSchool "magex electromancy"
-	AddSpellSchool "magex pyromancy"
-	AddSpellSchool "magex geomancy"
-	AddSpellSchool "magex hydromancy"
-	AddSpellSchool "magex transmutation"
-	AddSpellSchool "magex fell sorcery"
-	AddSpellSchool "magex fell sorcery"
+	AddSpellSchool "magex_electromancy"
+	AddSpellSchool "magex_pyromancy"
+	AddSpellSchool "magex_geomancy"
+	AddSpellSchool "magex_hydromancy"
+	AddSpellSchool "magex_transmutation"
+	AddSpellSchool "magex_fell_sorcery"
+	AddSpellSchool "magex_fell_sorcery"
 	AddSpellSchool "dwarf"
  }}, "🧛")
  
  MagExOneTimeAbility("magex_necro_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
- 	AddSpellSchool "magex necromancy"
-	AddSpellSchool "magex necromancy"
-	AddSpellSchool "magex necromancy"
- 	AddSpellSchool "magex toximancy"
- 	AddSpellSchool "magex plaguemancy"
- 	AddSpellSchool "magex toximancy"
- 	AddSpellSchool "magex plaguemancy"
- 	AddSpellSchool "magex toximancy"
- 	AddSpellSchool "magex plaguemancy"
-	AddSpellSchool "magex fell sorcery"
-	AddSpellSchool "magex fell sorcery"
-	AddSpellSchool "magex fell sorcery"
+ 	AddSpellSchool "magex_necromancy"
+	AddSpellSchool "magex_necromancy"
+	AddSpellSchool "magex_necromancy"
+ 	AddSpellSchool "magex_toximancy"
+ 	AddSpellSchool "magex_plaguemancy"
+ 	AddSpellSchool "magex_toximancy"
+ 	AddSpellSchool "magex_plaguemancy"
+ 	AddSpellSchool "magex_toximancy"
+ 	AddSpellSchool "magex_plaguemancy"
+	AddSpellSchool "magex_fell_sorcery"
+	AddSpellSchool "magex_fell_sorcery"
+	AddSpellSchool "magex_fell_sorcery"
 	AddSpellSchool "zombie mage"
  	AddSpellSchool "zombie mage"
 	AddSpellSchool "zombie mage"
-	AddSpellSchool "magex umbramancy"
-	AddSpellSchool "magex umbramancy"
-	AddSpellSchool "magex umbramancy"
-	AddSpellSchool "magex luxomancy"
-	AddSpellSchool "magex luxomancy"
-	AddSpellSchool "magex luxomancy"
-	AddSpellSchool "magex illusionism"
-	AddSpellSchool "magex illusionism"
+	AddSpellSchool "magex_umbramancy"
+	AddSpellSchool "magex_umbramancy"
+	AddSpellSchool "magex_umbramancy"
+	AddSpellSchool "magex_luxomancy"
+	AddSpellSchool "magex_luxomancy"
+	AddSpellSchool "magex_luxomancy"
+	AddSpellSchool "magex_illusionism"
+	AddSpellSchool "magex_illusionism"
 	AddSpellSchool "mage"
- 	AddSpellSchool "magex wild sorcery"
-	AddSpellSchool "magex electromancy"
-	AddSpellSchool "magex pyromancy"
-	AddSpellSchool "magex cryomancy"
-	AddSpellSchool "magex corossiomancy"
-	AddSpellSchool "magex geomancy"
-	AddSpellSchool "magex hydromancy"
-	AddSpellSchool "magex transmutation"
+ 	AddSpellSchool "magex_wild_sorcery"
+	AddSpellSchool "magex_electromancy"
+	AddSpellSchool "magex_pyromancy"
+	AddSpellSchool "magex_cryomancy"
+	AddSpellSchool "magex_corossiomancy"
+	AddSpellSchool "magex_geomancy"
+	AddSpellSchool "magex_hydromancy"
+	AddSpellSchool "magex_transmutation"
 	AddSpellSchool "dwarf"
  }}, "🧛")
  
