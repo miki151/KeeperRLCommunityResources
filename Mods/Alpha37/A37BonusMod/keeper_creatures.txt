@@ -97,7 +97,7 @@
     description = "(Easy) Summon an army from your raw resources that can take over the map."
     zLevelGroups = { "basic" "lawful" }
 	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 }
-    villainGroups = { LAWFUL_ADVENTURER LAWFUL_COTTAGES BONUS_LAWFUL }	
+    villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES BONUS_LAWFUL }	
   }
 "4_BonusDev_vampire_lord"  
   {
@@ -129,7 +129,7 @@
     }
     zLevelGroups = { "basic" "evil" }
 	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CORPSE" 5 }
-    villainGroups = { EVIL_ADVENTURER EVIL_COTTAGES BONUS_EVIL }
+    villainGroups = { EVIL_KEEPER EVIL_COTTAGES BONUS_EVIL }
   }
 
 "9_BonusDev_dungeon_master"
@@ -155,7 +155,7 @@
     workshopGroups = { "sandbox" }
     description = "Play a sandbox game where you can build and do whatever you like in a creative mode."
     zLevelGroups = { "basic" "evil" }
-    villainGroups = { EVIL_ADVENTURER EVIL_COTTAGES BONUS_EVIL }
+    villainGroups = { EVIL_KEEPER EVIL_COTTAGES BONUS_EVIL }
   }
   
 ############################################
@@ -188,7 +188,7 @@
   description = "The absorber is a creature that can learn forms, shape shift and absorb technologies of fallen foes. Warnining: This creature cannot build, recruit, cut or dig until it has learnt those concepts by absorbing them after killing things."
   minionTraits = { LEADER WORKER FIGHTER NO_LIMIT }
   flags = { "abomination_upgrades" }
-  villainGroups = { EVIL_ADVENTURER EVIL_COTTAGES BONUS_EVIL }
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES BONUS_EVIL }
 }
   
 ############################################
@@ -219,7 +219,7 @@
   noLeader = true
   specialTraits = { Lasting { FOUNDER } }
   credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 }
-  villainGroups = { LAWFUL_ADVENTURER LAWFUL_COTTAGES BONUS_LAWFUL }  
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES BONUS_LAWFUL }  
 }
 
 ############################################
@@ -395,3 +395,272 @@
 #    description = "Manage an adventurer guild and defeat evil."
 #  }
 ############################################
+#
+#Adventurer "keepers" per A37 Adventurer rework
+#
+
+"BONUS_3_cleric_hero_adventurers"
+{
+  creatureId = { "BONUS_CLERIC_HERO" "BONUS_CLERIC_HERO" }
+  tribeAlignment = LAWFUL
+  description = "Be a cleric hero."
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_4_warrior_adventurer_adventurers"
+{
+  creatureId = { "BONUS_WARRIOR_ADVENTURER" }
+  tribeAlignment = LAWFUL
+  description = "Focus on melee ability and support magic to slaughter your foes!"
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_5_mage_adventurer_adventurers"
+{
+  creatureId = { "BONUS_MAGE_ADVENTURER" "BONUS_MAGE_ADVENTURER_FEMALE" }
+  tribeAlignment = LAWFUL
+  description = "Train in the ways of a true wizard and conquer the land with spells!"
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_6_ranger_adventurer_adventurers"
+{
+  creatureId = { "BONUS_RANGER_ADVENTURER" "BONUS_RANGER_ADVENTURER_FEMALE" }
+  tribeAlignment = LAWFUL
+  description = "Play as a ranger and shoot down your foes with arrows."
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_7_barbarian_adventurers"
+{
+  creatureId = { "BONUS_BARBARIAN_ADVENTURER" "BONUS_BARBARIAN_ADVENTURER_FEMALE" }
+  tribeAlignment = LAWFUL
+  description = "Play as a Barbarian and crush all in your path with overwhelming strength!"
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_8_assassin_adventurers"
+{
+  creatureId = { "BONUS_ASSASSIN_ADVENTURER" "BONUS_ASSASSIN_ADVENTURER_FEMALE" }
+  tribeAlignment = EVIL
+  description = "Play as an Assassin and use stealth and overwhelming skill to vanquish your foes!"
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_9_dwarf_baron_adventurers"
+{
+  creatureId = { "BONUS_DWARF_BARON" }
+  tribeAlignment = LAWFUL
+  description = "Play as a dwarf baron to bring justice to the land."
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_10_minotaur_adventurers"
+{
+  creatureId = { "BONUS_MINOTAUR" }
+  tribeAlignment = EVIL
+  description = "Crush your enemies as a single minotaur warrior."
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_11_warrior_hero_adventurers"
+{
+  creatureId = { "BONUS_WARRIOR_HERO" }
+  tribeAlignment = LAWFUL
+  description = "Play as a warrior hero."
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_12_necromancer_adventurers"
+{
+  creatureId = { "BONUS_NECROMANCER" }
+  tribeAlignment = EVIL
+  description = "Oppose the world and rid it of all life."
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_13_cyclops_adventurers"
+{
+  creatureId = { "BONUS_CYCLOPS" }
+  tribeAlignment = EVIL
+  description = "Slaughter the world as a lone cyclops."
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_14_thief_hero_adventurers"
+{
+  creatureId = { "BONUS_THIEF_HERO" "BONUS_THIEF_HERO" }
+  tribeAlignment = LAWFUL #As specified in the Soft Monster original. This is more the "thief" than the "Evil Assassin" adventurer.
+  description = "Play as an archer assassin. Travel light, rely on stealth and arrows."
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_15_wizard_adventurer_adventurers"
+{
+  creatureId = { "BONUS_WIZARD_ADVENTURER" }
+  tribeAlignment = LAWFUL
+  description = "Wizard hero class. Train magic powers."
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
+
+"BONUS_16_spider_adventurer_adventurers"
+{
+  creatureId = { "BONUS_ADVENTURER_SPIDER" }
+  tribeAlignment = EVIL
+  description = "Breed and kill everything with your children."
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+  immigrantGroups = {}
+  technology = {}
+  zLevelGroups = { "basic" }
+  initialTech = { }
+  buildingGroups = {}
+  workshopGroups = {}
+  minionTraits = {LEADER WORKER}
+  maxPopulation = 1
+  startingBase = {5 5} "adventurer_house"
+  prisoners = false
+  requireQuartersForExp = false
+}
