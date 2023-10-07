@@ -3559,7 +3559,7 @@
     "dark_keeper_modded"
     {
         {
-          ids = { "BONUS_DARK_OGRE" "BONUS_DARK_OGRE_FEMALE" }
+          ids = { "BONUS_DARK_OGRE" "BONUS_DARK_OGRE_FEMALE" } 
           traits = { FIGHTER }
           spawnLocation = Pregnancy
           frequency = 0.3
@@ -3568,17 +3568,20 @@
             { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
             { 0.0 Pregnancy }
           }
-          specialTraits = {
-             { 0.02 { ExtraBodyPart HEAD 1}}
-             { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
-             { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
-             { 0.05 { Lasting { RANGED_VULNERABILITY } }}
-             { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
-             { 0.05 { Lasting { SWIMMING_SKILL } }}
+          specialTraits = {  #Dark wizards are better at Arcane Breeding Programmes than knights, so better outcomes here
+             { 0.05 { ExtraBodyPart HEAD 1}}
+	     { 0.01 { ExtraBodyPart WING 2}} #Normally Ogres can't fly, so 1% is meaningful
+	     { 0.25 { Lasting { NIGHT_VISION } }}
+             { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.01 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+             { 0.02 { Lasting { RANGED_VULNERABILITY } }}
+             { 0.08 { Lasting { DISARM_TRAPS_SKILL } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
              { 0.02 { Lasting { HATE_ELVES } }}
              { 0.02 { Lasting { HATE_HUMANS } }}
-             { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
-             { 0.05 { Lasting { BAD_BREATH } }}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
+             { 0.03 { Lasting { BAD_BREATH } }}
+	           { 0.03 { Lasting { ENTERTAINER } }}
           }
         }
         {
@@ -3590,20 +3593,20 @@
             { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
             { 0.0 Pregnancy }
           }
-          specialTraits = {
-             { 0.01 { ExtraBodyPart HEAD 1}}
-             { 0.01 { ExtraBodyPart WING 2}}
-             { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
-             { 0.05 { ExtraTraining DAMAGE 2}}
-             { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
-             { 0.05 { Lasting { NIGHT_VISION } }}
-             { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
-             { 0.05 { Lasting { SWIMMING_SKILL } }}
-             { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+          specialTraits = {  #Dark wizards are better at Arcane Breeding Programmes than knights, so better outcomes here
+             { 0.05 { ExtraBodyPart HEAD 1}}
+             { 0.05 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
+             { 0.10 { ExtraTraining DAMAGE 5}} #Brings the Orcs to Ogre spec
+             { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.25 { Lasting { NIGHT_VISION } }}
+             { 0.08 { Lasting { DISARM_TRAPS_SKILL } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+             { 0.02 { Lasting { MAGIC_VULNERABILITY } }}
              { 0.02 { Lasting { HATE_ELVES } }}
              { 0.02 { Lasting { HATE_HUMANS } }}
-             { 0.03 { Lasting { BAD_BREATH } }}
-             { 0.01 { Lasting { ENTERTAINER } }}
+             { 0.01 { Lasting { BAD_BREATH } }}
+             { 0.03 { Lasting { ENTERTAINER } }}
           }
         }
 		{
@@ -3718,13 +3721,15 @@
              { 0.02 { ExtraBodyPart HEAD 1}}
              { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
              { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+	     { 0.15 { Lasting { NIGHT_VISION } }} #Since they can't be out in the sun...
              { 0.05 { Lasting { RANGED_VULNERABILITY } }}
              { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
              { 0.05 { Lasting { SWIMMING_SKILL } }}
              { 0.02 { Lasting { HATE_ELVES } }}
              { 0.02 { Lasting { HATE_HUMANS } }}
-             { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
              { 0.05 { Lasting { BAD_BREATH } }}
+	     { 0.01 { Lasting { ENTERTAINER } }}
           }
         }
         {
@@ -3739,10 +3744,10 @@
           specialTraits = {
              { 0.01 { ExtraBodyPart HEAD 1}}
              { 0.01 { ExtraBodyPart WING 2}}
-             { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
-             { 0.05 { ExtraTraining DAMAGE 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE} }} #Sorry, but with scaling enemy DEF, 2+10 archery is a joke.
+             { 0.05 { ExtraTraining DAMAGE 5}} #Up to Ogre spec
              { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
-             { 0.05 { Lasting { NIGHT_VISION } }}
+             { 0.15 { Lasting { NIGHT_VISION } }} #Since they can't be out in the sun...
              { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
              { 0.05 { Lasting { SWIMMING_SKILL } }}
              { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
