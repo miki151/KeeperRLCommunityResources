@@ -1,0 +1,848 @@
+"AdaSword" modify append { ingredientType = "adasword" }
+"AdaWarHammer" modify append { ingredientType = "adawarhammer" }
+"AdaBattleAxe" modify append { ingredientType = "adabattleaxe" }
+"AdaHelm" modify append { ingredientType = "adahelm" }
+"AdaGloves" modify append { ingredientType = "adagloves" }
+"AdaShield" modify append { ingredientType = "adashield" }
+"AdaArmor" modify append { ingredientType = "adaarmor" }
+"AdaBoots" modify append { ingredientType = "adaboots" }
+  
+"DGR_CaprBone"
+  {
+    viewId = { "dgr_caprbone" }
+    name = "beast bones"
+    itemClass = CORPSE
+	resourceId = "DGR_BONE"
+    price = 0
+    weight = 5
+    storageIds = {"resources"}
+  }
+  
+"DGR_Katana"
+    {
+      viewId = { "dgr_katana" }
+	  equipedViewId = { "dgr_katana_v" }
+      name = "katana"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+	  description = "All the best stuff is made in the far east."
+      weight = 1
+      modifiers = {
+        DAMAGE 12
+      }
+      price = 10
+      weaponInfo = {
+        attackType = CUT
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_Rafflesia_Bile"
+    {
+      viewId = { "dgr_rafflesia_bile" }
+      name = "rafflesia bile"
+      itemClass = OTHER
+	  description = "Stomach juices extracted from a rafflesia."
+      weight = 0.3
+      price = 100
+      ingredientType = "rafflesia_bile"
+      storageIds = {"upgrades" "equipment"}
+    }
+"DGR_SpiderAbdomen"
+    {
+      viewId = { "dgr_spider_abdomen" }
+      name = "giant spider abdomen"
+      itemClass = OTHER
+	  description = "The abdomen of a giant spider. There's still some silk within."
+      weight = 50
+      price = 30
+      ingredientType = "spider_abdomen"
+      storageIds = {"upgrades" "equipment"}
+    }
+	
+"DGR_SpiderRobe"
+    {
+      viewId = { "dgr_spider_robe" }
+      name = "spider robe"
+      itemClass = ARMOR
+      equipmentSlot = BODY_ARMOR
+      weight = 2
+      price = 200
+      modifiers = {
+        SPELL_DAMAGE 12
+      }
+      equipedEffect = {POISON_RESISTANT}
+      maxUpgrades = 2
+	  genPrefixes = {
+        1 LastingEffect MAGIC_RESISTANCE
+      }
+      storageIds = {"armor" "equipment"}
+    }
+	
+"DGR_EelMucous"
+    {
+      viewId = { "dgr_eel_mucous" }
+      name = "elder eel mucous"
+      itemClass = OTHER
+	  description = "The disgusting remnants of a slain elder eel."
+      weight = 0.3
+      price = 100
+      ingredientType = "eel_mucous"
+      storageIds = {"upgrades" "equipment"}
+    }
+"DGR_EelDNA"
+    {
+      viewId = { "dgr_dna" }
+      name = "eel dna"
+      weight = 30
+      applyTime = 1
+      uses = 1
+      price = 50
+      effect = Permanent SWIMMING_SKILL
+      storageIds = {"potions" "equipment"}
+    }
+"DGR_ElfDNA" inherit "DGR_EelDNA"
+	{
+		name = "elf dna"
+		effect = Permanent ELF_VISION
+	}
+"DGR_DarkElfDNA" inherit "DGR_EelDNA"
+	{
+		name = "dark elf dna"
+		effect = Permanent NIGHT_VISION
+	}
+"DGR_HydraDNA" inherit "DGR_EelDNA"
+	{
+		name = "hydra dna"
+		effect = Permanent POISON_RESISTANT
+	}
+"DGR_RedDragonDNA" inherit "DGR_EelDNA"
+	{
+		name = "red dragonkin dna"
+		effect = Permanent FIRE_RESISTANT
+	}
+"DGR_BlackDragonDNA" inherit "DGR_EelDNA"
+	{
+		name = "black dragonkin dna"
+		effect = Permanent TELEPATHY
+	}
+"DGR_WhiteDragonDNA" inherit "DGR_EelDNA"
+	{
+		name = "white dragonkin dna"
+		effect = Permanent COLD_RESISTANT
+	}
+"DGR_DemonDNA" inherit "DGR_EelDNA"
+	{
+		name = "demon dna"
+		effect = Permanent SPELL_DAMAGE
+	}
+"DGR_UnicornDNA" inherit "DGR_EelDNA"
+	{
+		name = "unicorn dna"
+		effect = Permanent MAGIC_RESISTANCE
+	}
+"DGR_CyclopsDNA" inherit "DGR_EelDNA"
+	{
+		name = "cyclops dna"
+		effect = Permanent RANGED_RESISTANCE
+	}
+"DGR_TitanDNA" inherit "DGR_EelDNA"
+	{
+		name = "titan dna"
+		effect = Permanent MELEE_RESISTANCE
+	}
+"DGR_LizardDNA" inherit "DGR_EelDNA"
+	{
+		name = "lizardkin dna"
+		effect = Permanent SPEED
+	}
+"DGR_AngelDNA" inherit "DGR_EelDNA"
+	{
+		name = "angel dna"
+		effect = Permanent FLYING
+	}
+"DGR_WerewolfDNA" inherit "DGR_EelDNA"
+	{
+		name = "werewolf dna"
+		effect = Permanent REGENERATION
+	}
+ "DGR_DevilFork"
+    {
+      viewId = { "dgr_devilfork" }
+	  equipedViewId = { "dgr_devilfork_v" }
+      name = "devilish pitchfork"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 1.5
+      modifiers = {
+        DAMAGE 14
+      }
+      price = 100
+      weaponInfo = {
+        attackType = STAB
+        attackMsg = THRUST
+	    victimEffect = { 0.8 Fire{} }
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_BlueDragonScales"
+    {
+      viewId = { "dragon_scales" Rgb 0 120 175 255 }
+      name = "blue dragon scales"
+      itemClass = OTHER
+      weight = 5
+      price = 100
+      ingredientType = "blue_scales"
+      storageIds = {"upgrades" "equipment"}
+    }
+"DGR_BlueDragonArmor" inherit "ChainArmor"
+    {
+      viewId = { "chain_armor" Rgb 0 120 175 255 }
+      shortName = "blue dragon"
+      name = "blue dragon scale armor"
+      weight = 10
+      price = 250
+      modifiers = {
+        DEFENSE 12
+        SPELL_DAMAGE 8
+      }
+      equipedEffect = {MAGIC_RESISTANCE}
+      maxUpgrades = 2
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_MagicDragonScales"
+    {
+      viewId = { "dragon_scales" Rgb 208 136 250 255 }
+      name = "magic dragon scales"
+      itemClass = OTHER
+      weight = 5
+      price = 100
+      ingredientType = "magic_scales"
+      storageIds = {"upgrades" "equipment"}
+    }
+"DGR_MagicDragonArmor" inherit "ChainArmor"
+    {
+      viewId = { "chain_armor" Rgb 208 136 250 255 }
+      shortName = "magic dragon"
+      name = "magic dragon scale armor"
+      weight = 10
+      price = 250
+      modifiers = {
+        DEFENSE 9
+        SPELL_DAMAGE 12
+      }
+      equipedEffect = {MAGIC_RESISTANCE}
+	  equipedAbility = {"circular blast"}
+      maxUpgrades = 2
+      storageIds = {"armor" "equipment"}
+    }
+	
+	# BONEWORKS #
+"DGR_BoneSword" inherit "Sword"
+    {
+      viewId = { "dgr_bone_sword" }
+	  equipedViewId = { "dgr_bone_sword_v" }
+      name = "bone sword"
+      weight = 1
+      modifiers = {
+        DAMAGE 10
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_BoneArmor" inherit "ChainArmor"
+    {
+      viewId = { "dgr_bone_armor" }
+      shortName = "armor"
+      name = "bone armor"
+      weight = 10
+      modifiers = {
+        DEFENSE 7
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneBattleAxe" inherit "BattleAxe"
+    {
+      viewId = { "dgr_bone_battleaxe" }
+	  equipedViewId = { "dgr_bone_battleaxe_v" }
+      name = "bone battle axe"
+      weight = 6
+      modifiers = {
+        DAMAGE 15
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_BoneBoots" inherit "IronBoots"
+    {
+      viewId = { "dgr_bone_boots" }
+      shortName = "boots"
+      name = "pair of bone boots"
+      plural = "pairs of bone boots"
+      weight = 3
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneGloves" inherit "IronGloves"
+    {
+      viewId = { "dgr_bone_gloves" }
+      shortName = "gloves"
+      name = "pair of bone gloves"
+      plural = "pairs of bone gloves"
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneHelm" inherit "IronHelm"
+    {
+      viewId = { "dgr_bone_helm" }
+      shortName = "helm"
+      name = "bone helm"
+      weight = 3
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneShield" inherit "IronShield"
+    {
+      viewId = { "dgr_bone_shield" }
+      shortName = "bone"
+      name = "bone shield"
+      weight = 1.5
+      modifiers = {
+        PARRY 3
+        DEFENSE 2
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneWarHammer" inherit "WarHammer"
+    {
+      viewId = { "dgr_bone_warhammer" }
+	  equipedViewId = { "dgr_bone_warhammer_v" }
+      name = "bone war hammer"
+      weight = 6
+      modifiers = {
+        DAMAGE 13
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+	# IRON INLAID #
+"DGR_BoneSwordIron" inherit "DGR_BoneSword"
+    {
+      viewId = { "dgr_bone_sword_iron" }
+	  equipedViewId = { "dgr_bone_sword_iron_v" }
+      name = "iron-bone sword"
+      weight = 2
+      modifiers = {
+        DAMAGE 9
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_BoneSwordGold" inherit "DGR_BoneSword"
+    {
+      viewId = { "dgr_bone_sword_gold" }
+	  equipedViewId = { "dgr_bone_sword_gold_v" }
+      name = "gold-bone sword"
+      weight = 2
+      modifiers = {
+        DAMAGE 11
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_BoneSwordAda" inherit "DGR_BoneSword"
+    {
+      viewId = { "dgr_bone_sword_ada" }
+	  equipedViewId = { "dgr_bone_sword_ada_v" }
+      name = "adamantine-bone sword"
+      weight = 2
+      modifiers = {
+        DAMAGE 14
+      }
+	    storageIds = {"weapons" "equipment"}  
+    }
+"DGR_BoneArmorIron" inherit "DGR_BoneArmor"
+    {
+      viewId = { "dgr_bone_armor_iron" }
+      shortName = "armor"
+      name = "iron-bone armor"
+      weight = 12
+      modifiers = {
+        DEFENSE 6
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneArmorAda" inherit "DGR_BoneArmor"
+    {
+      viewId = { "dgr_bone_armor_ada" }
+      shortName = "armor"
+      name = "adamantine-bone armor"
+      weight = 10
+      modifiers = {
+        DEFENSE 8
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneArmorGold" inherit "DGR_BoneArmor"
+    {
+      viewId = { "dgr_bone_armor_gold" }
+      shortName = "armor"
+      name = "gold-bone armor"
+      weight = 10
+      modifiers = {
+        DEFENSE 7
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneBattleAxeIron" inherit "DGR_BoneBattleAxe"
+    {
+      viewId = { "dgr_bone_battleaxe_iron" }
+	  equipedViewId = { "dgr_bone_battleaxe_iron_v" }
+      name = "iron-bone battle axe"
+      weight = 6
+      modifiers = {
+        DAMAGE 13
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_BoneBattleAxeGold" inherit "DGR_BoneBattleAxe"
+    {
+      viewId = { "dgr_bone_battleaxe_gold" }
+	  equipedViewId = { "dgr_bone_battleaxe_gold_v" }
+      name = "gold-bone battle axe"
+      weight = 6
+      modifiers = {
+        DAMAGE 15
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_BoneBattleAxeAda" inherit "DGR_BoneBattleAxe"
+    {
+      viewId = { "dgr_bone_battleaxe_ada" }
+	  equipedViewId = { "dgr_bone_battleaxe_ada_v" }
+      name = "adamantine-bone battle axe"
+      weight = 6
+      modifiers = {
+        DAMAGE 18
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_BoneBootsIron" inherit "DGR_BoneBoots"
+    {
+      viewId = { "dgr_bone_boots_iron" }
+      shortName = "boots"
+      name = "pair of iron-bone boots"
+      plural = "pairs of iron-bone boots"
+      weight = 3
+	  modifiers = {
+        DEFENSE 3
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneBootsGold" inherit "DGR_BoneBoots"
+    {
+      viewId = { "dgr_bone_boots_gold" }
+      shortName = "boots"
+      name = "pair of gold-bone boots"
+      plural = "pairs of gold-bone boots"
+      weight = 3
+	  modifiers = {
+        DEFENSE 4
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneBootsAda" inherit "DGR_BoneBoots"
+    {
+      viewId = { "dgr_bone_boots_ada" }
+      shortName = "boots"
+      name = "pair of adamantine-bone boots"
+      plural = "pairs of adamantine-bone boots"
+      weight = 3
+	  modifiers = {
+        DEFENSE 5
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneHelmIron" inherit "DGR_BoneHelm"
+    {
+      viewId = { "dgr_bone_helm_iron" }
+      shortName = "helm"
+      name = "iron-bone helm"
+      weight = 3
+	  modifiers = {
+        DEFENSE 3
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneHelmGold" inherit "DGR_BoneHelm"
+    {
+      viewId = { "dgr_bone_helm_gold" }
+      shortName = "helm"
+      name = "gold-bone helm"
+      weight = 3
+	  modifiers = {
+        DEFENSE 4
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneHelmAda" inherit "DGR_BoneHelm"
+    {
+      viewId = { "dgr_bone_helm_ada" }
+      shortName = "helm"
+      name = "adamantine-bone helm"
+      weight = 4
+	  modifiers = {
+        DEFENSE 5
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneShieldIron" inherit "DGR_BoneShield"
+    {
+      viewId = { "dgr_bone_shield_iron" }
+      shortName = "iron-bone"
+      name = "iron-bone shield"
+      weight = 1.5
+      modifiers = {
+        PARRY 2
+        DEFENSE 3
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneShieldGold" inherit "DGR_BoneShield"
+    {
+      viewId = { "dgr_bone_shield_gold" }
+      shortName = "iron-bone"
+      name = "gold-bone shield"
+      weight = 1.5
+      modifiers = {
+        PARRY 3
+        DEFENSE 3
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneShieldAda" inherit "DGR_BoneShield"
+    {
+      viewId = { "dgr_bone_shield_ada" }
+      shortName = "ada-bone"
+      name = "adamantine-bone shield"
+      weight = 1.5
+      modifiers = {
+        PARRY 3
+        DEFENSE 4
+      }
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_BoneWarHammerIron" inherit "DGR_BoneWarHammer"
+    {
+      viewId = { "dgr_bone_warhammer_iron" }
+	  equipedViewId = { "dgr_bone_warhammer_iron_v" }
+      name = "iron-bone war hammer"
+      weight = 6
+      modifiers = {
+        DAMAGE 11
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_BoneWarHammerGold" inherit "DGR_BoneWarHammer"
+    {
+      viewId = { "dgr_bone_warhammer_gold" }
+	  equipedViewId = { "dgr_bone_warhammer_gold_v" }
+      name = "gold-bone war hammer"
+      weight = 6
+      modifiers = {
+        DAMAGE 13
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_BoneWarHammerAda" inherit "DGR_BoneWarHammer"
+    {
+      viewId = { "dgr_bone_warhammer_ada" }
+	  equipedViewId = { "dgr_bone_warhammer_ada_v" }
+      name = "adamantine-bone war hammer"
+      weight = 7
+      modifiers = {
+        DAMAGE 15
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_SavageBattleAxe"
+    {
+      viewId = { "dgr_savage_battleaxe" }
+	  equipedViewId = { "dgr_savage_battleaxe_v" Rgb 147 93 212 255 }
+      shortName = "savage"
+      name = "savage battle axe"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 12
+      modifiers = {
+        DAMAGE 22
+      }
+      price = 200
+      weaponInfo = {
+        attackType = CUT
+        twoHanded = true
+      }
+      genPrefixes = {
+        1 VictimEffect 0.8 Lasting 50 BLEEDING
+      }
+      maxUpgrades = 2
+      storageIds = {"weapons" "equipment"}
+    }
+	
+"DGR_YetiHorn"
+    {
+      viewId = { "dgr_yetihorn" }
+      name = "yeti horn"
+      itemClass = OTHER
+      weight = 5
+      price = 50
+      ingredientType = "yeti_horn"
+      storageIds = {"upgrades" "equipment"}
+    }
+"DGR_BloodVial"
+    {
+      viewId = { "dgr_bloodvial" }
+      name = "vial of corrupted blood"
+	  plural = "vials of corrupted blood"
+      itemClass = OTHER
+      weight = 1
+      price = 10
+      ingredientType = "bloodvial"
+      storageIds = {"upgrades" "equipment"}
+    }
+"DGR_DarkVial"
+    {
+      viewId = { "dgr_darkvial" }
+      name = "vial of fluid darkness"
+	  plural = "vials of fluid darkness"
+      itemClass = OTHER
+      weight = 1
+      price = 10
+      ingredientType = "darkvial"
+      storageIds = {"upgrades" "equipment"}
+    }
+"DGR_VoidVial"
+    {
+      viewId = { "dgr_voidvial" }
+      name = "vial of void"
+	  plural = "vials of void"
+      itemClass = OTHER
+      weight = 1
+      price = 10
+      ingredientType = "voidvial"
+      storageIds = {"upgrades" "equipment"}
+    }
+"DGR_Kris"
+    {
+      viewId = { "dgr_kris" }
+	  equipedViewId = { "dgr_kris_v" }
+      name = "kris"
+      plural = "krisses"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 0.3
+      modifiers = {
+        DAMAGE 6
+      }
+      price = 1
+	  weaponInfo = {
+        attackType = STAB
+        attackMsg = THRUST
+	    victimEffect = { 0.1 Lasting INSANITY }
+      }
+      storageIds = {"weapons" "equipment"}
+    }
+"DGR_Turban"
+    {
+      viewId = { "dgr_turban" }
+      name = "turban"
+      itemClass = ARMOR
+      equipmentSlot = HELMET
+      weight = 1
+      price = 30
+      modifiers = {
+        SPELL_DAMAGE 1
+      }
+      maxUpgrades = 1
+      storageIds = {"armor" "equipment"}
+    }
+"DGR_Exorite"
+  {
+    viewId = { "dgr_exoritepile" }
+    name = "exorite"
+    itemClass = OTHER
+    price = 0
+    resourceId = "DGR_EXORITE"
+	plural = "exorite"
+    weight = 0.8
+    storageIds = {"resources"}
+  }
+
+"DGR_ExoriteSword" inherit "Sword"
+  {
+    viewId = { "dgr_exorite_sword" }
+	equipedViewId = { "sword_v" Rgb 147 93 212 255 }
+    name = "exorite sword"
+    modifiers = {
+      DAMAGE 14
+    }
+    price = 50
+    genPrefixes = {
+      1 VictimEffect 0.2 Acid{}
+      1 VictimEffect 0.3 Fire{}
+      1 VictimEffect 0.2 Lasting POISON
+      1 LastingEffect RAGE
+    }
+	equipedAbility = {"dgr-far blade"}
+  storageIds = {"weapons" "equipment"}
+  }
+"DGR_ExoriteBattleAxe" inherit "BattleAxe"
+  {
+    viewId = { "dgr_exorite_battleaxe" }
+	equipedViewId = { "battle_axe_v" Rgb 147 93 212 255 }
+    shortName = "exorite"
+    name = "exorite battle axe"
+    modifiers = {
+      DAMAGE 21
+    }
+    price = 200
+    genPrefixes = {
+      1 VictimEffect 0.5 Lasting 50 BLEEDING
+    }
+    maxUpgrades = 2
+	equipedAbility = {"dgr-enrage"}
+  storageIds = {"weapons" "equipment"}
+  }
+"DGR_ExoriteWarHammer" inherit "WarHammer"
+  {
+    viewId = { "dgr_exorite_warhammer" }
+	equipedViewId = { "war_hammer_v" Rgb 147 93 212 255 }
+    name = "exorite war hammer"
+    modifiers = {
+      DAMAGE 18
+	  DEFENSE 4
+    }
+    price = 150
+    genPrefixes = {
+      1 VictimEffect 0.5 Lasting COLLAPSED
+    }
+    maxUpgrades = 2
+    storageIds = {"weapons" "equipment"}
+  }
+"DGR_ExoriteHelm"
+  {
+    viewId = { "dgr_exorite_helm" }
+    shortName = "helm"
+    name = "exorite helm"
+    itemClass = ARMOR
+    equipmentSlot = HELMET
+    weight = 3
+    price = 40
+    modifiers = {
+      DEFENSE 4 
+    }
+	equipedEffect = {ELF_VISION NIGHT_VISION}
+	maxUpgrades = 2
+  storageIds = {"armor" "equipment"}
+  }
+"DGR_ExoriteGloves"
+  {
+    viewId = { "dgr_exorite_gloves" }
+    shortName = "gloves"
+    name = "pair of exorite gloves"
+    plural = "pairs of exorite gloves"
+    itemClass = ARMOR
+    equipmentSlot = GLOVES
+    weight = 0.7
+    price = 25
+    modifiers = {
+      DEFENSE 4
+    }
+    equipedEffect = {NO_CARRY_LIMIT}
+	maxUpgrades = 2
+  storageIds = {"armor" "equipment"}
+  }
+"DGR_ExoriteShield"
+  {
+    viewId = { "wooden_shield" Rgb 179 123 246 255 }
+    shortName = "exorite"
+    name = "exorite shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 1.5
+    price = 50
+    modifiers = {
+      PARRY 5
+      DEFENSE 6
+    }
+	equipedEffect = {FIRE_RESISTANT COLD_RESISTANT}
+    maxUpgrades = 2
+    storageIds = {"armor" "equipment"}
+  }
+"DGR_ExoriteArmor"
+  {
+    viewId = { "dgr_exorite_armor" }
+    shortName = "armor"
+    name = "exorite armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 13
+    price = 160
+    modifiers = {
+      DEFENSE 10
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 3
+    }
+    maxUpgrades = 4
+	equipedEffect = {REGENERATION}
+  storageIds = {"armor" "equipment"}
+  }
+  
+"DGR_ExoriteBoots"
+  {
+    viewId = { "dgr_exorite_boots" }
+    shortName = "boots"
+    name = "pair of exorite boots"
+    plural = "pairs of exorite boots"
+    itemClass = ARMOR
+    equipmentSlot = BOOTS
+    weight = 3
+    price = 50
+    modifiers = {
+      DEFENSE 5
+    }
+    genPrefixes = {
+      1 LastingEffect SPEED
+    }
+    maxUpgrades = 2
+	equipedEffect = {FLYING}
+  storageIds = {"armor" "equipment"}
+  }
+  
+"DGR_RedDragonEgg"
+  {
+    viewId = { "dgr_egg" }
+    name = "dragon egg"
+    weight = 1
+    uses = 1
+    price = 100
+    effect = Summon "DGR_RED_WHELP" {1} none
+    storageIds = {"equipment"}
+  }
+  
+"DGR_BlueDragonEgg" inherit "DGR_RedDragonEgg"
+  {
+	effect = Summon "DGR_BLUE_WHELP" {1} none
+  }
+  
+"DGR_HeftyTome"
+  {
+    viewId = { "dgr_tome" }
+    name = "hefty tome"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 2
+    modifiers = {
+      SPELL_DAMAGE 6
+	  DEFENSE -2
+    }
+    price = 30
+    weaponInfo = {
+      attackType = SPELL
+      attackMsg = SWING
+    }
+    maxUpgrades = 3
+    storageIds = {"weapons" "equipment"}
+  }

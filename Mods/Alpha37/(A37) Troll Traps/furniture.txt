@@ -2,7 +2,7 @@
 {
   name = "tar trap"
   viewId = { "tt_tar_trap" }
-  entryType = Trap { CustomArea PlaceFurniture "TAR" { {1 0} {1 1} {1 -1} {0 1} {0 0} {-1 0}  {-1 1} {-1 -1} {0 -1} } }
+  entryType = Trap { CustomArea PlaceFurniture "BUILD_TAR" { {1 0} {1 1} {1 -1} {0 1} {0 0} {-1 0}  {-1 1} {-1 -1} {0 -1} } }
   warning = true
   constructMessage = SET_UP
 }
@@ -127,7 +127,7 @@
     DirectedBlast {0 1} 4
     DirectedBlast {1 0} 4
     DirectedBlast {-1 0} 4
-	CustomArea PlaceFurniture "TAR" { {0 -1} {0 1} {1 0} {-1 0} {0 0}} 
+	CustomArea PlaceFurniture "BUILD_TAR" { {0 -1} {0 1} {1 0} {-1 0} {0 0}} 
     RemoveFurniture "ARMOR_CHEST"
   }
   fire = 50
@@ -211,4 +211,20 @@
     SummonMimic()
   }
   hidesItems = true
+}
+
+"TT_PITFALL"
+{
+  name = "hole"
+  viewId = { "sokoban_hole" }
+  onBuilt = DOWN_STAIRS
+  tickType = Effect {Filter Not LastingEffect FLYING {Area 0 Stairs} }
+  canBuildOutsideOfTerritory = true
+}
+
+"BUILD_TAR" inherit "TAR" {
+  luxury = 0.1
+  layer = FLOOR
+  fire = 50
+  canBuildOutsideOfTerritory = true
 }

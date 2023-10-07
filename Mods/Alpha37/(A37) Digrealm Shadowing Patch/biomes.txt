@@ -1,0 +1,178 @@
+"DGR_HILLS"
+{
+  lakes = {
+    size = {10 20}
+    count = {0 2}
+  }
+  items = "wildernessItems"
+  itemCount = {20 40}
+  mountains = {
+    lowlandRatio = 0.0
+    hillRatio = 0.6
+    hill = "HILL"
+    grass = "GRASS"
+    mountain = "MOUNTAIN"
+    mountainDeep = "MOUNTAIN2"
+    mountainFloor = "FLOOR"
+  }
+  forests = {
+    {
+      ratio = 0.2
+      density = 0.25
+      onType = "HILL"
+      trees = "vegetationHigh"
+    }
+  }
+  wildlife = {
+    count = { 3 6 }
+    all = {
+      4 "DEER"
+      2 "FOX"
+      2 "BOAR"
+    }
+  }
+  darkKeeperEnemies = {
+    { id = "HUMAN_COTTAGE" count = { 3 5 } }
+    { id = "COTTAGE_BANDITS" probability = 0.5 }
+  }
+  whiteKeeperEnemies = {
+    { id = "COTTAGE_BANDITS" count = { 3 5 } }
+  }
+  viewId = { "map_mountain1" }
+  name = "hills"
+}
+
+"DGR_SWAMP"
+{
+  lakes = {
+    size = {6 14}
+    count = {20 30}
+  }
+  overrideWaterType = "DGR_SWAMPWATER"
+  items = "wildernessItems"
+  sandType = "DGR_SWAMPGRASS"
+  itemCount = {20 40}
+  mountains = {
+    lowlandRatio = 0.60
+    hillRatio = 0.01
+    hill = "DGR_SWAMPGRASS"
+    grass = "DGR_SWAMPGRASS"
+    mountain = "MOUNTAIN"
+    mountainDeep = "MOUNTAIN2"
+    mountainFloor = "FLOOR"
+  }
+  forests = {
+    {
+      ratio = 0.9
+      density = 0.05
+      onType = "DGR_SWAMPGRASS"
+      trees = "dgr_swampVegetation"
+    }
+	{
+      ratio = 0.02
+      density = 0.01
+      onType = "HILL"
+      trees = "dgr_swampVegetation"
+    }
+  }
+  wildlife = {
+    count = { 4 6 }
+    all = {
+      6 "SPIDER"
+      5 "RAT"
+      5 "BAT"
+	  5 "DGR_SWAMPSNAKE"
+	  1 "DGR_SEEDLING"
+    }
+  }
+  darkKeeperEnemies = {
+    { id = "LIZARDMEN_COTTAGE" count = { 1 3 } }
+    { id = "COTTAGE_BANDITS" probability = 0.3 }
+    { id = "CORPSES" probability = 0.1 }
+	{ id = "KOBOLD_CAVE" probability = 0.2 }
+	{ id = "DGR_JAWANTS_SMALL" probability = 0.2 }
+  }
+  whiteKeeperEnemies = {
+    { id = "LIZARDMEN_COTTAGE" count = { 1 3 } }
+    { id = "COTTAGE_BANDITS" probability = 0.3 }
+    { id = "CORPSES" probability = 0.1 }
+	{ id = "KOBOLD_CAVE" probability = 0.2 }
+	{ id = "DGR_JAWANTS_SMALL" probability = 0.2 }
+  }
+  darkKeeperBaseEnemies = {
+    { id = "LIZARDMEN_SMALL" }
+    { id = "COTTAGE_BANDITS" }
+    { id = "KOBOLD_CAVE" }
+	{ id = "DGR_JAWANTS_SMALL_CLOSED" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "LIZARDMEN_SMALL" }
+    { id = "COTTAGE_BANDITS" }
+    { id = "KOBOLD_CAVE" }
+	{ id = "DGR_JAWANTS_SMALL_CLOSED" }
+  }
+  viewId = { "dgr_swamptree" }
+  name = "swamp"
+}
+
+"DGR_VOLCANO"
+{
+  lakes = {
+    size = {15 25}
+    count = {4 8}
+	where = MOUNTAIN
+  }
+  overrideWaterType = "DGR_LAVA"
+  sandType = "DGR_LAVAFLOOR2"
+  mountains = {
+    lowlandRatio = 0.25
+    hillRatio = 0.05
+    hill = "DGR_ASHFLOOR"
+    grass = "DGR_LAVAFLOOR"
+    mountain = "MOUNTAIN2"
+    mountainDeep = "MOUNTAIN2"
+    mountainFloor = "DGR_LAVAFLOOR"
+  }
+  forests = {
+    {
+      ratio = 0.2
+      density = 0.1
+      onType = "DGR_ASHFLOOR"
+      trees = "dgr_volcanicVegetation"
+    }
+	{
+      ratio = 0.1
+      density = 0.02
+      onType = "DGR_LAVAFLOOR"
+      trees = "dgr_volcanicVegetation"
+    }
+  }
+  wildlife = {
+    count = { 3 6 }
+    all = {
+      6 "SPIDER"
+      5 "BAT"
+	  1 "DGR_RED_WHELP"
+    }
+  }
+  darkKeeperEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+	{ id = "DGR_VOLCKOBOLDS" probability = 0.4}
+	{ id = "DGR_REDWYRMS" probability = 0.4 }
+  }
+  whiteKeeperEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+	{ id = "DGR_VOLCKOBOLDS" probability = 0.4}
+	{ id = "DGR_REDWYRMS" probability = 0.4 }
+  }
+  darkKeeperBaseEnemies = {
+	{ id = "DGR_VOLCKOBOLDS" count = {2}}
+	{ id = "DGR_REDWYRMS" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "DGR_VOLCKOBOLDS" count = {2}}
+	{ id = "DGR_REDWYRMS" }
+  }
+  viewId = { "dgr_lavafloor" }
+  name = "volcano"
+}

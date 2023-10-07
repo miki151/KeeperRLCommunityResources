@@ -118,6 +118,24 @@ NipponHouseBase04()
 }
 End
 
+Def NipponRansackedShrine() {
+  Building("wood_wall", "wood_wall")
+  Building("wood_wall", "wood_floor")
+  Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Set("carpet", "wood_door")))
+  Inside(BOTTOM, 6,Border(BOTTOM, 1,Position(MIDDLE, {1 1},Margin(LEFT, 2,Set("floor", "wood_floor"),Set("wood_floor", "NIPPON_BANDIT_BED")))))
+  Inside(BOTTOM, 6,Border(BOTTOM, 1,Position(MIDDLE, {1 1},Margin(RIGHT, 2,Set("floor", "wood_floor"),Set("wood_floor", "torch")))))
+  Inside(TOP, 1,Border(TOP, 1,Position(MIDDLE, {1 1}, Set("NIPPON_WEAPON_CHEST", "wood_floor"))))
+  Inside(BOTTOM, 5,Border(BOTTOM, 1,Position(MIDDLE, {1 1},Margin(LEFT, 2,Set("floor", "wood_floor"),Set("wood_floor", "wood_floor")))))
+  Inside(BOTTOM, 5,Border(BOTTOM, 1,Position(MIDDLE, {1 1},Margin(RIGHT, 2,Set("floor", "wood_floor"),Set("wood_floor", "wood_floor")))))
+  Inside(BOTTOM, 3,Border(BOTTOM, 1,Position(MIDDLE, {1 1},Margin(LEFT, 2,Set("floor", "wood_floor"),Set("wood_floor", "NIPPON_BANDIT_BED")))))
+  Inside(BOTTOM, 3,Border(BOTTOM, 1,Position(MIDDLE, {1 1},Margin(RIGHT, 2,Set("floor", "wood_floor"),Set("wood_floor", "wood_floor")))))
+  Inside(BOTTOM, 2,Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Margin(LEFT, 2,Set("floor", "wood_floor"),NipponTresureChest()))))
+  Inside(BOTTOM, 2,Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Margin(RIGHT, 2,Set("floor", "wood_floor"),NipponTresureChest()))))
+  Inside(BOTTOM, 1,Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Margin(LEFT, 2,Set("floor", "wood_floor"),Set("wood_floor", "wood_floor")))))
+  Inside(BOTTOM, 1,Border(BOTTOM, 1,Position(MIDDLE, {1 1},Margin(RIGHT, 2,Set("floor", "wood_floor"),Set("wood_floor", "NIPPON_BANDIT_BED")))))
+  Inside(1, SplitV(0.6,Margin(BOTTOM, 1,{Set("wood_wall")Position(MIDDLE, {1 1}, Set("wood_floor", "wood_door"))},{Set("first_room")Border(-1, Set("no_dig"))}),Set("second_room")))}
+End
+
 Def ChooseSakura() {
 Choose(
 Building("nippon_sakura_1", "none"),
@@ -274,7 +292,7 @@ Def NipponVillage01()
       NipponHouseChoose()
       Filter(AnyFloor(), Set("main_building"))
     }
-    count = 3
+    count = {3 5}
     minSpacing = 1
     predicate = And(
 	          Not On("main_building"),
@@ -319,7 +337,7 @@ Def NipponVillage02()
       NipponHouseChoose()
       Filter(AnyFloor(), Set("main_building"))
     }
-    count = 3
+    count = {3 5}
     minSpacing = 1
     predicate = And(
 	          Not On("main_building"),
@@ -401,3 +419,63 @@ End
   NipponVillage01(),
   NipponVillage02()
 )
+
+Def NipponBanditVillage01() 
+{
+  Position(
+    position = MIDDLE,
+    size = {5 8}
+    generator = {
+      NipponRansackedShrine()
+      Filter(AnyFloor(), Set("main_building_inside"))
+      Inside(-1, Set("main_building"))
+    }
+  )
+  Place(
+    size = {4 4}
+    generator = {
+      NipponHouseChoose()
+      Filter(AnyFloor(), Set("main_building"))
+    }
+    count = {3 5}
+    minSpacing = 1
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  )
+}
+End
+
+
+"NipponBanditVillage" Choose(
+  NipponBanditVillage01()
+)
+
+
+
+
+"world_map" modify {
+  NoiseMap(0.65, {
+    (0.8, 1.0, Reset("set_water"))
+    (0.74, 0.8, Reset("set_sand"))
+    (0.2, 0.74, Reset("set_grass"))
+    (0.0, 0.2, Reset("set_mountain"))
+    #(0.0, 0.02, Set("set_lava"))
+  })
+  #Position(MIDDLE, {1 1}, FloodFill(Or(On("sand"), On("grass"), On("water")), Set("save")))
+  #Filter(Not On("save"), Reset("mountain"))
+  #Border(1, Filter(Not On("mountain"), Fail))
+  CellularAutomaton(Filter(Not On("set_mountain"), Reset("set_water")), 0.35)
+  SplitV(0.7, Filter(On("set_sand"), Reset("set_swamp")), Filter(On("set_water"), Reset("set_sand")))
+  SplitV(0.3, Filter(Or(On("set_water"), On("set_sand")), Reset("set_snow")), {})
+  NoiseMap(0.65, {
+    (0.0, 0.2, Filter(On("set_snow"), Set("set_mountain_snow")))
+  })
+  WorldMapFeatures()
+  WorldMapConnections()
+  WorldMapTrees()
+  Place(size = {1 1} generator = {Remove("GRASSLAND") {Set("GRASSLAND_JAPAN") Choose(Set("jp_map_cherry"))}} predicate = On("GRASSLAND") count = 20)
+}

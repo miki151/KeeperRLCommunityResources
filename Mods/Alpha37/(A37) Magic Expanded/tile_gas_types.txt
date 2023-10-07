@@ -1,12 +1,32 @@
-"DARKNESS_GAS" {
+"MAGEX_DARKNESS_GAS" {
   "Night Shadow"
   ColorId BLACK
   0.49
   0.1
   false
-  Filter Not LastingEffect DARKNESS_RESISTANT {
+  Filter Not LastingEffect MAGEX_DARKNESS_RESISTANT {
     CreatureMessage { " vitality is being drained" " vitality is being drained"}
     Bleed 0.02 "vitality sapping"
   }
 }
 
+"MAGEX_PLAGUE_WIND" {
+  "plague wind"
+  ColorId YELLOW
+  0.98
+  0.1
+  false
+  Filter Not LastingEffect PLAGUE_RESISTANT {
+    CreatureMessage { "are exposed to the plague" "is exposed to the plague"}
+    Chance 0.2 Lasting PLAGUE
+  }
+}
+
+"MAGEX_APHRODISIAC" {
+  "aphrodisiac"
+  ColorId PINK
+  0.98
+  0.1
+  false
+   Chance 0.2 Chain {Lasting 5 COPULATION_SKILL Lasting 5 PEACEFULNESS}
+}

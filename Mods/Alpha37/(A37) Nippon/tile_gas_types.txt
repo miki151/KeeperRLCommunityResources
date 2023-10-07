@@ -18,3 +18,15 @@ End
   }
 }
 
+"NIPPON_COLD_BREATH" {
+  "cold fog"
+  ColorId LIGHT_BLUE
+  0.98
+  0.1
+  false
+  Filter Or {Not LastingEffect COLD_RESISTANT Not LastingEffect COLD_IMMUNITY}{
+    CreatureMessage { "are frozen by the wind" "is frozen by the wind"}
+    Bleed 0.01 "frost"
+	Chance 0.1 Ice{}
+  }
+}

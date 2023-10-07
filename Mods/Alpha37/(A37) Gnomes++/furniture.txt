@@ -1,33 +1,3 @@
-"WORKSHOP" modify append
-	{
-		usageType = UsageEffect "use"
-			{
-				Filter BodyMaterial FLESH 
-				{
-					Chance 0.02 IncreaseAttr WORKSHOP 1
-				}			
-			}
-	}
-"FORGE" modify append
-	{
-		usageType = UsageEffect "use"
-			{
-				Filter BodyMaterial FLESH 
-				{
-					Chance 0.02 IncreaseAttr FORGE 1
-				}			
-			}
-	}
-"LABORATORY" modify append
-	{
-		usageType = UsageEffect "use"
-			{
-				Filter BodyMaterial FLESH 
-				{
-					Chance 0.02 IncreaseAttr LABORATORY 1
-				}			
-			}
-	}
 "AUTOMATONFORGE"
 	{
 		name = "automaton forge"
@@ -39,14 +9,24 @@
 		lightEmission = 4.2
 		destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
 		usageFX = FORGE
-		usageType =  UsageEffect "use" 
-			{
-				Filter BodyMaterial FLESH 
-				{
-					Chance 0.02 IncreaseAttr AUTOMATONFORGE 1
-				}
-			}
 	}
+	
+"AUTOMATONFORGE_LAVA_FORGE" inherit "AUTOMATONFORGE"
+	{
+		name = "lava automaton forge"
+		viewId = { "lava_forge" }
+		upgrade = "AUTOMATONFORGE"
+		usagePredicate = Not Area 1 Not FurnitureType "MAGMA"
+	}
+
+"AUTOMATONFORGE_MYST_FORGE" inherit "AUTOMATONFORGE"
+	{
+		name = "myst automaton forge"
+		viewId = { "myst_forge" }
+		upgrade = "AUTOMATONFORGE"
+		usagePredicate = ContainsGas "FOG"
+	}
+	
 "SUPERAUTOMATONFORGE"
 	{
 		name = "super automaton forge"
@@ -58,14 +38,24 @@
 		lightEmission = 4.2
 		destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
 		usageFX = FORGE
-		usageType = UsageEffect "use"
-			{
-				Filter BodyMaterial FLESH 
-				{
-					Chance 0.02 IncreaseAttr SUPERAUTOMATONFORGE 1
-				}			
-			}
 	}
+
+"SUPERAUTOMATONFORGE_LAVA_FORGE" inherit "SUPERAUTOMATONFORGE"
+	{
+		name = "lava super automaton forge"
+		viewId = { "lava_forge" }
+		upgrade = "SUPERAUTOMATONFORGE"
+		usagePredicate = Not Area 1 Not FurnitureType "MAGMA"
+	}
+
+"SUPERAUTOMATONFORGE_MYST_FORGE" inherit "SUPERAUTOMATONFORGE"
+	{
+		name = "myst super automaton forge"
+		viewId = { "myst_forge" }
+		upgrade = "SUPERAUTOMATONFORGE"
+		usagePredicate = ContainsGas "FOG"
+		}	
+
 "GNOMECAMERA"
 	{
 	  name = "gnomishcamera"
@@ -77,6 +67,7 @@
 	  canBuildOutsideOfTerritory = true
 	  eyeball = true
 	}
+	
 ####
 #"Turrents"
 #{

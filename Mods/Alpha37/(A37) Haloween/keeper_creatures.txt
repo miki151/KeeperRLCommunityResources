@@ -1,0 +1,52 @@
+"1_hallows_eve_priest"
+{
+  creatureId = { "HALLOWEEN_KEEPER_MAGE" "HALLOWEEN_KEEPER_MAGE_F" }
+  tribeAlignment = EVIL
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+  immigrantGroups = {"halloween_spirit" "halloween_keeper"}
+  technology = {
+      "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
+      "rat breeding" "bat breeding" "wolf breeding" "iron working" "jewellery" "two-handed weapons"
+      "traps" "archery" "sorcery" "advanced sorcery" "magical weapons" "master sorcery" "demonology"
+      "distillation"
+  }
+  zLevelGroups = { "basic" "evil" }
+  initialTech = { "sorcery" }
+  buildingGroups = {
+      "structure" "doors" "floors" "storage" "zones" "library_necro" "beds"
+      "dining table" "coffins" "halloween_pigsty"
+      "training_necro" "crafting" "laboratory" "jeweller" "poetry" "distillery" "furnace"
+      "prison" "orders" "throne" "demon_shrine" "installations" "minion_statues" "magical_installations" "healing_totem"
+      "traps"
+  }
+  workshopGroups = { "basic" "bows" }
+  description = "Build and manage your dream dungeon, defend against raids, and attack your enemies. Be about as evil as a boogieman can be!"
+# Special traits example, all traits are added
+#   specialTraits = { LastingEffect SPEED ExtraTraining MELEE 5 }
+}
+
+"1_hallows_eve_plague_zombie"
+{
+  creatureId = { "HALLOWEEN_PLAGUE_ZOMBIE" }
+  specialTraits = { Lasting {HALLOWEEN_PLAGUE_ZOMBIE} }
+  tribeAlignment = EVIL
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+  immigrantGroups = {"halloween_zombie"}
+  technology = {}
+  initialTech = { }
+  zLevelGroups = { "basic" "evil" }
+  baseNameGen = "TOWN"
+  buildingGroups = {
+      "structure" "doors" "floors" "storage" "zones" "training_zombies"
+      "orders" "installations"
+  }
+  workshopGroups = { }
+  description = "Enjoy some brains for dinner!"
+  minionTraits = { LEADER WORKER NO_LIMIT }
+  maxPopulation = 1000
+  populationString = "zombies"
+  noLeader = true
+  prisoners = false
+  immigrantInterval = 40
+  unlock = "zombies"
+}

@@ -1,0 +1,251 @@
+﻿Enter spell name [Start with a capital letter and make it very unique and creative]: 
+Enter spell symbol [se a creative unicode character that represents the spell]:
+Enter spell range [if applicable. This is not an effect range, it is a distance in tiles and a single integer]: 
+Enter spell cooldown [minimum number of turns]: 
+Enter spell cooldown [maximum number of turns]: 
+Enter spell sound - pick one that is in this list: (SPELL_HEALING/SPELL_CURE_POISON/SPELL_BLAST/SPELL_SUMMON_INSECTS/SPELL_METEOR_SHOWER/SPELL_FIRE_SPHERE_PET/SPELL_TELEPORT/SPELL_SPEED_SELF/SPELL_STR_BONUS/SPELL_DEX_BONUS):
+Can you use the spell to target yourself? (true/false): 
+Enter spell effect [try and carefully follow the rules for doing this]. Here are the supported spell effects: {
+3a i) Simple Effects (none of these effects have any parameters):
+
+Teleport
+Jump
+DestroyEquipment
+CircularBlast
+Deception
+MakeHumanoid
+DoubleTrouble
+Blast
+Pull
+Shove
+SwapPosition
+Stairs
+Wish
+TriggerTrap
+SetPhylactery
+NoAutoAssign
+
+B) Using Effects:
+
+SpecialAttr 
+- Parameters: SpecialAttr structure
+AddCompanion 
+- Parameters: CompanionInfo structure
+AddTechnology
+- Parameters: TechId structure
+
+C) Generic Modifier Effects (used to prefix any other effect):
+
+Area
+- Parameters: int (radius), Effect (effect)
+CustomArea 
+- Parameters: vector<Vec2> (positions), Effect (effect)
+Filter 
+- Parameters: CreaturePredicate (predicate), Effect (effect)
+Description 
+- Parameters: string (text), Effect (effect)
+Name 
+- Parameters: string (text), Effect (effect)
+AI 
+- Parameters: CreaturePredicate (predicate), EffectAIIntent (from), EffectAIIntent (to), Effect (effect)
+ReturnFalse 
+- Parameters: Effect (effect)
+SpecialAttr 
+- Parameters: Effect (effect)
+EquipmentType 
+- Parameters: MinionEquipmentType (type), Effect (effect)
+Bleed 
+- Parameters: double (amount), string (deathReason)
+Price 
+- Parameters: int (value)
+IncreaseMaxLevel 
+- Parameters: ExperienceType (type), int (value)
+ApplyToSteed 
+- Parameters: Effect (effect)
+
+D) Chain Effects (always followed by a list of other effects enclosed in curely brackets {} ):
+
+Chain
+- Parameters: vector<Effect> (effects)
+ChooseRandom
+- Parameters: vector<Effect> (effects)
+ChainUntilFail
+- Parameters: vector<Effect> (effects)
+FirstSuccessful
+- Parameters: vector<Effect> (effects)
+
+E) Lasting Effects:
+
+Lasting
+- Parameters: optional<TimeInterval> (duration), LastingOrBuff (lastingEffect)
+RemoveLasting
+- Parameters: LastingOrBuff (lastingEffect)
+Permanent
+- Parameters: LastingOrBuff (lastingEffect)
+RemovePermanent
+- Parameters: LastingOrBuff (lastingEffect)
+
+F) Summoning Effects:
+
+Summon
+- Parameters: CreatureId (creature), Range (count), optional<int> (ttl)
+AssembledMinion
+- Parameters: CreatureId (creature), EnumSet<MinionTrait> (traits), vector<Effect> (effects)
+SummonEnemy
+- Parameters: CreatureId (creature), Range (count), optional<int> (ttl)
+ReviveCorpse
+- Parameters: vector<CreatureId> (summoned), int (ttl)
+
+G) Attribute Modification Effects:
+
+Enhance
+- Parameters: EnhanceType (type), int (amount)
+IncreaseAttr
+- Parameters: AttrType (attr), int (amount)
+IncreaseMaxLevel
+- Parameters: ExperienceType (type), int (value)
+
+H) Body Part Effects:
+
+InjureBodyPart
+- Parameters: BodyPart (part)
+LoseBodyPart
+- Parameters: BodyPart (part)
+AddBodyPart
+- Parameters: BodyPart (part), int (count), optional<ItemType> (attack)
+RegrowBodyPart
+- Parameters: int (maxCount)
+Suicide
+- Parameters: MsgType (message)
+
+I) Messaging Effects:
+
+Message
+- Parameters: string (text), MessagePriority (priority)
+UnseenMessage
+- Parameters: string (text), MessagePriority (priority)
+CreatureMessage
+- Parameters: string (secondPerson), string (thirdPerson), optional<MessagePriority> (priority)
+PlayerMessage
+- Parameters: MessagePriority (priority), string (text)
+CollectiveMessage
+- Parameters: string (msg)
+
+J) Item Effects:
+AnimateItems
+- Parameters: int (maxCount), int (radius), Range (time), AnimatedItemType (type)
+DropItems
+- Parameters: ItemType (type), Range (count)
+TakeItems
+- Parameters: string (ingredient)
+
+K) Sound and Visual Effects:
+SoundEffect
+- Parameters: Sound (sound)
+ColorVariant
+- Parameters: Color (color)
+Fx
+- Parameters: FXInfo (info)
+
+L) Interface Effects:
+- UI
+- Parameters: ScriptedUIId (id), ScriptedUIData (data)
+
+M) Game Mechanics
+GrantAbility
+- Parameters: SpellId (id)
+RemoveAbility
+- Parameters: SpellId (id)
+AddSpellSchool
+- Parameters: SpellSchoolId
+Chance
+- Parameters: double (value)
+IncreaseMorale
+- Parameters: double (amount)
+IncreaseMaxLevel
+- Parameters: ExperienceType (type), int (value)
+
+N) Data Tracking Effects:
+Analytics
+- Parameters: string (name), string (value)
+
+O) Transformation Effects:
+Polymorph
+- Parameters: optional<CreatureId> (into), optional<TimeInterval> (timeout)
+SetCreatureName
+- Parameters: string (value)
+SetViewId
+- Parameters: ViewId (value)
+
+P) Flag Effects (effects related to setting and managing flags):
+
+SetFlag
+- Parameters: string (name), bool (value)
+SetCreatureFlag
+- Parameters: string (name), bool (value)
+Unlock
+- Parameters: UnlockId
+
+
+Here are the rules:
+
+Effect Types and Names:
+
+Specify the type of effect using only valid keywords like "Teleport," "Heal," "Damage," "Enhance," etc.
+
+Use the effect name directly for simple effects that do not require any parameters (e.g., "Teleport," "Jump"). Do not attempt to use an effect type that is not in the list of examples that are supported.
+
+Parameters: Do not separate any parameters by commas
+
+Optional Parameters:
+
+Enclose optional parameters within curly braces when they are required.
+
+Range parameters:
+
+A range parameter is constructed of a minimum integer and a maximum integer enclosed in curly braces
+
+Using Effects:
+
+For effects that require structures as parameters (e.g., "SpecialAttr," "AddCompanion," "AddTechnology"), specify the effect name followed by the structure with parameters enclosed in curly braces.
+
+Best practice:
+
+Spell effects should start with a name generic modifier effect then a description generic modifier effect. Example: Name "Teleport self" Description "Teleport yourself" Teleport.
+
+The Spell name and description should be very creative and unique.
+
+Chain Effects:
+
+Create chains of effects by listing them within curly brackets {} following the appropriate chain type (e.g., "Chain," "ChooseRandom," "ChainUntilFail," "FirstSuccessful"). Use the correct chain effect. Chain will simply carry out the effects in sequence. ChooseRandom will choose a random one to execute. ChainUntilFail will keep doing the effects in sequence until one of them fails. FirstSuccessful will keep trying to do the effects in sequence until one of them succeeds.
+
+Specify effects as single things chained together not as different effects side-by-side. eg.
+
+Wrong:
+Effect = Teleport
+Effect = Lasting Slowed
+
+Correct:
+Effect = Chain {Teleport Lasting Slowed}
+
+Generic Modifier Effects:
+
+When using generic modifier effects (e.g., "Area," "CustomArea," "Filter"), provide the effect name followed by parameters enclosed in curly braces followed by the effect you wish to use a modified version of. Specify the target(s) of an effect using these to define which entities or game elements are affected.
+
+Numeric Parameters:
+
+Use integers or double values as required for effect parameters.
+
+Boolean Parameters:
+
+Utilize boolean values (true or false) for effect parameters
+
+Text Parameters:
+
+Include text strings within double quotes when specifying names, messages, or labels.
+
+Lasting Effects:
+
+Specify lasting effects (e.g., "Lasting," "RemoveLasting," "Permanent," "RemovePermanent") followed by the lasting effect type
+
+}

@@ -499,10 +499,10 @@ End
   Chain {
 	  SummonElement
 	  Area 4 Filter Not Enemy {
-	  Filter CreatureId "FIRE_ELEMENTAL"  { SetCreatureName "Fire Kami" GrantAbility "fire breath"}
-	  Filter CreatureId "AIR_ELEMENTAL"   { SetCreatureName "Air Kami" GrantAbility "fog cloud"}
-	  Filter CreatureId "WATER_ELEMENTAL" { SetCreatureName "Water Kami" GrantAbility "deception"}
-	  Filter CreatureId "EARTH_ELEMENTAL" { SetCreatureName "Earth Kami" GrantAbility "dig"}
+	  Filter And {CreatureFlag "animated" CreatureId "FIRE_ELEMENTAL" } { SetCreatureName "Fire Kami" GrantAbility "fire breath"}
+	  Filter And {CreatureFlag "animated" CreatureId "AIR_ELEMENTAL" }  { SetCreatureName "Air Kami" GrantAbility "fog cloud"}
+	  Filter And {CreatureFlag "animated" CreatureId "WATER_ELEMENTAL" } { SetCreatureName "Water Kami" GrantAbility "deception"}
+	  Filter And {CreatureFlag "animated" CreatureId "EARTH_ELEMENTAL" } { SetCreatureName "Earth Kami" GrantAbility "dig"}
 	  }
 	  Caster {SetCreatureFlag "kami_talisman" false}
       Caster RemoveAbility NIPPON_ELEMENTAL_TALISMAN}
@@ -1348,4 +1348,151 @@ OneTimeAbilityName("NIPPON_CORRUPTED_DAIMYO_ANOTHER_BODYGUARD", "Gains an bodygu
   range = 4
   cooldown = {5 21}
   sound = SPELL_BLAST
+}
+
+
+#################################################################################################################################
+#                                                        mitsuryo-sha                                                           #
+#################################################################################################################################
+
+"NIPPON_POACHER_STALK"
+{
+  symbol = "🕵️"
+  effect = Lasting 10 INVISIBLE
+  cooldown = {100 301}
+  sound = SPELL_INVISIBILITY
+}
+
+"NIPPON_POACHER_KNIFE"
+{
+  symbol = "ℒ"
+  effect = Name "poisoned knife" Description "Causes damage and poisons" { Lasting 30 POISON Damage DAMAGE CUT }
+  range = 1
+  cooldown = {32 84}
+  endOnly = true
+  message = "lash with dagger!" "lashes with dagger!"
+}
+
+#################################################################################################################################
+#                                                            rhonin                                                             #
+#################################################################################################################################
+
+"NIPPON_RHONIN_SAND"
+{
+  symbol = "🕶️"
+  effect = Name "throw sand" Lasting 5 BLIND
+  cooldown = {10 21}
+  range = 2
+}
+
+#################################################################################################################################
+#                                                    MAD SWORDSMITH                                                             #
+#################################################################################################################################
+
+"NIPPON_MAD_SWORDSHITH_BREATH"
+{
+  symbol = "🐲"
+  effect = Name "fire breath" Fire{}
+  fx = {FLAMETHROWER ColorId LIGHT_RED}
+  range = 2
+  cooldown = {15 31}
+  sound = SPELL_BLAST
+  message = "breathe fire!" "breathes fire!"
+}
+
+
+#################################################################################################################################
+#                                                       SHINREI                                                                 #
+#################################################################################################################################
+
+"NIPPON_SHINREI_BLESSING"
+{
+  symbol = "🛡"
+  effect = Name "blessing" Chain {Area 10 Filter Not Enemy {	Lasting 40 DEF_BONUS 
+																Lasting 40 DAM_BONUS 
+																Lasting 40 RAN_DAM_BONUS 
+																Lasting 40 SPEL_DAM_BONUS}}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"NIPPON_SHINREI_CURSE"
+{
+  symbol = "🛡"
+  effect = Name "curse" Chain {Area 10 Filter Enemy {	Lasting 40 MELEE_VULNERABILITY 
+														Lasting 40 MAGIC_VULNERABILITY 
+														Lasting 40 RANGED_VULNERABILITY 
+														Lasting 40 ACID_VULNERABILITY 
+														Lasting 40 FIRE_VULNERABILITY 
+														Lasting 40 COLD_VULNERABILITY
+														NipponCurseProgress()}}
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"NIPPON_SHINREI_CALL"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "call the kami" Description "call the kami to your help"
+  Chain {
+	  SummonElement
+	  Area 4 Filter Not Enemy {
+	  Filter And {CreatureFlag "animated" CreatureId "FIRE_ELEMENTAL" } { SetCreatureName "Fire Kami" GrantAbility "fire breath"}
+	  Filter And {CreatureFlag "animated" CreatureId "AIR_ELEMENTAL" }  { SetCreatureName "Air Kami" GrantAbility "fog cloud"}
+	  Filter And {CreatureFlag "animated" CreatureId "WATER_ELEMENTAL" } { SetCreatureName "Water Kami" GrantAbility "deception"}
+	  Filter And {CreatureFlag "animated" CreatureId "EARTH_ELEMENTAL" } { SetCreatureName "Earth Kami" GrantAbility "dig"}
+	  }}
+  range = 4
+  cooldown = {150 301}
+  sound = SPELL_BLAST
+}
+
+#################################################################################################################################
+#                                                       juki onna                                                               #
+#################################################################################################################################
+
+"nippon_juki_onna_ice_breath"
+{
+  symbol = "❄"
+  effect = Name "ice cone" Chain { Ice{} Damage COLD_DAMAGE SPELL }
+  fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+  range = 6
+  cooldown = {15 31}
+  #sound = SPELL_FIRE_SPHERE_PET
+}
+
+"nippon_juki_onna_cold_fog"
+{
+  symbol = "🌫"
+  effect = Name "cold fog" Description "Creates a cold fog." Area 4 Filter DistanceD none 3.2 EmitGas "NIPPON_COLD_BREATH" 1
+  cooldown = {30 61}
+}
+
+"nippon_juki_onna_cold_blast"
+{
+  symbol = "❄"
+  effect = MinDistanceFromStrongEnemy(4) Name "cold blast" Description "Shoots a blast"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage { "are hit by the blast" "is hit by the blast"}
+          Damage COLD_DAMAGE SHOOT
+		  Ice{}
+        },
+        CreatureMessage { "are spared by the blast" "is spared by the blast"}
+      )
+  cooldown = 3
+  range = 14
+  maxHits = 1
+  fx = {MAGIC_MISSILE}
+  message = "shoot a blast" "shoots a blast"
+  type = ABILITY
+}
+
+"nippon_juki_onna_sculpt_ice"
+{
+  symbol = "❄❄"
+  effect = Name "sculpt_ice" PlaceFurniture "NIPPON_ICE_SCULPTURE"
+  cooldown = {300 810}
+  range = 1
+  sound = SPELL_METEOR_SHOWER
 }

@@ -221,8 +221,8 @@
 	spells = { "magic missile" }
     spellSchools = { "adventurer ancient magic" "adventurer fire wizard" }
     maxLevelIncrease = {
-      SPELL 100
-	  MELEE 20
+      SPELL_DAMAGE 20
+	  DAMAGE 20
     }
     permanentEffects = {
       MAGIC_RESISTANCE 1
@@ -237,6 +237,9 @@
         {  "LeatherBoots" }
         {  "LeatherGloves" }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
   }
 
     "ADVENTURERS_WARRIOR_HERO"
@@ -262,7 +265,7 @@
 	  "damage bonus"
     }
     maxLevelIncrease = {
-      MELEE 500
+      DAMAGE 20
     }
     permanentEffects = {
       MELEE_RESISTANCE 1
@@ -271,6 +274,10 @@
     chatReactionHostile  = "\"We are taking you down!\""
     deathDescription = "killed, fighting to the last"
     hatedByEffect = HATE_HUMANS
+	
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
   }
   "ADVENTURERS_THIEF_HERO"
     {
@@ -289,9 +296,9 @@
       DEFENSE 30
       }
     maxLevelIncrease = {
-      ARCHERY 500
-      MELEE 500
-	  SPELL 7
+      RANGED_DAMAGE 24
+      DAMAGE 20
+	  SPELL_DAMAGE 7
       }
     spellSchools = { "adventurer dark stealth" }
     permanentEffects = {
@@ -315,12 +322,16 @@
         { Amulet NIGHT_VISION 1 1}
         { Amulet SWIMMING_SKILL 1 1}
       }
+	  
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
   }
 
   "ADVENTURERS_WIZARD_ADVENTURER" inherit "ADVENTURERS_WIZARD_HERO"
     {
     maxLevelIncrease = {
-      SPELL 500
+      SPELL_DAMAGE 20
 	  }
     }
 	
@@ -343,8 +354,8 @@
         AMBUSH_SKILL 1
       }
       maxLevelIncrease = {
-        MELEE 500
-        SPELL 12
+        DAMAGE 20
+        SPELL_DAMAGE 12
       }
       hatedByEffect = HATE_HUMANS
       spellSchools = { "adventurer fighter" "adventurer war magic" }
@@ -357,6 +368,9 @@
         {  "LeatherHelm"}
         {  "GoldPiece" 16 26 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
   "ADVENTURERS_WARRIOR_ADVENTURER_FEMALE" inherit "ADVENTURERS_WARRIOR_ADVENTURER"
     {
@@ -388,8 +402,8 @@
         AMBUSH_SKILL 1
       }
       maxLevelIncrease = {
-    	MELEE 500
-        SPELL 24
+    	DAMAGE 20
+        SPELL_DAMAGE 24
       }
       hatedByEffect = HATE_HUMANS
       spellSchools = { "adventurer battle mage" }
@@ -407,6 +421,9 @@
         {  "LeatherBoots"}
         {  "GoldPiece" 16 26 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
   "ADVENTURERS_MAGE_ADVENTURER_FEMALE" inherit "ADVENTURERS_MAGE_ADVENTURER"
     {
@@ -439,8 +456,8 @@
 		ELF_VISION 1
       }
       maxLevelIncrease = {
-        MELEE 20
-        ARCHERY 500
+        DAMAGE 20
+        RANGED_DAMAGE 24
       }
       hatedByEffect = HATE_HUMANS
       spellSchools = { "adventurer fighter" }
@@ -457,6 +474,9 @@
         {  "LeatherHelm"}
         {  "GoldPiece" 16 26 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
 	}
   "ADVENTURERS_RANGER_ADVENTURER_FEMALE" inherit "ADVENTURERS_RANGER_ADVENTURER"
     {
@@ -487,7 +507,7 @@
         REGENERATION 1
       }
       maxLevelIncrease = {
-        MELEE 500
+        DAMAGE 24
       }
       hatedByEffect = HATE_HUMANS
       spellSchools = { "adventurer fighter" "adventurer barbarian" }
@@ -501,6 +521,9 @@
         {  "LeatherBoots"}
         {  "GoldPiece" 16 26 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
   "ADVENTURERS_BARBARIAN_ADVENTURER_FEMALE" inherit "ADVENTURERS_BARBARIAN_ADVENTURER"
     {
@@ -535,9 +558,9 @@
         DISARM_TRAPS_SKILL 1
       }
       maxLevelIncrease = {
-        MELEE 500
-		ARCHERY 500
-		SPELL 12
+        DAMAGE 24
+		RANGED_DAMAGE 24
+		SPELL_DAMAGE 12
       }
       spellSchools = { "adventurer assassination" "adventurer assassin magic" "adventurer assassin star arts" }
 	   spells = {
@@ -552,6 +575,9 @@
         {  "WoodenStaff"}		
         {  "GoldPiece" 26 36 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
   "ADVENTURERS_ASSASSIN_ADVENTURER_FEMALE" inherit "ADVENTURERS_ASSASSIN_ADVENTURER"
     {
@@ -632,7 +658,7 @@
         FAST_TRAINING 1
       }
       maxLevelIncrease = {
-        MELEE 500
+        DAMAGE 24
       }
 	  spells = { "adventurer spin web" "adventurer dig pit" "adventurer mud wall" }
       spellSchools = { "adventurer spider" }
@@ -641,6 +667,9 @@
         DAMAGE 50
         DEFENSE 50
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
   "ADVENTURERS_CLERIC_HERO"
     {
@@ -666,8 +695,8 @@
       RANGED_RESISTANCE 1
     }
     maxLevelIncrease = {
-      SPELL 500
-	  MELEE 500
+      SPELL_DAMAGE 24
+	  DAMAGE 24
     }
     chatReactionFriendly = "talks at length about his goddess"
     chatReactionHostile  = "\"Your afterlife will be horrible!\""
@@ -679,6 +708,9 @@
         {  "LeatherBoots" }
         {  "LeatherGloves" }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
   }
   
   "ADVENTURERS_NECROMANCER"
@@ -697,8 +729,8 @@
         name = "necromancer"
       }
       maxLevelIncrease = {
-        MELEE 500
-        SPELL 12
+        DAMAGE 24
+        SPELL_DAMAGE 12
       }
       permanentEffects = {
         RANGED_RESISTANCE 1
@@ -717,6 +749,9 @@
         { type = Glyph ARMOR ItemAttrBonus DEFENSE 3 chance = 0.01 }
         { type = Glyph WEAPON ItemAttrBonus DAMAGE 3 chance = 0.01 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
 
 #Necromancy
@@ -821,8 +856,8 @@
 		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 2
-        SPELL 7
+        DAMAGE 2
+        SPELL_DAMAGE 7
       }
      spellSchools = { "mage" }
      spells = { "fireball" }
@@ -847,6 +882,9 @@
         {  "GoldPiece" 80 120 }
         { type =  "ADVENTURERS_DwarvenBeer" chance = 0.1 }
     }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
   }
 
 	"ADVENTURERS_MINOTAUR" {
@@ -863,7 +901,7 @@
 		  weight = 400
 		}
 		maxLevelIncrease = {
-		  MELEE 500
+		  DAMAGE 24
 		}
 		name = {
 		  name = "minotaur"
@@ -874,6 +912,9 @@
 			{ Potion RegrowBodyPart 5}
 			{ Scroll Permanent DARKNESS_SOURCE}
 		  }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
 	}
 	
     "ADVENTURERS_CYCLOPS" inherit "CYCLOPS" {
@@ -891,6 +932,9 @@
 		{ Potion RegrowBodyPart 1 1 1 0.03 }
 		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }	
 
 "ADVENTURERS_IMMORTAL_DEATH" inherit "DEATH" {
