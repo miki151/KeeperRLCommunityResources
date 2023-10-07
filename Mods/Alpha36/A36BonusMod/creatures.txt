@@ -7750,15 +7750,17 @@ End
         DEFENSE 25
         SPELL_DAMAGE 5 
       }
-      viewId = { "cmbt_succubus" }
+      viewId = { "cmbt_succubus30" }
       body = {
         type = Humanoid LARGE
         material = SPIRIT
         intrinsicAttacks = {
-          TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+          TORSO {{	isExtraAttack = true
+			itemType = { Intrinsic { "touch_attack" } "touch" 0 {
               attackType = HIT
               attackMsg = TOUCH
               victimEffect = {1.0 Lasting PEACEFULNESS} } }}}
+			  
         }
         addBodyPart = {
           WING 2
@@ -7773,6 +7775,9 @@ End
         name = "combat succubus"
         pluralName = "combat succubi"
       }
+	chatReactionFriendly = "stretches and breathes magnificiently, confident you're enjoying the view."
+	chatReactionHostile = "\"Tsk tsk. If you keep waving that around, you'll tire yourself out.\""
+	petReaction = "growls seductively and encourages you to fully appreciate her physique."
     }
     "BONUS_MILITIA_PLAYER"
     {
