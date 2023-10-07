@@ -3401,7 +3401,7 @@ End
   
 "BONUS_AMAZON"
     {
-      viewId = { "amazon" }
+      viewId = { "amazonWP" }
       attr = {
         DAMAGE 20
         DEFENSE 17
@@ -3533,7 +3533,7 @@ End
 
 "BONUS_AMAZON_ELDER" inherit "BONUS_AMAZON"
 {
-  viewId = { "amazon_elder" }
+  viewId = { "amazon_elderWP" }
   attr = {
 	DAMAGE 16
 	DEFENSE 16 
@@ -3578,7 +3578,7 @@ End
 
 "BONUS_AMAZON_QUEEN" inherit "BONUS_AMAZON"
 {
-  viewId = { "amazon_queen" }
+  viewId = { "amazon_queenWP" }
   attr = {
 	DAMAGE 42
 	DEFENSE 36 
@@ -3631,7 +3631,7 @@ End
 
 "BONUS_AMAZON_WAR_MAIDEN" inherit "BONUS_AMAZON"
 {
-  viewId = { "amazon_war_maiden" }
+  viewId = { "amazon_war_maidenWP" }
   attr = {
 	DAMAGE 30
 	DEFENSE 20   
@@ -7825,17 +7825,19 @@ End
       attr = {
         DAMAGE 16
         DEFENSE 25
-        SPELL_DAMAGE 5 
+        SPELL_DAMAGE 16 
       }
-      viewId = { "cmbt_succubus" }
+      viewId = { "cmbt_succubus30" }
       body = {
         type = Humanoid LARGE
         material = SPIRIT
         intrinsicAttacks = {
-          TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+          TORSO {{
+			isExtraAttack = true
+			itemType = { Intrinsic { "touch_attack" } "touch" 0 {
               attackType = HIT
               attackMsg = TOUCH
-              victimEffect = {1.0 Lasting PEACEFULNESS} } }}}
+              victimEffect = {1.0 Lasting PEACEFULNESS} } }}}  
         }
         addBodyPart = {
           WING 2
@@ -7850,6 +7852,9 @@ End
         name = "combat succubus"
         pluralName = "combat succubi"
       }
+	chatReactionFriendly = "stretches and breathes magnificiently, confident you're enjoying the view."
+	chatReactionHostile = "\"Tsk tsk. If you keep waving that around, you'll tire yourself out.\""
+	petReaction = "growls seductively and encourages you to fully appreciate her physique."
     }
     "BONUS_MILITIA_PLAYER"
     {
