@@ -1,0 +1,74 @@
+"HALOWEEN_SUMMON_BATS"
+{
+  symbol = "☠"
+  effect = Name "summon bats" Summon "HALLOWEEN_BAT" {4 8} 100
+  cooldown = {30 61}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"HALOWEEN_SUMMON_WOLVES"
+{
+  symbol = "☠"
+  effect = Name "summon bats" Summon "WOLF" {2 4} 100
+  cooldown = {30 61}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"HALOWEEN_WITCH_TELEPORT"
+{
+  symbol = "🌀"
+  effect = Name "fiery teleport" Chain { Teleport CircularBlast Fire{}}
+  range = 3
+  cooldown = {50 201}
+  endOnly = true
+  sound = SPELL_TELEPORT
+}
+
+"HALOWEEN_WITCH_SLEEP"
+{
+  symbol = "🕶️"
+  effect = Name "sleep" Lasting 5 SLEEP
+  cooldown = {10 21}
+  range = 5
+}
+
+"HALOWEEN_WITCH_FOG_CLOUD"
+{
+  symbol = "🌫"
+  effect = Name "black fog" Description "Creates a black fog cloud." Area 4 Filter DistanceD none 3.2 EmitGas "BLACK_SMOKE" 1
+  cooldown = {30 61}
+}
+
+"HALOWEEN_SCARE"
+{
+  symbol = "😱"
+  effect = Name "scare" Lasting 10 PANIC
+  range = 1
+  cooldown = {25 51}
+  sound = SPELL_STR_BONUS
+}
+
+OneTimeAbility("HALOWEEN_HORSE", "Summons the horse.", { Summon "HALLOWEEN_HORSE" 1 none }, "🧛")
+
+"HALOWEEN_CHORT_SHAPESHIFT"
+{
+  symbol = "⇝"
+  effect = Name "shapeshift" Description "Change into a random monster" AI Health 0.6 1.0 1 -2 {
+    Polymorph none 100
+    IncreaseAttr DAMAGE 25
+    IncreaseAttr DEFENSE 30
+    SetCreatureName "chort"
+  }
+  message = "" ""
+  cooldown = 1
+}
+
+"HALOWEEN_TRIP"
+{
+  symbol = "🕶️"
+  effect = Name "trip" Lasting 5 ENTANGLED
+  cooldown = {5 21}
+  range = 5
+}
+
+OneTimeAbility("halloween plague zombie spawn", "More dead = more zombies!.", { Summon "HALLOWEEN_PLAGUE_ZOMBIE" 1 none }, "🧛")
