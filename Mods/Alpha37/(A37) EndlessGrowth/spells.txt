@@ -588,8 +588,9 @@ End
 
 "eg_final_sacrifice"
 {
+  upgrade = "eg_release_limits"
   symbol = "🛡"
-  effect = Name "final sacrifice" AI And{} 1 -1 { Permanent EG_FINAL_SACRIFICE }
+  effect = Name "release limits" AI And{} 1 -1 { Lasting 40 EG_FINAL_SACRIFICE }
   cooldown = {99999}
   sound = SPELL_DEX_BONUS
 }
@@ -708,19 +709,14 @@ End
 "eg_bloody_sacrifice"
 {
   symbol = "🛡"
-  effect = Name "bloody sacrifice" Description "Your final moment has come, let unleash power of your blood fully"  AI And{} 1 -1 { Chain { 
-														      Caster Suicide DIE 
+  effect = Name "bloody sacrifice" Description "Your final moment has come, let unleash power of your blood fully" Chain { 
 															  Area 1 {EmitGas "EG_BLOOD_FOG" 1
-															  Damage BLESSED_FLESH SPELL
-												              Damage BLESSED_FLESH SPELL
-															  Damage BLESSED_FLESH SPELL
-												              Damage BLESSED_FLESH SPELL
-															  Filter CreatureFlag "eg_better_spells"{Damage BLESSED_FLESH SPELL}
                                                               Filter CreatureFlag "eg_better_spells"{Damage BLESSED_FLESH SPELL}}															  
 															  Blast
-															  Filter Not CreatureFlag "eg_better_spells"{Summon "EG_BLOOD_PHANTOM" { 4 5 } 100}
-															  Filter CreatureFlag "eg_better_spells"{Summon "EG_BLOOD_PHANTOM" { 5 6 } 100}}}
-  cooldown = {99999}
+															  Filter Not CreatureFlag "eg_better_spells"{Summon "EG_BLOOD_PHANTOM" { 1 2 } 100}
+															  Filter CreatureFlag "eg_better_spells"{Summon "EG_BLOOD_PHANTOM" { 2 3 } 100}
+															  Caster Damage DAMAGE CUT}
+  cooldown = {125 250}
   sound = SPELL_DEX_BONUS
 }
 

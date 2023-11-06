@@ -825,7 +825,7 @@ Def PromoteGore()
 					}
 					Filter CreatureFlag "promotion_3" {
 						IncreaseMaxLevel BLESSED_FLESH 1
-						SetViewId {"eg_gore_vessel_up_4"}	
+						SetViewId {"eg_cultist_evangelist_04"}	
 						IncreaseAttr "BLESSED_FLESH" 2					
 						IncreaseAttr "SPELL_DAMAGE" 2
 						IncreaseAttr "DEFENSE" 1
@@ -836,7 +836,7 @@ Def PromoteGore()
 					Filter Not CreatureFlag "promotion_3"	{
 					Filter CreatureFlag "promotion_2" {
 						IncreaseMaxLevel BLESSED_FLESH 1
-					    SetViewId {"eg_gore_vessel_up_3"}
+					    SetViewId {"eg_cultist_evangelist_03"}
 						IncreaseAttr "BLESSED_FLESH" 2
 						IncreaseAttr "SPELL_DAMAGE" 2
 						IncreaseAttr "DEFENSE" 1							
@@ -846,12 +846,7 @@ Def PromoteGore()
 					Filter Not CreatureFlag "promotion_2"	{
 					Filter CreatureFlag "promotion_1" {
 						IncreaseMaxLevel BLESSED_FLESH 1
-					    Filter CreatureId "EG_GORE_VESSEL"{
-						SetViewId {"eg_gore_vessel_up_2"}
-						}
-						Filter CreatureId "EG_GORE_VESSEL_F"{
-						SetViewId {"eg_gore_vessel_up_f_2"}
-						}
+					    SetViewId {"eg_cultist_evangelist_02"}
 						IncreaseAttr "BLESSED_FLESH" 2						
                         AddSpellSchool "EG_GROWTH"					
 						IncreaseAttr "DAMAGE" 3
@@ -861,13 +856,7 @@ Def PromoteGore()
 						}
                     Filter Not CreatureFlag "promotion_1"	{
 						IncreaseMaxLevel BLESSED_FLESH 1
-					    Filter CreatureId "EG_GORE_VESSEL"{
-						SetViewId {"eg_gore_vessel_up_1"}
-						}
-						Filter CreatureId "EG_GORE_VESSEL_F"{
-						SetViewId {"eg_gore_vessel_up_f_1"}
-						}					
-                        AddSpellSchool "EG_BASE_MAGIC"	
+					    SetViewId {"eg_cultist_evangelist_01"}
 						IncreaseAttr "BLESSED_FLESH" 2						
 						IncreaseAttr "DAMAGE" 2
 						IncreaseAttr "DEFENSE" 2
@@ -875,6 +864,55 @@ Def PromoteGore()
 						SetCreatureFlag "promotion_1" true
 						}
                     }}}		
+
+			     Filter Or { CreatureId "EG_GORE_MELEE_VESSEL" CreatureId "EG_GORE_MELEE_VESSEL_F"}
+				    {
+					Filter CreatureFlag "promotion_4" {		
+						IncreaseMaxLevel BLESSED_FLESH 1
+						IncreaseAttr "BLESSED_FLESH" 1				
+						IncreaseAttr "DAMAGE" 1
+						IncreaseAttr "DEFENSE" 1
+					}
+					Filter CreatureFlag "promotion_3" {
+						IncreaseMaxLevel BLESSED_FLESH 1
+						SetViewId {"eg_cultist_champion_04"}	
+						IncreaseAttr "BLESSED_FLESH" 1				
+						IncreaseAttr "DAMAGE" 3
+						IncreaseAttr "DEFENSE" 3
+						Permanent FLYING
+						AddBodyPart ARM 2  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						SetCreatureFlag "promotion_4" true
+						}
+					Filter Not CreatureFlag "promotion_3"	{
+					Filter CreatureFlag "promotion_2" {
+						IncreaseMaxLevel BLESSED_FLESH 1
+					    SetViewId {"eg_cultist_champion_03"}
+						IncreaseAttr "BLESSED_FLESH" 1
+						IncreaseAttr "DAMAGE" 3
+						IncreaseAttr "DEFENSE" 3						
+						AddBodyPart ARM 2  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						SetCreatureFlag "promotion_3" true
+						}
+					Filter Not CreatureFlag "promotion_2"	{
+					Filter CreatureFlag "promotion_1" {
+						IncreaseMaxLevel BLESSED_FLESH 1
+					    SetViewId {"eg_cultist_champion_02"}
+						IncreaseAttr "BLESSED_FLESH" 1						
+                        AddSpellSchool "EG_GROWTH"					
+						IncreaseAttr "DAMAGE" 3
+						IncreaseAttr "DEFENSE" 3
+						SetCreatureFlag "promotion_2" true
+						}
+                    Filter Not CreatureFlag "promotion_1"	{
+						IncreaseMaxLevel BLESSED_FLESH 1
+					    SetViewId {"eg_cultist_champion_01"}
+                        AddSpellSchool "EG_BASE_MAGIC"	
+						IncreaseAttr "BLESSED_FLESH" 1						
+						IncreaseAttr "DAMAGE" 3
+						IncreaseAttr "DEFENSE" 3
+						SetCreatureFlag "promotion_1" true
+						}
+                    }}}
 					
 		     }
 End
@@ -961,7 +999,7 @@ End
 							 AddSpellSchool "EG_GROWTH_MAGIC_01"
 							 }
 							 AddSpellSchool "EG_GROWTH_MAGIC_02"
-							 IncreaseAttr SPELL_DAMAGE 1
+							 IncreaseAttr BLESSED_FLESH 1
             }
 			Filter Flag "gore_08"
 			{
@@ -969,7 +1007,7 @@ End
 						     Area 1 RemoveFurniture "EG_OFFERING"
 							 AddSpellSchool "EG_GROWTH_MAGIC_02"
 							 AddSpellSchool "EG_GROWTH_MAGIC_01"
-							 IncreaseAttr SPELL_DAMAGE 2
+							 IncreaseAttr BLESSED_FLESH 2
             }
         }
         }

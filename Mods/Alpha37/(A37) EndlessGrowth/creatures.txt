@@ -2,10 +2,10 @@
 "EG_GORE_VESSEL"
   {
     # Definitions in tiles.txt
-    viewId = { "eg_cultist_high_priest" }
+    viewId = { "eg_cultist_evangelist_m" }
     # ViewId upgrades of Keepers are applied every 5 tech level increases
       name = {
-      name = "Vessel"
+      name = "Evangelist"
       firstNameGen = "FIRST_MALE"
       fullTitle = true
     }
@@ -33,6 +33,7 @@
 	companions = {2 true BLESSED_FLESH 0.002 { "EG_GORE_REBORN" }}
     aiType = RANGED
     spellSchools = {  "EG_BASE_MAGIC"  }
+    spells = { "healing" }
     inventory = {
       { "Robe"}
       { "IronStaff" }
@@ -42,7 +43,51 @@
   
 "EG_GORE_VESSEL_F" inherit "EG_GORE_VESSEL"
   {
-    viewId = { "eg_cultist_high_priest_f" }
+    viewId = { "eg_cultist_evangelist_f" }
+    gender = FEMALE
+    name = append {
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+
+"EG_GORE_MELEE_VESSEL"
+  {
+    viewId = { "eg_cultist_champion_m" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+      MULTI_WEAPON 40
+	  BLESSED_FLESH 4
+      FURNACE 15
+      FORGE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "champion"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+      SPELL_DAMAGE 3
+    }
+    spellSchools = { "fighter" "EG_TEMPLAR" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+  
+"EG_GORE_MELEE_VESSEL_F" inherit "EG_GORE_MELEE_VESSEL"
+  {
+    viewId = { "eg_cultist_champion_f" }
     gender = FEMALE
     name = append {
       firstNameGen = "FIRST_FEMALE"
