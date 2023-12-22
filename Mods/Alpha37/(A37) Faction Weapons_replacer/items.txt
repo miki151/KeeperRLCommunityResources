@@ -1,3 +1,25 @@
+"IronStaff" inherit "WoodenStaff"
+  {
+    viewId = { "enchanted_staff" }
+    equipedViewId = { "enchanted_staff_v" }
+    name = "enchanted staff"
+    modifiers = {
+      SPELL_DAMAGE 15
+      SPELL_SPEED 15
+    }
+    price = 60
+    genPrefixes = {
+      1 VictimEffect 1.0 Escape{}
+      1 VictimEffect 0.4 DestroyEquipment
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 20
+        AttackerEffect Suicide DIE
+      }
+    }
+    maxUpgrades = 2
+    equipmentGroup = "artifact equipment"
+  }
+  
 #######
 # Law #
 ####### 

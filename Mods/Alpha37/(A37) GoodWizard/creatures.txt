@@ -83,11 +83,11 @@
     }
     hatedByEffect = HATE_HUMANS
     inventory = {
-      { "IronStaff" }
-      { type = Glyph ARMOR LastingEffect MAGIC_RESISTANCE chance = 0.3 }
-      { type = Glyph ARMOR LastingEffect SPEED chance = 0.3 }
-      { type = Glyph ARMOR LastingEffect NO_CARRY_LIMIT chance = 0.3 }
-      { type = Glyph WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE} chance = 0.3 }
+      { "EnchantedStaff" }
+      { type = Glyph {ARMOR LastingEffect MAGIC_RESISTANCE} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect SPEED} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect NO_CARRY_LIMIT} chance = 0.3 }
+      { type = Glyph {WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE}} chance = 0.3 }
       { Potion Heal { FLESH } 3 5 }
       { type = "Torch" chance = 0.3 }
       { "GoldPiece" 140 200 }
@@ -135,7 +135,7 @@
       DEFENSE 30
     }
     inventory = {
-      { "IronStaff" }
+      { "EnchantedStaff" }
       { "LeatherArmor"}
     }
   }
@@ -182,7 +182,7 @@
       DEFENSE 30
     }
     inventory = {
-      { "IronStaff" }
+      { "EnchantedStaff" }
       { "LeatherArmor"}
     }
   } 
@@ -245,9 +245,15 @@
 	permanentEffects = {
       RIDER 1
     }
-	companions = {4 false SPELL_DAMAGE 0.02 { "SPIRIT" }}
+    companions = {{
+      count = 5
+      spawnAway = false
+      statsBase = SPELL_DAMAGE
+      summonFreq = 0.05
+      creatures = { "SPIRIT" }}
+    }
     inventory = {
-      { "IronStaff" }
+      { "EnchantedStaff" }
       { "LeatherArmor"}
     }
   }
