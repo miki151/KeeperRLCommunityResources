@@ -94,7 +94,7 @@ End
 	  }
 	Chain{
       DropItems {"Skeleton"} 1
-	  DropItems {"IronStaff"} 1
+	  DropItems {"EnchantedStaff"} 1
 	  }
 	Chain{
       DropItems {"Skeleton"} 1
@@ -109,7 +109,19 @@ End
   }
   fire = 50
   strength = 30
-  destroyedRemains = "OPENED_COFFIN"
+  destroyedRemains = "MV_OPENED_COFFIN"
+}
+
+"MV_OPENED_COFFIN"
+{
+  name = "coffin"
+  viewId = { "opened_coffin" }
+  canHideHere = true
+  usageType = UsageEffect "sleep in coffin" Lasting SLEEP
+  fire = 50
+  strength = 40
+  bedType = COFFIN
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
 }
 
 "MV_SKELETON_COFFIN"
@@ -132,7 +144,7 @@ End
   }
   fire = 50
   strength = 30
-  destroyedRemains = "OPENED_COFFIN"
+  destroyedRemains = "MV_OPENED_COFFIN"
 }
 
 "MV_BLOOD"

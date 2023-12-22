@@ -224,12 +224,18 @@
   viewId = { "ins_dungeon_wall2" }
 }
 
-"INS_ENDOMORPH_GUARD_POST_CHEST" inherit "ARMOR_CHEST"
+"INS_ENDOMORPH_GUARD_POST_CHEST" 
 {
+  name = "chest"
+  viewId = { "chest" }
   usageType = UsageEffect "open" {
     CreatureMessage { "open the chest" "opens the chest"}
     CreatureMessage { "find some corpses inside" "finds some corpses inside"}
     DropItems {"Skeleton"} {10 20}
     RemoveFurniture "INS_ENDOMORPH_GUARD_POST_CHEST"
   }
+  canHideHere = true
+  hidesItems = true
+  fire = 50
+  strength = 30
 }

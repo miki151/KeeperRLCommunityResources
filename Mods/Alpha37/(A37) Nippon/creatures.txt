@@ -567,7 +567,13 @@
     chatReactionHostile = "\"Die!\""
     spellSchools = {"JP_ONMYOJI"}
     spells = { "heal spirit" }
-    companions = {2 false SPELL_DAMAGE 0.02 { "NIPPON_SHIKIGAMI" }}
+    companions = {{
+      count = 2
+      spawnAway = false
+      statsBase = SPELL_DAMAGE
+      summonFreq = 0.05
+      creatures = { "NIPPON_SHIKIGAMI" }}
+    }
     permanentEffects = {
       DISTILLATION_SKILL 1
     }
@@ -1181,7 +1187,13 @@
     chatReactionHostile = "\"Die!\""
     spellSchools = {"JP_NOROI_SHI"}
     spells = { "heal spirit" }
-    companions = {2 false SPELL_DAMAGE 0.02 { "JP_EVIL_SPIRIT" }}
+    companions = {{
+      count = 2
+      spawnAway = false
+      statsBase = SPELL_DAMAGE
+      summonFreq = 0.05
+      creatures = { "JP_EVIL_SPIRIT" }}
+    }
     permanentEffects = {
       DISTILLATION_SKILL 1
 	  PSYCHIATRY 1
@@ -1286,9 +1298,9 @@
       { "GoldPiece" 40 80 }
       # Put them in any order in the format "key = value"
       { countMin = 10 countMax = 15 type = "GoldPiece" chance = 0.1}
-      { type = Glyph ARMOR ItemAttrBonus DEFENSE 3 chance = 0.3 }
-      { type = Glyph WEAPON ItemAttrBonus DAMAGE 3 chance = 0.3 }
-      { type = Glyph RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 chance = 0.3 }
+      { type = Glyph {ARMOR ItemAttrBonus DEFENSE 3 }chance = 0.3 }
+      { type = Glyph {WEAPON ItemAttrBonus DAMAGE 3 }chance = 0.3 }
+      { type = Glyph {RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 }chance = 0.3 }
     }
   }
 
@@ -1335,9 +1347,9 @@
       { "GoldPiece" 40 80 }
       # Put them in any order in the format "key = value"
       { countMin = 10 countMax = 15 type = "GoldPiece" chance = 0.1}
-      { type = Glyph ARMOR ItemAttrBonus DEFENSE 3 chance = 0.3 }
-      { type = Glyph WEAPON ItemAttrBonus DAMAGE 3 chance = 0.3 }
-      { type = Glyph RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 chance = 0.3 }
+      { type = Glyph {ARMOR ItemAttrBonus DEFENSE 3 }chance = 0.3 }
+      { type = Glyph {WEAPON ItemAttrBonus DAMAGE 3 }chance = 0.3 }
+      { type = Glyph {RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 }chance = 0.3 }
     }
   }
   
@@ -1579,6 +1591,26 @@
     gender = FEMALE
     hatedByEffect = HATE_HUMANS
   }	  
+
+"JP_KEKKAI"
+  {
+    viewId = { "jp_kekkai" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 16 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    permanentEffects = {
+      SWARMER 1
+    }
+    chatReactionFriendly = "talks about eating"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "kekkai"
+    }
+  }
   
 #################################################################################################################################
 #                                                         allies                                                                #
@@ -2023,6 +2055,39 @@
       }
     }
     hatedByEffect = HATE_DEMONS
+  }
+  
+###############
+#  Juki Onna  #
+###############
+
+"JP_KYOKOTSU"
+  {
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 0.2 Lasting 1 NIPPON_KYOKOTSU_TOUCH}
+            attackerEffect = {Suicide DIE} } }}}
+      }
+    }
+    viewId = { "ghost" }
+    attr = {
+      DEFENSE 25
+      SPELL_DAMAGE 5
+    }
+    permanentEffects = {
+      FLYING 1
+    }
+    chatReactionFriendly = "\"Wouuuouuu!!!\""
+    chatReactionHostile = "\"Wouuuouuu!!!\""
+    name = {
+      name = "kyokotsu"
+    }
   }
   
   
