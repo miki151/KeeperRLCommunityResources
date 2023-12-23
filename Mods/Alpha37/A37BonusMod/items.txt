@@ -203,7 +203,7 @@ End
 "BalrogsWhip" modify append { BLUNT_WEAPON_PREFIXES() }
 
 "WoodenStaff" modify append { MAGIC_WEAPON_PREFIXES() }
-"IronStaff" modify append { MAGIC_WEAPON_PREFIXES() }
+"EnchantedStaff" modify append { MAGIC_WEAPON_PREFIXES() }
 "AdoxiumStaff"  modify append { MAGIC_WEAPON_PREFIXES() }
 "ElvenStaff" modify append { MAGIC_WEAPON_PREFIXES() }
 "Sceptre" modify append { MAGIC_WEAPON_PREFIXES() }
@@ -1601,7 +1601,35 @@ End
     }
 	maxUpgrades = 3
  }
+ 
+##########################
+#Haloween Mod
+########################## 
+
+"HALOWEEN_WITCH_MONKEY_CAP"
+  {
+    viewId = { "halloween_monkey_cap" }
+    name = "monkey cap"
+    weight = 0.5
+    description = "Summons some flying monkeys."
+    applyTime = 3
+    uses = 3
+    usedUpMsg = true
+    displayUses = true
+    price = 2
+    effect = Summon "HALLOWEEN_FLYING_MONKEY" {2 4} none
+    storageIds = {"equipment"}
+    equipmentGroup = "consumables"
+  }
   
+"HALLOWEEN_PLAGUE_ZOMBIE_CORPSE" inherit "Skeleton"
+  {
+    viewId = { "halloween_plague_zombie_corpse" }
+    name = "plagued remains"
+  }
+
+
+ 
 ########################
 #Ideas for future items#
 ########################
@@ -1651,3 +1679,426 @@ End
 # Tome of misfortune
 # Nets
 ########################
+
+##########################
+#Troll Traps Mod
+########################## 
+
+
+"Grimtooth Voucher"
+  {
+    viewId = { "scroll" }
+    name = "Grimtooth Voucher"
+    applyMsgFirstPerson = "uses the voucher"
+    applyMsgThirdPerson = "uses the voucher"
+    weight = 1
+    description = "strage voucher with trolls head"
+    uses = 1
+    price = 1000
+    effect = Summon "GRIMTOOTH" {1} none
+    effectDescription = false
+    ownedEffect = LIGHT_SOURCE
+    storageIds = {"equipment"}
+  }
+  
+##########################
+#Keeperrl Expanded mod
+##########################
+"MV_DEMON_ABBEY_KEY"
+  {
+    name = "abbey key"
+    viewId = { "black_market_key" }
+    applyMsgFirstPerson = "try to use the key"
+    applyMsgThirdPerson = "tries to use the key"
+    weight = 0.1
+    description = "A key with a strange crystal."
+    effect = Name "Unknown" Description "" FirstSuccessful { 
+      Area 2 Filter FurnitureType "MV_DEMON_ABBEY_TRAP_DOOR"
+        {
+          Fx { TELEPORT_OUT }
+          Message NORMAL "The dungeons are unlocked!"
+          SetFlag "mv_demon_unlock" true 
+        }
+      Message NORMAL "Nothing happens."
+    }
+    storageIds = {"jewellery" "equipment"}
+  }
+
+"MV_ABBEY_KEY"
+  {
+    name = "abbey key"
+    viewId = { "black_market_key" }
+    applyMsgFirstPerson = "try to use the key"
+    applyMsgThirdPerson = "tries to use the key"
+    weight = 0.1
+    description = "A key with a strange crystal."
+    effect = Name "Unknown" Description "" FirstSuccessful { 
+      Area 2 Filter FurnitureType "MV_ABBEY_TRAP_DOOR"
+        {
+          Fx { TELEPORT_OUT }
+          Message NORMAL "The dungeons are unlocked!"
+          SetFlag "mv_angel_unlock" true 
+        }
+      Message NORMAL "Nothing happens."
+    }
+    storageIds = {"jewellery" "equipment"}
+  } 
+ 
+"MV_PALADIN_REMAINS" inherit "Skeleton"
+  {
+    viewId = { "frozen_remains" }
+    name = "paladin remains"
+    uses = 1
+	ingredientType = "mv_paladin_remains"
+  }
+  
+"MV_DEVILS_HEART"
+  {
+    viewId = { "adoxie_eye" }
+    name = "devils heart"
+    itemClass = OTHER
+    weight = 5
+    uses = 1
+    price = 100
+	resourceId = "GOLD"
+	ingredientType = "mv_devils_heart"
+	storageIds = {"equipment"}
+  }
+
+"Paladin_Sword"
+  {
+    viewId = { "sword" ColorId YELLOW }
+    equipedViewId = { "sword_v" ColorId YELLOW }
+    name = "holy sword"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      DAMAGE 8
+    }
+    price = 4
+    craftingCost = "IRON" 50
+    weaponInfo = {
+      attackType = CUT
+	  victimEffect = {0.25 Lasting PANIC}
+    }
+	ownedEffect = LIGHT_SOURCE
+	equipedAbility = {"bolster"}
+	equipedEffect = {REGENERATION}
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "iron equipment"
+  }
+  
+"Devil_Sword"
+  {
+    viewId = { "sword" ColorId RED }
+    equipedViewId = { "sword_v" ColorId RED }
+    name = "unholy sword"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      DAMAGE 8
+    }
+    price = 4
+    craftingCost = "IRON" 50
+    weaponInfo = {
+      attackType = CUT
+	  victimEffect = {0.25 Lasting PANIC}
+    }
+	ownedEffect = DARKNESS_SOURCE
+	equipedAbility = {"rally"}
+	equipedEffect = {REGENERATION}
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "iron equipment"
+  }
+  
+
+"MummyFireSword" inherit "Sword"
+  {
+    name = "fire sword"
+    equipedEffect = {FIRE_DAMAGE}
+  }
+  
+
+"MummyFireEnchantedStaff" inherit "EnchantedStaff"
+  {
+   name = "fire staff"
+    equipedEffect = {FIRE_DAMAGE}
+  }
+  
+
+"MummyDarknessRobe" inherit "Robe"
+  {
+    name = "darkness robe"
+    equipedEffect = {DARKNESS_SOURCE}
+  }
+  
+"MummyDarknessLeatherArmor" inherit "LeatherArmor"
+  {
+    name = "darkness armor"
+    equipedEffect = {DARKNESS_SOURCE}
+  }
+  
+"MummyFireResistantLeatherHelm" inherit "LeatherHelm"
+  {
+    name = "fire helmet"
+    equipedEffect = {FIRE_RESISTANT}
+  }
+
+Def CaeliditeEffect()
+  Filter Not LastingEffect ACID_RESISTANT {
+    CreatureMessage {"are burnt by the caelidite" "is burnt by the caelidite"}
+    Bleed 0.01 "caelidite"
+  }
+End
+
+Def JothniteEffect()
+  Filter Not LastingEffect COLD_RESISTANT {
+    CreatureMessage {"are frozen by the jothnite" "is frozen by the jothnite"}
+    Bleed 0.01 "jothnite"
+	Lasting 50 FROZEN
+  }
+End
+
+"MV_CaeliditeOre"
+  {
+    viewId = { "mv_caelidite" }
+    name = "caelidite ore"
+    itemClass = OTHER
+    price = 4
+    resourceId = "CAELIDITE"
+    weight = 0.5
+    storageIds = {"resources"}
+  }
+
+"MV_CaeliditeSword" inherit "AdaSword"
+  {
+    viewId = { "mv_caelidite_sword" }
+    equipedViewId = { "mv_caelidite_sword_v" }
+    name = "caelidite sword"
+    shortName = "caelidite"
+    price = 200
+    craftingCost = "CAELIDITE" 20
+    carriedTickEffect = CaeliditeEffect()
+    autoEquipPredicate = LastingEffect ACID_RESISTANT
+    weaponInfo = {
+      attackType = CUT
+	  victimEffect = {0.25 Acid{}}
+    }
+    equipedEffect = {ACID_DAMAGE}
+    equipmentGroup = "caelidite equipment"
+  }
+    
+"MV_CaeliditeBattleAxe" inherit "AdaBattleAxe"
+  {
+    viewId = { "mv_caelidite_battle_axe" }
+    equipedViewId = { "mv_caelidite_battle_axe_v" }
+    shortName = "caelidite"
+    name = "caelidite battle axe"
+    price = 1500
+    craftingCost = "CAELIDITE" 50
+    carriedTickEffect = CaeliditeEffect()
+    autoEquipPredicate = LastingEffect ACID_RESISTANT
+    weaponInfo = {
+      attackType = CUT
+      twoHanded = true
+	  victimEffect = {0.25 Acid{}}
+    }
+    equipedEffect = {ACID_DAMAGE}
+    equipmentGroup = "caelidite equipment"
+  }
+  
+"MV_CaeliditeWarHammer" inherit "AdaWarHammer"
+  {
+    viewId = { "mv_caelidite_war_hammer" }
+    equipedViewId = { "mv_caelidite_war_hammer_v" }
+    shortName = "caelidite"
+    name = "caelidite war hammer"
+    price = 1000
+    craftingCost = "CAELIDITE" 40
+    carriedTickEffect = CaeliditeEffect()
+    autoEquipPredicate = LastingEffect ACID_RESISTANT
+    weaponInfo = {
+      attackType = CRUSH
+      twoHanded = true
+	  victimEffect = {0.25 Acid{}}
+    }
+    equipedEffect = {ACID_DAMAGE}
+    equipmentGroup = "caelidite equipment"
+  }
+  
+"AutomatonArmsMV_Caelidite"
+  {
+    viewId = { "automaton_arms" Rgb 220 148 148 255 }
+    name = "pair of caelidite  arms"
+    shortName = "caelidite arms"
+    weight = 6
+    craftingCost = CAELIDITE 5
+    upgradeInfo = {AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "caelidite arms"
+      Description "Grants a melee attack and a 18 acid damage."
+      {
+        IncreaseAttr ACID_DAMAGE 18
+		Permanent ACID_DAMAGE
+        AddBodyPart ARM 2 { Intrinsic { "fist_attack" } "fists" 4 {
+          attackMsg = SWING
+		  victimEffect = { 0.1 Acid{} }
+          meleeAttackAttr = ACID_DAMAGE }}
+        AddAutomatonPart 1 "melee" { "installed_arms" Rgb 220 148 148 255 }
+      }}
+    upgradeType = {WEAPON}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+
+"MV_JothniteOre"
+  {
+    viewId = { "mv_jothnite" }
+    name = "jothnite ore"
+    itemClass = OTHER
+    price = 4
+    resourceId = "JOTHNITE"
+    weight = 0.5
+    storageIds = {"resources"}
+  }
+ 
+"MV_JothniteSword" inherit "AdaSword"
+  {
+    viewId = { "mv_jothnite_sword" }
+    equipedViewId = { "mv_jothnite_sword_v" }
+    name = "jothnite sword"
+    shortName = "jothnite"
+    price = 200
+    craftingCost = "JOTHNITE" 20
+    carriedTickEffect = JothniteEffect()
+    autoEquipPredicate = LastingEffect COLD_RESISTANT
+	weaponInfo = {
+      attackType = CUT
+	  victimEffect = {0.25 Ice{}}
+    }
+    equipedEffect = {COLD_DAMAGE}
+    equipmentGroup = "jothnite equipment"
+  }
+
+"MV_JothniteBattleAxe" inherit "AdaBattleAxe"
+  {
+    viewId = { "mv_jothnite_battle_axe" }
+    equipedViewId = { "mv_jothnite_battle_axe_v" }
+    shortName = "jothnite"
+    name = "jothnite battle axe"
+    price = 1500
+    craftingCost = "JOTHNITE" 50
+    carriedTickEffect = JothniteEffect()
+    autoEquipPredicate = LastingEffect COLD_RESISTANT
+	weaponInfo = {
+      attackType = CUT
+      twoHanded = true
+	  victimEffect = {0.25 Ice{}}
+    }
+    equipedEffect = {COLD_DAMAGE}
+    equipmentGroup = "jothnite equipment"
+  }
+  
+"MV_JothniteWarHammer" inherit "AdaWarHammer"
+  {
+    viewId = { "mv_jothnite_war_hammer" }
+    equipedViewId = { "mv_jothnite_war_hammer_v" }
+    shortName = "jothnite"
+    name = "jothnite war hammer"
+    price = 1000
+    craftingCost = "JOTHNITE" 40
+    carriedTickEffect = JothniteEffect()
+    autoEquipPredicate = LastingEffect COLD_RESISTANT
+	weaponInfo = {
+      attackType = CRUSH
+      twoHanded = true
+	  victimEffect = {0.25 Ice{}}
+    }
+    equipedEffect = {COLD_DAMAGE}
+    equipmentGroup = "jothnite equipment"
+  }
+
+"AutomatonArmsMV_Jothnite"
+  {
+    viewId = { "automaton_arms" Rgb 220 148 148 255 }
+    name = "pair of jothnite  arms"
+    shortName = "jothnite arms"
+    weight = 6
+    craftingCost = JOTHNITE 5
+    upgradeInfo = {AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "jothnite arms"
+      Description "Grants a melee attack and a 18 cold damage."
+      {
+        IncreaseAttr COLD_DAMAGE 18
+		Permanent COLD_DAMAGE
+        AddBodyPart ARM 2 { Intrinsic { "fist_attack" } "fists" 4 {
+          attackMsg = SWING
+		  victimEffect = { 0.1 Ice{} }
+          meleeAttackAttr = COLD_DAMAGE }}
+        AddAutomatonPart 1 "melee" { "installed_arms" Rgb 220 148 148 255 }
+      }}
+    upgradeType = {WEAPON}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+
+"InferniteSword" modify append
+  {
+   weaponInfo = {
+      attackType = CUT
+	  victimEffect = {0.25 Fire{} }
+    }
+  }
+  
+"InferniteBattleAxe" modify append
+  {
+   weaponInfo = {
+      attackType = CUT
+      twoHanded = true
+	  victimEffect = {0.25 Fire{} }
+    }
+  }
+  
+
+"InferniteWarHammer" modify append
+  {
+   weaponInfo = {
+      attackType = CRUSH
+      twoHanded = true
+	  victimEffect = {0.25 Fire{} }
+    }
+  }
+  
+"InferniteTrident" modify append
+  {
+   weaponInfo = {
+      attackType = STAB
+      attackMsg = THRUST
+	  victimEffect = {0.25 Fire{} }
+    }
+  }
+    
+"AutomatonArmsInfernite" modify append
+  {
+    viewId = { "automaton_arms" Rgb 220 148 148 255 }
+    name = "pair of Infernite  arms"
+    shortName = "Infernite arms"
+    weight = 6
+    craftingCost = INFERNITE 5
+    upgradeInfo = {AUTOMATONS_UPPER AssembledCreatureEffect
+      Name "Infernite arms"
+      Description "Grants a melee attack and a 18 fire damage."
+      {
+        IncreaseAttr FIRE_DAMAGE 18
+		Permanent FIRE_DAMAGE
+        AddBodyPart ARM 2 { Intrinsic { "fist_attack" } "fists" 4 {
+          attackMsg = SWING
+		  victimEffect = { 0.1 Fire{}  }
+          meleeAttackAttr = FIRE_DAMAGE }}
+        AddAutomatonPart 1 "melee" { "installed_arms" Rgb 220 148 148 255 }
+      }}
+    upgradeType = {WEAPON}
+    storageIds = {"automaton_parts" "equipment"}
+  }
+ 

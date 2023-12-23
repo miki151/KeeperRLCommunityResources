@@ -1926,7 +1926,316 @@
 		GrantAbility "BONUS_magic wish"
   }
 }
- 
+
+###############################
+#Haloween
+###############################
+"HALOWEEN_SUMMON_BATS"
+{
+  symbol = "☠"
+  effect = Name "summon bats" Summon "HALLOWEEN_BAT" {4 8} 100
+  cooldown = {30 61}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"HALOWEEN_SUMMON_WOLVES"
+{
+  symbol = "☠"
+  effect = Name "summon bats" Summon "WOLF" {2 4} 100
+  cooldown = {30 61}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"HALOWEEN_WITCH_TELEPORT"
+{
+  symbol = "🌀"
+  effect = Name "fiery teleport" Chain { Teleport CircularBlast Fire{}}
+  range = 3
+  cooldown = {50 201}
+  endOnly = true
+  sound = SPELL_TELEPORT
+}
+
+"HALOWEEN_WITCH_SLEEP"
+{
+  symbol = "🕶️"
+  effect = Name "sleep" Lasting 5 SLEEP
+  cooldown = {10 21}
+  range = 5
+}
+
+"HALOWEEN_WITCH_FOG_CLOUD"
+{
+  symbol = "🌫"
+  effect = Name "black fog" Description "Creates a black fog cloud." Area 4 Filter DistanceD none 3.2 EmitGas "BLACK_SMOKE" 1
+  cooldown = {30 61}
+}
+
+"HALOWEEN_SCARE"
+{
+  symbol = "😱"
+  effect = Name "scare" Lasting 10 PANIC
+  range = 1
+  cooldown = {25 51}
+  sound = SPELL_STR_BONUS
+}
+
+OneTimeAbility("HALOWEEN_HORSE", "Summons the horse.", { Summon "HALLOWEEN_HORSE" 1 none }, "🧛")
+
+"HALOWEEN_CHORT_SHAPESHIFT"
+{
+  symbol = "⇝"
+  effect = Name "shapeshift" Description "Change into a random monster" AI Health 0.6 1.0 1 -2 {
+    Polymorph none 100
+    IncreaseAttr DAMAGE 25
+    IncreaseAttr DEFENSE 30
+    SetCreatureName "chort"
+  }
+  message = "" ""
+  cooldown = 1
+}
+
+"HALOWEEN_TRIP"
+{
+  symbol = "🕶️"
+  effect = Name "trip" Lasting 5 ENTANGLED
+  cooldown = {5 21}
+  range = 5
+}
+
+OneTimeAbility("halloween plague zombie spawn", "More dead = more zombies!.", { Summon "HALLOWEEN_PLAGUE_ZOMBIE" 1 none }, "🧛")
+
+"lure victim"
+{
+  symbol = "🌀"
+  effect = SummonEnemy "PESEANT" 1 none
+  range = 10
+  cooldown = 0
+  endOnly = true
+  sound = SPELL_TELEPORT
+}
+
+###############################
+#Troll Traps
+###############################
+
+"Set Terror Trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Terror Trap" CustomArea PlaceFurniture  "TERROR_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Gas trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Gas trap" CustomArea PlaceFurniture  "POISON_GAS_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Surprise trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Surprise trap" CustomArea PlaceFurniture  "SURPRISE_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Alarm trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Alarm trap" CustomArea PlaceFurniture  "ALARM_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Web trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Web trap" CustomArea PlaceFurniture  "WEB_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Fire trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Fire trap" CustomArea PlaceFurniture  "FIRE_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Blast trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Blast trap" CustomArea PlaceFurniture  "BLAST_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Boulder trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Boulder trap" CustomArea PlaceFurniture  "BOULDER_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Gargoyle"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Gargoyle" CustomArea PlaceFurniture  "GARGOYLE_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Wooden trap bridge"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Wooden trap bridge" CustomArea PlaceFurniture  "TRAP_BRIDGE"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Stone trap bridge"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Stone trap bridge" CustomArea PlaceFurniture  "TRAP_STONE_BRIDGE"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Tar trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Tar trap" CustomArea PlaceFurniture  "TAR_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Teleport trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Teleport trap" CustomArea PlaceFurniture  "RANDOM_TELEPORTER"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Tear Gas trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Tear Gas trap" CustomArea PlaceFurniture  "TEAR_GAS_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Chickenize trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Chickenize trap" CustomArea PlaceFurniture  "CHICKENIZE_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Halucination Gas trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Halucination Gas trap" CustomArea PlaceFurniture  "HALUCINATION_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Freezing trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Freezing trap" CustomArea PlaceFurniture  "FREEZE_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+"Set Floor Spikes"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Floor Spikes" CustomArea PlaceFurniture  "SPIKE_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = TRAP_ARMING
+}
+
+###############################
+#Keeperrl Expaded
+###############################
+
+OneTimeAbility("Reward Wish", "Make a wish.", { Wish }, "$")
+OneTimeAbility("Work Damnit", "Work Damnit", {Area 0 AddMinionTrait WORKER}, "$")
+OneTimeAbility("Demon Quest Altar", "Demon Quest Altar", {PlaceFurniture "MV_QUEST_DEMON_SHRINE"}, "$")
+OneTimeAbility("Demon Destroy Altar", "Demon Quest Altar", {PlaceFurniture "MV_DESTROY_DEMON_SHRINE"}, "$")
+OneTimeAbility("Angel Quest Altar", "Demon Quest Altar", {PlaceFurniture "MV_QUEST_ANGEL_SHRINE"}, "$")
+OneTimeAbility("Angel Destroy Altar", "Demon Quest Altar", {PlaceFurniture "MV_DESTROY_ANGEL_SHRINE"}, "$")
+OneTimeAbility("Paladin cage", "Paladin cage", {PlaceFurniture "MV_PALADIN_CAGE"}, "$")
+OneTimeAbility("Weak devil cage", "Weak devil cage", {PlaceFurniture "MV_DEVIL_CAGE"}, "$")
+OneTimeAbility("wendigo equipment", "wendigo equipment", {Chain {AddMinionTrait NO_EQUIPMENT AddMinionTrait NO_LEISURE_ZONE }}, "$")
+OneTimeAbility("leadership +10", "leadership +10", {IncreaseAttr LEADERSHIP 10}, "$")
+
+"rip and tear"
+{
+  symbol = "🐕️"
+  effect = Name "rip and tear" Description "All huskys within the radius of 10 receive a +3 damage buff and speed." {
+    Area 10 Filter And{ Not Enemy CreatureId "MV_HUSKY" } Chain {Lasting 40 DAM_BONUS Lasting 40 SPEED }
+  }
+  cooldown = 300
+  sound = SPELL_STR_BONUS
+}
+
+
+"charge"
+{
+  symbol = "⚔️"
+  effect = Name "charge" Description "All allies within the radius of 5 receive a +3 damage buff. Can only be used by a tribe leader." {
+    Filter Attacker CreatureStatus LEADER Area 5 Filter And{ Not Enemy Distance 1 none } Lasting 40 DAM_BONUS
+    Filter Not Attacker CreatureStatus LEADER CreatureMessage { "are not worthy!" "is not worthy!" }
+  }
+  cooldown = 300
+  sound = SPELL_STR_BONUS
+}
+
 # Spells.txt - Checklist
 #############################
 # 1) Give every spell a custom description and a custom name

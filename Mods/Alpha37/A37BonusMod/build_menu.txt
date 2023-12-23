@@ -1092,3 +1092,66 @@ End
     { Furniture {{ "ANIMAL_FENCE" } "WOOD" 1 }                     "Animal fence"      "Farming"
         "Require to keep farm animals from escaping." }
   }
+  
+#############################
+#Haloween
+#############################
+
+
+  "halloween_pigsty"
+  {
+    { Furniture {{ "HALLOWEEN_FARM_RAT_COOP" }     "WOOD" 5 }                 "Rat coop"      "Farming"
+        "" none {TechId "rat breeding"}}
+    { Furniture {{ "HALLOWEEN_FARM_BATSY" }     "WOOD" 5 }                       "Batsy"            "Farming"
+        "" none {TechId "bat breeding"}}
+    { Furniture {{ "HALLOWEEN_FARM_WOLF_PEN" }     "WOOD" 5 }                      "Wolf pen"           "Farming"
+        "" none {TechId "wolf breeding"}}
+    { Furniture {{ "ANIMAL_FENCE" } "WOOD" 1 }                     "Animal fence"      "Farming"
+        "Require to keep farm animals from escaping." }
+    { Furniture {{ "BARN" }    "CROPS" 20 }                        "Barn"              "Farming"
+        "Allocate crops to increase food supply." none }
+    { Furniture {{ "CROPS" }  "CROPS" 2 }                          "Field"             "Farming"
+        "Plant crops to make a crop field." none }
+    { DestroyLayers {FLOOR}                                        "Remove field"      "Farming" }
+    { Furniture {{ "BEAST_CAGE" }  "WOOD" 5 }                      "Livestock Cage"    "Farming"
+        "Give your goats, horses and donkeys a place to live." none }
+  }
+  
+
+  "storage" modify append
+  {
+    { Furniture {{ "HALLOWEEN_TORCH_N" "HALLOWEEN_TORCH_N_02" "HALLOWEEN_TORCH_E" "HALLOWEEN_TORCH_S" "HALLOWEEN_TORCH_S_02" "HALLOWEEN_TORCH_W" }}          "Torch"             "Installations Seasonal"
+        "Place it on tiles next to a wall." "TORCH" {} false BUILD_TORCH}
+		
+    { Furniture {{ "HALLOWEEN_GROUND_TORCH" "HALLOWEEN_FLOOR_TORCH" "HALLOWEEN_GROUND_TORCH_02" "HALLOWEEN_FLOOR_TORCH_02" }  "WOOD" 10  }                  "Standing torch"    "Installations Seasonal"
+        "" none {} false BUILD_TORCH }
+		
+    { Furniture {{ "HALLOWEEN_SKELETON_01" "HALLOWEEN_SKELETON_02" "HALLOWEEN_SKELETON_03" "HALLOWEEN_SKELETON_04" "HALLOWEEN_SKELETON_05" "HALLOWEEN_SKELETON_06" "HALLOWEEN_SKELETON_07" "HALLOWEEN_SKELETON_08" "HALLOWEEN_SKELETON_09" "HALLOWEEN_SKELETON_10" }  "WOOD" 10  }                  "Standing torch"    "Installations Seasonal"
+        "" none {} false BUILD_TORCH }
+				
+    { Furniture {{ "HALLOWEEN_FLOOR_WEB" }              "GOLD" 2 }       "Spiderweb"            "Installations Seasonal" }
+  }
+  
+#############################
+#Troll Traps Mod
+#############################
+  "traps"  modify append
+  {    
+    { Furniture {{ "TRAP_BRIDGE" }          "WOOD" 20 }                        "Wooden trap bridge"             "Troll Traps"                  "Build to pass over water. Will burn on lava. Not for foes."      none {  TechId "traps" } }
+    { Furniture {{ "TRAP_STONE_BRIDGE" }    "STONE" 20 }                       "Stone trap bridge"              "Troll Traps"                  "Build to pass over water or lava. Not for foes."                 none {  TechId "traps" } }
+    { Furniture {{ "TAR_TRAP" }             "WOOD" 20 }                        "Tar trap"                       "Troll Traps"                  "Will spill tar over an area"                                     none {  TechId "traps" } }
+    { Furniture {{ "RANDOM_TELEPORTER" }    "STONE" 20 }                       "Teleport trap"                  "Troll Traps"                  "Will teleport enemy away"                                        none {  TechId "traps" } }
+    { Furniture {{ "TEAR_GAS_TRAP" }        "WOOD" 20 }                        "Tear Gas trap"                  "Troll Traps"                  "Releases a cloud of tear gas."                                   none {  TechId "traps" } }
+	{ Furniture {{ "CHICKENIZE_TRAP" }      "WOOD" 20 }                        "Chickenize trap"                "Troll Traps"                  "Transform enemy intro chicken."                                  none {  TechId "traps" } }
+    { Furniture {{ "HALUCINATION_TRAP" }    "WOOD" 20 }                        "Halucination Gas trap"          "Troll Traps"                  "Releases a cloud of halucinogenic gas."                          none {  TechId "traps" } }
+    { Furniture {{ "FREEZE_TRAP" }          "WOOD" 20 }                        "Freezing trap"                  "Troll Traps"                  "Freezes enemy solid."                                            none {  TechId "traps" } }
+	{ Furniture {{ "SPIKE_TRAP" }           "IRON" 20 }                        "Floor Spikes"                   "Troll Traps"                  "Freezes enemy solid."                                            none {  TechId "traps" } }
+    { Furniture {{ "TT_PITFALL" }           "WOOD" 20 }                        "Pitfall"                        "Troll Traps"                  "Build to make enemies fall down."      none {  TechId "traps" }  }
+
+    { Furniture {{ "FAKE_MINION_STATUE" }       "STONE" 20 }  "Fake Gold Statue"                "Troll Traps"   
+        "Comes to life when an enemy comes near." none  { TechId "traps" }}
+	{ Furniture {{ "FAKE_STONE_MINION_STATUE" }       "STONE" 20 }  "Fake Stone Statue"         "Troll Traps"   
+        "Comes to life when an enemy comes near." none  { TechId "traps" }}
+	{ Furniture {{ "FAKE_TREASURE_CHEST" }       "STONE" 30 }  "Fake Chest"                     "Troll Traps"   
+        "Comes to life when an enemy comes near." none  { TechId "traps" }}
+  }   
