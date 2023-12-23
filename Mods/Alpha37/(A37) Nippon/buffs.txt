@@ -43,8 +43,8 @@ End
   color = ColorId RED
 }
 
-"RAN_DAM_BONUS" ATTR_BUFF(RANGED_DAMAGE, "damage", 3, "dangerous", 20)
-"SPEL_DAM_BONUS" ATTR_BUFF(SPELL_DAMAGE, "damage", 3, "dangerous", 20)
+"RAN_DAM_BONUS" ATTR_BUFF(RANGED_DAMAGE, "damage", "damage", 3, "dangerous", 20)
+"SPEL_DAM_BONUS" ATTR_BUFF(SPELL_DAMAGE, "damage", "damage", 3, "dangerous", 20)
 
 "NIPPON_FIRE_SPELL" {
   name = "fire damage"
@@ -438,4 +438,17 @@ End
   combatConsumable = true
   canWishFor = false
   color = ColorId RED
+}
+
+"NIPPON_KYOKOTSU_TOUCH" {
+  name = "cursed touch"
+  adjective = "cursed touch"
+  description = "is cursed by touch of impure creature"
+  combatConsumable = true
+  startEffect = Chain {  NipponCurseProgress()}
+  addedMessage = "curse" "curses" "take hold"
+  removedMessage = "curse" "curses" "fade"
+  color = ColorId RED
+  fx = DEBUFF_RED
+  price = 50
 }

@@ -1,0 +1,1471 @@
+
+Def TryYellowSign(Duration)
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"seen the yellow sign" "missed the yellow sign"}
+      Damage SPELL_DAMAGE SPELL
+	  Lasting Duration INSANITY
+    },
+    CreatureMessage {"seen the yellow sign" "missed the yellow sign"}
+  )
+End
+
+Def SeaSummons(Time)
+ChooseRandom{
+Summon "FTD_SUMMON_CRAB" {1} Time 
+Summon "FTD_SUMMON_HORSESHOE_CRAB" {1} Time 
+Summon "FTD_SUMMON_SPIDER_CRAB" {1} Time
+Summon "FTD_SUMMON_TURTLE" {1} Time 
+Summon "FTD_SUMMON_STARFISH" {1} Time 
+Summon "FTD_SUMMON_REACH_CRAB" {1} Time 
+Summon "FTD_SUMMON_RAT_PARASITE" {1} Time 
+}
+End
+
+Def SeaSummonsSwarm(Time)
+ChooseRandom{
+Summon "FTD_CRAB_SWARM" {1} Time 
+Summon "FTD_HORSESHOE_CRAB_SWARM" {1} Time 
+Summon "FTD_SPIDER_CRAB_SWARM" {1} Time
+Summon "FTD_TURTLE_SWARM" {1} Time 
+Summon "FTD_STARFISH_SWARM" {1} Time 
+Summon "FTD_REACH_CRAB_SWARM" {1} Time 
+Summon "FTD_RAT_PARASITE_SWARM" {1} Time 
+}
+End
+
+Def resetcosmos()
+SetFlag "cosmos_01" false
+SetFlag "cosmos_02" false
+SetFlag "cosmos_03" false
+SetFlag "cosmos_04" false
+SetFlag "cosmos_05" false
+End
+
+Def countcosmos()
+Filter Flag "cosmos_04" {
+    Filter Not Flag "cosmos_05" {
+           SetFlag "cosmos_05" true
+        }
+    }
+Filter Flag "cosmos_03" {
+    Filter Not Flag "cosmos_04" {
+           SetFlag "cosmos_04" true
+        }
+    }
+Filter Flag "cosmos_02" {
+    Filter Not Flag "cosmos_03" {
+           SetFlag "cosmos_03" true
+        }
+    }
+Filter Flag "cosmos_01" {
+    Filter Not Flag "cosmos_02" {
+           SetFlag "cosmos_02" true
+        }
+    }
+Filter Not Flag "cosmos_01" {
+       SetFlag "cosmos_01" true
+    }
+	
+End
+
+Def SeaSummonsSwarmCast(Time)
+Chain{
+ChooseRandom{
+SetFlag "ss_10" true
+SetFlag "ss_09" true
+SetFlag "ss_08" true
+SetFlag "ss_07" true
+SetFlag "ss_06" true
+}
+Filter Flag "ss_10" {
+	       SetFlag "ss_10" false
+		   SeaSummonsSwarm(Time)
+           SetFlag "ss_09" true
+    }
+Filter Flag "ss_09" {
+	       SetFlag "ss_09" false
+		   SeaSummonsSwarm(Time)
+           SetFlag "ss_08" true
+    }
+Filter Flag "ss_08" {
+	       SetFlag "ss_08" false
+		   SeaSummonsSwarm(Time)
+           SetFlag "ss_07" true
+    }
+Filter Flag "ss_07" {
+	       SetFlag "ss_07" false
+		   SeaSummonsSwarm(Time)
+           SetFlag "ss_06" true
+    }	
+Filter Flag "ss_06" {
+	       SetFlag "ss_06" false
+		   SeaSummonsSwarm(Time)
+    }
+SeaSummons(Time)
+SeaSummons(Time)
+SeaSummons(Time)
+SeaSummons(Time)
+SeaSummons(Time)
+}
+End
+
+Def SeaSummonsCast(Time)
+Chain{
+ChooseRandom{
+SetFlag "ss_04" true
+SetFlag "ss_03" true
+}
+Filter Flag "ss_04" {
+	       SetFlag "ss_04" false
+		   SeaSummons(Time)
+           SetFlag "ss_03" true
+    }
+Filter Flag "ss_03" {
+	       SetFlag "ss_03" false
+		   SeaSummons(Time)
+    }
+SeaSummons(Time)
+SeaSummons(Time)
+}
+End
+
+Def resetgore()
+SetFlag "gore_01" false
+SetFlag "gore_02" false
+SetFlag "gore_03" false
+SetFlag "gore_04" false
+SetFlag "gore_05" false
+SetFlag "gore_06" false
+SetFlag "gore_07" false
+SetFlag "gore_08" false
+End
+
+Def countgore()
+Filter Flag "gore_07" {
+    Filter Not Flag "gore_08" {
+           SetFlag "gore_08" true
+        }
+    }
+Filter Flag "gore_06" {
+    Filter Not Flag "gore_07" {
+           SetFlag "gore_07" true
+        }
+    }
+Filter Flag "gore_05" {
+    Filter Not Flag "gore_06" {
+           SetFlag "gore_06" true
+        }
+    }
+Filter Flag "gore_04" {
+    Filter Not Flag "gore_05" {
+           SetFlag "gore_05" true
+        }
+    }
+Filter Flag "gore_03" {
+    Filter Not Flag "gore_04" {
+           SetFlag "gore_04" true
+        }
+    }
+Filter Flag "gore_02" {
+    Filter Not Flag "gore_03" {
+           SetFlag "gore_03" true
+        }
+    }
+Filter Flag "gore_01" {
+    Filter Not Flag "gore_02" {
+           SetFlag "gore_02" true
+        }
+    }
+Filter Not Flag "gore_01" {
+       SetFlag "gore_01" true
+    }
+	
+End
+
+#####################################ENDLESS FLESH###########################################
+
+"tentacle lash"
+{
+  symbol = "↣"
+  effect = Name "lash out" Description "Lash out to distant enemies"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage {"are hit" "is hit"}
+          Damage DAMAGE SHOOT
+        },
+        CreatureMessage {"are spared" "is spared"}
+      )
+  range = 3
+  cooldown = 0
+  maxHits = 1
+  message = "lashes out" "lashes out"
+  type = ABILITY
+}
+
+"eg_grant_growth"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "grant blessed growth" Lasting 20 CANCER
+  range = 6
+  endOnly = true
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"summon gore familliar"
+{
+  symbol = "🐝"
+  effect = Name "summon familliar" Description "Beseech your patron for companion." Chain 
+        { 
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+            Filter Not Flag "gore_04" {
+			   Filter Not CreatureFlag "eg_better_spells" {
+                  Summon "EG_GORE_FAMILLIAR" {1} 30}
+			   Filter CreatureFlag "eg_better_spells" {
+                  Summon "EG_GORE_FAMILLIAR_UPGRADE" {1} 30}
+            }
+			 Filter Not Flag "gore_08" {	
+			Filter Flag "gore_04" {
+               Area 1 RemoveFurniture "EG_OFFERING"
+			   Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
+			   Filter Not CreatureFlag "eg_better_spells" {
+                  Summon "EG_GORE_FAMILLIAR" {1} none}
+			   Filter CreatureFlag "eg_better_spells" {
+                  Summon "EG_GORE_FAMILLIAR_UPGRADE" {1} none}
+            }}  	
+			Filter Flag "gore_08" {
+                Area 1 RemoveFurniture "EG_OFFERING"
+				Area 2 PlaceFurniture  "EG_GROWTH_FLOOR"
+			   Filter Not CreatureFlag "eg_better_spells" {
+                  Summon "EG_GORE_FAMILLIAR" {2} none}
+			   Filter CreatureFlag "eg_better_spells" {
+                  Summon "EG_GORE_FAMILLIAR_UPGRADE" {2} none}
+            } 
+        }
+  cooldown = {10 40}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"summon gorespawn"
+{
+  symbol = "🐝"
+  cooldown = {10 40}
+  effect = Name "eldrich summoning" Description "Beseech your patron for help." Chain 
+        { 
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }			
+			Filter Not Flag "gore_04" {
+			   Filter Not CreatureFlag "eg_better_spells" {
+				    ChooseRandom {
+                       Summon "EG_GORE_REBORN" {1 2} 30
+		               Summon "EG_GORE_SPAWN" {1 2} 30
+					   Summon "EG_GORE_TREE" {1 2} 30
+					   Summon "EG_GORE_CRAWLER" {4 6} 30
+                                 }}
+			   Filter CreatureFlag "eg_better_spells" {
+				    ChooseRandom {
+                       Summon "EG_GORE_REBORN_UPGRADE" {1 2} 30
+		               Summon "EG_GORE_SPAWN_UPGRADE" {1 2} 30
+					   Summon "EG_GORE_TREE_UPGRADE" {1 2} 30
+					   Summon "EG_GORE_CRAWLER_UPGRADE" {4 6} 30
+                                 }}
+
+            }
+			Filter Not Flag "gore_08" {			
+            Filter Flag "gore_04" {
+                Area 1 RemoveFurniture "EG_OFFERING"
+				Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
+				  Filter Not CreatureFlag "eg_better_spells" {
+				    ChooseRandom {
+					   Summon "EG_GORE_TREE" {1 2} none
+                       Summon "EG_GORE_REBORN" {1 2} none
+		               Summon "EG_GORE_SPAWN" {1 2} none
+					   Summon "EG_GORE_CRAWLER" {2 4} none
+                                 }}
+				  Filter Not CreatureFlag "eg_better_spells" {
+				    ChooseRandom {
+					   Summon "EG_GORE_TREE_UPGRADE" {1 2} none
+                       Summon "EG_GORE_REBORN_UPGRADE" {1 2} none
+		               Summon "EG_GORE_SPAWN_UPGRADE" {1 2} none
+					   Summon "EG_GORE_CRAWLER_UPGRADE" {2 4} none
+                                 }}
+				
+            }}
+			Filter Flag "gore_08" {
+                Area 1 RemoveFurniture "EG_OFFERING"
+				Area 2 PlaceFurniture  "EG_GROWTH_FLOOR"
+				  Filter Not CreatureFlag "eg_better_spells" {
+				    ChooseRandom {
+                       Summon "EG_GORE_REBORN" {2 3} none
+		               Summon "EG_GORE_SPAWN" {2 3} none
+					   Summon "EG_GORE_TREE" {2 3} none
+					   Summon "EG_GORE_CRAWLER" {4 6} none
+                                 }}
+				  Filter CreatureFlag "eg_better_spells" {
+				    ChooseRandom {
+                       Summon "EG_GORE_REBORN_UPGRADE" {2 3} none
+		               Summon "EG_GORE_SPAWN_UPGRADE" {2 3} none
+					   Summon "EG_GORE_TREE_UPGRADE" {2 3} none
+					   Summon "EG_GORE_CRAWLER_UPGRADE" {4 6} none
+                                 }}
+				
+            }		
+        }
+}
+
+"Mutation"
+{
+  symbol = "🐝"
+  cooldown = 500
+  effect = Name "Mutation" Description "Flesh rarely stays still." Chain{
+					IncreaseAttr "BLESSED_FLESH" 1
+					ChooseRandom {
+                        IncreaseAttr SPELL_DAMAGE 1
+						IncreaseAttr DAMAGE 1
+						IncreaseAttr DEFENSE 1					
+						Permanent SWIMMING_SKILL
+						Permanent SPEED 
+						Permanent MAGIC_RESISTANCE
+						Permanent FIRE_RESISTANT
+						Permanent AMBUSH_SKILL	
+                        Permanent BLIND 	
+                        IncreaseAttr DIGGING 16	
+                        Permanent BAD_BREATH	
+						AddBodyPart ARM 1 none
+						AddBodyPart LEG 1 none
+						AddBodyPart HEAD 1 none
+						AddBodyPart WING 1 none
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+						AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						IncreaseAttr MULTI_WEAPON 8
+						} }
+} 
+						
+ "gore form"
+{
+  symbol = "🐝"
+  cooldown = {100 200}
+  effect = Name "strenght of flesh" Description "open yourself to your patron in order to get great power." Chain 
+        { 
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+			 Filter Not Flag "gore_04" {
+                Polymorph "EG_GORE_BEAST" 100
+				Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {1 3} 30}
+            }
+            Filter Flag "gore_04" {
+			    Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
+                Area 1 RemoveFurniture "EG_OFFERING"
+                Polymorph "EG_GORE_BEAST" none
+				Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {2 4} none}
+				
+            }			
+			Filter Flag "gore_08" {
+			    Area 2 PlaceFurniture  "EG_GROWTH_FLOOR"
+                Area 1 RemoveFurniture "EG_OFFERING"
+                Polymorph "EG_GORE_BEAST_ADV" none	
+                Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {3 5} none}				
+            }  				
+        }
+}
+
+ "gore form wraith"
+{
+  upgrade =  "gore form"
+  symbol = "🐝"
+  cooldown = {100 200}
+  effect = Name "strenght of flesh" Description "open yourself to your patron in order to get great power." Chain 
+        { 
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+			 Filter Not Flag "gore_04" {
+                Polymorph "EG_GORE_FLESHWRAITH" 100
+				Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {1 3} 30}
+            }
+            Filter Flag "gore_04" {
+			    Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
+                Area 1 RemoveFurniture "EG_OFFERING"
+                Polymorph "EG_GORE_FLESHWRAITH" none
+				Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {2 4} none}
+				
+            }			
+			Filter Flag "gore_08" {
+			    Area 2 PlaceFurniture  "EG_GROWTH_FLOOR"
+                Area 1 RemoveFurniture "EG_OFFERING"
+                Polymorph "EG_GORE_FLESHWRAITH_ADV" none	
+                Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {3 5} none}				
+            }  				
+        }
+}
+
+"Shred tumors"
+{
+  symbol = "🐝"
+  effect = Name "shred tumors" Description "shred useless tomors that sprouted on your body." Chain 
+        { 
+                Summon "EG_GORE_TUMOR" {2 4} 30		
+        }
+  cooldown = {250 350}
+}
+
+"Forced Regeneration" 
+{
+  symbol = "❤️"
+  effect =  Name "Forced Regeneration"  Description "There is no time for those wounds, get back together."  Chain {
+                                 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 10  
+								 RemoveLasting BLIND }
+  cooldown = 60
+    sound = SPELL_HEALING
+}
+
+"Forced Regeneration_caster" 
+{
+  symbol = "❤️" 
+  effect = Name "Forced Regeneration"  Description "All flesh will lisen, no matter how stubborn it is."   Chain {
+			Filter Not CreatureFlag "eg_better_spells" {  
+                                 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 10  
+								 RemoveLasting BLIND }
+			Filter CreatureFlag "eg_better_spells" {  
+                                 Heal { FLESH }
+								 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 20  
+								 RemoveLasting BLIND }}
+  range = 1
+  targetSelf = true
+  cooldown = {10 30}
+  sound = SPELL_HEALING
+}
+
+"Forced Regeneration_caster_expert" 
+{
+  upgrade = "Forced Regeneration_caster"
+  symbol = "❤️" 
+  effect = Name "Forced Regeneration"  Description "All flesh will lisen, no matter how stubborn it is."   Chain {
+			Filter Not CreatureFlag "eg_better_spells" {  
+                                 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 10  
+								 RemoveLasting BLIND }
+			Filter CreatureFlag "eg_better_spells" {  
+                                 Heal { FLESH }
+								 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 20  
+								 RemoveLasting BLIND }}
+  range = 4
+  targetSelf = true
+  cooldown = {10 30}
+  sound = SPELL_HEALING
+}
+
+"Forced Regeneration_caster_mass" 
+{
+  symbol = "💕"
+  effect = Name "Mass Forced Regeneration"  Description "So eager the flesh had become" Area 2 Filter Not Enemy { Chain {
+			Filter Not CreatureFlag "eg_better_spells" {  
+                                 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 10  
+								 RemoveLasting BLIND }
+			Filter CreatureFlag "eg_better_spells" {  
+                                 Heal { FLESH }
+								 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 20  
+								 RemoveLasting BLIND }}}	   
+  cooldown = {20 50}
+  sound = SPELL_HEALING
+}
+
+"Forced Regeneration_caster_mass_greater" 
+{
+  upgrade = "Forced Regeneration_caster_mass"
+  symbol = "💕"
+  effect = Name "Mass Forced Regeneration"  Description "So eager the flesh had become" Area 4 Filter Not Enemy { Chain {
+			Filter Not CreatureFlag "eg_better_spells" {  
+                                 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 10  
+								 RemoveLasting BLIND }
+			Filter CreatureFlag "eg_better_spells" {  
+                                 Heal { FLESH }
+								 Heal { FLESH }
+								 RemoveLasting POISON
+								 RemoveLasting PLAGUE
+                                 RegrowBodyPart 20  
+								 RemoveLasting BLIND }}}	   
+  cooldown = {20 50}
+  sound = SPELL_HEALING
+}
+"Seed Flesh" 
+{
+  symbol = "🌱" 
+  effect = Name "Seed Flesh"  Description "Its body shall spread trouh the land."   Chain {
+							   Filter CreatureFlag "eg_better_spells" {Area 2 PlaceFurniture "EG_GROWTH_FLOOR"}
+							   Filter Not CreatureFlag "eg_better_spells" {Area 1 PlaceFurniture "EG_GROWTH_FLOOR"}
+							   }
+  targetSelf = true
+  cooldown = {50 100}
+  sound = SPELL_HEALING
+}
+
+"EG Altar TRANSFORM" 
+{
+  symbol = "🌱" 
+  effect = AI And{} 0 1 Name "Seed Flesh"  Description "Its body shall spread trouh the land." Chain {
+							   PlaceFurniture "EG_GROWTH_FLOOR"
+							   Caster Suicide TURN_INVISIBLE }
+  range = 1
+  cooldown = {50 100}
+  sound = SPELL_HEALING
+}
+
+"Harden Flesh" 
+{
+  symbol = "🌱" 
+  effect = Name "Harden Flesh"  Description "So we shall hide in its embrace."   Chain {
+                               Filter CreatureFlag "eg_better_spells" {
+							     Filter Area 1 FurnitureType "EG_GROWTH_FLOOR" {
+							     Area 1 PlaceFurniture "EG_GROWTH_WALL_FIN"}}
+							   Filter Not CreatureFlag "eg_better_spells" {
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							     Area 0 PlaceFurniture "EG_GROWTH_WALL_FIN"}}
+							   }
+  targetSelf = true
+  cooldown = {100 200}
+  sound = SPELL_HEALING
+}
+
+"Grant us eyes" 
+{
+  symbol = "🌱" 
+  effect = Name "Grant us eyes"   Description "We can sleep soundly knowing it watches over us."   Chain {
+							   Filter CreatureFlag "eg_better_spells" {
+							   Filter Area 0 FurnitureType "EG_GROWTH_EYEBALL" {
+							   Area 0 PlaceFurniture "EG_GROWTH_EYEBALL"}}
+							   Filter Not CreatureFlag "eg_better_spells" {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_EYEBALL"}}
+							   }
+  targetSelf = true
+  cooldown = {200 600}
+  sound = SPELL_HEALING
+}
+
+"Hands to protect us" 
+{
+  symbol = "🌱" 
+  effect = Name "Hands to protect us"  Description "Its hand shall shield us from world."   Chain {
+                               Filter CreatureFlag "eg_better_spells" {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_INERT_TANTACLE_UPGRADE"
+							                                              }}
+                               Filter Not CreatureFlag "eg_better_spells" {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_INERT_TANTACLE"
+							                                              }}
+							   }
+  targetSelf = true
+  cooldown = 800
+  sound = SPELL_HEALING
+}
+
+"Rampart Growth" 
+{
+  symbol = "🌱" 
+  effect = Name "Rampart Growth"  Description "Even its weakness is its strenght."   Chain {
+                               Filter CreatureFlag "eg_better_spells" {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_TUMOR"}}
+                               Filter Not CreatureFlag "eg_better_spells" {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_TUMOR"}}
+							   }
+  targetSelf = true
+  cooldown = {300 800}
+  sound = SPELL_HEALING
+}
+
+"Acidic Buildup" 
+{
+  symbol = "🌱" 
+  effect = Name "Acidic Buildup"  Description "Its waste is our protection."   Chain {
+                               Filter CreatureFlag "eg_better_spells" {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_GAS_TRAP_UPGRADE"}}
+							   Filter Not CreatureFlag "eg_better_spells" {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 0 PlaceFurniture "EG_GROWTH_GAS_TRAP"}}
+							   }
+  targetSelf = true
+  cooldown = {300 800}
+  sound = SPELL_HEALING
+}
+
+"Spread Seed" 
+{
+  symbol = "🌱" 
+  effect = Name "Sphincter"  Description "It arises back out to spread further."   Chain {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Filter Not CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {1 3} 30}
+							   Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {3 6} 30}
+							   Area 0 RemoveFurniture "EG_GROWTH_FLOOR"}}
+  targetSelf = true
+  cooldown = 400
+  sound = SPELL_HEALING
+}
+
+"ADVANCED_Spread_Seed" 
+{
+  upgrade = "Spread Seed"
+  symbol = "🌱" 
+  effect = Name "Sphincter"  Description "It arises back out to spread further."   Chain {
+							   Filter Area 1 FurnitureType "EG_GROWTH_FLOOR" {
+							   Filter Not CreatureFlag "eg_better_spells" {Area 1 Summon "EG_GORE_TUMOR" {1 3} 30}
+							   Filter CreatureFlag "eg_better_spells" {Area 1 Summon "EG_GORE_TUMOR" {3 6} 30}
+							   Area 1 RemoveFurniture "EG_GROWTH_FLOOR"}}
+  targetSelf = true
+  cooldown = 400
+  sound = SPELL_HEALING
+}
+
+"Veins Beyond" 
+{
+  symbol = "🌱" 
+  effect = Name "Veins Beyond"  Description "Its veins shall let us move trough them."   Chain {
+                               Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {1 3} 30}
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" { Teleport }
+							   }
+  targetSelf = true
+  cooldown = {250 510}
+  sound = SPELL_HEALING
+}
+
+"Forced Mutation"
+{
+  symbol = "🐝"
+  cooldown = {750 1000}
+  effect = Name "Forced Mutation" Description "Trouh my guidance you shall ascend." Chain{
+					IncreaseAttr "BLESSED_FLESH" 1
+					ChooseRandom {
+                        IncreaseAttr SPELL_DAMAGE 1
+						IncreaseAttr DAMAGE 1
+						IncreaseAttr DEFENSE 1					
+						Permanent SWIMMING_SKILL
+						Permanent SPEED 
+						Permanent MAGIC_RESISTANCE
+						Permanent FIRE_RESISTANT
+						Permanent AMBUSH_SKILL	
+                        Permanent BLIND 	
+                        IncreaseAttr DIGGING 16		
+						AddBodyPart ARM 1 none
+						AddBodyPart LEG 1 none
+						AddBodyPart HEAD 1 none
+						AddBodyPart WING 1 none
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+						AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						IncreaseAttr MULTI_WEAPON 8	}
+				    Filter CreatureFlag "eg_better_spells"{
+					IncreaseAttr "BLESSED_FLESH" 1
+					ChooseRandom {
+                        IncreaseAttr SPELL_DAMAGE 1
+						IncreaseAttr DAMAGE 1
+						IncreaseAttr DEFENSE 1					
+						Permanent SWIMMING_SKILL
+						Permanent SPEED 
+						Permanent MAGIC_RESISTANCE
+						Permanent FIRE_RESISTANT
+						Permanent AMBUSH_SKILL	
+                        Permanent BLIND 	
+                        IncreaseAttr DIGGING 16	
+						AddBodyPart ARM 1 none
+						AddBodyPart LEG 1 none
+						AddBodyPart HEAD 1 none
+						AddBodyPart WING 1 none
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+						AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						IncreaseAttr MULTI_WEAPON 8	} }}
+} 	
+
+"eg_release_limits"
+{
+  symbol = "🛡"
+  effect = Name "release limits" Lasting 40 EG_BEYOND_LIMITS
+  cooldown = {30 81}
+  sound = SPELL_DEX_BONUS
+}
+
+"eg_final_sacrifice"
+{
+  upgrade = "eg_release_limits"
+  symbol = "🛡"
+  effect = Name "release limits" AI And{} 1 -1 { Lasting 40 EG_FINAL_SACRIFICE }
+  cooldown = {99999}
+  sound = SPELL_DEX_BONUS
+}
+
+"eg_horryfic_wail"
+{
+  symbol = "😱"
+  effect = Name "horryfying wail" Area 2 Chance 0.5 Lasting PANIC
+  cooldown = {25 51}
+  sound = SPELL_STR_BONUS
+}
+
+"eg_ancient_wisdom"
+{
+  symbol = "💪"
+  effect = Name "ancient wisdom" Description "Blood shall lead your mind." Chain{
+  Filter Not CreatureFlag "eg_better_spells"{Lasting 40 SPEL_SPED_BONUS}
+  Filter CreatureFlag "eg_better_spells"{Lasting 80 SPEL_SPED_BONUS}}
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"eg_ancient_wisdom_advanced"
+{
+  upgrade = "eg_ancient_wisdom"
+  symbol = "💪"
+  effect = Name "ancient wisdom" Description "Blood shall lead your mind." Chain{
+  Filter Not CreatureFlag "eg_better_spells"{Lasting 40 SPEL_SPED_BONUS}
+  Filter CreatureFlag "eg_better_spells"{Lasting 80 SPEL_SPED_BONUS}}
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"eg_ancient_wisdom_mass"
+{
+  upgrade = "eg_ancient_wisdom_advanced"
+  symbol = "💪"
+  effect = Name "mass ancient wisdom" Description "Blood shall lead your mind." Chain{
+  Filter Not CreatureFlag "eg_better_spells"{ Area 10 Filter Not Enemy Lasting 40 SPEL_SPED_BONUS}
+  Filter CreatureFlag "eg_better_spells"{ Area 10 Filter Not Enemy Lasting 80 SPEL_SPED_BONUS}}
+  cooldown = {30 81}
+  sound = SPELL_STR_BONUS
+}
+
+"eg_blood_phantom"
+{
+  symbol = "👾"
+  effect = Name "blood phantom" Description "Call upon echoes in your blood to fight your enemies." Chain {
+  Lasting 10 BLEEDING 
+  Filter Not CreatureFlag "eg_better_spells"{Summon "EG_BLOOD_PHANTOM" { 1 2 } 100}
+  Filter CreatureFlag "eg_better_spells"{Summon "EG_BLOOD_PHANTOM" { 2 3 } 100}}
+  cooldown = {30 81}
+  sound = SPELL_FIRE_SPHERE_PET
+}
+
+"eg_blood_boil"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "boil blood" Description "Causes magical and fire damage" Chain{ 
+                                                 Damage BLESSED_FLESH SPELL
+												 Damage BLESSED_FLESH SPELL
+                                                 Filter CreatureFlag "eg_better_spells"{Damage BLESSED_FLESH SPELL}												 
+												 EmitGas "EG_BLOOD_FOG" 1}
+  range = 4
+  endOnly = true
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"eg_blood_boil_advanced"
+{
+  upgrade = "eg_blood_boil"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "boil blood" Description "Causes magical and fire damage" Chain{ 
+                                                 Damage BLESSED_FLESH SPELL
+												 Damage BLESSED_FLESH SPELL
+												 Filter CreatureFlag "eg_better_spells"{Damage BLESSED_FLESH SPELL}		
+												 EmitGas "EG_BLOOD_FOG" 1}
+  range = 8
+  endOnly = true
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"eg_blood_boil_expert"
+{
+  upgrade = "eg_blood_boil_advanced"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "boil blood" Description "Causes magical and fire damage" Chain{ 
+                                                 Damage BLESSED_FLESH SPELL
+												 Damage BLESSED_FLESH SPELL
+												 Filter CreatureFlag "eg_better_spells"{Damage BLESSED_FLESH SPELL}		
+												 EmitGas "EG_BLOOD_FOG" 1}
+  range = 12
+  endOnly = true
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"eg_blood_boil_mass"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "mass boil blood" Description "Causes magical and fire damage" Chain{ 
+                                                 Area 1 Damage BLESSED_FLESH SPELL
+												 Area 1 Damage BLESSED_FLESH SPELL
+												 Filter CreatureFlag "eg_better_spells"{Area 1 Damage BLESSED_FLESH SPELL}		
+												 Area 1 EmitGas "EG_BLOOD_FOG" 1}
+  range = 12
+  endOnly = true
+  cooldown = {21 42}
+  sound = SPELL_BLAST
+}
+
+"eg_bloody_sacrifice"
+{
+  symbol = "🛡"
+  effect = Name "bloody sacrifice" Description "Your final moment has come, let unleash power of your blood fully" Chain { 
+															  Area 1 {EmitGas "EG_BLOOD_FOG" 1
+                                                              Filter CreatureFlag "eg_better_spells"{Damage BLESSED_FLESH SPELL}}															  
+															  Blast
+															  Filter Not CreatureFlag "eg_better_spells"{Summon "EG_BLOOD_PHANTOM" { 1 2 } 100}
+															  Filter CreatureFlag "eg_better_spells"{Summon "EG_BLOOD_PHANTOM" { 2 3 } 100}
+															  Caster Damage DAMAGE CUT}
+  cooldown = {125 250}
+  sound = SPELL_DEX_BONUS
+}
+
+OneTimeAbility("gore fammiliar follower", "If shall follow you forever.", { AddCompanion {count = 1 summonFreq = 0.1 creatures = { "EG_GORE_FAMILLIAR" } }}, "🧛")
+OneTimeAbility("blessing of flesh", "Your flesh grows more holy.", {IncreaseAttr "BLESSED_FLESH" 4}, "🧛")
+
+
+"summon gore beast"
+{
+  symbol = "🐝"
+  effect = Name "shape gore beast" Description "Beseech fesh to rise as mighty beast." Chain 
+        { 
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+            Filter Not Flag "gore_04" {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 1 RemoveFurniture "EG_OFFERING"
+							   Summon "EG_GORE_BEAST" {1} 30
+							   Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_FAMILLIAR" {1} 30}
+							   Area 0 RemoveFurniture "EG_GROWTH_FLOOR"}}
+			Filter Not Flag "gore_08" {	
+			Filter Flag "gore_04" {
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 1 RemoveFurniture "EG_OFFERING"
+							   Summon "EG_GORE_BEAST" {1} none
+							   Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_FAMILLIAR" {1} none}
+							   Area 0 RemoveFurniture "EG_GROWTH_FLOOR"}}} 	
+			Filter Flag "gore_08" {
+
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							   Area 1 RemoveFurniture "EG_OFFERING"
+							   Summon "EG_GORE_BEAST_ADV" {1} none
+							   Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_FAMILLIAR_UPGRADE" {1} none}
+							   Area 0 RemoveFurniture "EG_GROWTH_FLOOR"}}} 	
+  cooldown = {100 400}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"gore_kraken_mechanics_player"
+{
+  symbol = "T"
+  effect = Name "send tendril" Description "Sends tendril to some direction" AI Enemy 0 1 AI Not Enemy 1 0 {
+    PlaceFurniture "EG_GORE_KRAKEN_MECHANIC"
+	Caster Lasting 60 IMMOBILE
+  }
+  range = 6
+  cooldown = {21 54}
+  sound = SPELL_STR_BONUS
+}
+
+"gore_kraken_mechanics"
+{
+  symbol = "T"
+  effect = Name "send tendril" Description "Sends tendril to some direction" AI Enemy 0 1 AI Not Enemy 1 0 {
+    PlaceFurniture "EG_GORE_KRAKEN_MECHANIC"
+  }
+  range = 6
+  cooldown = {21 54}
+  sound = SPELL_STR_BONUS
+}
+
+"gore_kraken_pull"
+{
+  symbol = "⮄"
+  effect = Name "pull" Description "pulls" AI Enemy 0 1 AI Not Enemy 1 0 {Filter CreatureFlag "pull" {Chain{
+  SetCreatureFlag "pull" false
+    Filter LastingEffect INWATER {
+    Filter Not Or {LastingEffect SWIMMING_SKILL LastingEffect FLYING} {
+		RemoveLasting SUMMONED
+        Lasting 1 SUMMONED
+    }}}
+  Caster PlaceFurniture "GORE_KRAKEN_BRIDGE"
+  SwapPosition
+  Area 1 RemoveFurniture "GORE_KRAKEN_BRIDGE"
+  FixedDamage DAMAGE 5 CRUSH
+  SetCreatureFlag "can_go" false
+  SetCreatureFlag "in_water" false
+  RemoveLasting SUMMONED
+  Lasting 1 SUMMONED}
+  Filter Not CreatureFlag "pull" {
+  Lasting 1 IMMOBILE  
+  Lasting 2 TENTACLE  
+  SetCreatureFlag "pull" true}}
+  range = 1
+  cooldown = {1}
+  sound = SPELL_BLAST
+}
+
+#####################################FISHMEN###########################################
+
+"ftd_fire_pistol"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(2) Name "shoot pistol" Description "Shoots an pistol" Chain{
+      TryNoFriendlyFire(
+        {
+          CreatureMessage {"are hit by the shot" "is hit by the shot"}
+          Damage RANGED_DAMAGE SHOOT
+        },
+        CreatureMessage {"are spared by the shot" "is spared by the shot"}
+      )
+	  Area 0 Filter DistanceD none 0.8 EmitGas "FOG" 1}
+  range = 7
+  cooldown = 3
+  maxHits = 10
+  projectileViewId = {"ftd_bullet"}
+  message = "shoot an pistol" "shoots an pistol"
+  type = ABILITY
+}
+
+"ftd_imbue_ominous_fog_cloud"
+{
+  symbol = "🌫"
+  effect = Name "imbue ominous fog" Description "Imbues ominous fog intro creature."  GrantAbility "imbued fog cloud"
+  range = 1
+  cooldown = {50 101}
+}
+
+OneTimeAbility("imbued fog cloud", "Creates a ominous fog cloud..", { Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}, "🌫")
+
+"ftd_summon_drowned"
+{
+  symbol = "🧟"
+  effect = Name "summon drowned" Summon "FTD_DROWNER" 1 30
+  message = "clack" "clacks"
+  cooldown = 60
+  type = ABILITY
+}
+"ftd_summon_crab"
+{
+  symbol = "🦀"
+  effect = Name "summon sea critters" Description "Summons 2 to 4 sea critters." SeaSummonsCast(30)
+  message = "clack" "clacks"
+  cooldown = 60
+  type = ABILITY
+}
+
+"ftd_ominous_fog_cloud"
+{
+  symbol = "🌫"
+  effect = Name "ominous fog" Description "Creates a ominous fog cloud." Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1
+  cooldown = {20 40}
+}
+
+"ftd_ominous_fog_cloud_advanced"
+{
+  upgrade = "ftd_ominous_fog_cloud"
+  symbol = "🌫"
+  effect = Name "ominous fog" Description "Creates a ominous fog cloud." Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1
+  range = 6
+  cooldown = {20 40}
+}
+
+"ftd_ominous_fog_cloud_expert"
+{
+  upgrade = "ftd_ominous_fog_cloud_advanced"
+  symbol = "🌫"
+  effect = Name "ominous fog" Description "Creates a ominous fog cloud." Area 8 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1
+  range = 10
+  cooldown = {20 40}
+}
+
+"ftd_fogger"
+{
+  symbol = "🌫"
+  effect = Name "leak fog" Lasting 40 FTD_FOGGER
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+}
+
+"ftd_fogger_mass"
+{
+  symbol = "🌫"
+  effect = Name "mass fogger" Area 4 Filter Not Enemy Lasting 40 FTD_FOGGER
+  cooldown = {30 81}
+}
+
+"ftd_fog_blessing"
+{
+  symbol = "🌫"
+  effect = Name "resist fog" Permanent FTD_CLOUD_IMMUNE
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+}
+
+"ftd_fog_blessing_mass"
+{
+
+  symbol = "🌫"
+  effect = Name "resist fog" Area 4 Filter Not Enemy Permanent FTD_CLOUD_IMMUNE
+  cooldown = {30 81}
+}
+"ftd_sea_invasion"
+{
+  symbol = "🌫🦀"
+  effect = Name "sea invasion" Description "Calls the sea creatures under cover of the fog." {
+              SeaSummonsSwarmCast (30) 
+			  Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}
+  cooldown = {40 60}
+}
+
+"ftd_great_sea_invasion"
+{
+  upgrade = "ftd_sea_invasion"
+  symbol = "🌫🦀"
+  effect = Name "great sea invasion" Description "Calls the sea creatures under cover of the fog." {
+              SeaSummonsSwarmCast (30)
+              Summon "FTD_DROWNER" {1 2} 30 
+			  Area 4 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}
+  cooldown = {40 60}
+}
+
+"ftd_apocalyptic_sea_invasion"
+{
+  upgrade = "ftd_great_sea_invasion"
+  symbol = "🌫🦀"
+  effect = Name "sea invasion" Description "Calls the sea creatures under cover of the fog." {
+              SeaSummonsSwarmCast (30)
+			  SeaSummonsSwarmCast (30)
+              Summon "FTD_DROWNER" {1 2} 30 
+			  Area 8 Filter DistanceD none 3.2 EmitGas "FTD_OMINOUS_FOG" 1}
+  cooldown = {40 60}
+}
+
+"sunlight resistance"
+{
+  symbol = "🐍"
+  effect = Lasting 10 FTD_SUNLIGHT_RESISTANCE
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = SPELL_CURE_POISON
+}
+
+"ftd_mutation"
+{
+  symbol = "🐝"
+  cooldown = 500
+  effect = Name "Mutation" Description "Shoggoth would adapt and thrive everywhere." Chain{
+					ChooseRandom {
+                        IncreaseAttr SPELL_DAMAGE 1
+						IncreaseAttr DAMAGE 1
+						IncreaseAttr DEFENSE 1					
+						Permanent NIGHT_VISION
+						Permanent SPEED 
+						Permanent MAGIC_RESISTANCE
+						Permanent FIRE_RESISTANT
+						Permanent AMBUSH_SKILL	
+                        IncreaseAttr DIGGING 16		
+						AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+						AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+						IncreaseAttr MULTI_WEAPON 8
+						} }
+} 
+
+"ftd_long_arms"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(1) Name "long arms" Description "Attack with long arms"
+           Chain{
+           CreatureMessage {"are hit by the claw" "is hit by the claw"}
+           Damage DAMAGE HIT}
+  fx = {MAGIC_MISSILE}
+  range = 2
+  cooldown = {0}
+  sound = SPELL_BLAST
+}
+
+#####################################COSMOS###########################################
+
+"cs_star_omen"
+{
+  symbol = "⭐"
+  effect = Summon "CS_COSMOS_LIGHT_SUICIDE" {3 7} 100
+  cooldown = {30 61}
+  sound = SPELL_SUMMON_INSECTS
+}
+
+"cs_drain"
+{
+  symbol = "🗡️"
+  effect = MinDistanceFromStrongEnemy(2) Name "sacrifice" Description "Sacrifices the creature" Chain {
+            Filter Area 0 Not Enemy {
+			Filter Not Area 0 Or {CreatureId "CS_DRAINED_BEAST" CreatureId "CS_DRAINED_HUMAN" CreatureId "CS_DRAINED_GREENSKIN" CreatureId "CS_DRAINED_DWARF" CreatureId "CS_DRAINED_ELF" HatedBy HATE_ELVES HatedBy HATE_DWARVES HatedBy HATE_GREENSKINS HatedBy HATE_HUMANS} {
+			Suicide TURN_INVISIBLE	
+			Summon "CS_DRAINED_BEAST" 1 none
+						countcosmos()	}
+			Filter Area 0 Or {CreatureId "CS_COSMOS_LIGHT" CreatureId "CS_COSMOS_LIGHT_SUICIDE" CreatureId "CS_COSMOS_BEAST" CreatureId "CS_DRAINED_BEAST" CreatureId "CS_DRAINED_HUMAN" CreatureId "CS_DRAINED_GREENSKIN" CreatureId "CS_DRAINED_DWARF" CreatureId "CS_DRAINED_ELF"} {
+			Suicide TURN_INVISIBLE}
+			Filter Area 0 HatedBy HATE_HUMANS {
+			Suicide TURN_INVISIBLE	
+			Summon "CS_DRAINED_HUMAN" 1 none
+						countcosmos()	}
+			Filter Area 0 HatedBy HATE_GREENSKINS {
+			Suicide TURN_INVISIBLE	
+			Summon "CS_DRAINED_GREENSKIN" 1 none
+						countcosmos()	}
+			Filter Area 0 HatedBy HATE_DWARVES {
+			Suicide TURN_INVISIBLE	
+			Summon "CS_DRAINED_DWARF" 1 none
+						countcosmos()	}
+			Filter Area 0 HatedBy HATE_ELVES {
+			Suicide TURN_INVISIBLE	
+			Summon "CS_DRAINED_ELF" 1 none
+						countcosmos()	}	
+			}}
+  endOnly = true
+  range = 1
+  cooldown = 200
+  sound = SPELL_BLAST
+}
+
+"cs_detonate_drained"
+{
+  symbol = "✨"
+  effect =  Name "detonate drained" Description "detonates the drained" Chain {
+            Filter Area 0 Not Enemy {
+			Filter Area 0 HatedBy HATE_DRAINED {
+			Chain{
+            Area 2 {Damage SPELL_DAMAGE SPELL
+	        Lasting 100 CS_TEMPORAL_DISRUPTION
+	        Blast
+			}}}}}
+  endOnly = true
+  range = 8
+  cooldown = 20
+  sound = SPELL_BLAST
+}
+
+Def TryStarMissile()
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"are hit by the missile" "is hit by the missile"}
+      Damage SPELL_DAMAGE SPELL
+	  Chance 0.2 Lasting 5 IMMOBILE
+	  Chance 0.4 Lasting 5 COLLAPSED
+	  Chance 0.6 Lasting 5 SLOWED
+    },
+    CreatureMessage {"are spared by the missile" "is spared by the missile"}
+  )
+End
+
+"cs_falling_star"
+{
+  symbol = "⭐"
+  effect = MinDistanceFromStrongEnemy(2) Name "falling star" Description "his castoff pieces shall serve as our weapon"
+      TryStarMissile()
+  maxHits = 1
+  projectileViewId = {"cs_missile_star"}
+  range = 4
+  cooldown = 20
+  sound = SPELL_BLAST
+}
+
+"cs_advanced_falling_star"
+{
+  upgrade = "cs_falling_star"
+  symbol = "🌟"
+  effect = MinDistanceFromStrongEnemy(2) Name "falling star" Description "his castoff pieces shall serve as our weapon"
+      TryStarMissile()
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = 10
+  sound = SPELL_BLAST
+}
+
+"cs_expert_falling_star"
+{
+  upgrade = "cs_advanced_falling_star"
+  symbol = "⭐🌟"
+  effect = MinDistanceFromStrongEnemy(2) Name "falling star" Description "his castoff pieces shall serve as our weapon"
+      TryStarMissile()
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = 5
+  sound = SPELL_BLAST
+}
+
+"cs_mirrage"
+{
+  symbol = "🎭"
+  effect = Name "mirrage" Chain {Deception Lasting 30 DEF_BONUS}
+  cooldown = 60
+  sound = SPELL_DECEPTION
+}
+
+"cs_nova"
+{
+  symbol = "⭐✨"
+  effect = Name "nova" Description "his wrath shall save us!" Chain{
+      Area 1 {Damage SPELL_DAMAGE SPELL
+	  Chance 0.2 Lasting 5 IMMOBILE
+	  Chance 0.4 Lasting 5 COLLAPSED
+	  Chance 0.6 Lasting 5 SLOWED
+	  Blast}}
+  cooldown = 50
+  sound = SPELL_BLAST
+}
+
+"cs_advanced_nova"
+{
+  upgrade = "cs_nova"
+  symbol = "🌟✨"
+  effect = Name "nova" Description "his wrath shall save us!" Chain{
+      Area 2 {Damage SPELL_DAMAGE SPELL
+	  Chance 0.4 Lasting 5 IMMOBILE
+	  Chance 0.6 Lasting 5 COLLAPSED
+	  Chance 0.8 Lasting 5 SLOWED
+	  Blast
+	  Escape {}}}
+  cooldown = 50
+  sound = SPELL_BLAST
+}
+
+"cs_expert_nova"
+{
+  upgrade = "cs_advanced_nova"
+  symbol = "⭐🌟✨"
+  effect = Name "nova" Description "his wrath shall save us!" Chain{
+      Area 3 {Damage SPELL_DAMAGE SPELL
+	  Chance 0.6 Lasting 15 IMMOBILE
+	  Chance 0.8 Lasting 15 COLLAPSED
+	  Chance 1.0 Lasting 15 SLOWED
+	  Blast
+	  Escape {}}}
+  cooldown = 50
+  sound = SPELL_BLAST
+}
+
+#####################################YELLOW SIGN###########################################
+
+"ys_allow_rider"
+{
+  upgrade = "cs_advanced_nova"
+  symbol = "⭐🌟✨"
+  effect = AI And{} 0 0 Name "Allow Rider" Description "allow people to ride you!" Chain{
+      RemoveAbility "ys_allow_rider"
+	  Permanent STEED
+	  GrantAbility "ys_deny_rider"
+	  }
+  cooldown = 1
+}
+
+"ys_deny_rider"
+{
+  upgrade = "cs_advanced_nova"
+  symbol = "⭐🌟✨"
+  effect = AI And{} 0 0 Name "Allow Rider" Description "allow people to ride you!" Chain{
+      RemoveAbility "ys_deny_rider"
+	  Permanent STEED
+	  GrantAbility "ys_allow_rider"
+	  }
+  cooldown = 1
+}
+
+"ys_great_reveal"
+{
+  symbol = "😱"
+  effect = Name "horrifying visage" Area 1 Filter Not LastingEffect INSANITY Lasting 10 PANIC
+  range = 1
+  endOnly = true
+  cooldown = {5 21}
+  sound = SPELL_STR_BONUS
+}
+
+"ys_great_reveal_advanced"
+{
+  upgrade = "ys_great_reveal"
+  symbol = "😱"
+  effect = Name "horrifying visage" Area 1 Filter Not LastingEffect INSANITY Lasting 10 PANIC
+  range = 1
+  endOnly = true
+  cooldown = {5 21}
+  sound = SPELL_STR_BONUS
+}
+
+"ys_great_reveal_expert"
+{
+  upgrade = "ys_great_reveal_advanced"
+  symbol = "😱"
+  effect = Name "horrifying visage" Area 1 Filter Not LastingEffect INSANITY Lasting 10 PANIC
+  range = 1
+  endOnly = true
+  cooldown = {5 21}
+  sound = SPELL_STR_BONUS
+}
+
+"ys_vision_of_carcosa"
+{
+  symbol = "🛡"
+  effect = Name "vision of carcosa" Area 10 Chain {Filter Enemy {
+													Chance 0.1 Lasting 10 INSANITY
+													Filter Not LastingEffect INSANITY Lasting 20 PANIC
+												  }}
+  cooldown = {80 204}
+  sound = SPELL_DEX_BONUS
+}
+
+"ys_vision_of_carcosa_advanced"
+{
+  upgrade = "ys_vision_of_carcosa"
+  symbol = "🛡"
+  effect = Name "vision of carcosa" Area 10 Chain {Filter Enemy {
+													Chance 0.2 Lasting 15 INSANITY
+													Filter Not LastingEffect INSANITY Lasting 30 PANIC
+												  }}
+  cooldown = {80 204}
+  sound = SPELL_DEX_BONUS
+}
+
+"ys_vision_of_carcosa_expert"
+{
+  upgrade = "ys_vision_of_carcosa_advanced"
+  symbol = "🛡"
+  effect = Name "vision of carcosa" Area 10 Chain {Filter Enemy {
+													Chance 0.3 Lasting 20 INSANITY
+													Filter Not LastingEffect INSANITY Lasting 40 PANIC
+												  }}
+  cooldown = {80 204}
+  sound = SPELL_DEX_BONUS
+}
+
+"ys_yellow_sign"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "vision of yellow sign" Description "Shows an yellow sign"
+      TryYellowSign(5)
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"ys_yellow_sign_advanced"
+{
+  upgrade = "ys_yellow_sign"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "vision of yellow sign" Description "Shows an yellow sign"
+      TryYellowSign(10)
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"ys_yellow_sign_expert"
+{
+  upgrade = "ys_yellow_sign"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "vision of yellow sign" Description "Shows an yellow sign"
+      TryYellowSign(15)
+  fx = {MAGIC_MISSILE}
+  range = 12
+  endOnly = true
+  cooldown = {5 21}
+  sound = SPELL_BLAST
+}
+
+"ys_phantom_of_truth"
+{
+  symbol = "🛡"
+  effect = Name "The Phantom of Truth" Area 4 Chain {   
+													Filter Not Enemy {Lasting 40 HIGH_MORALE Heal { FLESH 0.2 }}
+													Filter Enemy {Lasting 40 FTD_LOW_MORALE Damage SPELL_DAMAGE SPELL}
+													}
+  cooldown = {60 162}
+  sound = SPELL_DEX_BONUS
+}
+
+"ys_phantom_of_truth_advanced"
+{
+  upgrade = "ys_phantom_of_truth"
+  symbol = "🛡"
+  effect = Name "The Phantom of Truth" Area 6 Chain {   
+													Filter Not Enemy {Lasting 40 HIGH_MORALE Heal { FLESH 0.2 }}
+													Filter Enemy {Lasting 40 FTD_LOW_MORALE Damage SPELL_DAMAGE SPELL}
+													}
+  cooldown = {60 162}
+  sound = SPELL_DEX_BONUS
+}
+
+"ys_phantom_of_truth_expert"
+{
+  upgrade = "ys_phantom_of_truth_advanced"
+  symbol = "🛡"
+  effect = Name "The Phantom of Truth" Area 8 Chain {   
+													Filter Not Enemy {Lasting 40 HIGH_MORALE Heal { FLESH 0.2 }}
+													Filter Enemy {Lasting 40 FTD_LOW_MORALE Damage SPELL_DAMAGE SPELL}
+													}
+  cooldown = {60 162}
+  sound = SPELL_DEX_BONUS
+}
+
+"ys_horrifying_reveal"
+{
+  symbol = "⭐🌟✨"
+  effect = Name "Horrifying reveal" Chain {   
+      Caster Lasting 30 YS_REVEAL
+	  Filter Not CreatureFlag "reveal" {
+	  Caster SetCreatureFlag "reveal" true
+	  Area 6 Filter Enemy {Lasting 20 PANIC}}}
+  cooldown = 20
+}
+
+"ys_spirit_healing"
+{
+  symbol = "✴"
+  effect = Name "heal spirit" Heal { SPIRIT }
+  cooldown = {10 31}
+  sound = SPELL_HEALING
+}
+
+OneTimeAbility("ys_spawn_start", "", {SetCreatureFlag "reveal" false }, "🧛")

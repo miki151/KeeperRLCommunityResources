@@ -86,11 +86,17 @@
     name = {
       name = "priest"
     }
-    companions = {7 false SPELL_DAMAGE 0.05 { "DEMON_DWELLER" }}
+    companions = {{
+      count = 7
+      spawnAway = false
+      statsBase = SPELL_DAMAGE
+      summonFreq = 0.02
+      creatures = { "DEMON_DWELLER" }
+    }}
     spells = { "advanced heal spirit" "heal spirit group" "mass damage bonus" "fireball" "firewall" }
     hatedByEffect = HATE_HUMANS
     inventory = {
-      { "IronStaff"}
+      { "EnchantedStaff"}
       { "LeatherBoots"}
       { type = "Robe" prefixChance = 1 }
     }
@@ -465,7 +471,13 @@
       SetFlag "mv_paladin_killed" true
       DropItems { "MV_PALADIN_REMAINS"} {1}
     }
-	companions = {4 false DAMAGE 0.05 { "MV_PESEANT_PRISONER" }}
+    companions = {{
+      count = 4
+      spawnAway = false
+      statsBase = DAMAGE
+      summonFreq = 0.02
+      creatures = { "MV_PESEANT_PRISONER" }
+    }}
     hatedByEffect = HATE_HUMANS
     inventory = {
       { "Sword"}
@@ -509,7 +521,13 @@
       SetFlag "mv_weak_devil_killed" true
 	  DropItems { "MV_DEVILS_HEART"} {1}
     }
-	companions = {4 false DAMAGE 0.05 { "MV_WEAKENED_DEMON" }}
+    companions = {{
+      count = 4
+      spawnAway = false
+      statsBase = DAMAGE
+      summonFreq = 0.02
+      creatures = { "MV_WEAKENED_DEMON" }
+    }}
     inventory = {
       { "Sword"}
       { "ChainArmor"}
@@ -546,7 +564,13 @@
     name = {
       name = "Fallen Paladin"
     }
-	companions = {4 false DAMAGE 0.05 { "SKELETON_WARRIOR" }}
+    companions = {{
+      count = 4
+      spawnAway = false
+      statsBase = DAMAGE
+      summonFreq = 0.02
+      creatures = { "SKELETON_WARRIOR" }
+    }}
     hatedByEffect = HATE_UNDEAD
     inventory = {
       { "Sword"}
@@ -584,7 +608,13 @@
     name = {
       name = "Lesser Reaper"
     }
-	companions = {8 false DAMAGE 0.5 { "LOST_SOUL" }}
+    companions = {{
+      count = 8
+      spawnAway = false
+      statsBase = DAMAGE
+      summonFreq = 0.02
+      creatures = { "LOST_SOUL" }
+    }}
     hatedByEffect = HATE_UNDEAD
     inventory = {
       { "Sword"}
@@ -621,9 +651,9 @@
 "MV_PYRAMID_MUMMY_WARRIOR" inherit "MUMMY"
   {
   inventory = {
-      { type = Glyph WEAPON LastingEffect FIRE_DAMAGE chance = 0.3 }
-      { type = Glyph ARMOR LastingEffect DARKNESS_SOURCE chance = 0.3 }
-	  { type = Glyph ARMOR LastingEffect FIRE_RESISTANT chance = 0.3 }
+      { type = Glyph {WEAPON LastingEffect FIRE_DAMAGE} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect DARKNESS_SOURCE} chance = 0.3 }
+	  { type = Glyph {ARMOR LastingEffect FIRE_RESISTANT} chance = 0.3 }
       { "MummyDarknessLeatherArmor"}
       { "MummyFireResistantLeatherHelm"}
       { "MummyFireSword"}
@@ -643,12 +673,12 @@
     }
 	spellSchools = { "fire" "illusion" }
     inventory = {
-      { type = Glyph WEAPON LastingEffect FIRE_DAMAGE chance = 0.3 }
-      { type = Glyph ARMOR LastingEffect DARKNESS_SOURCE chance = 0.3 }
-	  { type = Glyph ARMOR LastingEffect FIRE_RESISTANT chance = 0.3 }
+      { type = Glyph {WEAPON LastingEffect FIRE_DAMAGE} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect DARKNESS_SOURCE} chance = 0.3 }
+	  { type = Glyph {ARMOR LastingEffect FIRE_RESISTANT} chance = 0.3 }
       { "MummyDarknessRobe"}
 	  { "MummyFireResistantLeatherHelm"}
-      { "MummyFireIronStaff" }
+      { "MummyFireEnchantedStaff" }
     }
   }
     
@@ -667,14 +697,14 @@
     }
 	spellSchools = { "fire" "illusion" }
     inventory = {
-	  { type = Glyph ARMOR LastingEffect LIFE_SAVED chance = 1 }
-      { type = Glyph WEAPON LastingEffect FIRE_DAMAGE chance = 0.3 }
-      { type = Glyph ARMOR LastingEffect DARKNESS_SOURCE chance = 0.3 }
-	  { type = Glyph ARMOR LastingEffect FIRE_RESISTANT chance = 0.3 }
+	  { type = Glyph {ARMOR LastingEffect LIFE_SAVED} chance = 1 }
+      { type = Glyph {WEAPON LastingEffect FIRE_DAMAGE} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect DARKNESS_SOURCE} chance = 0.3 }
+	  { type = Glyph {ARMOR LastingEffect FIRE_RESISTANT} chance = 0.3 }
       { "MummyDarknessLeatherArmor"}
       { "MummyFireResistantLeatherHelm"}
       { "MummyFireSword"}
-      { "MummyFireIronStaff" }
+      { "MummyFireEnchantedStaff" }
     }
   }
   
@@ -697,11 +727,11 @@
       DARKNESS_SOURCE 1
     }
     inventory = append {
-      { "IronStaff" }
-      { type = Glyph ARMOR LastingEffect MAGIC_RESISTANCE chance = 0.3 }
-      { type = Glyph ARMOR LastingEffect SPEED chance = 0.3 }
-      { type = Glyph ARMOR LastingEffect NO_CARRY_LIMIT chance = 0.3 }
-      { type = Glyph WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE} chance = 0.3 }
+      { "EnchantedStaff" }
+      { type = Glyph {ARMOR LastingEffect MAGIC_RESISTANCE} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect SPEED} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect NO_CARRY_LIMIT} chance = 0.3 }
+      { type = Glyph {WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE}} chance = 0.3 }
     }
   }
   
@@ -1197,7 +1227,13 @@
     }
 	aiType = RANGED
 	spellSchools = { "KE_DOG_MASTER" }
-	companions = {8 false LEADERSHIP 0.05 { "MV_HUSKY" }}
+    companions = {{
+      count = 8
+      spawnAway = false
+      statsBase = LEADERSHIP
+      summonFreq = 0.02
+      creatures = { "MV_HUSKY" }
+    }}
     hatedByEffect = HATE_HUMANS
     inventory = {
       { "Spear"}
@@ -1381,11 +1417,6 @@
       { Potion Lasting POISON }
       { Potion Lasting SPEED }
       { type = "SpiderRing" chance = 0.2 }
-      { type = Glyph ARMOR JoinPrefixes {
-          LastingEffect MAGIC_VULNERABILITY
-          LastingEffect MELEE_VULNERABILITY
-          LastingEffect RANGED_VULNERABILITY
-          LastingEffect INVISIBLE } chance = 0.3 }
     }
   } 
 

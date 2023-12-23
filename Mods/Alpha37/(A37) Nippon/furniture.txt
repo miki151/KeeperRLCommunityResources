@@ -422,25 +422,28 @@
   destroyedRemains = "OPENED_CHEST"
 }
 
-"NIPPON_SWORDSMITH_CHEST" inherit "NIPPON_WEAPON_CHEST"
+
+"NIPPON_SWORDSMITH_CHEST"
 {
-  usageType = UsageEffect "open chest" {
-    CreatureMessage { "open the chest" "opens the chest"}
-    CreatureMessage { "find an item inside" "finds an item inside"}
+  name = "chest"
+  viewId = { "chest" }
+  canHideHere = true
+  tickType = Effect {
     ChooseRandom {
-      DropItems {Glyph WEAPON ItemAttrBonus DAMAGE 2} 1
-      DropItems {Glyph WEAPON ItemAttrBonus DAMAGE 3} 1
-      DropItems {Glyph WEAPON ItemAttrBonus DAMAGE 4} 1
-      DropItems {Glyph WEAPON ItemAttrBonus DAMAGE 5} 1
-      DropItems {Glyph WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE}} 1
-	  DropItems {Glyph WEAPON SpecialAttr DAMAGE 5 Name "at night" Night} 1
-	  DropItems {Glyph WEAPON VictimEffect 0.3 Lasting FROZEN } 1
-	  DropItems {Glyph WEAPON VictimEffect 0.3 Lasting 50 BLEEDING } 1
-	  DropItems {Glyph WEAPON VictimEffect 0.3 Acid{30}} 1
+      DropItems {Glyph {WEAPON ItemAttrBonus DAMAGE 2}} 1
+      DropItems {Glyph {WEAPON ItemAttrBonus DAMAGE 3}} 1
+      DropItems {Glyph {WEAPON ItemAttrBonus DAMAGE 4}} 1
+      DropItems {Glyph {WEAPON ItemAttrBonus DAMAGE 5}} 1
+      DropItems {Glyph {WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE}}} 1
+	  DropItems {Glyph {WEAPON SpecialAttr DAMAGE 5 Name "at night" Night}} 1
+	  DropItems {Glyph {WEAPON VictimEffect 0.3 Lasting FROZEN }} 1
+	  DropItems {Glyph {WEAPON VictimEffect 0.3 Lasting 50 BLEEDING }} 1
+	  DropItems {Glyph {WEAPON VictimEffect 0.3 Acid{30}}} 1
     }
-    RemoveFurniture "NIPPON_SWORDSMITH_CHEST"
-    PlaceFurniture "OPENED_CHEST"
+    PlaceFurniture "CHEST"
   }
+  fire = 50
+  strength = 30
 }
 
 "NIPPON_LANTERN_PRINCESS"

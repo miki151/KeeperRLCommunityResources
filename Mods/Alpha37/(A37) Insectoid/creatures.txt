@@ -540,7 +540,7 @@
             attackType = BITE
             attackMsg = BITE } }}}
       }
-      droppedPartUpgrade = { AddCompanion 6 true none 0.1 { "INS_BLACK_ANT_WORKER" } }
+      droppedPartUpgrade = { IncreaseAttr DEFENSE 5 AddCompanion {count = 6 summonFreq = 0.1 creatures = { "INS_BLACK_ANT_WORKER" } }}
     }
     gender = FEMALE
 	spells = { "spawn as 600 larva" }
@@ -982,7 +982,13 @@
 	permanentEffects = {
       RIDER 1
     }
-	companions = {4 true FIRE_DAMAGE 0.01 { "INS_BLACK_ANT_BOMBER" }}
+    companions = {{
+      count = 4
+      spawnAway = false
+      statsBase = FIRE_DAMAGE
+      summonFreq = 0.02
+      creatures = { "INS_BLACK_ANT_BOMBER" }
+    }}
     chatReactionFriendly = "talks about alchemy"
     chatReactionHostile = "\"Die!\""
 	maxLevelIncrease = {
@@ -1062,7 +1068,13 @@
 	  DAMAGE 3
       RANGED_DAMAGE 3
     }
-	companions = {8 true none 0.1 { "INS_BLACK_ANT_WARRIOR_NO_LARVA" }}
+    companions = {{
+      count = 8
+      spawnAway = false
+      statsBase = none
+      summonFreq = 0.02
+      creatures = { "INS_BLACK_ANT_WARRIOR_NO_LARVA" }
+    }}
     hatedByEffect = HATE_INSECTS
     inventory = {
 	  { "Club"}
@@ -1257,7 +1269,13 @@
       }
       deathSound = none
     }
-	companions = {2 false SPELL_DAMAGE 0.02 { "SKELETON_WOLF" }}
+    companions = {{
+      count = 2
+      spawnAway = false
+      statsBase = SPELL_DAMAGE
+      summonFreq = 0.02
+      creatures = { "SKELETON_WOLF" }
+    }}
 	permanentEffects = {
       RIDER 1
 	  DISTILLATION_SKILL 1
@@ -1675,10 +1693,10 @@
       SPELL_DAMAGE 8
     }
     inventory = {
-      { type = Glyph ARMOR LastingEffect MAGIC_RESISTANCE chance = 0.3 }
-      { type = Glyph ARMOR LastingEffect SPEED chance = 0.3 }
-      { type = Glyph ARMOR LastingEffect NO_CARRY_LIMIT chance = 0.3 }
-      { type = Glyph WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect MAGIC_RESISTANCE }chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect SPEED} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect NO_CARRY_LIMIT} chance = 0.3 }
+      { type = Glyph {WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE}} chance = 0.3 }
     }
   }
   
