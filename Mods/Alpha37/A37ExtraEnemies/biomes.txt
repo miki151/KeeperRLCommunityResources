@@ -1,3 +1,49 @@
+###################
+#DESERTED RUINS MOD
+###################
+
+"DESERT"
+  modify append {
+	whiteKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+	darkKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+}
+"SNOW"
+  modify append {
+	whiteKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+	darkKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+}
+
+"GRASSLAND"
+  modify append {
+	whiteKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+	darkKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+}
+
+"FOREST"
+  modify append {
+	whiteKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+	darkKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+}
+
+"MOUNTAIN"
+  modify append {
+	whiteKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+	darkKeeperBaseEnemies = append {{"BOTTOMLESS_DUNGEON" }}
+}
+
+#####################################
+#From mushrooms+ mod, grassland only
+#####################################
+
+"GRASSLAND" modify append
+{
+  items = "randomMushrooms"
+}
+
+#####################################
+#From Extra Enemies mod
+#####################################
+
 "GRASSLAND" modify append
 {
   darkKeeperEnemies = {
@@ -7,7 +53,7 @@
     { id = "BLACKSMITH" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
     { id = "RUINS" probability = 0.5 }
-    { id = "EE_WILDMEN_CAVE" count = { 0 2 } }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" count = { 0 2 } }
 	{ id = "EE_CENTAUR_TOWN" }
 	{ id = "EE_AMAZON_TOWN" }
 	{ id = "EE_SHADOW_TEMPLE" probability = 0.1 }
@@ -17,20 +63,18 @@
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
     { id = "RUINS" probability = 0.5 }
-    { id = "EE_WILDMEN_CAVE" count = { 0 2 } }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" count = { 0 2 } }
 	{ id = "EE_RAT_VILLAGE" }
 	{ id = "GOBLIN_CAVE" }
 	{ id = "EE_SHADOW_TEMPLE" probability = 0.1 }
   }
   darkKeeperBaseEnemies = append {
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "KRAKEN" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
   }
   whiteKeeperBaseEnemies = append {
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "KRAKEN" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
   }
 
 }
@@ -41,12 +85,12 @@
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
     { id = "RUINS" probability = 0.5 }
-    { id = "EE_WILDMEN_CAVE" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
 	{ id = "EE_AMAZON_TOWN" }
 	{ id = "EE_SHADOW_TEMPLE" probability = 0.1 }
   }
   whiteKeeperEnemies = {
-    { id = "EE_WILDMEN_CAVE" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
 	{ id = "EE_RAT_VILLAGE" }
 	{ id = "GOBLIN_CAVE" }
     { id = "LIZARDMEN_COTTAGE" count = { 3 5 } }
@@ -56,16 +100,15 @@
 	{ id = "EE_SHADOW_TEMPLE" probability = 0.1 }
   }
   darkKeeperBaseEnemies = append {
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "KRAKEN" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
   }
   whiteKeeperBaseEnemies = append {
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "KRAKEN" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
   }
 }
+
 "MOUNTAIN" modify append
 {
   darkKeeperEnemies = {
@@ -75,7 +118,7 @@
     { id = "BANDITS" }
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
-    { id = "EE_WILDMEN_CAVE" probability = 0.4 }
+    { id = "EE_WILDMEN_CAVE_OPEN" probability = 0.4 }
 	{ id = "EE_CENTAUR_TOWN" probability = 0.2 }
 	{ id = "EE_AMAZON_TOWN" probability = 0.4}
 	{ id = "EE_SHADOW_TEMPLE" probability = 0.1 }
@@ -87,56 +130,53 @@
     { id = "BANDITS" }
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
-    { id = "EE_WILDMEN_CAVE" count = { 0 2 } probability = 0.6 }
+    { id = "EE_WILDMEN_CAVE_OPEN" count = { 0 2 } probability = 0.6 }
 	{ id = "EE_RAT_VILLAGE" probability = 0.6 }
 	{ id = "GOBLIN_CAVE" count = { 0 2 } }
 	{ id = "EE_SHADOW_TEMPLE" probability = 0.1 }
   }
   darkKeeperBaseEnemies = append {
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "KRAKEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
   }
   whiteKeeperBaseEnemies = append {
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "KRAKEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
   }
 }
 
+
 "DESERT" modify append {
   darkKeeperBaseEnemies = append {
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "KRAKEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
   }
   whiteKeeperBaseEnemies = append {
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "KRAKEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
   }
 }
 
 "SNOW" modify append {
   darkKeeperBaseEnemies = append {
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "KRAKEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
   }
   whiteKeeperBaseEnemies = append {
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "EE_WILDMEN_CAVE" }
-    { id = "KRAKEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
+    { id = "EE_WILDMEN_CAVE_OPEN" }
   }
 }
 
-"EE_VOLCANIC"
+"EE_VOLCANIC" inherit "MOUNTAIN"
 {
+  viewId = { "map_mountain1" }
+  name = "wasteland"
   lakes = {
     size = {5 15}
     count = {2 6}
   }
-  overrideWaterType = "MAGMA"
+  overrideWaterType = "FLOOR"
   sandType = "MAGMA"
   items = "EE_magicShrooms"
   itemCount = {0}
@@ -144,9 +184,9 @@
     lowlandRatio = 0.45
     hillRatio = 0.2
     hill = "EE_LAVA_ROCK"
-    grass = "EE_LAVA_ROCK"
+    grass = "FLOOR"
     mountain = "MAGMA"
-    mountainDeep = "MAGMA"
+    mountainDeep = "MOUNTAIN2"
     mountainFloor = "EE_LAVA_ROCK"
   }
   wildlife = {
@@ -173,10 +213,20 @@
     { id = "EE_HELL_KNIGHT_ISLAND" count = { 2 3 } }
 	{ id = "EE_SHADOW_TEMPLE" probability = 0.5 }
   }
+  darkKeeperBaseEnemies = {
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
 }
 
-"EE_ENCHANTED_FOREST"
+"EE_ENCHANTED_FOREST" inherit "FOREST"
 {
+  viewId = { "decid_tree" }
+  name = "feyland"
   lakes = {
     size = {5}
     count = {3}
@@ -191,7 +241,7 @@
     hill = "EE_FEY_HILL"
     grass = "EE_FEY_GRASS"
     mountain = "MOUNTAIN"
-    mountainDeep = "MOUNTAIN"
+    mountainDeep = "MOUNTAIN2"
     mountainFloor = "FLOOR"
   }
   wildlife = {
@@ -225,10 +275,22 @@
   }
   whiteKeeperEnemies = {
   }
+  darkKeeperBaseEnemies = {
+      { id = "WIZARD_TOWER"}
+      { id = "EE_WILDMEN_CAVE_HIDDEN" }
+      { id = "BOTTOMLESS_DUNGEON" }
+  }
+  whiteKeeperBaseEnemies = {
+      { id = "WIZARD_TOWER"}
+      { id = "EE_WILDMEN_CAVE_HIDDEN" }
+      { id = "BOTTOMLESS_DUNGEON" }
+  }
 }
 
-"EE_DARK_SWAMP"
+"EE_DARK_SWAMP" inherit "SWAMP"
 {
+  viewId = { "decid_tree" }
+  name = "dark swamp"
   lakes = {
     size = {5 24}
     count = { 8 14 }
@@ -290,10 +352,22 @@
 	{ id = "EE_CROC_LAKE" count = { 1 3 } }
 	{ id = "EE_SHADOW_TEMPLE" probability = 0.1 }
   }
+  darkKeeperBaseEnemies = {
+	{ id = "EE_CROC_LAKE"  }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
+  whiteKeeperBaseEnemies = {
+	{ id = "EE_CROC_LAKE" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
 }
 
-"EE_CITY"
+"EE_CITY" inherit "MOUNTAIN"
 {
+  viewId = { "map_mountain1" }
+  name = "unexplored"
   lakes = {
     size = {5 15}
     count = {0}
@@ -347,10 +421,26 @@
     { id = "EE_CITY_GROUP" count = { 5 7 } }
 	{ id = "EE_CITY_GROUP_SHOP" count = { 2 4 } }
   }
+  darkKeeperBaseEnemies = {
+    { id = "EE_CITY_BUILDING" }
+    { id = "EE_CITY_BUILDING2" }
+    { id = "EE_CITY_BARRACKS" }
+    { id = "EE_CITY_GROUP" }
+	{ id = "EE_CITY_GROUP_SHOP" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "EE_CITY_BUILDING" }
+    { id = "EE_CITY_BUILDING2" }
+    { id = "EE_CITY_BARRACKS" }
+    { id = "EE_CITY_GROUP" }
+	{ id = "EE_CITY_GROUP_SHOP"}
+  }  
 }
 
-"EE_ORC_CLAN"
+"EE_ORC_CLAN" inherit "FOREST"
 {
+  viewId = { "decid_tree" }
+  name = "orcland"
   lakes = {
     size = {5 15}
     count = {0}
@@ -400,10 +490,22 @@
     { id = "EE_ORC_CITY_SHOP" count = { 3 4 } }
     { id = "EE_ORC_CITY_GROUP" count = { 4 5 } }
   }
+  darkKeeperBaseEnemies = {
+    { id = "EE_ORC_MINOR" }
+    { id = "EE_ORC_CITY_SHOP" }
+    { id = "EE_ORC_CITY_GROUP" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "EE_ORC_MINOR" }
+    { id = "EE_ORC_CITY_SHOP" }
+    { id = "EE_ORC_CITY_GROUP" }
+  }
 }
 
-"EE_ORC_VILLAGE"
+"EE_ORC_VILLAGE" inherit "FOREST"
 {
+  viewId = { "decid_tree" }
+  name = "orc woods" 
   lakes = {
     size = {3 10}
     count = {0}
@@ -451,10 +553,20 @@
     { id = "EE_ORC_CITY_SHOP" count = { 3 4 } }
     { id = "EE_ORC_CITY_GROUP" count = { 7 8 } }
   }
+  darkKeeperBaseEnemies = {
+    { id = "EE_ORC_CITY_SHOP" }
+    { id = "EE_ORC_CITY_GROUP" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "EE_ORC_CITY_SHOP" }
+    { id = "EE_ORC_CITY_GROUP" }
+  }   
 }
 
-"EE_WARRIOR_TOWN"
+"EE_WARRIOR_TOWN" inherit "GRASSLAND"
 {
+  viewId = { "decid_tree" }
+  name = "odd forest"
   lakes = {
     size = {3 10}
     count = {0}
@@ -502,10 +614,20 @@
     { id = "EE_ORC_CITY_SHOP" count = { 3 4 } }
     { id = "EE_ORC_CITY_GROUP" count = { 7 8 } }
   }
+  darkKeeperBaseEnemies = {
+    { id = "EE_ORC_CITY_SHOP" }
+    { id = "EE_ORC_CITY_GROUP" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "EE_ORC_CITY_SHOP" }
+    { id = "EE_ORC_CITY_GROUP" }
+  }  
 }
 
-"EE_PALACE"
+"EE_PALACE" inherit "MOUNTAIN"
 {
+  viewId = { "map_mountain1" }  
+  name = "royal estates" 
   lakes = {
     size = {5 15}
     count = {0}
@@ -520,7 +642,7 @@
     hill = "HILL"
     grass = "GRASS"
     mountain = "MOUNTAIN"
-    mountainDeep = "MOUNTAIN"
+    mountainDeep = "MOUNTAIN2"
     mountainFloor = "FLOOR"
   }
   forests = {
@@ -554,10 +676,29 @@
 	{ id = "EE_ROYAL_BREWER" count = { 1 } }
 	{ id = "EE_ROYAL_JEWELLER" count = { 1 } }
   }
+  darkKeeperBaseEnemies = {
+	{ id = "EE_ROYAL_BLACKSMITH" count = { 1 } }
+	{ id = "EE_ROYAL_TRAPSMITH" count = { 1 } }
+	{ id = "EE_ROYAL_SCRIBE" count = { 1 } }
+	{ id = "EE_ROYAL_TANNER" count = { 1 } }
+	{ id = "EE_ROYAL_BREWER" count = { 1 } }
+	{ id = "EE_ROYAL_JEWELLER" count = { 1 } }
+  }
+  whiteKeeperBaseEnemies = {
+	{ id = "EE_ROYAL_BLACKSMITH" count = { 1 } }
+	{ id = "EE_ROYAL_TRAPSMITH" count = { 1 } }
+	{ id = "EE_ROYAL_SCRIBE" count = { 1 } }
+	{ id = "EE_ROYAL_TANNER" count = { 1 } }
+	{ id = "EE_ROYAL_BREWER" count = { 1 } }
+	{ id = "EE_ROYAL_JEWELLER" count = { 1 } }
+
+  } 
 }
 
-"EE_CENTAUR_PALACE"
+"EE_CENTAUR_PALACE" inherit "MOUNTAIN"
 {
+  viewId = { "decid_tree" }
+  name = "centaurland"
   lakes = {
     size = {5 15}
     count = {0}
@@ -572,7 +713,7 @@
     hill = "HILL"
     grass = "GRASS"
     mountain = "MOUNTAIN"
-    mountainDeep = "MOUNTAIN"
+    mountainDeep = "MOUNTAIN2"
     mountainFloor = "FLOOR"
   }
   forests = {
@@ -603,10 +744,22 @@
   whiteKeeperEnemies = {
 	{ id = "EE_CENTAUR_TOWN" count = { 6 7 } }
   }
+  darkKeeperBaseEnemies = {
+	{ id = "EE_CENTAUR_TOWN" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
+  whiteKeeperBaseEnemies = {
+	{ id = "EE_CENTAUR_TOWN" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
 }
 
-"EE_SHADOW_PALACE"
+"EE_SHADOW_PALACE" inherit "MOUNTAIN"
 {
+  viewId = { "map_mountain1" } 
+  name = "shadowings"
   lakes = {
     size = {5 15}
     count = {0}
@@ -662,6 +815,18 @@
 	{ id = "EE_SHADOW_BREWER" count = { 1 } }
 	{ id = "EE_SHADOW_JEWELLER" count = { 1 } }
   }
+  darkKeeperBaseEnemies = {
+	{ id = "EE_SHADOW_BLACKSMITH" count = { 1 } }
+	{ id = "EE_SHADOW_SCRIBE" count = { 1 } }
+	{ id = "EE_SHADOW_BREWER" count = { 1 } }
+	{ id = "EE_SHADOW_JEWELLER" count = { 1 } }
+  }
+  whiteKeeperBaseEnemies = {
+	{ id = "EE_SHADOW_BLACKSMITH" count = { 1 } }
+	{ id = "EE_SHADOW_SCRIBE" count = { 1 } }
+	{ id = "EE_SHADOW_BREWER" count = { 1 } }
+	{ id = "EE_SHADOW_JEWELLER" count = { 1 } }
+  }  
 }
 
 "EE_SPIDER_MOUNTAIN" inherit "MOUNTAIN"
@@ -680,7 +845,7 @@
       trees = "EE_vegetationWebs"
     }
   }
-  keeperBiome = none
+  name = "web mountain"  
 }
   
 "EE_HAUNTED_GRASSLAND" inherit "GRASSLAND"
@@ -715,11 +880,24 @@
     { id = "RUINS" count = { 4 6 } }
 	{ id = "EE_SHADOW_TEMPLE" count = { 0 2 } }
   }  
-  keeperBiome = none
+  darkKeeperBaseEnemies = {
+    { id = "CORPSES" }
+    { id = "RUINS" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "CORPSES" }
+    { id = "RUINS" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
 }
 
-"EE_CITY_RUINS"
+"EE_CITY_RUINS" inherit "MOUNTAIN"
 {
+  viewId = { "grass" }
+  name = "bandit wilds"
   lakes = {
     size = {5 15}
     count = {0}
@@ -764,10 +942,22 @@
   whiteKeeperEnemies = {
     { id = "EE_COTTAGE_BANDIT_RUINS" count = { 2 3 } }
   }
+  darkKeeperBaseEnemies = {
+    { id = "EE_COTTAGE_BANDIT_RUINS" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "EE_COTTAGE_BANDIT_RUINS" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
 }
 
-"EE_ELF_FOREST"
+"EE_ELF_FOREST" inherit "FOREST"
 {
+  viewId = { "grass" }
+  name = "elvenland" 
   lakes = {
     size = {10 20}
     count = {0 2}
@@ -820,10 +1010,22 @@
     { id = "CORPSES" probability = 0.2 }
     { id = "WIZARD_TOWER" probability = 0.1 }
   }
+  darkKeeperBaseEnemies = {
+	{ id = "ELVES" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
+  whiteKeeperBaseEnemies = {
+	{ id = "ELVES" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  } 
 }
 
-"EE_DWARF_MOUNTAIN"
+"EE_DWARF_MOUNTAIN" inherit "MOUNTAIN"
 {
+  viewId = { "map_mountain1" }
+  name = "dwarvenland"
   lakes = {
     size = { 2 }
     count = { 0 }
@@ -857,14 +1059,22 @@
 		1 "CAVE_BEAR"
     }
   }
-  darkKeeperEnemies = {
+  darkKeeperBaseEnemies = {
+    { id = "DWARF_CAVE" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
   }
-  whiteKeeperEnemies = {
-  }
+  whiteKeeperBaseEnemies = {
+    { id = "DWARF_CAVE" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }  
 }
 
-"EE_DWARF_MOUNTAIN_SMALL"
+"EE_DWARF_MOUNTAIN_SMALL" inherit "MOUNTAIN"
 {
+  viewId = { "map_mountain1" }
+  name = "dwarven hills"
   lakes = {
     size = { 2 }
     count = { 0 }
@@ -899,15 +1109,27 @@
     }
   }
   darkKeeperEnemies = {
-    { id = "DWARF_CAVE" count = { 4 6 } }
+    { id = "DWARF_CAVE" count = { 2 4 } }
   }
   whiteKeeperEnemies = {
-    { id = "DWARF_CAVE" count = { 4 6 } }
+    { id = "DWARF_CAVE" count = { 2 4 } }
   }
+  darkKeeperBaseEnemies = {
+    { id = "DWARF_CAVE" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "DWARF_CAVE" }
+    { id = "EE_WILDMEN_CAVE_HIDDEN" }
+    { id = "BOTTOMLESS_DUNGEON" }
+  }  
 }
 
-"EE_DARK_ELF_MOUNTAIN"
+"EE_DARK_ELF_MOUNTAIN" inherit "MOUNTAIN"
 {
+  viewId = { "map_mountain1" }
+  name = "dark elvenland"
   lakes = {
     size = { 2 }
     count = { 0 }
@@ -947,11 +1169,12 @@
 
   whiteKeeperEnemies = {
     { id = "DARK_ELF_CAVE" count = { 2 3 } }
-  }
+  }  
 }
 
 "EE_HERB_GRASSLAND" inherit "GRASSLAND"
 {
+  name = "herbland"
   forests = {
   {
       ratio = 0.3
@@ -960,5 +1183,10 @@
       trees = "EE_vegetationHerbs"
     }
   }
-  keeperBiome = none
+}
+
+"EE_HILLS" inherit "MOUNTAIN"
+{
+  viewId = { "hill" }
+  name = "hills"
 }

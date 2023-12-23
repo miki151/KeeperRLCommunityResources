@@ -1,6 +1,613 @@
+########################
+#From Casino mod
+########################
+
+Def SPINNER(spell, color, effects)
+{
+  viewId = { "dice" ColorId color }
+  name = "dice" 
+  layer = CEILING
+  constructMessage = none
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  tickType = Effect { effects RemoveFurniture spell  PlaceFurniture "TREASURE_CHEST"}
+}
+End
+
+"1_GOLD_DICE" SPINNER ("1_GOLD_DICE", GREEN, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {2} })
+"2_GOLD_DICE" SPINNER ("2_GOLD_DICE", GREEN, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {4} })
+"5_GOLD_DICE" SPINNER ("5_GOLD_DICE", GREEN, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {10} })
+"10_GOLD_DICE" SPINNER ("10_GOLD_DICE", YELLOW, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {20} })
+"20_GOLD_DICE" SPINNER ("20_GOLD_DICE", YELLOW, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {40} })
+"50_GOLD_DICE" SPINNER ("50_GOLD_DICE", YELLOW, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {100} })
+"100_GOLD_DICE" SPINNER ("100_GOLD_DICE", BLUE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {200} })
+"200_GOLD_DICE" SPINNER ("200_GOLD_DICE", BLUE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {400} })
+"500_GOLD_DICE" SPINNER ("500_GOLD_DICE", BLUE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {1000} })
+"1000_GOLD_DICE" SPINNER ("1000_GOLD_DICE", PURPLE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {2000} })
+"2000_GOLD_DICE" SPINNER ("2000_GOLD_DICE", WHITE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {4000} })
+"5000_GOLD_DICE" SPINNER ("5000_GOLD_DICE", RED, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {10000} })
+
+
+########################
+#From Farming mod
+########################
+
+
+  "BARN"
+  {
+    name = "barn"
+    viewId = { "haypile" }
+	strength = 50
+	blockingEnemies = true
+    populationIncrease = { 1 none }
+    canBuildOutsideOfTerritory = true
+  }
+  "CROPS" modify
+  {
+    usageType = UsageEffect "scythe " Chain
+	  { Chance 0.3 CreatureMessage { "scythe the field" "scythes the field" }
+	    Chance 0.1 Filter And { CreatureId "IMP" Not Indoors } DropItems {"sack"} 1
+	    Chance 0.1 Filter And { CreatureId "PESEANT_PLAYER" Not Indoors } DropItems {"sack"} 1
+	    Chance 0.1 Filter And { CreatureId "GOBLIN_WORKER" Not Indoors } DropItems {"sack"} 1
+	  }
+    usageTime = 20
+    canBuildOutsideOfTerritory = true
+  }
+
+########################
+#From Haunted Ruins mod
+########################
+
+
+  "FAKE_GRAVE"
+  {
+	  name = "grave"
+	  viewId = { "grave" }
+	  blockingEnemies = true
+	  canHideHere = true
+	  strength = 1
+	  destroyedEffect = {
+		   ChooseRandom {
+					 SummonEnemy "ANGEL" {1} none
+					 SummonEnemy "BONE_DRAGON" {1} none
+					 SummonEnemy "SKELETON_WARRIOR" {1} none
+					 SummonEnemy "VAMPIRE_BRUTE" {1} none
+					 SummonEnemy "ZOMBIE_MAGE" {1} none
+					 SummonEnemy "ABOMINATION" {1} none
+					 SummonEnemy "SLASHER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "VAMPIRE" {1} none
+					 SummonEnemy "VAMPIRE" {1} none
+					 SummonEnemy "VAMPIRE" {1} none
+					 SummonEnemy "SPIRIT" {1} none
+					 SummonEnemy "SPIRIT" {1} none
+					 SummonEnemy "SPIRIT" {1} none
+					 SummonEnemy "SLASHER" {2} none 
+					 SummonEnemy "ANGEL" {3} none
+					 SummonEnemy "SKELETON_WARRIOR" {4} none
+					 SummonEnemy "ZOMBIE" {5} none
+				  }
+	  }
+   }
+
+########################
+#Spell Circles mod
+########################
+
+
+Def SPELL(spell, color, effects)
+{
+  viewId = { "spell_circle" ColorId color }
+  name = "spell target" 
+  layer = CEILING
+  constructMessage = none
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  tickType = Effect { effects RemoveFurniture spell }
+}
+End
+
+"SUMMON_HORSES" SPELL ("SUMMON_HORSES", GREEN, Summon "HORSE" {5} none )
+
+"MINE_FIELD" SPELL ("MINE_FIELD", RED,
+	        CustomArea PlaceFurniture "MINE" {{ -2 -3 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -3 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -3 }}
+  	        CustomArea PlaceFurniture "MINE" {{  1 -3 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2 -2 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{  1 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2 -1 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{  1 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2  0 }}
+	        CustomArea PlaceFurniture "MINE" {{ -1  0 }}
+	        CustomArea PlaceFurniture "MINE" {{  0  0 }}
+	        CustomArea PlaceFurniture "MINE" {{  1  0 }}
+)
+
+"MINE"
+{
+  name = "fire trap"
+  viewId = { "trap" ColorId RED }
+  entryType = Trap { Chain {PlaceFurniture "FIRE_WALL" CircularBlast Area 1 Fire{100} } }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"SUMMON_ARMOURY" SPELL (
+	"SUMMON_ARMOURY", YELLOW,
+		DropItems {"BattleAxe"} {10}
+		DropItems {"ChainArmor"} {10}
+		DropItems {"IronHelm"} {10}
+		DropItems {"IronBoots"} {10}
+		DropItems {"IronGloves"} {10}
+	)
+
+"SUMMON_ARTIFACT" SPELL (
+	"SUMMON_ARTIFACT", ORANGE,
+	ChooseRandom {
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet TELEPATHY} {1}
+		}
+	)
+	
+"TRANSFORM_DRAGON" SPELL
+(
+    "TRANSFORM_DRAGON", BLUE,
+	Area 1 ChooseRandom
+	{
+		Chain { RemovePermanent POLYMORPHED RemoveLasting POLYMORPHED Polymorph "RED_DRAGON" 2 Permanent POLYMORPHED GrantAbility "EE_true form" }
+		Chain { RemovePermanent POLYMORPHED RemoveLasting POLYMORPHED Polymorph "GREEN_DRAGON" 2 Permanent POLYMORPHED GrantAbility "EE_true form" }
+	} Area 1 CircularBlast
+)
+
+######################################
+#Bonus mod expansion of spell circles#
+######################################
+"SUMMON_ARTIFACT" modify SPELL (
+	"SUMMON_ARTIFACT", ORANGE,
+	ChooseRandom {
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" Wish} {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "healing" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced healing" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "expert healing" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "group healing" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "heal spirit" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced heal spirit" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "heal spirit group" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "cure poison" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced cure poison" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "cure blindness" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "blindness" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "poison resistance" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "poison breath" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "summon flies" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "magic missile" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced magic missile" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "expert magic missile" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "deception" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "fog cloud" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "invisibility" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced invisibility" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "escape" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "blink" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "teleport" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced teleport" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "jump" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "panic" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "pacify" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "haste" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced haste" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "warhorse_haste" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "slow" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "magic cancellation" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "directed blast" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "pull" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "circular blast" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "defense bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced defense bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "mass defense bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "damage bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced damage bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "mass damage bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "bolster" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "rally" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "summon element" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "meteor shower" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "fire elemental" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "advanced fire elemental" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "fire breath" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "firewall" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "fire trap" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "fireball" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "earth elemental" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "advanced earth elemental" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "ice cone" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "acid stream" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "black smoke breath" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "shove" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "swap positions" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "black dragon blindness" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "dragon greeting" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "grant wish" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "double trouble" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "animate weapons" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "animate corpses" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "advanced animate corpses" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "adoxie right hand" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "adoxie left hand" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "adoxie left foot" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "adoxie right foot" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "dig" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "shoot arrow" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "shoot bolt" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "audience" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "repair automaton" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "chicken" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "shapeshift" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "berserker" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "summon chicken" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "summon more chickens" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "chickenmorph" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "advanced chickenmorph" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "chickengeddon" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "balrogs whip" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "kings charge" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" SummonEnemy "DJINN" {1} none } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent REGENERATION}   {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent INVISIBLE}   {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent FLYING}   {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent TELEPATHY}   {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent SPYING}   {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent DARKNESS_SOURCE}   {1}      
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent CONSUMPTION_SKILL } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent MELEE_RESISTANCE } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent MAGIC_RESISTANCE } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent RANGED_RESISTANCE } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent FIRE_IMMUNITY } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent COLD_IMMUNITY } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent ACID_IMMUNITY } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent MELEE_IMMUNITY } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent MAGIC_IMMUNITY } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent RANGED_IMMUNITY } {1}	
+		}
+	)
+	
+########################
+#Inscription mod
+########################
+
+"INSCRIPTION_TABLE" inherit "WORKSHOP"
+{
+  name = "inscription table"
+  viewId = { "poetry_table" ColorId YELLOW }
+}
+
+########################
+#War with nature
+########################
+
+
+  "CANIF_TREE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+      Chance 0.01 Chain { Message HIGH "You have scared a snake that was wrapped around a tree!" SummonEnemy "SNAKE" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have destroyed a raven nest!" SummonEnemy "RAVEN" {1} none }
+      Chance 0.01 Chain { Message HIGH "A tree awakes as an angry tree spirit!" SummonEnemy "ENT" {1} none }
+      Chance 0.01 Chain { Message HIGH "An angry driad falls from a tree!" SummonEnemy "DRIAD" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have disturbed a lone wolf under a tree!" SummonEnemy "WOLF" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have uncovered a fox hole beside a tree!" SummonEnemy "FOX" {1} none }
+    } 
+  }
+  "DECID_TREE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+      Chance 0.01 Chain { Message HIGH "You have scared a snake that was wrapped around a tree!" SummonEnemy "SNAKE" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have destroyed a raven nest!" SummonEnemy "RAVEN" {1} none }
+      Chance 0.01 Chain { Message HIGH "A tree awakes as an angry tree spirit!" SummonEnemy "ENT" {1} none }
+      Chance 0.01 Chain { Message HIGH "An angry driad falls from a tree!" SummonEnemy "DRIAD" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have disturbed a lone wolf under a tree!" SummonEnemy "WOLF" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have uncovered a fox hole beside a tree!" SummonEnemy "FOX" {1} none }
+    } 
+  }
+  "BUSH" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+      Chance 0.01 Chain { Message HIGH "A chicken walks out of a bush!" SummonEnemy "CHICKEN" {1} none }
+      Chance 0.01 Chain { Message HIGH "A wild boar emerges from the bushes!" SummonEnemy "BOAR" {1} none }
+      Chance 0.01 Chain { Message HIGH "Swarm of flies encountered in a bush." SummonEnemy "FLY" {4 5} none }
+    } 
+  }
+  "ADAMANTIUM_ORE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.1 Chain { Message HIGH "An adamantium golem has formed from ore!" SummonEnemy "ADA_GOLEM" { 1 } none }
+    } 
+  }
+  "IRON_ORE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.1 Chain { Message HIGH "An iron golem has formed from ore!" SummonEnemy "IRON_GOLEM" {1} none }
+    } 
+  }
+  "STONE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.1 Chain { Message HIGH "A stone golem has formed from granite!" SummonEnemy "STONE_GOLEM" {1} none }
+    } 
+ }
+  "GOLD_ORE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.1 Chain { Message HIGH "An earth elemental has formed from gold ore!" SummonEnemy "EARTH_ELEMENTAL" {1} none }
+    } 
+ }
+  "INFERNITE_ORE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.2 Chain { Message HIGH "A fire elemental has formed from infernite ore!" SummonEnemy "FIRE_ELEMENTAL" {1} none }
+	  Chance 0.2 Chain { Message HIGH "A lava golem has formed from infernite ore!" SummonEnemy "LAVA_GOLEM" {1} none }
+    } 
+ }
+  "ADOXIUM_ORE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.2 Chain { Message HIGH "You are attacked by a ghost." SummonEnemy "SPIRIT" {1} none }
+    } 
+ }
+  "MOUNTAIN" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+      Chance 0.001 Chain { Message HIGH "You have woken a bat!" SummonEnemy "BAT" {1} none }
+      Chance 0.001 Chain { Message HIGH "You have disturbed a rat!" SummonEnemy "RAT" {1} none }
+      Chance 0.001 Chain { Message HIGH "You have disturbed a spider!" SummonEnemy "SPIDER" {1} none }
+    } 
+  }
+
+########################
+#Recycle Tiles
+########################
+
+"WOOD_WALL" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"WOOD_PILLAR" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 2 }}}} }
+"CASTLE_WALL" modify append { itemDrop = {{{{"Rock"} 1 { 1 5 }}}} }
+"CASTLE_PILLAR" modify append { itemDrop = {{{{"Rock"} 1 { 1 2 }}}} }
+"BRIDGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"STONE_BRIDGE" modify append { itemDrop = {{{{"Rock"} 1 { 1 5 }}}} }
+"ARCHER_WALL" modify append { itemDrop = {{{{"Rock"} 1 { 1 20 }}}} }
+"WOOD_DOOR" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"IRON_DOOR" modify append { itemDrop = {{{{"IronOre"} 1 { 1 5 }}}} }
+"ADA_DOOR" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 5 }}}} }
+"WOOD_GATE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 8 }}}} }
+"IRON_GATE" modify append { itemDrop = {{{{"IronOre"} 1 { 1 8 }}}} }
+"ADA_GATE" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 8 }}}} }
+"FLOOR_WOOD1" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 2 }}}} }
+"FLOOR_WOOD2" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 2 }}}} }
+"FLOOR_STONE1" modify append { itemDrop = {{{{"Rock"} 1 { 1 2 }}}} }
+"FLOOR_STONE2" modify append { itemDrop = {{{{"Rock"} 1 { 1 2 }}}} }
+"FLOOR_CARPET1" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 2 }}}} }
+"FLOOR_CARPET2" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 2 }}}} }
+"TREASURE_CHEST" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"ARMOR_RACK" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"WEAPON_RACK" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"BOW_RACK" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"SCROLL_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"POTION_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"JEWELLERY_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"GRAVE" modify append { itemDrop = {{{{"Rock"} 1 { 1 5 }}}} }
+"AUTOMATON_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"BOOKCASE_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"BOOKCASE_IRON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 15 }}}} }
+"BOOKCASE_GOLD" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 15 }}}} }
+"THRONE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 500 }}}} }
+"PHYLACTERY" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 500 }}}} }
+"BED1" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"BED2" modify append { itemDrop = {{{{"IronOre"} 1 { 1 12 }}}} }
+"BED3" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 12 }}}} }
+"DINING_TABLE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"HAYPILE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"COFFIN1" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"COFFIN2" modify append { itemDrop = {{{{"Rock"} 1 { 1 15 }}}} }
+"COFFIN3" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 15 }}}} }
+"CHICKEN_COOP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"PIGSTY" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"COW_PEN" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"TRAINING_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"TRAINING_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"TRAINING_IRON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 12 }}}} }
+"TRAINING_ADA" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 12 }}}} }
+"ARCHERY_RANGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"WORKSHOP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"FORGE" modify append { itemDrop = {{{{"IronOre"} 1 { 1 20 }}}} }
+"LABORATORY" modify append { itemDrop = {{{{"Rock"} 1 { 1 10 }}}} }
+"LABORATORY" modify append { itemDrop = {{{{"Rock"} 1 { 1 10 }}}} }
+"JEWELLER" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"POETRY_TABLE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"DISTILLERY" modify append { itemDrop = {{{{"IronOre"} 1 { 1 30 }}}} }
+"MORGUE_TABLE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 10 }}}} }
+"FURNACE" modify append { itemDrop = {{{{"Rock"} 1 { 1 50 }}}} }
+"AUTOMATON_ENGINE_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 50 }}}} }
+"AUTOMATON_ENGINE_IRON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 50 }}}} }
+"AUTOMATON_ENGINE_ADA" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 50 }}}} }
+"DEMON_SHRINE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 30 }}}} }
+"ANGEL_SHRINE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 30 }}}} }
+"PRISON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 15 }}}} }
+"PRISON_BARS" modify append { itemDrop = {{{{"IronOre"} 1 { 1 5 }}}} }
+"PRISON_DOOR" modify append { itemDrop = {{{{"IronOre"} 1 { 1 30 }}}} }
+"TORTURE_TABLE" modify append { itemDrop = {{{{"IronOre"} 1 { 1 15 }}}} }
+"GALLOWS" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"BEAST_CAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 8 }}}} }
+"BARRICADE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"GROUND_TORCH" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 10 }}}} }
+"KEEPER_BOARD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"FOUNTAIN" modify append { itemDrop = {{{{"Rock"} 1 { 1 30 }}}} }
+"WHIPPING_POST" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"MINION_STATUE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 50 }}}} }
+"STONE_MINION_STATUE" modify append { itemDrop = {{{{"Rock"} 1 { 1 250 }}}} }
+"PORTAL" modify append { itemDrop = {{{{"Rock"} 1 { 1 60 }}}} }
+"HEALING_TOTEM" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 60 }}}} }
+"TERROR_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"POISON_GAS_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"ALARM_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"WEB_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"SURPRISE_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"FIRE_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"BOULDER_TRAP" modify append { itemDrop = {{{{"Rock"} 1 { 1 120 }}}} }
+"BLAST_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"GARGOYLE_TRAP" modify append { itemDrop = {{{{"Rock"} 1 { 1 20 }}}} }
+"TRAP_TRIGGER" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"DESTROY_WALLS_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+ 
+########################
+#Bonus mod mining
+########################
+
+  "VENORACK_ORE"
+  {
+  name = "venorack ore"
+  viewId = { "venorack_ore" }
+  blockMovement = true
+  blockVision = { NORMAL ELF }
+  wall = true
+  clearFogOfWar = true
+  itemDrop = {{{{"VenOre"} 1 { 16 28 }}}}
+  strength2 = {
+    500 BOULDER
+    500 DIG
+    500 HOSTILE_DIG
+    
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+  }
+  
+########################
+#Extra Enemies
+########################
+ 
 ######################################
 #Furniture shared with Adventurer mod
 ######################################
+
+  "EE_HIDDEN_CAVE"
+  {
+    name = "cave hidden by bush"
+    viewId = { "bush" }
+    canHideHere = true
+    usageType = UsageEffect "enter cave behind bush" Stairs
+    onBuilt = DOWN_STAIRS
+  }
 
   "EE_SPIDER_WEB"
   {
@@ -9,7 +616,7 @@
     entryType = Trap { Lasting ENTANGLED true }
     usageType = BuiltinUsageId TRAIN
     maxTraining = {
-      MELEE 12
+      DAMAGE 12
     }
     canBuildOutsideOfTerritory = true
   }
@@ -50,7 +657,7 @@
     strength = 50
     upgrade = "BOOKCASE_IRON"
     maxTraining = {
-      SPELL 30 #Modded
+      SPELL_DAMAGE 30 #Modded
     }
     requiresLight = true
     destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
@@ -354,7 +961,7 @@
     name = "wall"
     viewId = { "volc_wall" }
     blockMovement = true
-    blockVision = { NORMAL ELF }
+    blockAllVision = true
     wall = true
   }
   "EE_VOLC_STONE_FLOOR"
@@ -382,7 +989,7 @@
     name = "tainted wall"
     viewId = { "tainted_wall" }
     blockMovement = true
-    blockVision = { NORMAL ELF }
+    blockAllVision = true
     wall = true
   }
   "EE_ZOMBIE_WALL"
@@ -390,7 +997,7 @@
     name = "wall"
     viewId = { "zombie_altar_wall" }
     blockMovement = true
-    blockVision = { NORMAL ELF }
+    blockAllVision = true
     wall = true
   }
   "EE_SHALLOW_WATER_COSMETIC"
@@ -510,9 +1117,44 @@
     destroyedRemains = "TREASURE_CHEST"
     usageType = UsageEffect "open"  {
       ChooseRandom {
-    	  DropItems {"GoldPiece"} {15 25}
-    	  DropItems {"GoldPiece"} {15 25}
-		  SummonEnemy "RAT" {3 4} none
+    	  DropItems {"GoldPiece"} {35 55}
+    	  DropItems {"GoldPiece"} {55 75}
+	  DropItems {"AdoxiumOre"} {15 25}
+	  DropItems {"AdoxiumOre"} {25 45}
+	  DropItems {"AdaOre"} {15 25}
+	  DropItems {"AdaOre"} {25 45}
+	  DropItems {"InfOre"} {15 25}
+	  DropItems {"InfOre"} {25 55}
+	  DropItems {"VenOre"} {25 45}
+	  DropItems {"VenOre"} {35 55}
+	  #Gold and magic metals are treasure.  Iron, not so much.  ;-)
+	  DropItems {"IronStaff"} {1}
+	  DropItems {"IronStaff"} {1}
+	  #Two chances apiece for OK weapons.  Helps dial back the chance of getting artifacts or Bad Stuff.
+	  DropItems {"EE_Mace"} {1}
+	  DropItems {"EE_Mace"} {1}
+	  DropItems {"EE_Axe"} {1}
+	  DropItems {"EE_Axe"} {1}
+	  DropItems {"EE_LongSpear"} {1}
+	  DropItems {"EE_LongSpear"} {1}
+	  DropItems {"AdaWarHammer"} {1}
+	  DropItems {"DefenseAmulet"} {1}
+	  DropItems {Ring FIRE_RESISTANT} {1}
+	   #Nicer Stuff
+	  DropItems {"EE_VenLongSpear"} {1}
+	  DropItems {"EE_VenBattleAxe"} {1}
+	  DropItems {"ElvenBow"} {1}
+	  DropItems {"EE_AdaAxe"} {1}
+	  DropItems {"EE_AdaMace"} {1}
+	  DropItems {"EE_InfLongSpear"} {1}
+	  DropItems {"EE_InfBattleAxe"} {1}
+	  DropItems {Amulet DISARM_TRAPS_SKILL} {1}
+	  #Of course there's a chance to get a disarm-traps amulet.  Irony and all that.
+	  DropItems {Ring MELEE_RESISTANCE} {1}
+	  DropItems {Ring RANGED_RESISTANCE} {1}
+	  DropItems {Ring SPEED} {1}
+	  #There, see what greed will get you?
+	  SummonEnemy "BLACK_RAT" {4 5} none
       }
 	  FirstSuccessful {
 	    Filter LastingEffect DISARM_TRAPS_SKILL Message NORMAL "You disarm a trap on the chest using your disarming skills."
@@ -557,7 +1199,7 @@
 	  usageType = BuiltinUsageId TRAIN
 	  canHideHere = true
 	  maxTraining = {
-		MELEE 3
+		DAMAGE 3
 	  }
   }
   "EE_BOOKCASE_WOOD_NO_BLOCK"
@@ -568,7 +1210,7 @@
 	usageTime = 5
 	canHideHere = true
 	maxTraining = {
-	SPELL 3
+	SPELL_DAMAGE 3
 	}
   }
 
@@ -756,7 +1398,7 @@
     name = "wall"
     viewId = { "dirt_wall" }
     blockMovement = true
-    blockVision = { NORMAL ELF }
+    blockAllVision = true
     wall = true
   }
   "EE_ZOMBIE_SPAWNER"

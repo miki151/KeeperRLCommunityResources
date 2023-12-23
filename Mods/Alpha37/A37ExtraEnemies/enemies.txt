@@ -1,7 +1,89 @@
+################################
+#Taken from Extra Triggers mod
+################################
+
+"ESKIMO_COTTAGE" modify append { behaviour = { minPopulation = 1 minTeamSize = 0 triggers = { EnemyPopulation 10 } attackBehaviour = KillMembers 9 } }
+"NOMAD_COTTAGE" modify append { behaviour = { minPopulation = 1 minTeamSize = 0 triggers = { EnemyPopulation 10 } attackBehaviour = KillMembers 9 } }
+
+################################
+#Haunted ruins mod
+################################
+
+"BOTTOMLESS_DUNGEON"
+{
+ biome = "MOUNTAIN"
+ settlement = {
+    closeToPlayer = true
+    type = Builtin CEMETERY "RUINS"
+    locationName = "bottomless dungeon"
+    race = "undead"
+    tribe = MONSTER
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+      { ExtraEnemy { "HAUNTED_DUNGEON" {1} } {20 20} MAZE }
+    }
+  }
+}
+
+"HAUNTED_DUNGEON"
+{
+  biome = "MOUNTAIN"
+  settlement = {
+    type = Builtin CAVE "EE_HAUNTED"
+    tribe = MONSTER
+    locationName = "ruins"
+    race = "remains"
+    furniture = "hauntedDungeon"
+    inhabitants = {
+      fighters = {
+        count = {1}
+        all = { 1 "VANISH_ZOMBIE" }
+      }
+    }	
+  }
+}
+
+################################
+#Taken from Extra Enemies mod
+################################
+
 #Vanilla modifications
 
 "GOBLIN_CAVE" modify
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin MINETOWN "DUNGEON"
     tribe = BANDIT
@@ -28,7 +110,7 @@
 }
 
   "ELVES" modify append {
-    biomes = { "FOREST" } #Modded
+    biome = "FOREST"
     settlement = {
       type = Builtin CASTLE2 "WOOD" #Modded
       inhabitants = {
@@ -66,6 +148,7 @@
 	}
   }
   "ELEMENTALIST_ENTRY" modify append {
+    biome = "FOREST"
     settlement = {
     type = Builtin TOWER "EE_ELEMENTALIST"
       tribe = HUMAN
@@ -79,6 +162,7 @@
     discoverable = false
   }
   "ELEMENTALIST_FLOOR" modify append {
+    biome = "FOREST"
     settlement = {
       inhabitants = {
         fighters = {
@@ -97,6 +181,7 @@
     discoverable = false
   }
   "ELEMENTALIST" modify append {
+    biome = "FOREST"  
     settlement = {
     type = Builtin TOWER "EE_ELEMENTALIST" #Modded
       inhabitants = {
@@ -107,6 +192,7 @@
     }
   }
   "MAIN_DUNGEON_ENTRY" modify append {
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin CAVE "EE_DUNGEON_ENTRY" #Modded
       tribe = BANDIT
@@ -120,6 +206,7 @@
   }
 
   "NO_AGGRO_BANDITS" modify append {
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin CAVE "DUNGEON"
       inhabitants = {
@@ -139,6 +226,7 @@
 	}
   }
   "DUNGEON1" modify append {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -178,7 +266,7 @@
   }
 
   "SHELOB" modify append { #Modded
-    biomes = { "EE_SPIDER_MOUNTAIN" }
+    biome = "EE_SPIDER_MOUNTAIN"
     settlement = {
       type = Builtin VILLAGE "DUNGEON"
       tribe = SHELOB
@@ -209,16 +297,14 @@
     createOnBones = 0.6 { "DWARF_CAVE" "KOBOLD_CAVE" "OGRE_CAVE" "HARPY_CAVE" "OGRE_CAVE" "HARPY_CAVE"} #Modded
   }
   "CEMETERY" modify append { #Modded
-    biomes = { "EE_HAUNTED_GRASSLAND" }
+    biome = "EE_HAUNTED_GRASSLAND"
     settlement = {
     type = Builtin CEMETERY "EE_ZOMBIE"
       inhabitants = {
         leader = {
         id = { "NECROMANCER" }
-          baseLevelIncrease = {
-            MELEE 3
-            SPELL 7
-          } }
+			combatExperience = 7
+		}
         fighters = {
           count = {8 12}
           all = { 1 "ZOMBIE" 1 "EE_SKELETON" }
@@ -237,6 +323,7 @@
     }
   }
   "CEMETERY_ENTRY" modify append {
+    biome = "FOREST"
     settlement = {
     type = Builtin CEMETERY "BRICK"
       inhabitants = {
@@ -255,6 +342,7 @@
     discoverable = false
   }
   "RUINS" modify append {
+    biome = "FOREST"
     settlement = {
     type = Builtin COTTAGE "RUINS"
       tribe = MONSTER
@@ -283,6 +371,7 @@
     }
   }
   "HUMAN_COTTAGE" modify append {
+    biome = "FOREST"
     settlement = {
     type = Builtin COTTAGE "WOOD"
       tribe = HUMAN
@@ -313,6 +402,7 @@
     }
   }
   "LIZARDMEN_COTTAGE" modify append {
+    biome = "FOREST"
     settlement = {
     type = Builtin FORREST_COTTAGE "WOOD"
       tribe = BANDIT #Modded
@@ -328,6 +418,7 @@
     createOnBones = 1.0 { "ELVEN_COTTAGE" }
   }
   "DWARF_CAVE" modify append { #Modded
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin SMALL_MINETOWN "DUNGEON"
       tribe = DWARF
@@ -371,6 +462,7 @@
 	}
   }
   "RAT_CAVE" modify append {
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin VAULT "DUNGEON"
       inhabitants = {
@@ -391,7 +483,7 @@
 
 "DWARVES" modify append
 {
-  biomes = { "EE_DWARF_MOUNTAIN_SMALL"}
+  biome = "EE_DWARF_MOUNTAIN_SMALL"
   settlement = {
     type = Predefined { "mountain48" "EE_CITY_DWARF" } 
     tribe = DWARF
@@ -482,6 +574,7 @@
   }
 }
   "VILLAGE" modify append {
+	biome = "FOREST"
     settlement = {
     type = Builtin VILLAGE "EE_TAINTED"
       tribe = HUMAN
@@ -515,7 +608,7 @@
     }
   }
 "KNIGHTS" modify append {
-  biomes = { "EE_CITY"} 
+  biome = "EE_CITY"
   settlement = {
     type = Builtin CASTLE2 "EE_CITY_BRICK"
     tribe = HUMAN
@@ -559,6 +652,7 @@
   }
 }
   "MINOTAUR"  modify append {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin CAVE "EE_MINOTAUR" #Modded
     tribe = MONSTER
@@ -572,21 +666,21 @@
 }
 
 
-  "RED_DRAGON" modify append {
-    biomes = { "EE_VOLCANIC" }  
+"RED_DRAGON" modify append {
+    biome = "EE_VOLCANIC"
     settlement = append {
       type = Builtin CAVE "EE_VOLCANIC_BRICK"
       tribe = BANDIT
     }
   }
   "UNICORN_HERD" modify append {
-    biomes = { "EE_HERB_GRASSLAND" }  
+    biome = "EE_HERB_GRASSLAND"
   }
   "DRIADS" modify append {
-    biomes = { "EE_HERB_GRASSLAND" }  
+    biome = "EE_HERB_GRASSLAND"
   }
   "ORC_VILLAGE" modify append {
-    biomes = { "EE_ORC_VILLAGE"} 
+    biome = "EE_ORC_VILLAGE"
     settlement = {
       type = Predefined { "village32" "EE_WOOD_CITY_CASTLE" } 
       tribe = GREENSKIN
@@ -661,7 +755,7 @@
 
 "WARRIORS" modify append
 {
-  biomes = { "EE_WARRIOR_TOWN"}
+  biome = "EE_WARRIOR_TOWN"
   settlement = {
     type = Predefined { "castle32" "EE_WOOD_CITY_CASTLE" } 
     tribe = HUMAN
@@ -730,6 +824,7 @@
 }
 
 "RAT_PEOPLE_Z_LEVEL" modify append {
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin VAULT "DUNGEON"
       tribe = MONSTER
@@ -763,10 +858,45 @@
 ###############################
 #Endles enemies - New tribes
 ###############################
+"EE_BATTLEFIELD"
+{
+  biome = "GRASSLAND"
+  settlement = {
+    type = Builtin CASTLE2 "EE_BATTLEFIELD"
+    tribe = MONSTER
+    dontBuildRoad = true
+    stockpiles = {{ "corpse" 30 "FAKE_GRAVE" }}
+  }
+}
+
+###############################
+#Extra biomes to show off
+###############################
+"EE_VOLCANIC_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_VOLCANIC" }
+"EE_ENCHANTED_FOREST_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_ENCHANTED_FOREST" }
+"EE_DARK_SWAMP_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_DARK_SWAMP" }
+"EE_CITY_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_CITY" }
+"EE_ORC_CLAN_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_ORC_CLAN" }
+"EE_ORC_VILLAGE_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_ORC_VILLAGE" }
+"EE_WARRIOR_TOWN_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_WARRIOR_TOWN" }
+"EE_PALACE_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_PALACE" }
+"EE_CENTAUR_PALACE_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_CENTAUR_PALACE" }
+"EE_SHADOW_PALACE_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_SHADOW_PALACE" }
+"EE_SPIDER_MOUNTAIN_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_SPIDER_MOUNTAIN" }
+"EE_CITY_RUINS_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_CITY_RUINS" }
+"EE_ELF_FOREST_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_ELF_FOREST" }
+"EE_DWARF_MOUNTAIN_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_DWARF_MOUNTAIN" }
+"EE_DWARF_MOUNTAIN_SMALL_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_DWARF_MOUNTAIN_SMALL" }
+"EE_DARK_ELF_MOUNTAIN_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_DARK_ELF_MOUNTAIN" }
+"EE_HERB_GRASSLAND_CORPSES" inherit "EE_BATTLEFIELD" { biome = "EE_HERB_GRASSLAND" }
+
+###############################
+#Others
+###############################
 
 "EE_ELF_KINGDOM"
 {
-  biomes = { "EE_ELF_FOREST"}
+  biome = "EE_ELF_FOREST"
   settlement = {
     type = Predefined { "village32" "WOOD" } 
     inhabitants = {
@@ -839,6 +969,7 @@
 }
 "EE_ELF_VILLAGE"
 {
+  biome = "FOREST"
   settlement = {
     type = Builtin FORREST_VILLAGE "WOOD"
     inhabitants = {
@@ -885,6 +1016,7 @@
 }
 "EE_ELF_VILLAGE_SHOP"
 {
+  biome = "FOREST"
   settlement = {
     type = Builtin FORREST_VILLAGE "WOOD"
     inhabitants = {
@@ -931,7 +1063,7 @@
 }
 
   "EE_DWARF_KINGDOM" {
-    biomes = { "EE_DWARF_MOUNTAIN" }
+    biome = "EE_DWARF_MOUNTAIN"
     settlement = {
     type = Predefined { "mountain64" "EE_CITY_DWARF" } 
       tribe = DWARF
@@ -1012,6 +1144,7 @@
   
 "EE_WARRIOR_CASTLE"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin CASTLE2 "WOOD_CASTLE"
     tribe = HUMAN
@@ -1061,6 +1194,7 @@
   }
   
   "EE_WARRIOR_VILLAGE" {
+    biome = "MOUNTAIN"
     settlement = {
     type = Builtin VILLAGE "WOOD"
       tribe = HUMAN
@@ -1094,6 +1228,7 @@
   
 "EE_DWARF_MARKET"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin VILLAGE "DUNGEON"
     tribe = DWARF
@@ -1136,6 +1271,7 @@
 
 "EE_DWARF_MARKET_SMALL"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin VILLAGE "DUNGEON"
     tribe = DWARF
@@ -1178,6 +1314,7 @@
 
 "EE_DWARF_MINE"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin ANT_NEST "DUNGEON"
     tribe = DWARF
@@ -1208,6 +1345,7 @@
 
   "EE_CENTAUR_TOWN"
   {
+    biome = "FOREST"
     discoverable = false
     settlement = {
     type = Builtin VILLAGE "WOOD"
@@ -1240,6 +1378,7 @@
   
   "EE_AMAZON_TOWN"
   {
+    biome = "MOUNTAIN"
     discoverable = false
     settlement = {
     type = Builtin VILLAGE "WOOD"
@@ -1269,10 +1408,11 @@
 	}
   }
   
-"EE_WILDMAN_ENTRY"
+"EE_WILDMAN_ENTRY_HIDDEN"
 {
+  biome = "FOREST"
   settlement = {
-    type = Builtin CAVE "EE_ROYAL_SANDSTONE_WALL"
+    type = Builtin CEMETERY "EE_CAVE"
     tribe = BANDIT
   }
   config = {
@@ -1280,8 +1420,21 @@
   }  
 }
   
-"EE_WILDMEN_CAVE"
+"EE_WILDMAN_ENTRY_OPEN"
 {
+  biome = "MOUNTAIN"
+  settlement = {
+    type = Builtin MINETOWN "EE_ROYAL_SANDSTONE_WALL"
+    tribe = BANDIT
+  }
+  config = {
+    conquerCondition = NEVER
+  }  
+}
+  
+"EE_WILDMEN_CAVE_HIDDEN"
+{
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin MINETOWN "EE_ROYAL_SANDSTONE_WALL"
     tribe = HOSTILE
@@ -1306,7 +1459,17 @@
     ransom = 0.5 80
   }
   levelConnection = {
-	topLevel = ExtraEnemy {"EE_WILDMAN_ENTRY"}
+	topLevel = ExtraEnemy {"EE_WILDMAN_ENTRY_HIDDEN"}
+	levels = {
+	  { MainEnemy {40 40} BASIC }
+	}
+  }  
+}
+
+"EE_WILDMEN_CAVE_OPEN" inherit "EE_WILDMEN_CAVE_HIDDEN"
+{
+  levelConnection = {
+	topLevel = ExtraEnemy {"EE_WILDMAN_ENTRY_OPEN"}
 	levels = {
 	  { MainEnemy {40 40} BASIC }
 	}
@@ -1315,6 +1478,7 @@
 
 "EE_CROC_LAKE"
 {
+  biome = "SWAMP"
   discoverable = false
   settlement = {
     type = RandomLayout { "hydra" { 20 20 } "default"}
@@ -1331,6 +1495,7 @@
 
   "EE_AXEDIO_DUNGEON"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CAVE "BRICK"
       tribe = MONSTER
@@ -1365,6 +1530,7 @@
   
 "EE_AXEDIO_REWARD"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin MINETOWN "BLACK"
     tribe = MONSTER
@@ -1378,6 +1544,7 @@
   
   "EE_AXEDIO_DWARVES"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "EE_SANDSTONE_WALL_DWARVEN"
       tribe = DARK_KEEPER
@@ -1388,9 +1555,7 @@
           all = {
             1 "DWARF"
           }
-          baseLevelIncrease = {
-            MELEE 10
-          }
+		  combatExperience = 10
         }
         civilians = {
           count = {3 5}
@@ -1409,10 +1574,10 @@
       furniture = "EE_emptyChests"
     }
   }
-  
 
   "EE_AXEDIO_SURFACE_BANDITS"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CAVE "EE_DUNGEON_ENTRY"
       inhabitants = {
@@ -1431,6 +1596,7 @@
   
   "EE_AXEDIO_BANDITS"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CAVE "BRICK"
       inhabitants = {
@@ -1438,9 +1604,7 @@
         fighters = {
           count = {10 11}
           all = { 1 "BANDIT" }
-          baseLevelIncrease = {
-            MELEE 10
-          }
+          combatExperience = 7
         }
       }
       tribe = BANDIT
@@ -1451,8 +1615,9 @@
 	  createOnBones = 0.1 { "KOBOLD_CAVE" }
   }
   
-  "EE_AXEDIO_CYCLOPS" 
+"EE_AXEDIO_CYCLOPS" 
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin CAVE "WOOD_CASTLE"
     inhabitants = {
@@ -1466,8 +1631,9 @@
   }
 }
   
-  "EE_AXEDIO_DEMONS"
+"EE_AXEDIO_DEMONS"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin VILLAGE "RUINS"
       inhabitants = {
@@ -1486,6 +1652,7 @@
   
   "EE_AXEDIO_LIZARDMEN"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin VILLAGE "EE_MUD"
       tribe = LIZARD
@@ -1505,6 +1672,7 @@
   
   "EE_COW_DEMONS_ENTRY"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin SMALL_MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -1524,6 +1692,7 @@
   
   "EE_COW_DUNGEON1"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -1552,6 +1721,7 @@
   
   "EE_COW_DUNGEON2"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -1581,6 +1751,7 @@
   
   "EE_COW_DEMONS"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -1632,7 +1803,7 @@
   }
   
   "EE_DARK_ELF_EMPIRE" {
-    biomes = { "EE_DARK_ELF_MOUNTAIN" }
+    biome = "EE_DARK_ELF_MOUNTAIN"
     settlement = {
     type = Predefined { "mountain48" "EE_CITY_DWARF" }
       tribe = DARK_ELF
@@ -1677,6 +1848,7 @@
   
   "EE_GOBLIN_KING"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CASTLE2 "EE_TAINTED"
       tribe = BANDIT
@@ -1721,6 +1893,7 @@
   
   "EE_GOBLIN_ENTRY"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CASTLE2 "EE_MUD"
       tribe = BANDIT
@@ -1762,9 +1935,10 @@
       triggers = {
         RoomTrigger "THRONE" 0.0003
         SelfVictims
+		Resource "GOLD" 500
       }
-      attackBehaviour = StealGold
-      ransom = 0.9 100
+     attackBehaviour = StealResource "GOLD"	  
+     ransom = 0.9 100
     }
     immigrants = {
       {
@@ -1785,6 +1959,7 @@
   
   "EE_GOBLIN_DUNGEON1"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = BANDIT
@@ -1823,6 +1998,7 @@
   
   "EE_GOBLIN_DUNGEON2"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = BANDIT
@@ -1952,8 +2128,10 @@
         }
       }
     }
-    "EE_FAIRY_TOWER_FLOOR"
-    {
+
+"EE_FAIRY_TOWER_FLOOR"
+{
+    biome = "FOREST"
     settlement = {
     type = Predefined { "fairy_tower_floor" "EE_FAIRY_BRICK" }
     tribe = ELF
@@ -2011,7 +2189,7 @@
 
 "EE_TOWER_OF_ILLUSIA"
 {
-  biomes = { "EE_ENCHANTED_FOREST" }
+  biome = "EE_ENCHANTED_FOREST"
   settlement = {
     type = Predefined { "fairy_tower_top" "EE_FAIRY_BRICK" }
     tribe = ELF
@@ -2081,7 +2259,7 @@
   }
   
 "EE_ORC_MAIN" {
-  biomes = { "EE_ORC_CLAN"} 
+  biome = "EE_ORC_CLAN"
   settlement = {
     type = Predefined { "castle32" "EE_CITY_BRICK" }
     tribe = GREENSKIN
@@ -2121,6 +2299,7 @@
 }
 
 "EE_ORC_MINOR" {
+  biome = "FOREST"
   settlement = {
     type = Predefined { "castle1" "EE_WOOD_CITY_CASTLE" }
     tribe = GREENSKIN
@@ -2158,6 +2337,7 @@
 
 "EE_ORC_CITY_SHOP"
   {
+    biome = "FOREST"
     settlement = {
     type = Builtin VILLAGE "WOOD"
     tribe = GREENSKIN
@@ -2181,6 +2361,7 @@
   
 "EE_ORC_CITY_GROUP"
   {
+    biome = "FOREST"
     discoverable = false
     settlement = {
     type = Builtin VILLAGE "WOOD"
@@ -2205,6 +2386,7 @@
   
 "EE_HELL_DUNGEON1"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin MINETOWN "DUNGEON"
       tribe = MONSTER
@@ -2239,8 +2421,8 @@
   }
   
 "EE_CENTAURS"
-  {
-  biomes = { "EE_CENTAUR_PALACE" } 
+{
+  biome = "EE_CENTAUR_PALACE"
   settlement = {
     type = Predefined { "castle48" "EE_CITY_BRICK" } 
     tribe = HUMAN
@@ -2291,6 +2473,7 @@
   
 "EE_AMAZONS"
   {
+    biome = "FOREST"
     settlement = {
       type = Builtin VILLAGE "WOOD"
       inhabitants = {
@@ -2332,6 +2515,7 @@
   
 "EE_VULTURE_ABOMINATIONS"
   {
+    biome = "MOUNTAIN"
     settlement = { 
       type = Builtin VILLAGE "DUNGEON"
       tribe = MONSTER
@@ -2373,6 +2557,7 @@
   
 "EE_IMPRISONED_FAIRY"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin CAVE "DUNGEON"
       inhabitants = {
@@ -2385,6 +2570,7 @@
   
 "EE_OCEAN_PORTAL"
   {
+    biome = "MOUNTAIN"
     settlement = { 
       type = Builtin CAVE "EE_OCEAN_CAVE"
       inhabitants = {
@@ -2414,16 +2600,15 @@
   
 "EE_UNDEAD_SETTLEMENT"
   {
+    biome = "FOREST"
     settlement = {
       type = Builtin VILLAGE "BRICK"
       tribe = MONSTER
       inhabitants = {
         leader = {
         id = { "EE_NECROMANCER" }
-          baseLevelIncrease = {
-            MELEE 3
-            SPELL 7
-          } }
+			combatExperience = 7
+		}
         fighters = {
           count = {12 16}
           all = {
@@ -2461,6 +2646,7 @@
   
 "EE_RAT_VILLAGE"
   {
+    biome = "FOREST"
     settlement = {
       type = Builtin SMALL_VILLAGE "EE_MUD"
       tribe = HUMAN
@@ -2492,7 +2678,7 @@
   
 "EE_DRAGONS"
   {
-    biomes = { "EE_VOLCANIC" }  
+    biome = "EE_VOLCANIC"
     settlement = {
       type = Builtin CASTLE2 "EE_VOLCANIC_BRICK"
       tribe = BANDIT
@@ -2531,14 +2717,15 @@
       minPopulation = 5
       minTeamSize = 4
       triggers = {
-        Gold 2000
+		Resource "GOLD" 2000
       }
-      attackBehaviour = StealGold
-    }
+     attackBehaviour = StealResource "GOLD"
+	 }
   }
   
   "EE_SHADOW_TEMPLE"
   {
+    biome = "FOREST"
     settlement = {
       type = Builtin TEMPLE "EE_SHADOW_CITY_GRASS"
       tribe = HOSTILE
@@ -2554,7 +2741,7 @@
   
   "EE_HELL_PORTAL"
   {
-    biomes = { "EE_VOLCANIC" }  
+    biome = "EE_VOLCANIC"
     settlement = {
       type = Builtin CAVE "EE_VOLCANIC_BRICK"
       tribe = BANDIT
@@ -2616,7 +2803,7 @@
   
   "EE_RATMEN"
   {
-    biomes = { "EE_DARK_SWAMP" }
+    biome = "EE_DARK_SWAMP"
     settlement = {
       type = Builtin MINETOWN "EE_MUD"
       tribe = HUMAN
@@ -2727,6 +2914,7 @@
   
   "EE_GORGON_CULT"
   {
+    biome = "MOUNTAIN"
     settlement = {
       type = Builtin FORREST_COTTAGE "WOOD"
       tribe = MONSTER
@@ -2933,7 +3121,7 @@
 
  "EE_KING"
   {
-  biomes = { "EE_PALACE" }  
+  biome = "EE_PALACE" 
   settlement = {
     tribe = HUMAN
     type = Predefined { "castle64" "EE_CITY_BRICK" }
@@ -3032,7 +3220,7 @@
 
 "EE_SHADOW_KING" inherit "EE_KING"
 {
-  biomes = { "EE_SHADOW_PALACE" }  
+  biome = "EE_SHADOW_PALACE"
   settlement = append {
   type = Predefined { "castle64" "EE_SHADOW_CITY_BRICK" }
     tribe = DARK_ELF #Allied to dark elves and dark keepers
@@ -3080,7 +3268,7 @@
 
 "EE_OMALLY_BANDITS"
   {
-    biomes = { "EE_CITY_RUINS" }  
+    biome = "EE_CITY_RUINS"
     settlement = {
     tribe = BANDIT
     type = Predefined { "ruins70" "EE_BRICK_RUINS" }
@@ -3114,9 +3302,9 @@
       FinishOff
       EnemyPopulation 60
       NumConquered 20
-      Gold 1000
-    }
-    attackBehaviour = StealGold
+      Resource "GOLD" 2000
+	}
+    attackBehaviour = StealResource "GOLD"
     ransom = 0.9 340
   }
   immigrants = {
@@ -3448,33 +3636,130 @@
   #Define 100 levels of dungeons with increasing difficulty based on the base classes available.
   #This ensures that there is a continuous stream of enemies available getting gradually harder.  
       
-  "EE_ROYAL_DUNGEON1" inherit "EE_ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 1 } } } } }
-  "EE_ROYAL_DUNGEON4" inherit "EE_ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 7 } } } } }
-  "EE_ROYAL_DUNGEON8" inherit "EE_ROYAL_DUNGEON_TYPE_2" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 7 } } } } }
-  "EE_ROYAL_DUNGEON12" inherit "EE_ROYAL_DUNGEON_TYPE_2a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 13 } } } } }
-  "EE_ROYAL_DUNGEON16" inherit "EE_ROYAL_DUNGEON_TYPE_2b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 17 } } } } }
-  "EE_ROYAL_DUNGEON20" inherit "EE_ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 1 } } } } }
-  "EE_ROYAL_DUNGEON24" inherit "EE_ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 9 } } } } }
-  "EE_ROYAL_DUNGEON28" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 23 } } } } }
-  "EE_ROYAL_DUNGEON32" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 29 } } } } }
-  "EE_ROYAL_DUNGEON36" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 33 } } } } }
-  "EE_ROYAL_DUNGEON40" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 37 } } } } }
-  "EE_ROYAL_DUNGEON44" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 41 } } } } }
-  "EE_ROYAL_DUNGEON48" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 45 } } } } }
-  "EE_ROYAL_DUNGEON52" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 49 } } } } }
-  "EE_ROYAL_DUNGEON56" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 53 } } } } }
-  "EE_ROYAL_DUNGEON60" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 57 } } } } }
-  "EE_ROYAL_DUNGEON64" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 61 } } } } }
-  "EE_ROYAL_DUNGEON68" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 65 } } } } }
-  "EE_ROYAL_DUNGEON72" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 69 } } } } }
-  "EE_ROYAL_DUNGEON76" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 73 } } } } }
-  "EE_ROYAL_DUNGEON80" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 77 } } } } }
-  "EE_ROYAL_DUNGEON84" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 81 } } } } }
-  "EE_ROYAL_DUNGEON88" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 85 } } } } }
-  "EE_ROYAL_DUNGEON92" inherit "EE_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 92 } } } } }
-  "EE_ROYAL_DUNGEON96" inherit "EE_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 96 } } } } }
-  "EE_ROYAL_DUNGEON99" inherit "EE_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { baseLevelIncrease = { MELEE 125 } } } } }
+  "EE_ROYAL_DUNGEON1" inherit "EE_ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { 			combatExperience = 1 } } } }
+  "EE_ROYAL_DUNGEON4" inherit "EE_ROYAL_DUNGEON_TYPE_1" { settlement = append { inhabitants = append { fighters = append { combatExperience = 7 } } } }
+  "EE_ROYAL_DUNGEON8" inherit "EE_ROYAL_DUNGEON_TYPE_2" { settlement = append { inhabitants = append { fighters = append { combatExperience = 7 } } } }
+  "EE_ROYAL_DUNGEON12" inherit "EE_ROYAL_DUNGEON_TYPE_2a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 13 } } } }
+  "EE_ROYAL_DUNGEON16" inherit "EE_ROYAL_DUNGEON_TYPE_2b" { settlement = append { inhabitants = append { fighters = append { combatExperience = 17 } } } }
+  "EE_ROYAL_DUNGEON20" inherit "EE_ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { combatExperience = 1 } } } }
+  "EE_ROYAL_DUNGEON24" inherit "EE_ROYAL_DUNGEON_TYPE_3" { settlement = append { inhabitants = append { fighters = append { combatExperience = 9 } } } }
+  "EE_ROYAL_DUNGEON28" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 23 } } } }
+  "EE_ROYAL_DUNGEON32" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 29 } } } }
+  "EE_ROYAL_DUNGEON36" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 33 } } } }
+  "EE_ROYAL_DUNGEON40" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 37 } } } }
+  "EE_ROYAL_DUNGEON44" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 41 } } } }
+  "EE_ROYAL_DUNGEON48" inherit "EE_ROYAL_DUNGEON_TYPE_3a" { settlement = append { inhabitants = append { fighters = append { combatExperience = 45 } } } }
+  "EE_ROYAL_DUNGEON52" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { combatExperience = 49 } } } }
+  "EE_ROYAL_DUNGEON56" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { combatExperience = 53 } } } }
+  "EE_ROYAL_DUNGEON60" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { combatExperience = 57 } } } }
+  "EE_ROYAL_DUNGEON64" inherit "EE_ROYAL_DUNGEON_TYPE_3b" { settlement = append { inhabitants = append { fighters = append { combatExperience = 61 } } } }
+  "EE_ROYAL_DUNGEON68" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 65 } } } }
+  "EE_ROYAL_DUNGEON72" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 69 } } } }
+  "EE_ROYAL_DUNGEON76" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 73 } } } }
+  "EE_ROYAL_DUNGEON80" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 77 } } } }
+  "EE_ROYAL_DUNGEON84" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 81 } } } }
+  "EE_ROYAL_DUNGEON88" inherit "EE_ROYAL_DUNGEON_TYPE_3c" { settlement = append { inhabitants = append { fighters = append { combatExperience = 85 } } } }
+  "EE_ROYAL_DUNGEON92" inherit "EE_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { combatExperience = 92 } } } }
+  "EE_ROYAL_DUNGEON96" inherit "EE_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { combatExperience = 96 } } } }
+  "EE_ROYAL_DUNGEON99" inherit "EE_ROYAL_DUNGEON_TYPE_4" { settlement = append { inhabitants = append { fighters = append { combatExperience = 125 } } } }
 ####################################################################
+
+###
+#CSeven trying to make fairies more commonplace (feels like they're Illusia, rescue the Demon Fairy from the Abominations, or None)
+#Fairies get pretty powerful if converted, so no need to have them repopulate
+###
+
+"EE_VEN_FAIRIES" #shamelessly rip off vanilla Adamantine Golems, but helps with syntax.
+#Took until z11 to have these folks show up in testing, but they were only eligible to show up at z5 and below.
+#(Further testing demonstrated that 3 piles per appearance is overkill.)
+{
+  settlement = {
+    type = Builtin VAULT "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {2 3}
+        all = {
+		1 "EE_DARK_FAIRY"
+		3 "EE_EARTH_FAIRY"
+		}
+      }
+    }
+    tribe = ANT
+    race = "underground fairies"
+    dontConnectCave = true
+    surroundWithResources = 2
+    extraResources = "VENORACK_ORE"
+	}
+	
+	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 30% chance to go Hostile)
+	behaviour = {
+		minPopulation = 0
+		minTeamSize = 1
+		attackBehaviour = StealResource "GOLD"
+	}
+}
+
+"EE_ADOXIUM_FAIRIES"
+{
+settlement = {
+    type = Builtin VAULT "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {3 5}
+        all = {
+		2 "EE_DARK_FAIRY" #Living next to all this adoxium hasn't done the poor fairy much good
+		3 "EE_EARTH_FAIRY"
+		1 "EE_DEMON_FAIRY" #Living next to all this adoxium REALLY hasn't done this poor fairy much good at all!
+		1 "EE_MAGIC_FAIRY" #Adoxium may be named for the Evil God, but it IS good for magic...
+		}
+      }
+    }
+    tribe = ANT
+    race = "underground fairies"
+    dontConnectCave = true
+    surroundWithResources = 2
+    extraResources = "ADOXIUM_ORE"
+	}
+	
+	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 50% chance to go Hostile)
+	behaviour = {
+		minPopulation = 0
+    	minTeamSize = 1
+		attackBehaviour = StealResource "GOLD"
+		ransom = 0.5 80
+	}
+}
+
+"EE_INF_FAIRIES"
+{
+settlement = {
+    type = Builtin VAULT "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {3 5}
+        all = {
+		3 "EE_FIRE_FAIRY" #It's burny metal! Yay!
+		1 "EE_EARTH_FAIRY"
+		}
+      }
+    }
+    tribe = ANT
+    race = "underground fairies"
+    dontConnectCave = true
+    surroundWithResources = 2
+    extraResources = "INFERNITE_ORE"
+	}
+	
+	#Need this block because the fairies might decide to just come after Keepers (check their entry in zlevels: 10% chance to go Hostile)
+	behaviour = {
+		minPopulation = 0
+    	minTeamSize = 1
+		attackBehaviour = StealResource "GOLD"
+		ransom = 0.5 80
+	}
+
+}
+
 
 ###########################
 #Ideas for future villains#

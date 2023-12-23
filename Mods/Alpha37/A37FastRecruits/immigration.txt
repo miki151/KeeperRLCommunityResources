@@ -1,19 +1,14 @@
-#Attraction needs to be at 1.0
-#Frequency = <some sort of fraction> needs deleting
-#Anything with a cost info needs a 1.0 to show up when you haven't met requirments yet
-#Otherwise increasing all fractions would increase immigration speed [in different ways]
-
 "dark_keeper" modify
 {
     {
       ids = { "GOBLIN_ARTIFICER" }
       traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
       }
       specialTraits = {
-         { 0.03 { WorkshopType "WORKSHOP" Lasting { INSANITY } }}
-         { 0.05 { WorkshopType "FORGE" Lasting { INSANITY } }}
+         { 0.03 { AttrBonus FORGE 20 Lasting { INSANITY } }}
          { 0.03 { Lasting { BAD_BREATH } }}
          { 0.01 { Lasting { ENTERTAINER } }}
       }
@@ -21,8 +16,9 @@
     {
       ids = { "GOBLIN_WARRIOR" }
       traits = { FIGHTER }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
       }
       specialTraits = {
          { 0.01 { ExtraIntrinsicAttack
@@ -39,8 +35,8 @@
          { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
          { 0.01 { ExtraBodyPart HEAD 1}}
          { 0.01 { ExtraBodyPart WING 2}}
-         { 0.05 { ExtraTraining ARCHERY 2}}
-         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
          { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
          { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
          { 0.05 { Lasting { NIGHT_VISION } }}
@@ -56,8 +52,9 @@
     {
       ids = { "GOBLIN_WIZARD" }
       traits = { FIGHTER }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
         { 0.0 MinTurnRequirement 500 }
       }
       specialTraits = {
@@ -65,8 +62,7 @@
          { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
          { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
          { 0.03 { Lasting { RIDER } SpecialAttr SPELL_DAMAGE 6 Name "when riding steed" Attacker Rider }}
-         { 0.10 { ExtraTraining SPELL 4}}
-         { 0.05 { WorkshopType "LABORATORY" }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
          { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
          { 0.05 { AttrBonus SPELL_SPEED 30 }}
          { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
@@ -78,12 +74,13 @@
     {
       ids = { "GOBLIN_PRIEST" }
       traits = { FIGHTER }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+        { 0.0 MinTurnRequirement 500 }
       }
       specialTraits = {
-         { 0.10 { ExtraTraining SPELL 4}}
-         { 0.05 { WorkshopType "LABORATORY" }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
          { 0.10 { Lasting { MAGIC_RESISTANCE } }}
          { 0.02 { Lasting { HATE_ELVES } }}
          { 0.02 { Lasting { HATE_HUMANS } }}
@@ -94,11 +91,12 @@
     {
       ids = { "GOBLIN_SHAMAN" }
       traits = { FIGHTER }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
+        { 0.0 MinTurnRequirement 500 }
       }
       specialTraits = {
-         { 0.05 { WorkshopType "LABORATORY" }}
          { 0.10 { Lasting { MAGIC_RESISTANCE } }}
          { 0.02 { Lasting { HATE_ELVES } }}
          { 0.02 { Lasting { HATE_HUMANS } }}
@@ -108,9 +106,11 @@
     {
       ids = { "HARPY" }
       traits = { FIGHTER }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
-        { 1.0 AttractionInfo 1 {ItemIndex RANGED_WEAPON}}
+        { 0.0 MinTurnRequirement 2000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.3 AttractionInfo 1 {ItemIndex RANGED_WEAPON}}
       }
       specialTraits = {
          { 0.02 { SpecialAttr RANGED_DAMAGE 20 CreatureStatus CIVILIAN }}
@@ -122,16 +122,18 @@
          { 0.05 { Lasting { SWIMMING_SKILL } }}
          { 0.02 { Lasting { HATE_ELVES } }}
          { 0.02 { Lasting { HATE_HUMANS } }}
-         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
          { 0.05 { Lasting { BAD_BREATH } }}
       }
     }
     {
       ids = { "ZOMBIE" }
       traits = { FIGHTER }
+      frequency = 1.0
       spawnLocation = FurnitureType "GRAVE"
       requirements = {
-        { 1.0 CostInfo "CORPSE" 1}
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.0 CostInfo "CORPSE" 1}
       }
       specialTraits = {
          { 0.03 { CompanionInfo 1 true none 0.1 { "FLY" }}}
@@ -150,10 +152,12 @@
     {
       ids = { "SKELETON_ARCHER" }
       traits = { FIGHTER }
+      frequency = 1.0
       spawnLocation = FurnitureType "GRAVE"
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
-        { 1.0 CostInfo "CORPSE" 1}
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+        { 0.0 CostInfo "CORPSE" 1}
       }
       specialTraits = {
          { 0.3 { Lasting { SLOWED } }}
@@ -162,10 +166,12 @@
     {
       ids = { "VAMPIRE" }
       traits = { FIGHTER }
+      frequency = 1.0
       spawnLocation = FurnitureType "GRAVE"
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
-        { 1.0 CostInfo "CORPSE" 1}
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.0 CostInfo "CORPSE" 1}
       }
       specialTraits = {
          { 0.03 { CompanionInfo 1 true none 0.1 { "BAT" }}}
@@ -182,10 +188,12 @@
     {
       ids = { "MUMMY" }
       traits = { FIGHTER }
+      frequency = 1.0
       spawnLocation = FurnitureType "GRAVE"
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
-        { 1.0 CostInfo "CORPSE" 1}
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.0 CostInfo "CORPSE" 1}
       }
       specialTraits = {
         { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
@@ -195,28 +203,31 @@
     {
       ids = { "LOST_SOUL" }
       traits = { FIGHTER }
+      frequency = 1.0
       spawnLocation = FurnitureType "DEMON_SHRINE"
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "DEMON_SHRINE"}}
-        { 1.0 CostInfo "DEMON_PIETY" 300 }
+        { 0.3 AttractionInfo 1 {FurnitureType "DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 300 }
       }
     }
     {
       ids = { "SUCCUBUS" }
       traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 1.0
       spawnLocation = FurnitureType "DEMON_SHRINE"
       requirements = {
-        { 1.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
-        { 1.0 CostInfo "DEMON_PIETY" 1000 }
+        { 0.3 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 1000 }
       }
     }
     {
       ids = { "ICE_DEMON" }
       traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 1.0
       spawnLocation = FurnitureType "DEMON_SHRINE"
       requirements = {
-        { 1.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
-        { 1.0 CostInfo "DEMON_PIETY" 1000 }
+        { 0.3 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 1000 }
       }
       specialTraits = {
         { 1.0 { SpecialAttr COLD_DAMAGE 12 HatedBy HATE_HUMANS }}
@@ -226,18 +237,21 @@
     {
       ids = { "DOPPLEGANGER" }
       traits = { FIGHTER }
+      frequency = 1.0
       spawnLocation = FurnitureType "DEMON_SHRINE"
       requirements = {
-        { 1.0 AttractionInfo 3 {FurnitureType "DEMON_SHRINE"}}
-        { 1.0 CostInfo "DEMON_PIETY" 3000 }
+        { 0.3 AttractionInfo 3 {FurnitureType "DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 3000 }
       }
     }
     {
       ids = { "WEREWOLF" }
       traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 1.0
       requirements = {
-        { 1.0 FurnitureType "BEAST_CAGE" }
-        { 1.0 AttractionInfo 2 {FurnitureType "TRAINING_IRON"}}
+        { 0.0 MinTurnRequirement 2000 }
+        { 0.0 FurnitureType "BEAST_CAGE" }
+        { 0.3 AttractionInfo 2 {FurnitureType "TRAINING_IRON"}}
       }
       specialTraits = {
          { 1.0 { SpecialAttr DAMAGE 7 Name "at night" Night }}
@@ -257,13 +271,14 @@
       consumeIds = true
       spawnLocation = Pregnancy
       requirements = {
-        { 1.0 TechId "humanoid mutation" }
-        { 1.0 Pregnancy }
+        { 0.0 TechId "humanoid mutation" }
+        { 0.0 Pregnancy }
         { 1.0 CostInfo "GOLD" 100 }
       }
       specialTraits = {
          { 0.1 { Lasting { INSANITY }}}
       }
+      acceptedAchievement = "succubus_breading"
     }
     {
       ids = { "SPECIAL_BMBN" "SPECIAL_BMBW" "SPECIAL_BMGN" "SPECIAL_BMGW" }
@@ -271,10 +286,11 @@
       consumeIds = true
       spawnLocation = Pregnancy
       requirements = {
-        { 1.0 TechId "beast mutation" }
-        { 1.0 Pregnancy }
+        { 0.0 TechId "beast mutation" }
+        { 0.0 Pregnancy }
         { 1.0 CostInfo "GOLD" 100 }
       }
+      acceptedAchievement = "succubus_breading"
     }
 }
 
@@ -283,26 +299,27 @@
     {
       ids = { "ARTISAN" }
       traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
       }
       specialTraits = {
          { 0.05 { OneOfTraits { Lasting { FAST_CRAFTING } Lasting { SLOW_CRAFTING } } }}
-         { 0.03 { WorkshopType "WORKSHOP" Lasting { INSANITY } }}
-         { 0.03 { WorkshopType "FORGE" Lasting { INSANITY } }}
+         { 0.03 { AttrBonus FORGE 20 Lasting { INSANITY } }}
          { 0.03 { Lasting { BAD_BREATH } }}
       }
     }
     {
       ids = { "KNIGHT_PLAYER" }
       traits = { FIGHTER }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON_HUMAN"}}
       }
       specialTraits = {
         { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
-        { 0.05 { ExtraTraining ARCHERY 2}}
-        { 0.05 { ExtraTraining MELEE 2}}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
         { 0.05 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
         { 0.05 { Lasting { HATE_ELVES } }}
@@ -314,35 +331,41 @@
     {
       ids = { "PRIEST_PLAYER" }
       traits = { FIGHTER }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
-        { 1.1 TechId "worship"}
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD_HUMAN"}}
+        { 0.1 TechId "worship"}
+        { 0.0 MinTurnRequirement 500 }
       }
       specialTraits = {
         { 0.15 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
         { 0.03 { AttrBonus SPELL_DAMAGE 4 AttrBonus DEFENSE -4}}
         { 0.02 { AttrBonus SPELL_SPEED 30 }}
-        { 0.05 { ExtraTraining SPELL 2}}
+        { 0.05 { ExtraTraining SPELL_DAMAGE 2}}
         { 0.02 { Lasting { HATE_UNDEAD } }}
       }
     }
     {
       ids = { "CLERIC" }
       traits = { FIGHTER }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD_HUMAN"}}
+        { 0.0 MinTurnRequirement 500 }
       }
       specialTraits = {
         { 0.15 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
-        { 0.05 { ExtraTraining SPELL 2}}
+        { 0.05 { ExtraTraining SPELL_DAMAGE 2}}
         { 0.02 { AttrBonus SPELL_SPEED 30 }}
       }
     }
     {
       ids = { "ARCHER_PLAYER" }
       traits = { FIGHTER }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+        { 0.0 MinTurnRequirement 2000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
       }
       specialTraits = {
         { 0.15 { SpecialAttr RANGED_DAMAGE 8 HatedBy HATE_GREENSKINS }}
@@ -354,15 +377,16 @@
         { 0.05 { Lasting { SWIMMING_SKILL } }}
         { 0.02 { Lasting { HATE_ELVES } }}
         { 0.02 { Lasting { HATE_HUMANS } }}
-        { 0.05 { ExtraTraining ARCHERY 2}}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
         { 0.03 { Lasting { BAD_BREATH } }}
       }
     }
     {
       ids = { "JESTER" }
       traits = { FIGHTER }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "THRONE"}}
+        { 0.0 AttractionInfo 1 {FurnitureType "THRONE_HUMAN"}}
       }
       specialTraits = {
         { 1.0 { Lasting { ENTERTAINER } }}
@@ -372,51 +396,52 @@
       ids = { "DWARF_BLACKSMITH" }
       traits = { FIGHTER }
       requirements = {
-        { 1.0 RecruitmentInfo { "DWARVES" } 0 FIGHTER }
+        { 0.0 RecruitmentInfo { "DWARVES" } 0 FIGHTER }
         { 1.0 CostInfo "GOLD" 100 }
-      }
-      specialTraits = {
-       { 1.0 { WorkshopType "FORGE" }}
       }
     }
     {
       ids = { "GALEAM" }
       traits = { FIGHTER }
+      frequency = 1.0
       spawnLocation = FurnitureType "ANGEL_SHRINE"
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "ANGEL_SHRINE"}}
-        { 1.0 CostInfo "DEMON_PIETY" 300 }
+        { 0.3 AttractionInfo 1 {FurnitureType "ANGEL_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 300 }
       }
     }
     {
       ids = { "CHERUB" }
       traits = { FIGHTER }
+      frequency = 1.0
       spawnLocation = FurnitureType "ANGEL_SHRINE"
       requirements = {
-        { 1.0 AttractionInfo 2 {FurnitureType "ANGEL_SHRINE"}}
-        { 1.0 CostInfo "DEMON_PIETY" 1000 }
+        { 0.3 AttractionInfo 2 {FurnitureType "ANGEL_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 1000 }
       }
     }
     {
       ids = { "ANGEL" }
       traits = { FIGHTER }
+      frequency = 1.05
       spawnLocation = FurnitureType "ANGEL_SHRINE"
       requirements = {
-        { 1.0 AttractionInfo 2 {FurnitureType "ANGEL_SHRINE"}}
-        { 1.0 CostInfo "DEMON_PIETY" 3000 }
+        { 0.3 AttractionInfo 2 {FurnitureType "ANGEL_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 3000 }
       }
     }
     {
       ids = { "TEUTON" }
       traits = { FIGHTER }
       requirements = {
-        { 1.0 RecruitmentInfo { "TEUTONS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "TEUTONS" } 3 FIGHTER }
         { 1.0 CostInfo "GOLD" 150 }
       }
     }
     {
       ids = { "DOG" }
       traits = { FIGHTER DOESNT_TRIGGER NO_LIMIT }
+      frequency = 1.0
     }
     {
       ids = { "HORSE_CAN_TRAIN" }
@@ -434,6 +459,35 @@
     }
     WhiteRecruits()
 }
+
+"zombies" modify
+{
+    {
+      ids = { "ZOMBIE_WORKER" }
+      traits = { FIGHTER WORKER LEADER }
+      frequency = 1.0
+#      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 SunlightState NIGHT }
+        { 0.0 AttractionInfo 0 {FurnitureType "COFFIN1"}}
+      }
+      specialTraits = {
+         { 0.03 { CompanionInfo 1 true none 0.1 { "FLY" }}}
+         { 0.2 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.3 { Lasting { BLIND } }}
+         { 1.0 { Lasting { SWARMER } }}
+         { 0.3 { Lasting { COLLAPSED } }}
+      }
+    }
+
+}
+
 "goblins" modify
 {
     {
@@ -446,6 +500,7 @@
     {
       ids = { "GOBLIN_WORKER" }
       traits = { WORKER NO_AUTO_EQUIPMENT }
+      frequency = 1
       specialTraits = {
          { 0.2 { AttrBonus DIGGING 15 }}
       }
@@ -453,12 +508,12 @@
     {
       ids = { "GOBLIN_ARTIFICER" }
       traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 1.0
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
       }
       specialTraits = {
-         { 0.03 { WorkshopType "WORKSHOP" Lasting { INSANITY } }}
-         { 0.05 { WorkshopType "FORGE" Lasting { INSANITY } }}
+         { 0.05 { AttrBonus FORGE 20 Lasting { INSANITY } }}
          { 0.03 { Lasting { BAD_BREATH } }}
          { 0.01 { Lasting { ENTERTAINER } }}
       }
@@ -466,8 +521,9 @@
     {
       ids = { "GOBLIN_WARRIOR" }
       traits = { FIGHTER }
+      frequency = 1
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
       }
       specialTraits = {
          { 0.01 { ExtraIntrinsicAttack
@@ -481,8 +537,8 @@
          { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
          { 0.15 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
          { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
-         { 0.05 { ExtraTraining ARCHERY 2}}
-         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
          { 0.05 { Lasting { NIGHT_VISION } }}
          { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
          { 0.05 { Lasting { SWIMMING_SKILL } }}
@@ -497,8 +553,9 @@
       ids = { "GOBLIN_GUARD" }
       traits = { FIGHTER }
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
       }
+      frequency = 1.0
       specialTraits = {
          { 0.01 { ExtraIntrinsicAttack
             HEAD
@@ -508,8 +565,8 @@
                 victimEffect = {0.1 Lasting POISON} } } } }
          { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
          { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
-         { 0.05 { ExtraTraining ARCHERY 2}}
-         { 0.05 { ExtraTraining MELEE 2}}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
          { 0.05 { Lasting { NIGHT_VISION } }}
          { 0.05 { Lasting { SWIMMING_SKILL } }}
          { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
@@ -522,8 +579,9 @@
       ids = { "GOBLIN_ARCHER" }
       traits = { FIGHTER }
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
       }
+      frequency = 1.0
       specialTraits = {
          { 0.02 { SpecialAttr RANGED_DAMAGE 20 CreatureStatus CIVILIAN }}
          { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
@@ -534,7 +592,7 @@
          { 0.05 { Lasting { SWIMMING_SKILL } }}
          { 0.02 { Lasting { HATE_ELVES } }}
          { 0.02 { Lasting { HATE_HUMANS } }}
-         { 0.05 { ExtraTraining ARCHERY 2}}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
          { 0.05 { Lasting { BAD_BREATH } }}
          { 0.03 { AttrBonus RANGED_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
       }
@@ -543,10 +601,11 @@
       ids = { "GOBLIN_PRIEST" }
       traits = { FIGHTER }
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+        { 0.0 MinTurnRequirement 500 }
       }
+      frequency = 1.0
       specialTraits = {
-         { 0.05 { WorkshopType "LABORATORY" }}
          { 0.02 { Lasting { HATE_ELVES } }}
          { 0.02 { AttrBonus SPELL_SPEED 30 }}
          { 0.02 { Lasting { HATE_HUMANS } }}
@@ -557,15 +616,16 @@
       ids = { "GOBLIN_WIZARD" }
       traits = { FIGHTER }
       requirements = {
-        { 1.0 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
+        { 0.0 MinTurnRequirement 500 }
       }
+      frequency = 1.0
       specialTraits = {
          { 0.01 { CompanionInfo 1 true none 0.1 { "WOLF" }}}
          { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
          { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
-         { 0.10 { ExtraTraining SPELL 4}}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
          { 0.15 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
-         { 0.05 { WorkshopType "LABORATORY" }}
          { 0.05 { AttrBonus SPELL_SPEED 30 }}
          { 0.02 { Lasting { HATE_ELVES } }}
          { 0.02 { Lasting { HATE_HUMANS } }}
@@ -578,26 +638,77 @@
       traits = { FIGHTER }
       spawnLocation = Pregnancy
       requirements = {
-        { 1.0 Pregnancy }
+        { 0.0 Pregnancy }
         { 1.0 TechId "alchemy" }
       }
+      frequency = 1.0
     }
     {
       ids = { "GOBLIN_CHICKENMANCER" }
       traits = { FIGHTER }
       spawnLocation = Pregnancy
       requirements = {
-        { 1.0 Pregnancy }
+        { 0.0 Pregnancy }
         { 1.0 AttractionInfo 1 {FurnitureType "BOOKCASE_IRON"}}
       }
+      frequency = 1.0
     }
     {
       ids = { "TROLL" }
       traits = { FIGHTER }
       spawnLocation = Pregnancy
       requirements = {
-        { 1.0 Pregnancy }
+        { 0.0 Pregnancy }
       }
+      frequency = 1.0
     }
     DarkRecruits()
+}
+
+"tutorial" modify
+{
+    {
+      ids = { "IMP" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      spawnLocation = NearLeader
+      keybinding = CREATE_IMP
+      sound = CREATE_IMP 2
+      noAuto = true
+      requirements = {
+        { 1 ExponentialCost "GOLD" 30 5 4 }
+      }
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      tutorialHighlight = ACCEPT_IMMIGRANT
+      hiddenInHelp = true
+      consumeIds = true
+      requirements = {
+        { 0.0 TutorialRequirement ACCEPT_IMMIGRANT }
+        { 1.0 AttractionInfo 1 { FurnitureType "TRAINING_WOOD" } } 
+      }
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" "GOBLIN_WARRIOR" "GOBLIN_WARRIOR" }
+      frequency = 1.0
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      consumeIds = true
+#          hiddenInHelp = true
+      requirements = {
+        { 0.0 TutorialRequirement ACCEPT_MORE_IMMIGRANTS }
+        { 1.0 AttractionInfo 1 { FurnitureType "TRAINING_WOOD" } } 
+      }
+    }
+    {
+      ids = { "GOBLIN_ARTIFICER" }
+      frequency = 1.0
+      traits = { NO_AUTO_EQUIPMENT }
+      consumeIds = true
+#          hiddenInHelp = true
+      requirements = {
+        { 0.0 TutorialRequirement ACCEPT_MORE_IMMIGRANTS}
+        { 1.0 AttractionInfo 1 { FurnitureType "WORKSHOP" } } 
+      }
+    }
 }

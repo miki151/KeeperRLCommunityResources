@@ -4,6 +4,148 @@
 
 "BONUS MOD CONTAINS EXTRA ENEMIES MOD WHICH CONTAINS ADVENTURERS MOD - No need to mix these mods." inherit IMP {}
 
+"ADVENTURER"
+  {
+    viewId = { "player" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 20 
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "squire"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+     }
+    permanentEffects = {
+      AMBUSH_SKILL 1
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 16
+      SPELL_DAMAGE 16
+      RANGED_DAMAGE 16
+    }
+    hatedByEffect = HATE_HUMANS
+    spellSchools = { "fighter" "mage" }
+    inventory = {
+      { "FirstAidKit" 2 4 }
+      { "Knife"}
+      { "Sword"}
+      { "LeatherGloves"}
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "GoldPiece" 16 26 }
+    }
+  }
+"ADVENTURER_F" inherit "ADVENTURER"
+  {
+    viewId = { "player_f" }
+    gender = FEMALE
+    name = {
+      name = "squire"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+     }
+  }
+
+########################
+#From Haunted dungeon mod
+########################
+
+"VANISH_ZOMBIE" inherit "ZOMBIE"
+{
+  permanentEffects = {
+	DISAPPEAR_DURING_DAY 1
+  }
+}
+
+########################
+#From Dwarven Fort mod
+########################
+
+"DWARF_ELDER" inherit "DWARF"
+  {
+      name = {
+        name = "dying elder"
+		pluralName = "dwarves"
+        firstNameGen = "DWARF"		
+	  }
+}
+
+"DWARF_PLAYER" modify append { permanentEffects = append { RIDER 1 } }
+"DWARF_PLAYER_F" modify append  { permanentEffects = append { RIDER 1 } }
+
+########################
+#From Cats mod
+########################
+
+"CAT1"
+  {
+    viewId = { "cat01" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 5 
+    }
+    body = {
+      type = FourLegged MEDIUM
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 4 { attackType = BITE attackMsg = BITE } }}}
+      }
+      weight = 10
+    }
+    aiType = RANGED
+    name = {
+      name = "cat"
+    }
+    chatReactionFriendly = "mews knowingly"
+    chatReactionHostile = "\"HISSS!\""
+    petReaction = "purrs"
+  }
+"CAT2" inherit "CAT1" { viewId = { "cat02" } }
+"CAT3" inherit "CAT1" { viewId = { "cat03" } }
+"CAT4" inherit "CAT1" { viewId = { "cat04" } }
+"CAT5" inherit "CAT1" { viewId = { "cat05" } }
+"CAT6" inherit "CAT1" { viewId = { "cat06" } }
+"CAT7" inherit "CAT1" { viewId = { "cat07" } }
+"CAT8" inherit "CAT1" { viewId = { "cat08" } }
+
+################################################
+#Don't do this (Zombie spawners on some mods!) #
+################################################
+# "ZOMBIE" modify { () } #
+#########################################################
+# Summoned (some mods)                                  #
+#########################################################
+#"SKELETON_WARRIOR" modify { () } #
+#"SKELETON_ARCHER" modify { () }  #
+#########################################################
+######################################################
+# Goblins are summoned in some mods. No arifacts!    #
+######################################################
+#"GOBLIN_ARCHER" modify { () } #
+#"GOBLIN_SHAMAN" modify { () } #
+#"GOBLIN_WARRIOR" modify { () }#
+#"GOBLIN_WORKER" modify { () } #
+#"GOBLIN_PRIEST" modify { () } #
+#"GOBLIN_KING" modify { () }   #
+#"GOBLIN_MATRON" modify { () } #########
+#"GOBLIN_WARRIOR_VILLAIN" modify { () }#
+#"GOBLIN_WIZARD" modify { () }         #
+#"GOBLIN_WIZARD_VILLAIN" modify { () } #
+#"GOBLIN_GUARD" modify { () }          #
+#"GOBLIN_GUARD_VILLAIN" modify { () }  #
+#"GOBLIN_ARCHER_VILLAIN" modify { () } #
+#"GOBLIN_KABOOMER" modify { () }       #
+#"GOBLIN_CHICKENMANCER" modify { () }  #
+##############################################################
+
+########################
+#From Extra Enemmies Mod
+########################
+
 #############################
 #SHARED WITH ADVENTURERS MOD
 #############################
@@ -30,9 +172,9 @@
            HEAD 1
              } }
       spells = {
-        "EE haste other"
-        "EE defend other"
-        "EE friendly damage bonus"
+        "EE_haste other"
+        "EE_defend other"
+        "EE_friendly damage bonus"
       }
       permanentEffects = {
         IMMOBILE 1
@@ -113,7 +255,7 @@
       chatReactionFriendly = "\"it screeches in a horrid voice\""
       chatReactionHostile = "\"it screeches in a horrid voice\""
 	  cantEquip = true
-      spells = { "EE rapid invisibility" }
+      spells = { "EE_rapid invisibility" }
       permanentEffects = {
 		SPEED 1
 		TELEPATHY 1
@@ -176,7 +318,7 @@
         DAMAGE 20
         DEFENSE 24 
       }
-	  spells = { "EE cause blindness" }
+	  spells = { "EE_cause blindness" }
       viewId = { "special_bmgn" ColorId LIGHT_BLUE }
     }
   "EE_LIGHT_RED_SPIDER" inherit "SPIDER"
@@ -185,7 +327,7 @@
         DAMAGE 24
         DEFENSE 28 
       }
-	  spells = { "EE cripple" "EE hatch eggs" }
+	  spells = { "EE_cripple" "EE_hatch eggs" }
       viewId = { "special_bmgn" ColorId LIGHT_RED }
     }
   "EE_LIGHT_BROWN_SPIDER" inherit "SPIDER"
@@ -194,7 +336,7 @@
         DAMAGE 28
         DEFENSE 30 
       }
-	  spells = { "EE breed horrors" }
+	  spells = { "EE_breed horrors" }
       viewId = { "special_bmgn" ColorId LIGHT_BROWN }
     }
   
@@ -222,9 +364,9 @@
 	  LABORATORY 30
     }
 	spells = { "magic missile" }
-    spellSchools = { "extra ancient magic" "extra fire wizard" }
+    spellSchools = { "bonus ancient magic" "bonus fire wizard" }
     maxLevelIncrease = {
-      SPELL 16
+      SPELL_DAMAGE 16
     }
     permanentEffects = {
       MAGIC_RESISTANCE 1
@@ -240,6 +382,9 @@
         {  "LeatherBoots" }
         {  "LeatherGloves" }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
   }
 
     "EE_WARRIOR_HERO"
@@ -260,13 +405,13 @@
 	  FORGE 25
     }
 
-    spellSchools = { "extra fighter" }
+    spellSchools = { "bonus fighter" }
 	spells = {
       "healing"
 	  "damage bonus"
     }
     maxLevelIncrease = {
-      MELEE 13
+      DAMAGE 13
     }
     permanentEffects = {
       MELEE_RESISTANCE 1
@@ -276,6 +421,10 @@
     chatReactionHostile  = "\"We are taking you down!\""
     deathDescription = "killed, fighting to the last"
     hatedByEffect = HATE_HUMANS
+	
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
   }
   "EE_THIEF_HERO"
     {
@@ -295,11 +444,11 @@
 	  WORKSHOP 30
       }
     maxLevelIncrease = {
-      ARCHERY 20
-      MELEE 3
-	  SPELL 7
+      RANGED_DAMAGE 20
+      DAMAGE 3
+	  SPELL_DAMAGE 7
       }
-    spellSchools = { "extra dark stealth" }
+    spellSchools = { "bonus dark stealth" }
     permanentEffects = {
       ELF_VISION 1
       NIGHT_VISION 1
@@ -322,12 +471,15 @@
         { Amulet NIGHT_VISION 1 1 0.05}
         { Amulet SWIMMING_SKILL 1 1 0.05}
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
   }
 
   "EE_WIZARD_ADVENTURER" inherit "EE_WIZARD_HERO"
     {
     maxLevelIncrease = {
-      SPELL 20 }
+      SPELL_DAMAGE 20 }
     }
 	
   "EE_WARRIOR_ADVENTURER"
@@ -350,11 +502,11 @@
 		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 18
-        SPELL 12
+        DAMAGE 18
+        SPELL_DAMAGE 12
       }
       hatedByEffect = HATE_HUMANS
-      spellSchools = { "extra fighter" "extra war magic" }
+      spellSchools = { "bonus fighter" "bonus war magic" }
       inventory = {
         {  "FirstAidKit" 2 4 }
         {  "Sword"}
@@ -364,6 +516,10 @@
         {  "LeatherHelm"}
         {  "GoldPiece" 16 26 }
       }
+	  
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
   "EE_WARRIOR_ADVENTURER_FEMALE" inherit "EE_WARRIOR_ADVENTURER"
     {
@@ -396,11 +552,11 @@
 		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 7
-        SPELL 24
+        DAMAGE 7
+        SPELL_DAMAGE 24
       }
       hatedByEffect = HATE_HUMANS
-      spellSchools = { "extra battle mage" }
+      spellSchools = { "bonus battle mage" }
 	   spells = {
 		 "healing" 
 		 "advanced magic missile" 
@@ -415,6 +571,9 @@
         {  "LeatherBoots"}
         {  "GoldPiece" 16 26 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
   "EE_MAGE_ADVENTURER_FEMALE" inherit "EE_MAGE_ADVENTURER"
     {
@@ -448,11 +607,11 @@
 		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 12
-        ARCHERY 20
+        DAMAGE 12
+        RANGED_DAMAGE 20
       }
       hatedByEffect = HATE_HUMANS
-      spellSchools = { "extra fighter" }
+      spellSchools = { "bonus fighter" }
 	   spells = {
 		 "healing"
 		 "escape"
@@ -466,6 +625,9 @@
         {  "LeatherHelm"}
         {  "GoldPiece" 16 26 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
 	}
   "EE_RANGER_ADVENTURER_FEMALE" inherit "EE_RANGER_ADVENTURER"
     {
@@ -497,12 +659,12 @@
 		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 30
+        DAMAGE 30
       }
       hatedByEffect = HATE_HUMANS
-      spellSchools = { "extra fighter" "extra barbarian" }
+      spellSchools = { "bonus fighter" "bonus barbarian" }
 	   spells = {
-		 "EE battle cry"
+		 "EE_battle cry"
 	  }
       inventory = {
         { countMin = 2 countMax = 4 type = Potion Heal {FLESH} }
@@ -511,6 +673,9 @@
         {  "LeatherBoots"}
         {  "GoldPiece" 16 26 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
   "EE_BARBARIAN_ADVENTURER_FEMALE" inherit "EE_BARBARIAN_ADVENTURER"
     {
@@ -546,13 +711,13 @@
 		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 12
-		ARCHERY 12
-		SPELL 12
+        DAMAGE 12
+		RANGED_DAMAGE 12
+		SPELL_DAMAGE 12
       }
-      spellSchools = { "extra assassination" "extra assassin magic" "extra assassin star arts" }
+      spellSchools = { "bonus assassination" "bonus assassin magic" "bonus assassin star arts" }
 	   spells = {
-		 "EE rapid invisibility"
+		 "EE_rapid invisibility"
 	  }
       inventory = {
         { countMin = 2 countMax = 4 type = Potion Heal {FLESH} }
@@ -562,6 +727,9 @@
         {  "LeatherBoots"}
         {  "GoldPiece" 26 36 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
   "EE_ASSASSIN_ADVENTURER_FEMALE" inherit "EE_ASSASSIN_ADVENTURER"
     {
@@ -597,8 +765,8 @@
 	  }
 	   spells = {
 		 "invisibility"
-		 "EE advanced throwing star"
-		 "EE shadow step"
+		 "EE_advanced throwing star"
+		 "EE_shadow step"
 	  }
     }
   "EE_ASSASSIN_SPIRIT_CLONE"
@@ -625,10 +793,10 @@
       }
 	   spells = {
 		 "invisibility"
-		 "EE expert throwing star"
-		 "EE shadow step"
-		 "EE vanish"
-		 "EE expert vitals strike"
+		 "EE_expert throwing star"
+		 "EE_shadow step"
+		 "EE_vanish"
+		 "EE_expert vitals strike"
 	  }
     }
   "EE_ADVENTURER_SPIDER" inherit "SPIDER"
@@ -645,15 +813,18 @@
         FAST_TRAINING 1
       }
       maxLevelIncrease = {
-        MELEE 12
+        DAMAGE 12
       }
-	  spells = { "EE spin web" "EE dig pit" "EE mud wall" }
-      spellSchools = { "extra spider" }
+	  spells = { "EE_spin web" "EE_dig pit" "EE_mud wall" }
+      spellSchools = { "bonus spider" }
       gender = FEMALE
       attr = {
         DAMAGE 30
         DEFENSE 30
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
   "EE_CLERIC_HERO"
     {
@@ -672,7 +843,7 @@
       DEFENSE 40
 	  JEWELER 30
     }
-    spellSchools = { "extra healer" "extra high priest" }
+    spellSchools = { "bonus healer" "bonus high priest" }
     spells = {
       "healing"
     }
@@ -681,8 +852,8 @@
 	  RIDER 1
     }
     maxLevelIncrease = {
-      SPELL 15
-	  MELEE 3
+      SPELL_DAMAGE 15
+	  DAMAGE 3
     }
     chatReactionFriendly = "talks at length about his goddess"
     chatReactionHostile  = "\"Your afterlife will be horrible!\""
@@ -694,6 +865,9 @@
         {  "LeatherBoots" }
         {  "LeatherGloves" }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
   }
   
   "EE_NECROMANCER"
@@ -712,8 +886,8 @@
         name = "necromancer"
       }
       maxLevelIncrease = {
-        MELEE 3
-        SPELL 12
+        DAMAGE 3
+        SPELL_DAMAGE 12
       }
       permanentEffects = {
         RANGED_RESISTANCE 1
@@ -722,8 +896,8 @@
         DARKNESS_SOURCE 1
 		RIDER 1
       }
-      spellSchools = { "extra necromancy" }
-      spells = { "deception" "EE summon skeletons" }
+      spellSchools = { "bonus necromancy" }
+      spells = { "deception" "EE_summon skeletons" }
       chatReactionFriendly = "\"At your service, master!\""
       chatReactionHostile = "\"Soon you will join my undead ranks. DIE!\""
       hatedByEffect = HATE_UNDEAD
@@ -733,6 +907,9 @@
         { type = Glyph ARMOR ItemAttrBonus DEFENSE 3 chance = 0.01 }
         { type = Glyph WEAPON ItemAttrBonus DAMAGE 3 chance = 0.01 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
 
 #Necromancy
@@ -757,8 +934,8 @@
         }
       spellSchools = { "mage" }
       spells = {
-        "EE lesser eye servant"
-        "EE rapid magic missile"		
+        "EE_lesser eye servant"
+        "EE_rapid magic missile"		
       }
       permanentEffects = {
         SPEED 1
@@ -798,7 +975,7 @@
         weight = 10    
         }
       spells = {
-        "EE rapid magic missile"		
+        "EE_rapid magic missile"		
       }
       permanentEffects = {
         SPEED 1
@@ -837,8 +1014,8 @@
 		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 2
-        SPELL 7
+        DAMAGE 2
+        SPELL_DAMAGE 7
       }
      spellSchools = { "mage" }
      spells = { "fireball" }
@@ -863,6 +1040,9 @@
         {  "GoldPiece" 80 120 }
         { type =  "EE_DwarvenBeer" chance = 0.1 }
     }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
   }
   
     "EE_MINOTAUR" inherit "MINOTAUR" {
@@ -880,6 +1060,9 @@
 		{ Potion RegrowBodyPart 1 1 1 0.03 }
 		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
 	
     "EE_CYCLOPS" inherit "CYCLOPS" {
@@ -897,7 +1080,135 @@
 		{ Potion RegrowBodyPart 1 1 1 0.03 }
 		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
       }
+	promotionGroup = "adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }	
+
+"EE_IMMORTAL_DEATH" inherit "DEATH" {
+    spells = {
+			"EE_magic wish"
+			"EE_adamantine golem"
+			"EE_adamantine golems"
+			"EE_advanced bleeding star"
+			"EE_advanced fireball"
+			"EE_advanced fireblast"
+			"EE_advanced firewall"
+			"EE_advanced mind bolt"
+			"EE_advanced poison star"
+			"EE_advanced rapid invisibility"
+			"EE_advanced shadow bolt"
+			"EE_advanced throwing star"
+			"EE_advanced vitals strike"
+			"EE_air render"
+			"EE_area damage bonus"
+			"EE_area defense bonus"
+			"EE_area fire shield"
+			"EE_arm strike"
+			"EE_armor strike"
+			"EE_arrow shield"
+			"EE_assassinate"
+			"EE_battle cry"
+			"EE_bear"
+			"EE_bleeding star"
+			"EE_block"
+			"EE_blood curse"
+			"EE_blood rage"
+			"EE_boar"
+			"EE_break through"
+			"EE_breed dark spawn"
+			"EE_breed hell"
+			"EE_breed horrors"
+			"EE_buff totem"
+			"EE_cause blindness"
+			"EE_cripple"
+			"EE_curse of rage"
+			"EE_curse of risks"
+			"EE_darkness"
+			"EE_decapitate"
+			"EE_defend other"
+			"EE_dig pit"
+			"EE_double star"
+			"EE_double strike"
+			"EE_elf vision"
+			"EE_escape slash"
+			"EE_escape star"
+			"EE_expert fireball"
+			"EE_expert fireblast"
+			"EE_expert firewall"
+			"EE_expert shadow bolt"
+			"EE_expert throwing star"
+			"EE_expert vitals strike"
+			"EE_explosion"
+			"EE_eye servant"
+			"EE_fire shield"
+			"EE_fireblast"
+			"EE_freezing vines"
+			"EE_friendly damage bonus"
+			"EE_haste other"
+			"EE_hatch eggs"
+			"EE_healing totem"
+			"EE_heroic leap"
+			"EE_iron golem"
+			"EE_iron golems"
+			"EE_knockdown"
+			"EE_leg strike"
+			"EE_lesser eye servant"
+			"EE_magma bolt"
+			"EE_mana curse"
+			"EE_martial blast"
+			"EE_martial strike"
+			"EE_master throwing star"
+			"EE_mind bolt"
+			"EE_mud wall"
+			"EE_poison bolt"
+			"EE_poison star"
+			"EE_rapid invisibility"
+			"EE_rapid magic missile"
+			"EE_regeneration"
+			"EE_regrow body part"
+			"EE_resist magic"
+			"EE_shadow bolt"
+			"EE_shadow step"
+			"EE_smoke bomb"
+			"EE_snakes"
+			"EE_spin web"
+			"EE_split spirit"
+			"EE_stone golem"
+			"EE_stone golems"
+			"EE_stone to mud"
+			"EE_substitute"
+			"EE_summon air elementals"
+			"EE_summon shades"
+			"EE_summon shadow clone army"
+			"EE_summon shadow clones"
+			"EE_summon skeleton mages"
+			"EE_summon skeleton warriors"
+			"EE_summon skeletons"
+			"EE_summon spirit"
+			"EE_telepathy"
+			"EE_throw sand"
+			"EE_throwing star"
+			"EE_triple star"
+			"EE_triple strike"
+			"EE_vanish"
+			"EE_vitals strike"
+			"EE_weapon dodge"
+			"EE_weapon strike"
+			"EE_web wall"
+			"EE_wild swing"
+			"EE_wolves"
+		}
+		permanentEffects = append {
+           INVULNERABLE 1
+           FLYING 1
+           REGENERATION 1
+           POISON_RESISTANT 1
+           FIRE_IMMUNITY 1
+           SPEED 1
+        }
+		body = append { type = Humanoid HUGE }
+	}
 
 #################################
 #NOT SHARED WITH ADVENTURERS MOD
@@ -1041,7 +1352,7 @@
         SPELL_DAMAGE 1
         SPEED 1 #Modded
       }
-      spells = { "directed blast" "EE disenchantment bolt"} #Modded
+      spells = { "directed blast" "EE_disenchantment bolt"} #Modded
     inventory = {
       {  "GoldPiece" 5 10 }
       {  "EE_DEFENSEAMULET" 1 1 0.03}
@@ -1540,9 +1851,9 @@
       }
     }
   "ELEMENTALIST" modify append {
-      maxLevelIncrease = { SPELL 16 }
-      spellSchools = { "extra elemental" }
-      spells = { "EE elemental tea" "EE summon air elementals" }
+      maxLevelIncrease = { SPELL_DAMAGE 16 }
+      spellSchools = { "bonus elemental" }
+      spells = { "EE_elemental tea" "EE_summon air elementals" }
       gender = FEMALE
       permanentEffects = {
         FIRE_RESISTANT 1
@@ -1556,7 +1867,6 @@
         {  "ChainArmor" }
       }
     }
-
  "GOBLIN_ARCHER" modify
     {
       viewId = { "goblin_archer" }
@@ -1575,8 +1885,8 @@
 		RIDER 1
       }
 	  maxLevelIncrease = {
-        MELEE 3
-        ARCHERY 5
+        DAMAGE 3
+        RANGED_DAMAGE 5
 	  }
       name = {
         name = "goblin archer"
@@ -1613,11 +1923,11 @@
       body = {
         type = Humanoid MEDIUM
       }
-	  spellSchools = { "extra avian lore" }
+	  spellSchools = { "bonus avian lore" }
       spells = {
-		 "EE summon chickens" 
+		 "EE_summon chickens" 
 		 "advanced healing" 
-		 "EE summon giant chickens" 
+		 "EE_summon giant chickens" 
 		 "escape" 
 		 "advanced magic missile"
 	  }
@@ -1628,8 +1938,8 @@
 		RIDER 1
       }
 	  maxLevelIncrease = {
-        MELEE 3
-        SPELL 5
+        DAMAGE 3
+        SPELL_DAMAGE 5
 	  }
       name = {
         name = "goblin chickenmancer"
@@ -1675,10 +1985,10 @@
       }
       spells = {
 		 "advanced healing"
-		 "EE summon goblin guards"
+		 "EE_summon goblin guards"
 		 "expert magic missile"
-		 "EE goblin damage buff"
-		 "EE goblin defense buff"
+		 "EE_goblin damage buff"
+		 "EE_goblin defense buff"
 		 "invisibility"
 		 "escape"
 	  }
@@ -1691,8 +2001,8 @@
 		RIDER 1
 	  }
 	  maxLevelIncrease = {
-        MELEE 7
-        SPELL 7
+        DAMAGE 7
+        SPELL_DAMAGE 7
 	  }
       name = {
         name = "goblin king"
@@ -1757,11 +2067,11 @@
       body = {
         type = Humanoid MEDIUM
       }
-	  spellSchools = { "extra goblin priest" }
+	  spellSchools = { "bonus goblin priest" }
       spells = {
 		 "expert healing"
-		 "EE healing totem"
-		 "EE buff totem"
+		 "EE_healing totem"
+		 "EE_buff totem"
 		 "advanced magic missile"
 		 "advanced cure poison" 
 	     "cure blindness"  
@@ -1774,7 +2084,7 @@
 		RIDER 1
       }
 	  maxLevelIncrease = {
-        SPELL 4
+        SPELL_DAMAGE 4
 	  }
       name = {
         name = "goblin priest"
@@ -1822,13 +2132,13 @@
 		RIDER 1
 	  }
       maxLevelIncrease = {
-        MELEE 3
+        DAMAGE 3
       }
-      spellSchools = { "extra fighter" }
+      spellSchools = { "bonus fighter" }
       spells = { 
 	    "shove"
-        "EE battle cry"
-        "EE block"
+        "EE_battle cry"
+        "EE_block"
       }
       name = {
         name = "goblin warrior"
@@ -1858,16 +2168,16 @@
       body = {
         type = Humanoid MEDIUM
       }
-	  spellSchools = { "extra goblin wizard" }
+	  spellSchools = { "bonus goblin wizard" }
       spells = {
 		 "expert magic missile" 
 		 "escape" 
 		 "healing" 
-		 "EE snakes" 
+		 "EE_snakes" 
 		 "deception" 
 		 "teleport" 
 		 "advanced cure poison"   
-		 "EE freezing vines"
+		 "EE_freezing vines"
 	  }
       chatReactionFriendly = "talks about goblin magic"
       chatReactionHostile = "\"Die!\""
@@ -1876,7 +2186,7 @@
 		RIDER 1
       }
 	  maxLevelIncrease = {
-        SPELL 4
+        SPELL_DAMAGE 4
 	  }
       name = {
         name = "goblin wizard"
@@ -2039,8 +2349,8 @@
       }
       gender = FEMALE
       maxLevelIncrease = {
-        MELEE 3
-        ARCHERY 7
+        DAMAGE 3
+        RANGED_DAMAGE 7
       }
       permanentEffects = {
         SPEED 1
@@ -2075,8 +2385,8 @@
         DEFENSE 14   
       }
       maxLevelIncrease = {
-        MELEE 3
-        ARCHERY 1
+        DAMAGE 3
+        RANGED_DAMAGE 1
       }
       permanentEffects = {
         SPEED 1
@@ -2088,7 +2398,7 @@
         pluralName = "Centaurs"
 	    firstNameGen = "FIRST_MALE"
       }
-      chatReactionFriendly = "\"talks about farming\""
+      chatReactionFriendly = "talks about farming"
       chatReactionHostile = "\"Stay Back!\""
 	  inventory = {
         {  "FirstAidKit" 1 1 0.1}
@@ -2106,8 +2416,8 @@
       }
       gender = FEMALE
       maxLevelIncrease = {
-        MELEE 2
-        ARCHERY 5
+        DAMAGE 2
+        RANGED_DAMAGE 5
       }
       spells = {
         "advanced healing"
@@ -2117,7 +2427,7 @@
         pluralName = "Centaurs"
     	firstNameGen = "FIRST_FEMALE"
       }
-      chatReactionFriendly = "\"talks about methods of trackings animals\""
+      chatReactionFriendly = "talks about methods of tracking animals"
       chatReactionHostile = "\"Die!\""
       inventory = {
         {  "Bow"}
@@ -2140,8 +2450,8 @@
       }
       gender = FEMALE
       maxLevelIncrease = {
-        MELEE 2
-        SPELL 4
+        DAMAGE 2
+        SPELL_DAMAGE 4
       }
       permanentEffects = {
         SPEED 1
@@ -2152,7 +2462,7 @@
         "expert healing"
 		"group healing"
 		"advanced magic missile"
-		"EE advanced magic blast"
+		"EE_advanced magic blast"
 		"advanced cure poison"
 		"cure blindness"
       }
@@ -2162,7 +2472,7 @@
         pluralName = "Centaurs"
     	firstNameGen = "FIRST_FEMALE"
       }
-      chatReactionFriendly = "\"talks about centaur religion\""
+      chatReactionFriendly = "talks about centaur religion"
       chatReactionHostile = "\"Die!\""
       inventory = {
         { type =  "IronStaff" prefixChance = 0.3}
@@ -2188,7 +2498,7 @@
         name = "centaur child"
         pluralName = "centaur children"
       }
-      chatReactionFriendly = "\"talks about playing in the fields\""
+      chatReactionFriendly = "talks about playing in the fields"
       chatReactionHostile = "\"Don't hurt me!\""
 	  inventory = {
         {  "FirstAidKit" 1 1 0.1}
@@ -2204,15 +2514,15 @@
         DEFENSE 36   
       }
       maxLevelIncrease = {
-        MELEE 7
+        DAMAGE 7
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       name = {
         name = "centaur king"
         pluralName = "Centaurs"
 	    firstNameGen = "FIRST_MALE"
       }
-      chatReactionFriendly = "\"curses all greenskin invaders\""
+      chatReactionFriendly = "curses all greenskin invaders"
       chatReactionHostile = "\"Die!\""
       deathDescription = "slain"
       inventory = {
@@ -2241,15 +2551,15 @@
 		FORGE 15
       }
       maxLevelIncrease = {
-        MELEE 5
+        DAMAGE 5
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       name = {
         name = "centaur knight"
         pluralName = "Centaurs"
 	    firstNameGen = "FIRST_MALE"
       }
-      chatReactionFriendly = "\"talks about slaying greenskins\""
+      chatReactionFriendly = "talks about slaying greenskins"
       chatReactionHostile = "\"Perish Fiend!\""
       inventory = {
         {  "Sword" }
@@ -2291,7 +2601,7 @@
   
 "EE_AMAZON"
     {
-      viewId = { "amazon" }
+      viewId = { "amazonWP" }
       attr = {
         DAMAGE 20
         DEFENSE 17
@@ -2309,10 +2619,10 @@
       gender = FEMALE
 	  hatedByEffect = HATE_HUMANS
       maxLevelIncrease = {
-        MELEE 4
-        ARCHERY 3
+        DAMAGE 4
+        RANGED_DAMAGE 3
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       permanentEffects = {
         FAST_TRAINING 1
         ELF_VISION 1
@@ -2327,7 +2637,7 @@
         pluralName = "amazons"
         firstNameGen = "FIRST_FEMALE"
       }
-      chatReactionFriendly = "\"talks about her god's many blessings\""
+      chatReactionFriendly = "talks about her gods' many blessings"
       chatReactionHostile = "\"Die, fiend!\""
       inventory = {
         {  "Sword"}
@@ -2352,8 +2662,8 @@
         RANGED_DAMAGE 32 
       }
       maxLevelIncrease = {
-        MELEE 2
-        ARCHERY 4
+        DAMAGE 2
+        RANGED_DAMAGE 4
       }
       spells = {
         "healing"
@@ -2367,7 +2677,7 @@
         pluralName = "amazons"
         firstNameGen = "FIRST_FEMALE"
       }
-      chatReactionFriendly = "\"talks about tracking prey\""
+      chatReactionFriendly = "talks about tracking prey"
       chatReactionHostile = "\"Die, fiend!\""
       inventory = {
         {  "ElvenBow"}
@@ -2394,9 +2704,9 @@
 	DIGGING 25
   }
   maxLevelIncrease = {
-	MELEE 5
+	DAMAGE 5
   }
-  spellSchools = { "extra fighter" }
+  spellSchools = { "bonus fighter" }
   name = {
 	name = "amazon champion"
 	pluralName = "amazons"
@@ -2405,10 +2715,10 @@
 	  permanentEffects = {
 	RIDER 1
   }
-  chatReactionFriendly = "\"talks about honoring the gods.\""
+  chatReactionFriendly = "talks about honoring the gods."
   chatReactionHostile = "\"Die, cretin!\""
   inventory = {
-	{ type =  "BattleAxe" prefixChance = 0.1 }
+	{ type =  "EE_Amazweihander" prefixChance = 0.1 }
 	{ type =  "ChainArmor" prefixChance = 0.1 }
 	{  "IronGloves"}
 	{  "IronBoots"}
@@ -2423,24 +2733,24 @@
 
 "EE_AMAZON_ELDER" inherit "EE_AMAZON"
 {
-  viewId = { "amazon_elder" }
+  viewId = { "amazon_elderWP" }
   attr = {
 	DAMAGE 16
 	DEFENSE 16 
 	SPELL_DAMAGE 45  
   }
   maxLevelIncrease = {
-	MELEE 7
-	SPELL 10
-	ARCHERY 3
+	DAMAGE 7
+	SPELL_DAMAGE 10
+	RANGED_DAMAGE 3
   }
-  spellSchools = { "extra shaman" }
+  spellSchools = { "bonus shaman" }
   spells = {
 	"magic missile"
 	"slow"
 	"healing"
 	"advanced healing"
-	"EE summon spirit"
+	"EE_summon spirit"
   }
   permanentEffects = {
 	FAST_TRAINING 1
@@ -2457,7 +2767,7 @@
 	pluralName = "amazons"
 	firstNameGen = "FIRST_FEMALE"
   }
-  chatReactionFriendly = "\"talks about legends of old.\""
+  chatReactionFriendly = "talks about legends of old."
   chatReactionHostile = "\"Die, fiend!\""
   inventory = {
 	{ type =  "Robe" prefixChance = 1}
@@ -2468,18 +2778,18 @@
 
 "EE_AMAZON_QUEEN" inherit "EE_AMAZON"
 {
-  viewId = { "amazon_queen" }
+  viewId = { "amazon_queenWP" }
   attr = {
 	DAMAGE 42
 	DEFENSE 36 
 	SPELL_DAMAGE 35  
   }
   maxLevelIncrease = {
-	MELEE 9
-	SPELL 7
-	ARCHERY 3
+	DAMAGE 9
+	SPELL_DAMAGE 7
+	RANGED_DAMAGE 3
   }
-  spellSchools = { "extra fighter" }
+  spellSchools = { "bonus fighter" }
   spells = {
 	"healing"
 	"cure poison"
@@ -2502,7 +2812,7 @@
 	pluralName = "amazons"
 	firstNameGen = "FIRST_FEMALE"
   }
-  chatReactionFriendly = "\"complains about the teachings of the elders\""
+  chatReactionFriendly = "complains about the teachings of the elders"
   chatReactionHostile = "\"Die, fiend!\""
   inventory = {
 
@@ -2521,17 +2831,17 @@
 
 "EE_AMAZON_WAR_MAIDEN" inherit "EE_AMAZON"
 {
-  viewId = { "amazon_war_maiden" }
+  viewId = { "amazon_war_maidenWP" }
   attr = {
 	DAMAGE 30
 	DEFENSE 20   
   }
   maxLevelIncrease = {
-	MELEE 3
-	SPELL 3
-	ARCHERY 2
+	DAMAGE 3
+	SPELL_DAMAGE 3
+	RANGED_DAMAGE 2
   }
-  spellSchools = { "extra fighter" }
+  spellSchools = { "bonus fighter" }
   permanentEffects = {
 	FAST_TRAINING 1
 	ELF_VISION 1
@@ -2546,7 +2856,7 @@
 	pluralName = "amazons"
 	firstNameGen = "FIRST_FEMALE"
   }
-  chatReactionFriendly = "\"talks about combat training\""
+  chatReactionFriendly = "talks about combat training"
   chatReactionHostile = "\"Die!\""
   inventory = {
 	{  "ElvenSword"}
@@ -2579,16 +2889,16 @@
   }
   gender = FEMALE
   maxLevelIncrease = {
-	MELEE 3
-	SPELL 16
+	DAMAGE 3
+	SPELL_DAMAGE 16
   }
   spellSchools = { "mage" }
   spells = {
-	"EE elemental tea"
-	"EE choking vapor"
-	"EE arrow shield"
-	"EE magic blast"
-	"EE summon air elementals"
+	"EE_elemental tea"
+	"EE_choking vapor"
+	"EE_arrow shield"
+	"EE_magic blast"
+	"EE_summon air elementals"
   }
   permanentEffects = {
 	ELF_VISION 1
@@ -2603,7 +2913,7 @@
 	pluralName = "fairies"
 	firstNameGen = "EE_PIXIE"
   }
-  chatReactionFriendly = "\"talks about flying through clouds\""
+  chatReactionFriendly = "talks about flying through clouds"
   chatReactionHostile = "\"Don't mess with Air Fairies!\""
 }
 "EE_DARK_FAIRY" inherit "EE_AIR_FAIRY"
@@ -2612,17 +2922,17 @@
   spellSchools = { "mage" }
   spells = {
 	"healing"
-	"EE blood curse"
-	"EE spiders"
-	"EE darkness"
-	"EE mana curse"
+	"EE_blood curse"
+	"EE_spiders"
+	"EE_darkness"
+	"EE_mana curse"
   }
   name = {
 	name = "dark fairy"
 	pluralName = "fairies"
 	firstNameGen = "EE_PIXIE"
   }
-  chatReactionFriendly = "\"talks about the all-consuming void of darkness\""
+  chatReactionFriendly = "talks about the all-consuming void of darkness"
   chatReactionHostile = "\"The shadows will consume you!\""
 }
 "EE_DEMON_FAIRY" inherit "EE_AIR_FAIRY"
@@ -2639,8 +2949,8 @@
   spellSchools = { "mage" }
   spells = {
 	"healing"
-	"EE mind bolt"
-	"EE cause blindness"
+	"EE_mind bolt"
+	"EE_cause blindness"
   }
 
   name = {
@@ -2648,7 +2958,7 @@
 	pluralName = "fairies"
 	firstNameGen = "EE_PIXIE"
   }
-  chatReactionFriendly = "\"talks about not wanting to become a succubus\""
+  chatReactionFriendly = "talks about not wanting to become a succubus"
   chatReactionHostile = "\"Die, Whelp!\""
 }
 "EE_EARTH_FAIRY" inherit "EE_AIR_FAIRY"
@@ -2656,23 +2966,26 @@
   viewId = { "earth_fairy" }
   spellSchools = { "mage" }
   spells = {
-	"EE summon earth elementals"
-	"EE earth blast"
-	"EE elemental tea"
-	"EE spit shards"
-	"EE stone to mud"
-	"EE stone golems"
+	"EE_summon earth elementals"
+	"EE_earth blast"
+	"EE_elemental tea"
+	"EE_spit shards"
+	"EE_stone to mud"
+	"EE_stone golems"
   }
   attr = append {
 	DIGGING 50
 	FORGE 35
+  }
+  permanentEffects = append {
+	NO_FRIENDLY_FIRE 1 #Earth Blast is apparently very good at hitting friendlies and causing infighting?
   }
   name = {
 	name = "earth fairy"
 	pluralName = "fairies"
 	firstNameGen = "EE_PIXIE"
   }
-  chatReactionFriendly = "\"talks about different kinds of metals\""
+  chatReactionFriendly = "talks about different kinds of metals"
   chatReactionHostile = "\"Don't mess with Earth Fairies!\""
 }
 "EE_ELECTRIC_FAIRY" inherit "EE_AIR_FAIRY"
@@ -2681,7 +2994,7 @@
   spellSchools = { "mage" }
   spells = {
 	"healing"
-	"EE cripple"
+	"EE_cripple"
 	"magic missile"
   }
   name = {
@@ -2708,7 +3021,7 @@
 	}
   }	  spellSchools = { "mage" }
   spells = {
-	"EE elemental tea"
+	"EE_elemental tea"
 	"fireball"
 	"firewall"
   }
@@ -2725,7 +3038,7 @@
 	pluralName = "fairies"
 	firstNameGen = "EE_PIXIE"
   }
-  chatReactionFriendly = "\"talks about burning things\""
+  chatReactionFriendly = "talks about burning things"
   chatReactionHostile = "\"BURN!\""
 }
 "EE_LIGHT_FAIRY" inherit "EE_AIR_FAIRY"
@@ -2735,26 +3048,26 @@
   spells = {
 	"healing"
 	"directed blast"
-	"EE light"
+	"EE_light"
   }
   name = {
 	name = "light fairy"
 	pluralName = "fairies"
 	firstNameGen = "EE_PIXIE"
   }
-  chatReactionFriendly = "\"talks about helping people\""
+  chatReactionFriendly = "talks about helping people"
   chatReactionHostile = "\"I will smite you!\""
 }
 "EE_MAGIC_FAIRY" inherit "EE_AIR_FAIRY"
 {
   viewId = { "magic_fairy" }
-  spellSchools = { "extra illusion" }
+  spellSchools = { "bonus illusion" }
   spells = {
 	"healing"
 	"expert magic missile"
-	"EE advanced rapid magic missile"
-	"EE snakes"
-	"EE telepathy"		
+	"EE_advanced rapid magic missile"
+	"EE_snakes"
+	"EE_telepathy"		
   }
   attr = append {
 	LABORATORY 40
@@ -2764,20 +3077,20 @@
 	pluralName = "fairies"
 	firstNameGen = "EE_PIXIE"
   }
-  chatReactionFriendly = "\"talks about good tricks to play on people\""
+  chatReactionFriendly = "talks about good tricks to play on people"
   chatReactionHostile = "\"Don't mess with Magic Fairies!\""
 }
 "EE_NATURE_FAIRY" inherit "EE_AIR_FAIRY"
 {
   viewId = { "nature_fairy" }
-  spellSchools = { "extra shaman" }
+  spellSchools = { "bonus shaman" }
   spells = {
 	"healing"
 	"advanced healing"
 	"expert healing"
-	"EE wolves"
-	"EE bear"
-	"EE boar"
+	"EE_wolves"
+	"EE_bear"
+	"EE_boar"
   }
   companions = {5 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
   name = {
@@ -2785,7 +3098,7 @@
 	pluralName = "fairies"
 	firstNameGen = "EE_PIXIE"
   }
-  chatReactionFriendly = "\"talks about growing plants\""
+  chatReactionFriendly = "talks about growing plants"
   chatReactionHostile = "\"Don't mess with Nature Fairies!\""
 }
 "EE_WATER_FAIRY" inherit "EE_AIR_FAIRY"
@@ -2793,11 +3106,11 @@
   viewId = { "water_fairy" }
   spellSchools = { "mage" }
   spells = {
-	"EE elemental tea"
-	"EE choking vapor"
-	"EE summon water elementals"
+	"EE_elemental tea"
+	"EE_choking vapor"
+	"EE_summon water elementals"
 	"ice cone"
-	"EE acid blast"
+	"EE_acid blast"
   }
   attr = append {
 	LABORATORY 45
@@ -2815,7 +3128,7 @@
 	pluralName = "fairies"
 	firstNameGen = "EE_PIXIE"
   }
-  chatReactionFriendly = "\"talks about fish and other water animals\""
+  chatReactionFriendly = "talks about fish and other water animals"
   chatReactionHostile = "\"Drown, fairy hater!\""
 }
 "EE_FAIRY_QUEEN"
@@ -2836,20 +3149,20 @@
   }
   gender = FEMALE
   maxLevelIncrease = {
-	SPELL 16
+	SPELL_DAMAGE 16
   }
-  spellSchools = { "extra fairy lore" }
+  spellSchools = { "bonus fairy lore" }
   spells = {
 	"expert healing"
-	"EE expert rapid magic missile"
+	"EE_expert rapid magic missile"
 	"expert magic missile"
-	"EE fae deception"
-	"EE fae melee boost"
-	"EE fae time twisting"
-	"EE fae illusion"
-	"EE fae escape"
-	"EE fae teleport"
-	"EE summon fae army"
+	"EE_fae deception"
+	"EE_fae melee boost"
+	"EE_fae time twisting"
+	"EE_fae illusion"
+	"EE_fae escape"
+	"EE_fae teleport"
+	"EE_summon fae army"
   }
   permanentEffects = {
 	ELF_VISION 1
@@ -2864,7 +3177,7 @@
 	name = "Goddess Illusia"
 	pluralName = "fairies"
   }
-  chatReactionFriendly = "\"talks about ancient fae magic\""
+  chatReactionFriendly = "talks about ancient fae magic"
   chatReactionHostile = "\"Magic consume you!\""
   inventory = {
 
@@ -2905,8 +3218,8 @@
   }
   }
   spells = {
-	"EE rapid magic missile"
-	"EE summon fae clone"
+	"EE_rapid magic missile"
+	"EE_summon fae clone"
   }
   permanentEffects = {
 	ELF_VISION 1
@@ -2922,8 +3235,8 @@
 	name = "Illusia's Illusion"
 	pluralName = "fairies"
   }
-  chatReactionFriendly = "\"talks in the ancient spirit language.\""
-  chatReactionHostile = "\"talks in the ancient spirit language angrily.\"" 
+  chatReactionFriendly = "talks in the ancient spirit language."
+  chatReactionHostile = "talks in the ancient spirit language angrily." 
 }
 "EE_FAIRY_QUEEN_ILLUSION_2"
 {
@@ -2942,7 +3255,7 @@
   }
   }
   spells = {
-	"EE rapid magic missile"
+	"EE_rapid magic missile"
   }
   permanentEffects = {
 	ELF_VISION 1
@@ -2958,8 +3271,8 @@
 	name = "Illusia's Illusion"
 	pluralName = "fairies"
   }
-  chatReactionFriendly = "\"talks in the ancient spirit language.\""
-  chatReactionHostile = "\"talks in the ancient spirit language angrily.\"" 
+  chatReactionFriendly = "talks in the ancient spirit language."
+  chatReactionHostile = "talks in the ancient spirit language angrily." 
 }
 	
 #---------------------------------------------------------
@@ -3164,9 +3477,9 @@
         }        
       }
       maxLevelIncrease = {
-        MELEE 3
-        SPELL 2
-        ARCHERY 2
+        DAMAGE 3
+        SPELL_DAMAGE 2
+        RANGED_DAMAGE 2
       }
       spells = {
         "fireball"
@@ -3265,7 +3578,7 @@
           ARM {{{ Intrinsic { "sword" } "arm sword" 10 { attackType = HIT attackMsg = THRUST } }}}
         }        
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
         "fireball"
         "damage bonus"
@@ -3303,7 +3616,7 @@
         DEFENSE 50   
         SPELL_DAMAGE 20
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
         "damage bonus"
         "firewall"
@@ -3331,7 +3644,7 @@
         DEFENSE 55 
         SPELL_DAMAGE 35  
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
         "fireball"
         "firewall"
@@ -3377,10 +3690,10 @@
       }
       gender = FEMALE
       maxLevelIncrease = {
-        MELEE 9
-        SPELL 4
+        DAMAGE 9
+        SPELL_DAMAGE 4
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
         "healing"
         "deception"
@@ -3410,13 +3723,13 @@
         SPELL_DAMAGE 20   
       }
       spells = {
-        "EE magma bolt"
-        "EE fire shield"
+        "EE_magma bolt"
+        "EE_fire shield"
         "advanced fire elemental"
-		"EE spawn hell knights"
-		"EE spawn hell knight lord squad"
-		"EE spawn hell knight brute squad"
-		"EE spawn hell knight swordmaster squad"
+		"EE_spawn hell knights"
+		"EE_spawn hell knight lord squad"
+		"EE_spawn hell knight brute squad"
+		"EE_spawn hell knight swordmaster squad"
       }
       body = {
         type = NonHumanoid HUGE
@@ -3465,7 +3778,7 @@
 	    weight = 80
       }
       maxLevelIncrease = {
-        MELEE 1
+        DAMAGE 1
       }
       permanentEffects = {
         NIGHT_VISION 1
@@ -3496,9 +3809,9 @@
 		MULTI_WEAPON 30
       }
       maxLevelIncrease = {
-        MELEE 4
+        DAMAGE 4
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
         "healing"
       }
@@ -3528,8 +3841,8 @@
         RANGED_DAMAGE 15
       }
       maxLevelIncrease = {
-        MELEE 2
-        ARCHERY 5
+        DAMAGE 2
+        RANGED_DAMAGE 5
       }
       name = {
         name = "rat archer"
@@ -3583,9 +3896,9 @@
 	  }
       gender = FEMALE
       maxLevelIncrease = {
-        MELEE 4
-        SPELL 4
-        ARCHERY 2
+        DAMAGE 4
+        SPELL_DAMAGE 4
+        RANGED_DAMAGE 2
       }
       spells = {
         "escape"
@@ -3624,9 +3937,9 @@
         weight = 620        
       }
       maxLevelIncrease = {
-        MELEE 3
+        DAMAGE 3
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       permanentEffects = {
         RAGE 1
         RANGED_RESISTANCE 1
@@ -3670,7 +3983,7 @@
         SPELL_DAMAGE 25  
       }
       maxLevelIncrease = {
-        SPELL 7
+        SPELL_DAMAGE 7
       }
       body = {
         type = Humanoid LARGE
@@ -3697,8 +4010,8 @@
       name = {
         name = "banshee"
       }
-      chatReactionFriendly = "\"sobs uncontrollably\""
-      chatReactionHostile = "\"screams in an ear-shattering pitch\""
+      chatReactionFriendly = "sobs uncontrollably"
+      chatReactionHostile = "screams at an ear-shattering pitch!"
     }
     "EE_GARGOYLE"
     {
@@ -3746,9 +4059,9 @@
         weight = 460
       }
       maxLevelIncrease = {
-        MELEE 7
+        DAMAGE 7
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
         "directed blast"
         "shove"
@@ -3760,8 +4073,8 @@
         name = "giant"
         firstNameGen = "CYCLOPS"
       }
-      chatReactionFriendly = "\"talks about annoying small people\""
-      chatReactionHostile = "\"makes angry giant noises\""
+      chatReactionFriendly = "talks about annoying small people"
+      chatReactionHostile = "makes angry giant noises"
       inventory = {
         {  "HeavyClub" }
         {  "GoldPiece" 30 50 }
@@ -3790,14 +4103,14 @@
       }
       gender = FEMALE
       maxLevelIncrease = {
-        MELEE 5
-        SPELL 5
+        DAMAGE 5
+        SPELL_DAMAGE 5
       }
-	  spellSchools = { "extra shaman" }
+	  spellSchools = { "bonus shaman" }
       spells = {
         "healing"
         "panic"
-        "EE snakes"
+        "EE_snakes"
       }
       permanentEffects = {
         AMBUSH_SKILL 1
@@ -3834,7 +4147,7 @@
       }
 	  hatedByEffect = HATE_GREENSKINS
       maxLevelIncrease = {
-        MELEE 4
+        DAMAGE 4
       }
 
       permanentEffects = {
@@ -3845,7 +4158,7 @@
         name = "hobgoblin"
         firstNameGen = "ORC"
       }
-      chatReactionFriendly = "\"complains about other greenskins\""
+      chatReactionFriendly = "complains about other greenskins"
       chatReactionHostile = "\"Die!\""
       inventory = {
         {  "Spear"}
@@ -3871,10 +4184,10 @@
         weight = 300
       }
       maxLevelIncrease = {
-        MELEE 2
+        DAMAGE 2
       }
       spells = {
-        "EE poison spores"
+        "EE_poison spores"
       }
       permanentEffects = {
         SLOW_TRAINING 1
@@ -3896,7 +4209,7 @@
         name = "ogre"
         firstNameGen = "EE_ORC_FEMALE"
       }
-      chatReactionFriendly = "\"complains about ogre males\""
+      chatReactionFriendly = "complains about ogre males"
       chatReactionHostile = "\"Die!\""
 	}
 	"EE_ORC_PRIMARCH_TRIBE"
@@ -3917,23 +4230,23 @@
 	  permanentEffects = {
 		RIDER 1
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
-        "EE arm strike"
-		"EE wild swing"
-		"EE break through"
-		"EE air render"
+        "EE_arm strike"
+		"EE_wild swing"
+		"EE_break through"
+		"EE_air render"
 		"jump"
-		"EE throw sand"
+		"EE_throw sand"
 	}
       name = {
         name = "orc primarch"
         firstNameGen = "ORC"
 	}
       maxLevelIncrease = {
-        MELEE 3
+        DAMAGE 3
 	}
-      chatReactionFriendly = "\"talks about inner-tribal relations\""
+      chatReactionFriendly = "talks about inter-tribal relations"
       chatReactionHostile = "\"Die!\""
       inventory = {
         { type =  "EE_InfBattleAxe" prefixChance = 0.2 }
@@ -3958,11 +4271,11 @@
 	  body = {
         type = Humanoid LARGE
 	}
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
 	    "shove"
-		"EE battle cry"
-		"EE knockdown"
+		"EE_battle cry"
+		"EE_knockdown"
 		"jump"
 	}
       name = {
@@ -3973,9 +4286,9 @@
 		RIDER 1
       }
       maxLevelIncrease = {
-        MELEE 4
+        DAMAGE 4
 	}
-      chatReactionFriendly = "\"talks about training underlings\""
+      chatReactionFriendly = "talks about training underlings"
       chatReactionHostile = "\"Die!\""
       inventory = {
         { type =  "BattleAxe" prefixChance = 0.05 chance = 0.5 }
@@ -4005,22 +4318,22 @@
 	  body = {
         type = Humanoid LARGE
 	}
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
 	    "shove"
-		"EE battle cry"
+		"EE_battle cry"
 	}
       name = {
         name = "orc"
         firstNameGen = "ORC"
 	}
       maxLevelIncrease = {
-        MELEE 4
+        DAMAGE 4
 	}
 	permanentEffects = {
 		RIDER 1
       }
-      chatReactionFriendly = "\"talks about fighting\""
+      chatReactionFriendly = "talks about fighting"
       chatReactionHostile = "\"Die!\""
       inventory = {
         { type =  "EE_Mace" prefixChance = 0.05 chance = 0.5 }
@@ -4059,9 +4372,9 @@
         firstNameGen = "ORC"
 	}
       maxLevelIncrease = {
-        MELEE 9
+        DAMAGE 9
 	}
-      chatReactionFriendly = "\"talks about fighting\""
+      chatReactionFriendly = "talks about fighting"
       chatReactionHostile = "\"Die!\""
       inventory = {
         {  "BattleAxe"}
@@ -4098,9 +4411,9 @@
         firstNameGen = "ORC"
 	}
       maxLevelIncrease = {
-        MELEE 9
+        DAMAGE 9
 	}
-      chatReactionFriendly = "\"talks about fighting\""
+      chatReactionFriendly = "talks about fighting"
       chatReactionHostile = "\"Die!\""
       inventory = {
         { type =  "HeavyClub" prefixChance = 0.05 }
@@ -4126,10 +4439,10 @@
     chatReactionFriendly = "talks about gross wounds"
     chatReactionHostile = "\"Die!\""
     maxLevelIncrease = {
-      MELEE 4
-      SPELL 7
+      DAMAGE 4
+      SPELL_DAMAGE 7
     }
-    spellSchools = { "extra healer" }
+    spellSchools = { "bonus healer" }
 	spells = {
 	  "advanced healing"
 	  "group healing"
@@ -4158,7 +4471,7 @@
         name = "orc"
         firstNameGen = "EE_ORC_FEMALE"
       }
-      chatReactionFriendly = "\"complains about orc males\""
+      chatReactionFriendly = "complains about orc males"
       chatReactionHostile = "\"Die!\""
     }
 	
@@ -4183,7 +4496,7 @@
       }
 	  spellSchools = { "mage" }
       spells = {
-        "EE rapid magic missile"
+        "EE_rapid magic missile"
       }
       permanentEffects = {
         TELEPATHY 1
@@ -4198,8 +4511,8 @@
       name = {
         name = "spell book"
       }
-      chatReactionFriendly = "\"floats around eerily\""
-      chatReactionHostile = "\"Flips its pages angrily\""
+      chatReactionFriendly = "floats around eerily"
+      chatReactionHostile = "Flips its pages angrily"
       deathDescription = "destroyed"
     }
 "EE_WOLF_WARRIOR"
@@ -4216,10 +4529,10 @@
       type = Humanoid LARGE
     }
       spells = {
-        "invisibility" "healing" "EE wolves" "haste"
+        "invisibility" "healing" "EE_wolves" "haste"
 	}
     maxLevelIncrease = {
-      MELEE 5
+      DAMAGE 5
     }
     companions = {5 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
     chatReactionFriendly = "curses all dungeons"
@@ -4289,7 +4602,7 @@
         }
       }
       spells = {
-        "EE spit shards"
+        "EE_spit shards"
       }
       permanentEffects = {
       }
@@ -4298,7 +4611,7 @@
         name = "shard spitter"
       }
       chatReactionFriendly = "\"Guuuh...?\""
-      chatReactionHostile = "\"prepares to spit a rock at your face\""
+      chatReactionHostile = "prepares to spit a rock at your face"
     }
     "EE_SPRITE"
     {
@@ -4327,8 +4640,8 @@
       name = {
         name = "sprite"
       }
-      chatReactionFriendly = "\"talks too quietly for you to hear\""
-      chatReactionHostile = "\"it flutters around agrily\""
+      chatReactionFriendly = "talks too quietly for you to hear"
+      chatReactionHostile = "flutters around angrily"
       deathDescription = "swatted"
       noChase = true
     }
@@ -4356,8 +4669,8 @@
         }
       }
       maxLevelIncrease = {
-        MELEE 2
-        SPELL 6
+        DAMAGE 2
+        SPELL_DAMAGE 6
       }
 	  spellSchools = { "mage" }
       spells = {
@@ -4409,7 +4722,7 @@
         name = "bengal tiger"
       }
       chatReactionFriendly = "\"puuurrrr...\""
-      chatReactionHostile = "\"roars at you.\""
+      chatReactionHostile = "roars at you."
     }
     "EE_ELEPHANT"
     {
@@ -4436,8 +4749,8 @@
       name = {
         name = "elephant"
       }
-      chatReactionFriendly = "\"it says nothing, elephants can't talk\""
-      chatReactionHostile = "\"looks like it might charge you\""
+      chatReactionFriendly = "says nothing, elephants can't talk"
+      chatReactionHostile = "looks like it might charge you"
       noChase = true
     }
     "EE_LION"
@@ -4464,7 +4777,7 @@
         name = "lion"
       }
       chatReactionFriendly = "\"puuurrrr...\""
-      chatReactionHostile = "\"roars aggresively\""
+      chatReactionHostile = "roars aggresively"
     }
     "EE_LIONESS"
     {
@@ -4492,7 +4805,7 @@
         pluralName = "Lionesses"
       }
       chatReactionFriendly = "\"puuurrrr...\""
-      chatReactionHostile = "\"roars angrily at you\""
+      chatReactionHostile = "roars angrily at you"
     }
     "EE_CROCODILE"
     {
@@ -4518,8 +4831,8 @@
       name = {
         name = "crocodile"
       }
-      chatReactionFriendly = "\"it says nothing, crocodiles can't talk\""
-      chatReactionHostile = "\"looks like it'll bite you.\""
+      chatReactionFriendly = "says nothing, crocodiles can't talk"
+      chatReactionHostile = "looks like it'll bite you."
     }
 
   "EE_MUMMY_LORD" inherit "EE_BASE_SPELL_CASTER_1"
@@ -4544,8 +4857,8 @@
       }
 	  hatedByEffect = HATE_UNDEAD
       maxLevelIncrease = {
-        MELEE 25
-        SPELL 10
+        DAMAGE 25
+        SPELL_DAMAGE 10
       }
 	  spellSchools = { "mage" }
       spells = {
@@ -4580,6 +4893,7 @@
 	  permanentEffects = {
 		RIDER 1
       }
+	  spells = {"EE_grant all spells" }
    }
    "EE_VULTURE_ABOMINATION"
    {
@@ -4620,8 +4934,8 @@
              } }
       spellSchools = { "mage" }
       spells = {
-        "EE bolt of water"
-        "EE summon water elementals"
+        "EE_bolt of water"
+        "EE_summon water elementals"
       }
       permanentEffects = {
         IMMOBILE 1
@@ -4684,8 +4998,8 @@
         name = "Adoxie's eye"
         pluralName = "eyes"
       }
-      chatReactionFriendly = "\"nothing, why did you think an eye could talk?\""
-      chatReactionHostile = "\"nothing, why did you think an eye could talk?\""
+      chatReactionFriendly = "says nothing, why did you think an eye could talk?"
+      chatReactionHostile = "says nothing, why did you think an eye could talk?"
       deathDescription = "destroyed"
     }
    "EE_ADOXIE_HEAD_PLAYER" inherit "ADOXIE_HEAD" {
@@ -4729,10 +5043,10 @@
       FLYING 1
     }
     spells = {
-      "EE axedio left hand"
-      "EE axedio right hand"
-      "EE axedio left foot"
-      "EE axedio right foot"
+      "EE_axedio left hand"
+      "EE_axedio right hand"
+      "EE_axedio left foot"
+      "EE_axedio right foot"
     }
     body = {
       type = NonHumanoid HUGE
@@ -4783,7 +5097,7 @@
     {
       attr = {
         DAMAGE 21
-        DEFENSE 14 
+        DEFENSE 21
       }
       viewId = { "dark_orc" }
       permanentEffects = {
@@ -4806,7 +5120,7 @@
     {
       attr = {
         DAMAGE 23
-        DEFENSE 18 
+        DEFENSE 23
       }
       viewId = { "dark_ogre" }
       permanentEffects = {
@@ -4867,7 +5181,7 @@
 		SPEED 1
       }
       maxLevelIncrease = {
-        MELEE 8
+        DAMAGE 8
       }
       name = {
         name = "lion queen"
@@ -4965,15 +5279,15 @@
       body = {
         type = Humanoid MEDIUM
       }
-	  spellSchools = { "extra goblin high priest" }
+	  spellSchools = { "bonus goblin high priest" }
       spells = {
 		 "expert healing"
-		 "EE summon goblin priests"
+		 "EE_summon goblin priests"
 		 "invisibility"
 		 "expert magic missile"
 		 "escape"
-		 "EE summon spirit"
-		 "EE regrow body part"
+		 "EE_summon spirit"
+		 "EE_regrow body part"
 	  }
       chatReactionFriendly = "talks about establishing a goblin theocracy"
       chatReactionHostile = "\"Die!\""
@@ -4983,8 +5297,8 @@
 		RIDER 1
       }
 	        maxLevelIncrease = {
-        MELEE 2
-        SPELL 7
+        DAMAGE 2
+        SPELL_DAMAGE 7
 	  }
       name = {
         name = "goblin high priest"
@@ -5035,13 +5349,13 @@
 		RIDER 1
 	  }
       maxLevelIncrease = {
-        MELEE 3
+        DAMAGE 3
       }
-      spellSchools = { "extra fighter" }
+      spellSchools = { "bonus fighter" }
       spells = { 
 	    "shove"
-        "EE battle cry"
-        "EE block"
+        "EE_battle cry"
+        "EE_block"
       }
       name = {
         name = "elite goblin guard"
@@ -5072,7 +5386,7 @@
       }
       chatReactionFriendly = "talks about clubbing things"
       chatReactionHostile = "\"Die!\""
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       permanentEffects = {
 	    MELEE_RESISTANCE 1
         RANGED_RESISTANCE 1
@@ -5081,7 +5395,7 @@
 		RIDER 1
       }
 	  maxLevelIncrease = {
-        MELEE 3
+        DAMAGE 3
 	  }
       name = {
         name = "goblin brute"
@@ -5113,9 +5427,9 @@
       }
       spells = {
 		 "expert healing"
-		 "EE rapid magic missile"
+		 "EE_rapid magic missile"
 		 "escape"
-		 "EE summon gold golems"
+		 "EE_summon gold golems"
 	  }
       chatReactionFriendly = "talks about Gold"
       chatReactionHostile = "\"Die!\""
@@ -5124,8 +5438,8 @@
 		RIDER 1
       }
 	        maxLevelIncrease = {
-        MELEE 2
-        SPELL 7
+        DAMAGE 2
+        SPELL_DAMAGE 7
 	  }
       name = {
         name = "goblin leprechaun"
@@ -5206,9 +5520,9 @@
 		RIDER 1
 	  }
       maxLevelIncrease = {
-        MELEE 7
+        DAMAGE 7
       }
-      spellSchools = { "extra fighter" }
+      spellSchools = { "bonus fighter" }
       name = {
         name = "elite goblin guard"
         firstNameGen = "ORC"
@@ -5233,8 +5547,8 @@
 		RIDER 1
       }
 	        maxLevelIncrease = {
-        MELEE 3
-        ARCHERY 10
+        DAMAGE 3
+        RANGED_DAMAGE 10
 	  }
       name = {
         name = "goblin archer"
@@ -5263,7 +5577,7 @@
 		RIDER 1
       }
 	        maxLevelIncrease = {
-        MELEE 12
+        DAMAGE 12
 	  }
       name = {
         name = "goblin brute"
@@ -5282,7 +5596,7 @@
       body = {
         type = Humanoid MEDIUM
       }
-	  spellSchools = { "extra avian lore" }
+	  spellSchools = { "bonus avian lore" }
 	  name = {
         name = "goblin chickenmancer"
         firstNameGen = "ORC"
@@ -5294,8 +5608,8 @@
 		RIDER 1
       }
 	        maxLevelIncrease = {
-        MELEE 3
-        SPELL 5
+        DAMAGE 3
+        SPELL_DAMAGE 5
       }
       hatedByEffect = HATE_GREENSKINS
 	}
@@ -5310,7 +5624,7 @@
       body = {
         type = Humanoid MEDIUM
       }
-	  spellSchools = { "extra goblin high priest" }
+	  spellSchools = { "bonus goblin high priest" }
       name = {
         name = "goblin high priest"
         firstNameGen = "ORC"
@@ -5323,8 +5637,8 @@
 		RIDER 1
       }
 	        maxLevelIncrease = {
-        MELEE 7
-        SPELL 12
+        DAMAGE 7
+        SPELL_DAMAGE 12
       }
       hatedByEffect = HATE_GREENSKINS
 	}
@@ -5378,8 +5692,8 @@
       spells = {
 		 "advanced healing"
 		 "expert magic missile"
-		 "EE goblin damage buff"
-		 "EE goblin defense buff"
+		 "EE_goblin damage buff"
+		 "EE_goblin defense buff"
 		 "invisibility"
 		 "escape"
 	  }
@@ -5392,8 +5706,8 @@
 		RIDER 1
       }
 	  maxLevelIncrease = {
-        MELEE 12
-        SPELL 12
+        DAMAGE 12
+        SPELL_DAMAGE 12
 	  }
       name = {
         name = "goblin king"
@@ -5442,7 +5756,7 @@
       body = {
         type = Humanoid MEDIUM
       }
-	  spellSchools = { "extra goblin priest" }
+	  spellSchools = { "bonus goblin priest" }
       name = {
         name = "goblin priest"
         firstNameGen = "ORC"
@@ -5454,7 +5768,7 @@
 		RIDER 1
       }
 	  maxLevelIncrease = {
-        SPELL 12
+        SPELL_DAMAGE 12
       }
       hatedByEffect = HATE_GREENSKINS
 	}
@@ -5476,9 +5790,9 @@
 		RIDER 1
 	  }
       maxLevelIncrease = {
-        MELEE 7
+        DAMAGE 7
       }
-      spellSchools = { "extra fighter" }
+      spellSchools = { "bonus fighter" }
       name = {
         name = "goblin warrior"
         firstNameGen = "ORC"
@@ -5498,7 +5812,7 @@
       body = {
         type = Humanoid MEDIUM
       }
-	  spellSchools = { "extra goblin wizard" }
+	  spellSchools = { "bonus goblin wizard" }
       name = {
         name = "goblin wizard"
         firstNameGen = "ORC"
@@ -5510,7 +5824,7 @@
 		RIDER 1
       }
 	  maxLevelIncrease = {
-        SPELL 12
+        SPELL_DAMAGE 12
       }
       hatedByEffect = HATE_GREENSKINS
 	}
@@ -5538,8 +5852,8 @@
       RANGED_RESISTANCE 1
     }
     maxLevelIncrease = {
-      MELEE 3
-      ARCHERY 4
+      DAMAGE 3
+      RANGED_DAMAGE 4
     }
     aiType = RANGED
     name = {
@@ -5566,17 +5880,17 @@
 	   SPELL_DAMAGE 8
     }
      maxLevelIncrease = {
-       MELEE 6
-       SPELL 12
-       ARCHERY 16
+       DAMAGE 6
+       SPELL_DAMAGE 12
+       RANGED_DAMAGE 16
 	}
 	 spells = {
 		 "shove" 
-		 "EE battle cry" 
-		 "EE block" 
+		 "EE_battle cry" 
+		 "EE_block" 
 		 "swap positions" 
-		 "EE weapon dodge" 
-		 "EE knockdown" 
+		 "EE_weapon dodge" 
+		 "EE_knockdown" 
 		 "directed blast" 
 		 "escape" 
 		 "magic missile" 
@@ -5619,17 +5933,17 @@
 	   SPELL_DAMAGE 8
     }
      maxLevelIncrease = {
-       MELEE 3
-       SPELL 12
-       ARCHERY 16
+       DAMAGE 3
+       SPELL_DAMAGE 12
+       RANGED_DAMAGE 16
 	}
 	 spells = {
 		 "shove" 
-		 "EE battle cry" 
-		 "EE block" 
+		 "EE_battle cry" 
+		 "EE_block" 
 		 "swap positions" 
-		 "EE weapon dodge" 
-		 "EE knockdown" 
+		 "EE_weapon dodge" 
+		 "EE_knockdown" 
 		 "directed blast" 
 		 "escape" 
 		 "magic missile" 
@@ -5670,17 +5984,17 @@
 	   RANGED_DAMAGE 16
     }
      maxLevelIncrease = {
-       MELEE 10
-       SPELL 14
-       ARCHERY 8
+       DAMAGE 10
+       SPELL_DAMAGE 14
+       RANGED_DAMAGE 8
 	}
 	 spells = {
 		 "shove" 
-		 "EE battle cry" 
-		 "EE block" 
+		 "EE_battle cry" 
+		 "EE_block" 
 		 "swap positions" 
-		 "EE weapon dodge" 
-		 "EE knockdown" 
+		 "EE_weapon dodge" 
+		 "EE_knockdown" 
 		 "directed blast" 
 		 "escape" 
 	 }
@@ -5719,14 +6033,14 @@
 	   SPELL_DAMAGE 16
     }
      maxLevelIncrease = {
-       MELEE 12
-       SPELL 8
-       ARCHERY 16
+       DAMAGE 12
+       SPELL_DAMAGE 8
+       RANGED_DAMAGE 16
 	}
 	 spells = {
 		 "shove" 
-		 "EE battle cry" 
-		 "EE block" 
+		 "EE_battle cry" 
+		 "EE_block" 
 		 "directed blast"
 		 "escape"
 		 "healing"
@@ -5771,33 +6085,33 @@
 		SPELL_DAMAGE 44
 	  }
       maxLevelIncrease = {
-        MELEE 3
-        SPELL 12
+        DAMAGE 3
+        SPELL_DAMAGE 12
       }
 	   spells = {
 		 "escape"
 		 "deception"
-		 "EE snakes"
+		 "EE_snakes"
 		 "summon element"
-		 "EE area defense bonus"
-		 "EE area damage bonus"
-		 "EE healing totem"
+		 "EE_area defense bonus"
+		 "EE_area damage bonus"
+		 "EE_healing totem"
 		 "advanced healing"
-		 "EE buff totem"
-		 "EE wolves"
-		 "EE bear"
-		 "EE boar"
+		 "EE_buff totem"
+		 "EE_wolves"
+		 "EE_bear"
+		 "EE_boar"
 		 "expert magic missile"
-		 "EE resist magic"
-		 "EE arrow shield"
+		 "EE_resist magic"
+		 "EE_arrow shield"
 		 "magic cancellation"
-		 "EE freezing vines"
-		 "EE stone to mud"
-		 "EE advanced mind bolt"
-		 "EE stone golems"
+		 "EE_freezing vines"
+		 "EE_stone to mud"
+		 "EE_advanced mind bolt"
+		 "EE_stone golems"
 		 "invisibility"
-		 "EE adamantine golem"
-		 "EE iron golems"
+		 "EE_adamantine golem"
+		 "EE_iron golems"
 	  }
       inventory = {
         { Potion Heal {FLESH} 2 6 }
@@ -5836,36 +6150,36 @@
 		SPELL_DAMAGE 56
 	  }
       maxLevelIncrease = {
-        SPELL 6
+        SPELL_DAMAGE 6
       }
 	   spells = {
 		 "escape"
 		 "deception"
-		 "EE snakes"
+		 "EE_snakes"
 		 "summon element"
-		 "EE area defense bonus"
-		 "EE area damage bonus"
-		 "EE healing totem"
+		 "EE_area defense bonus"
+		 "EE_area damage bonus"
+		 "EE_healing totem"
 		 "advanced healing"
-		 "EE buff totem"
-		 "EE wolves"
-		 "EE bear"
-		 "EE boar"
+		 "EE_buff totem"
+		 "EE_wolves"
+		 "EE_bear"
+		 "EE_boar"
 		 "expert magic missile"
-		 "EE resist magic"
-		 "EE arrow shield"
+		 "EE_resist magic"
+		 "EE_arrow shield"
 		 "magic cancellation"
-		 "EE freezing vines"
-		 "EE stone to mud"
-		 "EE advanced mind bolt"
-		 "EE stone golems"
+		 "EE_freezing vines"
+		 "EE_stone to mud"
+		 "EE_advanced mind bolt"
+		 "EE_stone golems"
 		 "invisibility"
-		 "EE iron golems"
-		 "EE telepathy"
-		 "EE elf vision"
-		 "EE summon spirit"
-		 "EE adamantine golems"
-	     "EE rapid magic missile"
+		 "EE_iron golems"
+		 "EE_telepathy"
+		 "EE_elf vision"
+		 "EE_summon spirit"
+		 "EE_adamantine golems"
+	     "EE_rapid magic missile"
 		 "pacify"
 		 "advanced invisibility"
 	  }
@@ -5905,15 +6219,15 @@
 		RANGED_DAMAGE 28
       }
       maxLevelIncrease = {
-        MELEE 8
-        ARCHERY 12
+        DAMAGE 8
+        RANGED_DAMAGE 12
       }
 	   spells = {
 		 "healing"
 		 "escape"
 		 "shove"
-		 "EE battle cry"
-		 "EE block"
+		 "EE_battle cry"
+		 "EE_block"
       }
       inventory = {
         { Potion Heal {FLESH} 2 4 }
@@ -5948,17 +6262,17 @@
 		RANGED_DAMAGE 36
       }
       maxLevelIncrease = {
-        MELEE 6
-        ARCHERY 8
+        DAMAGE 6
+        RANGED_DAMAGE 8
       }
 	   spells = {
 		 "healing"
 		 "escape"
 		 "shove"
-		 "EE battle cry"
-		 "EE block"
+		 "EE_battle cry"
+		 "EE_block"
 		 "swap positions"
-		 "EE weapon dodge"
+		 "EE_weapon dodge"
       }
       inventory = {
         { Potion Heal {FLESH} 5 9 }
@@ -5994,18 +6308,18 @@
 		RANGED_DAMAGE 24
       }
       maxLevelIncrease = {
-        MELEE 2
-        ARCHERY 14
+        DAMAGE 2
+        RANGED_DAMAGE 14
       }
 	   spells = {
 		 "healing"
 		 "escape"
 		 "shove"
-		 "EE battle cry"
-		 "EE block"
+		 "EE_battle cry"
+		 "EE_block"
 		 "swap positions"
-		 "EE weapon dodge"
-		 "EE knockdown"
+		 "EE_weapon dodge"
+		 "EE_knockdown"
       }
       inventory = {
         { Potion Heal {FLESH} 2 4 }
@@ -6041,17 +6355,17 @@
 		RANGED_DAMAGE 32
       }
       maxLevelIncrease = {
-        ARCHERY 10
+        RANGED_DAMAGE 10
       }
 	   spells = {
 		 "healing"
 		 "escape"
 		 "shove"
-		 "EE battle cry"
-		 "EE block"
+		 "EE_battle cry"
+		 "EE_block"
 		 "swap positions"
-		 "EE weapon dodge"
-		 "EE knockdown"
+		 "EE_weapon dodge"
+		 "EE_knockdown"
       }
       inventory = {
         { Potion Heal {FLESH} 5 9 }
@@ -6087,16 +6401,16 @@
 		SPELL_DAMAGE 4
       }
       maxLevelIncrease = {
-        MELEE 8
-        SPELL 10
+        DAMAGE 8
+        SPELL_DAMAGE 10
       }
 	  spells = {
 		 "shove" 
-		 "EE battle cry" 
-		 "EE block"
+		 "EE_battle cry" 
+		 "EE_block"
 		 "swap positions"
-		 "EE weapon dodge"
-		 "EE knockdown"
+		 "EE_weapon dodge"
+		 "EE_knockdown"
 	     "healing"
 		 "escape" 
 	  }
@@ -6133,21 +6447,21 @@
 		SPELL_DAMAGE 8
       }
       maxLevelIncrease = {
-        MELEE 4
-        SPELL 8
+        DAMAGE 4
+        SPELL_DAMAGE 8
       }
 	  spells = {
 		 "shove" 
-		 "EE battle cry" 
-		 "EE block"
+		 "EE_battle cry" 
+		 "EE_block"
 		 "swap positions"
-		 "EE weapon dodge"
-		 "EE knockdown"
+		 "EE_weapon dodge"
+		 "EE_knockdown"
 	     "healing"
 		 "escape"
 		 "defense bonus"
 		 "damage bonus"
-		 "EE stone to mud"
+		 "EE_stone to mud"
 	  }
       inventory = {
         { Potion Heal {FLESH} 7 16 }
@@ -6180,26 +6494,26 @@
         DEFENSE 34 
       }
       maxLevelIncrease = {
-        MELEE 24
+        DAMAGE 24
       }
       hatedByEffect = HATE_HUMANS
-      spellSchools = { "extra fighter" "extra barbarian" }
+      spellSchools = { "bonus fighter" "bonus barbarian" }
 	   spells = {
 		 "shove"
-		 "EE battle cry"
-		 "EE block"
+		 "EE_battle cry"
+		 "EE_block"
 		 "swap positions"
-		 "EE weapon dodge"
-		 "EE knockdown"
-		 "EE wild swing"
-		 "EE throw sand"
-		 "EE heroic leap"
-		 "EE martial blast"
-		 "EE arm strike"
-		 "EE leg strike"
-		 "EE air render"
-		 "EE break through"
-		 "EE martial strike"
+		 "EE_weapon dodge"
+		 "EE_knockdown"
+		 "EE_wild swing"
+		 "EE_throw sand"
+		 "EE_heroic leap"
+		 "EE_martial blast"
+		 "EE_arm strike"
+		 "EE_leg strike"
+		 "EE_air render"
+		 "EE_break through"
+		 "EE_martial strike"
 	  }
       inventory = {
         { Potion Heal {FLESH} 5 8 }
@@ -6231,26 +6545,26 @@
         DEFENSE 50 
       }
       maxLevelIncrease = {
-        MELEE 16
+        DAMAGE 16
       }
 	   spells = {
 		 "shove"
-		 "EE battle cry"
-		 "EE block"
+		 "EE_battle cry"
+		 "EE_block"
 		 "swap positions"
-		 "EE weapon dodge"
-		 "EE knockdown"
-		 "EE wild swing"
-		 "EE throw sand"
-		 "EE heroic leap"
-		 "EE martial blast"
-		 "EE arm strike"
-		 "EE leg strike"
-		 "EE air render"
-		 "EE break through"
-		 "EE martial strike"
-		 "EE blood rage"
-		 "EE decapitate"
+		 "EE_weapon dodge"
+		 "EE_knockdown"
+		 "EE_wild swing"
+		 "EE_throw sand"
+		 "EE_heroic leap"
+		 "EE_martial blast"
+		 "EE_arm strike"
+		 "EE_leg strike"
+		 "EE_air render"
+		 "EE_break through"
+		 "EE_martial strike"
+		 "EE_blood rage"
+		 "EE_decapitate"
 	  }
       inventory = {
         { Potion Heal {FLESH} 6 12 }
@@ -6282,26 +6596,26 @@
         DEFENSE 66 
       }
       maxLevelIncrease = {
-        MELEE 8
+        DAMAGE 8
       }
 	   spells = {
 		 "shove"
-		 "EE battle cry"
-		 "EE block"
+		 "EE_battle cry"
+		 "EE_block"
 		 "swap positions"
-		 "EE weapon dodge"
-		 "EE knockdown"
-		 "EE wild swing"
-		 "EE throw sand"
-		 "EE heroic leap"
-		 "EE martial blast"
-		 "EE arm strike"
-		 "EE leg strike"
-		 "EE air render"
-		 "EE break through"
-		 "EE martial strike"
-		 "EE blood rage"
-		 "EE decapitate"
+		 "EE_weapon dodge"
+		 "EE_knockdown"
+		 "EE_wild swing"
+		 "EE_throw sand"
+		 "EE_heroic leap"
+		 "EE_martial blast"
+		 "EE_arm strike"
+		 "EE_leg strike"
+		 "EE_air render"
+		 "EE_break through"
+		 "EE_martial strike"
+		 "EE_blood rage"
+		 "EE_decapitate"
 	  }
       inventory = {
         { Potion Heal {FLESH} 8 16 }
@@ -6337,22 +6651,22 @@
 		SPELL_DAMAGE 24
       }
       maxLevelIncrease = {
-        MELEE 4
-		ARCHERY 10
-		SPELL 10
+        DAMAGE 4
+		RANGED_DAMAGE 10
+		SPELL_DAMAGE 10
       }
 	   spells = {
-		 "EE rapid invisibility"
-		 "EE escape slash"
-		 "EE shadow step"
-		 "EE smoke bomb"
-		 "EE advanced vitals strike"
-		 "EE substitute"
-		 "EE arm strike"
-		 "EE leg strike"
-		 "EE double strike"
-		 "EE throwing star"
-		 "EE arrow shield"
+		 "EE_rapid invisibility"
+		 "EE_escape slash"
+		 "EE_shadow step"
+		 "EE_smoke bomb"
+		 "EE_advanced vitals strike"
+		 "EE_substitute"
+		 "EE_arm strike"
+		 "EE_leg strike"
+		 "EE_double strike"
+		 "EE_throwing star"
+		 "EE_arrow shield"
 		 "healing"
 		 "escape"
 	  }
@@ -6387,30 +6701,30 @@
 		SPELL_DAMAGE 28
       }
       maxLevelIncrease = {
-		ARCHERY 8
-		SPELL 8
+		RANGED_DAMAGE 8
+		SPELL_DAMAGE 8
       }
 	   spells = {
-		 "EE rapid invisibility"
-		 "EE escape slash"
-		 "EE shadow step"
-		 "EE smoke bomb"
-		 "EE substitute"
-		 "EE arm strike"
-		 "EE leg strike"
-		 "EE armor strike"
-		 "EE weapon strike"
-		 "EE expert vitals strike"
-		 "EE assassinate"
-		 "EE triple strike"
-		 "EE poison star"
-		 "EE arrow shield"
-		 "EE bleeding star"
-		 "EE advanced throwing star"
+		 "EE_rapid invisibility"
+		 "EE_escape slash"
+		 "EE_shadow step"
+		 "EE_smoke bomb"
+		 "EE_substitute"
+		 "EE_arm strike"
+		 "EE_leg strike"
+		 "EE_armor strike"
+		 "EE_weapon strike"
+		 "EE_expert vitals strike"
+		 "EE_assassinate"
+		 "EE_triple strike"
+		 "EE_poison star"
+		 "EE_arrow shield"
+		 "EE_bleeding star"
+		 "EE_advanced throwing star"
 		 "healing"
 		 "escape"
-		 "EE shadow bolt"
-		 "EE summon shades"
+		 "EE_shadow bolt"
+		 "EE_summon shades"
 	  }
       inventory = {
         { Potion Heal {FLESH} 4 6 }
@@ -6444,22 +6758,22 @@
 		SPELL_DAMAGE 24
       }
       maxLevelIncrease = {
-        MELEE 10
-		ARCHERY 4
-		SPELL 10
+        DAMAGE 10
+		RANGED_DAMAGE 4
+		SPELL_DAMAGE 10
       }
 	   spells = {
-		 "EE rapid invisibility"
-		 "EE arrow shield"
-		 "EE poison star"
-		 "EE bleeding star"
-		 "EE double star"
-		 "EE advanced poison star"
-		 "EE advanced bleeding star"
-		 "EE expert throwing star"
-		 "EE escape star"
-		 "EE vitals strike"
-		 "EE escape slash"
+		 "EE_rapid invisibility"
+		 "EE_arrow shield"
+		 "EE_poison star"
+		 "EE_bleeding star"
+		 "EE_double star"
+		 "EE_advanced poison star"
+		 "EE_advanced bleeding star"
+		 "EE_expert throwing star"
+		 "EE_escape star"
+		 "EE_vitals strike"
+		 "EE_escape slash"
 		 "healing"
 		 "escape"
 	  }
@@ -6494,27 +6808,27 @@
 		SPELL_DAMAGE 28
       }
       maxLevelIncrease = {
-        MELEE 8
-		SPELL 8
+        DAMAGE 8
+		SPELL_DAMAGE 8
       }
 	   spells = {
-		 "EE rapid invisibility"
-		 "EE arrow shield"
-		 "EE poison star"
-		 "EE bleeding star"
-		 "EE advanced poison star"
-		 "EE advanced bleeding star"
-		 "EE escape star"
-		 "EE master throwing star"
-		 "EE triple star"
-		 "EE vitals strike"
-		 "EE escape slash"
-		 "EE shadow step"
-		 "EE smoke bomb"
+		 "EE_rapid invisibility"
+		 "EE_arrow shield"
+		 "EE_poison star"
+		 "EE_bleeding star"
+		 "EE_advanced poison star"
+		 "EE_advanced bleeding star"
+		 "EE_escape star"
+		 "EE_master throwing star"
+		 "EE_triple star"
+		 "EE_vitals strike"
+		 "EE_escape slash"
+		 "EE_shadow step"
+		 "EE_smoke bomb"
 		 "healing"
 		 "escape"
-		 "EE shadow bolt"
-		 "EE summon shades"
+		 "EE_shadow bolt"
+		 "EE_summon shades"
 	  }
       inventory = {
         { Potion Heal {FLESH} 2 4 }
@@ -6548,23 +6862,23 @@
 		SPELL_DAMAGE 36
       }
       maxLevelIncrease = {
-        MELEE 10
-		ARCHERY 10
-		SPELL 4
+        DAMAGE 10
+		RANGED_DAMAGE 10
+		SPELL_DAMAGE 4
       }
 	   spells = {
-		 "EE rapid invisibility"
+		 "EE_rapid invisibility"
 		 "healing"
 		 "escape"
-		 "EE summon shades"
-		 "EE summon shadow clones"
-		 "EE advanced shadow bolt"
-		 "EE web wall"
-		 "EE vanish"
-		 "EE vitals strike"
-		 "EE escape slash"
-		 "EE throwing star"
-		 "EE arrow shield"
+		 "EE_summon shades"
+		 "EE_summon shadow clones"
+		 "EE_advanced shadow bolt"
+		 "EE_web wall"
+		 "EE_vanish"
+		 "EE_vitals strike"
+		 "EE_escape slash"
+		 "EE_throwing star"
+		 "EE_arrow shield"
 	  }
       inventory = {
         { Potion Heal {FLESH} 4 6 }
@@ -6598,29 +6912,29 @@
 		SPELL_DAMAGE 44
       }
       maxLevelIncrease = {
-        MELEE 8
-		ARCHERY 8
+        DAMAGE 8
+		RANGED_DAMAGE 8
       }
 	   spells = {
 		 "healing"
 		 "escape"
-		 "EE summon shades"
-		 "EE summon shadow clones"
-		 "EE web wall"
-		 "EE vanish"
-		 "EE expert shadow bolt"
-		 "EE split spirit"
-		 "EE summon shadow clone army"
-		 "EE advanced rapid invisibility"
-		 "EE vitals strike"
-		 "EE escape slash"
-		 "EE shadow step"
-		 "EE smoke bomb"
-		 "EE throwing star"
-		 "EE arrow shield"
-		 "EE poison star"
-		 "EE bleeding star"
-		 "EE advanced throwing star"
+		 "EE_summon shades"
+		 "EE_summon shadow clones"
+		 "EE_web wall"
+		 "EE_vanish"
+		 "EE_expert shadow bolt"
+		 "EE_split spirit"
+		 "EE_summon shadow clone army"
+		 "EE_advanced rapid invisibility"
+		 "EE_vitals strike"
+		 "EE_escape slash"
+		 "EE_shadow step"
+		 "EE_smoke bomb"
+		 "EE_throwing star"
+		 "EE_arrow shield"
+		 "EE_poison star"
+		 "EE_bleeding star"
+		 "EE_advanced throwing star"
 	  }
       inventory = {
         { Potion Heal {FLESH} 4 6 }
@@ -6663,11 +6977,11 @@
         AMBUSH_SKILL 1
 		RIDER 1
       }
-      spells = { "EE battle cry" }
+      spells = { "EE_battle cry" }
       chatReactionFriendly = "curses all law enforcement"
       chatReactionHostile = "\"Die!\""
       maxLevelIncrease = {
-        MELEE 5
+        DAMAGE 5
       }
       name = {
         name = "bandit leader"
@@ -6711,17 +7025,19 @@
       attr = {
         DAMAGE 16
         DEFENSE 25
-        SPELL_DAMAGE 5 
+        SPELL_DAMAGE 16 
       }
-      viewId = { "succubus" }
+      viewId = { "cmbt_succubus30" }
       body = {
         type = Humanoid LARGE
         material = SPIRIT
         intrinsicAttacks = {
-          TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+          TORSO {{
+			isExtraAttack = true
+			itemType = { Intrinsic { "touch_attack" } "touch" 0 {
               attackType = HIT
               attackMsg = TOUCH
-              victimEffect = {1.0 Lasting PEACEFULNESS} } }}}
+              victimEffect = {1.0 Lasting PEACEFULNESS} } }}}  
         }
         addBodyPart = {
           WING 2
@@ -6729,13 +7045,16 @@
       }
       permanentEffects = {
         COPULATION_SKILL 1
-		RIDER 1
+	RIDER 1
       }
       gender = FEMALE
       name = {
         name = "combat succubus"
         pluralName = "combat succubi"
       }
+	chatReactionFriendly = "stretches and breathes magnificiently, confident you're enjoying the view."
+	chatReactionHostile = "\"Tsk tsk. If you keep waving that around, you'll tire yourself out.\""
+	petReaction = "growls seductively and encourages you to fully appreciate her physique."
     }
     "EE_MILITIA_PLAYER"
     {
@@ -6748,7 +7067,7 @@
         type = Humanoid LARGE
       }
       maxLevelIncrease = {
-        MELEE 7
+        DAMAGE 7
       }
       chatReactionFriendly = "talks about gold."
       chatReactionHostile = "\"Die!\""
@@ -6782,7 +7101,7 @@
         type = Humanoid LARGE
       }
       maxLevelIncrease = {
-        MELEE 4
+        DAMAGE 4
       }
       chatReactionFriendly = "talks about money."
       chatReactionHostile = "\"Die!\""
@@ -6817,7 +7136,7 @@
         firstNameGen = "DWARF"
       }
       maxLevelIncrease = {
-        MELEE 3
+        DAMAGE 3
       }
       permanentEffects = {
         MAGIC_VULNERABILITY 1
@@ -6855,7 +7174,7 @@
         firstNameGen = "DWARF"
       }
       maxLevelIncrease = {
-        MELEE 5
+        DAMAGE 5
       }
     }
   "EE_DWARF_WARRIOR" inherit "EE_DWARF_MILITIA"
@@ -6871,7 +7190,7 @@
         firstNameGen = "DWARF"
       }
       maxLevelIncrease = {
-        MELEE 6
+        DAMAGE 6
       }
     }
   "EE_ELITE_DWARF_WARRIOR" inherit "EE_DWARF_MILITIA"
@@ -6887,7 +7206,7 @@
         firstNameGen = "DWARF"
       }
       maxLevelIncrease = {
-        MELEE 8
+        DAMAGE 8
       }
     }
   "EE_DWARF_WORKER" inherit "DWARF"
@@ -6941,15 +7260,15 @@
         firstNameGen = "DWARF"
       }
       maxLevelIncrease = {
-        MELEE 20
-		SPELL 7
+        DAMAGE 20
+		SPELL_DAMAGE 7
       }
       permanentEffects = {
         POISON_RESISTANT 1
 		FAST_TRAINING 1
 		RIDER 1
       }
-	  spellSchools = { "extra dwarf monk" "extra fighter" }
+	  spellSchools = { "bonus dwarf monk" "bonus fighter" }
       chatReactionFriendly = "talks about drunken martial arts"
       chatReactionHostile = "\"Die!\""
       hatedByEffect = HATE_DWARVES
@@ -7055,13 +7374,13 @@
         firstNameGen = "DWARF"
       }
 	  maxLevelIncrease = {
-        MELEE 7
+        DAMAGE 7
 	  }
       permanentEffects = {
         MAGIC_VULNERABILITY 1
 		RIDER 1
       }
-	  spells = { "healing" "EE area defense bonus" }
+	  spells = { "healing" "EE_area defense bonus" }
       chatReactionFriendly = "complains about the dwarven nobility"
       chatReactionHostile = "\"Die!\""
       gender = FEMALE
@@ -7100,7 +7419,7 @@
       body = {
         type = Humanoid MEDIUM
       }
-      spellSchools = { "extra gnome lore" } #Modded
+      spellSchools = { "bonus gnome lore" } #Modded
       chatReactionFriendly = "talks about crafting"
       chatReactionHostile = "\"Die!\""
 	  	  permanentEffects = {
@@ -7125,7 +7444,7 @@
     body = {
       type = Humanoid MEDIUM
     }
-    spellSchools = { "extra gnome lore" } #Modded
+    spellSchools = { "bonus gnome lore" } #Modded
     chatReactionFriendly = "talks about digging"
     chatReactionHostile = "\"Die!\""
 	permanentEffects = {
@@ -7165,7 +7484,7 @@
       chatReactionFriendly = "talks about alchemical formulae"
       chatReactionHostile = "\"Die!\""
       maxLevelIncrease = {
-        SPELL 7
+        SPELL_DAMAGE 7
       }
     }
   "EE_GNOME_CROSSBOWMAN"
@@ -7183,7 +7502,7 @@
       body = {
         type = Humanoid MEDIUM
       }
-      spellSchools = { "extra gnome lore" } #Modded
+      spellSchools = { "bonus gnome lore" } #Modded
       chatReactionFriendly = "talks about crafting"
       chatReactionHostile = "\"Die!\""
 	  permanentEffects = {
@@ -7214,7 +7533,7 @@
 		RIDER 1
 	  }
       maxLevelIncrease = {
-        SPELL 9
+        SPELL_DAMAGE 9
 	  }
 	  gender = FEMALE
       name = {
@@ -7222,7 +7541,7 @@
 		pluralName = "gnomes"
         firstNameGen = "DWARF"
       }
-      spellSchools = { "extra fire" }
+      spellSchools = { "bonus fire" }
 		spells = { "healing" }
 	}
   "EE_GNOME_FIRE_WIZARD"
@@ -7245,15 +7564,15 @@
 		RIDER 1
 	  }
       maxLevelIncrease = {
-        SPELL 7
+        SPELL_DAMAGE 7
       }
       name = {
         name = "gnome fire wizard"
 		pluralName = "gnomes"
         firstNameGen = "DWARF"
       }
-      spellSchools = { "extra fire wizard" }
-		spells = { "healing" "fireball" "firewall" "EE fireblast" "EE fire shield" "fire elemental" }
+      spellSchools = { "bonus fire wizard" }
+		spells = { "healing" "fireball" "firewall" "EE_fireblast" "EE_fire shield" "fire elemental" }
     }
   "EE_GNOME_MAGE"
     {
@@ -7271,7 +7590,7 @@
       chatReactionFriendly = "talks about fire spells"
       chatReactionHostile = "\"Die!\""
       maxLevelIncrease = {
-        SPELL 12
+        SPELL_DAMAGE 12
       }
 	  	  permanentEffects = {
 		RIDER 1
@@ -7298,7 +7617,7 @@
       chatReactionFriendly = "talks about gnome religious teachings"
       chatReactionHostile = "\"Die!\""
       maxLevelIncrease = {
-        SPELL 7
+        SPELL_DAMAGE 7
       }
 	  	  permanentEffects = {
 		RIDER 1
@@ -7307,7 +7626,7 @@
         name = "gnome priest"
         firstNameGen = "DWARF"
       }
-      spellSchools = { "extra healer" }
+      spellSchools = { "bonus healer" }
 		spells = { "healing" "magic missile" }
     }
   "EE_GNOME_WIZARD"
@@ -7330,15 +7649,15 @@
 		RIDER 1
 	  }
       maxLevelIncrease = {
-        SPELL 7
+        SPELL_DAMAGE 7
       }
       name = {
         name = "gnome wizard"
 		pluralName = "gnomes"
         firstNameGen = "DWARF"
       }
-      spellSchools = { "extra gnome wizard" }
-		spells = { "healing" "magic missile" "EE rapid magic missile" "summon flies" }
+      spellSchools = { "bonus gnome wizard" }
+		spells = { "healing" "magic missile" "EE_rapid magic missile" "summon flies" }
     }
 #---------------------
 #Ungrouped Misc Units
@@ -7450,8 +7769,8 @@
         name = "necromancer"
       }
       maxLevelIncrease = {
-        MELEE 3
-        SPELL 12
+        DAMAGE 3
+        SPELL_DAMAGE 12
       }
       permanentEffects = {
         RANGED_RESISTANCE 1
@@ -7460,8 +7779,8 @@
         DARKNESS_SOURCE 1
 		RIDER 1
       }
-      spellSchools = { "extra necromancy" }
-      spells = { "deception" "EE summon skeletons" }
+      spellSchools = { "bonus necromancy" }
+      spells = { "deception" "EE_summon skeletons" }
       chatReactionFriendly = "\"At your service, master!\""
       chatReactionHostile = "\"Soon you will join my undead ranks. DIE!\""
       hatedByEffect = HATE_UNDEAD
@@ -7567,7 +7886,7 @@
     chatReactionFriendly = "talks about rat women"
     chatReactionHostile = "makes angry rat noises"
     maxLevelIncrease = {
-      MELEE 7
+      DAMAGE 7
     }
     permanentEffects = {
 		RIDER 1
@@ -7601,10 +7920,10 @@
     chatReactionFriendly = "talks about global rat superiority"
     chatReactionHostile = "curses you out in royal rat tongue"
     maxLevelIncrease = {
-      MELEE 7
-	  SPELL 7
+      DAMAGE 7
+	  SPELL_DAMAGE 7
 	}
-	  spellSchools = { "extra fighter" "extra rat mage" }
+	  spellSchools = { "bonus fighter" "bonus rat mage" }
       spells = {
         "healing"
 	}
@@ -7631,9 +7950,9 @@
 		MULTI_WEAPON 40
       }
       maxLevelIncrease = {
-        MELEE 10
+        DAMAGE 10
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
         "healing"
       }
@@ -7663,9 +7982,9 @@
 		MULTI_WEAPON 40
       }
       maxLevelIncrease = {
-        MELEE 12
+        DAMAGE 12
       }
-	  spellSchools = { "extra fighter" }
+	  spellSchools = { "bonus fighter" }
       spells = {
         "healing"
       }
@@ -7694,8 +8013,8 @@
         RANGED_DAMAGE 18
       }
       maxLevelIncrease = {
-        MELEE 2
-        ARCHERY 7
+        DAMAGE 2
+        RANGED_DAMAGE 7
       }
       name = {
         name = "rat archer"
@@ -7797,11 +8116,11 @@
 		SPELL_DAMAGE 24
 	  }
       maxLevelIncrease = {
-        MELEE 10
-		SPELL 7
+        DAMAGE 10
+		SPELL_DAMAGE 7
       }
-	  spellSchools = { "extra dwarf monk" "extra fighter" }
-	  spells = { "advanced healing" "fire breath" "EE stone to mud" "advanced cure poison" "pull" "shove" "EE battle cry" "EE block" "swap positions" }
+	  spellSchools = { "bonus dwarf monk" "bonus fighter" }
+	  spells = { "advanced healing" "fire breath" "EE_stone to mud" "advanced cure poison" "pull" "shove" "EE_battle cry" "EE_block" "swap positions" }
       chatReactionFriendly = "talks about drunken martial arts"
       chatReactionHostile = "\"Die!\""
       hatedByEffect = HATE_DWARVES
@@ -7817,9 +8136,9 @@
         DEFENSE 38 
       }
 	  maxLevelIncrease = {
-        MELEE 4
+        DAMAGE 4
 	  }
-	  spells = { "advanced healing" "EE area defense bonus" "EE area damage bonus" }
+	  spells = { "advanced healing" "EE_area defense bonus" "EE_area damage bonus" }
 	  inventory = {
        { type =  "EE_InfWarHammer", alternative =  "AdaWarHammer" prefixChance = 1 }
 	   { type =  "EE_InfArmor", alternative =  "AdaArmor" prefixChance = 0.9 }
@@ -7954,14 +8273,14 @@
       }
       chatReactionFriendly = "curses all dungeons"
       chatReactionHostile = "calls for guards"
-	  spellSchools = { "extra healer" "extra high priest" }
+	  spellSchools = { "bonus healer" "bonus high priest" }
       spells = { 		 
 		 "expert healing"
 		 "invisibility"
 		 "expert magic missile"
 		 "escape"
-		 "EE summon spirit"
-		 "EE regrow body part"		
+		 "EE_summon spirit"
+		 "EE_regrow body part"		
 		 }
 	  hatedByEffect = HATE_HUMANS
       inventory = {
@@ -8008,14 +8327,14 @@
       }
       chatReactionFriendly = "curses all humans"
       chatReactionHostile = "calls for guards"
-	  spellSchools = { "extra healer" "extra high priest" }
+	  spellSchools = { "bonus healer" "bonus high priest" }
       spells = { 		 
 		 "expert healing"
 		 "invisibility"
 		 "expert magic missile"
 		 "escape"
-		 "EE summon spirit"
-		 "EE regrow body part"		
+		 "EE_summon spirit"
+		 "EE_regrow body part"		
 		 }
 	  hatedByEffect = HATE_UNDEAD
       inventory = {
@@ -8056,7 +8375,7 @@
     chatReactionFriendly = "curses all dungeons"
     chatReactionHostile = "\"Die!\""
     maxLevelIncrease = {
-      MELEE 3
+      DAMAGE 3
     }
     name = {
       name = "Shadow Duke"
@@ -8096,7 +8415,7 @@
     chatReactionFriendly = "curses all law enforcement"
     chatReactionHostile = "\"Die!\""
     maxLevelIncrease = {
-      MELEE 4
+      DAMAGE 4
     }
     name = {
       name = "bandit punk"
@@ -8137,7 +8456,7 @@
     chatReactionFriendly = "complains there isn't enough booze."
     chatReactionHostile = "\"Die!\""
     maxLevelIncrease = {
-      MELEE 7
+      DAMAGE 7
     }
     name = {
       name = "Bandit Lord O'mally"
@@ -8177,7 +8496,7 @@
       firstNameGen = "ORC"
 	}
     maxLevelIncrease = {
-      MELEE 3
+      DAMAGE 3
     }
     hatedByEffect = HATE_HUMANS
     inventory = {
@@ -8209,7 +8528,7 @@
       firstNameGen = "EE_ORC_FEMALE"
 	}
     maxLevelIncrease = {
-	  ARCHERY 3
+	  RANGED_DAMAGE 3
     }
     hatedByEffect = HATE_HUMANS
     inventory = {
@@ -8242,11 +8561,11 @@
 	}
     companions = {10 false SPELL_DAMAGE 0.05 { "SPIRIT" }}
     maxLevelIncrease = {
-	  SPELL 3
+	  SPELL_DAMAGE 3
     }
     hatedByEffect = HATE_HUMANS
 	spells = {
-      "EE advanced rapid magic missile"
+      "EE_advanced rapid magic missile"
       "group healing"
 	  "advanced cure poison"
 	}
@@ -8304,8 +8623,8 @@
     }
     spells = { "healing" }
     maxLevelIncrease = {
-	  MELEE 2
-      ARCHERY 3
+	  DAMAGE 2
+      RANGED_DAMAGE 3
     }
     name = {
       name = "elven soldier"
@@ -8342,11 +8661,11 @@
       ELF_VISION 1
 	  RIDER 1
 	}
-    spells = { "expert healing" "haste" "EE area defense bonus" "EE area damage bonus" "EE magic blast" "EE haste other" "group healing" "expert magic missile" }
+    spells = { "expert healing" "haste" "EE_area defense bonus" "EE_area damage bonus" "EE_magic blast" "EE_haste other" "group healing" "expert magic missile" }
     maxLevelIncrease = {
-      SPELL 4
-      MELEE 4
-	  ARCHERY 4
+      SPELL_DAMAGE 4
+      DAMAGE 4
+	  RANGED_DAMAGE 4
     }
     name = {
       name = "elf king"
@@ -8392,8 +8711,8 @@
     }
     spells = { "healing" }
     maxLevelIncrease = {
-      MELEE 3
-      SPELL 3
+      DAMAGE 3
+      SPELL_DAMAGE 3
     }
     name = {
       name = "dark elf witchblade"
@@ -8434,9 +8753,9 @@
     }
     spells = { "healing" }
     maxLevelIncrease = {
-      MELEE 2
-	  ARCHERY 3
-      SPELL 3
+      DAMAGE 2
+	  RANGED_DAMAGE 3
+      SPELL_DAMAGE 3
     }
     name = {
       name = "dark elf archer"
@@ -8475,7 +8794,7 @@
       NIGHT_VISION 1
 	  RIDER 1
     }
-    spells = { "EE expert fireball" "EE expert firewall" "EE expert fireblast" "expert healing" "group healing" "EE area haste" "EE area defense bonus" "EE area damage bonus" "EE magic blast" }
+    spells = { "EE_expert fireball" "EE_expert firewall" "EE_expert fireblast" "expert healing" "group healing" "EE_area haste" "EE_area defense bonus" "EE_area damage bonus" "EE_magic blast" }
     name = {
       name = "dark elf empress"
     }
@@ -8502,6 +8821,55 @@
     }
   }
   
+#################
+#Difficulty mods#
+#################
+
+  "EE_KEEPER_MAGE_EASY" inherit "KEEPER_MAGE"
+    {
+      viewId = { "keeper1" Rgb 58 255 106 106 }
+      viewIdUpgrades = { { "keeper2" Rgb 58 255 106 106 } { "keeper3" Rgb 58 255 106 106 } { "keeper4" Rgb 58 255 106 106 } }
+      attr = {
+        DAMAGE 15
+        DEFENSE 15
+        SPELL_DAMAGE 25
+      }
+    }
+  "EE_KEEPER_MAGE_F_EASY" inherit "EE_KEEPER_MAGE_EASY"
+    {
+      viewId = { "keeper_f1" Rgb 58 255 106 106 }
+      viewIdUpgrades = { { "keeper_f2" Rgb 58 255 106 106 } { "keeper_f3" Rgb 58 255 106 106 } { "keeper_f4" Rgb 58 255 106 106 } }
+      gender = FEMALE
+      name = {
+        name = "wizard"
+        firstNameGen = "FIRST_FEMALE"
+        fullTitle = true
+      }
+    }
+  "EE_KEEPER_MAGE_HARD" inherit "KEEPER_MAGE"
+    {
+      viewId = { "keeper1" Rgb 106 106 255 106 }
+      viewIdUpgrades = { { "keeper2" Rgb 106 106 255 106 } { "keeper3" Rgb 106 106 255 106 } { "keeper4" Rgb 106 106 255 106 } }
+      attr = {
+        DAMAGE 10
+        DEFENSE 10
+        SPELL_DAMAGE 15
+      }
+    }
+  "EE_KEEPER_MAGE_F_HARD" inherit "EE_KEEPER_MAGE_HARD"
+    {
+      viewId = { "keeper_f1" Rgb 106 106 255 106 }
+      gender = FEMALE
+      name = {
+        name = "wizard"
+        firstNameGen = "FIRST_FEMALE"
+        fullTitle = true
+      }
+      viewIdUpgrades = {{ "keeper_f2"  Rgb 106 106 255 106 } { "keeper_f3"  Rgb 106 106 255 106 } { "keeper_f4"  Rgb 106 106 255 106 }}
+    }
+
+  
+
 ##########################
 #Ideas for Future modding#
 ##########################
@@ -8538,3 +8906,56 @@
 # Shade
 # Poltergeist
 #########################
+  
+###
+#Allow several creatures to take basic melee training, mostly so they can defend a little better. A37 defaults to combat XP helping melee performance unless other categories are identified, so it's not critical for that purpose anymore.  Yay!
+"WITCHMAN" modify append { maxLevelIncrease = { DAMAGE 3 } }
+#Witchers seemed pretty useless last I converted one. Hoping this helps.
+"KOBOLD" modify append { maxLevelIncrease = { DAMAGE 3 } }
+"GOBLIN_ARTIFICER" modify append { maxLevelIncrease = { DAMAGE 3 } }
+"ARTISAN" modify append { maxLevelIncrease = { DAMAGE 3 } }
+#Your gear-builders needn't be great fighters, but if you're building weapons & armor it helps to know how to use said weapons & armor.
+"SOFT_MONSTER" modify append { maxLevelIncrease = { DAMAGE 3 } }
+#If you meet the Soft Monster in a dungeon, it'd be nice if he trained up after conversion.
+"GOBLIN_MATRON" modify append { maxLevelIncrease = { DAMAGE 3 } }
+"EE_GOBLIN_MATRON_PLAYER" modify append {maxLevelIncrease = { DAMAGE 3  } }
+#Children may be grounds for complaint...but I'm pretty sure the matrons would defend them, since they gear up for combat.
+"EE_COMBAT_SUCCUBUS" modify append { maxLevelIncrease = { DAMAGE 3 } }
+#She's supposed to be able to fight, so how about it?
+
+#Combat steeds should be able to benefit from *some* training.
+"WARHORSE" modify append {maxLevelIncrease = { DAMAGE 3 } }
+"EE_LION" modify append {maxLevelIncrease = { DAMAGE 1 } }
+"EE_LIONESS" modify append {	maxLevelIncrease = { DAMAGE 1 } }
+
+#Dragons have their own names and language, so they're clearly intelligent, so they should be able to train. Balancing is tricky, though.
+"GREEN_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
+"RED_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
+"BLACK_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
+"WHITE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
+"YELLOW_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
+
+#Since zombies & skeletons can train in vanilla, I guess the dragons can as well.
+"EE_ZOMBIE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
+"BONE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
+
+#Ancient dragons have seen it all already, or at least they'd think so.
+"EE_ANCIENT_GREEN_DRAGON" modify append {maxLevelIncrease = {DAMAGE 1} }
+"EE_ANCIENT_RED_DRAGON" modify append {maxLevelIncrease = {DAMAGE 1} }
+
+#Young dragons, however, can learn a lot!
+"EE_YOUNG_GREEN_DRAGON" modify append {maxLevelIncrease = {DAMAGE 12} }
+"EE_YOUNG_RED_DRAGON" modify append {maxLevelIncrease = {DAMAGE 12} }
+####
+
+#Making absolutely sure farming creatures can farm; didn't cause immediately-noticeable errors on my end
+"IMP" modify { permanentEffects = append { CROPS_SKILL 1 } }
+"PESEANT_PLAYER" modify { permanentEffects = append { CROPS_SKILL 1 } }
+"GOBLIN_WORKER" modify { permanentEffects = append { CROPS_SKILL 1 } }
+
+##
+#Assigning forge training (allows crafters who gain combat XP to translate that into better performance at magma/myst forges)
+"GOBLIN_ARTIFICER" modify { maxLevelIncrease = append { FORGE 5 } }
+"ARTISAN" modify { maxLevelIncrease = append { FORGE 10 } } #Humans are larger and stronger: Lawful keepers, eventually, will get better smiths (unless someone changes this, which is fine). Might be a while though.
+"DWARF_BLACKSMITH" modify { maxLevelIncrease = append { FORGE 10 }}
+"CYCLOPS_PLAYER" modify { maxLevelIncrease = append { FORGE 10 }}

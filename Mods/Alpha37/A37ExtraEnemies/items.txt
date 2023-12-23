@@ -1,6 +1,310 @@
-########
-#Modded
-########
+##########################
+#Artifacts mod
+##########################
+
+Def SHARP_WEAPON_PREFIXES()
+    genPrefixes =
+	{
+      1 VictimEffect 0.3 Fire { 25 }
+      1 VictimEffect 0.2 Acid{30}
+      1 VictimEffect 0.2 Ice{30}
+      1 VictimEffect 0.1 Lasting 20 POISON
+      1 VictimEffect 0.1 Lasting 20 BLEEDING
+      1 VictimEffect 0.1 Lasting 100 FIRE_VULNERABILITY
+      1 VictimEffect 0.1 Lasting 100 COLD_VULNERABILITY
+      1 VictimEffect 0.1 Lasting 100 ACID_VULNERABILITY
+      1 VictimEffect 0.1 Lasting 100 MELEE_VULNERABILITY
+      1 VictimEffect 0.1 Lasting 100 MAGIC_VULNERABILITY
+      1 VictimEffect 0.1 Lasting 100 RANGED_VULNERABILITY
+      1 LastingEffect RAGE
+	  1 LastingEffect LIGHT_SOURCE	  
+      1 LastingEffect SLOW_CRAFTING
+      1 LastingEffect SLOW_TRAINING
+      1 LastingEffect HATE_DWARVES
+      1 LastingEffect HATE_HUMANS
+      1 LastingEffect HATE_GREENSKINS
+      1 LastingEffect HATE_ELVES
+      1 LastingEffect HATE_UNDEAD
+      1 LastingEffect HATE_DRAGONS
+      1 SpecialAttr DAMAGE 10 HatedBy HATE_UNDEAD
+      1 JoinPrefixes { ItemAttrBonus DAMAGE 3 LastingEffect HALLU }
+    }
+End
+
+Def BLUNT_WEAPON_PREFIXES()
+    genPrefixes =
+	{
+      1 VictimEffect 0.3 Fire { 25 }
+      1 VictimEffect 0.2 Acid{30}
+      1 VictimEffect 0.2 Ice{30}
+      1 VictimEffect 0.3 Lasting 20 COLLAPSED
+      1 VictimEffect 0.7 Lasting 20 SLOWED
+      1 LastingEffect RAGE
+	  1 LastingEffect LIGHT_SOURCE
+      1 LastingEffect MELEE_VULNERABILITY
+      1 LastingEffect RANGED_VULNERABILITY
+      1 SpecialAttr DAMAGE 10 HatedBy HATE_UNDEAD
+      1 ItemAttrBonus DIGGING 20
+      1 JoinPrefixes { ItemAttrBonus DAMAGE 3 LastingEffect HALLU }
+    }
+End
+
+Def MAGIC_WEAPON_PREFIXES()
+    genPrefixes =
+	{
+      1 VictimEffect 1.0 Escape{}
+      1 VictimEffect 0.4 DestroyEquipment
+      1 VictimEffect 0.2 Lasting INSANITY
+      1 VictimEffect 0.2 DestroyEquipment
+      1 VictimEffect 0.5 Fire{20}
+      1 VictimEffect 0.3 Lasting 20 PEACEFULNESS
+      1 VictimEffect 0.3 Lasting 20 SLEEP
+      1 VictimEffect 0.3 Lasting 20 PANIC
+      1 VictimEffect 0.3 Lasting 20 HALLU
+      1 LastingEffect FIRE_VULNERABILITY
+      1 LastingEffect COLD_VULNERABILITY
+      1 LastingEffect ACID_VULNERABILITY
+      1 LastingEffect MAGIC_VULNERABILITY
+      1 LastingEffect PANIC
+      1 JoinPrefixes { ItemAttrBonus SPELL_DAMAGE 20 AttackerEffect Suicide DIE } #This can be good for ranged-casting, just don't hit anyone with it
+	}
+End
+
+Def BOOTS_PREFIXES()
+    genPrefixes =
+	{
+      1 ItemAttrBonus DEFENSE 3
+      1 LastingEffect SPEED
+      1 LastingEffect FLYING
+      1 LastingEffect SWARMER
+      1 LastingEffect STEED
+      1 LastingEffect REGENERATION
+      1 LastingEffect SLOWED
+      #1 LastingEffect COLLAPSED #Really wear the Boots Of Fall On Your Arse?
+      1 LastingEffect EXPLORE_SKILL
+      1 LastingEffect EXPLORE_NOCTURNAL_SKILL
+      1 LastingEffect EXPLORE_CAVES_SKILL
+      1 LastingEffect CAN_DANCE
+    }
+End
+
+Def GLOVES_PREFIXES()
+    genPrefixes =
+	{
+      1 ItemAttrBonus PARRY 3
+      1 ItemAttrBonus DAMAGE 5
+      1 ItemAttrBonus SPELL_DAMAGE 5
+      1 ItemAttrBonus RANGED_DAMAGE 5
+      #1 LastingEffect POISON #Maybe if they're really really good Venorack? nope
+      #1 LastingEffect BLEEDING #Saw these in the King's castle. Confined the squires to bed.
+      1 LastingEffect SWIMMING_SKILL
+      1 LastingEffect DISARM_TRAPS_SKILL
+      1 LastingEffect BRIDGE_BUILDING_SKILL
+      1 LastingEffect DISTILLATION_SKILL
+    }
+End
+
+Def HELM_PREFIXES()
+    genPrefixes =
+	{
+      1 LastingEffect WARNING
+      1 LastingEffect SLEEP_RESISTANT
+      1 ItemAttrBonus DEFENSE 5
+      1 LastingEffect TELEPATHY
+      1 LastingEffect NO_FRIENDLY_FIRE
+      1 LastingEffect PSYCHIATRY
+      1 LastingEffect BAD_BREATH
+      #1 LastingEffect SUNLIGHT_VULNERABLE #Did someone prank you with a magnifying-lens hat?
+      1 LastingEffect MAGIC_CANCELLATION
+      1 LastingEffect INSANITY
+      1 LastingEffect PEACEFULNESS
+      1 LastingEffect LIGHT_SOURCE
+      #1 LastingEffect SLEEP #Effectively a kill: you can't order it removed, or remove it, without killing the wearer.  No.
+      1 LastingEffect PANIC
+      1 LastingEffect RAGE
+      1 LastingEffect HALLU
+      1 LastingEffect BLIND
+      1 LastingEffect ARCHER_VISION
+      1 LastingEffect ELF_VISION
+      1 LastingEffect NIGHT_VISION
+      1 LastingEffect WARNING
+      1 LastingEffect RESTED
+      1 LastingEffect FAST_CRAFTING
+      1 LastingEffect FAST_TRAINING
+      1 LastingEffect ENTERTAINER
+      1 LastingEffect RIDER
+      1 LastingEffect SLOW_CRAFTING
+      1 LastingEffect SLOW_TRAINING
+      1 LastingEffect HATE_DWARVES
+      1 LastingEffect HATE_HUMANS
+      1 LastingEffect HATE_GREENSKINS
+      1 LastingEffect HATE_ELVES
+      1 LastingEffect HATE_UNDEAD
+      1 LastingEffect HATE_DRAGONS
+    }
+End
+
+Def ARMOUR_PREFIXES()
+    genPrefixes =
+	{
+      1 ItemAttrBonus DEFENSE 5
+      1 LastingEffect PLAGUE #For folks with regen, plague-resistant, or undead, this is worth considering as a bio-warfare tool.
+      1 LastingEffect CAPTURE_RESISTANCE
+      1 LastingEffect POISON_RESISTANT
+      1 LastingEffect FIRE_RESISTANT
+      1 LastingEffect COLD_RESISTANT
+      1 LastingEffect MAGIC_RESISTANCE
+      1 LastingEffect ACID_RESISTANT
+      1 LastingEffect MELEE_RESISTANCE
+      1 LastingEffect RANGED_RESISTANCE
+      1 LastingEffect FIRE_VULNERABILITY
+      1 LastingEffect COLD_VULNERABILITY
+      1 LastingEffect ACID_VULNERABILITY
+      1 LastingEffect MELEE_VULNERABILITY
+      1 LastingEffect MAGIC_VULNERABILITY
+      1 LastingEffect RANGED_VULNERABILITY
+      1 LastingEffect FIRE_IMMUNITY
+      1 LastingEffect COLD_IMMUNITY
+      1 LastingEffect ACID_IMMUNITY
+      1 LastingEffect MELEE_IMMUNITY
+      1 LastingEffect MAGIC_IMMUNITY
+      1 LastingEffect RANGED_IMMUNITY
+      1 LastingEffect PLAGUE_RESISTANT
+      1 LastingEffect INVISIBLE
+      #1 LastingEffect ENTANGLED #No.
+      #1 LastingEffect TIED_UP #No.
+      #1 LastingEffect IMMOBILE # NO. These break AI characters; they can't fight, and even if captured can't be processed for conversion.
+      1 LastingEffect PREGNANT
+      1 LastingEffect SATIATED
+      1 LastingEffect SPYING
+      1 LastingEffect AMBUSH_SKILL
+      1 LastingEffect COPULATION_SKILL	  
+    }
+End
+
+"Knife" modify append { SHARP_WEAPON_PREFIXES()  }
+"AssassinsKnife" modify append { SHARP_WEAPON_PREFIXES()  }
+"UnicornHorn" modify append { SHARP_WEAPON_PREFIXES()  }
+"Spear" modify append { SHARP_WEAPON_PREFIXES()  }
+"Sword" modify append { SHARP_WEAPON_PREFIXES()  }
+"AdaSword" modify append { SHARP_WEAPON_PREFIXES()  }
+"InferniteSword" modify append { SHARP_WEAPON_PREFIXES()  }
+"ElvenSword" modify append { SHARP_WEAPON_PREFIXES()  }
+"BattleAxe" modify append { SHARP_WEAPON_PREFIXES()  }
+"AdaBattleAxe" modify append { SHARP_WEAPON_PREFIXES()  }
+"InferniteBattleAxe" modify append { SHARP_WEAPON_PREFIXES()  }
+"InferniteTrident" modify append { SHARP_WEAPON_PREFIXES()  }
+
+"WarHammer" modify append { BLUNT_WEAPON_PREFIXES() }
+"AdaWarHammer" modify append { BLUNT_WEAPON_PREFIXES() }
+"InferniteWarHammer" modify append { BLUNT_WEAPON_PREFIXES() }
+"Club" modify append { BLUNT_WEAPON_PREFIXES() }
+"HeavyClub" modify append { BLUNT_WEAPON_PREFIXES() }
+"BalrogsWhip" modify append { BLUNT_WEAPON_PREFIXES() }
+
+"WoodenStaff" modify append { MAGIC_WEAPON_PREFIXES() }
+"IronStaff" modify append { MAGIC_WEAPON_PREFIXES() }
+"AdoxiumStaff"  modify append { MAGIC_WEAPON_PREFIXES() }
+"ElvenStaff" modify append { MAGIC_WEAPON_PREFIXES() }
+"Sceptre" modify append { MAGIC_WEAPON_PREFIXES() }
+
+"LeatherBoots" modify append { BOOTS_PREFIXES() }
+"IronBoots" modify append { BOOTS_PREFIXES() }
+"AdaBoots" modify append { BOOTS_PREFIXES() }
+"AdoxiumBoots" modify append { BOOTS_PREFIXES() }
+"DevilBoots" modify append { BOOTS_PREFIXES() }
+
+"Bow" modify append { HELM_PREFIXES() }
+"ElvenBow" modify append { HELM_PREFIXES() }
+"ArchwoodBow" modify append { HELM_PREFIXES() }
+"Crossbow" modify append { HELM_PREFIXES() }
+
+"LeatherGloves" modify append { GLOVES_PREFIXES() }
+"IronGloves" modify append { GLOVES_PREFIXES() }
+"AdaGloves" modify append { GLOVES_PREFIXES() }
+"AdoxiumGloves" modify append { GLOVES_PREFIXES() }
+
+"LeatherHelm" modify append { HELM_PREFIXES() }
+"IronHelm" modify append { HELM_PREFIXES() }
+"CyclopsHelm" modify append { HELM_PREFIXES() }
+"AdaHelm" modify append { HELM_PREFIXES() }
+"AdoxiumHelm" modify append { HELM_PREFIXES() }
+"Cornuthaum1" modify append { HELM_PREFIXES() }
+"Cornuthaum2" modify append { HELM_PREFIXES() }
+"Cornuthaum3" modify append { HELM_PREFIXES() }
+
+"WoodenShield" modify append { ARMOUR_PREFIXES() }
+"IronShield" modify append { ARMOUR_PREFIXES() }
+"AdaShield" modify append { ARMOUR_PREFIXES() }
+"LeatherArmor" modify append { ARMOUR_PREFIXES() }
+"ChainArmor" modify append { ARMOUR_PREFIXES() }
+"RedDragonArmor" modify append { ARMOUR_PREFIXES() }
+"BlackDragonArmor" modify append { ARMOUR_PREFIXES() }
+"WhiteDragonArmor" modify append { ARMOUR_PREFIXES() }
+"YellowDragonScales" modify append { ARMOUR_PREFIXES() }
+"YellowDragonArmor" modify append { ARMOUR_PREFIXES() }
+"GreenDragonArmor" modify append { ARMOUR_PREFIXES() }
+"AdaArmor" modify append { ARMOUR_PREFIXES() }
+"AdoxiumArmor" modify append { ARMOUR_PREFIXES() }
+"Robe" modify append { ARMOUR_PREFIXES() }
+"HalloweenCostume" modify append { ARMOUR_PREFIXES() }
+
+
+##########################
+#Resources for bonus mod mining
+##########################
+
+"InfOre"
+  {
+    viewId = { "infernite_ore_pile" }
+	ownedEffect = LIGHT_SOURCE
+    name = "infernite ore"
+    itemClass = OTHER
+    price = 0
+    resourceId = "INFERNITE"
+    weight = 1
+	storageIds = {"equipment"}
+  }
+"VenOre"
+  {
+    viewId = { "venorack_ore_pile" }
+    name = "venorack ore"
+    itemClass = OTHER
+    price = 0
+    resourceId = "VEN"
+    weight = 0.5
+	storageIds = {"equipment"}
+  }
+
+#######################
+#Farming mod
+#######################
+
+ "sack"
+  {
+    viewId = { "sack" }
+    name = "sack of crops"
+    itemClass = OTHER
+    price = 0
+    resourceId = "CROPS"
+    weight = 5
+    storageIds = {"resources"}
+   }
+
+
+###############
+#Hand torch mod
+###############
+
+
+"Torch" modify append
+  {
+    ownedEffect = TORCH_VISION
+  }
+
+###################
+#Extra enemies mod
+###################
 
 "EE_DEFENSEAMULET"
   {
@@ -29,7 +333,7 @@
       uses = 2
       usedUpMsg = true
       displayUses = true
-	  storageIds = {"equipment"}
+	  storageIds = {"weapons" "equipment"}
       effect = { Enhance ARMOR 3 Enhance ARMOR -3 Enhance ARMOR 2 Enhance ARMOR -2 Enhance ARMOR -1 Enhance ARMOR 1 }
     }
 
@@ -60,8 +364,8 @@
         }
       }
       equipedEffect = { RAGE }
-      equipedAbility = { "EE fire shield" }
-	  storageIds = {"equipment"}
+      equipedAbility = { "EE_fire shield" }
+	  storageIds = {"weapons" "equipment"}
     }
   "EE_InvisibilityRobe"
     {
@@ -75,7 +379,7 @@
         DEFENSE 1
       }
       equipedAbility = { "invisibility" }
-	  storageIds = {"equipment"}
+	  storageIds = {"armor" "equipment"}
     }
   "EE_InvisibilityRing"
     {
@@ -104,7 +408,7 @@
       viewId = { "dwarf_beer" }
       name = "dwarven beer"
       weight = 0.3
-      description = "Permanently increases your attack by 1, but makes you insane and halucinate for a while in exchange."
+      description = "Permanently increases your attack by 1, but makes you insane and hallucinate for a while in exchange."
       uses = 1
       price = 100
       effect = { IncreaseAttr DAMAGE 1 Lasting INSANITY Lasting HALLU }
@@ -133,7 +437,7 @@
         1 ItemAttrBonus DEFENSE 3
       }
       maxUpgrades = 1
-	  storageIds = {"equipment"}
+	  storageIds = {"weapons" "equipment"}
     }
   "EE_Axe" #Modded
     {
@@ -155,7 +459,7 @@
         1 LastingEffect RAGE
       }
       maxUpgrades = 1
-	  storageIds = {"equipment"}
+	  storageIds = {"weapons" "equipment"}
     }
   "EE_AdaAxe" #Modded
     {
@@ -175,11 +479,11 @@
       }
       genPrefixes = {
         3 VictimEffect 0.6 Lasting 50 BLEEDING
-		1 SpellId "EE leg strike"
-		1 SpellId "EE arm strike"
+		1 SpellId "EE_leg strike"
+		1 SpellId "EE_arm strike"
       }
       maxUpgrades = 2
-	  storageIds = {"equipment"}
+	  storageIds = {"weapons" "equipment"}
     }
   "EE_Mace"
     {
@@ -202,7 +506,7 @@
         1 VictimEffect 0.3 Lasting 50 BLEEDING
       }
       maxUpgrades = 1
-	  storageIds = {"equipment"}
+	  storageIds = {"weapons" "equipment"}
     }
   "EE_AdaMace"
     {
@@ -225,7 +529,7 @@
         1 VictimEffect 0.5 Lasting 50 BLEEDING
       }
       maxUpgrades = 2
-	  storageIds = {"equipment"}
+	  storageIds = {"weapons" "equipment"}
     }
   "EE_WonderMushroom"
     {
@@ -366,7 +670,7 @@
         maxUpgrades =  1 
         equipedEffect = { COLD_RESISTANT }
         equipedAbility = { "ice cone" }
-		storageIds = {"equipment"}
+		storageIds = {"weapons" "equipment"}
       }
     "EE_RobesOfHell"
     {
@@ -381,7 +685,7 @@
         modifiers =  { DEFENSE 5 } 
         equipedEffect = { TELEPATHY NIGHT_VISION RAGE FIRE_RESISTANT MAGIC_RESISTANCE }
         equipedAbility = { "firewall" }
-		storageIds = {"equipment"}
+		storageIds = {"armor" "equipment"}
     }
     "EE_HeavenlyArmor"
     {
@@ -396,7 +700,7 @@
         modifiers =  { DEFENSE 10 } 
         maxUpgrades = 0
         equipedEffect = { MAGIC_RESISTANCE FLYING COLD_RESISTANT }
-		storageIds = {"equipment"}
+		storageIds = {"armor" "equipment"}
     }
     "EE_SpearOfLizardmen"
     {
@@ -412,7 +716,7 @@
         modifiers =  { DAMAGE 12 DEFENSE 3} 
         weaponInfo =  { attackType = STAB attackMsg = THRUST } 
         equipedEffect = { SWIMMING_SKILL FAST_TRAINING SLEEP_RESISTANT RESTED NIGHT_VISION PLAGUE_RESISTANT }
-		storageIds = {"equipment"}
+		storageIds = {"weapons" "equipment"}
     }
     "EE_RingOfSubjection"
     {
@@ -424,7 +728,7 @@
         itemClass =  ARMOR 
         equipmentSlot =  RINGS 
         equipedAbility = { "pacify" }  
-		storageIds = {"equipment"}
+		storageIds = {"jewellery" "equipment"}
     }
   "EE_IlluRing"
     {
@@ -435,7 +739,7 @@
       weight = 0.5
       price = 1000
       equipedAbility = { "double trouble" }
-	  storageIds = {"equipment"}
+	  storageIds = {"jewellery" "equipment"}
     }
     "EE_BoneOfWizardry"
     {
@@ -446,7 +750,7 @@
 		ownedEffect = SPELL_DAMAGE
 		price =  0 
 		itemClass =  CORPSE 
-		storageIds = {"equipment"}
+		storageIds = {"weapons" "equipment"}
     }
 	"EE_StaffOfBleeding"
 	{
@@ -462,8 +766,8 @@
 		weaponInfo =  { attackType = SPELL attackMsg = WAVE meleeAttackAttr = SPELL_DAMAGE } 
 		maxUpgrades =  2 
 		equipedEffect = { BLEEDING REGENERATION }
-		equipedAbility = { "EE blood curse" }
-		storageIds = {"equipment"}
+		equipedAbility = { "EE_blood curse" }
+		storageIds = {"weapons" "equipment"}
 	}
 	"EE_VampiricSword"
 	{
@@ -477,7 +781,7 @@
         equipmentSlot =  WEAPON 
 		modifiers = { DAMAGE 11 }
         weaponInfo =  { attackType = STAB attackMsg = THRUST attackerEffect = { Chance 0.2 Heal {FLESH} Heal {SPIRIT} RegrowBodyPart 1 } } 
-		storageIds = {"equipment"}
+		storageIds = {"weapons" "equipment"}
 	}
 	"EE_OmallyKnife"
 	{
@@ -494,7 +798,7 @@
 		attackType = STAB
         victimEffect = { 1.0 { Lasting POISON Lasting 50 BLEEDING } } }
 		equipedEffect = { POISON_RESISTANT }	
-		storageIds = {"equipment"}
+		storageIds = {"weapons" "equipment"}
 	}
 	"EE_Dagger"
 	{
@@ -510,7 +814,7 @@
 		attackType = STAB
         victimEffect = { 0.4 Lasting 50 BLEEDING }
 	  }
-	  storageIds = {"equipment"}
+	  storageIds = {"weapons" "equipment"}
 	}
 #Staff of dungeon master for creative mode. Cannot be wished for.
 #Musn't be given to anything in creature inventory that can be wished for.
@@ -559,7 +863,7 @@
     equipmentSlot = WEAPON
     weight = 1.0
     modifiers = {
-      DAMAGE 7
+      DAMAGE 9
     }
     price = 16
     weaponInfo = {
@@ -567,7 +871,7 @@
 	  victimEffect = { 0.4 Lasting 50 POISON }
     }
     genPrefixes = {
-	  2 SpellId "EE poison bolt"
+	  2 SpellId "EE_poison bolt"
       2 VictimEffect 0.2 Lasting INSANITY
       3 LastingEffect RAGE
       3 JoinPrefixes {
@@ -581,7 +885,7 @@
       }
     }
     maxUpgrades = 1
-	storageIds = {"equipment"}
+	storageIds = {"weapons" "equipment"}
   }
 "EE_VenBattleAxe"
   {
@@ -593,7 +897,7 @@
     equipmentSlot = WEAPON
     weight = 6
     modifiers = {
-      DAMAGE 13
+      DAMAGE 15
     }
     price = 80
     weaponInfo = {
@@ -602,10 +906,10 @@
       twoHanded = true
     }
     genPrefixes = {
-	  2 SpellId "EE poison bolt"
+	  2 SpellId "EE_poison bolt"
       3 LastingEffect RAGE
-	  2 SpellId "EE leg strike"
-	  2 SpellId "EE arm strike"
+	  2 SpellId "EE_leg strike"
+	  2 SpellId "EE_arm strike"
       1 JoinPrefixes {
         ItemAttrBonus DAMAGE 4
         LastingEffect INVISIBLE
@@ -613,7 +917,7 @@
       }
     }
     maxUpgrades = 1
-	storageIds = {"equipment"}
+	storageIds = {"weapons" "equipment"}
   }
 "EE_VenWarHammer"
   {
@@ -625,7 +929,7 @@
     equipmentSlot = WEAPON
     weight = 6
     modifiers = {
-      DAMAGE 11
+      DAMAGE 13
     }
     price = 60
     weaponInfo = {
@@ -634,10 +938,10 @@
       twoHanded = true
     }
     genPrefixes = {
-	  2 SpellId "EE poison bolt"
+	  2 SpellId "EE_poison bolt"
       3 VictimEffect 0.4 Lasting COLLAPSED
       3 LastingEffect RAGE
-	  2 SpellId "EE air render"
+	  2 SpellId "EE_air render"
       1 JoinPrefixes {
 			ItemAttrBonus DAMAGE 4
 			LastingEffect INVISIBLE
@@ -645,7 +949,7 @@
       }
     }
     maxUpgrades = 1
-	storageIds = {"equipment"}
+	storageIds = {"weapons" "equipment"}
   }
   "EE_VenLongSpear"
     {
@@ -657,7 +961,7 @@
       equipmentSlot = WEAPON
       weight = 6
       modifiers = {
-        DAMAGE 7
+        DAMAGE 9
         DEFENSE 2
       }
       price = 30
@@ -667,7 +971,7 @@
 		victimEffect = { 0.4 Lasting POISON }
       }
       genPrefixes = {
-		2 SpellId "EE poison bolt"
+		2 SpellId "EE_poison bolt"
 		1 JoinPrefixes {
 			ItemAttrBonus DAMAGE 6
 			VictimEffect 0.1 Escape{}
@@ -676,7 +980,7 @@
         2 ItemAttrBonus DEFENSE 3
       }
       maxUpgrades = 1
-	  storageIds = {"equipment"}
+	  storageIds = {"weapons" "equipment"}
     }
   "EE_VenAxe"
     {
@@ -688,7 +992,7 @@
       equipmentSlot = WEAPON
       weight = 3.5
       modifiers = {
-        DAMAGE 9
+        DAMAGE 10
       }
       price = 40
       weaponInfo = {
@@ -697,14 +1001,14 @@
       }
       genPrefixes = {
         3 LastingEffect RAGE
-		2 SpellId "EE poison bolt"
+		2 SpellId "EE_poison bolt"
 		3 JoinPrefixes {
 			ItemAttrBonus DAMAGE 4
 			LastingEffect HALLU
 		}
       }
       maxUpgrades = 1
-	  storageIds = {"equipment"}
+	  storageIds = {"weapons" "equipment"}
     }
   "EE_VenMace"
     {
@@ -716,7 +1020,7 @@
       equipmentSlot = WEAPON
       weight = 5
       modifiers = {
-        DAMAGE 8
+        DAMAGE 10
         DEFENSE 1
       }
       price = 40
@@ -727,7 +1031,7 @@
       genPrefixes = {
         3 VictimEffect 0.3 Lasting COLLAPSED
         3 LastingEffect RAGE
-		2 SpellId "EE poison bolt"
+		2 SpellId "EE_poison bolt"
 		1 JoinPrefixes {
 			ItemAttrBonus DAMAGE 4
 			LastingEffect INVISIBLE
@@ -735,7 +1039,7 @@
 		}
       }
       maxUpgrades = 1
-	  storageIds = {"equipment"}
+	  storageIds = {"weapons" "equipment"}
     }
 "EE_VenArmor"
   {
@@ -747,7 +1051,7 @@
     weight = 12
     price = 100
     modifiers = {
-      DEFENSE 4
+      DEFENSE 6
     }
     genPrefixes = {
       1 ItemAttrBonus DEFENSE 3
@@ -757,9 +1061,9 @@
 			LastingEffect BLIND
 		}
     }
-    maxUpgrades = 2
+    maxUpgrades = 1
 	equipedEffect = { POISON_RESISTANT }
-	storageIds = {"equipment"}
+	storageIds = {"armor" "equipment"}
   }
 "EE_VenBoots"
   {
@@ -772,16 +1076,16 @@
     weight = 2
     price = 30
     modifiers = {
-      DEFENSE 1
+      DEFENSE 3
     }
     genPrefixes = {
       1 LastingEffect FLYING
       1 LastingEffect FIRE_RESISTANT
       3 ItemAttrBonus DEFENSE 3
     }
-    maxUpgrades = 2
+    maxUpgrades = 1
 	equipedEffect = { POISON_RESISTANT }
-	storageIds = {"equipment"}
+	storageIds = {"armor" "equipment"}
   }
 "EE_VenGloves"
   {
@@ -794,15 +1098,15 @@
     weight = 0.8
     price = 30
     modifiers = {
-      DEFENSE 1
+      DEFENSE 2
     }
     genPrefixes = {
       1 ItemAttrBonus DAMAGE 3
       1 ItemAttrBonus SPELL_DAMAGE 3
     }
-    maxUpgrades = 2
+    maxUpgrades = 1
 	equipedEffect = { POISON_RESISTANT }
-	storageIds = {"equipment"}
+	storageIds = {"armor" "equipment"}
   }
 "EE_VenHelm"
   {
@@ -814,7 +1118,7 @@
     weight = 2.5
     price = 30
     modifiers = {
-      DEFENSE 2
+      DEFENSE 3
     }
     genPrefixes = {
       1 LastingEffect WARNING
@@ -822,7 +1126,7 @@
       3 ItemAttrBonus DEFENSE 3
     }
     maxUpgrades = 2
-	storageIds = {"equipment"}
+	storageIds = {"armor" "equipment"}
 	equipedEffect = { POISON_RESISTANT }
   }
 "EE_VenShield"
@@ -836,12 +1140,12 @@
     price = 40
     modifiers = {
       PARRY 2
-      DEFENSE 1
+      DEFENSE 3
     }
     genPrefixes = {
-	  2 SpellId "EE regeneration"
-	  1 SpellId "EE weapon dodge"
-	  1 SpellId "EE arrow shield"
+	  2 SpellId "EE_regeneration"
+	  1 SpellId "EE_weapon dodge"
+	  1 SpellId "EE_arrow shield"
 	  4 JoinPrefixes {
 			ItemAttrBonus DEFENSE 2
 			ItemAttrBonus PARRY 1
@@ -849,7 +1153,7 @@
 	}
     maxUpgrades = 2
 	equipedEffect = { POISON_RESISTANT }
-	storageIds = {"equipment"}
+	storageIds = {"armor" "equipment"}
   }
 "EE_InfSword"
   {
@@ -871,8 +1175,8 @@
     genPrefixes = {
       2 VictimEffect 0.1 Acid{}
       4 LastingEffect RAGE
-	  2 SpellId "EE arm strike"
-	  2 SpellId "EE leg strike"
+	  2 SpellId "EE_arm strike"
+	  2 SpellId "EE_leg strike"
       2 JoinPrefixes {
         ItemAttrBonus DAMAGE 5
         ItemAttrBonus DEFENSE -3
@@ -885,8 +1189,8 @@
     equipedEffect = {FIRE_DAMAGE}
 	equipmentGroup = "infernite equipment"
     maxUpgrades = 1
-	equipedAbility = { "EE flaming strike" }
-	storageIds = {"equipment"}
+	equipedAbility = { "EE_flaming strike" }
+	storageIds = {"weapons" "equipment"}
   }
 "EE_InfBattleAxe"
   {
@@ -909,8 +1213,8 @@
     genPrefixes = {
       2 VictimEffect 0.1 Acid{}
       4 LastingEffect RAGE
-	  2 SpellId "EE arm strike"
-	  2 SpellId "EE leg strike"
+	  2 SpellId "EE_arm strike"
+	  2 SpellId "EE_leg strike"
       2 JoinPrefixes {
         ItemAttrBonus DAMAGE 5
         ItemAttrBonus DEFENSE -3
@@ -922,8 +1226,8 @@
     equipedEffect = {FIRE_DAMAGE}
 	equipmentGroup = "infernite equipment"
     maxUpgrades = 0
-	equipedAbility = { "EE flaming strike" }
-	storageIds = {"equipment"}
+	equipedAbility = { "EE_flaming strike" }
+	storageIds = {"weapons" "equipment"}
   }
 "EE_InfWarHammer"
   {
@@ -946,7 +1250,7 @@
     genPrefixes = {
       2 VictimEffect 0.4 Lasting COLLAPSED
       4 LastingEffect RAGE
-	  3 SpellId "EE break through"
+	  3 SpellId "EE_break through"
       2 JoinPrefixes {
         ItemAttrBonus DAMAGE 5
         ItemAttrBonus DEFENSE -3
@@ -958,13 +1262,13 @@
     ownedEffect = LIGHT_SOURCE
     equipedEffect = {FIRE_DAMAGE}
 	equipmentGroup = "infernite equipment"
-	equipedAbility = { "EE flaming strike" }
-	storageIds = {"equipment"}
+	equipedAbility = { "EE_flaming strike" }
+	storageIds = {"weapons" "equipment"}
   }
  "EE_InfLongSpear"
     {
       viewId = { "infernite_spear" }
-	  equipedViewId = { "infernite_spear_v" }
+	  equipedViewId = { "infernite_steel_spear_v" }
       shortName = "spear"
       name = "infernite long spear"
       itemClass = WEAPON
@@ -996,8 +1300,8 @@
       ownedEffect = LIGHT_SOURCE
       equipedEffect = {FIRE_DAMAGE}
 	  equipmentGroup = "infernite equipment"
-	  equipedAbility = { "EE flaming strike" }
-	  storageIds = {"equipment"}
+	  equipedAbility = { "EE_flaming strike" }
+	  storageIds = {"weapons" "equipment"}
     }
   "EE_InfAxe"
     {
@@ -1018,8 +1322,8 @@
       }
       genPrefixes = {
         3 LastingEffect RAGE
-		2 SpellId "EE leg strike"
-		2 SpellId "EE arm strike"
+		2 SpellId "EE_leg strike"
+		2 SpellId "EE_arm strike"
 		3 JoinPrefixes {
 			ItemAttrBonus DAMAGE 4
 			LastingEffect HALLU
@@ -1031,8 +1335,8 @@
       equipedEffect = {FIRE_DAMAGE}
 	  equipmentGroup = "infernite equipment"
       maxUpgrades = 0
-	  equipedAbility = { "EE flaming strike" }
-	  storageIds = {"equipment"}
+	  equipedAbility = { "EE_flaming strike" }
+	  storageIds = {"weapons" "equipment"}
     }
   "EE_InfMace"
     {
@@ -1055,7 +1359,7 @@
       genPrefixes = {
         3 VictimEffect 0.3 Lasting COLLAPSED
         3 LastingEffect RAGE
-		2 SpellId "EE break through"
+		2 SpellId "EE_break through"
 		1 JoinPrefixes {
 			ItemAttrBonus DAMAGE 6
 			LastingEffect RAGE
@@ -1069,8 +1373,8 @@
       equipedEffect = {FIRE_DAMAGE}
 	  equipmentGroup = "infernite equipment"
       maxUpgrades = 0
-	  equipedAbility = { "EE flaming strike" }
-	  storageIds = {"equipment"}
+	  equipedAbility = { "EE_flaming strike" }
+	  storageIds = {"weapons" "equipment"}
     }
  "EE_InfArmor"
 	{
@@ -1092,8 +1396,8 @@
     ownedEffect = LIGHT_SOURCE
 	equipmentGroup = "infernite equipment"
     equipedEffect = { FIRE_RESISTANT }
-    equipedAbility = { "EE blowback" }
-	storageIds = {"equipment"}
+    equipedAbility = { "EE_blowback" }
+	storageIds = {"armor" "equipment"}
 	}
 "EE_InfBoots"
   {
@@ -1116,8 +1420,8 @@
     ownedEffect = LIGHT_SOURCE
 	equipmentGroup = "infernite equipment"
     equipedEffect = { FIRE_RESISTANT }
-    equipedAbility = { "EE blowback" }
-	storageIds = {"equipment"}
+    equipedAbility = { "EE_blowback" }
+	storageIds = {"armor" "equipment"}
   }
 "EE_InfGloves"
   {
@@ -1141,8 +1445,8 @@
     ownedEffect = LIGHT_SOURCE
 	equipmentGroup = "infernite equipment"
     equipedEffect = { FIRE_RESISTANT }
-    equipedAbility = { "EE blowback" }
-	storageIds = {"equipment"}
+    equipedAbility = { "EE_blowback" }
+	storageIds = {"armor" "equipment"}
   }
 "EE_InfHelm"
   {
@@ -1165,8 +1469,8 @@
     ownedEffect = LIGHT_SOURCE
 	equipmentGroup = "infernite equipment"
     equipedEffect = { FIRE_RESISTANT }
-    equipedAbility = { "EE blowback" }
-	storageIds = {"equipment"}
+    equipedAbility = { "EE_blowback" }
+	storageIds = {"armor" "equipment"}
   }
 "EE_InfShield"
   {
@@ -1186,10 +1490,118 @@
     ownedEffect = LIGHT_SOURCE
 	equipmentGroup = "infernite equipment"
     equipedEffect = { FIRE_RESISTANT }
-    equipedAbility = { "EE blowback" }
-	storageIds = {"equipment"}
+    equipedAbility = { "EE_blowback" }
+	storageIds = {"armor" "equipment"}
   }
-    
+  
+"EE_Amazweihander" inherit "ElvenSword"
+ {
+    viewId = { "sword" ColorId LIGHT_GREEN }
+    equipedViewId = { "sword_v" ColorId LIGHT_GREEN } #Amazon gear seems Elven more often than not
+    name = "amazon greatsword"
+	shortName = "zweihander"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+	weight = 2
+	modifiers = {
+        DAMAGE 11
+	PARRY 2
+      }
+	price = 200
+	weaponInfo = {
+        attackType = CUT
+	twoHanded = true
+      }
+	genPrefixes = {
+	  1 SpellId "EE_weapon dodge"
+	  2 ItemAttrBonus DAMAGE 3
+          2 ItemAttrBonus DEFENSE 3
+    }
+	storageIds = {"weapons" "equipment"}
+        equipmentGroup = "iron equipment"
+ }
+
+"EE_IronSpear"
+  {
+    viewId = { "steel_spear" }
+    equipedViewId = { "steel_spear_v" }
+    name = "iron spear"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 3
+    modifiers = {
+      DAMAGE 7
+    }
+    price = 10
+    weaponInfo = {
+      attackType = STAB
+      attackMsg = THRUST
+    }
+    specialAttr = {
+      DAMAGE 20 Rider
+    }
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "iron equipment"
+  }
+ 
+ "EE_AdaLongSpear"
+    {
+      viewId = { "adamantite_spear" }
+	  equipedViewId = { "adamantine_spear_v" }
+	  shortName = "spear"
+      name = "adamantine long spear"
+      itemClass = WEAPON
+      equipmentSlot = WEAPON
+      weight = 5
+      modifiers = {
+        DAMAGE 12
+        DEFENSE 2
+      }
+      price = 80
+      weaponInfo = {
+        attackType = STAB
+        attackMsg = THRUST
+      }
+      genPrefixes = {
+        1 ItemAttrBonus DAMAGE 3
+        1 ItemAttrBonus DEFENSE 3
+      }
+      maxUpgrades = 1
+	  storageIds = {"weapons" "equipment"}
+    }
+ 
+ "EE_FellPlate" inherit "ChainArmor" #Fallback inheritance
+ {
+ viewId = { "chain_armor" Rgb 116 25 20 255} #Roughly the color Evil Knights are wearing in Vanilla Retiles.
+    shortName = "fell plate"
+    name = "fell plate armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 15 #Weighs the same, but better crafting and extra material use means better protection and more room for glyphs.
+    price = 40
+    craftingCost = "IRON" 50
+    modifiers = {
+      DEFENSE 7
+    }
+	maxUpgrades = 3
+ }
+ 
+ "EE_LawPlate" inherit "ChainArmor" #Fallback inheritance
+ {
+ viewId = { "chain_armor" Rgb 231 231 231 255} #Should be roughly the color Less-Evil Knights are wearing in Vanilla Retiles.  May be very similar to Generic Grey. :-/
+    shortName = "field plate"
+    name = "field-plate armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 15 #Weighs the same, but better crafting and extra material use means better protection and more room for glyphs.
+    price = 40
+    craftingCost = "IRON" 50
+    modifiers = {
+      DEFENSE 7
+    }
+	maxUpgrades = 3
+ }
+  
 ########################
 #Ideas for future items#
 ########################

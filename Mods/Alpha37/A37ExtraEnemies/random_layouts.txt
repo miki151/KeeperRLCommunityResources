@@ -1,0 +1,85 @@
+Def WorldMapFeatures2() {
+  Filter(On("set_mountain"), {Set("MOUNTAIN") {Set("map_mountain_bg1") Choose(Set("map_mountain1"),
+      Set("map_mountain2"), Set("map_mountain3"), Set("map_mountain4"), Set("map_mountain5"))}})	  
+  Filter(On("set_mountain_snow"), {Set("MOUNTAIN") Choose(Set("map_mountain_snow1"), Set("map_mountain_snow2"),
+      Set("map_mountain_snow3"), Set("map_mountain_snow4"), Set("map_mountain_snow5"))})
+  Filter(On("set_water"), {Choose(0.7 Set("map_water1"), Set("map_water2"), Set("map_water3"), Set("map_water5"))})
+  Filter(On("set_sand"), {Set("DESERT") Choose(0.7 Set("map_sand1"), Set("map_sand2"))})
+  Filter(On("set_snow"), {Set("SNOW") Choose(0.7 Set("map_snow1"), Set("map_snow2"))})
+  Filter(On("set_swamp"), {Set("SWAMP") Choose(0.7 Set("map_swamp1"), Set("map_swamp2"), Set("map_swamp3"), Set("map_swamp4"))})
+  Filter(
+	On("set_grass"),
+	    {
+		Choose(
+		      0.7 Set("GRASSLAND"),
+			  Set("EE_ENCHANTED_FOREST"),
+			  Set("EE_DARK_SWAMP"),
+			  Set("EE_ORC_VILLAGE"),
+			  Set("EE_ORC_CLAN"),
+			  Set("EE_WARRIOR_TOWN"),		  
+			  Set("EE_PALACE"),
+			  Set("EE_CENTAUR_PALACE"),
+			  Set("EE_HAUNTED_GRASSLAND"),
+			  Set("EE_ELF_FOREST"),
+			  Set("EE_HERB_GRASSLAND")
+			)
+		Choose(0.7 Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))				
+		}
+    )
+  Filter(
+	On("set_hills"),
+	    {
+		Choose(
+		      0.7 Set("EE_HILLS"),
+			  Set("EE_VOLCANIC"),
+			  Set("EE_CITY"),
+			  Set("EE_SHADOW_PALACE"),
+			  Set("EE_SPIDER_MOUNTAIN"),
+			  Set("EE_CITY_RUINS"),
+			  Set("EE_DWARF_MOUNTAIN"),
+			  Set("EE_DWARF_MOUNTAIN_SMALL"),
+			  Set("EE_DARK_ELF_MOUNTAIN"),
+			)
+		Set("map_mountain_bg1")
+		}
+    )
+  Filter(On("EE_ENCHANTED_FOREST"), { Set("map_small_feature1") })
+  Filter(On("EE_DARK_SWAMP"), { Set("map_small_feature2") })
+  Filter(On("EE_ORC_VILLAGE"), { Set("map_small_feature3") })
+  Filter(On("EE_ORC_CLAN"), { Set("map_small_feature4") })
+  Filter(On("EE_WARRIOR_TOWN"), { Set("map_small_feature5") })
+  Filter(On("EE_PALACE"), { Set("map_small_feature6") })
+  Filter(On("EE_CENTAUR_PALACE"), { Set("map_small_feature7") })
+  Filter(On("EE_HAUNTED_GRASSLAND"), { Set("map_small_feature8") })
+  Filter(On("EE_DWARF_MOUNTAIN"), { Set("map_small_feature9") })
+  Filter(On("EE_VOLCANIC"), { Set("map_small_feature10") })
+  Filter(On("EE_CITY"), { Set("map_small_feature11") })
+  Filter(On("EE_SHADOW_PALACE"), { Set("map_small_feature12") })
+  Filter(On("EE_SPIDER_MOUNTAIN"), { Set("map_small_feature13") })
+  Filter(On("EE_CITY_RUINS"), { Set("map_small_feature14") })
+  Filter(On("EE_HERB_GRASSLAND"), { Set("map_small_feature15") })
+  Filter(On("EE_DWARF_MOUNTAIN_SMALL"), { Set("map_small_feature16") })
+  Filter(On("EE_DARK_ELF_MOUNTAIN"), { Set("map_small_feature17") })
+
+End
+
+"world_map" modify {
+  NoiseMap(0.65, {
+    (0.8, 1.0, Reset("set_water"))
+    (0.74, 0.8, Reset("set_sand"))
+    (0.4, 0.74, Reset("set_grass"))
+    (0.0, 0.4, Reset("set_hills"))
+    (0.0, 0.2, Reset("set_mountain"))
+  })
+  CellularAutomaton(Filter(Not On("set_mountain"), Reset("set_water")), 0.35)
+  Border(TOP, 23, Filter(Or(On("set_water"), On("set_sand")), Reset("set_snow")))
+  Margin(BOTTOM, 23, Filter(Or(On("set_water"), On("set_sand")), Filter(On("set_water"), Reset("set_sand"))),
+      Filter(On("set_sand"), Reset("set_swamp")))
+  NoiseMap(0.65, {
+    (0.0, 0.2, Filter(On("set_snow"), Set("set_mountain_snow")))
+  })
+  WorldMapFeatures2()
+  WorldMapConnections()
+  WorldMapTrees()
+}
+
