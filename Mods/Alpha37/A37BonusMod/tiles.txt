@@ -28,6 +28,7 @@
 
   { "assassin" "@" ColorId GRAY }
   { "assassin_archer" "@" ColorId GRAY }
+  { "assassin_archer_female" "@" ColorId GRAY }
   { "assassin_female" "@" ColorId GRAY }
   { "barbarian" "@" ColorId YELLOW }
   { "barbarian_female" "@" ColorId YELLOW }
@@ -474,9 +475,12 @@
   #CSeven
   {viewId = "cmbt_succubus" symbol = "&" color = ColorId RED weaponOrigin = {3 19} }
   {viewId = "cmbt_succubus30" symbol = "&" color = ColorId RED weaponOrigin = {3 19} }
+  {"incubus" "&" ColorId PINK }
+  {"cmbt_incubus" "&" ColorId BLUE }
   { viewId = "steel_spear" symbol = "/" color = ColorId BLUE }
   { viewId = "adamantite_spear" symbol = "/" color = ColorId LIGHT_BLUE }
   { viewId = "adamantine_spear_v" symbol = "/" color = ColorId LIGHT_BLUE weaponOrigin = {14 15} }
+  { viewId = "dwarf_miner" symbol = "d" color = ColorId BROWN weaponOrigin = {4 15} }
   
   #Campaign map
   { "map_fairy_tower" "O" ColorId RED }
@@ -499,6 +503,9 @@
   { "map_small_feature17" "." ColorId GREEN }
   { "map_fort" "^" ColorId WHITE }
   
+  #1.0 rework of Adventurer mode
+  {viewId = "player" symbol = "@" color = ColorId GREEN weaponOrigin = {4 13}}
+  {viewId = "player_f" symbol = "@" color = ColorId GREEN weaponOrigin = {3 14}}
 ######################################
 #Good Wizard
 ######################################
@@ -604,83 +611,95 @@
 #Keeperrl Expanded
 ######################################
 
-{ viewId = "mv_portcullis_ew" symbol = "P" color = ColorId LIGHT_GRAY } 
-{ viewId = "mv_portcullis_ns" symbol = "P" color = ColorId LIGHT_GRAY } 
-{ viewId = "mv_portcullis_gate_w" symbol = "-" color = ColorId LIGHT_GRAY
+{ viewId = "BONUS_portcullis_ew" symbol = "P" color = ColorId LIGHT_GRAY } 
+{ viewId = "BONUS_portcullis_ns" symbol = "P" color = ColorId LIGHT_GRAY } 
+{ viewId = "BONUS_portcullis_gate_w" symbol = "-" color = ColorId LIGHT_GRAY
   wallShadow = true }
-{ viewId = "mv_portcullis_gate_e" symbol = "-" color = ColorId LIGHT_GRAY
+{ viewId = "BONUS_portcullis_gate_e" symbol = "-" color = ColorId LIGHT_GRAY
   wallShadow = true }
-{ viewId = "mv_portcullis_gate_n" symbol = "|" color = ColorId LIGHT_GRAY }
-{ viewId = "mv_portcullis_gate_s" symbol = "|" color = ColorId LIGHT_GRAY }
-{ viewId = "mv_vampire_duke" symbol = "V" color = ColorId DARK_GRAY weaponOrigin = {2 11} }
-{ viewId = "mv_demon_priest" symbol = "@" color = ColorId BLACK }
-{ viewId = "mv_dark_monk" symbol = "@" color = ColorId BLACK }
-{ viewId = "mv_dark_monk_fighter" symbol = "@" color = ColorId BLACK weaponOrigin = {2 16}   }
-{ viewId = "mv_monk_fighter" symbol = "@" color = ColorId BROWN weaponOrigin = {2 16}   }
-{ viewId = "mv_blood" symbol = "~" color = ColorId DARK_GRAY
+{ viewId = "BONUS_portcullis_gate_n" symbol = "|" color = ColorId LIGHT_GRAY }
+{ viewId = "BONUS_portcullis_gate_s" symbol = "|" color = ColorId LIGHT_GRAY }
+{ viewId = "BONUS_vampire_duke" symbol = "V" color = ColorId DARK_GRAY weaponOrigin = {2 11} }
+{ viewId = "BONUS_demon_priest" symbol = "@" color = ColorId BLACK }
+{ viewId = "BONUS_dark_monk" symbol = "@" color = ColorId BLACK }
+{ viewId = "BONUS_dark_monk_fighter" symbol = "@" color = ColorId BLACK weaponOrigin = {2 16}   }
+{ viewId = "BONUS_monk_fighter" symbol = "@" color = ColorId BROWN weaponOrigin = {2 16}   }
+{ viewId = "BONUS_blood" symbol = "~" color = ColorId DARK_GRAY
   waterSides = "water" spriteColor = Rgb 248 76 91 255 }
-{ viewId = "mv_blood_ice" symbol = "." color = ColorId LIGHT_BLUE waterSides = "water" spriteColor = Rgb 248 76 91 255 }
-{ viewId = "mv_fallen_teuton" symbol = "@" color = ColorId BLACK weaponOrigin = {4 16}   }
-{ viewId = "mv_teuton_holy" symbol = "@" color = ColorId YELLOW weaponOrigin = {4 16}   }
+{ viewId = "BONUS_blood_ice" symbol = "." color = ColorId LIGHT_BLUE waterSides = "water" spriteColor = Rgb 248 76 91 255 }
+{ viewId = "BONUS_fallen_teuton" symbol = "@" color = ColorId BLACK weaponOrigin = {4 16}   }
+{ viewId = "BONUS_teuton_holy" symbol = "@" color = ColorId YELLOW weaponOrigin = {4 16}   }
 { viewId = "demon_dweller" symbol = "U" color = ColorId PURPLE weaponOrigin = {6 16}   }
 { viewId = "demon_lord" symbol = "U" color = ColorId YELLOW weaponOrigin = {4 19}   }
 { viewId = "devil" symbol = "&" color = ColorId ORANGE  weaponOrigin = {4 15}   }
-{ viewId = "mv_bandit" symbol = "@" color = ColorId DARK_BLUE weaponOrigin = {4 13} }
-{ viewId = "mv_bandit_archer" symbol = "@" color = ColorId DARK_BLUE }
-{ viewId = "mv_bandit_leader" symbol = "@" color = ColorId DARK_BLUE weaponOrigin = {4 13} }
-{ viewId = "mv_bandit_recruit" symbol = "@" color = ColorId DARK_BLUE weaponOrigin = {4 13} }
-{ viewId = "mv_bandit_brute" symbol = "@" color = ColorId DARK_BLUE weaponOrigin = {2 17} }
+{ viewId = "BONUS_bandit" symbol = "@" color = ColorId DARK_BLUE weaponOrigin = {4 13} }
+{ viewId = "BONUS_bandit_archer" symbol = "@" color = ColorId DARK_BLUE }
+{ viewId = "BONUS_bandit_leader" symbol = "@" color = ColorId DARK_BLUE weaponOrigin = {4 13} }
+{ viewId = "BONUS_bandit_recruit" symbol = "@" color = ColorId DARK_BLUE weaponOrigin = {4 13} }
+{ viewId = "BONUS_bandit_brute" symbol = "@" color = ColorId DARK_BLUE weaponOrigin = {2 17} }
 
-{ viewId = "mv_thief" symbol = "@" color = ColorId YELLOW weaponOrigin = {4 16} }
-{ viewId = "mv_thief_recruit" symbol = "@" color = ColorId YELLOW weaponOrigin = {4 16} }
-{ viewId = "mv_thief_leader" symbol = "@" color = ColorId YELLOW weaponOrigin = {5 16} }
-{ viewId = "mv_thief_rogue" symbol = "@" color = ColorId YELLOW weaponOrigin = {4 16} }
-{ viewId = "mv_thief_sorcerer" symbol = "@" color = ColorId YELLOW weaponOrigin = {4 16} }
+{ viewId = "BONUS_thief" symbol = "@" color = ColorId YELLOW weaponOrigin = {4 16} }
+{ viewId = "BONUS_thief_recruit" symbol = "@" color = ColorId YELLOW weaponOrigin = {4 16} }
+{ viewId = "BONUS_thief_leader" symbol = "@" color = ColorId YELLOW weaponOrigin = {5 16} }
+{ viewId = "BONUS_thief_rogue" symbol = "@" color = ColorId YELLOW weaponOrigin = {4 16} }
+{ viewId = "BONUS_thief_sorcerer" symbol = "@" color = ColorId YELLOW weaponOrigin = {4 16} }
 
-{ viewId = "mv_raider" symbol = "@" color = ColorId BLUE weaponOrigin = {4 15} }
-{ viewId = "mv_raider_recruit" symbol = "@" color = ColorId BLUE weaponOrigin = {4 15} }
-{ viewId = "mv_raider_leader" symbol = "@" color = ColorId BLUE weaponOrigin = {4 15} }
-{ viewId = "mv_raider_dog_master" symbol = "@" color = ColorId BLUE weaponOrigin = {4 15} }
-{ viewId = "mv_raider_wendigo" symbol = "@" color = ColorId BLUE }
+{ viewId = "BONUS_raider" symbol = "@" color = ColorId BLUE weaponOrigin = {4 15} }
+{ viewId = "BONUS_raider_recruit" symbol = "@" color = ColorId BLUE weaponOrigin = {4 15} }
+{ viewId = "BONUS_raider_leader" symbol = "@" color = ColorId BLUE weaponOrigin = {4 15} }
+{ viewId = "BONUS_raider_dog_master" symbol = "@" color = ColorId BLUE weaponOrigin = {4 15} }
+{ viewId = "BONUS_raider_wendigo" symbol = "@" color = ColorId BLUE }
 
-{ "mv_husky_01" "d" ColorId GRAY }
-{ "mv_husky_02" "d" ColorId RED }
-{ "mv_husky_03" "d" ColorId BROWN }
-{ "mv_moose" "M" ColorId BROWN }
+{ "BONUS_husky_01" "d" ColorId GRAY }
+{ "BONUS_husky_02" "d" ColorId RED }
+{ "BONUS_husky_03" "d" ColorId BROWN }
+{ "BONUS_moose" "M" ColorId BROWN }
 
-{ "mv_pickaxe" ")" ColorId LIGHT_GRAY }
-{ viewId = "mv_pickaxe_v" symbol = ")" color = ColorId LIGHT_GRAY weaponOrigin = {7 14} }
+{ "BONUS_pickaxe" ")" ColorId LIGHT_GRAY }
+{ viewId = "BONUS_pickaxe_v" symbol = ")" color = ColorId LIGHT_GRAY weaponOrigin = {7 14} }
 
-{ viewId = "mv_prisoner" symbol = "@" color = ColorId BLUE weaponOrigin = {2 9} }
-{ viewId = "mv_imp" symbol = "i" color = ColorId LIGHT_BROWN weaponOrigin = {5 15} }
-{ viewId = "mv_peasant_01" symbol = "@" color = ColorId GREEN weaponOrigin = {3 14} }
-{ viewId = "mv_peasant_02" symbol = "@" color = ColorId GREEN weaponOrigin = {3 11} }
-{ viewId = "mv_peasant_woman_01" symbol = "@" color = ColorId GREEN weaponOrigin = {5 15} }
-{ viewId = "mv_peasant_woman_02" symbol = "@" color = ColorId GREEN weaponOrigin = {5 15} }
+{ viewId = "BONUS_prisoner" symbol = "@" color = ColorId BLUE weaponOrigin = {2 9} }
+{ viewId = "BONUS_imp" symbol = "i" color = ColorId LIGHT_BROWN weaponOrigin = {5 15} }
+{ viewId = "BONUS_peasant_01" symbol = "@" color = ColorId GREEN weaponOrigin = {3 14} }
+{ viewId = "BONUS_peasant_02" symbol = "@" color = ColorId GREEN weaponOrigin = {3 11} }
+{ viewId = "BONUS_peasant_woman_01" symbol = "@" color = ColorId GREEN weaponOrigin = {5 15} }
+{ viewId = "BONUS_peasant_woman_02" symbol = "@" color = ColorId GREEN weaponOrigin = {5 15} }
 
-{ viewId = "mv_caelidite_ore" symbol = "⁂" color = ColorId GREEN
+{ viewId = "BONUS_caelidite_ore" symbol = "⁂" color = ColorId GREEN
   isSymbolFont = true wallShadow = true mountainSides = "mountain"
   background = "mountain2" fx = { GLITTERING ColorId GREEN } }
-{ viewId = "mv_caelidite" symbol = "✱" color = ColorId GREEN
+{ viewId = "BONUS_caelidite" symbol = "✱" color = ColorId GREEN
   isSymbolFont = true fx = { GLITTERING ColorId GREEN } }
-{ "mv_caelidite_sword" ")" ColorId RED }
-{ viewId = "mv_caelidite_sword_v" symbol = ")" color = ColorId GREEN animated = true weaponOrigin = {10 16} }
-{ "mv_caelidite_battle_axe" ")" ColorId RED }
-{ viewId = "mv_caelidite_battle_axe_v" symbol = ")" color = ColorId GREEN animated = true weaponOrigin = {11 14} }
-{ "mv_caelidite_war_hammer" ")" ColorId RED }
-{ viewId = "mv_caelidite_war_hammer_v" symbol = ")" color = ColorId GREEN animated = true weaponOrigin = {9 16} }
+{ "BONUS_caelidite_sword" ")" ColorId RED }
+{ viewId = "BONUS_caelidite_sword_v" symbol = ")" color = ColorId GREEN animated = true weaponOrigin = {10 16} }
+{ "BONUS_caelidite_battle_axe" ")" ColorId RED }
+{ viewId = "BONUS_caelidite_battle_axe_v" symbol = ")" color = ColorId GREEN animated = true weaponOrigin = {11 14} }
+{ "BONUS_caelidite_war_hammer" ")" ColorId RED }
+{ viewId = "BONUS_caelidite_war_hammer_v" symbol = ")" color = ColorId GREEN animated = true weaponOrigin = {9 16} }
+{ "caelidite_armor" "]" ColorId RED}
+{ "caelidite_helm" "]" ColorId RED}
+{ "caelidite_gloves" "]" ColorId RED}
+{ "caelidite_boots" "]" ColorId RED}
+{ "caelidite_shield" "]" ColorId RED}
 
-{ viewId = "mv_jothnite_ore" symbol = "⁂" color = ColorId LIGHT_BLUE
+
+{ viewId = "BONUS_jothnite_ore" symbol = "⁂" color = ColorId LIGHT_BLUE
   isSymbolFont = true wallShadow = true mountainSides = "mountain"
   background = "mountain2" fx = { GLITTERING ColorId LIGHT_BLUE } }
-{ viewId = "mv_jothnite" symbol = "✱" color = ColorId LIGHT_BLUE
+{ viewId = "BONUS_jothnite" symbol = "✱" color = ColorId LIGHT_BLUE
   isSymbolFont = true fx = { GLITTERING ColorId LIGHT_BLUE } }
-{ "mv_jothnite_sword" ")" ColorId RED }
-{ viewId = "mv_jothnite_sword_v" symbol = ")" color = ColorId LIGHT_BLUE weaponOrigin = {10 16} }
-{ "mv_jothnite_battle_axe" ")" ColorId RED }
-{ viewId = "mv_jothnite_battle_axe_v" symbol = ")" color = ColorId LIGHT_BLUE weaponOrigin = {11 14} }
-{ "mv_jothnite_war_hammer" ")" ColorId RED }
-{ viewId = "mv_jothnite_war_hammer_v" symbol = ")" color = ColorId LIGHT_BLUE weaponOrigin = {9 16} }
+{ "BONUS_jothnite_sword" ")" ColorId RED }
+{ viewId = "BONUS_jothnite_sword_v" symbol = ")" color = ColorId LIGHT_BLUE weaponOrigin = {10 16} }
+{ "BONUS_jothnite_battle_axe" ")" ColorId RED }
+{ viewId = "BONUS_jothnite_battle_axe_v" symbol = ")" color = ColorId LIGHT_BLUE weaponOrigin = {11 14} }
+{ "BONUS_jothnite_war_hammer" ")" ColorId RED }
+{ viewId = "BONUS_jothnite_war_hammer_v" symbol = ")" color = ColorId LIGHT_BLUE weaponOrigin = {9 16} }
+{ "jothnite_armor" "]" ColorId RED}
+{ "jothnite_helm" "]" ColorId RED}
+{ "jothnite_gloves" "]" ColorId RED}
+{ "jothnite_boots" "]" ColorId RED}
+{ "jothnite_shield" "]" ColorId RED}
+
   
 { "map_abbey_dark" "o" ColorId BLACK }
 { "map_abbey_light" "o" ColorId WHITE }
@@ -688,3 +707,48 @@
 { "map_dungeon_red" "o" ColorId RED }
 { "map_castle_snow" "o" ColorId BLUE }
 { "map_castle_vamp" "o" ColorId RED }
+
+
+{ viewId = "bonus_adoxie_priest" symbol = "@" color = ColorId RED weaponOrigin = {5 15} }
+{ viewId = "bonus_axedio_priest" symbol = "@" color = ColorId PURPLE weaponOrigin = {5 15} }
+{ "swish_infernite_golem" "D" ColorId RED }
+{ viewId = "swish_adoxium_golem" symbol = "*" color = ColorId RED animated = true }
+
+
+{ "new_adoxie_foot_left" "u" ColorId RED }
+{ "new_adoxie_foot_right" "u" ColorId RED }
+{ "new_adoxie_hand_right" "u" ColorId RED }
+{ "new_adoxie_hand_left" "u" ColorId RED }
+{ "new_adoxie_head" "U" ColorId RED }
+
+{ "new_axedio_foot_left" "u" ColorId PURPLE }
+{ "new_axedio_foot_right" "u" ColorId PURPLE }
+{ "new_axedio_hand_right" "u" ColorId PURPLE }
+{ "new_axedio_hand_left" "u" ColorId PURPLE }
+{ "new_axedio_head" "U" ColorId PURPLE }
+
+{ viewId = "grave_knight_m01" symbol = "@" color = ColorId YELLOW weaponOrigin = {3 15} }
+{ viewId = "grave_knight_m02" symbol = "@" color = ColorId YELLOW weaponOrigin = {3 15} }
+{ viewId = "grave_knight_m03" symbol = "@" color = ColorId YELLOW weaponOrigin = {3 16} }
+{ viewId = "grave_knight_m04" symbol = "@" color = ColorId YELLOW weaponOrigin = {3 16} }
+{ viewId = "grave_knight_f01" symbol = "@" color = ColorId YELLOW weaponOrigin = {3 15} }
+{ viewId = "grave_knight_f02" symbol = "@" color = ColorId YELLOW weaponOrigin = {3 15} }
+{ viewId = "grave_knight_f03" symbol = "@" color = ColorId YELLOW weaponOrigin = {3 16} }
+{ viewId = "grave_knight_f04" symbol = "@" color = ColorId YELLOW weaponOrigin = {3 16} }
+
+###
+#Superior Steeds
+###
+{"saddled_horse" "H" ColorId LIGHT_BROWN}
+{"hunting_horse" "H" ColorId LIGHT_BROWN}
+{"hvy_hunting_horse" "H" ColorId LIGHT_BROWN}
+{"charger" "H" ColorId LIGHT_BLUE}
+{"hvy_charger" "H" ColorId BLUE}
+{"fell_horse" "H" ColorId GRAY}
+{"fell_warhorse" "H" ColorId GRAY}
+{"fell_charger" "H" ColorId DARK_GRAY}
+{"vamp_warhorse" "H" ColorId RED}
+{"vamp_charger" "H" ColorId PURPLE}
+{"wargv2" "W" ColorId LIGHT_BROWN}
+{"war_warg" "W" ColorId BROWN}
+{"war_warg_saddle2" "W" ColorId RED}

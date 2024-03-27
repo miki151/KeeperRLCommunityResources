@@ -32,7 +32,7 @@ End
 
 #Rockblast
 
-  "structure" modify append { { ImmediateDig "Rockblast (magic)" "Structure" "Destroy rock immediately using magic" none {TechId "rock blast"} } }
+  "rockblast" { { ImmediateDig "Rockblast (magic)" "Structure" "Destroy rock immediately using magic" none {TechId "rock blast"} } }
 
 
 #########################################
@@ -744,13 +744,15 @@ End
         "Triggers all other traps around it." none                   { TechId "advanced traps" }}
     { Furniture {{ "DESTROY_WALLS_TRAP" }  "WOOD" 20 }  "Crumble trap"     "Traps"
         "All walls up to two tiles away are destroyed." none         { TechId "advanced traps" }}
-  }  
-  "crafting"
-  modify append {
+  }
+  
+  
+"inscription table"
+{
     { Furniture {{ "INSCRIPTION_TABLE" }   "GOLD" 4 }                      "Inscription Table"          "Crafting"
         "Produces scrolls." none { TechId "magic inscription" }}
 
-  }
+}
 
 
 #########################################
@@ -825,6 +827,8 @@ End
       "Build to pass over water of lava." }
     { Furniture {{ "DOWN_STAIRS" }                }              "Down stairs"       "Structure"
       "Build down z-levels." }
+    { Furniture {{ "UP_STAIRS" }                  }              "Up stairs"       "Structure"
+      "Build to reach higher z-levels." }
     { PlaceMinion "Place minion" "Structure" ""   } 
     { PlaceItem   "Place item"   "Structure" ""   } 
     { Furniture {{ "WOOD_DOOR" }                  "WOOD" 0}       "Wooden door"       "Doors"

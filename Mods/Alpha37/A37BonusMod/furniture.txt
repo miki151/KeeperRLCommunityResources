@@ -1000,6 +1000,19 @@ End
     blockAllVision = true
     wall = true
   }
+  "BONUS_ZOMBIE_WALL_DOOR"
+  {
+    name = "wall"
+    viewId = { "zombie_altar_wall" }
+    blockAllVision = true
+    strength = 1
+    viewLayer = FLOOR_BACKGROUND
+    entryType = Effect {
+        Message NORMAL "It was just an illusion!"
+        Fx { TELEPORT_OUT }
+        DestroyWalls BASH
+    }
+  }
   "BONUS_SHALLOW_WATER_COSMETIC"
   {
     name = "shallow water"
@@ -1120,8 +1133,8 @@ End
     destroyedRemains = "TREASURE_CHEST"
     usageType = UsageEffect "open"  {
       ChooseRandom {
-    	  DropItems {"GoldPiece"} {35 55}
-    	  DropItems {"GoldPiece"} {55 75}
+      DropItems {"GoldPiece"} {35 55}
+      DropItems {"GoldPiece"} {55 75}
 	  DropItems {"AdoxiumOre"} {15 25}
 	  DropItems {"AdoxiumOre"} {25 45}
 	  DropItems {"AdaOre"} {15 25}
@@ -1131,8 +1144,8 @@ End
 	  DropItems {"VenOre"} {25 45}
 	  DropItems {"VenOre"} {35 55}
 	  #Gold and magic metals are treasure.  Iron, not so much.  ;-)
-	  DropItems {"EnchantedStaff"} {1}
-	  DropItems {"EnchantedStaff"} {1}
+	  DropItems {"ArchwoodStaff"} {1}
+	  DropItems {"ArchwoodStaff"} {1}
 	  #Two chances apiece for OK weapons.  Helps dial back the chance of getting artifacts or Bad Stuff.
 	  DropItems {"BONUS_Mace"} {1}
 	  DropItems {"BONUS_Mace"} {1}
@@ -1143,6 +1156,7 @@ End
 	  DropItems {"AdaWarHammer"} {1}
 	  DropItems {"DefenseAmulet"} {1}
 	  DropItems {Ring FIRE_RESISTANT} {1}
+	  DropItems {Ring COLD_RESISTANT} {1}
 	   #Nicer Stuff
 	  DropItems {"BONUS_VenLongSpear"} {1}
 	  DropItems {"BONUS_VenBattleAxe"} {1}
@@ -1935,87 +1949,87 @@ End
 ########################
 
 Def DemonQuest()
-Filter Not Flag "mv_demon_quest_Finish" {
-Filter Flag "mv_demon_quest" {
-Filter Not Flag "mv_paladin_killed" {
+Filter Not Flag "BONUS_demon_quest_Finish" {
+Filter Flag "BONUS_demon_quest" {
+Filter Not Flag "BONUS_paladin_killed" {
                  PlayerMessage CRITICAL "Hurry he still draws breath."
                  }
-Filter Flag "mv_paladin_killed" {
+Filter Flag "BONUS_paladin_killed" {
                  PlayerMessage CRITICAL "You have done me well, here take your reward!"
 				 GrantAbility "Reward Wish"
                  }
             }
-Filter Not Flag "mv_demon_quest" {
+Filter Not Flag "BONUS_demon_quest" {
                  PlayerMessage CRITICAL "Angel worshiping fool managed to break out of prison under this abbey. This must not stand, he must die!"
-                 SetFlag "mv_demon_quest" true
-                 DropItems { "MV_DEMON_ABBEY_KEY"} {1}
+                 SetFlag "BONUS_demon_quest" true
+                 DropItems { "BONUS_DEMON_ABBEY_KEY"} {1}
 				 }		 
 }
 End
 
 Def AngelQuest()
-Filter Not Flag "mv_angel_quest_Finish" {
-Filter Flag "mv_demon_quest" {
-Filter Not Flag "mv_weak_devil_killed" {
+Filter Not Flag "BONUS_angel_quest_Finish" {
+Filter Flag "BONUS_demon_quest" {
+Filter Not Flag "BONUS_weak_devil_killed" {
                  PlayerMessage CRITICAL "We cant hold him much longer!."
                  }
-Filter Flag "mv_weak_devil_killed" {
+Filter Flag "BONUS_weak_devil_killed" {
                  PlayerMessage CRITICAL "Bless you. Here take your reward!"
 				 GrantAbility "Reward Wish"
                  }
             }
-Filter Not Flag "mv_angel_quest" {
+Filter Not Flag "BONUS_angel_quest" {
                  PlayerMessage CRITICAL "Powerfull demon stirs from within his prison under abbey, you must defeat it!"
-                 SetFlag "mv_angel_quest" true
-                 DropItems { "MV_DEMON_ABBEY_KEY"} {1}
+                 SetFlag "BONUS_angel_quest" true
+                 DropItems { "BONUS_DEMON_ABBEY_KEY"} {1}
 				 }		 
 }
 End
 
-"MV_FLOOR_STONE2" 
+"BONUS_FLOOR_STONE2" 
 {
   name = "floor"
   viewId = { "stone_floor5" }
   layer = GROUND
 }
-"MV_FLOOR_CARPET1" 
+"BONUS_FLOOR_CARPET1" 
 {
   name = "floor"
   viewId = { "carpet_floor1" }
   layer = GROUND
 }
-"MV_FLOOR_CARPET2" 
+"BONUS_FLOOR_CARPET2" 
 {
   name = "floor"
   viewId = { "carpet_floor4" }
   layer = GROUND
 }
-"MV_PORTCULLIS"
+"BONUS_PORTCULLIS"
 {
   name = "portcullis"
-  viewId = { "mv_portcullis_ew" }
+  viewId = { "BONUS_portcullis_ew" }
   blockingEnemies = true
   canHideHere = true
   strength = 160
   clickType = LOCK
-  requiredSupport = { { { E W } } { { N S } {"mv_portcullis_ns"} } }
+  requiredSupport = { { { E W } } { { N S } {"BONUS_portcullis_ns"} } }
   destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
 }
 
-"MV_PORTCULLIS_GATE"
+"BONUS_PORTCULLIS_GATE"
 {
   name = "portcullis gate"
-  viewId = { "mv_portcullis_gate_w" }
+  viewId = { "BONUS_portcullis_gate_w" }
   blockingEnemies = true
   canHideHere = true
   blockAllVision = true
   strength = 320
   clickType = LOCK
-  requiredSupport = { { { W } } { { N } {"mv_portcullis_gate_n"} } { { E } {"mv_portcullis_gate_e"} } { { S } {"mv_portcullis_gate_s"} } }
+  requiredSupport = { { { W } } { { N } {"BONUS_portcullis_gate_n"} } { { E } {"BONUS_portcullis_gate_e"} } { { S } {"BONUS_portcullis_gate_s"} } }
   destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
 }
 
-"MV_LOOT_COFFIN"
+"BONUS_LOOT_COFFIN"
 {
   name = "coffin"
   viewId = { "coffin1" }
@@ -2030,7 +2044,7 @@ End
 	  }
 	Chain{
       DropItems {"Skeleton"} 1
-	  DropItems {"EnchantedStaff"} 1
+	  DropItems {"ArchwoodStaff"} 1
 	  }
 	Chain{
       DropItems {"Skeleton"} 1
@@ -2041,14 +2055,14 @@ End
 	  DropItems {"WarHammer"} 1
 	  }
     }
-    RemoveFurniture "MV_LOOT_COFFIN"
+    RemoveFurniture "BONUS_LOOT_COFFIN"
   }
   fire = 50
   strength = 30
-  destroyedRemains = "MV_OPENED_COFFIN"
+  destroyedRemains = "BONUS_OPENED_COFFIN"
 }
 
-"MV_OPENED_COFFIN"
+"BONUS_OPENED_COFFIN"
 {
   name = "coffin"
   viewId = { "opened_coffin" }
@@ -2060,7 +2074,7 @@ End
   destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
 }
 
-"MV_SKELETON_COFFIN"
+"BONUS_SKELETON_COFFIN"
 {
   name = "coffin"
   viewId = { "coffin1" }
@@ -2076,17 +2090,17 @@ End
       Summon "SKELETON_WARRIOR" 1 none
 	  }
     }
-    RemoveFurniture "MV_LOOT_COFFIN"
+    RemoveFurniture "BONUS_LOOT_COFFIN"
   }
   fire = 50
   strength = 30
-  destroyedRemains = "MV_OPENED_COFFIN"
+  destroyedRemains = "BONUS_OPENED_COFFIN"
 }
 
-"MV_BLOOD"
+"BONUS_BLOOD"
 {
   name = "blood"
-  viewId = { "mv_blood" }
+  viewId = { "BONUS_blood" }
   bloodCountdown = 30
   layer = GROUND
   waterDepth = 100
@@ -2094,8 +2108,8 @@ End
   droppedItems = { "sinks" "sink" "You hear a splash." }
   defaultBridge = "BRIDGE"
   summonedElement = "DEMON_DWELLER"
-  freezeTo = "MV_BLOOD_ICE"
-  fillPit = "MV_BLOOD"
+  freezeTo = "BONUS_BLOOD_ICE"
+  fillPit = "BONUS_BLOOD"
   canSilentlyReplace = true
   movementSet = {
     traits = { FLY SWIM }
@@ -2104,15 +2118,15 @@ End
   walkIntoFX = { WATER_SPLASH Rgb 82 148 255 255 }
 }
 
-"MV_BLOOD_ICE"
+"BONUS_BLOOD_ICE"
 {
   name = "blood ice"
-  viewId = { "mv_blood_ice" }
+  viewId = { "BONUS_blood_ice" }
   layer = GROUND
-  meltInfo = { "MV_BLOOD" }
+  meltInfo = { "BONUS_BLOOD" }
 }
 
-"MV_DESTROY_DEMON_SHRINE"
+"BONUS_DESTROY_DEMON_SHRINE"
 {
   name = "demon shrine"
   viewId = { "demon_shrine" }
@@ -2122,11 +2136,11 @@ End
   destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
   destroyedEffect = {
     Message HIGH "Demon comes to take your life!"
-    SummonEnemy "MV_SHRINE_DEVIL" {1} none
+    SummonEnemy "BONUS_SHRINE_DEVIL" {1} none
   }
 }
 
-"MV_QUEST_DEMON_SHRINE"
+"BONUS_QUEST_DEMON_SHRINE"
 {
   name = "demon shrine"
   viewId = { "demon_shrine" }
@@ -2135,7 +2149,7 @@ End
   usageType = UsageEffect "use" { DemonQuest() }
 }
 
-"MV_DESTROY_ANGEL_SHRINE"
+"BONUS_DESTROY_ANGEL_SHRINE"
 {
   name = "angel shrine"
   viewId = { "angel_shrine" }
@@ -2145,11 +2159,11 @@ End
   destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
   destroyedEffect = {
     Message HIGH "Angel comes to take your life!"
-    SummonEnemy "MV_SHRINE_ANGEL" {1} none
+    SummonEnemy "BONUS_SHRINE_ANGEL" {1} none
   }
 }
 
-"MV_QUEST_ANGEL_SHRINE"
+"BONUS_QUEST_ANGEL_SHRINE"
 {
   name = "angel shrine"
   viewId = { "angel_shrine" }
@@ -2158,25 +2172,25 @@ End
   usageType = UsageEffect "use" { AngelQuest() }
 }
 
-"MV_DEMON_ABBEY_TRAP_DOOR"
+"BONUS_DEMON_ABBEY_TRAP_DOOR"
 {
   onBuilt = DOWN_STAIRS
   name = "trap door"
   viewId = { "wood_floor1" }
-  usageType = UsageEffect "use" { Filter Not Flag "mv_demon_unlock" { Message NORMAL "The dungeons are locked."}
-								       Filter Flag "mv_demon_unlock" { Stairs }}
+  usageType = UsageEffect "use" { Filter Not Flag "BONUS_demon_unlock" { Message NORMAL "The dungeons are locked."}
+								       Filter Flag "BONUS_demon_unlock" { Stairs }}
 }
 
-"MV_ABBEY_TRAP_DOOR"
+"BONUS_ABBEY_TRAP_DOOR"
 {
   onBuilt = DOWN_STAIRS
   name = "trap door"
   viewId = { "wood_floor1" }
-  usageType = UsageEffect "use" { Filter Not Flag "mv_angel_unlock" { Message NORMAL "The dungeons are locked."}
-								       Filter Flag "mv_angel_unlock" { Stairs }}
+  usageType = UsageEffect "use" { Filter Not Flag "BONUS_angel_unlock" { Message NORMAL "The dungeons are locked."}
+								       Filter Flag "BONUS_angel_unlock" { Stairs }}
 }
 
-"MV_PALADIN_CAGE"
+"BONUS_PALADIN_CAGE"
 {
   name = "cage"
   viewId = { "beast_cage" }
@@ -2184,15 +2198,15 @@ End
   usageType = UsageEffect "open" {
     CreatureMessage { "open the cage" "opens the cage"}
     CreatureMessage { "find paladin inside" "finds paladin inside"}
-    Summon "MV_PALADIN" 1 none
-    RemoveFurniture "MV_PALADIN_CAGE"
+    Summon "BONUS_PALADIN" 1 none
+    RemoveFurniture "BONUS_PALADIN_CAGE"
   }
   fire = 50
   strength = 30
   destroyedRemains = "BEAST_CAGE"
 }
 
-"MV_DEVIL_CAGE"
+"BONUS_DEVIL_CAGE"
 {
   name = "cage"
   viewId = { "beast_cage" }
@@ -2200,20 +2214,20 @@ End
   usageType = UsageEffect "open" {
     CreatureMessage { "open the cage" "opens the cage"}
     CreatureMessage { "find weakened devil inside" "finds weakened devil inside"}
-    Summon "MV_WEAK_DEVIL" 1 none
-    RemoveFurniture "MV_DEVIL_CAGE"
+    Summon "BONUS_WEAK_DEVIL" 1 none
+    RemoveFurniture "BONUS_DEVIL_CAGE"
   }
   fire = 50
   strength = 30
   destroyedRemains = "BEAST_CAGE"
 }
 
-"MV_CAELIDITE_ORE" inherit "MOUNTAIN2"
+"BONUS_CAELIDITE_ORE" inherit "MOUNTAIN2"
 {
   name = "caelidite ore"
-  viewId = { "mv_caelidite_ore" }
+  viewId = { "BONUS_caelidite_ore" }
   clearFogOfWar = true
-  itemDrop = {{{{"MV_CaeliditeOre"} 1 { 16 28 }}}}
+  itemDrop = {{{{"BONUS_CaeliditeOre"} 1 { 16 28 }}}}
   tickType = Effect {
     Area 1 Chain {Acid{} Chance 0.1 { Lasting 50 POISON} }
   }
@@ -2224,12 +2238,12 @@ End
   }
 }
 
-"MV_JOTHNITE_ORE" inherit "MOUNTAIN2"
+"BONUS_JOTHNITE_ORE" inherit "MOUNTAIN2"
 {
   name = "jothnite ore"
-  viewId = { "mv_jothnite_ore" }
+  viewId = { "BONUS_jothnite_ore" }
   clearFogOfWar = true
-  itemDrop = {{{{"MV_JothniteOre"} 1 { 16 28 }}}}
+  itemDrop = {{{{"BONUS_JothniteOre"} 1 { 16 28 }}}}
   tickType = Effect {
     Area 1 Chain {  Filter Not LastingEffect COLD_RESISTANT {
     CreatureMessage {"are frozen by the jothnite" "is frozen by the jothnite"}
@@ -2294,4 +2308,15 @@ End
   blockAllVision = true
   wall = true
   viewLayer = FLOOR_BACKGROUND
+}
+
+"BONUS_AXEDIO_STATUE" inherit "ADOXIE_STATUE_TEMPLE"
+{
+  destroyedEffect = {
+    Message HIGH "The statue comes to life!"
+    SummonEnemy "ADOXIE_HEAD" {1} none
+    Analytics "milestone" "adoxieComesToLife"
+  }
+  name = "statue of Evil God Axedio"
+  destroyedRemains = "DOWN_STAIRS_ADOXIE"
 }

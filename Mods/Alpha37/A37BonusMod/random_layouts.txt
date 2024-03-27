@@ -1,64 +1,142 @@
-Def HoleToGround() {
-  Set("floor")
-  Inside(1, {
-    Position(BOTTOM_CENTER,  {0 0}, Reset("floor", "up_stairs0"))
+Def WorldMapNew1() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new1")))
   })
-}
-End
-
-"hole_to_ground" HoleToGround()
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new2")))
+  })
   
-Def WorldMapExtra() {
-  NoiseMap(0.5, {(0.0, 0.058, Filter(On("set_grass"), Set("set_EE1")))})
-  NoiseMap(0.5, {(0.0, 0.058, Filter(On("set_hills"), Set("set_EE2")))})
-
-  Filter(On("set_EE1"), {Choose(
-								Set("EE_ENCHANTED_FOREST"),
-								Set("EE_DARK_SWAMP"),
-								Set("EE_ORC_VILLAGE"),
-								Set("EE_ORC_CLAN"),
-								Set("EE_WARRIOR_TOWN"),
-								Set("EE_PALACE"),
-								Set("EE_CENTAUR_PALACE"),
-								Set("EE_HAUNTED_GRASSLAND"),
-								Set("EE_ELF_FOREST"),
-								Set("EE_HERB_GRASSLAND"),
-								Set("GRASSLAND_ABBEY"),
-								Set("GRASSLAND_DARK_ABBEY")							
-								) Choose(Set("map_tree1"), Set("map_tree2"), Set("map_tree3"))})
-
-  Filter(On("set_EE2"), {Choose(
-								Set("EE_HILLS"),
-								Set("EE_VOLCANIC"),
-								Set("EE_CITY"),
-								Set("EE_ORC_CLAN"),
-								Set("EE_SHADOW_PALACE"),
-								Set("EE_SPIDER_MOUNTAIN"),
-								Set("EE_CITY_RUINS"),
-								Set("EE_DWARF_MOUNTAIN"),
-								Set("EE_DWARF_MOUNTAIN_SMALL"),
-								Set("EE_DARK_ELF_MOUNTAIN")						
-								) Choose(Set("map_tree1"), Set("map_tree2"), Set("map_tree3"))})
-  Filter(On("BONUS_ENCHANTED_FOREST"), { Set("map_small_feature1") })
-  Filter(On("BONUS_DARK_SWAMP"), { Set("map_small_feature2") })
-  Filter(On("BONUS_ORC_VILLAGE"), { Set("map_small_feature3") })
-  Filter(On("BONUS_ORC_CLAN"), { Set("map_small_feature4") })
-  Filter(On("BONUS_WARRIOR_TOWN"), { Set("map_small_feature5") })
-  Filter(On("BONUS_PALACE"), { Set("map_small_feature6") })
-  Filter(On("BONUS_CENTAUR_PALACE"), { Set("map_small_feature7") })
-  Filter(On("BONUS_HAUNTED_GRASSLAND"), { Set("map_small_feature8") })
-  Filter(On("BONUS_DWARF_MOUNTAIN"), { Set("map_small_feature9") })
-  Filter(On("BONUS_VOLCANIC"), { Set("map_small_feature10") })
-  Filter(On("BONUS_CITY"), { Set("map_small_feature11") })
-  Filter(On("BONUS_SHADOW_PALACE"), { Set("map_small_feature12") })
-  Filter(On("BONUS_SPIDER_MOUNTAIN"), { Set("map_small_feature13") })
-  Filter(On("BONUS_CITY_RUINS"), { Set("map_small_feature14") })
-  Filter(On("BONUS_HERB_GRASSLAND"), { Set("map_small_feature15") })
-  Filter(On("BONUS_DWARF_MOUNTAIN_SMALL"), { Set("map_small_feature16") })
-  Filter(On("BONUS_DARK_ELF_MOUNTAIN"), { Set("map_small_feature17") })
-  }
+  Filter(On("set_new1"), {Set("BONUS_SPIDER_MOUNTAIN") Set("map_small_feature13")})
+  Filter(On("set_new2"), {Set("BONUS_HAUNTED_GRASSLAND") Set("map_small_feature8")})}
 End
 
+Def WorldMapNew2() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new3")))
+  })
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new4")))
+  })
+  
+  Filter(On("set_new3"), {Set("BONUS_DWARF_MOUNTAIN") Set("map_small_feature9")})
+  Filter(On("set_new4"), {Set("BONUS_ENCHANTED_FOREST") Set("map_small_feature1")})}
+End
+
+Def WorldMapNew3() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new5")))
+  })
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new6")))
+  })
+  
+  Filter(On("set_new5"), {Set("BONUS_VOLCANIC") Set("map_small_feature10")})
+  Filter(On("set_new6"), {Set("BONUS_DARK_SWAMP") Set("map_small_feature2")})}
+End
+
+Def WorldMapNew4() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new7")))
+  })
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new8")))
+  })
+  
+  Filter(On("set_new7"), {Set("BONUS_CITY") Set("map_small_feature11")})
+  Filter(On("set_new8"), {Set("BONUS_CENTAUR_PALACE") Set("map_small_feature7")})}
+End
+
+Def WorldMapNew5() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new9")))
+  })
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new10")))
+  })
+  
+  Filter(On("set_new9"), {Set("BONUS_DWARF_MOUNTAIN_SMALL") Set("map_small_feature16")})
+  Filter(On("set_new10"), {Set("BONUS_HERB_GRASSLAND") Set("map_small_feature15")})}
+End
+
+Def WorldMapNew6() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new11")))
+  })
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new12")))
+  })
+  
+  Filter(On("set_new11"), {Set("BONUS_ORC_CLAN") Set("map_small_feature4")})
+  Filter(On("set_new12"), {Set("BONUS_ORC_VILLAGE") Set("map_small_feature3")})}
+End
+
+Def WorldMapNew7() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new13")))
+  })
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new14")))
+  })
+  
+  Filter(On("set_new13"), {Set("BONUS_ORC_CLAN") Set("map_small_feature4")})
+  Filter(On("set_new14"), {Set("BONUS_DARK_ELF_MOUNTAIN") Set("map_small_feature17")})}
+End
+
+Def WorldMapNew8() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new15")))
+  })
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new16")))
+  })
+  
+  Filter(On("set_new15"), {Set("BONUS_SHADOW_PALACE") Set("map_small_feature12")})
+  Filter(On("set_new16"), {Set("BONUS_PALACE") Set("map_small_feature6")})}
+End
+
+Def WorldMapNew9() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new17")))
+  })
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new18")))
+  })
+  
+  Filter(On("set_new17"), {Set("BONUS_CITY_RUINS") Set("map_small_feature17")})
+  Filter(On("set_new18"), {Set("BONUS_WARRIOR_TOWN") Set("map_small_feature17")})}
+End
+
+Def WorldMapNew10() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new19")))
+  })
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new20")))
+  })
+  
+  Filter(On("set_new19"), {Set("BONUS_BESIEGED_GRASSLAND") Set("map_small_feature7")})
+  Filter(On("set_new20"), {Set("BONUS_ELF_FOREST") Set("map_small_feature1")})}
+End
+
+Def WorldMapNew11() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new21")))
+  })
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_grass"), Set("set_new22")))
+  })
+  
+  Filter(On("set_new21"), {Set("BONUS_GRASSLAND_DARK_ABBEY") Set("map_small_feature15")})
+  Filter(On("set_new22"), {Set("BONUS_GRASSLAND_ABBEY") Set("map_small_feature15")})}
+End
+
+Def WorldMapNew12() {
+  NoiseMap(0.01, {
+    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new23")))
+  })
+  
+  Filter(On("set_new23"), {Set("BONUS_HILLS") Set("map_small_feature15")})}
+End
 
 "world_map" modify {
   NoiseMap(0.65, {
@@ -84,7 +162,18 @@ End
   WorldMapFeatures()
   WorldMapConnections()
   WorldMapTrees()
-  WorldMapExtra()
+  WorldMapNew1()
+  WorldMapNew2()
+  WorldMapNew3()
+  WorldMapNew4()
+  WorldMapNew5()
+  WorldMapNew6()
+  WorldMapNew7()
+  WorldMapNew8()
+  WorldMapNew9()
+  WorldMapNew10()
+  WorldMapNew11()
+  WorldMapNew12()
 }
 
 "world_map_test" modify {
@@ -109,5 +198,26 @@ End
   WorldMapFeatures()
   WorldMapConnections()
   WorldMapTrees()
-  WorldMapExtra()
+  WorldMapNew1()
+  WorldMapNew2()
+  WorldMapNew3()
+  WorldMapNew4()
+  WorldMapNew5()
+  WorldMapNew6()
+  WorldMapNew7()
+  WorldMapNew8()
+  WorldMapNew9()
+  WorldMapNew10()
+  WorldMapNew11()
+  WorldMapNew12()
 }
+
+Def HoleToGround() {
+  Set("floor")
+  Inside(1, {
+    Position(BOTTOM_CENTER,  {0 0}, Reset("floor", "up_stairs0"))
+  })
+}
+End
+
+"hole_to_ground" HoleToGround()

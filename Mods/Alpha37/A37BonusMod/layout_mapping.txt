@@ -1,4 +1,4 @@
-"ruins" inherit "default" append {
+"ruins" inherit "default" {
   "floor" { Place "FLOOR" Flag EMPTY_ROOM }
   "wood_floor" { Place "FLOOR" Flag EMPTY_ROOM }
   "stone_floor" { Place "FLOOR" Flag EMPTY_ROOM }
@@ -14,24 +14,25 @@
   "iron_door_blocking" Place "FLOOR"
 }
 
-"ruin_guard_post_floor2" inherit "ruins" append {
+"ruin_guard_post_floor2" inherit "ruins" {
   "up_stairs0" Stairs UP "BOOKCASE_STAIRS" 0
+  "down_stairs0" Stairs DOWN "ADOXIE_STATUE_TEMPLE" 0
 }
 
-"ruin_blacksmith" inherit "ruins" append {
+"ruin_blacksmith" inherit "ruins" {
   "down_stairs0" Stairs DOWN "FORGE_STAIRS" 0
 }
 
-"murderers_hideout" inherit "default" append {
-  "pamphlet_chest" Place "MV_SKELETON_COFFIN"
-  "knife_chest" Place "MV_SKELETON_COFFIN"
+"murderers_hideout" inherit "default" {
+  "pamphlet_chest" Place "BONUS_SKELETON_COFFIN"
+  "knife_chest" Place "BONUS_SKELETON_COFFIN"
 }
 
-"dark_abbey" inherit "default" append {
+"dark_abbey" inherit "default" {
 
-  "floor" { Place "MV_FLOOR_STONE2" Flag EMPTY_ROOM }
-  "wood_floor" { Place "MV_FLOOR_STONE2" Place "FLOOR_CARPET1" Flag EMPTY_ROOM }
-  "stone_floor" { Place "MV_FLOOR_STONE2" Place "FLOOR_CARPET1" Flag EMPTY_ROOM }
+  "floor" { Place "BONUS_FLOOR_STONE2" Flag EMPTY_ROOM }
+  "wood_floor" { Place "BONUS_FLOOR_STONE2" Place "FLOOR_CARPET1" Flag EMPTY_ROOM }
+  "stone_floor" { Place "BONUS_FLOOR_STONE2" Place "FLOOR_CARPET1" Flag EMPTY_ROOM }
   "wall" Place "DUNGEON_WALL2"
   "wood_wall" Place "DUNGEON_WALL2"
   "castle_wall" Place "DUNGEON_WALL2"
@@ -46,25 +47,21 @@
   "archer_wall" Place "DUNGEON_WALL2"
   "chest" Place "LOOT_COFFIN"
   "bed" Place "COFFIN1"
-  "wood_door" Place "MV_PORTCULLIS"
-  "wood_gate" Place "MV_PORTCULLIS_GATE"
-  "iron_door" Place "MV_PORTCULLIS"
+  "wood_door" Place "BONUS_PORTCULLIS"
+  "wood_gate" Place "BONUS_PORTCULLIS_GATE"
+  "iron_door" Place "BONUS_PORTCULLIS"
   "iron_gate" Place "IRON_GATE"
 }
 
-"demon_village" inherit "default" append {
+"demon_village" inherit "default" {
   "down_stairs0" Stairs DOWN "BOOKCASE_STAIRS" 0
 }
 
-"demon_shrine" inherit "default" append {
+"bonus_demon_shrine" inherit "default" {
   "down_stairs0" Stairs DOWN "DEMON_SHRINE" 0
 }
 
-"Cementery_no_hidden" inherit "default" append {
-  "hidden_door" Place "CASTLE_WALL"
-}
-
-"dark_vault_gargoyle" inherit "default" append {
+"bonus_dark_vault_gargoyle" inherit "default" {
   "wall" Place "DUNGEON_WALL2"
   "wood_wall" Place "DUNGEON_WALL2"
   "castle_wall" Place "DUNGEON_WALL2"
@@ -72,16 +69,68 @@
   "adoxie_left_foot" Place "GARGOYLE_TRAP"
   "adoxie_right_foot" Place "GARGOYLE_TRAP"
   "adoxie_feet_trigger" Place "FLOOR_CARPET1"
+  "prophet_remains" { Place "REMAINS_TABLE" Items "blackMarketScrolls" }
   "down_stairs0" Stairs DOWN "DOWN_STAIRS" 0
+  "up_stairs0" Stairs UP "UP_STAIRS" 0
+  "down_stairs1" Stairs DOWN "DOWN_STAIRS" 1
+  "up_stairs1" Stairs UP "UP_STAIRS" 1
 }
 
-"vault_gargoyle" inherit "default" append {
+"bonus_vault_gargoyle" inherit "default" append {
   "wall" Place "CASTLE_WALL"
   "wood_wall" Place "CASTLE_WALL"
   "castle_wall" Place "CASTLE_WALL"
   "archer_wall" Place "CASTLE_WALL"
   "adoxie_left_foot" Place "GARGOYLE_TRAP"
   "adoxie_right_foot" Place "GARGOYLE_TRAP"
-  "adoxie_feet_trigger" Place "MV_FLOOR_CARPET2"
+  "adoxie_feet_trigger" Place "BONUS_FLOOR_CARPET2"
+  "prophet_remains" { Place "REMAINS_TABLE" Items "blackMarketScrolls" }
   "down_stairs0" Stairs DOWN "DOWN_STAIRS" 0
+  "up_stairs0" Stairs UP "UP_STAIRS" 0
+  "down_stairs1" Stairs DOWN "DOWN_STAIRS" 1
+  "up_stairs1" Stairs UP "UP_STAIRS" 1
+}
+
+"bonus_zombie" inherit "default" {
+  "floor" { Place "FLOOR" Flag EMPTY_ROOM }
+  "wood_floor" { Place "FLOOR" Flag EMPTY_ROOM }
+  "stone_floor" { Place "FLOOR" Flag EMPTY_ROOM }
+  "wall" Place "BONUS_ZOMBIE_WALL"
+  "wood_wall" Place "BONUS_ZOMBIE_WALL"
+  "castle_wall" Place "BONUS_ZOMBIE_WALL"
+  "archer_wall" Place "BONUS_ZOMBIE_WALL"
+  "wood_door" Place "IRON_DOOR"
+  "wood_gate" Place "IRON_DOOR"
+  "iron_door" Place "IRON_DOOR"
+  "iron_gate" Place "IRON_DOOR"
+  "iron_gate_blocking" Place "IRON_DOOR"
+  "iron_door_blocking" Place "IRON_DOOR"
+  "down_stairs0" Stairs DOWN "BONUS_TAINTED_STAIRS_DOWN" 0
+  "up_stairs0" Stairs UP "BONUS_TAINTED_STAIRS_UP" 0
+  "down_stairs1" Stairs DOWN "BONUS_TAINTED_STAIRS_DOWN" 1
+  "up_stairs1" Stairs UP "BONUS_TAINTED_STAIRS_UP" 1
+  "hidden_door" Place "BONUS_ZOMBIE_WALL_DOOR"
+}
+
+"bonus_volcanic_brick" inherit "default" {
+  "floor" { Place "BONUS_VOLC_STONE_FLOOR" Flag EMPTY_ROOM }
+  "wood_floor" { Place "BONUS_VOLC_STONE_FLOOR" Flag EMPTY_ROOM }
+  "stone_floor" { Place "BONUS_VOLC_STONE_FLOOR" Flag EMPTY_ROOM }
+  "wall" Place "BONUS_VOLC_WALL"
+  "wood_wall" Place "BONUS_VOLC_WALL"
+  "castle_wall" Place "BONUS_VOLC_WALL"
+  "archer_wall" Place "BONUS_VOLC_WALL"
+  "ruin_wall" Place "BONUS_VOLC_WALL"
+  "wood_door" Place "BONUS_VOLC_STONE_FLOOR"
+  "wood_gate" Place "BONUS_VOLC_STONE_FLOOR"
+  "iron_door" Place "BONUS_VOLC_STONE_FLOOR"
+  "iron_gate" Place "BONUS_VOLC_STONE_FLOOR"
+  "iron_gate_blocking" Place "BONUS_VOLC_STONE_FLOOR"
+  "iron_door_blocking" Place "BONUS_VOLC_STONE_FLOOR"
+  "chest" { Place "NONFLAMMABLE_CHEST" Items "dragonChest" }
+}
+
+
+"axedio_temple" inherit "default" append {
+  "down_stairs0" Stairs DOWN "BONUS_AXEDIO_STATUE" 0
 }

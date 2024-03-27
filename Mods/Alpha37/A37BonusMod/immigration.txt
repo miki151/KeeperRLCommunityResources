@@ -227,7 +227,7 @@
       traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
       spawnLocation = NearLeader
       keybinding = CREATE_IMP
-      sound = CREATE_IMP 2
+      sound = { "CREATE_IMP" 2 } 
       noAuto = true
       initialRecruitment = 4
       requirements = {
@@ -681,7 +681,7 @@
       ids = { "DWARF_BLACKSMITH" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "DWARVES" } 0 FIGHTER }
+        { 0.0 RecruitmentInfo { "DWARVES" } 0 }
         { 1.0 CostInfo "GOLD" 100 }
         { 0.0 TechId "chivalry"}
       }
@@ -726,7 +726,7 @@
       ids = { "TEUTON" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "TEUTONS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "TEUTONS" } 3 }
         { 1.0 CostInfo "GOLD" 150 }
         { 0.0 TechId "chivalry"}
       }
@@ -919,7 +919,7 @@
       specialTraits = { { 1 { Lasting { FOUNDER } }} }	  
     }
     {
-      ids = { "PESEANT" }
+      ids = { "PESEANT_PLAYER" }
       traits = { LEADER WORKER NO_LIMIT }
       keybinding = CREATE_IMP
       noAuto = true
@@ -1353,7 +1353,7 @@
       ids = { "DWARF_BLACKSMITH" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "DWARVES" } 0 FIGHTER }
+        { 0.0 RecruitmentInfo { "DWARVES" } 0 }
         { 1.0 CostInfo "GOLD" 100 }
       }
       specialTraits = {
@@ -1394,7 +1394,7 @@
       ids = { "TEUTON" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "TEUTONS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "TEUTONS" } 3 }
         { 1.0 CostInfo "GOLD" 150 }
       }
     }
@@ -1436,7 +1436,7 @@
     "peseants" modify
 	{
       {
-        ids = { "PESEANT" }
+        ids = { "PESEANT_PLAYER" } #Required safety-lock for Farming
         traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
         keybinding = CREATE_IMP
         noAuto = true
@@ -1673,9 +1673,20 @@
             { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
             { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
             { 0.0 CostInfo "DEMON_PIETY" 1000 }            
-            { 0.0 NegateRequirement TechId "combat succubus" } #Modded		  
+            { 0.0 NegateRequirement TechId "combat copulators" } #Modded		  
           }
         }
+		{
+		  ids = { "BONUS_INCUBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+      }
+    }
         {
           ids = { "DOPPLEGANGER" }
           traits = { FIGHTER }
@@ -1712,7 +1723,7 @@
              { 1.0 { AttrBonus DAMAGE 3 }}  #Modded
           }
           requirements = {
-            { 0.0 RecruitmentInfo { "DARK_ELVES_ALLY" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "DARK_ELVES_ALLY" } 3  }
             { 1.0 CostInfo "GOLD" 20 }
           }
         }
@@ -1721,7 +1732,7 @@
       ids = { "SKELETON_WARRIOR" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_VAMPIRE_CASTLE_UP" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_VAMPIRE_CASTLE_UP" } 3 }
         { 1.0 CostInfo "GOLD" 5 }
       }
     }
@@ -1729,7 +1740,7 @@
       ids = { "SKELETON_ARCHER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_VAMPIRE_CASTLE_UP" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_VAMPIRE_CASTLE_UP" } 3 }
         { 1.0 CostInfo "GOLD" 5 }
       }
     }
@@ -1737,7 +1748,7 @@
       ids = { "RAT_SOLDIER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_RATMEN_ALLY" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_RATMEN_ALLY" } 3 }
         { 1.0 CostInfo "GOLD" 1 }
       }
     }
@@ -1745,17 +1756,17 @@
       ids = { "DEMON_DWELLER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_DEMON_SHRINE" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_DEMON_SHRINE" } 3 }
         { 1.0 CostInfo "GOLD" 50 }
       }
     }
 	{
-      ids = { "MV_DARK_MONK" }
+      ids = { "BONUS_DARK_MONK" }
       traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
       keybinding = CREATE_IMP
       noAuto = true
       requirements = {
-	    { 0.0 RecruitmentInfo { "MV_DARK_ABBEY" } 3 WORKER }
+	    { 0.0 RecruitmentInfo { "BONUS_DARK_ABBEY" } 3 }
         { 1 ExponentialCost "GOLD" 30 5 4 }
       }
     }
@@ -1767,7 +1778,7 @@
              { 1.0 { AttrBonus DAMAGE 3 }}  #Modded
           }
           requirements = {
-            { 0.0 RecruitmentInfo { "ORC_VILLAGE" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "ORC_VILLAGE" } 3 }
             { 1.0 CostInfo "GOLD" 5 }
           }
         }
@@ -1779,7 +1790,7 @@
              { 1.0 { AttrBonus RANGED_DAMAGE 3 }}  #Modded
           }
           requirements = {
-            { 0.0 RecruitmentInfo { "HARPY_CAVE" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "HARPY_CAVE" } 3 }
             { 1.0 CostInfo "GOLD" 5 }
           }
         }
@@ -1791,7 +1802,7 @@
              { 1.0 { AttrBonus DAMAGE 3 }}  #Modded
           }
           requirements = {
-            { 0.0 RecruitmentInfo { "OGRE_CAVE" "ORC_VILLAGE" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "OGRE_CAVE" "ORC_VILLAGE" } 3 }
             { 1.0 CostInfo "GOLD" 12 }
           }
         }
@@ -1923,13 +1934,25 @@
       ids = { "DWARF_BLACKSMITH" "BONUS_DWARF_WARRIOR" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM"} 0 FIGHTER }
+        { 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM"} 0 }
         { 1.0 CostInfo "GOLD" 100 }
       }
       specialTraits = {
-       { 1.0 { AttrBonus FORGE 20 }}
+       { 1.0 { AttrBonus FORGE 30 }}
       }
     }
+	{
+	 ids = { "BONUS_DWARF_MINER"}
+	 traits = { WORKER FIGHTER}
+	 requirements = {
+		{ 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM"} 0 }
+        { 1.0 CostInfo "GOLD" 100 }
+	 }
+	 specialTraits = {
+		{ 0.25 { Lasting { DISARM_TRAPS_SKILL } }}
+		{ 0.05 { Lasting { ENTERTAINER } }}
+	 }
+	}
     {
       ids = { "GALEAM" }
       traits = { FIGHTER }
@@ -1964,7 +1987,7 @@
       ids = { "TEUTON" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "TEUTONS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "TEUTONS" } 3 }
         { 1.0 CostInfo "GOLD" 150 }
       }
     }
@@ -1988,13 +2011,14 @@
       }
       frequency = 0.1
     }
-    WhiteRecruits()
+}
+Def WhiteRecruits()
 	
     {
       ids = { "ENT" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_ENTS_ALLY" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_ENTS_ALLY" } 3 }
         { 1.0 CostInfo "GOLD" 200 }
       }
     }
@@ -2002,7 +2026,7 @@
       ids = { "FIRE_ELEMENTAL" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_ELEMENTALIST_ALLY" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_ELEMENTALIST_ALLY" } 3 }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -2010,7 +2034,7 @@
       ids = { "AIR_ELEMENTAL" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_ELEMENTALIST_ALLY" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_ELEMENTALIST_ALLY" } 3 }
         { 1.0 CostInfo "GOLD" 200 }
       }
     }
@@ -2018,7 +2042,7 @@
       ids = { "WATER_ELEMENTAL" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_ELEMENTALIST_ALLY" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_ELEMENTALIST_ALLY" } 3  }
         { 1.0 CostInfo "GOLD" 200 }
       }
     }
@@ -2026,7 +2050,7 @@
       ids = { "EARTH_ELEMENTAL" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_ELEMENTALIST_ALLY" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_ELEMENTALIST_ALLY" } 3 }
         { 1.0 CostInfo "GOLD" 200 }
       }
     }
@@ -2034,7 +2058,7 @@
       ids = { "ELF_ARCHER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "ELVES" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "ELVES" } 3  }
         { 1.0 CostInfo "GOLD" 75 }
       }
     }
@@ -2042,7 +2066,7 @@
       ids = { "DRIAD" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_DRIADS_ALLY" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_DRIADS_ALLY" } 3 }
         { 1.0 CostInfo "GOLD" 75 }
       }
     }
@@ -2050,21 +2074,21 @@
       ids = { "WARRIOR" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "WARRIORS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "WARRIORS" } 3 }
         { 1.0 CostInfo "GOLD" 200 }
       }
     }
 	{
-      ids = { "MV_MONK" }
+      ids = { "BONUS_MONK" }
       traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
       keybinding = CREATE_IMP
       noAuto = true
       requirements = {
-	    { 0.0 RecruitmentInfo { "MV_ABBEY" } 3 WORKER }
+	    { 0.0 RecruitmentInfo { "BONUS_ABBEY" } 3 }
         { 1 ExponentialCost "GOLD" 50 5 4 }
       }
     }
-}
+End
 
     #Modded immigrants
 
@@ -2075,7 +2099,7 @@
           traits = { FIGHTER }
 		  stripEquipment = false
           requirements = {
-            { 0.0 RecruitmentInfo { "GNOMES" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "GNOMES" } 3 }
             { 1.0 CostInfo "GOLD" 12 }
           }
         }
@@ -2091,7 +2115,7 @@
              { 1.0 { AttrBonus DAMAGE 3 }}
           }
           requirements = {
-            { 0.0 RecruitmentInfo { "DARK_ELVES_ALLY" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "DARK_ELVES_ALLY" } 3 }
             { 1.0 CostInfo "GOLD" 20 }
           }
         }
@@ -2100,7 +2124,7 @@
       ids = { "SKELETON_WARRIOR" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_VAMPIRE_CASTLE_UP" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_VAMPIRE_CASTLE_UP" } 3 }
         { 1.0 CostInfo "GOLD" 5 }
       }
     }
@@ -2108,7 +2132,7 @@
       ids = { "SKELETON_ARCHER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_VAMPIRE_CASTLE_UP" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_VAMPIRE_CASTLE_UP" } 3 }
         { 1.0 CostInfo "GOLD" 5 }
       }
     }
@@ -2116,7 +2140,7 @@
       ids = { "RAT_SOLDIER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_RATMEN_ALLY" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_RATMEN_ALLY" } 3 }
         { 1.0 CostInfo "GOLD" 1 }
       }
     }
@@ -2124,17 +2148,17 @@
       ids = { "DEMON_DWELLER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_DEMON_SHRINE" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_DEMON_SHRINE" } 3  }
         { 1.0 CostInfo "GOLD" 50 }
       }
     }
 	{
-      ids = { "MV_DARK_MONK" }
+      ids = { "BONUS_DARK_MONK" }
       traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
       keybinding = CREATE_IMP
       noAuto = true
       requirements = {
-	    { 0.0 RecruitmentInfo { "MV_DARK_ABBEY" } 3 WORKER }
+	    { 0.0 RecruitmentInfo { "BONUS_DARK_ABBEY" } 3 }
         { 1 ExponentialCost "GOLD" 30 5 4 }
       }
     }
@@ -2146,7 +2170,7 @@
              { 1.0 { AttrBonus DAMAGE 3 }}
           }
           requirements = {
-            { 0.0 RecruitmentInfo { "ORC_VILLAGE" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "ORC_VILLAGE" } 3 }
             { 1.0 CostInfo "GOLD" 5 }
           }
         }
@@ -2158,7 +2182,7 @@
              { 1.0 { AttrBonus RANGED_DAMAGE 3 }}
           }
           requirements = {
-            { 0.0 RecruitmentInfo { "HARPY_CAVE" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "HARPY_CAVE" } 3 }
             { 1.0 CostInfo "GOLD" 5 }
           }
         }
@@ -2170,7 +2194,7 @@
              { 1.0 { AttrBonus DAMAGE 3 }}
           }
           requirements = {
-            { 0.0 RecruitmentInfo { "OGRE_CAVE" "ORC_VILLAGE" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "OGRE_CAVE" "ORC_VILLAGE" } 3 }
             { 1.0 CostInfo "GOLD" 12 }
           }
         }
@@ -2181,7 +2205,7 @@
           ids = { "BONUS_DARK_ELF_ARCHER" }
           traits = { FIGHTER }
           requirements = {
-            { 0.0 RecruitmentInfo {"BONUS_DARK_ELF_EMPIRE"} 3 FIGHTER }
+            { 0.0 RecruitmentInfo {"BONUS_DARK_ELF_EMPIRE"} 3  }
             { 1.0 CostInfo "GOLD" 50 }
           }
         }
@@ -2189,7 +2213,7 @@
           ids = { "BONUS_SHADOW_KNIGHT" }
           traits = { FIGHTER }
           requirements = {
-            { 0.0 RecruitmentInfo { "BONUS_SHADOW_KING" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "BONUS_SHADOW_KING" } 3 }
             { 1.0 CostInfo "GOLD" 500 }
           }
         }
@@ -2197,7 +2221,7 @@
           ids = { "BONUS_SHADOW_PRIEST" }
           traits = { FIGHTER }
           requirements = {
-            { 0.0 RecruitmentInfo { "BONUS_SHADOW_KING" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "BONUS_SHADOW_KING" } 3 }
             { 1.0 CostInfo "GOLD" 500 }
           }
         }
@@ -2205,7 +2229,7 @@
           ids = { "BONUS_SHADOW_ARCHER" }
           traits = { FIGHTER }
           requirements = {
-            { 0.0 RecruitmentInfo { "BONUS_SHADOW_KING" } 3 FIGHTER }
+            { 0.0 RecruitmentInfo { "BONUS_SHADOW_KING" } 3 }
             { 1.0 CostInfo "GOLD" 500 }
           }
         }
@@ -2217,7 +2241,7 @@
         ids = { "TEUTON" }
         traits = { FIGHTER }
         requirements = {
-          { 0.0 RecruitmentInfo { "TEUTONS" } 3 FIGHTER }
+          { 0.0 RecruitmentInfo { "TEUTONS" } 3 }
           { 1.0 CostInfo "GOLD" 150 }
         }
       }
@@ -2225,18 +2249,18 @@
         ids = { "DWARF_BLACKSMITH" }
         traits = { FIGHTER }
         requirements = {
-          { 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM" } 0 FIGHTER }
+          { 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM" } 0 }
           { 1.0 CostInfo "GOLD" 100 }
         }
         specialTraits = {
-         { 1.0 { AttrBonus FORGE 20 }}
+         { 1.0 { AttrBonus FORGE 30 }}
         }
       }
       {
         ids = { "BONUS_DWARF_WARRIOR" }
         traits = { FIGHTER }
         requirements = {
-          { 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM" } 0 FIGHTER }
+          { 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM" } 0 }
           { 1.0 CostInfo "GOLD" 100 }
         }
         specialTraits = {
@@ -2251,7 +2275,7 @@
 		  ids = { "BONUS_ROYAL_KNIGHT" }
 		  traits = { FIGHTER }
 		  requirements = {
-			{ 0.0 RecruitmentInfo { "BONUS_KING" } 3 FIGHTER }
+			{ 0.0 RecruitmentInfo { "BONUS_KING" } 3 }
 			{ 1.0 CostInfo "GOLD" 500 }
 		  }
 		}
@@ -2259,7 +2283,7 @@
 		  ids = { "BONUS_ROYAL_PRIEST" }
 		  traits = { FIGHTER }
 		  requirements = {
-			{ 0.0 RecruitmentInfo { "BONUS_KING" } 3 FIGHTER }
+			{ 0.0 RecruitmentInfo { "BONUS_KING" } 3  }
 			{ 1.0 CostInfo "GOLD" 500 }
 		  }
 		}
@@ -2267,7 +2291,7 @@
 		  ids = { "BONUS_ROYAL_ARCHER" }
 		  traits = { FIGHTER }
 		  requirements = {
-			{ 0.0 RecruitmentInfo { "BONUS_KING" } 3 FIGHTER }
+			{ 0.0 RecruitmentInfo { "BONUS_KING" } 3  }
 			{ 1.0 CostInfo "GOLD" 500 }
 		  }
 		}
@@ -2275,7 +2299,7 @@
 		  ids = { "BONUS_CENTAUR_ARCHER" }
 		  traits = { FIGHTER }
 		  requirements = {
-			{ 0.0 RecruitmentInfo { "BONUS_CENTAURS" } 3 FIGHTER }
+			{ 0.0 RecruitmentInfo { "BONUS_CENTAURS" } 3  }
 			{ 1.0 CostInfo "GOLD" 200 }
 		  }
 		}
@@ -2283,7 +2307,7 @@
 		  ids = { "ELF_ARCHER" }
 		  traits = { FIGHTER }
 		  requirements = {
-			{ 0.0 RecruitmentInfo { "BONUS_ELF_KINGDOM" } 3 FIGHTER }
+			{ 0.0 RecruitmentInfo { "BONUS_ELF_KINGDOM" } 3  }
 			{ 1.0 CostInfo "GOLD" 150 }
 		  }
 		}
@@ -2296,7 +2320,7 @@
           traits = { WORKER NO_LIMIT NO_EQUIPMENT }
           spawnLocation = NearLeader
           keybinding = CREATE_IMP
-          sound = CREATE_IMP 2
+          sound = { "CREATE_IMP" 2 }
           noAuto = true
           initialRecruitment = 4
           requirements = {
@@ -2680,7 +2704,7 @@
           traits = { WORKER NO_LIMIT NO_EQUIPMENT }
           spawnLocation = NearLeader
           keybinding = CREATE_IMP
-          sound = CREATE_IMP 2
+          sound = { "CREATE_IMP" 2 }
           noAuto = true
           initialRecruitment = 7
           specialTraits = {
@@ -2900,7 +2924,7 @@
             { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
             { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
             { 0.0 CostInfo "DEMON_PIETY" 1000 }            
-            { 0.0 NegateRequirement TechId "combat succubus" }		  
+            { 0.0 NegateRequirement TechId "combat copulators" }		  
           }
           specialTraits = {
     		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
@@ -2942,7 +2966,7 @@
           ids = { "DARK_ELF_WARRIOR" }
           traits = { FIGHTER }
           requirements = {
-            { 0.0 RecruitmentInfo {"DARK_ELVES_ALLY"} 3 FIGHTER }
+            { 0.0 RecruitmentInfo {"DARK_ELVES_ALLY"} 3  }
             { 1.0 CostInfo "GOLD" 20 }
           }
           specialTraits = {
@@ -2954,7 +2978,7 @@
       ids = { "SKELETON_WARRIOR" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_VAMPIRE_CASTLE_UP" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_VAMPIRE_CASTLE_UP" } 3  }
         { 1.0 CostInfo "GOLD" 5 }
       }
     }
@@ -2962,7 +2986,7 @@
       ids = { "SKELETON_ARCHER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_VAMPIRE_CASTLE_UP" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_VAMPIRE_CASTLE_UP" } 3  }
         { 1.0 CostInfo "GOLD" 5 }
       }
     }
@@ -2970,7 +2994,7 @@
       ids = { "RAT_SOLDIER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_RATMEN_ALLY" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_RATMEN_ALLY" } 3  }
         { 1.0 CostInfo "GOLD" 1 }
       }
     }
@@ -2978,17 +3002,17 @@
       ids = { "DEMON_DWELLER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_DEMON_SHRINE" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_DEMON_SHRINE" } 3  }
         { 1.0 CostInfo "GOLD" 50 }
       }
     }
 	{
-      ids = { "MV_DARK_MONK" }
+      ids = { "BONUS_DARK_MONK" }
       traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
       keybinding = CREATE_IMP
       noAuto = true
       requirements = {
-	    { 0.0 RecruitmentInfo { "MV_DARK_ABBEY" } 3 WORKER }
+	    { 0.0 RecruitmentInfo { "BONUS_DARK_ABBEY" } 3 }
         { 1 ExponentialCost "GOLD" 30 5 4 }
       }
     }
@@ -2996,7 +3020,7 @@
           ids = { "ORC" "BONUS_ORC_FEMALE" }
           traits = { FIGHTER }
           requirements = {
-            { 0.0 RecruitmentInfo {"ORC_VILLAGE"} 3 FIGHTER }
+            { 0.0 RecruitmentInfo {"ORC_VILLAGE"} 3  }
             { 1.0 CostInfo "GOLD" 5 }
           }
           specialTraits = {
@@ -3008,7 +3032,7 @@
           traits = { FIGHTER }
 		  stripEquipment = false
           requirements = {
-            { 0.0 RecruitmentInfo {"HARPY_CAVE"} 3 FIGHTER }
+            { 0.0 RecruitmentInfo {"HARPY_CAVE"} 3  }
             { 1.0 CostInfo "GOLD" 12 }
           }
           specialTraits = {
@@ -3020,7 +3044,7 @@
           traits = { FIGHTER }
 		  stripEquipment = false
           requirements = {
-            { 0.0 RecruitmentInfo {"OGRE_CAVE" "ORC_VILLAGE"} 3 FIGHTER }
+            { 0.0 RecruitmentInfo {"OGRE_CAVE" "ORC_VILLAGE"} 3  }
             { 1.0 CostInfo "GOLD" 12 }
           }
           specialTraits = {
@@ -3214,12 +3238,27 @@
             { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
             { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
             { 0.0 CostInfo "DEMON_PIETY" 1000 }
-            { 0.0 TechId "combat succubus" }
+            { 0.0 TechId "combat copulators" }
           }
           specialTraits = {
     		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
           }
         }
+		{
+		  ids = { "BONUS_COMBAT_INCUBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+        }
+		specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+		}
      }
     "dark_keeper_hard_mode"
     {
@@ -3228,7 +3267,7 @@
           traits = { WORKER NO_LIMIT NO_EQUIPMENT }
           spawnLocation = NearLeader
           keybinding = CREATE_IMP
-          sound = CREATE_IMP 2
+          sound = { "CREATE_IMP" 2 }
           noAuto = true
           initialRecruitment = 4
           specialTraits = {
@@ -3448,7 +3487,7 @@
             { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
             { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
             { 0.0 CostInfo "DEMON_PIETY" 1000 }            
-            { 0.0 NegateRequirement TechId "combat succubus" }		  
+            { 0.0 NegateRequirement TechId "combat copulators" }		  
           }
           specialTraits = {
     		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
@@ -3504,7 +3543,7 @@
           traits = { FIGHTER }
 		  stripEquipment = false
           requirements = {
-            { 0.0 RecruitmentInfo {"DARK_ELVES_ALLY"} 3 FIGHTER }
+            { 0.0 RecruitmentInfo {"DARK_ELVES_ALLY"} 3 }
             { 1.0 CostInfo "GOLD" 20 }
           }
           specialTraits = {
@@ -3516,7 +3555,7 @@
       ids = { "SKELETON_WARRIOR" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_VAMPIRE_CASTLE_UP" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_VAMPIRE_CASTLE_UP" } 3  }
         { 1.0 CostInfo "GOLD" 5 }
       }
     }
@@ -3524,7 +3563,7 @@
       ids = { "SKELETON_ARCHER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_VAMPIRE_CASTLE_UP" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_VAMPIRE_CASTLE_UP" } 3  }
         { 1.0 CostInfo "GOLD" 5 }
       }
     }
@@ -3532,7 +3571,7 @@
       ids = { "RAT_SOLDIER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_RATMEN_ALLY" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_RATMEN_ALLY" } 3  }
         { 1.0 CostInfo "GOLD" 1 }
       }
     }
@@ -3540,17 +3579,17 @@
       ids = { "DEMON_DWELLER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "MV_DEMON_SHRINE" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_DEMON_SHRINE" } 3  }
         { 1.0 CostInfo "GOLD" 50 }
       }
     }
 	{
-      ids = { "MV_DARK_MONK" }
+      ids = { "BONUS_DARK_MONK" }
       traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
       keybinding = CREATE_IMP
       noAuto = true
       requirements = {
-	    { 0.0 RecruitmentInfo { "MV_DARK_ABBEY" } 3 WORKER }
+	    { 0.0 RecruitmentInfo { "BONUS_DARK_ABBEY" } 3  }
         { 1 ExponentialCost "GOLD" 30 5 4 }
       }
     }
@@ -3559,7 +3598,7 @@
           traits = { FIGHTER }
 		  stripEquipment = false
           requirements = {
-            { 0.0 RecruitmentInfo {"ORC_VILLAGE"} 3 FIGHTER }
+            { 0.0 RecruitmentInfo {"ORC_VILLAGE"} 3  }
             { 1.0 CostInfo "GOLD" 5 }
           }
           specialTraits = {
@@ -3571,7 +3610,7 @@
           traits = { FIGHTER }
 		  stripEquipment = false
           requirements = {
-            { 0.0 RecruitmentInfo {"HARPY_CAVE"} 3 FIGHTER }
+            { 0.0 RecruitmentInfo {"HARPY_CAVE"} 3  }
             { 1.0 CostInfo "GOLD" 12 }
           }
           specialTraits = {
@@ -3583,7 +3622,7 @@
           traits = { FIGHTER }
 		  stripEquipment = false
           requirements = {
-            { 0.0 RecruitmentInfo {"OGRE_CAVE" "ORC_VILLAGE"} 3 FIGHTER }
+            { 0.0 RecruitmentInfo {"OGRE_CAVE" "ORC_VILLAGE"} 3  }
             { 1.0 CostInfo "GOLD" 12 }
           }
           specialTraits = {
@@ -3778,12 +3817,27 @@
             { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
             { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
             { 0.0 CostInfo "DEMON_PIETY" 1000 }
-            { 0.0 TechId "combat succubus" }
+            { 0.0 TechId "combat copulators" }
           }
           specialTraits = {
     		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
           }
         }
+		{
+		  ids = { "BONUS_COMBAT_INCUBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+        }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+		}
     }
     "sandbox"
     {
@@ -3817,8 +3871,8 @@
           }
           specialTraits = {  #Dark wizards are better at Arcane Breeding Programmes than knights, so better outcomes here
              { 0.05 { ExtraBodyPart HEAD 1}}
-	     { 0.01 { ExtraBodyPart WING 2}} #Normally Ogres can't fly, so 1% is meaningful
-	     { 0.25 { Lasting { NIGHT_VISION } }}
+			 { 0.01 { ExtraBodyPart WING 2}} #Normally Ogres can't fly, so 1% is meaningful
+			 { 0.25 { Lasting { NIGHT_VISION } }}
              { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
              { 0.01 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
              { 0.02 { Lasting { RANGED_VULNERABILITY } }}
@@ -3828,7 +3882,7 @@
              { 0.02 { Lasting { HATE_HUMANS } }}
              { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
              { 0.03 { Lasting { BAD_BREATH } }}
-	           { 0.03 { Lasting { ENTERTAINER } }}
+	         { 0.03 { Lasting { ENTERTAINER } }}
           }
         }
         {
@@ -3904,6 +3958,28 @@
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}}}
         }
+		{
+          ids = { "CYCLOPS" } #Moved from dark_knight_modded: breeding strange creatures is a Wizard thing; Knights breed more regular mounts and make better weapons & armor
+          traits = { FIGHTER }
+          consumeIds = true
+          spawnLocation = Pregnancy
+          requirements = {
+            { 0.0 TechId "cyclops mutation" }
+            { 0.0 Pregnancy }
+            { 1.0 CostInfo "GOLD" 500 }
+		  }
+        }
+		{
+          ids = { "MINOTAUR" }
+          traits = { FIGHTER }
+          consumeIds = true
+          spawnLocation = Pregnancy
+          requirements = {
+            { 0.0 TechId "minotaur mutation" }
+            { 0.0 Pregnancy }
+            { 1.0 CostInfo "GOLD" 500 }
+          }
+        }
         {
           ids = { "BONUS_COMBAT_SUCCUBUS" }
           traits = { FIGHTER }
@@ -3913,9 +3989,21 @@
             { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
             { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
             { 0.0 CostInfo "DEMON_PIETY" 1000 }
-            { 0.0 TechId "combat succubus" }
+            { 0.0 TechId "combat copulators" }
           }
         }
+		{
+		  ids = { "BONUS_COMBAT_INCUBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+        }
+		}
 		{
 		  ids = { "NECROMANCER" }
           traits = { FIGHTER }
@@ -3968,7 +4056,7 @@
              { 0.02 { ExtraBodyPart HEAD 1}}
              { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
              { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
-	     { 0.15 { Lasting { NIGHT_VISION } }} #Since they can't be out in the sun...
+			 { 0.15 { Lasting { NIGHT_VISION } }} #Since they can't be out in the sun...
              { 0.05 { Lasting { RANGED_VULNERABILITY } }}
              { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
              { 0.05 { Lasting { SWIMMING_SKILL } }}
@@ -4004,6 +4092,30 @@
              { 0.01 { Lasting { ENTERTAINER } }}
           }
         }
+		{
+          ids = { "BONUS_COMBAT_SUCCUBUS" }
+          traits = { FIGHTER }
+          frequency = 0.3
+          spawnLocation = FurnitureType "DEMON_SHRINE"
+          requirements = {
+            { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+            { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+            { 0.0 CostInfo "DEMON_PIETY" 1000 }
+            { 0.0 TechId "combat copulators" }
+          }
+        }
+		{
+		  ids = { "BONUS_COMBAT_INCUBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+        }
+		}
         {
           ids = { "BONUS_GHOST_ARMOUR" "BONUS_GHOST_ARMOUR" }
           traits = { FIGHTER }
@@ -4027,28 +4139,6 @@
           noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}}}
-        }
-		{
-          ids = { "CYCLOPS" }
-          traits = { FIGHTER }
-          consumeIds = true
-          spawnLocation = Pregnancy
-          requirements = {
-            { 0.0 TechId "cyclops mutation" }
-            { 0.0 Pregnancy }
-            { 1.0 CostInfo "GOLD" 500 }
-		  }
-        }
-		{
-          ids = { "MINOTAUR" }
-          traits = { FIGHTER }
-          consumeIds = true
-          spawnLocation = Pregnancy
-          requirements = {
-            { 0.0 TechId "minotaur mutation" }
-            { 0.0 Pregnancy }
-            { 1.0 CostInfo "GOLD" 500 }
-          }
         }
         {
           ids = { "BONUS_SQUIDHOLDER" }
@@ -4427,7 +4517,7 @@
       traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
       spawnLocation = NearLeader
       keybinding = CREATE_IMP
-      sound = CREATE_IMP 2
+      sound = { "CREATE_IMP" 2 }
       noAuto = true
       initialRecruitment = 4
       requirements = {
@@ -4971,7 +5061,7 @@
       ids = { "DWARF_BLACKSMITH" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "DWARVES" } 0 FIGHTER }
+        { 0.0 RecruitmentInfo { "DWARVES" } 0}
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5009,7 +5099,7 @@
       ids = { "TEUTON" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "TEUTONS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "TEUTONS" } 3  }
         { 1.0 CostInfo "GOLD" 150 }
       }
     }
@@ -5093,7 +5183,7 @@ Def WhiteCastleRecruits()
       ids = { "KNIGHT_PLAYER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS" } 3  }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5101,7 +5191,7 @@ Def WhiteCastleRecruits()
       ids = { "PRIEST_PLAYER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS" } 3  }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5109,7 +5199,7 @@ Def WhiteCastleRecruits()
       ids = { "CLERIC" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS" } 3  }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5117,7 +5207,7 @@ Def WhiteCastleRecruits()
       ids = { "ARCHER_PLAYER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS" } 3  }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5125,7 +5215,7 @@ Def WhiteCastleRecruits()
       ids = { "GOODWIZ_ARCANIST" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS" } 3  }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5133,7 +5223,7 @@ Def WhiteCastleRecruits()
       ids = { "GOODWIZ_FOOTMAN" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS" } 3  }
         { 1.0 CostInfo "GOLD" 75 }
       }
     }
@@ -5141,7 +5231,7 @@ Def WhiteCastleRecruits()
       ids = { "GOODWIZ_ARCANE_KNIGHT_PLAYER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS_ARCANE" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS_ARCANE" } 3  }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5149,7 +5239,7 @@ Def WhiteCastleRecruits()
       ids = { "GOODWIZ_ARCANE_PRIEST_PLAYER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS_ARCANE" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS_ARCANE" } 3  }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5157,7 +5247,7 @@ Def WhiteCastleRecruits()
       ids = { "GOODWIZ_ARCANE_CLERIC" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS_ARCANE" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS_ARCANE" } 3  }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5165,7 +5255,7 @@ Def WhiteCastleRecruits()
       ids = { "GOODWIZ_ARCANE_ARCHER_PLAYER" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS_ARCANE" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS_ARCANE" } 3  }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5173,7 +5263,7 @@ Def WhiteCastleRecruits()
       ids = { "GOODWIZ_ARCANE_ARCANIST" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS_ARCANE" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS_ARCANE" } 3  }
         { 1.0 CostInfo "GOLD" 100 }
       }
     }
@@ -5181,8 +5271,72 @@ Def WhiteCastleRecruits()
       ids = { "GOODWIZ_ARCANE_FOOTMAN" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BESIEGED_KNIGHTS_ARCANE" } 3 FIGHTER }
+        { 0.0 RecruitmentInfo { "BONUS_BESIEGED_KNIGHTS_ARCANE" } 3  }
         { 1.0 CostInfo "GOLD" 75 }
       }
     }
 End
+###
+#Superior Steeds
+###
+"white_knight_stables"
+{
+	{
+      ids = { "SST_WK_LIGHT_WARHORSE" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 50 }
+		{ 0.0 TechId "equine husbandry" }
+      }
+    }
+
+	{
+      ids = { "SST_WK_HEAVY_WARHORSE" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 75 }
+		{ 0.0 TechId "equine husbandry" }
+      }
+    }
+}
+
+"dark_knight_stables"
+{
+	{
+      ids = { "SST_FK_HORSE" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 50 }
+		{ 0.0 TechId "horsehandling" }
+      }
+    }
+	
+	{
+      ids = { "SST_FK_WAR_WOLF" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 30 }
+		{ 0.0 TechId "war wolves" }
+      }
+    }
+	
+	{
+      ids = { "SST_FK_WARG" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 60 }
+		{ 0.0 TechId "wargs" }
+      }
+    }
+	
+	{
+      ids = { "SST_FK_VAMPHORSE" }
+	  #Vamphorses seem plenty powerful enough to count against popcap.
+	  spawnLocation = FurnitureType "GRAVE" #They are undead, after all.  Best not to spawn outside!
+      requirements = {
+        { 0.0 TechId "vampiric warhorses" }
+		{ 0.0 CostInfo "CORPSE" 1}
+		{ 1.0 CostInfo "GOLD" 100 } #Immigration only shows the last CostInfo listed.  $100 is a little more important than 1 corpse.
+      }
+    }
+}

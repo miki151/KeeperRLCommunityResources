@@ -203,7 +203,7 @@ End
 "BalrogsWhip" modify append { BLUNT_WEAPON_PREFIXES() }
 
 "WoodenStaff" modify append { MAGIC_WEAPON_PREFIXES() }
-"EnchantedStaff" modify append { MAGIC_WEAPON_PREFIXES() }
+"ArchwoodStaff" modify append { MAGIC_WEAPON_PREFIXES() }
 "AdoxiumStaff"  modify append { MAGIC_WEAPON_PREFIXES() }
 "ElvenStaff" modify append { MAGIC_WEAPON_PREFIXES() }
 "Sceptre" modify append { MAGIC_WEAPON_PREFIXES() }
@@ -254,7 +254,7 @@ End
 #Resources for bonus mod mining
 ##########################
 
-"InfOre"
+"InfOre" #Vanilla ore, but expanded in BonusMod; adoxium tier
   {
     viewId = { "infernite_ore_pile" }
 	ownedEffect = LIGHT_SOURCE
@@ -263,9 +263,9 @@ End
     price = 0
     resourceId = "INFERNITE"
     weight = 1
-	storageIds = {"equipment"}
+	storageIds = {"resources"}
   }
-"VenOre"
+"VenOre" #BonusMod poison-ore, adamantine tier
   {
     viewId = { "venorack_ore_pile" }
     name = "venorack ore"
@@ -273,7 +273,27 @@ End
     price = 0
     resourceId = "VEN"
     weight = 0.5
-	storageIds = {"equipment"}
+	storageIds = {"resources"}
+  }
+ "CaelOre" #KRL Expanded acid-ore, adamantine tier
+  {
+    viewId = { "BONUS_caelidite" }
+    name = "caelidite ore"
+    itemClass = OTHER
+    price = 0
+    resourceId = "CAELIDITE"
+    weight = 0.5
+	storageIds = {"resources"}
+  }
+  "JothOre" #KRL Expanded ice-ore, adoxium tier
+  {
+    viewId = { "BONUS_jothnite" }
+    name = "jothnite ore"
+    itemClass = OTHER
+    price = 0
+    resourceId = "JOTHNITE"
+    weight = 1
+	storageIds = {"resources"}
   }
 
 #######################
@@ -471,7 +491,7 @@ End
       equipmentSlot = WEAPON
       weight = 4
       modifiers = {
-        DAMAGE 14
+        DAMAGE 22
       }
       price = 80
       weaponInfo = {
@@ -517,8 +537,8 @@ End
       equipmentSlot = WEAPON
       weight = 4
       modifiers = {
-        DAMAGE 12
-        DEFENSE 2
+        DAMAGE 19
+        DEFENSE 4
       }
       price = 100
       weaponInfo = {
@@ -542,7 +562,7 @@ End
       itemClass =  FOOD
       applyMsgFirstPerson = "eat the wonder mushroom"
       applyMsgThirdPerson = "eats a wonder mushroom"
-      applySound = DYING_PIG
+      applySound = "DYING_PIG"
       applyTime = 1
       uses = 1
       effect = {
@@ -853,6 +873,7 @@ End
 #Armaments
 #--------------
 
+#Venorack being moved to Adamantine-tier to keep competitive in A37; iron stuff simply can't compete in late-game.
 "BONUS_VenSword"
   {
     viewId = { "venorack_sword" }
@@ -863,9 +884,9 @@ End
     equipmentSlot = WEAPON
     weight = 1.0
     modifiers = {
-      DAMAGE 9
+      DAMAGE 20
     }
-    price = 16
+    price = 50
     weaponInfo = {
       attackType = CUT
 	  victimEffect = { 0.4 Lasting 50 POISON }
@@ -897,9 +918,9 @@ End
     equipmentSlot = WEAPON
     weight = 6
     modifiers = {
-      DAMAGE 15
+      DAMAGE 40
     }
-    price = 80
+    price = 220
     weaponInfo = {
       attackType = CUT
 	  victimEffect = { 0.4 Lasting POISON }
@@ -929,9 +950,9 @@ End
     equipmentSlot = WEAPON
     weight = 6
     modifiers = {
-      DAMAGE 13
+      DAMAGE 35
     }
-    price = 60
+    price = 180
     weaponInfo = {
       attackType = CRUSH
 	  victimEffect = { 0.4 Lasting POISON }
@@ -961,10 +982,10 @@ End
       equipmentSlot = WEAPON
       weight = 6
       modifiers = {
-        DAMAGE 9
-        DEFENSE 2
+        DAMAGE 18
+        DEFENSE 4
       }
-      price = 30
+      price = 160
       weaponInfo = {
         attackType = STAB
         attackMsg = THRUST
@@ -992,9 +1013,9 @@ End
       equipmentSlot = WEAPON
       weight = 3.5
       modifiers = {
-        DAMAGE 10
+        DAMAGE 22
       }
-      price = 40
+      price = 200
       weaponInfo = {
         attackType = CUT
 		victimEffect = { 0.4 Lasting POISON }
@@ -1020,10 +1041,10 @@ End
       equipmentSlot = WEAPON
       weight = 5
       modifiers = {
-        DAMAGE 10
-        DEFENSE 1
+        DAMAGE 20
+        DEFENSE 2
       }
-      price = 40
+      price = 200
       weaponInfo = {
         attackType = CRUSH
 		victimEffect = { 0.4 Lasting POISON }
@@ -1048,10 +1069,10 @@ End
     name = "venorack armor"
     itemClass = ARMOR
     equipmentSlot = BODY_ARMOR
-    weight = 12
-    price = 100
+    weight = 13
+    price = 200
     modifiers = {
-      DEFENSE 6
+      DEFENSE 24
     }
     genPrefixes = {
       1 ItemAttrBonus DEFENSE 3
@@ -1073,10 +1094,10 @@ End
     plural = "pairs of venorack boots"
     itemClass = ARMOR
     equipmentSlot = BOOTS
-    weight = 2
-    price = 30
+    weight = 3
+    price = 70
     modifiers = {
-      DEFENSE 3
+      DEFENSE 5
     }
     genPrefixes = {
       1 LastingEffect FLYING
@@ -1096,9 +1117,9 @@ End
     itemClass = ARMOR
     equipmentSlot = GLOVES
     weight = 0.8
-    price = 30
+    price = 45
     modifiers = {
-      DEFENSE 2
+      DEFENSE 6
     }
     genPrefixes = {
       1 ItemAttrBonus DAMAGE 3
@@ -1115,10 +1136,10 @@ End
     name = "venorack helm"
     itemClass = ARMOR
     equipmentSlot = HELMET
-    weight = 2.5
-    price = 30
+    weight = 3
+    price = 70
     modifiers = {
-      DEFENSE 3
+      DEFENSE 6
     }
     genPrefixes = {
       1 LastingEffect WARNING
@@ -1137,10 +1158,10 @@ End
     itemClass = ARMOR
     equipmentSlot = SHIELD
     weight = 1.4
-    price = 40
+    price = 150
     modifiers = {
-      PARRY 2
-      DEFENSE 3
+      PARRY 4
+      DEFENSE 8
     }
     genPrefixes = {
 	  2 SpellId "BONUS_regeneration"
@@ -1165,9 +1186,9 @@ End
     equipmentSlot = WEAPON
     weight = 2
     modifiers = {
-      DAMAGE 10
+      DAMAGE 30
     }
-    price = 18
+    price = 200
     weaponInfo = {
       attackType = CUT
 	  victimEffect = { 1.0 Fire{}} 
@@ -1202,9 +1223,9 @@ End
     equipmentSlot = WEAPON
     weight = 10
     modifiers = {
-      DAMAGE 16
+      DAMAGE 60
     }
-    price = 140
+    price = 1200
     weaponInfo = {
       attackType = CUT
 	  victimEffect = { 1.0 Fire{} }
@@ -1239,9 +1260,9 @@ End
     equipmentSlot = WEAPON
     weight = 10
     modifiers = {
-      DAMAGE 13
+      DAMAGE 55
     }
-    price = 90
+    price = 1000
     weaponInfo = {
       attackType = CRUSH
 	  victimEffect = { 1.0 Fire{} }
@@ -1275,10 +1296,10 @@ End
       equipmentSlot = WEAPON
       weight = 9
       modifiers = {
-        DAMAGE 9
-        DEFENSE 2
+        DAMAGE 40
+        DEFENSE 8
       }
-      price = 50
+      price = 1100
       weaponInfo = {
         attackType = STAB
         attackMsg = THRUST
@@ -1313,9 +1334,9 @@ End
       equipmentSlot = WEAPON
       weight = 6
       modifiers = {
-        DAMAGE 13
+        DAMAGE 45
       }
-      price = 70
+      price = 1100
       weaponInfo = {
         attackType = CUT
 		victimEffect = { 1.0 Fire{} }
@@ -1348,10 +1369,10 @@ End
       equipmentSlot = WEAPON
       weight = 6
       modifiers = {
-        DAMAGE 11
-        DEFENSE 1
+        DAMAGE 44
+        DEFENSE 5
       }
-      price = 70
+      price = 1100
       weaponInfo = {
         attackType = CRUSH
 		victimEffect = { 1.0 Fire{}}
@@ -1384,9 +1405,9 @@ End
     itemClass = ARMOR
     equipmentSlot = BODY_ARMOR
     weight = 15
-    price = 125
+    price = 1600
     modifiers = {
-      DEFENSE 7
+      DEFENSE 40
     }
     genPrefixes = {
       1 ItemAttrBonus DEFENSE 3
@@ -1408,9 +1429,9 @@ End
     itemClass = ARMOR
     equipmentSlot = BOOTS
     weight = 3.5
-    price = 35
+    price = 500
     modifiers = {
-      DEFENSE 3
+      DEFENSE 12
     }
     genPrefixes = {
       1 LastingEffect SPEED
@@ -1432,9 +1453,9 @@ End
     itemClass = ARMOR
     equipmentSlot = GLOVES
     weight = 1.2
-    price = 25
+    price = 250
     modifiers = {
-      DEFENSE 2
+      DEFENSE 12
     }
     genPrefixes = {
       1 ItemAttrBonus DAMAGE 3
@@ -1456,9 +1477,9 @@ End
     itemClass = ARMOR
     equipmentSlot = HELMET
     weight = 3.5
-    price = 35
+    price = 400
     modifiers = {
-      DEFENSE 3 
+      DEFENSE 12
     }
     genPrefixes = {
       1 LastingEffect TELEPATHY
@@ -1480,10 +1501,10 @@ End
     itemClass = ARMOR
     equipmentSlot = SHIELD
     weight = 2
-    price = 40
+    price = 500
     modifiers = {
-      PARRY 3
-      DEFENSE 3
+      PARRY 4
+      DEFENSE 15
     }
     maxUpgrades = 1
 	carriedTickEffect = InferniteEffect()
@@ -1505,7 +1526,7 @@ End
 	weight = 2
 	modifiers = {
         DAMAGE 11
-	PARRY 2
+		PARRY 2
       }
 	price = 200
 	weaponInfo = {
@@ -1554,10 +1575,10 @@ End
       equipmentSlot = WEAPON
       weight = 5
       modifiers = {
-        DAMAGE 12
-        DEFENSE 2
+        DAMAGE 23
+        DEFENSE 5
       }
-      price = 80
+      price = 800
       weaponInfo = {
         attackType = STAB
         attackMsg = THRUST
@@ -1586,6 +1607,22 @@ End
 	maxUpgrades = 3
  }
  
+ "BONUS_FellAdaPlate" inherit "AdaArmor" #Fallback inheritance
+ {
+ viewId = { "chain_armor" Rgb 116 25 20 255} #Roughly the color Evil Knights are wearing in Vanilla Retiles.
+    shortName = "fell adamantine"
+    name = "fell adamantine armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 13 #Weighs the same, but better crafting and extra material use means better protection and more room for glyphs.
+    price = 300
+    craftingCost = "ADA" 50
+    modifiers = {
+      DEFENSE 30
+    }
+	maxUpgrades = 5
+ }
+ 
  "BONUS_LawPlate" inherit "ChainArmor" #Fallback inheritance
  {
  viewId = { "chain_armor" Rgb 231 231 231 255} #Should be roughly the color Less-Evil Knights are wearing in Vanilla Retiles.  May be very similar to Generic Grey. :-/
@@ -1600,6 +1637,22 @@ End
       DEFENSE 7
     }
 	maxUpgrades = 3
+ }
+ 
+  "BONUS_LawAdaPlate" inherit "AdaArmor" #Fallback inheritance
+ {
+ viewId = { "chain_armor" Rgb 231 231 231 255} #Should be roughly the color Less-Evil Knights are wearing in Vanilla Retiles.  May be very similar to Generic Grey. :-/
+    shortName = "field adamantine"
+    name = "adamantine field-plate"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 13 #Weighs the same, but better crafting and extra material use means better protection and more room for glyphs.
+    price = 300
+    craftingCost = "ADA" 50
+    modifiers = {
+      DEFENSE 30
+    }
+	maxUpgrades = 5
  }
  
 ##########################
@@ -1704,7 +1757,7 @@ End
 ##########################
 #Keeperrl Expanded mod
 ##########################
-"MV_DEMON_ABBEY_KEY"
+"BONUS_DEMON_ABBEY_KEY"
   {
     name = "abbey key"
     viewId = { "black_market_key" }
@@ -1713,18 +1766,18 @@ End
     weight = 0.1
     description = "A key with a strange crystal."
     effect = Name "Unknown" Description "" FirstSuccessful { 
-      Area 2 Filter FurnitureType "MV_DEMON_ABBEY_TRAP_DOOR"
+      Area 2 Filter FurnitureType "BONUS_DEMON_ABBEY_TRAP_DOOR"
         {
           Fx { TELEPORT_OUT }
           Message NORMAL "The dungeons are unlocked!"
-          SetFlag "mv_demon_unlock" true 
+          SetFlag "BONUS_demon_unlock" true 
         }
       Message NORMAL "Nothing happens."
     }
     storageIds = {"jewellery" "equipment"}
   }
 
-"MV_ABBEY_KEY"
+"BONUS_ABBEY_KEY"
   {
     name = "abbey key"
     viewId = { "black_market_key" }
@@ -1733,26 +1786,26 @@ End
     weight = 0.1
     description = "A key with a strange crystal."
     effect = Name "Unknown" Description "" FirstSuccessful { 
-      Area 2 Filter FurnitureType "MV_ABBEY_TRAP_DOOR"
+      Area 2 Filter FurnitureType "BONUS_ABBEY_TRAP_DOOR"
         {
           Fx { TELEPORT_OUT }
           Message NORMAL "The dungeons are unlocked!"
-          SetFlag "mv_angel_unlock" true 
+          SetFlag "BONUS_angel_unlock" true 
         }
       Message NORMAL "Nothing happens."
     }
     storageIds = {"jewellery" "equipment"}
   } 
  
-"MV_PALADIN_REMAINS" inherit "Skeleton"
+"BONUS_PALADIN_REMAINS" inherit "Skeleton"
   {
     viewId = { "frozen_remains" }
     name = "paladin remains"
     uses = 1
-	ingredientType = "mv_paladin_remains"
+	ingredientType = "BONUS_paladin_remains"
   }
   
-"MV_DEVILS_HEART"
+"BONUS_DEVILS_HEART"
   {
     viewId = { "adoxie_eye" }
     name = "devils heart"
@@ -1760,8 +1813,8 @@ End
     weight = 5
     uses = 1
     price = 100
-	resourceId = "GOLD"
-	ingredientType = "mv_devils_heart"
+	#resourceId = "GOLD" -Um, vanilla brains aren't filed as gold???
+	ingredientType = "BONUS_devils_heart"
 	storageIds = {"equipment"}
   }
 
@@ -1774,7 +1827,7 @@ End
     equipmentSlot = WEAPON
     weight = 1.5
     modifiers = {
-      DAMAGE 8
+      DAMAGE 20 #Upgraded to Adamantine damage, so should be great early-game and a solid upgrade in midgame
     }
     price = 4
     craftingCost = "IRON" 50
@@ -1799,7 +1852,7 @@ End
     equipmentSlot = WEAPON
     weight = 1.5
     modifiers = {
-      DAMAGE 8
+      DAMAGE 20 #Upgraded to Adamantine damage, so should be great early-game and a solid upgrade in midgame
     }
     price = 4
     craftingCost = "IRON" 50
@@ -1823,7 +1876,7 @@ End
   }
   
 
-"MummyFireEnchantedStaff" inherit "EnchantedStaff"
+"MummyFireArchwoodStaff" inherit "ArchwoodStaff"
   {
    name = "fire staff"
     equipedEffect = {FIRE_DAMAGE}
@@ -1859,13 +1912,13 @@ Def JothniteEffect()
   Filter Not LastingEffect COLD_RESISTANT {
     CreatureMessage {"are frozen by the jothnite" "is frozen by the jothnite"}
     Bleed 0.01 "jothnite"
-	Lasting 50 FROZEN
+	Lasting 50 FROZEN #Might rethink this: FROZEN may well be a death sentence.
   }
 End
 
-"MV_CaeliditeOre"
+"BONUS_CaeliditeOre"
   {
-    viewId = { "mv_caelidite" }
+    viewId = { "BONUS_caelidite" }
     name = "caelidite ore"
     itemClass = OTHER
     price = 4
@@ -1874,10 +1927,10 @@ End
     storageIds = {"resources"}
   }
 
-"MV_CaeliditeSword" inherit "AdaSword"
+"BONUS_CaeliditeSword" inherit "AdaSword"
   {
-    viewId = { "mv_caelidite_sword" }
-    equipedViewId = { "mv_caelidite_sword_v" }
+    viewId = { "BONUS_caelidite_sword" }
+    equipedViewId = { "BONUS_caelidite_sword_v" }
     name = "caelidite sword"
     shortName = "caelidite"
     price = 200
@@ -1892,10 +1945,10 @@ End
     equipmentGroup = "caelidite equipment"
   }
     
-"MV_CaeliditeBattleAxe" inherit "AdaBattleAxe"
+"BONUS_CaeliditeBattleAxe" inherit "AdaBattleAxe"
   {
-    viewId = { "mv_caelidite_battle_axe" }
-    equipedViewId = { "mv_caelidite_battle_axe_v" }
+    viewId = { "BONUS_caelidite_battle_axe" }
+    equipedViewId = { "BONUS_caelidite_battle_axe_v" }
     shortName = "caelidite"
     name = "caelidite battle axe"
     price = 1500
@@ -1911,10 +1964,10 @@ End
     equipmentGroup = "caelidite equipment"
   }
   
-"MV_CaeliditeWarHammer" inherit "AdaWarHammer"
+"BONUS_CaeliditeWarHammer" inherit "AdaWarHammer"
   {
-    viewId = { "mv_caelidite_war_hammer" }
-    equipedViewId = { "mv_caelidite_war_hammer_v" }
+    viewId = { "BONUS_caelidite_war_hammer" }
+    equipedViewId = { "BONUS_caelidite_war_hammer_v" }
     shortName = "caelidite"
     name = "caelidite war hammer"
     price = 1000
@@ -1929,8 +1982,63 @@ End
     equipedEffect = {ACID_DAMAGE}
     equipmentGroup = "caelidite equipment"
   }
-  
-"AutomatonArmsMV_Caelidite"
+
+"BONUS_CaeliditeArmor" inherit "AdaArmor"
+  {
+	viewId = { "caelidite_armor" }
+    name = "caelidite armor"
+    price = 180 #20 more for half glyphs but guaranteed acid-resist
+    craftingCost = "CAELIDITE" 40
+    maxUpgrades = 2
+	equipedEffect = {ACID_RESISTANT}
+    equipmentGroup = "caelidite equipment"
+  }
+
+"BONUS_CaeliditeHelm" inherit "AdaHelm"
+  {
+    viewId = { "caelidite_helm" }
+    name = "caelidite helm"
+    price = 60 #20 more for half glyphs but guaranteed acid-resist
+    craftingCost = "CAELIDITE" 16
+    maxUpgrades = 1
+	equipedEffect = {ACID_RESISTANT}
+    equipmentGroup = "caelidite equipment"
+  }
+ 
+"BONUS_CaeliditeGloves" inherit "AdaGloves"
+  {
+    viewId = { "caelidite_gloves" }
+    name = "caelidite gloves"
+    price = 45 #20 more for half glyphs but guaranteed acid-resist
+    craftingCost = "CAELIDITE" 2
+    maxUpgrades = 1
+	equipedEffect = {ACID_RESISTANT}
+    equipmentGroup = "caelidite equipment"
+  }
+ 
+"BONUS_CaeliditeBoots" inherit "AdaBoots"
+  {
+    viewId = { "caelidite_boots" }
+    name = "caelidite boots"
+    price = 70 #20 more for half glyphs but guaranteed acid-resist
+    craftingCost = "CAELIDITE" 24
+    maxUpgrades = 1
+	equipedEffect = {ACID_RESISTANT}
+    equipmentGroup = "caelidite equipment"
+  }
+
+"BONUS_CaeliditeShield" inherit "AdaShield"
+  {
+    viewId = { "caelidite_shield" }
+    name = "caelidite shield"
+    price = 70 #20 more for half glyphs but guaranteed acid-resist
+    craftingCost = "CAELIDITE" 24
+    maxUpgrades = 1
+	equipedEffect = {ACID_RESISTANT}
+    equipmentGroup = "caelidite equipment"
+  }
+ 
+"AutomatonArmsBONUS_Caelidite"
   {
     viewId = { "automaton_arms" Rgb 220 148 148 255 }
     name = "pair of caelidite  arms"
@@ -1939,7 +2047,7 @@ End
     craftingCost = CAELIDITE 5
     upgradeInfo = {AUTOMATONS_UPPER AssembledCreatureEffect
       Name "caelidite arms"
-      Description "Grants a melee attack and a 18 acid damage."
+      Description "Grants a melee attack and 18 acid damage."
       {
         IncreaseAttr ACID_DAMAGE 18
 		Permanent ACID_DAMAGE
@@ -1953,9 +2061,9 @@ End
     storageIds = {"automaton_parts" "equipment"}
   }
 
-"MV_JothniteOre"
+"BONUS_JothniteOre"
   {
-    viewId = { "mv_jothnite" }
+    viewId = { "BONUS_jothnite" }
     name = "jothnite ore"
     itemClass = OTHER
     price = 4
@@ -1964,16 +2072,19 @@ End
     storageIds = {"resources"}
   }
  
-"MV_JothniteSword" inherit "AdaSword"
+"BONUS_JothniteSword" inherit "AdaSword"
   {
-    viewId = { "mv_jothnite_sword" }
-    equipedViewId = { "mv_jothnite_sword_v" }
+    viewId = { "BONUS_jothnite_sword" }
+    equipedViewId = { "BONUS_jothnite_sword_v" }
     name = "jothnite sword"
     shortName = "jothnite"
     price = 200
     craftingCost = "JOTHNITE" 20
     carriedTickEffect = JothniteEffect()
     autoEquipPredicate = LastingEffect COLD_RESISTANT
+	modifiers = {
+      DAMAGE 25 #Weaker than infernite, because FROZEN is That Damn Nasty.
+    }
 	weaponInfo = {
       attackType = CUT
 	  victimEffect = {0.25 Ice{}}
@@ -1982,16 +2093,19 @@ End
     equipmentGroup = "jothnite equipment"
   }
 
-"MV_JothniteBattleAxe" inherit "AdaBattleAxe"
+"BONUS_JothniteBattleAxe" inherit "AdaBattleAxe"
   {
-    viewId = { "mv_jothnite_battle_axe" }
-    equipedViewId = { "mv_jothnite_battle_axe_v" }
+    viewId = { "BONUS_jothnite_battle_axe" }
+    equipedViewId = { "BONUS_jothnite_battle_axe_v" }
     shortName = "jothnite"
     name = "jothnite battle axe"
     price = 1500
     craftingCost = "JOTHNITE" 50
     carriedTickEffect = JothniteEffect()
     autoEquipPredicate = LastingEffect COLD_RESISTANT
+	modifiers = {
+      DAMAGE 50 #Weaker than infernite, because FROZEN is That Damn Nasty.
+    }
 	weaponInfo = {
       attackType = CUT
       twoHanded = true
@@ -2001,16 +2115,19 @@ End
     equipmentGroup = "jothnite equipment"
   }
   
-"MV_JothniteWarHammer" inherit "AdaWarHammer"
+"BONUS_JothniteWarHammer" inherit "AdaWarHammer"
   {
-    viewId = { "mv_jothnite_war_hammer" }
-    equipedViewId = { "mv_jothnite_war_hammer_v" }
+    viewId = { "BONUS_jothnite_war_hammer" }
+    equipedViewId = { "BONUS_jothnite_war_hammer_v" }
     shortName = "jothnite"
     name = "jothnite war hammer"
     price = 1000
     craftingCost = "JOTHNITE" 40
     carriedTickEffect = JothniteEffect()
     autoEquipPredicate = LastingEffect COLD_RESISTANT
+	modifiers = {
+	  DAMAGE 40 #Weaker than infernite, because FROZEN is That Damn Nasty.
+	}
 	weaponInfo = {
       attackType = CRUSH
       twoHanded = true
@@ -2019,8 +2136,117 @@ End
     equipedEffect = {COLD_DAMAGE}
     equipmentGroup = "jothnite equipment"
   }
+  
+"BONUS_JothniteArmor"
+  {
+    viewId = { "jothnite_armor" }
+    shortName = "armor"
+    name = "jothnite armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 15
+    price = 1600
+    modifiers = {
+      DEFENSE 40
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 3
+    }
+    maxUpgrades = 3 #More upgrade slots, since no built-in ice spell, but this may change...
+	carriedTickEffect = JothniteEffect()
+	equipmentGroup = "jothnite equipment"
+    equipedEffect = { COLD_RESISTANT }
+	storageIds = {"armor" "equipment"}
+  }
+"BONUS_JothniteHelm"
+  {
+    viewId = { "jothnite_helm" }
+    shortName = "helm"
+    name = "jothnite helm"
+    itemClass = ARMOR
+    equipmentSlot = HELMET
+    weight = 3.5
+    price = 400
+    modifiers = {
+      DEFENSE 12
+    }
+    genPrefixes = {
+      1 LastingEffect TELEPATHY
+      1 LastingEffect REGENERATION
+    }
+    maxUpgrades = 2
+	carriedTickEffect = JothniteEffect()
+	equipmentGroup = "jothnite equipment"
+    equipedEffect = { COLD_RESISTANT }
+	storageIds = {"armor" "equipment"}
+  }
+"BONUS_JothniteGloves"
+  {
+	viewId = { "jothnite_gloves" }
+    shortName = "gloves"
+    name = "pair of jothnite gloves"
+    plural = "pairs of jothnite gloves"
+    itemClass = ARMOR
+    equipmentSlot = GLOVES
+    weight = 1.2
+    price = 250
+    modifiers = {
+      DEFENSE 12
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DAMAGE 3
+      1 ItemAttrBonus SPELL_DAMAGE 3
+    }
+    maxUpgrades = 0
+	carriedTickEffect = JothniteEffect()
+	equipmentGroup = "jothnite equipment"
+    equipedEffect = { COLD_RESISTANT }
+    equipedAbility = { "BONUS_freezing vines" } #Could be NASTY.
+	storageIds = {"armor" "equipment"}
+  }
+"BONUS_JothniteBoots"
+  {
+    viewId = { "jothnite_boots" }
+    shortName = "boots"
+    name = "pair of jothnite boots"
+    plural = "pairs of jothnite boots"
+    itemClass = ARMOR
+    equipmentSlot = BOOTS
+    weight = 3.5
+    price = 500
+    modifiers = {
+      DEFENSE 12
+    }
+    genPrefixes = {
+      1 LastingEffect SPEED
+    }
+    maxUpgrades = 2
+	carriedTickEffect = JothniteEffect()
+    equipmentGroup = "jothnite equipment"
+    equipedEffect = { COLD_RESISTANT }
+	storageIds = {"armor" "equipment"}
+  }
+"BONUS_JothniteShield"
+  {
+    viewId = { "jothnite_shield" }
+    shortName = "shield"
+    name = "jothnite shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 2
+    price = 500
+    modifiers = {
+      PARRY 4
+      DEFENSE 15
+    }
+    maxUpgrades = 2
+	carriedTickEffect = JothniteEffect()
+	equipmentGroup = "jothnite equipment"
+    equipedEffect = { COLD_RESISTANT }
+	storageIds = {"armor" "equipment"}
+  }
 
-"AutomatonArmsMV_Jothnite"
+"AutomatonArmsBONUS_Jothnite"
   {
     viewId = { "automaton_arms" Rgb 220 148 148 255 }
     name = "pair of jothnite  arms"
@@ -2102,3 +2328,8 @@ End
     storageIds = {"automaton_parts" "equipment"}
   }
  
+ "GK_ChainArmor" inherit "ChainArmor"
+  {
+    name = "grave knight armor"
+    equipedEffect = {DARKNESS_SOURCE}
+  }

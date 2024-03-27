@@ -4,6 +4,19 @@
 
 "BONUS MOD CONTAINS EXTRA ENEMIES MOD WHICH CONTAINS ADVENTURERS MOD - No need to mix these mods." inherit IMP {}
 
+"DEATH_PLAYER" inherit "DEATH" {
+	spells = { "stop_killing" "easy wish" "BONUS_grant all spells" }
+    body = {
+      type = Humanoid LARGE
+	}
+   permanentEffects = {
+		RIDER 1
+      }
+    attr = append {
+      DAMAGE 999 
+	}
+}
+
 "ADVENTURER"
   {
     viewId = { "player" }
@@ -137,9 +150,12 @@
   {
 	attr = append { INSCRIPTION 50 }
   }
+
 "ADOXIE_PRIEST"
   modify append
   {
+
+    viewId = { "bonus_adoxie_priest" }
 	attr = append { INSCRIPTION 50 }
   }
 "GOBLIN_KING"
@@ -524,7 +540,7 @@ Def RANDOM_ARTEFACT_HOLDER()
 	{ type =  "HeavyClub" chance = 0.0002 prefixChance = 1}
 	{ type =  "BalrogsWhip" chance = 0.0002 prefixChance = 1}
 	{ type =  "WoodenStaff" chance = 0.0002 prefixChance = 1}
-	{ type =  "EnchantedStaff" chance = 0.0002 prefixChance = 1}
+	{ type =  "ArchwoodStaff" chance = 0.0002 prefixChance = 1}
 	{ type =  "AdoxiumStaff"  chance = 0.0002 prefixChance = 1}
 	{ type =  "ElvenStaff" chance = 0.0002 prefixChance = 1}
 	{ type =  "Sceptre" chance = 0.0002 prefixChance = 1}
@@ -1086,7 +1102,7 @@ End
       body = {
         type = NonHumanoid LARGE
         material = SPIRIT
-        deathSound = SPELL_WORD_OF_POWER
+        deathSound = "SPELL_WORD_OF_POWER"
         intrinsicAttacks = {
           TORSO {{{ Intrinsic { "bite_attack" } "fangs" 6 {
               attackType = BITE
@@ -1277,7 +1293,7 @@ End
       viewId = { "assassin_archer" }
       name = {
         name = "Archer Assassin"
-        firstNameGen = "FIRST_FEMALE"
+        firstNameGen = "FIRST_MALE"
         fullTitle = true
       }
     body = {
@@ -1320,6 +1336,17 @@ End
 	promotionGroup = "adventurer"
     promotionCost = 1
     maxPromotions = 1000
+  }
+  
+  "BONUS_THIEF_HERO_F" inherit "BONUS_THIEF_HERO"
+  {
+	viewId = { "assassin_archer_female" }
+	name = {
+		name = "Archer Assassin"
+		firstNameGen = "FIRST_FEMALE"
+		fullTitle = true
+		}
+	gender = FEMALE
   }
 
   "BONUS_WIZARD_ADVENTURER" inherit "BONUS_WIZARD_HERO"
@@ -1410,7 +1437,7 @@ End
 	  }
       inventory = {
         {  "FirstAidKit" 2 4 }
-        {  "EnchantedStaff"}
+        {  "ArchwoodStaff"}
         {  "LeatherGloves"}
         { type =  "Robe" prefixChance = 1 }
         {  "LeatherHelm"}
@@ -1748,7 +1775,7 @@ End
       chatReactionHostile = "\"Soon you will join my undead ranks. DIE!\""
       hatedByEffect = HATE_UNDEAD
       inventory = {
-        {  "EnchantedStaff" }
+        {  "ArchwoodStaff" }
         {  "Robe" }
         { type = Glyph {ARMOR ItemAttrBonus DEFENSE 3} chance = 0.01 }
         { type = Glyph {WEAPON ItemAttrBonus DAMAGE 3} chance = 0.01 }
@@ -2793,7 +2820,7 @@ End
       }
       hatedByEffect = HATE_GREENSKINS
       inventory = {
-        { type =  "EnchantedStaff" }
+        { type =  "ArchwoodStaff" }
         {  "LeatherBoots" }
         { type =  "LeatherArmor" prefixChance = 0.4 }
         { type =  "LeatherGloves" chance = 0.4 }
@@ -2938,7 +2965,7 @@ End
       }
       hatedByEffect = HATE_GREENSKINS
       inventory = {
-        {  "EnchantedStaff" }
+        {  "ArchwoodStaff" }
         {  "LeatherBoots" }
         { type =  "Robe" prefixChance = 1 }
         { Potion Lasting 50 MAGIC_VULNERABILITY 1 4 0.01}
@@ -3040,7 +3067,7 @@ End
       }
       hatedByEffect = HATE_GREENSKINS
       inventory = {
-        {  "EnchantedStaff" }
+        {  "ArchwoodStaff" }
         { type =  "Robe" prefixChance = 1 }
         { type =  "LeatherBoots" prefixChance = 0.2 }
         { countMin = 2 countMax = 4 type = Potion Heal {FLESH} chance = 0.8 }
@@ -3085,7 +3112,7 @@ End
   attr = { DEFENSE 10 }
   body = { type = Humanoid MEDIUM }
   inventory = {
-    { type =  "EnchantedStaff" prefixChance = 0.03 }
+    { type =  "ArchwoodStaff" prefixChance = 0.03 }
     { Potion Lasting 50 MAGIC_VULNERABILITY 1 4 0.01}
     { Potion Lasting 50 MELEE_VULNERABILITY 1 4 0.01}
     { Potion Lasting PEACEFULNESS 1 4 0.01}
@@ -3327,7 +3354,7 @@ End
       chatReactionFriendly = "talks about centaur religion"
       chatReactionHostile = "\"Die!\""
       inventory = {
-        { type =  "EnchantedStaff" prefixChance = 0.3}
+        { type =  "ArchwoodStaff" prefixChance = 0.3}
 		{ type =  "Robe" prefixChance = 1.0 }
         { Amulet RANGED_RESISTANCE 1 1 0.8}
         { Ring ELF_VISION 1 1 0.2}
@@ -3629,7 +3656,7 @@ End
   chatReactionHostile = "\"Die, fiend!\""
   inventory = {
 	{ type =  "Robe" prefixChance = 1}
-	{  "EnchantedStaff" }
+	{  "ArchwoodStaff" }
 	{ type = Glyph {ARMOR LastingEffect POISON_RESISTANT} chance = 0.2 }
   }   
 }
@@ -4988,7 +5015,7 @@ End
       chatReactionHostile = "\"I'll make you a statue!\""
       inventory = {
         { type =  "BONUS_InvisibilityRobe"}
-        {  "EnchantedStaff" }
+        {  "ArchwoodStaff" }
         { type = Glyph {ARMOR LastingEffect COLD_RESISTANT} chance = 0.2 }
       }   
     }
@@ -5321,7 +5348,7 @@ End
     }
     hatedByEffect = HATE_GREENSKINS
     inventory = {
-      {  "EnchantedStaff"}
+      {  "ArchwoodStaff"}
       {  "LeatherArmor"}
 	  {  "LeatherBoots"}
     }
@@ -5873,6 +5900,7 @@ End
       deathDescription = "destroyed"
     }
    "BONUS_ADOXIE_HEAD_PLAYER" inherit "ADOXIE_HEAD" {
+    viewId = { "new_adoxie_head" }
     gender = FEMALE
     permanentEffects = {
       MAGIC_RESISTANCE 1
@@ -5899,7 +5927,7 @@ End
   }
    "BONUS_AXEDIO_HEAD_PLAYER" inherit "ADOXIE_HEAD" {
     gender = MALE
-    viewId = { "axedio_head" }
+    viewId = { "new_axedio_head" }
       name = {
         name = "Unholy god"
         pluralName = "Axedios"
@@ -5934,28 +5962,28 @@ End
 	}
   }
   "BONUS_AXEDIO_FOOT_LEFT" inherit "ADOXIE_FOOT_LEFT" {
-    viewId = { "axedio_foot_left" }
+    viewId = { "new_axedio_foot_left" }
       name = {
         name = "Axedios left foot"
         pluralName = "eyes"
       }
   }
   "BONUS_AXEDIO_FOOT_RIGHT" inherit "ADOXIE_FOOT_RIGHT" {
-    viewId = { "axedio_foot_right" }
+    viewId = { "new_axedio_foot_right" }
       name = {
         name = "Axedio's right foot"
         pluralName = "right feet"
       }
   }
   "BONUS_AXEDIO_HAND_LEFT" inherit "ADOXIE_LEFT_HAND" {
-    viewId = { "axedio_hand_left" }
+    viewId = { "new_axedio_hand_left" }
       name = {
         name = "Axedio's left hand"
         pluralName = "left hands"
       }
   }
   "BONUS_AXEDIO_HAND_RIGHT" inherit "ADOXIE_HAND_RIGHT" {
-    viewId = { "axedio_hand_right" }
+    viewId = { "new_axedio_hand_right" }
       name = {
         name = "Axedio"
         pluralName = "right_hands"
@@ -6517,7 +6545,7 @@ End
       body = {
         type = Humanoid MEDIUM
         material = FLESH
-		deathSound = SPELL_AIR_BLAST
+		deathSound = "SPELL_AIR_BLAST"
         intrinsicAttacks = {
           TORSO {{{ Intrinsic { "touch_attack" } "self destruct" 120 {
               attackType = HIT
@@ -6924,7 +6952,7 @@ End
 		{ Potion Lasting BLIND 1 3 0.6 }
 		{ Potion Lasting 50 MAGIC_VULNERABILITY 2 4 }
         {  "BONUS_SpyingCrystal" }
-        { type =  "EnchantedStaff" prefixChance = 0.75 }
+        { type =  "ArchwoodStaff" prefixChance = 0.75 }
 		{  "IronShield" }
         { type =  "IronGloves" prefixChance = 0.75 }
         { type =  "ChainArmor" prefixChance = 0.85 }
@@ -7755,7 +7783,7 @@ End
 		{ Potion Lasting BLIND 2 4 }
 		{ Potion Lasting INVISIBLE 2 4 }
 		{ Potion Lasting POISON 4 6 }
-        {  "EnchantedStaff"}
+        {  "ArchwoodStaff"}
 		{ type =  "ChainArmor" prefixChance = 0.8 }
 		{ type =  "LeatherGloves" prefixChance = 0.6 }
         { type =  "LeatherBoots" prefixChance = 0.6 }
@@ -7832,42 +7860,6 @@ End
 #------------------------
 #Ungrouped Misc Units
 #------------------------
-"BONUS_BANDIT_LEADER"
-    {
-      viewId = { "bandit_leader" }
-      attr = {
-        DAMAGE 18
-        DEFENSE 19
-        RANGED_DAMAGE 3
-      }
-      body = {
-        type = Humanoid LARGE
-      }
-      permanentEffects = {
-        AMBUSH_SKILL 1
-		RIDER 1
-      }
-      spells = { "BONUS_battle cry" }
-      chatReactionFriendly = "curses all law enforcement"
-      chatReactionHostile = "\"Die!\""
-      maxLevelIncrease = {
-        DAMAGE 5
-      }
-      name = {
-        name = "bandit leader"
-      }
-      hatedByEffect = HATE_HUMANS
-      inventory = {
-       {  "Sword" }
-       {  "WoodenShield" }
-       {  "LeatherArmor" }
-       { type =  "LeatherBoots" chance = 0.5 }
-       { type =  "LeatherGloves" chance = 0.5 }
-       { type = Potion Heal {FLESH} chance = 0.9 }
-       { type =  "Bow" chance = 0.9 }
-       { type = Ring DISARM_TRAPS_SKILL chance = 0.2 }
-      }
-    }
 
   "BONUS_FIRE_SPHERE"
     {
@@ -7890,12 +7882,66 @@ End
         name = "fire sphere"
       }
     }
+	
+	"BONUS_INCUBUS" inherit "SUCCUBUS" #Might as well keep 'em balanced...
+	{
+	viewId = { "incubus" }
+	gender = MALE
+	
+	chatReactionFriendly = "stretches gloriously, hoping you enjoy the view."
+    chatReactionHostile = "\"I know things that are much more fun than fighting.  Let me show you...\""
+	petReaction = "smiles invitingly and moves your hand someplace more interesting."
+	
+	name = {
+      name = "incubus"
+      pluralName = "incubi"
+    }
+	}
+
+	"BONUS_COMBAT_INCUBUS" #Integrated back into BonusMod.
+	{
+	attr = {
+        DAMAGE 36
+        DEFENSE 35
+        SPELL_DAMAGE 36 
+      }
+      viewId = { "cmbt_incubus" }
+      body = {
+        type = Humanoid LARGE
+        material = SPIRIT
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+              attackType = HIT
+              attackMsg = TOUCH
+              victimEffect = {1.0 Lasting PEACEFULNESS} } }}}
+        }
+        addBodyPart = {
+          WING 2
+        }
+      }
+	  
+	  chatReactionFriendly = "stretches and flexes gloriously, confident you're enjoying the view."
+      chatReactionHostile = "\"Naughty naughty. It's time for you to take a nap.\""
+	  petReaction = "smiles proudly and encourages you to fully appreciate his physique."
+	  
+	  maxLevelIncrease = { DAMAGE 10 SPELL_DAMAGE 10 }
+	  
+      permanentEffects = {
+        COPULATION_SKILL 1
+		RIDER 1
+      }
+      gender = MALE
+      name = {
+        name = "combat incubus"
+        pluralName = "combat incubi"
+      }
+	}
   "BONUS_COMBAT_SUCCUBUS"
     {
-      attr = {
-        DAMAGE 16
-        DEFENSE 25
-        SPELL_DAMAGE 16 
+      attr = { #Upgraded for later-game A37
+        DAMAGE 36
+        DEFENSE 35
+        SPELL_DAMAGE 36 
       }
       viewId = { "cmbt_succubus30" }
       body = {
@@ -7913,20 +7959,24 @@ End
           WING 2
         }
       }
+	  
+	  maxLevelIncrease = { DAMAGE 10 SPELL_DAMAGE 10 }
+	  
       permanentEffects = {
-        COPULATION_SKILL 1
-	RIDER 1
+		COPULATION_SKILL 1
+		RIDER 1
       }
       gender = FEMALE
       name = {
         name = "combat succubus"
-        pluralName = "combat succubi"
+        pluralName = "combat succubi" #Should be "succubae" for proper Latin, but since this is an Electric *Succubi* game...
       }
 	chatReactionFriendly = "stretches and breathes magnificiently, confident you're enjoying the view."
 	chatReactionHostile = "\"Tsk tsk. If you keep waving that around, you'll tire yourself out.\""
 	petReaction = "growls seductively and encourages you to fully appreciate her physique."
     }
-    "BONUS_MILITIA_PLAYER"
+    
+	"BONUS_MILITIA_PLAYER"
     {
       viewId = { "militia" }
       attr = {
@@ -7983,6 +8033,33 @@ End
 	  }
       hatedByEffect = HATE_HUMANS
     }
+	
+	#Recruitable Dwarf Miners!
+	#Intended for Lawful/Castle Keepers to hire so you don't have to conquer & enslave!
+	#Stole a lot from the DWARF_WORKER.
+	"BONUS_DWARF_MINER" inherit "DWARF"
+	{
+		viewId = {"dwarf_miner"}
+		attr = {
+		DAMAGE 15
+		DEFENSE 30
+		DIGGING 55
+		FURNACE 40
+		}
+		name = {
+        name = "dwarf miner"
+        pluralName = "dwarven miners"
+        firstNameGen = "DWARF"
+		}
+      maxLevelIncrease = { DAMAGE 12 } #Lots of training capacity still doesn't make them good fighters, but it does let them survive more effectively in hellish mining conditions.
+      permanentEffects = {
+        MAGIC_VULNERABILITY 1
+        NO_CARRY_LIMIT 1
+		REGENERATION 1 #As does regen.
+      }
+	  chatReactionFriendly = "curses molten animating rock walls"
+      chatReactionHostile = "\"Die!\""
+	}
 
 #---------------------
 #Player Dwarf Faction
@@ -8655,7 +8732,7 @@ End
       chatReactionHostile = "\"Soon you will join my undead ranks. DIE!\""
       hatedByEffect = HATE_UNDEAD
       inventory = {
-        {  "EnchantedStaff" }
+        {  "ArchwoodStaff" }
         {  "Robe" }
         { type = Glyph {ARMOR ItemAttrBonus DEFENSE 3} chance = 0.01 }
         { type = Glyph {WEAPON ItemAttrBonus DAMAGE 3} chance = 0.01 }
@@ -9446,7 +9523,7 @@ End
 	  "advanced cure poison"
 	}
     inventory = {
-      { type =  "EnchantedStaff" prefixChance = 1.0}
+      { type =  "ArchwoodStaff" prefixChance = 1.0}
       { type =  "LeatherArmor" prefixChance = 0.1}
 	  {  "LeatherBoots"}
 	  { Ring MAGIC_RESISTANCE 1 1 1}
@@ -9783,104 +9860,6 @@ End
 # Poltergeist
 #########################
   
-##########################
-#Bonus mod handing out artifacts from artifacts mod
-#Keep this at the end, so you can see where to post Extra enemies in above
-##########################
-  
-"BONUS_ROYAL_KNIGHT" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ROYAL_ARCHER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ROYAL_PRIEST" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_CENTAUR_ARCHER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_CENTAUR_FARMER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_CENTAUR_HUNTER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_CENTAUR_PRIESTESS" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_CENTAUR_CHILD" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_CENTAUR_KING" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_CENTAUR_KNIGHT" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_AMAZON_PESEANT" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_AMAZON" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_AMAZON_ARCHER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_AMAZON_CHAMPION" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_AMAZON_ELDER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_AMAZON_QUEEN" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_AMAZON_WAR_MAIDEN" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RED_DRAGONNEWT" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GREEN_DRAGONEWT" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RAT_MAN" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RAT_GENERAL" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RAT_ARCHER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ARACHNE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_COW_DEMON" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ARMORED_COW_DEMON" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GIANT" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GORGON" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_OGRE_FEMALE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ORC_PRIMARCH_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ORC_CAPTAIN_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ORC_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_OGRE_CHAMPION_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_OGRE_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ORC_HEALER_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ORC_FEMALE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_MUMMY_LORD" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DARK_ORC" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DARK_ORC_FEMALE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DARK_OGRE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DARK_OGRE_FEMALE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ZOMBIE_DARK" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_BANDIT_LEADER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_MILITIA" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_MILITIA" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_TOUGH" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_WARRIOR" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ELITE_DWARF_WARRIOR" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_WORKER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_MONK" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_FEMALE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_FEMALE2" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_FEMALE3" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_QUEEN" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GNOME" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GNOME_CHIEF" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GNOME_ALCHEMIST" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GNOME_CROSSBOWMAN" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GNOME_FIRE_MAGE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GNOME_FIRE_WIZARD" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GNOME_MAGE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GNOME_PRIEST" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_GNOME_WIZARD" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RAT_WORKER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RAT_MAN_RECRUIT" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RAT_SOLDIER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RAT_LADY" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RAT_KING" modify { RANDOM_ARTEFACT_HOLDER() } 
-"BONUS_RAT_GENERAL_RECRUIT" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RAT_GLADIATOR" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_RAT_ARCHER_RECRUIT" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_MILITIA_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_FIGHTER_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_WARRIOR_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ELITE_DWARF_WARRIOR_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_WORKER_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_MONK_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_QUEEN_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DWARF_BARON_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_KING" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_SHADOW_KING" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_SHADOW_DUKE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_SHADOW_KNIGHT" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_BANDIT_PUNK" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_BANDIT_OMALLY" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_WILDMAN" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_WILDMAN_WOMAN" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_WILDMAN_QUEEN" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ELF_SOLDIER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_ELF_KING" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DARK_ELF_WITCHBLADE" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DARK_ELF_ARCHER" modify { RANDOM_ARTEFACT_HOLDER() }
-"BONUS_DARK_ELF_EMPRESS" modify { RANDOM_ARTEFACT_HOLDER() }
-
 
 ############################################################
 #Skeletons, Goblins and fairies tend to get summoned a lot.#
@@ -9911,7 +9890,7 @@ End
 
 ###
 #Allow several creatures to take basic melee training, mostly so they can defend a little better. A37 defaults to combat XP helping melee performance unless other categories are identified, so it's not critical for that purpose anymore.  Yay!
-"WITCHMAN" modify append { maxLevelIncrease = { DAMAGE 3 } }
+"WITCHMAN" modify append { maxLevelIncrease = { DAMAGE 5 } }
 #Witchers seemed pretty useless last I converted one. Hoping this helps.
 "KOBOLD" modify append { maxLevelIncrease = { DAMAGE 3 } }
 "GOBLIN_ARTIFICER" modify append { maxLevelIncrease = { DAMAGE 3 } }
@@ -9919,11 +9898,9 @@ End
 #Your gear-builders needn't be great fighters, but if you're building weapons & armor it helps to know how to use said weapons & armor.
 "SOFT_MONSTER" modify append { maxLevelIncrease = { DAMAGE 3 } }
 #If you meet the Soft Monster in a dungeon, it'd be nice if he trained up after conversion.
-"GOBLIN_MATRON" modify append { maxLevelIncrease = { DAMAGE 3 } }
-"BONUS_GOBLIN_MATRON_PLAYER" modify append {maxLevelIncrease = { DAMAGE 3  } }
-#Children may be grounds for complaint...but I'm pretty sure the matrons would defend them, since they gear up for combat.
-"BONUS_COMBAT_SUCCUBUS" modify append { maxLevelIncrease = { DAMAGE 3 } }
-#She's supposed to be able to fight, so how about it?
+"GOBLIN_MATRON" modify append { maxLevelIncrease = { DAMAGE 5 } }
+"BONUS_GOBLIN_MATRON_PLAYER" modify append {maxLevelIncrease = { DAMAGE 5  } }
+#Children may be grounds for complaint...but I'm pretty sure the matrons would defend them, since they gear up for combat
 
 #Combat steeds should be able to benefit from *some* training.
 "WARHORSE" modify append {maxLevelIncrease = { DAMAGE 3 } }
@@ -10051,7 +10028,7 @@ End
     }
     hatedByEffect = HATE_HUMANS
     inventory = {
-      { "EnchantedStaff" }
+      { "ArchwoodStaff" }
       { type = Glyph {ARMOR LastingEffect MAGIC_RESISTANCE} chance = 0.3 }
       { type = Glyph {ARMOR LastingEffect SPEED} chance = 0.3 }
       { type = Glyph {ARMOR LastingEffect NO_CARRY_LIMIT} chance = 0.3 }
@@ -10103,7 +10080,7 @@ End
       DEFENSE 30
     }
     inventory = {
-      { "EnchantedStaff" }
+      { "ArchwoodStaff" }
       { "LeatherArmor"}
     }
   }
@@ -10150,7 +10127,7 @@ End
       DEFENSE 30
     }
     inventory = {
-      { "EnchantedStaff" }
+      { "ArchwoodStaff" }
       { "LeatherArmor"}
     }
   } 
@@ -10221,7 +10198,7 @@ End
       creatures = { "SPIRIT" }}
     }
     inventory = {
-      { "EnchantedStaff" }
+      { "ArchwoodStaff" }
       { "LeatherArmor"}
     }
   }
@@ -10950,11 +10927,11 @@ End
   permanentEffects = append {
       
     }
-  viewId = { "mv_peasant_01" }
+  viewId = { "BONUS_peasant_01" }
 	genderAlternatives = {
-      FEMALE { "mv_peasant_woman_01" }
-	  FEMALE { "mv_peasant_woman_01" }
-	  MALE { "mv_peasant_02" }
+      FEMALE { "BONUS_peasant_woman_01" }
+	  FEMALE { "BONUS_peasant_woman_01" }
+	  MALE { "BONUS_peasant_02" }
     }
   attr = {
       DAMAGE 14
@@ -10963,9 +10940,9 @@ End
     }
   }
   
-"MV_DEMON_PRIEST"
+"BONUS_DEMON_PRIEST"
   {
-    viewId = { "mv_demon_priest" }
+    viewId = { "BONUS_demon_priest" }
     attr = {
       DAMAGE 15
       DEFENSE 20
@@ -10997,13 +10974,13 @@ End
     spells = { "advanced heal spirit" "heal spirit group" "mass damage bonus" "fireball" "firewall" }
     hatedByEffect = HATE_HUMANS
     inventory = {
-      { "EnchantedStaff"}
+      { "ArchwoodStaff"}
       { "LeatherBoots"}
       { type = "Robe" prefixChance = 1 }
     }
   }
       
-"MV_SKELETAL_ABOMINATION" inherit "ABOMINATION"
+"BONUS_SKELETAL_ABOMINATION" inherit "ABOMINATION"
   {
     viewId = { "skeletal_abomination" }
     body = {
@@ -11021,7 +10998,7 @@ End
     hatedByEffect = HATE_UNDEAD
   }
   
-"MV_STEPHEN_VI" inherit "FRIAR"
+"BONUS_STEPHEN_VI" inherit "FRIAR"
   {
     name = {
       name = "Stephen VI"
@@ -11037,9 +11014,9 @@ End
     }
   }
   
-"MV_VAMPIRE_DUKE"
+"BONUS_VAMPIRE_DUKE"
   {
-    viewId = { "mv_vampire_duke" }
+    viewId = { "BONUS_vampire_duke" }
     attr = {
       DAMAGE 53
       DEFENSE 42
@@ -11091,7 +11068,7 @@ End
     }
   }
   
-"MV_MONK" inherit "PESEANT_PLAYER"
+"BONUS_MONK" inherit "PESEANT_PLAYER"
   {
     viewId = { "friar" }
 	genderAlternatives = {
@@ -11114,9 +11091,9 @@ End
     }
   }
   
-"MV_DARK_MONK" inherit "PESEANT_PLAYER"
+"BONUS_DARK_MONK" inherit "PESEANT_PLAYER"
   {
-    viewId = { "mv_dark_monk" }
+    viewId = { "BONUS_dark_monk" }
 	genderAlternatives = {
     }
 	attr = {
@@ -11137,7 +11114,7 @@ End
     }
   }
   
-"MV_SHRINE_DEVIL"
+"BONUS_SHRINE_DEVIL"
   {
     viewId = { "devil" }
     attr = {
@@ -11160,14 +11137,14 @@ End
     }
 	deathEffect = Filter Not Flag "abbey_key_dropped" {
 	  SetFlag "abbey_key_dropped" true
-      DropItems { "MV_DEMON_ABBEY_KEY"} {1}
+      DropItems { "BONUS_DEMON_ABBEY_KEY"} {1}
     }
 	inventory = {
       { "InferniteSword" }
     }
   }
   
-"MV_SHRINE_ANGEL"
+"BONUS_SHRINE_ANGEL"
   {
     viewId = { "angel" }
     attr = {
@@ -11188,13 +11165,13 @@ End
     }
 	deathEffect = Filter Not Flag "abbey_key_dropped" {
 	  SetFlag "abbey_key_dropped" true
-      DropItems { "MV_ABBEY_KEY"} {1}
+      DropItems { "BONUS_ABBEY_KEY"} {1}
     }
     inventory = {
       { type = "AdaSword" prefixChance = 1 }
     }
   }
-"MV_DEVIL_ABBEY" inherit "DEVIL"
+"BONUS_DEVIL_ABBEY" inherit "DEVIL"
   {
     attr = {
       DEFENSE 35
@@ -11205,11 +11182,11 @@ End
     }
   }
   
-"MV_PESEANT_PRISONER" inherit "PESEANT"
+"BONUS_PESEANT_PRISONER" inherit "PESEANT"
   {
-    viewId = { "mv_prisoner" }
+    viewId = { "BONUS_prisoner" }
 	genderAlternatives = {
-      FEMALE { "mv_prisoner" }
+      FEMALE { "BONUS_prisoner" }
     }
 	gender = MALE
   	maxLevelIncrease = {
@@ -11224,7 +11201,7 @@ End
     }
   }
   
-"MV_WEAKENED_DEMON" inherit "MV_PESEANT_PRISONER"
+"BONUS_WEAKENED_DEMON" inherit "BONUS_PESEANT_PRISONER"
   {
     viewId = { "demon_dweller" }
 	genderAlternatives = {
@@ -11254,11 +11231,11 @@ End
     }
   }
   
-"mv_dark_monk_fighter" inherit "PESEANT"
+"BONUS_dark_monk_fighter" inherit "PESEANT"
   {
-    viewId = { "mv_dark_monk_fighter" }
+    viewId = { "BONUS_dark_monk_fighter" }
 	genderAlternatives = {
-      FEMALE { "mv_dark_monk_fighter" }
+      FEMALE { "BONUS_dark_monk_fighter" }
     }
 	attr = {
       DAMAGE 18
@@ -11285,7 +11262,7 @@ End
     }
   }
   
-"mv_dark_monk_fighter_prison_spawn" inherit "mv_dark_monk_fighter"
+"BONUS_dark_monk_fighter_prison_spawn" inherit "BONUS_dark_monk_fighter"
   {
   	attr = {
       DAMAGE 24
@@ -11298,11 +11275,11 @@ End
  	spells = { "advanced healing" "Paladin cage"} 
   }
   
-"mv_monk_fighter" inherit "PESEANT"
+"BONUS_monk_fighter" inherit "PESEANT"
   {
-    viewId = { "mv_monk_fighter" }
+    viewId = { "BONUS_monk_fighter" }
 	genderAlternatives = {
-      FEMALE { "mv_monk_fighter" }
+      FEMALE { "BONUS_monk_fighter" }
     }
 	attr = {
       DAMAGE 18
@@ -11329,7 +11306,7 @@ End
     }
   }
   
- "mv_monk_fighter_prison_spawn" inherit "mv_monk_fighter"
+ "BONUS_monk_fighter_prison_spawn" inherit "BONUS_monk_fighter"
   {
   	attr = {
       DAMAGE 24
@@ -11342,9 +11319,9 @@ End
  	spells = { "advanced healing" "Weak devil cage"} 
   }
      
-"MV_PALADIN"
+"BONUS_PALADIN"
   {
-    viewId = { "mv_teuton_holy" }
+    viewId = { "BONUS_teuton_holy" }
     attr = {
       DAMAGE 41
       DEFENSE 33
@@ -11369,15 +11346,15 @@ End
       name = "Paladin"
     }
 	deathEffect = Chain {
-      SetFlag "mv_paladin_killed" true
-      DropItems { "MV_PALADIN_REMAINS"} {1}
+      SetFlag "BONUS_paladin_killed" true
+      DropItems { "BONUS_PALADIN_REMAINS"} {1}
     }
     companions = {{
       count = 4
       spawnAway = false
       statsBase = DAMAGE
       summonFreq = 0.02
-      creatures = { "MV_PESEANT_PRISONER" }
+      creatures = { "BONUS_PESEANT_PRISONER" }
     }}
     hatedByEffect = HATE_HUMANS
     inventory = {
@@ -11390,7 +11367,7 @@ End
     }
   }
   
-"MV_WEAK_DEVIL"
+"BONUS_WEAK_DEVIL"
   {
         viewId = { "devil" }
     attr = {
@@ -11419,15 +11396,15 @@ End
       groupName = "pack"
     }
 	deathEffect = Chain {
-      SetFlag "mv_weak_devil_killed" true
-	  DropItems { "MV_DEVILS_HEART"} {1}
+      SetFlag "BONUS_weak_devil_killed" true
+	  DropItems { "BONUS_DEVILS_HEART"} {1}
     }
     companions = {{
       count = 4
       spawnAway = false
       statsBase = DAMAGE
       summonFreq = 0.02
-      creatures = { "MV_WEAKENED_DEMON" }
+      creatures = { "BONUS_WEAKENED_DEMON" }
     }}
     inventory = {
       { "Sword"}
@@ -11439,9 +11416,9 @@ End
     }
   }
 
-"MV_UNDEAD_PALADIN"
+"BONUS_UNDEAD_PALADIN"
   {
-    viewId = { "mv_fallen_teuton" }
+    viewId = { "BONUS_fallen_teuton" }
     attr = {
       DAMAGE 41
       DEFENSE 33
@@ -11483,7 +11460,7 @@ End
     }
   }
   
-"MV_SPECTRE_OF_DEATH"
+"BONUS_SPECTRE_OF_DEATH"
   {
     viewId = { "special_hlgn" }
     attr = {
@@ -11527,29 +11504,29 @@ End
     }
   }
   
- "MV_DEMON_PRIEST_QUEST_ALTAR" inherit "MV_DEMON_PRIEST" 
+ "BONUS_DEMON_PRIEST_QUEST_ALTAR" inherit "BONUS_DEMON_PRIEST" 
   {
      spells = { "advanced heal spirit" "heal spirit group" "mass damage bonus" "fireball" "firewall" "Demon Quest Altar"}
   }
   
- "MV_DEMON_PRIEST_DESTROY_ALTAR" inherit "MV_DEMON_PRIEST" 
+ "BONUS_DEMON_PRIEST_DESTROY_ALTAR" inherit "BONUS_DEMON_PRIEST" 
   {
      spells = { "advanced heal spirit" "heal spirit group" "mass damage bonus" "fireball" "firewall" "Demon Destroy Altar"}
   }
    
-  "MV_PRIEST_QUEST_ALTAR" inherit "PRIEST"
+  "BONUS_PRIEST_QUEST_ALTAR" inherit "PRIEST"
   {
   spells = { "advanced healing" "haste" "defense bonus" "directed blast" "magic missile" "Angel Quest Altar"}
   }
    
-  "MV_PRIEST_DESTROY_ALTAR" inherit "PRIEST"
+  "BONUS_PRIEST_DESTROY_ALTAR" inherit "PRIEST"
   {
   spells = { "advanced healing" "haste" "defense bonus" "directed blast" "magic missile" "Angel Destroy Altar"}
   }
 
 ############Pyramid Mummies################## 
   
-"MV_PYRAMID_MUMMY_WARRIOR" inherit "MUMMY"
+"BONUS_PYRAMID_MUMMY_WARRIOR" inherit "MUMMY"
   {
   inventory = {
       { type = Glyph {WEAPON LastingEffect FIRE_DAMAGE} chance = 0.3 }
@@ -11561,7 +11538,7 @@ End
     }
   }
   
-"MV_PYRAMID_MUMMY_PRIEST" inherit "MUMMY"
+"BONUS_PYRAMID_MUMMY_PRIEST" inherit "MUMMY"
   {
   attr = {
       DAMAGE 10
@@ -11579,12 +11556,12 @@ End
 	  { type = Glyph {ARMOR LastingEffect FIRE_RESISTANT} chance = 0.3 }
       { "MummyDarknessRobe"}
 	  { "MummyFireResistantLeatherHelm"}
-      { "MummyFireEnchantedStaff" }
+      { "MummyFireArchwoodStaff" }
     }
   }
     
   
-"MV_PYRAMID_MUMMY_LORD" inherit "MUMMY"
+"BONUS_PYRAMID_MUMMY_LORD" inherit "MUMMY"
   {
   attr = {
       DAMAGE 15
@@ -11605,42 +11582,15 @@ End
       { "MummyDarknessLeatherArmor"}
       { "MummyFireResistantLeatherHelm"}
       { "MummyFireSword"}
-      { "MummyFireEnchantedStaff" }
-    }
-  }
-  
-"MV_NECROMANCER" inherit "NECROMANCER"
-  {
-    viewId = { "necromancer4" ColorId PURPLE }
-    name = append {
-      fullTitle = false
-    }
-    attr = {
-      DAMAGE 12
-      DEFENSE 25
-      SPELL_DAMAGE 25
-    }
-    aiType = RANGED
-    maxLevelIncrease = {
-      SPELL_DAMAGE 7
-    }
-	permanentEffects = append {
-      DARKNESS_SOURCE 1
-    }
-    inventory = append {
-      { "EnchantedStaff" }
-      { type = Glyph {ARMOR LastingEffect MAGIC_RESISTANCE} chance = 0.3 }
-      { type = Glyph {ARMOR LastingEffect SPEED} chance = 0.3 }
-      { type = Glyph {ARMOR LastingEffect NO_CARRY_LIMIT} chance = 0.3 }
-      { type = Glyph {WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE}} chance = 0.3 }
+      { "MummyFireArchwoodStaff" }
     }
   }
   
 ############Bandits##################   
 
-"MV_BANDIT_RECRUIT"
+"BONUS_BANDIT_RECRUIT"
   {
-    viewId = { "mv_bandit_recruit" }
+    viewId = { "BONUS_bandit_recruit" }
     attr = {
       DAMAGE 15
       DEFENSE 13
@@ -11676,20 +11626,20 @@ End
 	Chance 0.1 {
       CreatureMessage { "are more experienced" "is more experienced"}
 	  ChooseRandom {
-            Polymorph "MV_BANDIT" none
-			Polymorph "MV_BANDIT" none
-			Polymorph "MV_BANDIT" none
-			Polymorph "MV_BANDIT_ARCHER" none
-			Polymorph "MV_BANDIT_ARCHER" none
-			Polymorph "MV_BANDIT_BRUTE" none
+            Polymorph "BONUS_BANDIT" none
+			Polymorph "BONUS_BANDIT" none
+			Polymorph "BONUS_BANDIT" none
+			Polymorph "BONUS_BANDIT_ARCHER" none
+			Polymorph "BONUS_BANDIT_ARCHER" none
+			Polymorph "BONUS_BANDIT_BRUTE" none
 		 }
 		}
 	   }
   }
   
-"MV_BANDIT"
+"BONUS_BANDIT"
   {
-    viewId = { "mv_bandit" }
+    viewId = { "BONUS_bandit" }
     attr = {
       DAMAGE 18
       DEFENSE 16
@@ -11723,9 +11673,9 @@ End
     }
   }
   
-"MV_BANDIT_ARCHER"
+"BONUS_BANDIT_ARCHER"
   {
-    viewId = { "mv_bandit_archer" }
+    viewId = { "BONUS_bandit_archer" }
     attr = {
       DAMAGE 10
 	  RANGED_DAMAGE 16
@@ -11762,9 +11712,9 @@ End
     }
   }
  
-"MV_BANDIT_BRUTE"
+"BONUS_BANDIT_BRUTE"
   {
-    viewId = { "mv_bandit_brute" }
+    viewId = { "BONUS_bandit_brute" }
     attr = {
       DAMAGE 24
       DEFENSE 32
@@ -11799,9 +11749,9 @@ End
     }
   }
    
-"MV_BANDIT_LEADER"
+"BONUS_BANDIT_LEADER"
   {
-    viewId = { "mv_bandit_leader" }
+    viewId = { "BONUS_bandit_leader" }
     attr = {
       DAMAGE 22
       DEFENSE 19
@@ -11838,9 +11788,9 @@ End
     
 ############Bandit Thieves################## 
   
-"MV_THIEF_RECRUIT"
+"BONUS_THIEF_RECRUIT"
   {
-    viewId = { "mv_thief_recruit" }
+    viewId = { "BONUS_thief_recruit" }
     attr = {
       DAMAGE 15
       DEFENSE 13
@@ -11876,20 +11826,20 @@ End
 	Chance 0.1 {
       CreatureMessage { "are more experienced" "is more experienced"}
 	  ChooseRandom {
-            Polymorph "MV_THIEF" none
-			Polymorph "MV_THIEF" none
-			Polymorph "MV_THIEF" none
-			Polymorph "MV_THIEF_ROGUE" none
-			Polymorph "MV_THIEF_ROGUE" none
-			Polymorph "MV_SORCERER" none
+            Polymorph "BONUS_THIEF" none
+			Polymorph "BONUS_THIEF" none
+			Polymorph "BONUS_THIEF" none
+			Polymorph "BONUS_THIEF_ROGUE" none
+			Polymorph "BONUS_THIEF_ROGUE" none
+			Polymorph "BONUS_SORCERER" none
 		 }
 		}
 	   }
   }
   
-"MV_THIEF"
+"BONUS_THIEF"
   {
-    viewId = { "mv_thief" }
+    viewId = { "BONUS_thief" }
     attr = {
       DAMAGE 22
       DEFENSE 12
@@ -11919,9 +11869,9 @@ End
     }
   }
   
-"MV_THIEF_LEADER"
+"BONUS_THIEF_LEADER"
   {
-    viewId = { "mv_thief_leader" }
+    viewId = { "BONUS_thief_leader" }
     attr = {
       DAMAGE 26
       DEFENSE 15
@@ -11952,9 +11902,9 @@ End
     }
   }  
   
-"MV_SORCERER"
+"BONUS_SORCERER"
   {
-    viewId = { "mv_thief_sorcerer" }
+    viewId = { "BONUS_thief_sorcerer" }
     attr = {
       DAMAGE 12
       DEFENSE 8
@@ -11988,9 +11938,9 @@ End
     }
   }
   
-"MV_THIEF_ROGUE"
+"BONUS_THIEF_ROGUE"
   {
-    viewId = { "mv_thief_rogue" }
+    viewId = { "BONUS_thief_rogue" }
     attr = {
       DAMAGE 30
       DEFENSE 12
@@ -12026,9 +11976,9 @@ End
    
 ############Raiders##################   
 
-"MV_RAIDER_RECRUIT"
+"BONUS_RAIDER_RECRUIT"
   {
-    viewId = { "mv_raider_recruit" }
+    viewId = { "BONUS_raider_recruit" }
     attr = {
       DAMAGE 12
       DEFENSE 16
@@ -12059,20 +12009,20 @@ End
 	Chance 0.1 {
       CreatureMessage { "are more experienced" "is more experienced"}
 	  ChooseRandom {
-            Polymorph "MV_RAIDER" none
-			Polymorph "MV_RAIDER" none
-			Polymorph "MV_RAIDER" none
-			Polymorph "MV_RAIDER_DOG_MASTER" none
-			Polymorph "MV_RAIDER_DOG_MASTER" none
-			Polymorph "MV_RAIDER_WENDIGO" none
+            Polymorph "BONUS_RAIDER" none
+			Polymorph "BONUS_RAIDER" none
+			Polymorph "BONUS_RAIDER" none
+			Polymorph "BONUS_RAIDER_DOG_MASTER" none
+			Polymorph "BONUS_RAIDER_DOG_MASTER" none
+			Polymorph "BONUS_RAIDER_WENDIGO" none
 		 }
 		}
 	   }
   }
   
-"MV_RAIDER"
+"BONUS_RAIDER"
   {
-    viewId = { "mv_raider" }
+    viewId = { "BONUS_raider" }
     attr = {
       DAMAGE 14
       DEFENSE 20
@@ -12102,9 +12052,9 @@ End
     }
   }
 
-"MV_RAIDER_DOG_MASTER"
+"BONUS_RAIDER_DOG_MASTER"
   {
-    viewId = { "mv_raider_dog_master" }
+    viewId = { "BONUS_raider_dog_master" }
     attr = {
       DAMAGE 12
       DEFENSE 16
@@ -12133,7 +12083,7 @@ End
       spawnAway = false
       statsBase = LEADERSHIP
       summonFreq = 0.02
-      creatures = { "MV_HUSKY" }
+      creatures = { "BONUS_HUSKY" }
     }}
     hatedByEffect = HATE_HUMANS
     inventory = {
@@ -12146,20 +12096,20 @@ End
 	Chance 0.1 {
       CreatureMessage { "are more experienced" "is more experienced"}
 	  ChooseRandom {
-            Polymorph "MV_RAIDER" none
-			Polymorph "MV_RAIDER" none
-			Polymorph "MV_RAIDER" none
-			Polymorph "MV_BANDIT_ARCHER" none
-			Polymorph "MV_BANDIT_ARCHER" none
-			Polymorph "MV_RAIDER_WENDIGO" none
+            Polymorph "BONUS_RAIDER" none
+			Polymorph "BONUS_RAIDER" none
+			Polymorph "BONUS_RAIDER" none
+			Polymorph "BONUS_BANDIT_ARCHER" none
+			Polymorph "BONUS_BANDIT_ARCHER" none
+			Polymorph "BONUS_RAIDER_WENDIGO" none
 		 }
 		}
 	   }
   }
   
-"MV_RAIDER_WENDIGO"
+"BONUS_RAIDER_WENDIGO"
   {
-    viewId = { "mv_raider_wendigo" }
+    viewId = { "BONUS_raider_wendigo" }
     attr = {
       DAMAGE 20
       DEFENSE 30 
@@ -12197,15 +12147,15 @@ End
     }
   }
 
-"MV_HUSKY"
+"BONUS_HUSKY"
   {
-    viewId = { "mv_husky_01" }
+    viewId = { "BONUS_husky_01" }
 	genderAlternatives = {
-      FEMALE { "mv_husky_01" }
-	  FEMALE { "mv_husky_02" }
-	  FEMALE { "mv_husky_03" }
-	  MALE { "mv_husky_02" }
-	  MALE { "mv_husky_03" }
+      FEMALE { "BONUS_husky_01" }
+	  FEMALE { "BONUS_husky_02" }
+	  FEMALE { "BONUS_husky_03" }
+	  MALE { "BONUS_husky_02" }
+	  MALE { "BONUS_husky_03" }
     }
     attr = {
       DAMAGE 18
@@ -12227,9 +12177,9 @@ End
     petReaction = "\"WOOF!\""
   }
   
-"MV_RAIDER_LEADER"
+"BONUS_RAIDER_LEADER"
   {
-    viewId = { "mv_raider_leader" }
+    viewId = { "BONUS_raider_leader" }
     attr = {
       DAMAGE 18
       DEFENSE 25
@@ -12260,9 +12210,9 @@ End
     }
   }
 
-"MV_MOOSE" inherit "HORSE"
+"BONUS_MOOSE" inherit "HORSE"
   {
-    viewId = { "mv_moose" }
+    viewId = { "BONUS_moose" }
     petReaction = "growls"
     name = {
       name = "moose"
@@ -12271,7 +12221,7 @@ End
   
 ############Witch################## 
  
-"MV_WITCH"
+"BONUS_WITCH"
   {
     viewId = { "witch" }
     attr = {
@@ -12321,7 +12271,7 @@ End
     }
   } 
 
-"MV_AUTOMATON_CORPUS_CAELIDITE" inherit "AUTOMATON_CORPUS_WOOD"
+"BONUS_AUTOMATON_CORPUS_CAELIDITE" inherit "AUTOMATON_CORPUS_WOOD"
   {
     viewId = { "automaton_corpus" Rgb 11 220 88 255 }
     attr = {
@@ -12329,13 +12279,13 @@ End
       FIRE_DAMAGE 30
     }
     body = append {
-      material = MV_CAELIDITE
+      material = BONUS_CAELIDITE
     }
     name = {
       name = "caelidite automaton"
     }
   }
-"MV_HEAVY_AUTOMATON_CORPUS_CAELIDITE" inherit "MV_AUTOMATON_CORPUS_CAELIDITE"
+"BONUS_HEAVY_AUTOMATON_CORPUS_CAELIDITE" inherit "BONUS_AUTOMATON_CORPUS_CAELIDITE"
   {
     viewId = { "automaton_corpus" Rgb 11 220 88 255 }
     attr = append {
@@ -12346,7 +12296,7 @@ End
       name = "heavy caelidite automaton"
     }
   }
-"MV_LIGHT_AUTOMATON_CORPUS_CAELIDITE" inherit "MV_AUTOMATON_CORPUS_CAELIDITE"
+"BONUS_LIGHT_AUTOMATON_CORPUS_CAELIDITE" inherit "BONUS_AUTOMATON_CORPUS_CAELIDITE"
   {
     viewId = { "automaton_corpus" Rgb 11 220 88 255 }
     attr = append {
@@ -12358,7 +12308,7 @@ End
     }
   }
   
-"MV_AUTOMATON_CORPUS_JOTHNITE" inherit "AUTOMATON_CORPUS_WOOD"
+"BONUS_AUTOMATON_CORPUS_JOTHNITE" inherit "AUTOMATON_CORPUS_WOOD"
   {
     viewId = { "automaton_corpus" Rgb 116 178 236 255 }
     attr = {
@@ -12366,13 +12316,13 @@ End
       FIRE_DAMAGE 30
     }
     body = append {
-      material = MV_JOTHNITE
+      material = BONUS_JOTHNITE
     }
     name = {
       name = "jothnite automaton"
     }
   }
-"MV_HEAVY_AUTOMATON_CORPUS_JOTHNITE" inherit "MV_AUTOMATON_CORPUS_JOTHNITE"
+"BONUS_HEAVY_AUTOMATON_CORPUS_JOTHNITE" inherit "BONUS_AUTOMATON_CORPUS_JOTHNITE"
   {
     viewId = { "automaton_corpus" Rgb 116 178 236 255 }
     attr = append {
@@ -12383,7 +12333,7 @@ End
       name = "heavy jothnite automaton"
     }
   }
-"MV_LIGHT_AUTOMATON_CORPUS_JOTHNITE" inherit "MV_AUTOMATON_CORPUS_JOTHNITE"
+"BONUS_LIGHT_AUTOMATON_CORPUS_JOTHNITE" inherit "BONUS_AUTOMATON_CORPUS_JOTHNITE"
   {
     viewId = { "automaton_corpus" Rgb 116 178 236 255 }
     attr = append {
@@ -12394,3 +12344,900 @@ End
       name = "light jothnite automaton"
     }
   }
+  
+
+##########################
+#Bonus mod handing out artifacts from artifacts mod
+#Keep this at the end, so you can see where to post Extra enemies in above
+##########################
+  
+"BONUS_ROYAL_KNIGHT" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ROYAL_ARCHER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ROYAL_PRIEST" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_CENTAUR_ARCHER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_CENTAUR_FARMER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_CENTAUR_HUNTER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_CENTAUR_PRIESTESS" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_CENTAUR_CHILD" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_CENTAUR_KING" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_CENTAUR_KNIGHT" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_AMAZON_PESEANT" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_AMAZON" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_AMAZON_ARCHER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_AMAZON_CHAMPION" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_AMAZON_ELDER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_AMAZON_QUEEN" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_AMAZON_WAR_MAIDEN" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RED_DRAGONNEWT" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GREEN_DRAGONEWT" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RAT_MAN" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RAT_GENERAL" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RAT_ARCHER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ARACHNE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_COW_DEMON" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ARMORED_COW_DEMON" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GIANT" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GORGON" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_OGRE_FEMALE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ORC_PRIMARCH_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ORC_CAPTAIN_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ORC_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_OGRE_CHAMPION_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_OGRE_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ORC_HEALER_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ORC_FEMALE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_MUMMY_LORD" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DARK_ORC" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DARK_ORC_FEMALE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DARK_OGRE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DARK_OGRE_FEMALE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ZOMBIE_DARK" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_BANDIT_LEADER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_MILITIA" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_MILITIA" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_TOUGH" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_WARRIOR" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ELITE_DWARF_WARRIOR" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_WORKER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_MONK" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_FEMALE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_FEMALE2" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_FEMALE3" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_QUEEN" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GNOME" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GNOME_CHIEF" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GNOME_ALCHEMIST" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GNOME_CROSSBOWMAN" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GNOME_FIRE_MAGE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GNOME_FIRE_WIZARD" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GNOME_MAGE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GNOME_PRIEST" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_GNOME_WIZARD" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RAT_WORKER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RAT_MAN_RECRUIT" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RAT_SOLDIER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RAT_LADY" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RAT_KING" modify { RANDOM_ARTEFACT_HOLDER() } 
+"BONUS_RAT_GENERAL_RECRUIT" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RAT_GLADIATOR" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_RAT_ARCHER_RECRUIT" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_MILITIA_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_FIGHTER_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_WARRIOR_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ELITE_DWARF_WARRIOR_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_WORKER_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_MONK_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_QUEEN_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DWARF_BARON_TRIBE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_KING" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_SHADOW_KING" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_SHADOW_DUKE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_SHADOW_KNIGHT" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_BANDIT_PUNK" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_BANDIT_OMALLY" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_WILDMAN" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_WILDMAN_WOMAN" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_WILDMAN_QUEEN" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ELF_SOLDIER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_ELF_KING" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DARK_ELF_WITCHBLADE" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DARK_ELF_ARCHER" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_DARK_ELF_EMPRESS" modify { RANDOM_ARTEFACT_HOLDER() }
+
+"BONUS_AXEDIO_PRIEST"
+  {
+    viewId = { "bonus_axedio_priest" }
+    name = {
+      name = "high priest of Adoxie"
+    }
+    body = {
+      type = Humanoid LARGE
+      droppedPartUpgrade = { IncreaseAttr SPELL_SPEED 5 GrantAbility "BONUS_regrow body part"}
+    }
+	deathEffect =   SetFlag   "worship" true
+    attr = {
+      DAMAGE 12
+      DEFENSE 50
+      SPELL_DAMAGE 50
+	  SPELL_SPEED 5
+      LABORATORY 50
+	  INSCRIPTION 50
+    }
+    permanentEffects = {
+      NO_FRIENDLY_FIRE 1
+    }
+    aiType = RANGED
+    maxLevelIncrease = {
+      DAMAGE 2
+      SPELL_SPEED 4
+    }
+    inventory = {
+      { "AdoxiumStaff"}
+      { "AdoxiumArmor"}
+    }
+    spellSchools = { "mage" }
+    spells = { "BONUS_advanced mind bolt" "BONUS_stone golem" "BONUS_resist magic" "BONUS_mana curse" "BONUS_regrow body part" 
+               "expert magic missile" "panic" }
+  }
+  
+"ADOXIE_PRIEST" modify { RANDOM_ARTEFACT_HOLDER() }
+"BONUS_AXEDIO_PRIEST" modify { RANDOM_ARTEFACT_HOLDER() }
+
+"BONUS_INFERNITE_GOLEM"
+  {
+    viewId = { "swish_infernite_golem" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 50 
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = IRON
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 10 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {0.8 Fire{}} } }}}
+      }
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      SLOWED 1
+      FIRE_RESISTANT 1
+      LIGHT_SOURCE 1
+    }
+    name = {
+      name = "lava golem"
+    }
+    inventory = {
+      { "InferniteOre" 10 20 }
+    }
+  }
+  
+"BONUS_ADOXIUM_GOLEM"
+  {
+    viewId = { "swish_adoxium_golem" }
+    attr = {
+      DAMAGE 46
+      DEFENSE 46 
+      SPELL_DAMAGE  40
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = ROCK
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      SLOWED 1
+      MAGIC_RESISTANCE 1
+      FIRE_RESISTANT 1
+    }
+    name = {
+      name = "adoxium golem"
+    }
+    inventory = {
+      { "AdoxiumOre" 10 20 }
+    }
+     spells = { "expert magic missile" }
+  }
+  
+"ADOXIE_HEAD" modify
+  {
+    viewId = { "new_adoxie_head" }
+  }
+"ADOXIE_ADVENTURER" modify
+  {
+    viewId = { "new_adoxie_head" }
+  }
+"ADOXIE_FOOT_LEFT" modify
+  {
+    viewId = { "new_adoxie_foot_left" }
+  }
+"ADOXIE_FOOT_RIGHT" modify
+  {
+    viewId = { "new_adoxie_foot_right" }
+  }
+"ADOXIE_FOOT_LEFT_TRAP" modify
+  {
+    viewId = { "new_adoxie_foot_left" }  
+  }
+"ADOXIE_FOOT_RIGHT_TRAP" modify
+  {
+    viewId = { "new_adoxie_foot_right" } 
+  }
+"ADOXIE_LEFT_HAND" modify
+  {
+    viewId = { "new_adoxie_hand_left" }
+  }
+"ADOXIE_HAND_RIGHT" modify
+  {
+    viewId = { "new_adoxie_hand_right" }
+  }
+  
+"GK_KEEPER_GRAVE_KNIGHT"
+  {
+    viewId = { "grave_knight_m01" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 14
+      MULTI_WEAPON 30
+	  MORGUE 10
+      LABORATORY 10
+      FURNACE 15
+      FORGE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "grave knight"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "grave_knight_m02" } { "grave_knight_m03" } { "grave_knight_m04" }}
+    permanentEffects = {
+      RIDER 1
+	  SUNLIGHT_VULNERABLE 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+      SPELL_DAMAGE 3
+    }
+    spellSchools = { "fighter" "gk_grave_knight" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+"GK_KEEPER_GRAVE_KNIGHT_F" inherit "GK_KEEPER_GRAVE_KNIGHT"
+  {
+    viewId = { "grave_knight_f01" }
+    gender = FEMALE
+    name = {
+      name = "grave knight"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "grave_knight_f02" } { "grave_knight_f03" } { "grave_knight_f04" }}
+  }
+
+"GK_GRAVE_KNIGHT"
+  {
+    viewId = { "grave_knight_m03" }
+    attr = {
+      DAMAGE 41
+      DEFENSE 33
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+	  SUNLIGHT_VULNERABLE 1
+      RIDER 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+	spells = { "advanced animate corpses" }
+    name = {
+      name = "grave knight"
+      firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_UNDEAD
+	inventory = {
+      { "Sword"}
+      { "GK_ChainArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+	  { type = Glyph {ARMOR LastingEffect DARKNESS_SOURCE} chance = 0.7 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+  
+"GK_GRAVE_KNIGHT_DUKE"
+  {
+    viewId = { "grave_knight_m04" }
+    attr = {
+      DAMAGE 53
+      DEFENSE 42
+    }
+    body = {
+      type = Humanoid LARGE
+      droppedPartUpgrade = IncreaseAttr DAMAGE 7
+    }
+    permanentEffects = {
+	  RIDER 1
+	  SUNLIGHT_VULNERABLE 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      DAMAGE 3
+    }
+    name = {
+      name = "Fallen Duke"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+	spellSchools = { "fighter" }
+    spells = { "healing" "advanced animate corpses" }
+    hatedByEffect = HATE_UNDEAD
+    inventory = {
+      { type = "BattleAxe" prefixChance = 1 }
+      { "GK_ChainArmor"}
+      { "IronHelm"}
+      { "IronBoots"}
+      { Potion Heal { FLESH } 3 5 }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 140 200 }
+    }
+  }
+  ###
+  #Superior Steeds, from CSeven
+  ###
+  #Less-evil keepers
+
+"SST_WK_LIGHT_WARHORSE" inherit "WARHORSE"
+	{
+	viewId = { "saddled_horse" }
+	#These warhorses enjoy running and have a shorter cooldown, but aren't that strong, so their armor isn't sturdy.
+	#Best to set them up to get a kill.
+	attr = {
+	DAMAGE 36
+	SPELL_SPEED 20
+	DEFENSE 24
+	}
+	maxLevelIncrease = {
+	DAMAGE 7
+	}
+	name = {
+		name = "light warhorse"
+	}
+	afterKilledSomeone ={
+	ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+      ApplyToSteed Polymorph "SST_WK_HUNTER" none
+	}
+	noChase = true
+	chatReactionFriendly = "seems like it wants a carrot."
+    chatReactionHostile = "looks like it would prefer to be elsewhere."
+	petReaction = "nickers"
+ }
+ 
+ "SST_WK_HUNTER"
+ {
+ viewId = { "hunting_horse" }
+ #Hunting horses aren't much tougher than light warhorses...but they never. slow. down.
+ #Put ranged units on them and you'll be as annoying as the Khergits are in Mount & Blade.
+		attr = {
+		DAMAGE 38
+		DEFENSE 30
+		}
+		body = {
+		type = FourLegged LARGE
+		weight = 500
+		}
+		maxLevelIncrease = {
+		DAMAGE 7
+		}
+		permanentEffects = {
+		SPEED 1
+		STEED 1
+		SWIMMING_SKILL 1
+		}
+		name = {
+		name = "hunting horse"
+		}
+	
+	noChase = true	
+	chatReactionFriendly = "looks at you expectantly. Let's go!"
+    chatReactionHostile = "kicks dust at you." #Good job. You got to melee range on a Hunter...and chatted!
+	petReaction = "nickers"
+	
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 3 {Polymorph "SST_WK_HVY_HUNTER" none}
+		}
+ 
+ }
+ 
+ "SST_WK_HVY_HUNTER"
+ {
+ viewId = { "hvy_hunting_horse" }
+ 		attr = {
+		DAMAGE 42
+		DEFENSE 37
+		}
+		body = {
+		type = FourLegged LARGE
+		weight = 525
+		}
+		maxLevelIncrease = {
+		DAMAGE 7
+		}
+		permanentEffects = {
+		SPEED 1
+		STEED 1
+		SWIMMING_SKILL 1
+		}
+		name = {
+		name = "heavy hunter"
+		}
+		
+		noChase = true
+		chatReactionFriendly = "looks at you expectantly and stamps a hoof. Waiting for you..."
+		chatReactionHostile = "snorts derisively as you cough on a cloud of dust, apparently from nowhere." #Kicks dust faster than you can see.  :-P
+		petReaction = "nickers"
+ }
+ 
+ "SST_WK_HEAVY_WARHORSE" inherit "WARHORSE"
+ {
+ #These warhorses are built more for power than for speed.
+ #Especially in A37 with everyone scaling, the melee warhorses need to hit hard & take hard hits to stay competitive.
+		attr = {
+		DAMAGE 40
+		DEFENSE 40
+		}
+		maxLevelIncrease = {
+		DAMAGE 7
+		}
+		
+		afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 3 Polymorph "SST_WK_CHARGER" none
+	}
+	
+	noChase = true
+	chatReactionFriendly = "snuffles contentedly"
+    chatReactionHostile = "looks like it's about to kick you."
+	petReaction = "nickers"
+ 
+ }
+ 
+ "SST_WK_CHARGER"
+ {
+	viewId = { "charger" }
+	attr = {
+	DAMAGE 50
+	DEFENSE 50
+	}
+	body = {
+      type = FourLegged LARGE
+      weight = 500
+	  #Ideally I'd have chargers grant a substantial damage bonus when they gallop. Until (and maybe after!) I work out how to do that, they lend a hoof.
+		intrinsicAttacks = {
+        LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+		HEAD {{itemType = { Intrinsic { "bite_attack" }  "teeth" 5 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+	maxLevelIncrease = {
+		DAMAGE 12
+		}
+		#Seems high until you consider A37 scaling. Peasant horses can hit 60-70 attack in later-game.
+	permanentEffects = {
+      STEED 1
+      SWIMMING_SKILL 1
+    }
+	
+	noChase = true
+	chatReactionFriendly = "snorts confidently"
+    chatReactionHostile = "looks like it's about to kick you!"
+	petReaction = "nickers"
+	 name = {
+     name = "charger"
+    }
+	
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 8 {ApplyToSteed Polymorph "SST_WK_HVY_CHARGER" none} #5 more kills as a Charger, please. Making Ace Charger should be worth it, though.
+	}
+	
+ }
+ 
+  "SST_WK_HVY_CHARGER"
+ {
+	viewId = { "hvy_charger" }
+	attr = {
+	DAMAGE 65
+	DEFENSE 65
+	}
+	body = {
+      type = FourLegged LARGE
+      weight = 550
+		intrinsicAttacks = {
+        LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+		HEAD {{itemType = { Intrinsic { "bite_attack" }  "teeth" 5 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+	maxLevelIncrease = {
+		DAMAGE 12
+		}
+	permanentEffects = {
+      STEED 1
+	  RANGED_RESISTANCE 1
+    }
+	
+	spells = { "warhorse_haste" }
+	
+	noChase = true #Lawful horses, even the most competent and confident ones, carry and assist their riders. They don't attack on their own.
+	chatReactionFriendly = "looks at you calmly and confidently. They don't stand a chance."
+    chatReactionHostile = "You feel a great sense of pity from this horse..."
+	petReaction = "nickers"
+	 name = {
+      name = "heavy charger"
+    }
+	
+ }
+ 
+ #Fallen knights
+ 
+ "SST_FK_HORSE"
+ {
+	viewId = { "fell_horse" }
+	#Horses raised and trained in and for the presence of Evil. Not as varied as Less-Evil, but still solid mounts.
+	attr = {
+      DAMAGE 35
+      DEFENSE 35
+    }
+	body = {
+      type = FourLegged LARGE
+      weight = 500
+    }
+	permanentEffects = {
+     	STEED 1
+		SWIMMING_SKILL 1
+    }
+	maxLevelIncrease = {
+		DAMAGE 7
+	}
+	noChase = true #Fell horses aren't confident fighters.
+	chatReactionFriendly = "doesn't seem talkative."
+    chatReactionHostile = "looks like it wants to kick you."
+	petReaction = "snorts."
+	name = {
+      name = "fell horse"
+    }
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Polymorph "SST_FK_WARHORSE" none
+	}
+ }
+ 
+ "SST_FK_WARHORSE"
+{
+	viewId = { "fell_warhorse" }
+	attr = {
+      DAMAGE 45
+      DEFENSE 45
+    }
+	body = {
+      type = FourLegged LARGE
+      weight = 500
+	  intrinsicAttacks = {
+        LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+		HEAD {{itemType = { Intrinsic { "bite_attack" }  "teeth" 5 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+    }
+    }
+	permanentEffects = {
+      	STEED 1
+		SWIMMING_SKILL 1
+    }
+	maxLevelIncrease = {
+		DAMAGE 12
+	}
+	#Fell warhorses, however, want to fight and do NOT have noChase.
+	chatReactionFriendly = "neighs and looks ready to go fight something."
+    chatReactionHostile = "looks like it's about to kick you!"
+	petReaction = "snorts and stamps the ground."
+	name = {
+	name = "fell warhorse"
+    }
+	
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 8 { ApplyToSteed Polymorph "SST_FK_CHARGER" none }
+	}
+} 
+
+"SST_FK_CHARGER"
+{
+	viewId = { "fell_charger" }
+	attr = {
+      DAMAGE 57
+      DEFENSE 57
+    } #The Lawful heavies are better, true.  But they don't get leechquines.
+	body = {
+      type = FourLegged LARGE
+      weight = 550
+	  intrinsicAttacks = {
+        LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+		HEAD {{itemType = { Intrinsic { "bite_attack" }  "teeth" 5 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+    }
+    }
+	permanentEffects = {
+      	STEED 1
+		SWIMMING_SKILL 1
+    }
+	maxLevelIncrease = {
+		DAMAGE 12
+	}
+	
+	spells = { "warhorse_haste" }
+	
+	chatReactionFriendly = "neighs and stamps, ready to fight."
+    chatReactionHostile = "rears, ready to kick!"
+	petReaction = "stamps the ground, eager for action."
+	
+	name = {
+	name = "fell charger"
+    }
+}
+
+"SST_FK_VAMPHORSE"
+{
+	viewId = { "vamp_warhorse" }
+	attr = {
+		DAMAGE 45
+		DEFENSE 45
+	}
+	body = {
+      type = FourLegged LARGE
+	  material = UNDEAD_FLESH
+      weight = 500
+	  intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 5 { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } victimEffect = { 0.5 Lasting 50 BLEEDING  }} } isExtraAttack = true }}
+		LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+    }
+	}
+	maxLevelIncrease = {
+		DAMAGE 12
+	}
+	#Vampiric warhorses are later-game creatures and need the ability to keep up with scaling.
+	
+	permanentEffects = {
+	  NIGHT_VISION 1
+      STEED 1
+	  RANGED_RESISTANCE 1
+    }
+	
+	noChase = true #Vamphorses don't pursue: they're aware of the sun and the need to discipline their movement.
+	chatReactionFriendly = "silently gazes upon you with its glowing eyes."
+    chatReactionHostile = "fixes you with its fell gaze and bares its fangs..."
+	petReaction = "stamps the ground."
+	name = {
+	name = "vampiric warhorse"
+    }
+	hatedByEffect = HATE_UNDEAD
+	
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 5 { ApplyToSteed Polymorph "SST_FK_LEECHQUINE" none }
+	}
+}
+
+"SST_FK_LEECHQUINE"
+{
+	viewId = { "vamp_charger" }
+	attr = {
+		DAMAGE 60
+		DEFENSE 60
+	}
+	body = {
+      type = FourLegged LARGE
+	  material = UNDEAD_FLESH
+      weight = 500
+	  intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 5 { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } victimEffect = { 0.5 Lasting 50 BLEEDING  }} } isExtraAttack = true }}
+		LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 8 { attackType = CUT attackMsg = KICK attackerEffect = { RegrowBodyPart 1 } victimEffect = { 0.5 Lasting 50 BLEEDING  }} } isExtraAttack = true }}
+    }
+	}
+	#Yes, you read that right.  High-level vamphorses drain blood with their hooves too. I trust that's satisfactory?
+	
+	maxLevelIncrease = {
+		DAMAGE 12
+	}
+	permanentEffects = {
+		NIGHT_VISION 1
+      	STEED 1
+		RANGED_RESISTANCE 1
+    	}
+	noChase = true
+	chatReactionFriendly = "silently gazes upon you with its glowing eyes. Maybe you should offer it your wrist..."
+    chatReactionHostile = "fixes you with its fell gaze and bares its fangs..."
+	petReaction = "twists its head, looking for your vein."
+	name = {
+	name = "vampiric charger"
+    }
+	hatedByEffect = HATE_UNDEAD
+}
+
+"SST_FK_WAR_WOLF"
+{
+	viewId = { "wolf" }
+	attr = {
+	DAMAGE 25
+	DEFENSE 20
+	}
+	#There's only so much you can do to armor a wolf that's also gonna carry an armored rider.  This is mostly training & breeding.
+	#Conversely, gave 'em a boost to help keep up with A37.
+	body = {
+      type = FourLegged MEDIUM
+      weight = 35
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+	#The stat-ups for war wolves already take some training into account. Steed training on dummies will likely represent time spent acclimating to your creatures,
+	#getting the tack well-fitted, and probably teaching the best available fighting skills as well.
+	maxLevelIncrease = {
+		DAMAGE 4
+	}
+	#In particular, war wolves don't go exploring around. This is why they aren't an inherit from WOLF.
+	permanentEffects = {
+      	NIGHT_VISION 1
+      	STEED 1
+		SWARMER 1
+    	} #War wolves might not be individually as impressive as a warg...but they *are* pack hunters.
+	
+	#War wolves are happy in their role
+	chatReactionFriendly = "barks happily."
+    chatReactionHostile = "growls angrily."
+	petReaction = "wags its tail happily."
+	
+      name = {
+      name = "war wolf"
+      pluralName = "wolves"
+      groupName = "pack"
+    }
+}
+
+"SST_FK_WARG"
+#These will need tech: no blatant magic and infernal crossbreeding like an evil wizard might do, but getting hyena and dire-wolf together isn't a joke.
+{
+	viewId = { "wargv2" } #Swishos' surplus sprites for the win! Thanks.
+	attr = {
+	DAMAGE 34
+	DEFENSE 31
+	}
+	body = {
+      type = FourLegged MEDIUM
+      weight = 45 #Wargs are bigger and heavier than wolves, but they use their legs for movement and support. Attack comes from the jaw.
+      intrinsicAttacks = {
+       HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 9 { attackType = BITE attackMsg = BITE} } }}
+      }
+    }
+	maxLevelIncrease = {
+		DAMAGE 7
+	}
+	permanentEffects = {
+      	NIGHT_VISION 1
+      	STEED 1
+		SWIMMING_SKILL 1
+    	}
+	chatReactionFriendly = "emits a barking laugh."
+    chatReactionHostile = "eyes your throat and growls."
+	petReaction = "tries not to wag its tail, but clearly appreciates the attention."
+    name = {
+      name = "warg"
+      pluralName = "wargs"
+      groupName = "pack"
+    }
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Polymorph "SST_FK_WAR_WARG" none
+	}
+}
+
+"SST_FK_WAR_WARG"
+{
+viewId = { "war_warg" } #Swishos' surplus sprites for the win! Thanks.
+	attr = {
+	DAMAGE 45
+	DEFENSE 35
+	}
+	body = {
+      type = FourLegged MEDIUM
+      weight = 50 #War wargs are even bulkier.
+	  #Fully trained war warg bites for 60 melee attack, but only 40 DEF. Should be competitive in mid-game.
+      intrinsicAttacks = {
+       HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 10 { attackType = BITE attackMsg = BITE} } }}
+      }
+    }
+	maxLevelIncrease = {
+		DAMAGE 5
+	}
+	permanentEffects = {
+      	NIGHT_VISION 1
+      	STEED 1
+		SWIMMING_SKILL 1
+    	}
+	
+	chatReactionFriendly = "barks a confident laugh."
+    chatReactionHostile = "looks like it's about to tear your throat out!"
+	petReaction = "appreciates your assistance with its grooming."
+	#Remember! "its" is the possessive of "it"; "it's" is the contraction form of "it is".
+	
+    name = {
+      name = "war warg"
+      pluralName = "war wargs"
+      groupName = "pack"
+    }
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 6 { ApplyToSteed Polymorph "SST_FK_WAR_WARG" none}
+	}
+}
+
+"SST_FK_VET_WAR_WARG"
+{
+viewId = { "war_warg_saddle2" } #Swishos' surplus sprites for the win! Thanks.
+	attr = {
+	DAMAGE 50
+	DEFENSE 40
+	}
+	body = {
+      type = FourLegged MEDIUM
+      weight = 65 #Big and tough survivor.
+	  
+      intrinsicAttacks = {
+       HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 10 { attackType = BITE attackMsg = BITE} } }}
+      }
+    }
+	maxLevelIncrease = {
+		DAMAGE 5
+	}
+	permanentEffects = {
+      	NIGHT_VISION 1
+      	STEED 1
+		SWIMMING_SKILL 1
+		SWARMER 1 #Big, bad, and *coordinates*.
+    	}
+	
+	chatReactionFriendly = "laughs confidently. When's the next battle?"
+    chatReactionHostile = "looks like it's about to tear your throat out!"
+	petReaction = "appreciates the attention to its tack. Itchy!"
+	
+    name = {
+      name = "veteran warg"
+      pluralName = "veteran wargs"
+      groupName = "pack"
+    }
+}
+ 
+ ###
+ #Vanilla steed training allotments
+ ###
+ "WARHORSE" modify append {maxLevelIncrease = { DAMAGE 3 } } #It's an experienced riding horse, not purpose-bred and raised.
+ 
+ #Ki-rin, last I checked, are a wise & good Chinese mythological creature. They shouldn't be easily captured, and don't seem like melee fighters.
+ "KIRIN" modify append { maxLevelIncrease = {DAMAGE 3 SPELL_DAMAGE 3} permanentEffects = { CAPTURE_RESISTANCE 1} }
+ 
+ #Yetis and Minotaurs seem like they're already solid combat mounts. If there's a good argument for buffing them, let me know.
+
+  
