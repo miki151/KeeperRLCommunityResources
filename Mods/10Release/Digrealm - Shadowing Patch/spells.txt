@@ -1,0 +1,476 @@
+
+
+"dgr-rafflesia breath"
+  { 
+	symbol = "**"
+	effect = Name "Rafflesia breath" 
+	Description "Area effect radius of 5: enemies get a random effect chosen from Sleep, Slow, Blind, and Poison."
+	Chain { Area 5 Filter Enemy ChooseRandom {
+          Lasting SLEEP
+          Lasting SLOWED
+          Lasting BLIND
+          Lasting POISON
+        } }
+	cooldown = 150
+	sound = "SPELL_SUMMON_INSECTS"
+  }
+"dgr-blind"
+  { 
+	symbol = "🙈"
+	effect = Lasting BLIND
+	cooldown = 100
+	range = 3
+	sound = "SPELL_SUMMON_INSECTS"
+  }
+"dgr-acid touch"
+  { 
+	symbol = "ⴽ"
+	effect = Acid{}
+	range = 1
+	cooldown = 80
+  }
+"dgr-poison cloud"
+  {
+	  symbol = "☁"
+	  effect = Name "Poison cloud" Area 1 EmitGas "POISON_GAS" 0.4
+	  range = 4
+	  cooldown = 30
+	  endOnly = true
+  }
+"dgr-shroud of darkness"
+  {
+	  symbol = "Ⱉ"
+	  effect = Name "Shroud of darkness" Lasting DARKNESS_SOURCE
+	  cooldown = 30
+  }
+"dgr-blink" 
+    {
+    symbol = "🌀"
+    effect = Name "Blink" Teleport
+    range = 2
+    cooldown = 5
+    endOnly = true
+    sound = "SPELL_TELEPORT"
+  }
+"dgr-freeze"  
+  {
+	  symbol = "❄"
+      effect = Name "Freeze" Ice{}
+	  fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+	  range = 1
+	  cooldown = 30
+  }
+"dgr-small blizzard"
+  {
+	  symbol = "❄"
+      effect = Name "Small blizzard" Area 3 Filter Enemy Ice{}
+	  fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+	  cooldown = 60
+  }
+"dgr-ink"
+  {
+	  symbol = "🙈"
+	  effect = Name "Ink" Lasting BLIND
+	  range = 5
+	  cooldown = 20
+  }
+"dgr-blizzard"
+  {
+	  symbol = "❄"
+      effect = Name "Blizzard" Area 10 Filter Enemy Ice{}
+	  fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+	  cooldown = 60
+  }  
+"dgr-acid bolt"
+  { 
+	symbol = "ⴽ"
+	effect = Name "Acid bolt" Acid{}
+	range = 7
+	cooldown = 90	
+  }
+"dgr-necrolordship"
+  {
+	symbol = "💀"
+	effect = Name "Necrolordship" Description "Summons an undead horde." Chain {Summon "ZOMBIE" {3 5} 100 Summon "SKELETON" {3 5} 100 Summon "MUMMY" {3 5} 100}
+	cooldown = 300
+  }
+"dgr-smite"
+  {
+    symbol = "💡"
+    effect = Name "Smite" Damage SPELL_DAMAGE SPELL
+	endOnly = true
+    range = 10
+    cooldown = 20
+    sound = "SPELL_BLAST"
+  }
+"dgr-holy word"
+  {
+    symbol = "❤"
+    effect = Name "Holy word" Heal {FLESH}
+    range = 10
+    targetSelf = true
+	endOnly = true
+    cooldown = 30
+    sound = "SPELL_HEALING"
+  }
+"dgr-advanced group healing"
+  {
+	upgrade = "group healing"
+    symbol = "💕"
+    effect = Name "Advanced group healing" Area 4 Filter Not Enemy Heal {FLESH}
+    cooldown = 40
+    sound = "SPELL_HEALING"
+  }
+"dgr-assize"
+    {
+    symbol = "💥"
+    effect = Name "Assize" Chain {Area 3 Filter Not Enemy Heal {FLESH} Area 3 Filter Enemy Damage SPELL_DAMAGE SPELL}
+    cooldown = 160
+    sound = "SPELL_HEALING"
+  }
+"dgr-beacon"
+    {
+    symbol = "💡"
+    effect = Name "Beacon" Lasting LIGHT_SOURCE
+	range = 1
+	targetSelf = true
+    cooldown = 120
+    sound = "SPELL_HEALING"
+  }
+"dgr-regen"
+    {
+    symbol = "➕"
+    effect = Name "Regen" Lasting 50 REGENERATION
+	targetSelf = true
+	range = 1
+    cooldown = 320
+    sound = "SPELL_HEALING"
+  }
+"dgr-divine intervention"
+  {
+    symbol = "🙏"
+    effect = Name "Divine intervention" Chain {Heal {FLESH} Escape {}}
+    cooldown = 120
+    sound = "SPELL_TELEPORT"
+  }
+"dgr-flash heal"
+    {
+    symbol = "❤"
+    effect = Name "Flash heal" Heal {FLESH}
+	range = 1
+	targetSelf = true
+    cooldown = 30
+    sound = "SPELL_HEALING"
+  }
+"dgr-advanced cure blindness"
+ {
+    symbol = "👁"
+    effect = Name "Advanced cure blindness" RemoveLasting BLIND
+    cooldown = 30
+    targetSelf = true
+    range = 3
+    sound = "SPELL_CURE_POISON"
+  }
+"dgr-reckoning"
+  {
+	symbol = "👼"
+	effect = Name "Reckoning" Summon "DGR_PATANGEL" {4 6} 100
+	cooldown = 300
+  }
+"dgr-psychic drain"
+  {
+    symbol = "💡"
+    effect = Name "Psychic drain" Damage SPELL_DAMAGE SPELL 
+	endOnly = true
+    range = 30
+    cooldown = 10
+    sound = "SPELL_BLAST"
+  }
+"dgr-probe mind"
+   {
+    symbol = "💡"
+    effect = Name "Probe mind" Chain {Damage SPELL_DAMAGE SPELL Lasting INSANITY}
+	endOnly = true
+    range = 10
+    cooldown = 10
+  }
+"dgr-whirlwind"
+  {
+    symbol = "🌪️"
+    effect = Name "Whirlwind" Chain {Area 1 Filter Enemy Damage DAMAGE CUT CircularBlast }
+    cooldown = 40
+    sound = "BLADE_DAMAGE"
+  }
+"dgr-turtle stance"
+  {
+    symbol = "🐢"
+    effect = Name "Turtle stance" Description "Increases your defense. Only one stance can be active at a time." 
+	Chain {Lasting 40 DEF_BONUS RemoveLasting DAM_BONUS RemoveLasting MAGIC_RESISTANCE RemoveLasting POISON_RESISTANT RemoveLasting FIRE_RESISTANT RemoveLasting SLEEP_RESISTANT}
+    cooldown = 5
+  }
+"dgr-tiger stance"
+  {
+    symbol = "🐯"
+    effect = Name "Tiger stance" Description "Increases your damage. Only one stance can be active at a time." 
+	Chain {Lasting 40 DAM_BONUS RemoveLasting DEF_BONUS RemoveLasting MAGIC_RESISTANCE RemoveLasting POISON_RESISTANT RemoveLasting FIRE_RESISTANT RemoveLasting SLEEP_RESISTANT}
+    cooldown = 5
+  }
+"dgr-phoenix stance"
+  {
+    symbol = "🐦"
+    effect = Name "Phoenix stance" Description "Gives you resistance to magic. Only one stance can be active at a time."  
+	Chain {Lasting 40 MAGIC_RESISTANCE RemoveLasting DEF_BONUS RemoveLasting DAM_BONUS RemoveLasting POISON_RESISTANT RemoveLasting FIRE_RESISTANT RemoveLasting SLEEP_RESISTANT}
+    cooldown = 5
+  }
+"dgr-dragon stance"
+  {
+    symbol = "🐉"
+    effect = Name "Dragon stance" Description "Gives you resistance to poison, fire, and sleep. Only one stance can be active at a time." 
+	Chain {Lasting 40 POISON_RESISTANT Lasting 40 FIRE_RESISTANT Lasting 40 SLEEP_RESISTANT RemoveLasting DEF_BONUS RemoveLasting DAM_BONUS RemoveLasting MAGIC_RESISTANCE}
+    cooldown = 5
+  }
+"dgr-far blade" 
+  {
+    symbol = "⚔️"
+    effect = Name "Far blade" Damage DAMAGE CUT
+	range = 3
+    cooldown = 20
+    sound = "BLADE_DAMAGE"
+  }
+"dgr-third eye"
+  {
+    symbol = "👁️"
+    effect = Name "Third eye" Lasting TELEPATHY
+    cooldown = 50
+  }
+"dgr-second wind"
+  {
+    symbol = "❤"
+    effect = Name "Second wind" Heal {FLESH}
+    cooldown = 50
+    sound = "SPELL_HEALING"
+  }
+"dgr-hide presence"
+  {
+    symbol = "🕵️"
+    effect = Name "Hide presence" Lasting INVISIBLE
+    cooldown = 400
+    sound = "SPELL_INVISIBILITY"
+  }
+"dgr-corrode"
+  {
+    symbol = "🧴"
+    effect = Name "Corrode" Area 1 Filter Enemy Acid{}
+    cooldown = 100
+    sound = "SPELL_HEALING"
+  }
+"dgr-electric breath"
+  {
+    symbol = "⚡"
+    effect = Name "Electric breath" Lasting SLOWED
+    range = 6
+    cooldown = 15
+    sound = "SPELL_BLAST"
+  }
+"dgr-arcane summoning"
+  {
+	symbol = "👾"
+	effect = Name "Arcane summoning" Summon "DGR_ARCANE_SPIRIT" {4 6} 300
+	cooldown = 100
+  }
+"dgr-minor arcane summoning"
+  {
+	symbol = "👾"
+	effect = Name "Minor arcane summoning" Summon "DGR_ARCANE_SPIRIT" {2 4} 100
+	cooldown = 100
+  }
+"dgr-enrage"
+  {
+    symbol = "😠"
+    effect = Lasting RAGE
+    cooldown = 100
+    sound = "SPELL_INVISIBILITY"
+  }
+"dgr-blade haunt"
+  {
+	symbol = "⚔️"
+	effect = Name "Blade haunt" Summon "DGR_ANIMATED_SWORD" {1 3} 100
+	cooldown = 100
+  }
+"dgr-armor haunt"
+  {
+	symbol = "🛡️"
+	effect = Name "Armor haunt" Summon "DGR_ANIMATED_ARMOR" {1 2} 100
+	cooldown = 100
+  }
+"dgr-cold of death"
+  {
+	symbol = "❄"
+    effect = Name "Cold of death" Area 10 Ice{}
+	fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+	cooldown = 150
+  }
+"dgr-wail"
+  {
+	symbol = "👻"
+    effect = Name "Wail" Area 2 Filter Enemy Lasting INSANITY
+	cooldown = 1000
+  }
+"dgr-insanity"
+  {
+    symbol = "💃"
+    effect = Lasting INSANITY
+	endOnly = true
+    range = 5
+    cooldown = 90
+  }
+"dgr-tentacles"
+  {
+	symbol = "🐙"
+	effect = Name "Tentacles" Summon "DGR_TENTACLE" {3 4} 100
+	cooldown = 120
+  }
+"dgr-levitate"
+  {
+	symbol = "🐦"
+	effect = Name "Levitate" Lasting FLYING
+	cooldown = 80
+  }
+"dgr-curse"
+  {
+	symbol = "🤢"
+	range = 10
+	effect = Name "Curse" Description "Inflicts melee, magic, and ranged vulnerability to target." Chain {Lasting 40 MELEE_VULNERABILITY Lasting 40 MAGIC_VULNERABILITY Lasting 40 RANGED_VULNERABILITY}
+	cooldown = 160
+  }
+"dgr-eldritch ritual"
+  {
+	symbol = "#"
+	effect = Name "Eldritch ritual" Chain {Summon "DGR_SHOGGOTH" {2} 100 Lasting INVISIBLE}
+	cooldown = 120
+	sound = "SPELL_INVISIBILITY"
+  }
+"dgr-flay"
+  {
+    symbol = "~"
+    effect = Name "Flay" Chain {Damage SPELL_DAMAGE SPELL Lasting INSANITY}
+	endOnly = true
+    range = 10
+    cooldown = 30
+  }
+"dgr-demolish"
+  {
+    symbol = "x"
+    effect = Name "Demolish" Chain {DestroyWalls DIG DestroyWalls CUT}
+    cooldown = 1
+  }
+"dgr-replant"
+  {
+    symbol = "🌀"
+    effect = Name "Replant" Teleport
+    range = 3
+    cooldown = 2000
+    endOnly = true
+    sound = "SPELL_TELEPORT"
+  }
+"dgr-yellow sign"
+  {
+    symbol = "💃"
+    effect = Name "Yellow sign" Area 5 Filter Enemy Lasting INSANITY
+    cooldown = 200
+  }
+  
+"dgr-regrow-slime"
+{
+	symbol = "+"
+	effect = RegrowBodyPart 10
+	range = 1
+	cooldown = 70
+}
+
+"dgr-resist"
+  {
+    symbol = "🐉"
+    effect = Name "Resist" Description "Gives you resistance to poison, fire, and cold." 
+	Chain {Lasting 40 POISON_RESISTANT Lasting 40 FIRE_RESISTANT Lasting 40 COLD_RESISTANT}
+    cooldown = 5
+  }
+ 
+"dgr-cripple"
+  {
+    symbol = "⚔️"
+    effect = Name "Cripple" Chain {Damage DAMAGE CUT Lasting SLOWED}
+	range = 3
+    cooldown = 30
+    sound = "BLADE_DAMAGE"
+  }
+  
+"dgr-protective aura"
+{
+  symbol = "🛡"
+  effect = Name "Protective aura" Area 5 Filter Not Enemy Lasting 40 DEF_BONUS
+  cooldown = 140
+  sound = "SPELL_DEX_BONUS"
+}
+
+"dgr-party resist"
+  {
+    symbol = "🐉"
+    effect = Name "Party resist" Description "Gives you and nearby allies resistance to poison, fire, and cold." 
+	Area 5 Filter Not Enemy Chain {Lasting 40 POISON_RESISTANT Lasting 40 FIRE_RESISTANT Lasting 40 COLD_RESISTANT}
+    cooldown = 5
+  }
+  
+ "dgr-true shot"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(4) Name "True shot"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage { "are hit by the arrow" "is hit by the arrow"}
+          Damage RANGED_DAMAGE SHOOT
+		  Lasting 40 RANGED_VULNERABILITY
+        },
+        CreatureMessage { "are spared by the arrow" "is spared by the arrow"}
+      )
+  range = 7
+  cooldown = 60
+  maxHits = 1
+  projectileViewId = {"arrow"}
+  message = "shoot a glowing arrow" "shoots a glowing arrow"
+}
+
+"dgr-poison arrow"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(4) Name "Poison arrow"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage {"are hit by the arrow" "is hit by the arrow"}
+          Damage RANGED_DAMAGE SHOOT
+		  Lasting POISON
+        },
+        CreatureMessage {"are spared by the arrow" "is spared by the arrow"}
+      )
+  range = 7
+  cooldown = 30
+  maxHits = 1
+  projectileViewId = {"arrow"}
+  message = "shoot a poisonous arrow" "shoots a poisonous arrow"
+}
+
+"dgr-forest call"
+  {
+	symbol = "🐎"
+	effect = Name "Forest call" Description "Summon a variety of creatures." Chain {Summon "HORSE" {1 2} 300 Summon "JACKAL" {1 2} 300 Summon "CAVE_BEAR" {0 1} 300 Summon "SNAKE" {1 3} 300 Summon "WOLF" {0 2} 300}
+	cooldown = 150
+  }
+  
+"dgr-entangle"
+  { 
+	symbol = "🌱"
+	effect = Name "Entangle" Lasting ENTANGLED
+	cooldown = 90
+	range = 6
+	sound = "SPELL_SUMMON_INSECTS"
+  }

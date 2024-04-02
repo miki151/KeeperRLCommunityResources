@@ -1,0 +1,136 @@
+"dragon fire"
+  {
+    #id = "dragon fire"
+    symbol = "️🐲"
+    effect = Name "Fire Breath" Description "Unleash the fires of your wrath upon your enemies" 
+	Chain {
+	Area 1 Filter Enemy Chain { 
+		Damage SPELL_DAMAGE SPELL}
+	Area 1 PlaceFurniture "FIRE_WALL"}
+    endOnly = true
+    fx = {FLAMETHROWER ColorId LIGHT_RED}
+    range = 4
+    cooldown = 30
+    sound = "SPELL_BLAST"
+    #castMessageType = BREATHE_FIRE
+  }
+"dragon poison breath"
+  {
+    #id =  "dragon poison breath"
+    symbol = "️🐲"
+    effect = Name "Poison Breath" Description "Force your enemies to choke on your rage" 
+	Area 1 Filter 
+	Enemy Chain { 
+		Lasting POISON 
+		Damage SPELL_DAMAGE SPELL
+		Blast}
+    endOnly = true
+    fx = {FLAMETHROWER ColorId GREEN}
+    range = 4
+    cooldown = 30
+    sound = "SPELL_AIR_BLAST"
+  }
+"dragon ice breath"
+  {
+    #id =  "dragon ice breath"
+    symbol = "🐲"
+    effect = Name "Ice Breath" Description "Direct cold hatred upon your enemies" 
+	Area 1 Filter 
+	Enemy Chain { 
+		Lasting SLOWED 
+		Damage SPELL_DAMAGE SPELL
+		Ice{}}
+    endOnly = true
+    fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+    range = 4
+    cooldown = 30
+    #sound = "SPELL_FIRE_SPHERE_PET"
+  }
+  
+"dragon acid breath"
+  {
+    #id =  "dragon acid breath"
+    symbol = "️🐲"
+    effect = Name "Acid Breath" Description "Let your fury be the last thing your enemies ever see" 
+	Area 1 Filter 
+	Enemy Chain { 
+		Acid{} 
+		Lasting 30 MELEE_VULNERABILITY 
+		Damage SPELL_DAMAGE SPELL}
+    endOnly = true
+    fx = {FLAMETHROWER ColorId YELLOW}
+    range = 5
+    cooldown = 30
+    #sound = "SPELL_FIRE_SPHERE_PET"
+  }
+  
+"dragon mind breath"
+{
+    symbol = "️🐲"
+    effect = Name "Mindrot Breath" Description "Let your fury be the last thing your enemies ever see" Area 4 Filter Enemy Chain {
+    Lasting BLIND
+    Damage SPELL_DAMAGE SPELL}
+    endOnly = true
+    fx = {FLAMETHROWER ColorId WHITE}
+    range = 5
+    cooldown = 30
+}  
+
+"dragon black fog breath"
+  {
+    #id =  "dragon black fog breath"
+    symbol = "️🐲"
+    effect = Name "Black Fog Breath" Description "Let your fury be the last thing your enemies ever see" 
+	Chain {
+	Area 4 Filter Enemy Chain {
+		Damage SPELL_DAMAGE SPELL}
+	Area 4 EmitGas "BLACK_SMOKE" 1}
+    endOnly = true
+    fx = {FLAMETHROWER ColorId BLACK}
+    range = 5
+    cooldown = 30
+    #sound = "SPELL_FIRE_SPHERE_PET"
+  }
+  
+"foul breath"
+  {
+    #id =  "foul breath"
+    symbol = "️🐲"
+    effect = Name "Foul Breath" Description "Direct choking fumes" 
+	Chain {Area 1 EmitGas "POISON_GAS" 2.5 Lasting PANIC }
+    fx = {FLAMETHROWER ColorId LIGHT_GREEN}
+    range = 5
+    cooldown = 30
+    sound = "SPELL_AIR_BLAST"
+  }
+  
+"cold breath"
+  {
+    #id =  "cold breath"
+    symbol = "️🐲"
+    effect = Name "Cold Breath" Description "Direct a chill gas to slow and sap life" 
+	Chain {Area 2 EmitGas "POISON_GAS" 0.6 Lasting SLOWED}
+    fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+    range = 5
+    cooldown = 30
+    sound = "SPELL_AIR_BLAST"
+  }
+
+"throw javelin"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(2) Name "throw javelin" Description "Throws a javelin"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage { "are hit by the javelin" "is hit by the javelin"}
+          Damage RANGED_DAMAGE SHOOT
+        },
+        CreatureMessage {"are spared by the javelin" "is spared by the javelin"}
+      )
+  range = 6
+  cooldown = 1
+  maxHits = 1
+  projectileViewId = {"javelin"}
+  message = "throw a javelin" "throws a javelin"
+  type = ABILITY
+}

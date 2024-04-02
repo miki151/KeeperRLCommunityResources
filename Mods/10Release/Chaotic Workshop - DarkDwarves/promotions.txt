@@ -1,0 +1,47 @@
+"DD_DARK_DWARF" {
+    "melee fighter" {"sword"}
+        Description "Increases max melee training level by 3."
+        {
+		  AddSpellSchool "fighter"
+          IncreaseMaxLevel DAMAGE  3
+          Filter Gender MALE SetViewId {"dark_dwarf_fighter_m"}
+          Filter Gender FEMALE SetViewId {"dark_dwarf_fighter_f"}
+        }
+
+    "archer" {"bow"}
+        Description "Increases max archery training level by 3, adds 14 ranged damage when applied for the first time."
+        {
+          Filter Not CreatureFlag "is_archer" IncreaseAttr RANGED_DAMAGE 14
+          SetCreatureFlag "is_archer" true
+          IncreaseMaxLevel RANGED_DAMAGE 3
+          AddSpellSchool "archer"
+          Filter Gender MALE SetViewId {"dark_dwarf_crossbowman_m"}
+          Filter Gender FEMALE SetViewId {"dark_dwarf_crossbowman_f"}
+        }
+    
+    "spellcaster" {"wooden_staff"}
+        Description "Increases max spell training level by 3, adds 14 spell and fire damage when applied for the first time."
+        {
+          Filter Not CreatureFlag "is_spellcaster"  {
+		  IncreaseAttr SPELL_DAMAGE 14
+		  IncreaseAttr FIRE_DAMAGE 14
+		  }
+          SetCreatureFlag "is_spellcaster" true
+          IncreaseMaxLevel SPELL_DAMAGE 3
+          AddSpellSchool "DD_DARK_DWARF"
+          Filter Gender MALE SetViewId {"dark_dwarf_mage_m"}
+          Filter Gender FEMALE SetViewId {"dark_dwarf_mage_f"}
+        }
+    
+    "artisan" {"forge"}
+        Description "Increases crafting skill for all workshops by 8"
+        {
+          IncreaseAttr "WORKSHOP" 8
+          IncreaseAttr "FORGE" 8
+          IncreaseAttr "LABORATORY" 8
+          IncreaseAttr "JEWELER" 8
+          IncreaseAttr FURNACE 8
+          Filter Gender MALE SetViewId {"dark_dwarf_blacksmith_m"}
+          Filter Gender FEMALE SetViewId {"dark_dwarf_blacksmith_f"}
+        }
+}

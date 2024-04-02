@@ -1,0 +1,307 @@
+Def TomeSpellLevel ()
+{
+Filter Not CreatureFlag "tome_training" {
+					    IncreaseMaxLevel SPELL_DAMAGE 3
+						IncreaseAttr SPELL_DAMAGE 2
+						SetCreatureFlag "tome_training" true								
+						}
+Filter CreatureFlag "tome_training" {
+                        Chance 0.05 IncreaseMaxLevel SPELL_DAMAGE 1
+						Chance 0.05 IncreaseAttr SPELL_DAMAGE 1
+					    Chance 0.05 IncreaseAttr SPELL_SPEED 1					
+						}
+}
+End
+
+"Tome_Of_Mages"
+  {
+    viewId = { "lt_book_1"}
+    shortName = "mages tome"
+    name = "tome of basic mage spells"
+    plural = "tomes of basic mage spells"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "mage"}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"Tome_Of_Elements"
+  {
+    viewId = { "lt_book_2"}
+    shortName = "tome of elements"
+    name = "tome describing elemental magic"
+    plural = "tomes describing elemental magic"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "LT_ELEMENTALIST"
+			   AddCompanion {count = 5 statsBase = SPELL_DAMAGE summonFreq = 0.1 creatures = {"FIRE_ELEMENTAL" "AIR_ELEMENTAL" "WATER_ELEMENTAL" "EARTH_ELEMENTAL"} }
+			   }
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"Tome_Of_Flames"
+  {
+    viewId = { "lt_book_3"}
+    shortName = "tome of flames"
+    name = "tome describing fire magic"
+    plural = "tomes describing fire magic"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "fire"}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"Tome_Of_Necromancer"
+  {
+    viewId = { "lt_book_4"}
+    shortName = "Necromancers tome"
+    name = "lost tome of great necromancer"
+    plural = "lost tomes of great necromancer"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "zombie mage" 
+			   AddCompanion {count = 1 statsBase = SPELL_DAMAGE summonFreq = 0.1 creatures = {"SKELETON_WARRIOR"} }
+			   }
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"Tome_Of_Witch"
+  {
+    viewId = { "lt_book_5"}
+    shortName = "Witches cookbook"
+    name = "lost cookbook of the witch"
+    plural = "lost cookbook of the witch"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "LT_WITCH" }
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"Tome_Of_Spirits"
+  {
+    viewId = { "lt_book_6"}
+    shortName = "tome of spirits"
+    name = "tome describing spiritualistic magic"
+    plural = "tomes describing spiritualistic magic"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "spiritualist"
+			   AddCompanion {count = 7 statsBase = SPELL_DAMAGE summonFreq = 0.1 creatures = {"SPIRIT"} }
+			   }
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"Tome_Of_Illusions"
+  {
+    viewId = { "lt_book_7"}
+    shortName = "tome of illusions"
+    name = "tome describing illusionary magic"
+    plural = "tomes describing illusionary magic"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "illusion"}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"Tome_Of_Chickenmancer"
+  {
+    viewId = { "lt_book_8"}
+    shortName = "dirty book with glued feathers"
+    name = "contains ramblings about chicken magic"
+    plural = "contains ramblings about chicken magic"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "chickenmancy"}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+    
+"Tome_Of_Dwarf"
+  {
+    viewId = { "lt_book_9"}
+    shortName = "brown mook with golden outline and golden axe"
+    name = "contains wisdom of dwarf magic"
+    plural = "contains wisdom of dwarf magic"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "dwarf"}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"Tome_Of_Healer"
+  {
+    viewId = { "lt_book_10"}
+    shortName = "White book with red cross"
+    name = "contains healing magic knowlenge"
+    plural = "contains healing magic knowlenge"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "healer"}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"Tome_Of_Priest"
+  {
+    viewId = { "lt_book_11"}
+    shortName = "White book with red cross"
+    name = "contains healing magic knowlenge"
+    plural = "contains healing magic knowlenge"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "LT_PRIEST"}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+    
+"Tome_Of_Shaman"
+  {
+    viewId = { "lt_book_12"}
+    shortName = "Stone tablet"
+    name = "Stone tablet carved with shamanistic wisdom"
+    plural = "Stone tablets carved with shamanistic wisdome"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "LT_SHAMAN"
+			   AddCompanion {count = 7 statsBase = SPELL_DAMAGE summonFreq = 0.1 creatures = {"SPIRIT"} }
+			   }
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+    
+"Tome_Of_Sorcerer"
+  {
+    viewId = { "lt_book_13"}
+    shortName = "Sorcerers Tome"
+    name = "book that contains lustful sorcerers secrets"
+    plural = "books that contains lustful sorcerers secrets"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "LT_SORCERER"}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+    
+"Tome_Of_Elves"
+  {
+    viewId = { "lt_book_14"}
+    shortName = "Elven Tome"
+    name = "book that contains elven secrets"
+    plural = "books that contains elven secrets"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "LT_ELF_LORD"}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+   
+"Tome_Of_Adoxie"
+  {
+    viewId = { "lt_book_14"}
+    shortName = "Adoxie Bible"
+    name = "bible containing secrets of evil god adoxie"
+    plural = "bibles containing secrets of evil god adoxie"
+    blindName = "book"
+    applyVerb = "study" "studies"
+    fragile = true
+    weight = 0.3
+    effect = { 
+			   TomeSpellLevel ()
+			   AddSpellSchool "LT_ADOXIE_PRIEST"}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }

@@ -1,0 +1,111 @@
+# Legacy content, not in vanilla anymore
+
+"ORC_VILLAGE" modify
+{
+  settlement = {
+    type = Builtin VILLAGE "BRICK"
+    tribe = GREENSKIN
+    inhabitants = {
+      fighters = {
+        count = {12 16}
+        all = {
+          8 "ORC"
+		  2 "ORC_MAGE"
+		  2 "ORC_SHAMAN"
+		  2 "ORC_HEALER"
+          2 "OGRE"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "greenskins"
+    furniture = "roomFurniture"
+    outsideFeatures = "villageOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 16
+  }
+  createOnBones = 0.1 { "DWARVES" "VILLAGE" }
+  immigrants = {
+    {
+      ids = {"ORC"}
+      traits = {FIGHTER}
+      frequency = 3
+    }
+    {
+      ids = {"OGRE"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+"ORC_CAVE" modify
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {4 9}
+        all = { 3 "ORC" 
+			    1 "ORC_SHAMAN"}
+      }
+    }
+    tribe = BANDIT
+    race = "orcs"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+  immigrants = { 
+    {
+      ids = { "ORC" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+"COTTAGE_ORCS" modify
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {4 9}
+        all = { 3 "ORC" 
+			    1 "ORC_SHAMAN"}
+      }
+    }
+    tribe = BANDIT
+    race = "orcs"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+  createOnBones = 1.0 { "ELVEN_COTTAGE" }
+  immigrants = { 
+    {
+      ids = { "ORC" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}

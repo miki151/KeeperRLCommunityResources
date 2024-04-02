@@ -1,0 +1,177 @@
+"DM_DEMONCULT_ALTAR"
+{
+  name = "summoning altar"
+  viewId = { "dm_demoncult_altar" }
+  fire = 0
+  blockMovement = true
+  canHideHere = true
+  strength = 100
+  requiresLight = false
+  #luxury = 0.5
+  lightEmission = 8.2
+  itemDrop = {{{{Simple "IronOre"} 1 { 10 20 }}}}
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DM_DEMONCULT_SHRINE"
+{
+  name = "Demon Shrine"
+  viewId = { "dm_demoncult_shrine" }
+  fire = 0
+  blockMovement = true
+  canHideHere = true
+  strength = 100
+  requiresLight = false
+  #luxury = 0.5
+  lightEmission = 8.2
+  itemDrop = {{{{Simple "IronOre"} 1 { 10 20 }}}}
+  destroyFX = { ROCK_CLOUD Rgb 120 120 120 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"ADV_FIRE_WALL"
+{
+  name = "fire"
+  viewId = { "empty" }
+  layer = CEILING
+  constructMessage = none
+  onBuilt = SET_ON_FIRE
+  burnsDownMessage = STOPS_BURNING
+  hostileSpell = true
+  fire = 20
+}
+
+"DM_ASPICIENTIS_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dm_demoncult_aspicientis_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DM_MILITUS_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dm_demoncult_militus_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DM_GULA_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dm_demoncult_gula_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DM_OBSIDIO_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dm_demoncult_obsidio_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DM_VOLANS_TERROREM_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dm_demoncult_volans_terrorem_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DM_EMISSARIUS_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dm_demoncult_emissarius_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DM_FUROR_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dm_demoncult_furor_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DM_MILES_VOLANTEM_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dm_demoncult_miles_volantem_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DM_PROMITTENS_M_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dm_demoncult_promittens_m_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DM_PROMITTENS_F_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dm_demoncult_promittens_f_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 none}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DM_BREEDING_PIT"
+{
+  name = "Pit"
+  viewId = { "mud" }
+  tickType = Effect Chance 0.05 Filter
+    And {
+      IsClosedOffPigsty
+      CanCreatureEnter
+      Area 1 Not CreatureId "DM_HUMAN_CATTLE"
+    }
+    Summon "DM_HUMAN_CATTLE" 1 1000
+  populationIncrease = { 0.25 4 true }
+}

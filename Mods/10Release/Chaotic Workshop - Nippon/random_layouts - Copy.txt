@@ -1,0 +1,352 @@
+Def NipponShrineBase01() {
+  Building("wood_wall", "wood_floor")
+  Border(BOTTOM, 1,
+    Position(MIDDLE, {1 1}, Reset("carpet", "wood_door")))
+  Inside(BOTTOM, 6,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(LEFT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "torch"))))
+  )
+  Inside(BOTTOM, 6,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(RIGHT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "torch"))))
+  )
+  Inside(TOP, 1,
+    Border(TOP, 1,
+      Position(MIDDLE, {1 1}, Set("nippon_shrine", "carpet")))
+  )
+  Inside(BOTTOM, 5,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(LEFT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "wood_floor"))))
+  )
+  Inside(BOTTOM, 5,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(RIGHT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "wood_floor"))))
+  )
+  Inside(BOTTOM, 3,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(LEFT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "nippon_bookcase"))))
+  )
+  Inside(BOTTOM, 3,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(RIGHT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "nippon_bookcase"))))
+  )
+  Inside(BOTTOM, 2,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(LEFT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "wood_floor"))))
+  )
+  Inside(BOTTOM, 2,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(RIGHT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "wood_floor"))))
+  )
+  Inside(BOTTOM, 1,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(LEFT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "torch"))))
+  )
+  Inside(BOTTOM, 1,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(RIGHT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "torch"))))
+  )
+  Inside(1, SplitV(0.6,
+  Margin(BOTTOM, 1,
+      {
+        Set("wood_wall")
+        Position(MIDDLE, {1 1}, Reset("carpet", "wood_door"))
+      },
+      {
+        Set("first_room")
+        Border(-1, Set("no_dig"))
+      }
+    ),
+    Set("second_room")
+  ))
+}
+End
+
+Def NipponShrineBase02() {
+  Building("wood_wall", "wood_floor")
+  Border(BOTTOM, 1,
+    Position(MIDDLE, {1 1}, Reset("carpet", "wood_door")))
+  Inside(BOTTOM, 3,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(LEFT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "nippon_bookcase"))))
+  )
+  Inside(BOTTOM, 3,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(RIGHT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "nippon_bookcase"))))
+  )
+  Inside(BOTTOM, 2,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(LEFT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "wood_floor"))))
+  )
+  Inside(BOTTOM, 2,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(RIGHT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "wood_floor"))))
+  )
+  Inside(BOTTOM, 1,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(LEFT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "torch"))))
+  )
+  Inside(BOTTOM, 1,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(RIGHT, 2,Reset("carpet", "carpet"),Reset("wood_floor", "torch"))))
+  )
+  Inside(TOP, 1,
+    Border(TOP, 1,
+      Position(MIDDLE, {1 1}, Set("nippon_shrine", "carpet")))
+  )
+}
+End
+
+Def NipponHouseBase01() {
+  Building("wood_wall", "wood_floor")
+  Border(BOTTOM, 1,
+  Position(MIDDLE, {1 1}, Reset("wood_floor", "wood_door")))
+  Inside(TOP, 1,
+    Border(TOP, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(LEFT, 0,Reset("wood_floor", "bed"),Reset("wood_floor", "bed"))))
+  )
+}
+End
+
+Def NipponHouseBase02() {
+  Building("wood_wall", "wood_floor")
+  Border(TOP, 1,
+  Position(MIDDLE, {1 1}, Reset("wood_floor", "wood_door")))
+  Inside(BOTTOM, 1,
+    Border(BOTTOM, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(LEFT, 0,Reset("wood_floor", "bed"),Reset("wood_floor", "bed"))))
+  )
+}
+End
+
+Def NipponHouseBase03() {
+  Building("wood_wall", "wood_floor")
+  Border(LEFT, 1,
+  Position(MIDDLE, {1 1}, Reset("wood_floor", "wood_door")))
+  Inside(RIGHT, 1,
+    Border(RIGHT, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(TOP, 0,Reset("wood_floor", "bed"),Reset("wood_floor", "bed"))))
+  )
+}
+End
+
+Def NipponHouseBase04() {
+  Building("wood_wall", "wood_floor")
+  Border(RIGHT, 1,
+  Position(MIDDLE, {1 1}, Reset("wood_floor", "wood_door")))
+  Inside(LEFT, 1,
+    Border(LEFT, 1,
+      Position(MIDDLE, {1 1}, 
+	     Margin(TOP, 0,Reset("wood_floor", "bed"),Reset("wood_floor", "bed"))))
+  )
+}
+End
+
+Def NipponHouseChoose() {
+Choose(
+NipponHouseBase01(),
+NipponHouseBase02(),
+NipponHouseBase03(),
+NipponHouseBase04()
+)
+}
+End
+
+Def Nippon_Sakuras() {
+Choose(
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_sakura_1", "none")
+    }
+    count = 1
+    minSpacing = 4
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  ),
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_sakura_2", "none")
+    }
+    count = 1
+    minSpacing = 4
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  ),
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_sakura_3", "none")
+    }
+    count = 1
+    minSpacing = 4
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  ),
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_sakura_1", "none")
+    }
+    count = 2
+    minSpacing = 4
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  ),
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_sakura_2", "none")
+    }
+    count = 2
+    minSpacing = 4
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  ),
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_sakura_3", "none")
+    }
+    count = 2
+    minSpacing = 4
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  ),
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_sakura_1", "none")
+    }
+    count = 3
+    minSpacing = 4
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  ),
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_sakura_2", "none")
+    }
+    count = 3
+    minSpacing = 4
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  ),
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_sakura_3", "none")
+    }
+    count = 3
+    minSpacing = 4
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  )
+)
+}
+End      
+  
+Def NipponShrine() {
+  Position(
+    position = MIDDLE,
+    size = {5 5}
+    generator = {
+      NipponShrineBase01()
+      Filter(AnyFloor(), Set("main_building_inside"))
+      Inside(-1, Set("main_building"))
+    }
+  )
+  Place(
+    size = {4 4}
+    generator = {
+      NipponHouseChoose()
+      Filter(AnyFloor(), Set("main_building"))
+    }
+    count = 3
+    minSpacing = 1
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  )
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_torii", "none")
+    }
+    count = 1
+    minSpacing = 1
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  )
+  Nippon_Sakuras()
+  Nippon_Sakuras()
+}
+End
+
+"nipponshrine" Choose(
+  NipponShrine(),
+)

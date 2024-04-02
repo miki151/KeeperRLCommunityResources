@@ -1,0 +1,913 @@
+"MAGEX_SHOP_LIBRARY_EVIL"
+{
+  settlement = {
+    type = Builtin MINETOWN "DUNGEON"
+    tribe = DARK_ELF
+    inhabitants = {
+      fighters = {
+        count = {8 14}
+        all = { 1 "WHITE_WIZARD" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "library"
+    shopItems = {{10 18} "library" }
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+  }
+  levelConnection = {
+    topLevel = ExtraEnemy {"MAGEX_SHOP_LIBRARY_EVIL_ENTRY"}
+    levels = {
+      { ExtraEnemy { "DUNGEON1" { 2 4 } } {40 30} BASIC }
+      { ExtraEnemy { "DUNGEON2" 1 } {40 30} BASIC }
+      { MainEnemy {60 40} MINETOWN }
+    }
+  }
+}
+
+"MAGEX_SHOP_LIBRARY_EVIL_ENTRY"
+{
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DUNGEON"
+    tribe = DARK_ELF
+    inhabitants = {
+      fighters = {
+        count = {3 7}
+        all = { 1 "WHITE_WIZARD" }
+      }
+    }
+    race = "library"
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+  }
+  discoverable = false
+}
+
+"MAGEX_SHOP_LIBRARY_LAW"
+{
+  settlement = {
+    type = Builtin MINETOWN "DUNGEON"
+    tribe = HUMAN
+    inhabitants = {
+      fighters = {
+        count = {8 14}
+        all = { 1 "WHITE_WIZARD" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "library"
+    shopItems = {{10 18} "library" }
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+  }
+  levelConnection = {
+    topLevel = ExtraEnemy {"MAGEX_SHOP_LIBRARY_LAW_ENTRY"}
+    levels = {
+      { ExtraEnemy { "DUNGEON1" { 2 4 } } {40 30} BASIC }
+      { ExtraEnemy { "DUNGEON2" 1 } {40 30} BASIC }
+      { MainEnemy {60 40} MINETOWN }
+    }
+  }
+}
+
+"MAGEX_SHOP_LIBRARY_LAW_ENTRY"
+{
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DUNGEON"
+    tribe = HUMAN
+    inhabitants = {
+      fighters = {
+        count = {3 7}
+        all = { 1 "WHITE_WIZARD" }
+      }
+    }
+    race = "library"
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+  }
+  discoverable = false
+}
+"VILLAGE"  modify 
+{
+  settlement = {
+    type = Builtin VILLAGE "WOOD"
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "KNIGHT" } }
+      fighters = {
+        count = {4 8}
+        all = {
+          2 "SQUIRE_PLAYER"
+          1 "ARCHER"
+        }
+      }
+      civilians = {
+        count = {4 8}
+        all = {
+          1 "PESEANT"
+          1 "CHILD"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+      steeds = {
+        all = { 1 "HORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    shopItems = {{8 16} "armory" }
+    furniture = "roomFurniture"
+  }
+  config = {
+    spawnGhosts = 4
+    ghostProb = 0.1
+    alwaysMount = true
+  }
+}
+
+"KNIGHTS"  modify 
+{
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "DUKE" } }
+      fighters = {
+        count = {12 17}
+        all = {
+          1 "PRIEST"
+		  2 "SQUIRE_PLAYER"
+          1 "KNIGHT"
+          1 "ARCHER"
+		  1 "MAGEX_ARCANIST_VILLAIN"
+        }
+		expLevelIncrease = {
+          SPELL_DAMAGE 10
+        }
+      }
+      civilians = {
+        count = {6 9}
+        uniques = { "FATHER_OBLIVION" }
+        all = {
+          1 "PESEANT"
+          1 "CHILD"
+          1 "DONKEY"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+      steeds = {
+        all = { 1 "WARHORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "villageShop" }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  otherEnemy = "KNIFE_COTTAGE"
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 26
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+  }
+  behaviour = {
+    minPopulation = 7
+    minTeamSize = 10
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"SQUIRE_PLAYER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"KNIGHT"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"MAGEX_ARCANIST_VILLAIN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "MINOTAUR" { 1 2 } } {40 40} MAZE }
+    }
+  }
+}
+
+"HUMAN_BLACKSMITH"  modify 
+{
+  settlement = {
+    type = RandomLayout { "blacksmith" { 8 12 } "blacksmith"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "ARTISAN" } }
+      fighters = {
+        count = {3 6}
+        all = {
+		  2 "SQUIRE_PLAYER"
+          1 "KNIGHT"
+          1 "ARCHER"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    furniture = "forge"
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = DOWN
+    levels = {
+      { ExtraEnemy { "BLACKSMITH_CELLAR" {1} } {10 10} BASIC }
+    }
+  }
+}
+
+"GUARD_POST"  modify 
+{
+  settlement = {
+    type = RandomLayout { "guard_post" { 14 14 } "default"}
+    tribe = HUMAN
+    inhabitants = {
+      fighters = {
+        count = {3 6}
+        all = {
+		  2 "SQUIRE_PLAYER"
+          1 "KNIGHT"
+          1 "ARCHER"
+        }
+      }
+      civilians = {
+        count = {1 4}
+        all = {
+          1 "COW"
+          1 "DONKEY"
+          1 "DOG"
+        }
+      }
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = UP
+    levels = {
+      { ExtraEnemy { "GUARD_POST2" {1} } {10 10} BASIC }
+      { ExtraEnemy { "GUARD_POST3" {1} } {10 10} BASIC }
+    }
+  }
+}
+
+"MAGEX_ARCANE_VILLAGE"
+{
+  settlement = {
+    type = Builtin VILLAGE "WOOD"
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "MAGEX_ARCANE_KNIGHT" } }
+      fighters = {
+        count = {4 8}
+        all = {
+          2 "MAGEX_ARCANE_SQUIRE_PLAYER"
+          1 "MAGEX_ARCANE_ARCHER"
+        }
+      }
+      civilians = {
+        count = {4 8}
+        all = {
+          1 "PESEANT"
+          1 "CHILD"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+      steeds = {
+        all = { 1 "HORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    shopItems = {{8 16} "armory" }
+    furniture = "roomFurniture"
+  }
+  config = {
+    spawnGhosts = 4
+    ghostProb = 0.1
+    alwaysMount = true
+  }
+}
+
+"MAGEX_KNIGHTS_ARCANE"  
+{
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "MAGEX_KEEPER_MAGE_ARCANE" } }
+      fighters = {
+        count = {12 17}
+        all = {
+          1 "MAGEX_ARCANE_PRIEST"
+		  2 "MAGEX_ARCANE_SQUIRE_PLAYER"
+          1 "MAGEX_ARCANE_KNIGHT"
+          1 "MAGEX_ARCANE_ARCHER"
+		  3 "MAGEX_ARCANE_ARCANIST_VILLAIN"
+        }
+		expLevelIncrease = {
+          SPELL_DAMAGE 10
+        }
+      }
+      civilians = {
+        count = {6 9}
+        uniques = { "FATHER_OBLIVION" }
+        all = {
+          1 "PESEANT"
+          1 "CHILD"
+          1 "DONKEY"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+      steeds = {
+        all = { 1 "WARHORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "villageShop" }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  otherEnemy = "KNIFE_COTTAGE"
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 26
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+  }
+  behaviour = {
+    minPopulation = 7
+    minTeamSize = 10
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"MAGEX_ARCANE_ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"MAGEX_ARCANE_SQUIRE_PLAYER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"MAGEX_ARCANE_KNIGHT"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"MAGEX_ARCANE_ARCANIST_VILLAIN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "MINOTAUR" { 1 2 } } {40 40} MAZE }
+    }
+  }
+}
+
+"MAGEX_ARCANE_BLACKSMITH"
+{
+  settlement = {
+    type = RandomLayout { "blacksmith" { 8 12 } "blacksmith"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "ARTISAN" } }
+      fighters = {
+        count = {3 6}
+        all = {
+		  2 "MAGEX_ARCANE_SQUIRE_PLAYER"
+          1 "MAGEX_ARCANE_KNIGHT"
+          1 "MAGEX_ARCANE_ARCHER"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    furniture = "forge"
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = DOWN
+    levels = {
+      { ExtraEnemy { "BLACKSMITH_CELLAR" {1} } {10 10} BASIC }
+    }
+  }
+}
+
+"MAGEX_ARCANE_GUARD_POST" 
+{
+  settlement = {
+    type = RandomLayout { "guard_post" { 14 14 } "default"}
+    tribe = HUMAN
+    inhabitants = {
+      fighters = {
+        count = {3 6}
+        all = {
+		  2 "MAGEX_ARCANE_SQUIRE_PLAYER"
+          1 "MAGEX_ARCANE_KNIGHT"
+          1 "MAGEX_ARCANE_ARCHER"
+        }
+      }
+      civilians = {
+        count = {1 4}
+        all = {
+          1 "COW"
+          1 "DONKEY"
+          1 "DOG"
+        }
+      }
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = UP
+    levels = {
+      { ExtraEnemy { "GUARD_POST2" {1} } {10 10} BASIC }
+      { ExtraEnemy { "GUARD_POST3" {1} } {10 10} BASIC }
+    }
+  }
+}
+
+
+"MAGEX_BESIEGED_GUARD_POST"
+{
+  biome = "MAGEX_BESIEGED_GRASSLAND"
+  settlement = {
+    type = RandomLayout { "guard_post" { 14 14 } "magex_ruins"}
+    tribe = GREENSKIN
+    inhabitants = {
+      fighters = {
+        count = {12 18}
+        all = {
+		  5 "GOBLIN_WARRIOR_VILLAIN"
+		  2 "TROLL_VILLAIN"
+          1 "GOBLIN_WIZARD_VILLAIN"
+          1 "GOBLIN_ARCHER_VILLAIN"
+        }
+      }
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = UP
+    levels = {
+      { ExtraEnemy { "MAGEX_BESIEGED_GUARD_POST2" {1} } {10 10} BASIC }
+      { ExtraEnemy { "MAGEX_BESIEGED_GUARD_POST3" {1} } {10 10} BASIC }
+    }
+  }
+}
+
+"MAGEX_BESIEGED_GUARD_POST2"
+{
+  settlement = {
+    type = RandomLayout { "guard_post_floor2" { 5 7 } "magex_ruin_guard_post_floor2"}
+    tribe = GREENSKIN
+  }
+}
+"MAGEX_BESIEGED_GUARD_POST3"
+{
+  settlement = {
+    type = RandomLayout { "guard_post_floor3" { 4 4 } "magex_ruins"}
+    tribe = GREENSKIN
+  }
+}
+
+"MAGEX_BESIEGED_COTTAGE"
+{
+  settlement = {
+    type = Builtin COTTAGE "MAGEX_RUINED_WOOD"
+    tribe = GREENSKIN
+    crops = Crops()
+    inhabitants = {
+      fighters = {
+        count = {3 6}
+        all = {
+		  2 "GOBLIN_WARRIOR_VILLAIN"
+          1 "GOBLIN_WIZARD_VILLAIN"
+          1 "GOBLIN_ARCHER_VILLAIN"
+        }
+      }
+    }
+    furniture = "roomFurniture"
+  }
+}
+
+"MAGEX_BESIEGED_BLACKSMITH"
+{
+  settlement = {
+    type = RandomLayout { "blacksmith" { 8 12 } "magex_ruin_blacksmith"}
+    tribe = GREENSKIN
+    inhabitants = {
+      leader = { { "TROLL_VILLAIN" } }
+      fighters = {
+        count = {3 6}
+        all = {
+		  2 "GOBLIN_WARRIOR_VILLAIN"
+          1 "GOBLIN_WIZARD_VILLAIN"
+          1 "GOBLIN_ARCHER_VILLAIN"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    furniture = "forge"
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = DOWN
+    levels = {
+      { ExtraEnemy { "BLACKSMITH_CELLAR" {1} } {10 10} BASIC }
+    }
+  }
+}
+
+
+"MAGEX_BESIEGED_WIZARD_TOWER_ENTRY"
+{
+  settlement = {
+    type = Builtin TOWER "MAGEX_RUINED_WIZARD_TOWER_FLOOR"
+    tribe = GREENSKIN
+    inhabitants = {
+      leader = { { "GOBLIN_WIZARD_VILLAIN" } }
+      fighters = {
+        count = {3 6}
+        all = {
+		  2 "GOBLIN_WARRIOR_VILLAIN"
+          1 "GOBLIN_WIZARD_VILLAIN"
+          1 "GOBLIN_ARCHER_VILLAIN"
+        }
+      }
+    }
+  }
+  discoverable = false
+}
+
+"MAGEX_BESIEGED_WIZARD_TOWER"
+{
+  settlement = {
+    type = Predefined { "wizard_tower" "FOREST" } 
+    inhabitants = {
+      leader = { { "MAGEX_GOBLIN_SHAMAN_VILLAIN" } }
+      fighters = {
+        count = {3 6}
+        all = {
+		  2 "GOBLIN_WARRIOR_VILLAIN"
+          1 "GOBLIN_ARCHER_VILLAIN"
+        }
+      }
+    }
+    tribe = GREENSKIN
+    furniture = "trees"
+  }
+  levelConnection = {
+    direction = UP
+    topLevel = ExtraEnemy { "MAGEX_BESIEGED_WIZARD_TOWER_ENTRY" }
+    levels = {
+      { MainEnemy {20 20} BASIC "A besieged wizard's tower" true }
+    }
+  }
+}
+
+
+"MAGEX_BESIEGED_KNIGHTS_ARCANE"  
+{
+  biome = "MAGEX_BESIEGED_GRASSLAND"
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "MAGEX_KEEPER_MAGE_ARCANE" } }
+      fighters = {
+        count = {15 22}
+        all = {
+          1 "MAGEX_ARCANE_PRIEST"
+		  2 "MAGEX_ARCANE_SQUIRE_PLAYER"
+          1 "MAGEX_ARCANE_KNIGHT"
+          1 "MAGEX_ARCANE_ARCHER"
+		  3 "MAGEX_ARCANE_ARCANIST_VILLAIN"
+        }
+		expLevelIncrease = {
+          SPELL_DAMAGE 10
+        }
+      }      
+      civilians = {
+        count = {3 6}
+        uniques = { "FATHER_OBLIVION" }
+        all = {
+          1 "PESEANT"
+          1 "CHILD"
+          1 "DONKEY"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+      steeds = {
+        all = { 1 "WARHORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "villageShop" }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  otherEnemy = "KNIFE_COTTAGE"
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 26
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+  }
+  behaviour = {
+    minPopulation = 7
+    minTeamSize = 10
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"MAGEX_ARCANE_ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"MAGEX_ARCANE_SQUIRE_PLAYER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"MAGEX_ARCANE_KNIGHT"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"MAGEX_ARCANE_ARCANIST_VILLAIN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "MINOTAUR" { 1 2 } } {40 40} MAZE }
+    }
+  }
+}
+
+"MAGEX_BESIEGED_KNIGHTS"
+{
+  biome = "MAGEX_BESIEGED_GRASSLAND" 
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "DUKE" } }
+      fighters = {
+        count = {15 22}
+        all = {
+          1 "PRIEST"
+		  2 "SQUIRE_PLAYER"
+          1 "KNIGHT"
+          1 "ARCHER"
+		  1 "MAGEX_ARCANIST_VILLAIN"
+        }
+		expLevelIncrease = {
+          SPELL_DAMAGE 10
+        }
+      }
+      civilians = {
+        count = {3 6}
+        uniques = { "FATHER_OBLIVION" }
+        all = {
+          1 "PESEANT"
+          1 "CHILD"
+          1 "DONKEY"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+      steeds = {
+        all = { 1 "WARHORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "villageShop" }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  otherEnemy = "KNIFE_COTTAGE"
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 26
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+  }
+  behaviour = {
+    minPopulation = 7
+    minTeamSize = 10
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"SQUIRE_PLAYER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"KNIGHT"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"MAGEX_ARCANIST_VILLAIN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "MINOTAUR" { 1 2 } } {40 40} MAZE }
+    }
+  }
+}
+
+"MAGEX_GRAVE_KNIGHTS"
+{
+  biome =  "MAGEX_SWAMP" 
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+    tribe = DARK_ELF
+    inhabitants = {
+      leader = { { "MAGEX_GRAVE_KNIGHT_DUKE" } }
+      fighters = {
+        count = {12 17}
+        all = {
+		  1 "MAGEX_GRAVE_KNIGHT"
+          3 "SKELETON_WARRIOR"
+          1 "SKELETON_ARCHER"
+        }
+		uniques = { "BONE_DRAGON" }
+		expLevelIncrease = {
+          DAMAGE 10
+          SPELL_DAMAGE 10
+          RANGED_DAMAGE 10
+        }
+      }
+      civilians = {
+        count = {3 6}
+
+        all = {
+          1 "RAT"
+        }
+      }
+      steeds = {
+        all = { 10 "SKELETON_WOLF" }
+      }
+    }
+    locationNameGen = "EVIL_TOWN_GK"
+    race = "grave knight"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {
+        {10 15} "villageShop" 
+        {10 15} "grave knight"
+    }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  otherEnemy = "CEMETERY"
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 26
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+  }
+  behaviour = {
+    minPopulation = 7
+    minTeamSize = 10
+    ambushChance = 0.05
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"MAGEX_GRAVE_KNIGHT"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+    {
+      ids = {"SKELETON_ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"SKELETON_WARRIOR"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "DUNGEON1" { 1 3 } } {60 40} BASIC }
+    }
+  }
+}

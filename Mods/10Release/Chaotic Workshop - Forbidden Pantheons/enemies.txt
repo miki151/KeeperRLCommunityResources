@@ -1,0 +1,1687 @@
+
+####################################
+######### Endless Growth   #########
+####################################
+
+"EG_VESSEL"
+{
+  biome = "Cult_Forest_Growth"
+  settlement = {
+    type = RandomLayout { "adoxie_temple" { 30 20 } "eg_flesh"}
+    tribe = MONSTER
+    furniture = "eg_vessel_furniture"
+    shopItems = {{5 10} "eg_gore_dungeon" }
+    inhabitants = {
+      leader = { { "EG_GORE_VESSEL_VILLIAN" } }
+      fighters = {
+        count = {4 5}
+        all = { 1 "EG_GORE_FLESHWRAITH_ADV" }
+      }
+    }
+  }
+  config = {
+    immigrantInterval = 500
+    maxPopulation = 15
+    canEnemyRetire = false
+    prisoners = true
+  }
+  levelConnection = {
+    topLevel = ExtraEnemy {"EG_VESSEL_UPSIDE"}
+    levels = {
+      { ExtraEnemy { "EG_VESSEL_DUNGEON1" { 1 2 } } {40 30} BASIC }
+      { ExtraEnemy { "EG_VESSEL_DUNGEON2" { 1 2} } {40 30} BASIC }
+      { MainEnemy {32 22} BASIC "Main Hall" }
+    }
+  }
+}
+
+"EG_VESSEL_DUNGEON1"
+{
+  discoverable = false
+  settlement = {
+    type = RandomLayout { "dungeon" { 38 28 } "eg_flesh"}
+    tribe = MONSTER
+    furniture = "eg_vessel_furniture"
+    shopItems = {{5 10} "eg_gore_dungeon" }
+    inhabitants = {
+      fighters = {
+        count = {12 17}
+        all = {
+          1 "EG_GORE_SPAWN"
+          1 "EG_GORE_REBORN"
+          1 "EG_GORE_TREE"
+          1 "EG_GORE_FAMILLIAR"
+          1 "EG_GORE_CRAWLER"
+        }
+      }
+      civilians = {
+        count = {6 9}
+        all = {
+          1 "EG_GORE_TUMOR"
+        }
+      }
+    }
+  }
+  config = {
+    prisoners = true
+  }
+}
+
+"EG_VESSEL_DUNGEON2"
+{
+  discoverable = false
+  settlement = {
+    type = RandomLayout { "dungeon" { 38 28 } "eg_flesh"}
+    tribe = MONSTER
+    furniture = "eg_vessel_furniture"
+    shopItems = {{5 10} "eg_gore_dungeon" }
+    inhabitants = {
+      fighters = {
+        count = {12 17}
+        all = {
+          1 "EG_GORE_SPAWN_UPGRADE"
+          1 "EG_GORE_REBORN_UPGRADE"
+          1 "EG_GORE_TREE_UPGRADE"
+          1 "EG_GORE_FAMILLIAR_UPGRADE"
+          1 "EG_GORE_CRAWLER_UPGRADE"
+        }
+      }
+      civilians = {
+        count = {6 9}
+        all = {
+          1 "EG_GORE_TUMOR"
+        }
+      }
+    }
+  }
+  config = {
+    prisoners = true
+  }
+}
+"EG_VESSEL_UPSIDE"
+{
+  discoverable = false
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "eg_flesh"}
+    tribe = MONSTER
+    furniture = "eg_vessel_furniture"
+    shopItems = {{5 10} "eg_gore_dungeon" }
+    inhabitants = {
+      fighters = {
+        count = {12 17}
+        all = {
+          1 "EG_GORE_SPAWN"
+          1 "EG_GORE_REBORN"
+          1 "EG_GORE_TREE"
+          1 "EG_GORE_FAMILLIAR"
+          1 "EG_GORE_CRAWLER"
+        }
+      }
+      civilians = {
+        count = {6 9}
+        all = {
+          1 "EG_GORE_TUMOR"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "growth"
+  }
+  config = {
+    prisoners = true
+  }
+}
+
+"EG_VILLAGE"
+{
+  settlement = {
+    type = Builtin VILLAGE "WOOD"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "EG_CULTIST_RITUALIST" } }
+      fighters = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST_DEFENDER"
+          1 "EG_CULTIST_DEFENDER_F"
+		  1 "EG_CULTIST_ARCHER"
+          1 "EG_CULTIST_ARCHER_F"
+        }
+      }
+      civilians = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST"
+          1 "EG_CULTIST_F"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    shopItems = {{8 16} "armory" }
+    furniture = "roomFurniture"
+  }
+  config = {
+    spawnGhosts = 4
+    ghostProb = 0.1
+    alwaysMount = true
+  }
+}
+
+"EG_VILLAGE_FLESHY"
+{
+  settlement = {
+    type = Builtin VILLAGE "EG_WOOD"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "EG_CULTIST_RITUALIST" } }
+      fighters = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST_DEFENDER"
+          1 "EG_CULTIST_DEFENDER_F"
+		  1 "EG_CULTIST_ARCHER"
+          1 "EG_CULTIST_ARCHER_F"
+        }
+      }
+      civilians = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST"
+          1 "EG_CULTIST_F"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    shopItems = {{8 16} "armory" }
+    furniture = "roomFurniture"
+  }
+  config = {
+    spawnGhosts = 4
+    ghostProb = 0.1
+    alwaysMount = true
+  }
+}
+
+"EG_VILLAGE_FLESHY_MAP"
+{
+  biome =  "Cult_Forest_Growth" 
+  settlement = {
+    type = Builtin VILLAGE "EG_WOOD"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "EG_CULTIST_RITUALIST" } }
+      fighters = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST"
+          1 "EG_CULTIST_F"
+          100 "EG_CULTIST_DEFENDER"
+          100 "EG_CULTIST_DEFENDER_F"
+		  100 "EG_CULTIST_ARCHER"
+          100 "EG_CULTIST_ARCHER_F"
+        }
+      }
+      civilians = {
+        count = {4 8}
+        all = {
+          1 "EG_GORE_TUMOR"
+          1 "EG_GORE_CRAWLER"
+          1 "EG_GORE_FAMILLIAR"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    shopItems = {{8 16} "armory" }
+    furniture = "roomFurniture"
+  }
+  config = {
+    spawnGhosts = 4
+    ghostProb = 0.1
+    alwaysMount = true
+  }
+}
+
+"EG_VILLAGE_GROWTH_MAP"
+{
+  biome =  "Cult_Forest_Growth" 
+  settlement = {
+    type = Builtin VILLAGE "EG_WOOD"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "EG_CULTIST_RITUALIST_UPGRADE" } }
+      fighters = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST_UPGRADE"
+          1 "EG_CULTIST_F_UPGRADE"
+          100 "EG_CULTIST_DEFENDER_UPGRADE"
+          100 "EG_CULTIST_DEFENDER_F_UPGRADE"
+		  100 "EG_CULTIST_ARCHER_UPGRADE"
+          100 "EG_CULTIST_ARCHER_F_UPGRADE"
+        }
+      }
+      civilians = {
+        count = {4 8}
+        all = {
+          1 "EG_GORE_TUMOR"
+          1 "EG_GORE_CRAWLER"
+          1 "EG_GORE_FAMILLIAR"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "eldrich growth"
+    shopItems = {{8 16} "armory" }
+    furniture = "roomFurniture"
+  }
+  config = {
+    spawnGhosts = 4
+    ghostProb = 0.1
+    alwaysMount = true
+  }
+}
+
+"EG_VILLAGE_GROWTH"
+{
+  biome =  "Cult_Forest_Growth" 
+  settlement = {
+    type = Builtin VILLAGE "EG_WOOD"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "EG_CULTIST_RITUALIST_UPGRADE" } }
+      fighters = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST_DEFENDER_UPGRADE"
+          1 "EG_CULTIST_DEFENDER_F_UPGRADE"
+		  1 "EG_CULTIST_ARCHER_UPGRADE"
+          1 "EG_CULTIST_ARCHER_F_UPGRADE"
+        }
+      }
+      civilians = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST_UPGRADE"
+          1 "EG_CULTIST_F_UPGRADE"
+          1 "EG_GORE_TUMOR"
+          1 "EG_GORE_CRAWLER"
+          1 "EG_GORE_FAMILLIAR"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "eldrich growth"
+    shopItems = {{8 16} "armory" }
+    furniture = "roomFurniture"
+  }
+  config = {
+    spawnGhosts = 4
+    ghostProb = 0.1
+    alwaysMount = true
+  }
+}
+  
+"EG_GRAND_VILLAGE"
+{
+  biome =  "Cult_Forest" 
+  settlement = {
+    type = Builtin VILLAGE "BRICK"
+    tribe = MONSTER
+    inhabitants = {
+      leader = {
+        id = { "EG_GORE_VESSEL" }
+        expLevelIncrease = {  DAMAGE 3 
+							  SPELL_DAMAGE 6}
+      }
+      fighters = {
+        count = {12 16}
+        all = {
+          4 "EG_CULTIST_DEFENDER"
+		  4 "EG_CULTIST_DEFENDER_F"
+		  2 "EG_CULTIST_ARCHER"
+          2 "EG_CULTIST_ARCHER_F"
+		  1 "EG_CULTIST_RITUALIST"
+          1 "EG_CULTIST_RITUALIST_F"
+        }
+		uniques = { "EG_GORE_BEAST" }
+        expLevelIncrease = {
+          DAMAGE 6
+          SPELL_DAMAGE 6
+          RANGED_DAMAGE 6
+        }
+      }
+	  civilians = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST"
+          1 "EG_CULTIST_F"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+	  steeds = {
+        all = { 1 "HORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "greenskins"
+    furniture = "roomFurniture"
+    outsideFeatures = "villageOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 16
+  }
+  behaviour = {
+    ambushChance = 0.1
+    minPopulation = 0
+    minTeamSize = 8
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+  createOnBones = 0.1 { "DWARVES" "VILLAGE" }
+  immigrants = {
+    {
+      ids = {"EG_CULTIST_DEFENDER"}
+      traits = {FIGHTER}
+      frequency = 3
+    }
+	{
+      ids = {"EG_CULTIST_DEFENDER_F"}
+      traits = {FIGHTER}
+      frequency = 3
+    }
+  }
+} 
+ 
+"EG_MINOR_CULT_VILLAGE"
+{
+  biome =  "Cult_Forest" 
+  settlement = {
+    type =  RandomLayout { "village" { 20 15 } "village"}
+    tribe = MONSTER
+    inhabitants = {
+      leader = {
+        id = { "EG_CULTIST" }
+      }
+	  civilians = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST"
+          1 "EG_CULTIST_F"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+	  steeds = {
+        all = { 1 "HORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "cultists"
+    furniture = "roomFurniture"
+    outsideFeatures = "villageOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 16
+  }
+} 
+ 
+"EG_MINOR_CULT_VILLAGE_FLESHY"
+{
+  biome =  "Cult_Forest" 
+  settlement = {
+    type =  RandomLayout { "village" { 20 15 } "eg_flesh_village"}
+    tribe = MONSTER
+    inhabitants = {
+      leader = {
+        id = { "EG_CULTIST" }
+      }
+	  civilians = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST"
+          1 "EG_CULTIST_F"
+          1 "DONKEY"
+          1 "HORSE"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+	  steeds = {
+        all = { 1 "HORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "cultists"
+    furniture = "roomFurniture"
+    outsideFeatures = "villageOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 16
+  }
+} 
+
+"EG_GRAND_VILLAGE_GROWTH"
+{
+  biome =  "Cult_Forest_Growth" 
+  settlement = {
+    type = Builtin VILLAGE "BRICK"
+    tribe = MONSTER
+    inhabitants = {
+      fighters = {
+        count = {12 16}
+        all = {
+          1 "EG_CULTIST_DEFENDER_UPGRADE"
+          1 "EG_CULTIST_DEFENDER_F_UPGRADE"
+		  1 "EG_CULTIST_ARCHER_UPGRADE"
+          1 "EG_CULTIST_ARCHER_F_UPGRADE"
+		  1 "EG_CULTIST_RITUALIST_UPGRADE"
+          1 "EG_CULTIST_RITUALIST_F_UPGRADE"
+        }
+		uniques = { "EG_GORE_BEAST" }
+        expLevelIncrease = {
+          DAMAGE 12
+          SPELL_DAMAGE 12
+          RANGED_DAMAGE 12
+        }
+      }
+      civilians = {
+        count = {4 8}
+        all = {
+          1 "EG_CULTIST_UPGRADE"
+          1 "EG_CULTIST_F_UPGRADE"
+          1 "EG_GORE_TUMOR"
+          1 "EG_GORE_CRAWLER"
+          1 "EG_GORE_FAMILLIAR"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "greenskins"
+    furniture = "roomFurniture"
+    outsideFeatures = "villageOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 16
+  }
+  behaviour = {
+    ambushChance = 0.1
+    minPopulation = 0
+    minTeamSize = 8
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+  createOnBones = 0.1 { "DWARVES" "VILLAGE" }
+  immigrants = {
+    {
+      ids = {"EG_CULTIST_DEFENDER_UPGRADE"}
+      traits = {FIGHTER}
+      frequency = 3
+    }
+	{
+      ids = {"EG_CULTIST_DEFENDER_F_UPGRADE"}
+      traits = {FIGHTER}
+      frequency = 3
+    }
+  }
+}
+
+"EG_MAYOR_GORE_DEN"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {4 9}
+        all = {
+          50 "EG_GORE_TREE"
+		  50 "EG_GORE_REBORN"
+		  50 "EG_GORE_SPAWN"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "eldrich growth"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  immigrants = { 
+    {
+      ids = { "EG_GORE_TREE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+	{
+      ids = { "EG_GORE_REBORN" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+	{
+      ids = { "EG_GORE_SPAWN" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 5
+    attackBehaviour = KillLeader
+  }
+}
+
+"EG_MAYOR_GORE_DEN_FLESHY"
+{
+  settlement = {
+    type = Builtin CAVE "EG_FLESH"
+    inhabitants = {
+      fighters = {
+        count = {4 9}
+        all = {
+          25 "EG_GORE_TREE"
+		  75 "EG_GORE_REBORN"
+		  50 "EG_GORE_SPAWN"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "eldrich growth"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  immigrants = { 
+    {
+      ids = { "EG_GORE_TREE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+	{
+      ids = { "EG_GORE_REBORN" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+	{
+      ids = { "EG_GORE_SPAWN" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 5
+    attackBehaviour = KillLeader
+  }
+}
+
+"EG_GORE_BEAST_DEN"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = { { "EG_GORE_BEAST" } }
+    }
+    tribe = MONSTER
+    race = "eldrich growth"
+  }
+  config = {
+    leaderAsFighter = true
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    attackBehaviour = KillLeader
+  }
+}
+
+"EG_GORE_BEAST_DEN_FLESHY"
+{
+  settlement = {
+    type = Builtin CAVE "EG_FLESH"
+    inhabitants = {
+      leader = { { "EG_GORE_BEAST" } }
+    }
+    tribe = MONSTER
+    race = "eldrich growth"
+  }
+  config = {
+    leaderAsFighter = true
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    attackBehaviour = KillLeader
+  }
+}
+
+"EG_MINOR_GORE_DEN"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {4 9}
+        all = {
+		  100  "EG_GORE_CRAWLER"
+		  50  "EG_GORE_FAMILLIAR"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "eldrich growth"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  immigrants = { 
+    {
+      ids = { "EG_GORE_CRAWLER" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "EG_GORE_FAMILLIAR" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"EG_MINOR_GORE_DEN_FLESHY"
+{
+  settlement = {
+    type = Builtin CAVE "EG_FLESH"
+    inhabitants = {
+      fighters = {
+        count = {4 9}
+        all = {
+		  100  "EG_GORE_CRAWLER"
+		  50  "EG_GORE_FAMILLIAR"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "eldrich growth"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  immigrants = { 
+    {
+      ids = { "EG_GORE_CRAWLER" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "EG_GORE_FAMILLIAR" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+
+"GORE KRAKEN"
+{
+  settlement = {
+    type = Builtin MOUNTAIN_LAKE "DUNGEON"
+	inhabitants = {
+      leader = { { "EG_GORE_KRAKEN" } }
+    }
+    tribe = MONSTER
+    race = "kraken"
+    furniture = "eg_kraken"
+    dontBuildRoad = true
+    closeToPlayer = true
+  }
+  config = {
+    conquerCondition = NEVER
+  }
+}
+
+"EG_MOUNTAINTOP_FOUNTAIN"
+{
+  settlement = {
+    type = Builtin EMPTY "EG_FLESH"
+    inhabitants = {
+      leader = {{"EG_ALTARSPAWN"}}
+	  fighters = {
+        count = {4 5}
+        all = { 1 "EG_GORE_FLESHWRAITH" }
+      }
+    }
+    tribe = MONSTER
+    race = "altar"
+  }
+}
+
+####################################
+#########  From the Depths #########
+####################################
+
+"FTD_PIRATES"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = {{ "FTD_PIRATE_CAPTAIN" }}
+      fighters = {
+        count = {4 9}
+        all = { 1 "FTD_PIRATE" }
+      }
+    }
+    tribe = BANDIT
+    race = "bandits"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_PIRATE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_COTTAGE_PIRATES" inherit "FTD_PIRATES"
+{
+  createOnBones = 1.0 { "HUMAN_COTTAGE" }
+}
+
+"FTD_PIRATES_MAP"
+{
+  biome = "FTD_GREAT_LAKE"
+  settlement = {
+    type = Builtin CAVE "FTD_FLOODED_CAVE"
+    inhabitants = {
+      leader = {{ "FTD_PIRATE_CAPTAIN" }}
+      fighters = {
+        count = {4 9}
+        all = { 1 "FTD_PIRATE" }
+      }
+    }
+    tribe = BANDIT
+    race = "bandits"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_PIRATE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_DEEP_ONES_LESSER"
+{
+  biome = "FTD_GREAT_LAKE"
+  settlement = {
+    type = Builtin CAVE "FTD_FLOODED_CAVE"
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE" } }
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "FTD_DEEP_ONE"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "deep ones"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_DEEP_ONES_LESSER_MAP"
+{
+  biome = "FTD_GREAT_LAKE"
+  settlement = {
+    type = Builtin CAVE "FTD_FLOODED_CAVE"
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE" } }
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "FTD_DEEP_ONE"
+        }
+      }
+    }
+    tribe = MONSTER
+    race = "deep ones"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_HYBRID_COTTAGE"
+{
+  settlement = {
+    type = Builtin COTTAGE "WOOD"
+    tribe = MONSTER
+    crops = Crops()
+    inhabitants = {
+	  leader = { { "FTD_DEEP_ONE_HYBRID" } }
+      fighters = {
+        count = {2 4}
+        all = { 1 "FTD_DEEP_ONE_HYBRID" }
+      }
+      civilians = {
+        count = {3 7},
+        all = {
+          1 "HORSE"
+          1 "DONKEY"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    race = "humans"
+    furniture = "roomFurniture"
+  }
+}
+
+"FTD_HYBRID_COTTAGE_MAP"
+{
+  biome = "FTD_GREAT_LAKE"
+  settlement = {
+    type = Builtin COTTAGE "WOOD"
+    tribe = MONSTER
+    crops = Crops()
+    inhabitants = {
+	  leader = { { "FTD_DEEP_ONE_HYBRID" } }
+      fighters = {
+        count = {2 4}
+        all = { 1 "FTD_DEEP_ONE_HYBRID" }
+      }
+      civilians = {
+        count = {3 7},
+        all = {
+          1 "HORSE"
+          1 "DONKEY"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    race = "humans"
+    furniture = "roomFurniture"
+  }
+}
+
+"FTD_CRUSTACEAN_CAVE_LESSER_MAP"
+{
+  biome = "FTD_GREAT_LAKE"
+  settlement = {
+    type = Builtin CAVE "FTD_FLOODED_CAVE"
+    inhabitants = {
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "FTD_CRUSTACEAN_CRAB"
+          1 "FTD_CRUSTACEAN_LOBSTER"
+        }
+      }
+    }
+    tribe = MONSTER
+	furniture = "roomFurniture"
+    race = "deep ones"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_CRUSTACEAN_CAVE_LESSER"
+{
+  biome = "FTD_GREAT_LAKE"
+  settlement = {
+    type = Builtin CAVE "FTD_FLOODED_CAVE"
+    inhabitants = {
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "FTD_CRUSTACEAN_CRAB"
+          1 "FTD_CRUSTACEAN_LOBSTER"
+        }
+      }
+    }
+    tribe = MONSTER
+	furniture = "roomFurniture"
+    race = "deep ones"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+    behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+  immigrants = { 
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_DEEP_ONES_ENEMY"
+{
+  biome = "FTD_GREAT_LAKE" 
+  settlement = {
+    type = Builtin MINETOWN "FTD_FLOODED_CAVE"
+    tribe = MONSTER
+    race = "Deep Ones"
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE_ANCIENT" } }
+      fighters = {
+        count = {12 18}
+        all = {
+		  3 "FTD_DEEP_ONE"
+          1 "FTD_DEEP_ONE_HYBRID_FERAL"
+		  }
+      }
+    }
+    locationNameGen = "TOWN"
+    outsideFeatures = "dungeonOutside"
+  }
+  config = {
+    immigrantInterval = 500
+    maxPopulation = 15
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 3
+    minTeamSize = 4
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillMembers 3
+    ransom = 0.8 320
+  }
+  levelConnection = {
+    topLevel = ExtraEnemy {"MAIN_DUNGEON_ENTRY"}
+    levels = {
+      { ExtraEnemy { "FTD_DEEP_ONES_CAVE_FLOOR" { 2 4 } } {60 40} BASIC }
+      { ExtraEnemy { "FTD_DEEP_ONES_CAVE_FLOOR" { 1 2 } } {60 40} BASIC }
+      { MainEnemy {60 40} MINETOWN }
+    }
+  }
+  immigrants = {
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_DEEP_ONES_CAVE_FLOOR"
+{
+  discoverable = false
+  settlement = {
+    type = RandomLayout { "dungeon" { 38 28 } "ftd_flood_cavern"}
+    tribe = MONSTER
+    furniture = "roomFurniture"
+    shopItems = {{5 10} "dungeon" }
+    inhabitants = {
+      fighters = {
+        count = {10 15}
+        all = {
+		  6 "FTD_GIANT_CRAB"
+          4 "FTD_DRODGHER"
+          2 "FTD_CRUSTACEAN_CRAB"
+          2 "FTD_CRUSTACEAN_LOBSTER"
+        }
+      }
+    }
+  }
+}
+
+"FTD_DEEP_ONES_ALLY"
+{
+  biome = "FTD_GREAT_LAKE" 
+  settlement = {
+    type = Builtin MINETOWN "FTD_FLOODED_CAVE"
+    tribe = GREENSKIN
+    race = "Deep Ones"
+    inhabitants = {
+      leader = { { "FTD_DEEP_ONE_ANCIENT" } }
+      fighters = {
+        count = {12 18}
+        all = {
+		  3 "FTD_DEEP_ONE"
+          1 "FTD_DEEP_ONE_HYBRID_FERAL"
+		  }
+      }
+    }
+    locationNameGen = "TOWN"
+    outsideFeatures = "dungeonOutside"
+  }
+  config = {
+    immigrantInterval = 500
+    maxPopulation = 15
+    prisoners = true
+  }
+  levelConnection = {
+    topLevel = ExtraEnemy {"MAIN_DUNGEON_ENTRY"}
+    levels = {
+      { ExtraEnemy { "FTD_DEEP_ONES_CAVE_FLOOR" { 2 4 } } {60 40} BASIC }
+      { ExtraEnemy { "FTD_DEEP_ONES_CAVE_FLOOR" { 1 2 } } {60 40} BASIC }
+      { MainEnemy {60 40} MINETOWN }
+    }
+  }
+  immigrants = {
+    {
+      ids = { "FTD_DEEP_ONE" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+
+"FTD_CRUSTACEAN_CAVE"
+{
+  biome = "FTD_GREAT_LAKE" 
+  settlement = {
+    type = Builtin MINETOWN "FTD_FLOODED_CAVE"
+    tribe = HOSTILE
+    race = "Crustacean horde"
+    inhabitants = {
+      leader = { { "FTD_CRUSTACEAN_CRAB_BEHEMOTH" } }
+      fighters = {
+        count = {12 18}
+        all = {
+		  3 "FTD_CRUSTACEAN_CRAB"
+          3 "FTD_CRUSTACEAN_LOBSTER"
+		  }
+      }
+    }
+    locationNameGen = "TOWN"
+    outsideFeatures = "dungeonOutside"
+  }
+  config = {
+    immigrantInterval = 500
+    maxPopulation = 15
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 3
+    minTeamSize = 4
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillMembers 3
+    ransom = 0.8 320
+  }
+  levelConnection = {
+    topLevel = ExtraEnemy {"MAIN_DUNGEON_ENTRY"}
+    levels = {
+      { ExtraEnemy { "FTD_DEEP_ONES_CAVE_FLOOR" { 2 4 } } {60 40} BASIC }
+      { ExtraEnemy { "FTD_DEEP_ONES_CAVE_FLOOR" { 1 2 } } {60 40} BASIC }
+      { MainEnemy {60 40} MINETOWN }
+    }
+  }
+  immigrants = {
+    {
+      ids = { "FTD_CRUSTACEAN_CRAB" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "FTD_CRUSTACEAN_LOBSTER" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+"FTD_CASTLE"
+{
+  biome = "FTD_GREAT_LAKE" 
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "ftd_flood_cavern"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = {
+        id = {"FTD_DEEP_ONE_FIRSTBORN_NPC"}
+        expLevelIncrease = { SPELL_DAMAGE 12 }
+      }
+      fighters = {
+        count = {12 17}
+		uniques = { "FTD_DEEP_ONE"  "FTD_DEEP_ONE"  "FTD_DEEP_ONE"  "FTD_DEEP_ONE"  "FTD_DEEP_ONE_ANCIENT" }
+        all = {
+          6 "FTD_DEEP_ONE_HYBRID_ENFONCER"
+          6 "FTD_DEEP_ONE_HYBRID_ARCHER"
+          4 "FTD_DEEP_ONE_HYBRID_APOTHECARY"
+        }
+        expLevelIncrease = { SPELL_DAMAGE 6 }
+      }
+      civilians = {
+        count = {6 9}
+        all = {
+          10 "FTD_DEEP_PESEANT"
+          5 "FTD_DEEP_ONE_HYBRID"
+        }
+      }
+      steeds = {
+        count = {2 4}
+        all = { 1 "FTD_GIANT_CRAB" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "deep ones"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "ftd_deep_ones" }
+    furniture = "ftd_castleFurniture"
+    outsideFeatures = "ftd_dungeonOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 36
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+    prisoners = true
+  }
+  behaviour = {
+    duelChance = 1.0
+    minPopulation = 7
+    minTeamSize = 10
+    ambushChance = 0.05
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"FTD_DEEP_ONE_HYBRID_ENFONCER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"FTD_DEEP_ONE_HYBRID_ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+####################################
+#########     Cosmos       #########
+####################################
+
+"CS_DRAINED_DEN"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {4 9}
+        all = {
+			50 "CS_DRAINED_BEAST"
+			1 "CS_DRAINED_HUMAN" 
+			1 "CS_DRAINED_GREENSKIN" 
+			1 "CS_DRAINED_DWARF" 
+			1 "CS_DRAINED_ELF" 
+        }
+      }
+    }
+    tribe = BANDIT
+    race = "wolves"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  immigrants = {
+    {
+      ids = { "CS_DRAINED_BEAST" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 5
+    attackBehaviour = KillLeader
+  }
+}
+
+"CS_COTTAGE_CULT"
+{
+  settlement = {
+    type = Builtin COTTAGE "BRICK"
+    tribe = BANDIT
+    crops = Crops()
+    inhabitants = {
+      fighters = {
+        count = {4 9}
+        all = { 1 "CS_CULTIST" }
+      }
+	  
+    }
+    race = "cultists"
+    furniture = "roomFurniture"
+  }
+  config = {
+    alwaysMount = true
+  }
+}
+
+"CS_COTTAGE"
+{
+  biome = "CS_MOUNTAIN"
+  settlement = {
+    type = Builtin COTTAGE "BRICK"
+    tribe = BANDIT
+    crops = Crops()
+    inhabitants = {
+      fighters = {
+        count = {1 3}
+        uniques = { "CS_CULTIST" "CS_CULTIST" "CS_CULTIST" }
+        all = { 
+					1 "CS_DRAINED_HUMAN" 
+					1 "CS_DRAINED_GREENSKIN" 
+					1 "CS_DRAINED_DWARF" 
+					1 "CS_DRAINED_ELF" 
+					1 "CS_DRAINED_BEAST" 
+			}
+      }
+    }
+    race = "cultists"
+    furniture = "roomFurniture"
+  }
+  config = {
+    alwaysMount = true
+  }
+}
+
+
+"CS_CULT_FORT"
+{
+  biome = "CS_MOUNTAIN"
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+    tribe = BANDIT
+    inhabitants = {
+      leader = { { "CS_CULTIST_RITUALIST" } }
+      fighters = {
+        count = {4 6}
+        uniques = { "CS_CULTIST_DEFENDER"
+					"CS_CULTIST_DEFENDER" 
+					"CS_CULTIST_DEFENDER_F" 
+					"CS_CULTIST_ARCHER"
+					"CS_CULTIST_ARCHER" 
+					"CS_CULTIST_ARCHER_F" 
+					}
+        all = { 
+					1 "CS_DRAINED_HUMAN" 
+					1 "CS_DRAINED_GREENSKIN" 
+					1 "CS_DRAINED_DWARF" 
+					1 "CS_DRAINED_ELF" 
+					1 "CS_DRAINED_BEAST" 
+			}
+      }
+      civilians = {
+        count = {6 9}
+        all = {
+          1 "CS_CULTIST"
+          1 "CS_CULTIST_F"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "cultists"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    guardianInfo = "WITCHMAN" 0.003 1 2
+    immigrantInterval = 600
+    maxPopulation = 10
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 2
+    minTeamSize = 5
+    ambushChance = 0.05
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"CS_DRAINED_HUMAN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"CS_DRAINED_GREENSKIN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"CS_DRAINED_DWARF"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"CS_DRAINED_ELF"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"CS_DRAINED_BEAST"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+"CS_TOWER_ENTRY"
+{
+  settlement = {
+    inhabitants = {
+      fighters = {
+        count = {3 6}
+        all = {
+          10 "CS_DRAINED_HUMAN"
+          10 "CS_DRAINED_GREENSKIN"
+          10 "CS_DRAINED_DWARF"
+          10 "CS_DRAINED_ELF"
+          10 "CS_DRAINED_BEAST"
+          1 "CS_ELEMENTAL"
+        }
+      }
+    }
+    type = Builtin TOWER "CS_BRICK"
+    tribe = BANDIT
+  }
+  discoverable = false
+}
+
+"CS_TOWER_FLOOR"
+{
+  settlement = {
+    inhabitants = {
+      fighters = {
+        count = {1 3}
+        all = {
+          4 "CS_COSMOS_LIGHT"
+          3 "CS_STAR_VAMPIRE"
+          1 "CS_COSMOS_BEAST"
+        }
+      }
+    }
+    type = Builtin TOWER "CS_BRICK"
+    tribe = BANDIT
+  }
+  discoverable = false
+}
+
+"CS_TOWER"
+{
+  biome = "CS_MOUNTAIN"
+  settlement = {
+    type = Builtin TOWER "CS_BRICK"
+	
+    inhabitants = {
+      leader = {
+        id = {"CS_COSMOS_PROPHET_EVO_3"}
+        expLevelIncrease = { SPELL_DAMAGE 12 }
+      }
+      fighters = {
+        count = {1 3}
+        all = {
+          4 "CS_COSMOS_LIGHT"
+          3 "CS_STAR_VAMPIRE"
+          1 "CS_COSMOS_BEAST"
+        }
+      }
+    }
+    tribe = BANDIT
+    furniture = "roomFurniture"
+  }
+  config = {
+    leaderAsFighter = true
+  }
+  levelConnection = {
+    direction = UP
+    topLevel = ExtraEnemy { "CS_TOWER_ENTRY" }
+    levels = {
+      { ExtraEnemy { "CS_TOWER_FLOOR" { 3 6 }} {4 4} TOWER }
+      { MainEnemy {5 5} TOWER }
+    }
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      NumConquered 3
+      FinishOff
+      Proximity
+    }
+    attackBehaviour = CampAndSpawn {
+      count = {6 14}
+      all = {
+        4 "CS_COSMOS_LIGHT"
+        2 "CS_STAR_VAMPIRE"
+        1 "CS_COSMOS_BEAST"
+      }
+    }
+    ransom = 0.5 80
+  }
+}
+
+"NO_AGGRO_DRAINED_COTTAGE"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {4 9}
+        all = { 1 "CS_DRAINED_HUMAN" 
+				1 "CS_DRAINED_GREENSKIN" 
+				1 "CS_DRAINED_DWARF" 
+				1 "CS_DRAINED_ELF" }
+      }
+    }
+    tribe = BANDIT
+    race = "drained"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+    prisoners = true
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+  immigrants = {
+    {
+      ids = { "CS_DRAINED_HUMAN" "CS_DRAINED_GREENSKIN" "CS_DRAINED_DWARF" "CS_DRAINED_ELF" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
+####################################
+#########   YELLOW SIGN    #########
+####################################
+
+"YS_COTTAGE"
+{
+  biome = "FOREST"
+  settlement = {
+    type = Builtin FORREST_COTTAGE "WOOD"
+    tribe = LIZARD
+    inhabitants = {
+      leader = { { "YS_ACTOR" } }
+      fighters = {
+        count = {3 4}
+        all = { 1 "YS_CULTIST" }
+      }
+      civilians = {
+        count = {1 4}
+        all = {
+          1 "HORSE"
+          1 "COW"
+          1 "DOG"
+        }
+      }
+    }
+    race = "cultists"
+    furniture = "roomFurniture"
+  }
+  config = {
+    prisoners = true
+  }
+}

@@ -1,0 +1,71 @@
+Def WorldMapForbidden() {
+  NoiseMap(0.10, {
+    (0.0, 0.15, Filter(On("set_tree"), Set("set_gore")))
+  })
+  NoiseMap(0.10, {
+    (0.0, 0.15, Filter(On("set_tree"), Set("set_cult")))
+  })
+  NoiseMap(0.10, {
+    (0.0, 0.15, Filter(On("set_grass"), Set("set_cult_grass")))
+  })
+  NoiseMap(0.10, {
+    (0.0, 0.15, Filter(On("set_mountains"), Set("set_cult_mountains")))
+  })
+  
+  Filter(On("set_gore"), {Set("Cult_Forest_Growth") Choose(Set("eg_map_gore_1"), Set("eg_map_gore_2"), Set("eg_map_gore_3"))})
+  Filter(On("set_cult"), {Set("Cult_Forest") Choose(Set("eg_map_gore_tree_1"), Set("eg_map_gore_tree_2"), Set("eg_map_gore_tree_3"))})
+  Filter(On("set_cult_grass"), {Set("FTD_GREAT_LAKE") Choose(Set("eg_map_lake_1"), Set("eg_map_lake_2"), Set("eg_map_lake_3"))})}
+  Filter(On("set_cult_mountains"), {Set("CS_MOUNTAIN") Choose(Set("cs_crystal_map"), Set("cs_crystal_map"), Set("cs_crystal_map"))})
+End
+
+"world_map" modify {
+  NoiseMap(0.65, {
+    (0.8, 1.0, Reset("set_water"))
+    (0.74, 0.8, Reset("set_sand"))
+    (0.2, 0.74, Reset("set_grass"))
+    (0.0, 0.2, Reset("set_mountains"))
+    #(0.0, 0.02, Set("set_lava"))
+  })
+  #Position(MIDDLE, {1 1}, FloodFill(Or(On("sand"), On("grass"), On("water")), Set("save")))
+  #Filter(Not On("save"), Reset("mountain"))
+  #Border(1, Filter(Not On("mountain"), Fail))
+  CellularAutomaton(Filter(Not On("set_mountains"), Reset("set_water")), 0.35)
+  Inside(TOP, 18, Inside(BOTTOM, 18, CellularAutomaton(Set("water_area"), 0.75)))
+  SplitV(0.5,
+    Filter(And(Not On("water_area"), Or(On("set_water"), On("set_sand"))), Reset("set_snow")),
+    Filter(And(Not On("water_area"), Or(On("set_water"), On("set_sand"))), Reset("set_sand"))
+  )
+  Filter(And(On("set_sand"), On("water_area")), Reset("set_swamp"))
+  NoiseMap(0.65, {
+    (0.0, 0.2, Filter(On("set_snow"), Set("set_mountains_snow")))
+  })
+  WorldMapFeatures()
+  WorldMapConnections()
+  WorldMapTrees()
+  WorldMapForbidden()
+}
+
+"world_map_test" modify {
+  NoiseMap(0.65, {
+    (0.8, 1.0, Reset("set_water"))
+    (0.74, 0.8, Reset("set_sand"))
+    (0.2, 0.74, Reset("set_grass"))
+    (0.0, 0.2, Reset("set_mountains"))
+    #(0.0, 0.02, Set("set_lava"))
+  })
+  #Position(MIDDLE, {1 1}, FloodFill(Or(On("sand"), On("grass"), On("water")), Set("save")))
+  #Filter(Not On("save"), Reset("mountain"))
+  #Border(1, Filter(Not On("mountain"), Fail))
+  CellularAutomaton(Filter(Not On("set_mountains"), Reset("set_water")), 0.35)
+  SplitV(0.7, Filter(On("set_sand"), Reset("set_swamp")), Filter(On("set_water"), Reset("set_sand")))
+  SplitV(0.3, Filter(Or(On("set_water"), On("set_sand")), Reset("set_snow")), {})
+  NoiseMap(0.65, {
+    (0.0, 0.2, Filter(On("set_snow"), Set("set_mountains_snow")))
+  })
+  CellularAutomaton(Set("continent"), 0.5)
+  Filter(Not On("continent"), Reset("set_water"))
+  WorldMapFeatures()
+  WorldMapConnections()
+  WorldMapTrees()
+  WorldMapForbidden()
+}

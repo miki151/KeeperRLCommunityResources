@@ -1,0 +1,489 @@
+######################
+# Art of War (SPELL)
+#######################
+
+"mass pacify"
+{
+  symbol = "☮"
+  effect = Name "mass pacify" Area 3 Filter Enemy Lasting 50 PEACEFULNESS
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+
+"mass panic"
+{
+  symbol = "😱"
+  effect = Name "mass panic" Area 3 Filter Enemy Lasting 50 PANIC
+  cooldown = 100
+  sound = "SPELL_HEALING"
+}
+
+"mass invisibility"
+{
+  symbol = "🕵️"
+  effect = Name "mass invisibility" Area 3 Filter Not Enemy Lasting 50 INVISIBLE
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+
+######################
+# Martial Art: Air Blast (MELEE)
+######################
+
+"teach swap positions"
+{
+  symbol = "👉⇅"
+  effect = Name "teach swap positions" Chain { 
+	GrantAbility "swap positions" 
+  }
+  range = 1
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+
+"teach shove"
+{
+  symbol = "👉👉"
+  effect = Name "teach shove" Chain { 
+	GrantAbility "shove" 
+  }
+  range = 1
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+
+"teach directed blast"
+{
+  symbol = "👉💨"
+  effect = Name "teach directed blast" Chain { 
+	GrantAbility "directed blast" 
+  }
+  range = 1
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+
+"teach circular blast"
+{
+  symbol = "👉💥"
+  effect = Name "teach circular blast" Chain { 
+	GrantAbility "circular blast" 
+  }
+  range = 1
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+
+"teach jump"
+{
+  symbol = "👉👟"
+  effect = Name "teach jump" Chain { 
+	GrantAbility "jump" 
+  }
+  range = 1
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+
+"master directed blast"
+{
+  upgrade = "expert directed blast"
+  symbol = "💨"
+  effect = Name "master directed blast" Blast
+  range = 6
+  endOnly = true
+  cooldown = 4
+  sound = "SPELL_BLAST"
+}
+
+"master circular blast"
+{
+  upgrade = "expert circular blast"
+  symbol = "💥"
+  effect =  Name "master circular blast" CircularBlast
+  cooldown = 6
+  sound = "SPELL_AIR_BLAST"
+  message = "create an air blast!" "creates an air blast!"
+}
+
+"expert directed blast"
+{
+  upgrade = "advanced directed blast"
+  symbol = "💨"
+  effect = Name "expert directed blast" Blast
+  range = 6
+  endOnly = true
+  cooldown = 8
+  sound = "SPELL_BLAST"
+}
+
+"expert circular blast"
+{
+  upgrade = "advanced circular blast"
+  symbol = "💥"
+  effect = Name "expert circular blast" CircularBlast
+  cooldown = 12
+  sound = "SPELL_AIR_BLAST"
+  message = "create an air blast!" "creates an air blast!"
+}
+
+"advanced directed blast"
+{
+  upgrade = "directed blast"
+  symbol = "💨"
+  effect = Name "advanced directed blast" Blast
+  range = 5
+  endOnly = true
+  cooldown = 15
+  sound = "SPELL_BLAST"
+}
+
+"advanced circular blast"
+{
+  upgrade = "circular blast"
+  symbol = "💥"
+  effect = Name "advanced circular blast" CircularBlast
+  cooldown = 25
+  sound = "SPELL_AIR_BLAST"
+  message = "create an air blast!" "creates an air blast!"
+}
+
+"master jump"
+{
+  upgrade = "expert jump"
+  symbol = "👟"
+  effect = Name "master jump" Chain { Jump CircularBlast }
+  range = 6
+  cooldown = 4
+  message = "jump" "jumps"
+}
+
+
+"expert jump"
+{
+  upgrade = "advanced jump"
+  symbol = "👟"
+  effect = Name "expert jump" Chain { Jump CircularBlast }
+  range = 6
+  cooldown = 6
+  message = "jump" "jumps"
+}
+
+"advanced jump"
+{
+  upgrade = "jump"
+  symbol = "👟"
+  effect = Name "advanced jump" Jump
+  range = 6
+  cooldown = 5
+  message = "jump" "jumps"
+}
+
+#######################
+# Master Healer School
+#######################
+"regrow flesh"
+{
+  symbol = "⚕"
+  effect = Name "regrow flesh" RegrowBodyPart 10
+  range = 3
+  targetSelf = true
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+"teach expert healing"
+{
+  symbol = "⚕"
+  effect = Name "teach expert healing" Chain { 
+	GrantAbility "expert healing" 
+	GrantAbility "advanced healing" 
+	GrantAbility "healing" 
+  }
+  range = 1
+  targetSelf = true
+  cooldown = 1000
+  sound = "SPELL_HEALING"
+}
+"teach healing"
+{
+  symbol = "⚕"
+  effect = Name "teach healing" Chain {  
+	GrantAbility "healing" 
+  }
+  range = 1
+  targetSelf = true
+  cooldown = 1000
+  sound = "SPELL_HEALING"
+}
+####################
+# Artificer School
+####################
+"enhance armor"
+{
+  symbol = "🛡"
+  effect = Name "armor enhc. scroll" Chain {
+  	DropItems { Scroll Enhance ARMOR 1 } { 1 } 
+  }
+  #range = 0
+  #targetSelf = true
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+"enhance weapon"
+{
+  symbol = "⚔️"
+  effect = Name "weapon enhc. scroll" Chain {  
+  	DropItems { Scroll Enhance WEAPON 1 } { 1 }
+  }
+  #range = 0
+  #targetSelf = true
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+"advanced enhance armor"
+{
+  upgrade = "enhance armor"
+  symbol = "🛡"
+  effect = Name "advanced armor enhc." Chain {
+  	DropItems { Scroll Enhance ARMOR 4 } { 1 } 
+  }
+  #range = 0
+  #targetSelf = true
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+"advanced enhance weapon"
+{
+  upgrade = "enhance weapon"
+  symbol = "⚔️"
+  effect = Name "advanced weapon enhc." Chain {  
+  	DropItems { Scroll Enhance WEAPON 3 } { 1 }
+  }
+  #range = 0
+  #targetSelf = true
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+"expert enhance armor"
+{
+  upgrade = "advanced enhance armor"
+  symbol = "🛡"
+  effect = Name "expert armor enhc." Chain {
+  	DropItems { Scroll Enhance ARMOR 8 } { 1 } 
+  }
+  #range = 0
+  #targetSelf = true
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+"expert enhance weapon"
+{
+  upgrade = "advanced enhance weapon"
+  symbol = "⚔️"
+  effect = Name "expert weapon enhc." Chain {  
+  	DropItems { Scroll Enhance WEAPON 4 } { 1 }
+  }
+  #range = 0
+  #targetSelf = true
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+"master enhance armor"
+{
+  upgrade = "expert enhance armor"
+  symbol = "🛡"
+  effect = Name "master armor enhc." Chain {
+  	DropItems { Scroll Enhance ARMOR 10 } { 1 } 
+  }
+  #range = 0
+  #targetSelf = true
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+"master enhance weapon"
+{
+  upgrade = "expert enhance weapon"
+  symbol = "⚔️"
+  effect = Name "master weapon enhc." Chain {  
+  	DropItems { Scroll Enhance WEAPON 5 } { 1 }
+  }
+  #range = 0
+  #targetSelf = true
+  cooldown = 300
+  sound = "SPELL_HEALING"
+}
+"teach enhancement"
+{
+  symbol = "🔧"
+  effect = Name "teach enhancement" Chain { 
+	GrantAbility "enhance armor" 
+	GrantAbility "enhance weapon" 
+  }
+  range = 1
+  targetSelf = true
+  cooldown = 1000
+  sound = "SPELL_HEALING"
+}
+#########################
+# Teleportation Mastery #
+#########################
+"legendary teleport"
+{
+  upgrade = "master teleport"
+  symbol = "🌀"
+  effect = Name "legendary teleport" Teleport
+  range = 12
+  cooldown = 20
+  endOnly = true
+  sound = "SPELL_TELEPORT"
+}
+"master teleport"
+{
+  upgrade = "expert teleport"
+  symbol = "🌀"
+  effect = Name "master teleport" Teleport
+  range = 12
+  cooldown = 40
+  endOnly = true
+  sound = "SPELL_TELEPORT"
+}
+"expert teleport"
+{
+  upgrade = "advanced teleport"
+  symbol = "🌀"
+  effect = Name "expert teleport" Teleport
+  range = 12
+  cooldown = 80
+  endOnly = true
+  sound = "SPELL_TELEPORT"
+}
+
+#########################
+# Godslayer		#
+#########################
+
+"godslayer"
+{
+  symbol = "🌀"
+  effect = Name "Godslayer" Description "Debuff spell to kill even a god (Only Effective To Enemy)" Area 5 Filter Enemy Chain {
+	Jump
+	CircularBlast	
+	RemoveLasting INVULNERABLE 
+	RemovePermanent INVULNERABLE 
+	RemoveLasting MAGIC_RESISTANCE
+	RemoveLasting MELEE_RESISTANCE
+	RemoveLasting RANGED_RESISTANCE
+	RemoveLasting POISON_RESISTANT
+	RemoveLasting FIRE_RESISTANT
+	RemoveLasting COLD_RESISTANT 
+	RemoveLasting ACID_RESISTANT 
+	RemoveLasting REGENERATION 
+	RemoveLasting SPEED 
+	RemoveLasting DAM_BONUS 
+	RemoveLasting DEF_BONUS
+	Lasting 50 MAGIC_VULNERABILITY
+	Lasting 50 MELEE_VULNERABILITY
+	Lasting 50 RANGED_VULNERABILITY
+	Lasting 50 SLOWED
+	Lasting 50 BLIND
+	Lasting 50 COLLAPSED
+	Lasting 50 MAGIC_CANCELLATION
+  }
+  range = 12
+  cooldown = 100
+  sound = "SPELL_BLAST"
+}
+
+#########################
+# Ifrit Contractor	#
+#########################
+
+"DeliveryServiceSummonIfrit"
+{
+  symbol = "🌀"
+  effect = Name "Summon Ifrit Djinn" Description "Summon a powerful Djinn to grant your wish" Chain {  
+	Lasting 50 REGENERATION
+	Lasting 50 INVULNERABLE
+	Lasting 50 FLYING
+	Lasting 50 POISON_RESISTANT
+	Lasting 50 ACID_RESISTANT
+	Chain { CircularBlast
+		CustomArea PlaceFurniture "FIRE_WALL" {
+			{3 3} {3 2} {3 1} {3 0} {3 -1} {3 -2} {3 -3}
+			{2 3} {2 -3}
+			{1 3} {1 -3}
+			{0 3} {0 -3}
+			{-1 3} {-1 -3}
+			{-2 3} {-2 -3}
+			{-3 3} {-3 2} {-3 1} {-3 0} {-3 -1} {-3 -2} {-3 -3}
+		}
+		#Lasting 50 IMMOBILE
+		#Lasting 50 MAGIC_CANCELLATION
+	}
+	CreatureMessage {"are emiting powerful magic aura!" "is emiting powerful magic aura!"}
+#	Summon "DELIVERYSERVICE_GH_DJINN_IFRIT" { 1 } none
+	Summon "DELIVERYSERVICE_GH_DJINN_IFRIT" { 1 } 60
+  }
+  cooldown = 90
+  sound = "SPELL_TELEPORT"
+}
+
+"DeliveryServiceSpellProgenerate"
+{
+  symbol = "💞"
+  effect = Name "Progenerate" Description "A way to continue the lineage survival" 
+     Chain { 
+	ChainUntilFail {
+		Filter Not LastingEffect COPULATION_SKILL
+		Message NORMAL "\"Hmm... That's not a valid creature, I need a creature with \'Copulates\' trait...\""
+	}
+	ChainUntilFail {
+		Filter LastingEffect COPULATION_SKILL
+		Lasting 50 PREGNANT 
+		#Message "..."
+		RemoveLasting SLEEP
+	}
+     }
+  range = 1
+  fx = {LOVE}
+  #targetSelf = true
+  cooldown = 30
+  sound = "CREATE_IMP"
+}
+
+"DeliveryServiceSpellSealSummonedCreature"
+{
+  symbol = "⚿"
+  effect =
+	Name "Seal Summoned Creature" 
+	Description "Prevent a summoned creature to dissapear, permanently." 
+	Chain { 
+		ChainUntilFail {
+			Filter LastingEffect SUMMONED
+			Permanent SUMMONED
+			CreatureMessage {"\'s summon contract has been changed!" "\'s summon contract has been changed!" }
+			Message NORMAL "You assured the presence of this creature on this realm for eternity"
+			CreatureMessage {"shall continue to exist for an indefinite time" "shall continue to exist for an indefinite time"}
+    		}
+		ChainUntilFail {
+			Filter Not LastingEffect SUMMONED
+			Message NORMAL "You can not seal the presence of the creature, they are not summoned."
+		}
+	}
+  fx = {MAGIC_FIELD}
+  sound = "SPELL_SUMMON_SPIRIT"
+  range = 4
+  cooldown = 600
+  message = "draw a magical seal!" "draws a magical seal!"
+}
+"DeliveryServiceRemoteTrapTrigger"
+{
+  symbol = "🌀"
+  effect = Name "remote trap trigger" CustomArea TriggerTrap {
+		{0 -1}
+		}
+  range = 12
+  cooldown = 0
+  endOnly = true
+  sound = "SPELL_TELEPORT"
+}

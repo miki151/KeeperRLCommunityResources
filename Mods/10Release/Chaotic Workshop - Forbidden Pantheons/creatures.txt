@@ -1,0 +1,3777 @@
+##################################Endless Growth##################################
+# keepers
+"EG_GORE_VESSEL"
+  {
+    # Definitions in tiles.txt
+    viewId = { "eg_cultist_evangelist_m" }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+      name = {
+      name = "Evangelist"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    # attr_type.h
+    attr = {
+      DAMAGE 12
+      DEFENSE 12
+      SPELL_DAMAGE 20
+	  LABORATORY 20
+	  BLESSED_FLESH 4
+	  
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+      SPELL_DAMAGE 12
+    }
+	    permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+    companions = {{
+      count = 2
+      spawnAway = false
+      statsBase = BLESSED_FLESH
+      summonFreq = 0.05
+      creatures = { "EG_GORE_REBORN" }}
+    }
+    aiType = RANGED
+    spellSchools = {  "EG_BASE_MAGIC"  }
+    spells = { "healing" }
+    inventory = {
+      { "Robe"}
+      { "ArchwoodStaff" }
+    }
+
+  }
+  
+"EG_GORE_VESSEL_F" inherit "EG_GORE_VESSEL"
+  {
+    viewId = { "eg_cultist_evangelist_f" }
+    gender = FEMALE
+    name = append {
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+
+"EG_GORE_MELEE_VESSEL"
+  {
+    viewId = { "eg_cultist_champion_m" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+      MULTI_WEAPON 40
+	  BLESSED_FLESH 4
+      FURNACE 15
+      FORGE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "champion"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+      SPELL_DAMAGE 3
+    }
+    spellSchools = { "fighter" "EG_TEMPLAR" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+  
+"EG_GORE_MELEE_VESSEL_F" inherit "EG_GORE_MELEE_VESSEL"
+  {
+    viewId = { "eg_cultist_champion_f" }
+    gender = FEMALE
+    name = append {
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+  
+"EG_ALTARSPAWN" inherit "EG_GORE_VESSEL"
+  {
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      canCapture = true
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "SPELL_DAMAGE" 1 {
+            attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = SPELL } }}}
+      }
+    }
+	permanentEffects = {
+	IMMOBILE 1
+    }
+	spells = {"EG Altar TRANSFORM"}
+  }
+  
+"EG_GORE_VESSEL_VILLIAN"
+  {
+    viewId = { "eg_gore_vessel_up_4" }
+      name = {
+      name = "Vessel"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+      addBodyPart = {
+        ARM 4
+      }
+	  intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 8 {
+            attackType = HIT
+            attackMsg = CLAW
+        } }}}
+      }
+    }
+    attr = {
+      DAMAGE 22
+      DEFENSE 22
+      SPELL_DAMAGE 30
+	  LABORATORY 20
+	  BLESSED_FLESH 10	
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+      SPELL_DAMAGE 12
+    }
+	    permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+		  FLYING 1
+    }
+    companions = {{
+      count = 2
+      spawnAway = false
+      statsBase = BLESSED_FLESH
+      summonFreq = 0.05
+      creatures = { "EG_GORE_REBORN" }}
+    }
+    aiType = RANGED
+    spellSchools = {  "EG_BASE_MAGIC" "EG_BASE_MAGIC" }
+    inventory = {
+      { "Robe"}
+      { "ArchwoodStaff" }
+    }
+
+  }
+   
+# gorespawn
+"EG_GORE_SPAWN"
+  {
+    viewId = { "eg_gore_spawn_1" }
+    body = {
+      type = NonHumanoid LARGE
+	    bodyParts = {
+        TORSO 1
+		HEAD 1
+      }
+      weight = 300
+	  intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 7  {attackType = BITE attackMsg = BITE} }}}
+      }
+    }
+    attr = {
+      DAMAGE 14
+      DEFENSE 16 
+	  BLESSED_FLESH 4
+    }
+    permanentEffects = {
+	  SWARMER 1
+      RANGED_RESISTANCE 1
+      NIGHT_VISION 1
+	  SLOWED 1
+    }
+	spells = { "Mutation" }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+  
+"EG_GORE_SPAWN_UPGRADE" inherit "EG_GORE_SPAWN"
+  {
+    viewId = { "eg_gore_spawn_2" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 23 
+	  BLESSED_FLESH 8
+    }
+	permanentEffects = {
+	  SWARMER 1
+      RANGED_RESISTANCE 1
+      NIGHT_VISION 1
+	  SLOWED 1
+	  REGENERATION 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }
+
+"EG_GORE_PORCUPINE"
+  {
+    viewId = { "eg_gore_porcupine_1" }
+    body = {
+      type = NonHumanoid LARGE
+	    bodyParts = {
+        TORSO 1
+		HEAD 1
+      }
+      weight = 300
+	  intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 2  {attackType = BITE attackMsg = BITE} }}}
+      }
+    }
+    attr = {
+      DAMAGE 6
+      RANGED_DAMAGE 10
+      DEFENSE 10
+	  BLESSED_FLESH 4
+    }
+    permanentEffects = {
+	  SWARMER 1
+      RANGED_RESISTANCE 1
+      NIGHT_VISION 1
+	  SLOWED 1
+    }
+	spells = { "Mutation" "eg_launch_shards" "eg_have_shards" }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+  
+"EG_GORE_PORCUPINE_UPGRADE" inherit "EG_GORE_PORCUPINE"
+  {
+    viewId = { "eg_gore_porcupine_2" }
+    attr = {
+      DAMAGE 13
+      RANGED_DAMAGE 17
+      DEFENSE 17 
+	  BLESSED_FLESH 8
+    }
+	permanentEffects = {
+	  SWARMER 1
+      RANGED_RESISTANCE 1
+      NIGHT_VISION 1
+	  SLOWED 1
+	  REGENERATION 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }
+  
+"EG_GORE_REBORN"
+  {
+    viewId = { "eg_gore_reborn_1" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 11 
+	  BLESSED_FLESH 6
+    }
+    body = {
+      type = HumanoidLike LARGE
+	  	  intrinsicAttacks = {
+	          ARM  {{{ Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }}}
+	          HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }}}
+			                 }
+    }
+	spells = { "Mutation" }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  SLOWED 1
+		  SWARMER 1
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+  
+"EG_GORE_REBORN_UPGRADE" inherit "EG_GORE_REBORN"
+  {
+    viewId = { "eg_gore_reborn_2" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 14
+	  BLESSED_FLESH 8
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  SLOWED 1
+		  SWARMER 1
+		  REGENERATION 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }   
+  
+"EG_GORE_SPLITER"
+  {
+    viewId = { "eg_gore_violate_splitter_1" }
+    attr = {
+      DAMAGE 6
+	  ACID_DAMAGE 10
+      DEFENSE 8 
+	  BLESSED_FLESH 6
+    }
+    body = {
+      type = HumanoidLike LARGE
+	  	  intrinsicAttacks = {
+	          ARM  {{{ Intrinsic { "claws_attack" } "claws" 2 { attackType = HIT attackMsg = CLAW } }}}
+             HEAD {{
+               isExtraAttack = true
+               itemType = { Intrinsic { "bite_attack" } "fangs" 5 {
+                 attackType = BITE
+                 attackMsg = BITE
+		         meleeAttackAttr = ACID_DAMAGE 
+                 victimEffect = { 0.1 Acid{} } } }}}
+			     }
+    }
+	spells = { "Mutation" "eg_acid_stream" "eg_have_acid" }
+    permanentEffects = {
+          ACID_RESISTANT 1
+	      NIGHT_VISION 1
+		  SLOWED 1
+		  SWARMER 1
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+  
+"EG_GORE_SPLITER_UPGRADE" inherit "EG_GORE_SPLITER"
+  {
+    viewId = { "eg_gore_violate_splitter_2" }
+    attr = {
+      DAMAGE 13
+	  ACID_DAMAGE 17
+      DEFENSE 15
+	  BLESSED_FLESH 8
+    }
+    body = {
+      type = HumanoidLike LARGE
+	  	  intrinsicAttacks = {
+	          ARM  {{{ Intrinsic { "claws_attack" } "claws" 2 { attackType = HIT attackMsg = CLAW } }}}
+             HEAD {{
+               isExtraAttack = true
+               itemType = { Intrinsic { "bite_attack" } "fangs" 5 {
+                 attackType = BITE
+                 attackMsg = BITE
+		         meleeAttackAttr = ACID_DAMAGE 
+                 victimEffect = { 0.1 Acid{} } } }}}
+			     }
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  SLOWED 1
+		  SWARMER 1
+		  REGENERATION 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }   
+  
+"EG_GORE_BEAST"
+  {
+    viewId = { "eg_gore_beast" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+	  BLESSED_FLESH 6	  
+    }
+    body = {
+      type = NonHumanoid LARGE
+	    bodyParts = {
+        ARM 3
+        TORSO 1
+		HEAD 1
+		      }
+	  	  intrinsicAttacks = {
+	          ARM  {{{ Intrinsic { "claws_attack" } "claws" 12 { attackType = HIT attackMsg = CLAW } }}}
+	          HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 14 { attackType = BITE attackMsg = BITE} }}}
+			                 }
+          }
+	spells = { "Mutation" }
+    permanentEffects = {
+	  CONSUMPTION_SKILL 1
+      RANGED_RESISTANCE 1
+      NIGHT_VISION 1
+	  SLOWED 1
+	  SWARMER 1
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+  
+"EG_GORE_BEAST_ADV"
+  {
+    viewId = { "eg_gore_beast" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+      BLESSED_FLESH 10
+    }
+    body = {
+      type = NonHumanoid LARGE
+	    bodyParts = {
+        ARM 3
+        TORSO 1
+		HEAD 1
+      }
+	  	  intrinsicAttacks = {
+	          ARM  {{{ Intrinsic { "claws_attack" } "claws" 14 { attackType = HIT attackMsg = CLAW } }}}
+	          HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 16 { attackType = BITE attackMsg = BITE} }}}
+			                 }
+    }
+	spells = { "Mutation" }
+    permanentEffects = {
+	  CONSUMPTION_SKILL 1
+      RANGED_RESISTANCE 1
+      NIGHT_VISION 1
+	  SLOWED 1
+	  SWARMER 1
+    }
+	
+    companions = {{
+      count = 2
+      spawnAway = false
+      statsBase = BLESSED_FLESH
+      summonFreq = 0.05
+      creatures = { "EG_GORE_SPAWN" }}
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+  
+  "EG_GORE_TREE"
+  {
+    viewId = { "eg_gore_tree_1" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 20 
+	  BLESSED_FLESH 4
+    }
+    body = {
+      type = NonHumanoid LARGE
+	        bodyParts = {
+        ARM 6
+        TORSO 1
+      }
+	  	  intrinsicAttacks = {
+	          ARM   {{itemType = { Intrinsic { "claws_attack" } "claws" 3 { attackType = HIT attackMsg = CLAW victimEffect = { 0.1 Lasting 50 BLEEDING  } } } isExtraAttack = true }}
+			  TORSO   {{itemType = { Intrinsic { "bite_attack" } "fangs" 3 { attackType = BITE attackMsg = BITE victimEffect = { 0.1 Lasting 50 BLEEDING  } } } isExtraAttack = true }}
+			                 }
+    }
+	spells = { "Mutation" }
+    permanentEffects = {
+      NIGHT_VISION 1
+	  SLOWED 1
+	  SWARMER 1
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+  
+ "EG_GORE_TREE_UPGRADE" inherit "EG_GORE_TREE"
+  {
+    viewId = { "eg_gore_reborn_2" }
+    attr = {
+      DAMAGE 19
+      DEFENSE 26 
+	  BLESSED_FLESH 7
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  SLOWED 1
+		  SWARMER 1
+		  REGENERATION 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }  
+    
+"EG_GORE_FAMILLIAR"
+  {
+    viewId = { "eg_gore_familliar_1" }
+    attr = {
+      DAMAGE 2
+      DEFENSE 2
+      BLESSED_FLESH 2	  
+    }
+    body = {
+      type = FourLegged SMALL
+      weight = 1
+    }
+	spells = { "advanced healing" "Mutation" }
+    aiType = RANGED
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  SLOWED 1
+		  SWARMER 1
+    }
+	
+    noChase = true
+    name = {
+      name = "eldrich spawn"
+    }
+  }
+
+ "EG_GORE_FAMILLIAR_UPGRADE" inherit "EG_GORE_FAMILLIAR"
+  {
+    viewId = { "eg_gore_familliar_2" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 6
+      BLESSED_FLESH 5	 
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  SLOWED 1
+		  SWARMER 1
+		  REGENERATION 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }  
+     
+"EG_GORE_CRAWLER"
+  {
+    viewId = { "eg_gore_crawler_01" }
+    attr = {
+      DAMAGE 4
+      DEFENSE 8
+	  BLESSED_FLESH 4
+    }
+    body = {
+      type = FourLegged SMALL
+      weight = 1
+    }
+	spells = { "Mutation" }
+    permanentEffects = {
+		      NIGHT_VISION 1
+		      SLOWED 1
+			  SWARMER 1
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+  }
+
+ "EG_GORE_CRAWLER_UPGRADE" inherit "EG_GORE_CRAWLER"
+  {
+    viewId = { "eg_gore_familliar_2" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 14
+      BLESSED_FLESH 8	 
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  SLOWED 1
+		  SWARMER 1
+		  REGENERATION 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }  
+          
+"EG_GORE_TUMOR"
+  {
+    viewId = { "eg_gore_tumors" }
+    attr = {
+	  DAMAGE 1
+      DEFENSE 2 
+	  BLESSED_FLESH 1
+    }
+    body = {
+      type = NonHumanoid SMALL
+	  bodyParts = {
+        LEG 6
+        TORSO 1
+      }
+      weight = 1
+	  intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 5 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = {1 Lasting 5 BLEEDING }
+            attackerEffect = {Suicide DIE} } }}}
+      }
+    }
+    permanentEffects = {
+          SPEED 1
+	      NIGHT_VISION 1
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+	deathEffect = Area 0 PlaceFurniture  "EG_GROWTH_FLOOR"
+  }
+ 
+"EG_GORE_FLESHWRAITH"
+  {
+    viewId = { "eg_fleshwraith" }
+    body = {
+      type = NonHumanoid HUGE
+      addBodyPart = {
+        TORSO 1
+		HEAD 1
+        ARM 7
+      }
+      intrinsicAttacks = {
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+      }
+      deathSound = none
+    }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+	  BLESSED_FLESH	8
+	  MULTI_WEAPON 40
+    }
+    permanentEffects = {
+      FLYING 1
+      TELEPATHY 1
+    }
+    spells = { "blink" }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+ 
+"EG_GORE_FLESHWRAITH_ADV"
+  {
+    viewId = { "eg_fleshwraith" }
+    body = {
+      type = NonHumanoid HUGE
+      addBodyPart = {
+        TORSO 1
+		HEAD 1
+        ARM 7
+      }
+      intrinsicAttacks = {
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 12 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+      }
+      deathSound = none
+    }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+	  BLESSED_FLESH	8
+	  MULTI_WEAPON 40
+    }
+    permanentEffects = {
+      FLYING 1
+      TELEPATHY 1
+    }
+    spells = { "blink" "teleport" }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+  
+"EG_GORE_TENTACLE"
+  {
+    viewId = { "eg_gore_tentacle" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 25
+	  BLESSED_FLESH 2
+    }
+    body = {
+      type = NonHumanoid HUGE
+	  weight = 1000000
+      bodyParts = {
+        ARM 1
+        TORSO 1
+      }
+	  intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 10 {
+            attackType = HIT
+            attackMsg = CLAW
+            victimEffect = {1 Lasting 50 POISON } } }}}
+      }
+    }
+    permanentEffects = {
+      IMMOBILE 1
+      MELEE_RESISTANCE 1
+      SLEEP_RESISTANT 1
+	  TELEPATHY 1
+	  NO_FRIENDLY_FIRE 1
+    }
+    name = {
+      name = "eldrich spawn"
+      fullTitle = true
+    }
+	spells = { "tentacle lash" }
+	deathEffect = Summon "EG_GORE_TORN_TENTACLE" 1 10
+    gender = IT
+  }
+    
+"EG_GORE_TORN_TENTACLE"
+  {
+    viewId = { "eg_gore_tentacle_torn" }
+    attr = {
+	  DAMAGE 35
+      DEFENSE 2 
+	  BLESSED_FLESH 2
+    }
+    body = {
+      type = NonHumanoid SMALL
+	  bodyParts = {
+        LEG 2
+        ARM 1		
+        TORSO 1
+      }
+      weight = 1
+	  intrinsicAttacks = {
+        ARM {{{ Intrinsic { "touch_attack" } "touch" 5 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = {1 Lasting 50 POISON }
+            attackerEffect = {Suicide DIE} } }}}
+      }
+    }
+    permanentEffects = {
+          SPEED 1
+	      TELEPATHY 1
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+	deathEffect = Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
+  }
+  
+"GORE_ABOMINATION" 
+  {
+    viewId = { "eg_gore_cleanser" }
+    attr = {
+      DAMAGE 60
+      DEFENSE 40 
+    }
+    body = {
+      type = FourLegged HUGE
+      weight = 500
+      material = FLESH
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+   
+"GORE_ABOMINATION_PLAYER" 
+  {
+    viewId = { "eg_gore_cleanser" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10 
+    }
+    body = {
+      type = FourLegged HUGE
+      weight = 500
+      material = FLESH
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    gender = IT
+  }
+   
+ # Victims  
+"EG_HUMAN_CATTLE"
+  {
+    viewId = { "eg_breed_m" }
+    genderAlternatives = {
+      FEMALE { "eg_breed_f" }
+    }
+    attr = {
+      DAMAGE 6
+      DEFENSE 6
+	  DIGGING 15
+    }
+    body = {
+      type = Humanoid LARGE
+	  material = SACRIFICE_FLESH
+	  minionFood = true
+    }
+    chatReactionFriendly = "please help..."
+    chatReactionHostile = "\"Heeelp!\""
+	specialAttr = {
+      DEFENSE { -3 Name "when indoors"  Indoors }
+	  DAMAGE { -3 Name "when indoors"  Indoors }
+    }
+	deathEffect = DropItems { "eg_br_corpse" } {1}
+    permanentEffects = {
+      RANGED_VULNERABILITY 1
+	  MAGIC_VULNERABILITY 1
+	  SLOWED 1
+	  MELEE_VULNERABILITY 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "cattle"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+ # cultists 
+  "EG_CULTIST"
+  {
+    viewId = { "eg_cultist" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 8
+	  DIGGING 25
+	  FORGE 25
+      FURNACE 25
+	  WORKSHOP 25
+      JEWELER 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  DISTILLATION_SKILL 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      FORGE 10
+    }
+    aiType = RANGED
+    name = {
+      name = "Cultist"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "Robe"}
+    }
+  }
+
+ "EG_CULTIST_UPGRADE" inherit "EG_CULTIST"
+  {
+    viewId = { "eg_cultist_gore" }
+    attr = {
+	  BLESSED_FLESH 3
+      DAMAGE 17
+      DEFENSE 15
+	  DIGGING 31
+	  FORGE 31
+      FURNACE 31
+	  WORKSHOP 31
+      JEWELER 31
+    }
+    permanentEffects = {
+		  DISTILLATION_SKILL 1
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }    
+   
+  "EG_CULTIST_F" inherit "EG_CULTIST"
+  {
+    viewId = { "eg_cultist_f" }
+    name = {
+      name = "Cultist"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  }
+ 
+ "EG_CULTIST_F_UPGRADE" inherit "EG_CULTIST_F"
+  {
+    viewId = { "eg_cultist_gore_f" }
+    attr = {
+	  BLESSED_FLESH 3
+      DAMAGE 17
+      DEFENSE 15
+	  DIGGING 31
+	  FORGE 31
+      FURNACE 31
+	  WORKSHOP 31
+      JEWELER 31
+    }
+    permanentEffects = {
+		  DISTILLATION_SKILL 1
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }    
+  
+  "EG_CULTIST_DEFENDER"
+  {
+    viewId = { "eg_cultist_defender" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 18
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 6
+    }
+    name = {
+      name = "Cultist defender"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "Robe"}
+      { "LeatherHelm"}
+      { "Spear"}
+    }
+  }
+ 
+ "EG_CULTIST_DEFENDER_UPGRADE" inherit "EG_CULTIST_DEFENDER"
+  {
+    viewId = { "eg_cultist_defender_gore" }
+    attr = {
+      DAMAGE 19
+      DEFENSE 28
+	  BLESSED_FLESH 3
+    }
+    maxLevelIncrease = {
+      DAMAGE 14
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }  
+    
+  "EG_CULTIST_DEFENDER_F" inherit "EG_CULTIST_DEFENDER"
+  {
+    viewId = { "eg_cultist_defender_f" }
+    name = {
+      name = "Cultist defender"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  }
+ 
+ "EG_CULTIST_DEFENDER_F_UPGRADE" inherit "EG_CULTIST_DEFENDER_F"
+  {
+    viewId = { "eg_cultist_defender_gore_f" }
+    attr = {
+      DAMAGE 19
+      DEFENSE 28
+	  BLESSED_FLESH 3
+    }
+    maxLevelIncrease = {
+      DAMAGE 14
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }  
+  
+  "EG_CULTIST_RITUALIST"
+  {
+    viewId = { "eg_cultist_ritualist" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 11
+	  SPELL_DAMAGE 18
+	  LABORATORY 25
+	  BLESSED_FLESH 4
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 6
+    }
+    companions = {{
+      count = 1
+      spawnAway = false
+      statsBase = BLESSED_FLESH
+      summonFreq = 0.05
+      creatures = { "EG_GORE_FAMILLIAR" }}
+    }
+    spellSchools = { "EG_BASE_MAGIC" }
+    name = {
+      name = "Cultist Ritualist"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+	inventory = {
+      { "Robe"}
+      { "WoodenStaff" }
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+ 
+ "EG_CULTIST_RITUALIST_UPGRADE" inherit "EG_CULTIST_RITUALIST"
+  {
+    viewId = { "eg_cultist_ritualist_gore" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 15
+	  SPELL_DAMAGE 28
+	  LABORATORY 25
+	  BLESSED_FLESH 10
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 12
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }  
+             
+  "EG_CULTIST_RITUALIST_F" inherit "EG_CULTIST_RITUALIST"
+  {
+    viewId = { "eg_cultist_ritualist_f" }
+    name = {
+      name = "Cultist Ritualist"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+  }  
+  
+ "EG_CULTIST_RITUALIST_F_UPGRADE" inherit "EG_CULTIST_RITUALIST_F"
+  {
+    viewId = { "eg_cultist_ritualist_gore_f" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 15
+	  SPELL_DAMAGE 28
+	  LABORATORY 25
+	  BLESSED_FLESH 10
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 12
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }  
+           
+  "EG_CULTIST_ARCHER"
+  {
+    viewId = { "eg_cultist_archer" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 14
+	  RANGED_DAMAGE 14
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+	aiType = RANGED
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 2
+      RANGED_DAMAGE 6
+    }
+    name = {
+      name = "Cultist Archer"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "Robe"}	
+      { "Bow"}
+    }
+  }
+ 
+ "EG_CULTIST_ARCHER_UPGRADE" inherit "EG_CULTIST_ARCHER"
+  {
+    viewId = { "eg_cultist_archer_gore" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 18
+	  RANGED_DAMAGE 24
+	  BLESSED_FLESH 3
+    }
+	maxLevelIncrease = {
+      DAMAGE 2
+      RANGED_DAMAGE 12
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }  
+           
+  "EG_CULTIST_ARCHER_F" inherit "EG_CULTIST_ARCHER"
+  {
+    viewId = { "eg_cultist_archer_f" }
+    name = {
+      name = "Cultist Archer"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  }
+
+ "EG_CULTIST_ARCHER_F_UPGRADE" inherit "EG_CULTIST_ARCHER_F"
+  {
+    viewId = { "eg_cultist_archer_gore_f" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 18
+	  RANGED_DAMAGE 24
+	  BLESSED_FLESH 3
+    }
+	maxLevelIncrease = {
+      DAMAGE 2
+      RANGED_DAMAGE 12
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+	spellSchools = { "EG_GROWTH" }
+  }  
+          
+
+"EG_CULTIST_TEMPLAR"
+  {
+    viewId = { "eg_cultist_templar" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 14 
+      SPELL_SPEED 5
+      FURNACE 10
+      FORGE 5
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+	  SPELL_DAMAGE 4
+      FORGE 2
+    }
+    chatReactionFriendly = "for my faith i shall live or die!"
+    chatReactionHostile = "\"Die!\""
+	spellSchools = { "EG_TEMPLAR" }
+    permanentEffects = {
+      RIDER 1
+    }
+    name = {
+      name = "Cultist Templar"
+      firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+ "EG_CULTIST_TEMPLAR_UPGRADE" inherit "EG_CULTIST_TEMPLAR"
+  {
+    viewId = { "eg_cultist_templar_gore" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 19
+      SPELL_SPEED 8
+      FURNACE 10
+      FORGE 5
+	  BLESSED_FLESH 5
+    }
+	maxLevelIncrease = {
+      DAMAGE 13
+      RANGED_DAMAGE 7
+      FORGE 3
+    }
+    permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+	spellSchools = append { "EG_GROWTH" }
+  }  
+  
+"EG_CULTIST_TEMPLAR_F" inherit "EG_CULTIST_TEMPLAR"
+  {
+    name = {
+      name = "Cultist Templar"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  }
+
+ "EG_CULTIST_TEMPLAR_F_UPGRADE" inherit "EG_CULTIST_TEMPLAR_UPGRADE"
+  {
+    name = {
+      name = "Cultist Templar"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  } 
+  
+"EG_DOG_UPGRADE"
+  {
+    viewId = { "dog" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 10
+      BLESSED_FLESH 3	  
+    }
+    body = {
+      type = FourLegged MEDIUM
+	  addBodyPart = {ARM 1}
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 4 { attackType = BITE attackMsg = BITE } }}}
+		ARM  {{{ Intrinsic { "claws_attack" } "claws" 10 {
+											 attackType = HIT
+											 attackMsg = CLAW
+											 victimEffect = {1 Lasting 50 POISON }}}}}
+      }
+      weight = 25
+    }
+    aiType = RANGED
+    name = {
+      name = "dog"
+      groupName = "pack"
+      firstNameGen = "DOG"
+    }
+	spellSchools = { "EG_GROWTH" }
+    petReaction = "\"WOOF!\""
+  }
+
+"EG_WOLF_UPGRADE"
+  {
+    viewId = { "eg_dog_gore" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 14 
+      BLESSED_FLESH 3	
+    }
+    body = {
+      type = FourLegged MEDIUM
+      weight = 35
+	  addBodyPart = {ARM 1}
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+		ARM  {{{ Intrinsic { "claws_attack" } "claws" 10 {
+											 attackType = HIT
+											 attackMsg = CLAW
+											 victimEffect = {1 Lasting 50 POISON }}}}}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      STEED 1
+    }
+	spellSchools = { "EG_GROWTH" }
+    name = {
+      name = "wolf"
+      pluralName = "wolves"
+      firstNameGen = "DOG"
+      groupName = "pack"
+    }
+  }
+  
+ "EG_HORSE_GORE"
+  {
+    viewId = { "eg_horse_gore" }
+    attr = {
+      DAMAGE 19
+      DEFENSE 13
+    }
+    body = {
+      type = FourLegged LARGE
+      weight = 500
+    }
+    permanentEffects = {
+      STEED 1
+      SWIMMING_SKILL 1
+    }
+	spellSchools =  { "EG_GROWTH" }
+    spells = { "warhorse_haste" }
+    noChase = true
+    petReaction = "neighs"
+    name = {
+      name = "horse"
+    }
+  }
+  
+  "EG_BLOOD_PHANTOM"
+  {
+    viewId = { "eg_blood_phantom" }
+    body = {
+      type = HumanoidLike LARGE
+      material = WATER
+      weight = 300
+      deathSound = none
+    }
+    attr = {
+      DAMAGE 40
+      DEFENSE 15 
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      SWIMMING_SKILL 1
+    }
+    name = {
+      name = "water elemental"
+    }
+    gender = IT
+  }
+  
+"EG_GORE_KRAKEN_TRANSFORMED"
+  {
+    viewId = { "eg_blessed_spawn" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+	  BLESSED_FLESH	8
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    permanentEffects = {
+	  REGENERATION 1
+      FLYING 1
+    }
+	spellSchools =  { "EG_GROWTH" }
+    spells = {"gore_kraken_mechanics_player" "Mutation" "Seed Flesh" "ADVANCED_Spread_Seed"}
+  }
+  
+"EG_GORE_KRAKEN"
+  {
+    viewId = { "eg_krakenhead_gore" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20
+	  BLESSED_FLESH	8
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "eldrich spawn"
+    }
+    permanentEffects = {
+	  REGENERATION 1
+      IMMOBILE 1
+      SWIMMING_SKILL 1
+    }
+    spells = {"gore_kraken_mechanics"}
+  }
+
+"EG_GORE_KRAKEN_TENDRIL"
+  {
+    viewId = { "eg_kraken_gore_tentacle" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+    }
+    permanentEffects = {
+	  WATERCHECK 1
+	  REGENERATION 1
+      IMMOBILE 1
+      SWIMMING_SKILL 1
+    }
+    body = {
+      type = NonHumanoid LARGE
+      addBodyPart = {
+        ARM 2
+      }
+      weight = 800
+    }
+    spells = {"gore_kraken_pull"}
+    name = {
+      name = "eldrich spawn"
+    }
+  }
+  
+  
+##################################Depths################################## 
+  
+# keepers
+"FTD_DEEP_ONE_FIRSTBORN"
+  {
+    viewId = { "ftd_deep_one_firstborn_1" }
+	viewIdUpgrades = { { "ftd_deep_one_firstborn_2" } { "ftd_deep_one_firstborn_3" } { "ftd_deep_one_firstborn_4" } }
+    name = {
+	  name = "Ehyeoghupa"
+	  firstNameGen = "LOVECRAFTIAN"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+	  intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {attackType = BITE  attackMsg = BITE} }}}
+		LEG {{{ Intrinsic { "claws_attack" } "claws" 4 { attackType = HIT attackMsg = CLAW } }}}}}
+    attr = {
+      DAMAGE 24
+      DEFENSE 20
+      SPELL_DAMAGE 10
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+      SPELL_DAMAGE 12
+    }
+	permanentEffects = {
+      SWIMMING_SKILL 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    spellSchools = { "Lore of the Deep" }
+    spells = { "healing" }
+    inventory = {
+	  { "ftd_staff" }
+      { "Robe" }
+	  { "ftd_swarm_ring" }
+    }
+  }
+  
+  "FTD_DEEP_ONE_FIRSTBORN_F" inherit "FTD_DEEP_ONE_FIRSTBORN"
+  {
+    gender = FEMALE
+    name = append {
+      firstNameGen = "LOVECRAFTIAN"
+    }
+  }
+ 
+
+"FTD_DEEP_ONE_FIRSTBORN_NPC" inherit "FTD_DEEP_ONE_FIRSTBORN"
+  {
+    viewId = { "ftd_deep_one_firstborn_4" }
+    attr = {
+      DAMAGE 38
+      DEFENSE 28
+      SPELL_DAMAGE 14
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+      SPELL_DAMAGE 8
+    }
+    inventory = {
+      { "Robe"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+
+ # Deep ones
+
+"FTD_DEEP_ONE"
+  {
+    viewId = { "ftd_deep_one" }
+    attr = {
+      DAMAGE 24
+      DEFENSE 20
+	  SPELL_DAMAGE 11
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 8 {attackType = BITE  attackMsg = BITE} }}}
+		LEG {{{ Intrinsic { "claws_attack" } "claws" 7 { attackType = HIT attackMsg = CLAW } }}}}}
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  COPULATION_SKILL 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+	  SPELL_DAMAGE 4
+    }
+    chatReactionFriendly = "vulgtmah dagoth"
+    chatReactionHostile = "\"Die!\""
+	gender = FEMALE
+	spellSchools = { "Lore of the Deep" }
+    name = {
+      name = "deep one"
+      pluralName = "deep ones"
+	  firstNameGen = "LOVECRAFTIAN"
+    }
+     inventory = {
+    }
+  }
+  
+"FTD_DEEP_ONE_ANCIENT"
+  {
+    viewId = { "ftd_deep_one" }
+    attr = {
+      DAMAGE 36
+      DEFENSE 32
+	  SPELL_DAMAGE 19
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {attackType = BITE  attackMsg = BITE} }}}
+		LEG {{{ Intrinsic { "claws_attack" } "claws" 11 { attackType = HIT attackMsg = CLAW } }}}}}
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  COPULATION_SKILL 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 8
+	  SPELL_DAMAGE 8
+    }
+    chatReactionFriendly = "vulgtmah dagoth"
+    chatReactionHostile = "\"Die!\""
+	gender = FEMALE
+	spellSchools = { "Lore of the Deep" }
+    name = {
+      name = "deep one"
+      pluralName = "deep ones"
+	  firstNameGen = "LOVECRAFTIAN"
+    }
+    inventory = {
+    }
+  }
+   
+   # Deep ones hybrid
+
+"FTD_DEEP_PESEANT"
+  {
+    viewId = { "peasant" }
+    genderAlternatives = {
+      FEMALE { "peasant_woman" }
+    }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+	  DIGGING 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      CROPS_SKILL 1
+      DISTILLATION_SKILL 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    aiType = RANGED
+    name = {
+      name = "peasant"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+
+"FTD_DEEP_ONE_HYBRID_FERAL"
+  {
+    viewId = { "ftd_deep_hybrid_feral" }
+	genderAlternatives = {
+      FEMALE { "ftd_deep_hybrid_feral_f" }
+    }
+    attr = {
+      DAMAGE 20
+      DEFENSE 18
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {attackType = BITE  attackMsg = BITE} }}}
+		ARM {{{ Intrinsic { "claws_attack" } "claws" 4 { attackType = HIT attackMsg = CLAW } }}}}}
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  NIGHT_VISION 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    chatReactionFriendly = "graa... GRAAA!!"
+    chatReactionHostile = "graa... GRAAA!!"
+    name = {
+      name = "deep one feral hybrid"
+	  firstNameGen = "LOVECRAFTIAN"
+    }
+     inventory = {
+    }
+  }
+   
+"FTD_DEEP_ONE_HYBRID"
+  {
+    viewId = { "ftd_deep_hybrid_m" }
+    genderAlternatives = {
+      FEMALE { "ftd_deep_hybrid_f" }
+    }
+    attr = {
+      DAMAGE 16
+      DEFENSE 14
+	  FORGE 25
+      FURNACE 25
+	  WORKSHOP 25
+      JEWELER 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "c' ahnythor ahthrodog ehyeeog"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  NIGHT_VISION 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    name = {
+      name = "deep one hybrid craftsman"
+	  firstNameGen = "LOVECRAFTIAN"
+    }
+    maxLevelIncrease = {
+      FORGE 10
+    }
+	inventory = {
+	  { "LeatherArmor"}
+      { "Club"}
+    }
+  }
+ 
+"FTD_DEEP_ONE_HYBRID_ENFONCER"
+  {
+    viewId = { "ftd_deep_hybryd_enfoncer_m" }
+    genderAlternatives = {
+      FEMALE { "ftd_deep_hybryd_enfoncer_f" }
+    }
+    attr = {
+      DAMAGE 20
+      DEFENSE 22
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "c' ahnythor ahthrodog ehyeeog"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  NIGHT_VISION 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    name = {
+      name = "deep one hybrid enfoncer"
+	  firstNameGen = "LOVECRAFTIAN"
+    }
+    maxLevelIncrease = {
+      DAMAGE 8
+    }
+	inventory = {
+	  {"Club"}
+	  {"WoodenShield"}
+    }
+  }
+  
+"FTD_DEEP_ONE_HYBRID_ARCHER"
+  {
+    viewId = { "ftd_deep_hybrid_archer_m" }
+    genderAlternatives = {
+      FEMALE { "ftd_deep_hybrid_archer_f" }
+    }
+    attr = {
+      DAMAGE 16
+	  RANGED_DAMAGE 20
+      DEFENSE 16
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "c' ahnythor ahthrodog ehyeeog"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  NIGHT_VISION 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    name = {
+      name = "deep one hybrid archer"
+	  firstNameGen = "LOVECRAFTIAN"
+    }
+    maxLevelIncrease = {
+	  RANGED_DAMAGE 8
+    }
+	inventory = {
+      # Here comes a list of items. The format of each element is defined in creature_inventory.h
+      {"Bow"}
+      # Take a look a CYCLOPS for a more detailed example.
+    }
+  } 
+     
+"FTD_DEEP_ONE_HYBRID_PRIEST"
+  {
+    viewId = { "ftd_deep_hybrid_priest_m" }
+    genderAlternatives = {
+      FEMALE { "ftd_deep_hybrid_priest_f" }
+    }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+	  SPELL_DAMAGE 14
+	  SPELL_SPEED 5
+	  LABORATORY 15
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "c' ahnythor ahthrodog ehyeeog"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  NIGHT_VISION 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    name = {
+      name = "deep one hybrid priest"
+	  firstNameGen = "LOVECRAFTIAN"
+    }
+    maxLevelIncrease = {
+	  SPELL_DAMAGE 8
+    }
+    spellSchools = { "Lore of the Deep"  }
+	inventory = {
+      # Here comes a list of items. The format of each element is defined in creature_inventory.h
+      {"Robe"}
+	  {"WoodenStaff"}
+      # Take a look a CYCLOPS for a more detailed example.
+    }
+  } 
+     
+"FTD_DEEP_ONE_HYBRID_APOTHECARY"
+  {
+    viewId = { "ftd_hybrid_apothecary_m" }
+    genderAlternatives = {
+      FEMALE { "ftd_hybrid_apothecary_f" }
+    }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+	  SPELL_SPEED 14
+	  LABORATORY 45
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "c' ahnythor ahthrodog ehyeeog"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  NIGHT_VISION 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    name = {
+      name = "deep one hybrid apothecary"
+	  firstNameGen = "LOVECRAFTIAN"
+    }
+    maxLevelIncrease = {
+	  SPELL_DAMAGE 8
+    }
+    spellSchools = { "healer" }
+	inventory = {
+      # Here comes a list of items. The format of each element is defined in creature_inventory.h
+      {"Robe"}
+	  {"WoodenStaff"}
+      # Take a look a CYCLOPS for a more detailed example.
+    }
+  } 
+      
+"EG_SHOGGOTH"
+  {
+    viewId = { "ftd_shoggoth_imitator" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 20  
+    }
+    body = {
+      type = NonHumanoid LARGE
+	    bodyParts = {
+        ARM 3
+		LEG 2
+        TORSO 1
+		HEAD 1
+		      }
+	  	  intrinsicAttacks = {
+	          ARM  {{{ Intrinsic { "claws_attack" } "claws" 12 { attackType = HIT attackMsg = CLAW } }}}
+			  LEG  {{{ Intrinsic { "claws_attack" } "claws" 12 { attackType = HIT attackMsg = CLAW } }}}
+	          HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 14 { attackType = BITE attackMsg = BITE} }}}
+			                 }
+          }
+	spells = { "ftd_mutation" }
+    permanentEffects = {
+	  SWIMMING_SKILL 1
+      REGENERATION 1
+      NIGHT_VISION 1
+	  SLOWED 1
+	  SWARMER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    name = {
+      name = "shoggoth"
+    }
+    gender = IT
+  }
+   
+ # Animals 
+ "FTD_SUMMON_STARFISH"
+  {
+    viewId = { "ftd_starfish" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 6
+    }
+	aiType = RANGED
+    body = {
+      type = NonHumanoid SMALL
+	  minionFood = true
+      bodyParts = {
+        TORSO 1
+	    ARM 5
+		}
+      weight = 40
+    }
+    permanentEffects = {
+	  COLLAPSED 1
+      REGENERATION 1
+	  SWIMMING_SKILL 1
+	  SWARMER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    noChase = true
+    name = {
+      name = "starfish"
+      pluralName = "Starfishes"
+    }
+  }
+   
+"FTD_STARFISH" inherit "FTD_SUMMON_STARFISH"
+  {
+    aiType = RANGED
+  }
+   
+"FTD_STARFISH_SWARM" inherit "FTD_SUMMON_STARFISH"
+  {
+    permanentEffects = append {
+	  SWARMER 1
+    }
+  }  
+  
+"FTD_SUMMON_CRAB"
+  {
+    viewId = { "ftd_crab_01" }
+	genderAlternatives = {
+	  FEMALE { "ftd_crab_01" }
+	  MALE { "ftd_crab_02" }
+      FEMALE { "ftd_crab_02" }
+    }
+    attr = {
+      DAMAGE 4
+      DEFENSE 6
+    }
+    body = {
+      type = NonHumanoid SMALL
+      bodyParts = {
+        LEG 6
+        TORSO 1
+	    ARM 2
+      }
+	    intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 1 {
+            attackType = HIT
+            attackMsg = CLAW }}}}
+      } 
+      weight = 10
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+	  SWIMMING_SKILL 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    noChase = true
+    name = {
+      name = "crab"
+      pluralName = "crabs"
+    }
+  }
+   
+"FTD_CRAB" inherit "FTD_SUMMON_CRAB"
+  {
+    aiType = RANGED
+  }
+   
+"FTD_CRAB_SWARM" inherit "FTD_SUMMON_CRAB"
+  {
+    permanentEffects = append {
+	  SWARMER 1
+    }
+  }  
+  
+"FTD_GIANT_CRAB"
+  {
+    viewId = { "ftd_giant_crab_01" }
+	genderAlternatives = {
+	  FEMALE { "ftd_giant_crab_01" }
+	  MALE { "ftd_giant_crab_02" }
+      FEMALE { "ftd_giant_crab_02" }
+    }
+    attr = {
+		DAMAGE 11
+		DEFENSE 18 
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 6
+        TORSO 1
+	    ARM 2
+      }
+	    intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 12 {
+            attackType = HIT
+            attackMsg = CLAW }}}}
+      } 
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+	  SWIMMING_SKILL 1
+	  STEED 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    noChase = true
+    name = {
+      name = "giant crab"
+      pluralName = "giant crabs"
+    }
+  }
+
+"FTD_DRODGHER"
+  {
+    viewId = { "ftd_drodgher" }
+    attr = {
+      DAMAGE 4
+      DEFENSE 20
+    }
+    body = {
+      type = NonHumanoid LARGE
+      bodyParts = {
+        BACK 1
+        HEAD 1
+        TORSO 1
+      }
+      weight = 250
+      intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "sucker" 2 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  SLOWED 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    name = {
+      name = "drodgher"
+	  pluralName = "drodghers"
+    }
+	deathEffect = Chain {
+		Summon "FTD_DRODGHER_SPERM" {4 8} none
+    }
+  }
+  
+"FTD_DRODGHER_SPERM"
+  {
+    viewId = { "ftd_drogher_sperm" }
+    attr = {
+      DAMAGE 4
+      DEFENSE 2
+    }
+	aiType = RANGED
+    body = {
+      type = NonHumanoid SMALL
+	  minionFood = true
+      bodyParts = {
+        TORSO 1
+	    ARM 3
+		}
+      weight = 1
+	  intrinsicAttacks = {
+        ARM {{itemType = { Intrinsic { "fist_attack" }  "tentacles" 2 { attackType = HIT attackMsg = SWING} } isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+	  SPEED 1
+	  SWIMMING_SKILL 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    noChase = true
+    name = {
+      name = "drodgher sperm"
+      pluralName = "drodgher sperms"
+    }
+  }
+ 
+"FTD_SUMMON_TURTLE"
+  {
+    viewId = { "ftd_turtle" }
+    attr = {
+      DAMAGE 2
+      DEFENSE 12
+    }
+    aiType = RANGED
+    body = {
+      type = FourLegged MEDIUM
+      weight = 200
+	  intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "bite" 1 {
+            attackType = BITE
+            attackMsg = BITE }}}}
+      } 
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      MELEE_RESISTANCE 1
+	  SLOWED 1
+	  SWIMMING_SKILL 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    noChase = true
+    name = {
+      name = "turtle"
+      pluralName = "turtles"
+    }
+  } 
+   
+"FTD_TURTLE" inherit "FTD_SUMMON_TURTLE"
+  {
+    aiType = RANGED
+  }
+    
+"FTD_TURTLE_SWARM" inherit "FTD_SUMMON_TURTLE"
+  {
+    permanentEffects = append {
+	  SWARMER 1
+    }
+  }  
+  
+"FTD_SUMMON_HORSESHOE_CRAB"
+  {
+    viewId = { "ftd_swarmer_horseshoe" }
+    attr = {
+      DAMAGE 2
+	  MULTI_WEAPON 2
+      DEFENSE 6
+    }
+    body = {
+      type = NonHumanoid SMALL
+      bodyParts = {
+        LEG 6
+        TORSO 1
+      }
+	    intrinsicAttacks = {
+        LEG {{{ Intrinsic { "fist_attack" } "legs" 1 {
+            attackType = HIT
+            attackMsg = SWING }}}}
+      } 
+      weight = 10
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+	  SWIMMING_SKILL 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    noChase = true
+    name = {
+      name = "horseshoe crab"
+      pluralName = "horseshoe crabs"
+    }
+  }
+   
+"FTD_HORSESHOE_CRAB" inherit "FTD_SUMMON_HORSESHOE_CRAB"
+  {
+    aiType = RANGED
+  }
+   
+"FTD_HORSESHOE_CRAB_SWARM" inherit "FTD_SUMMON_HORSESHOE_CRAB"
+  {
+    permanentEffects = append {
+	  SWARMER 1
+    }
+  }  
+  
+"FTD_SUMMON_SPIDER_CRAB"
+  {
+    viewId = { "crab_temp_legs_visible_enlarged" }
+    attr = {
+      DAMAGE 3
+      DEFENSE 3
+    }
+    body = {
+      type = NonHumanoid SMALL
+      bodyParts = {
+        LEG 6
+        TORSO 1
+	    ARM 2
+      }
+	    intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 1 {
+            attackType = HIT
+            attackMsg = CLAW }}}}
+      } 
+      weight = 10
+    }
+    permanentEffects = {
+	  NO_FRIENDLY_FIRE 1
+      RANGED_RESISTANCE 1
+	  SWIMMING_SKILL 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    spells = { "ftd_long_arms" }
+    noChase = true
+    name = {
+      name = "spider crab"
+      pluralName = "spider crabs"
+    }
+  }
+   
+"FTD_SPIDER_CRAB" inherit "FTD_SUMMON_SPIDER_CRAB"
+  {
+    aiType = RANGED
+  }
+   
+"FTD_SPIDER_CRAB_SWARM" inherit "FTD_SUMMON_SPIDER_CRAB"
+  {
+    permanentEffects = append {
+	  SWARMER 1
+    }
+  }  
+
+"FTD_SUMMON_RAT_PARASITE"
+  {
+    viewId = { "ftd_crab_parasite_rat" }
+    attr = {
+      DAMAGE 2
+      DEFENSE 2 
+    }
+
+    body = {
+      type = NonHumanoid SMALL
+      bodyParts = {
+        LEG 6
+        TORSO 1
+	    ARM 2
+      }
+      weight = 1
+      canBeRevived = false
+    }
+    aiType = RANGED
+    permanentEffects = {
+      SPEED 1
+      STEED 1
+	  SWIMMING_SKILL 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    noChase = true
+    name = {
+      name = "rat?"
+    }
+  }
+    
+"FTD_RAT_PARASITE" inherit "FTD_SUMMON_RAT_PARASITE"
+  {
+    aiType = RANGED
+  }
+   
+"FTD_RAT_PARASITE_SWARM" inherit "FTD_SUMMON_RAT_PARASITE"
+  {
+    permanentEffects = append {
+	  SWARMER 1
+    }
+  }  
+ 
+"FTD_SUMMON_REACH_CRAB"
+  {
+    viewId = { "ftd_reach" }
+    attr = {
+      DAMAGE 2
+      DEFENSE 6
+    }
+    body = {
+      type = NonHumanoid SMALL
+      bodyParts = {
+        LEG 6
+        TORSO 1
+	    ARM 2
+      }
+	    intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 1 {
+            attackType = HIT
+            attackMsg = CLAW }}}}
+      } 
+      weight = 10
+    }
+    permanentEffects = {
+	  SLOWED 1
+	  NO_FRIENDLY_FIRE 1
+      RANGED_RESISTANCE 1
+	  SWIMMING_SKILL 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+    spells = { "ftd_long_arms" }
+    noChase = true
+    name = {
+      name = "reach crab"
+      pluralName = "reach crabs"
+    }
+  }
+    
+"FTD_REACH_CRAB" inherit "FTD_SUMMON_REACH_CRAB"
+  {
+    aiType = RANGED
+  }
+   
+"FTD_REACH_CRAB_SWARM" inherit "FTD_SUMMON_REACH_CRAB"
+  {
+    permanentEffects = append {
+	  SWARMER 1
+    }
+  }  
+    
+ # Constructs 
+"FTD_DEEP_ONE_GOLEM"
+  {
+    viewId = { "ftd_deep_one_golem" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 25
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = ROCK
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      SLOWED 1
+    }
+    name = {
+      name = "statue golem"
+    }
+  }
+  
+  
+ # Pirates
+"FTD_PIRATE"
+  {
+    viewId = { "ftd_pirate" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 13
+	  RANGED_DAMAGE 6
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all law enforcement"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      DAMAGE 2
+	  RANGED_DAMAGE 1
+    }
+    name = {
+      name = "pirate"
+    }
+	    permanentEffects = {
+      RIDER 1
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Knife"}
+	  { "ftd_flintlock"}
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { type = "Torch" chance = 0.3 }
+      { type = "Moonshine" chance = 0.5 }
+    }
+  }
+  
+  "FTD_PIRATE_CAPTAIN"
+  {
+    viewId = { "ftd_pirate_captain" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 16
+	  RANGED_DAMAGE 8
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all law enforcement"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      DAMAGE 4
+	  RANGED_DAMAGE 2
+    }
+    name = {
+      name = "pirate"
+    }
+	    permanentEffects = {
+      RIDER 1
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Knife"}
+	  { "ftd_flintlock"}
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { type = "Torch" chance = 0.3 }
+      { type = "Moonshine" chance = 0.5 }
+    }
+  }
+
+"FTD_TINY_CRAB"
+  {
+    viewId = { "ftd_crab_tiny" }
+    attr = {
+      DAMAGE 10
+	  SPELL_DAMAGE 10
+	  RANGED_DAMAGE 10
+      DEFENSE 25
+    }
+    body = {
+      type = Humanoid SMALL
+	  }
+    name = {
+      name = "crabby"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+     }
+    permanentEffects = {
+      AMBUSH_SKILL 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 16
+      SPELL_DAMAGE 16
+      RANGED_DAMAGE 16
+    }
+    hatedByEffect = HATE_HUMANS
+    spellSchools = { "fighter" "Lore of the Deep" }
+    spells = { "invisibility" }
+	inventory = {
+      { "FirstAidKit" 2 4 }
+      { "Knife"}
+      { "Sword"}
+      { "LeatherGloves"}
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "GoldPiece" 16 26 }
+    }
+	cantEquip = false
+  }
+
+"FTD_TINY_CRAB_F" inherit "FTD_TINY_CRAB"
+  {
+
+    gender = FEMALE
+    name = {
+      name = "crabby"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+     }
+  }
+  
+  
+ # Undead
+"FTD_DROWNER"
+  {
+    viewId = { "ftd_drowner" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 17 
+    }
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_FLESH
+      drops = {
+        none 20
+        { "ZombieBrain" } 1
+      }
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      SLOWED 1
+	  SWIMMING_SKILL 1	
+	  FTD_SUNLIGHT_RESISTANCE 1  
+    }
+    maxLevelIncrease = {
+      DAMAGE 3
+    }
+    name = {
+      name = "zombie"
+    }
+    hatedByEffect = HATE_UNDEAD
+  }
+
+ # Crustacean horde
+"FTD_CRUSTACEAN_CRAB"
+  {
+    viewId = { "ftd_mutant_crab_01" }
+	genderAlternatives = {
+      FEMALE { "ftd_mutant_crab_01" }
+	  MALE { "ftd_mutant_crab_02" }
+	  FEMALE { "ftd_mutant_crab_02" }
+    }
+    attr = {
+      DAMAGE 16
+      DEFENSE 28
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+		ARM {{{ Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }}}}}
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  RIDER 1
+	  RANGED_RESISTANCE 1
+	  MELEE_RESISTANCE 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+	maxLevelIncrease = {
+      DAMAGE 4
+    }
+    chatReactionFriendly = "chirp??"
+    chatReactionHostile = "chirp!!"
+    name = {
+      name = "crabman"
+    }
+     inventory = {
+    }
+  }
+  
+"FTD_CRUSTACEAN_LOBSTER"
+  {
+    viewId = { "ftd_mutant_lobster_01" }
+		genderAlternatives = {
+      FEMALE { "ftd_mutant_lobster_01" }
+	  MALE { "ftd_mutant_lobster_02" }
+	  FEMALE { "ftd_mutant_lobster_02" }
+    }
+    attr = {
+      DAMAGE 16
+      DEFENSE 22
+	  MULTI_WEAPON 20
+    }
+    body = {
+      type = Humanoid LARGE
+	  addBodyPart = {
+        ARM 2
+      }
+      intrinsicAttacks = {
+		ARM {{{ Intrinsic { "claws_attack" } "claws" 6 { attackType = HIT attackMsg = CLAW } }}}}}
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  RIDER 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+	maxLevelIncrease = {
+      DAMAGE 4
+    }
+    chatReactionFriendly = "chirp??"
+    chatReactionHostile = "chirp!!"
+    name = {
+      name = "lobsterman"
+    }
+     inventory = {
+    }
+  }
+  
+"FTD_CRUSTACEAN_CRAB_BEHEMOTH"
+  {
+    viewId = { "ftd_mutant_crab_behemoth_01" }
+	genderAlternatives = {
+      FEMALE { "ftd_mutant_crab_behemoth_01" }
+	  MALE { "ftd_mutant_crab_behemoth_02" }
+	  FEMALE { "ftd_mutant_crab_behemoth_02" }
+    }
+    attr = {
+      DAMAGE 24
+      DEFENSE 36
+	  MULTI_WEAPON 20
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  addBodyPart = {
+        ARM 2
+		LEG 4
+      }
+      intrinsicAttacks = {
+		ARM {{{ Intrinsic { "claws_attack" } "claws" 16 { attackType = HIT attackMsg = CLAW } }}}}}
+    permanentEffects = {
+      SWIMMING_SKILL 1
+	  RIDER 1
+	  RANGED_RESISTANCE 1
+	  MELEE_RESISTANCE 1
+	  FTD_CLOUD_IMMUNE 1
+    }
+	maxLevelIncrease = {
+      DAMAGE 4
+    }
+    chatReactionFriendly = "chirp??"
+    chatReactionHostile = "chirp!!"
+    name = {
+      name = "crabman behemoth"
+    }
+     inventory = {
+    }
+  }
+
+
+#####################################Cosmos###########################################
+
+# keepers
+"CS_COSMOS_PROPHET"
+  {
+    viewId = { "cs_cultist_cosmos_emissary_01" }
+      name = {
+      name = "High Priest"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    attr = {
+      DAMAGE 12
+      DEFENSE 12
+      SPELL_DAMAGE 20
+	  LABORATORY 20
+	  
+    }
+    maxLevelIncrease = {
+      DAMAGE 2
+      SPELL_DAMAGE 3
+    }
+	permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  RIDER 1
+    }
+    aiType = RANGED
+    spellSchools = {  "CS_COSMOS_CHOSEN_KEEPER"  }
+    spells = { "heal spirit" }
+    inventory = {
+      { "Robe"}
+      { "ArchwoodStaff" }
+    }
+  }
+  
+"CS_COSMOS_PROPHET_F" inherit "CS_COSMOS_PROPHET"
+  {
+    viewId = { "cs_cultist_cosmos_emissary_01_f" }
+    
+    gender = FEMALE
+    name = append {
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+ 
+"CS_COSMOS_PROPHET_EVO_1" inherit "CS_COSMOS_PROPHET"
+  {
+    viewId = { "cs_cultist_cosmos_emissary_02" }
+    body = {
+      type = Humanoid LARGE
+	  material = CS_MGEHYE
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+      SPELL_DAMAGE 6
+    }
+	permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  FLYING 1
+		  RANGED_RESISTANCE 1
+    }
+	name = {
+      name = "High Priest"
+      fullTitle = true
+    }
+  }
+ 
+"CS_COSMOS_PROPHET_EVO_2" inherit "CS_COSMOS_PROPHET"
+  {
+    viewId = { "cs_cultist_cosmos_emissary_03" }
+    body = {
+      type = Humanoid LARGE
+	  material = CS_MGEHYE
+    }
+    maxLevelIncrease = {
+      DAMAGE 6
+      SPELL_DAMAGE 9
+    }
+	permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  FLYING 1
+		  RANGED_RESISTANCE 1
+    }
+	name = {
+      name = "Cosmos Seed"
+      fullTitle = true
+    }
+  }  
+  
+"CS_COSMOS_PROPHET_EVO_3" inherit "CS_COSMOS_PROPHET"
+  {
+    viewId = { "cs_cultist_cosmos_emissary_04" }
+    body = {
+      type = Humanoid LARGE
+	  material = CS_MGEHYE
+    }
+    maxLevelIncrease = {
+      DAMAGE 8
+      SPELL_DAMAGE 12
+    }
+	permanentEffects = {
+	      NIGHT_VISION 1
+		  REGENERATION 1
+		  FLYING 1
+		  RANGED_RESISTANCE 1
+		  MELEE_RESISTANCE 1
+    }
+	name = {
+      name = "Ascended"
+      firstNameGen = "COSMIC_ENTITY"
+      fullTitle = true
+    }
+  }    
+  
+ # CRYSTAL
+  "CS_DRAINED_HUMAN"
+  {
+    viewId = { "cs_drained_human" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 6
+	  DIGGING 15
+	  FORGE 15
+      FURNACE 15
+	  WORKSHOP 15
+      JEWELER 15
+    }
+    body = {
+      type = Humanoid LARGE
+	  material = CS_MGEHYE_NO_DROP
+    }
+    chatReactionFriendly = "..."
+    chatReactionHostile = "\"...\""
+    permanentEffects = {
+	  LIGHT_SOURCE 1
+	  CS_WORKER 1
+      MAGIC_RESISTANCE 1
+	  CS_TEMPORAL_DISRUPTION 1
+    }
+	cantEquip = true
+    name = {
+      name = "Drained"
+    }
+	hatedByEffect = HATE_DRAINED
+	deathEffect = PlaceFurniture "CS_DRAINED_CORPSE_HUMAN"
+    }
+
+  "CS_DRAINED_GREENSKIN" inherit   "CS_DRAINED_HUMAN"
+  {
+    viewId = { "cs_drained_greenskin" }
+	deathEffect = PlaceFurniture "CS_DRAINED_CORPSE_GREENSKIN"
+  }
+
+  "CS_DRAINED_DWARF" inherit   "CS_DRAINED_HUMAN"
+  {
+    viewId = { "cs_drained_dwarf" }
+	deathEffect = PlaceFurniture "CS_DRAINED_CORPSE_DWARF"
+  }
+
+  "CS_DRAINED_ELF" inherit "CS_DRAINED_HUMAN"
+  {
+    viewId = { "cs_drained_elf" }
+	deathEffect = PlaceFurniture "CS_DRAINED_CORPSE_ELF"
+  }
+  
+  "CS_DRAINED_BEAST" inherit "CS_DRAINED_HUMAN"
+  {
+    body = {
+      type = FourLegged LARGE
+	  material = CS_MGEHYE_NO_DROP
+	  xCanPickUpItems = true
+    }
+    permanentEffects = {
+	  LIGHT_SOURCE 1
+	  STEED 1
+      MAGIC_RESISTANCE 1
+	  CS_TEMPORAL_DISRUPTION 1
+    }
+	cantEquip = true
+    viewId = { "cs_drained_beast" }
+	deathEffect = PlaceFurniture "CS_DRAINED_CORPSE_BEAST"
+  }
+  
+"CS_ELEMENTAL"
+  {
+    viewId = { "cs_crystal_elemental" }
+    body = {
+      type = HumanoidLike LARGE
+      material = CS_MGEHYE
+      weight = 500
+      deathSound = none
+    }
+    attr = {
+      DAMAGE 35
+      DEFENSE 15 
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+	  MELEE_RESISTANCE 1
+    }
+    name = {
+      name = "Mgehye elemental"
+    }
+    gender = IT
+  }  
+  
+ # cultists 
+  "CS_CULTIST"
+  {
+    viewId = { "cs_cultist" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 8
+	  FORGE 25
+      FURNACE 25
+	  WORKSHOP 25
+      JEWELER 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      FORGE 10
+    }
+    aiType = RANGED
+    name = {
+      name = "Cultist"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "Robe"}
+    }
+  }
+ 
+  "CS_CULTIST_F" inherit "CS_CULTIST"
+  {
+    viewId = { "cs_cultist_f" }
+    name = {
+      name = "Cultist"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  }
+  
+  "CS_CULTIST_DEFENDER"
+  {
+    viewId = { "cs_cultist_defender" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 18
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    name = {
+      name = "Cultist defender"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "Robe"}
+      { "LeatherHelm"}
+    }
+  }
+  
+  "CS_CULTIST_DEFENDER_F" inherit "CS_CULTIST_DEFENDER"
+  {
+    viewId = { "cs_cultist_defender_f" }
+    name = {
+      name = "Cultist defender"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  }
+  
+  "CS_CULTIST_RITUALIST"
+  {
+    viewId = { "cs_cultist_ritualist" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 11
+	  SPELL_DAMAGE 18
+	  LABORATORY 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 7
+    }
+    spellSchools = { "CS_COSMOS_EMBRACE" }
+    name = {
+      name = "Cultist Ritualist"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+	inventory = {
+      { "Robe"}
+      { "ArchwoodStaff" }
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+  "CS_CULTIST_RITUALIST_F" inherit "CS_CULTIST_RITUALIST"
+  {
+    viewId = { "cs_cultist_ritualist_f" }
+    name = {
+      name = "Cultist Ritualist"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+  }  
+  
+  "CS_CULTIST_ARCHER"
+  {
+    viewId = { "cs_cultist_archer" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 14
+	  RANGED_DAMAGE 14
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+	aiType = RANGED
+    chatReactionFriendly = "do you hear it?"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 2
+      RANGED_DAMAGE 7
+    }
+    name = {
+      name = "Cultist Archer"
+	  firstNameGen = "FIRST_MALE"
+    }
+	gender = MALE
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "Robe"}	
+      { "Bow"}
+    }
+  }
+  
+  "CS_CULTIST_ARCHER_F" inherit "CS_CULTIST_ARCHER"
+  {
+    viewId = { "cs_cultist_archer_f" }
+    name = {
+      name = "Cultist Archer"
+	  firstNameGen = "FIRST_FEMALE"
+    }
+	gender = FEMALE
+  }
+  
+ # cultists egg
+  "CS_CULTIST_EGG" inherit "CS_CULTIST"
+  {
+    viewId = { "cs_ascended_cultist_egg" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 12
+	  FORGE 30
+      FURNACE 30
+	  WORKSHOP 30
+      JEWELER 30
+    }
+    afterKilledSomeone = {
+      ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+      ApplyToSteed Filter Kills 20 Polymorph "CS_CULTIST_HATCHED" none
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = CS_MGEHYE
+      weight = 500
+      deathSound = none
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+	  RANGED_RESISTANCE 1
+    }
+    name = {
+      name = "cosmos seed"
+    }
+	gender = IT
+    hatedByEffect = none
+  }
+
+  "CS_CULTIST_DEFENDER_EGG" inherit "CS_CULTIST_DEFENDER"
+  {
+    viewId = { "cs_ascended_cultist_egg" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 24
+    }
+    afterKilledSomeone = {
+      ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+      ApplyToSteed Filter Kills 20 Polymorph "CS_CULTIST_DEFENDER_HATCHED" none
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = CS_MGEHYE
+      weight = 500
+      deathSound = none
+    }
+    maxLevelIncrease = {
+      DAMAGE 9
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+	  RANGED_RESISTANCE 1
+    }
+    name = {
+      name = "cosmos seed"
+    }
+	gender = IT
+    hatedByEffect = none
+  }
+  
+  "CS_CULTIST_RITUALIST_EGG" inherit "CS_CULTIST_RITUALIST"
+  {
+    viewId = { "cs_ascended_cultist_egg" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 16
+	  SPELL_DAMAGE 24
+	  LABORATORY 30
+    }
+    afterKilledSomeone = {
+      ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+      ApplyToSteed Filter Kills 20 Polymorph "CS_CULTIST_RITUALIST_HATCHED" none
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = CS_MGEHYE
+      weight = 500
+      deathSound = none
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 9
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+	  RANGED_RESISTANCE 1
+    }
+    name = {
+      name = "cosmos seed"
+    }
+	gender = IT
+    hatedByEffect = none
+  }
+
+  "CS_CULTIST_ARCHER_EGG" inherit "CS_CULTIST_ARCHER"
+  {
+    viewId = { "cs_ascended_cultist_egg" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 21
+	  RANGED_DAMAGE 21
+    }
+    afterKilledSomeone = {
+      ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+      ApplyToSteed Filter Kills 20 Polymorph "CS_CULTIST_ARCHER_HATCHED" none
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = CS_MGEHYE
+      weight = 500
+      deathSound = none
+    }
+    maxLevelIncrease = {
+      DAMAGE 3
+      RANGED_DAMAGE 9
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+	  RANGED_RESISTANCE 1
+    }
+    name = {
+      name = "cosmos seed"
+    }
+	gender = IT
+    hatedByEffect = none
+  }
+  
+ # cultists hatched
+  "CS_CULTIST_HATCHED" inherit "CS_CULTIST"
+  {
+    viewId = { "cs_ascended_cultist_hatched" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+	  FORGE 35
+      FURNACE 35
+	  WORKSHOP 35
+      JEWELER 35
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = SPIRIT
+      weight = 500
+      deathSound = none
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+	  MELEE_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+	  FLYING 1
+    }
+    name = {
+      name = "ascended"
+      firstNameGen = "COSMIC_ENTITY"
+    }
+	spells = append { "cs_drain" }
+	gender = IT
+    hatedByEffect = none
+  }
+
+  "CS_CULTIST_DEFENDER_HATCHED" inherit "CS_CULTIST_DEFENDER"
+  {
+    viewId = { "cs_ascended_cultist_hatched" }
+    attr = {
+      DAMAGE 24
+      DEFENSE 36
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = SPIRIT
+      weight = 500
+      deathSound = none
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+	  MELEE_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+	  FLYING 1
+    }
+    name = {
+      name = "ascended"
+      firstNameGen = "COSMIC_ENTITY"
+    }
+	spells = append { "cs_drain" }
+	gender = IT
+    hatedByEffect = none
+  }
+  
+  "CS_CULTIST_RITUALIST_HATCHED" inherit "CS_CULTIST_RITUALIST"
+  {
+    viewId = { "cs_ascended_cultist_hatched" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 22
+	  SPELL_DAMAGE 36
+	  LABORATORY 35
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = SPIRIT
+      weight = 500
+      deathSound = none
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 12
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+	  MELEE_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+	  FLYING 1
+    }
+    name = {
+      name = "ascended"
+      firstNameGen = "COSMIC_ENTITY"
+    }
+	spells = append { "cs_drain" }
+	gender = IT
+    hatedByEffect = none
+  }
+
+  "CS_CULTIST_ARCHER_HATCHED" inherit "CS_CULTIST_ARCHER"
+  {
+    viewId = { "cs_ascended_cultist_hatched" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 28
+	  RANGED_DAMAGE 28
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = SPIRIT
+      weight = 500
+      deathSound = none
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+      RANGED_DAMAGE 12
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+	  MELEE_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+	  FLYING 1
+    }
+    name = {
+      name = "ascended"
+      firstNameGen = "COSMIC_ENTITY"
+    }
+	spells = append { "cs_drain" }
+	gender = IT
+    hatedByEffect = none
+  }
+
+  
+"CS_STAR_VAMPIRE"
+  {
+    body = {
+      type = NonHumanoid LARGE
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 0.2 Lasting INSANITY}
+            attackerEffect = {Suicide DIE} } }}}
+      }
+    }
+    viewId = { "ghost" }
+    attr = {
+      DEFENSE 25
+      SPELL_DAMAGE 5
+    }
+    permanentEffects = {
+      FLYING 1
+    }
+    chatReactionFriendly = "\"Wouuuouuu!!!\""
+    chatReactionHostile = "\"Wouuuouuu!!!\""
+    name = {
+      name = "ghost"
+    }
+  }
+  
+"CS_COSMOS_BEAST"
+  {
+    viewId = { "cs_cosmos_beast" }
+    attr = {
+      DAMAGE 27
+      DEFENSE 29 
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = SPIRIT
+	  intrinsicAttacks = {
+        ARM {{{ Intrinsic { "touch_attack" } "touch" 8 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 0.1 Lasting 50 CS_TEMPORAL_DISRUPTION} } }}}
+      }
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+      REGENERATION 1
+	  TELEPATHY 1
+	  LIGHT_SOURCE 1
+    }
+	spells = { "cs_drain" "heal spirit" }
+    name = {
+      name = "beast of cosmos"
+    }
+  }
+
+"CS_COSMOS_LIGHT"
+  {
+    viewId = { "cs_cosmos_light" }
+    attr = {
+      DAMAGE 13
+      DEFENSE 14 
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 4 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 0.1 Lasting 50 CS_TEMPORAL_DISRUPTION} } }}}
+      }
+    }
+    permanentEffects = {
+	  CS_DISRUPTION_RESIST 1
+      REGENERATION 1
+	  TELEPATHY 1
+	  LIGHT_SOURCE 1
+	  FLYING 1
+    }
+	spells = { "heal spirit" }
+    name = {
+      name = "light of cosmos"
+    }
+  }
+
+"CS_COSMOS_LIGHT_SUICIDE" inherit "CS_COSMOS_LIGHT"
+  {
+    body = {
+      type = NonHumanoid MEDIUM
+      material = SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 4 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 1.0 Lasting 50 CS_TEMPORAL_DISRUPTION}
+			 attackerEffect = {Suicide DIE} } }}}
+      }
+    }
+  }
+  
+##################################Yellow Sign##################################
+# keepers
+
+"YS_PROPHET"
+  {
+    viewId = { "ys_yellow_king_avatar_01" }
+    viewIdUpgrades = { { "ys_yellow_king_avatar_02" } { "ys_yellow_king_avatar_03" } { "ys_yellow_king_avatar_04" } }
+    name = {
+      name = "king in yellow avatar"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "touch_attack" } "touch" 6 {
+            attackType = HIT
+            attackMsg = TOUCH
+			meleeAttackAttr = SPELL_DAMAGE
+            victimEffect = {1.0 Lasting INSANITY} } }}}
+      }
+    }
+    attr = {
+      DEFENSE 12
+      SPELL_DAMAGE 12
+      LABORATORY 10
+    }
+    permanentEffects = {
+      FLYING 1
+	  PSYCHIATRY 1
+	  INSANITY 1
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 15
+    }
+    gender = IT
+    aiType = RANGED
+    spellSchools = { "YS_YELLOW_SIGN" }
+    spells = { "ys_spirit_healing" }
+    inventory = {
+      { "Robe"}
+    }
+  }
+
+"YS_CULTIST"
+  {
+    viewId = { "ys_hastur_cultist" }
+    attr = {
+      DAMAGE 15
+	  RANGED_DAMAGE 7
+      DEFENSE 13
+      DIGGING 10
+      FURNACE 5
+      WORKSHOP 15
+      FORGE 15
+    }
+    fixedAttr = { FORGE FURNACE WORKSHOP }
+    body = {
+      type = Humanoid LARGE
+	  droppedPartUpgrade = Permanent INSANITY
+    }
+    maxLevelIncrease = {
+      DAMAGE 3
+	  RANGED_DAMAGE 3
+    }
+    chatReactionFriendly = "praise the king in yellow!"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+	  PSYCHIATRY 1
+	  INSANITY 1
+      DISTILLATION_SKILL 1
+      RIDER 1
+    }
+    name = {
+      name = "cultist"
+      firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_HUMANS
+    spellSchools = { "YS_MADNESS_WORK" }
+  }
+  
+"YS_CULTIST_F" inherit "YS_CULTIST"
+  {
+    name = {
+      name = "cultist"
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+  
+"YS_CULTIST_SORCERER"
+  {
+    viewId = { "ys_hastur_sorcerer" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 10
+      SPELL_DAMAGE 16
+      LABORATORY 35
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+	  PSYCHIATRY 1
+	  INSANITY 1
+      FLYING 1
+    }
+    aiType = RANGED
+    chatReactionFriendly = "praise the king in yellow!"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      SPELL_DAMAGE 8
+    }
+    name = {
+      name = "sorcerer"
+    }
+    spellSchools = { "YS_YELLOW_MAGE" }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+"YS_CULTIST_CHOSEN"
+  {
+    viewId = { "ys_hastur_chosen" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 10
+      SPELL_DAMAGE 20
+      LABORATORY 35
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+	  PSYCHIATRY 1
+	  INSANITY 1
+      RIDER 1
+    }
+    aiType = RANGED
+    chatReactionFriendly = "praise the king in yellow!"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      SPELL_DAMAGE 8
+    }
+    name = {
+      name = "chosen"
+    }
+    spellSchools = { "YS_YELLOW_SIGN" }
+    spells = { "heal spirit" }
+    companions = {{
+      count = 4
+      spawnAway = false
+      statsBase = SPELL_DAMAGE
+      summonFreq = 0.02
+      creatures = { "SPIRIT" }}
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+
+"YS_ACTOR"
+  {
+    viewId = { "ys_actor" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 10
+      MULTI_WEAPON 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "actor"
+      firstNameGen = "FIRST_MALE"
+    }
+    permanentEffects = {
+      RIDER 1
+	  PSYCHIATRY 1
+	  INSANITY 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    spellSchools = { "YS_MADNESS_MELEE" }
+  }
+
+"YS_JESTER"
+  {
+    viewId = { "ys_jester" }
+    attr = {
+      DAMAGE 8
+      RANGED_DAMAGE 8
+      DEFENSE 8 
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      RIDER 1
+	  PSYCHIATRY 1
+	  INSANITY 1
+    }
+    aiType = RANGED
+    spells = { "chicken" }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      RANGED_DAMAGE 7
+    }
+    spellSchools = { "YS_MADNESS_RANGED" }
+    name = {
+      name = "jester"
+      firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+"YS_TCHO-TCHOS"
+  {
+    viewId = { "ys_Tcho-Tchos" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 15
+      WORKSHOP 30
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about sword fighting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Tcho-Tcho"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      RIDER 1
+	  PSYCHIATRY 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+    
+"YS_BYAKHEE"
+  {
+    viewId = { "ys_Byakhee" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 11 
+    }
+    body = {
+      type = NonHumanoid LARGE
+      xCanPickUpItems = true
+      bodyParts = {
+        LEG 2
+		WING 2
+        TORSO 1
+		HEAD 1
+      }
+      intrinsicAttacks = {
+        WING  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+      droppedPartUpgrade = Permanent REGENERATION
+    }
+    maxLevelIncrease = {
+      DAMAGE 6
+    }
+    permanentEffects = {
+      INSANITY 1
+      PSYCHIATRY 1
+      REGENERATION 1
+    }
+    spells = { "ys_allow_rider" }
+    name = {
+      name = "byakhee"
+      stackName = "byakhees"
+    }
+  }
+
+"YS_HASTUR_SPAWN"
+  {
+    viewId = { "ys_hastur_spawn_hidden" }
+    attr = {
+      DAMAGE 19
+      DEFENSE 26 
+    }
+    body = {
+      type = NonHumanoid LARGE
+      bodyParts = {
+	    WING 2
+        LEG 8
+        TORSO 1
+      }
+      weight = 0.3
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "bite_attack" } "fangs" 1 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.1 Lasting POISON} } }}}
+      }
+    }
+    permanentEffects = {
+      INSANITY 1
+      PSYCHIATRY 1
+      REGENERATION 1
+	  FLYING 1
+    }
+    spells = { "ys_horrifying_reveal" "ys_spawn_start" }
+    name = {
+      name = "spawn of hastur"
+    }
+  }
+
+"YS_DREAM_LEECH"
+  {
+    viewId = { "ys_dream_leech" }
+    name = {
+      name = "dream leech"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "touch_attack" } "touch" 8 {
+            attackType = HIT
+            attackMsg = TOUCH
+			meleeAttackAttr = SPELL_DAMAGE
+            victimEffect = {0.2 Lasting INSANITY} } }}}
+      }
+    }
+    attr = {
+      DEFENSE 25
+      SPELL_DAMAGE 25
+      LABORATORY 10
+    }
+    permanentEffects = {
+      RIDER 1
+	  SPELL_DAMAGE 1
+	  INSANITY 1
+	  PSYCHIATRY 1
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 8
+    }
+    spells = { "ys_spirit_healing" "teleport" }
+    inventory = {
+      { "Robe"}
+      { "Sword" }
+    }
+  }
+
+###############################################################################
+##################################Minor Evils##################################
+###############################################################################
+
+
+##################################Beasts##################################
+
+"BB_BEAST"
+  {
+    viewId = { "bb_beast_patient" }
+    genderAlternatives = {
+      MALE { "bb_beast_naked" }
+      MALE { "bb_beast_loincloth" }
+      MALE { "bb_beast_patient_cloak" }
+    }
+    attr = {
+      DAMAGE 16
+      DEFENSE 8
+    }
+    body = {
+      type = Humanoid LARGE
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 6 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 5 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      REGENERATION 1
+      AMBUSH_SKILL 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 6
+    }
+    gender = MALE
+    name = {
+      name = "beast"
+      pluralName = "beasts"
+      firstNameGen = "FIRST_MALE"
+    }
+  }
+  
+"BB_BEAST_F" inherit "BB_BEAST"
+  {
+    gender = FEMALE
+    name = {
+      name = "beast"
+      pluralName = "beasts"
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+
+"BB_BEAST_BRUTE"
+  {
+    viewId = { "bb_beast_hulk" }
+    attr = {
+      DAMAGE 32
+      DEFENSE 16
+    }
+    body = {
+      type = Humanoid LARGE
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 12 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 10 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      REGENERATION 1
+      AMBUSH_SKILL 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
+    gender = MALE
+    name = {
+      name = "beast"
+      pluralName = "beasts"
+      firstNameGen = "FIRST_MALE"
+    }
+  }
+  
+"BB_BEAST_BRUTE_F" inherit "BB_BEAST"
+  {
+    gender = FEMALE
+    name = {
+      name = "beast"
+      pluralName = "beasts"
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }

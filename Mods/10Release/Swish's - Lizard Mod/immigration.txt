@@ -1,0 +1,128 @@
+"lizardmen_kingdom"
+{
+    {
+      ids = { "skink_worker" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      spawnLocation = NearLeader
+      keybinding = CREATE_IMP
+      sound = {"CREATE_IMP" 2}
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1 ExponentialCost "GOLD" 30 5 4 }
+      }
+    }
+    {
+      ids = { "skink_crafter" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
+      }
+      specialTraits = {
+         { 0.05 { OneOfTraits { Lasting { FAST_CRAFTING } Lasting { SLOW_CRAFTING } } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "crested_skint" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 0.7
+      initialRecruitment = 4
+      requirements = {
+            { 0.0 MinTurnRequirement 150 }
+      }
+      specialTraits = {
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+      }
+    }
+{
+      ids = { "swish_lizardman" }
+      traits = { FIGHTER }
+      frequency = 0.6
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+        { 0.0 MinTurnRequirement 650 }
+      }
+      specialTraits = {
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+      }
+    }
+{
+      ids = { "lizardman_warrior" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "lizard_totem"}}
+        { 0.0 MinTurnRequirement 850 }
+      }
+      specialTraits = {
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+      }
+    }
+{
+      ids = { "lizardman_heavy_warrior" }
+      traits = { FIGHTER }
+      frequency = 0.4
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "dino_statue"}}
+        { 0.0 MinTurnRequirement 950 }
+      }
+      specialTraits = {
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+      }
+    }
+{
+      ids = { "lizardman_shaman" "lizardman_shaman" "lizardman_shaman" "lizardman_shaman" }
+      traits = { FIGHTER }
+      frequency = 0.1
+      consumeIds = true
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "lizard_tablet"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+      }
+    }
+{
+      ids = { "lizardman_general" "lizardman_general" }
+      traits = { FIGHTER }
+      frequency = 0.4
+      consumeIds = true
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "dino_statue"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "THRONE"}}
+        { 1.0 CostInfo "GOLD" 100 }
+        { 0.0 MinTurnRequirement 1000 }
+      }
+    }
+}

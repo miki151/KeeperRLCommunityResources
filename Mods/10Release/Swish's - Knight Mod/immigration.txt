@@ -1,0 +1,239 @@
+"swish_knights"
+ {
+{
+      ids = { "swish_knight" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_knight_spear" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+ {
+      ids = { "swish_zerker" }
+      traits = { FIGHTER }
+      frequency = 0.1
+      requirements = {
+        { 0.1 AttractionInfo 2 {FurnitureType "TRAINING_IRON"}}
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_knight_archer" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      requirements = {
+        { 0.0 MinTurnRequirement 2000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+      }
+      specialTraits = {
+        { 0.15 { SpecialAttr RANGED_DAMAGE 8 HatedBy HATE_GREENSKINS }}
+        { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+        { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+        { 0.05 { Lasting { RANGED_VULNERABILITY } }}
+        { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+        { 0.05 { Lasting { SWIMMING_SKILL } }}
+        { 0.02 { Lasting { HATE_ELVES } }}
+        { 0.02 { Lasting { HATE_HUMANS } }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_smith" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
+      }
+      specialTraits = {
+         { 0.05 { OneOfTraits { Lasting { FAST_CRAFTING } Lasting { SLOW_CRAFTING } } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+ {
+      ids = { "swish_priest" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+        { 0.15 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
+        { 0.03 { AttrBonus SPELL_DAMAGE 4 AttrBonus DEFENSE -4}}
+        { 0.05 { ExtraTraining SPELL_DAMAGE 2}}
+        { 0.02 { Lasting { HATE_UNDEAD } }}
+      }
+    }
+{
+      ids = { "swish_paladin" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+        { 0.15 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
+        { 0.05 { ExtraTraining SPELL_DAMAGE 2}}
+      }
+    }
+{
+      ids = { "swish_arcanist" }
+      traits = { FIGHTER }
+      frequency = 0.15
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_GOLD"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+        { 0.15 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
+        { 0.05 { ExtraTraining SPELL_DAMAGE 2}}
+      }
+    }
+{
+      ids = { "swish_knight_veteran" "swish_knight_veteran2" }
+      traits = { FIGHTER }
+      consumeIds = true
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.0 MinTurnRequirement 3000 }
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_juggernaut" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.15
+      requirements = {
+        { 0.0 FurnitureType "BED3" }
+        { 0.3 AttractionInfo 2 {FurnitureType "TRAINING_IRON"}}
+        { 0.0 TechId "humanoid mutation" }
+        { 1.0 CostInfo "GOLD" 200 }
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "GALEAM" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = FurnitureType "angel_shrine"
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "angel_shrine"}}
+        { 0.0 CostInfo "DEMON_PIETY" 300 }
+      }
+    }
+{
+      ids = { "CHERUB" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      spawnLocation = FurnitureType "angel_shrine"
+      requirements = {
+        { 0.3 AttractionInfo 2 {FurnitureType "angel_shrine"}}
+        { 0.0 CostInfo "DEMON_PIETY" 1000 }
+      }
+    }
+{
+      ids = { "swish_ghost" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.7
+      requirements = {
+        { 0.3 AttractionInfo 2 {FurnitureType "angel_shrine"}}
+        { 0.0 CostInfo "DEMON_PIETY" 2000 }
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "ANGEL" }
+      traits = { FIGHTER }
+      frequency = 0.15
+      spawnLocation = FurnitureType "angel_shrine"
+      requirements = {
+        { 0.3 AttractionInfo 2 {FurnitureType "angel_shrine"}}
+        { 0.0 CostInfo "DEMON_PIETY" 3000 }
+      }
+    }
+{
+      ids = { "swish_juggernaut_ghost" "swish_juggernaut_ghost" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      consumeIds = true
+      requirements = {
+        { 0.3 AttractionInfo 2 {FurnitureType "angel_shrine"}}
+        { 0.0 CostInfo "DEMON_PIETY" 4000 }
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+}

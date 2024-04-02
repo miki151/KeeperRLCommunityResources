@@ -1,0 +1,177 @@
+"ov_pumpkins" {
+  CellularAutomaton(Set("OV_PUMPKINS"), 0.9)
+  Place(({1 1} Set("scarecrow") 1 On("OV_PUMPKINS")))
+}
+
+"ov_abyss_pumpkins" {
+  CellularAutomaton(Set("OV_ABYSS_PUMPKINS"), 0.9)
+  Place(({1 1} Set("scarecrow") 1 On("OV_ABYSS_PUMPKINS")))
+}
+
+Def ov_prisoncage1() {
+  Building("wood_wall", "wood_floor")
+  Border(BOTTOM, 3,
+    Border(TOP, 1,
+      Position(
+        MIDDLE,
+        {3 1},
+        {
+          Reset("wood_floor")
+          Margin(LEFT, 1,
+          Set("impaled_head", "no_corpse"),
+		  Border(RIGHT, 1,
+              Reset("wood_floor"))
+          )
+        }
+      )
+    )
+  )
+  Border(BOTTOM, 1,
+  Position(MIDDLE, {1 1}, Reset("wood_floor", "wood_door")))
+}
+End
+
+Def ov_prisoncage2() {
+  Building("wood_wall", "wood_floor")
+  Border(TOP, 3,
+    Border(BOTTOM, 1,
+      Position(
+        MIDDLE,
+        {3 1},
+        {
+          Reset("wood_floor")
+          Margin(RIGHT, 1,
+          Set("torture_table", "no_corpse"),
+		  Border(LEFT, 1,
+              Reset("wood_floor"))
+          )
+        }
+      )
+    )
+  )
+  Border(TOP, 1,
+  Position(MIDDLE, {1 1}, Reset("wood_floor", "wood_door")))
+}
+End
+
+"ov_prisoncage" Choose(
+  ov_prisoncage1(),
+  ov_prisoncage2()
+)
+
+"overlord_keep" {
+  Building("castle_wall", "stone_floor")
+  Corners(Set("no_door"), 1)
+  Place({1 1} Reset("stone_floor", "iron_door") 1 And(On("castle_wall"), Not On("no_door")))
+  Place (
+    ({1 1} Set("dining_table") 1 FurnitureLoc()),
+    ({1 1} Set("grave") 1 FurnitureLoc()),
+    ({1 1} Set("bed") 1 FurnitureLoc()),
+    ({1 1} Set("bed") 1 FurnitureLoc()),
+    ({1 1} Set("training wood") 1 FurnitureLoc()),
+    ({1 1} Set("torch") 1 FurnitureLoc()),
+    ({1 1} Set("brown minion hive") 1 FurnitureLoc()),
+  )
+}
+
+Def Ov_Dwarf_Castle(CornerSize) {
+  Inside(1, {
+    Building("castle_wall", "floor")
+    Inside(TOP, 5, Inside(BOTTOM, 5,
+        Filter(And(YMod(3, 0), On("castle_wall")), {Remove("castle_wall") Set("archer_wall")})))
+    Choose(CastleGate3(), CastleGate2(), CastleGate1())
+    CastleCorners(CornerSize)
+    Choose(
+      { CastleMaybe(CastlePart1(8)) CastleMaybe(CastlePart2(8)) CastleMaybe(CastlePart3(6)) },
+      { CastleMaybe(CastlePart1(6)) CastleMaybe(CastlePart2(6)) CastleMaybe(CastlePart3(4)) }
+    )
+    Connector()
+    Position(MIDDLE, {1 1}, FloodFill(And(AnyFloor(), Not AnyDoor()), Set("castle_outside")))
+    Filter(And(Or(AnyFloor(), AnyDoor()), Not On("castle_outside")), Set("castle_inside", "stone_floor"))
+    Place({1 1}, Set("inside_furniture"), 8, And(Not AnyDoor(), On("castle_inside")))
+    Place({1 1}, Set("outside_furniture"), 8, On("castle_outside"))
+    Border(BOTTOM, 2, Inside(BOTTOM, 1,
+        Position(MIDDLE, {1 1}, Set("clear_middle", "up_stairs0", "stairs"))))
+    Place({1 1}, Set("clear_middle", "down_stairs0", "stairs"), 1, On("castle_corner"))
+    Place({2 2}, Set("shop0"), 1, And(On("castle_inside"), Not On("stairs")))
+  })
+}
+End
+
+"ov_dwarf_castle" {
+  Choose(Ov_Dwarf_Castle(2), Ov_Dwarf_Castle(3))
+  Filter(AnyFloor(), SetFront("clear_furniture"))
+}
+
+Def WorldMapForbidden() {
+  NoiseMap(0.10, {
+    (0.0, 0.15, Filter(On("set_grass"), Set("set_over1")))
+  })
+  NoiseMap(0.10, {
+    (0.0, 0.15, Filter(On("set_grass"), Set("set_over2")))
+  })
+  NoiseMap(0.10, {
+    (0.0, 0.15, Filter(On("set_grass"), Set("set_over3")))
+  })
+  NoiseMap(0.10, {
+    (0.0, 0.15, Filter(On("set_tree"), Set("set_over4")))
+  })
+  
+  Filter(On("set_over1"), {Set("OV_GRASSLAND_PLEASURE_CULT") Choose(Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))})
+  Filter(On("set_over2"), {Set("OV_GRASSLAND_CORRUPT_HOBBIT") Choose(Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))})
+  Filter(On("set_over3"), {Set("OV_GRASSLAND_HOBBIT") Choose(Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))})
+  Filter(On("set_over4"), {Set("OV_GRASSLAND_OBERON") Choose(Set("map_tree1"), Set("map_tree2"), Set("map_tree3"))})
+}
+End
+
+"world_map" modify {
+  NoiseMap(0.65, {
+    (0.8, 1.0, Reset("set_water"))
+    (0.74, 0.8, Reset("set_sand"))
+    (0.2, 0.74, Reset("set_grass"))
+    (0.0, 0.2, Reset("set_mountains"))
+    #(0.0, 0.02, Set("set_lava"))
+  })
+  #Position(MIDDLE, {1 1}, FloodFill(Or(On("sand"), On("grass"), On("water")), Set("save")))
+  #Filter(Not On("save"), Reset("mountain"))
+  #Border(1, Filter(Not On("mountain"), Fail))
+  CellularAutomaton(Filter(Not On("set_mountains"), Reset("set_water")), 0.35)
+  Inside(TOP, 18, Inside(BOTTOM, 18, CellularAutomaton(Set("water_area"), 0.75)))
+  SplitV(0.5,
+    Filter(And(Not On("water_area"), Or(On("set_water"), On("set_sand"))), Reset("set_snow")),
+    Filter(And(Not On("water_area"), Or(On("set_water"), On("set_sand"))), Reset("set_sand"))
+  )
+  Filter(And(On("set_sand"), On("water_area")), Reset("set_swamp"))
+  NoiseMap(0.65, {
+    (0.0, 0.2, Filter(On("set_snow"), Set("set_mountains_snow")))
+  })
+  WorldMapFeatures()
+  WorldMapConnections()
+  WorldMapTrees()
+  WorldMapForbidden()
+}
+
+"world_map_test" modify {
+  NoiseMap(0.65, {
+    (0.8, 1.0, Reset("set_water"))
+    (0.74, 0.8, Reset("set_sand"))
+    (0.2, 0.74, Reset("set_grass"))
+    (0.0, 0.2, Reset("set_mountains"))
+    #(0.0, 0.02, Set("set_lava"))
+  })
+  #Position(MIDDLE, {1 1}, FloodFill(Or(On("sand"), On("grass"), On("water")), Set("save")))
+  #Filter(Not On("save"), Reset("mountain"))
+  #Border(1, Filter(Not On("mountain"), Fail))
+  CellularAutomaton(Filter(Not On("set_mountains"), Reset("set_water")), 0.35)
+  SplitV(0.7, Filter(On("set_sand"), Reset("set_swamp")), Filter(On("set_water"), Reset("set_sand")))
+  SplitV(0.3, Filter(Or(On("set_water"), On("set_sand")), Reset("set_snow")), {})
+  NoiseMap(0.65, {
+    (0.0, 0.2, Filter(On("set_snow"), Set("set_mountains_snow")))
+  })
+  CellularAutomaton(Set("continent"), 0.5)
+  Filter(Not On("continent"), Reset("set_water"))
+  WorldMapFeatures()
+  WorldMapConnections()
+  WorldMapTrees()
+  WorldMapForbidden()
+}

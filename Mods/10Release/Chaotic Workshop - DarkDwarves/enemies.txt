@@ -1,0 +1,225 @@
+"DARK_DWARVES"
+{
+  settlement = {
+    type = Builtin MINETOWN "DUNGEON"
+    tribe = GREENSKIN
+    inhabitants = {
+      leader = { { "DARK_DWARF_BARON" } }
+      fighters = {
+        count = {6 9}
+        all = {
+          1 "DARK_DWARF"
+        }
+      }
+      civilians = {
+        count = {3 5}
+        all = {
+		  1 "DARK_DWARF"
+          1 "DARK_DWARF_FEMALE"
+          1 "PIG"
+        }
+        uniques = { "DARK_DWARF_BLACKSMITH" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "dwarves"
+    stockpiles = {{ "gold" 200 "TREASURE_CHEST"} {"minerals" 120 }}
+    shopItems = {{8 16} "dwarfShop" }
+    outsideFeatures = "dungeonOutside"
+    surroundWithResources = 5
+    furniture = "roomFurniture"
+  }
+  config = {
+    immigrantInterval = 500
+    maxPopulation = 15
+    ghostProb = 0.1
+    spawnGhosts = 4
+  }
+  behaviour = {
+    minPopulation = 3
+    minTeamSize = 4
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillMembers 3
+    ransom = 0.8 320
+  }
+  immigrants = {
+    {
+      ids = {"DARK_DWARF"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"DARK_DWARF_FEMALE"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"DARK_DWARF_FIGHTER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+"DARK_DWARF_CAVE"
+{
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DUNGEON"
+    tribe = GREENSKIN
+    inhabitants = {
+      leader = {{ "DARK_DWARF" }}
+      fighters = {
+        count = {2 5}
+        all = { 1 "DARK_DWARF" }
+      }
+      civilians = {
+        count = {2 5}
+        all = { 1 "DARK_DWARF_FEMALE" }
+      }
+    }
+    race = "dark dwarves"
+    stockpiles = {{ "minerals" 60}}
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+    surroundWithResources = 6     
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    triggers = { SelfVictims StolenItems AggravatingMinions }
+    attackBehaviour = KillLeader
+    ransom = 0.5 80
+  }
+}
+
+STRONGER("DARK_DWARVES_Z_LEVEL1", "DARK_DWARF_CAVE", 1)
+STRONGER("DARK_DWARVES_Z_LEVEL2", "DARK_DWARF_CAVE", 7)
+STRONGER("DARK_DWARVES_Z_LEVEL3", "DARK_DWARF_CAVE", 15)
+STRONGER("DARK_DWARVES_Z_LEVEL4", "DARK_DWARF_CAVE", 22)
+STRONGER("DARK_DWARVES_Z_LEVEL5", "DARK_DWARF_CAVE", 30)
+
+"Z_LEVEL_DARK_DWARF_VAULT"
+{
+  settlement = {
+    type = RandomLayout { "z_level_vault" { 80 80 } "z_level_dwarf_vault" }
+    tribe = GREENSKIN
+    inhabitants = {
+      fighters = {
+        count = 4
+        all = { 1 "DARK_DWARF" }
+      }
+    }
+  }
+}
+
+
+"DWARVES" modify append
+{
+  settlement = {
+    type = Builtin MINETOWN "DUNGEON"
+    tribe = DWARF
+    inhabitants = {
+      leader = { { "DWARF_BARON" } }
+      fighters = {
+        count = {6 9}
+        all = {
+          1 "DWARF_FIGHTER"
+        }
+      }
+      civilians = {
+        count = {3 5}
+        all = {
+		  1 "DWARF"
+          1 "DWARF_FEMALE"
+          1 "RAT"
+        }
+        uniques = { "DWARF_BLACKSMITH" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "dwarves"
+    stockpiles = {{ "gold" 200 "TREASURE_CHEST"} {"minerals" 120 }}
+    shopItems = {{8 16} "dwarfShop" }
+    outsideFeatures = "dungeonOutside"
+    surroundWithResources = 5
+    furniture = "roomFurniture"
+  }
+  config = {
+    immigrantInterval = 500
+    maxPopulation = 15
+    ghostProb = 0.1
+    spawnGhosts = 4
+  }
+  behaviour = {
+    minPopulation = 3
+    minTeamSize = 4
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillMembers 3
+    ransom = 0.8 320
+  }
+  immigrants = {
+    {
+      ids = {"DWARF"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"DWARF_FEMALE"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"DWARF_FIGHTER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+"DWARF_CAVE" modify append {
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DUNGEON"
+    tribe = DWARF
+    inhabitants = {
+      leader = {{ "DWARF" }}
+      fighters = {
+        count = {2 5}
+        all = { 1 "DWARF" }
+      }
+      civilians = {
+        count = {2 5}
+        all = { 1 "DWARF_FEMALE" }
+      }
+    }
+    race = "dwarves"
+    stockpiles = {{ "minerals" 60}}
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+    surroundWithResources = 6     
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    triggers = { SelfVictims StolenItems AggravatingMinions }
+    attackBehaviour = KillLeader
+    ransom = 0.5 80
+  }
+}

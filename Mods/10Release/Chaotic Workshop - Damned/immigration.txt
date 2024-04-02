@@ -1,0 +1,50 @@
+"dm_demon_cult"
+{
+      {
+      ids = { "DM_DEMONCULT_CULTIST" }
+      traits = { WORKER FIGHTER }
+      spawnLocation = NearLeader
+      keybinding = CREATE_IMP
+      sound = {"CREATE_IMP" 2}
+      noAuto = true
+	  initialRecruitment = 4
+	  requirements = {
+	  	{ 1 ExponentialCost "GOLD" 30 5 4 }
+    }
+   }
+}
+
+"dm_default_allies"
+{
+    {
+      ids = { "DARK_ELF_WARRIOR" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "DARK_ELVES_ALLY" } 3 }
+        { 1.0 CostInfo "GOLD" 20 }
+      }
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "GOBLIN_CAVE_ALLY" } 3 }
+        { 1.0 CostInfo "GOLD" 5 }
+      }
+    }
+    {
+      ids = { "HARPY" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "HARPY_CAVE" } 3 }
+        { 1.0 CostInfo "GOLD" 12 }
+      }
+    }
+    {
+      ids = { "VAMPIRE" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "Z_LEVEL_VAMPIRE_VAULT" } 0 }
+      }
+    }
+}

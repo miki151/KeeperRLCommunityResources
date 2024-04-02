@@ -1,0 +1,46 @@
+"swine_wretch_puke"
+{
+  symbol = "🌫"
+  effect = Name "puke" Chain {Acid {25} Lasting PLAGUE}
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = 5
+  message = "spit acid!" "spits acid!"
+}
+
+"swine_throw_spear"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(4) Name "threw spear" Description "threw an spear"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage {"are hit by the spear" "is hit by the spear"}
+          Damage RANGED_DAMAGE SHOOT
+        },
+        CreatureMessage {"are spared by the spear" "is spared by the spear"}
+      )
+  range = 7
+  cooldown = 1
+  maxHits = 1
+  projectileViewId = {"swine_throw_spear"}
+  message = "throw an spear" "throws an spear"
+  type = ABILITY
+}
+
+"SWINE_SUMMON_PIGS"
+{
+  symbol = "🐷"
+  effect = Name "summon pigs" Summon "SWINE_WAR_PIG" {7 14} 100
+  cooldown = {30 61}
+  sound = "SPELL_SUMMON_INSECTS"
+}
+
+"SWINE_FOUL_GROG"
+{
+  symbol = "🌫"
+  effect = Name "puke" Chain {Acid {25} Lasting PLAGUE RemoveAbility "SWINE_FOUL_GROG"} 
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = 1
+  message = "spit acid!" "spits acid!"
+}

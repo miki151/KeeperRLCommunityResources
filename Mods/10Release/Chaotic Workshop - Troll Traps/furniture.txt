@@ -1,0 +1,230 @@
+"TAR_TRAP"
+{
+  name = "tar trap"
+  viewId = { "tt_tar_trap" }
+  entryType = Trap { CustomArea PlaceFurniture "BUILD_TAR" { {1 0} {1 1} {1 -1} {0 1} {0 0} {-1 0}  {-1 1} {-1 -1} {0 -1} } }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"RANDOM_TELEPORTER"
+{
+  name = "teleport trap"
+  viewId = { "trap"  Rgb 13 18 200 255 }
+  entryType = Trap { Area 1 Filter Enemy Escape {}}
+  warning = true
+  constructMessage = SET_UP
+}
+
+"TRAP_BRIDGE"
+{
+  name = "bridge"
+  viewId = { "bridge" }
+  overrideMovement = true
+  fire = 50
+  removeNonFriendly = true
+  removeWithCreaturePresent = false
+  bridge = true
+  entryType = Trap {Area 1 RemoveFurniture "TRAP_BRIDGE" }
+  canBuildOutsideOfTerritory = true
+}
+"TRAP_STONE_BRIDGE" inherit "TRAP_BRIDGE"
+{
+  viewId = { "bridge" ColorId GRAY }
+  fire = 0
+  name = "bridge"
+    entryType = Trap {Area 1 RemoveFurniture "TRAP_STONE_BRIDGE" }
+}
+
+"TEAR_GAS_TRAP"
+{
+  name = "tear gas trap"
+  viewId = { "tt_gas_trap"  Rgb 188 188 188 255 }
+  entryType = Trap { Area 1 EmitGas "TEAR_GAS" 0.4 }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"HALUCINATION_TRAP"
+{
+  name = "halucination gas trap"
+  viewId = { "tt_gas_trap"  Rgb 201 13 159 255 }
+  entryType = Trap { Area 1 EmitGas "HALUCINATION_GAS" 0.4 }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"CHICKENIZE_TRAP"
+{
+  name = "chickenize gas trap"
+  viewId = { "trap"  Rgb 255 255 255 255 }
+  entryType = Trap { Polymorph "CHICKEN" 100}
+  warning = true
+  constructMessage = SET_UP
+}
+
+"FREEZE_TRAP"
+{
+  name = "freeze trap"
+  viewId = { "trap"  Rgb 13 190 200 255 }
+  entryType = Trap {Filter Enemy { 
+                     Chain {
+					 Lasting FROZEN
+					 Ice{}}}}
+  warning = true
+  constructMessage = SET_UP
+}
+
+"POISON_GAS_TRAP" modify append
+{
+  viewId = { "tt_gas_trap"  Rgb 58 156 68 255 }
+}
+
+"ENEMY_POISON_GAS_TRAP"
+{
+  name = "poison gas trap"
+  viewId = { "trap"  Rgb 58 156 68 255 }
+  entryType = Effect {
+  RemoveFurniture "ENEMY_POISON_GAS_TRAP"
+  Area 1 EmitGas "POISON_GAS" 0.4 }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"ENEMY_FIRE_TRAP"
+{
+  name = "poison gas trap"
+  viewId = { "trap"  Rgb 58 156 68 255 }
+  entryType = Effect {
+  RemoveFurniture "ENEMY_POISON_GAS_TRAP"
+   PlaceFurniture "FIRE_WALL" }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"ENEMY_BLAST_TRAP"
+{
+  name = "blast trap"
+  viewId = { "trap" ColorId PINK }
+  tickType = Effect {
+    DirectedBlast {0 -1} 4
+    DirectedBlast {0 1} 4
+    DirectedBlast {1 0} 4
+    DirectedBlast {-1 0} 4
+  }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"TRAP_CHEST"
+{
+  name = "chest"
+  viewId = { "chest" }
+  canHideHere = true
+  usageType = UsageEffect "open" {
+    CreatureMessage {"open the chest" "opens the chest"}
+    DirectedBlast {0 -1} 4
+    DirectedBlast {0 1} 4
+    DirectedBlast {1 0} 4
+    DirectedBlast {-1 0} 4
+	CustomArea PlaceFurniture "BUILD_TAR" { {0 -1} {0 1} {1 0} {-1 0} {0 0}} 
+    RemoveFurniture "TRAP_CHEST"
+  }
+  fire = 50
+  strength = 30
+  destroyedRemains = "OPENED_CHEST"
+}
+
+"SPIKE_TRAP"
+  {
+    name = "Floor Spikes"
+    viewId = { "tt_spikes" }
+    entryType = Trap { Name "floor spike" FirstSuccessful { #Effect name is used when disarming the trap.
+	                     Filter  LastingEffect FLYING { CreatureMessage {"fly above the spikes" "flies above the spikes"}}
+					     Filter Not LastingEffect FLYING {Lasting 50 BLEEDING}
+					   }
+					 }
+    warning = true
+    constructMessage = SET_UP
+  }
+  
+  
+"FAKE_MINION_STATUE"
+{
+  name = "gold statue"
+  viewId = { "minion_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  tickType = Trap 1 {
+    Def SummonGoldStatue() {
+      Message HIGH "The statue comes to life!"
+      Summon "GOLD_STATUE" 1 20
+    } End
+    SummonGoldStatue()
+    SummonGoldStatue()
+    SummonGoldStatue()
+    SummonGoldStatue()
+  }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"FAKE_STONE_MINION_STATUE"
+{
+  name = "stone statue"
+  viewId = { "stone_minion_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 50
+  tickType = Trap 1 {
+    Def SummonStoneStatue() {
+      Message HIGH "The statue comes to life!"
+      Summon "STONE_STATUE" 1 20
+    } End
+    SummonStoneStatue()
+    SummonStoneStatue()
+    SummonStoneStatue()
+    SummonStoneStatue()
+  }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"FAKE_TREASURE_CHEST"
+{
+  name = "treasure chest"
+  viewId = { "treasurechest" }
+  canHideHere = true
+  fire = 50
+  luxury = 0.4
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  tickType = Trap 1 {
+    Def SummonMimic() {
+      Message HIGH "This is no chest!"
+      Summon "MIMIC" 1 20
+    } End
+    SummonMimic()
+    SummonMimic()
+    SummonMimic()
+    SummonMimic()
+  }
+  hidesItems = true
+}
+
+"TT_PITFALL"
+{
+  name = "hole"
+  viewId = { "sokoban_hole" }
+  onBuilt = DOWN_STAIRS
+  tickType = Effect {Filter Not LastingEffect FLYING {Area 0 Stairs} }
+  canBuildOutsideOfTerritory = true
+}
+
+"BUILD_TAR" inherit "TAR" {
+  luxury = 0.1
+  layer = FLOOR
+  fire = 50
+  canBuildOutsideOfTerritory = true
+}

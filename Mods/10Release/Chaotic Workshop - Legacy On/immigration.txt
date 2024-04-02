@@ -1,0 +1,158 @@
+Def LegacyRecruits()
+        {
+          ids = { "ORC" }
+          traits = { FIGHTER }
+          requirements = {
+            { 0.0 RecruitmentInfo { "ORC_VILLAGE" } 3 }
+            { 1.0 CostInfo "GOLD" 5 }
+          }
+        }
+        {
+          ids = { "OGRE" }
+          traits = { FIGHTER }
+          requirements = {
+            { 0.0 RecruitmentInfo { "OGRE_CAVE" "ORC_VILLAGE" } 3 }
+            { 1.0 CostInfo "GOLD" 12 }
+          }
+        }	
+End
+
+"dark_keeper" modify append
+{
+    {
+      ids = { "ORC" }
+      traits = { FIGHTER }
+      frequency = 0.35
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "WOLF" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.01 { ExtraBodyPart HEAD 1}}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "ORC_MAGE" }
+      traits = { FIGHTER }
+      frequency = 0.15
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "WOLF" }}}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.03 { Lasting { RIDER } SpecialAttr SPELL_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+		 { 0.03 { AttrBonus LABORATORY 20}}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "ORC_HEALER" }
+      traits = { FIGHTER }
+      frequency = 0.15
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.03 { AttrBonus LABORATORY 20}}
+         { 0.10 { Lasting { MAGIC_RESISTANCE } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "ORC_SHAMAN" }
+      traits = { FIGHTER }
+      frequency = 0.05
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+         { 0.03 { AttrBonus LABORATORY 20}}
+         { 0.10 { Lasting { MAGIC_RESISTANCE } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "OGRE" }
+      traits = { FIGHTER }
+      frequency = 0.05
+      requirements = {
+        { 0.0 MinTurnRequirement 2000 }
+
+        { 0.3 AttractionInfo 2 {FurnitureType "TRAINING_IRON"}}
+      }
+      specialTraits = {
+             { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "WOLF" }}}}
+             { 0.02 { ExtraBodyPart HEAD 1}}
+             { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY}}}
+             { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED}}}
+             { 0.05 { Lasting { RANGED_VULNERABILITY }}}
+             { 0.05 { Lasting { DISARM_TRAPS_SKILL }}}
+             { 0.05 { Lasting { SWIMMING_SKILL }}}
+             { 0.02 { Lasting { HATE_ELVES }}}
+             { 0.02 { Lasting { HATE_HUMANS }}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+             { 0.05 { Lasting { BAD_BREATH }}}
+      }
+    }
+    {
+      ids = { "SKELETON" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+      }
+    }
+LegacyRecruits()
+}
+
+"goblins" modify append
+{
+LegacyRecruits()
+}

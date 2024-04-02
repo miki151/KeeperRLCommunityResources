@@ -1,0 +1,331 @@
+"ZOMBIE_MAGE" modify append {
+	 permanentEffects = append { RIDER 1}
+  }  
+ 
+"SKELETON_ARCHER" modify {
+	 permanentEffects = append { RIDER 1}
+  }
+     
+"VAMPIRE_LORD" modify {
+	 permanentEffects = append { RIDER 1}
+  }
+  
+"VAMPIRE_LORD_NECRO" modify {
+	 permanentEffects = append { RIDER 1}
+  }
+  
+"NECROMANCER" modify {
+   permanentEffects = append { RIDER 1}
+  }
+ 
+"FLYING_CARPET" modify {
+    viewId = { "mc_flying_carpet_01" }
+	genderAlternatives = {
+      IT { "mc_flying_carpet_02" }
+	  IT { "mc_flying_carpet_03" }
+	  IT { "mc_flying_carpet_04" }
+	  IT { "mc_flying_carpet_05" }
+	  IT { "mc_flying_carpet_06" }
+	  IT { "mc_flying_carpet_07" }
+    }
+    gender = IT
+  }
+
+"MC_SKELETAL_WOLF" inherit "WOLF"
+{
+  viewId = { "NE_skeletal_wolf" }
+  body = append {
+    material = BONE
+  }
+  hatedByEffect = HATE_UNDEAD
+  permanentEffects = append { SUNLIGHT_VULNERABLE 1 }
+  name = {
+      name = "Skeletal Wolf"
+    }
+}
+
+"MC_SKELETAL_BAT" inherit "BAT"
+{
+  viewId = { "NE_skeletal_bat" }
+  body = append {
+    material = BONE
+  }
+  hatedByEffect = HATE_UNDEAD
+  permanentEffects = append { SUNLIGHT_VULNERABLE 1 }
+  name = {
+      name = "Skeletal Bat"
+    }
+}
+
+"MC_SKELETAL_BOAR" inherit "CAVE_BEAR"
+{
+  viewId = { "NE_skeletal_boar" }
+  body = append {
+    material = BONE
+  }
+  hatedByEffect = HATE_UNDEAD
+  permanentEffects = append { SUNLIGHT_VULNERABLE 1 }
+  name = {
+      name = "Skeletal Boar"
+    }
+}
+
+"MC_SKELETAL_RAVEN" inherit "RAVEN"
+{
+  viewId = { "NE_skeletal_raven" }
+  body = append {
+    material = BONE
+  }
+  hatedByEffect = HATE_UNDEAD
+  permanentEffects = append { SUNLIGHT_VULNERABLE 1 }
+  name = {
+      name = "Skeletal Raven"
+    }
+}
+
+"MC_SKELETAL_RAT" inherit "RAT"
+{
+  viewId = { "NE_skeletal_rat" }
+  body = append {
+    material = BONE
+  }
+  hatedByEffect = HATE_UNDEAD
+  permanentEffects = append { SUNLIGHT_VULNERABLE 1 }
+  name = {
+      name = "Skeletal Rat"
+    }
+}
+
+"MC_SKELETAL_HORSE" inherit "HORSE"
+{
+  viewId = { "ne_skeletal_horse" }
+  body = append {
+    material = BONE
+  }
+  hatedByEffect = HATE_UNDEAD
+  permanentEffects = append { SUNLIGHT_VULNERABLE 1 }
+  name = {
+      name = "Skeletal Horse"
+    }
+}
+
+  "swish_infernite_golem_copy"
+  {
+    viewId = { "swish_infernite_golem" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 50 
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = INFERNITE
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 10 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {0.8 Fire{30}} } }}}
+      }
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      SLOWED 1
+      FIRE_RESISTANT 1
+      LIGHT_SOURCE 1
+    }
+    name = {
+      name = "infernite golem"
+    }
+    inventory = {
+      { "InferniteOre" 10 20 }
+    }
+  }
+"swish_adoxium_golem_copy"
+  {
+    viewId = { "swish_adoxium_golem" }
+    attr = {
+      DAMAGE 46
+      DEFENSE 46 
+      SPELL_DAMAGE 40
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = ADOXIUM
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      SLOWED 1
+      MAGIC_RESISTANCE 1
+      FIRE_RESISTANT 1
+    }
+    name = {
+      name = "adoxium golem"
+    }
+    inventory = {
+      { "AdoxiumOre" 10 20 }
+    }
+    spells = { "expert magic missile" }
+  }
+  
+"WOOD_GOLEM"
+  {
+    viewId = { "wood_golem" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 17
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = WOOD
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      SLOWED 1
+    }
+    name = {
+      name = "wood golem"
+    }
+  }
+  
+"LOST_SOUL" modify append
+  {
+    body = {
+      type = NonHumanoid LARGE
+      material = UNDEAD_SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 0.2 Lasting INSANITY}
+            attackerEffect = {Suicide DIE} } }}}
+      }
+    }
+  }
+  
+"NE_BANSHEE"
+  {
+    body = {
+      type = NonHumanoid LARGE
+      material = UNDEAD_SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 0.1 Lasting INSANITY} }}}}}}
+    viewId = { "ne_banshee" }
+    attr = {
+      DEFENSE 12
+      SPELL_DAMAGE 5 
+    }
+    permanentEffects = {
+      FLYING 1
+    }
+	maxLevelIncrease = {
+      DAMAGE 4
+    }
+	spells = { "banshee scream" }
+    chatReactionFriendly = "\"Wouuuouuu!!!\""
+    chatReactionHostile = "\"Wouuuouuu!!!\""
+    name = {
+      name = "basnhee"
+    }
+  }
+   
+"NE_WRAITH"
+  {
+    body = {
+      type = NonHumanoid LARGE
+      material = UNDEAD_SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 4 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 0.2 Lasting INSANITY}
+            attackerEffect = {Heal { SPIRIT }} } }}}}}
+    viewId = { "ne_wraith" }
+    attr = {
+      DEFENSE 12
+      DAMAGE 8
+    }
+    permanentEffects = {
+      FLYING 1
+    }
+	maxLevelIncrease = {
+      DAMAGE 4
+    }
+	spells = { "banshee scream" }
+    chatReactionFriendly = "\"Wouuuouuu!!!\""
+    chatReactionHostile = "\"Wouuuouuu!!!\""
+    name = {
+      name = "wraith"
+    }
+  }
+    
+"NE_SOLAR_WRAITH"
+  {
+    body = {
+      type = NonHumanoid LARGE
+      material = SUN_RESISTANT_UNDEAD_SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 2 {
+            attackType = HIT
+            attackMsg = TOUCH
+			meleeAttackAttr = FIRE_DAMAGE 
+            victimEffect = {0.5 Fire{25}} } }}}}}
+    viewId = { "ne_sun_wraith" }
+    attr = {
+      DEFENSE 20
+      FIRE_DAMAGE 16
+    }
+	    specialAttr = {
+      DEFENSE     { 15 Name "when day" Not Night }
+	  FIRE_DAMAGE { 8 Name "when day" Not Night }
+    }
+    permanentEffects = {
+      FLYING 1
+	  FIRE_IMMUNITY 1
+    }
+	maxLevelIncrease = {
+      DAMAGE 8
+    }
+	spells = {"fire breath" "fire trap" }
+    chatReactionFriendly = "\"Wouuuouuu!!!\""
+    chatReactionHostile = "\"Wouuuouuu!!!\""
+    name = {
+      name = "sun wraith"
+    }
+  }
+  
+    
+"NE_CURSE"
+  {
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_SPIRIT
+      deathSound = none
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } }}}}
+      }
+    viewId = { "ne_sadako" }
+    attr = {
+      DEFENSE 18
+      DAMAGE 24
+    }
+    permanentEffects = {
+      FLYING 1
+	  RANGED_RESISTANCE 1
+	  MELEE_RESISTANCE 1
+    }
+	maxLevelIncrease = {
+      DAMAGE 12
+    }
+    spellSchools = { "ME_LIVING_CURSE" }
+    chatReactionFriendly = "\"HATE!!!\""
+    chatReactionHostile = "\"HATE!!!\""
+    name = {
+      name = "ME_LIVING_CURSE"
+    }
+  }

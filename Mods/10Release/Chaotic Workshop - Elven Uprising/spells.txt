@@ -1,0 +1,238 @@
+"summon wolves"
+{
+  symbol = "🐺"
+  effect = Summon "WOLF" {1 3} 30
+  cooldown = 40
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"advanced summon wolves"
+{
+  upgrade = "summon wolves"
+  symbol = "🐺🐺"
+  effect = Name "summon wolves" Summon "WOLF" {3 5} 30
+  cooldown = 40
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"expert summon wolves"
+{
+  upgrade = "advanced summon wolves"
+  symbol = "🐺🐺🐺"
+  effect = Name "summon wolves" Summon "WOLF" {3 5} 30
+  cooldown = 40
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"fe_werewolf_form_MKI"
+{
+  symbol = "🐺"
+  effect = Name "transformation" Description "Change into a werewolf!" AI Health 0 0.4 0 1 {
+    Polymorph "FE_WEREWOLF_WOLF_MKI" 30
+  }
+  message = "" ""
+  cooldown = 100
+}
+
+"fe_werewolf_form_MKII"
+{
+  upgrade = "fe_werewolf_form_MKI"
+  symbol = "🐺"
+  effect = Name "transformation" Description "Change into a werewolf!" AI Health 0 0.4 0 1 {
+    Polymorph "FE_WEREWOLF_WOLF_MKII" 35
+  }
+  message = "" ""
+  cooldown = 95
+}
+
+"fe_werewolf_form_MKIII"
+{
+  upgrade = "fe_werewolf_form_MKII"
+  symbol = "🐺"
+  effect = Name "transformation" Description "Change into a werewolf!" AI Health 0 0.4 0 1 {
+    Polymorph "FE_WEREWOLF_WOLF_MKIII" 40
+  }
+  message = "" ""
+  cooldown = 90
+}
+
+"fe_werewolf_form_MKIV"
+{
+  upgrade = "fe_werewolf_form_MKIII"
+  symbol = "🐺"
+  effect = Name "transformation" Description "Change into a werewolf!" AI Health 0 0.4 0 1 {
+    Polymorph "FE_WEREWOLF_WOLF_MKIV" 45
+  }
+  message = "" ""
+  cooldown = 85
+}
+
+"fe_werewolf_form_MKV"
+{
+  upgrade = "fe_werewolf_form_MKIV"
+  symbol = "🐺"
+  effect = Name "transformation" Description "Change into a werewolf!" AI Health 0 0.4 0 1 {
+    Polymorph "FE_WEREWOLF_WOLF_MKV" 50
+  }
+  message = "" ""
+  cooldown = 80
+}
+
+OneTimeAbility("honorable promotion", "Promotes solider intro Honorable.", { SetViewId {"de_wr2_honorable"} SetCreatureName "honorable" }, "🎖️")
+OneTimeAbility("immortal promotion", "Promotes solider intro Immortal.", { SetViewId {"de_wr3_immortal"} SetCreatureName "immortal" }, "🎖️")
+OneTimeAbility("arrow deflection", "strenghens solider agains ranged attacks.", Permanent RANGED_RESISTANCE, "🎯")
+OneTimeAbility("archer honorable promotion", "Promotes archer intro Honorable.", { SetViewId {"de_wr2_honorable"} SetCreatureName "honorable" }, "🎖️")
+OneTimeAbility("archer immortal promotion", "Promotes archer intro Immortal.", { SetViewId {"de_wr3_immortal"} SetCreatureName "immortal" }, "🎖️")
+OneTimeAbility("arcanist promotion", "Promotes mystic intro Arcanist.", { SetViewId {"de_sr2_arcanist"} SetCreatureName "arcanist" }, "🎖️")
+OneTimeAbility("sorcerer promotion", "Promotes arcanist intro Sorcerer.", { SetViewId {"de_sr3_sorcerer"} SetCreatureName "sorcerer" }, "🎖️")
+OneTimeAbility("gladiator veterancy", "Gladiator survived long enought to become veteran.", { SetViewId {"de_gl2_veteran"}}, "🎖️")
+OneTimeAbility("gladiator champion", "Gladiator proved himself to be a champion.", { SetViewId {"de_gl3_champion"}}, "🎖️")
+OneTimeAbility("blade mistress promotion", "Promotes solider intro Blade Mistress.", { SetViewId {"de_sp2_blade_mistress"} SetCreatureName "blade mistress" }, "🎖️")
+OneTimeAbility("blade princess promotion", "Promotes solider intro Blade Princess.", { SetViewId {"de_sp3_blade_princess"} SetCreatureName "blade princess" }, "🎖️")
+OneTimeAbility("demonologist promotion", "Promotes mystic intro Demonologist.", { SetViewId {"de_sm2_demonologist"} SetCreatureName "demonologist" }, "🎖️")
+OneTimeAbility("hellbinder promotion", "Promotes arcanist intro Hellbinder.", { SetViewId {"de_sm3_hellbinder"} SetCreatureName "hellbinder" }, "🎖️")
+
+OneTimeAbility("imp fammiliars", "They shall follow you forever.", {SetCreatureFlag "2 imps" true AddCompanion {count = 2 summonFreq = 0.1 creatures = { "DE_DEMON_IMP" } }}, "🧛")
+OneTimeAbility("more imp fammiliars", "They shall follow you forever.", {SetCreatureFlag "4 imps" true AddCompanion {count = 2 summonFreq = 0.1 creatures = { "DE_DEMON_IMP" } }}, "🧛")
+OneTimeAbility("demon fammiliars", "They shall follow you forever.", {SetCreatureFlag "2 minions" true AddCompanion {count = 2 summonFreq = 0.1 creatures = { "DE_DEMON_MINION" } }}, "🧛")
+OneTimeAbility("imp strenght",   "They shall follow you forever.", {IncreaseAttr DEFENSE 5 IncreaseAttr DAMAGE 8 IncreaseAttr SPELL_DAMAGE 2}, "🧛")
+OneTimeAbility("demon strenght",   "They shall follow you forever.", {IncreaseAttr DEFENSE 14 IncreaseAttr DAMAGE 16 IncreaseAttr SPELL_DAMAGE 6}, "🧛")
+OneTimeAbility("sure contract",   "They shall not harm your friends.", {SetCreatureFlag "de_banishment" true}, "🧛")
+
+
+"de_imps"
+{
+  symbol = "👾"
+  effect = Name "summon imps" Summon "DE_DEMON_IMP_SUMMON" { 4 8 } 100
+  cooldown = {30 81}
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+
+"de_imps_more"
+{
+  upgrade = "de_imps"
+  symbol = "👾"
+  effect = Name "summon imps" Summon "DE_DEMON_IMP_SUMMON" { 8 16 } 100
+  cooldown = {30 81}
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+
+"de_minions"
+{
+  symbol = "👾"
+  effect = Name "summon imps" Summon "DE_DEMON_MINION_SUMMON" { 1 2 } 100
+  cooldown = {30 81}
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+
+"de_banisment"
+{
+  symbol = "ℒ"
+  effect = Name "lesser banishment" Description "Banishes imps that have gone rogue" { Filter HatedBy HATE_DEMON_SUMMON Suicide TURN_INVISIBLE  }
+  range = 6
+  cooldown = {81 132}
+  endOnly = true
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+
+"de_intimidate"
+{
+  symbol = "😱"
+  effect = Name "intimidate" Area 1 Filter Enemy Lasting PANIC
+  cooldown = 50
+  sound = "SPELL_STR_BONUS"
+}
+
+"throw net"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(4) Name "throw net" Description "Throws an net"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage {"are hit by the net" "is hit by the net"}
+          Lasting IMMOBILE
+        },
+        CreatureMessage {"are spared by the net" "is spared by the net"}
+      )
+  range = 7
+  cooldown = 1
+  maxHits = 1
+  message = "trows an net" "trows an net"
+  type = ABILITY
+}
+
+Def TryFireMissile()
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"are hit by the missile" "is hit by the missile"}
+      Damage SPELL_DAMAGE SPELL Fire{5}
+	  Caster Lasting 0 "ELF_FIRE_SPELL"
+    },
+    CreatureMessage {"are spared by the missile" "is spared by the missile"}
+  )
+End
+
+"elf fire resistance"
+{
+  symbol = "🔥"
+  effect = Name "fire resistance" Lasting 40 FIRE_IMMUNITY
+  cooldown = {50 101}
+  sound = "SPELL_CURE_POISON"
+}
+
+"elf advanced fire resistance"
+{
+  upgrade = "elf fire resistance"
+  symbol = "🔥"
+  effect = Name "fire resistance" Lasting 40 FIRE_IMMUNITY
+  targetSelf = true
+  range = 1
+  cooldown = {50 101}
+  sound = "SPELL_CURE_POISON"
+}
+
+"elf master fire resistance"
+{
+  upgrade = "elf advanced fire resistance"
+  symbol = "🔥"
+  effect = Name "fire resistance" Area 10 Filter Not Enemy Lasting 40 FIRE_IMMUNITY
+  targetSelf = true
+  range = 1
+  cooldown = {50 101}
+  sound = "SPELL_CURE_POISON"
+}
+
+"fire missile"
+{
+  symbol = "🔥"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire missile" Description "Shoots a fire missile"
+      TryFireMissile()
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {5 21}
+  sound = "SPELL_BLAST"
+}
+
+"advanced fire missile"
+{
+  upgrade = "fire missile"
+  symbol = "🔥"
+  effect = MinDistanceFromStrongEnemy(2) Name "advanced fire missile" Description "Shoots a fire missile"
+      TryFireMissile()
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {5 21}
+  sound = "SPELL_BLAST"
+}
+
+"expert fire missile"
+{
+  upgrade = "advanced fire missile"
+  symbol = "🔥"
+  effect = MinDistanceFromStrongEnemy(2) Name "expert fire missile" Description "Shoots a fire missile"
+      TryFireMissile()
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = {5 21}
+  sound = "SPELL_BLAST"
+}

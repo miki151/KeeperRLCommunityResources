@@ -1,0 +1,64 @@
+Def WorldMapInsect() {
+  NoiseMap(0.05, {
+    (0.0, 0.05, Filter(On("set_grass"), Set("set_outback")))
+  })
+  NoiseMap(0.05, {
+    (0.0, 0.05, Filter(On("set_grass"), Set("set_Endomorph")))
+  })
+  
+  Filter(On("set_outback"), {Set("OUTBACK_NEW") Choose(Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))})
+  Filter(On("set_outback"), {Set("INS_GRASSLAND_ENDOMORPH") Choose(Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))})
+  }
+End
+
+"world_map" modify {
+  NoiseMap(0.65, {
+    (0.8, 1.0, Reset("set_water"))
+    (0.74, 0.8, Reset("set_sand"))
+    (0.2, 0.74, Reset("set_grass"))
+    (0.0, 0.2, Reset("set_mountains"))
+    #(0.0, 0.02, Set("set_lava"))
+  })
+  #Position(MIDDLE, {1 1}, FloodFill(Or(On("sand"), On("grass"), On("water")), Set("save")))
+  #Filter(Not On("save"), Reset("mountain"))
+  #Border(1, Filter(Not On("mountain"), Fail))
+  CellularAutomaton(Filter(Not On("set_mountains"), Reset("set_water")), 0.35)
+  Inside(TOP, 18, Inside(BOTTOM, 18, CellularAutomaton(Set("water_area"), 0.75)))
+  SplitV(0.5,
+    Filter(And(Not On("water_area"), Or(On("set_water"), On("set_sand"))), Reset("set_snow")),
+    Filter(And(Not On("water_area"), Or(On("set_water"), On("set_sand"))), Reset("set_sand"))
+  )
+  Filter(And(On("set_sand"), On("water_area")), Reset("set_swamp"))
+  NoiseMap(0.65, {
+    (0.0, 0.2, Filter(On("set_snow"), Set("set_mountains_snow")))
+  })
+  WorldMapFeatures()
+  WorldMapConnections()
+  WorldMapTrees()
+  WorldMapInsect()
+}
+
+"world_map_test" modify {
+  NoiseMap(0.65, {
+    (0.8, 1.0, Reset("set_water"))
+    (0.74, 0.8, Reset("set_sand"))
+    (0.2, 0.74, Reset("set_grass"))
+    (0.0, 0.2, Reset("set_mountains"))
+    #(0.0, 0.02, Set("set_lava"))
+  })
+  #Position(MIDDLE, {1 1}, FloodFill(Or(On("sand"), On("grass"), On("water")), Set("save")))
+  #Filter(Not On("save"), Reset("mountain"))
+  #Border(1, Filter(Not On("mountain"), Fail))
+  CellularAutomaton(Filter(Not On("set_mountains"), Reset("set_water")), 0.35)
+  SplitV(0.7, Filter(On("set_sand"), Reset("set_swamp")), Filter(On("set_water"), Reset("set_sand")))
+  SplitV(0.3, Filter(Or(On("set_water"), On("set_sand")), Reset("set_snow")), {})
+  NoiseMap(0.65, {
+    (0.0, 0.2, Filter(On("set_snow"), Set("set_mountains_snow")))
+  })
+  CellularAutomaton(Set("continent"), 0.5)
+  Filter(Not On("continent"), Reset("set_water"))
+  WorldMapFeatures()
+  WorldMapConnections()
+  WorldMapTrees()
+  WorldMapInsect()
+}

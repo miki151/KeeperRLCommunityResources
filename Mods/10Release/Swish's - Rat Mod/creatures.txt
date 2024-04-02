@@ -1,0 +1,388 @@
+"rat_worker"
+  {
+    viewId = { "rat_worker" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 9 
+	  DIGGING 20
+    }
+    body = {
+      type = Humanoid SMALL
+      material = SPIRIT
+    }
+    aiType = RANGED
+    noChase = true
+    cantEquip = true
+    chatReactionFriendly = "talks about digging"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      SPEED 1
+      NO_CARRY_LIMIT 1
+      PLAGUE_RESISTANT 1
+    }
+    name = {
+      name = "rat worker"
+    }
+  }
+"royal_guard"
+  {
+    viewId = { "royal_guard" }
+    attr = {
+      DAMAGE 21
+      DEFENSE 22 
+	  WORKSHOP 25
+      FORGE 25
+    }
+    body = {
+      type = Humanoid MEDIUM
+      weight = 90
+    }
+    name = {
+      name = "Royal Rat Guard"
+      firstNameGen = "RATS"
+    }
+    permanentEffects = {
+      MAGIC_VULNERABILITY 1
+      PLAGUE_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
+  }
+
+"RAT_SOLDIER" modify append
+  {
+    viewId = { "rat_soldier_new" }
+  }
+
+"RAT_LADY" modify append
+  {
+    viewId = { "rat_lady_new" }
+    gender = FEMALE
+    attr = {
+      DAMAGE 7
+      DEFENSE 7
+	  WORKSHOP 20
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    aiType = RANGED
+    noChase = true
+    cantEquip = true
+    name = {
+      name = "rat woman"
+      firstNameGen = "RATS"
+    }
+    permanentEffects = {
+      PLAGUE_RESISTANT 1
+    }
+  }
+  
+"RAT_KING" modify append
+  {
+    viewId = { "rat_king_new" }
+  }
+  
+"rat_soldier"
+  {
+    viewId = { "rat_soldier_new" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 12
+	  WORKSHOP 15
+      FORGE 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all elves"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    name = {
+      name = "rat soldier"
+      firstNameGen = "RATS"
+    }
+    permanentEffects = {
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+    }
+}
+
+"rat_slave_soldier"
+  {
+    viewId = { "rat_slave_soldier" }
+    attr = {
+      DAMAGE 2
+      DEFENSE 2
+    }
+    cantEquip = true
+    body = {
+      type = Humanoid SMALL
+    }
+    chatReactionFriendly = "curses all elves"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "rat slave soldier"
+    }
+    permanentEffects = {
+      PLAGUE_RESISTANT 1
+      SWARMER 1
+    }
+    }
+"rat_ogre"
+  {
+    viewId = { "rat_ogre" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 20 
+    }
+    body = {
+      type = NonHumanoid LARGE
+      weight = 120
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting POISON} } }}}
+      }
+    }
+    name = {
+      name = "rat ogre"
+    }
+    permanentEffects = {
+      REGENERATION 1
+      PLAGUE_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 10
+    }
+  }
+"armoured_rat_ogre"
+  {
+    viewId = { "armoured_rat_ogre" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 30 
+    }
+    body = {
+      type = NonHumanoid LARGE
+      weight = 120
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting POISON} } }}}
+      }
+    }
+    name = {
+      name = "armoured rat ogre"
+    }
+    permanentEffects = {
+      REGENERATION 1
+      PLAGUE_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 10
+    }
+  }
+"rat_female"
+  {
+    viewId = { "rat_female" }
+    gender = FEMALE
+    attr = {
+      DAMAGE 7
+      DEFENSE 7
+	  WORKSHOP 20
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    aiType = RANGED
+    noChase = true
+    cantEquip = true
+    name = {
+      name = "rat woman"
+      firstNameGen = "RATS"
+    }
+    permanentEffects = {
+      PLAGUE_RESISTANT 1
+    }
+  }
+"rat_seer"
+  {
+    viewId = { "rat_seer" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+      SPELL_DAMAGE 20 
+	  LABORATORY 35
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    aiType = RANGED
+    maxLevelIncrease = {
+      DAMAGE 2
+      SPELL_DAMAGE 7
+    }
+    spellSchools = { "mage" }
+    name = {
+      name = "rat seer"
+      firstNameGen = "RATS"
+    }
+    permanentEffects = {
+      PLAGUE_RESISTANT 1
+    }
+  }
+"rat_abomination"
+  {
+    viewId = { "rat_abomination" }
+    attr = {
+      DAMAGE 50
+      DEFENSE 50
+    }
+    body = {
+      type = FourLegged HUGE
+      addBodyPart = {
+        ARM 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting POISON} } }}}
+      }
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      RANGED_VULNERABILITY 1
+      REGENERATION 1
+      MAGIC_RESISTANCE 1
+      MELEE_RESISTANCE 1
+      PLAGUE_RESISTANT 1
+    }
+    name = {
+      name = "rat abomination"
+    }
+    }
+"rat_assassin"
+  {
+    viewId = { "rat_assassin" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 15
+      RANGED_DAMAGE 22
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all elves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      NIGHT_VISION 1
+      PLAGUE_RESISTANT 1
+}
+    maxLevelIncrease = {
+      DAMAGE 7
+      SPELL_DAMAGE 7
+      RANGED_DAMAGE 4
+    }
+    spellSchools = { "illusion" }
+    name = {
+      name = "rat assassin"
+      firstNameGen = "RATS"
+    }
+    }
+"rat_archer"
+  {
+    viewId = { "rat_archer" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 10
+      RANGED_DAMAGE 20
+	  WORKSHOP 15
+      FORGE 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all elves"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    maxLevelIncrease = {
+      DAMAGE 3
+      RANGED_DAMAGE 5
+    }
+    name = {
+      name = "rat archer"
+      firstNameGen = "RATS"
+    }
+    permanentEffects = {
+      PLAGUE_RESISTANT 1
+    }
+    }
+"mutant_rat_ogre"
+  {
+    viewId = { "mutant_rat_ogre" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 25 
+    }
+    body = {
+      type = NonHumanoid LARGE
+      weight = 120
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting POISON} } }}}
+      }
+    }
+    name = {
+      name = "mutant rat ogre"
+    }
+    permanentEffects = {
+      REGENERATION 1
+      PLAGUE_RESISTANT 1
+      MAGIC_RESISTANCE 1
+      MELEE_RESISTANCE 1
+      RANGED_VULNERABILITY 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 10
+    }
+  }
+"rat_experimentor"
+  {
+    viewId = { "rat_experimentor" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 20
+      LABORATORY 40	  
+    }
+    body = {
+      type = Humanoid LARGE
+      addBodyPart = {
+        ARM 3
+      }
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting POISON} } }}}
+      }
+    }
+    name = {
+      name = "rat experimentor"
+    }
+    permanentEffects = {
+      REGENERATION 1
+      PLAGUE_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 10
+    }
+  }

@@ -1,0 +1,1633 @@
+  ##############
+  # forest elf #
+  ############## 
+  
+"FE_ELF_PEASANT"
+  {
+    viewId = { "fe_male" }
+    genderAlternatives = {
+      FEMALE { "fe_female" }
+    }
+    attr = {
+      DAMAGE 14
+      DEFENSE 6 
+	  DIGGING 5
+	  JEWELER 5
+	  WORKSHOP 5
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+	  RIDER 1
+    }
+    name = {
+      name = "elf"
+      pluralName = "elves"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+
+"FE_CRAFTSMAN"
+  {
+    viewId = { "fe_craftsman" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10 
+	  WORKSHOP 30
+	  FORGE 30
+	  JEWELER 30
+	  FURNACE 25
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+	permanentEffects = {
+      ELF_VISION 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      FORGE 10
+    }
+    aiType = RANGED
+    name = {
+      name = "craftsman"
+      firstNameGen = "FOREST ELF FEMALE"
+    }
+	hatedByEffect = HATE_ELVES
+  }
+  
+"FE_ELF_ARCHER"
+  {
+    viewId = { "fe_hunter" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 12
+      RANGED_DAMAGE 18 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    aiType = RANGED
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      ELF_VISION 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      RANGED_DAMAGE 8
+    }
+	spellSchools = { "archer" }
+    name = {
+      name = "hunter"
+      pluralName = "hunters"
+	  firstNameGen = "FOREST ELF FEMALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { "LeatherArmor"}
+      { "Bow"}
+      { "GoldPiece" 2 6 }
+    }
+  }
+  
+"FE_HUNT_LORD"
+  {
+    viewId = { "fe_hunt_lord" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 18
+	  SPELL_DAMAGE 30
+      RANGED_DAMAGE 30
+      LABORATORY 20	  
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    aiType = RANGED
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      ELF_VISION 1
+	  RIDER 1
+	  DISARM_TRAPS_SKILL 1
+    }
+    maxLevelIncrease = {
+      RANGED_DAMAGE 8
+	  SPELL_DAMAGE 8
+    }
+	spellSchools = { "archer" "EU_HUNT_LORD" }
+    companions = {{
+      count = 2
+      spawnAway = true
+      statsBase = none
+      summonFreq = 0.05
+      creatures = { "WOLF" }}
+    }
+    name = {
+      name = "EU_HUNT_LORD"
+      pluralName = "hunt lords"
+	  firstNameGen = "FOREST ELF FEMALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { "LeatherArmor"}
+      { "Bow"}
+      { "GoldPiece" 2 6 }
+    }
+  }
+  
+"FE_BRAVE"
+  {
+    viewId = { "fe_brave" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 12 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      ELF_VISION 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 8
+
+    }
+	spellSchools = { "fighter" }
+    name = {
+      name = "brave"
+      pluralName = "braves"
+	  firstNameGen = "FOREST ELF MALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { "ElvenSword"}
+      { "LeatherArmor"}
+      { "GoldPiece" 2 6 }
+    }
+  }
+  
+"FE_CHILD"
+  {
+    viewId = { "fe_child" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 6 
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    aiType = RANGED
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      ELF_VISION 1
+    }
+    name = {
+      name = "child"
+      pluralName = "children"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+  
+"FE_DRUID"
+  {
+    viewId = { "fe_druid" }
+    attr = {
+      DAMAGE 8
+      DEFENSE 10
+      SPELL_DAMAGE 20 
+	  LABORATORY 35
+    }
+    aiType = RANGED
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      ELF_VISION 1
+      RIDER 1
+    }
+	spellSchools = { "EU_DRUID" }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 8
+    }
+    name = {
+      name = "EU_DRUID"
+	  pluralName = "druids"
+	  firstNameGen = "FOREST ELF MALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { type = "WoodenStaff" prefixChance = 1 }
+      { "LeatherArmor"}
+      { "GoldPiece" 80 120 }
+    }
+  }
+ 
+"FE_ASCENDED_DRUID"
+  {
+    viewId = { "fe_ascended_druid" }
+    body = {
+      type = HumanoidLike HUGE
+      material = WOOD
+    }
+    attr = {
+      DAMAGE 35
+      DEFENSE 40
+      SPELL_DAMAGE 20 
+	  LABORATORY 35
+    }
+    permanentEffects = {
+      ELF_VISION 1
+      RANGED_RESISTANCE 1
+      SLOWED 1
+    }
+	spellSchools = { "EU_DRUID" }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 8
+    }
+    chatReactionFriendly = "i am one with nature"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "ascended druid"
+	  pluralName = "ascended druids"
+	  firstNameGen = "FOREST ELF MALE"
+    }
+  }
+  
+"FE_DRIAD_ALLY"
+  {
+    viewId = { "fe_driad" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 14
+      RANGED_DAMAGE 25 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    aiType = RANGED
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      ELF_VISION 1
+    }
+    chatReactionFriendly = "curses all humans"
+    chatReactionHostile = "\"Die!\""
+    spells = { "deception" }
+    maxLevelIncrease = {
+      RANGED_DAMAGE 12
+    }
+	spellSchools = { "archer" }
+    name = {
+      name = "dryad"
+      pluralName = "dryads"
+	  firstNameGen = "FOREST ELF FEMALE"
+    }
+    inventory = {
+      { "Bow"}
+    }
+  }
+
+"FE_BUSHLING"
+  {
+    viewId = { "neutral_bushling" }
+    body = {
+        type = NonHumanoid LARGE
+        bodyParts = {
+          LEG 8
+          TORSO 1
+          }
+      material = WOOD
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+    attr = {
+      DAMAGE 20
+      DEFENSE 20
+    }
+    permanentEffects = {
+      ELF_VISION 1
+      RANGED_RESISTANCE 1
+    }
+	spells = { "jump" "panic" }
+    chatReactionFriendly = "..."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "bush spirit"
+	  pluralName = "bush spirits"
+	  firstNameGen = "FOREST ELF ENT"
+    }
+    gender = IT
+  }
+
+"FE_ENT"
+  {
+    viewId = { "neutral_ent" }
+    body = {
+      type = HumanoidLike HUGE
+      material = WOOD
+    }
+    attr = {
+      DAMAGE 35
+      DEFENSE 40
+    }
+    permanentEffects = {
+      ELF_VISION 1
+      RANGED_RESISTANCE 1
+      SLOWED 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "tree spirit"
+	  pluralName = "tree spirits"
+	  firstNameGen = "FOREST ELF ENT"
+    }
+    gender = IT
+  }
+
+"FE_DEER"
+  {
+    viewId = { "neutral_deer" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 8 
+    }
+    aiType = RANGED
+    body = {
+      type = FourLegged MEDIUM
+      weight = 400
+    }
+    permanentEffects = {
+      SPEED 1
+      STEED 1
+    }
+    noChase = true
+    name = {
+      name = "deer"
+      pluralName = "deer"
+    }
+	gender = MALE
+	afterKilledSomeone = {
+      ApplyToSteed CreatureMessage {"are more experienced" "is more experienced"}
+      ApplyToSteed Polymorph "FE_DEER_WAR" none
+    }
+  }
+
+"FE_DOE"
+  {
+    viewId = { "neutral_doe" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 8 
+    }
+    aiType = RANGED
+    body = {
+      type = FourLegged MEDIUM
+      weight = 400
+    }
+    permanentEffects = {
+      SPEED 1
+      STEED 1
+    }
+    noChase = true
+    name = {
+      name = "doe"
+      pluralName = "doe"
+    }
+	gender = FEMALE
+	afterKilledSomeone = {
+      ApplyToSteed CreatureMessage {"are more experienced" "is more experienced"}
+      ApplyToSteed Polymorph "FE_DOE_WAR" none
+    }
+  }
+  
+"FE_DEER_WAR" inherit "FE_DEER"
+  {
+    viewId = { "neutral_deer_war" }
+    attr = {
+      DAMAGE 24
+      DEFENSE 16
+    }
+    name = {
+      name = "wardeer"
+    }
+  }
+
+"FE_DOE_WAR" inherit "FE_DOE"
+  {
+    viewId = { "neutral_doe_war" }
+    attr = {
+      DAMAGE 24
+      DEFENSE 16
+    }
+    name = {
+      name = "wardoe"
+    }
+  }
+  
+"WOLF" modify append
+  {
+    viewId = { "neutral_wolf" }
+  }
+
+"WEREWOLF" modify append
+  {
+    viewId = { "neutral_werewolf" }    
+	genderAlternatives = {
+      MALE { "neutral_werewolf" }
+	  MALE { "neutral_werewolf_peasant_1" }
+	  MALE { "neutral_werewolf_peasant_2" }
+	  FEMALE { "neutral_werewolf_woman" }
+	  FEMALE { "neutral_werewolf_peasantwoman_1" }
+	  FEMALE { "neutral_werewolf_peasantwoman_2" }
+    }
+ }
+ 
+"FE_GREAT_WOLF"
+  {
+    viewId = { "neutral_great_wolf" }
+    attr = {
+      DAMAGE 36
+      DEFENSE 22 
+    }
+    body = {
+      type = FourLegged LARGE
+      weight = 95
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 16 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 14 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+    }
+    companions = {{
+      count = 5
+      spawnAway = true
+      statsBase = none
+      summonFreq = 0.05
+      creatures = { "WOLF" }}
+    }
+    name = {
+      name = "great wolf"
+      pluralName = "great wolves"
+      firstNameGen = "DOG"
+      groupName = "pack"
+    }
+  }
+
+"FE_WEREWOLF_ELF"
+  {
+    viewId = { "fe_werewolf_elf" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 10 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+	  RIDER 1
+	  SLOW_TRAINING 1
+    }
+	maxLevelIncrease = {
+      DAMAGE 12
+    }
+	spellSchools = { "EU_WEREWOLF" }
+    name = {
+      name = "wolfsoul"
+      pluralName = "wolfsoul"
+	  firstNameGen = "FOREST ELF MALE"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+   
+"FE_WEREWOLF_WOLF_MKI"
+  {
+    viewId = { "fe_werewolf" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 15
+    }
+    body = {
+      type = Humanoid LARGE
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      MAGIC_RESISTANCE 1
+      REGENERATION 1
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+    }
+    name = {
+      name = "werewolf"
+      pluralName = "werewolves"
+      firstNameGen = "FOREST ELF MALE"
+    }
+  }
+   
+"FE_WEREWOLF_WOLF_MKII"
+  {
+    viewId = { "fe_werewolf" }
+    attr = {
+      DAMAGE 40
+      DEFENSE 20
+    }
+    body = {
+      type = Humanoid LARGE
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      MAGIC_RESISTANCE 1
+      REGENERATION 1
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+    }
+    name = {
+      name = "werewolf"
+      pluralName = "werewolves"
+      firstNameGen = "FOREST ELF MALE"
+    }
+  }
+    
+"FE_WEREWOLF_WOLF_MKIII"
+  {
+    viewId = { "fe_werewolf" }
+    attr = {
+      DAMAGE 50
+      DEFENSE 25
+    }
+    body = {
+      type = Humanoid LARGE
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      MAGIC_RESISTANCE 1
+      REGENERATION 1
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+    }
+    name = {
+      name = "werewolf"
+      pluralName = "werewolves"
+      firstNameGen = "FOREST ELF MALE"
+    }
+  }
+    
+"FE_WEREWOLF_WOLF_MKIV"
+  {
+    viewId = { "fe_werewolf" }
+    attr = {
+      DAMAGE 60
+      DEFENSE 30
+    }
+    body = {
+      type = Humanoid LARGE
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      MAGIC_RESISTANCE 1
+      REGENERATION 1
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+    }
+    name = {
+      name = "werewolf"
+      pluralName = "werewolves"
+      firstNameGen = "FOREST ELF MALE"
+    }
+  }     
+  
+   
+"FE_WEREWOLF_WOLF_MKV"
+  {
+    viewId = { "fe_werewolf" }
+    attr = {
+      DAMAGE 70
+      DEFENSE 35
+    }
+    body = {
+      type = Humanoid LARGE
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      MAGIC_RESISTANCE 1
+      REGENERATION 1
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+    }
+    name = {
+      name = "werewolf"
+      pluralName = "werewolves"
+      firstNameGen = "FOREST ELF MALE"
+    }
+  } 
+
+"FE_ELDER"
+  {
+    viewId = { "fe_elder_01" }
+    viewIdUpgrades = { { "fe_elder_02" } { "fe_elder_03" } { "fe_elder_04" } }
+    name = {
+      name = "elder"
+      firstNameGen = "FOREST ELF MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    attr = {
+      DAMAGE 12
+      DEFENSE 12
+      SPELL_DAMAGE 20
+	  LABORATORY 10
+	  JEWELER 25
+    }
+    permanentEffects = {
+      RIDER 1
+	  MAGIC_RESISTANCE 1
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+    }
+    # experience_type.h
+    maxLevelIncrease = {
+      DAMAGE 7
+      SPELL_DAMAGE 12
+    }
+    aiType = RANGED
+    spellSchools = { "EU_DRUID" }
+    spells = { "healing" }
+    inventory = {
+      # Here comes a list of items. The format of each element is defined in creature_inventory.h
+      { "Robe"}
+      # Take a look a CYCLOPS for a more detailed example.
+    }
+  }
+"FE_ELDER_F" inherit "FE_ELDER"
+  {
+    gender = FEMALE
+    name = append {
+      firstNameGen =  "FOREST ELF FEMALE"
+    }
+  }
+  
+  ##############  
+  # undead elf #
+  ##############
+  
+"UE_BUTCHER_WARRIOR"
+  {
+    viewId = { "ue_butcher" }
+    attr = {
+      DAMAGE 23
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_FLESH
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    name = {
+      name = "butcher"
+    }
+    permanentEffects = {
+      ELF_VISION 1
+	  NIGHT_VISION 1
+      RIDER 1
+	  UNSTABLE 1
+    }
+    hatedByEffect = HATE_UNDEAD
+  }
+  
+"UE_BUTCHER_ARCHER"
+  {
+    viewId = { "ue_butcher_archer" }
+    attr = {
+      RANGED_DAMAGE 23
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_FLESH
+    }
+    aiType = RANGED
+    maxLevelIncrease = {
+      RANGED_DAMAGE 7
+    }
+	permanentEffects = {
+	  ELF_VISION 1
+	  NIGHT_VISION 1
+      RIDER 1
+	  UNSTABLE 1
+    }
+    name = {
+      name = "butcher archer"
+    }
+    hatedByEffect = HATE_UNDEAD
+  }
+
+"UE_BROKEN_MIND"
+  {
+    viewId = { "ue_broken_mind" }
+    attr = {
+      SPELL_DAMAGE 23
+      DEFENSE 10
+    }
+	
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_FLESH
+    }
+    aiType = RANGED
+    maxLevelIncrease = {
+      SPELL_DAMAGE 7
+    }
+	permanentEffects = {
+	  ELF_VISION 1
+	  NIGHT_VISION 1
+      RIDER 1
+	  UNSTABLE 1
+    }
+    name = {
+      name = "broken mind"
+    }
+    hatedByEffect = HATE_UNDEAD
+    spellSchools = { "mage" }
+  }
+  
+"UE_GHOUL"
+  {
+    viewId = { "ue_feedder" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 15 
+    }
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_FLESH
+      intrinsicAttacks = {
+	    ARM  {{ 
+		  isExtraAttack = true 
+		  itemType = { Intrinsic { "claws_attack" } "claws" 8 {
+		  attackType = HIT attackMsg = CLAW }} }}
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            attackerEffect = { RegrowBodyPart 1 }
+            victimEffect = { 0.1 Lasting 50 BLEEDING  } } }}}
+      }
+    }
+    permanentEffects = {
+      SPEED 1
+    }
+    name = {
+      name = "ghoul"
+    }
+    hatedByEffect = HATE_UNDEAD
+  }
+  
+"UE_ELF_ZOMBIE_WORKER" inherit "ZOMBIE"
+  {
+    viewId = { "ue_zombie" }
+	attr = append {
+      DIGGING 10
+      DEFENSE 15 
+    }
+  }
+   
+"UE_BETRAYER"
+  {
+    viewId = { "ue_noble_betrayer" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 17
+	  SPELL_DAMAGE 20 
+    }
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_FLESH
+      intrinsicAttacks = {
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            attackerEffect = { RegrowBodyPart 1 }
+            victimEffect = { 0.1 Lasting 50 BLEEDING  } } }}}
+      }
+    }
+    chatReactionFriendly = "\"All men be cursed!\""
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      NIGHT_VISION 1
+      RANGED_RESISTANCE 1
+      DISTILLATION_SKILL 1
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+	  SPELL_DAMAGE 7
+    }
+    spellSchools = { "illusion" "vampire" }
+    name = {
+      name = "betrayer"
+      firstNameGen = "VAMPIRE"
+    }
+    hatedByEffect = HATE_UNDEAD
+    inventory = {
+      { "ChainArmor"}
+      { "Sword"}
+	  { type = Glyph {WEAPON ItemAttrBonus SPELL_DAMAGE 4 }chance = 0.3 }
+    }
+  }
+  
+
+"UE_KEEPER_CABAL"
+  {
+    viewId = { "ue_cabal_01" }
+    viewIdUpgrades = { { "ue_cabal_02" } { "ue_cabal_03" } { "ue_cabal_04" } }
+    name = {
+      name = "crismon cabalist"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+      SPELL_DAMAGE 16
+	  MORGUE 50
+	  LABORATORY 50
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 12
+    }
+    aiType = RANGED
+    spellSchools = { "EU_RED_CABAL" }
+    spells = { "healing" }
+    inventory = {
+    }
+  }
+  
+"UE_KEEPER_CABAL_F" inherit "UE_KEEPER_CABAL"
+  {
+    gender = FEMALE
+    name = append {
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+  
+"UE_SLAVE"
+  {
+    viewId = { "ue_slave_male" }
+    genderAlternatives = {
+      FEMALE { "ue_slave_female" }
+    }
+    attr = {
+      DAMAGE    10
+      DEFENSE   4
+      DIGGING	5
+      JEWELER	5
+      WORKSHOP	5
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+	  RIDER 1
+	  UNSTABLE 1
+    }
+    name = {
+      name = "elf"
+      pluralName = "elves"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+
+"UE_SLAVE_CHILD"
+  {
+    viewId = { "ue_slave_child" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 6 
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    aiType = RANGED
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      ELF_VISION 1
+    }
+    name = {
+      name = "child"
+      pluralName = "children"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+    
+  ##############
+  #  dark elf  #
+  ############## 
+
+
+"DE_WARLORD"
+  {
+    viewId = { "de_warlord_01" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 20
+	  SPELL_DAMAGE 10
+	  MULTI_WEAPON 50
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "warlord"
+      firstNameGen = "DARK ELF MALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "de_warlord_02" } { "de_warlord_03" } { "de_warlord_04" }}
+    permanentEffects = {
+      RIDER 1
+	  NIGHT_VISION 1
+	  MAGIC_RESISTANCE 1
+	  FIRE_IMMUNITY 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+      SPELL_DAMAGE 3
+    }
+	gender = MALE
+    spellSchools = { "EU_DARK_ELF_WARLORD_MIGHT" "EU_DARK_ELF_WARLORD_MAGIC" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+"DE_WARLORD_F" inherit "DE_WARLORD"
+  {
+    gender = FEMALE
+    name = {
+      name = "warlord"
+      firstNameGen = "DARK ELF FEMALE"
+      fullTitle = true
+    }
+  }
+  
+"DE_ELF_PEASANT"
+  {
+    viewId = { "de_male" }
+    genderAlternatives = {
+      FEMALE { "de_female" }
+    }
+    attr = {
+      DAMAGE 14
+      DEFENSE 6 
+	  DIGGING 5
+	  JEWELER 5
+	  WORKSHOP 5
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      NIGHT_VISION 1
+	  MAGIC_RESISTANCE 1
+	  RIDER 1
+    }
+    name = {
+      name = "elf"
+      pluralName = "elves"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+  
+"DE_CHILD"
+  {
+    viewId = { "de_child" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 6 
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    aiType = RANGED
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      NIGHT_VISION 1
+    }
+    name = {
+      name = "child"
+      pluralName = "children"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+  
+"DE_ARTISAN"
+  {
+    viewId = { "de_artisant" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10 
+	  WORKSHOP 35
+	  FORGE 35
+	  JEWELER 20
+	  FURNACE 25
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+	permanentEffects = {
+      MAGIC_RESISTANCE 1
+      NIGHT_VISION 1
+    }
+    maxLevelIncrease = {
+      FORGE 10
+    }
+    aiType = RANGED
+    name = {
+      name = "artisan"
+      firstNameGen = "DARK ELF MALE"
+    }
+	hatedByEffect = HATE_ELVES
+  }
+  
+"DE_GLADIATOR"
+  {
+    viewId = { "de_gl1_novice" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all law enforcement"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
+    name = {
+      name = "EU_DARK_ELF_GLADIATOR"
+    }
+	spellSchools = { "EU_DARK_ELF_GLADIATOR" }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Club"}
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { type = "Torch" chance = 0.3 }
+      { type = "Bow" chance = 0.05 }
+    }
+  }  
+   
+"DE_SOLIDER"
+  {
+    viewId = { "de_wr1_warrior" }
+    attr = {
+      DAMAGE 22
+      DEFENSE 20 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      NIGHT_VISION 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 8
+    }
+	spellSchools = { "EU_DARK_ELF_SOLIDER" }
+    name = {
+      name = "solider"
+      pluralName = "soliders"
+	  firstNameGen = "DARK ELF MALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { "ElvenSword"}
+      { "LeatherArmor"}
+      { "GoldPiece" 2 6 }
+    }
+  }
+  
+"DE_ARCHER"
+  {
+    viewId = { "de_ar1_warrior_archer" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 12
+      RANGED_DAMAGE 18 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    aiType = RANGED
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      NIGHT_VISION 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      RANGED_DAMAGE 12
+    }
+	spellSchools = { "EU_DARK_ELF_ARCHER" }
+    name = {
+      name = "archer"
+      pluralName = "archer"
+	  firstNameGen = "DARK ELF MALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { "LeatherArmor"}
+      { "Bow"}
+      { "GoldPiece" 2 6 }
+    }
+  }
+  
+"DE_BLADE_DANCER"
+  {
+    viewId = { "de_sp1_blade_dancer" }
+    attr = {
+      DAMAGE 26
+	  MULTI_WEAPON 15
+      DEFENSE 7
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "do you like my dance?"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      NIGHT_VISION 1
+	  RIDER 1
+	  ENTERTAINER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 8
+    }
+	gender = FEMALE
+	spellSchools = { "EU_DARK_ELF_BLADE_DANCER" }
+    name = {
+      name = "blade dancer"
+      pluralName = "blade dancers"
+	  firstNameGen = "DARK ELF FEMALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { "ElvenSword"}
+	  { "ElvenSword"}
+      { "LeatherArmor"}
+      { "GoldPiece" 2 6 }
+    }
+  }
+
+"DE_MYSTIC"
+  {
+    viewId = { "de_sr1_mystic" }
+    attr = {
+      DEFENSE 10
+      SPELL_DAMAGE 20 
+	  LABORATORY 30
+    }
+    aiType = RANGED
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "feel the might of flames"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      NIGHT_VISION 1
+      RIDER 1
+    }
+	spellSchools = { "EU_DARK_ELF_MYSTIC" }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 8
+    }
+    name = {
+      name = "mystic"
+	  pluralName = "mystics"
+	  firstNameGen = "DARK ELF MALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { type = "WoodenStaff" prefixChance = 1 }
+      { "LeatherArmor"}
+      { "GoldPiece" 80 120 }
+    }
+  }
+  
+"DE_SUMMONER"
+  {
+    viewId = { "de_sm1_summoner" }
+    attr = {
+      DEFENSE 10
+      SPELL_DAMAGE 8
+      SPELL_SPEED  6 
+    }
+    aiType = RANGED
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "demons are my slaves"
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      NIGHT_VISION 1
+      RIDER 1
+    }
+	deathEffect = Filter Not CreatureFlag "de_banishment"{
+	Filter CreatureFlag "2 imps" { SummonEnemy "DE_DEMON_IMP" {2} none}
+	Filter CreatureFlag "4 imps" { SummonEnemy "DE_DEMON_IMP" {2} none}
+	Filter CreatureFlag "2 minions" { SummonEnemy "DE_DEMON_MINION" {2} none}
+	}
+	spellSchools = { "EU_DARK_ELF_SUMMONER" }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 8
+    }
+    name = {
+      name = "summoner"
+	  pluralName = "summoners"
+	  firstNameGen = "DARK ELF MALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { type = "WoodenStaff" prefixChance = 1 }
+      { "LeatherArmor"}
+      { "GoldPiece" 80 120 }
+    }
+  }
+ 
+"DE_DEMON_IMP"
+  {
+    viewId = { "de_demon_imp" }
+    attr = {
+      DEFENSE 5
+      DAMAGE 8
+	  SPELL_DAMAGE 2
+    }
+    hatedByEffect = HATE_DEMON_SUMMON
+    body = {
+      type = Humanoid SMALL
+      material = SPIRIT
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 4 { attackType = HIT attackMsg = CLAW } }}}
+      }
+    }
+    noChase = true
+    cantEquip = true
+    chatReactionFriendly = "yes master?"
+    chatReactionHostile = "\"Die!\""
+    spells = { "fire missile" } 
+    permanentEffects = {
+	FIRE_IMMUNITY 1
+	SPEED 1
+    }
+    name = {
+      name = "imp"
+    }
+  }
+
+"DE_DEMON_IMP_COMPANION" inherit "DE_DEMON_IMP"
+  {
+    spells = append { "imp strenght" } 
+  }	
+
+"DE_DEMON_IMP_SUMMON" inherit "DE_DEMON_IMP"
+  {
+    viewId = { "de_demon_imp" }
+  }	
+  
+"DE_DEMON_SUCCUBUS" inherit "SUCCUBUS"
+  {
+    viewId = { "de_demon_succubus" }
+  }	
+  
+"DE_DEMON_SUCCUBUS_SUMMON" inherit "DE_DEMON_SUCCUBUS"
+  {
+	deathEffect = Chance 0.25 SummonEnemy "DE_DEMON_SUCCUBUS" {1} none
+  }	
+  
+"DE_DEMON_MINION"
+  {
+    viewId = { "de_demon_minion" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 14 
+	  SPELL_DAMAGE 6
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }}}
+      }
+    }
+    hatedByEffect = HATE_DEMON_SUMMON
+    noChase = true
+    cantEquip = true
+    chatReactionFriendly = "yes master?"
+    chatReactionHostile = "\"Die!\""
+    spells = { "fire missile" } 
+    permanentEffects = {
+	FIRE_IMMUNITY 1
+	MELEE_RESISTANCE 1
+	MAGIC_RESISTANCE 1
+	RANGED_RESISTANCE 1
+    }
+    name = {
+      name = "imp"
+    }
+  }
+
+"DE_DEMON_MINION_COMPANION" inherit "DE_DEMON_MINION"
+  {
+    spells = append { "demon strenght" } 
+  }
+
+"DE_DEMON_MINION_SUMMON" inherit "DE_DEMON_MINION"
+  {
+	deathEffect = Chance 0.25 SummonEnemy "DE_DEMON_MINION" {1} none
+  }	
+  
+  ##############
+  #  high elf  #
+  ############## 
+
+"HE_AUTOCRAT"
+  {
+    viewId = { "he_autocrath_01" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+      MULTI_WEAPON 40
+      FURNACE 15
+      FORGE 10
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    name = {
+      name = "high lord"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "he_autocrath_02" } { "he_autocrath_03" } { "he_autocrath_04" }}
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+      SPELL_DAMAGE 3
+    }
+    hatedByEffect = HATE_ELVES
+    spellSchools = { "EU_HIGH_ELF_LORD_ELEGANCE" "EU_HIGH_ELF_LORD_ART" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+  
+"HE_AUTOCRAT_F" inherit "HE_AUTOCRAT"
+  {
+    gender = FEMALE
+    name = {
+      name = "knight"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+  }
+  
+"HE_ELF_PEASANT"
+  {
+    viewId = { "he_male" }
+    genderAlternatives = {
+      FEMALE { "he_female" }
+    }
+    attr = {
+      DAMAGE 14
+      DEFENSE 6 
+	  DIGGING 5
+	  JEWELER 5
+	  WORKSHOP 5
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      ELF_VISION 1
+	  RIDER 1
+    }
+    name = {
+      name = "elf"
+      pluralName = "elves"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+  
+"HE_CHILD"
+  {
+    viewId = { "he_child" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 6 
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    aiType = RANGED
+    chatReactionFriendly = "curses all dwarves"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      ELF_VISION 1
+    }
+    name = {
+      name = "child"
+      pluralName = "children"
+    }
+    hatedByEffect = HATE_ELVES
+  }
+  
+"HE_CRAFTSMAN"
+  {
+    viewId = { "he_craftmaster" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10 
+	  WORKSHOP 30
+	  FORGE 30
+	  JEWELER 30
+	  FURNACE 25
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+	permanentEffects = {
+      ELF_VISION 1
+	  RIDER 1
+    }
+    maxLevelIncrease = {
+      FORGE 10
+    }
+    aiType = RANGED
+    name = {
+      name = "craftmaster"
+      firstNameGen = "FOREST ELF FEMALE"
+    }
+	hatedByEffect = HATE_ELVES
+  }
+  
+"HE_LEGIONARE"
+  {
+    viewId = { "he_legionare" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 14 
+      FURNACE 10
+      WORKSHOP 5
+      FORGE 5
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+    }
+    name = {
+      name = "legionare"
+      firstNameGen = "FIRST_MALE"
+    }
+	hatedByEffect = HATE_ELVES
+  }
+
+"HE_LIGIONARE_CROSSBOWMAN"
+  {
+    viewId = { "he_legionare_crossbowman" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10
+      RANGED_DAMAGE 10 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    permanentEffects = {
+      ARCHER_VISION 1
+      RIDER 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    spellSchools = { "archer" }
+    maxLevelIncrease = {
+      DAMAGE 4
+      RANGED_DAMAGE 7
+    }
+    aiType = RANGED
+    name = {
+      name = "legionare crossbowman"
+      firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_ELVES
+  }

@@ -1,0 +1,57 @@
+"REPAIR_UNDEAD"
+{
+  symbol = "💀"
+  effect = Name "fix undead" Filter Or { BodyMaterial UNDEAD_FLESH
+      And {BodyMaterial BONE }}
+  {
+	RegrowBodyPart 10
+  }
+  range = 1
+  targetSelf = true
+  cooldown = 100
+  sound = "TRAP_ARMING"
+  message = "fixed the undead" "fixes the undead"
+  type = ABILITY
+}
+
+"summon succubus"
+{
+  symbol = "😍😍"
+  effect = Summon "SUCCUBUS" 1 100
+  cooldown = 40
+  sound = "SPELL_SUMMON_INSECTS"
+}
+
+"summon succubus harem"
+{
+  symbol = "😍"
+  upgrade = "summon succubus"
+  effect = Summon "SUCCUBUS" {3 7} 100
+  cooldown = 40
+  sound = "SPELL_SUMMON_INSECTS"
+}
+
+"BOLSTER_ELEMENTAL"
+{
+  symbol = "⭕"
+  effect = Name "bolster elemental" Filter Or { CreatureId  "FIRE_ELEMENTAL" CreatureId "AIR_ELEMENTAL"  CreatureId "WATER_ELEMENTAL"  CreatureId "EARTH_ELEMENTAL" CreatureId "ENT"}
+				    {
+	Heal { SPIRIT }
+	RegrowBodyPart 10
+  }
+  range = 1
+  targetSelf = true
+  cooldown = 100
+  sound = "TRAP_ARMING"
+  message = "fixed the undead" "fixes the undead"
+  type = ABILITY
+}
+
+"mass slow"
+{
+  upgrade = "slow"
+  symbol = "💪"
+  effect = Name "mass slow" Area 6 Filter Enemy Lasting 40 SLOWED
+  cooldown = {30 81}
+  sound = "SPELL_STR_BONUS"
+}

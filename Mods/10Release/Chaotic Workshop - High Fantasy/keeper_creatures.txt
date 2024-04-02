@@ -1,0 +1,106 @@
+"1_dark_mage" modify {
+    technology = append {
+      "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
+	  "glyph carving" "advanced glyph carving" "master glyph carving" 
+	  "golem construction" "advanced golem construction" "master golem construction" 
+      "summoning" "advanced summoning" "master summoning"
+	  }
+	buildingGroups = append { "magecrafting" }
+    workshopGroups = append { "scribing_evil" "glyphcarving" "golem_carving" "element_summoning" "demon_summoning"}
+  }
+"2_dark_knight" modify {
+    immigrantGroups = {"magex_goblin" "dark_keeper"}
+    technology = append {
+      "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
+	  "glyph carving" "advanced glyph carving" "master glyph carving" 
+	  "golem construction" "advanced golem construction" "master golem construction" 
+      "summoning" "advanced summoning" "master summoning"
+	  }
+    buildingGroups = {
+        "structure" "doors" "floors" "storage" "zones" "library" "throne" "beds"
+        "dining table" "coffins" "pigsty"
+        "training" "crafting" "laboratory" "jeweller" "poetry" "distillery" "furnace" "demon_shrine"
+        "prison" "orders" "installations" "minion_statues" "traps" "magecrafting"
+    }
+    workshopGroups = append { "scribing_evil" "glyphcarving" "golem_carving" "element_summoning" "demon_summoning"}
+  }
+
+"3_white_knight" modify {
+    technology = append {
+      "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
+	  "glyph carving" "advanced glyph carving" "master glyph carving" 
+	  "golem construction" "advanced golem construction" "master golem construction" 
+      "summoning" "advanced summoning" "master summoning"
+	  }
+	buildingGroups = append { "magecrafting" }
+    workshopGroups = append { "scribing_good" "glyphcarving" "golem_carving" "element_summoning" "angel_summoning"}
+  }
+
+"2_arcane_mage" inherit "3_white_knight"
+{
+  baseName = "Castle"
+  creatureId = { "MAGEX_KEEPER_MAGE_ARCANE" "MAGEX_KEEPER_MAGE_ARCANE_F" }
+  tribeAlignment = LAWFUL
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {"magex_cherub" "arcane_keeper" "white_recruits"}
+  initialTech = { "sorcery" }
+}
+
+"4_necromancer" modify {
+    technology = append {
+      "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
+	  "glyph carving" "advanced glyph carving" "master glyph carving" 
+	  "golem construction" "advanced golem construction" "master golem construction" 
+      "summoning" "advanced summoning" "master summoning"
+	  }
+	buildingGroups = append { "magecrafting" }
+    workshopGroups = append { "scribing_necro" "glyphcarving" "golem_carving_no_popu" "morgue_new" "element_summoning"}
+  }
+
+"4_nn_grave_knight"
+{
+  baseName = "Undead"
+  creatureId = { "MAGEX_KEEPER_GRAVE_KNIGHT" "MAGEX_KEEPER_GRAVE_KNIGHT_F" }
+  tribeAlignment = EVIL
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+  immigrantGroups = {"necromancer" }
+  technology = { "embalming" "advanced embalming" "master embalming" "necromancy"
+      "advanced necromancy" "master necromancy" "archery" "sorcery" "advanced sorcery"
+      "magical weapons" "master sorcery" "iron working" "two-handed weapons" "distillation"
+  }
+  zLevelGroups = { "basic" "evil" }
+  initialTech = { "necromancy" }
+  buildingGroups = {
+      "structure_necro" "doors" "floors" "storage" "zones" "library_necro" "beds" "coffins"
+      "training_necro" "morgue" "crafting" "embalming" "poetry" "distillery" "furnace" "orders"
+      "phylactery" "installations_no_heads" "magical_installations"
+  }
+  workshopGroups = { "morgue" "basic_without_lab" "bows" }
+  description = "Craft hordes of undead from the corpses of fallen enemies. "
+  credit = { "CORPSE" 20 }
+  maxPopulation = 1
+  flags = { "abomination_upgrades" }
+  prisoners = false
+}
+
+"6_dwarves" modify {
+    technology = append {
+      "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
+	  "glyph carving" "advanced glyph carving" "master glyph carving" 
+	  "golem construction" "advanced golem construction" "master golem construction" 
+      "summoning" "advanced summoning" "master summoning"
+	  }
+	buildingGroups = append { "magecrafting" }
+    workshopGroups = append { "scribing_good" "glyphcarving" "golem_carving_no_popu" "element_summoning"}
+  }
+  
+"7_goblins" modify {
+    technology = append {
+      "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
+	  "glyph carving" "advanced glyph carving" "master glyph carving" 
+	  "golem construction" "advanced golem construction" "master golem construction" 
+      "summoning" "advanced summoning" "master summoning"
+	  }
+	buildingGroups = append { "magecrafting" }
+    workshopGroups = append { "scribing_evil" "glyphcarving" "golem_carving" "scribing_goblin" "element_summoning"}
+  }

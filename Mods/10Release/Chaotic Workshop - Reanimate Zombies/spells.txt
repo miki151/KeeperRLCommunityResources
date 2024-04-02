@@ -1,0 +1,22 @@
+"animate corpses" modify
+{
+  symbol = "👤"
+  effect = Name "animate corpses" Chain {
+  AnimateItems 3 5 {10 20} CORPSE
+  Area 100 Filter Not Enemy {
+  Filter CreatureFlag "animated" {Polymorph "ZOMBIE" none}
+  SetCreatureFlag "animated" false}}
+  cooldown = {50 201}
+}
+
+"advanced animate corpses" modify
+{
+  upgrade = "animate corpses"
+  symbol = "👤"
+  effect = Name "advanced animate corpses" Chain {
+  AnimateItems 6 5 {30 50} CORPSE
+  Area 100 Filter Not Enemy {
+  Filter CreatureFlag "animated" {Polymorph "ZOMBIE" none}
+  SetCreatureFlag "animated" false}}
+  cooldown = {50 201}
+}

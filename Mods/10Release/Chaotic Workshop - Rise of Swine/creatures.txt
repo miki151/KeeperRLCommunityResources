@@ -1,0 +1,475 @@
+# swines
+"SWINE_KEEPER"
+  {
+    viewId = { "swine_tactician01" }
+    viewIdUpgrades = { { "swine_tactician02" } { "swine_tactician03" } { "swine_tactician04" } }
+    attr = {
+      DAMAGE 12
+      DEFENSE 13 
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    chatReactionFriendly = "talks about lavish dinners"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+	permanentEffects = {
+      RIDER 1
+	  PLAGUE_RESISTANT 1
+    }
+	gender = MALE
+    name = {
+      name = "counselor"
+      firstNameGen = "ORC"
+    }
+    companions = {{
+      count = 1
+      spawnAway = false
+      statsBase = none
+      summonFreq = 0.02
+      creatures = { "SWINE_PRINCE" }}
+    }
+    inventory = {
+      { "Club"}
+    }
+  }
+ 
+"SWINE_SOW"
+  {
+    viewId = { "swine_sow" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 30
+    }
+    body = {
+      type = Humanoid HUGE
+    }
+	aiType = RANGED
+    companions = {{
+      count = 6
+      spawnAway = false
+      statsBase = DAMAGE
+      summonFreq = 0.02
+      creatures = { "SWINE_PIGGLET" }}
+    }
+    chatReactionFriendly = "mumbles"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "sow"
+      firstNameGen = "ORKY"
+    }
+	gender = FEMALE
+	permanentEffects = {
+      COLLAPSED 1
+	  COPULATION_SKILL 1
+	  PLAGUE_RESISTANT 1
+    }
+    inventory = {
+    }
+  } 
+  
+"SWINE_PIGGLET"
+  {
+    viewId = { "swine_pigglet_01" }
+	genderAlternatives = {
+      FEMALE { "swine_pigglet_01" }
+	  FEMALE { "swine_pigglet_02" }
+	  FEMALE { "swine_pigglet_03" }
+	  FEMALE { "swine_pigglet_04" }
+	  FEMALE { "swine_pigglet_05" }
+	  FEMALE { "swine_pigglet_06" }
+	  FEMALE { "swine_pigglet_07" }
+	  FEMALE { "swine_pigglet_08" }
+	  MALE { "swine_pigglet_01" }
+	  MALE { "swine_pigglet_02" }
+	  MALE { "swine_pigglet_03" }
+	  MALE { "swine_pigglet_04" }
+	  MALE { "swine_pigglet_05" }
+	  MALE { "swine_pigglet_06" }
+	  MALE { "swine_pigglet_07" }
+	  MALE { "swine_pigglet_08" }
+    }
+    attr = {
+      DAMAGE 3
+      DEFENSE 7 
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    aiType = RANGED
+    noChase = true
+    cantEquip = true
+    chatReactionFriendly = "cowers in fear"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+      UNSTABLE 1
+	  PLAGUE_RESISTANT 1
+	  SWARMER 1
+    }
+	spells = { "SWINE_FOUL_GROG" }
+    name = {
+      name = "pigglet"
+
+    }
+  }
+  
+"SWINE_PRINCE"
+  {
+    viewId = { "swine_prince" }
+    attr = {
+      DAMAGE 46
+      DEFENSE 45
+    }
+    body = {
+      type = Humanoid HUGE
+    }
+    chatReactionFriendly = "talks about lavish dinners"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "swine prince"
+      firstNameGen = "ORKY"
+    }
+	permanentEffects = {
+      COLLAPSED 1
+	  BLIND 1
+	  REGENERATION 1
+	  PLAGUE_RESISTANT 1
+    }
+	gender = MALE
+    inventory = {
+      { "WarHammer" }
+      { "ChainArmor" }
+    }
+  }
+
+"SWINE_THRALL"
+  {
+    viewId = { "swine_slave" }
+    attr = {
+      DAMAGE 3
+      DEFENSE 7 
+	  DIGGING 30
+	  SWINE_CRAFTS 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    aiType = RANGED
+    noChase = true
+    cantEquip = true
+    chatReactionFriendly = "cowers in fear"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+      UNSTABLE 1
+	  PLAGUE_RESISTANT 1
+    }
+	gender = MALE
+    name = {
+      name = "thrall"
+
+    }
+  }
+   
+"SWINE_WRETCH"
+  {
+    viewId = { "swine_wretch" }
+	genderAlternatives = {
+      FEMALE { "swine_wretch"}
+      FEMALE { "swine_acidbloat"}
+      MALE { "swine_acidbloat"}	  
+    }
+    attr = {
+      DAMAGE 16
+      DEFENSE 7 
+    }
+    body = {
+      type = FourLegged LARGE
+      weight = 500
+    }
+    permanentEffects = {
+      STEED 1
+	  PLAGUE_RESISTANT 1
+    }
+	spells = { "swine_wretch_puke" }
+    noChase = true
+    petReaction = "squals"
+    name = {
+      name = "wretch"
+    }
+  }
+
+"SWINE_CRIPPLE"
+  {
+    viewId = { "swine_cripple" }
+	genderAlternatives = {
+      MALE { "swine_cripple_2"}	  
+    }
+    attr = {
+      DAMAGE 16
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid MEDIUM
+	  intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 10 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {0.3 Lasting 50 BLEEDING } } }}}
+      }
+    }
+    chatReactionFriendly = "talks about sword fighting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "swine slasher"
+      firstNameGen = "ORKY"
+    }
+	gender = MALE
+    permanentEffects = {
+      RIDER 1
+	  PLAGUE_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+
+"SWINE_SUICIDER"
+  {
+    viewId = { "swine_suicider" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 8
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 2
+        TORSO 1
+      }
+      deathSound = "SPELL_AIR_BLAST"
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "self destruct" 1 {
+          attackType = HIT
+          meleeAttackAttr = SPELL_DAMAGE
+          attackMsg = THRUST
+          itselfMessage = true
+          victimEffect = {1.0 Suicide DIE}
+          attackerEffect = {CircularBlast Area 1 Fire{} Suicide DIE} } }}}
+      }
+    }
+	gender = MALE
+    chatReactionFriendly = "talks about explosives"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "swine suicider"
+      firstNameGen = "ORKY"
+    }
+    permanentEffects = {
+      LIGHT_SOURCE 1
+      RANGED_VULNERABILITY 1
+	  PLAGUE_RESISTANT 1
+    }   
+  }
+  
+"SWINE_MANEATER"
+  {
+    viewId = { "swine_man" }
+	genderAlternatives = {
+      MALE { "swine_manhunter"}	  
+    }
+    attr = {
+      DAMAGE 20
+      DEFENSE 18
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      SLOWED 1
+	  PLAGUE_RESISTANT 1
+	  RIDER 1
+    }
+	gender = MALE
+	chatReactionFriendly = "talks about lavish dinners"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "maneater"
+      firstNameGen = "ORKY"
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
+    inventory = {
+      { "HeavyClub"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"SWINE_HURLER"
+  {
+    viewId = { "swine_hurler" }
+    genderAlternatives = {
+      MALE { "swine_axethrower"}  
+    }
+    attr = {
+      DAMAGE 8
+      DEFENSE 10
+	  RANGED_DAMAGE 10 
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+	  PLAGUE_RESISTANT 1
+	  RIDER 1
+      ARCHER_VISION 1
+    }
+	gender = MALE
+	chatReactionFriendly = "talks about hunting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "maneater"
+      firstNameGen = "ORKY"
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+      RANGED_DAMAGE 8
+    }
+    inventory = {
+      { "SWINE_THROW_SPEAR"}
+      { "LeatherArmor"}
+    }
+  }
+
+  "SWINE_SIEGE"
+  {
+    viewId = { "swine_siege" }
+    attr = {
+      DAMAGE 60
+      DEFENSE 45
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      SLOWED 1
+	  PLAGUE_RESISTANT 1
+	  RIDER 1
+    }
+	chatReactionFriendly = "talks about lavish dinners"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "Brute"
+      firstNameGen = "ORKY"
+    }
+	gender = MALE
+    maxLevelIncrease = {
+      DAMAGE 20
+    }
+    inventory = {
+      { "HeavyClub"}
+      { "LeatherArmor"}
+    }
+  }
+
+"SWINE_HUMAN_CATTLE"
+  {
+    viewId = { "swine_breed_m" }
+    genderAlternatives = {
+      FEMALE { "swine_breed_f" }
+    }
+    attr = {
+      DAMAGE 6
+      DEFENSE 6
+	  DIGGING 15
+    }
+    body = {
+      type = Humanoid LARGE
+	   minionFood = true
+    }
+    chatReactionFriendly = "please help..."
+    chatReactionHostile = "\"Heeelp!\""
+	specialAttr = {
+      DEFENSE { -3 Name "when indoors"  Indoors }
+	  DAMAGE { -3 Name "when indoors"  Indoors }
+    }
+    permanentEffects = {
+      RANGED_VULNERABILITY 1
+	  MAGIC_VULNERABILITY 1
+	  SLOWED 1
+	  MELEE_VULNERABILITY 1
+	  RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "cattle"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+"SWINE_SHAMAN"
+  {
+    viewId = { "swine_man_shaman_1" }
+	genderAlternatives = {
+      MALE { "swine_man_shaman_2" }
+    }
+    attr = {
+      DAMAGE 10
+      DEFENSE 14
+	  SPELL_DAMAGE 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      SLOWED 1
+	  PLAGUE_RESISTANT 1
+	  RIDER 1
+    }
+	chatReactionFriendly = "talks about lavish dinners"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "maneater"
+      firstNameGen = "ORKY"
+    }
+    maxLevelIncrease = {
+	  DAMAGE 6
+     SPELL_DAMAGE 6
+    }
+	gender = MALE
+	spellSchools = { "RS_SWINE_MYSTICISM" }
+    inventory = {
+      { "HeavyClub"}
+      { "LeatherArmor"}
+    }
+  }
+     
+"SWINE_WAR_PIG" inherit "PIG"
+  {
+    attr = {
+      DAMAGE 10
+      DEFENSE 5 
+    }
+    aiType = MELEE
+    body = {
+      type = FourLegged MEDIUM
+      weight = 150
+      deathSound = "DYING_PIG"
+      intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+	STEED 1
+    }
+    name = {
+      name = "frenzied pig"
+    }
+  }
+  

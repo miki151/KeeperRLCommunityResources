@@ -1,0 +1,606 @@
+"swish_unholy_kingdom"
+{
+    {
+      ids = { "swish_skeleton_worker" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      spawnLocation = NearLeader
+      keybinding = CREATE_IMP
+      sound = {"CREATE_IMP" 2}
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1 ExponentialCost "GOLD" 30 5 4 }
+      }
+    }
+    {
+      ids = { "swish_skeleton_crafter" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.0 CostInfo "CORPSE" 1}
+        { 0.1 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
+      }
+      specialTraits = {
+         { 0.05 { OneOfTraits { Lasting { FAST_CRAFTING } Lasting { SLOW_CRAFTING } } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+      }
+    }
+    {
+      ids = { "swish_skeleton_warrior" }
+      traits = { FIGHTER }
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.2 { Lasting { SWARMER } }}
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.2 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "swish_skeleton_archer" }
+      traits = { FIGHTER }
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.2 { Lasting { SWARMER } }}
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.2 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_armoured_skeleton" }
+      traits = { FIGHTER }
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.0 CostInfo "CORPSE" 2}
+        { 1.0 CostInfo "IRON" 10 }
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.2 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_skeleton_wizard" }
+      traits = { FIGHTER }
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 2000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_bookcase_bone"}}
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.05 { AttrBonus LABORATORY 20}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.2 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_shade" }
+      traits = { FIGHTER }
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 3000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_bookcase_boneadv"}}
+        { 0.0 CostInfo "CORPSE" 2}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.05 { AttrBonus LABORATORY 20}}
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.2 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_skeleton_rogue" }
+      traits = { FIGHTER }
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 3000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_bookcase_boneadv"}}
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.05 { AttrBonus LABORATORY 20}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.2 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_skele_abomination" "swish_skele_abomination" "swish_skele_abomination" "swish_skele_abomination" "swish_skele_abomination" }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 2000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.0 CostInfo "CORPSE" 5}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.20 { ExtraBodyPart HEAD 1}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.2 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_lich" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 5000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_bookcase_bonemaster"}}
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.05 { AttrBonus LABORATORY 20}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.2 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_corrupt_knight" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 5000 }
+        { 0.1 AttractionInfo 2 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_corrupt_shrine"}}
+        { 1.0 CostInfo "IRON" 20 }
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+      }
+    }
+{
+      ids = { "swish_corrupt_knightarcher" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 5000 }
+        { 0.1 AttractionInfo 2 {FurnitureType "ARCHERY_RANGE"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_corrupt_shrine"}}
+        { 1.0 CostInfo "IRON" 10 }
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+      }
+    }
+{
+      ids = { "swish_corrupt_rogue" }
+      traits = { FIGHTER }
+      frequency = 0.1
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 5000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_bookcase_bonemaster"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_corrupt_shrine"}}
+        { 1.0 CostInfo "IRON" 10 }
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+      }
+    }
+{
+      ids = { "swish_corrupt_smith" "swish_corrupt_smith" }
+      traits = { FIGHTER }
+      consumeIds = true
+      frequency = 0.1
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 5000 }
+        { 1.0 CostInfo "IRON" 10 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_ADA" }}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_corrupt_shrine"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+{
+      ids = { "swish_corrupt_juggernaut" "swish_corrupt_juggernaut" }
+      traits = { FIGHTER }
+      consumeIds = true
+      frequency = 0.1
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 5000 }
+        { 1.0 CostInfo "IRON" 50 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_ADA" }}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_corrupt_shrine"}}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.1 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+      }
+    }
+{
+      ids = { "swish_unholy_priest" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 5000 }
+        { 0.1 AttractionInfo 2 {FurnitureType "swish_bookcase_bone"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_corrupt_shrine"}}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.04 { Lasting { ENTERTAINER } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+      }
+    }
+{
+      ids = { "swish_vamp_noble" "swish_vamp_noble" "swish_vamp_noble" "swish_vamp_noble" }
+      traits = { FIGHTER }
+      consumeIds = true
+      frequency = 0.2
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 7000 }
+        { 0.1 AttractionInfo 2 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_vamp_shrine"}}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.1 { Lasting { ENTERTAINER } }}
+         { 0.1 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.1 { ExtraBodyPart WING 2}}
+         { 0.5 { CompanionInfo {summonFreq = 0.1 creatures = { "BAT" }}}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.2 { Lasting { BAD_BREATH } }}
+         { 1.0 { SpecialAttr DAMAGE 7 Name "at night" Night }}
+         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+      }
+    }
+{
+      ids = { "swish_vamp_winged" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 8000 }
+        { 0.1 AttractionInfo 2 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_vamp_shrine"}}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.2 { Lasting { BAD_BREATH } }}
+         { 1.0 { SpecialAttr DAMAGE 7 Name "at night" Night }}
+         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+      }
+    }
+{
+      ids = { "swish_vamp_feral" }
+      traits = { FIGHTER }
+      frequency = 0.4
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 8000 }
+        { 0.1 AttractionInfo 2 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_vamp_shrine"}}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.2 { Lasting { BAD_BREATH } }}
+         { 1.0 { SpecialAttr DAMAGE 7 Name "at night" Night }}
+         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+      }
+    }
+{
+      ids = { "swish_vamp_warrior" }
+      traits = { FIGHTER }
+      frequency = 0.6
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 4000 }
+        { 0.1 AttractionInfo 2 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_vamp_shrine"}}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.5 { CompanionInfo {summonFreq = 0.1 creatures = { "BAT" }}}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.2 { Lasting { BAD_BREATH } }}
+         { 1.0 { SpecialAttr DAMAGE 7 Name "at night" Night }}
+         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+      }
+    }
+{
+      ids = { "swish_vampwolfrage" "swish_vampwolfrage" }
+      traits = { FIGHTER }
+      consumeIds = true
+      frequency = 0.1
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 8000 }
+        { 0.1 AttractionInfo 2 {FurnitureType "TRAINING_ADA"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_vamp_shrine"}}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { ExtraBodyPart WING 2}}
+         { 0.5 { CompanionInfo {summonFreq = 0.1 creatures = { "WEREWOLF" }}}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.3 { Lasting { BAD_BREATH } }}
+         { 1.0 { SpecialAttr DAMAGE 7 Name "at night" Night }}
+         { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+      }
+    }
+{
+      ids = { "swish_demon_summoner" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      requirements = {
+        { 0.0 MinTurnRequirement 8000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_bookcase_bonemaster"}}
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.2 { Lasting { BAD_BREATH } }}
+      }
+    }
+{
+      ids = { "swish_winged_horror" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 CostInfo "DEMON_PIETY" 500 }
+
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SWARMER } }}
+      }
+    }
+{
+      ids = { "swish_demon_warrior" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 CostInfo "DEMON_PIETY" 2500 }
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo {count = 2 summonFreq = 0.1 creatures = { "swish_winged_horror" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+      }
+    }
+{
+      ids = { "swish_demon_sorcerer" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 CostInfo "DEMON_PIETY" 4000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "swish_bookcase_boneadv"}}
+      }
+      specialTraits = {
+         { 0.1 { CompanionInfo {count = 2 summonFreq = 0.1 creatures = { "swish_winged_horror" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+      }
+    }
+ {
+      ids = { "swish_slasher_demonUH" "swish_slasher_demonUH" "swish_slasher_demonUH" "swish_slasher_demonUH"   }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.0 MinTurnRequirement 10000 }
+        { 1.0 FurnitureType "swish_demon_shrine30" }
+        { 0.0 CostInfo "DEMON_PIETY" 5000 }
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.25 { CompanionInfo {count = 2 summonFreq = 0.1 creatures = { "swish_winged_horror" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+      }
+    }
+ {
+      ids = { "swish_spiked_horror" "swish_spiked_horror"   }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.0 MinTurnRequirement 10000 }
+        { 1.0 FurnitureType "swish_demon_shrine30" }
+        { 0.0 CostInfo "DEMON_PIETY" 5000 }
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.25 { CompanionInfo {count = 2 summonFreq = 0.1 creatures = { "swish_winged_horror" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+      }
+    }
+ {
+      ids = { "swish_undying_horror" "swish_undying_horror" }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.0 MinTurnRequirement 10000 }
+        { 1.0 FurnitureType "swish_demon_shrine30" }
+        { 0.0 CostInfo "DEMON_PIETY" 6500 }
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.25 { CompanionInfo {count = 2 summonFreq = 0.1 creatures = { "swish_winged_horror" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.5 { Lasting { BAD_BREATH } }}
+      }
+    }
+ {
+      ids = { "swish_writhing_horror" "swish_writhing_horror" }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.0 MinTurnRequirement 10000 }
+        { 0.0 CostInfo "DEMON_PIETY" 7500 }
+        { 1.0 FurnitureType "swish_demon_shrine30" }
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 0.5 { CompanionInfo {count = 2 summonFreq = 0.1 creatures = { "swish_winged_horror" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+      }
+    }
+ {
+      ids = { "swish_elder_horror" }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = NearLeader
+      requirements = {
+        { 0.0 MinTurnRequirement 10000 }
+        { 0.0 CostInfo "DEMON_PIETY" 8500 }
+        { 1.0 FurnitureType "swish_demon_shrine30" }
+      }
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+         { 1 { CompanionInfo {count = 4 summonFreq = 0.1 creatures = { "swish_winged_horror" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+      }
+    }
+}

@@ -1,0 +1,32 @@
+Def NipponCurseProgress()
+Filter LastingEffect NIPPON_CURSE_STRONG { Lasting 100 NIPPON_CURSE_RAMPANT }
+Filter LastingEffect NIPPON_CURSE        { Lasting 100 NIPPON_CURSE_STRONG }
+Filter LastingEffect NIPPON_CURSE_WEAK   { Lasting 100 NIPPON_CURSE }
+Filter LastingEffect NIPPON_CURSE_MINOR  { Lasting 100 NIPPON_CURSE_WEAK }
+End
+
+"NIPPON_MIASMA_SMOKE" {
+  "cursed miasma"
+  ColorId PURPLE
+  0.95
+  0.0
+  false
+  Chain {
+    CreatureMessage { "are poisoned by the gas" "is poisoned by the gas"}
+    Lasting 10 NIPPON_LOW_MORALE
+    Chance 0.2 NipponCurseProgress()
+  }
+}
+
+"NIPPON_COLD_BREATH" {
+  "cold fog"
+  ColorId LIGHT_BLUE
+  0.98
+  0.1
+  false
+  Filter Or {Not LastingEffect COLD_RESISTANT Not LastingEffect COLD_IMMUNITY}{
+    CreatureMessage { "are frozen by the wind" "is frozen by the wind"}
+    Bleed 0.01 "frost"
+	Chance 0.1 Ice{}
+  }
+}

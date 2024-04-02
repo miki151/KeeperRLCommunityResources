@@ -1,0 +1,64 @@
+"FE_WILDS_SHRINE" inherit "DEMON_SHRINE"
+{
+  name = "wilds shrine"
+  viewId = { "fe_altar" }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"FE_HEALING_TOTEM"
+{
+  name = "healing totem"
+  viewId = { "fe_totem" }
+  lastingEffect = ALLY REGENERATION 3 # ALLY/ENEMY LastingEffect radius
+  blockMovement = true
+  canHideHere = true
+  strength = 100
+}
+
+"FE_BLEEDING_TOTEM" inherit "FE_HEALING_TOTEM"
+{
+  name = "bleeding totem"
+  viewId = { "fe_totem_blood" }
+  lastingEffect = ENEMY BLEEDING 3
+}
+
+"FE_WOOD_PILLAR"
+{
+  name = "wooden pillar"
+  viewId = { "log_pillar" }
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+    
+  }
+  summonedElement = "ENT"
+  fire = 100
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"FE_WOOD_WALL" inherit "FE_WOOD_PILLAR"
+{
+  name = "wall"
+  viewId = { "log_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"FE_ARCHER_WALL" inherit "FE_WOOD_WALL"
+{
+  name = "wall with arrowslits"
+  viewId = { "archer_log_wall" }
+  blockVision = { NORMAL ELF }
+} 
+
+"FE_WOOD_FLOOR"
+{
+  name = "floor"
+  viewId = { "log_floor" }
+  fire = 50
+  luxury = 0.1
+  layer = FLOOR
+}
