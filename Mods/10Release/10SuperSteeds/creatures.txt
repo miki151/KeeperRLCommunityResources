@@ -1,0 +1,546 @@
+  #Less-evil keepers
+
+"SST_WK_LIGHT_WARHORSE" inherit "WARHORSE"
+	{
+	viewId = { "saddled_horse" }
+	#These warhorses enjoy running and have a shorter cooldown, but aren't that strong, so their armor isn't sturdy.
+	#Best to set them up to get a kill.
+	attr = {
+	DAMAGE 36
+	SPELL_SPEED 20
+	DEFENSE 24
+	}
+	maxLevelIncrease = {
+	DAMAGE 7
+	}
+	name = {
+		name = "light warhorse"
+	}
+	afterKilledSomeone ={
+	ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+      ApplyToSteed Polymorph "SST_WK_HUNTER" none
+	}
+	noChase = true
+	chatReactionFriendly = "seems like it wants a carrot."
+    chatReactionHostile = "looks like it would prefer to be elsewhere."
+	petReaction = "nickers"
+ }
+ 
+ "SST_WK_HUNTER"
+ {
+ viewId = { "hunting_horse" }
+ #Hunting horses aren't much tougher than light warhorses...but they never. slow. down.
+ #Put ranged units on them and you'll be as annoying as the Khergits are in Mount & Blade.
+		attr = {
+		DAMAGE 38
+		DEFENSE 30
+		}
+		body = {
+		type = FourLegged LARGE
+		weight = 500
+		}
+		maxLevelIncrease = {
+		DAMAGE 7
+		}
+		permanentEffects = {
+		SPEED 1
+		STEED 1
+		SWIMMING_SKILL 1
+		}
+		name = {
+		name = "hunting horse"
+		}
+	
+	noChase = true	
+	chatReactionFriendly = "looks at you expectantly. Let's go!"
+    chatReactionHostile = "kicks dust at you." #Good job. You got to melee range on a Hunter...and chatted!
+	petReaction = "nickers"
+	
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 3 {Polymorph "SST_WK_HVY_HUNTER" none}
+		}
+ 
+ }
+ 
+ "SST_WK_HVY_HUNTER"
+ {
+ viewId = { "hvy_hunting_horse" }
+ 		attr = {
+		DAMAGE 42
+		DEFENSE 37
+		}
+		body = {
+		type = FourLegged LARGE
+		weight = 525
+		}
+		maxLevelIncrease = {
+		DAMAGE 7
+		}
+		permanentEffects = {
+		SPEED 1
+		STEED 1
+		SWIMMING_SKILL 1
+		}
+		name = {
+		name = "heavy hunter"
+		}
+		
+		noChase = true
+		chatReactionFriendly = "looks at you expectantly and stamps a hoof. Waiting for you..."
+		chatReactionHostile = "snorts derisively as you cough on a cloud of dust, apparently from nowhere." #Kicks dust faster than you can see.  :-P
+		petReaction = "nickers"
+ }
+ 
+ "SST_WK_HEAVY_WARHORSE" inherit "WARHORSE"
+ {
+ #These warhorses are built more for power than for speed.
+ #Especially in A37 with everyone scaling, the melee warhorses need to hit hard & take hard hits to stay competitive.
+		attr = {
+		DAMAGE 40
+		DEFENSE 40
+		}
+		maxLevelIncrease = {
+		DAMAGE 7
+		}
+		
+		afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 3 Polymorph "SST_WK_CHARGER" none
+	}
+	
+	noChase = true
+	chatReactionFriendly = "snuffles contentedly"
+    chatReactionHostile = "looks like it's about to kick you."
+	petReaction = "nickers"
+ 
+ }
+ 
+ "SST_WK_CHARGER"
+ {
+	viewId = { "charger" }
+	attr = {
+	DAMAGE 50
+	DEFENSE 50
+	}
+	body = {
+      type = FourLegged LARGE
+      weight = 500
+	  #Ideally I'd have chargers grant a substantial damage bonus when they gallop. Until (and maybe after!) I work out how to do that, they lend a hoof.
+		intrinsicAttacks = {
+        LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+		HEAD {{itemType = { Intrinsic { "bite_attack" }  "teeth" 5 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+	maxLevelIncrease = {
+		DAMAGE 12
+		}
+		#Seems high until you consider A37 scaling. Peasant horses can hit 60-70 attack in later-game.
+	permanentEffects = {
+      STEED 1
+      SWIMMING_SKILL 1
+    }
+	
+	noChase = true
+	chatReactionFriendly = "snorts confidently"
+    chatReactionHostile = "looks like it's about to kick you!"
+	petReaction = "nickers"
+	 name = {
+     name = "charger"
+    }
+	
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 8 {ApplyToSteed Polymorph "SST_WK_HVY_CHARGER" none} #5 more kills as a Charger, please. Making Ace Charger should be worth it, though.
+	}
+	
+ }
+ 
+  "SST_WK_HVY_CHARGER"
+ {
+	viewId = { "hvy_charger" }
+	attr = {
+	DAMAGE 65
+	DEFENSE 65
+	}
+	body = {
+      type = FourLegged LARGE
+      weight = 550
+		intrinsicAttacks = {
+        LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+		HEAD {{itemType = { Intrinsic { "bite_attack" }  "teeth" 5 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+	maxLevelIncrease = {
+		DAMAGE 12
+		}
+	permanentEffects = {
+      STEED 1
+	  RANGED_RESISTANCE 1
+    }
+	
+	spells = { "warhorse_haste" }
+	
+	noChase = true #Lawful horses, even the most competent and confident ones, carry and assist their riders. They don't attack on their own.
+	chatReactionFriendly = "looks at you calmly and confidently. They don't stand a chance."
+    chatReactionHostile = "You feel a great sense of pity from this horse..."
+	petReaction = "nickers"
+	 name = {
+      name = "heavy charger"
+    }
+	
+ }
+ 
+ #Fallen knights
+ 
+ "SST_FK_HORSE"
+ {
+	viewId = { "fell_horse" }
+	#Horses raised and trained in and for the presence of Evil. Not as varied as Less-Evil, but still solid mounts.
+	attr = {
+      DAMAGE 35
+      DEFENSE 35
+    }
+	body = {
+      type = FourLegged LARGE
+      weight = 500
+    }
+	permanentEffects = {
+     	STEED 1
+		SWIMMING_SKILL 1
+    }
+	maxLevelIncrease = {
+		DAMAGE 7
+	}
+	noChase = true #Fell horses aren't confident fighters.
+	chatReactionFriendly = "doesn't seem talkative."
+    chatReactionHostile = "looks like it wants to kick you."
+	petReaction = "snorts."
+	name = {
+      name = "fell horse"
+    }
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Polymorph "SST_FK_WARHORSE" none
+	}
+ }
+ 
+ "SST_FK_WARHORSE"
+{
+	viewId = { "fell_warhorse" }
+	attr = {
+      DAMAGE 45
+      DEFENSE 45
+    }
+	body = {
+      type = FourLegged LARGE
+      weight = 500
+	  intrinsicAttacks = {
+        LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+		HEAD {{itemType = { Intrinsic { "bite_attack" }  "teeth" 5 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+    }
+    }
+	permanentEffects = {
+      	STEED 1
+		SWIMMING_SKILL 1
+    }
+	maxLevelIncrease = {
+		DAMAGE 12
+	}
+	#Fell warhorses, however, want to fight and do NOT have noChase.
+	chatReactionFriendly = "neighs and looks ready to go fight something."
+    chatReactionHostile = "looks like it's about to kick you!"
+	petReaction = "snorts and stamps the ground."
+	name = {
+	name = "fell warhorse"
+    }
+	
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 8 { ApplyToSteed Polymorph "SST_FK_CHARGER" none }
+	}
+} 
+
+"SST_FK_CHARGER"
+{
+	viewId = { "fell_charger" }
+	attr = {
+      DAMAGE 57
+      DEFENSE 57
+    } #The Lawful heavies are better, true.  But they don't get leechquines.
+	body = {
+      type = FourLegged LARGE
+      weight = 550
+	  intrinsicAttacks = {
+        LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+		HEAD {{itemType = { Intrinsic { "bite_attack" }  "teeth" 5 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+    }
+    }
+	permanentEffects = {
+      	STEED 1
+		SWIMMING_SKILL 1
+    }
+	maxLevelIncrease = {
+		DAMAGE 12
+	}
+	
+	spells = { "warhorse_haste" }
+	
+	chatReactionFriendly = "neighs and stamps, ready to fight."
+    chatReactionHostile = "rears, ready to kick!"
+	petReaction = "stamps the ground, eager for action."
+	
+	name = {
+	name = "fell charger"
+    }
+}
+
+"SST_FK_VAMPHORSE"
+{
+	viewId = { "vamp_warhorse" }
+	attr = {
+		DAMAGE 45
+		DEFENSE 45
+	}
+	body = {
+      type = FourLegged LARGE
+	  material = UNDEAD_FLESH
+      weight = 500
+	  intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 5 { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } victimEffect = { 0.5 Lasting 50 BLEEDING  }} } isExtraAttack = true }}
+		LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 10 { attackType = HIT attackMsg = KICK } } isExtraAttack = true }}
+    }
+	}
+	maxLevelIncrease = {
+		DAMAGE 12
+	}
+	#Vampiric warhorses are later-game creatures and need the ability to keep up with scaling.
+	
+	permanentEffects = {
+	  NIGHT_VISION 1
+      STEED 1
+	  RANGED_RESISTANCE 1
+    }
+	
+	noChase = true #Vamphorses don't pursue: they're aware of the sun and the need to discipline their movement.
+	chatReactionFriendly = "silently gazes upon you with its glowing eyes."
+    chatReactionHostile = "fixes you with its fell gaze and bares its fangs..."
+	petReaction = "stamps the ground."
+	name = {
+	name = "vampiric warhorse"
+    }
+	hatedByEffect = HATE_UNDEAD
+	
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 5 { ApplyToSteed Polymorph "SST_FK_LEECHQUINE" none }
+	}
+}
+
+"SST_FK_LEECHQUINE"
+{
+	viewId = { "vamp_charger" }
+	attr = {
+		DAMAGE 60
+		DEFENSE 60
+	}
+	body = {
+      type = FourLegged LARGE
+	  material = UNDEAD_FLESH
+      weight = 500
+	  intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 5 { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } victimEffect = { 0.5 Lasting 50 BLEEDING  }} } isExtraAttack = true }}
+		LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 8 { attackType = CUT attackMsg = KICK attackerEffect = { RegrowBodyPart 1 } victimEffect = { 0.5 Lasting 50 BLEEDING  }} } isExtraAttack = true }}
+    }
+	}
+	#Yes, you read that right.  High-level vamphorses drain blood with their hooves too. I trust that's satisfactory?
+	
+	maxLevelIncrease = {
+		DAMAGE 12
+	}
+	permanentEffects = {
+		NIGHT_VISION 1
+      	STEED 1
+		RANGED_RESISTANCE 1
+    	}
+	noChase = true
+	chatReactionFriendly = "silently gazes upon you with its glowing eyes. Maybe you should offer it your wrist..."
+    chatReactionHostile = "fixes you with its fell gaze and bares its fangs..."
+	petReaction = "twists its head, looking for your vein."
+	name = {
+	name = "vampiric charger"
+    }
+	hatedByEffect = HATE_UNDEAD
+}
+
+"SST_FK_WAR_WOLF"
+{
+	viewId = { "wolf" }
+	attr = {
+	DAMAGE 25
+	DEFENSE 20
+	}
+	#There's only so much you can do to armor a wolf that's also gonna carry an armored rider.  This is mostly training & breeding.
+	#Conversely, gave 'em a boost to help keep up with A37.
+	body = {
+      type = FourLegged MEDIUM
+      weight = 35
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+	#The stat-ups for war wolves already take some training into account. Steed training on dummies will likely represent time spent acclimating to your creatures,
+	#getting the tack well-fitted, and probably teaching the best available fighting skills as well.
+	maxLevelIncrease = {
+		DAMAGE 4
+	}
+	#In particular, war wolves don't go exploring around. This is why they aren't an inherit from WOLF.
+	permanentEffects = {
+      	NIGHT_VISION 1
+      	STEED 1
+		SWARMER 1
+    	} #War wolves might not be individually as impressive as a warg...but they *are* pack hunters.
+	
+	#War wolves are happy in their role
+	chatReactionFriendly = "barks happily."
+    chatReactionHostile = "growls angrily."
+	petReaction = "wags its tail happily."
+	
+      name = {
+      name = "war wolf"
+      pluralName = "wolves"
+      groupName = "pack"
+    }
+}
+
+"SST_FK_WARG"
+#These will need tech: no blatant magic and infernal crossbreeding like an evil wizard might do, but getting hyena and dire-wolf together isn't a joke.
+{
+	viewId = { "wargv2" } #Swishos' surplus sprites for the win! Thanks.
+	attr = {
+	DAMAGE 34
+	DEFENSE 31
+	}
+	body = {
+      type = FourLegged MEDIUM
+      weight = 45 #Wargs are bigger and heavier than wolves, but they use their legs for movement and support. Attack comes from the jaw.
+      intrinsicAttacks = {
+       HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 9 { attackType = BITE attackMsg = BITE} } }}
+      }
+    }
+	maxLevelIncrease = {
+		DAMAGE 7
+	}
+	permanentEffects = {
+      	NIGHT_VISION 1
+      	STEED 1
+		SWIMMING_SKILL 1
+    	}
+	chatReactionFriendly = "emits a barking laugh."
+    chatReactionHostile = "eyes your throat and growls."
+	petReaction = "tries not to wag its tail, but clearly appreciates the attention."
+    name = {
+      name = "warg"
+      pluralName = "wargs"
+      groupName = "pack"
+    }
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Polymorph "SST_FK_WAR_WARG" none
+	}
+}
+
+"SST_FK_WAR_WARG"
+{
+viewId = { "war_warg" } #Swishos' surplus sprites for the win! Thanks.
+	attr = {
+	DAMAGE 45
+	DEFENSE 35
+	}
+	body = {
+      type = FourLegged MEDIUM
+      weight = 50 #War wargs are even bulkier.
+	  #Fully trained war warg bites for 60 melee attack, but only 40 DEF. Should be competitive in mid-game.
+      intrinsicAttacks = {
+       HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 10 { attackType = BITE attackMsg = BITE} } }}
+      }
+    }
+	maxLevelIncrease = {
+		DAMAGE 5
+	}
+	permanentEffects = {
+      	NIGHT_VISION 1
+      	STEED 1
+		SWIMMING_SKILL 1
+    	}
+	
+	chatReactionFriendly = "barks a confident laugh."
+    chatReactionHostile = "looks like it's about to tear your throat out!"
+	petReaction = "appreciates your assistance with its grooming."
+	#Remember! "its" is the possessive of "it"; "it's" is the contraction form of "it is".
+	
+    name = {
+      name = "war warg"
+      pluralName = "war wargs"
+      groupName = "pack"
+    }
+	afterKilledSomeone ={
+		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+		ApplyToSteed Filter Kills 6 { ApplyToSteed Polymorph "SST_FK_WAR_WARG" none}
+	}
+}
+
+"SST_FK_VET_WAR_WARG"
+{
+viewId = { "war_warg_saddle2" } #Swishos' surplus sprites for the win! Thanks.
+	attr = {
+	DAMAGE 50
+	DEFENSE 40
+	}
+	body = {
+      type = FourLegged MEDIUM
+      weight = 65 #Big and tough survivor.
+	  
+      intrinsicAttacks = {
+       HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 10 { attackType = BITE attackMsg = BITE} } }}
+      }
+    }
+	maxLevelIncrease = {
+		DAMAGE 5
+	}
+	permanentEffects = {
+      	NIGHT_VISION 1
+      	STEED 1
+		SWIMMING_SKILL 1
+		SWARMER 1 #Big, bad, and *coordinates*.
+    	}
+	
+	chatReactionFriendly = "laughs confidently. When's the next battle?"
+    chatReactionHostile = "looks like it's about to tear your throat out!"
+	petReaction = "appreciates the attention to its tack. Itchy!"
+	
+    name = {
+      name = "veteran warg"
+      pluralName = "veteran wargs"
+      groupName = "pack"
+    }
+}
+ 
+ ###
+ #Vanilla steed training allotments
+ ###
+ "WARHORSE" modify append {maxLevelIncrease = { DAMAGE 3 } } #It's an experienced riding horse, not purpose-bred and raised.
+ 
+ #Dragons are good fighters, or at least consider themselves good fighters, already.  This helps reduce wing damage.
+ "GREEN_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 5} }
+ "RED_DRAGON" modify append {  maxLevelIncrease = {DAMAGE 5} }
+ "BLACK_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 5} }
+ "WHITE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 5} }
+ "YELLOW_DRAGON" modify append { maxLevelIncrease = {DAMAGE 5} }
+ "BONE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 5} }
+ 
+ #Ki-rin, last I checked, are a wise & good Chinese mythological creature. They shouldn't be easily captured, and don't seem like melee fighters.
+ "KIRIN" modify append { maxLevelIncrease = {DAMAGE 3 SPELL_DAMAGE 3} spells = append {"escape"} permanentEffects = append { CAPTURE_RESISTANCE 1} }
+ 
+ #Yetis and Minotaurs seem like they're already solid combat mounts. If there's a good argument for buffing them, let me know.
