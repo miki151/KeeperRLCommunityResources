@@ -1,0 +1,102 @@
+
+"ART_ARTISAN"
+  {
+    viewId = { "artisan" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 20
+      LABORATORY 50
+      FURNACE 50
+      WORKSHOP 50
+      FORGE 50
+      JEWELER 50
+    }
+    body = {
+      type = Humanoid LARGE
+      droppedPartUpgrade = { IncreaseAttr DEFENSE 3 Permanent FIRE_RESISTANT }
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 9
+    }
+    aiType = RANGED
+    spells = { "repair golem" }
+    gender = MALE
+    permanentEffects = {
+      FIRE_RESISTANT 1
+      MAGIC_RESISTANCE 1
+    }
+    companions = {{
+      count = 5
+      spawnAway = false
+      statsBase = LABORATORY
+      summonFreq = 0.1
+      creatures = { "ART_CLAY_GOLEM" "ART_STONE_GOLEM" "ART_IRON_GOLEM" "ART_LAVA_GOLEM" "ART_ADA_GOLEM" }
+    }}
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "elementalist"
+      firstNameGen = "FIRST_FEMALE"
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "ArchwoodStaff"}
+      { "Torch"}
+      { type = Glyph { ARMOR LastingEffect FIRE_RESISTANT } chance = 0.3 }
+    }
+  }
+  
+"ART_CLAY_GOLEM" inherit "CLAY_GOLEM"
+  {
+    viewId = { "art_clay_golem" }
+  }
+  
+"ART_STONE_GOLEM" inherit "STONE_GOLEM"
+  {
+    viewId = { "art_stone_golem" }
+  }
+  
+"ART_IRON_GOLEM" inherit "IRON_GOLEM"
+  {
+    viewId = { "art_iron_golem" }
+  } 
+  
+"ART_LAVA_GOLEM" inherit "LAVA_GOLEM"
+  {
+    viewId = { "art_lava_golem" }
+  }
+
+  
+"ART_ADA_GOLEM" inherit "ADA_GOLEM"
+  {
+    viewId = { "art_ada_golem" }
+  }
+
+"ART_CZECH_GOLEM"
+  {
+    viewId = { "art_golem-MKIII" }
+    attr = {
+      DAMAGE 36
+      FIRE_DAMAGE 36
+      DEFENSE 42
+    }
+    body = {
+      type = HumanoidLike HUGE
+      material = CLAY
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 10 {
+            attackType = HIT
+            attackMsg = SWING
+            meleeAttackAttr = FIRE_DAMAGE
+            victimEffect = {0.3 Fire{30}} } }}}
+      }
+    }
+    spells = { "fire breath" }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      SLOWED 1
+    }
+    name = {
+      name = "prague golem"
+    }
+  }

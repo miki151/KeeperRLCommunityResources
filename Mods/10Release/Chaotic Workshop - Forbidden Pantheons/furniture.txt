@@ -7,9 +7,15 @@ SetFlag "gore_05" false
 SetFlag "gore_06" false
 SetFlag "gore_07" false
 SetFlag "gore_08" false
+SetFlag "gore_09" false
 End
 
 Def countgore()
+Filter Flag "gore_08" {
+    Filter Not Flag "gore_09" {
+           SetFlag "gore_09" true
+        }
+    }
 Filter Flag "gore_07" {
     Filter Not Flag "gore_08" {
            SetFlag "gore_08" true
@@ -1355,14 +1361,26 @@ End
      GoreInfestation()
 	 Chance 0.003 {PlaceFurniture "EG_INERT_GROWTH_TUMOR"}
 	 RemoveFurniture "EG_GROWTH_FLOOR"
+	 ChooseRandom{
 	 PlaceFurniture "EG_GROWTH_FLOOR_FINISH"
+	 PlaceFurniture "EG_GROWTH_FLOOR_FINISH_2"
+	 }
   }
 }
 
 "EG_GROWTH_FLOOR_FINISH"
 {
   name = "floor"
-  viewId = { "eg_gore_floorgrowth" }
+  viewId = { "eg_gore_floorgrowth_01" }
+  fire = 50
+  luxury = 0.2
+  layer = FLOOR
+}
+
+"EG_GROWTH_FLOOR_FINISH_2"
+{
+  name = "floor"
+  viewId = { "eg_gore_floorgrowth_02" }
   fire = 50
   luxury = 0.2
   layer = FLOOR
@@ -1377,6 +1395,10 @@ End
   layer = GROUND
 }
 
+"FLOOR" modify append
+{
+  builtOver = append {"EG_GROWTH_FLOOR_GROUND"}
+}
 "EG_GROWTH_WALL"
 {
   name = "flesh"
@@ -1389,7 +1411,10 @@ End
   fire = 50
   tickType = Effect Filter Area 0 Not FurnitureType "EG_GROWTH_WALL" {
 	  Area 0 RemoveFurniture "EG_GROWTH_WALL"
+	  ChooseRandom {
 	  Area 0 PlaceFurniture  "EG_GROWTH_WALL_FIN"
+	  Area 0 PlaceFurniture  "EG_GROWTH_WALL_FIN_2"
+	  }
 	  Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
 	  }
   xForgetAfterBuilding = true
@@ -1416,7 +1441,10 @@ End
   fire = 50
   tickType = Effect Filter Area 0 Not FurnitureType "EG_GROWTH_WALL" {
 	  Area 0 RemoveFurniture "EG_GROWTH_WALL"
+	  ChooseRandom {
 	  Area 0 PlaceFurniture  "EG_GROWTH_WALL_FIN"
+	  Area 0 PlaceFurniture  "EG_GROWTH_WALL_FIN_2"
+	  }
 	  Area 200 GoreInfestation()
 	  Area 1 PlaceFurniture  "EG_GROWTH_FLOOR"
 	  }
@@ -1454,6 +1482,28 @@ End
   tryDestroyFX = { DESTROY_FURNITURE Rgb 90 38 51 255 }
 }
 
+"EG_GROWTH_WALL_FIN_2"
+{
+  name = "flesh"
+  viewId = { "eg_gore_wallgrowth_2" }
+  blockMovement = true
+  blockAllVision = true
+  constructMessage = FILL_UP
+  viewLayer = FLOOR_BACKGROUND
+  wall = true
+  fire = 50
+  xForgetAfterBuilding = true
+  strength2 = {
+    100 BOULDER
+    15 DIG
+    100 HOSTILE_DIG
+  }
+  summonedElement = "EG_GORE_FLESHWRAITH"
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 90 38 51 255 }
+  tryDestroyFX = { DESTROY_FURNITURE Rgb 90 38 51 255 }
+}
+
 "EG_GROWTH_EYEBALL"
 {
   name = "eyeball"
@@ -1463,7 +1513,7 @@ End
   canHideHere = true
   lightEmission = 4.2
   strength = 30
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   canBuildOutsideOfTerritory = true
   eyeball = true
 }
@@ -1477,7 +1527,7 @@ End
   canHideHere = true
   lightEmission = 8.2
   strength = 30
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   canBuildOutsideOfTerritory = true
   eyeball = true
 }
@@ -1493,7 +1543,7 @@ End
   strength = 160
   clickType = LOCK
   requiredSupport = { { { E W } } { { N S } {"eg_gore_door_ns"} } }
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
 }
 
@@ -1504,7 +1554,7 @@ End
   entryType = Trap { Area 1 Chain { EmitGas "POISON_GAS" 0.2  Acid{15}}}
   fire = 50
   warning = true
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   constructMessage = SET_UP
 }
 
@@ -1515,7 +1565,7 @@ End
   entryType = Trap { Area 2 Chain { EmitGas "POISON_GAS" 0.4  Acid{30}}}
   fire = 50
   warning = true
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   constructMessage = SET_UP
 }
 "EG_GROWTH_INERT_TANTACLE"
@@ -1536,7 +1586,7 @@ End
   strength = 40
   fire = 50
   warning = true
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   constructMessage = SET_UP
 }
 
@@ -1559,7 +1609,7 @@ End
   strength = 40
   fire = 50
   warning = true
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   constructMessage = SET_UP
 }
 
@@ -1590,7 +1640,7 @@ End
   }
   fire = 50
   warning = true
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   constructMessage = SET_UP
 }
 
@@ -1610,7 +1660,7 @@ End
   }
   fire = 50
   warning = true
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   constructMessage = SET_UP
 }
 
@@ -1633,7 +1683,7 @@ End
   fire = 50
   strength = 80
   requiresLight = true
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   usageFX = WORKSHOP
 }
 
@@ -1652,7 +1702,7 @@ End
   name = "standing torch"
   viewId = { "eg_gore_torch_ground" }
   luxury = 0.1
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
   lightEmission = 8.2
 }
 
@@ -1666,7 +1716,7 @@ End
   attachmentDir = N
   requiredSupport = { { { N } } }
   canBuildOutsideOfTerritory = true
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
 }
 
 "EG_TORCH_S" inherit "EG_TORCH_N"
@@ -1674,21 +1724,21 @@ End
   viewLayer = TORCH2
   attachmentDir = S
   requiredSupport = { { { S } } }
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
 }
 
 "EG_TORCH_E" inherit "EG_TORCH_S"
 {
   attachmentDir = E
   requiredSupport = { { { E } } }
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
 }
 
 "EG_TORCH_W" inherit "EG_TORCH_E"
 {
   attachmentDir = W
   requiredSupport = { { { W } } }
-  builtOver = {"EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
+  builtOver = { "EG_GROWTH_FLOOR_FINISH_2"  "EG_GROWTH_FLOOR" "EG_GROWTH_FLOOR_FINISH" "EG_GROWTH_FLOOR_GROUND"}
 }
 
 "MOUNTAIN1_OVERGROWN" inherit "MOUNTAIN"
@@ -2136,6 +2186,8 @@ End
   }
   lightEmission = 4.1
   fire = 100
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
   itemDrop = {{{{"CS_Mgehye"} 1 { 8 14 }}}}
   summonedElement = "CS_ELEMENTAL"
   tryDestroyFX = { ROCK_SPLINTERS Rgb 220 210 180 255 }
@@ -2168,9 +2220,20 @@ End
   canHideHere = true
   blockVision = { NORMAL }
   destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
   lightEmission = 8.2
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  tickType = Effect Chance 0.002 {
+    Filter Night SoundEffect { "OWL_AMBIENT" 0.2 }
+    Filter Not Night SoundEffect { "SONGBIRD_AMBIENT" 0.2 }
+  }
+  fire = 100
   itemDrop = {{{{"WoodPlank"} 1 { 8 14 }}}}
-  summonedElement = "CS_ELEMENTAL"
+  summonedElement = "ENT"
   tryDestroyFX = { ROCK_SPLINTERS Rgb 220 210 180 255 }
 }
 
@@ -2181,7 +2244,61 @@ End
   canHideHere = true
   blockVision = { NORMAL }
   lightEmission = 8.2
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  tickType = Effect Chance 0.002 {
+  }
+  fire = 100
   itemDrop = {{{{"CS_Mgehye"} 1 { 4 7 }}}}
-  summonedElement = "CS_ELEMENTAL"
+  summonedElement = "ENT"
   tryDestroyFX = { ROCK_SPLINTERS Rgb 220 210 180 255 }
+}
+
+##################################Chaos##################################
+
+"CHAOS_FORGE"
+{
+  name = "chaos forge"
+  viewId = { "chaos_forge" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  strength = 80
+  requiresLight = true
+  tickType = Effect Area 1 EmitGas "CHAOS_CHAOS_MIASMA" 0.4
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  usageFX = FORGE
+  usageSound = {"FORGE_USAGE" 0.2}
+}
+
+"CHAOS_WORKSHOP"
+{
+  name = "workshop"
+  viewId = { "chaos_workshop" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 80
+  requiresLight = true
+  usageFX = WORKSHOP
+  usageSound = {"WORKSHOP_USAGE" 0.2}
+  usagePredicate = Area 1 Not FurnitureType "ENCHANTED_WATER"
+}
+
+"CHAOS_JEWELER"
+{
+  name = "jeweller"
+  viewId = { "chaos_jeweller" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 40
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  usagePredicate = Area 1 Not FurnitureType "MAGMA"
+  usageFX = LAVA_JEWELLER
 }

@@ -3775,3 +3775,454 @@
       firstNameGen = "FIRST_FEMALE"
     }
   }
+  
+##################################Chaos##################################
+
+"CHAOS_KEEPER"
+  {
+    viewId = { "chaos_keeper_01" }
+    viewIdUpgrades = { { "chaos_keeper_02" } { "chaos_keeper_03" } { "chaos_keeper_04" } }
+    name = {
+      name = "arrogant wizard"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 20
+	  SPELL_SPEED 10
+      LABORATORY 10
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 12
+	  SPELL_SPEED 12
+    }
+    aiType = RANGED
+    spellSchools = { "CHAOS_MAGE" }
+    spells = { "healing" "chaos_control_corruption" }
+    inventory = {
+      { "Robe"}
+      { "WoodenStaff" }
+    }
+  }
+  
+"CHAOS_KEEPER_F" inherit "CHAOS_KEEPER"
+  {
+    gender = FEMALE
+    name = append {
+      firstNameGen = "FIRST_FEMALE"
+    }
+  }
+
+"CHAOS_CULTIST"
+  {
+    viewId = { "chaos_cultist" }
+    genderAlternatives = {
+      FEMALE { "chaos_cultist_f" }
+    }
+    attr = {
+      DAMAGE 10
+      DEFENSE 8
+      DIGGING 20
+      FURNACE 25
+      WORKSHOP 30
+      FORGE 30
+      JEWELER 30
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "praised be chaos"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      RIDER 1
+    }
+    aiType = RANGED
+    name = {
+      name = "cultist"
+    }
+    promotionGroup = "chaos_cultist"
+    promotionCost = 1.0
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "LeatherArmor"}
+    }
+  }
+  
+"CHAOS_WARRIOR"
+  {
+    viewId = { "chaos_warrior" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 8
+	  MULTI_WEAPON 5
+      FURNACE 10
+      WORKSHOP 5
+      FORGE 5
+    }
+    fixedAttr = { FORGE FURNACE WORKSHOP }
+    body = {
+      type = Humanoid LARGE
+      addBodyPart = {
+        ARM 1
+      }
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    chatReactionFriendly = "KILL MAIM BURN!"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+	  REGENERATION 1
+    }
+    name = {
+      name = "warrior"
+      firstNameGen = "FIRST_MALE"
+    }
+    promotionGroup = "chaos_knight"
+    promotionCost = 1.0
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+
+"CHAOS_CHAMPION"
+  {
+    viewId = { "chaos_champion" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 12
+	  MULTI_WEAPON 10
+      FURNACE 15
+      WORKSHOP 15
+      FORGE 15
+    }
+    fixedAttr = { FORGE FURNACE WORKSHOP }
+    body = {
+      type = Humanoid LARGE
+      addBodyPart = {
+        ARM 1
+      }
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
+    chatReactionFriendly = "KILL MAIM BURN!"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+	  REGENERATION 1
+    }
+    name = {
+      name = "champion"
+      firstNameGen = "FIRST_MALE"
+    }
+    spells = { "chaos_frenzy" }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"CHAOS_SORCERER"
+  {
+    viewId = { "chaos_sorcerer" }
+    name = {
+      name = "sorcerer"
+      firstNameGen = "FIRST_MALE"
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    attr = {
+      DAMAGE 7
+      DEFENSE 8
+      SPELL_DAMAGE 18
+      LABORATORY 35
+    }
+    permanentEffects = {
+      RIDER 1
+	  REGENERATION 1
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 7
+    }
+    promotionGroup = "chaos_mage"
+    promotionCost = 1.0
+    aiType = RANGED
+    spellSchools = { "CHAOS_MAGE" }
+    inventory = {
+      { "Robe"}
+      { "WoodenStaff" }
+    }
+  }  
+
+"CHAOS_SEER"
+  {
+    viewId = { "chaos_seer" }
+    name = {
+      name = "seer"
+      firstNameGen = "FIRST_MALE"
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    attr = {
+      DAMAGE 10
+      DEFENSE 12
+      SPELL_DAMAGE 25
+      LABORATORY 50
+    }
+    permanentEffects = {
+      RIDER 1
+	  REGENERATION 1
+    }
+    companions = {{
+      count = 5
+      spawnAway = false
+      statsBase = none
+      summonFreq = 0.1
+      creatures = { "CHAOS_EYE" }
+    }}
+    maxLevelIncrease = {
+      SPELL_DAMAGE 12
+    }
+    aiType = RANGED
+    spellSchools = { "CHAOS_MAGE" }
+    inventory = {
+      { "Robe"}
+      { "WoodenStaff" }
+    }
+  }  
+
+"CHAOS_BRUTE"
+  {
+    viewId = { "chaos_brute" }
+    attr = {
+      DAMAGE 26
+      DEFENSE 25
+    }
+    body = {
+      type = Humanoid HUGE
+    }
+    chatReactionFriendly = "must.... fight...."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "brute"
+      firstNameGen = "FIRST_MALE"
+    }
+    permanentEffects = {
+      RIDER 1
+	  REGENERATION 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    hatedByEffect = HATE_HUMANS
+    promotionGroup = "chaos_beast"
+    promotionCost = 1.0
+    inventory = {
+      { "HeavyClub"}
+      { "LeatherArmor"}
+    }
+  }
+
+"CHAOS_BEAST"
+  {
+    viewId = { "chaos_beast" }
+    attr = {
+      DAMAGE 32
+      DEFENSE 30
+    }
+    body = {
+      type = Humanoid HUGE
+      intrinsicAttacks = {
+        ARM  {{
+          isExtraAttack = true
+		  itemType = { Intrinsic { "claws_attack" } "claws" 4 { 
+			 attackType = HIT 
+			 attackMsg = CLAW } }}}
+      }
+    }
+    chatReactionFriendly = "must.... fight...."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "beast"
+      firstNameGen = "FIRST_MALE"
+    }
+    permanentEffects = {
+      RIDER 1
+	  REGENERATION 1
+	  MELEE_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
+    spells = { "jump" }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "HeavyClub"}
+      { "LeatherArmor"}
+    }
+  }
+
+"CHAOS_LOOTER"
+  {
+    viewId = { "chaos_looter" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 12
+      RANGED_DAMAGE 14
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      ARCHER_VISION 1
+      RIDER 1
+    }
+    chatReactionFriendly = "talks about loot"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "looter"
+      firstNameGen = "FIRST_MALE"
+    }
+    spellSchools = { "archer" }
+    maxLevelIncrease = {
+      RANGED_DAMAGE 7
+    }
+    hatedByEffect = HATE_HUMANS
+    promotionGroup = "chaos_raider"
+    promotionCost = 1.0
+    inventory = {
+      { "Bow"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"CHAOS_RAIDER"
+  {
+    viewId = { "chaos_raider" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 16
+      RANGED_DAMAGE 22
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      ARCHER_VISION 1
+      RIDER 1
+    }
+    chatReactionFriendly = "talks about loot"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "raider"
+      firstNameGen = "FIRST_MALE"
+    }
+    spellSchools = { "archer" }
+    maxLevelIncrease = {
+      RANGED_DAMAGE 12
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Bow"}
+      { "LeatherArmor"}
+    }
+  }  
+  
+  
+  
+    
+"CHAOS_EYE"
+  {
+    viewId = { "chaos_eye" }
+    body = {
+      type = NonHumanoid SMALL
+      bodyParts = {
+        BACK 1
+        HEAD 1
+        WING 2
+      }
+      weight = 1
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 3 { attackType = BITE attackMsg = BITE } }}}
+      }
+    }
+    attr = {
+      DAMAGE 3
+      DEFENSE 16
+    }
+    aiType = RANGED
+    noChase = true
+    permanentEffects = {
+      NIGHT_VISION 1
+      ARCHER_VISION 1
+      ELF_VISION 1
+      EXPLORE_SKILL 1
+      EXPLORE_CAVES_SKILL 1
+    }
+    name = {
+      name = "eye"
+    }
+  }
+
+"CHAOS_SPAWN"
+  {
+    viewId = { "chaos_spawn" }
+    body = {
+      type = NonHumanoid LARGE
+      addBodyPart = {
+        TORSO 1
+		HEAD 2
+        ARM 3
+		LEG 1
+      }
+      intrinsicAttacks = {
+        ARM  {{
+          isExtraAttack = true
+		  itemType = { Intrinsic { "claws_attack" } "claws" 2 { 
+			 attackType = HIT 
+			 attackMsg = CLAW } }}}
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 3 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+      deathSound = none
+    }
+    attr = {
+      DAMAGE 21
+      DEFENSE 16
+	  MULTI_WEAPON 10
+    }
+    cantEquip = true
+    permanentEffects = {
+      FLYING 1
+      TELEPATHY 1
+	  REGENERATION 1
+	  CHAOS_CORRUPTION 1
+	  STEED 1
+    }
+    name = {
+      name = "chaos spawn"
+    }
+    gender = IT
+  }

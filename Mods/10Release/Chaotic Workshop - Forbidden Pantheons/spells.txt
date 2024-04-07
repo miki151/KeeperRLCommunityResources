@@ -640,11 +640,23 @@ OneTimeAbility("eg_have_acid", "have acid", { SetCreatureFlag "eg_have_acid" tru
   symbol = "🌱" 
   effect = Name "Harden Flesh"  Description "So we shall hide in its embrace."   Chain {
                                Filter CreatureFlag "eg_better_spells" {
-							     Filter Area 1 FurnitureType "EG_GROWTH_FLOOR" {
-							     Area 1 PlaceFurniture "EG_GROWTH_WALL_FIN"}}
+							   Area 0 PlaceFurniture "EG_GROWTH_FLOOR"
+							     Area 1 PlaceFurniture "EG_GROWTH_WALL_FIN"}
+								 
 							   Filter Not CreatureFlag "eg_better_spells" {
 							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
-							     Area 0 PlaceFurniture "EG_GROWTH_WALL_FIN"}}
+							     Area 0 PlaceFurniture "EG_GROWTH_WALL_FIN"}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH" {
+							     Area 0 PlaceFurniture "EG_GROWTH_WALL_FIN"}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH_2" {
+							     Area 0 PlaceFurniture "EG_GROWTH_WALL_FIN"}
+								 
+								 
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_GROUND" {
+							     Area 0 PlaceFurniture "EG_GROWTH_WALL_FIN"}
+								 }
 							   }
   targetSelf = true
   cooldown = {100 200}
@@ -654,13 +666,25 @@ OneTimeAbility("eg_have_acid", "have acid", { SetCreatureFlag "eg_have_acid" tru
 "Grant us eyes" 
 {
   symbol = "🌱" 
-  effect = Name "Grant us eyes"   Description "We can sleep soundly knowing it watches over us."   Chain {
-							   Filter CreatureFlag "eg_better_spells" {
-							   Filter Area 0 FurnitureType "EG_GROWTH_EYEBALL" {
-							   Area 0 PlaceFurniture "EG_GROWTH_EYEBALL"}}
+  effect = Name "Grant us eyes"   Description "We can sleep soundly knowing it watches over us." Chain {
+                               Filter CreatureFlag "eg_better_spells" {
+							   Area 0 PlaceFurniture "EG_GROWTH_FLOOR"
+							     Area 1 PlaceFurniture "EG_GROWTH_EYEBALL_UPGRADE"}
+								 
 							   Filter Not CreatureFlag "eg_better_spells" {
-							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
-							   Area 0 PlaceFurniture "EG_GROWTH_EYEBALL"}}
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							     Area 0 PlaceFurniture "EG_GROWTH_EYEBALL"}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH" {
+							     Area 0 PlaceFurniture "EG_GROWTH_EYEBALL"}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH_2" {
+							     Area 0 PlaceFurniture "EG_GROWTH_EYEBALL"}
+								 
+								 
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_GROUND" {
+							     Area 0 PlaceFurniture "EG_GROWTH_EYEBALL"}
+								 }
 							   }
   targetSelf = true
   cooldown = {200 600}
@@ -670,15 +694,25 @@ OneTimeAbility("eg_have_acid", "have acid", { SetCreatureFlag "eg_have_acid" tru
 "Hands to protect us" 
 {
   symbol = "🌱" 
-  effect = Name "Hands to protect us"  Description "Its hand shall shield us from world."   Chain {
+  effect = Name "Hands to protect us"  Description "Its hand shall shield us from world." Chain {
                                Filter CreatureFlag "eg_better_spells" {
-							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
-							   Area 0 PlaceFurniture "EG_GROWTH_INERT_TANTACLE_UPGRADE"
-							                                              }}
-                               Filter Not CreatureFlag "eg_better_spells" {
-							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
-							   Area 0 PlaceFurniture "EG_GROWTH_INERT_TANTACLE"
-							                                              }}
+							   Area 0 PlaceFurniture "EG_GROWTH_FLOOR"
+							     Area 1 PlaceFurniture "EG_GROWTH_INERT_TANTACLE_UPGRADE"}
+								 
+							   Filter Not CreatureFlag "eg_better_spells" {
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							     Area 0 PlaceFurniture "EG_GROWTH_INERT_TANTACLE"}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH" {
+							     Area 0 PlaceFurniture "EG_GROWTH_INERT_TANTACLE"}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH_2" {
+							     Area 0 PlaceFurniture "EG_GROWTH_INERT_TANTACLE"}
+								 
+								 
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_GROUND" {
+							     Area 0 PlaceFurniture "EG_GROWTH_INERT_TANTACLE"}
+								 }
 							   }
   targetSelf = true
   cooldown = 800
@@ -690,11 +724,23 @@ OneTimeAbility("eg_have_acid", "have acid", { SetCreatureFlag "eg_have_acid" tru
   symbol = "🌱" 
   effect = Name "Rampart Growth"  Description "Even its weakness is its strenght."   Chain {
                                Filter CreatureFlag "eg_better_spells" {
-							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
-							   Area 0 PlaceFurniture "EG_GROWTH_TUMOR"}}
-                               Filter Not CreatureFlag "eg_better_spells" {
-							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
-							   Area 0 PlaceFurniture "EG_GROWTH_TUMOR"}}
+							   Area 0 PlaceFurniture "EG_GROWTH_FLOOR"
+							     Area 1 PlaceFurniture "EG_GROWTH_TUMOR_UPGRADE"}
+								 
+							   Filter Not CreatureFlag "eg_better_spells" {
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							     Area 0 PlaceFurniture "EG_GROWTH_TUMOR"}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH" {
+							     Area 0 PlaceFurniture "EG_GROWTH_TUMOR"}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH_2" {
+							     Area 0 PlaceFurniture "EG_GROWTH_TUMOR"}
+								 
+								 
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_GROUND" {
+							     Area 0 PlaceFurniture "EG_GROWTH_TUMOR"}
+								 }
 							   }
   targetSelf = true
   cooldown = {300 800}
@@ -704,13 +750,25 @@ OneTimeAbility("eg_have_acid", "have acid", { SetCreatureFlag "eg_have_acid" tru
 "Acidic Buildup" 
 {
   symbol = "🌱" 
-  effect = Name "Acidic Buildup"  Description "Its waste is our protection."   Chain {
+  effect = Name "Acidic Buildup"  Description "Its waste is our protection."    Chain {
                                Filter CreatureFlag "eg_better_spells" {
-							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
-							   Area 0 PlaceFurniture "EG_GROWTH_GAS_TRAP_UPGRADE"}}
+							   Area 0 PlaceFurniture "EG_GROWTH_FLOOR"
+							     Area 1 PlaceFurniture "EG_GROWTH_GAS_TRAP_UPGRADE"}
+								 
 							   Filter Not CreatureFlag "eg_better_spells" {
-							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
-							   Area 0 PlaceFurniture "EG_GROWTH_GAS_TRAP"}}
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
+							     Area 0 PlaceFurniture "EG_GROWTH_GAS_TRAP"}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH" {
+							     Area 0 PlaceFurniture "EG_GROWTH_GAS_TRAP"}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH_2" {
+							     Area 0 PlaceFurniture "EG_GROWTH_GAS_TRAP"}
+								 
+								 
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_GROUND" {
+							     Area 0 PlaceFurniture "EG_GROWTH_GAS_TRAP"}
+								 }
 							   }
   targetSelf = true
   cooldown = {300 800}
@@ -724,7 +782,22 @@ OneTimeAbility("eg_have_acid", "have acid", { SetCreatureFlag "eg_have_acid" tru
 							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {
 							   Filter Not CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {1 3} 30}
 							   Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {3 6} 30}
-							   Area 0 RemoveFurniture "EG_GROWTH_FLOOR"}}
+							   Area 0 RemoveFurniture "EG_GROWTH_FLOOR"}
+							   
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH" {
+							   Filter Not CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {1 3} 30}
+							   Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {3 6} 30}
+							   Area 0 RemoveFurniture "EG_GROWTH_FLOOR_FINISH"}
+							   
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH_2" {
+							   Filter Not CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {1 3} 30}
+							   Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {3 6} 30}
+							   Area 0 RemoveFurniture "EG_GROWTH_FLOOR_FINISH_2"}
+							   
+							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_GROUND" {
+							   Filter Not CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {1 3} 30}
+							   Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {3 6} 30}}
+							   }
   targetSelf = true
   cooldown = 400
   sound = "SPELL_HEALING"
@@ -738,7 +811,23 @@ OneTimeAbility("eg_have_acid", "have acid", { SetCreatureFlag "eg_have_acid" tru
 							   Filter Area 1 FurnitureType "EG_GROWTH_FLOOR" {
 							   Filter Not CreatureFlag "eg_better_spells" {Area 1 Summon "EG_GORE_TUMOR" {1 3} 30}
 							   Filter CreatureFlag "eg_better_spells" {Area 1 Summon "EG_GORE_TUMOR" {3 6} 30}
-							   Area 1 RemoveFurniture "EG_GROWTH_FLOOR"}}
+							   Area 1 RemoveFurniture "EG_GROWTH_FLOOR"}
+							   
+							   Filter Area 1 FurnitureType "EG_GROWTH_FLOOR_FINISH" {
+							   Filter Not CreatureFlag "eg_better_spells" {Area 1 Summon "EG_GORE_TUMOR" {1 3} 30}
+							   Filter CreatureFlag "eg_better_spells" {Area 1 Summon "EG_GORE_TUMOR" {3 6} 30}
+							   Area 1 RemoveFurniture "EG_GROWTH_FLOOR_FINISH"}
+							   
+							   Filter Area 1 FurnitureType "EG_GROWTH_FLOOR_FINISH_2" {
+							   Filter Not CreatureFlag "eg_better_spells" {Area 1 Summon "EG_GORE_TUMOR" {1 3} 30}
+							   Filter CreatureFlag "eg_better_spells" {Area 1 Summon "EG_GORE_TUMOR" {3 6} 30}
+							   Area 1 RemoveFurniture "EG_GROWTH_FLOOR_FINISH_2"}
+							   
+							   Filter Area 1 FurnitureType "EG_GROWTH_FLOOR_GROUND" {
+							   Filter Not CreatureFlag "eg_better_spells" {Area 1 Summon "EG_GORE_TUMOR" {1 3} 30}
+							   Filter CreatureFlag "eg_better_spells" {Area 1 Summon "EG_GORE_TUMOR" {3 6} 30}}
+							   
+							   }
   targetSelf = true
   cooldown = 400
   sound = "SPELL_HEALING"
@@ -747,10 +836,23 @@ OneTimeAbility("eg_have_acid", "have acid", { SetCreatureFlag "eg_have_acid" tru
 "Veins Beyond" 
 {
   symbol = "🌱" 
-  effect = Name "Veins Beyond"  Description "Its veins shall let us move trough them."   Chain {
-                               Filter CreatureFlag "eg_better_spells" {Summon "EG_GORE_TUMOR" {1 3} 30}
-							   Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" { Teleport }
+  effect = Name "Veins Beyond"  Description "Its veins shall let us move trough them."       Chain {
+                               Filter CreatureFlag "eg_better_spells" {
+							   Area 0 PlaceFurniture "EG_GROWTH_FLOOR"
+							   Teleport}
+								 
+							   Filter Not CreatureFlag "eg_better_spells" {
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR" {Teleport}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH" {Teleport}
+								 
+								 Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_FINISH_2" {Teleport}
+								 
+								 
+							     Filter Area 0 FurnitureType "EG_GROWTH_FLOOR_GROUND" {Teleport}
+								 }
 							   }
+  range = 12				   
   targetSelf = true
   cooldown = {250 510}
   sound = "SPELL_HEALING"
@@ -1635,3 +1737,206 @@ OneTimeAbility("ys_spawn_start", "", {SetCreatureFlag "reveal" false }, "🧛")
   effect =  Name "mania" Description "Enter an manic state" Lasting 50 YS_MANIA_SPELL
   cooldown = {50 101}
 }
+
+#####################################CHAOS###########################################
+
+Def TryMagicMissileChaos()
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"are hit by the missile" "is hit by the missile"}
+      Damage SPELL_DAMAGE SPELL
+	  Chance 0.2 {
+      CreatureMessage {"are hit by the missiles power surge" "is hit by the missiles power surge"}
+      Damage SPELL_DAMAGE SPELL
+	  }
+    },
+    CreatureMessage {"are spared by the missile" "is spared by the missile"}
+	Chance 0.2 {
+    CreatureMessage {"are hit by the missiles power surge" "is hit by the missiles power surge"}
+    Damage SPELL_DAMAGE SPELL
+	}
+  )
+End
+
+"chaos_magic_missile"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "magic missile" Description "Shoots a magic missile"
+      TryMagicMissileChaos()
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {5 21}
+  sound = "SPELL_BLAST"
+}
+
+"chaos_advanced_magic_missile"
+{
+  upgrade = "chaos_magic_missile"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "advanced magic missile" Description "Shoots a magic missile"
+      TryMagicMissileChaos()
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {5 21}
+  sound = "SPELL_BLAST"
+}
+
+"chaos_expert_magic_missile"
+{
+  upgrade = "chaos_advanced_magic_missile"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "expert magic missile" Description "Shoots a magic missile"
+      TryMagicMissileChaos()
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = {5 21}
+  sound = "SPELL_BLAST"
+}
+
+"chaos_benetit_surge"
+{
+  symbol = "🛡"
+  effect = Name "chaos blessing" ChooseRandom {
+  Lasting 40 DEF_BONUS
+  Lasting 40 DAM_BONUS
+  Lasting 40 SPEED
+  }
+  range = 1
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"chaos_benetit_surge_mass"
+{
+  upgrade = "chaos_benetit_surge"
+  symbol = "🛡"
+  effect = Name "mass chaos blessing" Area 10 Filter Not Enemy ChooseRandom {
+  Lasting 40 DEF_BONUS
+  Lasting 40 DAM_BONUS
+  Lasting 40 SPEED
+  }
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"chaos_demerit_surge"
+{
+  symbol = "🛡"
+  effect = Name "chaos curse" ChooseRandom {
+  Lasting 40 CHAOS_DAM_MALUS
+  Lasting 40 CHAOS_DEF_MALUS
+  Lasting 40 SLOWED
+  }
+  range = 1
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"chaos_demerit_surge_mass"
+{
+  upgrade = "chaos_demerit_surge"
+  symbol = "🛡"
+  effect = Name "mass chaos curse" Area 10 Filter Enemy ChooseRandom {
+  Lasting 40 CHAOS_DAM_MALUS
+  Lasting 40 CHAOS_DEF_MALUS
+  Lasting 40 SLOWED
+  }
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"chaos_protection"
+{
+  symbol = "✈️"
+  effect = Name "chaos protection" Area 1 Filter Enemy Escape {}
+  cooldown = {50 101}
+  sound = "SPELL_TELEPORT"
+}
+
+"chaos_great_protection"
+{
+  upgrade = "chaos_protection"
+  symbol = "✈️"
+  effect = Name "great chaos protection" Area 2 Filter Enemy Escape {}
+  cooldown = {50 101}
+  sound = "SPELL_TELEPORT"
+}
+
+"chaos_surge"
+{
+  symbol = "🛡"
+  effect = Name "chaos surge" Chain {
+												Area 10 Filter Not Enemy ChooseRandom {
+													Lasting 40 DEF_BONUS
+													Lasting 40 DAM_BONUS
+													Lasting 40 SPEED
+												}
+												Area 10 Filter Enemy ChooseRandom {
+													Lasting 40 CHAOS_DAM_MALUS
+													Lasting 40 CHAOS_DEF_MALUS
+													Lasting 40 SLOWED
+												}
+												Area 2 Filter Enemy Escape {}
+											}
+  cooldown = {60 162}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"chaos_frenzy"
+{
+  symbol = "🛡"
+  effect = Name "frenzy" Lasting 40 CHAOS_FRENZY
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"chaos_summon_eye"
+{
+  symbol = "👾"
+  effect = Name "summon eyes" Summon "CHAOS_EYE" { 1 2 } 200
+  cooldown = {30 81}
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+
+"chaos_advanced_summon_eye"
+{
+  upgrade = "chaos_summon_eye"
+  symbol = "👾"
+  effect = Name "summon eyes" Summon "CHAOS_EYE" { 2 4 } 200
+  cooldown = {30 81}
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+
+"chaos_control_corruption"
+{
+  symbol = "❤️"
+  effect = Name "tame corruption" Chain {
+	Heal { FLESH }
+	RegrowBodyPart 10
+	CreatureMessage { "are mutating!" "is mutating!" HIGH }
+	ChooseRandom {
+		RemovePermanent SPEED 
+		RemovePermanent MAGIC_RESISTANCE
+		RemovePermanent MELEE_RESISTANCE
+		RemovePermanent ACID_RESISTANT
+		RemovePermanent COLD_RESISTANT
+		RemovePermanent FIRE_RESISTANT
+		RemovePermanent RANGED_RESISTANCE
+		RemovePermanent FIRE_VULNERABILITY
+		RemovePermanent COLD_VULNERABILITY
+		RemovePermanent ACID_VULNERABILITY
+		RemovePermanent MELEE_VULNERABILITY
+		RemovePermanent MAGIC_VULNERABILITY
+		RemovePermanent RANGED_VULNERABILITY
+		RemovePermanent AMBUSH_SKILL	
+        RemovePermanent BLIND 	
+        RemovePermanent BAD_BREATH	
+		RemovePermanent SLOWED
+		RemovePermanent COLLAPSED
+		}}
+  range = 1
+  targetSelf = true
+  cooldown = {100 310}
+  sound = "SPELL_HEALING"
+}
+

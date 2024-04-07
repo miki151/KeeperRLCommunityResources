@@ -1,5 +1,37 @@
+"FORGE" modify {
+  furniture = "FORGE"
+  name = "forge"
+  verb = "forges"
+  attr = "FORGE"
+  minAttr = {
+    IRON 1
+    CS_MGEHYE 20
+    ADA 50
+    ADOXIUM 80
+    INFERNITE 80
+  }
+}
+
 "EG_WORKSHOP" {
   furniture = "EG_WORKSHOP"
   name = "shaping womb"
   attr = "BLESSED_FLESH"
+}
+
+"CHAOS_FORGE" inherit "FORGE" {
+  furniture = "CHAOS_FORGE"
+  prefix = Prefix "chaos imbued" JoinPrefixes { Scale 1.4 VictimEffect 0.2 Lasting 50 CHAOS_CORRUPTION_BAD}
+  hideFromTech = true
+}
+
+"CHAOS_WORKSHOP" inherit "WORKSHOP" {
+  furniture = "CHAOS_WORKSHOP"
+  prefix = Prefix "chaos imbued" JoinPrefixes { Scale 1.4 VictimEffect 0.2 Lasting 50 CHAOS_CORRUPTION_BAD}
+  hideFromTech = true
+}
+
+"CHAOS_JEWELER" inherit "JEWELER" {
+  furniture = "CHAOS_JEWELER"
+  prefix = Prefix "chaos imbued" JoinPrefixes { Scale 2.0 LastingEffect CHAOS_CORRUPTION}
+  hideFromTech = true
 }

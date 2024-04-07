@@ -1,0 +1,81 @@
+
+"ART_GOLEM_ENTRY"
+{
+  settlement = {
+    type = Builtin TOWER "BRICK"
+    tribe = MONSTER
+  }
+  discoverable = false
+}
+"ART_GOLEM_FLOOR"
+{
+  settlement = {
+    inhabitants = {
+      fighters = {
+        count = {1 3}
+        all = {
+          1 "ART_CLAY_GOLEM"
+          1 "ART_STONE_GOLEM"
+          1 "ART_IRON_GOLEM"
+          1 "ART_LAVA_GOLEM"
+          1 "ART_ADA_GOLEM"
+        }
+      }
+    }
+    type = Builtin TOWER "BRICK"
+    tribe = MONSTER
+  }
+  discoverable = false
+}
+"ART_GOLEM"
+{
+  biome = "GRASSLAND"
+  settlement = {
+    type = Builtin TOWER "BRICK"
+    inhabitants = {
+      leader = { { "ART_ARTISAN" } }
+      fighters = {
+        count = {1 2}
+        all = {
+          1 "ART_CLAY_GOLEM"
+        }
+	  }
+    }
+    tribe = MONSTER
+    furniture = "roomFurniture"
+  }
+  config = {
+    leaderAsFighter = true
+  }
+  levelConnection = {
+    direction = UP
+    topLevel = ExtraEnemy { "ART_GOLEM_ENTRY" }
+    levels = {
+      { ExtraEnemy { "ART_GOLEM_FLOOR" { 3 6 }} {4 4} TOWER }
+      { MainEnemy {5 5} TOWER }
+    }
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      NumConquered 3
+      FinishOff
+      Proximity
+    }
+    attackBehaviour = CampAndSpawn {
+      count = {3 7}
+      all = {
+          1 "ART_CLAY_GOLEM"
+          1 "ART_STONE_GOLEM"
+          1 "ART_IRON_GOLEM"
+          1 "ART_LAVA_GOLEM"
+          1 "ART_ADA_GOLEM"
+      }
+    }
+    ransom = 0.5 80
+  }
+}

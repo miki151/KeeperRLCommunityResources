@@ -907,3 +907,104 @@
       }
     }
 }
+
+
+#####################################Chaos###########################################
+
+"CHAOS_CULTISTS"
+{
+    {
+      ids = { "CHAOS_CULTIST" }
+      traits = { WORKER FIGHTER NO_LIMIT NO_LEISURE_ZONE }
+      keybinding = CREATE_IMP
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1 ExponentialCost "GOLD" 30 5 4 }
+      }
+    }
+}
+
+"CHAOS_CREATURES"
+{
+    {
+      ids = { "CHAOS_WARRIOR" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "CHAOS_BRUTE" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "CHAOS_LOOTER" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      requirements = {
+        { 0.0 MinTurnRequirement 2000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+      }
+      specialTraits = {
+        { 0.15 { SpecialAttr RANGED_DAMAGE 8 HatedBy HATE_GREENSKINS }}
+        { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+        { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+        { 0.05 { SpecialAttr RANGED_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+        { 0.05 { Lasting { RANGED_VULNERABILITY } }}
+        { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+        { 0.05 { Lasting { SWIMMING_SKILL } }}
+        { 0.02 { Lasting { HATE_ELVES } }}
+        { 0.02 { Lasting { HATE_HUMANS } }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "CHAOS_SORCERER" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+      }
+      specialTraits = {
+        { 0.15 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
+        { 0.03 { AttrBonus SPELL_DAMAGE 4 AttrBonus DEFENSE -4}}
+        { 0.02 { AttrBonus SPELL_SPEED 30 }}
+        { 0.05 { ExtraTraining SPELL_DAMAGE 2}}
+        { 0.02 { Lasting { HATE_UNDEAD } }}
+      }
+    }
+    {
+      ids = { "CHAOS_EYE" }
+      traits = { FIGHTER DOESNT_TRIGGER NO_LIMIT }
+      frequency = 0.1
+    }
+}

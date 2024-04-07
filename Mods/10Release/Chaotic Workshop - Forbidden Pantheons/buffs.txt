@@ -82,7 +82,7 @@
   addedMessage = "start" "starts" "communing"
   removedMessage = YOUR "are no longer communing"
   adjective = "recieving blessing"
-  tickEffect = Chance 0.0002 {IncreaseLevel BLESSED_FLESH 1}
+  tickEffect = Chance 0.002 {IncreaseLevel BLESSED_FLESH 1}
   consideredBad = true
   canAbsorb = false
   price = 2
@@ -349,4 +349,156 @@
   fx = BUFF_BLUE
   color = ColorId BLUE
   price = 10
+}
+
+
+#####################################CHAOS###########################################
+
+
+"CHAOS_DAM_MALUS" ATTR_DEBUFF(DAMAGE, "damage", 3, 20)
+"CHAOS_DEF_MALUS" ATTR_DEBUFF(DEFENSE, "defense", 3, 20)
+
+"CHAOS_FRENZY" {
+  name = "frenzy"
+  adjective = "frenzied"
+  description = "Frenzy"
+  addedMessage = ARE "frenzied"
+  removedMessage = ARE "no longer frenzied"
+  startEffect = Chain {IncreaseAttr DAMAGE 5 IncreaseAttr DEFENSE -5}
+  endEffect = Chain {IncreaseAttr DAMAGE -5 IncreaseAttr DEFENSE 5}
+  tickEffect = Heal {FLESH 0.01}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId RED
+}
+
+"CHAOS_CORRUPTION" {
+  name = "chaotic energy"
+  description = "Can cause random mutations."
+  addedMessage = ARE "affected by chaotic energy"
+  removedMessage = ARE "no longer affected by chaotic energy"
+  adjective = "bleeding"
+  tickEffect = Chain {
+  Chance 0.00001 {
+    CreatureMessage { "are mutating!" "is mutating!" HIGH }
+	ChooseRandom {
+        IncreaseAttr SPELL_DAMAGE 1
+		IncreaseAttr DAMAGE 1
+		IncreaseAttr RANGED_DAMAGE 1
+		IncreaseAttr DEFENSE 1	
+		IncreaseAttr MULTI_WEAPON 1
+        IncreaseAttr SPELL_DAMAGE -1
+		IncreaseAttr DAMAGE -1
+		IncreaseAttr RANGED_DAMAGE -1
+		IncreaseAttr DEFENSE -1
+		IncreaseAttr MULTI_WEAPON -1		
+		Permanent SWIMMING_SKILL
+		Permanent SPEED 
+		Permanent MAGIC_RESISTANCE
+		Permanent MELEE_RESISTANCE
+		Permanent ACID_RESISTANT
+		Permanent COLD_RESISTANT
+		Permanent FIRE_RESISTANT
+		Permanent RANGED_RESISTANCE
+		Permanent FIRE_VULNERABILITY
+		Permanent COLD_VULNERABILITY
+		Permanent ACID_VULNERABILITY
+		Permanent MELEE_VULNERABILITY
+		Permanent MAGIC_VULNERABILITY
+		Permanent RANGED_VULNERABILITY
+		Permanent AMBUSH_SKILL	
+        Permanent BLIND 	
+        Permanent BAD_BREATH		
+		Permanent SWIMMING_SKILL
+		Permanent SLOWED
+		Permanent COLLAPSED
+		RemovePermanent SPEED 
+		RemovePermanent MAGIC_RESISTANCE
+		RemovePermanent MELEE_RESISTANCE
+		RemovePermanent ACID_RESISTANT
+		RemovePermanent COLD_RESISTANT
+		RemovePermanent FIRE_RESISTANT
+		RemovePermanent RANGED_RESISTANCE
+		RemovePermanent FIRE_VULNERABILITY
+		RemovePermanent COLD_VULNERABILITY
+		RemovePermanent ACID_VULNERABILITY
+		RemovePermanent MELEE_VULNERABILITY
+		RemovePermanent MAGIC_VULNERABILITY
+		RemovePermanent RANGED_VULNERABILITY
+		RemovePermanent AMBUSH_SKILL	
+        RemovePermanent BLIND 	
+        RemovePermanent BAD_BREATH	
+		RemovePermanent SLOWED
+		RemovePermanent COLLAPSED
+		AddBodyPart ARM 1 none
+		AddBodyPart LEG 1 none
+		AddBodyPart HEAD 1 none
+		AddBodyPart WING 1 none	
+       	AddBodyPart ARM 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+		AddBodyPart LEG 1  { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+		AddBodyPart HEAD 1 { Intrinsic { "bite_attack" }  "fangs" 7 { attackType = BITE attackMsg = BITE} }
+		AddBodyPart WING 1 { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } }
+		LoseBodyPart ARM 
+		LoseBodyPart LEG 
+		LoseBodyPart WING 
+		InjureBodyPart ARM 
+		InjureBodyPart LEG 
+		InjureBodyPart  WING 
+		RegrowBodyPart 10
+		}}
+  }
+  consideredBad = true
+  canAbsorb = false
+  price = 2
+  fx = BUFF_RED
+  color = ColorId RED
+}
+
+"CHAOS_CORRUPTION_BAD" {
+  name = "chaotic energy"
+  description = "Can cause random mutations."
+  addedMessage = ARE "affected by chaotic energy"
+  removedMessage = ARE "no longer affected by chaotic energy"
+  adjective = "bleeding"
+  tickEffect = Chain {
+  Chance 0.01 {
+    CreatureMessage { "are mutating!" "is mutating!" HIGH }
+	ChooseRandom {
+        IncreaseAttr SPELL_DAMAGE -1
+		IncreaseAttr DAMAGE -1
+		IncreaseAttr RANGED_DAMAGE -1
+		IncreaseAttr DEFENSE -1
+		IncreaseAttr MULTI_WEAPON -1
+		RemovePermanent SPEED 
+		RemovePermanent MAGIC_RESISTANCE
+		RemovePermanent MELEE_RESISTANCE
+		RemovePermanent ACID_RESISTANT
+		RemovePermanent COLD_RESISTANT
+		RemovePermanent FIRE_RESISTANT
+		RemovePermanent RANGED_RESISTANCE
+		RemovePermanent FIRE_VULNERABILITY
+		RemovePermanent COLD_VULNERABILITY
+		RemovePermanent ACID_VULNERABILITY
+		RemovePermanent MELEE_VULNERABILITY
+		RemovePermanent MAGIC_VULNERABILITY
+		RemovePermanent RANGED_VULNERABILITY
+		RemovePermanent AMBUSH_SKILL	
+        RemovePermanent BLIND 	
+        RemovePermanent BAD_BREATH	
+		RemovePermanent SLOWED
+		RemovePermanent COLLAPSED
+		LoseBodyPart ARM 
+		LoseBodyPart LEG 
+		LoseBodyPart WING 
+		InjureBodyPart ARM 
+		InjureBodyPart LEG 
+		InjureBodyPart  WING 
+		RegrowBodyPart 10
+		}}
+  }
+  consideredBad = true
+  canAbsorb = false
+  price = 2
+  fx = DEBUFF_RED
+  color = ColorId RED
 }
