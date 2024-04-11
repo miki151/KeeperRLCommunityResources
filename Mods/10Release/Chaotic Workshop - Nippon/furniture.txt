@@ -491,3 +491,194 @@
   constructMessage = none
   usageType = UsageEffect "use portal" {Stairs Fx { TELEPORT_OUT }}
 }
+
+"NIPPON_SCARECROW_TRAP"
+{
+  name = "scarecrow trap"
+  viewId = { "scarecrow" }
+  blockMovement = true
+  tickType = Trap 1 {
+    Def SummonScarecrowNippon() {
+      Message HIGH "The scarecrow comes to life!"
+      SummonEnemy "NIPPON_SCARECROW_TRAP" 1 20
+    } End
+    SummonScarecrowNippon()
+    SummonScarecrowNippon()
+    SummonScarecrowNippon()
+    SummonScarecrowNippon()
+  }
+  strength = 40
+  warning = true
+  constructMessage = SET_UP
+}
+
+"NIPPON_SECRET_DOOR_1"
+{
+  name = "secret gate"
+  viewId = { "mountain" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 240
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_SECRET_DOOR_2"
+{
+  name = "secret gate"
+  viewId = { "mountain2" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 240
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_SECRET_DOOR_3"
+{
+  name = "secret gate"
+  viewId = { "dungeon_wall" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 240
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_SECRET_DOOR_4"
+{
+  name = "secret gate"
+  viewId = { "dungeon_wall2" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 240
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_SECRET_DOOR_5"
+{
+  name = "secret gate"
+  viewId = { "castle_wall" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 240
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_SECRET_DOOR_6"
+{
+  name = "secret gate"
+  viewId = { "archer_wall" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 240
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_SECRET_DOOR_7"
+{
+  name = "secret gate"
+  viewId = { "wood_wall" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 240
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"NIPPON_TAR_TRAP"
+{
+  name = "tar trap"
+  viewId = { "tt_tar_trap" }
+  entryType = Trap { CustomArea PlaceFurniture "BUILD_TAR" { {1 0} {1 1} {1 -1} {0 1} {0 0} {-1 0}  {-1 1} {-1 -1} {0 -1} } }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"NIPPON_RANDOM_TELEPORTER"
+{
+  name = "teleport trap"
+  viewId = { "trap"  Rgb 13 18 200 255 }
+  entryType = Trap { Area 1 Filter Enemy Escape {}}
+  warning = true
+  constructMessage = SET_UP
+}
+
+"NIPPON_BLOODLUST_TRAP"
+{
+  name = "bloodlust gas trap"
+  viewId = { "tt_gas_trap"  Rgb 201 13 159 255 }
+  entryType = Trap { Area 1 EmitGas "NIPPON_SPIDER_LILLY_SMOKE" 0.4 }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"NIPPON_FREEZE_TRAP"
+{
+  name = "freeze trap"
+  viewId = { "trap"  Rgb 13 190 200 255 }
+  entryType = Trap {Filter Enemy { 
+                     Chain {
+					 Lasting FROZEN
+					 Ice{}}}}
+  warning = true
+  constructMessage = SET_UP
+}
+
+"POISON_GAS_TRAP" modify append
+{
+  viewId = { "tt_gas_trap"  Rgb 58 156 68 255 }
+}
+
+"NIPPON_SPIKE_TRAP"
+  {
+    name = "Floor Spikes"
+    viewId = { "tt_spikes" }
+    entryType = Trap { Name "floor spike" FirstSuccessful { #Effect name is used when disarming the trap.
+	                     Filter  LastingEffect FLYING { CreatureMessage {"fly above the spikes" "flies above the spikes"}}
+					     Filter Not LastingEffect FLYING {Lasting 50 BLEEDING}
+					   }
+					 }
+    warning = true
+    constructMessage = SET_UP
+  }
+  
+"NIPPON_TT_PITFALL"
+{
+  name = "hole"
+  viewId = { "sokoban_hole" }
+  onBuilt = DOWN_STAIRS
+  tickType = Effect {Filter Not LastingEffect FLYING {Area 0 Stairs} }
+  canBuildOutsideOfTerritory = true
+}
+
+"BUILD_TAR" inherit "TAR" {
+  luxury = 0.1
+  layer = FLOOR
+  fire = 50
+  canBuildOutsideOfTerritory = true
+}

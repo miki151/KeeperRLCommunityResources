@@ -1,8 +1,100 @@
+
+"NIPPON_BANDIT_VILLAGE_START"
+{
+  settlement = {
+    type = RandomLayout { "NipponBanditVillage" { 25 25 } "nippon_shrine"}
+    tribe = BANDIT
+    inhabitants = {
+      leader = {
+	  id = {"NIPPON_GOTO"}
+      expLevelIncrease = {  DAMAGE 4 }}
+      fighters = {
+        count = {6 9}
+        all = {
+          4 "NIPPON_GOTO"
+        }
+      }
+      civilians = {
+        count = {2 3}
+        all = {
+          1 "DONKEY_STEED"
+          1 "COW"
+          1 "PIG"
+          1 "GOAT_STEED"
+        }
+      }
+    }
+    race = "bandits"
+    stockpiles = {
+      { "gold" 50 "TREASURE_CHEST" }
+    }
+    furniture = "roomFurniture"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 9
+    prisoners = true
+  }
+  immigrants = {
+    {
+      ids = { "NIPPON_GOTO" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+  behaviour = {
+    ambushChance = 0.05
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+}
+
 "NIPPON_VILLAGE"
 {
   settlement = {
     type = RandomLayout { "nippon_village" { 25 25 } "nippon_shrine"}
     tribe = HUMAN
+    inhabitants = {
+      leader = {{"NIPPON_PESEANT"}}
+      fighters = {
+        count = {4 6}
+        all = {
+          1 "NIPPON_PESEANT"
+        }
+      }
+      civilians = {
+        count = {3 7}
+        all = {
+          1 "NIPPON_PESEANT_CHILD_FEMALE"
+          1 "NIPPON_PESEANT_CHILD_MALE"
+          1 "DONKEY_STEED"
+          1 "COW"
+          1 "PIG"
+          1 "GOAT_STEED"
+        }
+      }
+    }
+    race = "humans"
+    stockpiles = {
+      { "gold" 50 "TREASURE_CHEST" }
+    }
+    crops = Crops()
+    furniture = "roomFurniture"
+  }
+  config = {
+    alwaysMount = true
+  }
+}
+
+"NIPPON_VILLAGE_EVIL"
+{
+  biome = "GRASSLAND_JAPAN_EVIL"
+  settlement = {
+    type = RandomLayout { "nippon_village" { 25 25 } "nippon_shrine"}
+    tribe = DARK_ELF
     inhabitants = {
       leader = {{"NIPPON_PESEANT"}}
       fighters = {
@@ -101,10 +193,9 @@
   }
 }
 
-
 "NIPPON_BUDDHIST_EVIL"
 {
-  biome = "GRASSLAND_JAPAN"
+  biome = "GRASSLAND_JAPAN_EVIL"
   settlement = {
     type = RandomLayout { "nippon_buddhist" { 25 25 } "nippon_shrine"}
     tribe = DARK_ELF
@@ -479,5 +570,34 @@
       traits = { FIGHTER }
       frequency = 0.5
     }
+  }
+}
+
+
+"NIPPON_VILLAGE_FOX"
+{
+  biome = "GRASSLAND_JAPAN_EVIL"
+  settlement = {
+    type = RandomLayout { "nipponfox" { 25 25 } "nippon_shrine"}
+    tribe = DARK_ELF
+    inhabitants = {
+      leader = {{"NIPPON_KITSUNE"}}
+      fighters = {
+        count = {6 12}
+        all = {
+          1 "NIPPON_PESEANT"
+        }
+      combatExperience = 2
+      }
+    }
+    race = "kitsune"
+    stockpiles = {
+      { "gold" 50 "TREASURE_CHEST" }
+    }
+    crops = Crops()
+    furniture = "roomFurniture"
+  }
+  config = {
+    alwaysMount = true
   }
 }

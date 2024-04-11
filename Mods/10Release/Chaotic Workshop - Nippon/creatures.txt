@@ -578,7 +578,7 @@
       DISTILLATION_SKILL 1
     }
     name = {
-      name = "JP_ONMYOJI"
+      name = "onmyoji"
       firstNameGen = "JAPANESE_MALE"
     }
     hatedByEffect = HATE_HUMANS
@@ -593,7 +593,7 @@
 {
     gender = FEMALE
     name = {
-      name = "JP_ONMYOJI"
+      name = "onmyoji "
       firstNameGen = "JAPANESE_FEMALE"
     }
 }
@@ -775,65 +775,6 @@
     }
   }
 
-###########
-#  ninja  #
-########### 
-
-"NIPPON_SHINOBI"
-  {
-    viewId = { "jp_shinobi" }
-    attr = {
-      DAMAGE 22
-      RANGED_DAMAGE 22
-      DEFENSE 10
-    }
-    specialAttr = {
-      DAMAGE { 7 Name "when indoors" Indoors }
-      RANGED_DAMAGE { 7 Name "when indoors" Indoors }
-    }
-    body = {
-      type = Humanoid LARGE
-    }
-    permanentEffects = {
-      ARCHER_VISION 1
-      ELF_VISION 1
-      NO_FRIENDLY_FIRE 1
-      RIDER 1
-    }
-    chatReactionFriendly = "curses all dungeons"
-    chatReactionHostile = "\"Die!\""
-    maxLevelIncrease = {
-      RANGED_DAMAGE 9
-      DAMAGE 9
-    }
-    spellSchools = { "fighter" "JP_NINJUSTU" "archer" }
-    name = {
-      name = "shinobi"
-      firstNameGen = "JAPANESE_MALE"
-    }
-    gender = MALE
-    aiType = RANGED
-    hatedByEffect = HATE_HUMANS
-    inventory = {
-      { "Bow"}
-      { "Knife"}
-      { "LeatherArmor"}
-      { "LeatherBoots"}
-      { type = "Torch" chance = 0.3 }
-      { type = Potion Heal { FLESH } chance = 0.7 }
-      { "GoldPiece" 4 10 }
-    }
-  }
-
-"NIPPON_KUNOICHI" inherit "NIPPON_SHINOBI"
-{
-    gender = FEMALE
-    name = {
-      name = "kunoichi"
-      firstNameGen = "JAPANESE_FEMALE"
-    }
-}
-
 #############
 #  Spirits  #
 #############
@@ -934,6 +875,437 @@
     spells = { "warhorse_haste" }
   }
 
+
+
+
+#################################################################################################################################
+#                                                       ninja japan                                                             #
+#################################################################################################################################
+
+###########
+#  kacho  #
+###########
+
+"NIPPON_KEEPER_SHINOBI"
+  {
+    viewId = { "jp_nin_no_kacho_01" }
+    attr = {
+      DAMAGE 16
+      RANGED_DAMAGE 16
+	  SPELL_DAMAGE 16
+      DEFENSE 10
+      MULTI_WEAPON 40
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "kacho"
+      firstNameGen = "JAPANESE_MALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "jp_nin_no_kacho_02" } { "jp_nin_no_kacho_03" } { "jp_nin_no_kacho_04" }}
+    permanentEffects = {
+      ARCHER_VISION 1
+      ELF_VISION 1
+      NO_FRIENDLY_FIRE 1
+      RIDER 1
+      POISON_RESISTANT 1
+	  PSYCHIATRY 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+	  RANGED_DAMAGE 12
+	  SPELL_DAMAGE 12
+    }
+	gender = MALE
+    spells = { "healing" }
+    spellSchools = { "fighter" "JP_NINJUSTU" "JP_DOKUSATSUJUTSU" "JP_MASHIN_ATO" "JP_BURADDORASUTOATO" "JP_SUPAI_ATO" "archer" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Nippon_Katana"}
+    }
+  }
+
+############
+#  shinobi #
+############
+
+"NIPPON_SHINOBI_MINARAI"
+  {
+    viewId = { "jp_shinobi_minarai" }
+    attr = {
+      DAMAGE 16
+      RANGED_DAMAGE 16
+      DEFENSE 8
+      DIGGING 10
+      WORKSHOP 10
+    }
+    specialAttr = {
+      DAMAGE { 3 Name "when indoors" Indoors }
+      RANGED_DAMAGE { 3 Name "when indoors" Indoors }
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      ARCHER_VISION 1
+      ELF_VISION 1
+      NO_FRIENDLY_FIRE 1
+      RIDER 1
+    }
+    chatReactionFriendly = "..."
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      RANGED_DAMAGE 3
+      DAMAGE 3
+    }
+    spellSchools = { "fighter" "JP_NINJUSTU" "archer" }
+    name = {
+      name = "minarai"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    promotionGroup = "shinobi_M"
+    promotionCost = 0.25
+    gender = MALE
+    aiType = RANGED
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Bow"}
+      { "Knife"}
+      { "LeatherArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 4 10 }
+    }
+  }
+
+"NIPPON_SHINOBI_MINARAI_F" inherit "NIPPON_SHINOBI_MINARAI"
+  {
+    viewId = { "jp_shinobi_minarai" }
+    gender = FEMALE
+    name = {
+      name = "minarai"
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+    promotionGroup = "shinobi_F"
+    promotionCost = 0.25
+  }
+  
+"NIPPON_SHINOBI"
+  {
+    viewId = { "jp_shinobi" }
+    attr = {
+      DAMAGE 24
+      RANGED_DAMAGE 24
+      DEFENSE 10
+    }
+    specialAttr = {
+      DAMAGE { 7 Name "when indoors" Indoors }
+      RANGED_DAMAGE { 7 Name "when indoors" Indoors }
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      ARCHER_VISION 1
+      ELF_VISION 1
+      NO_FRIENDLY_FIRE 1
+      RIDER 1
+    }
+    chatReactionFriendly = "..."
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      RANGED_DAMAGE 7
+      DAMAGE 7
+    }
+    spellSchools = { "fighter" "JP_NINJUSTU" "archer" }
+    name = {
+      name = "shinobi"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    gender = MALE
+    aiType = RANGED
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Bow"}
+      { "Knife"}
+      { "LeatherArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 4 10 }
+    }
+  }
+
+"NIPPON_KUNOICHI" inherit "NIPPON_SHINOBI"
+  {
+    viewId = { "jp_shinobi" }
+    gender = FEMALE
+    name = {
+      name = "shinobi"
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+  }
+  
+"NIPPON_PO_SHON_YUZA_F"
+  {
+    viewId = { "jp_po_shon_yuza_f" }
+    attr = {
+      DAMAGE 12
+      RANGED_DAMAGE 16
+	  SPELL_DAMAGE 18
+      DEFENSE 8
+    }
+    specialAttr = {
+      DAMAGE { 4 Name "when indoors" Indoors }
+      RANGED_DAMAGE { 4 Name "when indoors" Indoors }
+      SPELL_DAMAGE { 4 Name "when indoors" Indoors }
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+	  POISON_RESISTANT 1
+      ARCHER_VISION 1
+      ELF_VISION 1
+      NO_FRIENDLY_FIRE 1
+      RIDER 1
+    }
+    chatReactionFriendly = "come closer my love"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+	  DAMAGE 3
+      RANGED_DAMAGE 7
+      SPELL_DAMAGE 7
+    }
+    spellSchools = { "JP_DOKUSATSUJUTSU" "JP_NINJUSTU" "archer" }
+    name = {
+      name = "po shon yuza"
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+    gender = FEMALE
+    aiType = RANGED
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Bow"}
+      { "Knife"}
+      { "LeatherArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 4 10 }
+    }
+  }
+
+"NIPPON_PO_SHON_YUZA" inherit "NIPPON_PO_SHON_YUZA_F"
+  {
+    viewId = { "jp_po_shon_yuza" }
+    gender = MALE
+    name = {
+      name = "po shon yuza"
+      firstNameGen = "JAPANESE_MALE"
+    }
+  }
+  
+"NIPPON_SUPAIDARIRIKIRA"
+  {
+    viewId = { "jp_supaidaririkira" }
+    attr = {
+      DAMAGE 24
+      RANGED_DAMAGE 14
+      DEFENSE 20
+    }
+    specialAttr = {
+      DAMAGE { 7 Name "when indoors" Indoors }
+      RANGED_DAMAGE { 7 Name "when indoors" Indoors }
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      ARCHER_VISION 1
+      ELF_VISION 1
+      NO_FRIENDLY_FIRE 1
+      RIDER 1
+	  PSYCHIATRY 1
+    }
+    chatReactionFriendly = "..."
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      RANGED_DAMAGE 9
+      DAMAGE 3
+    }
+    spellSchools = { "fighter" "JP_NINJUSTU" "JP_BURADDORASUTOATO" }
+    name = {
+      name = "supaidaririkira"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    gender = MALE
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Bow"}
+      { "Knife"}
+      { "LeatherArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 4 10 }
+    }
+  }
+
+"NIPPON_SUPAIDARIRIKIRA_F" inherit "NIPPON_SUPAIDARIRIKIRA"
+  {
+    gender = FEMALE
+    name = {
+      name = "supaidaririkira"
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+  }
+ 
+"NIPPON_MASHIN_ATISUTO"
+  {
+    viewId = { "jp_mashin_atisuto" }
+    attr = {
+      DAMAGE 16
+      RANGED_DAMAGE 16
+      DEFENSE 8
+	  WORKSHOP 25
+      FURNACE 25
+      FORGE 30
+
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    maxLevelIncrease = {
+      RANGED_DAMAGE 3
+      DAMAGE 3
+      FORGE 10
+    }
+    chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    spellSchools = { "fighter" "JP_NINJUSTU" "JP_MASHIN_ATO" }
+    gender = MALE
+    name = {
+      name = "mashin atisuto"
+      firstNameGen = "JAPANESE_MALE"
+    }
+  }
+
+"NIPPON_MASHIN_ATISUTO_F" inherit "NIPPON_MASHIN_ATISUTO"
+  {
+    gender = FEMALE
+    name = {
+      name = "mashin atisuto"
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+  }
+ 
+"NIPPON_SCARECROW_TRAP"
+  {
+    viewId = { "scarecrow" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 25
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = SPIRIT
+    }
+    permanentEffects = {
+      MELEE_VULNERABILITY 1
+    }
+    name = {
+      name = "scarecrow"
+    }
+  }
+
+"NIPPON_SHINOBI_SUPAI"
+  {
+    viewId = { "jp_samurai_peasant_01" }
+    genderAlternatives = {
+	  MALE { "jp_samurai_peasant_01" }
+      MALE { "jp_samurai_peasant_02" }
+      MALE { "jp_samurai_peasant_03" }
+      MALE { "jp_samurai_peasant_04" }
+      MALE { "jp_citydweller_male_01" }
+	  MALE { "jp_citydweller_male_01" }
+      MALE { "jp_citydweller_male_02" }
+      MALE { "jp_citydweller_male_03" }
+    }
+    attr = {
+      DAMAGE 16
+      SPELL_DAMAGE 16
+      RANGED_DAMAGE 16
+      DEFENSE 8
+      DIGGING 10
+      WORKSHOP 10
+    }
+    specialAttr = {
+      DAMAGE { 3 Name "when indoors" Indoors }
+      RANGED_DAMAGE { 3 Name "when indoors" Indoors }
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      ARCHER_VISION 1
+      ELF_VISION 1
+      NO_FRIENDLY_FIRE 1
+      RIDER 1
+    }
+    chatReactionFriendly = "..."
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      RANGED_DAMAGE 3
+	  SPELL_DAMAGE 9
+      DAMAGE 3
+    }
+    spellSchools = { "JP_SUPAI_ATO" "JP_NINJUSTU" "archer" }
+    name = {
+      name = "supai"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    promotionGroup = "shinobi_M"
+    promotionCost = 0.25
+    gender = MALE
+    aiType = RANGED
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Bow"}
+      { "Knife"}
+      { "LeatherArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+      { "GoldPiece" 4 10 }
+    }
+  }
+
+"NIPPON_SHINOBI_SUPAI_F" inherit "NIPPON_SHINOBI_SUPAI"
+  {
+    viewId = { "jp_samurai_peasant_f_01" }
+    genderAlternatives = {
+      FEMALE { "jp_samurai_peasant_f_01" }
+	  FEMALE { "jp_samurai_peasant_f_02" }
+	  FEMALE { "jp_samurai_peasant_f_03" }
+	  FEMALE { "jp_samurai_peasant_f_04" }
+      FEMALE { "jp_citydweller_female_01" }
+      FEMALE { "jp_citydweller_female_01" }
+	  FEMALE { "jp_citydweller_female_02" }
+	  FEMALE { "jp_citydweller_female_03" }
+    }
+    gender = FEMALE
+    name = {
+      name = "mashin atisuto"
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+  }
+  
 #################################################################################################################################
 #                                                       evil japan                                                              #
 #################################################################################################################################
@@ -1672,7 +2044,7 @@
     gender = MALE
     aiType = RANGED
     name = {
-      name = "peasant"
+      name = "monk"
       firstNameGen = "JAPANESE_MALE"
     }
     hatedByEffect = HATE_HUMANS
@@ -1707,7 +2079,7 @@
     chatReactionHostile = "\"Die!\""
     spellSchools = { "fighter" "JP_BENKEI" }
     name = {
-      name = "JP_BENKEI"
+      name = "benkei"
       firstNameGen = "JAPANESE_MALE"
     }
     hatedByEffect = HATE_HUMANS
@@ -1742,7 +2114,7 @@
     chatReactionHostile = "\"Die!\""
     spellSchools = { "fighter" "JP_BENKEI" }
     name = {
-      name = "JP_BENKEI"
+      name = "benkei"
       firstNameGen = "JAPANESE_MALE"
     }
     hatedByEffect = HATE_HUMANS
@@ -1787,7 +2159,7 @@
     chatReactionHostile = "\"Die!\""
     spellSchools = { "fighter" "JP_BURADDOMONKU" }
     name = {
-      name = "JP_BURADDOMONKU"
+      name = "buraddomonku"
       firstNameGen = "JAPANESE_MALE"
     }
     hatedByEffect = HATE_HUMANS
@@ -1827,7 +2199,7 @@
     chatReactionHostile = "\"Die!\""
     spellSchools = { "fighter" "JP_BURADDOMONKU" }
     name = {
-      name = "JP_BURADDOMONKU"
+      name = "buraddomonku"
       firstNameGen = "JAPANESE_MALE"
     }
     hatedByEffect = HATE_HUMANS
@@ -1839,6 +2211,11 @@
       { "GoldPiece" 6 16 }
     }
   }
+  
+#################################################################################################################################
+#                                                         bandits                                                               #
+#################################################################################################################################
+
   
 ############
 #  Rhonin  #
@@ -1979,6 +2356,11 @@
       { "LeatherArmor"}
     }
   }
+  
+#################################################################################################################################
+#                                                         yokai                                                                 #
+#################################################################################################################################
+
 
 #############
 #  Shinrei  #
@@ -2019,6 +2401,7 @@
     }
     spells = { "NIPPON_SHINREI_BLESSING" "NIPPON_SHINREI_CURSE" "NIPPON_SHINREI_CALL" }
     gender = IT
+    hatedByEffect = HATE_YOKAI
     inventory = {
       { "ChainArmor"}
       { "LeatherBoots"}
@@ -2062,7 +2445,7 @@
     }
     spells = { "nippon_juki_onna_ice_breath" "nippon_juki_onna_cold_fog" "nippon_juki_onna_cold_blast" "nippon_juki_onna_sculpt_ice"}
     gender = FEMALE
-    hatedByEffect = HATE_DEMONS
+    hatedByEffect = HATE_YOKAI
     name = {
       name = "juki onna"
       firstNameGen = "JAPANESE_FEMALE"
@@ -2083,11 +2466,11 @@
         } }}}
       }
     }
-    hatedByEffect = HATE_DEMONS
+    hatedByEffect = HATE_YOKAI
   }
   
 ###############
-#  Juki Onna  #
+#   Kyokotsu  #
 ###############
 
 "JP_KYOKOTSU"
@@ -2112,12 +2495,54 @@
     permanentEffects = {
       FLYING 1
     }
+    hatedByEffect = HATE_UNDEAD
     chatReactionFriendly = "\"Wouuuouuu!!!\""
     chatReactionHostile = "\"Wouuuouuu!!!\""
     name = {
       name = "kyokotsu"
     }
   }
+
+#############
+#  Kitsune  #
+#############
+
+"NIPPON_KITSUNE"
+  {
+    viewId = { "jp_kitsune" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 8 
+      SPELL_SPEED 6 
+	  LABORATORY 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 7
+    }
+    aiType = RANGED
+    chatReactionFriendly = "hihihi..."
+    chatReactionHostile = "\"Die!\""
+    spellSchools = {"JP_KITSUNE"}
+    permanentEffects = {
+      MELEE_VULNERABILITY 1
+	  MAGIC_RESISTANCE 1
+    }
+    gender = FEMALE
+    name = {
+      name = "kitsune"
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+    hatedByEffect = HATE_YOKAI
+    inventory = {
+      { "Nippon_Fan"}
+      { "Robe"}
+      { "GoldPiece" 2 6 }
+    }
+}
   
   
 #################################################################################################################################

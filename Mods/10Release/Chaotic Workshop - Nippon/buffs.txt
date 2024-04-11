@@ -110,6 +110,7 @@ End
 }
 
 "HATE_DEMONS" HATE("demons")
+"HATE_YOKAI" HATE("yokai")
 
 "NIPPON_CURSE_MINOR" {
   name = "minor curse"
@@ -487,6 +488,20 @@ End
   removedMessage = YOUR "are no longer communing"
   adjective = "recieving blessing"
   tickEffect = Chance 0.0002 {IncreaseLevel MALICE 1}
+  consideredBad = true
+  canAbsorb = false
+  price = 2
+  fx = DEBUFF_RED
+  color = ColorId RED
+}
+
+"NIPPON_INCREASE_CURSE" {
+  name = "cursed"
+  description = "Have slight chance to increase power of an curse."
+  addedMessage = "curse" "curses" "take hold"
+  removedMessage = YOUR "are no being cursed"
+  adjective = "is being cursed"
+  tickEffect = Chance 0.01 {NipponCurseProgress()}
   consideredBad = true
   canAbsorb = false
   price = 2

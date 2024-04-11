@@ -470,6 +470,20 @@ End
     specialAttr = {
       DAMAGE 15 Rider
     }
+	
+    genPrefixes = {
+      1 VictimEffect 0.3 Fire { 25 }
+      1 VictimEffect 0.1 Lasting POISON
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 3
+        LastingEffect HALLU
+      }
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
     storageIds = {"weapons" "equipment"}
     equipmentGroup = "basic equipment"
   }
@@ -488,6 +502,19 @@ End
     price = 2
     weaponInfo = {
       attackType = CRUSH
+    }
+    genPrefixes = {
+      1 VictimEffect 0.3 Fire { 25 }
+      1 VictimEffect 0.1 Lasting POISON
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 3
+        LastingEffect HALLU
+      }
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
     }
     maxUpgrades = 0
     storageIds = {"weapons" "equipment"}
@@ -518,6 +545,10 @@ End
         ItemAttrBonus DAMAGE 3
         LastingEffect HALLU
       }
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
     }
     maxUpgrades = 1
     storageIds = {"weapons" "equipment"}
@@ -540,6 +571,10 @@ End
       1 VictimEffect 0.3 Fire{30}
       1 VictimEffect 0.2 Lasting POISON
       1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
     }
     equipmentGroup = "adamantine equipment"
   }
@@ -552,6 +587,14 @@ End
     shortName = "infernite"
     price = 200
     craftingCost = "INFERNITE" 20
+    genPrefixes = {
+      1 VictimEffect 0.2 Lasting 50 BLEEDING
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
     carriedTickEffect = InferniteEffect()
     autoEquipPredicate = LastingEffect FIRE_RESISTANT
     ownedEffect = LIGHT_SOURCE
@@ -583,6 +626,10 @@ End
     genPrefixes = {
       1 VictimEffect 0.2 Lasting 50 BLEEDING
       1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
     }
     maxUpgrades = 1
     storageIds = {"weapons" "equipment"}
@@ -602,6 +649,10 @@ End
     craftingCost = "ADA" 50
     genPrefixes = {
       1 VictimEffect 0.5 Lasting 50 BLEEDING
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
     }
     maxUpgrades = 2
     equipmentGroup = "adamantine equipment"
@@ -615,6 +666,13 @@ End
     name = "infernite naginata"
     price = 1500
     craftingCost = "INFERNITE" 50
+    genPrefixes = {
+      1 VictimEffect 0.5 Lasting 50 BLEEDING
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
     carriedTickEffect = InferniteEffect()
     autoEquipPredicate = LastingEffect FIRE_RESISTANT
     ownedEffect = LIGHT_SOURCE
@@ -641,6 +699,10 @@ End
     }
     genPrefixes = {
       1 VictimEffect 0.3 Lasting COLLAPSED
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
     }
     maxUpgrades = 1
     storageIds = {"weapons" "equipment"}
@@ -659,6 +721,10 @@ End
     craftingCost = "ADA" 40
     genPrefixes = {
       1 VictimEffect 0.5 Lasting COLLAPSED
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
     }
     maxUpgrades = 2
     equipmentGroup = "adamantine equipment"
@@ -700,6 +766,10 @@ End
     }
     genPrefixes = {
       1 VictimEffect 1.0 Escape{}
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
     }
     maxUpgrades = 1
     storageIds = {"weapons" "equipment"}
@@ -724,6 +794,10 @@ End
         ItemAttrBonus SPELL_DAMAGE 20
         AttackerEffect Suicide DIE
       }
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
     }
     maxUpgrades = 2
     equipmentGroup = "iron equipment"
@@ -744,7 +818,42 @@ End
       1 VictimEffect 0.2 Lasting INSANITY
       1 VictimEffect 0.2 DestroyEquipment
       1 VictimEffect 0.5 Fire{20}
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
     }
     maxUpgrades = 5
     equipmentGroup = "adoxium equipment"
+  }
+  
+  
+"Nippon_Fan"
+  {
+    viewId = { "jp_fan" }
+    equipedViewId = { "jp_fan_v" }
+    name = "fab"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+	  SPELL_SPEED 8
+    }
+    price = 30
+    weaponInfo = {
+      attackType = SPELL
+      attackMsg = WAVE
+      meleeAttackAttr = SPELL_DAMAGE
+    }
+    genPrefixes = {
+      1 VictimEffect 1.0 Escape{}
+      1 VictimEffect 0.4 DestroyEquipment
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_SPEED 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "basic equipment"
   }

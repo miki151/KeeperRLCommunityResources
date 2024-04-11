@@ -46,6 +46,25 @@ End
 
 
 
+Def NipponFoxShrine() {
+Building("wood_wall", "wood_wall")
+Building("wood_wall", "wood_floor")
+Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Set("carpet", "wood_door")))
+Inside(BOTTOM, 3,Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Margin(LEFT, 2,Set("floor", "carpet"),Set("wood_floor", "nippon_bookcase")))))
+Inside(BOTTOM, 3,Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Margin(RIGHT, 2,Set("floor", "carpet"),Set("wood_floor", "nippon_bookcase")))))
+Inside(BOTTOM, 2,Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Margin(LEFT, 2,Set("floor", "carpet"),NipponTresureChest()))))
+Inside(BOTTOM, 2,Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Margin(RIGHT, 2,Set("floor", "carpet"),NipponTresureChest()))))
+Inside(BOTTOM, 1,Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Margin(LEFT, 2,Set("floor", "carpet"),Set("wood_floor", "torch")))))
+Inside(BOTTOM, 1,Border(BOTTOM, 1,Position(MIDDLE, {1 1}, Margin(RIGHT, 2,Set("floor", "carpet"),Set("wood_floor", "torch")))))
+      Choose(
+        {Inside(TOP, 1,Border(TOP, 1,Position(MIDDLE, {1 1}, Set("BED3", "carpet"))))},
+        {Inside(TOP, 1,Border(TOP, 1,Position(MIDDLE, {1 1}, Set("BED3", "carpet"))))}
+        )
+}
+End
+
+
+
 Def NipponShrineBase01() {
   Building("wood_wall", "wood_wall")
   Building("wood_wall", "wood_floor")
@@ -414,6 +433,54 @@ Def NipponBuddhist()
 End
   
 
+Def NipponFox() 
+ {
+  Position(
+    position = MIDDLE,
+    size = {5 5}
+    generator = {
+      NipponFoxShrine()
+      Filter(AnyFloor(), Set("main_building_inside"))
+      Inside(-1, Set("main_building"))
+    }
+  )
+  Place(
+    size = {4 4}
+    generator = {
+      NipponHouseChoose()
+      Filter(AnyFloor(), Set("main_building"))
+    }
+    count = {3 5}
+    minSpacing = 1
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  )
+  Place(
+    size = {1 1}
+    generator = {
+     Building("nippon_torii", "none")
+    }
+    count = 1
+    minSpacing = 1
+    predicate = And(
+	          Not On("main_building"),
+              Not Area(2,On("wood_wall"),1),
+              Not Area(2,On("custom_tree"),1),
+              Not Area(2,On("nippon_torii"),1)
+			  )
+  )
+  Nippon_Sakuras()
+  Nippon_Sakuras()
+}
+End
+
+"nipponfox" Choose(
+  NipponFox()
+)
 
 "nippon_buddhist" Choose(
   NipponBuddhist()
@@ -459,13 +526,20 @@ End
 )
 
 Def WorldMapNippon() {
-  NoiseMap(0.05, {
-    (0.0, 0.15, Filter(On("set_grass"), Set("set_nippon")))
+  NoiseMap(0.15, {
+    (0.0, 0.15, Filter(And(Not On("water_area"), Not On("set_tree"), Not On("set_sand"), Not On("set_mountains"), Not On("set_snow"), Or(On("set_grass"))), Set("set_nippon")))
   })
   
   Filter(On("set_nippon"), {Remove("GRASSLAND") Set("GRASSLAND_JAPAN") Choose(Set("jp_map_cherry"), Set("jp_map_cherry"), Set("jp_map_cherry"))})}
 End
 
+Def WorldMapEVILNippon() {
+  NoiseMap(0.15, {
+    (0.0, 0.15, Filter(And(Not On("water_area"), Not On("set_tree"), Not On("set_sand"), Not On("set_mountains"), Not On("set_snow"), Or(On("set_grass"))), Set("set_Bnippon")))
+  })
+  
+  Filter(On("set_Bnippon"), {Remove("GRASSLAND") Set("GRASSLAND_JAPAN_EVIL") Choose(Set("jp_map_cherry"), Set("jp_map_cherry"), Set("jp_map_cherry"))})}
+End
 "world_map" modify {
   NoiseMap(0.65, {
     (0.8, 1.0, Reset("set_water"))
@@ -491,6 +565,7 @@ End
   WorldMapConnections()
   WorldMapTrees()
   WorldMapNippon()
+  WorldMapEVILNippon()
 }
 
 "world_map_test" modify {
@@ -516,4 +591,5 @@ End
   WorldMapConnections()
   WorldMapTrees()
   WorldMapNippon()
+  WorldMapEVILNippon()
 }

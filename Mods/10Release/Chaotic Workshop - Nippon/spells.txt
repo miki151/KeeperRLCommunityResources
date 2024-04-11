@@ -280,7 +280,7 @@ OneTimeAbilityName("NIPPON_SHIKIGAMI_SUMMON", "Gains more shikigami.", { AI And{
 "NIPPON_ADVANCED_SHINOBI_MINES"
 {
   symbol = "🔧"
-  effect = Name "lay posionous gas grap" PlaceFurniture "POISON_GAS_TRAP"
+  effect = Name "lay posionous gas trap" PlaceFurniture "POISON_GAS_TRAP"
   cooldown = {150 400}
   sound = "SPELL_METEOR_SHOWER"
 }
@@ -302,6 +302,223 @@ OneTimeAbilityName("NIPPON_SHIKIGAMI_SUMMON", "Gains more shikigami.", { AI And{
   blockedByWall = false
 }
 
+#################################################################################################################################
+#                                                          dokusatsujutsu                                                       #
+#################################################################################################################################
+
+"NIPPON_DOKUSATSUJUTSU_BOLT"
+{
+  symbol = "⇾"
+  effect = MinDistanceFromStrongEnemy(4) Name "shoot poisoned bolt" Description "Shoots a poisoned bolt"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage { "are hit by the bolt" "is hit by the poisoned bolt"}
+          Damage SPELL_DAMAGE SHOOT
+		  Lasting POISON
+        },
+        CreatureMessage { "are spared by the bolt" "is spared by the poisoned bolt"}
+      )
+  range = 14
+  cooldown = {3 12}
+  maxHits = 1
+  projectileViewId = {"arrow"}
+  message = "shoot a poisoned bolt" "shoots a poisoned bolt"
+  type = ABILITY
+}
+
+"NIPPON_DOKUSATSUJUTSU_BOLT_ADV"
+{
+  upgrade = "NIPPON_DOKUSATSUJUTSU_BOLT"
+  symbol = "⇾"
+  effect = MinDistanceFromStrongEnemy(4) Name "shoot poisoned penetrating penetrating bolt" Description "Shoots a poisoned penetrating bolt"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage { "are hit by the bolt" "is hit by the poisoned penetrating bolt"}
+          Damage SPELL_DAMAGE SHOOT
+		  Lasting POISON
+        },
+        CreatureMessage { "are spared by the bolt" "is spared by the poisoned penetrating bolt"}
+      )
+  range = 14
+  cooldown = {3 12}
+  maxHits = 2
+  projectileViewId = {"arrow"}
+  message = "shoot a poisoned penetrating bolt" "shoots a poisoned penetrating bolt"
+  type = ABILITY
+}
+
+"NIPPON_DOKUSATSUJUTSU_PELLET"
+{
+  symbol = "☠"
+  effect = Name "poison pellet" Area 1 EmitGas "POISON_GAS" 0.5
+  endOnly = true
+  range = 6
+  cooldown = {15 31}
+  sound = "SPELL_BLAST"
+  message = "throws a pellet!" "throws an pellet!"
+}
+
+"NIPPON_DOKUSATSUJUTSU_PELLET_ADV"
+{
+  upgrade = "NIPPON_DOKUSATSUJUTSU_PELLET"
+  symbol = "☠"
+  effect = Name "poison pellet" Area 2 EmitGas "POISON_GAS" 0.5
+  endOnly = true
+  range = 6
+  cooldown = {15 31}
+  sound = "SPELL_BLAST"
+  message = "throws a pellet!" "throws an pellet!"
+}
+
+"NIPPON_DOKUSATSUJUTSU_RESIST"
+{
+  symbol = "🐍❤️"
+  effect = Name "poison resistance" Lasting POISON_RESISTANT
+  cooldown = {5 31}
+  targetSelf = true
+  range = 1
+  sound = "SPELL_CURE_POISON"
+}
+
+"NIPPON_DOKUSATSUJUTSU_HEALING"
+{
+  upgrade = "NIPPON_DOKUSATSUJUTSU_RESIST"
+  symbol = "🐍❤️"
+  effect = Name "posion healing" Chain {Heal { FLESH } Lasting 20 POISON_RESISTANT}
+  range = 1
+  targetSelf = true
+  cooldown = {5 31}
+  sound = "SPELL_HEALING"
+}
+
+"NIPPON_DOKUSATSUJUTSU_HEALING_ADV"
+{
+  upgrade = "NIPPON_DOKUSATSUJUTSU_HEALING"
+  symbol = "🐍❤️"
+  effect = Name "posion healing" Chain {Heal { FLESH } Lasting 20 POISON_RESISTANT}
+  targetSelf = true
+  range = 4
+  cooldown = {10 31}
+  sound = "SPELL_HEALING"
+}
+
+"NIPPON_DOKUSATSUJUTSU_POISON_BREATH"
+
+{
+  symbol = "☠"
+  effect = Name "poison breath" Area 1 EmitGas "POISON_GAS" 0.5
+  fx = {FLAMETHROWER ColorId GREEN}
+  range = 2
+  cooldown = {30 46}
+  sound = "SPELL_BLAST"
+  message = "breathe poison!" "breathes poison!"
+}
+
+"NIPPON_DOKUSATSUJUTSU_POISON_BREATH_ADV"
+
+{
+  upgrade = "NIPPON_DOKUSATSUJUTSU_POISON_BREATH"
+  symbol = "☠"
+  effect = Name "poison breath" Area 1 EmitGas "POISON_GAS" 0.5
+  fx = {FLAMETHROWER ColorId GREEN}
+  range = 4
+  cooldown = {30 46}
+  sound = "SPELL_BLAST"
+  message = "breathe poison!" "breathes poison!"
+}
+
+#################################################################################################################################
+#                                                          jp_supaidaririkira                                                       #
+#################################################################################################################################
+
+
+"NIPPON_SUPAIDARIRIKIRA_PELLET"
+{
+  symbol = "☠"
+  effect = Name "bloodlust pellet" Area 1 EmitGas "NIPPON_SPIDER_LILLY_SMOKE" 0.5
+  endOnly = true
+  range = 6
+  cooldown = {30 64}
+  sound = "SPELL_BLAST"
+  message = "throws a pellet!" "throws an pellet!"
+}
+
+"NIPPON_SUPAIDARIRIKIRA_BREATH"
+{
+  symbol = "☠🐍"
+  effect = Name "bloodlust breath" Area 1 EmitGas "NIPPON_SPIDER_LILLY_SMOKE" 0.5
+  fx = {FLAMETHROWER ColorId GREEN}
+  range = 2
+  cooldown = {30 46}
+  sound = "SPELL_BLAST"
+  message = "breathe poison!" "breathes poison!"
+}
+
+#################################################################################################################################
+#                                                          machine art                                                               #
+#################################################################################################################################
+
+"NIPPON_SHINOBI_ALARM"
+{
+  symbol = "🔧"
+  effect = Name "lay alarm" PlaceFurniture "ALARM_TRAP"
+  cooldown = {150 400}
+}
+
+"NIPPON_SHINOBI_SCARE"
+{
+  symbol = "🔧"
+  effect = Name "lay jumpscare" PlaceFurniture "TERROR_TRAP"
+  cooldown = {150 400}
+}
+
+"NIPPON_SHINOBI_FIRETRAP"
+{
+  symbol = "🔧"
+  effect = Name "lay fire trap" PlaceFurniture "FIRE_TRAP"
+  cooldown = {150 400}
+}
+
+"NIPPON_SCARECROW_TRAP"
+{
+  symbol = "🔧"
+  effect = Name "lay scarecrow trap" PlaceFurniture "NIPPON_SCARECROW_TRAP"
+  cooldown = {150 400}
+}
+
+#################################################################################################################################
+#                                                          spy                                                                  #
+#################################################################################################################################
+
+"NIPPON_SPY_PACIFY"
+{
+  symbol = "☮"
+  effect = Name "pacify" Lasting 40 PEACEFULNESS
+  range = 3
+  cooldown = {30 81}
+  endOnly = true
+  sound = "SPELL_STR_BONUS"
+}
+
+"NIPPON_SPY_PACIFY_ADV"
+{
+  upgrade = "NIPPON_SPY_PACIFY"
+  symbol = "☮"
+  effect = Name "pacify" Lasting 40 PEACEFULNESS
+  range = 6
+  cooldown = {30 81}
+  endOnly = true
+  sound = "SPELL_STR_BONUS"
+}
+
+"NIPPON_SPY_PACIFY_EX"
+{
+  upgrade = "NIPPON_SPY_PACIFY_ADV"
+  symbol = "☮"
+  effect = Name "mass pacify" Area 9 Filter Enemy Lasting 40 PEACEFULNESS
+  cooldown = {30 81}
+  sound = "SPELL_STR_BONUS"
+}
 #################################################################################################################################
 #                                                          benkei                                                               #
 #################################################################################################################################
@@ -1496,4 +1713,124 @@ OneTimeAbilityName("NIPPON_CORRUPTED_DAIMYO_ANOTHER_BODYGUARD", "Gains an bodygu
   cooldown = {300 810}
   range = 1
   sound = "SPELL_METEOR_SHOWER"
+}
+
+#################################################################################################################################
+#                                                       kitsune                                                                     #
+#################################################################################################################################
+
+
+Def TryFoxFire()
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"are hit by the fire" "is hit by the fire"}
+      Fire
+    },
+    CreatureMessage {"are spared by the fire" "is spared by the fire"}
+  )
+End
+
+"NIPPON_FOX_TRANSFORM"
+{
+  symbol = "❤️"
+  effect = Name "human form" Description "Assume form of an human" Chain{
+          Filter CreatureFlag "is_human" { SetViewId {"jp_kitsune"} SetCreatureFlag "is_human" false}
+          Filter Not CreatureFlag "is_human" { SetViewId {"jp_kitsune_human"} SetCreatureFlag "is_human" true}
+		  }
+  cooldown = {10 31}
+  sound = "SPELL_HEALING"
+}
+
+"NIPPON_FOX_FIRE"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fox fire" Description "Shoots a gout of flame"
+      TryMagicMissile()
+  fx = {MAGIC_MISSILE}
+  range = 4
+  cooldown = {1 21}
+  sound = "SPELL_BLAST"
+}
+
+"NIPPON_FOX_FIRE_ADV"
+{
+  upgrade = "NIPPON_FOX_FIRE"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fox fire" Description "Shoots a gout of flame"
+      TryMagicMissile()
+  fx = {MAGIC_MISSILE}
+  range = 8
+  cooldown = {1 21}
+  sound = "SPELL_BLAST"
+}
+"NIPPON_FOX_FIRE_EXP"
+{
+  upgrade = "NIPPON_FOX_FIRE_ADV"
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fox fire" Description "Shoots a gout of flame"
+      TryMagicMissile()
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = {1 21}
+  sound = "SPELL_BLAST"
+}
+
+"NIPPON_FOX_DECEPTION"
+{
+  symbol = "🎭"
+  effect = Name "illusion" Deception
+  cooldown = {45 90}
+  sound = "SPELL_DECEPTION"
+}
+
+"NIPPON_FOX_DECEPTION_ADV"
+{
+  upgrade = "NIPPON_FOX_DECEPTION"
+  symbol = "🎭"
+  effect = Name "illusion" Deception
+  cooldown = {30 60}
+  sound = "SPELL_DECEPTION"
+}
+
+"NIPPON_FOX_DECEPTION_EXP"
+{
+  upgrade = "NIPPON_FOX_DECEPTION_ADV"
+  symbol = "🎭"
+  effect = Name "illusion" Deception
+  cooldown = {15 30}
+  sound = "SPELL_DECEPTION"
+}
+
+"NIPPON_FOX_INVISIBILITY"
+{
+  symbol = "🕵️"
+  effect = Name "invisibility" Lasting 8 INVISIBLE
+  cooldown = {40 100}
+  sound = "SPELL_INVISIBILITY"
+}
+
+"NIPPON_FOX_INVISIBILITY_ADV"
+{
+  upgrade = "NIPPON_FOX_INVISIBILITY"
+  symbol = "🕵️"
+  effect = Name "invisibility" Lasting 12 INVISIBLE
+  cooldown = {30 80}
+  sound = "SPELL_INVISIBILITY"
+}
+
+"NIPPON_FOX_INVISIBILITY_EXP"
+{
+  upgrade = "NIPPON_FOX_INVISIBILITY_ADV"
+  symbol = "🕵️"
+  effect = Name "invisibility" Lasting 16 INVISIBLE
+  cooldown = {20 60}
+  sound = "SPELL_INVISIBILITY"
+}
+
+"NIPPON_FOX_FLIGHT"
+{
+  symbol = "f"
+  effect = Name "take flight" Lasting 40 FLYING
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
 }

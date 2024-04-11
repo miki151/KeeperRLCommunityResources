@@ -192,7 +192,7 @@
       }
     }
     {
-      ids = { "NIPPON_SHINOBI" "NIPPON_KUNOICHI" }
+      ids = { "NIPPON_SHINOBI" }
       traits = { FIGHTER }
       frequency = 0.7
       requirements = {
@@ -231,6 +231,28 @@
       specialTraits = {
         { 1.0 { Lasting { SUMMONED 500 } }}
       }
+    }
+	{
+      ids = { "NIPPON_BENKEI" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "NIPPON_BUDDHIST_GOOD" } 3  }
+        { 1.0 CostInfo "GOLD" 20 }
+      }
+    }
+}
+
+"nippon_shinobi"
+{
+    {
+      ids = { "NIPPON_SHINOBI_MINARAI" "NIPPON_SHINOBI_MINARAI_F" }
+      traits = { WORKER FIGHTER }
+      keybinding = CREATE_IMP
+      noAuto = true
+      initialRecruitment = 6
+      requirements = {
+        { 1 ExponentialCost "GOLD" 45 10 6 }
+      }             
     }
 	{
       ids = { "NIPPON_BENKEI" }
@@ -469,6 +491,14 @@
         { 1.0 CostInfo "GOLD" 20 }
       }
     }
+	{
+      ids = { "NIPPON_PESEANT" }
+      traits = { WORKER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "NIPPON_VILLAGE_FOX" } 3  }
+        { 1.0 CostInfo "GOLD" 20 }
+      }
+    }
 }
 
 
@@ -479,6 +509,14 @@
       traits = { FIGHTER }
       requirements = {
         { 0.0 RecruitmentInfo { "NIPPON_BUDDHIST_EVIL" } 3  }
+        { 1.0 CostInfo "GOLD" 20 }
+      }
+    }
+	{
+      ids = { "NIPPON_PESEANT" }
+      traits = { WORKER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "NIPPON_VILLAGE_FOX" } 3  }
         { 1.0 CostInfo "GOLD" 20 }
       }
     }
