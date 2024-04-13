@@ -1065,6 +1065,10 @@ End
             Area 1 Filter 
 			FurnitureType "EG_OFFERING" Chain { countgore() }
 			Filter Not Flag "gore_08" {	
+			Filter Not Flag "gore_04" 
+			{
+			PlayerMessage CRITICAL "Bring five offerings and put them around an altar."
+            } 
 			Filter Flag "gore_04" 
 			{
 			                 Area 1 PlaceFurniture "EG_GROWTH_FLOOR"
@@ -1096,6 +1100,11 @@ End
             resetgore()
             Area 1 Filter 
 			FurnitureType "EG_OFFERING" Chain { countgore() }
+			Filter Not Flag "gore_04" 
+			{
+			PlayerMessage CRITICAL "Bring five offerings and put them around an altar."
+            } 
+			Filter Not Flag "gore_08" {	
 			Filter Flag "gore_04" 
 			{
 			                 Area 2 PlaceFurniture "EG_GROWTH_FLOOR"
@@ -1106,7 +1115,7 @@ End
 							 }
 							 AddSpellSchool "EG_GROWTH_MAGIC_02"
 							 IncreaseAttr BLESSED_FLESH 1
-            }
+            }}
 			Filter Flag "gore_08"
 			{
 						     Area 2 PlaceFurniture "EG_GROWTH_FLOOR"
@@ -1133,6 +1142,11 @@ End
             resetgore()
             Area 1 Filter 
 			FurnitureType "EG_OFFERING" Chain { countgore() }
+			Filter Not Flag "gore_08" {	
+			Filter Not Flag "gore_04" 
+			{
+			PlayerMessage CRITICAL "Bring five offerings and put them around an altar."
+            }
 			Filter Flag "gore_04" 
 			{
 			                 Area 2 PlaceFurniture "EG_GROWTH_FLOOR"
@@ -1143,7 +1157,7 @@ End
 							 }
 							 AddSpellSchool "EG_WISDOM_MAGIC"	
 							 IncreaseAttr SPELL_SPEED 1
-            }
+            }}
 			Filter Flag "gore_08"
 			{
 						     Area 2 PlaceFurniture "EG_GROWTH_FLOOR"
@@ -1695,6 +1709,8 @@ End
   canHideHere = true
   strength = 100 
   canBuildOutsideOfTerritory = true
+  canSilentlyReplace = true
+  removeInstantly = true
 }
 
 "EG_GROUND_TORCH"
@@ -2128,6 +2144,24 @@ End
 }
 #####################################COSMOS###########################################
 
+"CS_HILL"
+{
+  name = "hill"
+  viewId = { "cs_sorch_hill_" }
+  lightEmission = 2.2
+  layer = GROUND
+}
+
+"CS_HILL_CRYSTAL"
+{
+  name = "hill"
+  viewId = { "cs_sorch_hill_crystal_" }
+  lightEmission = 2.2
+  layer = GROUND
+}
+
+
+
 "CS_ALTAR"
 {
   name = "Genesis Altar"
@@ -2151,6 +2185,7 @@ End
 	  Chain{ 
 	  Summon "CS_COSMOS_BEAST" {1} none}}
 	  resetcosmos()}
+  usageType = UsageEffect "use" {PlayerMessage CRITICAL "drain creatures to recieve help."}
   usageTime = 1
   strength = 100
   hidesItems = true
@@ -2301,4 +2336,275 @@ End
   destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
   usagePredicate = Area 1 Not FurnitureType "MAGMA"
   usageFX = LAVA_JEWELLER
+}
+
+
+"CHAOS_MOUNTAIN" inherit "MOUNTAIN2"
+{
+  name = "corrupted rock"
+  viewId = { "chaos_mountain_place" }
+  lightEmission = 2.2
+  summonedElement = "CHAOS_SPAWN"
+  destroyFX = { ROCK_CLOUD Rgb 255 200 255 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 255 200 255 255 }
+}
+
+"CHAOS_HIDDEN_DOOR"
+{
+  name = "corrupted rock"
+  viewId = { "chaos_mountain_place" }
+  blockAllVision = true
+  strength = 1
+  #viewLayer = FLOOR_BACKGROUND
+  entryType = Effect {
+      Message NORMAL "It was just an illusion!"
+      Fx { TELEPORT_OUT }
+      DestroyWalls BASH
+  }
+}
+
+"CHAOS_WALL" inherit "DUNGEON_WALL"
+{
+  viewId = { "chaos_wall_place" }
+  builtOver = {"CHAOS_MOUNTAIN"}
+  lightEmission = 2.2
+  summonedElement = "CHAOS_SPAWN"
+  destroyFX = { ROCK_CLOUD Rgb 255 200 255 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 255 200 255 255 }
+}
+
+"CHAOS_FLOOR"
+{
+  name = "corrupted floor"
+  viewId = { "chaos_floor" }
+  lightEmission = 2.2
+  layer = GROUND
+}
+
+"CHAOS_MAGMA" {
+  name = "corrupted magma"
+  viewId = { "magma" }
+  layer = GROUND
+  entryType = Magma
+  droppedItems = { "burns" "burn" }
+  lightEmission = 8.2
+  defaultBridge = "STONE_BRIDGE"
+  summonedElement = "CHAOS_SPAWN"
+  freezeTo = "FLOOR"
+  fillPit = "CHAOS_MAGMA"
+  canSilentlyReplace = true
+  tickType = Effect {
+    Area 1 Chance 0.03 SetFurnitureOnFire
+    Chance 0.1 SetFurnitureOnFire
+    Chance 0.002 SoundEffect { "LAVA_AMBIENT" 0.2 }
+  }
+  movementSet = {
+    traits = { FLY }
+    forcibleTraits = { WALK }
+  }
+}
+
+##################################Forgotten##################################
+
+"FP_ALTAR_OLD"
+{
+  name = "Ancient Altar"
+  viewId = { "fp_ancient_altar_dead" }
+  canBuildOutsideOfTerritory = true
+  tickType = Effect Chain{ 	RemoveFurniture "FP_ALTAR_OLD" 
+							ChooseRandom {
+							PlaceFurniture "FP_ALTAR_OLD_BEAST"
+							PlaceFurniture "FP_ALTAR_OLD_BLESS"
+							PlaceFurniture "FP_ALTAR_OLD_SWORD"
+							}
+						}
+}
+
+"FP_ALTAR_OLD_BEAST"
+{
+  name = "Ancient Altar"
+  viewId = { "fp_ancient_altar_beast" }
+  usageTime = 1
+  strength = 100
+  hidesItems = true
+  canHideHere = true
+  usageType = UsageEffect "use" {
+   Chain 
+        { 
+		    SetFlag "lore_flesh_shaper" true
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+			Filter Not Flag "gore_05" 
+			{
+			PlayerMessage CRITICAL "Bring five offerings and put them around an altar."
+            } 
+			Filter Flag "gore_05" 
+			{
+						     Area 1 RemoveFurniture "EG_OFFERING"
+							 Summon "BB_BEAST" {1 3} none
+							 Summon "BB_BEAST_F" {1 3} none
+							 Summon "BB_BEAST_BRUTE" {0 1} none
+							 Summon "BB_BEAST_BRUTE_F" {0 1} none
+						     Area 0 RemoveFurniture "FP_ALTAR_OLD_BEAST"
+						     Area 0 PlaceFurniture "FP_ALTAR_OLD_DEAD_BEAST"
+            } 
+        }
+	}
+  destroyedRemains = "FP_ALTAR_OLD_DEAD_BEAST"
+}
+
+"FP_ALTAR_OLD_BLESS"
+{
+  name = "Ancient Altar"
+  viewId = { "fp_ancient_altar_bless" }
+  usageTime = 1
+  strength = 100
+  hidesItems = true
+  canHideHere = true
+  usageType = UsageEffect "use" {
+   Chain 
+        { 
+		    SetFlag "lore_flesh_shaper" true
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+			Filter Not Flag "gore_05" 
+			{
+			PlayerMessage CRITICAL "Bring five offerings and put them around an altar."
+            } 
+			Filter Flag "gore_05" 
+			{
+						     Area 1 RemoveFurniture "EG_OFFERING"
+							 Permanent FP_ANCIENT_POWER
+							 AddSpellSchool "FP_ANCIENT_MAGIC"
+						     Area 0 RemoveFurniture "FP_ALTAR_OLD"
+						     Area 0 PlaceFurniture "FP_ALTAR_OLD_DEAD_BLESS"
+            } 
+        }
+	}
+  destroyedRemains = "FP_ALTAR_OLD_DEAD_BLESS"
+}
+
+"FP_ALTAR_OLD_SWORD"
+{
+  name = "Ancient Altar"
+  viewId = { "fp_ancient_altar_beast" }
+  usageTime = 1
+  strength = 100
+  hidesItems = true
+  canHideHere = true
+  usageType = UsageEffect "use" {
+   Chain 
+        { 
+		    SetFlag "lore_flesh_shaper" true
+            resetgore()
+            Area 1 Filter 
+			FurnitureType "EG_OFFERING" Chain { countgore() }
+			Filter Not Flag "gore_05" 
+			{
+			PlayerMessage CRITICAL "Bring five offerings and put them around an altar."
+            } 
+			Filter Flag "gore_05" 
+			{
+						     Area 1 RemoveFurniture "EG_OFFERING"
+							 DropItems {"Fp_Shard_Knife"} {1}
+						     Area 0 RemoveFurniture "FP_ALTAR_OLD_SWORD"
+						     Area 0 PlaceFurniture "FP_ALTAR_OLD_DEAD_SWORD"
+            } 
+        }
+	}
+  destroyedRemains = "FP_ALTAR_OLD_DEAD_SWORD"
+}
+
+"FP_ALTAR_OLD_DEAD"
+{
+  name = "Ancient Altar"
+  viewId = { "fp_ancient_altar_dead" }
+  hidesItems = true
+  canHideHere = true
+}
+
+"FP_ALTAR_OLD_DEAD_BEAST"
+{
+  name = "Ancient Altar"
+  viewId = { "fp_ancient_altar_dead" }
+  hidesItems = true
+  canHideHere = true
+}
+
+"FP_ALTAR_OLD_DEAD_BLESS"
+{
+  name = "Ancient Altar"
+  viewId = { "fp_ancient_altar_dead" }
+  hidesItems = true
+  canHideHere = true
+}
+
+"FP_ALTAR_OLD_DEAD_SWORD"
+{
+  name = "Ancient Altar"
+  viewId = { "fp_ancient_altar_dead" }
+  hidesItems = true
+  canHideHere = true
+}
+
+"FP_MUD_SPAWN"
+{
+  name = "mud"
+  viewId = { "fp_mud_01" }
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+  tickType = Effect Chain{ 	RemoveFurniture "FP_MUD_SPAWN" 
+							ChooseRandom {
+							PlaceFurniture "FP_MUD_01"
+							PlaceFurniture "FP_MUD_01"
+							PlaceFurniture "FP_MUD_01"
+							PlaceFurniture "FP_MUD_01"
+							PlaceFurniture "FP_MUD_02"
+							PlaceFurniture "FP_MUD_03"
+							PlaceFurniture "FP_MUD_04"
+							PlaceFurniture "FP_MUD_05"
+							}
+						}
+}
+
+"FP_MUD_01"
+{
+  name = "mud"
+  viewId = { "fp_mud_01" }
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"FP_MUD_02"
+{
+  name = "mud"
+  viewId = { "fp_mud_02" }
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"FP_MUD_03"
+{
+  name = "mud"
+  viewId = { "fp_mud_03" }
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"FP_MUD_04"
+{
+  name = "mud"
+  viewId = { "fp_mud_04" }
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"FP_MUD_05"
+{
+  name = "mud"
+  viewId = { "fp_mud_05" }
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
 }

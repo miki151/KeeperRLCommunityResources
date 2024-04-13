@@ -274,7 +274,7 @@
   }
   mountainEnemies = {
     {1 8} {id = "CS_DRAINED_DEN" probability = 0.6}
-    10 {id = "KIRIN"}
+    10 {id = "CS_CRATER_BIG_SPAWN"}
   }
   wildlife = {
     count = { 3 }
@@ -287,25 +287,118 @@
     }
   }
   darkKeeperEnemies = {
-    { id = "CS_COTTAGE_CULT" count = { 1 4 } }
+    { id = "CS_CRATER_SMALL_EMPTY" count = { 1 2 } }
+    { id = "CS_CRATER_BIG_EMPTY" probability = 0.3 }
+    { id = "CS_COTTAGE_CULT" count = { 1 2 } }
     { id = "NO_AGGRO_DRAINED_COTTAGE" count = { 0 2 } }
     { id = "CORPSES" probability = 0.2 }
   }
   whiteKeeperEnemies = {
-    { id = "CS_COTTAGE_CULT" count = { 1 4 } }
+    { id = "CS_CRATER_SMALL_EMPTY" count = { 1 2 } }
+    { id = "CS_CRATER_BIG_EMPTY" probability = 0.3 }
+    { id = "CS_COTTAGE_CULT" count = { 1 2 } }
     { id = "NO_AGGRO_DRAINED_COTTAGE" count = { 0 2 } }
     { id = "CORPSES" probability = 0.2 }
   }
   darkKeeperBaseEnemies = {
+    { id = "CS_CRATER_SMALL_EMPTY" count = { 1 2 } }
+    { id = "CS_CRATER_BIG_EMPTY" probability = 0.3 }
     { id = "CS_COTTAGE_CULT" }
     { id = "NO_AGGRO_DRAINED_COTTAGE" }
-    { id = "KRAKEN" probability = 0.3 }
+    { id = "CS_CULT_HIDEOUT" probability = 0.3 }
   }
   whiteKeeperBaseEnemies = {
+    { id = "CS_CRATER_SMALL_EMPTY" count = { 1 2 } }
+    { id = "CS_CRATER_BIG_EMPTY" probability = 0.3 }
     { id = "CS_COTTAGE_CULT" }
     { id = "NO_AGGRO_DRAINED_COTTAGE" }
-    { id = "KRAKEN" probability = 0.3 }
+    { id = "CS_CULT_HIDEOUT" probability = 0.3 }
   }
   viewId = { "map_mountains1" }
   name = "mountains"
+}
+
+"YS_GRASSLAND"
+{
+  lakes = {
+    size = {15 20}
+    count = {0 3}
+  }
+  items = "wildernessItems"
+  itemCount = {10 20}
+  mountains = {
+    lowlandRatio = 1.0
+    hillRatio = 0.0
+    hill = "HILL"
+    grass = "GRASS"
+    mountain = "MOUNTAIN"
+    mountainDeep = "MOUNTAIN2"
+    mountainFloor = "FLOOR"
+  }
+  forests = {
+    {
+      ratio = 0.3
+      density = 0.25
+      onType = "GRASS"
+      trees = "vegetationLow"
+    }
+    {
+      ratio = 0.8
+      density = 0.25
+      onType = "HILL"
+      trees = "vegetationHigh"
+    }
+    {
+      ratio = 1.0
+      density = 0.002
+      onType = "GRASS"
+      trees = "flowers"
+    }
+    {
+      ratio = 0.1
+      density = 0.02
+      onType = "GRASS"
+      trees = "flowers"
+    }
+  }
+  mountainEnemies = {
+    {1 8} {id = "WOLF_DEN" probability = 0.2}
+    {1 8} {id = "BAT_DEN" probability = 0.2}
+    {1 8} {id = "CAVE_BEAR_DEN" probability = 0.2}
+    {1 8} {id = "YS_BYAKHEE_CAVE" probability = 0.2}
+    10 {id = "KIRIN"}
+  }
+  wildlife = {
+    count = { 3 }
+    all = {
+      4 "DEER"
+      2 "FOX"
+      2 "BOAR"
+      2 "RAVEN"
+    }
+  }
+  darkKeeperEnemies = {
+    { id = "YS_COTTAGE" count = { 3 5 } }
+    { id = "YS_BYAKHEE_CAVE" probability = 0.7 }
+    { id = "CORPSES" probability = 0.2 }
+    { id = "RUINS" probability = 0.5 }
+  }
+  whiteKeeperEnemies = {
+    { id = "YS_COTTAGE" count = { 3 5 } }
+    { id = "YS_BYAKHEE_CAVE" probability = 0.7 }
+    { id = "CORPSES" probability = 0.2 }
+    { id = "RUINS" probability = 0.5 }
+  }
+  darkKeeperBaseEnemies = {
+    { id = "YS_COTTAGE" }
+    { id = "YS_BYAKHEE_CAVE" }
+    { id = "KRAKEN" probability = 0.3 }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "YS_COTTAGE" }
+    { id = "YS_BYAKHEE_CAVE" }
+    { id = "KRAKEN" probability = 0.3 }
+  }
+  viewId = { "grass" }
+  name = "grassland"
 }

@@ -862,3 +862,79 @@
     storageIds = {"equipment"}
     equipmentGroup = "light emitting equipment"
   }
+  
+"eg_offering"
+  {
+    viewId = { "eg_offering" Rgb 0 0 0 0 }
+    shortName = "offering"
+    name = "offering"
+    plural = "offering"
+    blindName = "corpse"
+    applyVerb = "place" "places"
+    fragile = true
+    weight = 0.3
+    effect = { Area 0 PlaceFurniture "EG_OFFERING" }
+    craftingCost = "CORPSE" 4
+    price = 10
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"potions" "equipment"}
+  }
+  
+"Fp_Ancient_Scroll"
+  {
+    name = "religious scroll"
+    viewId = { "scroll" }
+    weight = 1
+    price = 1
+    applyVerb = "read" "reads"
+    applyPredicate = Not LastingEffect BLIND
+    resourceId = "TEXTS"
+    effect = Description "Ancient religious text. Most of it is totaly unreadable" { }
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"AdoxieScroll" modify append
+  {
+    resourceId = "TEXTS"
+  }
+
+"AdoxieScrollVault" modify append
+  {
+    resourceId = "TEXTS"
+  }
+  
+"ZombieScroll" modify append
+  {
+    resourceId = "TEXTS"
+  }
+  
+"CyclopsScroll" modify append
+  {
+    resourceId = "TEXTS"
+  }
+
+"Fp_Shard_Knife"
+  {
+    viewId = { "fp_shard" }
+    equipedViewId = { "fp_shard_v" }
+    name = "shard"
+    plural = "shards"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 0.3
+    modifiers = {
+      DAMAGE 5
+    }
+    price = 1
+    weaponInfo = {
+      attackType = STAB
+      attackMsg = THRUST
+      victimEffect = { 0.1 Suicide DIE }
+	  attackerEffect = {FixedDamage SPELL_DAMAGE 5 SPELL}
+    }
+    ownedEffect = DARKNESS_SOURCE
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "artifact equipment"
+  }

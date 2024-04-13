@@ -1342,6 +1342,139 @@
 #########     Cosmos       #########
 ####################################
 
+"CS_CRATER_SMALL_EMPTY"
+{
+  settlement = {
+    type = RandomLayout { "PlaceCrater" { 8 8 } "default"}
+    tribe = MONSTER
+    dontBuildRoad = true
+    shopItems = {{10 15} "cs_crater" }
+  }
+}
+
+"CS_CRATER_SMALL"
+{
+  settlement = {
+    type = RandomLayout { "PlaceCrater" { 8 8 } "default"}
+    inhabitants = {
+      fighters = {
+        count = {1 3}
+        all = {
+			50 "CS_STAR_SWIMMER"
+        }
+      }
+    }
+    tribe = MONSTER
+    dontBuildRoad = true
+    shopItems = {{10 15} "cs_crater" }
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 36
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 6
+    minTeamSize = 1
+    ambushChance = 0.05
+    triggers = {
+      SelfVictims
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"CS_STAR_SWIMMER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+"CS_CRATER_BIG_EMPTY"
+{
+  settlement = {
+    type = RandomLayout { "PlaceCraterBig" { 8 8 } "default"}
+    tribe = MONSTER
+    dontBuildRoad = true
+    shopItems = {{10 15} "cs_crater" }
+  }
+}
+
+"CS_CRATER_BIG"
+{
+  settlement = {
+    type = RandomLayout { "PlaceCraterBig" { 8 8 } "default"}
+    inhabitants = {
+      fighters = {
+        count = {3 6}
+        all = {
+			50 "CS_STAR_SWIMMER"
+        }
+      }
+    }
+    tribe = MONSTER
+    dontBuildRoad = true
+    shopItems = {{10 15} "cs_crater" }
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 1
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 12
+    minTeamSize = 3
+    ambushChance = 0.05
+    triggers = {
+      SelfVictims
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"CS_STAR_SWIMMER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+"CS_CRATER_BIG_SPAWN"
+{
+  settlement = {
+    type = RandomLayout { "PlaceCraterBig" { 8 8 } "default"}
+    inhabitants = {
+      leader = { { "CS_COSMOS_SPAWN" } }
+      fighters = {
+        count = {3 6}
+        all = {
+			50 "CS_STAR_SWIMMER"
+        }
+      }
+    }
+    tribe = MONSTER
+    dontBuildRoad = true
+    shopItems = {{10 15} "cs_crater" }
+  }
+}
+
 "CS_DRAINED_DEN"
 {
   settlement = {
@@ -1653,16 +1786,111 @@
   }
 }
 
+"CS_HIDEOUT"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    tribe = BANDIT
+  }
+  config = {
+    conquerCondition = NEVER
+  }
+}
+
+"CS_CULT_HIDEOUT"
+{
+  biome = "MOUNTAIN"
+  settlement = {
+    type = Builtin MINETOWN "DUNGEON"
+    tribe = BANDIT
+    inhabitants = {
+      leader = { { "CS_CULTIST_RITUALIST" } }
+      fighters = {
+        count = {6 9}
+        all = {
+					1 "CS_CULTIST" 
+					1 "CS_CULTIST_F" 
+					}
+      }
+      civilians = {
+        count = {6 9},
+        all = {
+          1 "CS_DRAINED_HUMAN" 
+		  1 "CS_DRAINED_GREENSKIN" 
+		  1 "CS_DRAINED_DWARF" 
+		  1 "CS_DRAINED_ELF" 
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "cult"
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+  }
+  config = {
+    immigrantInterval = 500
+    maxPopulation = 15
+    prisoners = true
+  }
+  levelConnection = {
+    topLevel = ExtraEnemy {"CS_HIDEOUT"}
+    levels = {
+      { MainEnemy {60 40} MINETOWN }
+    }
+  }
+  immigrants = {
+    {
+      ids = { "CS_CULTIST" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+    {
+      ids = { "CS_CULTIST_F" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+
 ####################################
 #########   YELLOW SIGN    #########
 ####################################
 
+"YS_BYAKHEE_CAVE"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = {
+        id = { "YS_BYAKHEE" }
+        combatExperience = 7
+      }
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "YS_BYAKHEE"
+        }
+      }
+    }
+    tribe = BANDIT
+    race = "cave"
+  }
+  config = {
+    leaderAsFighter = true
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    attackBehaviour = KillLeader
+  }
+}
+
 "YS_COTTAGE"
 {
-  biome = "FOREST"
+  biome = "YS_GRASSLAND"
   settlement = {
     type = Builtin FORREST_COTTAGE "WOOD"
-    tribe = LIZARD
+    tribe = BANDIT
     inhabitants = {
       leader = { { "YS_ACTOR" } }
       fighters = {
@@ -1683,5 +1911,247 @@
   }
   config = {
     prisoners = true
+  }
+}
+
+
+"YS_CASTLE"
+{
+  biome = "YS_GRASSLAND"
+  settlement = {
+    type = RandomLayout { "castle" { 20 20 30 30 } "ys_castle"}
+    tribe = BANDIT
+    inhabitants = {
+      leader = { 
+	    id = {  "YS_PROPHET" } 
+        expLevelIncrease = {
+          DAMAGE 10
+          SPELL_DAMAGE 10
+          RANGED_DAMAGE 10
+        }}
+      fighters = {
+        count = {12 17}
+        all = {
+          1 "YS_CULTIST_SORCERER"
+          3 "YS_ACTOR"
+        }
+      }
+      civilians = {
+        count = {6 9}
+        uniques = { "YS_JESTER" }
+        all = {
+          1 "YS_CULTIST"
+          1 "YS_CULTIST_F"
+        }
+      }
+      steeds = {
+        all = { 1 "YS_BYAKHEE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "villageShop" }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 36
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+    prisoners = true
+  }
+  behaviour = {
+    duelChance = 1.0
+    minPopulation = 7
+    minTeamSize = 10
+    ambushChance = 0.05
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"KNIGHT"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "MINOTAUR" { 1 2 } } {40 40} MAZE }
+    }
+  }
+}
+
+"YS_HOUSE"
+{
+  biome = "YS_GRASSLAND"
+  settlement = {
+    type = RandomLayout { "guard_post" { 14 14 } "ys_wood"}
+    tribe = BANDIT
+    inhabitants = {
+      fighters = {
+        count = {2 5}
+        all = {
+          1 "YS_ACTOR"
+          1 "YS_JESTER"
+        }
+      }
+      civilians = {
+        count = {1 4}
+        all = {
+          1 "YS_CULTIST"
+          1 "YS_CULTIST_F"
+        }
+      }
+    }
+  }
+  config = {
+    prisoners = true
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = UP
+    levels = {
+      { ExtraEnemy { "YS_HOUSE_TOP" {1} } {10 10} BASIC }
+    }
+  }
+}
+
+"YS_HOUSE_TOP"
+{
+  settlement = {
+    type = RandomLayout { "guard_post" { 14 14 } "ys_wood"}
+    tribe = BANDIT
+    inhabitants = {
+      fighters = {
+        count = {2 5}
+        all = {
+          1 "YS_HASTUR_SPAWN"
+          1 "YS_HASTUR_SPAWN"
+        }
+      }
+    }
+  }
+}
+
+
+##############################
+#########   CHAOS    #########
+##############################
+
+
+
+"CHAOS_DUNGEON"
+{
+  biome = "SNOW"
+  settlement = {
+    type = RandomLayout { "adoxie_temple" { 30 20 } "chaos"}
+    tribe = MONSTER
+    inhabitants = {
+      leader = { 
+	    id = {  "CHAOS_KEEPER" } 
+        expLevelIncrease = {
+          DAMAGE 10
+          SPELL_DAMAGE 10
+          RANGED_DAMAGE 10
+        }}
+      fighters = {
+        count = {8 12}
+        all = { 
+		4 "CHAOS_CHAMPION" 
+		2 "CHAOS_SEER" 
+		1 "CHAOS_BEAST" 
+		1 "CHAOS_RAIDER" 
+		}
+      }
+    }
+  }
+  config = {
+    immigrantInterval = 500
+    maxPopulation = 15
+    canEnemyRetire = false
+    prisoners = true
+  }
+  levelConnection = {
+    topLevel = ExtraEnemy {"MAIN_DUNGEON_ENTRY"}
+    levels = {
+      { ExtraEnemy { "CHAOS_DUNGEON1" { 4 } } {40 30} BASIC }
+      { MainEnemy {32 22} BASIC "Chaos Sorcerer" }
+      { ExtraEnemy { "CHAOS_DOWN" { 1 } } {40 30} DUNGEON "A place of power" true false }
+    }
+  }
+}
+
+"CHAOS_DUNGEON1"
+{
+  discoverable = false
+  settlement = {
+    type = RandomLayout { "dungeon" { 38 28 } "chaos"}
+    tribe = MONSTER
+    furniture = "roomFurniture"
+    shopItems = {{5 10} "dungeon" }
+    inhabitants = {
+      fighters = {
+        count = {8 12}
+        all = { 
+		4 "CHAOS_WARRIOR" 
+		2 "CHAOS_SORCERER" 
+		1 "CHAOS_BRUTE" 
+		1 "CHAOS_LOOTER" 
+		}
+      }
+    }
+  }
+  config = {
+    prisoners = true
+  }
+}
+
+"CHAOS_DOWN"
+{
+  discoverable = false
+  settlement = {
+    type = Builtin MINETOWN "CHAOS"
+    tribe = MONSTER
+    furniture = "hellFurniture"
+    inhabitants = {
+      leader = { 
+	    id = {  "CHAOS_DEITY" }}}
+  }
+}
+
+
+##################################
+#########   FORGOTTEN    #########
+##################################
+
+
+
+"FP_FORGOTTEN_SHRINE"
+{
+  settlement = {
+    type = RandomLayout { "fp_ancientshrine" { 7 7 } "default"}
+    tribe = MONSTER
+    dontBuildRoad = true
   }
 }

@@ -1,3 +1,13 @@
+"default" modify append {
+  "hill" { ClearFurniture Place "HILL" Flag EMPTY_ROOM }
+  "cs_hill" { ClearFurniture Place "CS_HILL" Flag EMPTY_ROOM }
+  "cs_hill_crystal" { ClearFurniture Place "CS_HILL_CRYSTAL" Flag EMPTY_ROOM }
+  "old_altar" Place "FP_ALTAR_OLD"
+  "fp_mud" { Place "FLOOR" Place "FP_MUD_SPAWN" Flag EMPTY_ROOM }
+  "fp_skeleton" Items "cult_corpse"
+}
+
+
 "eg_flesh" inherit "default" append {
   "floor" { Place "FLOOR" Place "EG_GROWTH_FLOOR" Flag EMPTY_ROOM }
   "wood_floor" { Place "FLOOR" Place "EG_GROWTH_FLOOR" Flag EMPTY_ROOM }
@@ -42,4 +52,106 @@
   "stone_bridge" Place "FTD_MUD_BRIDGE"
   "wood_bridge" Place "FTD_MUD_BRIDGE"
   "iron_door" Place "FTD_MUD"
+}
+
+"ys_castle" inherit "default" append {
+  "floor" { Place "FLOOR" Flag EMPTY_ROOM }
+  "wood_floor" { Place "FLOOR" Place "FLOOR_STONE1" Flag EMPTY_ROOM }
+  "stone_floor" { Place "FLOOR" Place "FLOOR_STONE1" Flag EMPTY_ROOM }
+  "castle_wall" Place "DUNGEON_WALL2"
+  "archer_wall" Place "DUNGEON_WALL2"
+  "dining_table" Place "DINING_TABLE"
+  "water" { ClearFurniture Place "MAGMA"}
+  "underground_water" { ClearFurniture Place "MAGMA"}
+  "kraken_water" { ClearFurniture Place "MAGMA"}
+  "enchanted_water" { ClearFurniture Place "MAGMA"}
+  "wood_door" Place "IRON_GATE"
+  "wood_gate" Place "IRON_GATE"
+}
+"chaos" inherit "default" {
+  "floor" { Place "CHAOS_FLOOR" Flag EMPTY_ROOM }
+  "wood_floor" { Place "CHAOS_FLOOR" Place "FLOOR_WOOD1" Flag EMPTY_ROOM }
+  "stone_floor" { Place "CHAOS_FLOOR" Place "FLOOR_STONE1" Flag EMPTY_ROOM }
+  "set_territory" Flag EMPTY_ROOM
+  "no_territory" RemoveFlag EMPTY_ROOM
+  "resources" RemoveFlag NO_RESOURCES
+  "clear_furniture" ClearFurniture
+  "dining_table" Place "DINING_TABLE"
+  "rock" Place "CHAOS_MOUNTAIN"
+  "hard_rock" Place "CHAOS_MOUNTAIN"
+  "water" { ClearFurniture Place "ENCHANTED_WATER"}
+  "underground_water" { ClearFurniture Place "ENCHANTED_WATER"}
+  "mud_floor" { ClearFurniture Place "MUD_FLOOR" Flag EMPTY_ROOM}
+  "enchanted_water" { ClearFurniture Place "ENCHANTED_WATER"}
+  "enchanted_workshop" { Place "CHAOS_WORKSHOP"}
+  "enchanted_lab" { Place "ENCHANTED_LABORATORY"}
+  "lava" { ClearFurniture Place "ENCHANTED_WATER"}
+  "stockpile" Stockpile 0
+  "bed" Place "BED1"
+  "haypile" Place "HAYPILE"
+  "stable" Place "STABLE"
+  "wall" Place "CHAOS_WALL"
+  "wood_wall" Place "CHAOS_WALL"
+  "castle_wall" Place "CHAOS_WALL"
+  "archer_wall" Place "CHAOS_WALL"
+  "ruin_wall" Place "CHAOS_WALL"
+  "wood_door" Place "CHAOS_HIDDEN_DOOR"
+  "wood_gate" Place "CHAOS_HIDDEN_DOOR"
+  "hidden_door" Place "CHAOS_HIDDEN_DOOR"
+  "stone_bridge" Place "STONE_BRIDGE"
+  "wood_bridge" Place "BRIDGE"
+  "treasure_chest" Place "TREASURE_CHEST"
+  "adventurer_chest" Place "ADVENTURER_CHEST"
+  "iron_door" Place "CHAOS_HIDDEN_DOOR"
+  "iron_gate" Place "CHAOS_HIDDEN_DOOR"
+  "iron_gate_blocking" Place "CHAOS_HIDDEN_DOOR"
+  "iron_door_blocking" PlaceHostile "CHAOS_HIDDEN_DOOR"
+  "down_stairs0" Stairs DOWN "PORTAL_STAIRS" 0
+  "up_stairs0" Stairs UP "PORTAL_STAIRS" 0
+  "down_stairs1" Stairs DOWN "PORTAL_STAIRS" 1
+  "up_stairs1" Stairs UP "PORTAL_STAIRS" 1
+  "clear_middle" ClearLayer MIDDLE
+  "outside_furniture" OutsideFurniture
+  "inside_furniture" InsideFurniture
+  "loot_coffin" { Place "LOOT_COFFIN" Items "chest" Items "corpse" }
+  "armor_chest" { Place "CHEST" Items "armorChest" }
+  "pamphlet_chest" { Place "CHEST" Items "pamphlets" }
+  "knife_chest" { Place "ASSASSIN_CHEST" Items "assassinChest" }
+  "ada_chest" { Place "CHEST" Items "lakeChest" }
+  "weapon_rack" Place "WEAPON_RACK"
+  "swarmer_chest" { Place "CHEST" Items "swarmerChest" }
+  "blacksmith_chest" { Place "CHEST" Items "blacksmithChest" }
+  "zombie_chest" { Place "CHEST" Items "zombieChest" }
+  "torch" Place "GROUND_TORCH"
+  "throne" Place "THRONE"
+  "broken_throne" Place "BROKEN_THRONE"
+  "forge" Place "CHAOS_FORGE"
+  "lava_forge" Place "CHAOS_FORGE"
+  "crops" Place "CROPS"
+  "scarecrow" Place "SCARECROW"
+  "corpse" Items "battle_corpse"
+  "wizard_corpse" Items "wizard_corpse"
+  "gnome_corpse" Items "gnome_corpse"
+  "automaton_parts" Items "automaton_parts"
+  "shop0" Shop 0
+  "fog" AddGas "FOG"
+  "spider_web" Place "SPIDER_WEB"
+  "connect" { RemoveFlag NO_DIG Flag CONNECT_CORRIDOR }
+  "prison_bars" PlaceHostile "CHAOS_WALL"
+  "prison_door" PlaceHostile "CHAOS_HIDDEN_DOOR"
+  "prison" Place "PRISON"
+  "ant_worker" HostileCreature "ANT_WORKER"
+  "bat" PeacefulCreature "BAT"
+  "elf_archer" AlliedPrisoner "ELF_ARCHER"
+  "ghost_spawn" Place "GHOST_SPAWN"
+  "gargoyle" Place "GARGOYLE_TRAP"
+  "workshop" Place "CHAOS_WORKSHOP"
+}
+
+"ys_wood" inherit "default" append {
+  "stone_floor" Chain { ClearFurniture Place "FLOOR" Place "FLOOR_WOOD1" Flag EMPTY_ROOM }
+  "castle_wall" Place "WOOD_WALL"
+  "up_stairs0" Stairs UP "BOOKCASE_STAIRS" 0
+  "iron_door" Place "WOOD_DOOR"
+  "iron_gate" Place "WOOD_GATE"
 }

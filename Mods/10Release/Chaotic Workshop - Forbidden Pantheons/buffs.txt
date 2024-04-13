@@ -502,3 +502,17 @@
   fx = DEBUFF_RED
   color = ColorId RED
 }
+
+"FP_ANCIENT_POWER" {
+  name = "empowered"
+  adjective = "powerfull"
+  description = "imbued with an ancient power"
+  addedMessage = ARE "empowered"
+  removedMessage = ARE "no longer empowered"
+  startEffect = Chain {IncreaseAttr RANGED_DAMAGE 10 IncreaseAttr SPELL_DAMAGE 10 IncreaseAttr DAMAGE 10 IncreaseAttr DEFENSE 10}
+  endEffect = Chain {IncreaseAttr RANGED_DAMAGE -10  IncreaseAttr SPELL_DAMAGE -10  IncreaseAttr DAMAGE -10 IncreaseAttr DEFENSE -10}
+  tickEffect = Heal {FLESH 0.01}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId RED
+}

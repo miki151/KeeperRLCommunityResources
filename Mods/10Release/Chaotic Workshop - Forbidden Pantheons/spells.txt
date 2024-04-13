@@ -1940,3 +1940,57 @@ End
   sound = "SPELL_HEALING"
 }
 
+
+
+
+"chaos_diety_call"
+{
+  symbol = ".-"
+  effect = Name "call of chaos" Summon "CHAOS_SPAWN_GOD" { 4 } 50
+  cooldown = 50
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"chaos_diety_gaze"
+{
+  symbol = "☮"
+  effect = Name "gaze of chaos" Lasting 50 CHAOS_CORRUPTION_BAD
+  range = 8
+  cooldown = 5
+  endOnly = true
+  sound = "SPELL_STR_BONUS"
+}
+
+#####################################CHAOS###########################################
+
+"FP_VITALITY_SURGE"
+{
+  symbol = "❤️"
+  effect = Name "surge of vitality" Heal { FLESH }
+  cooldown = {31 62}
+  sound = "SPELL_HEALING"
+}
+
+"FP_HIDDEN_PATH"
+{
+  symbol = "🌀"
+  effect = Name "blink" Teleport
+  range = 2
+  cooldown = {5 30}
+  endOnly = true
+  sound = "SPELL_TELEPORT"
+}
+
+"FP_BURST_OF_MIGHT"
+{
+  symbol = "ℒ"
+  effect = Name "ancient might" Description "Causes magical damage and releases black smoke" Chain{ 
+																					Area 0 EmitGas "BLACK_SMOKE" 1 
+																					FixedDamage SPELL_DAMAGE 40 SPELL 
+																					}
+  fx = {BALROGS_WHIP ColorId BLACK}
+  range = 4
+  cooldown = {30 120}
+  endOnly = true
+  message = "lash your might!" "lashes his might!"
+}
