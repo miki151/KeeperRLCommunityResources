@@ -1856,6 +1856,46 @@
 #########   YELLOW SIGN    #########
 ####################################
 
+"YS_NO_AGGRO_TCHO-TCHOS"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = {{ "YS_TCHO-TCHOS" }}
+      fighters = {
+        count = {4 9}
+        all = { 1 "YS_TCHO-TCHOS" }
+      }
+    }
+    tribe = BANDIT
+    race = "tcho-tchos"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+    prisoners = true
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+  immigrants = {
+    {
+      ids = { "YS_TCHO-TCHOS" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+"YS_TCHO-TCHOS" inherit "YS_NO_AGGRO_TCHO-TCHOS"
+{
+  behaviour = {
+    ambushChance = 0.05
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+}
+
 "YS_BYAKHEE_CAVE"
 {
   settlement = {
