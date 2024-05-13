@@ -1,0 +1,18 @@
+
+"cannon_fire"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire cannon" Description "Shoots from an cannon" Chain{
+  DestroyWalls DIG
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"are hit by the missile" "is hit by the missile"}
+      Damage SIEGE_DAMAGE HIT
+    },
+    CreatureMessage {"are spared by the missile" "is spared by the missile"}
+  )}
+  fx = {MAGIC_MISSILE}
+  range = 12
+  cooldown = {60 120}
+  sound = "SPELL_BLAST"
+}

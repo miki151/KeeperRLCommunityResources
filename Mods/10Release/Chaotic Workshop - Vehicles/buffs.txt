@@ -1,0 +1,39 @@
+
+"RIDING_WAGON" {
+  name = "wagon"
+  adjective = "wagon"
+  description = "wagon"
+  addedMessage = ARE "wagon"
+  removedMessage = ARE "wagon"
+  tickEffect = Chain { 
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "WAGON" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "WAGON" { Lasting 1 NO_CARRY_LIMIT }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"RIDING_CANNON" {
+  name = "wagon"
+  adjective = "wagon"
+  description = "wagon"
+  addedMessage = ARE "wagon"
+  removedMessage = ARE "wagon"
+  tickEffect = Chain { 
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "CANNON" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "CANNON" { Lasting 1 OPERATING_CANNON Lasting 1 NO_FRIENDLY_FIRE}}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"OPERATING_CANNON" {
+  name = "operating cannon"
+  adjective = "operating cannon"
+  description = "operating cannon"
+  startEffect = Chain { GrantAbility "cannon_fire"  IncreaseAttr SIEGE_DAMAGE 120}	
+  endEffect = Chain { RemoveAbility "cannon_fire"  IncreaseAttr SIEGE_DAMAGE -120}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
