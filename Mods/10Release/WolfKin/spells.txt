@@ -1,0 +1,26 @@
+OneTimeAbility("growup", "Causes a Pup to mature to an adult.", { SetViewId {"lupa"} SetCreatureName "WolfKin Warrior" }
+   { IncreaseMaxLevel RANGED_DAMAGE 14 IncreaseAttr DEFENSE 10 IncreaseMaxLevel DAMAGE 13 IncreaseAttr DAMAGE 16 IncreaseMaxLevel SPELL_DAMAGE 1 }, "🧛")
+"WolfCurse"
+{
+  symbol = "🐺"
+  effect = Name "Wolf Curse" Chain { Lasting HALLU Lasting PLAGUE }
+  fx = {FLAMETHROWER ColorId LIGHT_GREEN}
+  range = 10
+  cooldown = {5 300}
+  sound = "SPELL_BLAST"
+}
+
+#OneTimeAbility("mature","Causes a Wolfkin Maiden to mature.", {
+#    Polymorph "LUPA_GIRL" none
+#    SetCreatureName "Wolfkin Wife"
+#  }, "💛")
+
+OneTimeAbility("mature", "Causes a Wolfkin Maiden to mature.", 
+{ SetViewId {"lupa_w"} SetCreatureName "Lupa" }
+{ IncreaseAttr DEFENSE 13 IncreaseMaxLevel DAMAGE 9 IncreaseAttr DAMAGE 4 
+IncreaseMaxLevel SPELL_DAMAGE 6 }, "💛")
+
+OneTimeAbility("MasterLevel", "Graduate to a Master Smith.", 
+{ SetViewId {"lupa_c"} SetCreatureName "Wolfkin Smith" }
+{ IncreaseAttr DAMAGE 10 IncreaseAttr DEFENSE 10 IncreaseAttr SPELL_DAMAGE 8 IncreaseAttr FURNACE 35 IncreaseAttr WORKSHOP 50 IncreaseAttr FORGE 50 IncreaseAttr JEWELER 50 IncreaseMaxLevel DAMAGE 12 IncreaseMaxLevel SPELL_DAMAGE 20 }
+, "🛠️")

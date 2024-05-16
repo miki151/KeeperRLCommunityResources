@@ -1,0 +1,59 @@
+"lupakin"
+{
+    {
+    ids = { "LUPA_CANDIDATE" }
+    traits = { WORKER FIGHTER }
+    keybinding = CREATE_IMP
+    #frequency = .1
+    sound = {"CREATE_IMP" 2}
+    initialRecruitment = 5
+    spawnLocation = NearLeader
+    invisible = true
+    noAuto = true
+    requirements = {
+        { 1 ExponentialCost "GOLD" 8000 6 5 }
+        }
+    }
+	{
+		ids = { "LUPA_PUP" }
+		traits = { WORKER FIGHTER }
+		spawnLocation = Pregnancy
+		requirements = {
+		 { 0.0 Pregnancy }
+		}
+		specialTraits = {
+        { 0.08 { Lasting { DISARM_TRAPS_SKILL } }}
+        { 0.05 { Lasting { SWIMMING_SKILL } }}
+        { 0.60 { AttrBonus DEFENSE 5 Lasting { HATE_ELVES } }}
+        { 0.01 { AttrBonus DAMAGE 5 Lasting { HATE_HUMANS } }}
+        { 0.30 { ExtraTraining DAMAGE 5 Lasting { HATE_GREENSKINS } }}
+        { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+      }
+	}
+    {
+      ids = { "WARG" }
+      traits = { WORKER }
+      requirements = {
+        { 0.0 CostInfo "CORPSE" 7}
+      }
+    }
+    {
+      ids = { "LUPA_CANDIDATE" }
+      traits = { WORKER FIGHTER }
+      spawnLocation = Pregnancy
+      requirements = {
+        { 0.0 Pregnancy }
+      }
+    }
+    {    
+      ids = { "LUPA_HELPER" }
+      traits = { WORKER FIGHTER }
+      spawnLocation = Pregnancy
+      requirements = {
+        { 0.0 Pregnancy }
+      }
+		specialTraits = {
+        { 0.2 { SpecialAttr DAMAGE 2 HatedBy HATE_ELVES ExtraTraining FURNACE 40 AttrBonus WORKSHOP 40 AttrBonus FORGE 40 AttrBonus JEWELER 40 }}
+      }
+    }
+}

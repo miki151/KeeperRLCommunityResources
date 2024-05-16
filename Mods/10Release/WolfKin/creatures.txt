@@ -1,0 +1,336 @@
+"KEEPER_LUPA"
+  {
+    # Definitions in tiles.txt
+    viewId = { "alpha_wolf" }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+    name = {
+      # The name gets changed appropriately to Keeper and Adventurer
+      name = "WolfKin"
+      # Definitions in name_generator.h
+      firstNameGen = "DEITY"
+      # Creature is always referred to as [FirstName] the [Creature name]
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+      deathSound = "DOG_DEATH"
+      canCapture = false
+      intrinsicAttacks = {
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 8 
+          {
+            attackType = BITE
+            attackMsg = BITE
+            attackerEffect = { RegrowBodyPart 1 }
+            victimEffect = { 0.34 Lasting 50 BLEEDING } } }}}
+      }
+    }
+	
+	chatReactionFriendly = "Awoo?"
+    chatReactionHostile = "\"Grrr!\""
+	
+	permanentEffects = {
+      AMBUSH_SKILL 1
+      COLD_RESISTANT 1
+	  NIGHT_VISION 1
+	  CAN_DANCE 1
+      RIDER 1
+    }
+	
+	gender = MALE
+	
+    # attr_type.h
+    attr = {
+        DAMAGE 16
+        DEFENSE 24
+        SPELL_DAMAGE 3
+        FURNACE 15
+        WORKSHOP 15
+    }
+    # experience_type.h
+    maxLevelIncrease = {
+      DAMAGE 50
+      SPELL_DAMAGE  20
+	  RANGED_DAMAGE 20
+    }
+    spellSchools = { "WolfMaster" }
+    spells = { }
+    inventory = {
+      # Here comes a list of items. The format of each element is defined in creature_inventory.h
+      # Take a look a CYCLOPS for a more detailed example.
+    }
+  }
+
+"LUPA_PUP" inherit "KEEPER_LUPA"
+{
+    viewId = { "lupa_pup" }
+	name = { "WolfKin Pup" }
+	gender = FEMALE
+	#promotionGroup = "lupakin"
+    #promotionCost = 0.25
+	chatReactionFriendly = "*courting growl*"
+	body = {
+	type = Humanoid LARGE
+    canCapture = false
+    deathSound = "DOG_DEATH"
+    intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 12 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+	}
+    attr = {
+      DAMAGE 8
+      DEFENSE 8
+    }
+	maxLevelIncrease = {
+    DAMAGE 6
+	RANGED_DAMAGE 2
+	SPELL_DAMAGE  9
+    }
+    spellSchools = { "Wolfkin" }
+
+	spells = { }
+	permanentEffects = {
+		COLD_RESISTANT 1
+		NIGHT_VISION 1
+		CAN_DANCE 1
+        RIDER 1
+    }
+}
+
+"LUPA_GIRL" inherit "KEEPER_LUPA"
+{
+    viewId = { "lupa_w" }
+    attr = {
+      DAMAGE 0
+      DEFENSE 18
+      LABORATORY 10
+    }
+	chatReactionFriendly = "*courting growl*"
+	name = { "WolfKin Maden" }
+	maxLevelIncrease = {
+    DAMAGE 16
+	RANGED_DAMAGE 3
+	SPELL_DAMAGE  8
+    }
+    spellSchools = { "Wolfkin" }
+	spells = { "jump" "healing" }
+	permanentEffects = {
+      COPULATION_SKILL 1
+      COLD_RESISTANT 1
+	  NIGHT_VISION 1
+      RIDER 1
+    }
+    gender = FEMALE
+}
+
+"LUPA_WAR" inherit "KEEPER_LUPA"
+{
+    viewId = { "lupa" }
+	name = { "WolfKin Warrior" }
+	gender = FEMALE
+    attr = {
+      DAMAGE 16
+      DEFENSE 16
+      WORKSHOP 2
+    }
+	maxLevelIncrease = {
+    DAMAGE 16
+	RANGED_DAMAGE 12
+	SPELL_DAMAGE  4
+    }
+    spellSchools = { "Wolfkin" }
+	spells = { "jump" }
+}
+
+"LUPAL"
+  {
+    viewId = { "alpha_wolf" }
+    attr = {
+      DAMAGE 53
+      DEFENSE 42
+      SPELL_DAMAGE 3
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+    }
+	chatReactionFriendly = "Awoo?"
+    chatReactionHostile = "\"Grrr!\""
+    maxLevelIncrease = {
+      DAMAGE 20
+      SPELL_DAMAGE  6
+	  RANGED_DAMAGE 16
+    }
+    name = {
+      name = "LupaKin"
+      firstNameGen = "DEITY"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+      deathSound = "DOG_DEATH"
+      #ambientSound = 0.01 {"WOLF_AMBIENT" 0.2}
+      intrinsicAttacks = {
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 8 
+          {
+            attackType = BITE
+            attackMsg = BITE
+            attackerEffect = { RegrowBodyPart 1 }
+            victimEffect = { 0.34 Lasting 50 BLEEDING } } }}}
+      } }
+    #hatedByEffect = HATE_HUMANS
+    inventory = {
+      { type = "BattleAxe" prefixChance = 1 }
+      { "ChainArmor"}
+      { "IronHelm"}
+      { "IronBoots"}
+      { Potion Heal { FLESH } 3 5 }
+      { "GoldPiece" 140 200 }
+    }
+  }
+
+"WARG" inherit "WOLF"
+  {
+    viewId = { "warg" }
+    name = {
+      name = "Warg"
+    }
+    gender = FEMALE
+    attr = {
+      DAMAGE 24
+      DEFENSE 24
+      DIGGING 48
+    }
+    permanentEffects = {
+      STEED 1
+      SWIMMING_SKILL 1
+      EXPLORE_SKILL 1
+      NIGHT_VISION 1
+      SPEED 1
+      ELF_VISION 1
+    }
+    afterKilledSomeone = {
+      ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+      ApplyToSteed Filter Kills 5 Polymorph "WARGUS" none
+    }
+    body = {
+      type = FourLegged HUGE
+      weight = 3500
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 16 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 14 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+      deathSound = "DOG_DEATH"
+      ambientSound = 0.001 {"WOLF_AMBIENT" 0.2}
+    }
+  }
+
+"WARGUS" inherit "WARG"
+  {
+    viewId = { "s_warg" }
+    attr = {
+      DAMAGE 38
+      DEFENSE 40
+      DIGGING 76
+    }
+    name = {
+      name = "Greater Warg"
+    }
+    permanentEffects = {
+      STEED 1
+      SWIMMING_SKILL 1
+      EXPLORE_SKILL 1
+      NIGHT_VISION 1
+      SPEED 1
+      ELF_VISION 1
+      AMBUSH_SKILL 1
+    }
+    spells = { "warhorse_haste" }
+  }
+
+"LUPA_CANDIDATE" inherit "KEEPER_LUPA"
+{
+    viewId = { "lupa_g" }
+    attr = {
+      DAMAGE 0
+      DEFENSE 5
+    }
+	chatReactionFriendly = "*courting growl*"
+	name = { "Wolf Maiden" }
+	maxLevelIncrease = {
+    DAMAGE 2
+	RANGED_DAMAGE 1
+	SPELL_DAMAGE  3
+    }
+    spellSchools = { "Wolfgirl" }
+	spells = { "healing" }
+	permanentEffects = {
+      COPULATION_SKILL 1
+      COLD_RESISTANT 1
+	  NIGHT_VISION 1
+      RIDER 1
+    }
+    gender = FEMALE
+}
+
+"LUPA_HELPER" inherit "KEEPER_LUPA"
+{
+    viewId = { "lupa_h" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 18
+      FURNACE 15
+      WORKSHOP 15
+    }
+	chatReactionFriendly = "Awoo?"
+	name = { "WolfKin Apprentice" }
+	maxLevelIncrease = {
+    DAMAGE 4
+	RANGED_DAMAGE 2
+	SPELL_DAMAGE  8
+    }
+    spellSchools = { "WolfHelper" }
+	spells = { "jump" }
+	permanentEffects = {
+	  NIGHT_VISION 1
+    }
+    gender = FEMALE
+}
+
+"LUPA_SMITH" inherit "LUPA_HELPER"
+{
+    viewId = { "lupa_c" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 36
+    }
+	chatReactionFriendly = "Awoo?"
+	name = { "Wolfkin Craftsman" }
+	maxLevelIncrease = {
+    DAMAGE 16
+	RANGED_DAMAGE 16
+	SPELL_DAMAGE  8
+    }
+    spellSchools = { "WolfCraft" }
+	spells = { "jump" }
+	permanentEffects = {
+	  NIGHT_VISION 1
+      SPEED 1
+    }
+    gender = FEMALE
+}
+
+"WOLF_SLAVE1" inherit "LUPA_WAR"
+  {
+    attr = {
+      DAMAGE 36
+      DEFENSE 36
+    }
+    inventory = {
+      { "ElvenSword" }
+      { "ChainArmor" }
+      { "Bow" }
+    }
+  }
