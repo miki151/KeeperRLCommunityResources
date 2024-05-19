@@ -1,5 +1,31 @@
 
-"cannon_fire"
+"SIEGE_PACK_UP"
+{
+  symbol = "$"
+  effect = Name "pack up" { Caster SetFlag "siege_packing_up" true Caster Suicide TURN_INVISIBLE }
+  targetSelf = false
+  cooldown = 150
+}
+
+"siege_balistae_fire"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire balistae" Description "Shoots from an balistae" Chain{
+  DestroyWalls DIG
+  TryNoFriendlyFire(
+    {
+      CreatureMessage {"are hit by the missile" "is hit by the missile"}
+      Damage SIEGE_DAMAGE HIT
+    },
+    CreatureMessage {"are spared by the missile" "is spared by the missile"}
+  )}
+  projectileViewId = {"projectile_balistae"}
+  range = 8
+  cooldown = 10
+  sound = "SPELL_BLAST"
+}
+
+"siege_cannon_fire"
 {
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "fire cannon" Description "Shoots from an cannon" Chain{
@@ -11,8 +37,47 @@
     },
     CreatureMessage {"are spared by the missile" "is spared by the missile"}
   )}
-  fx = {MAGIC_MISSILE}
+  projectileViewId = {"projectile_cannon_ball"}
   range = 12
-  cooldown = {60 120}
+  cooldown = 20
+  sound = "SPELL_BLAST"
+}
+
+"siege_catapult_fire"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire catapult" Description "Shoots from an mortal" Area 1 {
+	  DestroyWalls DIG
+      Damage SIEGE_DAMAGE HIT}
+  projectileViewId = {"projectile_catapult_stone"}
+  endOnly = true
+  range = 12
+  cooldown = 15
+  sound = "SPELL_BLAST"
+}
+
+"siege_mortal_fire"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire mortal" Description "Shoots from an mortal" Area 1 {
+	  DestroyWalls DIG
+      Damage SIEGE_DAMAGE HIT}
+  projectileViewId = {"projectile_cannon_ball"}
+  endOnly = true
+  range = 16
+  cooldown = 20
+  sound = "SPELL_BLAST"
+}
+
+"siege_trebuchet_fire"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "fire trebuchet" Description "Shoots from an mortal" Area 1 {
+	  DestroyWalls DIG
+      Damage SIEGE_DAMAGE HIT}
+  projectileViewId = {"projectile_catapult_stone"}
+  endOnly = true
+  range = 24
+  cooldown = 30
   sound = "SPELL_BLAST"
 }

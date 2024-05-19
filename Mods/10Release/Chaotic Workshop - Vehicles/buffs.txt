@@ -1,38 +1,226 @@
 
-"RIDING_WAGON" {
+"SIEGE_RIDING_BOAT" {
   name = "wagon"
   adjective = "wagon"
   description = "wagon"
   addedMessage = ARE "wagon"
   removedMessage = ARE "wagon"
   tickEffect = Chain { 
-						Area 0 Filter Not Rider {Area 0 Filter CreatureId "WAGON" {Lasting 1 IMMOBILE }}
-						Area 0 Filter Not CreatureId "WAGON" { Lasting 1 NO_CARRY_LIMIT }}
+                        Area 0 Filter CreatureId "SIEGE_BOAT" {Lasting 1 IMMOBILE }
+                        Area 0 Filter Not Or{FurnitureType "WATER" 
+											 FurnitureType "UNDERGROUND_WATER"   
+											 FurnitureType "ENCHANTED_WATER" 
+											 FurnitureType "KRAKEN_WATER"  
+											 FurnitureType "SHALLOW_WATER1" 
+											 FurnitureType "SHALLOW_WATER2"}  
+											{Area 0 Lasting 1 IMMOBILE }}
   combatConsumable = true
   canWishFor = false
   color = ColorId BROWN
 }
 
-"RIDING_CANNON" {
+"SIEGE_RIDING_WAGON" {
   name = "wagon"
   adjective = "wagon"
   description = "wagon"
   addedMessage = ARE "wagon"
   removedMessage = ARE "wagon"
   tickEffect = Chain { 
-						Area 0 Filter Not Rider {Area 0 Filter CreatureId "CANNON" {Lasting 1 IMMOBILE }}
-						Area 0 Filter Not CreatureId "CANNON" { Lasting 1 OPERATING_CANNON Lasting 1 NO_FRIENDLY_FIRE}}
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "SIEGE_WAGON" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "SIEGE_WAGON" { Lasting 1 NO_CARRY_LIMIT }}
   combatConsumable = true
   canWishFor = false
   color = ColorId BROWN
 }
 
-"OPERATING_CANNON" {
+"SIEGE_RIDING_BALISTAE_SMALL" {
+  name = "balistae"
+  adjective = "balistae"
+  description = "balistae"
+  addedMessage = ARE "balistae"
+  removedMessage = ARE "balistae"
+  tickEffect = Chain { 
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "SIEGE_BALISTAE_SMALL" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "SIEGE_BALISTAE_SMALL" { Lasting 1 SIEGE_OPERATING_SIEGE_BALISTAE }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_RIDING_BALISTAE" {
+  name = "balistae"
+  adjective = "balistae"
+  description = "balistae"
+  addedMessage = ARE "balistae"
+  removedMessage = ARE "balistae"
+  tickEffect = Chain { 
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "SIEGE_BALISTAE" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "SIEGE_BALISTAE" { Lasting 1 SIEGE_OPERATING_SIEGE_BALISTAE }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_OPERATING_SIEGE_BALISTAE" {
+  name = "operating balistae"
+  adjective = "operating balistae"
+  description = "operating balistae"
+  startEffect = Chain { GrantAbility "siege_balistae_fire"  IncreaseAttr SIEGE_DAMAGE 30}	
+  endEffect = Chain { RemoveAbility "siege_balistae_fire"  IncreaseAttr SIEGE_DAMAGE -30}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_RIDING_CANNON" {
+  name = "canon"
+  adjective = "canon"
+  description = "canon"
+  addedMessage = ARE "canon"
+  removedMessage = ARE "canon"
+  tickEffect = Chain { 
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "SIEGE_CANNON" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "SIEGE_CANNON" { Lasting 1 SIEGE_OPERATING_SIEGE_CANNON }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_RIDING_CANNON_SMALL" {
+  name = "canon"
+  adjective = "canon"
+  description = "canon"
+  addedMessage = ARE "canon"
+  removedMessage = ARE "canon"
+  tickEffect = Chain { 
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "SIEGE_CANNON_SMALL" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "SIEGE_CANNON_SMALL" { Lasting 1 SIEGE_OPERATING_SIEGE_CANNON }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_OPERATING_SIEGE_CANNON" {
   name = "operating cannon"
   adjective = "operating cannon"
   description = "operating cannon"
-  startEffect = Chain { GrantAbility "cannon_fire"  IncreaseAttr SIEGE_DAMAGE 120}	
-  endEffect = Chain { RemoveAbility "cannon_fire"  IncreaseAttr SIEGE_DAMAGE -120}
+  startEffect = Chain { GrantAbility "siege_cannon_fire"  IncreaseAttr SIEGE_DAMAGE 50}	
+  endEffect = Chain { RemoveAbility "siege_cannon_fire"  IncreaseAttr SIEGE_DAMAGE -50}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_RIDING_CATAPULT" {
+  name = "catapult"
+  adjective = "catapult"
+  description = "catapult"
+  addedMessage = ARE "catapult"
+  removedMessage = ARE "catapult"
+  tickEffect = Chain { 
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "SIEGE_CATAPULT" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "SIEGE_CATAPULT" { Lasting 1 SIEGE_OPERATING_SIEGE_CATAPULT }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_RIDING_CATAPULT_SMALL" {
+  name = "catapult"
+  adjective = "catapult"
+  description = "catapult"
+  addedMessage = ARE "catapult"
+  removedMessage = ARE "catapult"
+  tickEffect = Chain { 
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "SIEGE_CATAPULT_SMALL" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "SIEGE_CATAPULT_SMALL" { Lasting 1 SIEGE_OPERATING_SIEGE_CATAPULT }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_OPERATING_SIEGE_CATAPULT" {
+  name = "operating catapult"
+  adjective = "operating catapult"
+  description = "operating catapult"
+  startEffect = Chain { GrantAbility "siege_catapult_fire"  IncreaseAttr SIEGE_DAMAGE 50}	
+  endEffect = Chain { RemoveAbility "siege_catapult_fire"  IncreaseAttr SIEGE_DAMAGE -50}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_RIDING_MORTAL" {
+  name = "mortal"
+  adjective = "mortal"
+  description = "mortal"
+  addedMessage = ARE "mortal"
+  removedMessage = ARE "mortal"
+  tickEffect = Chain { 
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "SIEGE_MORTAL" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "SIEGE_MORTAL" { Lasting 1 SIEGE_OPERATING_SIEGE_MORTAL }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_RIDING_MORTAL_SMALL" {
+  name = "mortal"
+  adjective = "mortal"
+  description = "mortal"
+  addedMessage = ARE "mortal"
+  removedMessage = ARE "mortal"
+  tickEffect = Chain { 
+						Area 0 Filter Not Rider {Area 0 Filter CreatureId "SIEGE_MORTAL_SMALL" {Lasting 1 IMMOBILE }}
+						Area 0 Filter Not CreatureId "SIEGE_MORTAL_SMALL" { Lasting 1 SIEGE_OPERATING_SIEGE_MORTAL }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_OPERATING_SIEGE_MORTAL" {
+  name = "operating mortal"
+  adjective = "operating mortal"
+  description = "operating mortal"
+  startEffect = Chain { GrantAbility "siege_mortal_fire"  IncreaseAttr SIEGE_DAMAGE 75}	
+  endEffect = Chain { RemoveAbility "siege_mortal_fire"  IncreaseAttr SIEGE_DAMAGE -75}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_RIDING_TREBUCHET" {
+  name = "trebuchet"
+  adjective = "trebuchet"
+  description = "trebuchet"
+  addedMessage = ARE "trebuchet"
+  removedMessage = ARE "trebuchet"
+  tickEffect = Chain { 
+						Area 0 Filter Not CreatureId "SIEGE_TREBUCHET" { Lasting 1 SIEGE_OPERATING_SIEGE_TREBUCHET }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_RIDING_TREBUCHET_SMALL" {
+  name = "trebuchet"
+  adjective = "trebuchet"
+  description = "trebuchet"
+  addedMessage = ARE "trebuchet"
+  removedMessage = ARE "trebuchet"
+  tickEffect = Chain { 
+						Area 0 Filter Not CreatureId "SIEGE_TREBUCHET_SMALL" { Lasting 1 SIEGE_OPERATING_SIEGE_TREBUCHET }}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"SIEGE_OPERATING_SIEGE_TREBUCHET" {
+  name = "operating trebuchet"
+  adjective = "operating trebuchet"
+  description = "operating trebuchet"
+  startEffect = Chain { GrantAbility "siege_trebuchet_fire"  IncreaseAttr SIEGE_DAMAGE 100}	
+  endEffect = Chain { RemoveAbility "siege_trebuchet_fire"  IncreaseAttr SIEGE_DAMAGE -100}
   combatConsumable = true
   canWishFor = false
   color = ColorId BROWN
