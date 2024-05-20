@@ -1,0 +1,132 @@
+##################################
+#Inscription mod
+##################################
+
+"INSCRIPTION" {
+  furniture = "INSCRIPTION_TABLE"
+  name = "inscription"
+  attr = "INSCRIPTION"
+}
+
+###
+#Metal & forge expansions
+###
+
+"FORGE" modify append {
+	minAttr = {
+		IRON 1
+		STEEL 30
+		ADA 50
+		ADOXIUM 80
+		INFERNITE 80
+		VEN 50
+		CAELIDITE 50
+		JOTHNITE 80
+	}
+}
+
+"LAVA_FORGE" modify append { #Apparently inheritances get Weird in modded workshop_info?? Refused to take the inherit as with vanilla, duplicate key error.
+  furniture = "LAVA_FORGE"
+  name = "forge"
+  verb = "forges"
+  attr = "FORGE"
+  minAttr = {
+    IRON 1
+	STEEL 30
+    ADA 50
+    ADOXIUM 80
+    INFERNITE 80
+	VEN 50
+	CAELIDITE 50
+	JOTHNITE 80
+  }
+  prefix = Prefix "fine" Scale 1.4
+  hideFromTech = true
+}
+#Adamantine forge represents lighter and stronger tools: it's easier and more efficient to work all metal.
+"BONUS_ADA_FORGE" {
+	furniture = "BONUS_ADA_FORGE"
+	name = "adamantine forge"
+	verb = "forges"
+	attr = "FORGE"
+	minAttr = {
+		IRON 1
+		STEEL 25
+		ADA 45
+		ADOXIUM 75
+		INFERNITE 75
+		VEN 45
+		CAELIDITE 45
+		JOTHNITE 75
+	}
+	hideFromTech = true
+}
+
+"BONUS_ADA_LAVA_FORGE" inherit "BONUS_ADA_FORGE" {
+	prefix = Prefix "fine" Scale 1.45 #Better, but for practical purposes should be a rounding error.
+	hideFromTech = true
+}
+#Adoxium forge channels magic.  It's NOT easy to work with, but makes Better gear.
+"BONUS_ADOXIUM_FORGE" {
+	furniture = "BONUS_ADOXIUM_FORGE"
+	name = "adoxium forge"
+	verb = "forges"
+	attr = "FORGE"
+	minAttr = {
+		IRON 30
+		STEEL 45
+		ADA 65
+		ADOXIUM 90
+		INFERNITE 90
+		VEN 65
+		CAELIDITE 65
+		JOTHNITE 90
+	}
+	prefix = Prefix "mystic" Scale 1.55
+	hideFromTech = true
+}
+
+"BONUS_ADOXIUM_LAVA_FORGE" inherit "BONUS_ADOXIUM_FORGE" {
+	prefix = Prefix "arcane" Scale 1.75 #Better, but for practical purposes should be a rounding error.
+	hideFromTech = true
+}
+#The Soulforge infuses the metal with the souls of the dead. It's powerful but defintely Not Nice, Necro territory.
+#"BONUS_SOULFORGE" {
+#	furniture = "BONUS_SOULFORGE"
+#	name = "soulforge"
+#	verb = "forges"
+#	attr = "FORGE"
+#	minAttr = {
+#		IRON 30
+#		STEEL 45
+#		ADA 65
+#		ADOXIUM 90
+#		INFERNITE 90
+#		VEN 65
+#		CAELIDITE 65
+#		JOTHNITE 90
+#	}
+#	prefix = Prefix "dark" Scale 1.25
+#	hideFromTech = true
+#}
+
+#Infernite forge is, primarily, a permanently Hot forge, all the benefits of lava forge without actually needing lava.
+#But it also makes working lower-tier stuff pretty easy, and provides its own light.
+"BONUS_INFERNITE_FORGE" {
+	furniture = "BONUS_INFERNITE_FORGE"
+	name = "infernite forge"
+	verb = "forges"
+	attr = "FORGE"
+	minAttr = {
+		IRON 1
+		STEEL 15
+		ADA 45
+		ADOXIUM 80
+		INFERNITE 80
+		VEN 45
+		CAELIDITE 45
+		JOTHNITE 80
+	}
+	prefix = Prefix "molten" Scale 1.5
+	hideFromTech = true
+}

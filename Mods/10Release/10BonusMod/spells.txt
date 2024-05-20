@@ -1,0 +1,2400 @@
+
+#Balance note: CSeven is sympathetic to letting your adoxium or other spell-speed gear have an effect
+#BUT
+#he also doesn't like to make summon spells recharge faster than their summons time out.
+#(Compare black-dragon blindness: not many folks like being reblinded *just* as it times out!)
+
+###
+#Modded vanilla spells
+#(Shadowing's AI tweak)
+###
+"escape" modify
+{
+  symbol = "✈️"
+  effect = Name "escape" AI Health 0.6 1.0 1 1 { Escape {}}
+  cooldown = {50 101}
+  sound = "SPELL_TELEPORT"
+}
+
+###############################
+#Spell Circles
+###############################
+
+"BONUS_true form"
+ {
+  symbol = "◀️"
+  effect = Name "Trueform" Description "Undo a polyorph spell that has been cast" RemovePermanent POLYMORPHED
+  targetSelf = true
+  cooldown = 100
+ }
+
+##############################
+#Absorber mod
+##############################
+
+"BONUS_animal form"
+  {
+    symbol = "🐺"
+    effect = Name "animal form" Description "Change into a lower animal"
+	     Chain {
+		     Heal { SPIRIT }
+			 FirstSuccessful {
+				  Chance 0.3 Polymorph "KANGAROO" 20
+				  Chance 0.5 Polymorph "WOLF" 20
+				  Polymorph "POLAR_BEAR" 20
+			}
+	    }
+  message = "" ""
+  cooldown = 1
+ }
+
+"BONUS_impart animal form"
+  {
+    symbol = "🎁"
+    range = 1
+    effect = Name "impart animal form" Description "Give your animal form to a different creature (You lose it)."
+	Chain {
+		Area 1 RemoveAbility "BONUS_animal form"
+		Area 1 RemoveAbility "BONUS_impart animal form"
+		GrantAbility "BONUS_animal form"
+		GrantAbility "BONUS_impart animal form"
+	}
+    message = "" ""
+    cooldown = 30
+ }
+  
+"BONUS_chaos form"
+ {
+  symbol = "👽"
+  effect = Name "chaos form" Description "Change into a random monster" Chain { Heal { SPIRIT } Polymorph none 20 }
+  message = "" ""
+  cooldown = 1
+ }  
+
+"BONUS_impart chaos form"
+  {
+    symbol = "🎁"
+	range = 1
+    effect = Name "impart chaos form" Description "Give your chaos form to a different creature (You lose it)."
+	Chain {
+		Area 1 RemoveAbility "BONUS_chaos form"
+		Area 1 RemoveAbility "BONUS_impart chaos form"
+		GrantAbility "BONUS_chaos form"
+		GrantAbility "BONUS_impart chaos form"
+    }
+    message = "" ""
+    cooldown = 1
+ }
+
+"BONUS_monster form"
+  {
+    symbol = "👾"
+    effect = Name "monster form" Description "Change into a tough monster" Chain { Heal { SPIRIT }
+        FirstSuccessful {
+          Chance 0.3 Polymorph "KNIGHT" 20
+          Chance 0.5 Polymorph "MINOTAUR" 20
+          Polymorph "CYCLOPS" 20
+        }
+	}
+	cooldown = 1
+    message = "" ""
+  }
+
+"BONUS_impart monster form"
+  {
+    range = 1
+    symbol = "🎁"
+    effect = Name "impart monster form" Description "Give your monster form to a different creature (You lose it)."
+	Chain {
+		Area 1 RemoveAbility "BONUS_monster form"
+		Area 1 RemoveAbility "BONUS_impart monster form"
+		GrantAbility "BONUS_monster form"
+		GrantAbility "BONUS_impart monster form"
+    }
+    message = "" ""
+    cooldown = 30
+}
+
+"BONUS_absorb life technology"
+  {
+    symbol = "📖"
+	cooldown = 300
+    effect = Name "Absorb life" Description "Absorb life technologies from your defeated enemies"
+	         Chain {
+    				    Filter Flag "living"                AddTechnology "living"
+	    				Filter Flag "storage"				AddTechnology "storage"
+		    			Filter Flag "prisons"				AddTechnology "prisons"
+			    		Filter Flag "zones"					AddTechnology "zones"
+						Filter Not Flag "living"
+						    Filter Not Flag "storage"
+						        Filter Not Flag "prisons"
+						           Filter Not Flag "zones"
+    						           Filter Not Flag "advanced sorcery"
+	    					               CreatureMessage { "need dead creatures to feed off." "needs more dead creatures." }
+					}
+    sound = "SPELL_BLAST"
+  }
+    
+"BONUS_abosrb magic"
+  {
+    symbol = "📖"
+	cooldown = 300
+    effect = Name "Absorb alchemy" Description "Absorb alchemy technologies from your defeated enemies"
+	         Chain {
+	   		    		Filter Flag "advanced sorcery"		AddTechnology "advanced sorcery"
+		    			Filter Flag "master sorcery"		AddTechnology "master sorcery"
+						Filter Flag "alchemy"				AddTechnology "alchemy"
+						Filter Flag "alchemical conversion"	AddTechnology "alchemical conversion"
+	    				Filter Flag "incendiary alchemy"	AddTechnology "incendiary alchemy"
+		    			Filter Flag "advanced alchemy"		AddTechnology "advanced alchemy"
+					}					
+    sound = "SPELL_BLAST"
+  }
+
+"BONUS_abosrb dark magic"
+  {
+    symbol = "📖"
+	cooldown = 300
+    effect = Name "Absorb dark magic" Description "Absorb dark magic technologies from your defeated enemies"
+	         Chain {
+						Filter Flag "demonology"			AddTechnology "demonology"
+						Filter Flag "necromancy"			AddTechnology "necromancy"
+						Filter Flag "advanced necromancy"	AddTechnology "advanced necromancy"
+						Filter Flag "master necromancy"		AddTechnology "master necromancy"
+					}					
+    sound = "SPELL_BLAST"
+  }
+
+"BONUS_abosrb liquid powers"
+  {
+    symbol = "📖"
+	cooldown = 300
+    effect = Name "Absorb liquid powers" Description "Absorb liquid technologies from your defeated enemies"
+	         Chain {
+						Filter Flag "distillation"			AddTechnology "distillation"
+						Filter Flag "embalming"				AddTechnology "embalming"
+						Filter Flag "advanced embalming"	AddTechnology "advanced embalming"
+						Filter Flag "master embalming"		AddTechnology "master embalming"
+					}					
+    sound = "SPELL_BLAST"
+  }
+
+"BONUS_abosrb automoton powers"
+  {
+    symbol = "📖"
+	cooldown = 300
+    effect = Name "Abosrb automoton powers" Description "Abosrb automoton technologies from your defeated enemies"
+	         Chain {  
+						Filter Flag "automatons"			AddTechnology "automatons"
+						Filter Flag "advanced automatons"	AddTechnology "advanced automatons"
+						Filter Flag "automaton brains"		AddTechnology "automaton brains"
+						Filter Flag "aerodynamics"			AddTechnology "aerodynamics"
+					}					
+    sound = "SPELL_BLAST"
+  }
+
+"BONUS_abosrb beast skills"
+  {
+    symbol = "📖"
+	cooldown = 300
+    effect = Name "Abosrb beast skills" Description "Abosrb beast technologies from your defeated enemies"
+	         Chain {  
+						Filter Flag "chicken breeding"		AddTechnology "chicken breeding"
+						Filter Flag "pig breeding"			AddTechnology "pig breeding"
+						Filter Flag "cow breeding"			AddTechnology "cow breeding"
+						Filter Flag "beast mutation"		AddTechnology "beast mutation"
+					}					
+    sound = "SPELL_BLAST"
+  }
+
+"BONUS_abosrb human skills"
+  {
+    symbol = "📖"
+	cooldown = 300
+    effect = Name "Abosrb human skills" Description "Abosrb human technologies from your defeated enemies"
+	         Chain {  
+				    	Filter Flag "crafting"				AddTechnology "crafting"
+					    Filter Flag "installations"			AddTechnology "installations"
+						Filter Flag "chivalry"				AddTechnology "chivalry"
+						Filter Flag "humanoid mutation"		AddTechnology "humanoid mutation"
+					}					
+    sound = "SPELL_BLAST"
+  }
+
+"BONUS_abosrb weapons skills"
+  {
+    symbol = "📖"
+	cooldown = 300
+    effect = Name "Abosrb weapon skills" Description "Abosrb weapon technologies from your defeated enemies"
+	         Chain {  
+						Filter Flag "two-handed weapons"	AddTechnology "two-handed weapons"
+						Filter Flag "archery"				AddTechnology "archery"
+						Filter Flag "magical weapons"		AddTechnology "magical weapons"
+						Filter Flag "iron working"			AddTechnology "iron working"
+					}					
+    sound = "SPELL_BLAST"
+  }
+
+"BONUS_abosrb lore"
+  {
+    symbol = "📖"
+	cooldown = 300
+    effect = Name "Abosrb lore" Description "Abosrb lore from your defeated enemies"
+	         Chain {  
+						Filter Flag "goblin_lore"			AddTechnology "goblin_lore"
+						Filter Flag "worship"				AddTechnology "worship"
+					}					
+    sound = "SPELL_BLAST"
+  }
+
+"BONUS_abosrb crafts"
+  {
+    symbol = "📖"
+	cooldown = 300
+    effect = Name "Abosrb crafts" Description "Abosrb crafts from your defeated enemies"
+	         Chain {  
+						Filter Flag "traps"					AddTechnology "traps"
+						Filter Flag "advanced traps"		AddTechnology "advanced traps"
+						Filter Flag "jewellery"				AddTechnology "jewellery"
+					}					
+    sound = "SPELL_BLAST"
+  }
+
+##############################
+#Extra Enemies and Adventurers
+##############################
+
+###########################
+#Spells from Adventurer mod
+###########################
+
+#Spells for adventurer clases.
+
+"BONUS_rapid magic missile"
+  {
+    symbol = "⥇"
+    effect = Name "rapid magic missile" Description "Throw raw magic at your foes; short-ranged but very quick." Damage SPELL_DAMAGE SPELL
+    range = 4
+    cooldown = 2
+    sound = "SPELL_BLAST"
+  }
+"BONUS_battle cry"
+  {
+    symbol = "💪"
+    effect = Name "battle cry" Description "Enter a battle rage, increasing your melee damage but diminishing your defense." Lasting 20 RAGE
+    cooldown = {45 90}
+    sound = "SPELL_STR_BONUS"
+  }
+"BONUS_area defense bonus"
+  {
+    symbol = "🛡"
+    effect = Name "area defense bonus" Description "Briefly improve the defense of all friendly creatures in the area." { Message NORMAL  "Spirit of Endurance invoked." Area 2 Filter Not Enemy Lasting 20 DEF_BONUS }
+    cooldown = {35 70}
+    sound = "SPELL_DEX_BONUS"
+  }
+"BONUS_block"
+  {
+    symbol = "🛡"
+    effect = Name "block" Description "Actively block incoming attacks, briefly improving your defense." Lasting 20 DEF_BONUS
+    cooldown = {35 70}
+    sound = "SPELL_DEX_BONUS"
+  }
+"BONUS_area damage bonus"
+  {
+    symbol = "💪"
+    effect = Name "area damage bonus" Description "Briefly improve the melee attack potential of all friendly creatures in the area." { Message NORMAL  "Powers of violence called." Area 2 Filter Not Enemy Lasting 20 DAM_BONUS }
+    cooldown = {35 70}
+    sound = "SPELL_STR_BONUS"
+  }
+"BONUS_healing totem"
+  {
+    symbol = "¬+¬"
+    effect = Name "healing totem" Description "Call a wooden totem that will periodically heal friendly creatures." Summon "BONUS_HEALING_TOTEM" { 1 } 100
+    cooldown = 250
+    sound = "SPELL_SUMMON_SPIRIT"
+  }
+"BONUS_buff totem"
+  {
+    symbol = "¬💪¬"
+    effect = Name "buff totem" Description "Call a wooden totem that will periodically buff friendly creatures." Summon "BONUS_BUFF_TOTEM" { 1 2 } 100
+    cooldown = 250
+    sound = "SPELL_SUMMON_SPIRIT"
+  }
+"BONUS_magma bolt"
+  {
+   symbol = "{🔥}"
+   effect = Name "magma bolt" Description "Throw a flaming bolt of magic." { Fire {} Blast }
+   range = 6
+   cooldown = 8
+   sound = "SPELL_FIRE_SPHERE_PET"
+  }
+"BONUS_advanced firewall"
+  {
+    symbol = "𝍔"
+    effect = Name "advanced firewall" Description "Lay a strip of fire at range." CustomArea PlaceFurniture "FIRE_WALL" { { 0 -3 } { 0 -2 } { 0 -1 } {0 0} {0 1} {0 2} {0 3} {1 -2} {1 -1} {1 0} {1 1} {1 2} {-1 -2} {-1 -1} {-1 0} {-1 1} { -1 2 } }
+    endOnly = true
+    range = 4
+    cooldown = 30
+    sound = "SPELL_BLAST"
+  }
+"BONUS_expert firewall"
+  {
+    upgrade = "BONUS_advanced firewall"
+    symbol = "𝍔"
+    effect = Name "expert firewall" Description "Lay a large defensive fire field." CustomArea PlaceFurniture "FIRE_WALL" { { 0 -4 } { 0 -3 }{ 0 -2 }{ 0 -1 }{ 0 0 }{ 0 1 }{ 0 2 }{ 0 3 }{ 0 4 }{ 1 -3 }{ 1 -2 }{ 1 -1 }{ 1 0 }{ 1 1 }{ 1 2 }{ 1 3 }{ -1 -3 }{ -1 -2 }{ -1 -1 }{ -1 0 }{ -1 1 }{ -1 2 }{ -1 3 }}
+    endOnly = true
+    range = 6
+    cooldown = 30
+    sound = "SPELL_BLAST"
+  }
+"BONUS_advanced fireball"
+  {
+    upgrade = "fireball"
+    symbol = "🔥"
+    effect = Name "advanced fireball" Description "Throw a ball of fire." Fire {}
+    fx = {FIREBALL}
+    range = 8
+    cooldown = 20
+    sound = "SPELL_FIRE_SPHERE_PET"
+  }
+"BONUS_expert fireball"
+  {
+    upgrade = "BONUS_advanced fireball"
+    symbol = "🔥"
+    effect = Name "expert fireball" Description "Throw a long-ranged ball of fire." Fire {}
+    fx = {FIREBALL}
+    range = 12
+    cooldown = 10
+    sound = "SPELL_FIRE_SPHERE_PET"
+  }
+"BONUS_fireblast"
+  {
+    symbol = "🔥💥"
+    effect = Name "fireblast" Description "Throw a fiery detonation." { Fire {} CircularBlast Blast }
+    fx = {FIREBALL}
+    range = 8
+    cooldown = 30
+    sound = "SPELL_BLAST"
+  }
+"BONUS_advanced fireblast"
+  {
+    upgrade = "BONUS_fireblast"
+    symbol = "🔥💥"
+    effect = Name "advanced fireblast" Description "Throw a fiery detonation, farther." { Fire {} CircularBlast Blast }
+    fx = {FIREBALL}
+    range = 10
+    cooldown = 25
+    sound = "SPELL_BLAST"
+  }
+"BONUS_expert fireblast"
+  {
+    upgrade = "BONUS_advanced fireblast"
+    symbol = "🔥💥"
+    effect = Name "expert fireblast" Description "Throw a long-ranged and quick fiery detonation." { Fire {} CircularBlast Blast }
+    fx = {FIREBALL}
+    range = 12
+    cooldown = 20
+    sound = "SPELL_BLAST"
+  }
+"BONUS_explosion"
+  {
+    symbol = "🔥💣"
+    effect = Name "explosion" Description "Wreak magical flaming blast havoc on your enemies." { Area 12 Filter Enemy Fire {} Area 12 Filter Enemy Blast Area 12 Filter Enemy Damage SPELL_DAMAGE SPELL 
+    CustomArea PlaceFurniture "FIRE_WALL" {{ 0 -12 }{ 0 -10}{ 0 -8 }{0 -6}{ 0 -4 }{0 -2 }{0 2 }{0 4 }{0 6 }{0 8 }{0 10}{ 0 12 }{2 -10}{ 2 -8}{ 2 -6}{ 2 -4}{ 2 -2}{ 2 0}{ 2 2}{ 2 4}{ 2 6}{ 2 8}{ 2 10}{ 4 8}{ 4 6}{ 4 4}{ 4 2}{ 4 0}{ 4 -2}{ 4 -4}{ 4 -6}{ 4 -8}{ 
+    6 6}{ 6 4}{ 6 2}{ 6 0}{ 6 -2}{ 6 -4}{ 6 -6}{ 8 4}{ 8 2}{ 8 0}{ 8 -2}{ 8 -4}{ 10 2}{ 10 0}{ 10 -2}{ 12 0}{ -2 -10}{ -2 -8}{ -2 -6}{ -2 -4}{ -2 -2}{ -2 0}{ -2 2}{ -2 4}{ -2 6}{ -2 8}{ -2 10}{ -4 -8}{ -4 -6}{ -4 -4}{ -4 -2}{ -4 0}{ -4 2}{ -4 2}{ -4 4}{ -4 6}{ -4 8}{
+    -6 6}{ -6 4}{ -6 2}{ -6 0}{ -6 -2}{ -6 -4}{ -6 -6}{ -8 4}{ -8 2}{ -8 0}{ -8 2}{ -8 4}{ -10 2}{ -10 0 }{-10 -2}{ -12 0}} }
+    fx = {FIREBALL}
+    cooldown = 1500
+    sound = "SPELL_BLAST"
+  }
+"BONUS_stone golem"
+  {
+   symbol = "👤"
+   effect = Name "stone golem" Description "Call one or two stone golems to assist you." Summon "STONE_GOLEM" { 1 2 } 100
+   cooldown = 100 #Duration equal to cooldown, spell-speed inappropriate.
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"BONUS_stone golems"
+ {
+   upgrade = "BONUS_stone golem"
+   symbol = "👤"
+   effect = Name "stone golems" Description "Call several stone golems to your side." Summon "STONE_GOLEM" { 4 7 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"BONUS_iron golem"
+ {
+   symbol = "👤"
+   effect = Name "iron golem" Description "Call one or two iron golems to assist you." Summon "IRON_GOLEM" { 1 2 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"BONUS_iron golems"
+ {
+   upgrade = "BONUS_iron golem"
+   symbol = "👤"
+   effect = Name "iron golems" Description "Call several iron golems to your side." Summon "IRON_GOLEM" { 4 7 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"BONUS_adamantine golem"
+ {
+   symbol = "♜"
+   effect = Name "adamantine golem" Description "Call one or two adamantine golems to assist you." Summon "ADA_GOLEM" { 1 2 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"BONUS_adamantine golems"
+{
+   upgrade = "BONUS_adamantine golem"
+   symbol = "♜♜"
+   effect = Name "adamantine golems" Description "Call several adamantine golems to your side." Summon "ADA_GOLEM" { 4 7 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ "BONUS_snakes"
+ {
+   symbol = "🐍🐍"
+   effect = Name "snakes" Description "Call some snakes to assist you." Summon "SNAKE" { 7 8 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT" 
+ }
+
+"BONUS_blood curse"
+ {
+   symbol = "☛"
+   range = 10
+   effect = Name "blood curse" Description "Make your target bleed." Lasting 20 BLEEDING
+   cooldown = 125
+   sound = "SPELL_BLAST"
+ }  
+ 
+"BONUS_freezing vines"
+ {
+   symbol = "🙙"
+   range = 10
+   effect = Name "freezing vines" Description "Call freezing vines to freeze and hold your target in place." { Message NORMAL  "Freezing vines burst from the ground." Lasting 10 FROZEN }
+   endOnly = true
+   cooldown = {35 70}
+   sound = "SPELL_STR_BONUS"
+ }
+ 
+ "BONUS_stone to mud"
+ {
+   symbol = "🕳"
+   effect = Name "stone to mud" Description "Destroy all walls in the immediate area." Area 2 DestroyWalls DIG
+   cooldown = {250 500}
+   sound = "SPELL_AIR_BLAST"
+ }
+
+ "BONUS_regeneration" 
+  {
+    symbol = "+♥"
+    effect = Name "regeneration" Description "Briefly heal over time." Lasting 50 REGENERATION
+    cooldown = 50
+    sound = "SPELL_DEX_BONUS"
+  }
+
+ 
+"BONUS_resist magic"
+ {
+   symbol = "⛥" #Should be a one-point-up pentagram.  Was sorely tempted to use ₥, but that's kinda English-centric.
+   effect = Name "resist magic" Description "Briefly improve your resistance to magic." Lasting 20 MAGIC_RESISTANCE
+   cooldown = {40 80}
+   sound = "SPELL_DEX_BONUS"
+ }
+ 
+"BONUS_darkness"
+ {
+   symbol = "☁"
+   effect = Name "darkness" Description "Briefly block out light, including the sun, in an area around you." Lasting DARKNESS_SOURCE
+   cooldown = 14
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_wolves"
+ {
+   symbol = "🐺"
+   effect = Name "wolves" Description "Call a pack of wolves to your aid." Summon "WOLF" { 5 6 } 100
+   cooldown = {100 150}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_bear"
+ {
+   symbol = "🐻"
+   effect = Name "bear" Description "Call some cave bears to your aid." Summon "CAVE_BEAR" { 3 4 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_boar"
+ {
+   symbol = "🐗"
+   effect = Name "boar" Description "Call some boars to your aid." Summon "BOAR" { 3 4 } 100
+   cooldown = 50
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+
+"BONUS_fire shield"
+ {
+   symbol = "❂"
+   effect = Name "fire shield" Description "Briefly improve your resistance to fire." Lasting 20 FIRE_RESISTANT
+   cooldown = 100
+   sound = "SPELL_INVISIBILITY"
+ }
+ 
+"BONUS_area fire shield"
+ {
+   upgrade = "BONUS_fire shield"
+   symbol = "❂"
+   effect = Name "area fire shield" Description "Briefly improve the fire resistance of all allied creatures in the area." { Message NORMAL  "Fire charm summoned." Area 3 Filter Not Enemy Lasting 20 FIRE_RESISTANT }
+   cooldown = {40 80}
+   sound = "SPELL_INVISIBILITY"
+ }
+ 
+"BONUS_telepathy"
+ {
+   symbol = "💭"
+   effect = Name "telepathy" Description "Briefly detect other creatures with physical minds." Lasting TELEPATHY
+   cooldown = 175
+   sound = "SPELL_INVISIBILITY"
+ }
+ 
+"BONUS_elf vision"
+ {
+   symbol = "👁"
+   effect = Name "elf vision" Description "Briefly see, and safely shoot through, trees and bushes." Lasting ELF_VISION
+   cooldown = 90
+   sound = "SPELL_SPEED_SELF"
+ }
+ 
+"BONUS_weapon dodge"
+ {
+   symbol = "⇠⇢"
+   effect = Name "weapon dodge" Description "Actively evade melee attacks, briefly reducing the damage they do to you." Lasting 20 MELEE_RESISTANCE
+   cooldown = 90
+   sound = "SPELL_DEX_BONUS"
+ }
+
+"BONUS_arrow shield"
+ {
+   symbol = "➵◌"
+   effect = Name "arrow shield" Description "Actively defend against ranged attacks, briefly reducing the damage they do to you." Lasting 20 RANGED_RESISTANCE
+   cooldown = 50
+   sound = "SPELL_DEX_BONUS"
+ }
+ 
+"BONUS_cause blindness" 
+ {
+   symbol = "👀"
+   range = 5
+   effect = Name "cause blindness" Description "Strike your target blind." Lasting 20 BLIND
+   cooldown = 100
+   sound = "SPELL_DECEPTION"
+ }
+ 
+"BONUS_cripple"
+ {
+   symbol = "↯"
+   range = 5
+   effect = Name "cripple" Description "Knock your target to the ground, slowing their movement." Lasting 20 COLLAPSED
+   cooldown = 120
+   sound = "SPELL_BLAST"
+ }
+ 
+"BONUS_mind bolt"
+ {
+   symbol = "⇝"
+   range = 1
+   effect = Name "mind bolt" Description "Temporarily drive your target insane, making them hostile to all." Lasting INSANITY
+   cooldown = 180
+   sound = "SPELL_BLAST"
+ }
+ 
+"BONUS_advanced mind bolt"
+ {
+   upgrade = "BONUS_mind bolt"
+   symbol = "⇝"
+   range = 6
+   effect = Name "advanced mind bolt" Description "Temporarily drive your target insane, making them hostile to all." Lasting INSANITY
+   cooldown = 120
+   sound = "SPELL_BLAST"
+ }
+ 
+"BONUS_mana curse"
+ {
+   symbol = "☞"
+   range = 5
+   effect = Name "mana curse" Description "Briefly make the target more vulnerable to magic." Lasting 18 MAGIC_VULNERABILITY
+   cooldown = {30 60}
+   sound = "SPELL_BLAST"
+ }
+ 
+"BONUS_regrow body part"
+ {
+   symbol = "♥💪"
+   effect = Name "regrow body part" Description "Regrow a lost limb!" RegrowBodyPart 1
+   cooldown = 3000
+   sound = "SPELL_BLAST"
+ }
+ 
+ "BONUS_summon air elementals"
+ {
+   symbol = "⥀"
+   effect = Name "summon air elementals" Description "Call some air elementals to your aid." Summon "AIR_ELEMENTAL" { 3 4 } 100
+   cooldown = {100 200}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_eye servant"
+ {
+   symbol = "👁️"
+   effect = Name "eye servant" Description "Call an eye servant or two to your aid." Summon "BONUS_EYE_SERVANT" { 1 2 } 100
+   cooldown = 80
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+ "BONUS_lesser eye servant"
+ {
+   symbol = "👁️"
+   effect = Name "lesser eye servant" Description "Call a lesser eye servant, or maybe two, to your aid." Summon "BONUS_LESSER_EYE_SERVANT" { 1 2 } 100
+   cooldown = 80
+   sound = "SPELL_SUMMON_SPIRIT" 
+ }
+
+ 
+"BONUS_summon skeletons"
+ {
+   symbol = "☠"
+   effect = Name "summon skeletons" Description "Call skeletal archers to your aid." Summon "SKELETON_ARCHER" { 1 5 } 100
+   cooldown = {35 70}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_summon skeleton warriors"
+ {
+   upgrade = "BONUS_summon skeletons"
+   symbol = "☠"
+   effect = Name "summon skeleton warriors" Description "Call skeleton warriors to your aid." Summon "SKELETON_WARRIOR" { 1 5 } 100
+   cooldown = {35 70}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_summon skeleton mages"
+ {
+   symbol = "☠"
+   effect = Name "summon skeleton mages" Description "Call skeleton mages to your aid." Summon "BONUS_SKELETON_MAGE" { 1 3 } 100
+   cooldown = {35 70}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+  "BONUS_spin web"
+  {
+    symbol = "*"
+    effect = Name "spin web" Description "Weave a web trap on the current tile." PlaceFurniture "BONUS_SPIDER_WEB"
+    cooldown = 0
+  }
+  "BONUS_dig pit"
+  {
+    symbol = "O"
+    effect = Name "dig pit" Description "Dig a pit, slowing travel until it's filled." PlaceFurniture "BONUS_SPIDER_PIT"
+    cooldown = 0
+  }
+  "BONUS_mud wall"
+  {
+    symbol = "="
+    effect = Name "mud wall" Description "Raise a mud wall, blocking sight and travel." PlaceFurniture "BONUS_SPIDER_MUD_WALL"
+    cooldown = 0
+  }
+  "BONUS_hatch eggs"
+  {
+    symbol = "::"
+    effect = Name "hatch eggs" Description "Hatch three spiders." {
+		Summon "SPIDER" {3} 100
+		Summon "BONUS_GREEN_SPIDER" {1} 100
+		Summon "BONUS_RED_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+  "BONUS_breed dark spawn"
+  {
+    upgrade = "BONUS_hatch eggs"
+    symbol = ";;"
+    effect = Name "breed dark spawn" Description "Hatch five spiders." {
+		Summon "SPIDER" {3} 100
+		Summon "BONUS_GREEN_SPIDER" {1} 100
+		Summon "BONUS_RED_SPIDER" {1} 100
+		Summon "BONUS_BLUE_SPIDER" {1} 100
+		Summon "BONUS_YELLOW_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+  
+  "BONUS_breed horrors"
+  {
+    upgrade = "BONUS_breed dark spawn"
+    symbol = ",,"
+    effect = Name "breed horrors" Description "Hatch eight spiders." {
+		Summon "SPIDER" {1} 100
+		Summon "BONUS_GREEN_SPIDER" {1} 100
+		Summon "BONUS_RED_SPIDER" {1} 100
+		Summon "BONUS_BLUE_SPIDER" {1} 100
+		Summon "BONUS_YELLOW_SPIDER" {1} 100
+		Summon "BONUS_PINK_SPIDER" {1} 100
+		Summon "BONUS_LIGHT_BLUE_SPIDER" {1} 100
+		Summon "BONUS_LIGHT_RED_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+  "BONUS_breed hell"
+  {
+    upgrade = "BONUS_breed horrors"    
+    symbol = "**"
+    effect = Name "breed hell" Description "Hatch nine spiders." {
+		Summon "SPIDER" {1} 100
+		Summon "BONUS_GREEN_SPIDER" {1} 100
+		Summon "BONUS_RED_SPIDER" {1} 100
+		Summon "BONUS_BLUE_SPIDER" {1} 100
+		Summon "BONUS_YELLOW_SPIDER" {1} 100
+		Summon "BONUS_PINK_SPIDER" {1} 100
+		Summon "BONUS_LIGHT_BLUE_SPIDER" {1} 100
+		Summon "BONUS_LIGHT_RED_SPIDER" {1} 100
+		Summon "BONUS_LIGHT_BROWN_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+ 
+ "BONUS_summon spirit"
+  {
+    symbol = "👾"
+    effect = Name "summon spirit" Description "Call some spirits to your aid." Summon "SPIRIT" { 3 5 } 100
+    cooldown = 100
+    sound = "SPELL_FIRE_SPHERE_PET"
+  }
+
+"BONUS_knockdown"
+ {
+   symbol = "↧"
+   range = 1
+   effect = Name "knockdown" Description "Knock your target to the ground, slowing their movement." Lasting 20 COLLAPSED
+   cooldown = 30
+   sound = "BLUNT_DAMAGE"
+ }
+"BONUS_advanced rapid invisibility"
+ {
+   symbol = "🕵️"
+   effect = Name "advanced rapid invisibility" Description "Become invisible." Lasting INVISIBLE
+   cooldown = 30
+   sound = "SPELL_INVISIBILITY"
+ }
+
+"BONUS_wild swing" #Tricky as barbarians have far better attack than armor.
+  {
+    symbol = "🌀💥"
+    effect = Name "wild swing" Description "Swing your weapon wildly, attacking everyone in your area. Including yourself!" { Area 1 Damage DAMAGE CUT CircularBlast }
+	targetSelf = false
+    cooldown = 2
+    sound = "BLADE_DAMAGE"
+  }
+"BONUS_blood rage"
+  {
+    symbol = "💪"
+    effect = Name "blood rage" Description "Work yourself into an insane frenzy, boosting attack and speed at the cost of defense and your ability to tell friend from foe." { Lasting 20 RAGE Lasting SPEED Lasting INSANITY }
+    cooldown = 90
+    sound = "SPELL_STR_BONUS"
+  }
+"BONUS_air render"
+  {
+    symbol = "☽"
+    effect = Name "air render" Description "Slash a target at range." { Damage DAMAGE CUT }
+	range = 3
+    cooldown = 12
+	endOnly = true
+    sound = "SPELL_AIR_BLAST"
+  }
+"BONUS_martial blast"
+  {
+    symbol = "💥"
+    effect = Name "martial blast" Description "Attack everyone in the immediately surrounding area." { Area 2 Blast }
+    cooldown = 2
+    sound = "SPELL_AIR_BLAST"
+  }
+"BONUS_martial strike"
+  {
+    symbol = "💥"
+    effect = Name "martial strike" Description "Launch an attack that travels through the air and opposition." { Damage DAMAGE CUT Blast }
+	range = 4
+    cooldown = 20
+    sound = "BLUNT_DAMAGE"
+  }
+"BONUS_break through"
+  {
+    symbol = "💥➭"
+    effect = Name "break through" Description "Smash through a target, including trees and walls." { Damage DAMAGE CUT DestroyWalls DIG }
+	range = 1
+    cooldown = 5
+    sound = "BLUNT_DAMAGE"
+  }
+"BONUS_throw sand" 
+ {
+   symbol = "△"
+   range = 4
+   effect = Name "throw sand" Description "Throw a handful of sand in your target's face, either blinding them or doing minor damage." ChooseRandom { Lasting BLIND FixedDamage DAMAGE 1 CUT }
+   cooldown = 10
+   sound = "SHOOT_BOW"
+   message = "throws sand!" "throws sand!"
+ }
+"BONUS_decapitate"
+ {
+   symbol = "👱"
+   range = 1
+   effect = Name "decapitate" Description "Cut off your target's head! If they survive, they'll still have a bleeding wound." { LoseBodyPart HEAD Lasting 20 BLEEDING }
+   #Undead and ectoplasmic folks will probably survive!
+   cooldown = {100 200}
+   sound = "BLADE_DAMAGE"
+ }
+"BONUS_leg strike"
+ {
+   symbol = "👞"
+   range = 1
+   effect = Name "leg strike" Description "Cut off your target's leg, leaving a bleeding wound." { LoseBodyPart LEG Lasting 20 BLEEDING }
+   cooldown = 50
+   sound = "BLADE_DAMAGE"
+ }
+"BONUS_arm strike"
+ {
+   symbol = "✋"
+   range = 1
+   effect = Name "arm strike" Description "Cut off your target's arm, leaving a bleeding wound." { LoseBodyPart ARM Lasting 20 BLEEDING }
+   cooldown = 50
+   sound = "BLADE_DAMAGE"
+ }
+"BONUS_curse of rage"
+ {
+   symbol = "😈"
+   effect = Name "curse of rage" Description "increases your damage stat by 1, but also lowers your defense by 1" { IncreaseAttr DAMAGE 1 IncreaseAttr DEFENSE -1 }
+   targetSelf = true
+   cooldown = 500
+   sound = "SPELL_WORD_OF_POWER"
+ }
+"BONUS_heroic leap"
+{
+  symbol = "↷"
+  effect = Name "heroic leap" Description "Jump to a target location, causing damage and knockback to all around when you land." { Jump CircularBlast }
+  range = 3
+  cooldown = 10
+  endOnly = true
+  message = "jump" "jumps"
+}
+
+"BONUS_vitals strike" 
+ {
+   symbol = "🗡"
+   range = 1
+   effect = Name "vitals strike" Description "has a chance to deal high damage, moderate damage, low damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 20 STAB FixedDamage DAMAGE 60 STAB FixedDamage DAMAGE 180 STAB }
+   cooldown = {40 80}
+   sound = "BLADE_DAMAGE"
+   message = "go for vitals!" "goes for vitals!"
+ }
+"BONUS_advanced vitals strike" 
+ {
+   symbol = "🗡"
+   upgrade = "BONUS_vitals strike"
+   range = 1
+   effect = Name "advanced vitals strike" Description "has a chance to deal insane damage, moderately high damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 80 STAB FixedDamage DAMAGE 200 STAB }
+   cooldown = {35 70}
+   sound = "BLADE_DAMAGE"
+   message = "go for vitals!" "goes for vitals!"
+ }
+"BONUS_expert vitals strike" 
+ {
+   symbol = "🗡"
+   upgrade = "BONUS_advanced vitals strike"
+   range = 1
+   effect = Name "expert vitals strike" Description "has a chance to deal insane damage, high damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 100 STAB FixedDamage DAMAGE 250 STAB }
+   cooldown = {30 60}
+   sound = "BLADE_DAMAGE"
+   message = "go for vitals!" "goes for vitals!"
+ }
+"BONUS_assassinate" 
+ {
+   symbol = "🗡"
+   range = 1
+   effect = Name "assassinate" Description "causes massive damage to a single target" FixedDamage DAMAGE 350 CUT 
+   cooldown = {100 200}
+   sound = "BLADE_DAMAGE"
+   message = "go for vitals!" "goes for vitals!"
+ }
+"BONUS_curse of risks" #Given the stat-escalation in A37, making the Increase 5 as well. +1 just doesn't register when compared to -3/-5 to Defense.
+ {
+   symbol = "😈"
+   effect = Name "curse of risks" Description "Either increase a random stat by 5 or decrease defense by 3 or 5" ChooseRandom { IncreaseAttr DAMAGE 3 IncreaseAttr SPELL_DAMAGE 3 IncreaseAttr RANGED_DAMAGE 3 IncreaseAttr DEFENSE 3 IncreaseAttr DEFENSE -3 IncreaseAttr DEFENSE -5 }
+   targetSelf = true
+   cooldown = 500
+   sound = "SPELL_WORD_OF_POWER"
+ }
+ "BONUS_shadow step"
+ {
+   symbol = "⇢"
+   effect = Name "shadow step"  Description "Jump to a new location and cast illusions on landing." { Jump Deception }
+   range = 6
+   cooldown = 10
+   sound = "SPELL_DECEPTION"
+   endOnly = true
+   message = "step through shadows" "steps through shadows"
+ }
+ "BONUS_escape slash"
+ {
+   symbol ="✈️☽"
+   effect = Name "escape slash" Description "Attack an enemy, then teleport them Away." { Damage DAMAGE CUT Escape{} }
+   range = 1
+   cooldown = 4
+   sound = "BLADE_DAMAGE"
+   message = "use magic in an attack" "uses magic in an attack"
+ }
+ "BONUS_smoke bomb"
+ {
+   symbol = "✈️💥"
+   effect = Name "smoke bomb" Description "Become invisible and teleport to a safer position in a cloud of smoke!" { CircularBlast Lasting INVISIBLE Escape{} }
+   cooldown = {50 100}
+   sound = "SPELL_DECEPTION"
+   message = "throw a smoke bomb" "throws a smoke bomb"
+ }
+"BONUS_substitute"
+ {
+   symbol = "⇅"
+   effect = Name "substitute" Description "Cast illusions, and then swap positions with them." { Deception SwapPosition Deception }
+   range = 1
+   cooldown = 30 #Something like this might take more than 15 turns to sort out, so spell speed might make it Spammable.
+   endOnly = true
+   message = "cast decoys" "poofs into several copies"
+ }
+ "BONUS_double strike"
+ {
+   symbol = "☽☽"
+   effect = Name "double strike" Description "Attack twice in one action!" { Damage DAMAGE CUT Damage DAMAGE STAB }
+   range = 1
+   cooldown = 8
+   sound = "BLADE_DAMAGE"
+   message = "hit twice" "hits twice"
+ }
+ "BONUS_armor strike"
+ {
+   symbol = "💥🛡"
+   effect = Name "armor strike" Description "Attack your target's armor, permanently reducing its protection by 1." { Damage DAMAGE CUT Enhance ARMOR -1 }
+   range = 1
+   cooldown = 4
+   sound = "BLUNT_DAMAGE"
+   message = "damage an armor piece" "damages an armor piece"
+ }
+ "BONUS_weapon strike"
+ {
+   symbol = "💥⚔"
+   effect = Name "weapon strike" Description "Attack your target's weapon, permanently reducing its damage potential by 1." { Damage DAMAGE CUT Enhance WEAPON -1 }
+   range = 1
+   cooldown = 4
+   sound = "BLUNT_DAMAGE"
+   message = "damage a weapon" "damages a weapon"
+ }
+ "BONUS_triple strike"
+ {
+   symbol = "☽☽☽"
+   upgrade = "BONUS_double strike"
+   effect = Name "triple strike" Description "Attack thrice in one action!" { Damage DAMAGE CUT Damage DAMAGE STAB Damage DAMAGE CUT }
+   range = 1
+   cooldown = 8
+   sound = "BLADE_DAMAGE"
+   message = "hit three times" "hits three times"
+ }
+ "BONUS_throwing star"
+ {
+   symbol = "✫"
+   effect = Name "throwing star" Description "Throw sharpened metal to attack at range, without a bulky bow or fancy magic." Damage RANGED_DAMAGE STAB
+   range = 6
+   cooldown = 0
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a star" "throws a star"
+ }
+ "BONUS_advanced throwing star"
+ {
+   symbol = "✫"
+   upgrade = "BONUS_throwing star"
+   effect = Name "advanced throwing star" Description "Throw sharpened metal to attack at range." Damage RANGED_DAMAGE STAB
+   range = 8
+   cooldown = 0
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a star" "throws a star"
+ }
+ "BONUS_expert throwing star"
+ {
+   symbol = "✫"
+   upgrade = "BONUS_advanced throwing star"
+   effect = Name "expert throwing star" Description "Throw a star to attack at range." Damage RANGED_DAMAGE STAB
+   range = 10
+   cooldown = 0
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a star" "throws a star"
+ }
+ "BONUS_master throwing star"
+ {
+   symbol = "✫"
+   upgrade = "BONUS_expert throwing star"
+   effect = Name "master throwing star" Description "Throw a star to attack at range." Damage RANGED_DAMAGE STAB
+   range = 12
+   cooldown = 0
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a star" "throws a star"
+ }
+ "BONUS_poison star"
+ {
+   symbol = "✦"
+   effect = Name "poison star" Description "Throw poisoned sharp metal to hurt your enemies and poison them." { Damage RANGED_DAMAGE STAB Lasting POISON }
+   range = 6
+   cooldown = 1
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a poison star" "throws a poison star"
+ }
+ "BONUS_advanced poison star"
+ {
+   symbol = "✦"
+   upgrade = "BONUS_poison star"
+   effect = Name "advanced poison star" Description "Throw poisoned sharp metal to hurt your enemies and poison them." { Damage RANGED_DAMAGE STAB Lasting POISON }
+   range = 8
+   cooldown = 1
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a poison star" "throws a poison star"
+ }
+ "BONUS_bleeding star"
+ {
+   symbol = "✷"
+   effect = Name "bleeding star" Description "Throw jagged sharp metal to hurt and bleed your enemies." { Damage RANGED_DAMAGE STAB Lasting 20 BLEEDING }
+   range = 6
+   cooldown = 1
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a bleeding star" "throws a bleeding star"
+ }
+ "BONUS_advanced bleeding star"
+ {
+   symbol = "✷"
+   upgrade = "BONUS_bleeding star"
+   effect = Name "advanced bleeding star" Description "Throw jagged sharp metal to hurt and bleed your enemies." { Damage RANGED_DAMAGE STAB Lasting 20 BLEEDING }
+   range = 8
+   cooldown = 1
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a bleeding star" "throws a bleeding star"
+ }
+ "BONUS_escape star"
+ {
+   symbol = "✲"
+   effect = Name "escape star" Description "Throw sharpened metal that teleports your target Away, then boost your speed." { Damage RANGED_DAMAGE STAB Escape{} Lasting SPEED }
+   range = 8
+   cooldown = 1
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw an escape star" "throws an escape star"
+ }
+  "BONUS_double star"
+ {
+   symbol = "✫✫"
+   effect = Name "double star" Description "Throw two stars in the same action." { Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB }
+   range = 8
+   cooldown = 2
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw stars" "throws stars"
+ }
+  "BONUS_triple star"
+ {
+   symbol = "✫✫✫"
+   upgrade = "BONUS_double star"
+   effect = Name "triple star" Description "Throw three stars in the same action!" { Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB }
+   range = 8
+   cooldown = 2
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw stars" "throws stars"
+ }
+ "BONUS_summon shades"
+ {
+   symbol = "🕵"
+   effect = Name "summon shades" Description "Call some shades to your aid." Summon "BONUS_SHADE" { 3 4 } 100
+   cooldown = {100 200}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"BONUS_shadow bolt"
+  {
+    symbol = "⥇"
+    effect = Name "shadow bolt" Description "Injure your target's body and mind, along with teleporting them Someplace Safer." { Damage SPELL_DAMAGE SPELL Escape{} Lasting INSANITY }
+    range = 8
+    cooldown = 10
+	endOnly = true
+    sound = "SPELL_BLAST"
+  }
+"BONUS_advanced shadow bolt"
+  {
+    symbol = "⥇"
+	upgrade = "BONUS_shadow bolt"
+    effect = Name "advanced shadow bolt" Description "Injure your target's body and mind, along with teleporting them Someplace Safer." { Damage SPELL_DAMAGE SPELL Escape{} Lasting INSANITY }
+    range = 9
+    cooldown = 8
+	endOnly = true
+    sound = "SPELL_BLAST"
+  }
+"BONUS_expert shadow bolt"
+  {
+    symbol = "⥇"
+	upgrade = "BONUS_advanced shadow bolt"
+    effect = Name "expert shadow bolt" Description "Injure your target's body and mind, along with teleporting them Someplace Safer." { Damage SPELL_DAMAGE SPELL Escape{} Lasting INSANITY }
+    range = 10
+    cooldown = 6
+	endOnly = true
+    sound = "SPELL_BLAST"
+  }
+ "BONUS_summon shadow clones"
+  {
+    symbol = "🕵"
+    effect = Name "summon shadow clones" Description "Call shadow clones to assist you." Summon "BONUS_SHADOW_CLONE" { 3 4 } 100
+    cooldown = {100 200}
+    sound = "SPELL_SUMMON_SPIRIT"
+  }
+ "BONUS_summon shadow clone army"
+  {
+    symbol = "🕵"
+    effect = Name "summon shadow clone army" Description "Call lots of shadow clones to assist you." Summon "BONUS_SHADOW_CLONE" { 12 16 } 500
+    cooldown = {500 1000}
+    sound = "SPELL_SUMMON_SPIRIT"
+  }
+ "BONUS_web wall"
+  {
+    symbol = "🕸"
+    effect = Name "web wall" Description "Lay three webs at a distance." CustomArea PlaceFurniture "WEB_TRAP" {{ 0 -1}{ 0 0}{ 0 1 }}
+    endOnly = true
+    range = 4
+    cooldown = {15 30}
+    sound = none
+  }
+"BONUS_vanish"
+  {
+    symbol = "🕵️"
+    effect = Name "vanish" Description "Briefly become invisible, and then teleport to a nearby target area." { Lasting INVISIBLE Teleport }
+    range = 8
+    cooldown = {50 100}
+	endOnly = true
+    sound = "SPELL_TELEPORT"
+  }
+"BONUS_split spirit"
+  {
+    symbol = "👤👤"
+    effect = Name "split spirit" Description "Split part of your spirit off to fight at your side!" { IncreaseAttr DAMAGE -4 IncreaseAttr SPELL_DAMAGE -4 IncreaseAttr RANGED_DAMAGE -4 IncreaseAttr DEFENSE -4 Summon "BONUS_ASSASSIN_SPIRIT_CLONE" { 1 } 0 }
+    cooldown = 500
+    sound = "SPELL_WORD_OF_POWER"
+  }
+  
+#Starter spells
+"BONUS_poison bolt" #Even money on piercing: poison is delayed instakill, so if they can't heal poison, all you have to do is wait. But if they can, or you don't have time to wait, this won't win the fight.
+ {
+   symbol = "☠"
+   range = 3
+   effect = Name "poison bolt" Description "Inject a lethal poison into your target." Lasting POISON
+   cooldown = {50 100}
+   sound = "SPELL_DECEPTION"
+ }
+ 
+"BONUS_haste other"
+  {
+    symbol = "🏃"
+    effect = Name "haste other" Description "Briefly speed your target's movement." Lasting SPEED
+    targetSelf = false
+    range = 3
+    cooldown = 110
+    sound = "SPELL_SPEED_SELF"
+  }
+"BONUS_defend other"
+  {
+    symbol = "🛡"
+    effect = Name "defend other" Description "Briefly improve your target's defense." Lasting 50 DEF_BONUS
+    targetSelf = false
+    range = 3
+    cooldown = {35 70}
+    sound = "SPELL_DEX_BONUS"
+  }
+  
+"BONUS_friendly damage bonus"
+  {
+    symbol = "💪"
+    effect = Name "friendly damage bonus" Description "Briefly improve your target's melee damage output." Lasting 50 DAM_BONUS
+    targetSelf = false
+    range = 3
+    cooldown = {35 70}
+    sound = "SPELL_STR_BONUS"
+  }
+"BONUS_rapid invisibility"
+ {
+   symbol = "🕵️"
+   effect = Name "rapid invisibility" Description "Become invisible." Lasting INVISIBLE
+   cooldown = {30 60}
+   sound = "SPELL_INVISIBILITY"
+ }
+
+"BONUS_magic wish"
+{
+  symbol = "$"
+  effect = Name "grant wish" Description "Provides you with the object you desire, if you specify it correctly." { Wish }
+  cooldown = 1
+}
+
+##############################
+#Spells not in Adventurer mod
+##############################
+
+"BONUS_advanced rapid magic missile"
+  {
+    upgrade = "BONUS_rapid magic missile"
+    symbol = "⥇"
+    effect = Name "advanced rapid magic missile" Damage SPELL_DAMAGE SPELL
+    range = 6
+    cooldown = 2
+    sound = "SPELL_BLAST"
+  }
+"BONUS_expert rapid magic missile"
+  {
+    upgrade = "BONUS_advanced rapid magic missile"
+    symbol = "⥇"
+    effect = Name "expert rapid magic missile" Damage SPELL_DAMAGE SPELL
+    range = 8
+    cooldown = 1
+    sound = "SPELL_BLAST"
+  }
+"BONUS_magic blast"
+  {
+	upgrade = "directed blast"
+    symbol = "💨"
+    effect = Name "magic blast" { Damage SPELL_DAMAGE SPELL Blast }
+    range = 6
+    endOnly = true
+    cooldown = 20
+    sound = "SPELL_BLAST"
+  }
+"BONUS_advanced magic blast"
+  {
+    upgrade = "BONUS_magic blast"
+    symbol = "💨"
+    effect = Name "BONUS_advanced magic blast" { Damage SPELL_DAMAGE SPELL Blast }
+    range = 8
+    endOnly = true
+    cooldown = 16
+    sound = "SPELL_BLAST"
+  }
+"BONUS_expert magic blast"
+  {
+    upgrade = "BONUS_advanced magic blast"
+    symbol = "💨"
+    effect = Name "expert magic blast" { Damage SPELL_DAMAGE SPELL Blast }
+    range = 10
+    endOnly = true
+    cooldown = 12
+    sound = "SPELL_BLAST"
+  }
+"BONUS_summon contraption"
+  {
+   symbol = "👾"
+   effect = Name "summon contraption" Summon "BONUS_GIANT_ROBOT" { 1 2 } 100
+   cooldown = 90
+   sound = "SPELL_SUMMON_SPIRIT"
+  }
+"BONUS_summon automaton"
+  {
+   symbol = "👾"
+   effect = Name "summon automaton" Summon "AUTOMATON" { 1 2 } 100
+   cooldown = 90
+   sound = "SPELL_SUMMON_SPIRIT"
+  }
+"BONUS_summon automaton army"
+  {
+   symbol = "👾!"
+   effect = Name "summon automaton army" Summon "AUTOMATON" { 10 11 } 100
+   cooldown = 3000
+   sound = "SPELL_SUMMON_SPIRIT"
+  }
+"BONUS_repair"
+  {
+    symbol = "🔧"
+    effect = Name "repair" { RegrowBodyPart 1 Lasting SPEED }
+    range = 1
+    targetSelf = true
+    cooldown = 30
+    sound = "SPELL_STR_BONUS"
+  }
+"BONUS_area haste"
+  {
+    upgrade = "BONUS_haste other"
+    symbol = "🏃"
+    effect = Name "area haste" { Message NORMAL  "Time is altered." Area 2 Filter Not Enemy Lasting SPEED }
+    cooldown = 110
+    sound = "SPELL_SPEED_SELF"
+  }
+"BONUS_spiders"
+ {
+   symbol = "🕷"
+   effect = Name "spiders" Summon "SPIDER" { 2 3 } 100
+   cooldown = 100 #Duration is equal to cooldown.  No need for spell speed here.
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"BONUS_poison spores"
+ {
+   symbol = "☠"
+   range = 5
+   effect = Name "poison spores" Lasting POISON
+   cooldown = 20
+   sound = "SPELL_AIR_BLAST"
+ }
+
+"BONUS_light"
+ {
+   symbol = "🕯"
+   effect = Name "light" Lasting LIGHT_SOURCE
+   cooldown = {40 80}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_raven"
+ {
+   symbol = "🐦"
+   effect = Name "raven" Summon "RAVEN" { 1 2 } 100
+   cooldown = 20
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_levitate"
+ {
+   symbol = "^"
+   effect = Name "levitate" Lasting FLYING
+   cooldown = 175
+   sound = "SPELL_SPEED_SELF"
+ }
+ 
+"BONUS_arrow attraction"
+ {
+   symbol = "🚶↩"
+   range = 5
+   effect = Name "arrow attraction" Lasting 50 RANGED_VULNERABILITY
+   cooldown = {30 60}
+   sound = "SPELL_BLAST"
+ }
+ 
+"BONUS_summon ocean portal"
+ {
+   symbol = "@"
+   effect = Name "summon ocean portal" Summon "BONUS_OCEAN_PORTAL" { 1 2 } 100
+   cooldown = {100 200}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_adoxie eye"
+ {
+   symbol =  "(.)"
+   effect = Name "adoxie eye" Summon "BONUS_ADOXIE_EYE" { 1 2 } 100
+   cooldown = 50
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_axedio right hand"
+{
+  symbol = "-."
+  effect = Name "axedio right hand" Summon "BONUS_AXEDIO_HAND_RIGHT" { 1 } 50
+  cooldown = 50
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"BONUS_axedio left hand"
+{
+  symbol = ".-"
+  effect = Name "axedio left hand" Summon "BONUS_AXEDIO_HAND_LEFT" { 1 } 50
+  cooldown = 50
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"BONUS_axedio left foot"
+{
+  symbol = "_|"
+  effect = Name "axedio left foot" Summon "BONUS_AXEDIO_FOOT_LEFT" { 1 } 50
+  cooldown = 50
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"BONUS_axedio right foot"
+{
+  symbol = "|_"
+  effect = Name "axedio right foot" Summon "BONUS_AXEDIO_FOOT_RIGHT" { 1 } 50
+  cooldown = 50
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"BONUS_disenchantment bolt"
+ {
+   symbol = "⇝"
+   range = 10
+   effect = Name "disenchantment bolt" Enhance ARMOR -1
+   cooldown = 180
+   sound = "SPELL_BLAST"
+}
+
+"BONUS_summon giant chickens"
+ {
+   symbol = "🐔"
+   effect = Name "summon giant chickens" Summon "BONUS_GIANT_CHICKEN" { 4 5 } 100
+   cooldown = 40
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_summon chickens"
+ {
+   symbol = ".."
+   effect = Name "summon chickens" Summon "BONUS_BATTLE_CHICKEN" { 4 5 } 100
+   cooldown = 20
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_summon goblin kaboomers"
+ {
+   symbol = "👺"
+   effect = Name "summon goblin kaboomers" Summon "GOBLIN_KABOOMER" { 3 5 } 100
+   cooldown = 50
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_summon goblin priests"
+ {
+   symbol = "✝"
+   effect = Name "summon goblin priests" Summon "GOBLIN_PRIEST" { 4 5 } 100
+   cooldown = 90
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_summon goblin warrior horde"
+ {
+   symbol = "⚔"
+   effect = Name "summon goblin warrior horde" Summon "GOBLIN_WARRIOR" { 5 6 } 100
+   cooldown = 120
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_summon goblin horde"
+ { 
+   symbol = "👺"
+   effect = Name "summon goblin horde" Summon "GOBLIN_WORKER" { 10 11 } 100
+   cooldown = 50
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_summon goblin archers"
+ {
+   symbol = "🏹"
+   effect = Name "summon goblin archers" Summon "GOBLIN_ARCHER" { 5 6 } 100
+   cooldown = 90
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_summon goblin wizards"
+ {
+   symbol = "🧙"
+   effect = Name "summon goblin wizards" Summon "GOBLIN_WIZARD" { 4 5 } 100
+   cooldown = {100 120}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+ "BONUS_goblin damage buff"
+ {
+    symbol = "💪"
+    effect = Name "goblin damage buff" { Message NORMAL  "Goblin violence cast." Area 2 Filter Not Enemy Lasting 50 DAM_BONUS }
+    cooldown = 10
+    sound = "SPELL_STR_BONUS"
+ }
+ 
+ "BONUS_goblin defense buff"
+ {
+    symbol = "🛡"
+    effect = Name "goblin defense buff" { Message NORMAL  "Goblin skin charm." Area 2 Filter Not Enemy Lasting 50 DEF_BONUS }
+    cooldown = 10
+    sound = "SPELL_DEX_BONUS"
+ }
+ 
+"BONUS_summon gold golems"
+ {
+   symbol = "💰"
+   effect = Name "summon gold golems" Summon "BONUS_GOLD_GOLEM" { 2 3 } 100
+   cooldown = {100 120}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"BONUS_summon goblin guards"
+ {
+   symbol = "⚔"
+   effect = Name "summon goblin guards" Summon "BONUS_ELITE_GOBLIN_GUARD" { 5 6 } 100
+   cooldown = {100 120}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+ "BONUS_fae time twisting"
+ {
+    symbol = "🏃"
+    effect = Name "fae time twisting" { Message NORMAL  "Time is commanded." Area 6 Filter Not Enemy Lasting SPEED Area 6 Filter Enemy Lasting SLOWED }
+    cooldown = 80 #Pretty powerful, doesn't feel like it needs Spell Speed.
+    sound = "SPELL_SPEED_SELF"
+  }
+  
+  "BONUS_fae melee boost"
+  {
+    symbol = "🛡"
+    effect = Name "fae melee boost" { Message NORMAL  "Fae Spirit of Endurance invoked." Area 3 Filter Not Enemy Lasting 50 DEF_BONUS Area 3 Filter Not Enemy Lasting 50 DAM_BONUS }
+    cooldown = 30
+    sound = "SPELL_DEX_BONUS"
+  }
+  
+  "BONUS_fae illusion"
+  {
+    symbol = "🎭"
+    effect = Name "fae illusion" { Message NORMAL  "Magic concealment." Area 3 Filter Not Enemy Lasting INVISIBLE Area 1 Filter Not Enemy Deception Summon "BONUS_FAIRY_QUEEN_ILLUSION" { 1 2 } 100 }
+    cooldown = 30 #This is VERY powerful as is, no need for spell speed.
+    sound = "SPELL_TELEPORT"
+  }
+  
+  "BONUS_fae escape"
+  {
+    symbol ="✈️"
+    effect = Name "fae escape" { Message NORMAL  "Fae escape." Deception Summon "BONUS_FAIRY_QUEEN_ILLUSION" { 1 2 } 100 Lasting INVISIBLE Escape{} }
+    cooldown = 30
+    sound = "SPELL_TELEPORT"
+  }
+  
+  "BONUS_fae teleport"
+  {
+    symbol = "🌀"
+    range = 12
+    effect = Name "fae teleport" { Message NORMAL  "Magic is commanded." Teleport Deception Summon "BONUS_FAIRY_QUEEN_ILLUSION" { 1 2 } 100 Lasting INVISIBLE }
+    cooldown = 30
+	endOnly = true
+    sound = "SPELL_DECEPTION"
+  }
+  
+  "BONUS_fae deception"
+  {
+    symbol = "🎭"
+    effect = Name "fae deception" { Deception Summon "BONUS_FAIRY_QUEEN_ILLUSION" { 1 2 } 100 }
+    cooldown = 5
+    sound = "SPELL_INVISIBILITY"
+  }
+  
+  "BONUS_summon fae army"
+  {
+   symbol = "!!"
+   effect = Name "summon fae army" { Summon "BONUS_AIR_FAIRY" { 2 3 } 100 Summon "BONUS_DARK_FAIRY" { 2 3 } 100 Summon "BONUS_EARTH_FAIRY" { 2 3 } 100 Summon "BONUS_ELECTRIC_FAIRY" { 2 3 } 100 Summon "BONUS_LIGHT_FAIRY" { 2 3 } 100 Summon "BONUS_MAGIC_FAIRY" { 2 3 } 100 Summon "BONUS_NATURE_FAIRY" { 2 3 } 100 Summon "BONUS_WATER_FAIRY" { 2 3 } 100 }
+   cooldown = 200
+   sound = "SPELL_SUMMON_SPIRIT"
+  }
+  
+  "BONUS_summon fae clone"
+  {
+   symbol = "🎭"
+   effect = Name "summon fae clone" Summon "BONUS_FAIRY_QUEEN_ILLUSION_2" { 1 } 40
+   cooldown = 30
+   sound = "SPELL_SUMMON_SPIRIT"
+  }
+
+ "BONUS_summon rats"
+  {
+   symbol = "🐭"
+   effect = Name "summon rats" { Summon "RAT" { 3 6 } 100 Summon "BLACK_RAT" { 0 2 } 100 }
+   cooldown = 40
+   sound = "SPELL_SUMMON_SPIRIT"
+  }
+"BONUS_flaming strike"
+  {
+    symbol = "🔥☽"
+    effect = Name "flaming strike" { Fire{} Damage DAMAGE CUT }
+    fx = {FIREBALL}
+    range = 3
+    cooldown = 14
+    sound = "SPELL_FIRE_SPHERE_PET"
+  }
+"BONUS_blowback"
+  {
+    symbol = "🔥💥"
+    effect = Name "blowback" { Fire{} CircularBlast }
+    fx = {FIREBALL}
+    cooldown = {30 60}
+    sound = "SPELL_BLAST"
+  }
+"BONUS_spawn hell knights"
+  {
+   symbol = "🔥⚔"
+   effect = Name "spawn hell knights" Summon "BONUS_HELL_KNIGHT" { 2 3 } 0
+   cooldown = 100 #These look like they're for the Hell Portal creature itself, so spell-speed isn't a factor.
+   sound = "SPELL_SUMMON_SPIRIT"
+  }
+"BONUS_spawn hell knight lord squad"
+  {
+   symbol = "🔥⚔"
+   effect = Name "spawn hell knight lord squad" { Summon "BONUS_HELL_KNIGHT_LORD" { 1 } 0 Summon "BONUS_HELL_KNIGHT" { 3 4 } 0 }
+   cooldown = 400
+   sound = "SPELL_SUMMON_SPIRIT"
+  }
+"BONUS_spawn hell knight brute squad"
+  {
+   symbol = "🔥⚔"
+   effect = Name "spawn hell knight brute squad" { Summon "BONUS_HELL_KNIGHT_BRUTE" { 1 3 } 0 Summon "BONUS_HELL_KNIGHT" { 3 4 } 0 }
+   cooldown = 350
+   sound = "SPELL_SUMMON_SPIRIT"
+  }
+"BONUS_spawn hell knight swordmaster squad"
+  {
+   symbol = "🔥⚔"
+   effect = Name "spawn hell knight swordmaster squad" { Summon "BONUS_HELL_KNIGHT_SWORDMASTER" { 1 3 } 0 Summon "BONUS_HELL_KNIGHT" { 3 4 } 0 }
+   cooldown = 350
+   sound = "SPELL_SUMMON_SPIRIT"
+  }
+
+#-------------------------
+#Water spells
+#-------------------------
+"BONUS_elemental tea"
+#Healing with a defense bonus but a longer cooldown. Presumably British, thanks Soft Monster.  :-)
+{
+  symbol = "❤️"
+  effect = Name "elemental tea" Description "Provides healing, rest, morale and nutrition." {Lasting RESTED Lasting SATIATED Heal {FLESH} }
+  cooldown = {50 100}
+  sound = "SPELL_HEALING"
+}
+"BONUS_bolt of water"
+#Glorified magic missile
+ {
+   symbol = "->"
+   effect = Name "bolt of water" Damage SPELL_DAMAGE SPELL
+   range = 7
+   cooldown = {20 40}
+   sound = "SPELL_BLAST"
+ }
+"BONUS_water blast"
+ {
+   symbol = "*>"
+   upgrade = "BONUS_bolt of water"
+   effect = Name "water blast" { Damage SPELL_DAMAGE SPELL Blast }
+   range = 10
+   cooldown = 30
+   sound = "SPELL_BLAST"
+ }
+ "BONUS_summon water elementals"
+ {
+   symbol = "🕵"
+   effect = Name "summon water elementals" Summon "WATER_ELEMENTAL" { 3 4 } 100
+   cooldown = {100 200}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ "BONUS_choking vapor"
+ {
+   symbol = "☠"
+   range = 10
+   effect = Name "choking vapor" EmitGas "POISON_GAS" 5
+   cooldown = {50 100}
+   sound = "SPELL_BLAST"
+ }
+ 
+ "BONUS_acid blast"
+ #More powerful acid bolt spell with a longer range but larger cooldown
+ {
+   upgrade = "BONUS_water blast"
+   symbol = "~~"
+   effect = Name "acid blast" { Damage SPELL_DAMAGE SPELL Blast Acid{} }
+   fx = {FLAMETHROWER ColorId YELLOW}
+   range = 10
+   cooldown = 20
+ }
+ 
+#-------------------------
+#Earth spells
+#-------------------------
+#Elemental tea is taken from general spells
+#-------------------------
+#Stone to mud is an adventurer spell
+#-------------------------
+ "BONUS_summon earth elementals"
+ {
+   symbol = "🕵"
+   effect = Name "summon earth elementals" Summon "EARTH_ELEMENTAL" { 3 4 } 100
+   cooldown = {100 200}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ "BONUS_earth bolt"
+ #More powerful acid bolt spell with a longer range but larger cooldown
+ {
+   symbol = "->"
+   effect = Name "earth bolt" { Damage SPELL_DAMAGE SPELL Chance 0.2 Lasting 50 BLEEDING }
+   fx = {FLAMETHROWER ColorId YELLOW}
+   range = 10
+   cooldown = 20
+ }
+ 
+ "BONUS_earth blast"
+ #More powerful acid bolt spell with a longer range but larger cooldown
+ {
+   upgrade = "BONUS_earth bolt"
+   symbol = "=>"
+   effect = Name "earth blast" { Damage SPELL_DAMAGE SPELL Blast Chance 0.3 Lasting 50 BLEEDING }
+   fx = {FLAMETHROWER ColorId YELLOW}
+   range = 10
+   cooldown = 20
+ }
+ 
+ "BONUS_spit shards"
+ {
+   #Guaranteed bleeding 3 times a day
+   symbol = "!"
+   range = 7
+   effect = Name "spit shards" Lasting 50 BLEEDING
+   cooldown = 1000
+   sound = "SPELL_BLAST"
+ }
+ 
+ "BONUS_grant all spells"
+  {
+    symbol = "🎁"
+	range = 100
+	cooldown = 1
+	effect = Chain {
+		GrantAbility "BONUS_acid blast"
+		GrantAbility "BONUS_advanced bleeding star"
+		GrantAbility "BONUS_advanced poison star"
+		GrantAbility "BONUS_advanced throwing star"
+		GrantAbility "BONUS_armor strike"
+		GrantAbility "BONUS_bleeding star"
+		GrantAbility "BONUS_choking vapor"
+		GrantAbility "BONUS_double strike"
+		GrantAbility "BONUS_earth blast"
+		GrantAbility "BONUS_earth bolt"
+		GrantAbility "BONUS_escape slash"
+		GrantAbility "BONUS_escape star"
+		GrantAbility "BONUS_expert throwing star"
+		GrantAbility "BONUS_fae time twisting"
+		GrantAbility "BONUS_goblin damage buff"
+		GrantAbility "BONUS_goblin defense buff"
+		GrantAbility "BONUS_lesser eye servant"
+		GrantAbility "BONUS_master throwing star"
+		GrantAbility "BONUS_poison star"
+		GrantAbility "BONUS_regeneration"
+		GrantAbility "BONUS_shadow step"
+		GrantAbility "BONUS_smoke bomb"
+		GrantAbility "BONUS_snakes"
+		GrantAbility "BONUS_spit shards"
+		GrantAbility "BONUS_stone to mud"
+		GrantAbility "BONUS_summon air elementals"
+		GrantAbility "BONUS_summon earth elementals"
+		GrantAbility "BONUS_summon rats"
+		GrantAbility "BONUS_summon shades"
+		GrantAbility "BONUS_summon shadow clone army"
+		GrantAbility "BONUS_summon shadow clones"
+		GrantAbility "BONUS_summon spirit"
+		GrantAbility "BONUS_summon water elementals"
+		GrantAbility "BONUS_throwing star"
+		GrantAbility "BONUS_triple strike"
+		GrantAbility "BONUS_weapon strike"
+		GrantAbility "BONUS_web wall"
+		GrantAbility "BONUS_abosrb automoton powers"
+		GrantAbility "BONUS_abosrb beast skills"
+		GrantAbility "BONUS_abosrb crafts"
+		GrantAbility "BONUS_abosrb dark magic"
+		GrantAbility "BONUS_abosrb human skills"
+		GrantAbility "BONUS_abosrb liquid powers"
+		GrantAbility "BONUS_abosrb lore"
+		GrantAbility "BONUS_abosrb magic"
+		GrantAbility "BONUS_abosrb weapons skills"
+		GrantAbility "BONUS_absorb life technology"
+		GrantAbility "BONUS_adamantine golem"
+		GrantAbility "BONUS_adamantine golems"
+		GrantAbility "BONUS_adoxie eye"
+		GrantAbility "BONUS_advanced fireball"
+		GrantAbility "BONUS_advanced fireblast"
+		GrantAbility "BONUS_advanced firewall"
+		GrantAbility "BONUS_advanced magic blast"
+		GrantAbility "BONUS_advanced mind bolt"
+		GrantAbility "BONUS_advanced rapid invisibility"
+		GrantAbility "BONUS_advanced rapid magic missile"
+		GrantAbility "BONUS_advanced shadow bolt"
+		GrantAbility "BONUS_advanced vitals strike"
+		GrantAbility "BONUS_air render"
+		GrantAbility "BONUS_animal form"
+		GrantAbility "BONUS_area damage bonus"
+		GrantAbility "BONUS_area defense bonus"
+		GrantAbility "BONUS_area fire shield"
+		GrantAbility "BONUS_area haste"
+		GrantAbility "BONUS_arm strike"
+		GrantAbility "BONUS_arrow attraction"
+		GrantAbility "BONUS_arrow shield"
+		GrantAbility "BONUS_assassinate"
+		GrantAbility "BONUS_axedio left foot"
+		GrantAbility "BONUS_axedio left hand"
+		GrantAbility "BONUS_axedio right foot"
+		GrantAbility "BONUS_axedio right hand"
+		GrantAbility "BONUS_battle cry"
+		GrantAbility "BONUS_bear"
+		GrantAbility "BONUS_block"
+		GrantAbility "BONUS_blood curse"
+		GrantAbility "BONUS_blood rage"
+		GrantAbility "BONUS_blowback"
+		GrantAbility "BONUS_boar"
+		GrantAbility "BONUS_bolt of water"
+		GrantAbility "BONUS_break through"
+		GrantAbility "BONUS_buff totem"
+		GrantAbility "BONUS_cause blindness"
+		GrantAbility "BONUS_chaos form"
+		GrantAbility "BONUS_cripple"
+		GrantAbility "BONUS_curse of rage"
+		GrantAbility "BONUS_curse of risks"
+		GrantAbility "BONUS_darkness"
+		GrantAbility "BONUS_decapitate"
+		GrantAbility "BONUS_defend other"
+		GrantAbility "BONUS_disenchantment bolt"
+		GrantAbility "BONUS_elemental tea"
+		GrantAbility "BONUS_elf vision"
+		GrantAbility "BONUS_expert fireball"
+		GrantAbility "BONUS_expert fireblast"
+		GrantAbility "BONUS_expert firewall"
+		GrantAbility "BONUS_expert magic blast"
+		GrantAbility "BONUS_expert rapid magic missile"
+		GrantAbility "BONUS_expert shadow bolt"
+		GrantAbility "BONUS_expert vitals strike"
+		GrantAbility "BONUS_explosion"
+		GrantAbility "BONUS_eye servant"
+		GrantAbility "BONUS_fire shield"
+		GrantAbility "BONUS_fireblast"
+		GrantAbility "BONUS_flaming strike"
+		GrantAbility "BONUS_freezing vines"
+		GrantAbility "BONUS_friendly damage bonus"
+		GrantAbility "BONUS_haste other"
+		GrantAbility "BONUS_healing totem"
+		GrantAbility "BONUS_heroic leap"
+		GrantAbility "BONUS_impart animal form"
+		GrantAbility "BONUS_impart chaos form"
+		GrantAbility "BONUS_impart monster form"
+		GrantAbility "BONUS_iron golem"
+		GrantAbility "BONUS_iron golems"
+		GrantAbility "BONUS_knockdown"
+		GrantAbility "BONUS_leg strike"
+		GrantAbility "BONUS_levitate"
+		GrantAbility "BONUS_light"
+		GrantAbility "BONUS_magic blast"
+		GrantAbility "BONUS_magma bolt"
+		GrantAbility "BONUS_mana curse"
+		GrantAbility "BONUS_martial blast"
+		GrantAbility "BONUS_martial strike"
+		GrantAbility "BONUS_mind bolt"
+		GrantAbility "BONUS_monster form"
+		GrantAbility "BONUS_poison bolt"
+		GrantAbility "BONUS_poison spores"
+		GrantAbility "BONUS_rapid invisibility"
+		GrantAbility "BONUS_rapid magic missile"
+		GrantAbility "BONUS_raven"
+		GrantAbility "BONUS_regrow body part"
+		GrantAbility "BONUS_repair"
+		GrantAbility "BONUS_resist magic"
+		GrantAbility "BONUS_shadow bolt"
+		GrantAbility "BONUS_spawn hell knight brute squad"
+		GrantAbility "BONUS_spawn hell knight lord squad"
+		GrantAbility "BONUS_spawn hell knight swordmaster squad"
+		GrantAbility "BONUS_spawn hell knights"
+		GrantAbility "BONUS_spiders"
+		GrantAbility "BONUS_split spirit"
+		GrantAbility "BONUS_stone golem"
+		GrantAbility "BONUS_stone golems"
+		GrantAbility "BONUS_substitute"
+		GrantAbility "BONUS_summon automaton"
+		GrantAbility "BONUS_summon automaton army"
+		GrantAbility "BONUS_summon chickens"
+		GrantAbility "BONUS_summon contraption"
+		GrantAbility "BONUS_summon giant chickens"
+		GrantAbility "BONUS_summon goblin archers"
+		GrantAbility "BONUS_summon goblin guards"
+		GrantAbility "BONUS_summon goblin horde"
+		GrantAbility "BONUS_summon goblin kaboomers"
+		GrantAbility "BONUS_summon goblin priests"
+		GrantAbility "BONUS_summon goblin warrior horde"
+		GrantAbility "BONUS_summon goblin wizards"
+		GrantAbility "BONUS_summon gold golems"
+		GrantAbility "BONUS_summon ocean portal"
+		GrantAbility "BONUS_summon skeleton mages"
+		GrantAbility "BONUS_summon skeleton warriors"
+		GrantAbility "BONUS_summon skeletons"
+		GrantAbility "BONUS_telepathy"
+		GrantAbility "BONUS_throw sand"
+		GrantAbility "BONUS_true form"
+		GrantAbility "BONUS_vanish"
+		GrantAbility "BONUS_vitals strike"
+		GrantAbility "BONUS_water blast"
+		GrantAbility "BONUS_weapon dodge"
+		GrantAbility "BONUS_wild swing"
+		GrantAbility "BONUS_wolves"
+		GrantAbility "BONUS_magic wish"
+  }
+}
+
+###############################
+#Haloween
+###############################
+"HALOWEEN_SUMMON_BATS"
+{
+  symbol = "☠"
+  effect = Name "summon bats" Summon "HALLOWEEN_BAT" {4 8} 100
+  cooldown = {30 61}
+  sound = "SPELL_SUMMON_INSECTS"
+}
+
+"HALOWEEN_SUMMON_WOLVES"
+{
+  symbol = "☠"
+  effect = Name "summon bats" Summon "WOLF" {2 4} 100
+  cooldown = {30 61}
+  sound = "SPELL_SUMMON_INSECTS"
+}
+
+"HALOWEEN_WITCH_TELEPORT"
+{
+  symbol = "🌀"
+  effect = Name "fiery teleport" Chain { Teleport CircularBlast Fire{}}
+  range = 3
+  cooldown = {50 201}
+  endOnly = true
+  sound = "SPELL_TELEPORT"
+}
+
+"HALOWEEN_WITCH_SLEEP"
+{
+  symbol = "🕶️"
+  effect = Name "sleep" Lasting 5 SLEEP
+  cooldown = {10 21}
+  range = 5
+}
+
+"HALOWEEN_WITCH_FOG_CLOUD"
+{
+  symbol = "🌫"
+  effect = Name "black fog" Description "Creates a black fog cloud." Area 4 Filter DistanceD none 3.2 EmitGas "BLACK_SMOKE" 1
+  cooldown = {30 61}
+}
+
+"HALOWEEN_SCARE"
+{
+  symbol = "😱"
+  effect = Name "scare" Lasting 10 PANIC
+  range = 1
+  cooldown = {25 51}
+  sound = "SPELL_STR_BONUS"
+}
+
+OneTimeAbility("HALOWEEN_HORSE", "Summons the horse.", { Summon "HALLOWEEN_HORSE" 1 none }, "🧛")
+
+"HALOWEEN_CHORT_SHAPESHIFT"
+{
+  symbol = "⇝"
+  effect = Name "shapeshift" Description "Change into a random monster" AI Health 0.6 1.0 1 -2 {
+    Polymorph none 100
+    IncreaseAttr DAMAGE 25
+    IncreaseAttr DEFENSE 30
+    SetCreatureName "chort"
+  }
+  message = "" ""
+  cooldown = 1
+}
+
+"HALOWEEN_TRIP"
+{
+  symbol = "🕶️"
+  effect = Name "trip" Lasting 5 ENTANGLED
+  cooldown = {5 21}
+  range = 5
+}
+
+OneTimeAbility("halloween plague zombie spawn", "More dead = more zombies!.", { Summon "HALLOWEEN_PLAGUE_ZOMBIE" 1 none }, "🧛")
+
+"lure victim"
+{
+  symbol = "🌀"
+  effect = SummonEnemy "PESEANT" 1 none
+  range = 10
+  cooldown = 0
+  endOnly = true
+  sound = "SPELL_TELEPORT"
+}
+
+###############################
+#Troll Traps
+###############################
+
+"Set Terror Trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Terror Trap" CustomArea PlaceFurniture  "TERROR_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Gas trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Gas trap" CustomArea PlaceFurniture  "POISON_GAS_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Surprise trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Surprise trap" CustomArea PlaceFurniture  "SURPRISE_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Alarm trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Alarm trap" CustomArea PlaceFurniture  "ALARM_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Web trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Web trap" CustomArea PlaceFurniture  "WEB_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Fire trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Fire trap" CustomArea PlaceFurniture  "FIRE_TRAP"  { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Blast trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Blast trap" CustomArea PlaceFurniture  "BLAST_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Boulder trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Boulder trap" CustomArea PlaceFurniture  "BOULDER_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Gargoyle"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Gargoyle" CustomArea PlaceFurniture  "GARGOYLE_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Wooden trap bridge"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Wooden trap bridge" CustomArea PlaceFurniture  "TRAP_BRIDGE"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Stone trap bridge"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Stone trap bridge" CustomArea PlaceFurniture  "TRAP_STONE_BRIDGE"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Tar trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Tar trap" CustomArea PlaceFurniture  "TAR_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Teleport trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Teleport trap" CustomArea PlaceFurniture  "RANDOM_TELEPORTER"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Tear Gas trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Tear Gas trap" CustomArea PlaceFurniture  "TEAR_GAS_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Chickenize trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Chickenize trap" CustomArea PlaceFurniture  "CHICKENIZE_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Halucination Gas trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Halucination Gas trap" CustomArea PlaceFurniture  "HALUCINATION_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Freezing trap"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Freezing trap" CustomArea PlaceFurniture  "FREEZE_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+"Set Floor Spikes"
+{
+  symbol = "𝍔"
+  effect =  Name "Set Floor Spikes" CustomArea PlaceFurniture  "SPIKE_TRAP"   { {0 0} }
+  endOnly = true
+  range = 3
+  cooldown = 300
+  sound = "TRAP_ARMING"
+}
+
+###############################
+#Keeperrl Expaded
+###############################
+
+OneTimeAbility("Reward Wish", "Make a wish.", { Wish }, "$")
+OneTimeAbility("Work Damnit", "Work Damnit", {Area 0 AddMinionTrait WORKER}, "$")
+OneTimeAbility("Demon Quest Altar", "Demon Quest Altar", {PlaceFurniture "BONUS_QUEST_DEMON_SHRINE"}, "$")
+OneTimeAbility("Demon Destroy Altar", "Demon Quest Altar", {PlaceFurniture "BONUS_DESTROY_DEMON_SHRINE"}, "$")
+OneTimeAbility("Angel Quest Altar", "Demon Quest Altar", {PlaceFurniture "BONUS_QUEST_ANGEL_SHRINE"}, "$")
+OneTimeAbility("Angel Destroy Altar", "Demon Quest Altar", {PlaceFurniture "BONUS_DESTROY_ANGEL_SHRINE"}, "$")
+OneTimeAbility("Paladin cage", "Paladin cage", {PlaceFurniture "BONUS_PALADIN_CAGE"}, "$")
+OneTimeAbility("Weak devil cage", "Weak devil cage", {PlaceFurniture "BONUS_DEVIL_CAGE"}, "$")
+OneTimeAbility("wendigo equipment", "wendigo equipment", {Chain {AddMinionTrait NO_EQUIPMENT AddMinionTrait NO_LEISURE_ZONE }}, "$")
+OneTimeAbility("leadership +10", "leadership +10", {IncreaseAttr LEADERSHIP 10}, "$")
+
+"rip and tear"
+{
+  symbol = "🐕️"
+  effect = Name "rip and tear" Description "All huskies within a 10-tile radius receive a +3 damage buff and speed." {
+    Area 10 Filter And{ Not Enemy CreatureId "BONUS_HUSKY" } Chain {Lasting 40 DAM_BONUS Lasting 40 SPEED }
+  }
+  cooldown = 300
+  sound = "SPELL_STR_BONUS"
+}
+
+
+"charge"
+{
+  symbol = "⚔️"
+  effect = Name "charge" Description "All allies within the radius of 5 receive a +3 damage buff. Can only be used by a tribe leader." {
+    Filter Attacker CreatureStatus LEADER Area 5 Filter And{ Not Enemy Distance 1 none } Lasting 40 DAM_BONUS
+    Filter Not Attacker CreatureStatus LEADER CreatureMessage { "are not worthy!" "is not worthy!" }
+  }
+  cooldown = 300
+  sound = "SPELL_STR_BONUS"
+}
+
+ ###
+ #Expanded elemental resistance spells for Necro Lord of Resistance et al
+ ###
+ "BONUS_ice shield"
+ {
+   symbol = "❂"
+   effect = Name "ice shield" Description "Briefly improve your resistance to ice." Lasting 20 COLD_RESISTANT
+   cooldown = {50 100}
+   sound = "SPELL_INVISIBILITY"
+ }
+ 
+ "BONUS_area ice shield"
+ {
+   upgrade = "BONUS_ice shield"
+   symbol = "❂"
+   effect = Name "area ice shield" Description "Briefly improve the ice resistance of all allied creatures in the area." { Message NORMAL  "Ice charm summoned." Area 3 Filter Not Enemy Lasting 20 COLD_RESISTANT }
+   cooldown = {40 80}
+   sound = "SPELL_INVISIBILITY"
+ }
+ 
+  "BONUS_acid shield"
+ {
+   symbol = "❂"
+   effect = Name "acid shield" Description "Briefly improve your resistance to acid." Lasting 20 ACID_RESISTANT
+   cooldown = {50 100}
+   sound = "SPELL_INVISIBILITY"
+ }
+ 
+ "BONUS_area acid shield"
+ {
+   upgrade = "BONUS_acid shield"
+   symbol = "❂"
+   effect = Name "area acid shield" Description "Briefly improve the acid resistance of all allied creatures in the area." { Message NORMAL  "Caustic charm summoned." Area 3 Filter Not Enemy Lasting 20 ACID_RESISTANT }
+   cooldown = {40 80}
+   sound = "SPELL_INVISIBILITY"
+ }
+  "BONUS_area melee resistance"
+ {
+   symbol = "⚔🛡"
+   effect = Name "area melee shield" Description "Briefly improve the resistance to melee damage of all allied creatures in the area." { Message NORMAL  "Physical charm summoned." Area 3 Filter Not Enemy Lasting 20 MELEE_RESISTANCE }
+   cooldown = {40 80}
+   sound = "SPELL_INVISIBILITY"
+ }
+ "BONUS_area arrow resistance"
+ {
+   symbol = "🏹🛡"
+   effect = Name "area arrow shield" Description "Briefly improve the resistance to ranged damage of all allied creatures in the area." { Message NORMAL  "Projectile charm summoned." Area 3 Filter Not Enemy Lasting 20 RANGED_RESISTANCE }
+   cooldown = {40 80}
+   sound = "SPELL_INVISIBILITY"
+ }
+ "BONUS_area magic resistance"
+ {
+   symbol = "⛥🛡"
+   effect = Name "area magic shield" Description "Briefly improve the resistance to magic damage of all allied creatures in the area." { Message NORMAL  "Arcane charm summoned." Area 3 Filter Not Enemy Lasting 20 MAGIC_RESISTANCE }
+   cooldown = {40 80}
+   sound = "SPELL_INVISIBILITY"
+ }
+ ###
+ 
+ ###
+ #Potion-dispensing spells (let rescue dogs, witches, etc dispense potions on a cooldown rather than carrying expensive inventory that they waste at the first opportunity)
+ ###
+ "BONUS_canine healing flask"
+ {
+  upgrade = "healing"
+  symbol = "❤️"
+  effect = Name "healing flask" Description "Give a wounded comrade a quick nip of health." Heal { FLESH }
+  range = 1
+  cooldown = {10 31}
+  projectileViewId = { "potion1" }
+  sound = "SPELL_HEALING"
+ }
+ "BONUS_canine antidote flask"
+ {
+  upgrade = "cure poison"
+  symbol = "⚕�"
+  effect = Name "antidote flask" Description "Give a poisoned comrade an antidote." RemoveLasting POISON
+  range = 1
+  cooldown = {25 51}
+  projectileViewId = { "potion1" }
+  sound = "SPELL_CURE_POISON"
+ }
+ "BONUS_canine unblinding flask"
+ {
+  upgrade = "cure blindness"
+  symbol = "⚕�"
+  effect = Name "vision flask" Description "Give a blinded comrade a restorative." RemoveLasting BLIND
+  range = 1
+  cooldown = {25 51}
+  projectileViewId = { "potion1" }
+  sound = "SPELL_CURE_POISON"
+ }
+ 
+ 
+ ###
+ #Better Bows
+ ###
+ "fire longbow"
+ {
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(4) Name "shoot arrow" Description "Shoots an arrow"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage { "are hit by the arrow" "is hit by the arrow"}
+          Damage RANGED_DAMAGE SHOOT
+        },
+        CreatureMessage { "are spared by the arrow" "is spared by the arrow"}
+      )
+  range = 12 #Vanilla: Shortbow range 7, crossbow range 14.
+  cooldown = 2
+  maxHits = 1
+  projectileViewId = {"arrow"}
+  message = "shoot an arrow" "shoots an arrow"
+  type = ABILITY
+ }
+ "fire recurve bow"
+ {
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(4) Name "shoot arrow" Description "Shoots an arrow"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage { "are hit by the arrow" "is hit by the arrow"}
+          Damage RANGED_DAMAGE SHOOT
+        },
+        CreatureMessage { "are spared by the arrow" "is spared by the arrow"}
+      )
+  range = 9
+  cooldown = 1
+  maxHits = 1
+  projectileViewId = {"arrow"}
+  message = "shoot an arrow" "shoots an arrow"
+  type = ABILITY
+ }
+
+# Spells.txt - Checklist
+#############################
+# 1) Give every spell a custom description and a custom name
+# 2) Consider using endonly for each ranged spell to avoid hitting everything in it's path. Make the choice depend on balancing the spell.
+# 3) Consider using spell speed stat for each spell using {} on cooldown. Not necessarily for all spells.
+# 4) Consider creating new buffs when spells use an existing buff. Give the new buffs better descriptions and names etc.
+# 5) Carefully consider which stats to buff. eg. Do you want a defense or parry buff?
+# 6) Get the best sprites for creatures using or being used by spells
+# 7) Consider using sprite variants
+# 8) Find the best UNICode characters supported by KeeperRL for the spells. Go easy on using ASCII

@@ -1,0 +1,303 @@
+########################################
+#Bonus mod z-levels
+########################################
+
+# Here come levels for all keeper types
+# At every depth the game chooses a random level that's available
+
+#Vanilla context notes:
+#Locks lava access (and thus upgraded metalworking) until z6 (guaranteed lava on z8)
+#Fixed Special-levels are 3 (ally vault), 8 (swarmer vault), 13 (ada golems), 18 (black dragon), 23 (hostile balrog)
+#Adoxium & infernite are hell-locked: z24+, the terrain attacks (hard on miners) and folks have created very meta workarounds
+#so that's probably best bypassed if possible
+#Random desirable feature: enchanted pond, allows upgraded lab & workshop; ideally on lava level for centralized crafting
+#
+#Goblin matrons are on z10
+
+#If all went to plan, here's the current fixed z-stack:
+#z18 Black Dragon
+#z23 Balrog
+#z24 Sea Of Bones
+#This is intended to allow bonus & regular content to coexist, and (ideally) reduce the problems with hell terrain killing off workers.
+"bonus basic" {
+
+  #Modded depth 1
+  {
+    type = FullZLevel {
+      enemy = "BONUS_GARGOYLE_ENTRANCE"
+    }
+	minDepth = 0
+	maxDepth = 1
+  }
+  {
+    type = EnemyZLevel {
+      enemy = "Z_LEVEL_FULL"
+    }
+    minDepth = 1 #Frankly, folks, Z-levels without cool stuff are plain boring.
+    maxDepth = 200
+  }
+  { # adamantium, the ores are added automatically around the golems
+    type = FullZLevel {
+      enemy = "ADA_GOLEMS"
+    }
+    minDepth = 14
+  }
+  { 
+    type = FullZLevel {
+      enemy = "BONUS_ADOXIUM_Z_GOLEMS"
+    }
+    minDepth = 24
+  }
+  { 
+    type = FullZLevel {
+      enemy = "BONUS_INFERNITE_Z_GOLEMS"
+    }
+    minDepth = 24
+  }
+  { 
+    type = FullZLevel {
+      enemy = "BONUS_GOLD_Z_GOLEMS"
+    }
+    minDepth = 2
+  }
+  { # adamantium, the ores are added automatically around the golems
+    type = FullZLevel {
+      enemy = "BONUS_IRON_Z_GOLEMS"
+    }
+    minDepth = 2
+	maxDepth = 17 #At this depth, chances are you're converting iron
+  }
+  { # adamantium, the ores are added automatically around the golems
+    type = FullZLevel {
+      enemy = "BONUS_STONE_Z_GOLEMS"
+    }
+    minDepth = 2
+  }
+
+#Imported vanilla fixed levels, guaranteed as in vanilla
+
+  {
+    type = EnemyZLevel {
+      enemy = "Z_LEVEL_BLACK_DRAGON"
+    }
+    minDepth = 18
+    maxDepth = 18
+    guarantee = true
+  }
+  {
+    type = EnemyZLevel {
+      enemy = "Z_LEVEL_BALROG"
+      attackChance = 1.0
+    }
+    minDepth = 23
+    maxDepth = 23
+    guarantee = true
+  }
+
+#Modded fixed levels (NOT guaranteed, though!)
+  { type = FullZLevel { enemy = "KOBOLD_CAVE" } minDepth = 3 maxDepth = 3}
+  { type = FullZLevel { enemy = "BANDITS" } minDepth = 3 maxDepth = 3}
+  { type = FullZLevel { enemy = "DARK_ELVES_ENTRY" } minDepth = 5 maxDepth = 5}
+  { type = FullZLevel { enemy = "GNOMES_ENTRY" } minDepth = 5 maxDepth = 5}
+  { type = FullZLevel { enemy = "CYCLOPS" } minDepth = 8 maxDepth = 8}
+  { type = FullZLevel { enemy = "GREEN_DRAGON" } minDepth = 9 maxDepth = 9}
+  { type = FullZLevel { enemy = "RED_DRAGON" } minDepth = 9 maxDepth = 9}
+  { type = FullZLevel { enemy = "MINOTAUR" } minDepth = 11 maxDepth = 11}
+  { type = FullZLevel { enemy = "SHELOB" } minDepth = 11 maxDepth = 11}
+
+#Scaled enemies from level 12 to 99.
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON12" } minDepth = 12 maxDepth = 16}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON16" } minDepth = 16 maxDepth = 20}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON20" } minDepth = 20 maxDepth = 24}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON24" } minDepth = 24 maxDepth = 28}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON28" } minDepth = 28 maxDepth = 32}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON32" } minDepth = 32 maxDepth = 36}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON36" } minDepth = 36 maxDepth = 40}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON40" } minDepth = 40 maxDepth = 44}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON44" } minDepth = 44 maxDepth = 48}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON48" } minDepth = 48 maxDepth = 52}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON52" } minDepth = 52 maxDepth = 56}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON56" } minDepth = 56 maxDepth = 60}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON60" } minDepth = 60 maxDepth = 64}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON64" } minDepth = 64 maxDepth = 70}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON68" } minDepth = 68 maxDepth = 74}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON72" } minDepth = 72 maxDepth = 78}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON76" } minDepth = 76 maxDepth = 82}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON80" } minDepth = 80 maxDepth = 86}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON84" } minDepth = 84 maxDepth = 90}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON88" } minDepth = 88 maxDepth = 94}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON92" } minDepth = 92 maxDepth = 98}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON96" } minDepth = 96 maxDepth = 100}
+  { type = FullZLevel { enemy = "BONUS_ROYAL_DUNGEON99" } minDepth = 99 maxDepth = 200}
+  {
+    # A level full of water with some islands
+    type = WaterZLevel {
+      waterType = "WATER"
+      creatures = {
+        # Total no of creatures on this level. All are hostile
+        count = {10 11}
+        all = {
+          # The number is the weight, i.e. rats are three times more likely than water fairies
+          3 "RAT"
+          2 "WATER_ELEMENTAL"
+		  1 "BONUS_WATER_FAIRY"
+        }
+      }
+    }
+    minDepth = 7
+    maxDepth = 12
+
+  }
+
+#Modded Magma level
+  {
+    type = WaterZLevel {
+      waterType = "MAGMA"
+      creatures = {
+        count = {10 11}
+        all = {
+          10 "FIRE_ELEMENTAL"
+          1 "BONUS_YOUNG_RED_DRAGON"
+        }
+      }
+    }
+    minDepth = 13
+	maxDepth = 26 #So, eventually, the shallow magma levels are excluded in favor of deep magma.
+
+  }
+
+#Modded deep Magma level
+  {
+    type = WaterZLevel {
+      waterType = "MAGMA"
+      creatures = {
+        count = {10 11}
+        all = {
+          5 "RED_DRAGON"
+          5 "BONUS_YOUNG_RED_DRAGON"
+        }
+      }
+    }
+    minDepth = 25
+
+  }
+
+#Modded sea of bones
+  {
+    type = WaterZLevel {
+      waterType = "BONUS_SEA_OF_BONES"
+      creatures = {
+        count = {50 51}
+        all = {
+          2 "MUMMY"
+          2 "BONUS_SKELETON"
+          2 "VAMPIRE"
+          2 "BAT"
+          2 "ZOMBIE"
+		  2 "ABOMINATION"
+		  2 "BONUS_BANSHEE"
+		  2 "LOST_SOUL"
+          2 "BONUS_MUMMY_LORD"
+		  2 "BONUS_SPIRIT_DRAGON"
+		  2 "BONUS_ZOMBIE_DRAGON"
+        }
+      }
+    }
+    minDepth = 24
+	maxDepth = 24
+	guarantee = true
+	#The Sea of Bones is impressive, but at best you can capture bone dragons & zombie kings. No resources or real building potential.
+	#Thus, it's best for it to happen once and not keep recurring.
+
+  }
+
+#Modded Hell Knight Level
+  {
+    type = FullZLevel {
+      enemy = "BONUS_HELL_DUNGEON1"
+      attackChance = 1.0
+    }
+    minDepth = 12
+  }
+
+#Modded Underground Fairy levels
+ {
+	type = FullZLevel {
+      	enemy = "BONUS_VEN_FAIRIES"
+      	attackChance = 0.3
+    	}
+	minDepth = 6 #Venorack is available at z6, so a huge pile of it with fairy guardians is too
+}
+{
+	type = FullZLevel {
+      	enemy = "BONUS_CAE_FAIRIES"
+      	attackChance = 0.1
+    	}
+	minDepth = 6 #Caelidite is available at z6, so a huge pile of it with fairy guardians is too
+}
+{
+	type = FullZLevel {
+     	enemy = "BONUS_ADOXIUM_FAIRIES"
+      	attackChance = 0.5 #Living next to large quantities of adoxium may unhinge fair folk...
+      	}
+	minDepth = 24 #Adoxium starts at z24
+}
+{
+	type = FullZLevel {
+	enemy = "BONUS_INF_FAIRIES"
+      	attackChance = 0.1 #Fire fairies are more content to enjoy their infernite
+     	}
+	minDepth = 24
+}
+{
+	type = FullZLevel {
+      	enemy = "BONUS_JOT_FAIRIES"
+      	attackChance = 0.1
+    	}
+	minDepth = 24 #Water fairies are OK around jothnite
+}
+
+} #Hey, gang, this close-bracket ends the list of generic z-levels. Easy to miss, and breaks the whole mod if you do. Generic z-levels go ABOVE this bracket!
+
+# White and dark keepers (modded)
+# Here come levels specific to white keepers
+"lawful" modify {
+  {
+    type = FullZLevel {
+      enemy = "DARK_ELF_CAVE"
+      attackChance = 0.6
+    }
+    minDepth = 6
+	maxDepth = 9
+  }
+  { type = FullZLevel { enemy = "OGRE_CAVE" } minDepth = 7 maxDepth = 7}
+  { type = FullZLevel { enemy = "HARPY_CAVE" } minDepth = 7 maxDepth = 7}
+  {
+    type = FullZLevel {
+      enemy = "DARK_ELF_CAVE"
+    }
+    minDepth = 11
+  }
+  { type = FullZLevel { enemy = "OGRE_CAVE" } minDepth = 7 maxDepth = 7}
+  { type = FullZLevel { enemy = "HARPY_CAVE" } minDepth = 7 maxDepth = 7}
+}
+
+# Here come levels specific to dark keepers
+"evil" modify {
+  {
+    type = FullZLevel {
+      enemy = "DWARF_CAVE"
+    }
+    minDepth = 6
+	maxDepth = 9
+  }
+  {
+    type = FullZLevel {
+      enemy = "DWARF_CAVE"
+      attackChance = 0.6
+    }
+    minDepth = 11
+  }
+  { type = FullZLevel { enemy = "ANTS_OPEN" } minDepth = 7 maxDepth = 7}
+  { type = FullZLevel { enemy = "TEMPLE" } minDepth = 7 maxDepth = 7}
+}
