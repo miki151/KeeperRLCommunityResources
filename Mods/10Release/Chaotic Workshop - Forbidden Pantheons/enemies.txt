@@ -1402,7 +1402,7 @@
 "CS_CRATER_BIG_EMPTY"
 {
   settlement = {
-    type = RandomLayout { "PlaceCraterBig" { 8 8 } "default"}
+    type = RandomLayout { "PlaceCraterBig" { 10 10 } "default"}
     tribe = MONSTER
     dontBuildRoad = true
     shopItems = {{10 15} "cs_crater" }
@@ -1412,7 +1412,7 @@
 "CS_CRATER_BIG"
 {
   settlement = {
-    type = RandomLayout { "PlaceCraterBig" { 8 8 } "default"}
+    type = RandomLayout { "PlaceCraterBig" { 10 10 } "default"}
     inhabitants = {
       fighters = {
         count = {3 6}
@@ -1423,7 +1423,6 @@
     }
     tribe = MONSTER
     dontBuildRoad = true
-    shopItems = {{10 15} "cs_crater" }
   }
   config = {
     immigrantInterval = 300
@@ -1957,9 +1956,88 @@
 
 "YS_CASTLE"
 {
-  biome = "YS_GRASSLAND"
   settlement = {
-    type = RandomLayout { "castle" { 20 20 30 30 } "ys_castle"}
+    type = RandomLayout { "castle" { 15 15 20 20 } "ys_castle"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "YS_PROPHET" } }
+      fighters = {
+        count = {12 17}
+        all = {
+          3 "YS_ACTOR"
+          1 "YS_CULTIST_SORCERER"
+        }
+      }
+      civilians = {
+        count = {6 9}
+        uniques = { "YS_JESTER" }
+        all = {
+          1 "YS_CULTIST"
+          1 "YS_CULTIST_F"
+        }
+      }
+      steeds = {
+        all = { 1 "YS_BYAKHEE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "villageShop" }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 36
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+    prisoners = true
+  }
+  behaviour = {
+    duelChance = 1.0
+    minPopulation = 7
+    minTeamSize = 10
+    ambushChance = 0.05
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"YS_CULTIST_SORCERER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"YS_ACTOR"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "MINOTAUR" { 1 2 } } {40 40} MAZE }
+    }
+  }
+}
+
+"YS_CASTLE_2"
+{
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "default"}
     tribe = BANDIT
     inhabitants = {
       leader = { 
@@ -2029,7 +2107,7 @@
       frequency = 1
     }
     {
-      ids = {"KNIGHT"}
+      ids = {"YS_ACTOR"}
       traits = {FIGHTER}
       frequency = 1
     }
@@ -2041,6 +2119,7 @@
     }
   }
 }
+
 
 "YS_HOUSE"
 {
@@ -2187,10 +2266,28 @@
 
 
 
-"FP_FORGOTTEN_SHRINE"
+"FP_FORGOTTEN_SHRINE_1"
 {
   settlement = {
-    type = RandomLayout { "fp_ancientshrine" { 7 7 } "default"}
+    type = RandomLayout { "fp_ancientshrine" { 7 7 } "fp_altar_beast"}
+    tribe = MONSTER
+    dontBuildRoad = true
+  }
+}
+
+"FP_FORGOTTEN_SHRINE_2"
+{
+  settlement = {
+    type = RandomLayout { "fp_ancientshrine" { 7 7 } "fp_altar_bless"}
+    tribe = MONSTER
+    dontBuildRoad = true
+  }
+}
+
+"FP_FORGOTTEN_SHRINE_3"
+{
+  settlement = {
+    type = RandomLayout { "fp_ancientshrine" { 7 7 } "fp_altar_bless"}
     tribe = MONSTER
     dontBuildRoad = true
   }

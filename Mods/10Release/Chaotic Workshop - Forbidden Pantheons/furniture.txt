@@ -2409,7 +2409,7 @@ End
 "FP_ALTAR_OLD"
 {
   name = "Ancient Altar"
-  viewId = { "fp_ancient_altar_dead" }
+  viewId = { "ruin_altar_empty" }
   canBuildOutsideOfTerritory = true
   tickType = Effect Chain{ 	RemoveFurniture "FP_ALTAR_OLD" 
 							ChooseRandom {
@@ -2423,7 +2423,7 @@ End
 "FP_ALTAR_OLD_BEAST"
 {
   name = "Ancient Altar"
-  viewId = { "fp_ancient_altar_beast" }
+  viewId = { "ruin_altar_beast" }
   usageTime = 1
   strength = 100
   hidesItems = true
@@ -2457,7 +2457,7 @@ End
 "FP_ALTAR_OLD_BLESS"
 {
   name = "Ancient Altar"
-  viewId = { "fp_ancient_altar_bless" }
+  viewId = { "ruin_altar_bless" }
   usageTime = 1
   strength = 100
   hidesItems = true
@@ -2489,7 +2489,7 @@ End
 "FP_ALTAR_OLD_SWORD"
 {
   name = "Ancient Altar"
-  viewId = { "fp_ancient_altar_beast" }
+  viewId = { "ruin_altar_sword" }
   usageTime = 1
   strength = 100
   hidesItems = true
@@ -2520,7 +2520,7 @@ End
 "FP_ALTAR_OLD_DEAD"
 {
   name = "Ancient Altar"
-  viewId = { "fp_ancient_altar_dead" }
+  viewId = { "ruin_altar_empty" }
   hidesItems = true
   canHideHere = true
 }
@@ -2528,7 +2528,7 @@ End
 "FP_ALTAR_OLD_DEAD_BEAST"
 {
   name = "Ancient Altar"
-  viewId = { "fp_ancient_altar_dead" }
+  viewId = { "ruin_altar_empty" }
   hidesItems = true
   canHideHere = true
 }
@@ -2536,7 +2536,7 @@ End
 "FP_ALTAR_OLD_DEAD_BLESS"
 {
   name = "Ancient Altar"
-  viewId = { "fp_ancient_altar_dead" }
+  viewId = { "ruin_altar_empty" }
   hidesItems = true
   canHideHere = true
 }
@@ -2544,7 +2544,7 @@ End
 "FP_ALTAR_OLD_DEAD_SWORD"
 {
   name = "Ancient Altar"
-  viewId = { "fp_ancient_altar_dead" }
+  viewId = { "ruin_altar_empty" }
   hidesItems = true
   canHideHere = true
 }
@@ -2607,4 +2607,28 @@ End
   viewId = { "fp_mud_05" }
   layer = FLOOR
   canBuildOutsideOfTerritory = true
+}
+
+
+
+"FP_TORCH_ON_THE_WALL_CONTROLLER"
+{
+  name = "torch generator"
+  viewId = { "torch" }
+  lightEmission = 8.2
+  layer = CEILING
+  xForgetAfterBuilding = true
+  canBuildOutsideOfTerritory = true
+  tickType = Effect {
+    FirstSuccessful {
+  ### one square to the right ###
+      Filter Translate {1 0} FurnitureType "RUIN_WALL" {PlaceFurniture "TORCH_E" Area 2 RemoveFurniture "FP_TORCH_ON_THE_WALL_CONTROLLER"}
+  ### one square to the left ###
+      Filter Translate {-1 0} FurnitureType "RUIN_WALL" {PlaceFurniture "TORCH_W" Area 2 RemoveFurniture "FP_TORCH_ON_THE_WALL_CONTROLLER"}
+  ### one square to the down ###
+      Filter Translate {0 1} FurnitureType "RUIN_WALL" {PlaceFurniture "TORCH_S" Area 2 RemoveFurniture "FP_TORCH_ON_THE_WALL_CONTROLLER"}
+  ### one square to the up ###
+      Filter Translate {0 -1} FurnitureType "RUIN_WALL" {PlaceFurniture "TORCH_N" Area 2 RemoveFurniture "FP_TORCH_ON_THE_WALL_CONTROLLER"}
+    }
+  }
 }
