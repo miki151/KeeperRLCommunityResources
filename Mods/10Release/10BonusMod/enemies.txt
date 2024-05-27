@@ -1457,7 +1457,7 @@
     discoverable = false
     settlement = {
     type = Builtin VILLAGE "WOOD"
-    tribe = HUMAN
+    tribe = HOSTILE
     inhabitants = {
       fighters = {
         count = {3 6}
@@ -4726,7 +4726,7 @@
           }
         }
       }
-      tribe = HUMAN
+      tribe = HOSTILE
       race = "amazons"
     }
     config = {
@@ -6178,7 +6178,7 @@ settlement = {
     {
     settlement = {
       type = Predefined { "fairy_tower_entry" "BONUS_FAIRY_BRICK" }
-      tribe = ELF
+      tribe = HOSTILE #Illusia is hostile to everyone
       locationName = "Goddess Illusia's Tower"
       inhabitants = {
         fighters = {
@@ -6236,7 +6236,7 @@ settlement = {
     biome = "FOREST"
     settlement = {
     type = Predefined { "fairy_tower_floor" "BONUS_FAIRY_BRICK" }
-    tribe = ELF
+    tribe = HOSTILE #Illusia is hostile to everyone
     locationName = "Goddess Illusia's Tower"
     inhabitants = {
       fighters = {
@@ -6294,7 +6294,7 @@ settlement = {
   biome = "BONUS_ENCHANTED_FOREST"
   settlement = {
     type = Predefined { "fairy_tower_top" "BONUS_FAIRY_BRICK" }
-    tribe = ELF
+    tribe = HOSTILE #Illusia is hostile to everyone
     locationName = "Goddess Illusia's Tower"
     inhabitants = {
       leader = { { "BONUS_FAIRY_QUEEN" } }
@@ -6444,7 +6444,20 @@ settlement = {
       }
     }
   }
-  
+
+"BONUS_VULTURE_ABOMINATIONS_LAW" inherit "BONUS_VULTURE_ABOMINATIONS"
+#Pretty much just so Lawful Keepers can rescue a compatible fairy too.
+{
+	levelConnection = {
+      direction = UP
+      topLevel = MainEnemy
+      levels = {
+        { ExtraEnemy { "BONUS_IMPRISONED_FAIRY_LAW" { 1 } } { 28 16 } MINETOWN }
+      }
+    }
+
+}
+
 "BONUS_IMPRISONED_FAIRY"
   {
     biome = "MOUNTAIN"
@@ -6454,6 +6467,19 @@ settlement = {
         leader = {{ "BONUS_DEMON_FAIRY" }}
       }
       tribe = DARK_KEEPER
+    }
+    discoverable = false
+  }
+  
+"BONUS_IMPRISONED_FAIRY_LAW"
+  {
+    biome = "MOUNTAIN"
+    settlement = {
+      type = Builtin CAVE "DUNGEON"
+      inhabitants = {
+        leader = {{ "BONUS_LIGHT_FAIRY" }}
+      }
+      tribe = WHITE_KEEPER
     }
     discoverable = false
   }

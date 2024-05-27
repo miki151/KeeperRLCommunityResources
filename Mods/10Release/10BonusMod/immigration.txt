@@ -1437,7 +1437,7 @@
 	{
       {
         ids = { "PESEANT_PLAYER" } #Required safety-lock for Farming
-        traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+        traits = { WORKER NO_LIMIT } #Can gear up as stopgap, issue unlimited-carry, full-rest rings, etc, and hang out in the leisure zone.
         keybinding = CREATE_IMP
         noAuto = true
            initialRecruitment = 7 #Modded
@@ -2005,11 +2005,11 @@
 Def WhiteRecruits()
 	
     {
-      ids = { "ENT" }
+      ids = { "BONUS_ENT_RECRUIT" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BONUS_ENTS_ALLY" } 3 }
-        { 1.0 CostInfo "GOLD" 200 }
+        { 0.0 RecruitmentInfo { "BONUS_ENTS_ALLY" } 5 }
+        { 1.0 CostInfo "CORPSE" 100 } #Blood makes the trees grow. Gold doesn't help the forest that much.
       }
     }
     {
@@ -2057,7 +2057,7 @@ Def WhiteRecruits()
       traits = { FIGHTER }
       requirements = {
         { 0.0 RecruitmentInfo { "BONUS_DRIADS_ALLY" } 3 }
-        { 1.0 CostInfo "GOLD" 75 }
+        { 1.0 CostInfo "CORPSE" 75 } #Blood makes the trees grow!
       }
     }
     {
@@ -4292,14 +4292,14 @@ End
           traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
           consumeIds = true    
-          requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
+          requirements = { {  1.0 CostInfo "IRON" 40}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
         {
           ids = { "BONUS_POSSESSED_SWORD" "BONUS_POSSESSED_SWORD" }
           traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
           consumeIds = true    
-          requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
+          requirements = { {  1.0 CostInfo "IRON" 20}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
         {
           ids = { "BONUS_GIANT_ROBOT" "BONUS_GIANT_ROBOT" }
@@ -4704,6 +4704,7 @@ End
              { 0.1 { Lasting { RAGE }}}
           }
         }
+		WhiteRecruits()
     }
 
 ##########################
@@ -5578,8 +5579,8 @@ End
 
 	{
 		ids = { "BONUS_HUNTING_DOG" }
-		traits = { FIGHTER INCREASE_POPULATION} #If all goes to plan, -1 point per pack, but +1 per dog, so net positive.
-		groupSize = {2 5}
+		traits = { FIGHTER INCREASE_POPULATION} #Turns out that INCREASE_POPULATION is per creature, so up to 4 in a pack was a Bargain.  Fixed.
+		groupSize = {2 3} #Per syntax (equal-to or greater than first number, less than second), this works out to "2".
 		frequency = 0.5
 		requirements = {
 			{ 1.0 CostInfo "GOLD" 100 }
@@ -5599,10 +5600,11 @@ End
 			{ 0.0 TechId "canine heroes" }
         }
 		specialTraits = {
-			{ 0.05 { SpecialAttr DAMAGE 5 HatedBy HATE_GREENSKINS }}
-			{ 0.05 { SpecialAttr DAMAGE 5 HatedBy HATE_UNDEAD }}
+			{ 0.15 { SpecialAttr DAMAGE 5 HatedBy HATE_GREENSKINS }}
+			{ 0.15 { SpecialAttr DAMAGE 5 HatedBy HATE_UNDEAD }}
 			{ 0.1 { SpecialAttr DEFENSE 8 HatedBy HATE_GREENSKINS }}
 			{ 0.1 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
+			{ 0.01 { Lasting { REGENERATION } }} #The Doggo That Would Not Die
 		}
 	}
 	{
@@ -5617,9 +5619,9 @@ End
 			{ 0.05 { SpecialAttr DAMAGE 5 HatedBy HATE_GREENSKINS }}
 			{ 0.05 { SpecialAttr DAMAGE 5 HatedBy HATE_UNDEAD }}
 			{ 0.05 { SpecialAttr DAMAGE 5 HatedBy HATE_DRAGONS }}
-			{ 0.1 { SpecialAttr DEFENSE 10 HatedBy HATE_GREENSKINS }}
-			{ 0.1 { SpecialAttr DEFENSE 10 HatedBy HATE_UNDEAD }}
-			{ 0.1 { SpecialAttr DEFENSE 20 HatedBy HATE_DRAGONS }}
+			{ 0.15 { SpecialAttr DEFENSE 10 HatedBy HATE_GREENSKINS }}
+			{ 0.15 { SpecialAttr DEFENSE 10 HatedBy HATE_UNDEAD }}
+			{ 0.15 { SpecialAttr DEFENSE 20 HatedBy HATE_DRAGONS }}
 			{ 0.01 { Lasting { REGENERATION } }} #The Doggo That Would Not Die
 		}
 	}
