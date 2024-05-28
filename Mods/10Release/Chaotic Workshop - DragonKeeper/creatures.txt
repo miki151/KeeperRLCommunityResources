@@ -226,28 +226,39 @@
       attr = {
         DAMAGE 12
         DEFENSE 14 
-	DIGGING 18
+	    DIGGING 18
       }
       body = {
         type = Humanoid MEDIUM
       }
       permanentEffects = {
         SWIMMING_SKILL 1
-	RIDER 1
+     	RIDER 1
+        SWARMER 1
       }
       chatReactionFriendly = "talks about digging"
       chatReactionHostile = "\"Die!\""
       name = {
         name = "kobold worker"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
         pluralName = "kobold workers"
         groupName = "tribe"
       }
     }
 
+  "KOBOLD_WORKER_RECRUIT" inherit "KOBOLD_WORKER"
+    {	
+       spells = append { "kobold worker band" }
+    }
+  
   "KOBOLD_RED_WORKER" inherit "KOBOLD_WORKER"
     {	
       viewId = { "kobold_red_worker" }
+    }
+
+  "KOBOLD_RED_WORKER_RECRUIT" inherit "KOBOLD_RED_WORKER"
+    {	
+       spells = append { "kobold red worker band" }
     }
 
   "KOBOLD_YELLOW_WORKER" inherit "KOBOLD_WORKER"
@@ -255,9 +266,19 @@
       viewId = { "kobold_yellow_worker" }
     }
 
+  "KOBOLD_YELLOW_WORKER_RECRUIT" inherit "KOBOLD_YELLOW_WORKER"
+    {	
+       spells = append { "kobold yellow worker band" }
+    }
+
   "KOBOLD_WHITE_WORKER" inherit "KOBOLD_WORKER"
     {	
       viewId = { "kobold_white_worker" }
+    }
+
+  "KOBOLD_WHITE_WORKER_RECRUIT" inherit "KOBOLD_WHITE_WORKER"
+    {	
+       spells = append { "kobold white worker band" }
     }
 
   "KOBOLD_BLACK_WORKER" inherit "KOBOLD_WORKER"
@@ -265,9 +286,19 @@
       viewId = { "kobold_black_worker" }
     }
 
+  "KOBOLD_BLACK_WORKER_RECRUIT" inherit "KOBOLD_BLACK_WORKER"
+    {	
+       spells = append { "kobold black worker band" }
+    }
+
   "KOBOLD_GREEN_WORKER" inherit "KOBOLD_WORKER"
     {	
       viewId = { "kobold_green_worker" }
+    }
+
+  "KOBOLD_GREEN_WORKER_RECRUIT" inherit "KOBOLD_GREEN_WORKER"
+    {	
+       spells = append { "kobold green worker band" }
     }
 	
   "KOBOLD_BONE_WORKER" inherit "KOBOLD_WORKER"
@@ -278,6 +309,11 @@
 	  weight = 35
       material = BONE
       }
+    }
+
+  "KOBOLD_BONE_WORKER_RECRUIT" inherit "KOBOLD_BONE_WORKER"
+    {	
+       spells = append { "kobold bone worker band" }
     }	
 	
   "KOBOLD_GUARD" inherit "KOBOLD_WORKER"
@@ -295,7 +331,7 @@
       }
       name = {
         name = "kobold guard"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
         pluralName = "kobold guards"
         groupName = "tribe"
       }
@@ -354,7 +390,7 @@
       spellSchools = { "healer" }
       name = {
         name = "kobold priest"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
         pluralName = "kobold priests"
       }
     }
@@ -402,7 +438,7 @@
       spellSchools = { "mage" }
       name = {
         name = "kobold sorcerer"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
       }
     }
 
@@ -456,11 +492,12 @@
       }
       permanentEffects = {
         AMBUSH_SKILL 1
-	RIDER 1
+	    RIDER 1
+        SWARMER 1
       }
       name = {
         name = "kobold scout"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
         pluralName = "kobold scouts"
         groupName = "tribe"
       }
@@ -517,11 +554,12 @@
       permanentEffects = {
         SWIMMING_SKILL 1
         DISARM_TRAPS_SKILL 1
-	RIDER 1
+	    RIDER 1
+        SWARMER 1
       }
       name = {
         name = "kobold crafter"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
       }
     }
 
@@ -587,12 +625,12 @@
       spellSchools = { "dragon_k_red_blessed" }
       name = {
         name = "kobold fire blessed"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
       }
       permanentEffects = {
         FIRE_RESISTANT 1
         SWIMMING_SKILL 1
-	RIDER 1
+	    RIDER 1
       }
     }
 									
@@ -623,7 +661,7 @@
       spellSchools = { "dragon_k_yellow_blessed" }
       name = {
         name = "kobold mind blessed"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
       }
       permanentEffects = {
         ACID_RESISTANT 1
@@ -653,7 +691,7 @@
       spellSchools = { "dragon_k_black_blessed" }
       name = {
         name = "kobold acid blessed"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
       }
     }
 	
@@ -672,12 +710,12 @@
       permanentEffects = {
         POISON_RESISTANT 1
         SWIMMING_SKILL 1
-	RIDER 1
+	    RIDER 1
       }
       spellSchools = { "dragon_k_green_blessed" }
       name = {
         name = "kobold venom blessed"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
       }
     }
 	
@@ -695,12 +733,12 @@
       permanentEffects = {
         COLD_RESISTANT 1
         SWIMMING_SKILL 1
-	RIDER 1
+	    RIDER 1
       }
       spellSchools = { "dragon_k_white_blessed" }
       name = {
         name = "kobold ice blessed"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
       }
     }
 	
@@ -729,12 +767,12 @@
       }
       permanentEffects = {
         SWIMMING_SKILL 1
-	RIDER 1
+	    RIDER 1
       }
       spellSchools = { "dragon_k_undead_blessed" }
       name = {
         name = "kobold bone abberation"
-        firstNameGen = "ORC"
+        firstNameGen = "KOBOLD"
       }
     }
 	
