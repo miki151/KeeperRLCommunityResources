@@ -1,0 +1,3823 @@
+########################
+#From Casino mod
+########################
+
+Def SPINNER(spell, color, effects)
+{
+  viewId = { "dice" ColorId color }
+  name = "dice" 
+  layer = CEILING
+  constructMessage = none
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  tickType = Effect { effects RemoveFurniture spell  PlaceFurniture "TREASURE_CHEST"}
+}
+End
+
+"1_GOLD_DICE" SPINNER ("1_GOLD_DICE", GREEN, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {2} })
+"2_GOLD_DICE" SPINNER ("2_GOLD_DICE", GREEN, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {4} })
+"5_GOLD_DICE" SPINNER ("5_GOLD_DICE", GREEN, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {10} })
+"10_GOLD_DICE" SPINNER ("10_GOLD_DICE", YELLOW, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {20} })
+"20_GOLD_DICE" SPINNER ("20_GOLD_DICE", YELLOW, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {40} })
+"50_GOLD_DICE" SPINNER ("50_GOLD_DICE", YELLOW, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {100} })
+"100_GOLD_DICE" SPINNER ("100_GOLD_DICE", BLUE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {200} })
+"200_GOLD_DICE" SPINNER ("200_GOLD_DICE", BLUE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {400} })
+"500_GOLD_DICE" SPINNER ("500_GOLD_DICE", BLUE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {1000} })
+"1000_GOLD_DICE" SPINNER ("1000_GOLD_DICE", PURPLE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {2000} })
+"2000_GOLD_DICE" SPINNER ("2000_GOLD_DICE", WHITE, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {4000} })
+"5000_GOLD_DICE" SPINNER ("5000_GOLD_DICE", RED, ChooseRandom { PlayerMessage HIGH "Hades wins, you lose!" DropItems { "GoldPiece" } {10000} })
+
+
+########################
+#From Farming mod
+########################
+
+
+  "BARN"
+  {
+    name = "barn"
+    viewId = { "haypile" }
+	strength = 50
+	blockingEnemies = true
+    populationIncrease = { 1 none }
+    canBuildOutsideOfTerritory = true
+  }
+  "CROPS" modify
+  {
+    usageType = UsageEffect "scythe " Chain
+	  { Chance 0.3 CreatureMessage { "scythe the field" "scythes the field" }
+	    Chance 0.1 Filter And { CreatureId "IMP" Not Indoors } DropItems {"sack"} 1
+	    Chance 0.1 Filter And { CreatureId "PESEANT_PLAYER" Not Indoors } DropItems {"sack"} 1
+	    Chance 0.1 Filter And { CreatureId "GOBLIN_WORKER" Not Indoors } DropItems {"sack"} 1
+		Chance 0.1 Filter And { CreatureId "BONUS_DARK_MONK" Not Indoors } DropItems {"sack"} 1
+		Chance 0.1 Filter And { CreatureId "BONUS_MONK" Not Indoors } DropItems {"sack"} 1
+	  }
+    usageTime = 20
+    canBuildOutsideOfTerritory = true
+  }
+
+########################
+#From Haunted Ruins mod
+########################
+
+
+  "FAKE_GRAVE"
+  {
+	  name = "grave"
+	  viewId = { "grave" }
+	  blockingEnemies = true
+	  canHideHere = true
+	  strength = 1
+	  destroyedEffect = {
+		   ChooseRandom {
+					 SummonEnemy "ANGEL" {1} none
+					 SummonEnemy "BONE_DRAGON" {1} none
+					 SummonEnemy "SKELETON_WARRIOR" {1} none
+					 SummonEnemy "VAMPIRE_BRUTE" {1} none
+					 SummonEnemy "ZOMBIE_MAGE" {1} none
+					 SummonEnemy "ABOMINATION" {1} none
+					 SummonEnemy "SLASHER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "SHAPESHIFTER" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "ZOMBIE" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "MUMMY" {1} none
+					 SummonEnemy "VAMPIRE" {1} none
+					 SummonEnemy "VAMPIRE" {1} none
+					 SummonEnemy "VAMPIRE" {1} none
+					 SummonEnemy "SPIRIT" {1} none
+					 SummonEnemy "SPIRIT" {1} none
+					 SummonEnemy "SPIRIT" {1} none
+					 SummonEnemy "SLASHER" {2} none 
+					 SummonEnemy "ANGEL" {3} none
+					 SummonEnemy "SKELETON_WARRIOR" {4} none
+					 SummonEnemy "ZOMBIE" {5} none
+				  }
+	  }
+   }
+
+########################
+#Spell Circles mod
+########################
+
+
+Def SPELL(spell, color, effects)
+{
+  viewId = { "spell_circle" ColorId color }
+  name = "spell target" 
+  layer = CEILING
+  constructMessage = none
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  tickType = Effect { effects RemoveFurniture spell }
+}
+End
+
+"SUMMON_HORSES" SPELL ("SUMMON_HORSES", GREEN, Summon "HORSE" {5} none )
+
+"MINE_FIELD" SPELL ("MINE_FIELD", RED,
+	        CustomArea PlaceFurniture "MINE" {{ -2 -3 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -3 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -3 }}
+  	        CustomArea PlaceFurniture "MINE" {{  1 -3 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2 -2 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{  1 -2 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2 -1 }} 
+	        CustomArea PlaceFurniture "MINE" {{ -1 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{  0 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{  1 -1 }}
+	        CustomArea PlaceFurniture "MINE" {{ -2  0 }}
+	        CustomArea PlaceFurniture "MINE" {{ -1  0 }}
+	        CustomArea PlaceFurniture "MINE" {{  0  0 }}
+	        CustomArea PlaceFurniture "MINE" {{  1  0 }}
+)
+
+"MINE"
+{
+  name = "fire trap"
+  viewId = { "trap" ColorId RED }
+  entryType = Trap { Chain {PlaceFurniture "FIRE_WALL" CircularBlast Area 1 Fire{100} } }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"SUMMON_ARMOURY" SPELL (
+	"SUMMON_ARMOURY", YELLOW,
+		DropItems {"BattleAxe"} {10}
+		DropItems {"ChainArmor"} {10}
+		DropItems {"IronHelm"} {10}
+		DropItems {"IronBoots"} {10}
+		DropItems {"IronGloves"} {10}
+	)
+
+"SUMMON_ARTIFACT" SPELL (
+	"SUMMON_ARTIFACT", ORANGE,
+	ChooseRandom {
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet TELEPATHY} {1}
+		}
+	)
+	
+"TRANSFORM_DRAGON" SPELL
+(
+    "TRANSFORM_DRAGON", BLUE,
+	Area 1 ChooseRandom
+	{
+		Chain { RemovePermanent POLYMORPHED RemoveLasting POLYMORPHED Polymorph "RED_DRAGON" 2 Permanent POLYMORPHED GrantAbility "BONUS_true form" }
+		Chain { RemovePermanent POLYMORPHED RemoveLasting POLYMORPHED Polymorph "GREEN_DRAGON" 2 Permanent POLYMORPHED GrantAbility "BONUS_true form" }
+	} Area 1 CircularBlast
+)
+
+######################################
+#Bonus mod expansion of spell circles#
+######################################
+"SUMMON_ARTIFACT" modify SPELL (
+	"SUMMON_ARTIFACT", ORANGE,
+	ChooseRandom {
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"RedDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"BlackDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"WhiteDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"YellowDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"GreenDragonArmor"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"Sceptre"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"DevilBoots"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"BalrogsWhip"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"CyclopsHelm"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"SpiderRing"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {"MagicLamp"} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring FIRE_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring ACID_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Ring COLD_IMMUNITY} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet MELEE_RESISTANCE} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet SPEED} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Amulet TELEPATHY} {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" Wish} {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "healing" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced healing" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "expert healing" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "group healing" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "heal spirit" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced heal spirit" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "heal spirit group" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "cure poison" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced cure poison" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "cure blindness" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "blindness" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "poison resistance" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "poison breath" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "summon flies" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "magic missile" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced magic missile" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "expert magic missile" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "deception" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "fog cloud" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "invisibility" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced invisibility" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "escape" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "blink" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "teleport" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced teleport" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "jump" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "panic" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "pacify" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "haste" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced haste" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "warhorse_haste" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "slow" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "magic cancellation" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "directed blast" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "pull" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "circular blast" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "defense bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced defense bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "mass defense bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "damage bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "advanced damage bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "mass damage bonus" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "bolster" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "rally" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "summon element" } {1}
+			DropItems {Scroll Name "Unidentified" Description "Could be anything" GrantAbility "meteor shower" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "fire elemental" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "advanced fire elemental" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "fire breath" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "firewall" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "fire trap" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "fireball" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "earth elemental" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "advanced earth elemental" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "ice cone" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "acid stream" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "black smoke breath" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "shove" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "swap positions" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "black dragon blindness" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "dragon greeting" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "grant wish" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "double trouble" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "animate weapons" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "animate corpses" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "advanced animate corpses" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "adoxie right hand" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "adoxie left hand" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "adoxie left foot" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "adoxie right foot" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "dig" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "shoot arrow" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "shoot bolt" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "audience" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "repair automaton" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "chicken" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "shapeshift" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "berserker" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "summon chicken" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "summon more chickens" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "chickenmorph" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "advanced chickenmorph" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "chickengeddon" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "balrogs whip" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" GrantAbility "kings charge" } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" SummonEnemy "DJINN" {1} none } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent REGENERATION}   {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent INVISIBLE}   {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent FLYING}   {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent TELEPATHY}   {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent SPYING}   {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent DARKNESS_SOURCE}   {1}      
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent CONSUMPTION_SKILL } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent MELEE_RESISTANCE } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent MAGIC_RESISTANCE } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent RANGED_RESISTANCE } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent FIRE_IMMUNITY } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent COLD_IMMUNITY } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent ACID_IMMUNITY } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent MELEE_IMMUNITY } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent MAGIC_IMMUNITY } {1}
+			DropItems {Potion Name "Unidentified" Description "Could be anything" Permanent RANGED_IMMUNITY } {1}	
+		}
+	)
+	
+########################
+#Inscription mod
+########################
+
+"INSCRIPTION_TABLE" inherit "WORKSHOP"
+{
+  name = "inscription table"
+  viewId = { "poetry_table" ColorId YELLOW }
+}
+
+########################
+#War with nature
+########################
+
+
+  "CANIF_TREE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+      Chance 0.01 Chain { Message HIGH "You have scared a snake that was wrapped around a tree!" SummonEnemy "SNAKE" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have destroyed a raven nest!" SummonEnemy "RAVEN" {1} none }
+      Chance 0.01 Chain { Message HIGH "A tree awakes as an angry tree spirit!" SummonEnemy "ENT" {1} none }
+      Chance 0.01 Chain { Message HIGH "An angry dryad falls from a tree!" SummonEnemy "DRIAD" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have disturbed a lone wolf under a tree!" SummonEnemy "WOLF" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have uncovered a fox hole beside a tree!" SummonEnemy "FOX" {1} none }
+    } 
+  }
+  "DECID_TREE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+      Chance 0.01 Chain { Message HIGH "You have scared a snake that was wrapped around a tree!" SummonEnemy "SNAKE" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have destroyed a raven nest!" SummonEnemy "RAVEN" {1} none }
+      Chance 0.01 Chain { Message HIGH "A tree awakes as an angry tree spirit!" SummonEnemy "ENT" {1} none }
+      Chance 0.01 Chain { Message HIGH "An angry dryad falls from a tree!" SummonEnemy "DRIAD" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have disturbed a lone wolf under a tree!" SummonEnemy "WOLF" {1} none }
+      Chance 0.01 Chain { Message HIGH "You have uncovered a fox hole beside a tree!" SummonEnemy "FOX" {1} none }
+    } 
+  }
+  "BUSH" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+      Chance 0.01 Chain { Message HIGH "A chicken walks out of a bush!" SummonEnemy "CHICKEN" {1} none }
+      Chance 0.01 Chain { Message HIGH "A wild boar emerges from the bushes!" SummonEnemy "BOAR" {1} none }
+      Chance 0.01 Chain { Message HIGH "Swarm of flies encountered in a bush." SummonEnemy "FLY" {4 5} none }
+    } 
+  }
+  "ADAMANTIUM_ORE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.1 Chain { Message HIGH "An adamantium golem has formed from ore!" SummonEnemy "ADA_GOLEM" { 1 } none }
+    } 
+  }
+  "IRON_ORE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.1 Chain { Message HIGH "An iron golem has formed from ore!" SummonEnemy "IRON_GOLEM" {1} none }
+    } 
+  }
+  "STONE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.1 Chain { Message HIGH "A stone golem has formed from granite!" SummonEnemy "STONE_GOLEM" {1} none }
+    } 
+ }
+  "GOLD_ORE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.1 Chain { Message HIGH "A gold golem has formed from gold ore!" SummonEnemy "BONUS_GOLD_GOLEM" {1} none }
+    } 
+ }
+  "INFERNITE_ORE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.2 Chain { Message HIGH "A fire elemental has formed from infernite ore!" SummonEnemy "FIRE_ELEMENTAL" {1} none }
+	  Chance 0.2 Chain { Message HIGH "A lava golem has formed from infernite ore!" SummonEnemy "LAVA_GOLEM" {1} none }
+    } 
+ }
+  "ADOXIUM_ORE" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+	  Chance 0.2 Chain { Message HIGH "You are attacked by a ghost." SummonEnemy "SPIRIT" {1} none }
+    } 
+ }
+  "MOUNTAIN" modify append {
+    destroyedEffect = Filter Flag "WarWithNature" Chain {
+      Chance 0.001 Chain { Message HIGH "You have woken a bat!" SummonEnemy "BAT" {1} none }
+      Chance 0.001 Chain { Message HIGH "You have disturbed a rat!" SummonEnemy "RAT" {1} none }
+      Chance 0.001 Chain { Message HIGH "You have disturbed a spider!" SummonEnemy "SPIDER" {1} none }
+    } 
+  }
+
+########################
+#Recycle Tiles
+########################
+
+"WOOD_WALL" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"WOOD_PILLAR" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 2 }}}} }
+"CASTLE_WALL" modify append { itemDrop = {{{{"Rock"} 1 { 1 5 }}}} }
+"CASTLE_PILLAR" modify append { itemDrop = {{{{"Rock"} 1 { 1 2 }}}} }
+"BRIDGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"STONE_BRIDGE" modify append { itemDrop = {{{{"Rock"} 1 { 1 5 }}}} }
+"ARCHER_WALL" modify append { itemDrop = {{{{"Rock"} 1 { 1 20 }}}} }
+"WOOD_DOOR" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"IRON_DOOR" modify append { itemDrop = {{{{"IronOre"} 1 { 1 5 }}}} }
+"ADA_DOOR" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 5 }}}} }
+"WOOD_GATE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 8 }}}} }
+"IRON_GATE" modify append { itemDrop = {{{{"IronOre"} 1 { 1 8 }}}} }
+"ADA_GATE" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 8 }}}} }
+"FLOOR_WOOD1" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 2 }}}} }
+"FLOOR_WOOD2" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 2 }}}} }
+"FLOOR_STONE1" modify append { itemDrop = {{{{"Rock"} 1 { 1 2 }}}} }
+"FLOOR_STONE2" modify append { itemDrop = {{{{"Rock"} 1 { 1 2 }}}} }
+"FLOOR_CARPET1" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 2 }}}} }
+"FLOOR_CARPET2" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 2 }}}} }
+"TREASURE_CHEST" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"ARMOR_RACK" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"WEAPON_RACK" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"BOW_RACK" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"SCROLL_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"POTION_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"JEWELLERY_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"GRAVE" modify append { itemDrop = {{{{"Rock"} 1 { 1 5 }}}} }
+"AUTOMATON_STORAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"BOOKCASE_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"BOOKCASE_IRON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 15 }}}} }
+"BOOKCASE_GOLD" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 15 }}}} }
+"THRONE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 500 }}}} }
+"PHYLACTERY" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 500 }}}} }
+"BED1" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"BED2" modify append { itemDrop = {{{{"IronOre"} 1 { 1 12 }}}} }
+"BED3" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 12 }}}} }
+"DINING_TABLE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"HAYPILE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"COFFIN1" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"COFFIN2" modify append { itemDrop = {{{{"Rock"} 1 { 1 15 }}}} }
+"COFFIN3" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 15 }}}} }
+"CHICKEN_COOP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"PIGSTY" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"COW_PEN" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"TRAINING_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"TRAINING_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"TRAINING_IRON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 12 }}}} }
+"TRAINING_ADA" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 12 }}}} }
+"ARCHERY_RANGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"WORKSHOP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"FORGE" modify append { itemDrop = {{{{"IronOre"} 1 { 1 20 }}}} }
+"LABORATORY" modify append { itemDrop = {{{{"Rock"} 1 { 1 10 }}}} }
+"LABORATORY" modify append { itemDrop = {{{{"Rock"} 1 { 1 10 }}}} }
+"JEWELLER" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"POETRY_TABLE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 12 }}}} }
+"DISTILLERY" modify append { itemDrop = {{{{"IronOre"} 1 { 1 30 }}}} }
+"MORGUE_TABLE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 10 }}}} }
+"FURNACE" modify append { itemDrop = {{{{"Rock"} 1 { 1 50 }}}} }
+"AUTOMATON_ENGINE_WOOD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 50 }}}} }
+"AUTOMATON_ENGINE_IRON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 50 }}}} }
+"AUTOMATON_ENGINE_ADA" modify append { itemDrop = {{{{"AdaOre"} 1 { 1 50 }}}} }
+"DEMON_SHRINE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 30 }}}} }
+"ANGEL_SHRINE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 30 }}}} }
+"PRISON" modify append { itemDrop = {{{{"IronOre"} 1 { 1 15 }}}} }
+"PRISON_BARS" modify append { itemDrop = {{{{"IronOre"} 1 { 1 5 }}}} }
+"PRISON_DOOR" modify append { itemDrop = {{{{"IronOre"} 1 { 1 30 }}}} }
+"TORTURE_TABLE" modify append { itemDrop = {{{{"IronOre"} 1 { 1 15 }}}} }
+"GALLOWS" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"BEAST_CAGE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 8 }}}} }
+"BARRICADE" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 5 }}}} }
+"GROUND_TORCH" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 10 }}}} }
+"KEEPER_BOARD" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 15 }}}} }
+"FOUNTAIN" modify append { itemDrop = {{{{"Rock"} 1 { 1 30 }}}} }
+"WHIPPING_POST" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"MINION_STATUE" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 50 }}}} }
+"STONE_MINION_STATUE" modify append { itemDrop = {{{{"Rock"} 1 { 1 250 }}}} }
+"PORTAL" modify append { itemDrop = {{{{"Rock"} 1 { 1 60 }}}} }
+"HEALING_TOTEM" modify append { itemDrop = {{{{"GoldPiece"} 1 { 1 60 }}}} }
+"TERROR_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"POISON_GAS_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"ALARM_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"WEB_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"SURPRISE_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"FIRE_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"BOULDER_TRAP" modify append { itemDrop = {{{{"Rock"} 1 { 1 120 }}}} }
+"BLAST_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"GARGOYLE_TRAP" modify append { itemDrop = {{{{"Rock"} 1 { 1 20 }}}} }
+"TRAP_TRIGGER" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+"DESTROY_WALLS_TRAP" modify append { itemDrop = {{{{"WoodPlank"} 1 { 1 20 }}}} }
+ 
+########################
+#Bonus mod mining
+########################
+
+  "VENORACK_ORE"
+  {
+  name = "venorack ore"
+  viewId = { "venorack_ore" }
+  blockMovement = true
+  blockVision = { NORMAL ELF }
+  wall = true
+  clearFogOfWar = true
+  itemDrop = {{{{"VenOre"} 1 { 16 28 }}}}
+  strength2 = {
+    500 BOULDER
+    500 DIG
+    500 HOSTILE_DIG
+    
+  }
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+  }
+  
+########################
+#Extra Enemies
+########################
+ 
+######################################
+#Furniture shared with Adventurer mod
+######################################
+
+  "BONUS_HIDDEN_CAVE"
+  {
+    name = "cave hidden by bush"
+    viewId = { "bush" }
+    canHideHere = true
+    usageType = UsageEffect "enter cave behind bush" Stairs
+    onBuilt = DOWN_STAIRS
+  }
+
+  "BONUS_SPIDER_WEB"
+  {
+    name = "spider web"
+    viewId = { "web_trap" }
+    entryType = Trap { Lasting ENTANGLED true }
+    usageType = BuiltinUsageId TRAIN
+    maxTraining = {
+      DAMAGE 12
+    }
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_SPIDER_PIT"
+  {
+    name = "hole"
+    viewId = { "pit" }
+    blockingEnemies = true
+    tickType =  Pit
+    canBuildOutsideOfTerritory = true
+    canSilentlyReplace = true
+  }
+  "BONUS_SPIDER_MUD_WALL"
+  {
+    name = "wall"
+    viewId = { "mud_wall" }
+    blockingEnemies = true
+    blockVision = { NORMAL ELF }
+    strength = 80
+    usageType = UsageEffect "sleep in" Lasting SLEEP
+    tickType = Effect BedHeal()
+    bedType = CAGE
+    canBuildOutsideOfTerritory = true
+    canSilentlyReplace = true
+  }
+
+##############################################################
+
+
+  "BOOKCASE_GOLD" modify append {
+    name = "golden bookcase"
+    viewId = { "bookcase_gold" }
+    blockMovement = true
+    usageType = BuiltinUsageId STUDY
+    usageTime = 5
+    canHideHere = true
+    fire = 70
+    strength = 50
+    upgrade = "BOOKCASE_IRON"
+    maxTraining = {
+      SPELL_DAMAGE 30 #Modded
+    }
+    requiresLight = true
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  }
+  
+  "RUIN_WALL" modify append {
+    name = "wall"
+    viewId = { "ruin_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+    wall = true
+    canBuildOutsideOfTerritory = true
+	strength = 200 #Modded
+    strength2 = {
+      100 BOULDER
+      100 DIG
+      300 HOSTILE_DIG
+
+    }
+  }
+  
+  "FLOOR_WOOD1" modify append {
+    name = "floor"
+    viewId = { "wood_floor2" }
+    fire = 50
+    luxury = 0.1
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true #Modded
+  }
+  
+  "FLOOR_WOOD2" modify append {
+    viewId = { "wood_floor4" }
+  }
+
+  "FLOOR_STONE1" modify append {
+    name = "floor"
+    viewId = { "stone_floor1" }
+    luxury = 0.3
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true  #Modded
+  }
+
+  "FLOOR_CARPET1" modify append{
+    name = "floor"
+    viewId = { "carpet_floor1" }
+    luxury = 0.7
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true  #Modded
+  }
+  
+##########
+#Modded
+##########
+
+  "BONUS_RUINS"
+  {
+    name = "ruin wall"
+    viewId = { "ruin_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+    wall = true
+  }
+
+  "BONUS_CAVE_BUSHES"
+  {
+    name = "cave bushes"
+    viewId = { "bush" }
+    strength2 = {
+      10 CUT
+    }
+    blockMovement = true
+    fire = 30
+    itemDrop = {{{{"WoodPlank"} 1 { 10 15 }}}}
+    tryDestroyFX = { WOOD_SPLINTERS }
+  }
+   
+  "BONUS_LAVA_ROCK" inherit "MUD"
+  {
+    viewId = { "lava_rock" }
+   }
+  "BONUS_FLOOR_STONE1_COSMETIC" inherit "MUD"
+  {
+    name = "floor"
+    viewId = { "stone_floor1" }
+   }
+  "BONUS_FLOOR_SWAMP1_COSMETIC" inherit "MUD"
+  {
+    viewId = { "swamp_hill" }
+   }
+  "BONUS_FLOOR_STONE2_COSMETIC" inherit "MUD"
+  {
+    name = "floor"
+    viewId = { "stone_floor5" }
+   }
+  "BONUS_FLOOR_WOOD1_COSMETIC" inherit "MUD"
+  {
+    name = "floor"
+    viewId = { "wood_floor2" }
+   }
+  "BONUS_FLOOR_WOOD2_COSMETIC" inherit "MUD"
+  {
+    name = "floor"
+    viewId = { "wood_floor4" }
+   }
+  "BONUS_ELVEN_RUG"
+  {
+    name = "elven rug of concealent"
+    viewId = { "floor_invi" }
+    layer = FLOOR
+    lastingEffect = ENEMY INVISIBLE 0
+    lightEmission = 20
+   }
+  "BONUS_DWARVEN_REGENERATOR"
+  {
+    name = "dwarven regenerator"
+    viewId = { "floor_regen" }
+    layer = FLOOR
+    lastingEffect = ENEMY REGENERATION 0
+  }
+
+  "BONUS_FALLING_RUBBLE_TRAP"
+  {
+    name = "falling rubble trap"
+    viewId = { "ruin_wall" }
+    layer = CEILING
+    entryType = Trap { Area 1 PlaceFurniture "BONUS_RUBBLE" }
+    warning = true
+    constructMessage = SET_UP
+  }
+  "BONUS_RUBBLE"
+  {
+    name = "rubble"
+    viewId = { "bm_map_mountain2" }
+    constructMessage = none	
+    canSilentlyReplace = true #Allows remove construction to work
+    blockMovement = true
+	strength = 200
+    destroyedEffect = PlaceFurniture "STONES"
+    strength2 = {
+      200 BOULDER
+      200 DIG
+      200 HOSTILE_DIG
+      
+    }
+  }
+  "BONUS_TAR_PIT"
+  {
+   name = "tar pit"
+   viewId = { "tar_pit" }
+   entryType = Trap { Name "tar" FirstSuccessful {  #Effect name is used when disarming the trap.
+	                     Filter LastingEffect FLYING CreatureMessage {"fly above the tar pit" "flies above the tar pit"}
+					     Lasting SLOWED
+					   }
+					 }
+   warning = true
+   constructMessage = SET_UP
+  }
+
+  "BONUS_FLOOR_SPIKES_TRAP"
+  {
+    name = "floor_spikes trap"
+    viewId = { "floor_spikes_trap" }
+    entryType = Trap { Name "floor spike" FirstSuccessful { #Effect name is used when disarming the trap.
+	                     Filter LastingEffect FLYING CreatureMessage {"fly above the spikes" "flies above the spikes"}
+					     Lasting 50 BLEEDING
+					   }
+					 }
+    warning = true
+    constructMessage = SET_UP
+  }
+  "BONUS_SEA_OF_BONES"
+  {
+    name = "The Sea of Bones"
+    viewId = { "bone_floor" }
+    layer = GROUND
+  }
+  "BONUS_FLOOR_STONE3_JEWELED"
+  {
+    name = "jeweled floor"
+    viewId = { "stone_pattern1" }
+    luxury = 0.7
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_FLOOR_STONE4_JEWELED"
+  {
+    name = "jeweled floor"
+    viewId = { "stone_pattern2" }
+    luxury = 0.7
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_FLOOR_TAINTED1"
+  {
+    name = "floor"
+    viewId = { "tainted_tile" }
+    luxury = 0.5
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_FLOOR_ZOMBIE1"
+  {
+    name = "floor"
+    viewId = { "zombie_stone_floor" }
+    luxury = 0.6
+    layer = GROUND
+  }
+  "BONUS_FLOOR_ZOMBIE_CARPET1"
+  {
+    name = "carpet"
+    viewId = { "zombie_carpet" }
+    luxury = 0.6
+    layer = GROUND
+  }
+  "BONUS_CORRUPTED_HILL" inherit "GRASS" 
+  {
+	name = "wasteland"
+    viewId = { "corrupted_hill" }
+  }
+  "BONUS_MASS_GRAVE"
+  {
+    name = "mass grave"
+    viewId = { "impaled_head" }
+    wall = true
+  }
+  "BONUS_LITTLE_SPIDER_WEB"
+  {
+    name = "spider web"
+    viewId = { "web_trap" }
+    strength = 1
+    blockingEnemies = true
+    destroyedEffect = { SummonEnemy "SPIDER" {1} none PlaceFurniture "BONUS_BROKEN_WEB" }
+  }
+  "BONUS_BIG_SPIDER_WEB"
+  {
+    name = "spider web"
+    viewId = { "web_trap" }
+    strength = 1
+    blockingEnemies = true
+    destroyedEffect =  { SummonEnemy "SHELOB" {1} none PlaceFurniture "CHEST" }
+  }
+  "BONUS_BACKGROUND_RUBBLE"
+  {
+    name = "rubble"
+    viewId = { "bm_map_mountain2" }
+    canHideHere = true
+    blockingEnemies = true
+	strength = 200
+    destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+    destroyedEffect = PlaceFurniture "STONES"
+  }
+  "BONUS_BACKGROUND_BOULDER"
+  {
+    name = "boulder"
+    viewId = { "boulder" }
+    canHideHere = true
+    blockingEnemies = true
+	strength = 200
+    tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+    destroyedEffect = PlaceFurniture "STONES"
+  }
+  "BONUS_HOLE"
+  {
+    name = "hole"
+    viewId = { "pit" }
+	strength = 50
+	blockingEnemies = true
+  }
+  "BONUS_BROKEN_WEB"
+  {
+    name = "broken web"
+    viewId = { "web_trap" }
+  }
+  "BONUS_DUNGEON_ENTRY" inherit "DOWN_STAIRS"
+  {
+    name = "dungeon entrance"
+    viewId = { "dungeon_entrance" }
+  }
+  "BONUS_ELEMENTALIST_STAIRS_DOWN" inherit "DOWN_STAIRS"
+  {
+    name = "spiraling stairs"
+    viewId = { "down_staircase" Rgb 58 255 106 106 }
+  }
+  "BONUS_ELEMENTALIST_STAIRS_UP" inherit "UP_STAIRS"
+  {
+    name = "spiraling stairs"
+    viewId = { "up_staircase" Rgb 58 255 106 106  }
+  }
+  "BONUS_TAINTED_STAIRS_DOWN" inherit "DOWN_STAIRS"
+  {
+    name = "blood-red stairs"
+    viewId = { "down_staircase" Rgb 255 0 0 255 }
+  }
+  "BONUS_TAINTED_STAIRS_UP" inherit "UP_STAIRS"
+  {
+    name = "blood-red stairs"
+    viewId = { "up_staircase" Rgb 255 0 0 255  }
+  }
+  "BONUS_VOLC_WALL"
+  {
+    name = "wall"
+    viewId = { "volc_wall" }
+    blockMovement = true
+    blockAllVision = true
+    wall = true
+  }
+  "BONUS_VOLC_STONE_FLOOR"
+  {
+    name = "floor"
+    viewId = { "volc_stone_floor" }
+    luxury = 0.5
+    layer = GROUND
+  }
+
+  "BONUS_TREE_WALL"
+  {
+    name = "tree wall"
+    viewId = { "tree_wall" }
+    blockMovement = true
+    blockVision = { NORMAL }
+    wall = true
+	strength = 100
+    summonedElement = "ENT"
+    fire = 100
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  }
+  "BONUS_TAINTED_WALL"
+  {
+    name = "tainted wall"
+    viewId = { "tainted_wall" }
+    blockMovement = true
+    blockAllVision = true
+    wall = true
+  }
+  "BONUS_ZOMBIE_WALL"
+  {
+    name = "wall"
+    viewId = { "zombie_altar_wall" }
+    blockMovement = true
+    blockAllVision = true
+    wall = true
+  }
+  "BONUS_ZOMBIE_WALL_DOOR"
+  {
+    name = "wall"
+    viewId = { "zombie_altar_wall" }
+    blockAllVision = true
+    strength = 1
+    viewLayer = FLOOR_BACKGROUND
+    entryType = Effect {
+        Message NORMAL "It was just an illusion!"
+        Fx { TELEPORT_OUT }
+        DestroyWalls BASH
+    }
+  }
+  "BONUS_SHALLOW_WATER_COSMETIC"
+  {
+    name = "shallow water"
+    viewId = { "water" }
+    layer = GROUND
+    summonedElement = "WATER_ELEMENTAL"
+    freezeTo = "ICE"
+    walkIntoFX = { WATER_SPLASH Rgb 82 148 255 255 }
+  }
+  "BONUS_CASTLE_WALL_GM"
+  {
+    name = "wall"
+    viewId = { "castle_wall" }
+    blockMovement = true
+    blockVision = { NORMAL ELF }
+    strength2 = {
+      300 BOULDER
+      100 DIG
+      1900 HOSTILE_DIG
+      
+    }
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_WOOD_WALL_GM" inherit "BONUS_CASTLE_WALL_GM"
+  {
+    viewId = { "wood_wall" }
+    summonedElement = "ENT"
+    fire = 100
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  }
+  "BONUS_WOOD_DOOR_GM"
+  {
+    name = "wooden door"
+    viewId = { "wood_door_ew" }
+    blockingEnemies = true
+    canHideHere = true
+    blockVision = { NORMAL ELF }
+    fire = 50
+    strength = 80
+    clickType = LOCK
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_IRON_DOOR_GM"
+  {
+    name = "iron door"
+    viewId = { "iron_door_ew" }
+    blockingEnemies = true
+    canHideHere = true
+    blockVision = { NORMAL ELF }
+    strength = 160
+    clickType = LOCK
+    destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_ADA_DOOR_GM"
+  {
+    name = "adamantine door"
+    viewId = { "ada_door_ew" }
+    blockingEnemies = true
+    canHideHere = true
+    blockVision = { NORMAL ELF }
+    strength = 320
+    clickType = LOCK
+    requiredSupport = { { { E W } } { { N S } {"ada_door_ns"} } }
+    destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_IRON_ALTAR"
+  {
+    name = "iron hero altar"
+    viewId = { "iron_hero_altar" }
+    blockMovement = true
+    canHideHere = true
+    luxury = 0.7
+    strength = 50
+    populationIncrease = {1 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  }
+  "BONUS_GOLD_ALTAR"
+  {
+    name = "gold hero altar"
+    viewId = { "gold_hero_altar" }
+    blockMovement = true
+    canHideHere = true
+    luxury = 0.7
+    strength = 50
+    populationIncrease = {3 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  }
+  "BONUS_ADA_ALTAR"
+  {
+    name = "adamantine hero altar"
+    viewId = { "ada_hero_altar" }
+    blockMovement = true
+    canHideHere = true
+    luxury = 0.7
+    strength = 50
+    populationIncrease = {10 none}
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  }
+  "BONUS_FIREPROOF_CHEST"
+  {
+  name = "chest"
+  viewId = { "chest" }
+  canHideHere = true
+  tickType = Effect {
+    DropItemList "chest"
+    PlaceFurniture "CHEST"
+  }
+  }
+  "BONUS_LOCKED_CHEST"
+  {
+    name = "chest"
+    viewId = { "locked_chest" }
+    canHideHere = true
+    strength = 1
+    destroyedRemains = "TREASURE_CHEST"
+    usageType = UsageEffect "open"  {
+      ChooseRandom {
+      DropItems {"GoldPiece"} {35 55}
+      DropItems {"GoldPiece"} {55 75}
+	  DropItems {"SteelOre"} {35 55}
+      DropItems {"SteelOre"} {55 75}
+	  DropItems {"AdoxiumOre"} {15 25}
+	  DropItems {"AdoxiumOre"} {25 45}
+	  DropItems {"AdaOre"} {15 25}
+	  DropItems {"AdaOre"} {25 45}
+	  DropItems {"InfOre"} {15 25}
+	  DropItems {"InfOre"} {25 55}
+	  DropItems {"BONUS_JothniteOre"} {15 25}
+	  DropItems {"BONUS_JothniteOre"} {25 55}
+	  DropItems {"VenOre"} {25 45}
+	  DropItems {"VenOre"} {35 55}
+	  #Gold, steel, and magic metals are treasure.  Iron, not so much.  ;-)
+	  DropItems {"ArchwoodStaff"} {1}
+	  DropItems {"ArchwoodStaff"} {1}
+	  #Two chances apiece for OK weapons.  Helps dial back the chance of getting artifacts or Bad Stuff.
+	  DropItems {"BONUS_Mace"} {1}
+	  DropItems {"BONUS_SteelMace"} {1}
+	  DropItems {"BONUS_Axe"} {1}
+	  DropItems {"BONUS_SteelAxe"} {1}
+	  DropItems {"BONUS_LongSpear"} {1}
+	  DropItems {"BONUS_LongSpear"} {1}
+	  DropItems {"AdaWarHammer"} {1}
+	  DropItems {"DefenseAmulet"} {1}
+	  DropItems {Ring FIRE_RESISTANT} {1}
+	  DropItems {Ring COLD_RESISTANT} {1}
+	   #Nicer Stuff
+	  DropItems {"BONUS_VenLongSpear"} {1}
+	  DropItems {"BONUS_VenBattleAxe"} {1}
+	  DropItems {"ElvenBow"} {1}
+	  DropItems {"BONUS_AdaAxe"} {1}
+	  DropItems {"BONUS_AdaMace"} {1}
+	  DropItems {"BONUS_InfLongSpear"} {1}
+	  DropItems {"BONUS_InfBattleAxe"} {1}
+	  DropItems {Amulet DISARM_TRAPS_SKILL} {1}
+	  #Of course there's a chance to get a disarm-traps amulet.  Irony and all that.
+	  DropItems {Ring MELEE_RESISTANCE} {1}
+	  DropItems {Ring RANGED_RESISTANCE} {1}
+	  DropItems {Ring SPEED} {1}
+	  #There, see what greed will get you?
+	  SummonEnemy "BLACK_RAT" {4 5} none
+      }
+	  FirstSuccessful {
+	    Filter LastingEffect DISARM_TRAPS_SKILL Message NORMAL "You disarm a trap on the chest using your disarming skills."
+		 {  
+          ChooseRandom {
+            Message NORMAL "The chest breaks open easily."
+            Message NORMAL "The chest resists and then suddenly breaks open."
+            Message NORMAL "The chest cracks along the top."
+          }
+          ChooseRandom {
+             { Chain {Message NORMAL "A blue gas leaks from the chest." Lasting HALLU}}
+             { Message NORMAL "The chest catches fire as you trigger the trap." Fire{} }
+             { Message NORMAL "A frost bolt hits you!" Ice{} }
+             { Message NORMAL "An acid ball splashes you!" Acid{} }
+             { Message NORMAL "You are stabbed by a needle!" Lasting POISON }
+             { Message NORMAL "A small device slits you open!" Lasting 50 BLEEDING }
+             { Message NORMAL "Something makes you cough!" Lasting PLAGUE }
+		  }
+		}
+      } 
+      DestroyWalls BASH
+	}
+  }
+
+  "BONUS_TRAINING_WOOD_GM" inherit "TRAINING_WOOD" { canBuildOutsideOfTerritory = true }
+  "BONUS_TRAINING_IRON_GM" inherit "TRAINING_IRON" { canBuildOutsideOfTerritory = true }
+  "BONUS_TRAINING_ADA_GM" inherit "TRAINING_ADA" { canBuildOutsideOfTerritory = true }
+  "BONUS_ARCHERY_RANGE_GM" inherit "ARCHERY_RANGE" { canBuildOutsideOfTerritory = true }
+  "BONUS_FOUNTAIN_GM" inherit "FOUNTAIN" { canBuildOutsideOfTerritory = true }
+  "BONUS_TORCH_N_GM" inherit "TORCH_N" {    requiredSupport = { { { } } } }
+  "BONUS_TORCH_S_GM" inherit "TORCH_S" {    requiredSupport = { { { } } } }
+  "BONUS_TORCH_E_GM" inherit "TORCH_E" {    requiredSupport = { { { } } } }
+  "BONUS_TORCH_W_GM" inherit "TORCH_W" {    requiredSupport = { { { } } } }
+  "BONUS_GROUND_TORCH_GM" inherit "GROUND_TORCH" { canBuildOutsideOfTerritory = true }
+  "BONUS_TREE_TRUNK_GM" inherit "TREE_TRUNK"  { canBuildOutsideOfTerritory = true  onBuilt = SET_ON_FIRE fire = 1  xForgetAfterBuilding = true }
+  
+  #Palace
+  "BONUS_TRAINING_WOOD_NO_BLOCK"
+  {
+	  name = "wooden training dummy"
+	  viewId = { "training_wood" }
+	  usageType = BuiltinUsageId TRAIN
+	  canHideHere = true
+	  maxTraining = {
+		DAMAGE 3
+	  }
+  }
+  "BONUS_BOOKCASE_WOOD_NO_BLOCK"
+  {
+	name = "wooden bookcase"
+	viewId = { "bookcase_wood" }
+	usageType = BuiltinUsageId STUDY
+	usageTime = 5
+	canHideHere = true
+	maxTraining = {
+	SPELL_DAMAGE 3
+	}
+  }
+
+  "BONUS_CURSED_WALL" inherit "DUNGEON_WALL"
+  {
+    viewId = { "cursed_wall" }
+  }
+
+  #Fairies
+  "BONUS_FEY_GRASS" inherit "GRASS"
+  {
+    viewId = { "fey_grass" }
+  }
+  "BONUS_FEY_SAND" inherit "SAND"
+  {
+    viewId = { "fey_sand" }
+  }
+  "BONUS_FEY_HILL" inherit "HILL"
+  {
+    viewId = { "fey_hill" }
+  }
+  "BONUS_FEY_WALL" inherit "DUNGEON_WALL"
+  {
+    viewId = { "fey_wall" }
+  }
+  "BONUS_FEY_WATER" inherit "WATER"
+  {
+    viewId = { "fey_water" }
+    freezeTo = "BONUS_FEY_ICE"
+    fillPit = "BONUS_FEY_WATER"
+	walkIntoFX = { WATER_SPLASH Rgb 142 83 209 255 }
+  }
+  "BONUS_FEY_ICE" inherit "ICE" { meltInfo = { "BONUS_FEY_WATER" } }
+  "BONUS_FEY_TREE31" inherit "CANIF_TREE" { viewId = { "fey_tree1" }}
+  "BONUS_FEY_TREE32" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId LIGHT_BROWN }}
+  "BONUS_FEY_TREE33" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId WHITE }}
+  "BONUS_FEY_TREE34" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId YELLOW }}
+  "BONUS_FEY_TREE35" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId RED }}
+  "BONUS_FEY_TREE36" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId LIGHT_BLUE }}
+  "BONUS_FEY_TREE37" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId LIGHT_GRAY }}
+  "BONUS_FEY_TREE38" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId PURPLE }}
+  "BONUS_FEY_TREE39" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId ORANGE }}
+  "BONUS_FEY_TREE40" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId DARK_GRAY }}
+  "BONUS_FEY_TREE41" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId WHITE }}
+  "BONUS_FEY_TREE42" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId ORANGE_BROWN }}
+  "BONUS_FEY_TREE43" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId BROWN }}
+  "BONUS_FEY_TREE44" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId DARK_BROWN }} 
+  "BONUS_FEY_TREE45" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  GRAY }}
+  "BONUS_FEY_TREE46" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  ALMOST_GRAY }}
+  "BONUS_FEY_TREE47" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId  ALMOST_BLACK }}
+  "BONUS_FEY_TREE48" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  ALMOST_DARK_GRAY }}
+  "BONUS_FEY_TREE49" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  BLACK }}
+  "BONUS_FEY_TREE50" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  ALMOST_WHITE }}
+  "BONUS_FEY_TREE51" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  GREEN }}
+  "BONUS_FEY_TREE52" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  LIGHT_GREEN }}
+  "BONUS_FEY_TREE53" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  DARK_GREEN }}
+  "BONUS_FEY_TREE54" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  LIGHT_RED }}
+  "BONUS_FEY_TREE55" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  PINK }}
+  "BONUS_FEY_TREE56" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  BLUE }}
+  "BONUS_FEY_TREE57" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  DARK_BLUE }}
+  "BONUS_FEY_TREE58" inherit "CANIF_TREE" { viewId = { "fey_tree1" ColorId  SKY_BLUE }}
+  "BONUS_FEY_TREE59" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId  VIOLET }}
+ 
+  "BONUS_FEY_TREE61" inherit "CANIF_TREE" { viewId = { "fey_tree2" }}
+  "BONUS_FEY_TREE62" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_BROWN }}
+  "BONUS_FEY_TREE63" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId WHITE }}
+  "BONUS_FEY_TREE64" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId YELLOW }}
+  "BONUS_FEY_TREE65" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId RED }}
+  "BONUS_FEY_TREE66" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_BLUE }}
+  "BONUS_FEY_TREE67" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_GRAY }}
+  "BONUS_FEY_TREE68" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId PURPLE }}
+  "BONUS_FEY_TREE69" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId ORANGE }}
+  "BONUS_FEY_TREE70" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_GRAY }}
+  "BONUS_FEY_TREE71" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId WHITE }}
+  "BONUS_FEY_TREE72" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId ORANGE_BROWN }}
+  "BONUS_FEY_TREE73" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId BROWN }}
+  "BONUS_FEY_TREE74" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_BROWN }} 
+  "BONUS_FEY_TREE75" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId GRAY }}
+  "BONUS_FEY_TREE76" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_GRAY }}
+  "BONUS_FEY_TREE77" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_BLACK }}
+  "BONUS_FEY_TREE78" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_DARK_GRAY }}
+  "BONUS_FEY_TREE79" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId BLACK }}
+  "BONUS_FEY_TREE80" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId ALMOST_WHITE }}
+  "BONUS_FEY_TREE81" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId GREEN }}
+  "BONUS_FEY_TREE82" inherit "CANIF_TREE" { viewId = { "fey_bush1" ColorId LIGHT_GREEN }}
+  "BONUS_FEY_TREE83" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_GREEN }}
+  "BONUS_FEY_TREE84" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId LIGHT_RED }}
+  "BONUS_FEY_TREE85" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId PINK }}
+  "BONUS_FEY_TREE86" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId BLUE }}
+  "BONUS_FEY_TREE87" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId DARK_BLUE }}
+  "BONUS_FEY_TREE88" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId SKY_BLUE }}
+  "BONUS_FEY_TREE89" inherit "CANIF_TREE" { viewId = { "fey_tree2" ColorId VIOLET }}
+
+  #Fairy and driad herbs
+  "BONUS_HERB_1"
+  {
+    name = "herb"
+    viewId = { "herb1" }
+    strength2 = { 10 DIG }
+    fire = 100
+    itemDrop = {{{{"BONUS_Berry1"} 1 { 1 }}}}
+    usageType = UsageEffect "dig" DestroyWalls DIG	
+  }
+
+  "BONUS_HERB_2" inherit "BONUS_HERB_1" { viewId = { "herb2" } itemDrop = {{{{"BONUS_Berry2"} 1 { 1 }}}}}
+  "BONUS_HERB_3" inherit "BONUS_HERB_1" { viewId = { "herb3" } itemDrop = {{{{"BONUS_Berry3"} 1 { 1 }}}}}
+  "BONUS_HERB_4" inherit "BONUS_HERB_1" { viewId = { "herb4" } itemDrop = {{{{"BONUS_Berry4"} 1 { 1 }}}}}
+  "BONUS_HERB_5" inherit "BONUS_HERB_1" { viewId = { "herb5" } itemDrop = {{{{"BONUS_Leaf1"} 1 { 1 }}}}}
+  "BONUS_HERB_6" inherit "BONUS_HERB_1" { viewId = { "herb6" } itemDrop = {{{{"BONUS_Flower1"} 1 { 1 }}}}}
+  "BONUS_HERB_7" inherit "BONUS_HERB_1" { viewId = { "herb7" } itemDrop = {{{{"BONUS_Flower2"} 1 { 1 }}}}}
+
+  
+  
+  #Swamp
+  "BONUS_SWAMP_TREE1" inherit "CANIF_TREE" { viewId = { "swamp_tree1" ColorId GREEN }
+    viewLayer = TORCH1 }
+  "BONUS_SWAMP_TREE2" inherit "CANIF_TREE" { viewId = { "swamp_tree2" ColorId GREEN }
+    viewLayer = TORCH1 }
+  "BONUS_SWAMP_BUSH1" inherit "CANIF_TREE" { viewId = { "swamp_bush1" ColorId GREEN }
+    viewLayer = TORCH1 }
+  "BONUS_SWAMP_REEDS" inherit "CANIF_TREE" { viewId = { "swamp_grass_reeds" ColorId GREEN }
+    viewLayer = TORCH1 }
+
+  "BONUS_SWAMP_LILY_PAD1" 
+  {
+    name = "lily pads"
+    viewId = { "swamp_lily_pad1" }
+    viewLayer = TORCH1 
+	bridge = true 
+	removeNonFriendly = true
+    removeWithCreaturePresent = false
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_SWAMP_LILY_PADS2" 
+  {
+    name = "lily pads"
+    viewId = { "swamp_lily_pads2" }
+    viewLayer = TORCH1 
+	bridge = true 
+	removeNonFriendly = true
+    removeWithCreaturePresent = false
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_SWAMP_WATER_REEDS" 
+  {
+    name = "reeds"
+    viewId = { "swamp_water_reeds" }
+    viewLayer = TORCH1 
+	bridge = true 
+	removeNonFriendly = true
+    removeWithCreaturePresent = false
+    canBuildOutsideOfTerritory = true
+  }
+  "BONUS_SWAMP_GRASS" inherit "GRASS"
+  {
+    viewId = { "swamp_grass" }
+  }
+  "BONUS_SWAMP_HILL" inherit "HILL"
+  {
+    viewId = { "swamp_hill" }
+  }
+  "BONUS_SWAMP_WATER"
+  {
+    name = "swamp water"
+    viewId = { "swamp_water" }
+    layer = GROUND
+    waterDepth = 1.5
+    entryType = Water
+    droppedItems = none
+    defaultBridge = "BRIDGE"
+    summonedElement = "WATER_ELEMENTAL"
+    freezeTo = "BONUS_SWAMP_ICE"
+    fillPit = "BONUS_SWAMP_WATER"
+    canSilentlyReplace = true
+    movementSet = {
+      traits = { FLY SWIM WADE }
+      forcibleTraits = { WALK }
+	}
+    walkIntoFX = { WATER_SPLASH Rgb 144 181 165 255 }
+  }
+  "BONUS_SWAMP_ICE" inherit "ICE" { meltInfo = { "BONUS_SWAMP_WATER" }
+  }
+  "BONUS_DIRT_WALL"
+  {
+    name = "wall"
+    viewId = { "dirt_wall" }
+    blockMovement = true
+    blockAllVision = true
+    wall = true
+  }
+  "BONUS_ZOMBIE_SPAWNER"
+  {
+    name = "zombie spawner"
+    viewId = { "totem" Rgb 156 58 68 255 }
+    tickType = Effect Chance 0.05 SummonEnemy "BONUS_ZOMBIE_DARK" { 1 4 } 50
+    blockMovement = true
+    canHideHere = true
+    strength = 100
+  }
+  "BONUS_SHADOW_ALTAR"
+  {
+    name = "shadow altar"
+    viewId = { "shadow_altar" }
+    tickType = Effect Chance 0.08 SummonEnemy "BONUS_SHADE" { 1 } 500
+    blockMovement = true
+    canHideHere = true
+	lightEmission = 20.0
+    strength = 200
+	destroyFX = { DESTROY_FURNITURE Rgb 15 15 15 255 }
+	destroyedEffect = { Message NORMAL "The Altar releases a streak of dark energy!" Area 5 IncreaseAttr DAMAGE 2 SummonEnemy "BONUS_SHADE" {4} none }
+  }
+  
+"BONUS_BLOOD_WELL"
+{
+  name = "well of blood"
+  viewId = { "well" ColorId RED }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect "drink from"
+      {
+        CreatureMessage {"take a sip" "takes a sip"}
+		RegrowBodyPart 1
+      }
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+########################
+#Haloween mod
+########################
+
+"HALLOWEEN_FARM_RAT_COOP"
+{
+  name = "rat coop"
+  viewId = { "halloween_pumpkins" }
+  tickType = Effect Chance 0.05 Filter
+    And {
+      IsClosedOffPigsty
+      CanCreatureEnter
+      Area 1 Not CreatureId "HALLOWEEN_FARM_RAT"
+    }
+    Summon "HALLOWEEN_FARM_RAT" 1 none
+  canBuildOutsideOfTerritory = true
+  populationIncrease = { 0.25 4 true }
+}
+"HALLOWEEN_FARM_BATSY"
+{
+  name = "batsy"
+  viewId = { "halloween_pumpkins" }
+  tickType = Effect Chance 0.05 Filter
+    And {
+      IsClosedOffPigsty
+      CanCreatureEnter
+      Area 1 Not CreatureId "HALLOWEEN_FARM_BAT"
+    }
+    Summon "HALLOWEEN_FARM_BAT" 1 none
+  canBuildOutsideOfTerritory = true
+  populationIncrease = { 0.5 8 true }
+}
+"HALLOWEEN_FARM_WOLF_PEN"
+{
+  name = "wolf pen"
+  viewId = { "halloween_pumpkins" }
+  tickType = Effect Chance 0.05 Filter
+    And {
+      IsClosedOffPigsty
+      CanCreatureEnter
+      Area 1 Not CreatureId "HALLOWEEN_FARM_WOLF"
+    }
+    Summon "HALLOWEEN_FARM_WOLF" 1 none
+  canBuildOutsideOfTerritory = true
+  populationIncrease = { 1 16 true }
+}
+
+"HALLOWEEN_GROUND_TORCH"
+{
+  name = "standing carved pumpkin"
+  viewId = { "halloween_pumpkin_decoration_standing" }
+  luxury = 0.1
+  lightEmission = 8.2
+}
+
+"HALLOWEEN_FLOOR_TORCH_02"
+{
+  name = "carved pumpkin"
+  viewId = { "halloween_pumpkin_decoration_floor_m" }
+  luxury = 0.1
+  lightEmission = 8.2
+}
+
+"HALLOWEEN_GROUND_TORCH_02"
+{
+  name = "standing carved pumpkin"
+  viewId = { "halloween_pumpkin_decoration_standing_m" }
+  luxury = 0.1
+  lightEmission = 8.2
+}
+
+"HALLOWEEN_FLOOR_TORCH"
+{
+  name = "carved pumpkin"
+  viewId = { "halloween_pumpkin_decoration_floor" }
+  luxury = 0.1
+  lightEmission = 8.2
+}
+
+"HALLOWEEN_TORCH_N"
+{
+  name = "hanging carved pumpkin"
+  viewId = { "halloween_pumpkin_decoration_wall" }
+  lightEmission = 8.2
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  canBuildOutsideOfTerritory = true
+}
+
+"HALLOWEEN_TORCH_S" inherit "HALLOWEEN_TORCH_N"
+{
+  viewLayer = TORCH2
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+
+"HALLOWEEN_TORCH_N_02"
+{
+  name = "hanging carved pumpkin"
+  viewId = { "halloween_pumpkin_decoration_wall_m" }
+  lightEmission = 8.2
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  canBuildOutsideOfTerritory = true
+}
+
+"HALLOWEEN_TORCH_S_02" inherit "HALLOWEEN_TORCH_N_02"
+{
+  viewLayer = TORCH2
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+
+"HALLOWEEN_TORCH_E" inherit "HALLOWEEN_TORCH_N"
+{
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+
+"HALLOWEEN_TORCH_W" inherit "HALLOWEEN_TORCH_N"
+{
+  viewId = { "halloween_pumpkin_decoration_wall_m" }
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+
+"HALLOWEEN_SPIDER_WEB"
+{
+  name = "spider web"
+  viewId = { "web_trap" }
+  entryType = Trap { Lasting ENTANGLED true }
+}
+
+"HALLOWEEN_FLOOR_WEB"
+{
+  name = "spiderweb"
+  viewId = { "halloween_web_trap" }
+  luxury = 0.7
+  layer = FLOOR
+}
+
+"HALLOWEEN_SKELETON_01"
+{
+  name = "hanging skeleton"
+  viewId = { "halloween_skeleton_06" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+  canBuildOutsideOfTerritory = true
+}
+
+"HALLOWEEN_SKELETON_02"
+{
+  name = "hanging skeleton"
+  viewId = { "halloween_skeleton_07" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+  canBuildOutsideOfTerritory = true
+}
+
+"HALLOWEEN_SKELETON_03"
+{
+  name = "hanging skeleton"
+  viewId = { "halloween_skeleton_09" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+  canBuildOutsideOfTerritory = true
+}
+
+"HALLOWEEN_SKELETON_04"
+{
+  name = "hanging skeleton"
+  viewId = { "halloween_skeleton_11" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+  canBuildOutsideOfTerritory = true
+}
+
+"HALLOWEEN_SKELETON_05"
+{
+  name = "hanging skeleton"
+  viewId = { "halloween_skeleton_10" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+  canBuildOutsideOfTerritory = true
+}
+"HALLOWEEN_SKELETON_06"
+{
+  name = "hanging skeleton"
+  viewId = { "halloween_skeleton_01" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  canBuildOutsideOfTerritory = true
+}
+
+"HALLOWEEN_SKELETON_07"
+{
+  name = "hanging skeleton"
+  viewId = { "halloween_skeleton_02" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  canBuildOutsideOfTerritory = true
+}
+
+"HALLOWEEN_SKELETON_08"
+{
+  name = "hanging skeleton"
+  viewId = { "halloween_skeleton_03" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  canBuildOutsideOfTerritory = true
+}
+
+"HALLOWEEN_SKELETON_09"
+{
+  name = "hanging skeleton"
+  viewId = { "halloween_skeleton_05" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+  canBuildOutsideOfTerritory = true
+}
+
+"HALLOWEEN_SKELETON_10"
+{
+  name = "hanging skeleton"
+  viewId = { "halloween_skeleton_04" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+  canBuildOutsideOfTerritory = true
+}
+
+########################
+#From Troll Traps mod
+####################
+
+"TAR_TRAP"
+{
+  name = "tar trap"
+  viewId = { "tt_tar_trap" }
+  entryType = Trap { CustomArea PlaceFurniture "BUILD_TAR" { {1 0} {1 1} {1 -1} {0 1} {0 0} {-1 0}  {-1 1} {-1 -1} {0 -1} } }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"RANDOM_TELEPORTER"
+{
+  name = "teleport trap"
+  viewId = { "trap"  Rgb 13 18 200 255 }
+  entryType = Trap { Area 1 Filter Enemy Escape {}}
+  warning = true
+  constructMessage = SET_UP
+}
+
+"TRAP_BRIDGE"
+{
+  name = "bridge"
+  viewId = { "bridge" }
+  overrideMovement = true
+  fire = 50
+  removeNonFriendly = true
+  removeWithCreaturePresent = false
+  bridge = true
+  entryType = Trap {Area 1 RemoveFurniture "TRAP_BRIDGE" }
+  canBuildOutsideOfTerritory = true
+}
+"TRAP_STONE_BRIDGE" inherit "TRAP_BRIDGE"
+{
+  viewId = { "bridge" ColorId GRAY }
+  fire = 0
+  name = "bridge"
+    entryType = Trap {Area 1 RemoveFurniture "TRAP_STONE_BRIDGE" }
+}
+
+"TEAR_GAS_TRAP"
+{
+  name = "tear gas trap"
+  viewId = { "tt_gas_trap"  Rgb 188 188 188 255 }
+  entryType = Trap { Area 1 EmitGas "TEAR_GAS" 0.4 }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"HALUCINATION_TRAP"
+{
+  name = "halucination gas trap"
+  viewId = { "tt_gas_trap"  Rgb 201 13 159 255 }
+  entryType = Trap { Area 1 EmitGas "HALUCINATION_GAS" 0.4 }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"CHICKENIZE_TRAP"
+{
+  name = "chickenize gas trap"
+  viewId = { "trap"  Rgb 255 255 255 255 }
+  entryType = Trap { Polymorph "CHICKEN" 100}
+  warning = true
+  constructMessage = SET_UP
+}
+
+"FREEZE_TRAP"
+{
+  name = "freeze trap"
+  viewId = { "trap"  Rgb 13 190 200 255 }
+  entryType = Trap {Filter Enemy { 
+                     Chain {
+					 Lasting FROZEN
+					 Ice{}}}}
+  warning = true
+  constructMessage = SET_UP
+}
+
+"POISON_GAS_TRAP" modify append
+{
+  viewId = { "tt_gas_trap"  Rgb 58 156 68 255 }
+}
+
+"ENEMY_POISON_GAS_TRAP"
+{
+  name = "poison gas trap"
+  viewId = { "trap"  Rgb 58 156 68 255 }
+  entryType = Effect {
+  RemoveFurniture "ENEMY_POISON_GAS_TRAP"
+  Area 1 EmitGas "POISON_GAS" 0.4 }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"ENEMY_FIRE_TRAP"
+{
+  name = "poison gas trap"
+  viewId = { "trap"  Rgb 58 156 68 255 }
+  entryType = Effect {
+  RemoveFurniture "ENEMY_POISON_GAS_TRAP"
+   PlaceFurniture "FIRE_WALL" }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"ENEMY_BLAST_TRAP"
+{
+  name = "blast trap"
+  viewId = { "trap" ColorId PINK }
+  tickType = Effect {
+    DirectedBlast {0 -1} 4
+    DirectedBlast {0 1} 4
+    DirectedBlast {1 0} 4
+    DirectedBlast {-1 0} 4
+  }
+  warning = true
+  constructMessage = SET_UP
+}
+
+"TRAP_CHEST"
+{
+  name = "chest"
+  viewId = { "chest" }
+  canHideHere = true
+  usageType = UsageEffect "open" {
+    CreatureMessage {"open the chest" "opens the chest"}
+    DirectedBlast {0 -1} 4
+    DirectedBlast {0 1} 4
+    DirectedBlast {1 0} 4
+    DirectedBlast {-1 0} 4
+	CustomArea PlaceFurniture "BUILD_TAR" { {0 -1} {0 1} {1 0} {-1 0} {0 0}} 
+    RemoveFurniture "TRAP_CHEST"
+  }
+  fire = 50
+  strength = 30
+  destroyedRemains = "OPENED_CHEST"
+}
+
+"SPIKE_TRAP"
+  {
+    name = "Floor Spikes"
+    viewId = { "tt_spikes" }
+    entryType = Trap { Name "floor spike" FirstSuccessful { #Effect name is used when disarming the trap.
+	                     Filter  LastingEffect FLYING { CreatureMessage {"fly above the spikes" "flies above the spikes"}}
+					     Filter Not LastingEffect FLYING {Lasting 50 BLEEDING}
+					   }
+					 }
+    warning = true
+    constructMessage = SET_UP
+  }
+  
+  
+"FAKE_MINION_STATUE"
+{
+  name = "gold statue"
+  viewId = { "minion_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  tickType = Trap 1 {
+    Def SummonGoldStatue() {
+      Message HIGH "The statue comes to life!"
+      Summon "GOLD_STATUE" 1 20
+    } End
+    SummonGoldStatue()
+    SummonGoldStatue()
+    SummonGoldStatue()
+    SummonGoldStatue()
+  }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"FAKE_STONE_MINION_STATUE"
+{
+  name = "stone statue"
+  viewId = { "stone_minion_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 50
+  tickType = Trap 1 {
+    Def SummonStoneStatue() {
+      Message HIGH "The statue comes to life!"
+      Summon "STONE_STATUE" 1 20
+    } End
+    SummonStoneStatue()
+    SummonStoneStatue()
+    SummonStoneStatue()
+    SummonStoneStatue()
+  }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"FAKE_TREASURE_CHEST"
+{
+  name = "treasure chest"
+  viewId = { "treasurechest" }
+  canHideHere = true
+  fire = 50
+  luxury = 0.4
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  tickType = Trap 1 {
+    Def SummonMimic() {
+      Message HIGH "This is no chest!"
+      Summon "MIMIC" 1 20
+    } End
+    SummonMimic()
+    SummonMimic()
+    SummonMimic()
+    SummonMimic()
+  }
+  hidesItems = true
+}
+
+"TT_PITFALL"
+{
+  name = "hole"
+  viewId = { "sokoban_hole" }
+  onBuilt = DOWN_STAIRS
+  tickType = Effect {Filter Not LastingEffect FLYING {Area 0 Stairs} }
+  canBuildOutsideOfTerritory = true
+}
+
+"BUILD_TAR" inherit "TAR" {
+  luxury = 0.1
+  layer = FLOOR
+  tickType = Effect
+    Filter And { Not LastingEffect FLYING Not BodyMaterial SPIRIT Not LastingEffect IMMOBILE Not Area 0 FurnitureType "BRIDGE" Not Area 0 FurnitureType "STONE_BRIDGE"} {
+      Chance 0.1 {
+        CreatureMessage { "are stuck in the tar!" "is stuck in the tar!"}
+        Lasting IMMOBILE
+      }
+      Filter Not LastingEffect IMMOBILE Chance 0.5 {
+        CreatureMessage {"are slowed down by the tar!" "is slowed down by the tar!"}
+        Lasting SLOWED
+      }
+    }
+  fire = 50
+  canBuildOutsideOfTerritory = true
+}
+
+########################
+#From Keeperrl Expanded mod
+########################
+
+Def DemonQuest()
+Filter Not Flag "BONUS_demon_quest_Finish" {
+Filter Flag "BONUS_demon_quest" {
+Filter Not Flag "BONUS_paladin_killed" {
+                 PlayerMessage CRITICAL "Hurry he still draws breath."
+                 }
+Filter Flag "BONUS_paladin_killed" {
+                 PlayerMessage CRITICAL "You have done me well, here take your reward!"
+				 GrantAbility "Reward Wish"
+                 }
+            }
+Filter Not Flag "BONUS_demon_quest" {
+                 PlayerMessage CRITICAL "Angel worshiping fool managed to break out of prison under this abbey. This must not stand, he must die!"
+                 SetFlag "BONUS_demon_quest" true
+                 DropItems { "BONUS_DEMON_ABBEY_KEY"} {1}
+				 }		 
+}
+End
+
+Def AngelQuest()
+Filter Not Flag "BONUS_angel_quest_Finish" {
+Filter Flag "BONUS_demon_quest" {
+Filter Not Flag "BONUS_weak_devil_killed" {
+                 PlayerMessage CRITICAL "We cant hold him much longer!."
+                 }
+Filter Flag "BONUS_weak_devil_killed" {
+                 PlayerMessage CRITICAL "Bless you. Here take your reward!"
+				 GrantAbility "Reward Wish"
+                 }
+            }
+Filter Not Flag "BONUS_angel_quest" {
+                 PlayerMessage CRITICAL "Powerfull demon stirs from within his prison under abbey, you must defeat it!"
+                 SetFlag "BONUS_angel_quest" true
+                 DropItems { "BONUS_DEMON_ABBEY_KEY"} {1}
+				 }		 
+}
+End
+
+"BONUS_FLOOR_STONE2" 
+{
+  name = "floor"
+  viewId = { "stone_floor5" }
+  layer = GROUND
+}
+"BONUS_FLOOR_CARPET1" 
+{
+  name = "floor"
+  viewId = { "carpet_floor1" }
+  layer = GROUND
+}
+"BONUS_FLOOR_CARPET2" 
+{
+  name = "floor"
+  viewId = { "carpet_floor4" }
+  layer = GROUND
+}
+"BONUS_PORTCULLIS"
+{
+  name = "portcullis"
+  viewId = { "BONUS_portcullis_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  strength = 160
+  clickType = LOCK
+  requiredSupport = { { { E W } } { { N S } {"BONUS_portcullis_ns"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"BONUS_PORTCULLIS_GATE"
+{
+  name = "portcullis gate"
+  viewId = { "BONUS_portcullis_gate_w" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  strength = 320
+  clickType = LOCK
+  requiredSupport = { { { W } } { { N } {"BONUS_portcullis_gate_n"} } { { E } {"BONUS_portcullis_gate_e"} } { { S } {"BONUS_portcullis_gate_s"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"BONUS_LOOT_COFFIN"
+{
+  name = "coffin"
+  viewId = { "coffin1" }
+  canHideHere = true
+  usageType = UsageEffect "open" {
+    CreatureMessage { "open the coffin" "opens the coffin"}
+    CreatureMessage { "find some equipment inside" "finds some equipment inside"}
+    ChooseRandom {
+	Chain{
+      DropItems {"Skeleton"} 1
+	  DropItems {"Sword"} 1
+	  }
+	Chain{
+      DropItems {"Skeleton"} 1
+	  DropItems {"ArchwoodStaff"} 1
+	  }
+	Chain{
+      DropItems {"Skeleton"} 1
+	  DropItems {"BattleAxe"} 1
+	  }
+	Chain{
+      DropItems {"Skeleton"} 1
+	  DropItems {"WarHammer"} 1
+	  }
+    }
+    RemoveFurniture "BONUS_LOOT_COFFIN"
+  }
+  fire = 50
+  strength = 30
+  destroyedRemains = "BONUS_OPENED_COFFIN"
+}
+
+"BONUS_OPENED_COFFIN"
+{
+  name = "coffin"
+  viewId = { "opened_coffin" }
+  canHideHere = true
+  usageType = UsageEffect "sleep in coffin" Lasting SLEEP
+  fire = 50
+  strength = 40
+  bedType = COFFIN
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"BONUS_SKELETON_COFFIN"
+{
+  name = "coffin"
+  viewId = { "coffin1" }
+  canHideHere = true
+  usageType = UsageEffect "open" {
+    CreatureMessage { "open the coffin" "opens the coffin"}
+    CreatureMessage { "find animated skeleton inside" "finds animated skeleton inside"}
+    ChooseRandom {
+	Chain{
+      Summon "SKELETON_ARCHER" 1 none
+	  }
+	Chain{
+      Summon "SKELETON_WARRIOR" 1 none
+	  }
+    }
+    RemoveFurniture "BONUS_LOOT_COFFIN"
+  }
+  fire = 50
+  strength = 30
+  destroyedRemains = "BONUS_OPENED_COFFIN"
+}
+
+"BONUS_BLOOD"
+{
+  name = "blood"
+  viewId = { "BONUS_blood" }
+  bloodCountdown = 30
+  layer = GROUND
+  waterDepth = 100
+  entryType = Water
+  droppedItems = { "sinks" "sink" "You hear a splash." }
+  defaultBridge = "BRIDGE"
+  summonedElement = "DEMON_DWELLER"
+  freezeTo = "BONUS_BLOOD_ICE"
+  fillPit = "BONUS_BLOOD"
+  canSilentlyReplace = true
+  movementSet = {
+    traits = { FLY SWIM }
+    forcibleTraits = { WALK }
+  }
+  walkIntoFX = { WATER_SPLASH Rgb 82 148 255 255 }
+}
+
+"BONUS_BLOOD_ICE"
+{
+  name = "blood ice"
+  viewId = { "BONUS_blood_ice" }
+  layer = GROUND
+  meltInfo = { "BONUS_BLOOD" }
+}
+
+"BONUS_DESTROY_DEMON_SHRINE"
+{
+  name = "demon shrine"
+  viewId = { "demon_shrine" }
+  blockMovement = true
+  luxury = 0.7
+  strength = 250
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  destroyedEffect = {
+    Message HIGH "Demon comes to take your life!"
+    SummonEnemy "BONUS_SHRINE_DEVIL" {1} none
+  }
+}
+
+"BONUS_QUEST_DEMON_SHRINE"
+{
+  name = "demon shrine"
+  viewId = { "demon_shrine" }
+  luxury = 0.7
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  usageType = UsageEffect "use" { DemonQuest() }
+}
+
+"BONUS_DESTROY_ANGEL_SHRINE"
+{
+  name = "angel shrine"
+  viewId = { "angel_shrine" }
+  blockMovement = true
+  luxury = 0.7
+  strength = 250
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  destroyedEffect = {
+    Message HIGH "Angel comes to take your life!"
+    SummonEnemy "BONUS_SHRINE_ANGEL" {1} none
+  }
+}
+
+"BONUS_QUEST_ANGEL_SHRINE"
+{
+  name = "angel shrine"
+  viewId = { "angel_shrine" }
+  luxury = 0.7
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  usageType = UsageEffect "use" { AngelQuest() }
+}
+
+"BONUS_DEMON_ABBEY_TRAP_DOOR"
+{
+  onBuilt = DOWN_STAIRS
+  name = "trap door"
+  viewId = { "wood_floor1" }
+  usageType = UsageEffect "use" { Filter Not Flag "BONUS_demon_unlock" { Message NORMAL "The dungeons are locked."}
+								       Filter Flag "BONUS_demon_unlock" { Stairs }}
+}
+
+"BONUS_ABBEY_TRAP_DOOR"
+{
+  onBuilt = DOWN_STAIRS
+  name = "trap door"
+  viewId = { "wood_floor1" }
+  usageType = UsageEffect "use" { Filter Not Flag "BONUS_angel_unlock" { Message NORMAL "The dungeons are locked."}
+								       Filter Flag "BONUS_angel_unlock" { Stairs }}
+}
+
+"BONUS_PALADIN_CAGE"
+{
+  name = "cage"
+  viewId = { "beast_cage" }
+  canHideHere = true
+  usageType = UsageEffect "open" {
+    CreatureMessage { "open the cage" "opens the cage"}
+    CreatureMessage { "find paladin inside" "finds paladin inside"}
+    Summon "BONUS_PALADIN" 1 none
+    RemoveFurniture "BONUS_PALADIN_CAGE"
+  }
+  fire = 50
+  strength = 30
+  destroyedRemains = "BEAST_CAGE"
+}
+
+"BONUS_DEVIL_CAGE"
+{
+  name = "cage"
+  viewId = { "beast_cage" }
+  canHideHere = true
+  usageType = UsageEffect "open" {
+    CreatureMessage { "open the cage" "opens the cage"}
+    CreatureMessage { "find weakened devil inside" "finds weakened devil inside"}
+    Summon "BONUS_WEAK_DEVIL" 1 none
+    RemoveFurniture "BONUS_DEVIL_CAGE"
+  }
+  fire = 50
+  strength = 30
+  destroyedRemains = "BEAST_CAGE"
+}
+
+"BONUS_CAELIDITE_ORE" inherit "MOUNTAIN2"
+{
+  name = "caelidite ore"
+  viewId = { "BONUS_caelidite_ore" }
+  clearFogOfWar = true
+  itemDrop = {{{{"BONUS_CaeliditeOre"} 1 { 16 28 }}}}
+  # This is thematic BUT lethally punishes Less-Evil and prisoner use.  (Imps are body SPIRIT and thus acid-immune.)
+  #tickType = Effect {
+  #  Area 1 Chain {Acid{} Chance 0.1 { Lasting 50 POISON} }
+  #}
+  strength2 = {
+    200 BOULDER
+    220 DIG
+    200 HOSTILE_DIG
+  }
+}
+
+"BONUS_JOTHNITE_ORE" inherit "MOUNTAIN2"
+{
+  name = "jothnite ore"
+  viewId = { "BONUS_jothnite_ore" }
+  clearFogOfWar = true
+  itemDrop = {{{{"BONUS_JothniteOre"} 1 { 16 28 }}}}
+  #Awfully nasty to folks who aren't using rockblast! I'd imagine mining would result in casualties.
+  #tickType = Effect {
+  #  Area 1 Chain {  Filter Not LastingEffect COLD_RESISTANT {
+  #  CreatureMessage {"are frozen by the jothnite" "is frozen by the jothnite"}
+  #  Bleed 0.01 "jothnite"
+  #  Chance 0.01 { Lasting 50 FROZEN} }}
+  #}
+  strength2 = {
+    200 BOULDER
+    220 DIG
+    200 HOSTILE_DIG
+  }
+}
+
+###
+#Necro statues, thanks, Shadowing's Dungeon Design!
+###
+
+"BONUS_UNDEAD_ANGEL_STATUE"
+{
+  name = "statue of unlife"
+  viewId = { "dd_angel_statue_undead" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.5
+  strength = 50
+  populationIncrease = { 1 none }
+  itemDrop = {{{{"Rock"} 1 { 124 126 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"BONUS_UNDEAD_ANGEL_STATUE_GLOW"
+{
+  name = "anchor of unlife"
+  viewId = { "dd_angel_statue_undead_glowing" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = { 5 5 }
+  itemDrop = {{{{"Rock"} 1 { 254 256 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  lightEmission = 8.2
+}
+
+###
+#Exotic forges
+###
+"BONUS_ADA_FORGE"
+{
+  name = "adamantine forge"
+  viewId = { "ada_forge" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  luxury = 0.5 #Ada forges are Luxurious in order to give an efficiency bonus, representing better-quality tools and such.  (Also reduces skill requirement, as handled in workshop_info.)
+  strength = 80
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  usageFX = FORGE
+  usageSound = {"FORGE_USAGE" 0.2}
+  usagePredicate = Area 1 Not FurnitureType "MAGMA"
+}
+"BONUS_ADA_LAVA_FORGE" inherit "BONUS_ADA_FORGE"
+{
+  name = "adamantine magma forge"
+  viewId = { "ada_lava_forge" }
+  usagePredicate = Not Area 1 Not FurnitureType "MAGMA"
+  upgrade = "FORGE"
+}
+
+"BONUS_ADOXIUM_FORGE"
+{
+  name = "adoxium forge"
+  viewId = { "adoxium_forge" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  strength = 80
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  usageFX = FORGE
+  usageSound = {"FORGE_USAGE" 0.2}
+  usagePredicate = Area 1 Not FurnitureType "MAGMA"
+}
+"BONUS_ADOXIUM_LAVA_FORGE" inherit "BONUS_ADOXIUM_FORGE"
+{
+  name = "adoxium magma forge"
+  viewId = { "adoxium_lava_forge" }
+  usagePredicate = Not Area 1 Not FurnitureType "MAGMA"
+  upgrade = "FORGE"
+}
+
+#"BONUS_SOULFORGE"
+#{
+#  name = "soulforge"
+#  viewId = { "myst_forge" }
+#  blockMovement = true
+#  usageTime = 5
+#  canHideHere = true
+#  strength = 80
+#  requiresLight = true
+#  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+#  usageFX = FORGE
+#  usageSound = {"FORGE_USAGE" 0.2}
+#  usagePredicate = Area 1 Not FurnitureType "MAGMA"
+#}
+
+"BONUS_INFERNITE_FORGE"
+{
+  name = "infernite forge"
+  viewId = { "infernite_forge" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  strength = 80
+  luxury = 0.2 #Mostly the factor of having a forge that never, ever, goes cold.  But it's not particularly comfortable to work.
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  usageFX = FORGE
+  usageSound = {"FORGE_USAGE" 0.2}
+  lightEmission = 8.2 #Magma tiles emit this much light; since the Infernite Forge is a light source, I don't think it needs to need light.
+  upgrade = "FORGE"
+}
+
+####################
+#Ideas for new traps
+####################
+# Silver blade
+# Explosion Trap/magic mine (Knocks you back)
+# Confusion Trap (Causes Insanity)
+# Pitfall Trap (Stuns)
+# Summon Guardian Trap (Makes automation)
+# Relocation Trap (Teleports invader)
+# Memory Trap (Triggers spell cooldowns)
+# Weapon Destruction Trap (Kills weapons)
+# Ruining Trap (Damages stats)
+# Explosive door runes
+# Trick bed
+# Trick bookshelf
+# Trick chest
+# Magic bolt trap
+# Hidden passage and Door
+####################
+#Ideas for new rooms
+####################
+# Mushroom Farm
+# Medical Room
+# Market
+# Slave Market
+# Guard room
+# Beast Pit
+# Quarry
+# Ore Mine
+# Lounge
+# Arena
+# Limb Workshop
+############################
+#Ideas for new installations
+############################
+# Stone door
+# Bone door
+# Magic door
+# Crystal orbs (light)
+# Skull candles (light)
+# Large Bronze Brazier (light)
+############################
+
+"RUINED_WOOD_WALL" inherit "WOOD_WALL"
+{
+  name = "wall"
+  viewId = { "wof_woodb_ruin_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"BONUS_AXEDIO_STATUE" inherit "ADOXIE_STATUE_TEMPLE"
+{
+  destroyedEffect = {
+    Message HIGH "The statue comes to life!"
+    SummonEnemy "ADOXIE_HEAD" {1} none
+    Analytics "milestone" "adoxieComesToLife"
+  }
+  name = "statue of Evil God Axedio"
+  destroyedRemains = "DOWN_STAIRS_ADOXIE"
+}
+
+###
+#DungeonDesign integration
+###
+
+"CAULDRON_TAR" modify append { #Vanilla item made constructable
+	name = "cauldron with tar"
+	viewId = { "cauldron_tar" }
+	blockMovement = true
+	canHideHere = true
+	strength = 80
+	destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+	luxury = 0.5
+	itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+}
+
+"DD_TILE"
+{
+  name = "testing tileset"
+  viewId = { "dd_tile" }
+  viewLayer = FLOOR_BACKGROUND
+  luxury = 0.4
+}
+
+"DD_PORTCULLIS"
+{
+  name = "portcullis"
+  viewId = { "dd_portcullis_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  strength = 160
+  clickType = LOCK
+  requiredSupport = { { { E W } } { { N S } {"dd_portcullis_ns"} } }
+  itemDrop = {{{{"IronOre"} 1 { 2 3 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_PORTCULLIS_GATE"
+{
+  name = "portcullis gate"
+  viewId = { "dd_prison_gate_w" }
+  blockingEnemies = true
+  canHideHere = true
+  blockVision = { NORMAL ELF } #It's a grid, so Arrowslit humans chould be able to shoot through.
+  strength = 320
+  clickType = LOCK
+  requiredSupport = { { { W } } { { N } {"dd_prison_gate_n"} } { { E } {"dd_prison_gate_e"} } { { S } {"dd_prison_gate_s"} } }
+  itemDrop = {{{{"IronOre"} 1 { 2 3 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_IRON_BARS"
+{
+  name = "iron bars"
+  viewId = { "dd_iron_bars" }
+  blockMovement = true
+  wall = true
+  strength = 160
+  itemDrop = {{{{"IronOre"} 1 { 0 2 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"DD_ICE_FLOOR"
+{
+  name = "ice floor"
+  viewId = { "dd_ice_floor" }
+  layer = FLOOR
+  luxury = 0.2
+  itemDrop = {{{{"WoodPlank"} 1 { 0 2 }}} }
+}
+
+"DD_FLOOR_CANAL"
+{
+  name = "water canal"
+  viewId = { "dd_floor_canal" }
+  layer = FLOOR
+  luxury = 0.4
+  itemDrop = {{{{"Rock"} 1 { 0 2 }}} }
+}
+
+"DD_FLOOR_LAVA_CANAL"
+{
+  name = "lava canal"
+  viewId = { "dd_floor_lava_canal"}
+  layer = FLOOR
+  luxury = 0.4
+  itemDrop = {{{{"Rock"} 1 { 0 2 }}} }
+  lightEmission = 1.7
+}
+
+"DD_FLOOR_NECRO_CANAL"
+{
+  name = "necro canal"
+  viewId = { "dd_floor_nerco_canal"}
+  layer = FLOOR
+  luxury = 0.4
+  itemDrop = {{{{"Rock"} 1 { 0 2 }}} }
+  lightEmission = 1.7
+}
+
+"DD_STANDING_ARMOR"
+{
+  name = "standing armor"
+  viewId = { "dd_standing_armor_1" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  itemDrop = {{{{"IronOre"} 1 { 9 11 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_LANTERN"
+{
+  name = "flying lantern"
+  viewId = { "dd_lantern" }
+  luxury = 0.1
+  lightEmission = 8.2
+  strength = 20
+  itemDrop = {{{{"WoodPlank"} 1 { 2 3 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"DD_LANTERN_BLUE"
+{
+  name = "blue flying lantern"
+  viewId = { "dd_lantern_blue" }
+  luxury = 0.1
+  lightEmission = 8.2
+  strength = 20
+  itemDrop = {{{{"WoodPlank"} 1 { 2 3 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"DD_FIREPLACE_N"
+{
+  name = "fireplace"
+  viewId = { "dd_fireplace_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  luxury = 0.3
+  lightEmission = 4.1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  canBuildOutsideOfTerritory = true
+}
+"DD_FIREPLACE_E" inherit "DD_FIREPLACE_N"
+{
+  name = "fireplace"
+  viewId = { "dd_fireplace_e"}
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+"DD_FIREPLACE_W" inherit "DD_FIREPLACE_N"
+{
+  name = "fireplace"
+  viewId = { "dd_fireplace_w"}
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+"DD_FIREPLACE_S" inherit "DD_FIREPLACE_N"
+{
+  name = "fireplace"
+  viewId = { "dd_fireplace_s"}
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+"DD_ALKOVE_N"
+{
+  name = "alcove with candle"
+  viewId = { "dd_alkove_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  lightEmission = 4.1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  canBuildOutsideOfTerritory = true
+}
+"DD_ALKOVE_S" inherit "DD_ALKOVE_N"
+{
+  name = "alcove with candle"
+  viewId = { "dd_alkove_s"}
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+"DD_ALKOVE_E" inherit "DD_ALKOVE_N"
+{
+  name = "alcove with candle"
+  viewId = { "dd_alkove_e"}
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+"DD_ALKOVE_W" inherit "DD_ALKOVE_N"
+{
+  name = "alcove with candle"
+  viewId = { "dd_alkove_w"}
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+"DD_STATUE_SUCCUBUS" #Stone!
+{
+  name = "succubus statue"
+  viewId = { "dd_statue_succubus" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 4}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  itemDrop = {{{{"Rock"} 1 { 120 130 }}} }
+}
+"DD_STATUE_WARRIOR" #stone
+{
+  name = "warrior statue"
+  viewId = { "dd_statue_warrior" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 4}
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  itemDrop = {{{{"Rock"} 1 { 120 130 }}} }
+}
+"DD_SHIELD_N"
+{
+  name = "shield"
+  viewId = { "dd_shield_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  luxury = 0.3
+  attachmentDir = N
+  itemDrop = {{{{"IronOre"} 1 { 2 3 }}} }
+  requiredSupport = { { { N } } }
+}
+"DD_SHIELD_E" inherit "DD_SHIELD_N"
+{
+  name = "shield"
+  viewId = { "dd_shield_e"}
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+"DD_SHIELD_W" inherit "DD_SHIELD_N"
+{
+  name = "shield"
+  viewId = { "dd_shield_w"}
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+"DD_SHIELD_S" inherit "DD_SHIELD_N"
+{
+  name = "shield"
+  viewId = { "dd_shield_s"}
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+
+"DD_FOUNTAIN_RED" 
+{
+  name = "red fountain"
+  viewId = { "dd_fountain_red" }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect "drink from"
+      {
+        CreatureMessage { "take a sip" "takes a sip"}
+        ChooseRandom {
+          Heal { FLESH }
+          Lasting SLEEP
+          Lasting SLOWED
+          Lasting BLIND
+          Lasting INVISIBLE
+          Lasting POISON
+          Lasting POISON_RESISTANT
+          Lasting FLYING
+          Lasting SPEED
+        }
+      }
+  summonedElement = "WATER_ELEMENTAL"
+  strength = 80
+  itemDrop = {{{{"Rock"} 1 { 11 13 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_WALL_SKULL_N"
+{
+  name = "wall skull"
+  viewId = { "dd_wall_skull_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  luxury = 0.3 #Only costs 2 Wood, but since canvasses are *free* and give 0.3...
+  itemDrop = {{{{"WoodPlank"} 1 { 0 1 }}} }
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+}
+"DD_WALL_SKULL_E" inherit "DD_WALL_SKULL_N"
+{
+  name = "wall skull"
+  viewId = { "dd_wall_skull_e"}
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+"DD_WALL_SKULL_W" inherit "DD_WALL_SKULL_N"
+{
+  name = "wall skull"
+  viewId = { "dd_wall_skull_w"}
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+"DD_WALL_SKULL_S" inherit "DD_WALL_SKULL_N"
+{
+  name = "wall skull"
+  viewId = { "dd_wall_skull_s"}
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+"DD_RED_CRYSTAL" 
+{
+  name = "red crystal"
+  viewId = { "dd_red_crystal" }
+  strength = 60
+  luxury = 0.4
+  lightEmission = 4.1
+  itemDrop = {{{{"WoodPlank"} 1 { 2 3 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_BLUE_CRYSTAL" 
+{
+  name = "blue crystal"
+  viewId = { "dd_blue_crystal" }
+  strength = 60
+  luxury = 0.4
+  itemDrop = {{{{"WoodPlank"} 1 { 2 3 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_GREEN_CRYSTAL" 
+{
+  name = "green crystal"
+  viewId = { "dd_green_crystal" }
+  strength = 60
+  luxury = 0.4
+  itemDrop = {{{{"WoodPlank"} 1 { 2 3 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DD_WALL_FOUNTAIN_N"
+{
+  name = "wall fountain"
+  viewId = { "dd_wall_fountain_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  luxury = 0.3
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+}
+
+"DD_WALL_FOUNTAIN_RED_N"
+{
+  name = "wall fountain"
+  viewId = { "dd_wall_fountain_blood_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  luxury = 0.3
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+}
+
+"DD_SAND_WALL_FOUNTAIN_N"
+{
+  name = "wall fountain"
+  viewId = { "dd_sand_wall_fountain_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  luxury = 0.3
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+}
+
+"DD_SAND_WALL_FOUNTAIN_RED_N"
+{
+  name = "wall fountain"
+  viewId = { "dd_sand_wall_fountain_blood_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  luxury = 0.3
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+}
+
+"DD_USABLE_CRATE"
+{
+  name = "crate"
+  viewId = { "dd_swish_crate" }
+  emptyViewId = { "dd_swish_crate_empty" }
+  fire = 50
+  strength = 80
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{"WoodPlank"} 1 { 7 8 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"equipment"}
+  hidesItems = true
+}
+
+"DD_USABLE_BARREL"
+{
+  name = "barrel"
+  viewId = { "dd_swish_barrel" }
+  emptyViewId = { "dd_swish_barrel_empty" }
+  fire = 50
+  strength = 80
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{"WoodPlank"} 1 { 7 8 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"equipment"}
+  hidesItems = true
+}
+
+"DD_CAULDRON_DECORATION"
+{
+  name = "cauldron"
+  viewId = { "cauldron" }
+  blockMovement = true
+  canHideHere = true
+  strength = 80
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_TAR_CAULDRON_DECORATION"
+{
+  name = "cauldron"
+  viewId = { "cauldron_tar" }
+  blockMovement = true
+  canHideHere = true
+  strength = 80
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_CORPSE_PIT"
+{
+  name = "Corpse Pit"
+  viewId = { "dd_corpse_pit" }
+  emptyViewId = { "dd_corpse_pit_empty" }
+  canHideHere = true
+  tickType = Effect BedHeal()
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  storageIds = {"corpses"}
+  hidesItems = true
+}
+
+"GRAVE" modify append 
+{
+  hidesItems = true
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+}
+
+ "DD_TORTURE_02"
+{
+  name = "Wheel"
+  viewId = { "dd_torture_02" }
+  canHideHere = true
+  usageType = BuiltinUsageId TIE_UP
+  strength = 80
+  upgrade = "TORTURE_TABLE"
+  itemDrop = {{{{"WoodPlank"} 1 { 4 6 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+
+ "DD_TORTURE_01"
+{
+  name = "Grill"
+  viewId = { "dd_torture_01" }
+  canHideHere = true
+  usageType = BuiltinUsageId TIE_UP
+  strength = 80
+  upgrade = "TORTURE_TABLE"
+  itemDrop = {{{{"IronOre"} 1 { 4 6 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_LOG_WOOD_PILLAR"
+{
+  name = "wooden pillar"
+  viewId = { "dd_log_pillar" }
+#wall = true
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+  }
+  summonedElement = "ENT"
+  fire = 100
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{"WoodPlank"} 1 { 0 1 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"DD_LOG_WOOD_WALL" inherit "DD_LOG_WOOD_PILLAR"
+{
+  name = "wall"
+  viewId = { "dd_log_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  itemDrop = {{{{"WoodPlank"} 1 { 2 3 }}} }
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"DD_FLOOR_LOG1"
+{
+  name = "floor"
+  viewId = { "dd_log_floor" }
+  fire = 50
+  luxury = 0.1
+  layer = FLOOR
+  itemDrop = {{{{"WoodPlank"} 1 { 0 1 }}} }
+}
+
+"DD_BURNT_WOOD_WALL" inherit "DD_LOG_WOOD_PILLAR"
+{
+  name = "wall"
+  viewId = { "dd_woodb_ruin_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  itemDrop = {{{{"WoodPlank"} 1 { 2 3 }}} }
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"DD_UNDEAD_ANGEL_STATUE"
+{
+  name = "undead angel statue"
+  viewId = { "dd_angel_statue_undead" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 50
+  itemDrop = {{{{"Rock"} 1 { 4 6 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DD_UNDEAD_ANGEL_STATUE_GLOW"
+{
+  name = "undead angel statue"
+  viewId = { "dd_angel_statue_undead_glowing" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 50
+  itemDrop = {{{{"Rock"} 1 { 4 6 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  lightEmission = 8.2
+}
+
+"DD_ANGEL_STATUE"
+{
+  name = "angel statue"
+  viewId = { "dd_angel_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 50
+  itemDrop = {{{{"Rock"} 1 { 4 6 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DD_SAND_CASTLE_PILLAR"
+{
+  name = "stone pillar"
+  viewId = { "dd_sand_swish_castle_pillar" }
+  strength2 = {
+    300 BOULDER
+    100 DIG
+    1900 HOSTILE_DIG #Seems a touch high?
+  }
+  itemDrop = {{{{"Rock"} 1 { 0 1 }}} }
+  canBuildOutsideOfTerritory = true
+}
+"DD_SAND_CASTLE_WALL" inherit "DD_SAND_CASTLE_PILLAR"
+{
+  name = "wall"
+  viewId = { "dd_sand_swish_castle_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"DD_SAND_FLOOR_STONE1"
+{
+  name = "floor"
+  viewId = { "dd_sand_floor_stone1" }
+  luxury = 0.3
+  itemDrop = {{{{"Rock"} 1 { 0 1 }}} }
+  layer = FLOOR
+}
+"DD_SAND_FLOOR_STONE2" inherit "DD_SAND_FLOOR_STONE1"
+{
+  viewId = { "dd_sand_floor_stone2" }
+}
+
+"DD_SAND_STATUE_SUCCUBUS"
+{
+  name = "succubus statue"
+  viewId = { "dd_sand_statue_succubus" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 4}
+  itemDrop = {{{{"Rock"} 1 { 124 126 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_SAND_STATUE_WARRIOR"
+{
+  name = "warrior statue"
+  viewId = { "dd_sand_statue_warrior" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 4}
+  itemDrop = {{{{"Rock"} 1 { 124 126 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DD_SAND_STATUE_MINION"
+{
+  name = "minion statue"
+  viewId = { "dd_sand_statue_minion" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = {1 4}
+  itemDrop = {{{{"Rock"} 1 { 124 126 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DD_SAND_FLOOR_CANAL"
+{
+  name = "water canal"
+  viewId = { "dd_sand_floor_canal" }
+  itemDrop = {{{{"Rock"} 1 { 0 1 }}} }
+  layer = FLOOR
+  luxury = 0.4
+}
+
+"DD_SAND_FLOOR_LAVA_CANAL"
+{
+  name = "lava canal"
+  viewId = { "dd_sand_floor_lava_canal"}
+  itemDrop = {{{{"Rock"} 1 { 0 1 }}} }
+  layer = FLOOR
+  luxury = 0.4
+  lightEmission = 1.7
+}
+
+"DD_SAND_FLOOR_NECRO_CANAL"
+{
+  name = "necro canal"
+  viewId = { "dd_sand_floor_nerco_canal"}
+  itemDrop = {{{{"Rock"} 1 { 0 1 }}} }
+  layer = FLOOR
+  luxury = 0.4
+  lightEmission = 1.7
+}
+
+"DD_CASTLE_PILLAR"
+{
+  name = "stone pillar"
+  viewId = { "dd_swish_castle_pillar" }
+  strength2 = {
+    300 BOULDER
+    100 DIG
+    1900 HOSTILE_DIG
+  }
+  itemDrop = {{{{"Rock"} 1 { 0 1 }}} }
+  canBuildOutsideOfTerritory = true
+}
+"DD_CASTLE_WALL" inherit "DD_CASTLE_PILLAR"
+{
+  name = "wall"
+  viewId = { "dd_swish_castle_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"DD_SAND_FOUNTAIN_RED" 
+{
+  name = "red fountain"
+  viewId = { "dd_sand_fountain_red" }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect "drink from"
+      {
+        CreatureMessage { "take a sip" "takes a sip"}
+        ChooseRandom {
+          Heal { FLESH }
+          Lasting SLEEP
+          Lasting SLOWED
+          Lasting BLIND
+          Lasting INVISIBLE
+          Lasting POISON
+          Lasting POISON_RESISTANT
+          Lasting FLYING
+          Lasting SPEED
+        }
+      }
+  summonedElement = "WATER_ELEMENTAL"
+  strength = 80
+  itemDrop = {{{{"Rock"} 1 { 12 13 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_SAND_FOUNTAIN" 
+{
+  name = "fountain"
+  viewId = { "dd_sand_fountain" }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect "drink from"
+      {
+        CreatureMessage { "take a sip" "takes a sip"}
+        ChooseRandom {
+          Heal { FLESH }
+          Lasting SLEEP
+          Lasting SLOWED
+          Lasting BLIND
+          Lasting INVISIBLE
+          Lasting POISON
+          Lasting POISON_RESISTANT
+          Lasting FLYING
+          Lasting SPEED
+        }
+      }
+  summonedElement = "WATER_ELEMENTAL"
+  strength = 80
+  itemDrop = {{{{"Rock"} 1 { 12 13 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_GOLD_WARRIOR_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dd_gold_statue_warrior" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = { 1 none }
+  itemDrop = {{{{"GoldPiece"} 1 { 24 26 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DD_GOLD_SUCCUBUS_STATUE"
+{
+  name = "gold statue"
+  viewId = { "dd_gold_statue_succubus" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = { 1 none }
+  itemDrop = {{{{"GoldPiece"} 1 { 24 26 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+
+"DD_PRISON_GATE"
+{
+  name = "prison gate"
+  viewId = { "dd_prison_gate_w" }
+  movementSet = {
+    traits = { WALK }
+    blockingEnemies = true
+    blockingPrisoners = true
+  }
+  canHideHere = true
+  #blockAllVision = true #I'll allow hiding to guarantee folks can get through, but it's a portcullis.  You can see through it!
+  strength = 80
+  itemDrop = {{{{"IronOre"} 1 { 14 16 }}} }
+  requiredSupport = { { { W } } { { N } {"dd_prison_gate_n"} } { { E } {"dd_prison_gate_e"} } { { S } {"dd_prison_gate_s"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+
+"DD_SANDSTONE_WALL" inherit "DUNGEON_WALL"
+{
+  viewId = { "sandstone_wall" }
+  builtOver = {"SANDSTONE"}
+}
+
+"DD_RED_SANDSTONE_WALL" inherit "DUNGEON_WALL"
+{
+  viewId = { "dd_red_sandstone_wall" }
+  builtOver = {"RED_SANDSTONE"}
+}
+
+"DD_GLACIER_WALL" inherit "DUNGEON_WALL"
+{
+  viewId = { "dd_glacier_wall" }
+  builtOver = {"GLACIER"}
+}
+
+"DD_MOUNTAIN_SKULLS_WALL" inherit "DUNGEON_WALL"
+{
+  viewId = { "wall_skulls" }
+  builtOver = {"MOUNTAIN_SKULLS"}
+}
+
+"DD_DWARF_SANDSTONE_WALL" inherit "DWARF_WALL"
+{
+  viewId = { "sandstone_wall" }
+  builtOver = {"SANDSTONE"}
+}
+
+"DD_DWARF_RED_SANDSTONE_WALL" inherit "DWARF_WALL"
+{
+  viewId = { "dd_red_sandstone_wall" }
+  builtOver = {"RED_SANDSTONE"}
+}
+
+"DD_DWARF_GLACIER_WALL" inherit "DWARF_WALL"
+{
+  viewId = { "dd_glacier_wall" }
+  builtOver = {"GLACIER"}
+}
+
+"DD_DWARF_MOUNTAIN_SKULLS_WALL" inherit "DWARF_WALL"
+{
+  viewId = { "wall_skulls" }
+  builtOver = {"MOUNTAIN_SKULLS"}
+}
+
+"DD_NECRO_SANDSTONE_WALL" inherit "NECRO_WALL"
+{
+  viewId = { "sandstone_wall" }
+  builtOver = {"SANDSTONE"}
+}
+
+"DD_NECRO_RED_SANDSTONE_WALL" inherit "NECRO_WALL"
+{
+  viewId = { "dd_red_sandstone_wall" }
+  builtOver = {"RED_SANDSTONE"}
+}
+
+"DD_NECRO_GLACIER_WALL" inherit "NECRO_WALL"
+{
+  viewId = { "dd_glacier_wall" }
+  builtOver = {"GLACIER"}
+}
+
+"DD_NECRO_MOUNTAIN_SKULLS_WALL" inherit "NECRO_WALL"
+{
+  viewId = { "wall_skulls" }
+  builtOver = {"MOUNTAIN_SKULLS"}
+}
+
+
+"DD_STONE_DOOR"
+{
+  name = "wooden door"
+  viewId = { "dd_stone_door_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 200
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { E W } } { { N S } {"dd_stone_door_ns"} } }
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+}
+
+"DD_STONE_GATE"
+{
+  name = "stone gate"
+  viewId = { "dd_stone_gate_w" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 280
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { W } } { { N } {"dd_stone_gate_n"} } { { E } {"dd_stone_gate_e"} } { { S } {"dd_stone_gate_s"} } }
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+}
+
+"DD_SAND_STONE_DOOR"
+{
+  name = "sandstone door"
+  viewId = { "dd_sandstone_door_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 200
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { E W } } { { N S } {"dd_sandstone_door_ns"} } }
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+}
+
+"DD_SAND_STONE_GATE"
+{
+  name = "sandstone gate"
+  viewId = { "dd_sandstone_gate_w" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 280
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { W } } { { N } {"dd_sandstone_gate_n"} } { { E } {"dd_sandstone_gate_e"} } { { S } {"dd_sandstone_gate_s"} } }
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+}
+
+"DD_GLACIER_DOOR"
+{
+  name = "Ice door"
+  viewId = { "dd_glacier_door_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 180
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { E W } } { { N S } {"dd_glacier_door_ns"} } }
+  itemDrop = {{{{"WoodPlank"} 1 { 2 3 }}} }
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+}
+
+"DD_GLACIER_GATE"
+{
+  name = "ice gate"
+  viewId = { "dd_glacier_gate_w" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 240
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { W } } { { N } {"dd_glacier_gate_n"} } { { E } {"dd_glacier_gate_e"} } { { S } {"dd_glacier_gate_s"} } }
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+}
+
+"DD_GRASS" inherit "GRASS"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+"DD_SNOW" inherit "SNOW"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+"DD_MUD" inherit "MUD"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+"DD_SWAMPGRASS" inherit "SWAMPGRASS"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+"DD_HILL" inherit "HILL"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+"DD_SAND" inherit "SAND"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"DD_RED_SAND" inherit "RED_SAND"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"DD_ROAD" inherit "ROAD"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"DD_WATER" inherit "WATER"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"DD_ICE" inherit "ICE"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+  builtOver = {"WATER" "DD_WATER" "DD_SHALLOW_WATER1" "SHALLOW_WATER1" "DD_SHALLOW_WATER2" "SHALLOW_WATER2"}
+  meltInfo = { "WATER" }
+}
+"DD_KRAKEN_WATER" inherit "KRAKEN_WATER"
+{
+  builtOver = {"WATER" "DD_WATER" }
+  tickType = Effect {
+    Summon "KRAKEN" 1 none
+    PlaceFurniture "WATER"
+  }
+}
+
+"DD_SHALLOW_WATER1" inherit "SHALLOW_WATER1"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"DD_SHALLOW_WATER2" inherit "SHALLOW_WATER2"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"DD_MAGMA" inherit "MAGMA"
+{
+  luxury = 0.1
+  layer = FLOOR
+  canBuildOutsideOfTerritory = true
+}
+
+"DD_TAR" inherit "TAR" {
+  luxury = 0.1
+  layer = FLOOR
+  fire = 50
+  canBuildOutsideOfTerritory = true
+   tickType = Effect
+    Filter And { Not LastingEffect FLYING Not BodyMaterial SPIRIT Not LastingEffect IMMOBILE Not Area 0 FurnitureType "BRIDGE" Not Area 0 FurnitureType "STONE_BRIDGE"} {
+      Chance 0.1 {
+        CreatureMessage { "are stuck in the tar!" "is stuck in the tar!"}
+        Lasting IMMOBILE
+      }
+      Filter Not LastingEffect IMMOBILE Chance 0.5 {
+        CreatureMessage {"are slowed down by the tar!" "is slowed down by the tar!"}
+        Lasting SLOWED
+      }
+    }
+}
+
+"SCARECROW" modify append 
+{
+  luxury = 0.5
+
+}
+
+"SNOWMAN" modify append 
+{
+  luxury = 0.5
+
+}
+
+"SANDSTONE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"RED_SANDSTONE" modify append 
+{
+  viewId = { "red_sandstone" }
+}
+"GLACIER" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"MOUNTAIN_SKULLS" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"WALL_SKULLS" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"ADAMANTIUM_ORE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"ADOXIUM_ORE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+ 
+"INFERNITE_ORE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"IRON_ORE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"STONE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"GOLD_ORE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"CASTLE_WALL" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"ARCHER_WALL" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"HIDDEN_CASTLE_DOOR" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"SNOW_WALL" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"MUD_WALL" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"RUIN_WALL" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"MOUNTAIN2" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"MOUNTAIN" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+"BUSH" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"BURNT_TREE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"TREE_TRUNK" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"GIANT_MUSHROOM" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"GUM_TREE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"PALM_TREE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"CACTUS1" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"SWAMPTREE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"TREE_SNOW" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"DECID_TREE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+"CANIF_TREE" modify append 
+{
+
+  canBuildOutsideOfTerritory = true
+}
+
+#Crops struck to avoid confusion with BonusMod crops.
+
+"DD_BONE_WALL"
+{
+  name = "wall"
+  viewId = { "necro_wall_sw" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  viewLayer = FLOOR_BACKGROUND
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+  }
+  summonedElement = "SKELETON_WARRIOR"
+  canBuildOutsideOfTerritory = true
+  itemDrop = {{{{"WoodPlank"} 1 { 2 3 }}} }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+
+"DD_EVIL_CASTLE_WALL" inherit "DD_SAND_CASTLE_PILLAR"
+{
+  name = "wall"
+  viewId = { "evil_stone_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  itemDrop = {{{{"Rock"} 1 { 2 3 }}} }
+  viewLayer = FLOOR_BACKGROUND
+}
+
+"FLOOR_STONE4" inherit "FLOOR_STONE1"
+{
+  viewId = { "stone_floor4" }
+  itemDrop = {{{{"Rock"} 1 { 0 1 }}} }
+}
+
+"FLOOR_WOOD3" inherit "FLOOR_WOOD1"
+{
+  viewId = { "wood_floor1" }
+  itemDrop = {{{{"WoodPlank"} 1 { 0 1 }}} }
+}
+
+"FLOOR_WOOD4" inherit "FLOOR_WOOD1"
+{
+  viewId = { "wood_floor3" }
+  itemDrop = {{{{"WoodPlank"} 1 { 0 1 }}} }
+}
+
+"FLOOR_WOOD5" inherit "FLOOR_WOOD1"
+{
+  viewId = { "wood_floor5" }
+  itemDrop = {{{{"WoodPlank"} 1 { 0 1 }}} }
+}
+
+"FLOOR_CARPET5" inherit "FLOOR_CARPET1"
+{
+  viewId = { "carpet_floor5" }
+  itemDrop = {{{{"GoldPiece"} 1 { 0 1 }}} }
+}
+
+"FLOOR_SPEEDY"
+{
+  name = "Carpet"
+  viewId = { "floor_speed" }
+  luxury = 0.7
+  layer = FLOOR
+  itemDrop = {{{{"GoldPiece"} 1 { 0 1 }}} }
+}
+"FLOOR_BLINDY"
+{
+  name = "Carpet"
+  viewId = { "floor_blind" }
+  luxury = 0.7
+  layer = FLOOR
+  itemDrop = {{{{"GoldPiece"} 1 { 0 1 }}} }
+}
+"FLOOR_INVIY"
+{
+  name = "Carpet"
+  viewId = { "floor_invi" }
+  luxury = 0.7
+  layer = FLOOR
+  itemDrop = {{{{"GoldPiece"} 1 { 0 1 }}} }
+}
+"FLOOR_PEACEY"
+{
+  name = "Carpet"
+  viewId = { "floor_peace" }
+  luxury = 0.7
+  layer = FLOOR
+  itemDrop = {{{{"GoldPiece"} 1 { 0 1 }}} }
+}
+"BLACKY_FLOOR"
+{
+  name = "void"
+  viewId = { "black" }
+  luxury = 0.7
+  layer = FLOOR
+  itemDrop = {{{{"GoldPiece"} 1 { 0 1 }}} }
+}
+
+"DD_VOID_WALL"
+{
+  name = "void"
+  viewId = { "black" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  viewLayer = FLOOR_BACKGROUND
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+  }
+  summonedElement = "SPIRIT"
+  itemDrop = {{{{"GoldPiece"} 1 { 2 3 }}} }
+  canBuildOutsideOfTerritory = true
+}
