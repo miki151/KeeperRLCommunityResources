@@ -682,11 +682,11 @@
       traits = { FIGHTER }
       requirements = {
         { 0.0 RecruitmentInfo { "DWARVES" } 0 }
-        { 1.0 CostInfo "GOLD" 100 }
+        { 1.0 CostInfo "GOLD" 250 }
         { 0.0 TechId "chivalry"}
       }
       specialTraits = {
-       { 1.0 { AttrBonus FORGE 20 }}
+       { 1.0 { AttrBonus FORGE 30 }}
       }
     }
     {
@@ -1354,10 +1354,10 @@
       traits = { FIGHTER }
       requirements = {
         { 0.0 RecruitmentInfo { "DWARVES" } 0 }
-        { 1.0 CostInfo "GOLD" 100 }
+        { 1.0 CostInfo "GOLD" 250 }
       }
       specialTraits = {
-       { 1.0 { AttrBonus FORGE 20 }}
+       { 1.0 { AttrBonus FORGE 30 }}
       }
     }
     {
@@ -1437,7 +1437,7 @@
 	{
       {
         ids = { "PESEANT_PLAYER" } #Required safety-lock for Farming
-        traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+        traits = { WORKER NO_LIMIT } #Can gear up as stopgap, issue unlimited-carry, full-rest rings, etc, and hang out in the leisure zone.
         keybinding = CREATE_IMP
         noAuto = true
            initialRecruitment = 7 #Modded
@@ -1665,29 +1665,6 @@
           }
         }
         {
-          ids = { "SUCCUBUS" }
-          traits = { FIGHTER NO_EQUIPMENT }
-          frequency = 0.3
-          spawnLocation = FurnitureType "DEMON_SHRINE"
-          requirements = {
-            { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
-            { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
-            { 0.0 CostInfo "DEMON_PIETY" 1000 }            
-            { 0.0 NegateRequirement TechId "combat copulators" } #Modded		  
-          }
-        }
-		{
-		  ids = { "BONUS_INCUBUS" }
-		  traits = { FIGHTER NO_EQUIPMENT }
-		  frequency = 0.3
-		  spawnLocation = FurnitureType "DEMON_SHRINE"
-		  requirements = {
-		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
-		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
-          { 0.0 CostInfo "DEMON_PIETY" 1000 }
-      }
-    }
-        {
           ids = { "DOPPLEGANGER" }
           traits = { FIGHTER }
           frequency = 0.3
@@ -1854,7 +1831,7 @@
       traits = { FIGHTER }
       frequency = 0.7
       requirements = {
-        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON_HUMAN"}}
       }
       specialTraits = {
         { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
@@ -1873,7 +1850,7 @@
       traits = { FIGHTER }
       frequency = 0.3
       requirements = {
-        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD_HUMAN"}}
         { 0.1 TechId "worship"}
         { 0.0 MinTurnRequirement 500 }
       }
@@ -1889,7 +1866,7 @@
       traits = { FIGHTER }
       frequency = 0.3
       requirements = {
-        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD_HUMAN"}}
         { 0.0 MinTurnRequirement 500 }
       }
       specialTraits = {
@@ -1924,21 +1901,34 @@
       traits = { FIGHTER }
       frequency = 0.1
       requirements = {
-        { 0.0 AttractionInfo 1 {FurnitureType "THRONE"}}
+        { 0.0 AttractionInfo 1 {FurnitureType "THRONE_HUMAN"}}
       }
       specialTraits = {
         { 1.0 { Lasting { ENTERTAINER } }}
       }
     }
     {
-      ids = { "DWARF_BLACKSMITH" "BONUS_DWARF_WARRIOR" }
+      ids = { "DWARF_BLACKSMITH" } #Here rather than WhiteRecuits because the Dwarf Blacksmith is in vanilla WhiteKeeper
       traits = { FIGHTER }
       requirements = {
         { 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM"} 0 }
-        { 1.0 CostInfo "GOLD" 100 }
+        { 1.0 CostInfo "GOLD" 250 }
       }
       specialTraits = {
        { 1.0 { AttrBonus FORGE 30 }}
+      }
+    }
+	{
+      ids = {"BONUS_DWARF_WARRIOR" }
+      traits = { FIGHTER WORKER } #Let's Get DIGGING!
+      requirements = {
+        { 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM"} 0 }
+        { 1.0 CostInfo "GOLD" 150 }
+      }
+      specialTraits = {
+       { 0.25 { AttrBonus FORGE 10 }} #Enough for tier 2 quals.
+	   { 0.25 { Lasting { DISARM_TRAPS_SKILL } }}
+	   { 0.05 { Lasting { ENTERTAINER } }}
       }
     }
 	{
@@ -1997,8 +1987,8 @@
       frequency = 0.1
     }
     {
-      ids = { "HORSE_CAN_TRAIN" "DONKEY" }
-      traits = { NO_LIMIT }
+      ids = { "HORSE_CAN_TRAIN" }
+      traits = { NO_LIMIT INCREASE_POPULATION }
       requirements = {
         { 1.0 CostInfo "CROPS" 15 } #Modded
       }
@@ -2015,11 +2005,11 @@
 Def WhiteRecruits()
 	
     {
-      ids = { "ENT" }
+      ids = { "BONUS_ENT_RECRUIT" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "BONUS_ENTS_ALLY" } 3 }
-        { 1.0 CostInfo "GOLD" 200 }
+        { 0.0 RecruitmentInfo { "BONUS_ENTS_ALLY" } 5 }
+        { 1.0 CostInfo "CORPSE" 100 } #Blood makes the trees grow. Gold doesn't help the forest that much.
       }
     }
     {
@@ -2067,14 +2057,14 @@ Def WhiteRecruits()
       traits = { FIGHTER }
       requirements = {
         { 0.0 RecruitmentInfo { "BONUS_DRIADS_ALLY" } 3 }
-        { 1.0 CostInfo "GOLD" 75 }
+        { 1.0 CostInfo "CORPSE" 75 } #Blood makes the trees grow!
       }
     }
     {
       ids = { "WARRIOR" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "WARRIORS" } 3 }
+        { 0.0 RecruitmentInfo { "BONUS_WARRIORS_LAW" } 3 }
         { 1.0 CostInfo "GOLD" 200 }
       }
     }
@@ -2202,6 +2192,14 @@ End
     "dark_allies_extended"
 	{
         {
+		  ids = { "GOBLIN_ARTIFICER_VILLAIN" }
+		  traits = { FIGHTER NO_AUTO_EQUIPMENT }
+		  requirements = {
+			{ 0.0 RecruitmentInfo { "GOBLIN_BLACKSMITH" } 0 }
+			{ 1.0 CostInfo "GOLD" 250 }
+		  }
+		}
+		{
           ids = { "BONUS_DARK_ELF_ARCHER" }
           traits = { FIGHTER }
           requirements = {
@@ -2366,23 +2364,21 @@ End
         }
         {
           ids = { "BONUS_GHOST_ARMOUR" "BONUS_GHOST_ARMOUR" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} }                                   
         }
         {
           ids = { "BONUS_POSSESSED_SWORD" "BONUS_POSSESSED_SWORD" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} }                                   
         }
 		
          {
-          ids = { "NECROMANCER" }
+          ids = { "BONUS_NECROMANCER_LT" } #Leftanant Necromancers.  
           traits = { FIGHTER }
           frequency = 0.1
           spawnLocation = FurnitureType "GRAVE"
@@ -2444,8 +2440,8 @@ End
             { 1.0 CostInfo "CORPSE" 1}
           }
           specialTraits = {
-             {1.0 { Lasting { DARKNESS_SOURCE } }}
-                        {1.0 { AttrBonus WORKSHOP 20 }}
+            {1.0 { Lasting { DARKNESS_SOURCE } }}
+            {1.0 { AttrBonus WORKSHOP 20 }}
           }
         }
         {
@@ -2512,7 +2508,7 @@ End
           frequency = 0.2
           spawnLocation = FurnitureType "GRAVE"
           requirements = {
-            { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+            { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_IRON_NECRO"}}
           }
           specialTraits = {
              { 0.3 { Lasting { TELEPATHY } }}
@@ -2562,7 +2558,7 @@ End
           frequency = 0.2
           spawnLocation = FurnitureType "GRAVE"
           requirements = {
-            { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+            { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_WOOD_NECRO"}}
                  }
           specialTraits = {
              { 0.3 { ExtraTraining DAMAGE 3}}
@@ -2624,7 +2620,7 @@ End
           }
         }
         {
-          ids = { "SPECIAL_HLGN" }
+          ids = { "BONUS_LoW" }
           traits = { FIGHTER }
                  consumeIds = true
           initialRecruitment = 1
@@ -2634,15 +2630,15 @@ End
             { 0.0 TechId "lord of war" }
           }
           specialTraits = {
-            { 1.0 { ExtraTraining DAMAGE 5}}
+            { 1.0 { ExtraTraining DAMAGE 12}} #Buffing for 1.0 difficulty curves, this is a late-game unit
             { 1.0 { AttrBonus DAMAGE 7}}
-                       { 1.0 { Lasting { MELEE_RESISTANCE }}} 
+            { 1.0 { Lasting { MELEE_RESISTANCE }}} 
             { 1.0 { Lasting { RAGE }}}
             { 1.0 { Lasting { DEF_BONUS }}}                    
           }
         }
         {
-          ids = { "SPECIAL_HLGN" }
+          ids = { "BONUS_LoM" }
           traits = { FIGHTER }
                  consumeIds = true
           initialRecruitment = 1
@@ -2652,13 +2648,13 @@ End
             { 0.0 TechId "lord of magic" }
           }
           specialTraits = {
-            { 1.0 { ExtraTraining SPELL_DAMAGE 5}}
+            { 1.0 { ExtraTraining SPELL_DAMAGE 12}} #Buffing for 1.0 difficulty curves, this is a late-game unit
             { 1.0 { AttrBonus SPELL_DAMAGE 5}}
-                       { 1.0 { Lasting { MAGIC_RESISTANCE }}} 
+            { 1.0 { Lasting { MAGIC_RESISTANCE }}} 
           }
         }
         {
-          ids = { "SPECIAL_HLGN" }
+          ids = { "BONUS_LoS" }
           traits = { FIGHTER }
          consumeIds = true
           initialRecruitment = 1
@@ -2669,14 +2665,15 @@ End
           }
           specialTraits = {
             { 1.0 { Lasting { SPEED }}}
-            { 1.0 { ExtraTraining DAMAGE 2}}
+			#Lord of Speed should be fully powered & ready to go out of the box: it is SPEED, after all.
+            #{ 1.0 { ExtraTraining DAMAGE 2}}
             { 1.0 { AttrBonus FORGE 20}}
             { 1.0 { Lasting { FAST_CRAFTING }}} 
             { 1.0 { Lasting { FAST_TRAINING }}}
           }
         }
         {
-          ids = { "SPECIAL_HLGN" }
+          ids = { "BONUS_LoR" }
           traits = { FIGHTER }
           consumeIds = true
           initialRecruitment = 1
@@ -2688,10 +2685,12 @@ End
           specialTraits = {
             { 1.0 { Lasting { SLEEP_RESISTANT }}}
             { 1.0 { Lasting { FIRE_RESISTANT }}}
-                       { 1.0 { Lasting { POISON_RESISTANT }}} 
-                       { 1.0 { Lasting { MAGIC_RESISTANCE }}} 
-                       { 1.0 { Lasting { MELEE_RESISTANCE }}} 
-                       { 1.0 { Lasting { RANGED_RESISTANCE }}}
+			{ 1.0 { Lasting { COLD_RESISTANT }}}
+			{ 1.0 { Lasting { ACID_RESISTANT }}}
+            { 1.0 { Lasting { POISON_RESISTANT }}} 
+            { 1.0 { Lasting { MAGIC_RESISTANCE }}} 
+            { 1.0 { Lasting { MELEE_RESISTANCE }}} 
+            { 1.0 { Lasting { RANGED_RESISTANCE }}}
           }
         }
     }
@@ -2930,7 +2929,80 @@ End
     		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
           }
         }
-       {
+		{
+		  ids = { "BONUS_INCUBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+		  }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+		}
+		{
+		  ids = { "BONUS_OMNIBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+		  }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+		}
+		{
+          ids = { "BONUS_COMBAT_SUCCUBUS" }
+          traits = { FIGHTER }
+          frequency = 0.3
+          spawnLocation = FurnitureType "DEMON_SHRINE"
+          requirements = {
+            { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+            { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+            { 0.0 CostInfo "DEMON_PIETY" 1000 }
+            { 0.0 TechId "combat copulators" }
+          }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+        }
+		{
+		  ids = { "BONUS_COMBAT_INCUBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+          }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+		}
+		{
+		  ids = { "BONUS_COMBAT_OMNIBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+		  }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+		}
+        {
           ids = { "DOPPLEGANGER" }
           traits = { FIGHTER }
           frequency = 0.3
@@ -3162,9 +3234,8 @@ End
         }
         {
           ids = { "BONUS_GHOST_ARMOUR" "BONUS_GHOST_ARMOUR" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} }
           specialTraits = {
@@ -3173,9 +3244,8 @@ End
         }
         {
           ids = { "BONUS_POSSESSED_SWORD" "BONUS_POSSESSED_SWORD" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} }
           specialTraits = {
@@ -3184,9 +3254,8 @@ End
         }
         {
           ids = { "BONUS_GIANT_ROBOT" "BONUS_GIANT_ROBOT" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}}}
           specialTraits = {
@@ -3229,37 +3298,7 @@ End
              { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
           }
         }
-        {
-          ids = { "BONUS_COMBAT_SUCCUBUS" }
-          traits = { FIGHTER }
-          frequency = 0.3
-          spawnLocation = FurnitureType "DEMON_SHRINE"
-          requirements = {
-            { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
-            { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
-            { 0.0 CostInfo "DEMON_PIETY" 1000 }
-            { 0.0 TechId "combat copulators" }
-          }
-          specialTraits = {
-    		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
-          }
-        }
-		{
-		  ids = { "BONUS_COMBAT_INCUBUS" }
-		  traits = { FIGHTER }
-		  frequency = 0.3
-		  spawnLocation = FurnitureType "DEMON_SHRINE"
-		  requirements = {
-			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
-			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
-			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
-			{ 0.0 TechId "combat copulators" }
-        }
-		specialTraits = {
-    		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
-          }
-		}
-     }
+    }
     "dark_keeper_hard_mode"
     {
         {
@@ -3493,6 +3532,79 @@ End
     		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
           }
         }
+		{
+		  ids = { "BONUS_INCUBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+		  }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+		}
+		{
+		  ids = { "BONUS_OMNIBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+		  }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+		}
+		{
+          ids = { "BONUS_COMBAT_SUCCUBUS" }
+          traits = { FIGHTER }
+          frequency = 0.3
+          spawnLocation = FurnitureType "DEMON_SHRINE"
+          requirements = {
+            { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+            { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+            { 0.0 CostInfo "DEMON_PIETY" 1000 }
+            { 0.0 TechId "combat copulators" }
+          }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+        }
+		{
+		  ids = { "BONUS_COMBAT_INCUBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+          }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+		}
+		{
+		  ids = { "BONUS_COMBAT_OMNIBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+		  }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+		}
         {
           ids = { "DOPPLEGANGER" }
           traits = { FIGHTER }
@@ -3690,7 +3802,7 @@ End
         }
         {
           ids = { "BONUS_GHOST_ARMOUR" "BONUS_GHOST_ARMOUR" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
           noAuto = true
           consumeIds = true    
@@ -3722,7 +3834,7 @@ End
           }
         }
         {
-          ids = { "NECROMANCER" }
+          ids = { "BONUS_NECROMANCER_LT" }
           traits = { FIGHTER }
           frequency = 0.1
           spawnLocation = FurnitureType "GRAVE"
@@ -3808,36 +3920,6 @@ End
     		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
           }
         }
-        {
-          ids = { "BONUS_COMBAT_SUCCUBUS" }
-          traits = { FIGHTER }
-          frequency = 0.3
-          spawnLocation = FurnitureType "DEMON_SHRINE"
-          requirements = {
-            { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
-            { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
-            { 0.0 CostInfo "DEMON_PIETY" 1000 }
-            { 0.0 TechId "combat copulators" }
-          }
-          specialTraits = {
-    		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
-          }
-        }
-		{
-		  ids = { "BONUS_COMBAT_INCUBUS" }
-		  traits = { FIGHTER }
-		  frequency = 0.3
-		  spawnLocation = FurnitureType "DEMON_SHRINE"
-		  requirements = {
-			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
-			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
-			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
-			{ 0.0 TechId "combat copulators" }
-        }
-		  specialTraits = {
-    		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
-          }
-		}
     }
     "sandbox"
     {
@@ -3936,30 +4018,27 @@ End
         }
         {
           ids = { "BONUS_GHOST_ARMOUR" "BONUS_GHOST_ARMOUR" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
         {
           ids = { "BONUS_POSSESSED_SWORD" "BONUS_POSSESSED_SWORD" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
         {
           ids = { "BONUS_GIANT_ROBOT" "BONUS_GIANT_ROBOT" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}}}
         }
 		{
-          ids = { "CYCLOPS" } #Moved from dark_knight_modded: breeding strange creatures is a Wizard thing; Knights breed more regular mounts and make better weapons & armor
+          ids = { "CYCLOPS" } #Moved from dark_knight_modded: breeding strange creatures is a Wizard thing. Knights breed more regular mounts and make better weapons & armor
           traits = { FIGHTER }
           consumeIds = true
           spawnLocation = Pregnancy
@@ -3980,6 +4059,40 @@ End
             { 1.0 CostInfo "GOLD" 500 }
           }
         }
+		{
+          ids = { "SUCCUBUS" }
+          traits = { FIGHTER NO_EQUIPMENT }
+          frequency = 0.3
+          spawnLocation = FurnitureType "DEMON_SHRINE"
+          requirements = {
+            { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+            { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+            { 0.0 CostInfo "DEMON_PIETY" 1000 }            
+            { 0.0 NegateRequirement TechId "combat copulators" } #Modded		  
+          }
+        }
+		{
+		  ids = { "BONUS_INCUBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+		  }
+		}
+		{
+		  ids = { "BONUS_OMNIBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+		  }
+		}
         {
           ids = { "BONUS_COMBAT_SUCCUBUS" }
           traits = { FIGHTER }
@@ -4002,7 +4115,19 @@ End
 			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
 			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
 			{ 0.0 TechId "combat copulators" }
-        }
+		  }
+		}
+		{
+		  ids = { "BONUS_COMBAT_OMNIBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+		  }
 		}
 		{
 		  ids = { "NECROMANCER" }
@@ -4093,6 +4218,40 @@ End
           }
         }
 		{
+          ids = { "SUCCUBUS" }
+          traits = { FIGHTER NO_EQUIPMENT }
+          frequency = 0.3
+          spawnLocation = FurnitureType "DEMON_SHRINE"
+          requirements = {
+            { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+            { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+            { 0.0 CostInfo "DEMON_PIETY" 1000 }            
+            { 0.0 NegateRequirement TechId "combat copulators" } #Modded		  
+          }
+        }
+		{
+		  ids = { "BONUS_INCUBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+		  }
+		}
+		{
+		  ids = { "BONUS_OMNIBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+		  }
+		}
+		{
           ids = { "BONUS_COMBAT_SUCCUBUS" }
           traits = { FIGHTER }
           frequency = 0.3
@@ -4114,35 +4273,45 @@ End
 			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
 			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
 			{ 0.0 TechId "combat copulators" }
-        }
+          }
+		}
+		{
+		  ids = { "BONUS_COMBAT_OMNIBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.3
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+		  }
 		}
         {
           ids = { "BONUS_GHOST_ARMOUR" "BONUS_GHOST_ARMOUR" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
-          requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
+          requirements = { {  1.0 CostInfo "IRON" 40}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
         {
           ids = { "BONUS_POSSESSED_SWORD" "BONUS_POSSESSED_SWORD" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
-          requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
+          requirements = { {  1.0 CostInfo "IRON" 20}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
         {
           ids = { "BONUS_GIANT_ROBOT" "BONUS_GIANT_ROBOT" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}}}
         }
         {
           ids = { "BONUS_SQUIDHOLDER" }
           traits = { FIGHTER }
+		  spawnLocation = FurnitureType "GRAVE" #It's undead, so kinda needs to spawn Inside kthx
           frequency = 0.2
 		  consumeIds = true
           initialRecruitment = 1
@@ -4177,6 +4346,39 @@ End
              { 0.02 { Lasting { HATE_HUMANS } }}
           }
         }
+		#
+		#Goblin swarms for Evil Knights! makes the wolves reasonable.
+		#
+		{
+			ids = { "BONUS_GOBLIN_WARRIOR_CAV" }
+			traits = { FIGHTER }
+			groupSize = {2 5}
+			frequency = 0.4
+			requirements = {
+				{ 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+			}
+			specialTraits = {
+				{ 0.25 { SpecialAttr DAMAGE 10 Name "when riding steed" Attacker Rider }}
+				{ 0.10 { ExtraTraining DAMAGE 2}}
+				{ 0.25 { Lasting { SWARMER } }}
+			}
+		}
+		{
+			ids = { "BONUS_GOBLIN_ARCHER_CAV" }
+			traits = { FIGHTER }
+			groupSize = {2 5}
+			frequency = 0.3
+			requirements = {
+				{ 0.3 AttractionInfo 1 {ItemIndex RANGED_WEAPON}}
+			}
+			specialTraits = {
+				{ 0.25 { SpecialAttr RANGED_DAMAGE 10 Name "when riding steed" Attacker Rider }}
+				{ 0.02 { SpecialAttr RANGED_DAMAGE 20 CreatureStatus CIVILIAN }}
+				{ 0.15 { SpecialAttr RANGED_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+				{ 0.10 { ExtraTraining RANGED_DAMAGE 2}}
+				{ 0.25 { Lasting { SWARMER } }}
+			}
+		}
     }
 
 	"goblin"
@@ -4412,25 +4614,22 @@ End
     {
         {
           ids = { "BONUS_GHOST_ARMOUR" "BONUS_GHOST_ARMOUR" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
         {
           ids = { "BONUS_POSSESSED_SWORD" "BONUS_POSSESSED_SWORD" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
         {
           ids = { "BONUS_GIANT_ROBOT" "BONUS_GIANT_ROBOT" }
-          traits = { FIGHTER }
+          traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          noAuto = true
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} }
         }
@@ -4505,6 +4704,7 @@ End
              { 0.1 { Lasting { RAGE }}}
           }
         }
+		WhiteRecruits()
     }
 
 ##########################
@@ -4972,8 +5172,9 @@ End
       specialTraits = {
          { 0.05 { OneOfTraits { Lasting { FAST_CRAFTING } Lasting { SLOW_CRAFTING } } }}
          { 0.03 { AttrBonus FORGE 20 Lasting { INSANITY } }}
-		 { 0.03 { AttrBonus WORKSHOP 20 Lasting { INSANITY } }}
-         { 0.03 { Lasting { BAD_BREATH } }}
+		 #{ 0.03 { AttrBonus WORKSHOP 20 Lasting { INSANITY } }} Upgraded workshop only speeds crafting, not worth Insane.
+         { 0.03 { Lasting { ENTERTAINER } }}
+		 { 0.03 { Lasting { BAD_BREATH } }}
       }
     }
     {
@@ -5061,10 +5262,38 @@ End
       ids = { "DWARF_BLACKSMITH" }
       traits = { FIGHTER }
       requirements = {
-        { 0.0 RecruitmentInfo { "DWARVES" } 0}
-        { 1.0 CostInfo "GOLD" 100 }
+        { 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM"} 0 }
+        { 1.0 CostInfo "GOLD" 250 }
+      }
+      specialTraits = {
+       { 1.0 { AttrBonus FORGE 30 }}
       }
     }
+	{
+      ids = {"BONUS_DWARF_WARRIOR" }
+      traits = { FIGHTER WORKER } #Let's Get DIGGING!
+      requirements = {
+        { 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM"} 0 }
+        { 1.0 CostInfo "GOLD" 150 }
+      }
+      specialTraits = {
+       { 0.25 { AttrBonus FORGE 10 }} #Enough for tier 2 quals.
+	   { 0.25 { Lasting { DISARM_TRAPS_SKILL } }}
+	   { 0.05 { Lasting { ENTERTAINER } }}
+      }
+    }
+	{
+	 ids = { "BONUS_DWARF_MINER"}
+	 traits = { WORKER FIGHTER}
+	 requirements = {
+		{ 0.0 RecruitmentInfo { "DWARVES" "BONUS_DWARF_KINGDOM"} 0 }
+        { 1.0 CostInfo "GOLD" 100 }
+	 }
+	 specialTraits = {
+		{ 0.25 { Lasting { DISARM_TRAPS_SKILL } }}
+		{ 0.05 { Lasting { ENTERTAINER } }}
+	 }
+	}
     {
       ids = { "GALEAM" }
       traits = { FIGHTER }
@@ -5315,7 +5544,7 @@ End
       ids = { "SST_FK_WAR_WOLF" }
       traits = { NO_LIMIT }
       requirements = {
-        { 1.0 CostInfo "GOLD" 30 }
+        { 1.0 CostInfo "GOLD" 20 }
 		{ 0.0 TechId "war wolves" }
       }
     }
@@ -5324,7 +5553,7 @@ End
       ids = { "SST_FK_WARG" }
       traits = { NO_LIMIT }
       requirements = {
-        { 1.0 CostInfo "GOLD" 60 }
+        { 1.0 CostInfo "GOLD" 40 }
 		{ 0.0 TechId "wargs" }
       }
     }
@@ -5340,3 +5569,60 @@ End
       }
     }
 }
+
+###
+#Canine Heroes
+###
+"canine heroes"
+{
+#High-end dogs like these very much DO count against popcap: you need to keep them fed, trained, and cared for. They're much more than just pets!
+
+	{
+		ids = { "BONUS_HUNTING_DOG" }
+		traits = { FIGHTER INCREASE_POPULATION} #Turns out that INCREASE_POPULATION is per creature, so up to 4 in a pack was a Bargain.  Fixed.
+		groupSize = {2 3} #Per syntax (equal-to or greater than first number, less than second), this works out to "2".
+		frequency = 0.5
+		requirements = {
+			{ 1.0 CostInfo "GOLD" 100 }
+			{ 0.0 TechId "canine heroes" }
+        }
+		specialTraits = {
+			{ 0.5 { Lasting { ENTERTAINER } }} #Hunting dogs have a good chance of being The Big Friendly Dog, mutually beloved of all friendlies. *licks your face!*
+		}
+	}
+	{
+		ids = { "BONUS_GUARD_DOG" }
+		traits = { FIGHTER }
+		groupSize = {2 4}
+		frequency = 0.5
+		requirements = {
+			{ 1.0 CostInfo "GOLD" 100 }
+			{ 0.0 TechId "canine heroes" }
+        }
+		specialTraits = {
+			{ 0.15 { SpecialAttr DAMAGE 5 HatedBy HATE_GREENSKINS }}
+			{ 0.15 { SpecialAttr DAMAGE 5 HatedBy HATE_UNDEAD }}
+			{ 0.1 { SpecialAttr DEFENSE 8 HatedBy HATE_GREENSKINS }}
+			{ 0.1 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
+			{ 0.01 { Lasting { REGENERATION } }} #The Doggo That Would Not Die
+		}
+	}
+	{
+		ids = { "BONUS_RESCUE_DOG" }
+		traits = { FIGHTER }
+		frequency = 0.5
+		requirements = {
+			{ 1.0 CostInfo "GOLD" 100 }
+			{ 0.0 TechId "canine heroes" }
+        }
+		specialTraits = {
+			{ 0.05 { SpecialAttr DAMAGE 5 HatedBy HATE_GREENSKINS }}
+			{ 0.05 { SpecialAttr DAMAGE 5 HatedBy HATE_UNDEAD }}
+			{ 0.05 { SpecialAttr DAMAGE 5 HatedBy HATE_DRAGONS }}
+			{ 0.15 { SpecialAttr DEFENSE 10 HatedBy HATE_GREENSKINS }}
+			{ 0.15 { SpecialAttr DEFENSE 10 HatedBy HATE_UNDEAD }}
+			{ 0.15 { SpecialAttr DEFENSE 20 HatedBy HATE_DRAGONS }}
+			{ 0.01 { Lasting { REGENERATION } }} #The Doggo That Would Not Die
+		}
+	}
+} 

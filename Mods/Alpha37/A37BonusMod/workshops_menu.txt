@@ -184,9 +184,20 @@
 # Bonus mod
 ############################################################
 
+#Hey, gang, crafting costs & material are also defined in the items.txt entries.  (Doing that should let you furnace 'em, no matter the material??)
+#Adding them here SHOULD work, see elsewhere in this file, but for Forge stuff it seemed to break syntax.  ???
+
 "basic_Bonus_Mod" {
   "FORGE"
   {
+    {item = { "BONUS_SteelSword"}  work = 20 	cost = none 	tech = "iron working" 	materialTab = true}
+    {item = { "BONUS_SteelArmor"}              work = 30       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelHelm"}               work = 15       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelBoots"}              work = 15       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelGloves"}             work = 6        cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelShield"}             work = 12       cost = none		  tech = "iron working" materialTab = true}
+	{item = { "BONUS_SteelWarHammer"}          work = 20       cost = none        tech = "two-handed weapons" materialTab = true}
+    {item = { "BONUS_SteelBattleAxe"}          work = 22       cost = none        tech = "two-handed weapons" materialTab = true}
     {item = { "BONUS_VenSword"}  work = 20 	cost = none 	tech = "magical weapons" 	materialTab = true}
     {item = { "BONUS_VenArmor"}              work = 30       cost = none		  tech = "magical weapons" materialTab = true}
     {item = { "BONUS_VenHelm"}               work = 15       cost = none		  tech = "magical weapons" materialTab = true}
@@ -205,13 +216,15 @@
 	{item = {"BONUS_CaeliditeShield"}		 work = 12 		cost = none 	tech = "magical weapons" materialTab = true}
 	  {item = {"Paladin_Sword"}
        work = 30 
-       cost = none
+       cost = "IRON" 50
        requireIngredient = "BONUS_PALADIN_REMAINS"
+	   materialTab = true
       }
 	  {item = {"Devil_Sword"}
        work = 30 
        cost = none
        requireIngredient = "BONUS_DEVILS_HEART"
+	   materialTab = true
 	  }
 	{item = { "BONUS_InfSword"}              work = 20       cost = none		  tech = "magical weapons" materialTab = true}
     {item = { "BONUS_InfArmor"}              work = 30       cost = none		  tech = "magical weapons" materialTab = true}
@@ -232,7 +245,132 @@
 	}
 
   
-    "LAVA_FORGE" inherit "FORGE" append {}
+    "LAVA_FORGE" inherit "FORGE" append {
+	{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADA_FORGE" inherit "FORGE" append {
+	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
+      {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
+      {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
+      {item = {"IronBoots"}       work = 12   cost = none   materialTab = true}
+      {item = {"IronGloves"}      work = 3    cost = none   materialTab = true}
+      {item = {"IronShield"}      work = 12   cost = none   materialTab = true}
+      {item = {"WarHammer"}       work = 16   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"BattleAxe"}       work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdaSword"}        work = 20   cost = none   materialTab = true}
+      {item = {"AdaArmor"}        work = 30   cost = none   materialTab = true}
+      {item = {"AdaHelm"}         work = 15   cost = none   materialTab = true}
+      {item = {"AdaBoots"}        work = 15   cost = none   materialTab = true}
+      {item = {"AdaGloves"}       work = 6    cost = none   materialTab = true}
+      {item = {"AdaShield"}       work = 12   cost = none   materialTab = true}
+      {item = {"AdaWarHammer"}    work = 20   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdaBattleAxe"}    work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdoxiumArmor"}    work = 30   cost = none   materialTab = true}
+      {item = {"AdoxiumHelm"}     work = 15   cost = none   materialTab = true}
+      {item = {"AdoxiumBoots"}    work = 15   cost = none   materialTab = true}
+      {item = {"AdoxiumGloves"}   work = 6    cost = none   materialTab = true}
+      {item = {"AdoxiumStaff"}    work = 20   cost = none   tech = "magical weapons"  materialTab = true}
+	}
+	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {
+	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
+      {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
+      {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
+      {item = {"IronBoots"}       work = 12   cost = none   materialTab = true}
+      {item = {"IronGloves"}      work = 3    cost = none   materialTab = true}
+      {item = {"IronShield"}      work = 12   cost = none   materialTab = true}
+      {item = {"WarHammer"}       work = 16   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"BattleAxe"}       work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdaSword"}        work = 20   cost = none   materialTab = true}
+      {item = {"AdaArmor"}        work = 30   cost = none   materialTab = true}
+      {item = {"AdaHelm"}         work = 15   cost = none   materialTab = true}
+      {item = {"AdaBoots"}        work = 15   cost = none   materialTab = true}
+      {item = {"AdaGloves"}       work = 6    cost = none   materialTab = true}
+      {item = {"AdaShield"}       work = 12   cost = none   materialTab = true}
+      {item = {"AdaWarHammer"}    work = 20   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdaBattleAxe"}    work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdoxiumArmor"}    work = 30   cost = none   materialTab = true}
+      {item = {"AdoxiumHelm"}     work = 15   cost = none   materialTab = true}
+      {item = {"AdoxiumBoots"}    work = 15   cost = none   materialTab = true}
+      {item = {"AdoxiumGloves"}   work = 6    cost = none   materialTab = true}
+      {item = {"AdoxiumStaff"}    work = 20   cost = none   tech = "magical weapons"  materialTab = true}
+	}
+	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
+	  {{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
+      {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
+      {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
+      {item = {"IronBoots"}       work = 12   cost = none   materialTab = true}
+      {item = {"IronGloves"}      work = 3    cost = none   materialTab = true}
+      {item = {"IronShield"}      work = 12   cost = none   materialTab = true}
+      {item = {"WarHammer"}       work = 16   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"BattleAxe"}       work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdaSword"}        work = 20   cost = none   materialTab = true}
+      {item = {"AdaArmor"}        work = 30   cost = none   materialTab = true}
+      {item = {"AdaHelm"}         work = 15   cost = none   materialTab = true}
+      {item = {"AdaBoots"}        work = 15   cost = none   materialTab = true}
+      {item = {"AdaGloves"}       work = 6    cost = none   materialTab = true}
+      {item = {"AdaShield"}       work = 12   cost = none   materialTab = true}
+      {item = {"AdaWarHammer"}    work = 20   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdaBattleAxe"}    work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdoxiumArmor"}    work = 30   cost = none   materialTab = true}
+      {item = {"AdoxiumHelm"}     work = 15   cost = none   materialTab = true}
+      {item = {"AdoxiumBoots"}    work = 15   cost = none   materialTab = true}
+      {item = {"AdoxiumGloves"}   work = 6    cost = none   materialTab = true}
+      {item = {"AdoxiumStaff"}    work = 20   cost = none   tech = "magical weapons"  materialTab = true}
+	}
+	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
+      {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
+      {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
+      {item = {"IronBoots"}       work = 12   cost = none   materialTab = true}
+      {item = {"IronGloves"}      work = 3    cost = none   materialTab = true}
+      {item = {"IronShield"}      work = 12   cost = none   materialTab = true}
+      {item = {"WarHammer"}       work = 16   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"BattleAxe"}       work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdaSword"}        work = 20   cost = none   materialTab = true}
+      {item = {"AdaArmor"}        work = 30   cost = none   materialTab = true}
+      {item = {"AdaHelm"}         work = 15   cost = none   materialTab = true}
+      {item = {"AdaBoots"}        work = 15   cost = none   materialTab = true}
+      {item = {"AdaGloves"}       work = 6    cost = none   materialTab = true}
+      {item = {"AdaShield"}       work = 12   cost = none   materialTab = true}
+      {item = {"AdaWarHammer"}    work = 20   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdaBattleAxe"}    work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdoxiumArmor"}    work = 30   cost = none   materialTab = true}
+      {item = {"AdoxiumHelm"}     work = 15   cost = none   materialTab = true}
+      {item = {"AdoxiumBoots"}    work = 15   cost = none   materialTab = true}
+      {item = {"AdoxiumGloves"}   work = 6    cost = none   materialTab = true}
+      {item = {"AdoxiumStaff"}    work = 20   cost = none   tech = "magical weapons"  materialTab = true}
+	}
+	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
+      {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
+      {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
+      {item = {"IronBoots"}       work = 12   cost = none   materialTab = true}
+      {item = {"IronGloves"}      work = 3    cost = none   materialTab = true}
+      {item = {"IronShield"}      work = 12   cost = none   materialTab = true}
+      {item = {"WarHammer"}       work = 16   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"BattleAxe"}       work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdaSword"}        work = 20   cost = none   materialTab = true}
+      {item = {"AdaArmor"}        work = 30   cost = none   materialTab = true}
+      {item = {"AdaHelm"}         work = 15   cost = none   materialTab = true}
+      {item = {"AdaBoots"}        work = 15   cost = none   materialTab = true}
+      {item = {"AdaGloves"}       work = 6    cost = none   materialTab = true}
+      {item = {"AdaShield"}       work = 12   cost = none   materialTab = true}
+      {item = {"AdaWarHammer"}    work = 20   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdaBattleAxe"}    work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+      {item = {"AdoxiumArmor"}    work = 30   cost = none   materialTab = true}
+      {item = {"AdoxiumHelm"}     work = 15   cost = none   materialTab = true}
+      {item = {"AdoxiumBoots"}    work = 15   cost = none   materialTab = true}
+      {item = {"AdoxiumGloves"}   work = 6    cost = none   materialTab = true}
+      {item = {"AdoxiumStaff"}    work = 20   cost = none   tech = "magical weapons"  materialTab = true}
+	}
+	
+	"LABORATORY" {
+		{item = {Potion OneTimeBoost() Polymorph "BONUS_FAIRY_QUEEN" none} work = 20 cost = "GOLD" 100
+          requireIngredient = "royal_dust" }
+	}
 }
 	
 "necromancer"
@@ -247,6 +385,7 @@
           requireIngredient = "archwood" }  
     {{ "Torch"}                 2        "WOOD" 4}
   }
+  "ENCHANTED_WORKSHOP" inherit "WORKSHOP" append {}
 
   "FORGE"
   {
@@ -260,6 +399,14 @@
     {{ "IronShield"}            12       "IRON" 18}
     {{ "WarHammer"}             16       "IRON" 25      "two-handed weapons"}
     {{ "BattleAxe"}             22       "IRON" 35      "two-handed weapons"}
+	{item = { "BONUS_SteelSword"}  work = 20 	cost = none 	tech = "iron working" 	materialTab = true}
+    {item = { "BONUS_SteelArmor"}              work = 30       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelHelm"}               work = 15       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelBoots"}              work = 15       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelGloves"}             work = 6        cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelShield"}             work = 12       cost = none		  tech = "iron working" materialTab = true}
+	{item = { "BONUS_SteelWarHammer"}          work = 20       cost = none        tech = "two-handed weapons" materialTab = true}
+    {item = { "BONUS_SteelBattleAxe"}          work = 22       cost = none        tech = "two-handed weapons" materialTab = true}
     {{ "BONUS_VenSword"}              10       "VEN" 15      "magical weapons"}
     {{ "BONUS_VenMace"}               14       "VEN" 25      "magical weapons"}
     {{ "BONUS_VenAxe"}                18       "VEN" 30      "magical weapons"}
@@ -304,12 +451,34 @@
 	  {item = {"BONUS_CaeliditeSword"}        work = 20   cost = none   materialTab = true}
       {item = {"BONUS_CaeliditeWarHammer"}    work = 20   cost = none   tech = "two-handed weapons"  materialTab = true}
       {item = {"BONUS_CaeliditeBattleAxe"}    work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+	  {item = {"BONUS_CaeliditeArmor"}		 work = 30 		cost = none 	  tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_CaeliditeHelm"}		 	 work = 15 	cost = none   	  tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_CaeliditeBoots"}		 work = 15 		cost = none 	tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_CaeliditeGloves"}		 work = 6 			cost = none  tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_CaeliditeShield"}		 work = 12 		cost = none 	tech = "magical weapons" materialTab = true}
 	  {item = {"BONUS_JothniteSword"}        work = 20   cost = none   materialTab = true}
       {item = {"BONUS_JothniteWarHammer"}    work = 20   cost = none   tech = "two-handed weapons"  materialTab = true}
       {item = {"BONUS_JothniteBattleAxe"}    work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+	  {item = {"BONUS_JothniteArmor"}	 	 work = 30 		cost = none 	tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_JothniteHelm"}		 	 work = 15 		cost = none 	tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_JothniteBoots"}	 	 work = 15 		cost = none 	tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_JothniteGloves"}		 work = 6 		cost = none  	tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_JothniteShield"}		 work = 12 		cost = none 	tech = "magical weapons" materialTab = true}
   }
-    "LAVA_FORGE" inherit "FORGE" append {}
-    
+    "LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
+	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	}
 
   "LABORATORY"
   {
@@ -387,6 +556,14 @@
     {{ "IronShield"}            12       "IRON" 18}
     {{ "WarHammer"}             16       "IRON" 30      "two-handed weapons"}
     {{ "BattleAxe"}             22       "IRON" 40      "two-handed weapons"}
+	{item = { "BONUS_SteelSword"}  work = 10 	cost = none 	tech = "iron working" 	materialTab = true}
+    {item = { "BONUS_SteelArmor"}              work = 30       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelHelm"}               work = 8        cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelBoots"}              work = 12       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelGloves"}             work = 3        cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_SteelShield"}             work = 12       cost = none		  tech = "iron working" materialTab = true}
+	{item = { "BONUS_SteelWarHammer"}          work = 16       cost = none        tech = "two-handed weapons" materialTab = true}
+    {item = { "BONUS_SteelBattleAxe"}          work = 22       cost = none        tech = "two-handed weapons" materialTab = true}
     {{ "BONUS_VenSword"}              10       "VEN" 15}
     {{ "BONUS_VenLongSpear"}          12       "VEN" 20}
     {{ "BONUS_VenMace"}               14       "VEN" 25}
@@ -433,12 +610,34 @@
 	  {item = {"BONUS_CaeliditeSword"}        work = 20   cost = none   materialTab = true}
       {item = {"BONUS_CaeliditeWarHammer"}    work = 20   cost = none   tech = "two-handed weapons"  materialTab = true}
       {item = {"BONUS_CaeliditeBattleAxe"}    work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+	  {item = {"BONUS_CaeliditeArmor"}		 work = 30 		cost = none 	  tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_CaeliditeHelm"}		 	 work = 15 	cost = none   	  tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_CaeliditeBoots"}		 work = 15 		cost = none 	tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_CaeliditeGloves"}		 work = 6 			cost = none  tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_CaeliditeShield"}		 work = 12 		cost = none 	tech = "magical weapons" materialTab = true}
 	  {item = {"BONUS_JothniteSword"}        work = 20   cost = none   materialTab = true}
       {item = {"BONUS_JothniteWarHammer"}    work = 20   cost = none   tech = "two-handed weapons"  materialTab = true}
       {item = {"BONUS_JothniteBattleAxe"}    work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+	  {item = {"BONUS_JothniteArmor"}	 	 work = 30 		cost = none 	tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_JothniteHelm"}		 	 work = 15 		cost = none 	tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_JothniteBoots"}	 	 work = 15 		cost = none 	tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_JothniteGloves"}		 work = 6 		cost = none  	tech = "magical weapons" materialTab = true}
+	  {item = {"BONUS_JothniteShield"}		 work = 12 		cost = none 	tech = "magical weapons" materialTab = true}
   }
-    "LAVA_FORGE" inherit "FORGE" append {}
-    
+    "LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
+	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+	}
 
   "LABORATORY"
   {
@@ -504,10 +703,11 @@
     {{Ring SLEEP_RESISTANT}      40 "GOLD"   100 "royal jewellery"}
     {{Amulet DISARM_TRAPS_SKILL} 40 "GOLD"   150 "royal jewellery"}
     {{Amulet AMBUSH_SKILL}       40 "GOLD"   150 "royal jewellery"}
+	{{Amulet ARCHER_VISION}      40 "GOLD"    60 "royal jewellery"}
     {{Ring RANGED_RESISTANCE}    40 "GOLD"   200 "royal jewellery"}
     {{Ring TELEPATHY}            40 "GOLD"   300 "royal jewellery"}
     {{Ring FLYING}               40 "GOLD"   400 "royal jewellery"}
-    {{Ring NO_CARRY_LIMIT}       40 "GOLD"  1000 "royal jewellery"}
+    {{Ring NO_CARRY_LIMIT}       40 "GOLD"   200 "royal jewellery"}
   }
 }
 
@@ -527,6 +727,7 @@
     {{ "ArchwoodStaff"}           13       "WOOD" 0      "magical weapons"}
     {{ "Torch"}                 2        "WOOD" 0}
   }
+  "ENCHANTED_WORKSHOP" inherit "WORKSHOP" append {}
 
   "FORGE"
   {
@@ -584,7 +785,17 @@
     {{ "BONUS_JothniteBattleAxe"}          1       "ADA" 0}
   }
     "LAVA_FORGE" inherit "FORGE" append {}
-    
+    "BONUS_ADA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
+	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+	}
 
   "LABORATORY"
   {
@@ -642,7 +853,7 @@
 	{{TechBook "alchemical conversion"}    1    "GOLD" 1000 "alchemy"}
 	{{TechBook "humanoid mutation"}        1    "GOLD" 1000 "alchemy"}
 	{{TechBook "beast mutation"}           1    "GOLD" 1000 "alchemy"}
-	{{TechBook "pig breeding"}             1    "GOLD" 1000}
+	{{TechBook "pig breeding"}             1    "GOLD" 1000 "chicken breeding" }
 	{{TechBook "jewellery"}                1    "GOLD" 1000 "iron working"}
 	{{TechBook "two-handed weapons"}       1    "GOLD" 1000 "iron working"}
 	{{TechBook "traps"}                    1    "GOLD" 1000}
@@ -652,6 +863,29 @@
 	{{TechBook "magical weapons"}          1    "GOLD" 1000 "advanced sorcery"}
 	{{TechBook "master sorcery"}           1    "GOLD" 1000 "advanced sorcery"}
 	{{TechBook "demonology"}               1    "GOLD" 1000 "advanced sorcery"}
+  }
+}
+
+"techBooksLawful"
+{
+  "WORKSHOP"
+  {
+	{{TechBook "iron working"}             1    "GOLD" 1000}
+	{{TechBook "alchemy"}                  1    "GOLD" 1000}
+	{{TechBook "advanced alchemy"}         1    "GOLD" 1000 "alchemy"}
+	{{TechBook "alchemical conversion"}    1    "GOLD" 1000 "alchemy"}
+	{{TechBook "canine heroes"}            1    "GOLD" 1000 "chicken breeding"}
+	{{TechBook "royal jewellery"}          1    "GOLD" 1000 "jewellery"}
+	{{TechBook "pig breeding"}             1    "GOLD" 1000 "chicken breeding"}
+	{{TechBook "jewellery"}                1    "GOLD" 1000 "iron working"}
+	{{TechBook "two-handed weapons"}       1    "GOLD" 1000 "iron working"}
+	{{TechBook "traps"}                    1    "GOLD" 1000}
+	{{TechBook "archery"}                  1    "GOLD" 1000}
+	{{TechBook "sorcery"}                  1    "GOLD" 1000}
+	{{TechBook "advanced sorcery"}         1    "GOLD" 1000 "sorcery"}
+	{{TechBook "magical weapons"}          1    "GOLD" 1000 "advanced sorcery"}
+	{{TechBook "master sorcery"}           1    "GOLD" 1000 "advanced sorcery"}
+	{{TechBook "worship"}                  1    "GOLD" 1000}
   }
 }
 
@@ -666,6 +900,7 @@
           requireIngredient = "archwood"}
     {{FirstAidKit}           20       "GOLD"  1}
   }
+  "ENCHANTED_WORKSHOP" inherit "WORKSHOP" append {}
   
   "FORGE"
   {
@@ -680,7 +915,20 @@
       CORPUS("BONUS_HEAVY_AUTOMATON_CORPUS_JOTHNITE", "heavy automaton corpus", "JOTHNITE" 40, "advanced automatons", 3)
       { item = {"AutomatonArmsBONUS_Jothnite"} work = 2 tech = "automatons" materialTab = true}
   }
-    "LAVA_FORGE" inherit "FORGE" append {}
+    "LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
+	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	}
+	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	}
     
 
   "LABORATORY"
@@ -708,20 +956,38 @@
 	"WORKSHOP"
 	{
 	 {item = {"BONUS_LongSpear"} work = 8	cost = none tech = "advanced smithy"}
+	 {{"BONUS_longbow"}                   13       "WOOD" 30      "archery"}
+     {item = {"BONUS_archlongbow"}  work = 30 cost = "WOOD" 30 requireIngredient = "archwood" tech = "archery" }
+	 {{"BONUS_WoodTowerShield"}          6        "WOOD" 20}
 	}
+	"ENCHANTED_WORKSHOP" inherit "WORKSHOP" append {}
 	
 	"FORGE"
 	{
-	{item = { "BONUS_Mace"}         work = 14       cost = none tech = "advanced smithy" }
-    {item = { "BONUS_Axe"}          work = 18       cost = none tech = "advanced smithy"}
-	{item = { "BONUS_IronSpear"}    work = 18       cost = none tech = "advanced smithy"}
-	{item = { "BONUS_FellPlate"}    work = 35	   cost = none tech = "advanced smithy"} #The armor is better based on higher skill/technology, so needs more time and attention
+	{item = { "BONUS_Mace"}         work = 14       cost = none tech = "advanced smithy" materialTab = true}
+    {item = { "BONUS_Axe"}          work = 18       cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_IronSpear"}    work = 18       cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_FellPlate"}    work = 35	   cost = none tech = "advanced smithy" materialTab = true} #The armor is better based on higher skill/technology, so needs more time and attention
+	{item = { "BONUS_SteelMace"}         work = 14       cost = none tech = "advanced smithy" materialTab = true}
+    {item = { "BONUS_SteelAxe"}          work = 18       cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_SteelSpear"}    work = 18       cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_FellSteelPlate"}    work = 35	   cost = none tech = "advanced smithy" materialTab = true}
 	{item = { "BONUS_AdaMace"}      work = 16       cost = none tech = "advanced smithy" materialTab = true}
 	{item = { "BONUS_AdaAxe"}       work = 20       cost = none tech = "advanced smithy" materialTab = true}
 	{item = { "BONUS_AdaLongSpear"} work = 24       cost = none tech = "advanced smithy" materialTab = true}
-	{item = {"BONUS_FellAdaPlate"}	work = 35	   cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_FellAdaPlate"}	work = 35	   cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_SteelTowerShield"}             work = 20       cost = none		  tech = "iron working" materialTab = true}
+	{item = { "BONUS_AdaTowerShield"}             work = 20       cost = none		  tech = "iron working" materialTab = true}
+	{item = { "BONUS_AdoxiumTowerShield"}             work = 20       cost = none		  tech = "magical weapons" materialTab = true}
+	{item = { "BONUS_InferniteTowerShield"}             work = 20       cost = none		  tech = "magical weapons" materialTab = true}
+	{item = { "BONUS_JothniteTowerShield"}             work = 20       cost = none		  tech = "magical weapons" materialTab = true}
 	}
     "LAVA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
+	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {}
+	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {}
 	    
  }
 
@@ -729,36 +995,92 @@
  {
 	"WORKSHOP"
 	{
-	 {item = { "BONUS_LongSpear"} work = 8	cost = none tech = "advanced smithy"}
+	 {item = { "BONUS_LongSpear"} work = 8	cost = none tech = "advanced smithy" materialTab = true}
+	 {{"BONUS_longbow"}                   13       "WOOD" 30      "archery"}
+     {item = {"BONUS_archlongbow"}  work = 30 cost = "WOOD" 30 requireIngredient = "archwood" tech = "archery" }
+	 {{"BONUS_WoodTowerShield"}          6        "WOOD" 20}
 	}
+	"ENCHANTED_WORKSHOP" inherit "WORKSHOP" append {}
 	
 	"FORGE"
 	{
-	{item = { "BONUS_Mace"}                  work = 14       cost = none tech = "advanced smithy"}
-    {item = { "BONUS_Axe"}                   work = 18       cost = none tech = "advanced smithy"}
-	{item = { "BONUS_IronSpear"}          	 work = 18       cost = none tech = "advanced smithy"}
-	{item = { "BONUS_LawPlate"} 			 work = 35	   cost = none tech = "advanced smithy"} #The armor is better based on higher skill/technology, so needs more time and attention
+	{item = { "BONUS_Mace"}                  work = 14       cost = none tech = "advanced smithy" materialTab = true}
+    {item = { "BONUS_Axe"}                   work = 18       cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_IronSpear"}          	 work = 18       cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_LawPlate"} 			 work = 35	   cost = none tech = "advanced smithy" materialTab = true} #The armor is better based on higher skill/technology, so needs more time and attention
+	{item = { "BONUS_SteelMace"}         work = 14       cost = none tech = "advanced smithy" materialTab = true}
+    {item = { "BONUS_SteelAxe"}          work = 18       cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_SteelSpear"}    work = 18       cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_LawSteelPlate"} 			 work = 35	   cost = none tech = "advanced smithy" materialTab = true}
 	{item = { "BONUS_AdaMace"}               work = 16       cost = none tech = "advanced smithy" materialTab = true}
 	{item = { "BONUS_AdaAxe"}                work = 20       cost = none tech = "advanced smithy" materialTab = true}
 	{item = { "BONUS_AdaLongSpear"}          work = 24       cost = none tech = "advanced smithy" materialTab = true}
 	{item = { "BONUS_LawAdaPlate"}			 work = 35	   cost = none tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_SteelTowerShield"}             work = 20       cost = none		  tech = "iron working" materialTab = true}
+	{item = { "BONUS_AdaTowerShield"}             work = 20       cost = none		  tech = "iron working" materialTab = true}
+	{item = { "BONUS_AdoxiumTowerShield"}             work = 20       cost = none		  tech = "magical weapons" materialTab = true}
+	{item = { "BONUS_InferniteTowerShield"}             work = 20       cost = none		  tech = "magical weapons" materialTab = true}
+	{item = { "BONUS_JothniteTowerShield"}             work = 20       cost = none		  tech = "magical weapons" materialTab = true}
 	}
     "LAVA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
+	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {}
+	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {}
 
  }
 
 ##
 #Making Venorack, etc compatible with alchemical conversion
+#This is explicitly NOT profitable, but higher-tier stuff should be acknowledged.
 ##
 
 "Magic metal conversion"
 {
 	"LABORATORY"
 	{
-		{{ "GoldPiece"}                           5        "VEN"   2      "alchemical conversion"}
-		{{ "GoldPiece"}                           5        "INFERNITE"   1       "alchemical conversion"}
-		{{ "GoldPiece"}                           5        "ADA"   1       "alchemical conversion"}
-		{{ "VenOre"}                              5        "GOLD"  1	     "alchemical conversion"}
-		{{ "InfOre"}                              5        "GOLD"  2      "alchemical conversion"}
+		{{ "GoldPiece"}                           1        "ADA"   1       "alchemical conversion"}
+		{{ "GoldPiece"}                           1        "VEN"   1      "alchemical conversion"}
+		{{ "GoldPiece"}                           1        "CAELIDITE"   1      "alchemical conversion"}
+		{{ "GoldPiece"}                           1        "ADOXIUM"   1       "alchemical conversion"}
+		{{ "GoldPiece"}                           1        "INFERNITE"  1       "alchemical conversion"}
+		{{ "GoldPiece"}                           1        "JOTHNITE"  1       "alchemical conversion"}
+		{{ "VenOre"}                              1        "GOLD"  4	     "alchemical conversion"}
+		{{ "BONUS_CaeliditeOre"}                  1        "GOLD"  4	     "alchemical conversion"}
+		{{ "BONUS_CaeliditeOre"}                  1        "GOLD"  4	     "alchemical conversion"}
+		{{ "AdoxiumOre"}                          1        "GOLD"  5      "alchemical conversion"}
+		{{ "BONUS_JothniteOre"}                   1        "GOLD"  5	     "alchemical conversion"}
 	}
+}
+
+###
+#Mage armors, etc (like the Advanced Armory, but for Wizards!)
+###
+
+"wizard armory" #Not alignment-based.
+{
+	"WORKSHOP"
+	{
+		{item = { "BONUS_mageArmorLeather"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
+	}
+	"ENCHANTED_WORKSHOP" inherit "WORKSHOP" append {}
+	
+	"FORGE"
+	{	{item = { "BONUS_SteelStaff"}			 work = 20	   cost = none tech = "magical weapons" materialTab = true}
+		{item = { "BONUS_mageArmorAdoxium"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
+		{item = { "BONUS_mageArmorSteel"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
+		{item = { "BONUS_mageArmorAda"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
+		{item = { "BONUS_mageArmorVen"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
+		{item = { "BONUS_mageArmorCae"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
+		{item = { "BONUS_mageArmorAdoxium"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
+		{item = { "BONUS_mageArmorInfernite"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
+		{item = { "BONUS_mageArmorJothnite"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
+	}
+	"LAVA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
+	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {}
+	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {}
+	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {}
 }

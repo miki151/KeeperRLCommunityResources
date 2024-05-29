@@ -147,6 +147,7 @@
         }
       }
     }
+	locationName = "Gobbo Cave"
     tribe = BANDIT
     race = "goblins"
   }
@@ -324,6 +325,7 @@
         all = { 1 "BANDIT" }
       }
     }
+	locationName = "NoAg Cave" #Bugfinder
     tribe = BANDIT
     race = "bandits"
   }
@@ -387,6 +389,8 @@
   }
 }
 
+#Re-specifying the biome for DEMON_DEN, CEMETERY, and GOBLIN_VILLAGE wasn't helping, I'm afraid.
+
 "BONUS_SHELOB"
 {
   biome = "BONUS_SPIDER_MOUNTAIN"
@@ -428,9 +432,9 @@
       fighters = {
         count = {8 12}
         all = { 
-					1 "ZOMBIE" 
-					1 "BONUS_SKELETON" }
-      }
+			1 "ZOMBIE" 
+			1 "BONUS_SKELETON" }
+        }
     }
     locationName = "cemetery"
     tribe = MONSTER
@@ -438,7 +442,7 @@
     furniture = "BONUS_cryptCoffins"
   }
   levelConnection = {
-    topLevel = ExtraEnemy { "CEMETERY_ENTRY" }
+    topLevel = ExtraEnemy { "BONUS_CEMETERY_ENTRY" }
     levels = {
       {MainEnemy {40 40} BASIC }
     }
@@ -635,6 +639,7 @@
           }
       }
     }
+	locationName = "dwarf cave" #Bugfinder
     race = "dwarves"
     stockpiles = {{ "minerals" 60}}
     outsideFeatures = "dungeonOutside"
@@ -783,6 +788,74 @@
     minPopulation = 0
     minTeamSize = 1
     attackBehaviour = KillLeader
+  }
+}
+
+##
+#Noname Hunt: NAME THAT SHIT
+##
+
+"KRAKEN" modify {
+  settlement = {
+    type = Builtin MOUNTAIN_LAKE "DUNGEON"
+    inhabitants = {
+      leader = { { "KRAKEN" } }
+    }
+	locationName = "Kraken"
+    race = "kraken"
+    tribe = MONSTER
+  }
+  config = {
+    leaderAsFighter = true
+  }
+  discoverable = false
+
+}
+"CORPSES" modify {
+	settlement = {
+    type = Builtin EMPTY "BRICK"
+    tribe = MONSTER
+    dontBuildRoad = true
+    shopItems = {{10 15} "battle_corpse" }
+	locationName = "corpse field"
+	}
+}
+"DARK_ELF_CAVE" modify {
+	biome = "MOUNTAIN"
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DUNGEON"
+    tribe = DARK_ELF
+    inhabitants = {
+      leader = {
+        id = { "DARK_ELF_WARRIOR" }
+        combatExperience = 7
+      }
+      fighters = {
+        count = {2 5}
+        all = { 1 "DARK_ELF_WARRIOR" }
+        combatExperience = 7
+      }
+      civilians = {
+        count = {2 5}
+        all = { 1 "DARK_ELF" }
+      }
+    }
+    race = "dark elves"
+	locationName = "drow cave"
+    stockpiles = {{ "minerals" 60 }}
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+    surroundWithResources = 6
+  }
+  config = {
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    triggers = {SelfVictims StolenItems AggravatingMinions }
+    attackBehaviour = KillLeader
+    ransom = 0.5 80
   }
 }
 
@@ -980,7 +1053,7 @@
   }
 }
 
-"BONUS_MINOTAUR"
+"BONUS_MINOTAUR" #As an *enemy defintion* "BONUS_MINOTAUR" *should* be stable. If it isn't, we'll probably rename the adventurer.
 {
   settlement = {
     type = Builtin CAVE "BONUS_MINOTAUR"
@@ -1384,7 +1457,7 @@
     discoverable = false
     settlement = {
     type = Builtin VILLAGE "WOOD"
-    tribe = HUMAN
+    tribe = HOSTILE
     inhabitants = {
       fighters = {
         count = {3 6}
@@ -1956,7 +2029,8 @@
 {
   settlement = {
     type = RandomLayout { "adoxie_feet_entry" { 5 5 } "bonus_vault_gargoyle"}
-    tribe = MONSTER
+    locationName = "vault entry"
+	tribe = MONSTER
     race = "vault"
   }
 }
@@ -1987,13 +2061,15 @@
 {
   settlement = {
     type = RandomLayout { "adoxie_feet_entry" { 5 5 } "bonus_dark_vault_gargoyle"}
-    tribe = MONSTER
+    locationName = "dark vault entry"
+	tribe = MONSTER
     race = "altar of Evil God Adoxie"
   }
 }
 
 "BONUS_DARK_VAULT"
 {
+  biome = "BONUS_GRASSLAND_DARK_ABBEY"
   settlement = {
     type = RandomLayout { "adoxie_statue_under" { 15 15 } "bonus_dark_vault_gargoyle"}
     tribe = MONSTER
@@ -2404,7 +2480,7 @@
     furniture = "castleFurniture"
     outsideFeatures = "castleOutside"
   }
-  otherEnemy = "BONUS_MURDER_COTTAGE"
+  #otherEnemy = "BONUS_MURDER_COTTAGE"
   config = {
 	conquerCondition = NEVER
   }
@@ -2427,7 +2503,7 @@
       }
     }
     locationName = "Bran Castle"
-    race = "demons"
+    race = "vampires"
     furniture = "dungeonOutside"
     outsideFeatures = "dungeonOutside"
   }
@@ -2519,7 +2595,7 @@
 
 "BONUS_RAT_DUNGEON"
 {
-  discoverable = false
+  #discoverable = false #If not discoverable, they don't show up to shop from in the villain bar
   settlement = {
     type = Builtin MINETOWN "DUNGEON"
     tribe = DARK_ELF
@@ -2800,7 +2876,7 @@
 
 # LAWFUL
 
-"BONUS_ENTS_ALLY"
+"BONUS_ENTS_ALLY" #Now identical to vanilla ENTS, but changing to ELF-aligned so still friendly to Lawful.
 {
   settlement = {
     type = Builtin FOREST "WOOD"
@@ -2815,13 +2891,14 @@
         all = { 1 "CHILD_ENTS" }
       }
     }
-    tribe = HUMAN
+    tribe = ELF
     race = "tree spirits"
   }
   config = {
     immigrantInterval = 300
     maxPopulation = 10
     alwaysMount = true
+	prisoners = true
   }
   immigrants = { 
     {
@@ -2837,7 +2914,7 @@
   settlement = {
     inhabitants = {
       fighters = {
-        count = {1 3}
+        count = {1 2}
         all = {
           1 "AIR_ELEMENTAL"
           1 "WATER_ELEMENTAL"
@@ -2857,7 +2934,7 @@
   settlement = {
     inhabitants = {
       fighters = {
-        count = {2 4}
+        count = {1 3}
         all = {
           1 "AIR_ELEMENTAL"
           1 "WATER_ELEMENTAL"
@@ -2877,7 +2954,7 @@
   settlement = {
     inhabitants = {
       fighters = {
-        count = {3 5}
+        count = {2 3}
         all = {
           1 "AIR_ELEMENTAL"
           1 "WATER_ELEMENTAL"
@@ -2895,6 +2972,7 @@
 
 "BONUS_ELEMENTALIST_ALLY"
 {
+  biome = "MOUNTAIN"
   settlement = {
     type = Builtin TOWER "BRICK"
     inhabitants = {
@@ -2919,9 +2997,9 @@
     direction = UP
     topLevel = ExtraEnemy { "ELEMENTALIST_ENTRY" }
     levels = {
-      { ExtraEnemy { "BONUS_ROGUE_ELEMENTALIST_FLOOR_1" { 3 6 }} {4 4} TOWER }
-	  { ExtraEnemy { "BONUS_ROGUE_ELEMENTALIST_FLOOR_2" { 3 6 }} {4 4} TOWER }
-	  { ExtraEnemy { "BONUS_ROGUE_ELEMENTALIST_FLOOR_3" { 3 6 }} {4 4} TOWER }
+      { ExtraEnemy { "BONUS_ROGUE_ELEMENTALIST_FLOOR_1" { 2 3 }} {4 4} TOWER } #Pretty sure it's {"name"{range of floors}} and then{size range of floor} CONFIG. 
+	  { ExtraEnemy { "BONUS_ROGUE_ELEMENTALIST_FLOOR_2" { 2 3 }} {4 4} TOWER } #ELEMENTALIST uses 4-6, but only has the one floor group.
+	  { ExtraEnemy { "BONUS_ROGUE_ELEMENTALIST_FLOOR_3" { 1 2 }} {4 4} TOWER } #Three floor groups, well, should have fewer floors.
       { MainEnemy {5 5} TOWER }
     }
   }  
@@ -2951,9 +3029,10 @@
 
 "BONUS_WARRIORS_LAW"
 {
+  biome = "FOREST" #Hoping this helps it generate
   settlement = {
     type = Builtin CASTLE2 "WOOD_CASTLE"
-    tribe = BANDIT
+    tribe = HUMAN #Changed from BANDIT based on the faction identifier and listed in campaign_villains as an ALLY ??
     inhabitants = {
       leader = { { "SHAMAN" } }
       fighters = {
@@ -2972,12 +3051,15 @@
     maxPopulation = 10
     ghostProb = 0.1
     spawnGhosts = 6
+	prisoners = true
   }
   behaviour = {
+	ambushChance = 0.1
     minPopulation = 3
     minTeamSize = 5
     triggers = {
       RoomTrigger "THRONE" 0.0003
+	  #Human throne is OK since these are intended as allies to Less-Evil keepers
       RoomTrigger "IMPALED_HEAD" 0.0001
       SelfVictims
       NumConquered 2
@@ -3552,6 +3634,7 @@
         all = { 1 "BONUS_BANDIT_RECRUIT" }
       }
     }
+	locationName = "Agro Bandits"
     tribe = BANDIT
     race = "bandits"
 	furniture = "roomFurniture"
@@ -3663,7 +3746,7 @@
       steeds = { all = { 1 "HORSE" } }
     }
     locationNameGen = "TOWN"
-    race = "thieves"
+    race = "brigands" #Technical term to help verify who's spawning
     stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
     furniture = "roomFurniture"
     outsideFeatures = "bleedingTotem"
@@ -3895,6 +3978,7 @@
         all = { 1 "BONUS_RAIDER_RECRUIT" }
       }
     }
+	locationName = "Raiders"
     tribe = BANDIT
     race = "bandits"
 	furniture = "roomFurniture"
@@ -3932,6 +4016,7 @@
         all = { 1 "BONUS_RAIDER_RECRUIT" }
       }
     }
+	locationName = "Cottage Raiders"
     tribe = BANDIT
     race = "bandits"
 	furniture = "roomFurniture"
@@ -4006,7 +4091,7 @@
       steeds = { all = { 1 "BONUS_MOOSE" } }
     }
     locationNameGen = "TOWN"
-    race = "thieves"
+    race = "raiders"
     stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
     furniture = "roomFurniture"
     outsideFeatures = "bleedingTotem"
@@ -4060,6 +4145,7 @@
 "BONUS_MURDER_COTTAGE" inherit "HUMAN_COTTAGE"
 {
   settlement = append {
+	locationName = "Murderer Cottage"
     type = Builtin COTTAGE "WOOD_HIDDEN_STAIRS"
   }
   levelConnection = {
@@ -4103,6 +4189,7 @@
         }
       }
     }
+	locationName = "Demon Cult Village"
     race = "humans"
     stockpiles = {
       { "gold" 50 "TREASURE_CHEST" }
@@ -4119,7 +4206,7 @@
 {
   settlement = {
     type = Builtin MINETOWN "DUNGEON"
-    tribe = MONSTER
+    tribe = DARK_ELF #MONSTER will attack you on entry, which may not be intended.
     inhabitants = {
       leader = { { "BONUS_DEMON_PRIEST" } }
       fighters = {
@@ -4159,14 +4246,15 @@
     inhabitants = {
       leader = {{ "SOFT_MONSTER" }}
     }
+	locationName = "Soft's Hideout"
     tribe = DARK_KEEPER
   }
   levelConnection = {
     topLevel = ExtraEnemy { "MAIN_DUNGEON_ENTRY" }
     levels = {
 	  { ExtraEnemy { "DUNGEON1" { 2 4 } } {60 40} BASIC }
-	  { ExtraEnemy { "DUNGEON2" { 1 2 } } {60 40} BASIC }
-      { MainEnemy {32 32} BASIC }
+	  { ExtraEnemy { "DUNGEON2" { 1 2 } } {40 30} BASIC }
+      { MainEnemy {32 32} MINETOWN }
     }
   }
   discoverable = false
@@ -4465,7 +4553,7 @@
     minPopulation = 12
     minTeamSize = 10
     triggers = {
-      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE" 0.003 #Building a Throne directly challenges the King's right to rule.
       RoomTrigger "IMPALED_HEAD" 0.0001
       SelfVictims
       StolenItems
@@ -4484,6 +4572,11 @@
     }
     {
       ids = {"BONUS_ROYAL_KNIGHT"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+	{
+      ids = {"BONUS_ROYAL_PRIEST"}
       traits = {FIGHTER}
       frequency = 1
     }
@@ -4555,6 +4648,11 @@
       traits = {FIGHTER}
       frequency = 1
     }
+	{
+      ids = {"BONUS_SHADOW_PRIEST"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
   }
 }
 
@@ -4619,15 +4717,16 @@
         fighters = {
           count = {10 15}
           all = {
-            2 "BONUS_AMAZON"
-            1 "BONUS_AMAZON_ARCHER"
-            1 "BONUS_AMAZON_CHAMPION"
+            4 "BONUS_AMAZON"
+            3 "BONUS_AMAZON_ARCHER"
+            2 "BONUS_AMAZON_CHAMPION"
             1 "BONUS_AMAZON_ELDER"
-            1 "BONUS_AMAZON_WAR_MAIDEN"
+            2 "BONUS_AMAZON_WAR_MAIDEN"
+			1 "BONUS_AMAZON_HUNTER"
           }
         }
       }
-      tribe = HUMAN
+      tribe = HOSTILE
       race = "amazons"
     }
     config = {
@@ -4636,7 +4735,7 @@
     }
     immigrants = {
       {
-        ids = { "BONUS_AMAZON" "BONUS_AMAZON_ARCHER" "BONUS_AMAZON_CHAMPION" "BONUS_AMAZON_ELDER" "BONUS_AMAZON_WAR_MAIDEN" }
+        ids = { "BONUS_AMAZON" "BONUS_AMAZON_ARCHER" "BONUS_AMAZON_CHAMPION" "BONUS_AMAZON_ELDER" "BONUS_AMAZON_WAR_MAIDEN" "BONUS_AMAZON_HUNTER" }
         traits = {FIGHTER}
         frequency = 1
       }
@@ -4770,7 +4869,7 @@
     furniture = "castleFurniture"
     outsideFeatures = "castleOutside"
   }
-  otherEnemy = "KNIFE_COTTAGE"
+  #otherEnemy = "KNIFE_COTTAGE"
   config = {
     immigrantInterval = 300
     maxPopulation = 26
@@ -4867,7 +4966,7 @@
     furniture = "castleFurniture"
     outsideFeatures = "castleOutside"
   }
-  otherEnemy = "KNIFE_COTTAGE"
+  #otherEnemy = "KNIFE_COTTAGE"
   config = {
     immigrantInterval = 300
     maxPopulation = 26
@@ -5157,6 +5256,7 @@ settlement = {
     tribe = MONSTER
     dontBuildRoad = true
     shopItems = {{10 15} "battle_corpse" }
+	locationName = "Bonus Corpsefield"
   }
 }
 
@@ -5167,6 +5267,7 @@ settlement = {
     tribe = MONSTER
     dontBuildRoad = true
     stockpiles = {{ "corpse" 30 "FAKE_GRAVE" }}
+	locationName = "Corpse Castle"
   }
 }
 
@@ -5749,7 +5850,7 @@ settlement = {
           count = {12 15}
           all = {
             3 "BONUS_COW_DEMON"
-            1 "BONUS_MINOTAUR"
+            1 "MINOTAUR" #The *creature* BONUS_MINOTAUR is an Adventurer class, seems to crash the game if captured.  "MINOTAUR" receives comparable upgrades in BonusMod.
           }
         }
         civilians = {
@@ -6077,7 +6178,7 @@ settlement = {
     {
     settlement = {
       type = Predefined { "fairy_tower_entry" "BONUS_FAIRY_BRICK" }
-      tribe = ELF
+      tribe = HOSTILE #Illusia is hostile to everyone
       locationName = "Goddess Illusia's Tower"
       inhabitants = {
         fighters = {
@@ -6135,7 +6236,7 @@ settlement = {
     biome = "FOREST"
     settlement = {
     type = Predefined { "fairy_tower_floor" "BONUS_FAIRY_BRICK" }
-    tribe = ELF
+    tribe = HOSTILE #Illusia is hostile to everyone
     locationName = "Goddess Illusia's Tower"
     inhabitants = {
       fighters = {
@@ -6193,7 +6294,7 @@ settlement = {
   biome = "BONUS_ENCHANTED_FOREST"
   settlement = {
     type = Predefined { "fairy_tower_top" "BONUS_FAIRY_BRICK" }
-    tribe = ELF
+    tribe = HOSTILE #Illusia is hostile to everyone
     locationName = "Goddess Illusia's Tower"
     inhabitants = {
       leader = { { "BONUS_FAIRY_QUEEN" } }
@@ -6343,7 +6444,20 @@ settlement = {
       }
     }
   }
-  
+
+"BONUS_VULTURE_ABOMINATIONS_LAW" inherit "BONUS_VULTURE_ABOMINATIONS"
+#Pretty much just so Lawful Keepers can rescue a compatible fairy too.
+{
+	levelConnection = {
+      direction = UP
+      topLevel = MainEnemy
+      levels = {
+        { ExtraEnemy { "BONUS_IMPRISONED_FAIRY_LAW" { 1 } } { 28 16 } MINETOWN }
+      }
+    }
+
+}
+
 "BONUS_IMPRISONED_FAIRY"
   {
     biome = "MOUNTAIN"
@@ -6353,6 +6467,19 @@ settlement = {
         leader = {{ "BONUS_DEMON_FAIRY" }}
       }
       tribe = DARK_KEEPER
+    }
+    discoverable = false
+  }
+  
+"BONUS_IMPRISONED_FAIRY_LAW"
+  {
+    biome = "MOUNTAIN"
+    settlement = {
+      type = Builtin CAVE "DUNGEON"
+      inhabitants = {
+        leader = {{ "BONUS_LIGHT_FAIRY" }}
+      }
+      tribe = WHITE_KEEPER
     }
     discoverable = false
   }
@@ -6418,7 +6545,7 @@ settlement = {
       immigrantInterval = 100
       maxPopulation = 20
     }
-    createOnBones = 0.1 { "CEMETERY" }
+    createOnBones = 0.1 { "BONUS_CEMETERY" }
     immigrants = {
       {
         ids = {"BONUS_SKELETON"}
@@ -6448,15 +6575,16 @@ settlement = {
             1 "BONUS_ANCIENT_GREEN_DRAGON"
             1 "GREEN_DRAGON"
             1 "RED_DRAGON"
+			1 "YELLOW_DRAGON"
             2 "BONUS_YOUNG_GREEN_DRAGON"
             2 "BONUS_YOUNG_RED_DRAGON"
-            6 "BONUS_GREEN_DRAGONEWT"
-            6 "BONUS_RED_DRAGONNEWT"
+            5 "BONUS_GREEN_DRAGONEWT"
+            5 "BONUS_RED_DRAGONNEWT"
 			}
       }
     }
     locationNameGen = "TOWN"
-    race = "humans"
+    race = "dragons"
     stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
     furniture = "roomFurniture"
     outsideFeatures = "castleOutside"
@@ -6567,32 +6695,49 @@ settlement = {
   }
   config = {
     immigrantInterval = 700
-    maxPopulation = 3
-    conquerCondition = DESTROY_BUILDINGS
+    maxPopulation = 30
+	#Removed requirement to kill the buildings; killing the portal plus the knights should suffice, kthx
+  }
+  behaviour = {
+    ambushChance = 0.1
+    minPopulation = 3
+    minTeamSize = 5
+    triggers = {
+      RoomTrigger "THRONE" 0.0005
+      RoomTrigger "THRONE_HUMAN" 0.0005
+      SelfVictims
+      NumConquered 4
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.8 140
   }
   immigrants = {
     {
       ids = {"BONUS_HELL_KNIGHT_SWORDMASTER"}
       traits = {FIGHTER}
-      frequency = 700
+      frequency = 5 #Frequency is releative to each other, here HELL_KNIGHT is twice as likely as _BRUTE and 5x as _LORD.
       spawnLocation = InsideTerritory
     }
     {
       ids = {"BONUS_HELL_KNIGHT_LORD"}
       traits = {FIGHTER}
-      frequency = 700
+      frequency = 2
       spawnLocation = InsideTerritory
     }
     {
       ids = {"BONUS_HELL_KNIGHT_BRUTE"}
       traits = {FIGHTER}
-      frequency = 700
+      frequency = 5
       spawnLocation = InsideTerritory
     }
     {
       ids = {"BONUS_HELL_KNIGHT"}
       traits = {FIGHTER}
-      frequency = 700
+      frequency = 10
       spawnLocation = InsideTerritory
     }
   }
@@ -6633,7 +6778,7 @@ settlement = {
     }
   }
   
-  "BONUS_RATMEN"
+  "BONUS_RATMEN" #Tribe HUMAN means they're on Team Lawful, believe it or not.
   {
     biome = "BONUS_DARK_SWAMP"
     settlement = {
@@ -6926,7 +7071,7 @@ settlement = {
     furniture = "castleFurniture"
     outsideFeatures = "castleOutside"
   }
-  otherEnemy = "KNIFE_COTTAGE"
+  #otherEnemy = "KNIFE_COTTAGE"
   config = {
     immigrantInterval = 300
     maxPopulation = 26
@@ -7092,7 +7237,7 @@ settlement = {
     type = RandomLayout { "castle" { 15 15 20 20 } "default"}
     tribe = HUMAN
     inhabitants = {
-      leader = { { "GOODWIZ_KEEPER_MAGE_ARCANE" } }
+      leader = { { "GOODWIZ_KEEPER_MAGE_ARCANE_VILLAIN" } }
       fighters = {
         count = {12 17}
         all = {
@@ -7128,7 +7273,7 @@ settlement = {
     furniture = "castleFurniture"
     outsideFeatures = "castleOutside"
   }
-  otherEnemy = "KNIFE_COTTAGE"
+  #otherEnemy = "KNIFE_COTTAGE"
   config = {
     immigrantInterval = 300
     maxPopulation = 26
@@ -7190,6 +7335,7 @@ settlement = {
 
 "HALLOWEEN_WITCH_OF_THE_EAST"
 {
+  biome = "BONUS_HAUNTED_GRASSLAND" #Hoping to encourage more use of less-populated biomes
   settlement = {
     type = Builtin CASTLE2 "BRICK"
     tribe = MONSTER
@@ -7201,7 +7347,7 @@ settlement = {
       }
     }
     locationNameGen = "TOWN"
-    race = "humans"
+    race = "witch"
     stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
     furniture = "roomFurniture"
     outsideFeatures = "castleOutside"
@@ -7267,6 +7413,7 @@ settlement = {
 
 "HALLOWEEN_WEREWOLF_VILLAGE"
 {
+  biome = "FOREST" #Should give them better cover
   settlement = {
     type = RandomLayout { "village" { 20 15 } "village"}
     tribe = MONSTER
@@ -7280,7 +7427,7 @@ settlement = {
         }
       }
     }
-    race = "humans"
+    race = "werewolves"
     stockpiles = {
       { "gold" 50 "TREASURE_CHEST" }
     }
@@ -7625,7 +7772,7 @@ settlement = {
     furniture = "castleFurniture"
     outsideFeatures = "castleOutside"
   }
-  otherEnemy = "CEMETERY"
+  otherEnemy = "BONUS_CEMETERY"
   config = {
     immigrantInterval = 300
     maxPopulation = 26
@@ -7675,36 +7822,14 @@ settlement = {
   }
 }
 
-Def SINGLE_DRAGON(dragon_type)
-{
-  settlement = {
-    type =  Builtin CAVE "RUINS"
-    race = "dragon"
-    tribe = MONSTER
-    inhabitants = {
-      leader = { { dragon_type } }
-    }
-  }
-  config = {
-    conquerCondition = NEVER
-  }
-}
-End
-
-"BONUS_SINGLE_WHITE_DRAGON" SINGLE_DRAGON("WHITE_DRAGON")
-"BONUS_SINGLE_RED_DRAGON" SINGLE_DRAGON("RED_DRAGON")
-"BONUS_SINGLE_GREEN_DRAGON" SINGLE_DRAGON("GREEN_DRAGON")
-"BONUS_SINGLE_YELLOW_DRAGON" SINGLE_DRAGON("YELLOW_DRAGON")
-"BONUS_SINGLE_BLACK_DRAGON" SINGLE_DRAGON("BLACK_DRAGON")
-
 ###########################
 #Ideas for future villains#
 ###########################
 #Ant Hive
 #Grand Elvish City
 #Three cyclops
-#The forty thieves
-#Wolfville
+#The forty thieves -Kinda handled, what with desert thieves, but could be made More Flavorful
+#Wolfville -Kinda hendled, werewolf city (it's pretty Overt though)
 #The seven witches
 ###########################
 

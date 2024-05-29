@@ -596,18 +596,27 @@ End
 
     { Furniture {{ "WORKSHOP" }   "WOOD" 15 }                      "Workshop"          "Crafting"
         "Produces leather equipment, traps, first-aid kits and other." "WORKSHOPS" {} true  BUILD_WORKSHOP}
+	{ Furniture {{ "ENCHANTED_WORKSHOP" }   "WOOD" 15 }                      "Workshop"          "Crafting"
+        "Produces improved leather and wooden equipment. Must be placed near an enchanted pool."}
 
     { Furniture {{ "FORGE" }      "IRON" 20 }                      "Forge"             "Crafting"
         "Produces metal weapons and armor."    none { TechId "iron working" }}
+	{ Furniture {{ "LAVA_FORGE" }      "IRON" 20 }               "Magma forge"    "Crafting"
+        "Produces improved weapons and armor. Must be placed next to lava."    none { TechId "iron working" }}
 
     { Furniture {{ "LABORATORY" } "STONE" 10 }                     "Laboratory"        "Crafting"
         "Produces magical potions."            none { TechId "alchemy" }}
+	{ Furniture {{ "ENCHANTED_LABORATORY" } "STONE" 10 }                     "Enchanted laboratory"        "Crafting"
+        "Produces magical potions used to mutate your minions. Must be placed near an enchanted pool."
+                    none { TechId "alchemy" }}
 
     { Furniture {{ "LABORATORY" } "STONE" 10 }                     "Embalmers"        "Crafting"
         "Produces magical potions."            none { TechId "embalming" }}
 
     { Furniture {{ "JEWELLER" }   "WOOD" 12 }                      "Jeweller"          "Crafting"
         "Produces magical rings and amulets."  none { TechId "jewellery" }}
+	{ Furniture {{ "LAVA_JEWELLER" }   "STONE" 12 }                      "Magma jeweller"          "Crafting"
+        "Produces glyphs used to improve weapons and armor. Must be placed next to lava." none { TechId "jewellery" }}
 
     { Furniture {{ "POETRY_TABLE" } "WOOD" 12 }                    "Poetry table"       "Crafting"
         "Allows writing poems." none {} }
@@ -650,7 +659,7 @@ End
         "Claim a dungeon tile as your own. Building anything on it has the same effect."  none {} }
 
     { UnclaimTile                                                "Unclaim tile"        "Orders"
-        "Discard a tile in your dungeon, as well a any constructions it contains." none {}}
+        "Discard a tile in your dungeon, as well as any constructions it contains." none {}}
 
     { Zone FETCH_ITEMS                                         "Fetch items"       "Orders"
         "Order imps to fetch items from locations outside the dungeon. This is a one-time order." none {}}
@@ -827,8 +836,6 @@ End
       "Build to pass over water of lava." }
     { Furniture {{ "DOWN_STAIRS" }                }              "Down stairs"       "Structure"
       "Build down z-levels." }
-    { Furniture {{ "UP_STAIRS" }                  }              "Up stairs"       "Structure"
-      "Build to reach higher z-levels." }
     { PlaceMinion "Place minion" "Structure" ""   } 
     { PlaceItem   "Place item"   "Structure" ""   } 
     { Furniture {{ "WOOD_DOOR" }                  "WOOD" 0}       "Wooden door"       "Doors"
@@ -1075,11 +1082,11 @@ End
     { Furniture {{ "COW_PEN" }     "WOOD" 5 }                      "Cow pen"           "Farming"
         "" none {TechId "cow breeding"}}
     { Furniture {{ "ANIMAL_FENCE" } "WOOD" 1 }                     "Animal fence"      "Farming"
-        "Require to keep farm animals from escaping." }
+        "Required to keep farm animals from escaping." }
     { Furniture {{ "BARN" }    "CROPS" 20 }                        "Barn"              "Farming"
-        "Allocate crops to increase food supply." none }
+        "Stockpile crops to increase food supply." none }
     { Furniture {{ "CROPS" }  "CROPS" 2 }                          "Field"             "Farming"
-        "Plant crops to make a crop field." none }
+        "Plant crops to create a field, so you can grow more crops." none }
     { DestroyLayers {FLOOR}                                        "Remove field"      "Farming" }
     { Furniture {{ "BEAST_CAGE" }  "WOOD" 5 }                      "Livestock Cage"    "Farming"
         "Give your goats, horses and donkeys a place to live." none }
@@ -1113,7 +1120,7 @@ End
     { Furniture {{ "ANIMAL_FENCE" } "WOOD" 1 }                     "Animal fence"      "Farming"
         "Require to keep farm animals from escaping." }
     { Furniture {{ "BARN" }    "CROPS" 20 }                        "Barn"              "Farming"
-        "Allocate crops to increase food supply." none }
+        "Stockpile crops to increase food supply." none }
     { Furniture {{ "CROPS" }  "CROPS" 2 }                          "Field"             "Farming"
         "Plant crops to make a crop field." none }
     { DestroyLayers {FLOOR}                                        "Remove field"      "Farming" }
@@ -1124,13 +1131,13 @@ End
 
   "storage" modify append
   {
-    { Furniture {{ "HALLOWEEN_TORCH_N" "HALLOWEEN_TORCH_N_02" "HALLOWEEN_TORCH_E" "HALLOWEEN_TORCH_S" "HALLOWEEN_TORCH_S_02" "HALLOWEEN_TORCH_W" }}          "Torch"             "Installations Seasonal"
-        "Place it on tiles next to a wall." "TORCH" {} false BUILD_TORCH}
+    { Furniture {{ "HALLOWEEN_TORCH_N" "HALLOWEEN_TORCH_N_02" "HALLOWEEN_TORCH_E" "HALLOWEEN_TORCH_S" "HALLOWEEN_TORCH_S_02" "HALLOWEEN_TORCH_W" }}          "Wall jack-o-lantern"             "Installations Seasonal"
+        "Place it on tiles next to a wall." none {} false BUILD_TORCH}
 		
-    { Furniture {{ "HALLOWEEN_GROUND_TORCH" "HALLOWEEN_FLOOR_TORCH" "HALLOWEEN_GROUND_TORCH_02" "HALLOWEEN_FLOOR_TORCH_02" }  "WOOD" 10  }                  "Standing torch"    "Installations Seasonal"
+    { Furniture {{ "HALLOWEEN_GROUND_TORCH" "HALLOWEEN_FLOOR_TORCH" "HALLOWEEN_GROUND_TORCH_02" "HALLOWEEN_FLOOR_TORCH_02" }  "WOOD" 10  }                  "Standing jack-o-lantern"    "Installations Seasonal"
         "" none {} false BUILD_TORCH }
 		
-    { Furniture {{ "HALLOWEEN_SKELETON_01" "HALLOWEEN_SKELETON_02" "HALLOWEEN_SKELETON_03" "HALLOWEEN_SKELETON_04" "HALLOWEEN_SKELETON_05" "HALLOWEEN_SKELETON_06" "HALLOWEEN_SKELETON_07" "HALLOWEEN_SKELETON_08" "HALLOWEEN_SKELETON_09" "HALLOWEEN_SKELETON_10" }  "WOOD" 10  }                  "Standing torch"    "Installations Seasonal"
+    { Furniture {{ "HALLOWEEN_SKELETON_01" "HALLOWEEN_SKELETON_02" "HALLOWEEN_SKELETON_03" "HALLOWEEN_SKELETON_04" "HALLOWEEN_SKELETON_05" "HALLOWEEN_SKELETON_06" "HALLOWEEN_SKELETON_07" "HALLOWEEN_SKELETON_08" "HALLOWEEN_SKELETON_09" "HALLOWEEN_SKELETON_10" }  "WOOD" 10  }                  "Skele-torch"    "Installations Seasonal"
         "" none {} false BUILD_TORCH }
 				
     { Furniture {{ "HALLOWEEN_FLOOR_WEB" }              "GOLD" 2 }       "Spiderweb"            "Installations Seasonal" }
@@ -1152,10 +1159,308 @@ End
 	{ Furniture {{ "SPIKE_TRAP" }           "IRON" 20 }                        "Floor Spikes"                   "Troll Traps"                  "Freezes enemy solid."                                            none {  TechId "traps" } }
     { Furniture {{ "TT_PITFALL" }           "WOOD" 20 }                        "Pitfall"                        "Troll Traps"                  "Build to make enemies fall down."      none {  TechId "traps" }  }
 
-    { Furniture {{ "FAKE_MINION_STATUE" }       "STONE" 20 }  "Fake Gold Statue"                "Troll Traps"   
+    { Furniture {{ "FAKE_MINION_STATUE" }       "GOLD" 20 }  "Fake Gold Statue"                "Troll Traps"   
         "Comes to life when an enemy comes near." none  { TechId "traps" }}
 	{ Furniture {{ "FAKE_STONE_MINION_STATUE" }       "STONE" 20 }  "Fake Stone Statue"         "Troll Traps"   
         "Comes to life when an enemy comes near." none  { TechId "traps" }}
 	{ Furniture {{ "FAKE_TREASURE_CHEST" }       "STONE" 30 }  "Fake Chest"                     "Troll Traps"   
         "Comes to life when an enemy comes near." none  { TechId "traps" }}
-  }   
+  }
+
+###
+#Advanced forges
+###
+
+"advanced forges" {
+	{ Furniture {{ "BONUS_ADA_FORGE"  }      "ADA" 20 }                      "Adamantine forge"             "Crafting"
+        "Lighter and tougher tools to more efficiently produce weapons and armor made of metals."    none { TechId "iron working" }}
+	{ Furniture {{ "BONUS_ADA_LAVA_FORGE" }      "ADA" 20 }               "Adamantine magma forge"    "Crafting"
+        "Uses lava as fuel for even better results. Must be placed next to lava."    none { TechId "iron working" }}
+	{ Furniture {{ "BONUS_ADOXIUM_FORGE"  }      "ADOXIUM" 20 }                      "Adoxium forge"             "Crafting"
+        "Requires supreme skill, but allows channeling magical energy to make better weapons and armor made of metals."    none { TechId "magical weapons" }}
+	{ Furniture {{ "BONUS_ADOXIUM_LAVA_FORGE" }      "ADOXIUM" 20 }               "Adoxium magma forge"    "Crafting"
+        "Provide the best forge, with the best fuel, for the best crafters, to make the best gear. Must be placed next to lava."    none { TechId "magical weapons" }}
+	{ Furniture {{ "BONUS_INFERNITE_FORGE"  }      "INFERNITE" 20 }                      "Infernite forge"             "Crafting"
+        "Harness infernite to create the hottest lava forge mortals have ever known. Contains its own lava."    none { TechId "magical weapons" }}
+}
+  
+
+###
+#Necro popcap furniture
+#Sprites yoinked from DungeonDesign, with thanks to Shadowing
+###
+
+"necro_minion_statues" {
+	{ Furniture {{ "BONUS_UNDEAD_ANGEL_STATUE" } "STONE" 250 }  "Statue of Unlife"  "Installations" "Increases luxury by 0.5. Increases population cap by 1, with no limit."}
+	{ Furniture {{ "BONUS_UNDEAD_ANGEL_STATUE_GLOW" } "STONE" 500 }  "Anchor of Unlife"  "Installations" "Increases luxury by 0.7. Increases population cap by 5, up to 5 total anchors."}
+}
+
+###
+#DungeonDesign integration
+###
+
+"minion_statues" modify
+  {
+    { Furniture {{ "DD_GOLD_SUCCUBUS_STATUE" "DD_GOLD_WARRIOR_STATUE" "MINION_STATUE" }        "GOLD"   50  }                  "Golden statue"     "Installations" ""}
+    { Furniture {{ "DD_STATUE_SUCCUBUS" "DD_STATUE_WARRIOR" "STONE_MINION_STATUE"  "DD_SAND_STATUE_SUCCUBUS" "DD_SAND_STATUE_WARRIOR" "DD_SAND_STATUE_MINION"}  "STONE"  250 }                  "Stone statue"      "Installations" ""}
+  }
+
+"orders" modify append {
+    { Furniture {{ "DD_CASTLE_WALL" }                "STONE" 5 }      "Stone wall"    "Design: Walls"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+    { Furniture {{ "DD_CASTLE_PILLAR" }              "STONE" 2 }      "Stone pillar"      "Design: Walls"
+      "Acts as roof support, but doesn't block movement." }    
+    { Furniture {{ "DD_SAND_CASTLE_WALL" }                "STONE" 5 }      "Stone wall"    "Design: Walls"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+    { Furniture {{ "DD_SAND_CASTLE_PILLAR" }              "STONE" 2 }      "Stone pillar"      "Design: Walls"
+      "Acts as roof support, but doesn't block movement." }    
+    { Furniture {{ "DD_IRON_BARS" }                  "IRON" 3 }       "Iron bars"         "Design: Walls" "Connect with portcullis." }
+    { Furniture {{ "DD_BURNT_WOOD_WALL" }                  "WOOD" 5 }       "Wooden wall"   "Design: Walls"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+    { Furniture {{ "DD_LOG_WOOD_WALL" }                  "WOOD" 5 }       "Wooden wall"   "Design: Walls"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+    { Furniture {{ "DD_LOG_WOOD_PILLAR" }                "WOOD" 2 }       "Wooden pillar"     "Design: Walls"
+      "Acts as roof support, but doesn't block movement." }
+    { Furniture {{ "SANDSTONE" }             "STONE" 5 }      "Sandstone"         "Design: Landscaping" }
+    { Furniture {{ "RED_SANDSTONE" }             "STONE" 5 }      "Red Sandstone"         "Design: Landscaping" }
+    { Furniture {{ "GLACIER" }             "WOOD" 5 }      "Glacier"         "Design: Landscaping" }
+    { Furniture {{ "MOUNTAIN_SKULLS" }             "STONE" 5 }      "Skull Mountain"         "Design: Landscaping" } 
+    { Furniture {{ "DUNGEON_WALL" "DUNGEON_WALL2" "DD_SANDSTONE_WALL" "DD_RED_SANDSTONE_WALL" "DD_GLACIER_WALL" "DD_MOUNTAIN_SKULLS_WALL" } "STONE" 3}       "Reinforce wall"    "Design: Walls" 
+      "Reinforced walls are better at stopping enemies from digging into your dungeon."} 
+    { Furniture {{ "DWARF_WALL" "DWARF_WALL2" "DD_DWARF_SANDSTONE_WALL" "DD_DWARF_RED_SANDSTONE_WALL" "DD_DWARF_GLACIER_WALL" "DD_DWARF_MOUNTAIN_SKULLS_WALL" } "STONE" 3}       "Reinforce wall"    "Design: Walls" 
+      "Reinforced walls are better at stopping enemies from digging into your dungeon."}
+    { Furniture {{ "NECRO_WALL" "NECRO_WALL2" "DD_NECRO_SANDSTONE_WALL" "DD_NECRO_RED_SANDSTONE_WALL" "DD_NECRO_GLACIER_WALL" "DD_NECRO_MOUNTAIN_SKULLS_WALL" } "STONE" 3}       "Reinforce wall"    "Design: Walls" 
+      "Reinforced walls are better at stopping enemies from digging into your dungeon."}  
+	{ Furniture {{ "SNOW_WALL" }                    "WOOD" 5 }     "Snow Wall"    "Design: Walls"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+	{ Furniture {{ "MUD_WALL" }                     "WOOD" 5 }     "Mud Wall"    "Design: Walls"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+	{ Furniture {{ "RUIN_WALL" }                    "STONE" 5 }     "Ruin Wall"    "Design: Walls"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+    { Furniture {{ "DD_BONE_WALL" }                  "WOOD" 5 }       "Bone wall"   "Design: Walls"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+    { Furniture {{ "DD_EVIL_CASTLE_WALL" }                  "STONE" 5 }       "EVIL wall"   "Design: Walls"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+
+	 { Furniture {{ "DD_VOID_WALL" }                 "GOLD" 5 }              "Void"       		"Design: Landscaping" }	  
+	 { Furniture {{ "ADAMANTIUM_ORE" }               "ADA" 30 }              "Adamantium Ore"       		"Design: Landscaping" }
+	 { Furniture {{ "ADOXIUM_ORE" }                  "ADOXIUM" 30 }          "Adoxium Ore"       	    	"Design: Landscaping" }
+	 { Furniture {{ "INFERNITE_ORE" }                "INFERNITE" 30 }     "Infernite Ore"       		    "Design: Landscaping" }
+	 { Furniture {{ "IRON_ORE" }                     "IRON" 30 }             "Iron Ore"             		"Design: Landscaping" }
+	 { Furniture {{ "STONE" }                        "STONE" 30 }            "Adoxium Ore"       	    	"Design: Landscaping" }
+	 { Furniture {{ "GOLD_ORE" }                     "GOLD" 30 }             "Gold Ore"             		"Design: Landscaping" } 
+
+	  
+    { Furniture {{ "DD_PORTCULLIS" }                 "IRON" 5 }       "Portcullis"        "Design: Doors" "Connect with iron bars." }
+    { Furniture {{ "DD_STONE_DOOR" }                  "STONE" 5 }       "Stone door"       "Design: Doors" "Stops enemies. Your minions can pass freely unless you lock it."  "DOORS"}
+    { Furniture {{ "DD_SAND_STONE_DOOR" }                  "STONE" 5 }       "Sandstone door"       "Design: Doors" "Stops enemies. Your minions can pass freely unless you lock it."  "DOORS"}    
+    { Furniture {{ "DD_GLACIER_DOOR" }                  "WOOD" 5 }       "Ice door"       "Design: Doors" "Stops enemies. Your minions can pass freely unless you lock it."  "DOORS"}    
+	{ Furniture {{ "DD_PORTCULLIS_GATE" }                 "IRON" 5 }       "Portcullis Gate"        "Design: Doors" "Connect with iron bars." }	  
+    { Furniture {{ "DD_STONE_GATE" }                  "STONE" 8 }       "Stone gate"       "Design: Doors" "Stops enemies. Your minions can pass freely unless you lock it."}
+    { Furniture {{ "DD_SAND_STONE_GATE" }                  "STONE" 8 }       "Sandstone gate"       "Design: Doors" "Stops enemies. Your minions can pass freely unless you lock it."}
+    { Furniture {{ "DD_GLACIER_GATE" }                  "WOOD" 8 }       "Ice gate"       "Design: Doors" "Stops enemies. Your minions can pass freely unless you lock it."}
+  
+    { Furniture {{ "DD_LANTERN_BLUE" }     "WOOD" 5 }                    "Blue flying lantern"         "Design: Decorative" }
+    { Furniture {{ "DD_LANTERN" }     "WOOD" 5 }                    "Flying lantern"         "Design: Decorative" }
+    { Furniture {{ "DD_FIREPLACE_N" "DD_FIREPLACE_E" "DD_FIREPLACE_W" "DD_FIREPLACE_S" }     "STONE" 5 }       "Fireplace"         "Design: Decorative" "Fireplace set into the wall; place like a torch." }
+    { Furniture {{ "DD_STANDING_ARMOR" }                "IRON" 30 }        "Standing armor"    "Design: Decorative" }
+    { Furniture {{ "DD_ALKOVE_N" "DD_ALKOVE_S" "DD_ALKOVE_W" "DD_ALKOVE_E" }     }                    "Alcove with candle"         "Design: Decorative" "Alcove in the wall, with a candle. Place like a torch." }
+	{ Furniture {{ "DD_SHIELD_N" "DD_SHIELD_S" "DD_SHIELD_W" "DD_SHIELD_E" }  "IRON" 5}                    "Wall-mounted shield"         "Design: Decorative" "Decorative shield hung on the wall, like a torch." }
+    { Furniture {{ "DD_FOUNTAIN_RED" }     "STONE" 25 }                    "Red fountain"         "Design: Decorative" }
+    { Furniture {{ "DD_SAND_FOUNTAIN" "DD_SAND_FOUNTAIN_RED" }     "STONE" 25 }                    "Sandstone fountain"         "Design: Decorative" }   
+	{ Furniture {{ "DD_WALL_SKULL_N" "DD_WALL_SKULL_S" "DD_WALL_SKULL_W" "DD_WALL_SKULL_E" }                "WOOD" 2 }        "Wall-mounted skull"    "Design: Decorative" "A skull on the wall, like a torch." }
+    { Furniture {{ "DD_RED_CRYSTAL" "DD_GREEN_CRYSTAL" "DD_BLUE_CRYSTAL" }     "WOOD" 5 }                    "Color crystal"         "Design: Decorative" "Colored crystal that gives off light." }
+    { Furniture {{ "DD_WALL_FOUNTAIN_N" "DD_WALL_FOUNTAIN_RED_N" "DD_SAND_WALL_FOUNTAIN_N" "DD_SAND_WALL_FOUNTAIN_RED_N" } "STONE" 5 }            "Wall fountain"     "Design: Decorative" } #Changed from WOOD to STONE
+	{ Furniture {{ "DD_CAULDRON_DECORATION" "DD_TAR_CAULDRON_DECORATION"}               "STONE" 5 }      "Decorative Cauldron"             "Design: Decorative" }
+	{ Furniture {{ "DD_TORTURE_01" }      "IRON" 10 }            "Torture implements"     "Design: Decorative" "Decorative piece for prison."}
+	{ Furniture {{ "DD_TORTURE_02" }      "WOOD" 10 }            "Torture implements"     "Design: Decorative" "Decorative piece for prison."}
+    { Furniture {{ "DD_UNDEAD_ANGEL_STATUE" "DD_UNDEAD_ANGEL_STATUE_GLOW" "DD_ANGEL_STATUE" }               "STONE" 10 }      "Angel Statue"             "Design: Decorative" }
+ #Crops removed to avoid confusion with BonusMod crops.
+    { Furniture {{ "SCARECROW" }               "WOOD" 5 }                    "Scarecrow"       		"Design: Decorative" }
+	{ Furniture {{ "SNOWMAN" }                 "WOOD" 5 }                    "Snowman"       		"Design: Decorative" }	
+	{ Furniture {{ "CAULDRON_TAR" }            "STONE" 5 }                   "Tar-filled cauldron"       		"Design: Decorative" }	
+	{ Furniture {{ "CHEST" }                   "WOOD" 5 }                  "Chest"       		"Design: Decorative" } 
+	
+	{ Furniture {{"BUSH"} "WOOD"   20 }                      "Bush"                   "Design: Plants"}
+    { Furniture {{"BURNT_TREE"} "WOOD"   20 }                "Burnt Tree"             "Design: Plants"}
+	{ Furniture {{"TREE_TRUNK"} "WOOD"   20 }                "Tree Trunk"             "Design: Plants"}
+	{ Furniture {{"GIANT_MUSHROOM"} "WOOD"   20 }            "Giant Treeshroom"       "Design: Plants"}
+    { Furniture {{"GUM_TREE"} "WOOD"   20 }                  "Gum Tree"               "Design: Plants"}
+	{ Furniture {{"PALM_TREE"} "WOOD"   20 }                 "Palm Tree"              "Design: Plants"}
+	{ Furniture {{"CACTUS1"} "WOOD"   20 }                   "Cactus"                 "Design: Plants"}
+    { Furniture {{"SWAMPTREE"} "WOOD"   20 }                 "Swamp Tree"             "Design: Plants"}
+	{ Furniture {{"TREE_SNOW"} "WOOD"   20 }                 "Tree Snow"              "Design: Plants"}
+	{ Furniture {{"DECID_TREE"} "WOOD"   20 }                "Decid Tree"             "Design: Plants"}
+    { Furniture {{"CANIF_TREE"} "WOOD"   20 }                "Canif Tree"             "Design: Plants"}
+	
+	{ Furniture {{ "DD_FLOOR_CANAL" }               "STONE" 2 }      "Water canal"             "Design: Floors" }
+    { Furniture {{ "DD_FLOOR_LAVA_CANAL" }               "STONE" 2 }      "Lava canal"             "Design: Floors" }
+    { Furniture {{ "DD_FLOOR_NECRO_CANAL" }               "STONE" 2 }      "Necrotic canal"             "Design: Floors" }
+    { Furniture {{ "DD_SAND_FLOOR_STONE1" }               "STONE" 2 }      "Stone"             "Design: Floors" }
+    { Furniture {{ "DD_SAND_FLOOR_STONE2" }               "STONE" 2 }      "Stone"             "Design: Floors" }
+    { Furniture {{ "DD_SAND_FLOOR_CANAL" }               "STONE" 2 }      "Water canal"             "Design: Floors" }
+    { Furniture {{ "DD_SAND_FLOOR_LAVA_CANAL" }               "STONE" 2 }      "Lava canal"             "Design: Floors" }  
+    { Furniture {{ "DD_SAND_FLOOR_NECRO_CANAL" }               "STONE" 2 }      "Necrotic canal"             "Design: Floors" }
+    { Furniture {{ "DD_FLOOR_LOG1" }                "WOOD" 2 }       "Wooden"            "Design: Floors"}
+    { Furniture {{ "DD_ICE_FLOOR" }                "WOOD" 3 }       "Ice"            "Design: Floors"}
+    { Furniture {{ "DD_GRASS" }                   "WOOD" 2 }       "Grass"               "Design: Landscaping"}
+	{ Furniture {{ "DD_SNOW" }                    "WOOD" 2 }       "Snow"                "Design: Landscaping"}  
+    { Furniture {{ "DD_MUD" }                     "WOOD" 2 }       "Mud"                 "Design: Landscaping"}
+    { Furniture {{ "DD_SWAMPGRASS" }              "WOOD" 2 }       "SwampGrass"          "Design: Landscaping"}
+	{ Furniture {{ "DD_HILL" }                    "WOOD" 2 }       "Hill"                "Design: Landscaping"}
+	{ Furniture {{ "DD_SAND" }                    "STONE" 2 }       "Sand"                "Design: Landscaping"}
+	{ Furniture {{ "DD_RED_SAND" }                "STONE" 2 }       "Red Sand"            "Design: Landscaping"}
+	{ Furniture {{ "DD_ROAD" }                    "STONE" 2 }       "Road"                "Design: Landscaping"}
+	{ Furniture {{ "DD_WATER" }              "STONE" 2 }       "Water"        "Design: Landscaping"}	
+	{ Furniture {{ "DD_SHALLOW_WATER1" "DD_SHALLOW_WATER2" }              "STONE" 1 }       "Shallow Water"        "Design: Landscaping"}	
+	{ Furniture {{ "DD_MAGMA" }              "STONE" 4 }       "Magma"        "Design: Landscaping"}	
+	{ Furniture {{ "DD_ICE" }                "WOOD" 4 }       "ICE"        "Design: Landscaping"}
+	
+    { Furniture {{ "FLOOR_STONE1" }               "STONE" 2 }      "Stone"              "Design: Floors" }
+    { Furniture {{ "FLOOR_STONE2" }               "STONE" 2 }      "Stone"              "Design: Floors" }
+    { Furniture {{ "FLOOR_STONE3" }               "STONE" 2 }      "Stone"              "Design: Floors" }
+    { Furniture {{ "FLOOR_STONE4" }               "STONE" 2 }      "Stone"              "Design: Floors" }
+    { Furniture {{ "FLOOR_STONE5" }               "STONE" 2 }      "Stone"              "Design: Floors" }
+    { Furniture {{ "FLOOR_WOOD1" }                "WOOD" 2 }       "Wooden"            "Design: Floors"}
+    { Furniture {{ "FLOOR_WOOD2" }                "WOOD" 2 }       "Wooden"            "Design: Floors"}
+    { Furniture {{ "FLOOR_WOOD3" }                "WOOD" 2 }       "Wooden"            "Design: Floors"}
+    { Furniture {{ "FLOOR_WOOD4" }                "WOOD" 2 }       "Wooden"            "Design: Floors"}
+    { Furniture {{ "FLOOR_WOOD5" }                "WOOD" 2 }       "Wooden"            "Design: Floors"}
+    { Furniture {{ "FLOOR_CARPET1" }              "GOLD" 2 }       "Carpet"            "Design: Floors" }
+    { Furniture {{ "FLOOR_CARPET2" }              "GOLD" 2 }       "Carpet"            "Design: Floors" }
+    { Furniture {{ "FLOOR_CARPET3" }              "GOLD" 2 }       "Carpet"            "Design: Floors" }
+	{ Furniture {{ "FLOOR_CARPET4" }              "GOLD" 2 }       "Carpet"            "Design: Floors" }
+    { Furniture {{ "FLOOR_CARPET5" }              "GOLD" 2 }       "Carpet"            "Design: Floors" }
+    { Furniture {{ "FLOOR_SPEEDY" }              "GOLD" 2 }       "Carpet"            "Design: Floors 2" }
+    { Furniture {{ "FLOOR_BLINDY" }              "GOLD" 2 }       "Carpet"            "Design: Floors 2" }
+    { Furniture {{ "FLOOR_INVIY" }              "GOLD" 2 }       "Carpet"            "Design: Floors 2" }
+	{ Furniture {{ "FLOOR_PEACEY" }              "GOLD" 2 }       "Carpet"            "Design: Floors 2" }
+    { Furniture {{ "BLACKY_FLOOR" }              "GOLD" 2 }       "Void"            "Design: Floors 2" }
+	
+}
+
+
+Def LIBRARYDESING(SUF1, SUF2)
+    { Furniture {{ "BOOKCASE_WOOD" + SUF1 }   "WOOD" 15 }                 "Wooden bookcase"   "Desing: Library"
+        "Train your minions' magical powers here." "BOOKCASES"     {TechId "sorcery"} true BUILD_LIBRARY }
+
+    { Furniture {{ "BOOKCASE_IRON" + SUF1 }   "IRON" 15 }                 "Iron bookcase"     "Desing: Library"
+        "Train your minions' magical powers here." none          {TechId "advanced sorcery"} }
+
+    { Furniture {{ "BOOKCASE_GOLD" + SUF1 }   "GOLD" 15 }                 "Golden bookcase"   "Desing: Library"
+        "Train your minions' magical powers here." none           {TechId "master sorcery"}}
+End
+
+"library" modify append
+  {
+  LIBRARYDESING("_HUMAN", "_human")
+  LIBRARYDESING("_NECRO", "_necro")
+}
+
+  "library_necro" modify append
+  {
+  LIBRARYDESING("", "")
+  LIBRARYDESING("_HUMAN", "_human")
+}
+
+  "library_human" modify append
+  {
+  LIBRARYDESING("", "")
+  LIBRARYDESING("_NECRO", "_necro")
+}
+
+
+Def TRAININGDESING(SUF1, SUF2)
+    { Furniture {{ "TRAINING_WOOD" + SUF1 } "WOOD" 12 }                   "Wooden dummy"      "Desing: Training"
+        "Train your minions' melee skills here." "TRAINING_DUMMIES" {} true  TRAINING_ROOM}
+    { Furniture {{ "TRAINING_IRON" + SUF1 } "IRON" 12 }                   "Iron dummy"        "Desing: Training"
+        "Train your minions' melee skills here."   none { TechId "iron working" } }
+    { Furniture {{ "TRAINING_ADA" + SUF1 }  "ADA"  12 }                   "Adamantine dummy"  "Desing: Training"
+        "Train your minions' melee skills here."   none { TechId "iron working" }}
+End
+
+"training" modify append
+  {	
+TRAININGDESING("_NECRO", "_necro")
+TRAININGDESING("_HUMAN", "_human")
+TRAININGDESING("_DWARF", "_dwarf")
+}
+
+"training_human" modify append
+  {	
+    { Furniture {{ "TRAINING_WOOD" } "WOOD" 12 }                   "Wooden dummy"      "Desing: Training"
+        "Train your minions' melee skills here." "TRAINING_DUMMIES" {} true  TRAINING_ROOM}
+
+    { Furniture {{ "TRAINING_IRON" } "IRON" 12 }                   "Iron dummy"        "Desing: Training"
+        "Train your minions' melee skills here."   none { TechId "iron working" } }
+
+    { Furniture {{ "TRAINING_ADA" }  "ADA"  12 }                   "Adamantine dummy"  "Desing: Training"
+        "Train your minions' melee skills here."   none { TechId "iron working" }}
+TRAININGDESING("_NECRO", "_necro")
+TRAININGDESING("_DWARF", "_dwarf")
+}
+
+ "training_necro" modify append
+  {	
+    { Furniture {{ "TRAINING_WOOD" } "WOOD" 12 }                   "Wooden dummy"      "Desing: Training"
+        "Train your minions' melee skills here." "TRAINING_DUMMIES" {} true  TRAINING_ROOM}
+
+    { Furniture {{ "TRAINING_IRON" } "IRON" 12 }                   "Iron dummy"        "Desing: Training"
+        "Train your minions' melee skills here."   none { TechId "iron working" } }
+
+    { Furniture {{ "TRAINING_ADA" }  "ADA"  12 }                   "Adamantine dummy"  "Desing: Training"
+        "Train your minions' melee skills here."   none { TechId "iron working" }}
+TRAININGDESING("_HUMAN", "_human")
+TRAININGDESING("_DWARF", "_dwarf")
+}
+
+  "training_dwarf" modify append
+  {	
+    { Furniture {{ "TRAINING_WOOD" } "WOOD" 12 }                   "Wooden dummy"      "Desing: Training"
+        "Train your minions' melee skills here." "TRAINING_DUMMIES" {} true  TRAINING_ROOM}
+
+    { Furniture {{ "TRAINING_IRON" } "IRON" 12 }                   "Iron dummy"        "Desing: Training"
+        "Train your minions' melee skills here."   none { TechId "iron working" } }
+
+    { Furniture {{ "TRAINING_ADA" }  "ADA"  12 }                   "Adamantine dummy"  "Desing: Training"
+        "Train your minions' melee skills here."   none { TechId "iron working" }}
+TRAININGDESING("_NECRO", "_necro")
+TRAININGDESING("_HUMAN", "_human")
+}
+   
+"storage" modify append {
+    { Furniture {{ "DD_USABLE_BARREL" "DD_USABLE_CRATE" }      "WOOD" 15 }                      "Misc. Storages"      "Storage" }
+    { Furniture {{ "DD_CORPSE_PIT" } }                      "Corpse Pit"      "Storage" }
+}
+
+"traps" modify append
+  {
+    { Furniture {{ "DD_TAR" }            "WOOD" 20 }  "Tar"       "Traps"
+        "Can immobilize creatures." none                  { TechId "traps" }}
+	{ Furniture {{ "DD_KRAKEN_WATER" }   "GOLD" 50 }  "Kraken"       "Traps"
+        "Summon a Kraken." none                  { TechId "traps" }}
+}
+
+"prison" modify
+  {
+    { Furniture {{ "PRISON" }        "IRON" 15 }                   "Prison"            "Prison"
+        "Required to capture enemies." "PRISON" {} true}
+
+    { Furniture {{ "PRISON_BARS" }        "IRON" 5 }               "Prison bars"            "Prison"
+        "Used to secure prison." }
+
+    { Furniture {{ "PRISON_DOOR" }        "IRON" 30 }              "Prison door"            "Prison"
+        "Used to secure prison." }
+
+    { Furniture {{ "DD_PRISON_GATE" }     "IRON" 30 }              "Prison gate"            "Prison"
+        "Used to secure prison." }
+
+    { Furniture {{ "TORTURE_TABLE" } "IRON" 15 }                   "Torture table"     "Prison"
+        "Can be used to torture prisoners. Free population slot required for torturing."}
+
+    { Furniture {{ "GALLOWS" }       "WOOD"  20 }                  "Gallows"           "Prison"
+        "For hanging prisoners."}
+
+    { Furniture {{ "BEAST_CAGE" } "WOOD" 8 }                       "Beast cage"        "Prison"
+        "Beasts sleep here."}
+  }

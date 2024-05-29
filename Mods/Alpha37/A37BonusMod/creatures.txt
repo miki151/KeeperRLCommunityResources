@@ -4,19 +4,6 @@
 
 "BONUS MOD CONTAINS EXTRA ENEMIES MOD WHICH CONTAINS ADVENTURERS MOD - No need to mix these mods." inherit IMP {}
 
-"DEATH_PLAYER" inherit "DEATH" {
-	spells = { "stop_killing" "easy wish" "BONUS_grant all spells" }
-    body = {
-      type = Humanoid LARGE
-	}
-   permanentEffects = {
-		RIDER 1
-      }
-    attr = append {
-      DAMAGE 999 
-	}
-}
-
 "ADVENTURER"
   {
     viewId = { "player" }
@@ -250,6 +237,7 @@
       type = NonHumanoid SMALL
       material = SPIRIT
     }
+	gender = IT #Dopples don't come Gendered, just sayin'.
 }
 
 "ZOMBIE_MORGUER" inherit "ZOMBIE" 
@@ -847,7 +835,7 @@ Def RANDOM_ARTEFACT_HOLDER()
 	{ type =  Scroll Name "Unidentified" Description "Could be anything" Permanent DISAPPEAR_DURING_DAY chance = 0.0002 }
 	{ type =  Scroll Name "Unidentified" Description "Could be anything" Permanent NO_CARRY_LIMIT chance = 0.0002 }
 	{ type =  Scroll Name "Unidentified" Description "Could be anything" Permanent SPYING chance = 0.0002 }
-	{ type =  Scroll Name "Unidentified" Description "Could be anything" Permanent LIFE_SAVED chance = 0.0002 }
+	{ type =  Scroll Name "Unidentified" Description "Could be anything" Permanent LIFE_SAVED chance = 0.0002 } #Being Lifesaved removes the status, so this is tolerable.
 	{ type =  Scroll Name "Unidentified" Description "Could be anything" Permanent UNSTABLE chance = 0.0002 }	  
 	{ type =  Scroll Name "Unidentified" Description "Could be anything" Permanent TURNED_OFF chance = 0.0002 }
 	{ type =  Scroll Name "Unidentified" Description "Could be anything" Permanent DRUNK chance = 0.0002 }	  
@@ -1244,7 +1232,7 @@ End
         {  "LeatherBoots" }
         {  "LeatherGloves" }
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "spell_adventurer"
     promotionCost = 1
     maxPromotions = 1000
   }
@@ -1267,7 +1255,7 @@ End
 	  FORGE 25
     }
 
-    spellSchools = { "bonus fighter" }
+    spellSchools = { "bonus fighter" } #DAMAGE, this is OK
 	spells = {
       "healing"
 	  "damage bonus"
@@ -1284,7 +1272,7 @@ End
     deathDescription = "killed, fighting to the last"
     hatedByEffect = HATE_HUMANS
 	
-	promotionGroup = "adventurer"
+	promotionGroup = "melee_adventurer"
     promotionCost = 1
     maxPromotions = 1000
   }
@@ -1310,7 +1298,7 @@ End
       DAMAGE 3
 	  SPELL_DAMAGE 7
       }
-    spellSchools = { "bonus dark stealth" }
+    spellSchools = { "bonus dark stealth" } #Patched, should be SPELL_DAMAGE
     permanentEffects = {
       ELF_VISION 1
       NIGHT_VISION 1
@@ -1320,7 +1308,7 @@ End
       DISARM_TRAPS_SKILL 1
 	  RIDER 1
       }
-    chatReactionFriendly = "chats about when she robbed a shop"
+    chatReactionFriendly = "chats about when they robbed a shop"
     chatReactionHostile  = "\"A knife awaits your back my friend!\""
     hatedByEffect = HATE_HUMANS
       inventory = {
@@ -1333,7 +1321,7 @@ End
         { Amulet NIGHT_VISION 1 1 0.05}
         { Amulet SWIMMING_SKILL 1 1 0.05}
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "ranged_adventurer"
     promotionCost = 1
     maxPromotions = 1000
   }
@@ -1390,7 +1378,7 @@ End
         {  "GoldPiece" 16 26 }
       }
 	  
-	promotionGroup = "adventurer"
+	promotionGroup = "melee_adventurer"
     promotionCost = 1
     maxPromotions = 1000
     }
@@ -1444,7 +1432,7 @@ End
         {  "LeatherBoots"}
         {  "GoldPiece" 16 26 }
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "spell_adventurer"
     promotionCost = 1
     maxPromotions = 1000
     }
@@ -1484,7 +1472,7 @@ End
         RANGED_DAMAGE 20
       }
       hatedByEffect = HATE_HUMANS
-      spellSchools = { "bonus fighter" }
+      spellSchools = { "bonus fighter" } #Conflicts with the Fighter, who needs it on (melee) DAMAGE
 	   spells = {
 		 "healing"
 		 "escape"
@@ -1498,7 +1486,7 @@ End
         {  "LeatherHelm"}
         {  "GoldPiece" 16 26 }
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "ranged_adventurer"
     promotionCost = 1
     maxPromotions = 1000
 	}
@@ -1546,7 +1534,7 @@ End
         {  "LeatherBoots"}
         {  "GoldPiece" 16 26 }
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "melee_adventurer"
     promotionCost = 1
     maxPromotions = 1000
     }
@@ -1600,7 +1588,7 @@ End
         {  "LeatherBoots"}
         {  "GoldPiece" 26 36 }
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "melee_adventurer spell_adventurer ranged_adventurer"
     promotionCost = 1
     maxPromotions = 1000
     }
@@ -1695,7 +1683,7 @@ End
         DAMAGE 30
         DEFENSE 30
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "melee_adventurer"
     promotionCost = 1
     maxPromotions = 1000
     }
@@ -1738,12 +1726,12 @@ End
         {  "LeatherBoots" }
         {  "LeatherGloves" }
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "spell_adventurer"
     promotionCost = 1
     maxPromotions = 1000
   }
   
-  "BONUS_NECROMANCER"
+  "BONUS_NECROMANCER" #This is the Adventurer Necro. The Necro Keeper is an inherit from Vanilla.
     {
       viewId = { "necromancer" }
       attr = {
@@ -1780,7 +1768,7 @@ End
         { type = Glyph {ARMOR ItemAttrBonus DEFENSE 3} chance = 0.01 }
         { type = Glyph {WEAPON ItemAttrBonus DAMAGE 3} chance = 0.01 }
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "spell_adventurer"
     promotionCost = 1
     maxPromotions = 1000
     }
@@ -1913,7 +1901,7 @@ End
         {  "GoldPiece" 80 120 }
         { type =  "BONUS_DwarvenBeer" chance = 0.1 }
     }
-	promotionGroup = "adventurer"
+	promotionGroup = "melee_adventurer"
     promotionCost = 1
     maxPromotions = 1000
   }
@@ -1933,7 +1921,7 @@ End
 		{ Potion RegrowBodyPart 1 1 1 0.03 }
 		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "melee_adventurer"
     promotionCost = 1
     maxPromotions = 1000
     }
@@ -1953,7 +1941,7 @@ End
 		{ Potion RegrowBodyPart 1 1 1 0.03 }
 		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
       }
-	promotionGroup = "adventurer"
+	promotionGroup = "melee_adventurer"
     promotionCost = 1
     maxPromotions = 1000
     }	
@@ -2587,8 +2575,8 @@ End
       inventory = {
         { type =  "BattleAxe" }
         {  "ChainArmor"}
-        { type =  "IronHelm" chance = 0.5 }
-        { type =  "IronBoots" chance = 0.3 }
+        { type =  "BONUS_SteelHelm" chance = 0.5 }
+        { type =  "BONUS_SteelBoots" chance = 0.3 }
         { type =  "Torch" chance = 0.3 }
         { type =  "BONUS_DwarvenBeer" chance = 0.1 } #Modded
         {  "GoldPiece" 2 6 }
@@ -2612,6 +2600,15 @@ End
         { type = Glyph {WEAPON JoinPrefixes { LastingEffect BAD_BREATH VictimEffect 0.2 Lasting PANIC }} chance = 0.3 }
         { type =  "BONUS_DwarvenBeer" chance = 0.1 } #Modded
     }
+  }
+  #Seemed rather wimpy compared to the 1.0 map special Blacksmiths. This should be able to get at 3d tier with a little work.
+  "DWARF_BLACKSMITH" modify {
+	attr = append {
+		FORGE 70
+		JEWELER 50
+		FURNACE 50
+	}
+	maxLevelIncrease = append { DAMAGE 7 }
   }
   "LIZARDMAN" modify append {
     inventory = {
@@ -2820,7 +2817,7 @@ End
       }
       hatedByEffect = HATE_GREENSKINS
       inventory = {
-        { type =  "ArchwoodStaff" }
+        { type =  "BONUS_SteelStaff" }
         {  "LeatherBoots" }
         { type =  "LeatherArmor" prefixChance = 0.4 }
         { type =  "LeatherGloves" chance = 0.4 }
@@ -2965,7 +2962,7 @@ End
       }
       hatedByEffect = HATE_GREENSKINS
       inventory = {
-        {  "ArchwoodStaff" }
+        {  "BONUS_SteelStaff" }
         {  "LeatherBoots" }
         { type =  "Robe" prefixChance = 1 }
         { Potion Lasting 50 MAGIC_VULNERABILITY 1 4 0.01}
@@ -3067,7 +3064,7 @@ End
       }
       hatedByEffect = HATE_GREENSKINS
       inventory = {
-        {  "ArchwoodStaff" }
+        {  "BONUS_SteelStaff" }
         { type =  "Robe" prefixChance = 1 }
         { type =  "LeatherBoots" prefixChance = 0.2 }
         { countMin = 2 countMax = 4 type = Potion Heal {FLESH} chance = 0.8 }
@@ -3095,6 +3092,12 @@ End
       }
 	}
 	
+	"WHITE_WIZARD" modify append { #The wizard in the succubus garden tower
+		attr = append { LABORATORY 10}
+		maxLevelIncrease = { SPELL_DAMAGE 11}
+		
+	}
+	
 
 #######################
 ##Extra enemies mod
@@ -3112,6 +3115,7 @@ End
   attr = { DEFENSE 10 }
   body = { type = Humanoid MEDIUM }
   inventory = {
+	{ type =  "BONUS_SteelStaff" prefixChance = 0.08 }
     { type =  "ArchwoodStaff" prefixChance = 0.03 }
     { Potion Lasting 50 MAGIC_VULNERABILITY 1 4 0.01}
     { Potion Lasting 50 MELEE_VULNERABILITY 1 4 0.01}
@@ -3182,7 +3186,7 @@ End
       name = "royal archer"
     }
     inventory = {
-        {  "Bow"}
+        {  "BONUS_longbow"}
         {  "Knife"}
         {  "LeatherArmor"}
         {  "LeatherBoots"}
@@ -3392,6 +3396,16 @@ End
         DAMAGE 43
         DEFENSE 36   
       }
+	  body = {
+        type = Humanoid LARGE
+        addBodyPart = {
+          TORSO 1
+	      LEG 2
+        }
+        material = FLESH
+        weight = 600
+		droppedPartUpgrade = {IncreaseAttr DEFENSE 5 Permanent SPEED}
+      }
       maxLevelIncrease = {
         DAMAGE 7
       }
@@ -3493,7 +3507,6 @@ End
         type = Humanoid LARGE
         material = FLESH
         weight = 240
-        
       }
       gender = FEMALE
 	  hatedByEffect = HATE_HUMANS
@@ -3536,24 +3549,25 @@ End
     {
       viewId = { "amazon_archer" }
       attr = {
-        DAMAGE 22
+        DAMAGE 20
         DEFENSE 16  
-        RANGED_DAMAGE 32 
+        RANGED_DAMAGE 30 
       }
       maxLevelIncrease = {
         DAMAGE 2
-        RANGED_DAMAGE 4
+        RANGED_DAMAGE 6
       }
       spells = {
         "healing"
         "haste"
       }
-	  	  permanentEffects = {
+	  	permanentEffects = {
 		RIDER 1
+		NO_FRIENDLY_FIRE 1
       }
       name = {
         name = "amazon archer"
-        pluralName = "amazons"
+        pluralName = "amazon archers"
         firstNameGen = "FIRST_FEMALE"
       }
       chatReactionFriendly = "talks about tracking prey"
@@ -3572,6 +3586,55 @@ End
       }
     }
 	
+"BONUS_AMAZON_HUNTER" inherit "BONUS_AMAZON" #Semi-feral amazon archers; can't bypass-allies, but as solo snipers go, pretty nasty.
+    {
+      viewId = { "amazon_hunter" }
+      attr = {
+        DAMAGE 22
+        DEFENSE 5  
+        RANGED_DAMAGE 32 
+      }
+	  body = {
+      type = Humanoid LARGE
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "leg_attack" } "legs" 7 { attackType = HIT attackMsg = KICK }} isExtraAttack = true }}
+        ARM {{ itemType = { Intrinsic { "claws_attack" }  "claws" 6 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+		}
+      }
+      maxLevelIncrease = {
+        DAMAGE 7
+        RANGED_DAMAGE 12
+      }
+      spells = {
+	    "BONUS_rapid invisibility" #60-turn cooldown, can be spell-speed'd to 30.  Now the *undead* shall know why they fear the night.
+        "haste"
+      }
+	  	permanentEffects = {
+		NIGHT_VISION 1
+		FAST_TRAINING 1
+		AMBUSH_SKILL 1
+		SWIMMING_SKILL 1
+		DISARM_TRAPS_SKILL 1
+		REGENERATION 1
+      }
+      name = {
+        name = "amazon hunter"
+        pluralName = "amazon hunters"
+        firstNameGen = "FIRST_FEMALE"
+      }
+      chatReactionFriendly = "is only interested in killing prey."
+      chatReactionHostile = "ignores your words, preferring to focus on killing you."
+      inventory = {
+        {  "ElvenBow"}
+		{  "LeatherArmor" }
+		{  "LeatherHelm" }
+		{  "LeatherBoots" }
+        { Amulet RANGED_RESISTANCE 1 1 0.15}
+        { Amulet MELEE_RESISTANCE 1 1 0.15}
+		{ Ring SPEED 1 1 0.02 }
+      }
+    }
+	
 "BONUS_AMAZON_CHAMPION" inherit "BONUS_AMAZON"
 {
   viewId = { "amazon_champion" }
@@ -3583,29 +3646,29 @@ End
 	DIGGING 25
   }
   maxLevelIncrease = {
-	DAMAGE 5
+	DAMAGE 7
   }
   spellSchools = { "bonus fighter" }
   name = {
 	name = "amazon champion"
-	pluralName = "amazons"
+	pluralName = "amazon champions"
 	firstNameGen = "FIRST_FEMALE"
   }
-	  permanentEffects = {
+	permanentEffects = {
 	RIDER 1
   }
   chatReactionFriendly = "talks about honoring the gods."
   chatReactionHostile = "\"Die, cretin!\""
   inventory = {
-	{ type =  "BONUS_Amazweihander" prefixChance = 0.1 }
+	{ type =  "BONUS_Amazweihander" prefixChance = 0.3 }
 	{ type =  "ChainArmor" prefixChance = 0.1 }
 	{  "IronGloves"}
 	{  "IronBoots"}
-	{  "BONUS_DEFENSEAMULET" 1 1 0.3}
+	{  "BONUS_DEFENSEAMULET" 1 1 0.5}
 	{ Potion Lasting 50 MELEE_RESISTANCE 1 1 0.3}
 	{ Potion Heal {FLESH} 1 3 0.4}
-	{ Ring DAM_BONUS 1 1 0.3}
-	{ Ring DEF_BONUS 1 1 0.3}
+	{ Ring DAM_BONUS 1 1 0.4}
+	{ Ring DEF_BONUS 1 1 0.4}
 	{ Ring RAGE 1 1 0.03}
   }
 }
@@ -3621,7 +3684,6 @@ End
   maxLevelIncrease = {
 	DAMAGE 7
 	SPELL_DAMAGE 10
-	RANGED_DAMAGE 3
   }
   spellSchools = { "bonus shaman" }
   spells = {
@@ -3649,7 +3711,7 @@ End
     }
   name = {
 	name = "amazon elder"
-	pluralName = "amazons"
+	pluralName = "amazon elders"
 	firstNameGen = "FIRST_FEMALE"
   }
   chatReactionFriendly = "talks about legends of old."
@@ -3667,14 +3729,21 @@ End
   attr = {
 	DAMAGE 42
 	DEFENSE 36 
-	SPELL_DAMAGE 35  
+	SPELL_DAMAGE 35
+	RANGED_DAMAGE 30
   }
+  body = {
+        type = Humanoid LARGE
+        material = FLESH
+        weight = 240
+		droppedPartUpgrade = IncreaseAttr DAMAGE 5
+      }
   maxLevelIncrease = {
 	DAMAGE 9
 	SPELL_DAMAGE 7
-	RANGED_DAMAGE 3
+	RANGED_DAMAGE 7
   }
-  spellSchools = { "bonus fighter" }
+  spellSchools = { "bonus fighter" "archer"} #The Queen can do anything her warriors can do. The elders? not so much.
   spells = {
 	"healing"
 	"cure poison"
@@ -3700,7 +3769,7 @@ End
   chatReactionFriendly = "complains about the teachings of the elders"
   chatReactionHostile = "\"Die, fiend!\""
   inventory = {
-
+	{ type =  "AdaSword" prefixChance = 0.05 }
 	{ type =  "AdaArmor" prefixChance = 0.05 }
 	{ type =  "AdaBoots" prefixChance = 0.05 }
 	{ type =  "AdaGloves" prefixChance = 0.05 }
@@ -3722,9 +3791,8 @@ End
 	DEFENSE 20   
   }
   maxLevelIncrease = {
-	DAMAGE 3
+	DAMAGE 5
 	SPELL_DAMAGE 3
-	RANGED_DAMAGE 2
   }
   spellSchools = { "bonus fighter" }
   permanentEffects = {
@@ -3768,6 +3836,7 @@ End
 	type = Humanoid MEDIUM
 	material = FLESH
 	weight = 80
+	droppedPartUpgrade = IncreaseAttr SPELL_DAMAGE 5
 	addBodyPart = {
 	  WING 2
 	}
@@ -4034,9 +4103,13 @@ End
 	type = Humanoid MEDIUM
 	material = FLESH
 	weight = 80
+	drops = {
+		{"RoyalDust"} 1 #Mostly for folks who capture her alive but didn't get the 50% on creatureId.
+	}
 	addBodyPart = {
 	  WING 2
 	}
+	droppedPartUpgrade = {IncreaseAttr SPELL_DAMAGE 50 Permanent MAGIC_RESISTANCE Permanent FLYING} #Seems high, but anyone who's fought Illusia knows she's not a joke.  Good payoff plz.
   }
   gender = FEMALE
   maxLevelIncrease = {
@@ -4301,9 +4374,9 @@ End
     {
       viewId = { "spirit_dragon" }
       attr = {
-        DAMAGE 30
-        DEFENSE 30 
-        SPELL_DAMAGE 30  
+        DAMAGE 35
+        DEFENSE 40
+        SPELL_DAMAGE 35  
       }
       body = {
         type = FourLegged HUGE
@@ -4835,7 +4908,6 @@ End
         RAGE 1
         RANGED_RESISTANCE 1
         REGENERATION 1
-		RIDER 1
       }
       name = {
         name = "cow demon"
@@ -4904,6 +4976,153 @@ End
       chatReactionFriendly = "sobs uncontrollably"
       chatReactionHostile = "screams at an ear-shattering pitch!"
     }
+	#Lords Of X, for Necro faction
+	"BONUS_LORD_TEMPLATE" {
+		viewId = {"special_hlgn"}
+		attr = {
+			DEFENSE 5 #if it's this low, there's a Bug!
+		}
+		body = {
+		type = NonHumanoid LARGE #Same as Death.
+		material = SPIRIT
+		}
+		permanentEffects = {
+		FLYING 1
+		}
+		name = {
+			firstNameGen = "VAMPIRE"
+			name = "lord"
+			fullTitle = true
+		}
+		gender = IT
+	}
+	
+	"BONUS_LoW" inherit "BONUS_LORD_TEMPLATE" #Late-game melee monster, comes with substantial melee bonuses in immigration.
+	{
+		attr = {
+		DAMAGE 80
+		DEFENSE 80
+		SPELL_DAMAGE 10 #Just in case it's needed for heal-spirit.
+		}
+		body = append {
+		type = NonHumanoid LARGE
+		intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "fist_attack" } "axes" 50 {
+            attackType = HIT meleeAttackAttr = DAMAGE attackMsg = SWING } }}}
+			}
+		}
+		maxLevelIncrease = {
+			DAMAGE 12
+		}
+		spells = {
+		"heal spirit" #Intended to permit self-healing, since uber-units that can't be repaired aren't much fun.
+		}
+		name = {
+			name = "lord of war"
+			firstName = "Orlov" #CSeven has the DVD
+			fullTitle = true
+		}
+	}
+	"BONUS_LoM" inherit "BONUS_LORD_TEMPLATE" #Late-game magic monster.
+	{
+		attr = {
+		SPELL_DAMAGE 70
+		SPELL_SPEED 70
+		DEFENSE 70
+		}
+		aiType = RANGED
+		maxLevelIncrease = {
+			SPELL_DAMAGE 12
+		}
+		#Thinking the Lord of Magic maybe doesn't deserve to have a melee attack; its spells should suffice, no?
+		#body = {
+		#intrinsicAttacks = {
+        #TORSO {{{ Intrinsic { "fist_attack" } "arcane energies" 1 {
+        #    attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = SPELL } }}}
+		#	}
+		#}
+		spellSchools = {
+			"mage"
+			"spiritualist"
+			#"bonus_evocation" In case this unit, somehow, turns out underpowered...
+		}
+		spells = {
+			"BONUS_advanced mind bolt"
+			"BONUS_mana curse"
+			"BONUS_advanced rapid magic missile" #Expert seems overpowered, given that the LoM will also have Expert MM from Mage.
+			"BONUS_expert magic blast"
+			"BONUS_weapon dodge"
+			"BONUS_arrow shield"
+			"BONUS_summon shades"
+			"magic cancellation"
+		}
+		name = {
+			name = "lord of magic"
+			fullTitle = true
+		}
+	}
+	"BONUS_LoS" inherit "BONUS_LORD_TEMPLATE"
+	{
+		attr = {
+			DAMAGE 110 #Seems high, but the LoS is endgame, and does not train.
+			SPELL_DAMAGE 110 # Because bumping dummies and bookshelves is slow...and thus, NOT SPEED.
+			DEFENSE 120
+		}
+		body = append {
+		type = Humanoid LARGE
+		intrinsicAttacks = {
+			ARM  {{ itemType = { Intrinsic { "claws_attack" } "razor wind" 10 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+			HEAD {{ itemType = { Intrinsic { "bite_attack" }  "razor wind" 10 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+			TORSO {{ itemType = { Intrinsic { "fist_attack" } "razor wind" 10 { attackType = HIT attackMsg = SWING }} isExtraAttack = true }}
+			}
+		}
+		cantEquip = true
+		spells = {
+			"BONUS_air render"
+			"BONUS_martial strike"
+			"BONUS_substitute"
+			"BONUS_area haste"
+		}
+		name = {
+			name = "lord of speed"
+			fullTitle = true
+		}
+	}
+	"BONUS_LoR" inherit "BONUS_LORD_TEMPLATE"
+	{
+		attr = {
+			DAMAGE 50
+			DEFENSE 150 #LoR tanks for others, rather than kicking arse individually.
+		}
+		body = append {
+		type = NonHumanoid LARGE
+		intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "fist_attack" } "fist" 50 {
+            attackType = HIT meleeAttackAttr = DAMAGE attackMsg = SWING } }}}
+			}
+		}
+		spellSchools = {
+			"healer"
+			"spiritualist"
+		}
+		spells = {
+			"mass defense bonus"
+			"BONUS_area fire shield"
+			"BONUS_area ice shield"
+			"BONUS_area acid shield"
+			"BONUS_area defense bonus"
+			"BONUS_area melee resistance"
+			"BONUS_area arrow resistance"
+			"BONUS_area magic resistance"
+			"BONUS_adamantine golems" #Tanks for the team, and possibly provides useful adamantine!
+			"BONUS_stone to mud" #Lord of Resistance includes breaching hostile resistance.  ;-)
+		}
+		name = {
+			name = "lord of resistance"
+			fullTitle = true
+		}
+	}
+	
     "BONUS_GARGOYLE"
     {
       viewId = { "gargoyle" }
@@ -4940,12 +5159,12 @@ End
     {
       viewId = { "giant" }
       attr = {
-        DAMAGE 25
+        DAMAGE 30
         DEFENSE 30 
         SPELL_DAMAGE 10  
       }
       body = {
-        type = Humanoid LARGE
+        type = Humanoid HUGE #The cyclops is HUGE, so one should expect the Giant to be too!
         material = FLESH
         weight = 460
       }
@@ -4956,6 +5175,7 @@ End
       spells = {
         "directed blast"
         "shove"
+		"BONUS_break through" #Not as good a fighter as the Cyclops, but he's a living siege engine.
       }
       permanentEffects = {
         RANGED_RESISTANCE 1
@@ -4977,7 +5197,8 @@ End
       viewId = { "gorgon" }
       attr = {
         DAMAGE 32
-        DEFENSE 28 
+        DEFENSE 28
+		RANGED_DAMAGE 38
         SPELL_DAMAGE 38  
 	    LABORATORY 35
       }
@@ -4995,9 +5216,10 @@ End
       gender = FEMALE
       maxLevelIncrease = {
         DAMAGE 5
+		RANGED_DAMAGE 7
         SPELL_DAMAGE 5
       }
-	  spellSchools = { "bonus shaman" }
+	  spellSchools = { "bonus shaman" "archer" } #So they get bypass-allies at archery-training 7
       spells = {
         "healing"
         "panic"
@@ -5339,7 +5561,7 @@ End
 	  "group healing"
 	  "magic missile"
 	}
-	       permanentEffects = {
+	  permanentEffects = {
 		RIDER 1
       }
     name = {
@@ -5348,11 +5570,75 @@ End
     }
     hatedByEffect = HATE_GREENSKINS
     inventory = {
-      {  "ArchwoodStaff"}
+      {  "BONUS_SteelStaff"}
       {  "LeatherArmor"}
 	  {  "LeatherBoots"}
     }
   }
+  ##
+  #Goblin cavalry swarms
+  ##
+	"BONUS_GOBLIN_WARRIOR_CAV"
+	{
+    viewId = { "goblin_cavalry" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "talks about mounted fighting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "goblin raider"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+  "BONUS_GOBLIN_ARCHER_CAV"
+	{
+    viewId = { "goblin_archer_B" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 12
+      RANGED_DAMAGE 14
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "insists on needing more arrows!"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "goblin harrasser"
+      firstNameGen = "ORC"
+    }
+    spellSchools = { "archer" }
+	permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      RANGED_DAMAGE 7
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "Bow"}
+      { "LeatherArmor"}
+    }
+  }
+  
+  
   
     "BONUS_ORC_FEMALE" inherit "ORC"
     {
@@ -5423,7 +5709,7 @@ End
         "invisibility" "healing" "BONUS_wolves" "haste"
 	}
     maxLevelIncrease = {
-      DAMAGE 5
+      DAMAGE 7 #Should make them better converts
     }
     companions = {{
       count = 5
@@ -5566,8 +5852,8 @@ End
         }
       }
       maxLevelIncrease = {
-        DAMAGE 2
-        SPELL_DAMAGE 6
+        DAMAGE 7
+        SPELL_DAMAGE 7
       }
 	  spellSchools = { "mage" }
       spells = {
@@ -6429,7 +6715,7 @@ End
     }
     "BONUS_GOBLIN_ARCHER_PLAYER"
     {
-      viewId = { "goblin_archer" }
+      viewId = { "goblin_archer_B" }
       attr = {
         DAMAGE 22
         DEFENSE 23 
@@ -7936,7 +8222,59 @@ End
         pluralName = "combat incubi"
       }
 	}
-  "BONUS_COMBAT_SUCCUBUS"
+	"BONUS_OMNIBUS" inherit "SUCCUBUS"
+	{
+	viewId = { "omnibus" }
+	gender = IT
+	
+	chatReactionFriendly = "stretches and sways gloriously, hoping you enjoy the view."
+    chatReactionHostile = "\"Wouldn't you rather enjoy this lovely body? Let me show you...\""
+	petReaction = "giggles happily and moves your hand someplace more interesting."
+	
+	name = {
+      name = "omnibus"
+      pluralName = "omnibuses"
+    }
+	}
+	"BONUS_COMBAT_OMNIBUS"
+	{
+	attr = {
+        DAMAGE 36
+        DEFENSE 35
+        SPELL_DAMAGE 36 
+      }
+      viewId = { "cmbt_omnibus" }
+      body = {
+        type = Humanoid LARGE
+        material = SPIRIT
+        intrinsicAttacks = {
+          TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+              attackType = HIT
+              attackMsg = TOUCH
+              victimEffect = {1.0 Lasting PEACEFULNESS} } }}}
+        }
+        addBodyPart = {
+          WING 2
+        }
+      }
+	  
+	  chatReactionFriendly = "stretches and flexes gloriously, confident you're enjoying the view."
+      chatReactionHostile = "\"You'd be much happier with me than you are right now.\""
+	  petReaction = "smiles proudly, encouraging you to use both hands and take your time."
+	  
+	  maxLevelIncrease = { DAMAGE 10 SPELL_DAMAGE 10 }
+	  
+      permanentEffects = {
+        COPULATION_SKILL 1
+		RIDER 1
+      }
+      gender = IT
+      name = {
+        name = "combat omnibus"
+        pluralName = "combat omnibuses"
+      }
+	}
+	"BONUS_COMBAT_SUCCUBUS"
     {
       attr = { #Upgraded for later-game A37
         DAMAGE 36
@@ -8041,10 +8379,27 @@ End
 	{
 		viewId = {"dwarf_miner"}
 		attr = {
-		DAMAGE 15
-		DEFENSE 30
+		DAMAGE 12 #These folks are intended to stand up to lava golems, base DEF 36.
+		DEFENSE 35 #LG base dmg/fire-dmg 26/36. There is probably some adjustment for z-depth.
 		DIGGING 55
 		FURNACE 40
+		}
+		body = {
+			type = Humanoid MEDIUM
+			weight = 100
+			intrinsicAttacks = {
+				ARM {{
+				isExtraAttack = true
+				itemType = { Intrinsic { "fist_attack" } "pickaxe" 5 {
+				attackType = HIT
+				attackMsg = SWING } }}}
+			}
+		}
+		inventory = {
+			{ "LeatherArmor"}
+			{ type = "LeatherHelm" chance = 0.5 }
+			{ type = "LeatherBoots" chance = 0.5 }
+			{ type = "Torch" chance = 1.0 }
 		}
 		name = {
         name = "dwarf miner"
@@ -8057,7 +8412,7 @@ End
         NO_CARRY_LIMIT 1
 		REGENERATION 1 #As does regen.
       }
-	  chatReactionFriendly = "curses molten animating rock walls"
+	  chatReactionFriendly = "curses murderous animating molten-rock walls"
       chatReactionHostile = "\"Die!\""
 	}
 
@@ -8646,16 +9001,14 @@ End
         DEFENSE 30 
       }
       body = {
-        type = NonHumanoid HUGE
+        type = NonHumanoid MEDIUM #It's a sword, not a ghost wielding a sword
         bodyParts = {
-          BACK 2
-		  ARM 1
 		  TORSO 1
 		}				
         material = IRON
         weight = 10
         intrinsicAttacks = {
-          ARM {{{ Intrinsic { "sword" } "blade" 10 { attackType = HIT attackMsg = THRUST } }}}
+          TORSO {{{ Intrinsic { "sword" } "blade" 10 { attackType = HIT attackMsg = THRUST } }}}
         }        
       }
       permanentEffects = {
@@ -8677,16 +9030,15 @@ End
         DEFENSE 40 
       }
       body = {
-        type = NonHumanoid HUGE
+        type = NonHumanoid LARGE
         bodyParts = {
           BACK 2
-		  ARM 1
 		  TORSO 1
 		}				
         material = IRON
         weight = 10
         intrinsicAttacks = {
-          ARM {{{ Intrinsic { "chain_armor" } "metal" 10 { attackType = HIT attackMsg = SWING } }}}
+          TORSO {{{ Intrinsic { "chain_armor" } "metal" 10 { attackType = HIT attackMsg = SWING } }}}
         }        
       }
       permanentEffects = {
@@ -8700,7 +9052,7 @@ End
       deathDescription = "vanquished"
       cantEquip = true
     }
-    "NECROMANCER" modify
+    "BONUS_NECROMANCER_LT" #HEY. 'Necromancer' is the Keeper unit for Necro Keepers!
     {
       viewId = { "necromancer" }
       attr = {
@@ -8713,11 +9065,11 @@ End
         material = UNDEAD_FLESH
       }
       name = {
-        name = "necromancer"
+        name = "Necromancer" 
       }
       maxLevelIncrease = {
         DAMAGE 3
-        SPELL_DAMAGE 12
+        SPELL_DAMAGE 10 #strictly worse than the player-necro
       }
       permanentEffects = {
         RANGED_RESISTANCE 1
@@ -8977,7 +9329,7 @@ End
 "BONUS_DWARF_MILITIA_TRIBE" inherit "BONUS_DWARF_MILITIA"
 {
       inventory = {
-        { type =  "Sword" prefixChance = 0.05 }
+        { type =  "BONUS_SteelSword" prefixChance = 0.05 }
         { countMin = 1 countMax = 2 type = Potion Heal {FLESH} chance = 0.2 }
         { type =  "LeatherArmor" prefixChance = 0.05 }
         {  "LeatherBoots" }
@@ -8999,7 +9351,7 @@ End
         { type =  "LeatherArmor" prefixChance = 0.1 }
         {  "LeatherBoots" }
         {  "LeatherHelm" }
-        {  "WoodenShield" }
+        {  "BONUS_SteelShield" }
         { type =  "Torch" chance = 0.2 }
         { countMin = 6 countMax = 12 type =  "GoldPiece" chance = 0.6 }
         { type =  "BONUS_DwarvenBeer" chance = 0.15 }
@@ -9012,12 +9364,12 @@ End
         DEFENSE 30 
 	  }
       inventory = {
-        { type =  "WarHammer" prefixChance = 0.2 }
+        { type =  "BONUS_SteelWarHammer" prefixChance = 0.2 }
         { countMin = 1 countMax = 3 type = Potion Heal {FLESH} chance = 0.5 }
-        { type =  "ChainArmor" prefixChance = 0.1 }
-        {  "IronBoots" }
-        {  "IronHelm" }
-        {  "IronGloves" }
+        { type =  "BONUS_SteelArmor" prefixChance = 0.1 }
+        {  "BONUS_SteelBoots" }
+        {  "BONUS_SteelHelm" }
+        {  "BONUS_SteelGloves" }
         { type =  "Torch" chance = 0.2 }
         { countMin = 6 countMax = 12 type =  "GoldPiece" chance = 0.6 }
         { type =  "BONUS_DwarvenBeer" chance = 0.2 }
@@ -9213,7 +9565,6 @@ End
       permanentEffects = {
         HATE_GREENSKINS 1
 		RIDER 1
-		INSANITY 1
       }
       body = {
         type = Humanoid LARGE
@@ -9266,7 +9617,6 @@ End
         HATE_HUMANS 1
 		DARKNESS_SOURCE 1
 		RIDER 1
-		INSANITY 1
       }
       body = {
 	    material = UNDEAD_FLESH
@@ -9674,9 +10024,9 @@ End
     inventory = {
       { type =  "ElvenSword" prefixChance = 0.1}
       { type =  "BONUS_InfArmor" prefixChance = 0.05}
-	  { type =  "IronHelm" prefixChance = 0.05}
+	  { type =  "BONUS_SteelHelm" prefixChance = 0.05}
 	  { type =  "LeatherBoots" prefixChance = 0.05}
-	  {  "IronShield" }
+	  {  "BONUS_SteelShield" }
       {  "GoldPiece" 12 16 }
 	  { Potion Lasting SPEED 1 2 0.6}
       { Potion Lasting 50 MELEE_RESISTANCE 1 3 0.1}
@@ -9753,7 +10103,7 @@ End
     }
     hatedByEffect = HATE_ELVES
     inventory = {
-
+	  { type =  "AdoxiumStaff" prefixChance = 0.5 }
       { type =  "BONUS_InfArmor" prefixChance = 1 }
 	  { type =  "AdaBoots" prefixChance = 1 }
       { type =  "ElvenBow" prefixChance = 1 }
@@ -9890,7 +10240,7 @@ End
 
 ###
 #Allow several creatures to take basic melee training, mostly so they can defend a little better. A37 defaults to combat XP helping melee performance unless other categories are identified, so it's not critical for that purpose anymore.  Yay!
-"WITCHMAN" modify append { maxLevelIncrease = { DAMAGE 5 } }
+"WITCHMAN" modify append { maxLevelIncrease = { DAMAGE 7 } }
 #Witchers seemed pretty useless last I converted one. Hoping this helps.
 "KOBOLD" modify append { maxLevelIncrease = { DAMAGE 3 } }
 "GOBLIN_ARTIFICER" modify append { maxLevelIncrease = { DAMAGE 3 } }
@@ -9903,28 +10253,28 @@ End
 #Children may be grounds for complaint...but I'm pretty sure the matrons would defend them, since they gear up for combat
 
 #Combat steeds should be able to benefit from *some* training.
-"WARHORSE" modify append {maxLevelIncrease = { DAMAGE 3 } }
+#"WARHORSE" modify append {maxLevelIncrease = { DAMAGE 3 } }
 "BONUS_LION" modify append {maxLevelIncrease = { DAMAGE 1 } }
 "BONUS_LIONESS" modify append {	maxLevelIncrease = { DAMAGE 1 } }
 
 #Dragons have their own names and language, so they're clearly intelligent, so they should be able to train. Balancing is tricky, though.
-"GREEN_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
-"RED_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
-"BLACK_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
-"WHITE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
-"YELLOW_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
+"GREEN_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 7} }
+"RED_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 7} }
+"BLACK_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 7} }
+"WHITE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 7} }
+"YELLOW_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 7} }
 
 #Since zombies & skeletons can train in vanilla, I guess the dragons can as well.
-"BONUS_ZOMBIE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
-"BONE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 3} }
+"BONUS_ZOMBIE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 7} }
+"BONE_DRAGON" modify append {	 maxLevelIncrease = {DAMAGE 7} }
 
 #Ancient dragons have seen it all already, or at least they'd think so.
-"BONUS_ANCIENT_GREEN_DRAGON" modify append {maxLevelIncrease = {DAMAGE 1} }
-"BONUS_ANCIENT_RED_DRAGON" modify append {maxLevelIncrease = {DAMAGE 1} }
+"BONUS_ANCIENT_GREEN_DRAGON" modify append {maxLevelIncrease = {DAMAGE 3} }
+"BONUS_ANCIENT_RED_DRAGON" modify append {maxLevelIncrease = {DAMAGE 3} }
 
 #Young dragons, however, can learn a lot!
-"BONUS_YOUNG_GREEN_DRAGON" modify append {maxLevelIncrease = {DAMAGE 12} }
-"BONUS_YOUNG_RED_DRAGON" modify append {maxLevelIncrease = {DAMAGE 12} }
+"BONUS_YOUNG_GREEN_DRAGON" modify append {maxLevelIncrease = {DAMAGE 14} }
+"BONUS_YOUNG_RED_DRAGON" modify append {maxLevelIncrease = {DAMAGE 14} }
 ####
 
 #Making absolutely sure farming creatures can farm; didn't cause immediately-noticeable errors on my end
@@ -9934,10 +10284,10 @@ End
 
 ##
 #Assigning forge training (allows crafters who gain combat XP to translate that into better performance at magma/myst forges)
-"GOBLIN_ARTIFICER" modify { maxLevelIncrease = append { FORGE 5 } }
-"ARTISAN" modify { maxLevelIncrease = append { FORGE 10 } } #Humans are larger and stronger: Lawful keepers, eventually, will get better smiths (unless someone changes this, which is fine). Might be a while though.
-"DWARF_BLACKSMITH" modify { maxLevelIncrease = append { FORGE 10 }}
-"CYCLOPS_PLAYER" modify { maxLevelIncrease = append { FORGE 10 }}
+#No longer necessary in 1.0, combat XP boosts all creature stats, yay!
+#"GOBLIN_ARTIFICER" modify { maxLevelIncrease = append { FORGE 5 } }
+#"ARTISAN" modify { maxLevelIncrease = append { FORGE 10 } } #Humans are larger and stronger: Lawful keepers, eventually, will get better smiths (unless someone changes this, which is fine). Might be a while though.
+#"CYCLOPS_PLAYER" modify { maxLevelIncrease = append { FORGE 10 }}
 
 ############################
 # Haloween
@@ -9998,7 +10348,7 @@ End
     viewIdUpgrades = { { "arcane_keeper_f2" } { "arcane_keeper_f3" } { "arcane_keeper_f4" }}
   }
 	
-"GOODWIZ_KEEPER_MAGE_ARCANE_VILLIAN"
+"GOODWIZ_KEEPER_MAGE_ARCANE_VILLAIN"
   {
     viewId = { "arcane_keeper_4" }
 	genderAlternatives = {
@@ -10008,6 +10358,7 @@ End
       DAMAGE 32
       DEFENSE 32
 	  SPELL_DAMAGE 32
+	  LABORATORY 10 #Remember! someone may want to capture or convert!
     }
     body = {
       type = Humanoid LARGE
@@ -10019,10 +10370,11 @@ End
     chatReactionFriendly = "curses all dungeons"
     chatReactionHostile = "\"Die!\""
     maxLevelIncrease = {
-      SPELL_DAMAGE 3
+      SPELL_DAMAGE 11 #Same as the succubus-garden wizard
     }
+	spellSchools = { "mage" }
     name = {
-      name = "wizard"
+      name = "Noble Wizard" #Equivalent to a Duke, should have some title
       firstNameGen = "FIRST_MALE"
       fullTitle = true
     }
@@ -10058,7 +10410,7 @@ End
       RIDER 1
     }
     name = {
-      name = "GOODWIZ_ARCANIST"
+      name = "arcanist"
       firstNameGen = "FIRST_MALE"
     }
     maxLevelIncrease = {
@@ -10080,7 +10432,7 @@ End
       DEFENSE 30
     }
     inventory = {
-      { "ArchwoodStaff" }
+      { "BONUS_SteelStaff" }
       { "LeatherArmor"}
     }
   }
@@ -10096,7 +10448,7 @@ End
       type = Humanoid LARGE
     }
     chatReactionFriendly = "curses all dungeons"
-    chatReactionHostile = "\"Heeelp!\""
+    chatReactionHostile = "\"Die, scum!\""
     permanentEffects = {
       RIDER 1
     }
@@ -10105,7 +10457,7 @@ End
       RANGED_DAMAGE 3
     }
     name = {
-      name = "GOODWIZ_FOOTMAN"
+      name = "footman"
 	  firstNameGen = "FIRST_MALE"
     }
     hatedByEffect = HATE_HUMANS
@@ -10223,7 +10575,7 @@ End
     chatReactionFriendly = "talks about sword fighting"
     chatReactionHostile = "\"Die!\""
     name = {
-      name = "goblin warrior"
+      name = "flying monkey"
       firstNameGen = "ORC"
     }
     permanentEffects = {
@@ -11080,7 +11432,6 @@ End
 	  SPELL_DAMAGE 4
     }
 	permanentEffects = {
-      
 	  DISTILLATION_SKILL 1
     }
 	spells = { "advanced healing" }
@@ -11103,7 +11454,6 @@ End
 	  SPELL_DAMAGE 4
     }
 	permanentEffects = {
-      
 	  DISTILLATION_SKILL 1
     }
 	spells = { "advanced healing" }
@@ -11129,7 +11479,7 @@ End
             attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = SPELL } }}}
       }
     }
-	chatReactionFriendly = "laughs at suffeting"
+	chatReactionFriendly = "laughs at suffering"
     chatReactionHostile = "\"Die!\""
     permanentEffects = { FIRE_IMMUNITY 1 } 
     name = {
@@ -11287,7 +11637,7 @@ End
 	  SPELL_DAMAGE 4
     }
 	spells = { "advanced healing" }
-	chatReactionFriendly = "\"We wont let you free it!\""
+	chatReactionFriendly = "\"We won't let you free it!\""
     chatReactionHostile = "\"DIE!\""
     name = {
       name = "monk"
@@ -11586,7 +11936,8 @@ End
     }
   }
   
-############Bandits##################   
+############Bandits##################
+#These are the Forest/Mountain Bandits.
 
 "BONUS_BANDIT_RECRUIT"
   {
@@ -11601,14 +11952,15 @@ End
     chatReactionFriendly = "curses all law enforcement"
     chatReactionHostile = "\"Die!\""
     maxLevelIncrease = {
-      DAMAGE 2
+      DAMAGE 3
     }
     name = {
-      name = "bandit"
+      name = "rogue"
 	  firstNameGen = "FIRST_MALE"
     }
 	permanentEffects = {
       RIDER 1
+	  EVOLVES 1
     }
     deathEffect = Filter Not Flag "key_dropped" {
       SetFlag "key_dropped" true
@@ -11623,7 +11975,7 @@ End
       { type = "Torch" chance = 0.3 }
     }
 	afterKilledSomeone = {
-	Chance 0.1 {
+	Chance 0.3 { #Make the evolution a little more likely
       CreatureMessage { "are more experienced" "is more experienced"}
 	  ChooseRandom {
             Polymorph "BONUS_BANDIT" none
@@ -11662,6 +12014,7 @@ End
     }
 	permanentEffects = {
       RIDER 1
+	  DISARM_TRAPS_SKILL 1
     }
 	spellSchools = { "fighter" }
     hatedByEffect = HATE_HUMANS
@@ -11765,11 +12118,12 @@ End
       DAMAGE 7
     }
     name = {
-      name = "bandit"
+      name = "bandit chief"
 	  firstNameGen = "FIRST_MALE"
     }
 	permanentEffects = {
       RIDER 1
+	  DISARM_TRAPS_SKILL 1
     }
     deathEffect = Filter Not Flag "key_dropped" {
       SetFlag "key_dropped" true
@@ -11787,7 +12141,7 @@ End
   }
     
 ############Bandit Thieves################## 
-  
+#These are the Desert Thieves.
 "BONUS_THIEF_RECRUIT"
   {
     viewId = { "BONUS_thief_recruit" }
@@ -11804,11 +12158,12 @@ End
       DAMAGE 2
     }
     name = {
-      name = "bandit"
+      name = "young thief"
 	  firstNameGen = "FIRST_MALE"
     }
 	permanentEffects = {
       RIDER 1
+	  EVOLVES 1
     }
     deathEffect = Filter Not Flag "key_dropped" {
       SetFlag "key_dropped" true
@@ -11823,7 +12178,7 @@ End
       { type = "Torch" chance = 0.3 }
     }
 	afterKilledSomeone = {
-	Chance 0.1 {
+	Chance 0.3 {
       CreatureMessage { "are more experienced" "is more experienced"}
 	  ChooseRandom {
             Polymorph "BONUS_THIEF" none
@@ -11858,6 +12213,7 @@ End
     }
 	permanentEffects = {
       RIDER 1
+	  DISARM_TRAPS_SKILL 1
     }
 	spellSchools = { "fighter" }
     hatedByEffect = HATE_HUMANS
@@ -11885,11 +12241,12 @@ End
       DAMAGE 7
     }
     name = {
-      name = "thief"
+      name = "chief thief" #Never played a Thief in QFG, but did the reading.
 	  firstNameGen = "FIRST_MALE"
     }
 	permanentEffects = {
       RIDER 1
+	  DISARM_TRAPS_SKILL 1
     }
 	spells = { "charge" }
 	spellSchools = { "fighter" }
@@ -11955,7 +12312,7 @@ End
       DAMAGE 7
     }
     name = {
-      name = "thief"
+      name = "thief slicer"
 	  firstNameGen = "FIRST_MALE"
     }
 	permanentEffects = {
@@ -11974,7 +12331,8 @@ End
     }
   }
    
-############Raiders##################   
+############Raiders##################
+#These are the Snow Raiders.
 
 "BONUS_RAIDER_RECRUIT"
   {
@@ -11992,11 +12350,12 @@ End
       DAMAGE 2
     }
     name = {
-      name = "raider"
+      name = "new raider"
 	  firstNameGen = "FIRST_MALE"
     }
 	permanentEffects = {
       RIDER 1
+	  EVOLVES 1
     }
     hatedByEffect = HATE_HUMANS
     inventory = {
@@ -12006,7 +12365,7 @@ End
       { type = "Torch" chance = 0.3 }
     }
 	afterKilledSomeone = {
-	Chance 0.1 {
+	Chance 0.3 {
       CreatureMessage { "are more experienced" "is more experienced"}
 	  ChooseRandom {
             Polymorph "BONUS_RAIDER" none
@@ -12092,19 +12451,7 @@ End
       { type = "LeatherArmor" chance = 0.5 }
       { type = "Torch" chance = 0.3 }
     }
-	afterKilledSomeone = {
-	Chance 0.1 {
-      CreatureMessage { "are more experienced" "is more experienced"}
-	  ChooseRandom {
-            Polymorph "BONUS_RAIDER" none
-			Polymorph "BONUS_RAIDER" none
-			Polymorph "BONUS_RAIDER" none
-			Polymorph "BONUS_BANDIT_ARCHER" none
-			Polymorph "BONUS_BANDIT_ARCHER" none
-			Polymorph "BONUS_RAIDER_WENDIGO" none
-		 }
-		}
-	   }
+	#Evolution struck as worth more than a generic melee unit or archer
   }
   
 "BONUS_RAIDER_WENDIGO"
@@ -12140,7 +12487,7 @@ End
     maxLevelIncrease = {
       DAMAGE 12
     }
-	spells = { "wendigo equipment" "jump" }
+	spells = { "wendigo equipment" "jump" } #Wendigo equip either isn't firing or isn't locking out gear.  Not a priority IMO.
     name = {
       name = "wendigo"
       firstNameGen = "FIRST_MALE"
@@ -12193,7 +12540,7 @@ End
       DAMAGE 7
     }
     name = {
-      name = "raider"
+      name = "raider chief"
 	  firstNameGen = "FIRST_MALE"
     }
 	permanentEffects = {
@@ -12232,7 +12579,7 @@ End
     }
     body = {
       type = Humanoid MEDIUM
-      droppedPartUpgrade = IncreaseAttr DEFENSE 2
+      droppedPartUpgrade = {IncreaseAttr DEFENSE 2}
     }
     name = {
       name = "witch"
@@ -12703,6 +13050,24 @@ End
   ###
   #Less-evil keepers
 
+"BONUS_ENT_RECRUIT" inherit "ENT"
+{
+	attr = {
+      DAMAGE 40
+      DEFENSE 35
+    }
+	spells = {
+		"BONUS_stone to mud"
+		"BONUS_wolves"
+		"BONUS_boar"
+	}
+	deathEffect = DropItems { "Archwood" } 1 #YOU'RE WELCOME. Ideally I'd include a message that they'll continue to serve in death.
+}
+
+"HORSE_CAN_TRAIN" modify append {
+	permanentEffects = append { EVOLVES 1 }
+}
+
 "SST_WK_LIGHT_WARHORSE" inherit "WARHORSE"
 	{
 	viewId = { "saddled_horse" }
@@ -12715,6 +13080,11 @@ End
 	}
 	maxLevelIncrease = {
 	DAMAGE 7
+	}
+	permanentEffects = {
+		STEED 1
+		SWIMMING_SKILL 1
+		EVOLVES 1
 	}
 	name = {
 		name = "light warhorse"
@@ -12749,6 +13119,7 @@ End
 		SPEED 1
 		STEED 1
 		SWIMMING_SKILL 1
+		EVOLVES 1
 		}
 		name = {
 		name = "hunting horse"
@@ -12807,11 +13178,19 @@ End
 		DAMAGE 7
 		}
 		
+		permanentEffects = {
+			STEED 1
+			SWIMMING_SKILL 1
+			EVOLVES 1
+		}
+		
 		afterKilledSomeone ={
 		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
 		ApplyToSteed Filter Kills 3 Polymorph "SST_WK_CHARGER" none
 	}
-	
+	name = {
+		name = "heavy warhorse"
+		}
 	noChase = true
 	chatReactionFriendly = "snuffles contentedly"
     chatReactionHostile = "looks like it's about to kick you."
@@ -12842,6 +13221,7 @@ End
 	permanentEffects = {
       STEED 1
       SWIMMING_SKILL 1
+	  EVOLVES 1
     }
 	
 	noChase = true
@@ -12880,6 +13260,7 @@ End
 	permanentEffects = {
       STEED 1
 	  RANGED_RESISTANCE 1
+	  SWIMMING_SKILL 1 #Just in case the horse evolves while in water.
     }
 	
 	spells = { "warhorse_haste" }
@@ -12911,6 +13292,7 @@ End
 	permanentEffects = {
      	STEED 1
 		SWIMMING_SKILL 1
+		EVOLVES 1
     }
 	maxLevelIncrease = {
 		DAMAGE 7
@@ -12946,6 +13328,7 @@ End
 	permanentEffects = {
       	STEED 1
 		SWIMMING_SKILL 1
+		EVOLVES 1
     }
 	maxLevelIncrease = {
 		DAMAGE 12
@@ -13023,6 +13406,7 @@ End
 	  NIGHT_VISION 1
       STEED 1
 	  RANGED_RESISTANCE 1
+	  EVOLVES 1
     }
 	
 	noChase = true #Vamphorses don't pursue: they're aware of the sun and the need to discipline their movement.
@@ -13054,7 +13438,7 @@ End
 	  intrinsicAttacks = {
         HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 5 { attackType = BITE attackMsg = BITE attackerEffect = { RegrowBodyPart 1 } victimEffect = { 0.5 Lasting 50 BLEEDING  }} } isExtraAttack = true }}
 		LEG {{ itemType = { Intrinsic { "leg_attack" } "hoof" 8 { attackType = CUT attackMsg = KICK attackerEffect = { RegrowBodyPart 1 } victimEffect = { 0.5 Lasting 50 BLEEDING  }} } isExtraAttack = true }}
-    }
+      }
 	}
 	#Yes, you read that right.  High-level vamphorses drain blood with their hooves too. I trust that's satisfactory?
 	
@@ -13139,6 +13523,7 @@ End
       	NIGHT_VISION 1
       	STEED 1
 		SWIMMING_SKILL 1
+		EVOLVES 1
     	}
 	chatReactionFriendly = "emits a barking laugh."
     chatReactionHostile = "eyes your throat and growls."
@@ -13176,6 +13561,7 @@ viewId = { "war_warg" } #Swishos' surplus sprites for the win! Thanks.
       	NIGHT_VISION 1
       	STEED 1
 		SWIMMING_SKILL 1
+		EVOLVES 1
     	}
 	
 	chatReactionFriendly = "barks a confident laugh."
@@ -13190,7 +13576,7 @@ viewId = { "war_warg" } #Swishos' surplus sprites for the win! Thanks.
     }
 	afterKilledSomeone ={
 		ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
-		ApplyToSteed Filter Kills 6 { ApplyToSteed Polymorph "SST_FK_WAR_WARG" none}
+		ApplyToSteed Filter Kills 6 { ApplyToSteed Polymorph "SST_FK_VET_WAR_WARG" none}
 	}
 }
 
@@ -13240,4 +13626,326 @@ viewId = { "war_warg_saddle2" } #Swishos' surplus sprites for the win! Thanks.
  
  #Yetis and Minotaurs seem like they're already solid combat mounts. If there's a good argument for buffing them, let me know.
 
+ ###
+ #Canine Heroes
+ #Specialized doggos for Lawful Keepers!
+ ###
+ "BONUS_HUNTING_DOG"
+  {
+    viewId = { "BONUS_hunting_dog" }
+    attr = {
+      DAMAGE 27
+      DEFENSE 12
+    }
+    body = {
+      type = FourLegged MEDIUM
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 6 { attackType = BITE attackMsg = BITE } }}}
+      }
+      weight = 25
+      deathSound = "DOG_DEATH"
+    }
+	maxLevelIncrease = {
+		DAMAGE 7 #These dogs can be used in combat, but are really more for Offscreen hunting. (Pay a pile for the pack, gain a popcap point.)
+	}
+	permanentEffects = {
+		TELEPATHY 1 #Best-fit for scent.
+		SPEED 1
+		SWIMMING_SKILL 1
+		SWARMER 1
+    	}
+    aiType = MELEE
+    name = {
+      name = "hunting dog"
+      groupName = "pack"
+      firstNameGen = "DOG"
+    }
+    chatReactionFriendly = "listens attentively."
+    chatReactionHostile = "points at you and growls."
+	petReaction = "hops up and licks your face!" #Hunting dogs are friendly! /CK2
+  }
+  
+  "BONUS_GUARD_DOG"
+  {
+    viewId = { "BONUS_guard_dog" }
+    attr = {
+      DAMAGE 27
+      DEFENSE 27
+    }
+    body = {
+      type = FourLegged MEDIUM
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 6 { attackType = BITE attackMsg = BITE } }}}
+      }
+      weight = 25
+      deathSound = "DOG_DEATH"
+    }
+	maxLevelIncrease = {
+		DAMAGE 12 #Total attack 45 after training.  Difficulty curve is a pain, innit?
+	}
+	permanentEffects = {
+		TELEPATHY 1 #Best-fit for scent.  Invisible folks and blinding black dragons can't sneak past these good doggos!
+		NIGHT_VISION 1 #Possibly OP but wolves can see in the dark, so will give the guard dogs a shot.
+		SWIMMING_SKILL 1
+		SWARMER 1
+    	}
+	noChase = true #Guard dogs stay at their post.
+    aiType = MELEE
+    name = {
+      name = "guard dog"
+      groupName = "pack"
+      firstNameGen = "DOG"
+    }
+    chatReactionFriendly = "listens attentively."
+    chatReactionHostile = "growls menacingly."
+	petReaction = "is not interested in pets. The wagging tail is purely a reflex, nothing more."
+  }
+  
+  "BONUS_RESCUE_DOG" #Send these folks in when you need extra healers.
+  {
+    viewId = { "BONUS_rescue_dog" }
+    attr = {
+      DAMAGE 18 #These doggos aren't trained to attack. But they will protect their rescuees as best they can.
+      DEFENSE 30
+	  SPELL_SPEED 20
+    }
+    body = {
+      type = FourLegged MEDIUM
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" }  "fangs" 4 { attackType = BITE attackMsg = BITE } }}}
+      }
+      weight = 30
+      deathSound = "DOG_DEATH"
+    }
+	maxLevelIncrease = {
+		DAMAGE 10
+	}
+	spells = { "BONUS_canine healing flask" "BONUS_canine antidote flask" "BONUS_canine unblinding flask" }
+	permanentEffects = { #Armored harness & keg of fixer-uppers mean these doggos are NOT fast or pack hunters.
+		TELEPATHY 1 #Scent, helps in case of dragon attack.
+		SWIMMING_SKILL 1
+		SLEEP_RESISTANT 1
+		POISON_RESISTANT 1
+		RANGED_RESISTANCE 1
+		MAGIC_RESISTANCE 1
+    	}
+	noChase = true #Rescue dogs stay with their rescuee.
+    aiType = MELEE
+    name = {
+      name = "rescue dog"
+      groupName = "pack"
+      firstNameGen = "DOG"
+    }
+    chatReactionFriendly = "listens attentively."
+    chatReactionHostile = "barks and blocks the way."
+	petReaction = "appreciates your help with the heavy harness, wagging happily."
+  }
+ 
+  ###
+  #NB Keeper Creatures
+  ###
+  "KEEPER_MAGE_NB"
+  {
+    # Definitions in tiles.txt
+    viewId = { "keeper1NB" }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+	##
+	# Add the Rgb string after each viewId if you want to pick a color, forex BonusMod Hard Mode Purple: viewId = { "keeper1NB" Rgb 106 106 255 106 }
+	# For the record: Rgb values are Red Grn Blu Alpha, in that order.  Not always obvious!
+	# Rgb 67 212 220 255 is the Bright Blue from VanillaRetiles. Little too bright for full-body though.
+	# Rgb 42 124 162 255 is the Dark Blue, works OK as a full-body for Good-Aligned.
+	# Rgb 231 231 231 255 is Vanilla Retiles Generic Shiny Armor Grey.
+	# Rgb 54 54 54 255 is Necromancer Faded Black.
+	##
+    viewIdUpgrades = { { "keeper2NB" } { "keeper3NB" } { "keeper4NB" } }
+    name = {
+      name = "wizard"
+      firstNameGen = "DEITY"
+      fullTitle = true
+    }
+	gender = IT
+    body = {
+      # One of Humanoid, HumanoidLike, Bird, FourLegged and NonHumanoid
+      # size is one of SMALL, MEDIUM, LARGE and HUGE, influences stuff like pushing boulders and being pushed
+      type = Humanoid LARGE
+    }
+    # attr_type.h
+    attr = {
+      DAMAGE 12
+      DEFENSE 12
+      SPELL_DAMAGE 20
+      LABORATORY 10
+    }
+    # lasting_effect.h
+    permanentEffects = {
+      RIDER 1
+    }
+    # attr_type.h
+    maxLevelIncrease = {
+      DAMAGE 7
+      SPELL_DAMAGE 12
+    }
+    aiType = RANGED
+    spellSchools = { "mage" }
+    spells = { "healing" }
+    inventory = {
+      # Here comes a list of items. The format of each element is defined in creature_inventory.h
+      { "Robe"}
+      { "WoodenStaff" }
+      # Take a look a CYCLOPS for a more detailed example.
+    }
+  }
+"ADVENTURER_MAGE_NB" inherit "KEEPER_MAGE_NB"
+  {
+    promotionGroup = "spell_adventurer"
+    promotionCost = 1
+    maxLevelIncrease = {
+      SPELL_DAMAGE 50
+    }
+    inventory = AdventurerEquipment("WoodenStaff")
+  }
+"KEEPER_KNIGHT_NB"
+  {
+    viewId = { "keeper_knight_NB1" }
+	viewIdUpgrades = { { "keeper_knight_NB2" } { "keeper_knight_NB3" } { "keeper_knight_NB4" } }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+      MULTI_WEAPON 40
+      FURNACE 15
+      FORGE 10
+    }
+	gender = IT
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "knight"
+      firstNameGen = "DEITY"
+      fullTitle = true
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+      SPELL_DAMAGE 3
+    }
+    spellSchools = { "fighter" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+"ADVENTURER_KNIGHT_NB" inherit "KEEPER_KNIGHT_NB"
+  {
+    promotionGroup = "melee_adventurer"
+    promotionCost = 1
+    maxLevelIncrease = {
+      DAMAGE 50
+    }
+    inventory = AdventurerEquipment("Sword")
+  }
+"KEEPER_KNIGHT_WHITE_NB"
+  {
+	# For the record: Rgb values are Red Grn Blu Alpha, in that order.  Not always obvious!
+	# Rgb 67 212 220 255 is the Bright Blue from VanillaRetiles. Little too bright for full-body though.
+	# Rgb 42 124 162 255 is the Dark Blue, works OK as a full-body for Good-Aligned.
+	# Rgb 231 231 231 255 is Vanilla Retiles Generic Shiny Armor Grey.
+	# Rgb 54 54 54 255 is Necromancer Faded Black.
+    viewId = { "keeper_knight_NB1" Rgb 42 124 162 255 }
+	viewIdUpgrades = { { "keeper_knight_NB2" Rgb 42 124 162 255 } { "keeper_knight_NB3" Rgb 42 124 162 255 } { "keeper_knight_NB4" Rgb 42 124 162 255 } }
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+      MULTI_WEAPON 40
+      FURNACE 5
+      FORGE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+	gender = IT
+    name = {
+      name = "knight"
+      firstNameGen = "DEITY"
+      fullTitle = true
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+      SPELL_DAMAGE 1
+    }
+    hatedByEffect = HATE_HUMANS
+    spellSchools = { "fighter" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+  
+  
+"ADVENTURER_KNIGHT_WHITE_NB" inherit "KEEPER_KNIGHT_WHITE_NB"
+  {
+    promotionGroup = "melee_adventurer"
+    promotionCost = 1
+    maxLevelIncrease = {
+      DAMAGE 50
+    }
+    inventory = AdventurerEquipment("Sword")
+  }
+  
+"GOODWIZ_KEEPER_MAGE_ARCANE_NB" inherit "GOODWIZ_KEEPER_MAGE_ARCANE"
+  {
+	viewId = { "keeper1NB" Rgb 42 124 162 255 }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+    viewIdUpgrades = { { "keeper2NB" Rgb 42 124 162 255 } { "keeper3NB" Rgb 42 124 162 255 } { "keeper4NB" Rgb 42 124 162 255 } }
+	gender = IT
+    name = {
+      name = "wizard"
+      firstNameGen = "DEITY"
+      fullTitle = true
+    }
+  }
+  
+  "NECROMANCER_NB" inherit "KEEPER_MAGE"
+  {
+    viewId = { "keeper1NB" Rgb 54 54 54 255 }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+    viewIdUpgrades = { { "keeper2NB" Rgb 54 54 54 255 } { "necro3NB" Rgb 54 54 54 255} { "necro4NB" Rgb 54 54 54 255 } }
+	gender = IT
+    name = {
+      name = "necromancer"
+      firstNameGen = "DEITY"
+      fullTitle = true
+    }
+    spellSchools = { "zombie mage" }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 12
+    }
+    attr = append {
+      MORGUE 50
+      LABORATORY 50
+    }
+    permanentEffects = append {
+      SUNLIGHT_VULNERABLE 1
+    }
+  }
+  
+  "GK_KEEPER_GRAVE_KNIGHT_NB" inherit "GK_KEEPER_GRAVE_KNIGHT" {
+	viewId = { "keeper_knight_NB1" Rgb 74 74 74 255 }
+	viewIdUpgrades = { { "keeper_knight_NB2" Rgb 74 74 74 255 } { "keeper_graveknight_NB3" Rgb 74 74 74 255 } { "keeper_graveknight_NB4" Rgb 74 74 74 255 } }
+	gender = IT
+	name = {
+      name = "grave knight"
+      firstNameGen = "DEITY"
+      fullTitle = true
+    }
+  }
   

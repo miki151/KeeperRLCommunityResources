@@ -130,14 +130,6 @@ Def WorldMapNew11() {
   Filter(On("set_new22"), {Set("BONUS_GRASSLAND_ABBEY") Set("map_small_feature15")})}
 End
 
-Def WorldMapNew12() {
-  NoiseMap(0.01, {
-    (0.01, 0.05, Filter(On("set_mountains"), Set("set_new23")))
-  })
-  
-  Filter(On("set_new23"), {Set("BONUS_HILLS") Set("map_small_feature15")})}
-End
-
 "world_map" modify {
   NoiseMap(0.65, {
     (0.8, 1.0, Reset("set_water"))
@@ -173,7 +165,6 @@ End
   WorldMapNew9()
   WorldMapNew10()
   WorldMapNew11()
-  WorldMapNew12()
 }
 
 "world_map_test" modify {
@@ -209,7 +200,6 @@ End
   WorldMapNew9()
   WorldMapNew10()
   WorldMapNew11()
-  WorldMapNew12()
 }
 
 Def HoleToGround() {

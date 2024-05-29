@@ -116,14 +116,14 @@ Def HELM_PREFIXES()
       1 LastingEffect BAD_BREATH
       #1 LastingEffect SUNLIGHT_VULNERABLE #Did someone prank you with a magnifying-lens hat?
       1 LastingEffect MAGIC_CANCELLATION
-      1 LastingEffect INSANITY
+      #1 LastingEffect INSANITY #Nope.
       1 LastingEffect PEACEFULNESS
       1 LastingEffect LIGHT_SOURCE
       #1 LastingEffect SLEEP #Effectively a kill: you can't order it removed, or remove it, without killing the wearer.  No.
       1 LastingEffect PANIC
       1 LastingEffect RAGE
       1 LastingEffect HALLU
-      1 LastingEffect BLIND
+      #1 LastingEffect BLIND #No reason the wearer wouldn't remove it.
       1 LastingEffect ARCHER_VISION
       1 LastingEffect ELF_VISION
       1 LastingEffect NIGHT_VISION
@@ -254,13 +254,23 @@ End
 #Resources for bonus mod mining
 ##########################
 
+"SteelOre" #BonusMod upgraded iron, not really an ore as such
+  {
+    viewId = { "steelpile" Rgb 236 245 255 255 }
+    name = "steel"
+    itemClass = OTHER
+    price = 1
+    resourceId = "STEEL"
+    weight = 0.5
+	storageIds = {"resources"}
+  }
 "InfOre" #Vanilla ore, but expanded in BonusMod; adoxium tier
   {
     viewId = { "infernite_ore_pile" }
-	ownedEffect = LIGHT_SOURCE
+	#ownedEffect = LIGHT_SOURCE Disabled in vanilla, because minions bogart it as a light source.  >_<
     name = "infernite ore"
     itemClass = OTHER
-    price = 0
+    price = 4
     resourceId = "INFERNITE"
     weight = 1
 	storageIds = {"resources"}
@@ -270,7 +280,7 @@ End
     viewId = { "venorack_ore_pile" }
     name = "venorack ore"
     itemClass = OTHER
-    price = 0
+    price = 2
     resourceId = "VEN"
     weight = 0.5
 	storageIds = {"resources"}
@@ -280,7 +290,7 @@ End
     viewId = { "BONUS_caelidite" }
     name = "caelidite ore"
     itemClass = OTHER
-    price = 0
+    price = 2
     resourceId = "CAELIDITE"
     weight = 0.5
 	storageIds = {"resources"}
@@ -290,7 +300,7 @@ End
     viewId = { "BONUS_jothnite" }
     name = "jothnite ore"
     itemClass = OTHER
-    price = 0
+    price = 4
     resourceId = "JOTHNITE"
     weight = 1
 	storageIds = {"resources"}
@@ -447,6 +457,7 @@ End
         DEFENSE 2
       }
       price = 8
+	  craftingCost = "WOOD" 30
       weaponInfo = {
         attackType = STAB
         attackMsg = THRUST
@@ -471,6 +482,7 @@ End
         DAMAGE 10
       }
       price = 30
+	  craftingCost = "IRON" 25 #Better than the Sword at 20.
       weaponInfo = {
         attackType = CUT
       }
@@ -490,6 +502,7 @@ End
       itemClass = WEAPON
       equipmentSlot = WEAPON
       weight = 4
+	  craftingCost = "ADA" 30 #Single-handed axe should cost less than two-handed.
       modifiers = {
         DAMAGE 22
       }
@@ -518,6 +531,7 @@ End
         DEFENSE 1
       }
       price = 30
+	  craftingCost = "IRON" 35
       weaponInfo = {
         attackType = CRUSH
       }
@@ -541,6 +555,7 @@ End
         DEFENSE 4
       }
       price = 100
+	  craftingCost = "ADA" 35
       weaponInfo = {
         attackType = CRUSH
       }
@@ -777,7 +792,7 @@ End
 		viewId = { "iron_staff" }
 		equipedViewId = { "iron_staff_v" }
 		name = "staff of blood"
-		plural = "starves of blood"
+		plural = "staves of blood"
 		weight =  1.5 
 		price =  60 
         itemClass =  WEAPON 
@@ -785,7 +800,7 @@ End
 		modifiers =  { SPELL_DAMAGE 8 } 
 		weaponInfo =  { attackType = SPELL attackMsg = WAVE meleeAttackAttr = SPELL_DAMAGE } 
 		maxUpgrades =  2 
-		equipedEffect = { BLEEDING REGENERATION }
+	#	equipedEffect = { BLEEDING REGENERATION } #Got rid of this as all it does is undermine folks with actual HP and spam the log.
 		equipedAbility = { "BONUS_blood curse" }
 		storageIds = {"weapons" "equipment"}
 	}
@@ -873,6 +888,163 @@ End
 #Armaments
 #--------------
 
+#Steel is a bridge-gap tier between iron & adamantine.  Also helps use the pile of sprites sitting around in the various resource folders.
+"BONUS_SteelSword" inherit "Sword"
+  {
+	name = "steel sword"
+	weight = 1.4 #Marginally (0.1 or so) lighter
+	modifiers = {
+      DAMAGE 10 #25% Better; Lava forges add another 40%, so a Fine Steel Sword is as good as a Generic Iron Battleaxe.
+    }
+    price = 5 #25% More Expensive
+    craftingCost = "STEEL" 20
+	equipmentGroup = "steel equipment"
+  }
+  "BONUS_SteelAxe" inherit "BONUS_Axe"
+  {
+     name = "steel axe"
+      weight = 4.8
+      modifiers = {
+        DAMAGE 12
+      }
+      price = 37
+	  craftingCost = "STEEL" 25
+	  equipmentGroup = "steel equipment"
+  }
+  "BONUS_SteelMace" inherit "BONUS_Mace"
+  {
+     name = "steel mace"
+      weight = 4.8
+      modifiers = {
+        DAMAGE 10
+		DEFENSE 2
+      }
+      price = 37
+	  craftingCost = "STEEL" 35
+	  equipmentGroup = "steel equipment"
+  }
+  "BONUS_SteelSpear"
+  {
+    name = "steel spear"
+	viewId = { "steel_spear" }
+    equipedViewId = { "steel_spear_v" }
+    weight = 2.9
+    modifiers = {
+      DAMAGE 8
+	  PARRY 1 #One-off bonus, hopefully helps it be Better than iron.
+    }
+    price = 12
+	craftingCost = "STEEL" 15
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weaponInfo = {
+      attackType = STAB
+      attackMsg = THRUST
+    }
+    specialAttr = {
+      DAMAGE 22 Rider
+    }
+    storageIds = {"weapons" "equipment"}
+	equipmentGroup = "steel equipment"
+  }
+  "BONUS_SteelWarHammer" inherit "WarHammer"
+  {
+	viewId = { "war_hammer" Rgb 231 231 231 255 }
+    equipedViewId = { "war_hammer_v" Rgb 231 231 231 255 }
+    name = "steel warhammer"
+    weight = 8
+    modifiers = {
+      DAMAGE 15
+    }
+    price = 25
+    craftingCost = "STEEL" 40
+	equipmentGroup = "steel equipment"
+  }
+  "BONUS_SteelBattleAxe" inherit "BattleAxe"
+  {
+	viewId = { "battle_axe" Rgb 231 231 231 255 }
+    equipedViewId = { "battle_axe_v" Rgb 231 231 231 255 }
+    name = "steel battleaxe"
+    weight = 8
+    modifiers = {
+      DAMAGE 17
+    }
+    price = 37
+    craftingCost = "STEEL" 50
+	equipmentGroup = "steel equipment"
+  }
+  "BONUS_SteelArmor" inherit "ChainArmor"
+  {
+	viewId = { "chain_armor" Rgb 231 231 231 255}
+    shortName = "armor"
+    name = "steel mail"
+    weight = 15
+    price = 32
+    craftingCost = "STEEL" 40
+    modifiers = {
+      DEFENSE 7
+    }
+	equipmentGroup = "steel equipment"
+  }
+  "BONUS_SteelHelm" inherit "IronHelm"
+  {
+	viewId = { "iron_helm" Rgb 231 231 231 255 }
+    shortName = "helm"
+    name = "steel helm"
+    weight = 3.9
+    price = 10
+    craftingCost = "STEEL" 16
+    modifiers = {
+      DEFENSE 4
+    }
+	equipmentGroup = "steel equipment"
+  }
+  "BONUS_SteelGloves" inherit "IronGloves"
+  {
+    viewId = { "iron_gloves" Rgb 231 231 231 255 }
+    shortName = "gloves"
+    name = "pair of steel gloves"
+    plural = "pairs of steel gloves"
+    weight = 1
+    price = 12
+    craftingCost = "STEEL" 2
+    modifiers = {
+      DEFENSE 3
+    }
+	equipmentGroup = "steel equipment"
+  }
+  "BONUS_SteelBoots" inherit "IronBoots"
+  {
+    viewId = { "iron_boots" Rgb 231 231 231 255 }
+    shortName = "boots"
+    name = "pair of steel boots"
+    plural = "pairs of steel boots"
+    weight = 3.8
+    price = 10
+    craftingCost = "STEEL" 24
+    modifiers = {
+      DEFENSE 3
+    }
+  }
+  "BONUS_SteelShield"
+  {
+	viewId = { "steel_shield" }
+    shortName = "steel"
+    name = "steel shield"
+	itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 1.9
+    price = 12
+    craftingCost = "STEEL" 24
+    modifiers = {
+      PARRY 2
+      DEFENSE 4
+    }
+    maxUpgrades = 1
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "steel equipment"
+  }
+
 #Venorack being moved to Adamantine-tier to keep competitive in A37; iron stuff simply can't compete in late-game.
 "BONUS_VenSword"
   {
@@ -887,6 +1059,7 @@ End
       DAMAGE 20
     }
     price = 50
+	craftingCost = "VEN" 20
     weaponInfo = {
       attackType = CUT
 	  victimEffect = { 0.4 Lasting 50 POISON }
@@ -910,7 +1083,7 @@ End
   }
 "BONUS_VenBattleAxe"
   {
-    viewId = { "venorack_battle_axe" }
+    viewId = { "venorack_war_axe" }
 	equipedViewId = { "venorack_battle_axe_v" }
     shortName = "axe"
     name = "venorack battle axe"
@@ -921,6 +1094,7 @@ End
       DAMAGE 40
     }
     price = 220
+	craftingCost = "VEN" 50
     weaponInfo = {
       attackType = CUT
 	  victimEffect = { 0.4 Lasting POISON }
@@ -953,6 +1127,7 @@ End
       DAMAGE 35
     }
     price = 180
+	craftingCost = "VEN" 40
     weaponInfo = {
       attackType = CRUSH
 	  victimEffect = { 0.4 Lasting POISON }
@@ -986,6 +1161,7 @@ End
         DEFENSE 4
       }
       price = 160
+	  craftingCost = "VEN" 35
       weaponInfo = {
         attackType = STAB
         attackMsg = THRUST
@@ -1016,6 +1192,7 @@ End
         DAMAGE 22
       }
       price = 200
+	  craftingCost = "VEN" 30
       weaponInfo = {
         attackType = CUT
 		victimEffect = { 0.4 Lasting POISON }
@@ -1045,6 +1222,7 @@ End
         DEFENSE 2
       }
       price = 200
+	  craftingCost = "VEN" 35
       weaponInfo = {
         attackType = CRUSH
 		victimEffect = { 0.4 Lasting POISON }
@@ -1071,6 +1249,7 @@ End
     equipmentSlot = BODY_ARMOR
     weight = 13
     price = 200
+	craftingCost = "VEN" 40
     modifiers = {
       DEFENSE 24
     }
@@ -1096,6 +1275,7 @@ End
     equipmentSlot = BOOTS
     weight = 3
     price = 70
+	craftingCost = "VEN" 24
     modifiers = {
       DEFENSE 5
     }
@@ -1118,6 +1298,7 @@ End
     equipmentSlot = GLOVES
     weight = 0.8
     price = 45
+	craftingCost = "VEN" 2
     modifiers = {
       DEFENSE 6
     }
@@ -1138,6 +1319,7 @@ End
     equipmentSlot = HELMET
     weight = 3
     price = 70
+	craftingCost = "VEN" 16
     modifiers = {
       DEFENSE 6
     }
@@ -1146,7 +1328,7 @@ End
       1 LastingEffect TELEPATHY
       3 ItemAttrBonus DEFENSE 3
     }
-    maxUpgrades = 2
+    maxUpgrades = 1
 	storageIds = {"armor" "equipment"}
 	equipedEffect = { POISON_RESISTANT }
   }
@@ -1157,8 +1339,9 @@ End
     name = "venorack shield"
     itemClass = ARMOR
     equipmentSlot = SHIELD
-    weight = 1.4
+    weight = 1.5
     price = 150
+	craftingCost = "VEN" 24
     modifiers = {
       PARRY 4
       DEFENSE 8
@@ -1172,7 +1355,7 @@ End
 			ItemAttrBonus PARRY 1
 		}
 	}
-    maxUpgrades = 2
+    maxUpgrades = 1
 	equipedEffect = { POISON_RESISTANT }
 	storageIds = {"armor" "equipment"}
   }
@@ -1189,6 +1372,7 @@ End
       DAMAGE 30
     }
     price = 200
+	craftingCost = "INFERNITE" 20
     weaponInfo = {
       attackType = CUT
 	  victimEffect = { 1.0 Fire{}} 
@@ -1226,6 +1410,7 @@ End
       DAMAGE 60
     }
     price = 1200
+	craftingCost = "INFERNITE" 50
     weaponInfo = {
       attackType = CUT
 	  victimEffect = { 1.0 Fire{} }
@@ -1263,6 +1448,7 @@ End
       DAMAGE 55
     }
     price = 1000
+	craftingCost = "INFERNITE" 40
     weaponInfo = {
       attackType = CRUSH
 	  victimEffect = { 1.0 Fire{} }
@@ -1300,6 +1486,7 @@ End
         DEFENSE 8
       }
       price = 1100
+	  craftingCost = "INFERNITE" 35
       weaponInfo = {
         attackType = STAB
         attackMsg = THRUST
@@ -1337,6 +1524,7 @@ End
         DAMAGE 45
       }
       price = 1100
+	  craftingCost = "INFERNITE" 30
       weaponInfo = {
         attackType = CUT
 		victimEffect = { 1.0 Fire{} }
@@ -1373,6 +1561,7 @@ End
         DEFENSE 5
       }
       price = 1100
+	  craftingCost = "INFERNITE" 35 
       weaponInfo = {
         attackType = CRUSH
 		victimEffect = { 1.0 Fire{}}
@@ -1406,6 +1595,7 @@ End
     equipmentSlot = BODY_ARMOR
     weight = 15
     price = 1600
+	craftingCost = "INFERNITE" 40
     modifiers = {
       DEFENSE 40
     }
@@ -1430,6 +1620,7 @@ End
     equipmentSlot = BOOTS
     weight = 3.5
     price = 500
+	craftingCost = "INFERNITE" 24
     modifiers = {
       DEFENSE 12
     }
@@ -1454,6 +1645,7 @@ End
     equipmentSlot = GLOVES
     weight = 1.2
     price = 250
+	craftingCost = "INFERNITE" 2
     modifiers = {
       DEFENSE 12
     }
@@ -1478,6 +1670,7 @@ End
     equipmentSlot = HELMET
     weight = 3.5
     price = 400
+	craftingCost = "INFERNITE" 16
     modifiers = {
       DEFENSE 12
     }
@@ -1502,6 +1695,7 @@ End
     equipmentSlot = SHIELD
     weight = 2
     price = 500
+	craftingCost = "INFERNITE" 24
     modifiers = {
       PARRY 4
       DEFENSE 15
@@ -1529,14 +1723,16 @@ End
 		PARRY 2
       }
 	price = 200
+	craftingCost = "IRON" 30
 	weaponInfo = {
         attackType = CUT
 	twoHanded = true
       }
 	genPrefixes = {
 	  1 SpellId "BONUS_weapon dodge"
-	  2 ItemAttrBonus DAMAGE 3
-          2 ItemAttrBonus DEFENSE 3
+	  2 ItemAttrBonus DAMAGE 5
+      2 ItemAttrBonus DEFENSE 5
+	  3 SpecialAttr DAMAGE 20 HatedBy HATE_UNDEAD
     }
 	storageIds = {"weapons" "equipment"}
         equipmentGroup = "iron equipment"
@@ -1554,6 +1750,7 @@ End
       DAMAGE 7
     }
     price = 10
+	craftingCost = "IRON" 15 #Cheaper than Sword as does less base damage (and the shaft is wooden).
     weaponInfo = {
       attackType = STAB
       attackMsg = THRUST
@@ -1579,6 +1776,7 @@ End
         DEFENSE 5
       }
       price = 800
+	  craftingCost = "ADA" 30 #Longspears aren't quite pike-length, and being all-round better than the Sword means it needs to cost more.
       weaponInfo = {
         attackType = STAB
         attackMsg = THRUST
@@ -1605,6 +1803,17 @@ End
       DEFENSE 7
     }
 	maxUpgrades = 3
+ }
+ "BONUS_FellSteelPlate" inherit "BONUS_FellPlate"
+ {
+	shortName = "fell steel"
+    name = "fell steel plate"
+	weight = 11 #Better crafting and extra material use means better protection and more room for glyphs.
+    price = 50
+    craftingCost = "STEEL" 50
+    modifiers = {
+      DEFENSE 9
+    }
  }
  
  "BONUS_FellAdaPlate" inherit "AdaArmor" #Fallback inheritance
@@ -1639,6 +1848,18 @@ End
 	maxUpgrades = 3
  }
  
+ "BONUS_LawSteelPlate" inherit "BONUS_LawPlate"
+ {
+	shortName = "field steel"
+    name = "steel field-plate"
+	weight = 11 #Better crafting and extra material use means better protection and more room for glyphs.
+    price = 50
+    craftingCost = "STEEL" 50
+    modifiers = {
+      DEFENSE 9
+    }
+ }
+ 
   "BONUS_LawAdaPlate" inherit "AdaArmor" #Fallback inheritance
  {
  viewId = { "chain_armor" Rgb 231 231 231 255} #Should be roughly the color Less-Evil Knights are wearing in Vanilla Retiles.  May be very similar to Generic Grey. :-/
@@ -1654,6 +1875,120 @@ End
     }
 	maxUpgrades = 5
  }
+ ##Tower shields
+ ##They really need better sprites, but I was in a hurry. -CSeven :-/
+ 
+ "BONUS_WoodTowerShield"
+ {
+    viewId = { "wood_twrshld" }
+    shortName = "pavise" #Technically the Siege version (walls on wheels), but should reduce confusion in lists.
+    name = "wooden tower shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 6
+    price = 5
+	craftingCost = "WOOD" 20
+    modifiers = {
+      DEFENSE 1
+    }
+    maxUpgrades = 1
+	equipmentGroup = "basic equipment"
+    equipedEffect = { RANGED_RESISTANCE }
+	storageIds = {"armor" "equipment"}
+ }
+  "BONUS_SteelTowerShield"
+ {
+    viewId = { "steel_twrshld" }
+    shortName = "pavise" #Technically the Siege version (walls on wheels), but should reduce confusion in lists.
+    name = "steel tower shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 5 #Wood and iron shields weigh the same in vanilla, so Steel gets discounted.
+    price = 25
+	craftingCost = "STEEL" 40
+    modifiers = {
+      DEFENSE 4
+    }
+    maxUpgrades = 2
+	equipmentGroup = "steel equipment"
+    equipedEffect = { RANGED_RESISTANCE }
+	storageIds = {"armor" "equipment"}
+ }
+  "BONUS_AdaTowerShield"
+  {
+    viewId = { "steel_twrshld" Rgb 107 182 191 255}
+    shortName = "pavise" #Technically the Siege version (walls on wheels), but should reduce confusion in lists.
+    name = "adamantine tower shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 6
+    price = 500
+	craftingCost = "ADA" 40
+    modifiers = {
+      DEFENSE 4 #Doesn't *look* like an upgrade...
+    }
+    maxUpgrades = 2
+	equipmentGroup = "adamantine equipment"
+    equipedEffect = { RANGED_IMMUNITY } #Hey, gang, check this out! (Will probably nerf it later, but still...)
+	storageIds = {"armor" "equipment"}
+  }
+  "BONUS_AdoxiumTowerShield"
+  {
+    viewId = { "adox_twrshld" }
+    shortName = "pavise" #Technically the Siege version (walls on wheels), but should reduce confusion in lists.
+    name = "adoxium tower shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 6
+    price = 600
+	craftingCost = "ADOXIUM" 40
+    modifiers = {
+      DEFENSE 4
+    }
+    maxUpgrades = 4
+	equipmentGroup = "adoxium equipment"
+    equipedEffect = { RANGED_RESISTANCE MAGIC_RESISTANCE }
+	storageIds = {"armor" "equipment"}
+  }
+  "BONUS_InferniteTowerShield"
+  {
+    viewId = { "adox_twrshld" Rgb 130 013 020 255 }
+    shortName = "pavise" #Technically the Siege version (walls on wheels), but should reduce confusion in lists.
+    name = "infernite tower shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 6
+    price = 550
+	craftingCost = "INFERNITE" 40
+    modifiers = {
+      DEFENSE 4
+    }
+    maxUpgrades = 3
+	equipmentGroup = "infernite equipment"
+	carriedTickEffect = InferniteEffect() #Gives fire resistance when equipped, so OK to auto-equip
+	ownedEffect = LIGHT_SOURCE
+    equipedEffect = { RANGED_RESISTANCE FIRE_RESISTANT }
+	storageIds = {"armor" "equipment"}
+  }
+  "BONUS_JothniteTowerShield"
+  {
+    viewId = { "adox_twrshld" Rgb 028 134 148 255 }
+    shortName = "pavise" #Technically the Siege version (walls on wheels), but should reduce confusion in lists.
+    name = "jothnite tower shield"
+    itemClass = ARMOR
+    equipmentSlot = SHIELD
+    weight = 6
+    price = 550
+	craftingCost = "JOTHNITE" 40
+    modifiers = {
+      DEFENSE 4
+    }
+    maxUpgrades = 3
+	equipmentGroup = "jothnite equipment"
+	carriedTickEffect = JothniteEffect() #Gives fire resistance when equipped, so OK to auto-equip
+    equipedEffect = { RANGED_RESISTANCE COLD_RESISTANT }
+	storageIds = {"armor" "equipment"}
+  }
  
 ##########################
 #Haloween Mod
@@ -1681,7 +2016,19 @@ End
     name = "plagued remains"
   }
 
+###
+#CSeven adding more Special Crafting Ingredients, etc
+###
 
+"RoyalDust" {
+	viewId = { "brain" }
+    name = "royal dust"
+    itemClass = OTHER
+    weight = 5
+    price = 500
+    ingredientType = "royal_dust"
+    storageIds = {"upgrades" "equipment"}
+}
  
 ########################
 #Ideas for future items#
@@ -1818,7 +2165,10 @@ End
 	storageIds = {"equipment"}
   }
 
-"Paladin_Sword"
+#It turns out that you get the Paladin remains from killing the Paladin for the Dark Abbey.
+#With that in mind, switching the swords around so making the paladin into a sword results in an Evil sword,
+#and vice versa.
+"Devil_Sword"
   {
     viewId = { "sword" ColorId YELLOW }
     equipedViewId = { "sword_v" ColorId YELLOW }
@@ -1829,7 +2179,7 @@ End
     modifiers = {
       DAMAGE 20 #Upgraded to Adamantine damage, so should be great early-game and a solid upgrade in midgame
     }
-    price = 4
+    price = 40
     craftingCost = "IRON" 50
     weaponInfo = {
       attackType = CUT
@@ -1842,8 +2192,11 @@ End
     storageIds = {"weapons" "equipment"}
     equipmentGroup = "iron equipment"
   }
-  
-"Devil_Sword"
+
+#It turns out that you get the Paladin remains from killing the Paladin for the Dark Abbey.
+#With that in mind, switching the swords around so making the paladin into a sword results in an Evil sword,
+#and vice versa.  
+"Paladin_Sword"
   {
     viewId = { "sword" ColorId RED }
     equipedViewId = { "sword_v" ColorId RED }
@@ -1854,7 +2207,7 @@ End
     modifiers = {
       DAMAGE 20 #Upgraded to Adamantine damage, so should be great early-game and a solid upgrade in midgame
     }
-    price = 4
+    price = 40
     craftingCost = "IRON" 50
     weaponInfo = {
       attackType = CUT
@@ -1912,7 +2265,7 @@ Def JothniteEffect()
   Filter Not LastingEffect COLD_RESISTANT {
     CreatureMessage {"are frozen by the jothnite" "is frozen by the jothnite"}
     Bleed 0.01 "jothnite"
-	Lasting 50 FROZEN #Might rethink this: FROZEN may well be a death sentence.
+	#Lasting 50 FROZEN #Might rethink this: FROZEN may well be a death sentence.
   }
 End
 
@@ -1967,7 +2320,7 @@ End
 "BONUS_CaeliditeWarHammer" inherit "AdaWarHammer"
   {
     viewId = { "BONUS_caelidite_war_hammer" }
-    equipedViewId = { "BONUS_caelidite_war_hammer_v" }
+    equipedViewId = { "BONUS_caelidite_war_hammer" }
     shortName = "caelidite"
     name = "caelidite war hammer"
     price = 1000
@@ -2146,6 +2499,7 @@ End
     equipmentSlot = BODY_ARMOR
     weight = 15
     price = 1600
+	craftingCost = "JOTHNITE" 40
     modifiers = {
       DEFENSE 40
     }
@@ -2167,6 +2521,7 @@ End
     equipmentSlot = HELMET
     weight = 3.5
     price = 400
+	craftingCost = "JOTHNITE" 16
     modifiers = {
       DEFENSE 12
     }
@@ -2190,6 +2545,7 @@ End
     equipmentSlot = GLOVES
     weight = 1.2
     price = 250
+	craftingCost = "JOTHNITE" 2
     modifiers = {
       DEFENSE 12
     }
@@ -2214,6 +2570,7 @@ End
     equipmentSlot = BOOTS
     weight = 3.5
     price = 500
+	craftingCost = "JOTHNITE" 24
     modifiers = {
       DEFENSE 12
     }
@@ -2235,6 +2592,7 @@ End
     equipmentSlot = SHIELD
     weight = 2
     price = 500
+	craftingCost = "JOTHNITE" 24
     modifiers = {
       PARRY 4
       DEFENSE 15
@@ -2255,7 +2613,7 @@ End
     craftingCost = JOTHNITE 5
     upgradeInfo = {AUTOMATONS_UPPER AssembledCreatureEffect
       Name "jothnite arms"
-      Description "Grants a melee attack and a 18 cold damage."
+      Description "Grants a melee attack and 18 cold damage."
       {
         IncreaseAttr COLD_DAMAGE 18
 		Permanent COLD_DAMAGE
@@ -2332,4 +2690,323 @@ End
   {
     name = "grave knight armor"
     equipedEffect = {DARKNESS_SOURCE}
+  }
+  
+  ###
+  #Better Bows
+  ###
+  "BONUS_longbow"
+  {
+    viewId = { "longbow" }
+    name = "long bow"
+    itemClass = RANGED_WEAPON
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"fire longbow"}
+    weaponInfo = {
+      twoHanded = true
+    }
+    weight = 2
+    modifiers = {
+      RANGED_DAMAGE 12
+    }
+	craftingCost = "WOOD" 30
+    price = 20
+    maxUpgrades = 1
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "ranged weapons"
+  }
+  "BONUS_archlongbow" inherit "BONUS_longbow"
+  {
+	viewId = { "arch_longbow" }
+	name = "archwood longbow"
+	modifiers = {
+      RANGED_DAMAGE 29
+    }
+	craftingCost = "WOOD" 30
+    price = 1500
+    maxUpgrades = 3
+  }
+  "BONUS_recurvebow" inherit "BONUS_longbow"
+  {
+    viewId = { "recurvebow" }
+    name = "recurve bow"
+	equipedAbility = {"fire recurve bow"}
+	modifiers = {
+      RANGED_DAMAGE 11
+    }
+	craftingCost = "WOOD" 35
+	price = 40
+  }
+  "BONUS_archrecurvebow" inherit "BONUS_longbow"
+  {
+    viewId = { "arch_recurvebow" }
+	name = "archwood recurve bow"
+	modifiers = {
+      RANGED_DAMAGE 27
+    }
+	craftingCost = "WOOD" 35
+    price = 2000
+    maxUpgrades = 2
+  }
+  
+  ###
+  #Mage Armors & other such gear
+  ###
+  #The general idea is that mage armor is much lighter than non-mage armor, but allows better movement for spellcasting, etc.  (So, bonus spell speed.)
+  #It also accommodates (more) glyphs than the corresponding non-mage armor.
+  "BONUS_mageArmorLeather"
+  {
+	viewId = { "leather_magearmor" }
+    shortName = "mage armor"
+    name = "leather mage armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 8
+    price = 20
+    modifiers = {
+	  SPELL_DAMAGE 1
+      DEFENSE 2
+	  SPELL_SPEED 5
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 4
+    }
+	autoEquipPredicate = AttributeAtLeast "SPELL_DAMAGE" 5
+    equipWarning = "Mage armor is designed for spellcasters. Continue?" #Folks who like the extra glyph slots might get better stats out of high-end Mage, I suppose...?
+    maxUpgrades = 3
+	equipmentGroup = "mage equipment"
+	storageIds = {"armor" "equipment"}
+  }
+  "BONUS_mageArmorSteel"
+  {
+	viewId = { "leather_magearmor" Rgb 236 245 255 255}
+    shortName = "mage armor"
+    name = "steel mage armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 15
+    price = 40
+	craftingCost = "STEEL" 40
+    modifiers = {
+	  SPELL_DAMAGE 1
+      DEFENSE 4
+	  SPELL_SPEED 5
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 4
+    }
+	autoEquipPredicate = AttributeAtLeast "SPELL_DAMAGE" 5
+    equipWarning = "Mage armor is designed for spellcasters. Continue?"
+    maxUpgrades = 5
+	equipmentGroup = "mage equipment"
+	storageIds = {"armor" "equipment"}
+  }
+  "BONUS_mageArmorAda"
+  {
+	viewId = { "ada_magearmor" }
+    shortName = "mage armor"
+    name = "adamantine mage armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 12
+    price = 200
+	craftingCost = "ADA" 40
+    modifiers = {
+	  SPELL_DAMAGE 2
+      DEFENSE 20
+	  SPELL_SPEED 10
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 6
+    }
+	autoEquipPredicate = AttributeAtLeast "SPELL_DAMAGE" 5
+    equipWarning = "Mage armor is designed for spellcasters. Continue?" #Folks who like the extra glyph slots might get better stats out of high-end Mage, I suppose...?
+    maxUpgrades = 6
+	equipmentGroup = "mage equipment"
+	storageIds = {"armor" "equipment"}
+  }
+  "BONUS_mageArmorVen"
+  {
+	viewId = { "ada_magearmor" Rgb 015 153 024 255 }
+    shortName = "mage armor"
+    name = "venorack mage armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 12
+    price = 200
+	craftingCost = "VEN" 40
+    modifiers = {
+	  SPELL_DAMAGE 2
+      DEFENSE 20
+	  SPELL_SPEED 10
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 6
+    }
+	equipedEffect = { POISON_RESISTANT }
+	autoEquipPredicate = AttributeAtLeast "SPELL_DAMAGE" 5
+    equipWarning = "Mage armor is designed for spellcasters. Continue?" #Folks who like the extra glyph slots might get better stats out of high-end Mage, I suppose...?
+    maxUpgrades = 5
+	equipmentGroup = "mage equipment"
+	storageIds = {"armor" "equipment"}
+  }
+  "BONUS_mageArmorCae"
+  {
+	viewId = { "ada_magearmor" Rgb 009 191 078 255 }
+    shortName = "mage armor"
+    name = "caelidite mage armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 12
+    price = 200
+	craftingCost = "CAELIDITE" 40
+    modifiers = {
+	  SPELL_DAMAGE 2
+      DEFENSE 20
+	  SPELL_SPEED 10
+	  ACID_DAMAGE 30
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 6
+    }
+	equipedEffect = { ACID_RESISTANT }
+	autoEquipPredicate = AttributeAtLeast "SPELL_DAMAGE" 5
+    equipWarning = "Mage armor is designed for spellcasters. Continue?" #Folks who like the extra glyph slots might get better stats out of high-end Mage, I suppose...?
+    maxUpgrades = 5
+	equipmentGroup = "mage equipment"
+	storageIds = {"armor" "equipment"}
+  }
+  "BONUS_mageArmorAdoxium"
+  {
+	viewId = { "adoxium_magearmor" }
+    shortName = "mage armor"
+    name = "adoxium mage armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 12
+    price = 2000
+	craftingCost = "ADOXIUM" 50
+    modifiers = {
+	  SPELL_DAMAGE 4
+      DEFENSE 34
+	  SPELL_SPEED 45
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 8
+    }
+	autoEquipPredicate = AttributeAtLeast "SPELL_DAMAGE" 5
+    equipWarning = "Mage armor is designed for spellcasters. Continue?" #Folks who like the extra glyph slots might get better stats out of high-end Mage, I suppose...?
+    maxUpgrades = 6
+	equipmentGroup = "mage equipment"
+	storageIds = {"armor" "equipment"}
+  }
+  "BONUS_mageArmorInfernite"
+  {
+	viewId = { "adoxium_magearmor" Rgb 153 015 024 255 }
+    shortName = "mage armor"
+    name = "infernite mage armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 12
+    price = 2000
+	craftingCost = "INFERNITE" 50
+    modifiers = {
+	  SPELL_DAMAGE 4
+      DEFENSE 34
+	  SPELL_SPEED 30
+	  FIRE_DAMAGE 45 #Probably a touch high, but hopefully this'll help Blowback & flaming whips hit harder.
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 8
+    }
+	equipedEffect = { FIRE_RESISTANT }
+	equipedAbility = { "BONUS_area fire shield" }
+	autoEquipPredicate = AttributeAtLeast "SPELL_DAMAGE" 5
+    equipWarning = "Mage armor is designed for spellcasters. Continue?" #Folks who like the extra glyph slots might get better stats out of high-end Mage, I suppose...?
+    maxUpgrades = 6
+	equipmentGroup = "mage equipment"
+	storageIds = {"armor" "equipment"}
+  }
+  "BONUS_mageArmorJothnite"
+  {
+	viewId = { "adoxium_magearmor" Rgb 028 134 148 255 }
+    shortName = "mage armor"
+    name = "jothnite mage armor"
+    itemClass = ARMOR
+    equipmentSlot = BODY_ARMOR
+    weight = 12
+    price = 2000
+	craftingCost = "JOTHNITE" 50
+    modifiers = {
+	  SPELL_DAMAGE 4
+      DEFENSE 34
+	  SPELL_SPEED 30
+	  COLD_DAMAGE 45 #Probably a touch high.
+    }
+    genPrefixes = {
+      1 ItemAttrBonus DEFENSE 8
+    }
+	equipedEffect = { COLD_RESISTANT }
+	equipedAbility = { "BONUS_area ice shield" }
+	autoEquipPredicate = AttributeAtLeast "SPELL_DAMAGE" 5
+    equipWarning = "Mage armor is designed for spellcasters. Continue?" #Folks who like the extra glyph slots might get better stats out of high-end Mage, I suppose...?
+    maxUpgrades = 6
+	equipmentGroup = "mage equipment"
+	storageIds = {"armor" "equipment"}
+  }
+  
+  ##
+  #Staff expansion
+  ##
+  
+  "BONUS_SteelStaff" inherit "WoodenStaff"
+  {
+    viewId = { "iron_staff" } #Might as well use the graphics.
+    equipedViewId = { "iron_staff_v" }
+    name = "steel staff"
+	weight = 3
+    modifiers = {
+      SPELL_DAMAGE 20
+      SPELL_SPEED 20
+    }
+    price = 200
+	craftingCost = "STEEL" 20
+    genPrefixes = {
+      1 VictimEffect 1.0 Escape{}
+      1 ItemAttrBonus SPELL_DAMAGE 5
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 20
+        AttackerEffect Suicide DIE
+      }
+    }
+    maxUpgrades = 1 #Pretty much worse than archwood, but better than Enchanted Wooden.
+    equipmentGroup = "mage equipment"
+  }
+  
+  
+  ##
+  #Recategorizing vanilla staves & cornuthaums to Mage Equipment
+  ##
+  
+  "WoodenStaff" modify append {
+	equipmentGroup = "mage equipment"
+  }
+  "ArchwoodStaff" modify append {
+	equipmentGroup = "mage equipment"
+  }
+  "AdoxiumStaff" modify append {
+	equipmentGroup = "mage equipment"
+  }
+  "ElvenStaff" modify append {
+	equipmentGroup = "mage equipment"
+  }
+  
+  "Cornuthaum1" modify append {
+	equipmentGroup = "mage equipment"
+  }
+  "Cornuthaum2" modify append {
+	equipmentGroup = "mage equipment"
+  }
+  "Cornuthaum3" modify append {
+	equipmentGroup = "mage equipment"
   }
