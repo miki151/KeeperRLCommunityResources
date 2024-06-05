@@ -1,0 +1,996 @@
+#Spells for adventurer clases.
+
+"ADVENTURERS_rapid magic missile"
+  {
+    symbol = "⥇"
+    effect = Name "rapid magic missile" Description "Throw raw magic at your foes; short-ranged but very quick." Damage SPELL_DAMAGE SPELL
+    range = 4
+    cooldown = 2
+    sound = "SPELL_BLAST"
+  }
+"ADVENTURERS_battle cry"
+  {
+    symbol = "💪"
+    effect = Name "battle cry" Description "Enter a battle rage, increasing your melee damage but diminishing your defense." Lasting 20 RAGE
+    cooldown = {45 90}
+    sound = "SPELL_STR_BONUS"
+  }
+"ADVENTURERS_area defense bonus"
+  {
+    symbol = "🛡"
+    effect = Name "area defense bonus" Description "Briefly improve the defense of all friendly creatures in the area." { Message NORMAL  "Spirit of Endurance invoked." Area 2 Filter Not Enemy Lasting 20 DEF_BONUS }
+    cooldown = {35 70}
+    sound = "SPELL_DEX_BONUS"
+  }
+"ADVENTURERS_block"
+  {
+    symbol = "🛡"
+    effect = Name "block" Description "Actively block incoming attacks, briefly improving your defense." Lasting 20 DEF_BONUS
+    cooldown = {35 70}
+    sound = "SPELL_DEX_BONUS"
+  }
+"ADVENTURERS_area damage bonus"
+  {
+    symbol = "💪"
+    effect = Name "area damage bonus" Description "Briefly improve the melee attack potential of all friendly creatures in the area." { Message NORMAL  "Powers of violence called." Area 2 Filter Not Enemy Lasting 20 DAM_BONUS }
+    cooldown = {35 70}
+    sound = "SPELL_STR_BONUS"
+  }
+"ADVENTURERS_healing totem"
+  {
+    symbol = "¬+¬"
+    effect = Name "healing totem" Description "Call a wooden totem that will periodically heal friendly creatures." Summon "ADVENTURERS_HEALING_TOTEM" { 1 } 100
+    cooldown = 250
+    sound = "SPELL_SUMMON_SPIRIT"
+  }
+"ADVENTURERS_buff totem"
+  {
+    symbol = "¬💪¬"
+    effect = Name "buff totem" Description "Call a wooden totem that will periodically buff friendly creatures." Summon "ADVENTURERS_BUFF_TOTEM" { 1 2 } 100
+    cooldown = 250
+    sound = "SPELL_SUMMON_SPIRIT"
+  }
+"ADVENTURERS_magma bolt"
+  {
+   symbol = "{🔥}"
+   effect = Name "magma bolt" Description "Throw a flaming bolt of magic." { Fire {} Blast }
+   range = 6
+   cooldown = 8
+   sound = "SPELL_FIRE_SPHERE_PET"
+  }
+"ADVENTURERS_advanced firewall"
+  {
+    symbol = "𝍔"
+    effect = Name "advanced firewall" Description "Lay a strip of fire at range." CustomArea PlaceFurniture "FIRE_WALL" { { 0 -3 } { 0 -2 } { 0 -1 } {0 0} {0 1} {0 2} {0 3} {1 -2} {1 -1} {1 0} {1 1} {1 2} {-1 -2} {-1 -1} {-1 0} {-1 1} { -1 2 } }
+    endOnly = true
+    range = 4
+    cooldown = 30
+    sound = "SPELL_BLAST"
+  }
+"ADVENTURERS_expert firewall"
+  {
+    upgrade = "ADVENTURERS_advanced firewall"
+    symbol = "𝍔"
+    effect = Name "expert firewall" Description "Lay a large defensive fire field." CustomArea PlaceFurniture "FIRE_WALL" { { 0 -4 } { 0 -3 }{ 0 -2 }{ 0 -1 }{ 0 0 }{ 0 1 }{ 0 2 }{ 0 3 }{ 0 4 }{ 1 -3 }{ 1 -2 }{ 1 -1 }{ 1 0 }{ 1 1 }{ 1 2 }{ 1 3 }{ -1 -3 }{ -1 -2 }{ -1 -1 }{ -1 0 }{ -1 1 }{ -1 2 }{ -1 3 }}
+    endOnly = true
+    range = 6
+    cooldown = 30
+    sound = "SPELL_BLAST"
+  }
+"ADVENTURERS_advanced fireball"
+  {
+    upgrade = "fireball"
+    symbol = "🔥"
+    effect = Name "advanced fireball" Description "Throw a ball of fire." Fire {}
+    fx = {FIREBALL}
+    range = 8
+    cooldown = 20
+    sound = "SPELL_FIRE_SPHERE_PET"
+  }
+"ADVENTURERS_expert fireball"
+  {
+    upgrade = "ADVENTURERS_advanced fireball"
+    symbol = "🔥"
+    effect = Name "expert fireball" Description "Throw a long-ranged ball of fire." Fire {}
+    fx = {FIREBALL}
+    range = 12
+    cooldown = 10
+    sound = "SPELL_FIRE_SPHERE_PET"
+  }
+"ADVENTURERS_fireblast"
+  {
+    symbol = "🔥💥"
+    effect = Name "fireblast" Description "Throw a fiery detonation." { Fire {} CircularBlast Blast }
+    fx = {FIREBALL}
+    range = 8
+    cooldown = 30
+    sound = "SPELL_BLAST"
+  }
+"ADVENTURERS_advanced fireblast"
+  {
+    upgrade = "ADVENTURERS_fireblast"
+    symbol = "🔥💥"
+    effect = Name "advanced fireblast" Description "Throw a fiery detonation, farther." { Fire {} CircularBlast Blast }
+    fx = {FIREBALL}
+    range = 10
+    cooldown = 25
+    sound = "SPELL_BLAST"
+  }
+"ADVENTURERS_expert fireblast"
+  {
+    upgrade = "ADVENTURERS_advanced fireblast"
+    symbol = "🔥💥"
+    effect = Name "expert fireblast" Description "Throw a long-ranged and quick fiery detonation." { Fire {} CircularBlast Blast }
+    fx = {FIREBALL}
+    range = 12
+    cooldown = 20
+    sound = "SPELL_BLAST"
+  }
+"ADVENTURERS_explosion"
+  {
+    symbol = "🔥💣"
+    effect = Name "explosion" Description "Wreak magical flaming blast havoc on your enemies." { Area 12 Filter Enemy Fire {} Area 12 Filter Enemy Blast Area 12 Filter Enemy Damage SPELL_DAMAGE SPELL 
+    CustomArea PlaceFurniture "FIRE_WALL" {{ 0 -12 }{ 0 -10}{ 0 -8 }{0 -6}{ 0 -4 }{0 -2 }{0 2 }{0 4 }{0 6 }{0 8 }{0 10}{ 0 12 }{2 -10}{ 2 -8}{ 2 -6}{ 2 -4}{ 2 -2}{ 2 0}{ 2 2}{ 2 4}{ 2 6}{ 2 8}{ 2 10}{ 4 8}{ 4 6}{ 4 4}{ 4 2}{ 4 0}{ 4 -2}{ 4 -4}{ 4 -6}{ 4 -8}{ 
+    6 6}{ 6 4}{ 6 2}{ 6 0}{ 6 -2}{ 6 -4}{ 6 -6}{ 8 4}{ 8 2}{ 8 0}{ 8 -2}{ 8 -4}{ 10 2}{ 10 0}{ 10 -2}{ 12 0}{ -2 -10}{ -2 -8}{ -2 -6}{ -2 -4}{ -2 -2}{ -2 0}{ -2 2}{ -2 4}{ -2 6}{ -2 8}{ -2 10}{ -4 -8}{ -4 -6}{ -4 -4}{ -4 -2}{ -4 0}{ -4 2}{ -4 2}{ -4 4}{ -4 6}{ -4 8}{
+    -6 6}{ -6 4}{ -6 2}{ -6 0}{ -6 -2}{ -6 -4}{ -6 -6}{ -8 4}{ -8 2}{ -8 0}{ -8 2}{ -8 4}{ -10 2}{ -10 0 }{-10 -2}{ -12 0}} }
+    fx = {FIREBALL}
+    cooldown = 1500
+    sound = "SPELL_BLAST"
+  }
+"ADVENTURERS_stone golem"
+  {
+   symbol = "👤"
+   effect = Name "stone golem" Description "Call one or two stone golems to assist you." Summon "STONE_GOLEM" { 1 2 } 100
+   cooldown = 100 #Duration equal to cooldown, spell-speed inappropriate.
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"ADVENTURERS_stone golems"
+ {
+   upgrade = "ADVENTURERS_stone golem"
+   symbol = "👤"
+   effect = Name "stone golems" Description "Call several stone golems to your side." Summon "STONE_GOLEM" { 4 7 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"ADVENTURERS_iron golem"
+ {
+   symbol = "👤"
+   effect = Name "iron golem" Description "Call one or two iron golems to assist you." Summon "IRON_GOLEM" { 1 2 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"ADVENTURERS_iron golems"
+ {
+   upgrade = "ADVENTURERS_iron golem"
+   symbol = "👤"
+   effect = Name "iron golems" Description "Call several iron golems to your side." Summon "IRON_GOLEM" { 4 7 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"ADVENTURERS_adamantine golem"
+ {
+   symbol = "♜"
+   effect = Name "adamantine golem" Description "Call one or two adamantine golems to assist you." Summon "ADA_GOLEM" { 1 2 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"ADVENTURERS_adamantine golems"
+{
+   upgrade = "ADVENTURERS_adamantine golem"
+   symbol = "♜♜"
+   effect = Name "adamantine golems" Description "Call several adamantine golems to your side." Summon "ADA_GOLEM" { 4 7 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ "ADVENTURERS_snakes"
+ {
+   symbol = "🐍🐍"
+   effect = Name "snakes" Description "Call some snakes to assist you." Summon "SNAKE" { 7 8 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT" 
+ }
+
+"ADVENTURERS_blood curse"
+ {
+   symbol = "☛"
+   range = 10
+   effect = Name "blood curse" Description "Make your target bleed." Lasting 20 BLEEDING
+   cooldown = 125
+   sound = "SPELL_BLAST"
+ }  
+ 
+"ADVENTURERS_freezing vines"
+ {
+   symbol = "🙙"
+   range = 10
+   effect = Name "freezing vines" Description "Call freezing vines to freeze and hold your target in place." { Message NORMAL  "Freezing vines burst from the ground." Lasting 10 FROZEN }
+   endOnly = true
+   cooldown = {35 70}
+   sound = "SPELL_STR_BONUS"
+ }
+ 
+ "ADVENTURERS_stone to mud"
+ {
+   symbol = "🕳"
+   effect = Name "stone to mud" Description "Destroy all walls in the immediate area." Area 2 DestroyWalls DIG
+   cooldown = {250 500}
+   sound = "SPELL_AIR_BLAST"
+ }
+
+ "ADVENTURERS_regeneration" 
+  {
+    symbol = "+♥"
+    effect = Name "regeneration" Description "Briefly heal over time." Lasting 50 REGENERATION
+    cooldown = 50
+    sound = "SPELL_DEX_BONUS"
+  }
+
+ 
+"ADVENTURERS_resist magic"
+ {
+   symbol = "⛥" #Should be a one-point-up pentagram.  Was sorely tempted to use ₥, but that's kinda English-centric.
+   effect = Name "resist magic" Description "Briefly improve your resistance to magic." Lasting 20 MAGIC_RESISTANCE
+   cooldown = {40 80}
+   sound = "SPELL_DEX_BONUS"
+ }
+ 
+"ADVENTURERS_darkness"
+ {
+   symbol = "☁"
+   effect = Name "darkness" Description "Briefly block out light, including the sun, in an area around you." Lasting DARKNESS_SOURCE
+   cooldown = 14
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"ADVENTURERS_wolves"
+ {
+   symbol = "🐺"
+   effect = Name "wolves" Description "Call a pack of wolves to your aid." Summon "WOLF" { 5 6 } 100
+   cooldown = {100 150}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"ADVENTURERS_bear"
+ {
+   symbol = "🐻"
+   effect = Name "bear" Description "Call some cave bears to your aid." Summon "CAVE_BEAR" { 3 4 } 100
+   cooldown = 100
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"ADVENTURERS_boar"
+ {
+   symbol = "🐗"
+   effect = Name "boar" Description "Call some boars to your aid." Summon "BOAR" { 3 4 } 100
+   cooldown = 50
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+
+"ADVENTURERS_fire shield"
+ {
+   symbol = "❂"
+   effect = Name "fire shield" Description "Briefly improve your resistance to fire." Lasting 20 FIRE_RESISTANT
+   cooldown = 100
+   sound = "SPELL_INVISIBILITY"
+ }
+ 
+"ADVENTURERS_area fire shield"
+ {
+   upgrade = "ADVENTURERS_fire shield"
+   symbol = "❂"
+   effect = Name "area fire shield" Description "Briefly improve the fire resistance of all allied creatures in the area." { Message NORMAL  "Fire charm summoned." Area 3 Filter Not Enemy Lasting 20 FIRE_RESISTANT }
+   cooldown = {40 80}
+   sound = "SPELL_INVISIBILITY"
+ }
+ 
+"ADVENTURERS_telepathy"
+ {
+   symbol = "💭"
+   effect = Name "telepathy" Description "Briefly detect other creatures with physical minds." Lasting TELEPATHY
+   cooldown = 175
+   sound = "SPELL_INVISIBILITY"
+ }
+ 
+"ADVENTURERS_elf vision"
+ {
+   symbol = "👁"
+   effect = Name "elf vision" Description "Briefly see, and safely shoot through, trees and bushes." Lasting ELF_VISION
+   cooldown = 90
+   sound = "SPELL_SPEED_SELF"
+ }
+ 
+"ADVENTURERS_weapon dodge"
+ {
+   symbol = "⇠⇢"
+   effect = Name "weapon dodge" Description "Actively evade melee attacks, briefly reducing the damage they do to you." Lasting 20 MELEE_RESISTANCE
+   cooldown = 90
+   sound = "SPELL_DEX_BONUS"
+ }
+
+"ADVENTURERS_arrow shield"
+ {
+   symbol = "➵◌"
+   effect = Name "arrow shield" Description "Actively defend against ranged attacks, briefly reducing the damage they do to you." Lasting 20 RANGED_RESISTANCE
+   cooldown = 50
+   sound = "SPELL_DEX_BONUS"
+ }
+ 
+"ADVENTURERS_cause blindness" 
+ {
+   symbol = "👀"
+   range = 5
+   effect = Name "cause blindness" Description "Strike your target blind." Lasting 20 BLIND
+   cooldown = 100
+   sound = "SPELL_DECEPTION"
+ }
+ 
+"ADVENTURERS_cripple"
+ {
+   symbol = "↯"
+   range = 5
+   effect = Name "cripple" Description "Knock your target to the ground, slowing their movement." Lasting 20 COLLAPSED
+   cooldown = 120
+   sound = "SPELL_BLAST"
+ }
+ 
+"ADVENTURERS_mind bolt"
+ {
+   symbol = "⇝"
+   range = 1
+   effect = Name "mind bolt" Description "Temporarily drive your target insane, making them hostile to all." Lasting INSANITY
+   cooldown = 180
+   sound = "SPELL_BLAST"
+ }
+ 
+"ADVENTURERS_advanced mind bolt"
+ {
+   upgrade = "ADVENTURERS_mind bolt"
+   symbol = "⇝"
+   range = 6
+   effect = Name "advanced mind bolt" Description "Temporarily drive your target insane, making them hostile to all." Lasting INSANITY
+   cooldown = 120
+   sound = "SPELL_BLAST"
+ }
+ 
+"ADVENTURERS_mana curse"
+ {
+   symbol = "☞"
+   range = 5
+   effect = Name "mana curse" Description "Briefly make the target more vulnerable to magic." Lasting 18 MAGIC_VULNERABILITY
+   cooldown = {30 60}
+   sound = "SPELL_BLAST"
+ }
+ 
+"ADVENTURERS_regrow body part"
+ {
+   symbol = "♥💪"
+   effect = Name "regrow body part" Description "Regrow a lost limb!" RegrowBodyPart 1
+   cooldown = 3000
+   sound = "SPELL_BLAST"
+ }
+ 
+ "ADVENTURERS_summon air elementals"
+ {
+   symbol = "⥀"
+   effect = Name "summon air elementals" Description "Call some air elementals to your aid." Summon "AIR_ELEMENTAL" { 3 4 } 100
+   cooldown = {100 200}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"ADVENTURERS_eye servant"
+ {
+   symbol = "👁️"
+   effect = Name "eye servant" Description "Call an eye servant or two to your aid." Summon "ADVENTURERS_EYE_SERVANT" { 1 2 } 100
+   cooldown = 80
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+ "ADVENTURERS_lesser eye servant"
+ {
+   symbol = "👁️"
+   effect = Name "lesser eye servant" Description "Call a lesser eye servant, or maybe two, to your aid." Summon "ADVENTURERS_LESSER_EYE_SERVANT" { 1 2 } 100
+   cooldown = 80
+   sound = "SPELL_SUMMON_SPIRIT" 
+ }
+
+ 
+"ADVENTURERS_summon skeletons"
+ {
+   symbol = "☠"
+   effect = Name "summon skeletons" Description "Call skeletal archers to your aid." Summon "SKELETON_ARCHER" { 1 5 } 100
+   cooldown = {35 70}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"ADVENTURERS_summon skeleton warriors"
+ {
+   upgrade = "ADVENTURERS_summon skeletons"
+   symbol = "☠"
+   effect = Name "summon skeleton warriors" Description "Call skeleton warriors to your aid." Summon "SKELETON_WARRIOR" { 1 5 } 100
+   cooldown = {35 70}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+"ADVENTURERS_summon skeleton mages"
+ {
+   symbol = "☠"
+   effect = Name "summon skeleton mages" Description "Call skeleton mages to your aid." Summon "ADVENTURERS_SKELETON_MAGE" { 1 3 } 100
+   cooldown = {35 70}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+ 
+  "ADVENTURERS_spin web"
+  {
+    symbol = "*"
+    effect = Name "spin web" Description "Weave a web trap on the current tile." PlaceFurniture "ADVENTURERS_SPIDER_WEB"
+    cooldown = 0
+  }
+  "ADVENTURERS_dig pit"
+  {
+    symbol = "O"
+    effect = Name "dig pit" Description "Dig a pit, slowing travel until it's filled." PlaceFurniture "ADVENTURERS_SPIDER_PIT"
+    cooldown = 0
+  }
+  "ADVENTURERS_mud wall"
+  {
+    symbol = "="
+    effect = Name "mud wall" Description "Raise a mud wall, blocking sight and travel." PlaceFurniture "ADVENTURERS_SPIDER_MUD_WALL"
+    cooldown = 0
+  }
+  "ADVENTURERS_hatch eggs"
+  {
+    symbol = "::"
+    effect = Name "hatch eggs" Description "Hatch three spiders." {
+		Summon "SPIDER" {3} 100
+		Summon "ADVENTURERS_GREEN_SPIDER" {1} 100
+		Summon "ADVENTURERS_RED_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+  "ADVENTURERS_breed dark spawn"
+  {
+    upgrade = "ADVENTURERS_hatch eggs"
+    symbol = ";;"
+    effect = Name "breed dark spawn" Description "Hatch five spiders." {
+		Summon "SPIDER" {3} 100
+		Summon "ADVENTURERS_GREEN_SPIDER" {1} 100
+		Summon "ADVENTURERS_RED_SPIDER" {1} 100
+		Summon "ADVENTURERS_BLUE_SPIDER" {1} 100
+		Summon "ADVENTURERS_YELLOW_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+  
+  "ADVENTURERS_breed horrors"
+  {
+    upgrade = "ADVENTURERS_breed dark spawn"
+    symbol = ",,"
+    effect = Name "breed horrors" Description "Hatch eight spiders." {
+		Summon "SPIDER" {1} 100
+		Summon "ADVENTURERS_GREEN_SPIDER" {1} 100
+		Summon "ADVENTURERS_RED_SPIDER" {1} 100
+		Summon "ADVENTURERS_BLUE_SPIDER" {1} 100
+		Summon "ADVENTURERS_YELLOW_SPIDER" {1} 100
+		Summon "ADVENTURERS_PINK_SPIDER" {1} 100
+		Summon "ADVENTURERS_LIGHT_BLUE_SPIDER" {1} 100
+		Summon "ADVENTURERS_LIGHT_RED_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+  "ADVENTURERS_breed hell"
+  {
+    upgrade = "ADVENTURERS_breed horrors"    
+    symbol = "**"
+    effect = Name "breed hell" Description "Hatch nine spiders." {
+		Summon "SPIDER" {1} 100
+		Summon "ADVENTURERS_GREEN_SPIDER" {1} 100
+		Summon "ADVENTURERS_RED_SPIDER" {1} 100
+		Summon "ADVENTURERS_BLUE_SPIDER" {1} 100
+		Summon "ADVENTURERS_YELLOW_SPIDER" {1} 100
+		Summon "ADVENTURERS_PINK_SPIDER" {1} 100
+		Summon "ADVENTURERS_LIGHT_BLUE_SPIDER" {1} 100
+		Summon "ADVENTURERS_LIGHT_RED_SPIDER" {1} 100
+		Summon "ADVENTURERS_LIGHT_BROWN_SPIDER" {1} 100
+	}
+    cooldown = 100
+  }
+ 
+ "ADVENTURERS_summon spirit"
+  {
+    symbol = "👾"
+    effect = Name "summon spirit" Description "Call some spirits to your aid." Summon "SPIRIT" { 3 5 } 100
+    cooldown = 100
+    sound = "SPELL_FIRE_SPHERE_PET"
+  }
+
+"ADVENTURERS_knockdown"
+ {
+   symbol = "↧"
+   range = 1
+   effect = Name "knockdown" Description "Knock your target to the ground, slowing their movement." Lasting 20 COLLAPSED
+   cooldown = 30
+   sound = "BLUNT_DAMAGE"
+ }
+"ADVENTURERS_advanced rapid invisibility"
+ {
+   symbol = "🕵️"
+   effect = Name "advanced rapid invisibility" Description "Become invisible." Lasting INVISIBLE
+   cooldown = 30
+   sound = "SPELL_INVISIBILITY"
+ }
+
+"ADVENTURERS_wild swing" #Tricky as barbarians have far better attack than armor.
+  {
+    symbol = "🌀💥"
+    effect = Name "wild swing" Description "Swing your weapon wildly, attacking everyone in your area. Including yourself!" { Area 1 Damage DAMAGE CUT CircularBlast }
+	targetSelf = false
+    cooldown = 2
+    sound = "BLADE_DAMAGE"
+  }
+"ADVENTURERS_blood rage"
+  {
+    symbol = "💪"
+    effect = Name "blood rage" Description "Work yourself into an insane frenzy, boosting attack and speed at the cost of defense and your ability to tell friend from foe." { Lasting 20 RAGE Lasting SPEED Lasting INSANITY }
+    cooldown = 90
+    sound = "SPELL_STR_BONUS"
+  }
+"ADVENTURERS_air render"
+  {
+    symbol = "☽"
+    effect = Name "air render" Description "Slash a target at range." { Damage DAMAGE CUT }
+	range = 3
+    cooldown = 12
+	endOnly = true
+    sound = "SPELL_AIR_BLAST"
+  }
+"ADVENTURERS_martial blast"
+  {
+    symbol = "💥"
+    effect = Name "martial blast" Description "Attack everyone in the immediately surrounding area." { Area 2 Blast }
+    cooldown = 2
+    sound = "SPELL_AIR_BLAST"
+  }
+"ADVENTURERS_martial strike"
+  {
+    symbol = "💥"
+    effect = Name "martial strike" Description "Launch an attack that travels through the air and opposition." { Damage DAMAGE CUT Blast }
+	range = 4
+    cooldown = 20
+    sound = "BLUNT_DAMAGE"
+  }
+"ADVENTURERS_break through"
+  {
+    symbol = "💥➭"
+    effect = Name "break through" Description "Smash through a target, including trees and walls." { Damage DAMAGE CUT DestroyWalls DIG }
+	range = 1
+    cooldown = 5
+    sound = "BLUNT_DAMAGE"
+  }
+"ADVENTURERS_throw sand" 
+ {
+   symbol = "△"
+   range = 4
+   effect = Name "throw sand" Description "Throw a handful of sand in your target's face, either blinding them or doing minor damage." ChooseRandom { Lasting BLIND FixedDamage DAMAGE 1 CUT }
+   cooldown = 10
+   sound = "SHOOT_BOW"
+   message = "throws sand!" "throws sand!"
+ }
+"ADVENTURERS_decapitate"
+ {
+   symbol = "👱"
+   range = 1
+   effect = Name "decapitate" Description "Cut off your target's head! If they survive, they'll still have a bleeding wound." { LoseBodyPart HEAD Lasting 20 BLEEDING }
+   #Undead and ectoplasmic folks will probably survive!
+   cooldown = {100 200}
+   sound = "BLADE_DAMAGE"
+ }
+"ADVENTURERS_leg strike"
+ {
+   symbol = "👞"
+   range = 1
+   effect = Name "leg strike" Description "Cut off your target's leg, leaving a bleeding wound." { LoseBodyPart LEG Lasting 20 BLEEDING }
+   cooldown = 50
+   sound = "BLADE_DAMAGE"
+ }
+"ADVENTURERS_arm strike"
+ {
+   symbol = "✋"
+   range = 1
+   effect = Name "arm strike" Description "Cut off your target's arm, leaving a bleeding wound." { LoseBodyPart ARM Lasting 20 BLEEDING }
+   cooldown = 50
+   sound = "BLADE_DAMAGE"
+ }
+"ADVENTURERS_curse of rage"
+ {
+   symbol = "😈"
+   effect = Name "curse of rage" Description "increases your damage stat by 1, but also lowers your defense by 1" { IncreaseAttr DAMAGE 1 IncreaseAttr DEFENSE -1 }
+   targetSelf = true
+   cooldown = 500
+   sound = "SPELL_WORD_OF_POWER"
+ }
+"ADVENTURERS_heroic leap"
+{
+  symbol = "↷"
+  effect = Name "heroic leap" Description "Jump to a target location, causing damage and knockback to all around when you land." { Jump CircularBlast }
+  range = 3
+  cooldown = 10
+  endOnly = true
+  message = "jump" "jumps"
+}
+
+"ADVENTURERS_vitals strike" 
+ {
+   symbol = "🗡"
+   range = 1
+   effect = Name "vitals strike" Description "has a chance to deal high damage, moderate damage, low damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 20 STAB FixedDamage DAMAGE 60 STAB FixedDamage DAMAGE 180 STAB }
+   cooldown = {40 80}
+   sound = "BLADE_DAMAGE"
+   message = "go for vitals!" "goes for vitals!"
+ }
+"ADVENTURERS_advanced vitals strike" 
+ {
+   symbol = "🗡"
+   upgrade = "ADVENTURERS_vitals strike"
+   range = 1
+   effect = Name "advanced vitals strike" Description "has a chance to deal insane damage, moderately high damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 80 STAB FixedDamage DAMAGE 200 STAB }
+   cooldown = {35 70}
+   sound = "BLADE_DAMAGE"
+   message = "go for vitals!" "goes for vitals!"
+ }
+"ADVENTURERS_expert vitals strike" 
+ {
+   symbol = "🗡"
+   upgrade = "ADVENTURERS_advanced vitals strike"
+   range = 1
+   effect = Name "expert vitals strike" Description "has a chance to deal insane damage, high damage, or cause blindness" ChooseRandom { Lasting BLIND FixedDamage DAMAGE 100 STAB FixedDamage DAMAGE 250 STAB }
+   cooldown = {30 60}
+   sound = "BLADE_DAMAGE"
+   message = "go for vitals!" "goes for vitals!"
+ }
+"ADVENTURERS_assassinate" 
+ {
+   symbol = "🗡"
+   range = 1
+   effect = Name "assassinate" Description "causes massive damage to a single target" FixedDamage DAMAGE 350 CUT 
+   cooldown = {100 200}
+   sound = "BLADE_DAMAGE"
+   message = "go for vitals!" "goes for vitals!"
+ }
+"ADVENTURERS_curse of risks" #Given the stat-escalation in A37, making the Increase 5 as well. +1 just doesn't register when compared to -3/-5 to Defense.
+ {
+   symbol = "😈"
+   effect = Name "curse of risks" Description "Either increase a random stat by 5 or decrease defense by 3 or 5" ChooseRandom { IncreaseAttr DAMAGE 3 IncreaseAttr SPELL_DAMAGE 3 IncreaseAttr RANGED_DAMAGE 3 IncreaseAttr DEFENSE 3 IncreaseAttr DEFENSE -3 IncreaseAttr DEFENSE -5 }
+   targetSelf = true
+   cooldown = 500
+   sound = "SPELL_WORD_OF_POWER"
+ }
+ "ADVENTURERS_shadow step"
+ {
+   symbol = "⇢"
+   effect = Name "shadow step"  Description "Jump to a new location and cast illusions on landing." { Jump Deception }
+   range = 6
+   cooldown = 10
+   sound = "SPELL_DECEPTION"
+   endOnly = true
+   message = "step through shadows" "steps through shadows"
+ }
+ "ADVENTURERS_escape slash"
+ {
+   symbol ="✈️☽"
+   effect = Name "escape slash" Description "Attack an enemy, then teleport them Away." { Damage DAMAGE CUT Escape{} }
+   range = 1
+   cooldown = 4
+   sound = "BLADE_DAMAGE"
+   message = "use magic in an attack" "uses magic in an attack"
+ }
+ "ADVENTURERS_smoke bomb"
+ {
+   symbol = "✈️💥"
+   effect = Name "smoke bomb" Description "Become invisible and teleport to a safer position in a cloud of smoke!" { CircularBlast Lasting INVISIBLE Escape{} }
+   cooldown = {50 100}
+   sound = "SPELL_DECEPTION"
+   message = "throw a smoke bomb" "throws a smoke bomb"
+ }
+"ADVENTURERS_substitute"
+ {
+   symbol = "⇅"
+   effect = Name "substitute" Description "Cast illusions, and then swap positions with them." { Deception SwapPosition Deception }
+   range = 1
+   cooldown = 30 #Something like this might take more than 15 turns to sort out, so spell speed might make it Spammable.
+   endOnly = true
+   message = "cast decoys" "poofs into several copies"
+ }
+ "ADVENTURERS_double strike"
+ {
+   symbol = "☽☽"
+   effect = Name "double strike" Description "Attack twice in one action!" { Damage DAMAGE CUT Damage DAMAGE STAB }
+   range = 1
+   cooldown = 8
+   sound = "BLADE_DAMAGE"
+   message = "hit twice" "hits twice"
+ }
+ "ADVENTURERS_armor strike"
+ {
+   symbol = "💥🛡"
+   effect = Name "armor strike" Description "Attack your target's armor, permanently reducing its protection by 1." { Damage DAMAGE CUT Enhance ARMOR -1 }
+   range = 1
+   cooldown = 4
+   sound = "BLUNT_DAMAGE"
+   message = "damage an armor piece" "damages an armor piece"
+ }
+ "ADVENTURERS_weapon strike"
+ {
+   symbol = "💥⚔"
+   effect = Name "weapon strike" Description "Attack your target's weapon, permanently reducing its damage potential by 1." { Damage DAMAGE CUT Enhance WEAPON -1 }
+   range = 1
+   cooldown = 4
+   sound = "BLUNT_DAMAGE"
+   message = "damage a weapon" "damages a weapon"
+ }
+ "ADVENTURERS_triple strike"
+ {
+   symbol = "☽☽☽"
+   upgrade = "ADVENTURERS_double strike"
+   effect = Name "triple strike" Description "Attack thrice in one action!" { Damage DAMAGE CUT Damage DAMAGE STAB Damage DAMAGE CUT }
+   range = 1
+   cooldown = 8
+   sound = "BLADE_DAMAGE"
+   message = "hit three times" "hits three times"
+ }
+ "ADVENTURERS_throwing star"
+ {
+   symbol = "✫"
+   effect = Name "throwing star" Description "Throw sharpened metal to attack at range, without a bulky bow or fancy magic." Damage RANGED_DAMAGE STAB
+   range = 6
+   cooldown = 0
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a star" "throws a star"
+ }
+ "ADVENTURERS_advanced throwing star"
+ {
+   symbol = "✫"
+   upgrade = "ADVENTURERS_throwing star"
+   effect = Name "advanced throwing star" Description "Throw sharpened metal to attack at range." Damage RANGED_DAMAGE STAB
+   range = 8
+   cooldown = 0
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a star" "throws a star"
+ }
+ "ADVENTURERS_expert throwing star"
+ {
+   symbol = "✫"
+   upgrade = "ADVENTURERS_advanced throwing star"
+   effect = Name "expert throwing star" Description "Throw a star to attack at range." Damage RANGED_DAMAGE STAB
+   range = 10
+   cooldown = 0
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a star" "throws a star"
+ }
+ "ADVENTURERS_master throwing star"
+ {
+   symbol = "✫"
+   upgrade = "ADVENTURERS_expert throwing star"
+   effect = Name "master throwing star" Description "Throw a star to attack at range." Damage RANGED_DAMAGE STAB
+   range = 12
+   cooldown = 0
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a star" "throws a star"
+ }
+ "ADVENTURERS_poison star"
+ {
+   symbol = "✦"
+   effect = Name "poison star" Description "Throw poisoned sharp metal to hurt your enemies and poison them." { Damage RANGED_DAMAGE STAB Lasting POISON }
+   range = 6
+   cooldown = 1
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a poison star" "throws a poison star"
+ }
+ "ADVENTURERS_advanced poison star"
+ {
+   symbol = "✦"
+   upgrade = "ADVENTURERS_poison star"
+   effect = Name "advanced poison star" Description "Throw poisoned sharp metal to hurt your enemies and poison them." { Damage RANGED_DAMAGE STAB Lasting POISON }
+   range = 8
+   cooldown = 1
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a poison star" "throws a poison star"
+ }
+ "ADVENTURERS_bleeding star"
+ {
+   symbol = "✷"
+   effect = Name "bleeding star" Description "Throw jagged sharp metal to hurt and bleed your enemies." { Damage RANGED_DAMAGE STAB Lasting 20 BLEEDING }
+   range = 6
+   cooldown = 1
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a bleeding star" "throws a bleeding star"
+ }
+ "ADVENTURERS_advanced bleeding star"
+ {
+   symbol = "✷"
+   upgrade = "ADVENTURERS_bleeding star"
+   effect = Name "advanced bleeding star" Description "Throw jagged sharp metal to hurt and bleed your enemies." { Damage RANGED_DAMAGE STAB Lasting 20 BLEEDING }
+   range = 8
+   cooldown = 1
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw a bleeding star" "throws a bleeding star"
+ }
+ "ADVENTURERS_escape star"
+ {
+   symbol = "✲"
+   effect = Name "escape star" Description "Throw sharpened metal that teleports your target Away, then boost your speed." { Damage RANGED_DAMAGE STAB Escape{} Lasting SPEED }
+   range = 8
+   cooldown = 1
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw an escape star" "throws an escape star"
+ }
+  "ADVENTURERS_double star"
+ {
+   symbol = "✫✫"
+   effect = Name "double star" Description "Throw two stars in the same action." { Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB }
+   range = 8
+   cooldown = 2
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw stars" "throws stars"
+ }
+  "ADVENTURERS_triple star"
+ {
+   symbol = "✫✫✫"
+   upgrade = "ADVENTURERS_double star"
+   effect = Name "triple star" Description "Throw three stars in the same action!" { Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB Damage RANGED_DAMAGE STAB }
+   range = 8
+   cooldown = 2
+   endOnly = true
+   sound = "SHOOT_BOW"
+   message = "throw stars" "throws stars"
+ }
+ "ADVENTURERS_summon shades"
+ {
+   symbol = "🕵"
+   effect = Name "summon shades" Description "Call some shades to your aid." Summon "ADVENTURERS_SHADE" { 3 4 } 100
+   cooldown = {100 200}
+   sound = "SPELL_SUMMON_SPIRIT"
+ }
+"ADVENTURERS_shadow bolt"
+  {
+    symbol = "⥇"
+    effect = Name "shadow bolt" Description "Injure your target's body and mind, along with teleporting them Someplace Safer." { Damage SPELL_DAMAGE SPELL Escape{} Lasting INSANITY }
+    range = 8
+    cooldown = 10
+	endOnly = true
+    sound = "SPELL_BLAST"
+  }
+"ADVENTURERS_advanced shadow bolt"
+  {
+    symbol = "⥇"
+	upgrade = "ADVENTURERS_shadow bolt"
+    effect = Name "advanced shadow bolt" Description "Injure your target's body and mind, along with teleporting them Someplace Safer." { Damage SPELL_DAMAGE SPELL Escape{} Lasting INSANITY }
+    range = 9
+    cooldown = 8
+	endOnly = true
+    sound = "SPELL_BLAST"
+  }
+"ADVENTURERS_expert shadow bolt"
+  {
+    symbol = "⥇"
+	upgrade = "ADVENTURERS_advanced shadow bolt"
+    effect = Name "expert shadow bolt" Description "Injure your target's body and mind, along with teleporting them Someplace Safer." { Damage SPELL_DAMAGE SPELL Escape{} Lasting INSANITY }
+    range = 10
+    cooldown = 6
+	endOnly = true
+    sound = "SPELL_BLAST"
+  }
+ "ADVENTURERS_summon shadow clones"
+  {
+    symbol = "🕵"
+    effect = Name "summon shadow clones" Description "Call shadow clones to assist you." Summon "ADVENTURERS_SHADOW_CLONE" { 3 4 } 100
+    cooldown = {100 200}
+    sound = "SPELL_SUMMON_SPIRIT"
+  }
+ "ADVENTURERS_summon shadow clone army"
+  {
+    symbol = "🕵"
+    effect = Name "summon shadow clone army" Description "Call lots of shadow clones to assist you." Summon "ADVENTURERS_SHADOW_CLONE" { 12 16 } 500
+    cooldown = {500 1000}
+    sound = "SPELL_SUMMON_SPIRIT"
+  }
+ "ADVENTURERS_web wall"
+  {
+    symbol = "🕸"
+    effect = Name "web wall" Description "Lay three webs at a distance." CustomArea PlaceFurniture "WEB_TRAP" {{ 0 -1}{ 0 0}{ 0 1 }}
+    endOnly = true
+    range = 4
+    cooldown = {15 30}
+    sound = none
+  }
+"ADVENTURERS_vanish"
+  {
+    symbol = "🕵️"
+    effect = Name "vanish" Description "Briefly become invisible, and then teleport to a nearby target area." { Lasting INVISIBLE Teleport }
+    range = 8
+    cooldown = {50 100}
+	endOnly = true
+    sound = "SPELL_TELEPORT"
+  }
+"ADVENTURERS_split spirit"
+  {
+    symbol = "👤👤"
+    effect = Name "split spirit" Description "Split part of your spirit off to fight at your side!" { IncreaseAttr DAMAGE -4 IncreaseAttr SPELL_DAMAGE -4 IncreaseAttr RANGED_DAMAGE -4 IncreaseAttr DEFENSE -4 Summon "ADVENTURERS_ASSASSIN_SPIRIT_CLONE" { 1 } 0 }
+    cooldown = 500
+    sound = "SPELL_WORD_OF_POWER"
+  }
+  
+#Starter spells
+"ADVENTURERS_poison bolt" #Even money on piercing: poison is delayed instakill, so if they can't heal poison, all you have to do is wait. But if they can, or you don't have time to wait, this won't win the fight.
+ {
+   symbol = "☠"
+   range = 3
+   effect = Name "poison bolt" Description "Inject a lethal poison into your target." Lasting POISON
+   cooldown = {50 100}
+   sound = "SPELL_DECEPTION"
+ }
+ 
+"ADVENTURERS_haste other"
+  {
+    symbol = "🏃"
+    effect = Name "haste other" Description "Briefly speed your target's movement." Lasting SPEED
+    targetSelf = false
+    range = 3
+    cooldown = 110
+    sound = "SPELL_SPEED_SELF"
+  }
+"ADVENTURERS_defend other"
+  {
+    symbol = "🛡"
+    effect = Name "defend other" Description "Briefly improve your target's defense." Lasting 50 DEF_BONUS
+    targetSelf = false
+    range = 3
+    cooldown = {35 70}
+    sound = "SPELL_DEX_BONUS"
+  }
+  
+"ADVENTURERS_friendly damage bonus"
+  {
+    symbol = "💪"
+    effect = Name "friendly damage bonus" Description "Briefly improve your target's melee damage output." Lasting 50 DAM_BONUS
+    targetSelf = false
+    range = 3
+    cooldown = {35 70}
+    sound = "SPELL_STR_BONUS"
+  }
+"ADVENTURERS_rapid invisibility"
+ {
+   symbol = "🕵️"
+   effect = Name "rapid invisibility" Description "Become invisible." Lasting INVISIBLE
+   cooldown = {30 60}
+   sound = "SPELL_INVISIBILITY"
+ }
+
+"ADVENTURERS_magic wish"
+{
+  symbol = "$"
+  effect = Name "grant wish" Description "Provides you with the object you desire, if you specify it correctly." { Wish }
+  cooldown = 1
+}
+
+
+ 
+# Spells.txt - Checklist
+#############################
+# 1) Give every spell a custom description and a custom name
+# 2) Consider using endonly for each ranged spell to avoid hitting everything in it's path. Make the choice depend on balancing the spell.
+# 3) Consider using spell speed stat for each spell using {} on cooldown. Not necessarily for all spells.
+# 4) Consider creating new buffs when spells use an existing buff. Give the new buffs better descriptions and names etc.
+# 5) Carefully consider which stats to buff. eg. Do you want a defense or parry buff?
+# 6) Get the best sprites for creatures using or being used by spells
+# 7) Consider using sprite variants
+# 8) Find the best UNICode characters supported by KeeperRL for the spells. Go easy on using ASCII

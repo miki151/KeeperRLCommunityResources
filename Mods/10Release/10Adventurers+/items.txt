@@ -1,0 +1,61 @@
+"ADVENTURERS_VenBattleAxe"
+  {
+    viewId = { "venorack_battle_axe" }
+    shortName = "axe"
+    name = "venorack battle axe"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 6
+    modifiers = {
+      DAMAGE 13
+    }
+    price = 80
+    weaponInfo = {
+      attackType = CUT
+	  victimEffect = { 0.4 Lasting POISON }
+      twoHanded = true
+    }
+    genPrefixes = {
+	  2 SpellId "ADVENTURERS_poison bolt"
+      3 LastingEffect RAGE
+	  2 SpellId "ADVENTURERS_leg strike"
+	  2 SpellId "ADVENTURERS_arm strike"
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 4
+        LastingEffect INVISIBLE
+		LastingEffect BLIND
+      }
+    }
+    maxUpgrades = 1
+	storageIds = {"equipment"}
+  }
+
+  "ADVENTURERS_DwarvenBeer"
+    {
+      viewId = { "dwarf_beer" }
+      name = "dwarven beer"
+      weight = 0.3
+      description = "Permanently increases your attack by 1, but makes you insane and halucinate for a while in exchange."
+      uses = 1
+      price = 100
+      effect = { IncreaseAttr DAMAGE 1 Lasting INSANITY Lasting HALLU }
+	  storageIds = {"equipment"}
+    }
+	
+	"ADVENTURERS_Dagger"
+	{
+		viewId = { "knife" }
+		equipedViewId = { "knife_v" }
+		name = "Dagger"
+		weight = 1
+		price = 65
+		itemClass = WEAPON
+		equipmentSlot = WEAPON
+		modifiers = { DAMAGE 7 }
+		weaponInfo = { 
+		attackType = STAB
+        victimEffect = { 0.4 Lasting 50 BLEEDING }
+	  }
+	  storageIds = {"equipment"}
+	}
+

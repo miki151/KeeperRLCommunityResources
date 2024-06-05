@@ -1,0 +1,65 @@
+"GNOME" modify append {  companions = { { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "GNOME_HUSBAND" } } } }
+"KEEPER_MAGE" modify append {  companions = { { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "SUCCUBUS" } } } }
+"KEEPER_MAGE_F" modify append {  companions = { { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "SUCCUBUS" } } } }
+"KEEPER_KNIGHT" modify append {  companions = { { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "WIZARD_COMPANION" } } } }
+"KEEPER_KNIGHT_F" modify append {  companions = { { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "WIZARD_COMPANION" } } } }
+"KEEPER_KNIGHT_WHITE" modify append {  companions = { { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "ANGEL_COMPANION" } } } }
+"KEEPER_KNIGHT_WHITE_F" modify append {  companions = { { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "ANGEL_COMPANION" } } } }
+"NECROMANCER" modify append {  companions = { { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "LOST_SOUL" } } } }
+"NECROMANCER_F" modify append {  companions = { { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "LOST_SOUL" } } } }
+"DWARF_PLAYER" modify append {  companions = { { count = 1 spawnAway = false statsBase = DAMAGE summonFreq = 0.02 creatures = { "DWARF_COMPANION" } } } }
+"DWARF_PLAYER_F" modify append { companions = { {  count = 1 spawnAway = false statsBase = DAMAGE summonFreq = 0.02 creatures = { "DWARF_COMPANION" } } } }
+"GOBLIN_KEEPER" modify append {  companions = { { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "GOBLIN_PRIEST" } } } }
+"ZOMBIE_WORKER" modify append  { companions = { { count = 2 spawnAway = false statsBase = DEFENSE summonFreq = 0.01 creatures = { "FLY" } } } }
+"CYCLOPS_PLAYER" modify append { companions = {{ count = 1 spawnAway = false statsBase = DAMAGE summonFreq = 0.02 creatures = { "CYCLOPS_COMPANION" } } } }
+
+#No corpse. A couple of bones.
+"FLY" modify append { body = append { material = BONE } }
+
+"DWARF_COMPANION" inherit "DWARF"
+  {
+    viewId = { "dwarf_fighter" }
+  }
+  
+"WIZARD_COMPANION"
+  {
+    viewId = { "keeper4" ColorId PURPLE }
+	spells = { "magic missile"}
+    attr = {
+      DAMAGE 20
+      DEFENSE 25
+      SPELL_DAMAGE 25
+    }
+    aiType = RANGED
+	    name = {
+      name = "wizard"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+  }
+  
+"CYCLOPS_COMPANION"
+  {
+    viewId = { "cyclops" }
+    attr = {
+      DAMAGE 28
+      DEFENSE 28
+    }
+    body = {
+      type = Humanoid LARGE
+      weight = 400
+    }
+    name = {
+      name = "wife"
+      pluralName = "wives"
+      firstNameGen = "CYCLOPS"
+    }
+  }
+  
+  
+"ANGEL_COMPANION" inherit "ANGEL" { inventory = { } } 
+
+"GNOME_HUSBAND" inherit "GNOME_CHIEF" { inventory = { } name = { name = "husband" } } 

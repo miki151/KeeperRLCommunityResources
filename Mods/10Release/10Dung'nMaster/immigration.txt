@@ -1,0 +1,596 @@
+"dungeon_master"
+{
+    {
+      ids = { "IMP" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      spawnLocation = NearLeader
+      keybinding = CREATE_IMP
+      sound = {"CREATE_IMP" 2}
+      noAuto = true
+      initialRecruitment = 4
+    }
+    {
+      ids = { "PESEANT_PLAYER" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      keybinding = CREATE_IMP
+      noAuto = true
+      initialRecruitment = 4
+    }
+
+    {
+      ids = { "DARK_ELF_WARRIOR" }
+      traits = { FIGHTER }
+    }
+    {
+      ids = { "GOBLIN_ARTIFICER_VILLAIN" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" }
+      traits = { FIGHTER }
+    }
+    {
+      ids = { "HARPY" }
+      traits = { FIGHTER }
+    }
+    {
+      ids = { "VAMPIRE" }
+      traits = { FIGHTER }
+    }
+    {
+      ids = { "DWARF" }
+      traits = { FIGHTER }
+    }
+    {
+      ids = { "ARTISAN_VILLAIN" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+    }
+    {
+      ids = { "HORSE_CAN_TRAIN" }
+      traits = { NO_LIMIT INCREASE_POPULATION }
+    }
+    {
+      ids = { "WARHORSE" }
+      traits = { NO_LIMIT INCREASE_POPULATION }
+    }
+    {
+      ids = { "CAMEL" }
+      traits = { NO_LIMIT INCREASE_POPULATION }
+    }
+    {
+      ids = { "HORSE_CAN_TRAIN" }
+      traits = { NO_LIMIT }
+    }
+    {
+      ids = { "WARHORSE" }
+      traits = { NO_LIMIT }
+    }
+    {
+      ids = { "CAMEL" }
+      traits = { NO_LIMIT }
+    }
+    {
+      ids = { "GOBLIN_ARTIFICER" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 0.7
+      specialTraits = {
+         { 0.03 { AttrBonus FORGE 20 Lasting { INSANITY } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "WOLF" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.01 { ExtraBodyPart HEAD 1}}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "GOBLIN_WIZARD" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      specialTraits = {
+         { 0.01 { CompanionInfo { summonFreq = 0.1 creatures = { "WOLF" }}}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.03 { Lasting { RIDER } SpecialAttr SPELL_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "GOBLIN_PRIEST" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      specialTraits = {
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.10 { Lasting { MAGIC_RESISTANCE } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "GOBLIN_SHAMAN" }
+      traits = { FIGHTER }
+      frequency = 0.1
+      specialTraits = {
+         { 0.10 { Lasting { MAGIC_RESISTANCE } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "HARPY" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      specialTraits = {
+         { 0.02 { SpecialAttr RANGED_DAMAGE 20 CreatureStatus CIVILIAN }}
+         { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.05 { Lasting { RANGED_VULNERABILITY } }}
+         { 0.05 { SpecialAttr RANGED_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "ZOMBIE" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      spawnLocation = FurnitureType "GRAVE"
+      specialTraits = {
+         { 0.03 { CompanionInfo { summonFreq = 0.1 creatures = { "FLY" }}}}
+         { 0.2 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.3 { Lasting { BLIND } }}
+         { 1.0 { Lasting { SWARMER } }}
+         { 0.3 { Lasting { COLLAPSED } }}
+      }
+    }
+    {
+      ids = { "SKELETON_ARCHER" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      spawnLocation = FurnitureType "GRAVE"
+      specialTraits = {
+         { 0.3 { Lasting { SLOWED } }}
+      }
+    }
+    {
+      ids = { "VAMPIRE" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      spawnLocation = FurnitureType "GRAVE"
+      specialTraits = {
+         { 0.03 { CompanionInfo { summonFreq = 0.1 creatures = { "BAT" }}}}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.3 { Lasting { TELEPATHY } }}
+         { 0.3 { Lasting { FIRE_RESISTANT } }}
+         { 0.05 { Lasting { HATE_GREENSKINS } }}
+         { 0.02 { AttrBonus SPELL_SPEED 30 }}
+         { 0.3 { Lasting { FLYING } }}
+         { 0.1 { Lasting { ENTERTAINER } }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "MUMMY" }
+      traits = { FIGHTER }
+      frequency = 0.1
+      spawnLocation = FurnitureType "GRAVE"
+      specialTraits = {
+        { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+        { 1.0 { Lasting { BAD_BREATH } }}
+      }
+     }
+    {
+      ids = { "LOST_SOUL" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 300 }
+      }
+    }
+    {
+      ids = { "SUCCUBUS" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+    }
+    {
+      ids = { "ICE_DEMON" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+      specialTraits = {
+        { 1.0 { SpecialAttr COLD_DAMAGE 12 HatedBy HATE_HUMANS }}
+        { 1.0 { Lasting { SUMMONED 500 } }}
+      }
+    }
+    {
+      ids = { "DOPPLEGANGER" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+    }
+    {
+      ids = { "WEREWOLF" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 0.1
+      specialTraits = {
+         { 1.0 { SpecialAttr DAMAGE 7 Name "at night" Night }}
+         { 0.1 { SpecialAttr DAMAGE 5 HatedBy HATE_HUMANS }}
+         { 0.1 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { Lasting { INSANITY }}}
+         { 0.1 { Lasting { HATE_UNDEAD }}}
+         { 0.3 { Lasting { AMBUSH_SKILL } }}
+         { 0.1 { Lasting { ENTERTAINER } }}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+	}
+    {
+      ids = { "ARTISAN" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 0.7
+      specialTraits = {
+         { 0.05 { OneOfTraits { Lasting { FAST_CRAFTING } Lasting { SLOW_CRAFTING } } }}
+         { 0.03 { AttrBonus FORGE 20 Lasting { INSANITY } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "SQUIRE_PLAYER" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "PRIEST_PLAYER" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      specialTraits = {
+        { 0.15 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
+        { 0.03 { AttrBonus SPELL_DAMAGE 4 AttrBonus DEFENSE -4}}
+        { 0.02 { AttrBonus SPELL_SPEED 30 }}
+        { 0.05 { ExtraTraining SPELL_DAMAGE 2}}
+        { 0.02 { Lasting { HATE_UNDEAD } }}
+      }
+    }
+    {
+      ids = { "CLERIC" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      specialTraits = {
+        { 0.15 { SpecialAttr DEFENSE 8 HatedBy HATE_UNDEAD }}
+        { 0.05 { ExtraTraining SPELL_DAMAGE 2}}
+        { 0.02 { AttrBonus SPELL_SPEED 30 }}
+      }
+    }
+    {
+      ids = { "ARCHER_PLAYER" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      specialTraits = {
+        { 0.15 { SpecialAttr RANGED_DAMAGE 8 HatedBy HATE_GREENSKINS }}
+        { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+        { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+        { 0.05 { SpecialAttr RANGED_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+        { 0.05 { Lasting { RANGED_VULNERABILITY } }}
+        { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+        { 0.05 { Lasting { SWIMMING_SKILL } }}
+        { 0.02 { Lasting { HATE_ELVES } }}
+        { 0.02 { Lasting { HATE_HUMANS } }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "JESTER" }
+      traits = { FIGHTER }
+      frequency = 0.1
+      specialTraits = {
+        { 1.0 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "DWARF_BLACKSMITH" }
+      traits = { FIGHTER }
+    }
+    {
+      ids = { "GALEAM" }
+      traits = { FIGHTER NO_LIMIT }
+      frequency = 0.3
+      spawnLocation = FurnitureType "ANGEL_SHRINE"
+    }
+    {
+      ids = { "CHERUB" }
+      traits = { FIGHTER NO_LIMIT }
+      frequency = 0.2
+      spawnLocation = FurnitureType "ANGEL_SHRINE"
+    }
+    {
+      ids = { "ANGEL" }
+      traits = { FIGHTER NO_LIMIT }
+      frequency = 0.15
+      spawnLocation = FurnitureType "ANGEL_SHRINE"
+    }
+    {
+      ids = { "TEUTON" }
+      traits = { FIGHTER }
+    }
+    {
+      ids = { "DOG" }
+      traits = { FIGHTER DOESNT_TRIGGER NO_LIMIT }
+      frequency = 0.1
+    }
+    {
+      ids = { "HORSE_CAN_TRAIN" }
+      traits = { NO_LIMIT INCREASE_POPULATION }
+    }
+    {
+      ids = { "GNOME" }
+      traits = { LEADER WORKER NO_LIMIT }
+      invisible = true
+      noAuto = true
+      initialRecruitment = 4
+      spawnLocation = NearLeader
+    }
+    {
+      ids = { "DWARF_PLAYER" "DWARF_PLAYER_F" }
+      traits = { LEADER WORKER FIGHTER }
+      invisible = true
+      noAuto = true
+      initialRecruitment = 11
+      spawnLocation = NearLeader
+    }
+    {
+      ids = { "ZOMBIE_WORKER" }
+      traits = { FIGHTER WORKER NO_LIMIT }
+      invisible = true
+      noAuto = true
+      initialRecruitment = 4
+      spawnLocation = NearLeader
+    }
+    {
+      ids = { "ZOMBIE_WORKER" }
+      traits = { FIGHTER WORKER LEADER }
+      frequency = 0.5
+      specialTraits = {
+         { 0.03 { CompanionInfo { summonFreq = 0.1 creatures = { "FLY" }}}}
+         { 0.2 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.3 { Lasting { BLIND } }}
+         { 1.0 { Lasting { SWARMER } }}
+         { 0.3 { Lasting { COLLAPSED } }}
+      }
+    }
+    {
+      ids = { "GOBLIN_WORKER" }
+      traits = { WORKER NO_AUTO_EQUIPMENT }
+      initialRecruitment = 4
+      invisible = true
+      hiddenInHelp = true
+    }
+    {
+      ids = { "GOBLIN_WORKER" }
+      traits = { WORKER NO_AUTO_EQUIPMENT }
+      frequency = 1
+      specialTraits = {
+         { 0.2 { AttrBonus DIGGING 15 }}
+      }
+    }
+    {
+      ids = { "GOBLIN_ARTIFICER" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 0.7
+      specialTraits = {
+         { 0.05 { AttrBonus FORGE 20 Lasting { INSANITY } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" }
+      traits = { FIGHTER }
+      frequency = 1
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { CompanionInfo { summonFreq = 0.1 creatures = { "WOLF" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.15 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "GOBLIN_GUARD" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { SpecialAttr DEFENSE 10 CreatureStatus LEADER }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "GOBLIN_ARCHER" }
+      traits = { FIGHTER }
+      frequency = 0.4
+      specialTraits = {
+         { 0.02 { SpecialAttr RANGED_DAMAGE 20 CreatureStatus CIVILIAN }}
+         { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.15 { SpecialAttr RANGED_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { Lasting { RANGED_VULNERABILITY } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { Lasting { BAD_BREATH } }}
+         { 0.03 { AttrBonus RANGED_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "GOBLIN_PRIEST" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      specialTraits = {
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { AttrBonus SPELL_SPEED 30 }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "GOBLIN_WIZARD" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      specialTraits = {
+         { 0.01 { CompanionInfo { summonFreq = 0.1 creatures = { "WOLF" }}}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.15 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "GOBLIN_KABOOMER" }
+      traits = { FIGHTER }
+      spawnLocation = Pregnancy
+      frequency = 0.5
+    }
+    {
+      ids = { "GOBLIN_CHICKENMANCER" }
+      traits = { FIGHTER }
+      spawnLocation = Pregnancy
+      frequency = 0.5
+    }
+    {
+      ids = { "TROLL" }
+      traits = { FIGHTER }
+      spawnLocation = Pregnancy
+      frequency = 0.5
+    }
+    {
+      ids = { "IMP" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      spawnLocation = NearLeader
+      keybinding = CREATE_IMP
+      sound = {"CREATE_IMP" 2}
+      noAuto = true
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      tutorialHighlight = ACCEPT_IMMIGRANT
+      hiddenInHelp = true
+      consumeIds = true
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" "GOBLIN_WARRIOR" "GOBLIN_WARRIOR" }
+      frequency = 0.5
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      consumeIds = true
+    }
+    {
+      ids = { "GOBLIN_ARTIFICER" }
+      frequency = 0.1
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      consumeIds = true
+    }
+}
