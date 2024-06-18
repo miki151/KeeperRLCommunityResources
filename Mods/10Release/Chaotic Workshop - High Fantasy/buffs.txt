@@ -1,10 +1,22 @@
+"MAGEX_FLAME_CLOAK" {
+  name = "flame cloak"
+  adjective = "flame cloaked"
+  description = "enchanted with flame cloak"
+  addedMessage = ARE "enchanted with flame cloak"
+  removedMessage = ARE "no longer enchanted with flame cloak"
+  tickEffect = Area 1 Filter Enemy Fire {}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId RED
+}
+
 "MAGEX_LIGHTING_DISCHARGE" {
   name = "lighting discharge"
   adjective = "charged"
   description = "started to discharge"
-  addedMessage = ARE "super"
-  removedMessage = ARE "is no longer discharging"
-  tickEffect = Area 1 Filter Not Enemy {Bleed 0.05 "shocked"}
+  addedMessage = ARE "sdischarginguper"
+  removedMessage = ARE "no longer discharging"
+  tickEffect = Chain { Area 1 Filter Or { Not LastingEffect MAGEX_LIGHTNING_RESISTANT Not LastingEffect MAGEX_LIGHTNING_IMMUNITY} {Filter Not Enemy {Bleed 0.05 "shocked"}}}
   combatConsumable = true
   canWishFor = false
   color = ColorId RED
@@ -43,8 +55,8 @@
   name = "magex_fire_damage"
   adjective = "deals fire damage"
   description = "All dealt melee damage is transformed into fire damage."
-  addedMessage = "deal" "deals" "magex_fire_damage"
-  removedMessage = "no longer deal" "no longer deals" "magex_fire_damage"
+  addedMessage = "deal" "deals" "fire damage"
+  removedMessage = "no longer deal" "no longer deals" "fire damage"
   fx = BUFF_RED
   color = ColorId RED
   price = 50
@@ -390,6 +402,26 @@
   color = ColorId RED
 }
 
+"MAGEX_FELL_CORRUPTION" {
+  name = "fell corruption"
+  adjective = "fell corruption"
+  description = "corrupted by fell energies"
+  addedMessage = ARE "corrupted by withdrawal of fell"
+  removedMessage = ARE "no longer corrupted by withdrawal of fell"
+  startEffect = Chain { 
+						IncreaseAttr DAMAGE 6
+						IncreaseAttr SPELL_DAMAGE 6
+						IncreaseAttr DEFENSE -3}
+  endEffect = Chain { 
+						IncreaseAttr DAMAGE 6
+						IncreaseAttr SPELL_DAMAGE 6
+						IncreaseAttr DEFENSE -3}
+
+  combatConsumable = true
+  canWishFor = true
+  color = ColorId GREEN
+}
+
 "MAGEX_FELL_POWER_OVERWHELMING" {
   name = "fell overload"
   adjective = "fell overload"
@@ -577,3 +609,64 @@
   price = 50
   modifyDamageAttr = DAMAGE RANGED_DAMAGE
 }
+
+"MAGEX_RANGED_SPELL_DAMAGE" {
+  name = "spell damage"
+  adjective = "deals magical damage"
+  description = "All dealt ranged damage is transformed into magical damage."
+  addedMessage = "deal" "deals" "magical damage"
+  removedMessage = "no longer deal" "no longer deals" "magical damage"
+  fx = BUFF_PURPLE
+  color = ColorId PURPLE
+  price = 50
+  modifyDamageAttr = RANGED_DAMAGE SPELL_DAMAGE
+}
+
+"MAGEX_RANGED_FIRE_DAMAGE" {
+  name = "fire damage"
+  adjective = "deals fire damage"
+  description = "All dealt ranged damage is transformed into fire damage."
+  addedMessage = "deal" "deals" "fire damage"
+  removedMessage = "no longer deal" "no longer deals" "fire damage"
+  fx = BUFF_PURPLE
+  color = ColorId PURPLE
+  price = 50
+  modifyDamageAttr = RANGED_DAMAGE FIRE_DAMAGE
+}
+
+"MAGEX_RANGED_COLD_DAMAGE" {
+  name = "cold damage"
+  adjective = "deals cold damage"
+  description = "All dealt ranged damage is transformed into cold damage."
+  addedMessage = "deal" "deals" "cold damage"
+  removedMessage = "no longer deal" "no longer deals" "cold damage"
+  fx = BUFF_RED
+  color = ColorId RED
+  price = 50
+  modifyDamageAttr = RANGED_DAMAGE COLD_DAMAGE
+}
+
+"MAGEX_ARCHER_TRAINING" {
+  name = "trained Archer"
+  adjective = " is trained"
+  description = "Gives a +4 damage bonus."
+  startEffect = IncreaseAttr RANGED_DAMAGE 4
+  endEffect = IncreaseAttr RANGED_DAMAGE -4
+  combatConsumable = true
+  consideredBad = false
+  color = ColorId GREEN
+  price = 200
+}
+
+"MAGEX_MOUNTAIN_ARCHER_TRAINING" {
+  name = "trained Mountain Archer"
+  adjective = " is trained"
+  description = "Gives a +4 defense bonus."
+  startEffect = IncreaseAttr DEFENSE 4
+  endEffect = IncreaseAttr DEFENSE -4
+  combatConsumable = true
+  consideredBad = false
+  color = ColorId GREEN
+  price = 200
+}
+

@@ -1,0 +1,53 @@
+ "Swine Culture"
+  {
+  
+    { { Dig CutTree }                                        "Dig or cut tree"   "Structure"  
+      "" "DIG" {} true DIG_OR_CUT_TREES}
+
+     { Furniture {{ "PIT" }                        "STONE" 0 }      "Dig a pit"         "Structure"
+      "Dig a pit in the ground. Building next to water or lava will cause it to fill up." none {TechId "swine hold"}}
+
+    { Furniture {{ "WOOD_WALL" }                  "WOOD" 5 }       "Wooden wall"   "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." none {TechId "swine hold"}}
+
+    { Furniture {{ "WOOD_PILLAR" }                "WOOD" 2 }       "Wooden pillar"     "Structure"
+      "Acts as roof support, but doesn't block movement." none {TechId "swine hold"}}
+
+    { Furniture {{ "WOOD_DOOR" }                  "WOOD" 5 }       "Wooden door"       "Structure"
+      "Stops enemies. Your minions can pass freely unless you lock it." none {TechId "swine hold"} }
+
+    { Furniture {{ "SWINE_FLOOR" }                "WOOD" 2 }       "Floor"            "Structure"
+        "" none {TechId "swine hold"}}
+
+    { Furniture {{ "SWINE_BED1" }       "WOOD" 24 }                      "Hay Pile"         "Living"
+        "Smart Swines sleep here." "BEDS" {} true  BUILD_BED }
+		
+    { Furniture {{ "SWINE_BED2" }       "WOOD" 24 }                      "Beast Hay Pile"         "Living"
+        "Dumb Swines sleep here." "BEDS" {} true  BUILD_BED }
+
+    { Furniture {{ "SWINE_TABLE" }        "CORPSE"   50  }                  "Dinning Table"     "Living" "Dine here and increase population by 1"}
+		
+    { Furniture {{ "SWINE_WORKSHOP" }   "WOOD" 30 }                      "Workshop"          "Crafting"
+        "Produces leather equipment, traps, first-aid kits and other." "WORKSHOPS" {} true  BUILD_WORKSHOP}
+		
+    { Furniture {{ "SWINE_CAULDRON" }   "STONE" 30 }                      "Cauldron"          "Crafting"
+        "Produces leather equipment, traps, first-aid kits and other." "WORKSHOPS" {TechId "swine cooking"}  true  BUILD_WORKSHOP}
+				
+    { Furniture {{ "SWINE_CORPSE_PIT" }}                                 "Corpse pit"        "Crafting"
+        "Used to store food."}
+				
+    { Furniture {{ "SWINE_TRAINING" } "CORPSE" 2 }                   "Training Dummy"      "Training"
+        "Train your minions' melee skills here." "TRAINING_DUMMIES" {} true  TRAINING_ROOM}
+
+    { Furniture {{ "SWINE_MYSTIC_SKIN" }   "CORPSE" 2 }                 "Mystic Skin"   "Training"  
+        "Train your minions' magical powers here." "BOOKCASES"     {TechId "swine mystycism"} true BUILD_LIBRARY }
+    
+    { Furniture {{ "ARCHERY_RANGE" } "WOOD" 24 }                   "Archery target"    "Training"
+        "Train your minions' archery skills here."}
+		
+	{ Furniture {{ "ANIMAL_FENCE" } "WOOD" 2 }                     "Animal fence"      "Breeding"
+        "Require to keep farm humans from escaping." }
+		
+	{ Furniture {{ "SWINE_BREEDING_PIT" }     "WOOD" 10 }                       "Breeding Pit"            "Breeding"
+        "" none {TechId "human breeding"}}
+  }

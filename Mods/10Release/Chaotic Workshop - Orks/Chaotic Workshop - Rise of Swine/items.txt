@@ -1,0 +1,96 @@
+"SWINE_THROW_SPEAR"
+  {
+    viewId = { "spear" }
+    name = "spear"
+    itemClass = RANGED_WEAPON
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"swine_throw_spear"}
+    weaponInfo = {
+      twoHanded = true
+    }
+    weight = 1
+    modifiers = {
+      RANGED_DAMAGE 10
+    }
+    price = 12
+    maxUpgrades = 1
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "ranged weapons"
+  }
+  
+"SWINE_GRUB"
+  {
+    viewId = { "swine_grub" }
+    shortName = "grub"
+    name = "grub"
+    plural = "grub"
+    blindName = "meat"
+    applyVerb = "eat" "eats"
+    fragile = true
+    weight = 0.3
+    effect = { Lasting 50 HIGH_MORALE Lasting 50 MELEE_RESISTANCE Lasting 50 RANGED_RESISTANCE Heal { FLESH }}
+    price = 10
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"potions" "equipment"}
+  }
+  
+"SWINE_SOUP"
+  {
+    viewId = { "swine_soup" }
+    shortName = "grub"
+    name = "grub"
+    plural = "grub"
+    blindName = "meat"
+    applyVerb = "drink" "drinks"
+    fragile = true
+    weight = 0.3
+    effect = { Lasting 50 HIGH_MORALE Lasting 50 FIRE_RESISTANT Lasting 50 COLD_RESISTANT Heal { FLESH }}
+    price = 10
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"potions" "equipment"}
+  }
+  
+"SWINE_GROG"
+  {
+    viewId = { "potion1" Rgb 255 0 0 0 }
+    shortName = "grog"
+    name = "potion of grog"
+    plural = "potions of grog"
+    blindName = "potion"
+    applyVerb = "drink" "drinks"
+    fragile = true
+    weight = 0.3
+    effect = { Lasting 50 HIGH_MORALE Lasting 50 DAM_BONUS Lasting DRUNK}
+    price = 10
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"potions" "equipment"}
+  }
+  
+"SWINE_FOUL_GROG"
+  {
+    viewId = { "potion1" Rgb 0 255 0 0 }
+    shortName = "foul grog"
+    name = "potion of foul grog"
+    plural = "potions of foul grog"
+    blindName = "potion"
+    applyVerb = "drink" "drinks"
+    fragile = true
+    weight = 0.3
+    effect = { Lasting 50 HIGH_MORALE GrantAbility "SWINE_FOUL_GROG" Lasting DRUNK}
+    price = 10
+    burnTime = 1
+    uses = 1
+    producedStat = POTION_PRODUCED
+    storageIds = {"potions" "equipment"}
+  }
+  
+"SWINE_CORPSE" inherit "WizardCorpse"
+  {
+    name = "corpse"
+  }

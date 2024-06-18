@@ -25,14 +25,18 @@
               attackMsg = BITE
               victimEffect = {0.5 Fire{20}} } }}}
         }
-	drops = { {"RedDragonScales"} 1}
+	  drops = { {"RedDragonScales"} 1}
+      droppedPartUpgrade = GrantAbility "dragon fire"
       }
       permanentEffects = {
         FIRE_IMMUNITY 1
         RANGED_VULNERABILITY 1
+        CAPTURE_RESISTANCE 1
+        REGENERATION 1
       }
       spellSchools = { "fighter" "dragon_k_dragon" }
       spells = { "dragon fire" }
+      hatedByEffect = HATE_DRAGONS
     }
 
   "KEEPER_RED_DRAGON_F" inherit "KEEPER_RED_DRAGON"
@@ -53,7 +57,7 @@
         DAMAGE 15
         DEFENSE 15
         SPELL_DAMAGE 15
-	LABORATORY 50
+	    LABORATORY 50
       }
       maxLevelIncrease = {
         DAMAGE 12
@@ -67,14 +71,18 @@
               attackMsg = BITE
               victimEffect = {0.5 Fire{20}} } }}}
         }
-	drops = { {"YellowDragonScales"} 1}
+	  drops = { {"YellowDragonScales"} 1}
+      droppedPartUpgrade = GrantAbility "dragon acid breath"
       }
       permanentEffects = {
-        FIRE_IMMUNITY 1
+        ACID_IMMUNITY 1
         RANGED_VULNERABILITY 1
+        CAPTURE_RESISTANCE 1
+        REGENERATION 1
       }
       spellSchools = { "fighter" "dragon_k_dragon" }
       spells = { "dragon acid breath" }
+      hatedByEffect = HATE_DRAGONS
     }
 
   "KEEPER_YELLOW_DRAGON_F" inherit "KEEPER_YELLOW_DRAGON"
@@ -99,6 +107,7 @@
               attackMsg = BITE } }}}
         }
         drops = {{ "BlackDragonScales" } 1}
+        droppedPartUpgrade = GrantAbility "dragon mind breath"
       }
       permanentEffects = {
         RANGED_VULNERABILITY 1
@@ -106,9 +115,12 @@
         TELEPATHY 1
         AMBUSH_SKILL 1
         SWIMMING_SKILL 1
+        CAPTURE_RESISTANCE 1
+        REGENERATION 1
       }
       spellSchools = { "fighter" "dragon_k_dragon" }
       spells = { "dragon mind breath" }
+      hatedByEffect = HATE_DRAGONS
     }
 
   "KEEPER_BLACK_DRAGON_F" inherit "KEEPER_BLACK_DRAGON"
@@ -134,13 +146,17 @@
               victimEffect = {0.3 Lasting POISON} } }}}
         }
         drops = { { "GreenDragonScales" } 1}
+        droppedPartUpgrade = GrantAbility "dragon poison breath"
       }
       permanentEffects = {
         POISON_RESISTANT 1
         RANGED_VULNERABILITY 1
+        CAPTURE_RESISTANCE 1
+        REGENERATION 1
       }
       spellSchools = { "fighter" "dragon_k_dragon" }
       spells = { "dragon poison breath" }
+      hatedByEffect = HATE_DRAGONS
     }
 
   "KEEPER_GREEN_DRAGON_F" inherit "KEEPER_GREEN_DRAGON"
@@ -165,13 +181,17 @@
               attackMsg = BITE } }}}
         }
         drops = {{ "WhiteDragonScales" } 1}
+        droppedPartUpgrade = GrantAbility "dragon ice breath"
       }
       permanentEffects = {
         RANGED_VULNERABILITY 1
         COLD_IMMUNITY 1
+        CAPTURE_RESISTANCE 1
+        REGENERATION 1
       }
       spellSchools = { "fighter" "dragon_k_dragon" }
       spells = { "dragon ice breath" }
+      hatedByEffect = HATE_DRAGONS
     }
 
   "KEEPER_WHITE_DRAGON_F" inherit "KEEPER_WHITE_DRAGON"
@@ -203,16 +223,22 @@
         type = Humanoid HUGE
 		 material = BONE
         intrinsicAttacks = {
-          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+          HEAD {{
+            isExtraAttack = true
+            itemType = { Intrinsic { "bite_attack" } "fangs" 15 {
               attackType = BITE
-              attackMsg = BITE } }}}
+              attackMsg = BITE
+              attackerEffect = { RegrowBodyPart 1 } } }}}
         }
       }
       permanentEffects = {
-        RANGED_VULNERABILITY 1
+        RANGED_RESISTANCE 1
+		MELEE_RESISTANCE 1
+        CAPTURE_RESISTANCE 1
       }
       spellSchools = { "fighter" "dragon_k_bone_dragon" }
       spells = { "dragon black fog breath" }
+      hatedByEffect = HATE_UNDEAD
     }
 
   "KEEPER_BONE_DRAGON_F" inherit "KEEPER_BONE_DRAGON"
@@ -235,6 +261,7 @@
         SWIMMING_SKILL 1
      	RIDER 1
         SWARMER 1
+		KOBOLD_WORKER 1
       }
       chatReactionFriendly = "talks about digging"
       chatReactionHostile = "\"Die!\""
@@ -243,6 +270,9 @@
         firstNameGen = "KOBOLD"
         pluralName = "kobold workers"
         groupName = "tribe"
+      }
+      hatedByEffect = HATE_DRAGONS  
+      inventory = {
       }
     }
 
@@ -309,6 +339,7 @@
 	  weight = 35
       material = BONE
       }
+      hatedByEffect = HATE_UNDEAD
     }
 
   "KOBOLD_BONE_WORKER_RECRUIT" inherit "KOBOLD_BONE_WORKER"
@@ -333,7 +364,16 @@
         name = "kobold guard"
         firstNameGen = "KOBOLD"
         pluralName = "kobold guards"
-        groupName = "tribe"
+        groupName = "tribe" 
+      }
+      permanentEffects = {
+        SWIMMING_SKILL 1
+     	RIDER 1
+        SWARMER 1
+      }
+      inventory = {
+        { "Spear"}
+        { "LeatherArmor"}
       }
     }
 	
@@ -370,6 +410,7 @@
 	  weight = 35
       material = BONE
       }
+      hatedByEffect = HATE_UNDEAD
     }	
 	
   "KOBOLD_PRIEST" inherit "KOBOLD_WORKER"
@@ -392,6 +433,15 @@
         name = "kobold priest"
         firstNameGen = "KOBOLD"
         pluralName = "kobold priests"
+      }
+      permanentEffects = {
+        SWIMMING_SKILL 1
+     	RIDER 1
+        SWARMER 1
+      }
+      inventory = {
+        { "WoodenStaff"}
+        { "Robe"}
       }
     }
 
@@ -440,6 +490,15 @@
         name = "kobold sorcerer"
         firstNameGen = "KOBOLD"
       }
+      permanentEffects = {
+        SWIMMING_SKILL 1
+     	RIDER 1
+        SWARMER 1
+      }
+      inventory = {
+        { "WoodenStaff"}
+        { "Robe"}
+      }
     }
 
   "KOBOLD_RED_SORCERER" inherit "KOBOLD_SORCERER"
@@ -475,6 +534,7 @@
 	  weight = 35
       material = BONE
       }
+      hatedByEffect = HATE_UNDEAD
     }	
 	
   "KOBOLD_SCOUT" inherit "KOBOLD_WORKER"
@@ -491,6 +551,7 @@
         RANGED_DAMAGE 7
       }
       permanentEffects = {
+        SWIMMING_SKILL 1
         AMBUSH_SKILL 1
 	    RIDER 1
         SWARMER 1
@@ -500,6 +561,10 @@
         firstNameGen = "KOBOLD"
         pluralName = "kobold scouts"
         groupName = "tribe"
+      }
+      inventory = {
+        { "Spear"}
+        { "LeatherArmor"}
       }
     }
 
@@ -536,6 +601,7 @@
 	  weight = 35
       material = BONE
       }
+      hatedByEffect = HATE_UNDEAD
     }	
 	
   "KOBOLD_CRAFTER" inherit "KOBOLD_WORKER"
@@ -554,6 +620,7 @@
       permanentEffects = {
         SWIMMING_SKILL 1
         DISARM_TRAPS_SKILL 1
+		DISTILLATION_SKILL 1
 	    RIDER 1
         SWARMER 1
       }
@@ -596,6 +663,7 @@
 	  weight = 35
       material = BONE
       }
+      hatedByEffect = HATE_UNDEAD
     }	
 											
   "KOBOLD_REDBLESSED" inherit "KOBOLD_WORKER"
@@ -632,6 +700,11 @@
         SWIMMING_SKILL 1
 	    RIDER 1
       }
+      inventory = {
+        { "LeatherGloves"}
+        { "LeatherBoots"}
+        { "Robe"}
+      }
     }
 									
   "KOBOLD_YELLOWBLESSED" inherit "KOBOLD_WORKER"
@@ -660,7 +733,7 @@
       }
       spellSchools = { "dragon_k_yellow_blessed" }
       name = {
-        name = "kobold mind blessed"
+        name = "kobold acid blessed"
         firstNameGen = "KOBOLD"
       }
       permanentEffects = {
@@ -690,7 +763,7 @@
       }
       spellSchools = { "dragon_k_black_blessed" }
       name = {
-        name = "kobold acid blessed"
+        name = "kobold mind blessed"
         firstNameGen = "KOBOLD"
       }
     }
@@ -774,6 +847,7 @@
         name = "kobold bone abberation"
         firstNameGen = "KOBOLD"
       }
+      hatedByEffect = HATE_UNDEAD
     }
 	
   "WATCHDRAKE" inherit "WOLF"
@@ -789,32 +863,36 @@
         firstNameGen = "DOG"
         groupName = "pride"
       }
-      spells = { "cold breath"}
     }
 	
   "WATCHDRAKE_YELLOW" inherit "WATCHDRAKE"
     {
       viewId = { "watchdrake_yellow" }
+      spells = { "acid stream"}
     }
 		
   "WATCHDRAKE_RED" inherit "WATCHDRAKE"
     {
       viewId = { "watchdrake_red" }
+      spells = { "fire breath"}
     }
 	
   "WATCHDRAKE_GREEN" inherit "WATCHDRAKE"
     {
       viewId = { "watchdrake_green" }
+      spells = { "poison breath"}
     }	
 	
   "WATCHDRAKE_BLACK" inherit "WATCHDRAKE"
     {
       viewId = { "watchdrake_black" }
+      spells = { "mind breath"}
     }
 	
   "WATCHDRAKE_WHITE" inherit "WATCHDRAKE"
     {
       viewId = { "watchdrake_white" }
+      spells = { "cold breath"}
     }	
 	
   "WATCHDRAKE_UNDEAD" inherit "WATCHDRAKE"
@@ -828,7 +906,9 @@
         LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
         HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 10 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
       }
-    }
+     }
+      spells = { "black smoke breath" }
+      hatedByEffect = HATE_UNDEAD
     }
 				
   "WYRMLING"
@@ -851,7 +931,7 @@
         NIGHT_VISION 1
         EXPLORE_NOCTURNAL_SKILL 1
         EXPLORE_CAVES_SKILL 1
-	EXPLORE_SKILL 1
+	    EXPLORE_SKILL 1
       }
       name = {
         name = "wyrmling"
@@ -865,26 +945,42 @@
   "WYRMLING_YELLOW" inherit "WYRMLING"
     {
       viewId = { "wyrmling_yellow" }
+      permanentEffects = append {
+        ACID_IMMUNITY 1
+      }
     }
 		
   "WYRMLING_RED" inherit "WYRMLING"
     {
       viewId = { "wyrmling_red" }
+      permanentEffects = append {
+        FIRE_RESISTANT 1
+      }
     }
 	
   "WYRMLING_GREEN" inherit "WYRMLING"
     {
       viewId = { "wyrmling_green" }
+      permanentEffects = append {
+        POISON_RESISTANT 1
+      }
     }	
 	
   "WYRMLING_BLACK" inherit "WYRMLING"
     {
       viewId = { "wyrmling_black" }
+      permanentEffects = append {
+		BLIND 1
+        TELEPATHY 1
+      }
     }
 	
   "WYRMLING_WHITE" inherit "WYRMLING"
     {
       viewId = { "wyrmling_white" }
+      permanentEffects = append {
+        COLD_RESISTANT 1
+      }
     }	
 	
   "WYRMLING_UNDEAD" inherit "WYRMLING"
@@ -896,7 +992,14 @@
         weight = 1
         intrinsicAttacks = {
           HEAD {{{ Intrinsic { "bite_attack" } "fangs" 4 { attackType = BITE attackMsg = BITE } }}}
-        }}}	
+        }}
+      permanentEffects = append {
+        MELEE_RESISTANCE 1
+        RANGED_RESISTANCE 1
+		MAGIC_VULNERABILITY 1
+      }
+      hatedByEffect = HATE_UNDEAD
+		}	
 
   "RIDING_DRAKE"
     {
@@ -929,26 +1032,42 @@
   "RIDING_DRAKE_YELLOW" inherit "RIDING_DRAKE"
     {
       viewId = { "ridingdrake_yellow" }
+      permanentEffects = append {
+        ACID_RESISTANT 1
+      }
     }
 		
   "RIDING_DRAKE_RED" inherit "RIDING_DRAKE"
     {
       viewId = { "ridingdrake_red" }
+      permanentEffects = append {
+        FIRE_RESISTANT 1
+      }
     }
 	
   "RIDING_DRAKE_GREEN" inherit "RIDING_DRAKE"
     {
       viewId = { "ridingdrake_green" }
+      permanentEffects = append {
+        POISON_RESISTANT 1
+      }
     }	
 	
   "RIDING_DRAKE_BLACK" inherit "RIDING_DRAKE"
     {
       viewId = { "ridingdrake_black" }
+      permanentEffects = append {
+		BLIND 1
+        TELEPATHY 1
+      }
     }
 	
   "RIDING_DRAKE_WHITE" inherit "RIDING_DRAKE"
     {
       viewId = { "ridingdrake_white" }
+      permanentEffects = append {
+        COLD_RESISTANT 1
+      }
     }	
 	
   "RIDING_DRAKE_UNDEAD" inherit "RIDING_DRAKE"
@@ -964,6 +1083,12 @@
               attackMsg = BITE } }}}
         }
      }
+      permanentEffects = append {
+        MELEE_RESISTANCE 1
+        RANGED_RESISTANCE 1
+		MAGIC_VULNERABILITY 1
+      }
+      hatedByEffect = HATE_UNDEAD
     }
 	
   "RED_HATCHLING" inherit "RIDING_DRAKE"
@@ -988,9 +1113,10 @@
         }
         drops = { { "RedDragonScales" } 1}
       }
-      permanentEffects = append {
+      permanentEffects = {
         FIRE_RESISTANT 1
         RANGED_VULNERABILITY 1
+		CAPTURE_RESISTANCE 1
       }
       spells = { "dragon fire"}
       name = {
@@ -1020,9 +1146,10 @@
         }
         drops = { { "YellowDragonScales" } 1}
       }
-      permanentEffects = append {
+      permanentEffects = {
         ACID_RESISTANT 1
         RANGED_VULNERABILITY 1
+		CAPTURE_RESISTANCE 1
       }
       spells = {"dragon acid breath"}
       name = {
@@ -1051,11 +1178,12 @@
         }
         drops = { { "BlackDragonScales" } 1}
       }
-      permanentEffects = append {
+      permanentEffects = {
         BLIND 1
         TELEPATHY 1
         AMBUSH_SKILL 1
         RANGED_VULNERABILITY 1
+		CAPTURE_RESISTANCE 1
       }
       spells = { "dragon mind breath" }
       name = {
@@ -1085,9 +1213,10 @@
         }
         drops = { { "GreenDragonScales" } 1}
       }
-      permanentEffects = append {
+      permanentEffects = {
         POISON_RESISTANT 1
         RANGED_VULNERABILITY 1
+		CAPTURE_RESISTANCE 1
       }
       spells = { "dragon poison breath"}
       name = {
@@ -1116,9 +1245,10 @@
         }
         drops = { { "WhiteDragonScales" } 1}
       }
-      permanentEffects = append {
+      permanentEffects = {
         COLD_RESISTANT 1
         RANGED_VULNERABILITY 1
+		CAPTURE_RESISTANCE 1
       }
       spells = { "dragon ice breath"}
       name = {
@@ -1148,8 +1278,10 @@
               attackMsg = BITE } }}}
         }
       }
-      permanentEffects = append {
-        RANGED_VULNERABILITY 1
+      permanentEffects = {
+        RANGED_RESISTANCE 1
+        MELEE_RESISTANCE 1
+		MAGIC_VULNERABILITY 1
       }
       spells = { "dragon black fog breath" }
       name = {
@@ -1157,6 +1289,7 @@
         firstNameGen = "DRAGON"
         stackName = "dragon_k_dragon"
       }
+      hatedByEffect = HATE_UNDEAD
     }
 		
   "DMG_SPIRIT"
@@ -1294,4 +1427,66 @@
       DAMAGE 15
       DEFENSE 15 
     }
+      hatedByEffect = HATE_UNDEAD
+  }
+  
+"GREEN_NAGA"
+  {
+    viewId = { "naga" Rgb 33 120 27 255 }
+    attr = {
+      DAMAGE 30
+      DEFENSE 24
+    }
+    body = {
+      type = NonHumanoid HUGE
+      addBodyPart = {
+        HEAD 1
+        ARM 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 7 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      RANGED_VULNERABILITY 1
+    }
+    name = {
+      name = "green naga"
+    }
+    hatedByEffect = HATE_DRAGONS
+  }
+  
+ 
+"UNDEAD_NAGA"
+  {
+    viewId = { "naga_undead" }
+    attr = {
+      DAMAGE 27
+      DEFENSE 26
+    }
+    body = {
+      material = BONE
+      type = NonHumanoid HUGE
+      addBodyPart = {
+        HEAD 1
+        ARM 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+            attackType = BITE
+            attackMsg = BITE}}}}
+      }
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      RANGED_VULNERABILITY 1
+    }
+    name = {
+      name = "undead naga"
+    }
+    hatedByEffect = HATE_UNDEAD
   }

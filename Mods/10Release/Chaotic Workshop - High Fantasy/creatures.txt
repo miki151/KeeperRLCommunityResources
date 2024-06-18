@@ -1,3 +1,86 @@
+
+###########################################################
+# 					archers 							  #
+###########################################################
+
+"SKELETON_ARCHER" modify {
+	 permanentEffects = append { RIDER 1}
+	 spells = append { "magex_archer_school" }
+    spellSchools = {  }
+  }
+  
+"MAGEX_ARCANE_ARCHER_PLAYER" inherit "ARCHER_PLAYER"
+  {
+    viewId = { "magex_arcane_archer" }
+	spells = append { "magex_archer_school" }
+    spellSchools = {  }
+  }
+  
+"MAGEX_ARCANE_ARCHER" inherit "ARCHER"
+  {
+    viewId = { "magex_arcane_archer" }
+	spells = append { "magex_archer_school" }
+    spellSchools = {  }
+  }
+   
+"ARCHER_PLAYER" modify append
+  {
+	spells = append { "magex_archer_school" }
+    spellSchools = {  }
+  }
+  
+"ARCHER" modify append
+  {
+	spells = append { "magex_archer_school" }
+    spellSchools = {  }
+  }
+
+"HARPY" modify append
+  {
+	spells = append { "magex_archer_school" }
+    spellSchools = {  }
+  }
+
+"ELF_ARCHER" modify append
+  {
+	spells = append { "magex_archer_school" }
+  }
+  
+"DRIAD" modify append
+  {
+	spells = append { "magex_archer_school" }
+  }
+  
+"DRIAD_LEADER" modify append
+  {
+	spells = append { "magex_archer_school" }
+  }
+  
+"GOBLIN_ARCHER" modify append
+  {
+	spells = append { "magex_archer_school" }
+    spellSchools = {  }
+  }  
+  
+"GOBLIN_ARCHER_VILLAIN" modify append
+  {
+	spells = append { "magex_archer_school" }
+    spellSchools = {  }
+  }  
+  
+  
+  
+###########################################################
+# 					warrior  							  #
+###########################################################
+
+  
+"WEREWOLF" modify
+  {
+	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
+    spells = append {"magex_warrior_school" }
+  } 
+  
 "GOBLIN_WARRIOR" modify append
   {
     spells = append {"magex_warrior_school" }
@@ -10,12 +93,12 @@
   
 "VAMPIRE" modify append
   {
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_noble_warrior_school" }
   }  
   
 "DARK_ELF_WARRIOR" modify append
   {
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_noble_warrior_school" }
   }  
   
 "GOBLIN_WARRIOR_VILLAIN" modify append
@@ -31,16 +114,17 @@
 "TROLL" modify append
   {
     spells = append {"magex_warrior_barbarian_school" }
+    spellSchools = {"magex_cyclops" }
   } 
   
 "KNIGHT" modify append
   {
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_noble_warrior_school" }
   } 
   
 "KNIGHT_PLAYER" modify append
   {
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_noble_warrior_school" }
   } 
   
 "WITCHMAN" modify append
@@ -50,42 +134,50 @@
     
 "TEUTON" modify append
   {
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_noble_warrior_school" }
   } 
   
 "TEUTON_BOSS" modify append
   {
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_noble_warrior_school" }
   } 
   
 "DUKE" modify append
   {
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_noble_warrior_school" }
   } 
   
 "ADVENTURER_KNIGHT" modify append
   {
-    spells = append {"magex_warrior_school" }
+	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
+    spells = append {"magex_keeper_warrior_school_knight"  }
+	spellSchools = {"magex_paladin" "magex_keeper_knight"}
   } 
   
 "ADVENTURER_KNIGHT_F" modify append
   {
-    spells = append {"magex_warrior_school" }
+	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
+    spells = append {"magex_keeper_warrior_school_knight"  }
+	spellSchools = {"magex_paladin" "magex_keeper_knight"}
   } 
   
 "ADVENTURER_KNIGHT_WHITE" modify append
   {
-    spells = append {"magex_warrior_school" }
+	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
+    spells = append {"magex_keeper_warrior_school_knight"  }
+	spellSchools = {"magex_paladin" "magex_keeper_knight"}
   } 
   
 "ADVENTURER_KNIGHT_WHITE_F" modify append
   {
-    spells = append {"magex_warrior_school" }
+	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
+    spells = append {"magex_keeper_warrior_school_knight"  }
+	spellSchools = {"magex_paladin" "magex_keeper_knight"}
   } 
   
 "SQUIRE_PLAYER" modify append
   {
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_noble_warrior_school" }
   } 
   
 "GOBLIN_GUARD_VILLAIN" modify append
@@ -96,52 +188,9 @@
 "MAGEX_KNIGHT_GOBLIN_WARRIOR" inherit "GOBLIN_WARRIOR"
   {
     viewId = { "magex_knight_goblin_warrior" }
-    spells = append {"magex_warrior_school" }
-  }
-  
-"MAGEX_KNIGHT_GOBLIN_PRIEST" inherit "GOBLIN_PRIEST"
-  {
-    viewId = { "magex_knight_goblin_priest" }
-  }
-  
-"MAGEX_KNIGHT_GOBLIN_WIZARD" inherit "GOBLIN_WIZARD"
-  {
-    viewId = { "goblin_wizard" }
+    spells = {"magex_noble_warrior_school" }
   }
 
-"MAGEX_KNIGHT_GOBLIN_SHAMAN" inherit "GOBLIN_SHAMAN"
-  {
-    viewId = { "goblin_shaman" }
-  }
-  
-"KEEPER_MAGE" modify
-  {
-    spells = append {"magex_keeper_spell_school" }
-    spellSchools = { "magex_keeper_dungeon" }
-	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
-  }
-  
-"KEEPER_MAGE_F" modify
-  {
-    spells = append {"magex_keeper_spell_school"}
-    spellSchools = { "magex_keeper_dungeon" }
-	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
-  } 
- 
-"ADVENTURER_MAGE" modify
-  {
-    spells = append {"magex_keeper_spell_school"}
-    spellSchools = { "magex_keeper_dungeon" }
-	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
-  } 
-
-"ADVENTURER_MAGE_F" modify
-  {
-    spells = append {"magex_keeper_spell_school"}
-    spellSchools = { "magex_keeper_dungeon" }
-	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
-  } 
-  
 "DWARF_FIGHTER" modify
   {
 	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
@@ -166,11 +215,13 @@
 "CYCLOPS" modify
   {
     spells = append {"magex_warrior_barbarian_school" }
+    spellSchools = {"magex_cyclops" }
   }
  
 "CYCLOPS_PLAYER" modify
   {
-    spells = append {"magex_warrior_barbarian_school" }
+    spells = append {"magex_keeper_warrior_school_cyclops" }
+    spellSchools = {"magex_cyclops" }
   }
   
 "LIZARDLORD" modify
@@ -190,46 +241,351 @@
 "KEEPER_KNIGHT" modify
   {
 	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_keeper_warrior_school_knight"  }
+	spellSchools = {"magex_paladin" "magex_keeper_knight"}
   }
   
 "KEEPER_KNIGHT_F" modify
   {
 	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_keeper_warrior_school_knight"  }
+	spellSchools = {"magex_paladin" "magex_keeper_knight"}
   } 
   
 "KEEPER_KNIGHT_WHITE" modify
   {
 	permanentEffects = append { MAGEX_LIGHT_RESISTANT 1 }
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_keeper_warrior_school_knight"  }
+	spellSchools = {"magex_paladin" "magex_keeper_knight"}
   } 
   
 "KEEPER_KNIGHT_WHITE_F" modify
   {
 	permanentEffects = append { MAGEX_LIGHT_RESISTANT 1 }
-    spells = append {"magex_warrior_school" }
+    spells = append {"magex_keeper_warrior_school_knight"  }
+	spellSchools = {"magex_paladin" "magex_keeper_knight"}
   }
   
- "ANGEL" modify
+"MAGEX_REFORGED"
   {
-	permanentEffects = append { MAGEX_LIGHT_RESISTANT 1 }
+    viewId = { "magex_emperors_warrior" }
+    attr = {
+      DAMAGE 32
+      DEFENSE 31
+    }
+    body = {
+      type = Humanoid LARGE
+      weight = 400
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+	  MELEE_RESISTANCE 1
+	  SLOWED 1
+    }
+	spells = { "magex_die_heretic" "magex_noble_warrior_school" }
+    name = {
+      name = "reforged"
+      pluralName = "reforged"
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
   }
 
-"CHERUB" modify
+"MAGEX_ARCANE_KNIGHT_PLAYER" inherit "KNIGHT_PLAYER"
   {
-	permanentEffects = append { MAGEX_LIGHT_RESISTANT 1 }
+    viewId = { "magex_arcane_knight" }
+    spells = {"magex_noble_warrior_school" }
+  }
+  
+"MAGEX_ARCANE_KNIGHT" inherit "KNIGHT"
+  {
+    viewId = { "magex_arcane_knight" }
+    spells = {"magex_noble_warrior_school" }
   }
 
-"GALEAM" modify
+"MAGEX_ARCANE_SQUIRE_PLAYER" inherit "SQUIRE_PLAYER"
   {
-	permanentEffects = append { MAGEX_LIGHT_RESISTANT 1 }
+    viewId = { "magex_arcane_squire" }
+    promotionGroup = "magex_knight"
+    spells = {"magex_noble_warrior_school" }
+  }  
+
+"MAGEX_FOOTMAN"
+  {
+    viewId = { "magex_arcane_normal_footman" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Heeelp!\""
+    permanentEffects = {
+      RIDER 1
+    }
+	maxLevelIncrease = {
+      DAMAGE 5
+      RANGED_DAMAGE 3
+    }
+    name = {
+      name = "footman"
+	  firstNameGen = "FIRST_MALE"
+    }
+    spells = {"magex_warrior_school" }
+    hatedByEffect = HATE_HUMANS
+	inventory = {
+      { "LeatherArmor"}
+      { "Club"}
+    }
   }
+  
+"MAGEX_ARCANE_FOOTMAN" inherit "MAGEX_FOOTMAN"
+  {
+    viewId = { "magex_arcane_footman" }
+  }    
+
+"MAGEX_KEEPER_GRAVE_KNIGHT"
+  {
+    viewId = { "magex_grave_knight_m01" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 14
+      MULTI_WEAPON 30
+	  MORGUE 10
+      LABORATORY 10
+      FURNACE 15
+      FORGE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "grave knight"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "magex_grave_knight_m02" } { "magex_grave_knight_m03" } { "magex_grave_knight_m04" }}
+    permanentEffects = {
+      RIDER 1
+	  SUNLIGHT_VULNERABLE 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
+    spellSchools = { "magex_grave_knight" "magex_keeper_knight" }
+    spells = { "healing" "magex_keeper_warrior_school_graveknight" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+"MAGEX_KEEPER_GRAVE_KNIGHT_F" inherit "MAGEX_KEEPER_GRAVE_KNIGHT"
+  {
+    viewId = { "magex_grave_knight_f01" }
+    gender = FEMALE
+    name = {
+      name = "grave knight"
+      firstNameGen = "FIRST_FEMALE"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "magex_grave_knight_f02" } { "magex_grave_knight_f03" } { "magex_grave_knight_f04" }}
+  }
+
+"MAGEX_GRAVE_KNIGHT"
+  {
+    viewId = { "magex_grave_knight_m03" }
+    attr = {
+      DAMAGE 41
+      DEFENSE 33
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+	  SUNLIGHT_VULNERABLE 1
+      RIDER 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "grave knight"
+      firstNameGen = "FIRST_MALE"
+    }
+    spellSchools = { "magex_grave_knight" }
+    spells = { "magex_warrior_grave_school" }
+    hatedByEffect = HATE_UNDEAD
+	inventory = {
+      { "Sword"}
+      { "MagEx_Grave_ChainArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { type = Potion Heal { FLESH } chance = 0.7 }
+	  { type = Glyph {ARMOR LastingEffect DARKNESS_SOURCE} chance = 0.7 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+  
+"MAGEX_GRAVE_KNIGHT_DUKE"
+  {
+    viewId = { "magex_grave_knight_m04" }
+    attr = {
+      DAMAGE 53
+      DEFENSE 42
+    }
+    body = {
+      type = Humanoid LARGE
+      droppedPartUpgrade = IncreaseAttr DAMAGE 7
+    }
+    permanentEffects = {
+	  RIDER 1
+	  SUNLIGHT_VULNERABLE 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      DAMAGE 4
+    }
+    name = {
+      name = "Fallen Duke"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    spellSchools = { "magex_grave_knight" }
+    spells = { "healing" "magex_warrior_grave_school" "animate corpses"}
+    hatedByEffect = HATE_UNDEAD
+    inventory = {
+      { type = "BattleAxe" prefixChance = 1 }
+      { "MagEx_Grave_ChainArmor"}
+      { "IronHelm"}
+      { "IronBoots"}
+      { Potion Heal { FLESH } 3 5 }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 140 200 }
+    }
+  }
+  
+###########################################################
+# 					wizard  							  #
+###########################################################
+
+"GNOME" modify
+  {
+    viewId = { "gnome_boss" }
+    attr = {
+      DAMAGE 15
+      SPELL_DAMAGE 15
+      DEFENSE 16
+      DIGGING 20
+      FURNACE 20
+      WORKSHOP 50
+      FORGE 50
+      LABORATORY 50
+      JEWELER 50
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      SLOW_TRAINING 1
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 12
+    }
+    spellSchools = {"magex_artificer"}
+    aiType = RANGED
+    chatReactionFriendly = "talks about digging"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "gnome chief"
+    }
+    inventory = {
+      { "Sword"}
+    }
+  }
+  
+"GNOME" modify
+  {
+    viewId = { "gnome" }
+    attr = {
+      DAMAGE 12
+      SPELL_DAMAGE 12
+      DEFENSE 13
+      DIGGING 10
+      FURNACE 10
+      WORKSHOP 25
+      FORGE 25
+      JEWELER 25
+      LABORATORY 25
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+    aiType = RANGED
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      SLOW_TRAINING 1
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 12
+    }
+    spellSchools = {"magex_artificer"}
+    chatReactionFriendly = "talks about digging"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "gnome"
+    }
+    spells = { "repair automaton" }
+  }
+  
+"MAGEX_KNIGHT_GOBLIN_WIZARD" inherit "GOBLIN_WIZARD"
+  {
+    viewId = { "goblin_wizard" }
+    spells = append {"magex_spell_school"}
+    spellSchools = {}
+  }
+
+"KEEPER_MAGE" modify
+  {
+    spells = append {"magex_keeper_school" }
+    spellSchools = { "magex_keeper_dungeon" }
+	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
+  }
+  
+"KEEPER_MAGE_F" modify
+  {
+    spells = append {"magex_keeper_school" }
+    spellSchools = { "magex_keeper_dungeon" }
+	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
+  } 
+ 
+"ADVENTURER_MAGE" modify
+  {
+    spells = append {"magex_keeper_school" }
+    spellSchools = { "magex_keeper_dungeon" }
+	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
+  } 
+
+"ADVENTURER_MAGE_F" modify
+  {
+    spells = append {"magex_keeper_school" }
+    spellSchools = { "magex_keeper_dungeon" }
+	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
+  } 
+  
   
 "NECROMANCER" modify
   {
     spellSchools = { "magex_keeper_necromancy" }
-	spells = append {"magex_keeper_spell_school_necro_keeper"}
+	spells = append {"magex_keeper_school"}
     permanentEffects = append {MAGEX_NECROTIC_RESISTANT 1
 							   MAGEX_LIGHT_VULNERABILITY 1
 							   MAGEX_DARKNESS_RESISTANT 1
@@ -239,7 +595,7 @@
 "NECROMANCER_F" modify
   {
     spellSchools = { "magex_keeper_necromancy" }
-	spells = append {"magex_keeper_spell_school_necro_keeper"}
+	spells = append {"magex_keeper_school"}
 	permanentEffects = append {MAGEX_NECROTIC_RESISTANT 1
 							   MAGEX_LIGHT_VULNERABILITY 1
 							   MAGEX_DARKNESS_RESISTANT 1
@@ -261,9 +617,6 @@
 	spells = { "magex_keeper_spell_school_sans_necro" }
   }
   
-"SKELETON_ARCHER" modify {
-	 permanentEffects = append { RIDER 1}
-  }
   
 "ZOMBIE_MAGE" modify
   {
@@ -294,7 +647,18 @@
   {
     spells = append {"magex_spell_school"}
   }
-  
+
+"ELF_LORD" modify
+  { 
+    spells = append {"magex_spell_school" "magex_noble_warrior_school" "magex_archer_school"}
+    spellSchools = {}
+  } 
+
+"DARK_ELF_LORD" modify
+  { 
+    spells = append {"magex_necro_school" "magex_evil_priest_school"}
+    spellSchools = {}
+  } 
 "ADOXIE_PRIEST" modify
   {
     spellSchools = { "magex_necromancy" "mage" "magex_demon_worship" "magex_pyromancy"}
@@ -317,43 +681,359 @@
   {
     spells = append {"magex_spell_school" "magex_evil_priest_school"}
   }
+    
+"MAGEX_KEEPER_MAGE_ARCANE"
+  {
+    # Definitions in tiles.txt
+    viewId = { "magex_arcane_keeper_1" }
+    # ViewId upgrades of Keepers are applied every 5 tech level increases
+    viewIdUpgrades = { { "magex_arcane_keeper_2" } { "magex_arcane_keeper_3" } { "magex_arcane_keeper_4" } }
+    name = {
+      # The name gets changed appropriately to Keeper and Adventurer
+      name = "wizard"
+      # Definitions in name_generator.h
+      firstNameGen = "FIRST_MALE"
+      # Creature is always referred to as [FirstName] the [Creature name]
+      fullTitle = true
+    }
+    body = {
+      # One of Humanoid, HumanoidLike, Bird, FourLegged and NonHumanoid
+      # size is one of SMALL, MEDIUM, LARGE and HUGE, influences stuff like pushing boulders and being pushed
+      type = Humanoid LARGE
+    }
+    # attr_type.h
+    attr = {
+      DAMAGE 12
+      DEFENSE 12
+      SPELL_DAMAGE 20
+	  LABORATORY 10
+    }   
+	permanentEffects = {
+      RIDER 1
+    }
+    # experience_type.h
+    maxLevelIncrease = {
+      DAMAGE 7
+      SPELL_DAMAGE 12
+    }
+    aiType = RANGED
+    spellSchools = { "magex_keeper_castle" }
+    spells = { "healing" "magex_keeper_school"}
+    inventory = {
+      # Here comes a list of items. The format of each element is defined in creature_inventory.h
+      { "Robe"}
+	  { "WoodenStaff" }
+      # Take a look a CYCLOPS for a more detailed example.
+    }
+  }
   
+"MAGEX_KEEPER_MAGE_ARCANE_F" inherit "MAGEX_KEEPER_MAGE_ARCANE"
+  {
+    viewId = { "magex_arcane_keeper_f1" }
+    gender = FEMALE
+    name = append {
+      firstNameGen = "FIRST_FEMALE"
+    }
+    viewIdUpgrades = { { "magex_arcane_keeper_f2" } { "magex_arcane_keeper_f3" } { "magex_arcane_keeper_f4" }}
+  }
+	
+"MAGEX_KEEPER_MAGE_ARCANE_VILLIAN"
+  {
+    viewId = { "magex_arcane_keeper_4" }
+	genderAlternatives = {
+      FEMALE { "magex_arcane_keeper_f4" }  
+    }
+    attr = {
+      DAMAGE 32
+      DEFENSE 32
+	  SPELL_DAMAGE 32
+    }
+    body = {
+      type = Humanoid LARGE
+      droppedPartUpgrade = IncreaseAttr SPELL_DAMAGE 7
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      SPELL_DAMAGE 3
+    }
+    name = {
+      name = "wizard"
+      firstNameGen = "FIRST_MALE"
+      fullTitle = true
+    }
+    spellSchools = { "magex_keeper_castle" }
+    spells = { "healing" }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "ArchwoodStaff" }
+      { type = Glyph {ARMOR LastingEffect MAGIC_RESISTANCE} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect SPEED} chance = 0.3 }
+      { type = Glyph {ARMOR LastingEffect NO_CARRY_LIMIT} chance = 0.3 }
+      { type = Glyph {WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE}} chance = 0.3 }
+      { Potion Heal { FLESH } 3 5 }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 140 200 }
+    }
+  }
+  
+"MAGEX_ARCANIST"
+  {
+    viewId = { "magex_arcane_normal_arcanist" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 12
+      SPELL_DAMAGE 12
+	  LABORATORY 35
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about magic"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    permanentEffects ={
+      RIDER 1
+    }
+    name = {
+      name = "arcanist"
+      firstNameGen = "FIRST_MALE"
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 12
+    }
+    spellSchools = { "magex_keeper_castle" }
+    spells = { "magex_spell_school" }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+  }
+  
+ 
+"MAGEX_ARCANIST_VILLAIN" inherit "MAGEX_ARCANIST"
+  {
+    attr = {
+      SPELL_DAMAGE 38
+      DEFENSE 30
+    }
+    inventory = {
+      { "ArchwoodStaff" }
+      { "LeatherArmor"}
+    }
+  }
+
+"MAGEX_ARCANE_ARCANIST" inherit "MAGEX_ARCANIST"
+  {
+    viewId = { "magex_arcane_arcanist" }
+  }
+  
+"MAGEX_ARCANE_ARCANIST_VILLAIN" inherit "MAGEX_ARCANE_ARCANIST"
+  {
+    attr = {
+      SPELL_DAMAGE 38
+      DEFENSE 30
+    }
+    inventory = {
+      { "ArchwoodStaff" }
+      { "LeatherArmor"}
+    }
+  }     
+  
+  
+  
+  
+  
+  
+###########################################################
+# 					priest  							  #
+###########################################################
+
+   
+"MAGEX_KNIGHT_GOBLIN_PRIEST" inherit "GOBLIN_PRIEST"
+  {
+    viewId = { "magex_knight_goblin_priest" }
+    spells = { "magex_goblin_priest_school" "healing"}
+    spellSchools = {}
+  } 
+
+
 "GOBLIN_PRIEST" modify
   { 
     spells = append {"magex_goblin_priest_school"}
     spellSchools = {}
   } 
 
-
-"SHAMAN" modify
-  {
-    spells = append {"magex_barbarian_shaman_school"}
-    spellSchools = {}
-  } 
-  
-"GOBLIN_SHAMAN" modify
-  {
-    spells = append {"magex_shaman_school"}
-    spellSchools = {}
-  }   
-  
 "PRIEST_PLAYER" modify
   { 
     spells = append {"magex_priest_school"}
     spellSchools = {}
+	permanentEffects = append {
+      RIDER 1
+    }
   }  
 
 "CLERIC" modify
   { 
     spells = append {"magex_priest_school"}
     spellSchools = {}
+	permanentEffects = append {
+      RIDER 1
+    }
   } 
   
 "PRIEST" modify
   {
      spells = append { "magex_summon_galeam" "magex_summon_cherub" "magex_priest_creature_school"}
   }
+
   
+"MAGEX_ARCANE_CLERIC" inherit "CLERIC"
+  {
+    viewId = { "magex_arcane_cleric" }
+    spells = append {"magex_priest_school"}
+    spellSchools = {}
+	permanentEffects = append {
+      RIDER 1
+    }
+  }
+  
+"MAGEX_ARCANE_PRIEST_PLAYER" inherit "PRIEST_PLAYER"
+  {
+    viewId = { "magex_arcane_priest" }
+    spells = append {"magex_priest_school"}
+    spellSchools = {}
+	permanentEffects = append {
+      RIDER 1
+    }
+  }
+  
+"MAGEX_ARCANE_PRIEST" inherit "PRIEST"
+  {
+    viewId = { "magex_arcane_priest" }
+     spells = append { "magex_summon_galeam" "magex_summon_cherub" "magex_priest_creature_school"}
+	permanentEffects = append {
+      RIDER 1
+    }
+  }
+   
+"MAGEX_HUECUVA"
+  {
+    viewId = { "magex_huecuva" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 16 
+    }
+    body = {
+      weight = 35
+      material = BONE
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all gods"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      SPELL_DAMAGE 7
+    }
+	spells = {"magex_dead_priest_school"}
+    permanentEffects = {
+      SUNLIGHT_VULNERABLE 1
+	  MAGEX_DARKNESS_RESISTANT 1
+	  MAGEX_LIGHT_VULNERABILITY 1
+    }
+    aiType = RANGED
+    name = {
+      name = "MAGEX_HUECUVA"
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+
+
+
+
+
+
+ 
+  
+###########################################################
+# 					shaman  							  #
+###########################################################
+
+"MAGEX_KNIGHT_GOBLIN_SHAMAN" inherit "GOBLIN_SHAMAN"
+  {
+    viewId = { "goblin_shaman" }
+    spells = {"magex_shaman_school"}
+  }
+
+"SHAMAN" modify
+  {
+    spells = append {"magex_barbarian_shaman_school"}
+    spellSchools = {}
+    companions = {}
+  } 
+  
+"GOBLIN_SHAMAN" modify
+  {
+    spells = append {"magex_shaman_school"}
+    spellSchools = {}
+    companions = {}
+  }   
+ 
+"ORC_SHAMAN" modify
+  {
+    spells = append {"magex_shaman_school"}
+    spellSchools = {}
+    companions = {}
+  }   
+    
+"MAGEX_GOBLIN_SHAMAN_VILLAIN" inherit "GOBLIN_SHAMAN"
+  {
+    attr = {
+      SPELL_DAMAGE 35
+      DEFENSE 28
+    }
+	permanentEffects = {
+      RIDER 1
+    }
+    companions = {}
+    spells = append {"magex_shaman_school"}
+    spellSchools = {}
+    inventory = {
+      { "ArchwoodStaff" }
+      { "LeatherArmor"}
+    }
+  }
+
+
+
+
+
+
+   
+###########################################################
+# 					misc  					    		  #
+###########################################################
+
+ "ANGEL" modify
+  {
+	permanentEffects = append { MAGEX_LIGHT_RESISTANT 1 }
+  }
+
+"CHERUB" modify
+  {
+	permanentEffects = append { MAGEX_LIGHT_RESISTANT 1 }
+  }
+
+"GALEAM" modify
+  {
+	permanentEffects = append { MAGEX_LIGHT_RESISTANT 1 }
+  }
+
+
 "DEMON_LORD" modify
   {
     spells = append {"magex_summon_succubus"}
@@ -401,12 +1081,6 @@
   {
 	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
   } 
-  
-"WEREWOLF" modify
-  {
-	permanentEffects = append { MAGEX_DARKNESS_RESISTANT 1 }
-  } 
-  
 "KIRIN" modify
   {
     viewId = { "kirin" }
@@ -499,10 +1173,6 @@
     body = {
       type = Humanoid LARGE
       material = BONE
-      drops = {
-        none 20
-        { "ZombieBrain" } 1
-      }
     }
     permanentEffects = {
     }
@@ -720,37 +1390,6 @@
     gender = IT
   }
 
-"MAGEX_HUECUVA"
-  {
-    viewId = { "magex_huecuva" }
-    attr = {
-      DAMAGE 12
-      DEFENSE 8
-      SPELL_DAMAGE 16 
-    }
-    body = {
-      weight = 35
-      material = BONE
-      type = Humanoid LARGE
-    }
-    chatReactionFriendly = "curses all gods"
-    chatReactionHostile = "\"Die!\""
-    maxLevelIncrease = {
-      SPELL_DAMAGE 7
-    }
-	spells = {"magex_dead_priest_school"}
-    permanentEffects = {
-      SUNLIGHT_VULNERABLE 1
-	  MAGEX_DARKNESS_RESISTANT 1
-	  MAGEX_LIGHT_VULNERABILITY 1
-    }
-    aiType = RANGED
-    name = {
-      name = "MAGEX_HUECUVA"
-    }
-    hatedByEffect = HATE_HUMANS
-  }
-
 "MAGEX_SHADOW_TERROR"
   {
     viewId = { "magex_shadow_terror" }
@@ -771,12 +1410,13 @@
     }
     permanentEffects = {
       FLYING 1
+	  INVISIBLE 1
 	  MAGEX_DARKNESS_IMMUNITY 1
 	  MAGEX_LIGHT_VULNERABILITY 1
     }
     spells = { "magex_ilusion_invisibility" "teleport" }
     name = {
-      name = "shadow terror"
+      name = "umbral terror"
     }
     gender = IT
   }
@@ -800,6 +1440,7 @@
     }
     permanentEffects = {
       FLYING 1
+	  TELEPATHY 1
 	  MAGEX_LIGHT_RESISTANT 1
 	  MAGEX_DARKNESS_VULNERABILITY 1
 	  MAGEX_LIGHT_IMMUNITY 1
@@ -995,32 +1636,6 @@
     }
   }
 
-"MAGEX_REFORGED"
-  {
-    viewId = { "magex_emperors_warrior" }
-    attr = {
-      DAMAGE 32
-      DEFENSE 31
-    }
-    body = {
-      type = Humanoid LARGE
-      weight = 400
-    }
-    permanentEffects = {
-      RANGED_RESISTANCE 1
-	  MELEE_RESISTANCE 1
-	  SLOWED 1
-    }
-	spells = { "magex_die_heretic" "magex_warrior_school" }
-    name = {
-      name = "reforged"
-      pluralName = "reforged"
-    }
-    maxLevelIncrease = {
-      DAMAGE 12
-    }
-  }
-  
 
 "MAGES_SUMMON_IMP"
   {
@@ -1372,271 +1987,6 @@
       name = "living curse"
     }
   }
-
-"MAGEX_KEEPER_MAGE_ARCANE"
-  {
-    # Definitions in tiles.txt
-    viewId = { "magex_arcane_keeper_1" }
-    # ViewId upgrades of Keepers are applied every 5 tech level increases
-    viewIdUpgrades = { { "magex_arcane_keeper_2" } { "magex_arcane_keeper_3" } { "magex_arcane_keeper_4" } }
-    name = {
-      # The name gets changed appropriately to Keeper and Adventurer
-      name = "wizard"
-      # Definitions in name_generator.h
-      firstNameGen = "FIRST_MALE"
-      # Creature is always referred to as [FirstName] the [Creature name]
-      fullTitle = true
-    }
-    body = {
-      # One of Humanoid, HumanoidLike, Bird, FourLegged and NonHumanoid
-      # size is one of SMALL, MEDIUM, LARGE and HUGE, influences stuff like pushing boulders and being pushed
-      type = Humanoid LARGE
-    }
-    # attr_type.h
-    attr = {
-      DAMAGE 12
-      DEFENSE 12
-      SPELL_DAMAGE 20
-	  LABORATORY 10
-    }   
-	permanentEffects = {
-      RIDER 1
-    }
-    # experience_type.h
-    maxLevelIncrease = {
-      DAMAGE 7
-      SPELL_DAMAGE 12
-    }
-    aiType = RANGED
-    spellSchools = { "magex_keeper_castle" }
-    spells = { "healing" }
-    inventory = {
-      # Here comes a list of items. The format of each element is defined in creature_inventory.h
-      { "Robe"}
-	  { "WoodenStaff" }
-      # Take a look a CYCLOPS for a more detailed example.
-    }
-  }
-  
-"MAGEX_KEEPER_MAGE_ARCANE_F" inherit "MAGEX_KEEPER_MAGE_ARCANE"
-  {
-    viewId = { "magex_arcane_keeper_f1" }
-    gender = FEMALE
-    name = append {
-      firstNameGen = "FIRST_FEMALE"
-    }
-    viewIdUpgrades = { { "magex_arcane_keeper_f2" } { "magex_arcane_keeper_f3" } { "magex_arcane_keeper_f4" }}
-  }
-	
-"MAGEX_KEEPER_MAGE_ARCANE_VILLIAN"
-  {
-    viewId = { "magex_arcane_keeper_4" }
-	genderAlternatives = {
-      FEMALE { "magex_arcane_keeper_f4" }  
-    }
-    attr = {
-      DAMAGE 32
-      DEFENSE 32
-	  SPELL_DAMAGE 32
-    }
-    body = {
-      type = Humanoid LARGE
-      droppedPartUpgrade = IncreaseAttr SPELL_DAMAGE 7
-    }
-    permanentEffects = {
-      RIDER 1
-    }
-    chatReactionFriendly = "curses all dungeons"
-    chatReactionHostile = "\"Die!\""
-    maxLevelIncrease = {
-      SPELL_DAMAGE 3
-    }
-    name = {
-      name = "wizard"
-      firstNameGen = "FIRST_MALE"
-      fullTitle = true
-    }
-    hatedByEffect = HATE_HUMANS
-    inventory = {
-      { "ArchwoodStaff" }
-      { type = Glyph {ARMOR LastingEffect MAGIC_RESISTANCE} chance = 0.3 }
-      { type = Glyph {ARMOR LastingEffect SPEED} chance = 0.3 }
-      { type = Glyph {ARMOR LastingEffect NO_CARRY_LIMIT} chance = 0.3 }
-      { type = Glyph {WEAPON JoinPrefixes { ItemAttrBonus DAMAGE 20 AttackerEffect Suicide DIE}} chance = 0.3 }
-      { Potion Heal { FLESH } 3 5 }
-      { type = "Torch" chance = 0.3 }
-      { "GoldPiece" 140 200 }
-    }
-  }
-  
-"MAGEX_ARCANIST"
-  {
-    viewId = { "magex_arcane_normal_arcanist" }
-    attr = {
-      DAMAGE 5
-      DEFENSE 12
-      SPELL_DAMAGE 12
-	  LABORATORY 35
-    }
-    body = {
-      type = Humanoid LARGE
-    }
-    chatReactionFriendly = "talks about magic"
-    chatReactionHostile = "\"Die!\""
-    aiType = RANGED
-    permanentEffects ={
-      RIDER 1
-    }
-    name = {
-      name = "arcanist"
-      firstNameGen = "FIRST_MALE"
-    }
-    maxLevelIncrease = {
-      SPELL_DAMAGE 12
-    }
-    spellSchools = { "mage" }
-    hatedByEffect = HATE_HUMANS
-    inventory = {
-      { "WoodenStaff"}
-      { "LeatherArmor"}
-    }
-  }
-  
- 
-"MAGEX_ARCANIST_VILLAIN" inherit "MAGEX_ARCANIST"
-  {
-    attr = {
-      SPELL_DAMAGE 38
-      DEFENSE 30
-    }
-    inventory = {
-      { "ArchwoodStaff" }
-      { "LeatherArmor"}
-    }
-  }
-  
-"MAGEX_FOOTMAN"
-  {
-    viewId = { "magex_arcane_normal_footman" }
-    attr = {
-      DAMAGE 14
-      DEFENSE 12
-    }
-    body = {
-      type = Humanoid LARGE
-    }
-    chatReactionFriendly = "curses all dungeons"
-    chatReactionHostile = "\"Heeelp!\""
-    permanentEffects = {
-      RIDER 1
-    }
-	maxLevelIncrease = {
-      DAMAGE 5
-      RANGED_DAMAGE 3
-    }
-    name = {
-      name = "footman"
-	  firstNameGen = "FIRST_MALE"
-    }
-    hatedByEffect = HATE_HUMANS
-	inventory = {
-      { "LeatherArmor"}
-      { "Club"}
-    }
-  }
-  
-"MAGEX_ARCANE_ARCANIST" inherit "MAGEX_ARCANIST"
-  {
-    viewId = { "magex_arcane_arcanist" }
-  }
-  
-"MAGEX_ARCANE_ARCANIST_VILLAIN" inherit "MAGEX_ARCANE_ARCANIST"
-  {
-    attr = {
-      SPELL_DAMAGE 38
-      DEFENSE 30
-    }
-    inventory = {
-      { "ArchwoodStaff" }
-      { "LeatherArmor"}
-    }
-  } 
-"MAGEX_ARCANE_FOOTMAN" inherit "MAGEX_FOOTMAN"
-  {
-    viewId = { "magex_arcane_footman" }
-  }
-  
-"MAGEX_ARCANE_CLERIC" inherit "CLERIC"
-  {
-    viewId = { "magex_arcane_cleric" }
-	permanentEffects = append {
-      RIDER 1
-    }
-  }
-  
-"MAGEX_ARCANE_PRIEST_PLAYER" inherit "PRIEST_PLAYER"
-  {
-    viewId = { "magex_arcane_priest" }
-	permanentEffects = append {
-      RIDER 1
-    }
-  }
-  
-"MAGEX_ARCANE_PRIEST" inherit "PRIEST"
-  {
-    viewId = { "magex_arcane_priest" }
-	permanentEffects = append {
-      RIDER 1
-    }
-  }
-   
-"MAGEX_ARCANE_ARCHER_PLAYER" inherit "ARCHER_PLAYER"
-  {
-    viewId = { "magex_arcane_archer" }
-  }
-  
-"MAGEX_ARCANE_ARCHER" inherit "ARCHER"
-  {
-    viewId = { "magex_arcane_archer" }
-  }
-  
-"MAGEX_ARCANE_KNIGHT_PLAYER" inherit "KNIGHT_PLAYER"
-  {
-    viewId = { "magex_arcane_knight" }
-  }
-  
-"MAGEX_ARCANE_KNIGHT" inherit "KNIGHT"
-  {
-    viewId = { "magex_arcane_knight" }
-  }
-
-"MAGEX_ARCANE_SQUIRE_PLAYER" inherit "SQUIRE_PLAYER"
-  {
-    viewId = { "magex_arcane_squire" }
-    promotionGroup = "magex_knight"
-  }  
-
-"MAGEX_GOBLIN_SHAMAN_VILLAIN" inherit "GOBLIN_SHAMAN"
-  {
-    attr = {
-      SPELL_DAMAGE 35
-      DEFENSE 28
-    }
-	permanentEffects = {
-      RIDER 1
-    }
-    companions = {{
-      count = 5
-      spawnAway = false
-      statsBase = SPELL_DAMAGE
-      summonFreq = 0.05
-      creatures = { "SPIRIT" }}
-    }
-    inventory = {
-      { "ArchwoodStaff" }
-      { "LeatherArmor"}
-    }
-  }
   
 "MAGEX_CHERUB_WORKER"
   {
@@ -1667,127 +2017,84 @@
     }
   }
 
-"MAGEX_KEEPER_GRAVE_KNIGHT"
+  
+"MAGEX_GREEN_NAGA"
   {
-    viewId = { "magex_grave_knight_m01" }
+    viewId = { "naga" Rgb 33 120 27 255 }
     attr = {
-      DAMAGE 18
-      DEFENSE 14
-      MULTI_WEAPON 30
-	  MORGUE 10
-      LABORATORY 10
-      FURNACE 15
-      FORGE 10
+      DAMAGE 30
+      DEFENSE 24
     }
     body = {
-      type = Humanoid LARGE
+      type = NonHumanoid HUGE
+      addBodyPart = {
+        HEAD 1
+        ARM 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 7 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting POISON} } }}}
+      }
     }
-    name = {
-      name = "grave knight"
-      firstNameGen = "FIRST_MALE"
-      fullTitle = true
-    }
-    viewIdUpgrades = { { "magex_grave_knight_m02" } { "magex_grave_knight_m03" } { "magex_grave_knight_m04" }}
     permanentEffects = {
-      RIDER 1
-	  SUNLIGHT_VULNERABLE 1
+      POISON_RESISTANT 1
+      RANGED_VULNERABILITY 1
     }
-    maxLevelIncrease = {
-      DAMAGE 12
-      SPELL_DAMAGE 3
-    }
-    spellSchools = { "fighter" "magex_grave_knight" }
-    spells = { "healing" }
-    inventory = {
-      { "LeatherArmor"}
-      { "LeatherHelm"}
-      { "Sword"}
-    }
-  }
-"MAGEX_KEEPER_GRAVE_KNIGHT_F" inherit "MAGEX_KEEPER_GRAVE_KNIGHT"
-  {
-    viewId = { "magex_grave_knight_f01" }
-    gender = FEMALE
     name = {
-      name = "grave knight"
-      firstNameGen = "FIRST_FEMALE"
-      fullTitle = true
+      name = "green naga"
     }
-    viewIdUpgrades = { { "magex_grave_knight_f02" } { "magex_grave_knight_f03" } { "magex_grave_knight_f04" }}
+    hatedByEffect = HATE_DRAGONS
   }
+  
+  
 
-"MAGEX_GRAVE_KNIGHT"
+"MAGEX_RAT"
   {
-    viewId = { "magex_grave_knight_m03" }
+    viewId = { "rat" }
     attr = {
-      DAMAGE 41
-      DEFENSE 33
+      DAMAGE 12 
+      DEFENSE 12 
     }
     body = {
-      type = Humanoid LARGE
-    }
-    maxLevelIncrease = {
-      DAMAGE 4
+      type = FourLegged SMALL
+      weight = 1
+      canBeRevived = false
     }
     permanentEffects = {
-      MELEE_RESISTANCE 1
-	  SUNLIGHT_VULNERABLE 1
-      RIDER 1
+      SPEED 1
     }
-    chatReactionFriendly = "curses all dungeons"
-    chatReactionHostile = "\"Die!\""
-	spells = { "advanced animate corpses" }
+    noChase = true
     name = {
-      name = "grave knight"
-      firstNameGen = "FIRST_MALE"
+      name = "rat"
     }
-    hatedByEffect = HATE_UNDEAD
-	inventory = {
-      { "Sword"}
-      { "MagEx_Grave_ChainArmor"}
-      { "LeatherBoots"}
-      { type = "Torch" chance = 0.3 }
-      { type = Potion Heal { FLESH } chance = 0.7 }
-	  { type = Glyph {ARMOR LastingEffect DARKNESS_SOURCE} chance = 0.7 }
-      { "GoldPiece" 6 16 }
+  }
+"MAGEX_BLACK_RAT" inherit "MAGEX_RAT"
+  {
+    viewId = { "black_rat" }
+    permanentEffects = append {
+      PLAGUE 1
+    }
+    name = {
+      name = "black rat"
     }
   }
   
-"MAGEX_GRAVE_KNIGHT_DUKE"
+  
+  
+"MAGEX_AUTOMATON_SUMMON_WOOD" inherit "LIGHT_AUTOMATON_CORPUS_WOOD"
   {
-    viewId = { "magex_grave_knight_m04" }
-    attr = {
-      DAMAGE 53
-      DEFENSE 42
+    automatonParts = {
+      {"AutomatonLegsWood" }
+      {"AutomatonArmsWood" }
     }
-    body = {
-      type = Humanoid LARGE
-      droppedPartUpgrade = IncreaseAttr DAMAGE 7
-    }
-    permanentEffects = {
-	  RIDER 1
-	  SUNLIGHT_VULNERABLE 1
-    }
-    chatReactionFriendly = "curses all dungeons"
-    chatReactionHostile = "\"Die!\""
-    maxLevelIncrease = {
-      DAMAGE 3
-    }
-    name = {
-      name = "Fallen Duke"
-      firstNameGen = "FIRST_MALE"
-      fullTitle = true
-    }
-	spellSchools = { "fighter" }
-    spells = { "healing" "advanced animate corpses" }
-    hatedByEffect = HATE_UNDEAD
-    inventory = {
-      { type = "BattleAxe" prefixChance = 1 }
-      { "MagEx_Grave_ChainArmor"}
-      { "IronHelm"}
-      { "IronBoots"}
-      { Potion Heal { FLESH } 3 5 }
-      { type = "Torch" chance = 0.3 }
-      { "GoldPiece" 140 200 }
+  }
+  
+"MAGEX_AUTOMATON_SUMMON_IRON" inherit "LIGHT_AUTOMATON_CORPUS_IRON"
+  {
+    automatonParts = {
+      {"AutomatonLegsIron" }
+      {"AutomatonArmsIron" }
     }
   }

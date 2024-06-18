@@ -24,6 +24,34 @@
   walkIntoFX = { WATER_SPLASH Rgb 82 148 255 255 }
 }
 
+"MAGEX_ACID_SUMMON"
+{
+  name = "MAGEX_ACID"
+  viewId = { "magex_acid" }
+  bloodCountdown = 30
+  layer = FLOOR
+  waterDepth = 0.5
+  entryType = Water
+  droppedItems = { "melts" "melt" "You hear a splash, and then sizzle." }
+  defaultBridge = "STONE_BRIDGE"
+  tickType = Effect Chain{
+    Filter And { Not LastingEffect FLYING Not BodyMaterial SPIRIT } {
+        CreatureMessage { "are burned by acid!" "is burned by acid!"}
+        Acid{1}
+    }
+	Chance 0.2 RemoveFurniture "MAGEX_ACID_SUMMON"}	
+  summonedElement = "WATER_ELEMENTAL"
+  freezeTo = "MAGEX_ACID"
+  fillPit = "MAGEX_ACID"
+  canSilentlyReplace = true
+  movementSet = {
+    traits = { FLY SWIM WADE }
+    forcibleTraits = { WALK }
+  }
+  walkIntoFX = { WATER_SPLASH Rgb 82 148 255 255 }
+}
+
+
 "MAGEX_GRASS"
 {
   name = "grass"

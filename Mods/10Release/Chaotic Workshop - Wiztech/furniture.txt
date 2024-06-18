@@ -143,8 +143,23 @@
 
 "WIZCHTECH_PIPES"
 {
-  name = "pipes"
-  viewId = { "wizchtech_pipes" }
+  name = "pump"
+  viewId = { "wizchtech_pump" }
   luxury = 0.5
   usagePredicate = Not Area 5 Not FurnitureType "WIZCHTECH_ACID"
+}
+
+"WIZTECH_FURNANCE"
+{
+  name = "furnance"
+  viewId = { "wiztech_steel_furnance" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  strength = 80
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  usageFX = FORGE
+  usageSound = {"FORGE_USAGE" 0.2}
+  usagePredicate = Area 1 Not FurnitureType "WIZCHTECH_PIPES"
 }

@@ -30,3 +30,15 @@
   false
    Chance 0.2 Chain {Lasting 5 COPULATION_SKILL Lasting 5 PEACEFULNESS}
 }
+
+"MAGEX_STORM_CLOUD" {
+  "plague wind"
+  ColorId LIGHT_BLUE
+  0.98
+  0.1
+  true
+  Filter Or { Not LastingEffect MAGEX_LIGHTNING_RESISTANT Not LastingEffect MAGEX_LIGHTNING_IMMUNITY} {
+    CreatureMessage { "are exposed to lightning cloud" "is exposed to lightning cloud"}
+    Bleed 0.02 "shocked"
+  }
+}

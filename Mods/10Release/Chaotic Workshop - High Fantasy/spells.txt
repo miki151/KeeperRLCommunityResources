@@ -34,6 +34,23 @@ End
 
 # dungeon master spells
 
+
+"magex_dig_down"
+{
+  symbol = "☄"
+  effect = Name "dig down" PlaceFurniture "DOWN_STAIRS"
+  cooldown = {30 81}
+  sound = "SPELL_METEOR_SHOWER"
+}
+
+"magex_dig_up"
+{
+  symbol = "☄"
+  effect = Name "dig up" PlaceFurniture "UP_STAIRS"
+  cooldown = {30 81}
+  sound = "SPELL_METEOR_SHOWER"
+}
+
 "magex_dm_summon_imps"
 {
   symbol = "🐝"
@@ -42,13 +59,7 @@ End
   sound = "SPELL_SUMMON_INSECTS"
 }
 
-"magex_dm_telepathy"
-{
-  symbol = "🛡"
-  effect = Name "telepathy" Lasting 20 TELEPATHY
-  cooldown = {30 81}
-  sound = "SPELL_DEX_BONUS"
-}
+MagExOneTimeAbility("magex_dm_telepathy","telepathy", "Becomes telepath.", Permanent TELEPATHY, "🎯")
 
 "magex_dm_greater_telepathy"
 {
@@ -143,7 +154,7 @@ MagExOneTimeAbility("magex_gn_dark_presence", "dark presence", "gives you an dar
 {
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
-  Chain { Area 1 Lasting 50 POISON}
+  Chain { Area 1 Filter Enemy Lasting 50 POISON}
   projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 8
   cooldown = {2 16}
@@ -155,7 +166,7 @@ MagExOneTimeAbility("magex_gn_dark_presence", "dark presence", "gives you an dar
   upgrade = "magex_poison_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
-  Chain { Area 2 Lasting 50 POISON}
+  Chain { Area 2 Filter Enemy Lasting 50 POISON}
   projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 12
   cooldown = {2 16}
@@ -167,7 +178,7 @@ MagExOneTimeAbility("magex_gn_dark_presence", "dark presence", "gives you an dar
   upgrade = "magex_advanced_poison_bolt"
   symbol = "⥇"
   effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
-  Chain { Area 3 Lasting 50 POISON}
+  Chain { Area 3 Filter Enemy Lasting 50 POISON}
   projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 16
   cooldown = {2 16}
@@ -225,18 +236,27 @@ MagExOneTimeAbility("magex_gn_dark_presence", "dark presence", "gives you an dar
 
 MagExOneTimeAbility("magex_poison_resistance_self","poison resistance self", "Becomes resistant to poison.", Permanent POISON_RESISTANT, "🎯")
 
-# lightning spells
-
-"magex_elemental_storm_bolt"
+"magex_poision_summon"
 {
-  symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a magex_lightning_bolt"
-      MagExTryMagicAttack(MAGEX_LIGHTNING_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
-  projectileViewId = {"magex_blast" ColorId PURPLE }
-  range = 12
-  cooldown = {4}
-  sound = "SPELL_BLAST"
+  symbol = "⚔️"
+  effect = Name "prepare poison"  AI And{} 0 1 DropItems {Potion Lasting POISON} {1}
+  cooldown = {100 401}
 }
+
+"magex_antidote_poision_summon"
+{
+  symbol = "⚔️"
+  effect = Name "prepare antidote"  AI And{} 0 1 DropItems {Potion Lasting POISON_RESISTANT} {1}
+  cooldown = {100 401}
+}
+
+"magex_glyph_poision_summon"
+{
+  symbol = "⚔️"
+  effect = Name "carve posion glyph"  AI And{} 0 1 DropItems {Glyph { WEAPON VictimEffect 0.1 Lasting POISON }} {1}
+  cooldown = {100 401}
+}
+
 
 # plague spells
 
@@ -253,7 +273,7 @@ MagExOneTimeAbility("magex_poison_resistance_self","poison resistance self", "Be
 "magex_plague_bolt"
 {
   symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
+  effect = MinDistanceFromStrongEnemy(2) Name "plague wind" Description "Calls forth infected wind"
   Chain { Area 1 EmitGas "MAGEX_PLAGUE_WIND" 0.25 }
   projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 8
@@ -265,7 +285,7 @@ MagExOneTimeAbility("magex_poison_resistance_self","poison resistance self", "Be
 {
   upgrade = "magex_plague_bolt"
   symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
+  effect = MinDistanceFromStrongEnemy(2) Name "plague wind" Description "Calls forth infected wind"
   Chain { Area 2 EmitGas "MAGEX_PLAGUE_WIND" 0.30 }
   projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 12
@@ -277,7 +297,7 @@ MagExOneTimeAbility("magex_poison_resistance_self","poison resistance self", "Be
 {
   upgrade = "magex_advanced_plague_bolt"
   symbol = "⥇"
-  effect = MinDistanceFromStrongEnemy(2) Name "poison splash" Description "Shoots a poison splash"
+  effect = MinDistanceFromStrongEnemy(2) Name "plague wind" Description "Calls forth infected wind"
   Chain { Area 3 EmitGas "MAGEX_PLAGUE_WIND" 0.35 }
   projectileViewId = {"magex_bubble_blast" ColorId GREEN }
   range = 16
@@ -350,7 +370,41 @@ MagExOneTimeAbility("magex_poison_resistance_self","poison resistance self", "Be
 
 MagExOneTimeAbility("magex_plague_resistance_self","plague resistance self", "Becomes resistant to poison.", Permanent PLAGUE_RESISTANT, "🎯")
 
+"magex_plague_summon"
+{
+  symbol = "⚔️"
+  effect = Name "prepare plague brew"  AI And{} 0 1 DropItems {Potion Lasting PLAGUE} {1}
+  cooldown = {100 401}
+}
+
+"magex_antidote_plague_summon"
+{
+  symbol = "⚔️"
+  effect = Name "prepare cure"  AI And{} 0 1 DropItems {Potion Lasting PLAGUE_RESISTANT} {1}
+  cooldown = {100 401}
+}
+
+"magex_glyph_plague_summon"
+{
+  symbol = "⚔️"
+  effect = Name "carve posion glyph"  AI And{} 0 1 DropItems {Glyph { WEAPON VictimEffect 0.05 Lasting PLAGUE }} {1}
+  cooldown = {100 401}
+}
+
+
 # lightning spells
+
+"magex_elemental_storm_bolt"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "lightning bolt" Description "Shoots a magex_lightning_bolt"
+      MagExTryMagicAttack(MAGEX_LIGHTNING_DAMAGE, SPELL, 0, true, "are hit by the bolt", "is hit by the bolt")
+  projectileViewId = {"magex_blast" ColorId PURPLE }
+  range = 12
+  cooldown = {4}
+  sound = "SPELL_BLAST"
+}
+
 "magex_lightning_bolt"
 {
   symbol = "⥇"
@@ -390,6 +444,32 @@ MagExOneTimeAbility("magex_plague_resistance_self","plague resistance self", "Be
   range = 12
   cooldown = {2 16}
   sound = "SPELL_BLAST"
+}
+
+"magex_lightning_cloud"
+{
+  symbol = "🌫"
+  effect = Name "storm cloud" Description "Creates a storm cloud." Area 1 Filter DistanceD none 3.2 EmitGas "MAGEX_STORM_CLOUD" 1
+  range = 4
+  cooldown = {30 61}
+}
+
+"magex_lightning_cloud_advanced"
+{
+  upgrade = "magex_lightning_cloud"
+  symbol = "🌫"
+  effect = Name "storm cloud" Description "Creates a storm cloud." Area 2 Filter DistanceD none 3.2 EmitGas "MAGEX_STORM_CLOUD" 1
+  range = 6
+  cooldown = {30 61}
+}
+
+"magex_lightning_cloud_expert"
+{
+  upgrade = "magex_lightning_cloud_advanced"
+  symbol = "🌫"
+  effect = Name "storm cloud" Description "Creates a storm cloud." Area 3 Filter DistanceD none 3.2 EmitGas "MAGEX_STORM_CLOUD" 1
+  range = 9
+  cooldown = {30 61}
 }
 
 "magex_lightning_charge"
@@ -480,6 +560,7 @@ MagExOneTimeAbility("magex_plague_resistance_self","plague resistance self", "Be
 MagExOneTimeAbility("magex_lightning_resistance_self","lightning resistance self", "Becomes resistant to lightning.", Permanent MAGEX_LIGHTNING_RESISTANT, "🎯")
 
 # fire spells
+
 "magex_fire_bolt"
 {
   symbol = "⥇"
@@ -522,6 +603,44 @@ MagExOneTimeAbility("magex_lightning_resistance_self","lightning resistance self
   range = 8
   cooldown = {5 21}
   sound = "SPELL_BLAST"
+}
+
+"magex_firewall"
+{
+  symbol = "𝍔"
+  effect =  Name "firewall" CustomArea PlaceFurniture "FIRE_WALL" { {0 -2} {0 -1} {0 0} {0 1} {0 2} }
+  endOnly = true
+  range = 2
+  cooldown = {15 31}
+  sound = "SPELL_BLAST"
+}
+
+"magex_flame_cloak"
+{
+  symbol = "🛡"
+  effect = Name "flame cloak" Lasting 10 MAGEX_FLAME_CLOAK
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"magex_flame_cloak_advanced"
+{
+  upgrade = "magex_flame_cloak"
+  symbol = "🛡"
+  effect = Name "flame cloak" Lasting 10 MAGEX_FLAME_CLOAK
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"magex_flame_cloak_mass"
+{
+  upgrade = "magex_flame_cloak_advanced"
+  symbol = "🛡"
+  effect = Name "mass flame cloak" Area 10 Filter Not Enemy Lasting 10 MAGEX_FLAME_CLOAK
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
 }
 
 "magex_fire_resistance"
@@ -585,6 +704,7 @@ MagExOneTimeAbility("magex_lightning_resistance_self","lightning resistance self
 MagExOneTimeAbility("magex_fire_resistance_self","fire resistance self", "Becomes resistant to fire.", Permanent FIRE_RESISTANT, "🎯")
 
 # ice spells
+
 "magex_ice_bolt"
 {
   symbol = "⥇"
@@ -627,6 +747,38 @@ MagExOneTimeAbility("magex_fire_resistance_self","fire resistance self", "Become
   range = 12
   cooldown = {5 21}
   sound = "SPELL_BLAST"
+}
+
+"magex_arctic_wind"
+{
+  symbol = "❄"
+  effect = Name "arctic wind" Ice{}
+  fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+  range = 2
+  cooldown = {15 31}
+  #sound = "SPELL_FIRE_SPHERE_PET"
+}
+
+"magex_arctic_wind_advanced"
+{
+  upgrade = "magex_arctic_wind"
+  symbol = "❄"
+  effect = Name "arctic wind" Ice {}
+  fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+  range = 3
+  cooldown = {15 31}
+  #sound = "SPELL_FIRE_SPHERE_PET"
+}
+
+"magex_arctic_wind_expert"
+{
+  upgrade = "magex_arctic_wind_advanced"
+  symbol = "❄"
+  effect = Name "arctic wind" Ice {}
+  fx = {FLAMETHROWER ColorId LIGHT_BLUE}
+  range = 4
+  cooldown = {15 31}
+  #sound = "SPELL_FIRE_SPHERE_PET"
 }
 
 "magex_ice_resistance"
@@ -706,6 +858,7 @@ MagExOneTimeAbility("magex_fire_resistance_self","fire resistance self", "Become
 MagExOneTimeAbility("magex_cold_resistance_self", "cold resistance self", "Becomes resistant to cold.", Permanent COLD_RESISTANT, "🎯")
 
 # acid spells
+
 "magex_acid_bolt"
 {
   symbol = "⥇"
@@ -749,6 +902,39 @@ MagExOneTimeAbility("magex_cold_resistance_self", "cold resistance self", "Becom
   cooldown = {5 21}
   sound = "SPELL_BLAST"
 }
+
+"magex_acid_geyser"
+{
+  symbol = "🜅"
+  effect = Name "acid geyser" Chain{ Area 1 Acid{} PlaceFurniture "MAGEX_ACID_SUMMON" }
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = {15 31}
+  message = "spit acid!" "spits acid!"
+}
+
+"magex_acid_geyser_advanced"
+{
+  upgrade = "magex_acid_geyser"
+  symbol = "🜅"
+  effect = Name "acid geyser" Chain{ Area 1 Acid{} Acid{} PlaceFurniture "MAGEX_ACID_SUMMON" }
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 5
+  cooldown = {15 31}
+  message = "spit acid!" "spits acid!"
+}
+
+"magex_acid_geyser_expert"
+{
+  upgrade = "magex_acid_geyser_advanced"
+  symbol = "🜅"
+  effect = Name "acid geyser" Chain{ Area 1 Acid{} Acid{} Acid{} PlaceFurniture "MAGEX_ACID_SUMMON" }
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 5
+  cooldown = {15 31}
+  message = "spit acid!" "spits acid!"
+}
+
 
 "magex_acid_resistance"
 {
@@ -827,7 +1013,7 @@ MagExOneTimeAbility("magex_cold_resistance_self", "cold resistance self", "Becom
 "magex_acid_stream-elemental"
 {
   symbol = "🜅"
-  effect = Name "acid stream" Chain{ Acid{} Damage ACID_DAMAGE SHOOT PlaceFurniture "MAGEX_ACID" }
+  effect = Name "acid stream" Chain{ Acid{} Damage ACID_DAMAGE SHOOT PlaceFurniture "MAGEX_ACID_SUMMON" }
   fx = {FLAMETHROWER ColorId YELLOW}
   range = 4
   cooldown = {15 31}
@@ -838,7 +1024,7 @@ MagExOneTimeAbility("magex_cold_resistance_self", "cold resistance self", "Becom
 "magex_acid_stream_leaves"
 {
   symbol = "🜅"
-  effect = Name "acid stream" Chain{{ Caster Lasting 0 "MAGEX_ACID_SPELL"} Acid{} PlaceFurniture "MAGEX_ACID" Damage SPELL_DAMAGE SPELL}
+  effect = Name "acid stream" Chain{{ Caster Lasting 0 "MAGEX_ACID_SPELL"} Acid{} PlaceFurniture "MAGEX_ACID_SUMMON" Damage SPELL_DAMAGE SPELL}
   fx = {FLAMETHROWER ColorId YELLOW}
   range = 4
   cooldown = {15 31}
@@ -890,6 +1076,34 @@ MagExOneTimeAbility("magex_acid_resistance_self", "acid resistance self", "Becom
   range = 10
   cooldown = {5 21}
   sound = "SPELL_BLAST"
+}
+
+"magex_dark_glow"
+{
+  symbol = "🛡"
+  effect = Name "banish light" Lasting 40 DARKNESS_SOURCE
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"magex_dark_glow_advanced"
+{
+  upgrade = "magex_dark_glow"
+  symbol = "🛡"
+  effect = Name "banish light" Lasting 40 DARKNESS_SOURCE
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"magex_dark_glow_mass"
+{
+  upgrade = "magex_dark_glow_advanced"
+  symbol = "🛡"
+  effect = Name "mass banish light" Area 10 Filter Not Enemy Lasting 40 DARKNESS_SOURCE
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
 }
 
 "magex_dark_resistance"
@@ -1019,6 +1233,34 @@ MagExOneTimeAbility("magex_dark_resistance_self","dark resistance self", "Become
   range = 10
   cooldown = {5 21}
   sound = "SPELL_BLAST"
+}
+
+"magex_light_glow"
+{
+  symbol = "🛡"
+  effect = Name "glow" Lasting 40 LIGHT_SOURCE
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"magex_light_glow_advanced"
+{
+  upgrade = "magex_light_glow"
+  symbol = "🛡"
+  effect = Name "glow" Lasting 40 LIGHT_SOURCE
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"magex_light_glow_mass"
+{
+  upgrade = "magex_light_glow_advanced"
+  symbol = "🛡"
+  effect = Name "mass glow" Area 10 Filter Not Enemy Lasting 40 LIGHT_SOURCE
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
 }
 
 "magex_light_resistance"
@@ -1240,6 +1482,29 @@ MagExOneTimeAbility("magex_light_resistance_self", "light resistance self", "Bec
   sound = "SPELL_BLAST"
 }
 
+"magex_rock_summon"
+{
+  symbol = "⚔️"
+  effect = Name "unearth stone"  AI And{} 0 1 DropItems {"Rock"} {2 4}
+  cooldown = {100 401}
+}
+
+"magex_rock_summon_advanced"
+{
+  upgrade = "magex_rock_summon"
+  symbol = "⚔️"
+  effect = Name "unearth stone"  AI And{} 0 1 DropItems {"Rock"} {3 5}
+  cooldown = {100 401}
+}
+
+"magex_rock_summon_expert"
+{
+  upgrade = "magex_rock_summon_advanced"
+  symbol = "⚔️"
+  effect = Name "unearth stone"  AI And{} 0 1 DropItems {"Rock"} {4 6}
+  cooldown = {100 401}
+}
+
 # water spells
 "magex_water_bolt"
 {
@@ -1280,6 +1545,38 @@ MagExOneTimeAbility("magex_light_resistance_self", "light resistance self", "Bec
   range = 6
   cooldown = {0 10}
   sound = "SPELL_BLAST"
+}
+
+"water_teleport"
+{
+  symbol = "🌀"
+  effect = Name "water step" Area 0 Filter Or {FurnitureType "WATER" FurnitureType "UNDERGROUND_WATER" FurnitureType "ENCHANTED_WATER" FurnitureType "KRAKEN_WATER" FurnitureType "SHALLOW_WATER1" FurnitureType "SHALLOW_WATER2" FurnitureType "ICE"} {Teleport}
+  range = 6
+  cooldown = {50 201}
+  endOnly = true
+  sound = "SPELL_TELEPORT"
+}
+
+"water_teleport_advanced"
+{
+  upgrade = "water_teleport"
+  symbol = "🌀"
+  effect = Name "water step" Area 0 Filter Or {FurnitureType "WATER" FurnitureType "UNDERGROUND_WATER" FurnitureType "ENCHANTED_WATER" FurnitureType "KRAKEN_WATER" FurnitureType "SHALLOW_WATER1" FurnitureType "SHALLOW_WATER2" FurnitureType "ICE"} {Teleport}
+  range = 12
+  cooldown = {50 201}
+  endOnly = true
+  sound = "SPELL_TELEPORT"
+}
+
+"water_teleport_expert"
+{
+  upgrade = "water_teleport_advanced"
+  symbol = "🌀"
+  effect = Name "water step" Area 0 Filter Or {FurnitureType "WATER" FurnitureType "UNDERGROUND_WATER" FurnitureType "ENCHANTED_WATER" FurnitureType "KRAKEN_WATER" FurnitureType "SHALLOW_WATER1" FurnitureType "SHALLOW_WATER2" FurnitureType "ICE"} {Teleport}
+  range = 18
+  cooldown = {50 201}
+  endOnly = true
+  sound = "SPELL_TELEPORT"
 }
 
 "magex_water_resistance"
@@ -1544,6 +1841,33 @@ MagExOneTimeAbility("magex_necrotic_resistance_self", "necrotic resistance self"
 												Polymorph "MAGEX_SKELETON_REANIMATE" none}
   SetCreatureFlag "animated" false}}
   cooldown = {50 201}
+}
+
+
+"magex_grave_robber"
+{
+  symbol = "X"
+  effect = Name "grave robbing" AI And{} 0 1 Chance 0.01 DropItems {"Skeleton"} {1}
+  cooldown = {100 402}
+  blockedByWall = false
+}
+
+"magex_grave_robber_advanced"
+{
+  upgrade = "magex_grave_robber"
+  symbol = "X"
+  effect = Name "grave robbing" AI And{} 0 1 Chance 0.02 DropItems {"Skeleton"} {1}
+  cooldown = {100 402}
+  blockedByWall = false
+}
+
+"magex_grave_robber_expert"
+{
+  upgrade = "magex_grave_robber_advanced"
+  symbol = "X"
+  effect = Name "grave robbing" AI And{} 0 1 Chance 0.03 DropItems {"Skeleton"} {1}
+  cooldown = {100 402}
+  blockedByWall = false
 }
 
 
@@ -1856,6 +2180,70 @@ MagExOneTimeAbility("undead companion", "undead companion", "adds a zombie compa
   cooldown = {25 50}
 }
 
+"magex_wild_resistance"
+{
+  symbol = "🐍"
+  effect = Name "chatic resistance" ChooseRandom {
+						  Lasting 40 FIRE_RESISTANT
+						  Lasting 40 COLD_RESISTANT
+						  Lasting 40 ACID_RESISTANT
+						  Lasting 40 MELEE_RESISTANCE
+						  Lasting 40 MAGIC_RESISTANCE
+						  Lasting 40 RANGED_RESISTANCE
+						  Lasting 40 MAGEX_LIGHTNING_RESISTANT
+						  Lasting 40 MAGEX_DARKNESS_RESISTANT
+						  Lasting 40 MAGEX_LIGHT_RESISTANT
+						  Lasting 40 MAGEX_NECROTIC_RESISTANT
+						  Lasting 40 MAGEX_FELL_RESISTANT
+						  }
+  cooldown = {50 101}
+  sound = "SPELL_CURE_POISON"
+}
+
+"magex_wild_resistance_advanced"
+{
+  upgrade = "magex_wild_resistance"
+  symbol = "🐍"
+  effect = Name "chatic resistance" ChooseRandom {
+						  Lasting 40 FIRE_RESISTANT
+						  Lasting 40 COLD_RESISTANT
+						  Lasting 40 ACID_RESISTANT
+						  Lasting 40 MELEE_RESISTANCE
+						  Lasting 40 MAGIC_RESISTANCE
+						  Lasting 40 RANGED_RESISTANCE
+						  Lasting 40 MAGEX_LIGHTNING_RESISTANT
+						  Lasting 40 MAGEX_DARKNESS_RESISTANT
+						  Lasting 40 MAGEX_LIGHT_RESISTANT
+						  Lasting 40 MAGEX_NECROTIC_RESISTANT
+						  Lasting 40 MAGEX_FELL_RESISTANT
+						  }
+  cooldown = {50 101}
+  targetSelf = true
+  range = 1
+  sound = "SPELL_CURE_POISON"
+}
+
+"magex_wild_resistance_expert"
+{
+  upgrade = "magex_wild_resistance"
+  symbol = "🐍"
+  effect = Name "mass chatic resistance" ChooseRandom {
+						  Lasting 40 FIRE_RESISTANT
+						  Lasting 40 COLD_RESISTANT
+						  Lasting 40 ACID_RESISTANT
+						  Lasting 40 MELEE_RESISTANCE
+						  Lasting 40 MAGIC_RESISTANCE
+						  Lasting 40 RANGED_RESISTANCE
+						  Lasting 40 MAGEX_LIGHTNING_RESISTANT
+						  Lasting 40 MAGEX_DARKNESS_RESISTANT
+						  Lasting 40 MAGEX_LIGHT_RESISTANT
+						  Lasting 40 MAGEX_NECROTIC_RESISTANT
+						  Lasting 40 MAGEX_FELL_RESISTANT
+						  }
+  cooldown = {50 101}
+  range = 4
+  sound = "SPELL_CURE_POISON"
+}
 MagExOneTimeAbility("magex_wild_resistance_self", "chaos resistance self", "Becomes touched by chaos.", SetCreatureFlag "magex_wild_magic" true, "🎯")
 
 # fell spells
@@ -2002,10 +2390,9 @@ MagExOneTimeAbility("magex_wild_resistance_self", "chaos resistance self", "Beco
 "magex_fell_binding"
 {
   symbol = "🗡️"
-  effect = MinDistanceFromStrongEnemy(2) Name "open portal" Description "Sacrifices the creature to bin summoned creature" Chain {
-            Filter Area 0 Not Enemy {
-			Suicide DIE	
-			GrantAbility "magex_fell_binding_act"}}
+  effect = MinDistanceFromStrongEnemy(2) Name "binding" Description "Sacrifices the creature to bin summoned creature" Chain {
+            Filter Area 0 Not Enemy {Suicide DIE}
+			Caster GrantAbility "magex_fell_binding_act"}
   endOnly = true
   range = 1
   cooldown = 200
@@ -2021,6 +2408,46 @@ MagExOneTimeAbility("magex_wild_resistance_self", "chaos resistance self", "Beco
   range = 1
   sound = "SPELL_CURE_POISON"
 }
+
+"magex_fell_empowerment"
+{
+  symbol = "🗡️"
+  effect = MinDistanceFromStrongEnemy(2) Name "binding" Description "Sacrifices the creature to bin summoned creature" Chain {
+            Filter Area 0 Not Enemy {Suicide DIE}
+			Caster RemoveLasting MAGEX_FELL_WITHRAWAL 
+			Caster Lasting 600 MAGEX_FELL_INFUSION
+			Caster Lasting 600 MAGEX_FELL_POWER_OVERWHELMING
+			Caster Lasting 600 REGENERATION}
+  endOnly = true
+  range = 1
+  cooldown = 200
+  sound = "SPELL_BLAST"
+}
+
+"magex_fell_corruption_sacrifice"
+{
+  symbol = "🗡️"
+  effect = MinDistanceFromStrongEnemy(2) Name "prepare corruption" Description "Sacrifices the creature to crepare corruption" Chain {
+            Filter Area 0 Not Enemy {Suicide DIE}
+			Caster GrantAbility "magex_fell_corruption"}
+  endOnly = true
+  range = 1
+  cooldown = 200
+  sound = "SPELL_BLAST"
+}
+
+"magex_fell_corruption"
+{
+  symbol = "⚕"
+  effect = Name "corrupt creature" Chain{Permanent MAGEX_FELL_CORRUPTION 
+									Caster RemoveAbility "magex_fell_corruption"}
+  cooldown = {25 51}
+  range = 1
+  sound = "SPELL_CURE_POISON"
+}
+
+MagExOneTimeAbility("magex_fell_corrupt_self", "fel corruption", "Corruption claims you.", Permanent MAGEX_FELL_CORRUPTION, "🎯")
+
 
 # Illusionism
 
@@ -2162,6 +2589,33 @@ MagExOneTimeAbility("magex_wild_resistance_self", "chaos resistance self", "Beco
   sound = "SPELL_DEX_BONUS"
 }
 
+"magex_blindness"
+{
+  symbol = "🕶️"
+  effect = Name "blindness" Lasting 5 BLIND
+  cooldown = {12 24}
+  range = 4
+}
+
+"magex_advanced_blindness"
+{
+  upgrade = "magex_blindness"
+  symbol = "🕶️"
+  effect = Name "blindness" Lasting 5 BLIND
+  cooldown = {10 20}
+  range = 8
+}
+
+"magex_expert_blindness"
+{
+  upgrade = "magex_blindness"
+  symbol = "🕶️"
+  effect = Name "blindness" Lasting 5 BLIND
+  cooldown = {8 18}
+  range = 12
+}
+
+
 # air spells
 "magex_air_bolt"
 {
@@ -2275,6 +2729,34 @@ MagExOneTimeAbility("magex_wild_resistance_self", "chaos resistance self", "Beco
 
 MagExOneTimeAbility("magex_air_flying_self", "air flying self", "Becomes flying.", Permanent FLYING, "🎯")
 
+"magex_fog_cloud"
+{
+  symbol = "🌫"
+  effect = Name "fog" Description "Creates a fog cloud." Area 2 Filter DistanceD none 1.7 EmitGas "FOG" 1
+  range = 6
+  endOnly = true
+  cooldown = {30 61}
+}
+
+"magex_fog_cloud_advanced"
+{
+  upgrade = "magex_fog_cloud"
+  symbol = "🌫"
+  effect = Name "fog" Description "Creates a fog cloud." Area 2 Filter DistanceD none 2.4 EmitGas "FOG" 1
+  range = 9
+  endOnly = true
+  cooldown = {30 61}
+}
+
+"magex_fog_cloud_expert"
+{
+  upgrade = "magex_fog_cloud_advanced"
+  symbol = "🌫"
+  effect = Name "fog" Description "Creates a fog cloud." Area 2 Filter DistanceD none 3.2 EmitGas "FOG" 1
+  range = 12
+  endOnly = true
+  cooldown = {30 61}
+}
 
 
 # nymphomancy
@@ -2387,6 +2869,70 @@ MagExOneTimeAbility("magex_air_flying_self", "air flying self", "Becomes flying.
 
 MagExOneTimeAbility("magex_copulate_self", "copulate self", "Becomes able to copulate.", Permanent COPULATION_SKILL, "🎯")
 
+"magex_aphrodisiac_summon"
+{
+  symbol = "⚔️"
+  effect = Name "prepare aphrodisiac"  AI And{} 0 1 DropItems {Potion Lasting 50 COPULATION_SKILL} {1}
+  cooldown = {100 401}
+}
+
+"magex_sedative_summon"
+{
+  symbol = "⚔️"
+  effect = Name "prepare sedative"  AI And{} 0 1 DropItems {Potion Lasting 50 PEACEFULNESS} {1}
+  cooldown = {100 401}
+}
+
+"magex_impregnation"
+{
+  symbol = "🔥"
+  effect = Name "spell of impregnation" Description "Bestows copulation to female creatures made of flesh" Filter And {Gender FEMALE BodyMaterial FLESH }{Lasting 50 PREGNANT}
+  range = 4
+  cooldown = {85 170}
+  endOnly = true
+  sound = "SPELL_STR_BONUS"
+}
+
+
+
+# artificer
+
+MagExOneTimeAbility("magex_automaton_companion_1", "automaton", "adds a automaton companion", AddCompanion {count = 1 statsBase = none summonFreq = 0.1 creatures = {"AUTOMATON" } }, "🎯")
+MagExOneTimeAbility("magex_automaton_companion_2", "automaton", "adds a automaton companion", AddCompanion {count = 1 statsBase = none summonFreq = 0.1 creatures = {"AUTOMATON" } }, "🎯")
+MagExOneTimeAbility("magex_automaton_companion_3", "automaton", "adds a automaton companion", AddCompanion {count = 1 statsBase = none summonFreq = 0.1 creatures = {"AUTOMATON" } }, "🎯")
+MagExOneTimeAbility("magex_automaton_companion_4", "automaton", "adds a automaton companion", AddCompanion {count = 1 statsBase = none summonFreq = 0.1 creatures = {"AUTOMATON" } }, "🎯")
+MagExOneTimeAbility("magex_automaton_companion_5", "automaton", "adds a automaton companion", AddCompanion {count = 1 statsBase = none summonFreq = 0.1 creatures = {"AUTOMATON" } }, "🎯")
+MagExOneTimeAbility("magex_automaton_companion_6", "automaton", "adds a automaton companion", AddCompanion {count = 1 statsBase = none summonFreq = 0.1 creatures = {"AUTOMATON" } }, "🎯")
+
+MagExOneTimeAbility("magex_articer_skills_1", "apprentice artificer", "skills of an artificer", Chain {IncreaseAttr "FORGE" 16 IncreaseAttr FURNACE 16}, "🎯")
+MagExOneTimeAbility("magex_articer_skills_2", "artificer", "skills of an artificer", Chain {IncreaseAttr "FORGE" 12 IncreaseAttr FURNACE 12}, "🎯")
+MagExOneTimeAbility("magex_articer_skills_3", "master artificer", "skills of an artificer", Chain {IncreaseAttr "FORGE" 8 IncreaseAttr FURNACE 8}, "🎯")
+
+"magex_repair_automaton_advanced"
+{
+  upgrade = "repair automaton"
+  symbol = "🔧"
+  effect = Name "repair automaton" Description "Repairs broken automaton parts" Filter Automaton RegrowBodyPart 20
+  range = 1
+  targetSelf = true
+  cooldown = 15
+  sound = "TRAP_ARMING"
+  message = "repair the automaton" "repairs the automaton"
+  type = ABILITY
+}
+
+"magex_repair_automaton_expert"
+{
+  upgrade = "magex_repair_automaton_advanced"
+  symbol = "🔧"
+  effect = Name "repair automaton" Description "Repairs broken automaton parts" Filter Automaton RegrowBodyPart 30
+  range = 1
+  targetSelf = true
+  cooldown = 15
+  sound = "TRAP_ARMING"
+  message = "repair the automaton" "repairs the automaton"
+  type = ABILITY
+}
 
 
 
@@ -2416,6 +2962,65 @@ MagExOneTimeAbility("magex_copulate_self", "copulate self", "Becomes able to cop
 # 						priest							  #
 ###########################################################
 
+
+# dragon cult
+
+"magex_summon_naga"
+{
+  symbol = "👾"
+  effect = Name "call naga" ChooseRandom {
+										Summon "RED_NAGA" { 1 2 } 50
+										Summon "BLACK_NAGA" { 1 2 } 50
+										Summon "WHITE_NAGA" { 1 2 } 50
+										Summon "YELLOW_NAGA" { 1 2 } 50
+										Summon "MAGEX_GREEN_NAGA" { 1 2 } 50
+										}
+  cooldown = {81 132}
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"magex_summon_naga_advanced"
+{
+  upgrade = "magex_summon_naga"
+  symbol = "👾"
+  effect = Name "call naga" ChooseRandom {
+										Summon "RED_NAGA" { 1 2 } 100
+										Summon "BLACK_NAGA" { 1 2 } 100
+										Summon "WHITE_NAGA" { 1 2 } 100
+										Summon "YELLOW_NAGA" { 1 2 } 100
+										Summon "MAGEX_GREEN_NAGA" { 1 2 } 100
+										}
+  cooldown = {81 132}
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"magex_summon_naga_expert"
+{
+  upgrade = "magex_summon_naga_advanced"
+  symbol = "👾"
+  effect = Name "call naga" ChooseRandom {
+										Summon "RED_NAGA" { 2 3 } 100
+										Summon "BLACK_NAGA" { 2 3 } 100
+										Summon "WHITE_NAGA" { 2 3 } 100
+										Summon "YELLOW_NAGA" { 2 3 } 100
+										Summon "MAGEX_GREEN_NAGA" { 2 3 } 100
+										}
+  cooldown = {81 132}
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+"magex_summon_dragon"
+{
+  symbol = "👾"
+  effect = Name "call dragon" ChooseRandom {
+										Summon "RED_DRAGON" { 1 2 } 50
+										Summon "BLACK_DRAGON" { 1 2 } 50
+										Summon "WHITE_DRAGON" { 1 2 } 50
+										Summon "YELLOW_DRAGON" { 1 2 } 50
+										Summon "GREEN_DRAGON" { 1 2 } 50
+										}
+  cooldown = {81 132}
+  sound = "SPELL_SUMMON_SPIRIT"
+}
 
 # demonology
 
@@ -2946,10 +3551,83 @@ MagExOneTimeAbility("magex_too_much_zombie_companion", "zombie companion", "adds
 }
 
 
+# vermin worship
+
+"magex_summon_rats"
+{
+  symbol = "😱"
+  effect = Name "rat plague" Chain { 
+										Summon "MAGEX_RAT" { 2 3 } 100
+										Summon "MAGEX_BLACK_RAT" { 1 2 } 100
+									}
+  cooldown = {15 51}
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"magex_summon_rats_advanced"
+{
+  upgrade = "magex_summon_rats"
+  symbol = "😱"
+  effect = Name "rat plague" Chain { 
+										Summon "MAGEX_RAT" { 4 6 } 100
+										Summon "MAGEX_BLACK_RAT" { 2 4 } 100
+									}
+  cooldown = {15 51}
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"magex_summon_rats_expert"
+{
+  upgrade = "magex_summon_rats_advanced"
+  symbol = "😱"
+  effect = Name "rat plague" Chain { 
+										Summon "MAGEX_RAT" { 8 12 } 100
+										Summon "MAGEX_BLACK_RAT" { 4 8 } 100
+									}
+  cooldown = {15 51}
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+"magex_summon_rats_god"
+{
+  symbol = "😱"
+  effect = Name "call forth black death" Chain { 
+										Summon "MAGEX_BLACK_RAT" { 16 24 } 100
+										Area 5 Lasting PLAGUE
+									}
+  cooldown = {15 51}
+  sound = "SPELL_SUMMON_SPIRIT"
+}
+
+
 
 ###########################################################
 # 						warriors						  #
 ###########################################################
+
+# keeper knight
+
+"magex_lesser_kings_charge"
+{
+  symbol = "👑"
+  effect = Name "charge!!!!" Description "All allies within the radius of 4 receive a +15 damage buff. Can only be used by a tribe leader." {
+    Filter Attacker CreatureStatus LEADER Area 4 Filter And{ Not Enemy Distance 1 none } Lasting 40 KINGS_CHARGE
+    Filter Not Attacker CreatureStatus LEADER CreatureMessage { "are not worthy!" "is not worthy!" }
+  }
+  cooldown = {300 510}
+  sound = "SPELL_STR_BONUS"
+}
+
+"magex_lesser_morale"
+{
+  symbol = "👑"
+  effect = Name "speech" Description "All allies within the radius of 4 high morale. Can only be used by a tribe leader." {
+    Filter Attacker CreatureStatus LEADER Area 4 Filter And{ Not Enemy Distance 1 none } Lasting 40 HIGH_MORALE
+    Filter Not Attacker CreatureStatus LEADER CreatureMessage { "are not worthy!" "is not worthy!" }
+  }
+  cooldown = {300 510}
+  sound = "SPELL_STR_BONUS"
+}
 
 # thug
 
@@ -2990,7 +3668,7 @@ MagExOneTimeAbility("magex_guardsman", "guardsman", "increases damage by +4", Pe
 "magex_warrior_berserkir_haste"
 {
   symbol = "🏃"
-  effect = Lasting 40 SPEED
+  effect = Name "haste" Lasting 40 SPEED
   cooldown = {25 51}
   sound = "SPELL_SPEED_SELF"
 }
@@ -3035,7 +3713,7 @@ MagExOneTimeAbility("magex_explorer", "explorer", "allows you to explore", Chain
   symbol = "🕶️"
   effect = Name "dirty trick" Lasting 5 BLIND
   cooldown = {30 81}
-  range = 1
+  range = 3
 }
 
 "magex_hidden_blade"
@@ -3145,6 +3823,116 @@ MagExOneTimeAbility("magex_brute_2", "brute", "increases damage by +4", Permanen
   sound = "SPELL_STR_BONUS"
 }
 
+# Slaver
+
+"magex_slaver_throw_net"
+{
+  symbol = "↣"
+  effect = MinDistanceFromStrongEnemy(4) Name "throw net" Description "Thrown an net"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage { "are hit by the net" "is hit by the net"}
+          Lasting 5 ENTANGLED
+        },
+        CreatureMessage { "are spared by the net" "is spared by the net"}
+      )
+  range = 7
+  cooldown = {5 15}
+  maxHits = 1
+  projectileViewId = {"magex_net"}
+  message = "throw an net" "throws an net"
+  type = ABILITY
+}
+
+"magex_slaver_terrify"
+{
+  symbol = "🔮"
+  effect = Name "terrify" Area 2 Lasting 5 PANIC
+  cooldown = {25 51}
+  sound = "SPELL_STR_BONUS"
+}
+
+# cyclops
+
+"magex_great_smash"
+{
+  symbol = "↣"
+  effect = Name "great smash" Description "smashes with great strenght" Chain {
+          CreatureMessage { "are hit by the smash" "is hit by the smash"}
+          Damage DAMAGE CRUSH
+          Damage DAMAGE CRUSH
+		  DestroyWalls DIG
+        }
+  cooldown = {25 51}
+  message = "smashes with great strenght" "smashes with great strenght"
+  type = ABILITY
+}
+
+"magex_cyclops_roar"
+{
+  symbol = "😱"
+  effect =  Name "roar" Area 4 Filter Enemy Lasting PANIC 
+  range = 5
+  cooldown = {25 51}
+  sound = "SPELL_STR_BONUS"
+}
+
+###############################################
+# 					archery					  #
+###############################################
+
+
+# arcane archer
+
+MagExOneTimeAbility("magex_arcane_archer_attack", "arcane archer", "let magic flow trough your arrow", Chain {Permanent MAGEX_RANGED_SPELL_DAMAGE}, "🎯")
+
+# prodigy
+
+MagExOneTimeAbility("magex_prodigy_ranged_training", "prodigy", "unleash your talent", Chain {IncreaseMaxLevel RANGED_DAMAGE 3}, "🎯")
+MagExOneTimeAbility("magex_prodigy_ranged_trained", "training", "trained archer", Permanent MAGEX_ARCHER_TRAINING, "🎯")
+
+# arsonist
+
+MagExOneTimeAbility("magex_fire_archer_attack", "flaming arrows", "set your arrows on fire", Chain {Permanent MAGEX_RANGED_FIRE_DAMAGE}, "🎯")
+"magex_fire_bomb"
+{
+  symbol = "𝍔"
+  effect =  Name "firewall" Area 1 PlaceFurniture "FIRE_WALL"
+  endOnly = true
+  range = 6
+  cooldown = {31 62}
+  sound = "SPELL_BLAST"
+}
+
+# frost carver
+
+MagExOneTimeAbility("magex_cold_immunity_self", "cold adaptation self", "Becomes immune to cold, but vulnerable to fire.", Chain{ Permanent COLD_IMMUNITY Permanent FIRE_VULNERABILITY}, "🎯")
+MagExOneTimeAbility("magex_frost_archer_attack", "ice carved arrows", "carved your arrows from ice", Chain {Permanent MAGEX_RANGED_COLD_DAMAGE}, "🎯")
+
+# mountain
+
+MagExOneTimeAbility("magex_mountain_archer_attack", "training", "trained archer", Permanent MAGEX_MOUNTAIN_ARCHER_TRAINING, "🎯")
+
+# hunter
+
+MagExOneTimeAbility("magex_hunter_archer_attack", "training", "trained hunter", Permanent ELF_VISION, "🎯")
+
+# survivalist
+
+"magex_survivalist_healing"
+{
+  symbol = "❤️"
+  effect = Heal { FLESH 0.5 }
+  range = 1
+  cooldown = {10 31}
+  sound = "SPELL_HEALING"
+}
+
+
+# arcane archer
+
+MagExOneTimeAbility("magex_magic_resistance_self", "magic resistance self", "Becomes resistant to magic.", Permanent MAGIC_RESISTANCE, "🎯")
+
 ###########################################################
 # 					non school spell					  #
 ###########################################################
@@ -3168,6 +3956,23 @@ MagExOneTimeAbility("magex_brute_2", "brute", "increases damage by +4", Permanen
 
 # add spell
 
+MagExOneTimeAbility("magex_archer_school", "pick spellschool", "gets random magex_spell_school.", { 
+ ChooseRandom {
+	AddSpellSchool "magex_hunter"
+	AddSpellSchool "magex_pathfinder"
+	AddSpellSchool "magex_scout" 
+	AddSpellSchool "magex_mountain_archer" 
+	AddSpellSchool "magex_arcane_archer" 
+	AddSpellSchool "magex_prodigy_archer" 
+	AddSpellSchool "magex_arson_archer" 
+	AddSpellSchool "magex_survivalist_archer" 
+	AddSpellSchool "magex_crowd_shooter_archer" 
+	AddSpellSchool "magex_frost_archer" 
+ }}, "🧛")
+
+
+# add spell
+
 MagExOneTimeAbility("magex_warrior_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
 	AddSpellSchool "magex_thug"
@@ -3180,9 +3985,31 @@ MagExOneTimeAbility("magex_warrior_school", "pick spellschool", "gets random mag
 	AddSpellSchool "magex_acrobat" 
 	AddSpellSchool "magex_conscript" 
 	AddSpellSchool "magex_gladiator" 
+	AddSpellSchool "magex_spellblade" 
 	AddSpellSchool "magex_brute" 
 	AddSpellSchool "magex_paladin" 
 	AddSpellSchool "magex_witch_hunter" 
+	AddSpellSchool "magex_slaver" 
+	AddSpellSchool "magex_grave_knight" 
+ }}, "🧛")
+
+MagExOneTimeAbility("magex_warrior_grave_school", "pick spellschool", "gets random magex_spell_school.", { 
+ ChooseRandom {
+	AddSpellSchool "magex_thug"
+	AddSpellSchool "magex_guardsman"
+	AddSpellSchool "magex_fighter" 
+	AddSpellSchool "magex_berserkir" 
+	AddSpellSchool "magex_explorer" 
+	AddSpellSchool "magex_coward" 
+	AddSpellSchool "magex_honorless" 
+	AddSpellSchool "magex_acrobat"  
+	AddSpellSchool "magex_gladiator" 
+	AddSpellSchool "magex_spellblade" 
+	AddSpellSchool "magex_brute" 
+	AddSpellSchool "magex_paladin" 
+	AddSpellSchool "magex_witch_hunter" 
+	AddSpellSchool "magex_slaver" 
+	AddSpellSchool "magex_grave_knight" 
  }}, "🧛")
 
 MagExOneTimeAbility("magex_warrior_barbarian_school", "pick spellschool", "gets random magex_spell_school.", { 
@@ -3195,11 +4022,42 @@ MagExOneTimeAbility("magex_warrior_barbarian_school", "pick spellschool", "gets 
 	AddSpellSchool "magex_honorless" 
 	AddSpellSchool "magex_gladiator" 
 	AddSpellSchool "magex_brute" 
+	AddSpellSchool "magex_slaver" 
  }}, "🧛")
-  
+
+MagExOneTimeAbility("magex_noble_warrior_school", "pick spellschool", "gets random magex_spell_school.", { 
+ ChooseRandom {
+	AddSpellSchool "magex_guardsman"
+	AddSpellSchool "magex_fighter" 
+	AddSpellSchool "magex_explorer" 
+	AddSpellSchool "magex_coward" 
+	AddSpellSchool "magex_acrobat" 
+	AddSpellSchool "magex_conscript" 
+	AddSpellSchool "magex_paladin" 
+	AddSpellSchool "magex_witch_hunter" 
+	AddSpellSchool "magex_spellblade" 
+	AddSpellSchool "magex_grave_knight" 
+ }}, "🧛")
+ 
+MagExOneTimeAbility("magex_knight_warrior_school", "pick spellschool", "gets random magex_spell_school.", { 
+ ChooseRandom {
+	AddSpellSchool "magex_guardsman"
+	AddSpellSchool "magex_fighter" 
+	AddSpellSchool "magex_explorer" 
+	AddSpellSchool "magex_coward" 
+	AddSpellSchool "magex_honorless" 
+	AddSpellSchool "magex_acrobat" 
+	AddSpellSchool "magex_conscript" 
+	AddSpellSchool "magex_spellblade" 
+	AddSpellSchool "magex_witch_hunter" 
+	AddSpellSchool "magex_spellblade" 
+	AddSpellSchool "magex_grave_knight" 
+ }}, "🧛")
+ 
 MagExOneTimeAbility("magex_priest_creature_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
 	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_dragon_worship"
 	AddSpellSchool "magex_demon_worship"
 	AddSpellSchool "magex_angel_worship" 
 	AddSpellSchool "magex_angel_worship" 
@@ -3218,6 +4076,7 @@ MagExOneTimeAbility("magex_priest_school", "pick spellschool", "gets random mage
 	AddSpellSchool "magex_nature_worship"
 	AddSpellSchool "magex_shamanism"
 	AddSpellSchool "magex_shamanism"
+	AddSpellSchool "magex_dragon_worship"
 	AddSpellSchool "magex_death_cult"
 	AddSpellSchool "magex_rot_cult"
 	AddSpellSchool "magex_bear_worship"
@@ -3241,7 +4100,9 @@ MagExOneTimeAbility("magex_evil_priest_school", "pick spellschool", "gets random
 	AddSpellSchool "magex_rot_cult"
 	AddSpellSchool "magex_rot_cult"
 	AddSpellSchool "magex_shamanism"
-	AddSpellSchool "magex_shamanism"	
+	AddSpellSchool "magex_shamanism"
+	AddSpellSchool "magex_dragon_worship"
+	AddSpellSchool "magex_dragon_worship"	
 	AddSpellSchool "magex_bear_worship"
 	AddSpellSchool "magex_angel_worship"
 	AddSpellSchool "magex_the_emperor_worship"
@@ -3250,12 +4111,16 @@ MagExOneTimeAbility("magex_evil_priest_school", "pick spellschool", "gets random
 	AddSpellSchool "magex_demon_worship" 
 	AddSpellSchool "magex_demon_worship" 
 	AddSpellSchool "magex_demon_worship" 
+	AddSpellSchool "magex_vermin_worship" 
+	AddSpellSchool "magex_vermin_worship" 
  }}, "🧛")
 
 MagExOneTimeAbility("magex_goblin_priest_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
 	AddSpellSchool "magex_death_cult"
 	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_vermin_worship" 
+	AddSpellSchool "magex_vermin_worship" 
 	AddSpellSchool "magex_the_emperor_worship"
 	AddSpellSchool "magex_angel_worship"
 	AddSpellSchool "magex_demon_worship" 
@@ -3276,7 +4141,11 @@ MagExOneTimeAbility("magex_shaman_school", "pick spellschool", "gets random mage
 	AddSpellSchool "magex_shamanism"
 	AddSpellSchool "magex_shamanism"	 
 	AddSpellSchool "magex_shamanism"
-	AddSpellSchool "magex_shamanism"	 
+	AddSpellSchool "magex_shamanism"
+	AddSpellSchool "magex_vermin_worship" 
+	AddSpellSchool "magex_vermin_worship" 
+	AddSpellSchool "magex_dragon_worship"
+	AddSpellSchool "magex_dragon_worship"	 
  }}, "🧛")
 
 MagExOneTimeAbility("magex_barbarian_shaman_school", "pick spellschool", "gets random magex_spell_school.", { 
@@ -3285,6 +4154,12 @@ MagExOneTimeAbility("magex_barbarian_shaman_school", "pick spellschool", "gets r
 	AddSpellSchool "magex_nature_worship"
 	AddSpellSchool "magex_shamanism"
 	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_vermin_worship" 
+	AddSpellSchool "magex_vermin_worship" 
+	AddSpellSchool "magex_dragon_worship"
+	AddSpellSchool "magex_dragon_worship"
+	AddSpellSchool "magex_dragon_worship"
+	AddSpellSchool "magex_dragon_worship"
 	AddSpellSchool "magex_bear_worship"
 	AddSpellSchool "magex_bear_worship"
 	AddSpellSchool "magex_bear_worship"
@@ -3312,23 +4187,34 @@ MagExOneTimeAbility("magex_dead_priest_school", "pick spellschool", "gets random
 	AddSpellSchool "magex_death_cult"
 	AddSpellSchool "magex_death_cult"
 	AddSpellSchool "magex_death_cult"
+	AddSpellSchool "magex_vermin_worship" 
+	AddSpellSchool "magex_vermin_worship" 
+	AddSpellSchool "magex_dragon_worship"
+	AddSpellSchool "magex_dragon_worship"
  }}, "🧛")
 
 MagExOneTimeAbility("magex_random_holy_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
 	AddSpellSchool "magex_ancestor_worship"
-	AddSpellSchool "magex_demon_worship"
 	AddSpellSchool "magex_shamanism"	
-	AddSpellSchool "magex_bear_worship"
-	AddSpellSchool "magex_nature_worship"
-	AddSpellSchool "magex_angel_worship"
 	AddSpellSchool "magex_death_cult"
-	AddSpellSchool "magex_the_emperor_worship"
 	AddSpellSchool "magex_rot_cult"
+	AddSpellSchool "magex_demon_worship"
+	AddSpellSchool "magex_angel_worship"
+	AddSpellSchool "magex_nature_worship"
+	AddSpellSchool "magex_bear_worship"
+	AddSpellSchool "magex_the_emperor_worship"
+	AddSpellSchool "magex_vermin_worship" 
+	AddSpellSchool "magex_dragon_worship"
  }}, "🧛")
+ 
+ 
+ 
  
 MagExOneTimeAbility("magex_dwarf_school", "pick spellschool", "gets random magex_spell_school.", { 
  ChooseRandom {
+ 	AddSpellSchool "magex_artificer"
+ 	AddSpellSchool "magex_artificer"
  	AddSpellSchool "magex_toximancy"
  	AddSpellSchool "magex_plaguemancy"
  	AddSpellSchool "magex_luxomancy"
@@ -3345,6 +4231,7 @@ MagExOneTimeAbility("magex_dwarf_school", "pick spellschool", "gets random magex
 	AddSpellSchool "magex_illusionism"
 	AddSpellSchool "magex_necromancy"
 	AddSpellSchool "magex_fell_sorcery"
+	AddSpellSchool "magex_hedge"
  }}, "🧛")
  
  
@@ -3368,6 +4255,8 @@ MagExOneTimeAbility("magex_spell_school", "pick spellschool", "gets random magex
 	AddSpellSchool "magex_necromancy"
 	AddSpellSchool "magex_fell_sorcery"
 	AddSpellSchool "dwarf"
+	AddSpellSchool "magex_hedge"
+ 	AddSpellSchool "magex_artificer"
  }}, "🧛")
  
 MagExOneTimeAbility("magex_keeper_spell_school", "pick spellschool", "gets random magex_spell_school.", { 
@@ -3389,6 +4278,8 @@ MagExOneTimeAbility("magex_keeper_spell_school", "pick spellschool", "gets rando
 	AddSpellSchool "magex_necromancy"
 	AddSpellSchool "magex_fell_sorcery"
 	AddSpellSchool "dwarf"
+	AddSpellSchool "magex_hedge"
+ 	AddSpellSchool "magex_artificer"
  }}, "🧛")
  
 MagExOneTimeAbility("magex_keeper_spell_school_sans_necro", "pick spellschool", "gets random magex_spell_school.", { 
@@ -3422,6 +4313,8 @@ MagExOneTimeAbility("magex_keeper_spell_school_sans_necro", "pick spellschool", 
 	AddSpellSchool "magex_fell_sorcery"
 	AddSpellSchool "magex_fell_sorcery"
 	AddSpellSchool "dwarf"
+	AddSpellSchool "magex_hedge"
+ 	AddSpellSchool "magex_artificer"
  }}, "🧛")
 
 MagExOneTimeAbility("magex_keeper_spell_school_necro_keeper", "pick spellschool", "gets random magex_spell_school.", { 
@@ -3452,6 +4345,8 @@ MagExOneTimeAbility("magex_keeper_spell_school_necro_keeper", "pick spellschool"
 	AddSpellSchool "magex_fell_sorcery"
 	AddSpellSchool "magex_fell_sorcery"
 	AddSpellSchool "dwarf"
+	AddSpellSchool "magex_hedge"
+ 	AddSpellSchool "magex_artificer"
  }}, "🧛")
  
  MagExOneTimeAbility("magex_necro_school", "pick spellschool", "gets random magex_spell_school.", { 
@@ -3490,6 +4385,8 @@ MagExOneTimeAbility("magex_keeper_spell_school_necro_keeper", "pick spellschool"
 	AddSpellSchool "magex_hydromancy"
 	AddSpellSchool "magex_transmutation"
 	AddSpellSchool "dwarf"
+	AddSpellSchool "magex_hedge"
+ 	AddSpellSchool "magex_artificer"
  }}, "🧛")
  
  
@@ -3530,5 +4427,463 @@ MagExOneTimeAbility("magex_keeper_spell_school_necro_keeper", "pick spellschool"
   symbol = "💕"
   effect = Name "group healing" Area 2 Filter Not Enemy {Filter Not LastingEffect MAGEX_NECROTIC_SATURATION Heal { FLESH }}
   cooldown = {25 51}
+  sound = "SPELL_HEALING"
+}
+
+
+
+
+
+Def AddPicks()
+GrantAbility "magex_pick_toximancy"
+GrantAbility "magex_pick_plaguemancy"
+GrantAbility "magex_pick_nymphomancy"
+GrantAbility "magex_pick_wild_magic"
+GrantAbility "magex_pick_luxomancy"
+GrantAbility "magex_pick_mage"
+GrantAbility "magex_pick_elementalist"
+GrantAbility "magex_pick_pyromancy"
+GrantAbility "magex_pick_cryomancy"
+GrantAbility "magex_pick_corrosiomancy"
+GrantAbility "magex_pick_umbramancy"
+GrantAbility "magex_pick_geomancy"
+GrantAbility "magex_pick_hydromancy"
+GrantAbility "magex_pick_transmutation"
+GrantAbility "magex_pick_illusionism"
+GrantAbility "magex_pick_necromancy"
+GrantAbility "magex_pick_fell_sorcery"
+GrantAbility "magex_pick_dwarf"
+GrantAbility "magex_pick_hedge"
+GrantAbility "magex_pick_artificer"
+End
+
+Def RemovePicks()
+RemoveAbility "magex_pick_toximancy"
+RemoveAbility "magex_pick_plaguemancy"
+RemoveAbility "magex_pick_nymphomancy"
+RemoveAbility "magex_pick_wild_magic"
+RemoveAbility "magex_pick_luxomancy"
+RemoveAbility "magex_pick_mage"
+RemoveAbility "magex_pick_elementalist"
+RemoveAbility "magex_pick_pyromancy"
+RemoveAbility "magex_pick_cryomancy"
+RemoveAbility "magex_pick_corrosiomancy"
+RemoveAbility "magex_pick_umbramancy"
+RemoveAbility "magex_pick_geomancy"
+RemoveAbility "magex_pick_hydromancy"
+RemoveAbility "magex_pick_transmutation"
+RemoveAbility "magex_pick_illusionism"
+RemoveAbility "magex_pick_necromancy"
+RemoveAbility "magex_pick_fell_sorcery"
+RemoveAbility "magex_pick_dwarf"
+RemoveAbility "magex_pick_hedge"
+RemoveAbility "magex_pick_artificer"
+End
+
+ 
+MagExOneTimeAbility("magex_keeper_school", "pick spellschool", "gets all spell chools to pick from.", { AddPicks() }, "🧛")
+ 
+
+"magex_pick_toximancy"
+{
+  symbol = "❤️"
+  effect = Name "pick toximancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_toximancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_plaguemancy"
+{
+  symbol = "❤️"
+  effect = Name "pick plaguemancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_plaguemancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_nymphomancy"
+{
+  symbol = "❤️"
+  effect = Name "pick nymphomancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_nymphomancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_wild_magic"
+{
+  symbol = "❤️"
+  effect = Name "pick wild magic" Description "Pick your spell school" Chain {AddSpellSchool "magex_wild_sorcery" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_luxomancy"
+{
+  symbol = "❤️"
+  effect = Name "pick luxomancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_luxomancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_mage"
+{
+  symbol = "❤️"
+  effect = Name "pick generalist" Description "Pick your spell school" Chain {AddSpellSchool "mage" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_elementalist"
+{
+  symbol = "❤️"
+  effect = Name "pick elementalist" Description "Pick your spell school" Chain {AddSpellSchool "magex_electromancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_pyromancy"
+{
+  symbol = "❤️"
+  effect = Name "pick pyromancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_pyromancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_cryomancy"
+{
+  symbol = "❤️"
+  effect = Name "pick cryomancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_cryomancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_corrosiomancy"
+{
+  symbol = "❤️"
+  effect = Name "pick corrosiomancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_corossiomancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_umbramancy"
+{
+  symbol = "❤️"
+  effect = Name "pick umbramancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_umbramancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+ 
+"magex_pick_geomancy"
+{
+  symbol = "❤️"
+  effect = Name "pick geomancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_geomancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_hydromancy"
+{
+  symbol = "❤️"
+  effect = Name "pick hydromancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_hydromancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_transmutation"
+{
+  symbol = "❤️"
+  effect = Name "pick transmutation" Description "Pick your spell school" Chain {AddSpellSchool "magex_transmutation" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_illusionism"
+{
+  symbol = "❤️"
+  effect = Name "pick illusionism" Description "Pick your spell school" Chain {AddSpellSchool "magex_illusionism" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_necromancy"
+{
+  symbol = "❤️"
+  effect = Name "pick necromancy" Description "Pick your spell school" Chain {AddSpellSchool "magex_necromancy" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_fell_sorcery"
+{
+  symbol = "❤️"
+  effect = Name "pick fell sorcery" Description "Pick your spell school" Chain {AddSpellSchool "magex_fell_sorcery" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_dwarf"
+{
+  symbol = "❤️"
+  effect = Name "pick dwarven magic" Description "Pick your spell school" Chain {AddSpellSchool "dwarf" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_hedge"
+{
+  symbol = "❤️"
+  effect = Name "pick hedge magic" Description "Pick your spell school" Chain {AddSpellSchool "magex_hedge" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_artificer"
+{
+  symbol = "❤️"
+  effect = Name "pick artificer magic" Description "Pick your spell school" Chain {AddSpellSchool "magex_artificer" RemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+ 
+
+ 
+
+Def WarriorAddPicks()
+GrantAbility "magex_pick_thug"
+GrantAbility "magex_pick_guardsman"
+GrantAbility "magex_pick_fighter"
+GrantAbility "magex_pick_berserkir"
+GrantAbility "magex_pick_explorer"
+GrantAbility "magex_pick_coward"
+GrantAbility "magex_pick_honorles"
+GrantAbility "magex_pick_acrobat"
+GrantAbility "magex_pick_conscript"
+GrantAbility "magex_pick_gladiator"
+GrantAbility "magex_pick_spellblade"
+GrantAbility "magex_pick_brute"
+GrantAbility "magex_pick_witch_hunter"
+GrantAbility "magex_pick_slaver"
+GrantAbility "magex_pick_grave_knight"
+GrantAbility "magex_pick_paladin"
+GrantAbility "magex_pick_cyclops"
+End
+ 
+MagExOneTimeAbility("magex_keeper_warrior_school_knight", "pick spellschool", "gets random magex_spell_school.", {WarriorAddPicksKnight() }, "🧛")
+ 
+MagExOneTimeAbility("magex_keeper_warrior_school_cyclops", "pick spellschool", "gets random magex_spell_school.", {WarriorAddPicksCyclop() }, "🧛")
+ 
+MagExOneTimeAbility("magex_keeper_warrior_school_graveknight", "pick spellschool", "gets random magex_spell_school.", {WarriorAddPicksGraveKnight() }, "🧛")
+ 
+Def WarriorAddPicksKnight()
+GrantAbility "magex_pick_thug"
+GrantAbility "magex_pick_guardsman"
+GrantAbility "magex_pick_fighter"
+GrantAbility "magex_pick_berserkir"
+GrantAbility "magex_pick_explorer"
+GrantAbility "magex_pick_coward"
+GrantAbility "magex_pick_honorles"
+GrantAbility "magex_pick_acrobat"
+GrantAbility "magex_pick_conscript"
+GrantAbility "magex_pick_gladiator"
+GrantAbility "magex_pick_spellblade"
+GrantAbility "magex_pick_brute"
+GrantAbility "magex_pick_witch_hunter"
+GrantAbility "magex_pick_slaver"
+GrantAbility "magex_pick_grave_knight"
+GrantAbility "magex_pick_cyclops"
+End
+
+Def WarriorAddPicksGraveKnight()
+GrantAbility "magex_pick_thug"
+GrantAbility "magex_pick_guardsman"
+GrantAbility "magex_pick_fighter"
+GrantAbility "magex_pick_berserkir"
+GrantAbility "magex_pick_explorer"
+GrantAbility "magex_pick_coward"
+GrantAbility "magex_pick_honorles"
+GrantAbility "magex_pick_acrobat"
+GrantAbility "magex_pick_conscript"
+GrantAbility "magex_pick_gladiator"
+GrantAbility "magex_pick_spellblade"
+GrantAbility "magex_pick_brute"
+GrantAbility "magex_pick_witch_hunter"
+GrantAbility "magex_pick_slaver"
+GrantAbility "magex_pick_paladin"
+GrantAbility "magex_pick_cyclops"
+End
+
+Def WarriorAddPicksCyclop()
+GrantAbility "magex_pick_thug"
+GrantAbility "magex_pick_guardsman"
+GrantAbility "magex_pick_fighter"
+GrantAbility "magex_pick_berserkir"
+GrantAbility "magex_pick_explorer"
+GrantAbility "magex_pick_coward"
+GrantAbility "magex_pick_honorles"
+GrantAbility "magex_pick_acrobat"
+GrantAbility "magex_pick_conscript"
+GrantAbility "magex_pick_gladiator"
+GrantAbility "magex_pick_spellblade"
+GrantAbility "magex_pick_brute"
+GrantAbility "magex_pick_witch_hunter"
+GrantAbility "magex_pick_slaver"
+GrantAbility "magex_pick_grave_knight"
+GrantAbility "magex_pick_paladin"
+End
+
+Def WarriorRemovePicks()
+RemoveAbility "magex_pick_thug"
+RemoveAbility "magex_pick_guardsman"
+RemoveAbility "magex_pick_fighter"
+RemoveAbility "magex_pick_berserkir"
+RemoveAbility "magex_pick_explorer"
+RemoveAbility "magex_pick_coward"
+RemoveAbility "magex_pick_honorles"
+RemoveAbility "magex_pick_acrobat"
+RemoveAbility "magex_pick_conscript"
+RemoveAbility "magex_pick_gladiator"
+RemoveAbility "magex_pick_spellblade"
+RemoveAbility "magex_pick_brute"
+RemoveAbility "magex_pick_witch_hunter"
+RemoveAbility "magex_pick_slaver"
+RemoveAbility "magex_pick_grave_knight"
+RemoveAbility "magex_pick_paladin"
+RemoveAbility "magex_pick_cyclops"
+End
+
+
+"magex_pick_thug"
+{
+  symbol = "❤️"
+  effect = Name "pick thug style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_thug" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_guardsman"
+{
+  symbol = "❤️"
+  effect = Name "pick guardsman style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_guardsman" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_fighter"
+{
+  symbol = "❤️"
+  effect = Name "pick fighter style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_fighter" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_berserkir"
+{
+  symbol = "❤️"
+  effect = Name "pick berserkir style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_berserkir" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_explorer"
+{
+  symbol = "❤️"
+  effect = Name "pick explorer style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_explorer" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_coward"
+{
+  symbol = "❤️"
+  effect = Name "pick coward style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_coward" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_honorles"
+{
+  symbol = "❤️"
+  effect = Name "pick honorles style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_honorless" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_acrobat"
+{
+  symbol = "❤️"
+  effect = Name "pick acrobat style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_acrobat" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_conscript"
+{
+  symbol = "❤️"
+  effect = Name "pick conscript style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_conscript" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_gladiator"
+{
+  symbol = "❤️"
+  effect = Name "pick gladiator style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_gladiator" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_spellblade"
+{
+  symbol = "❤️"
+  effect = Name "pick spellblade style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_spellblade" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_brute"
+{
+  symbol = "❤️"
+  effect = Name "pick brute style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_brute" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_witch_hunter"
+{
+  symbol = "❤️"
+  effect = Name "pick witch hunter style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_witch_hunter" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_slaver"
+{
+  symbol = "❤️"
+  effect = Name "pick slaver style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_slaver" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_grave_knight"
+{
+  symbol = "❤️"
+  effect = Name "pick grave knight style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_grave_knight" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_paladin"
+{
+  symbol = "❤️"
+  effect = Name "pick paladin style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_paladin" WarriorRemovePicks()}
+  cooldown = 1
+  sound = "SPELL_HEALING"
+}
+
+"magex_pick_cyclops"
+{
+  symbol = "❤️"
+  effect = Name "pick giant style" Description "Pick your fighting school" Chain {AddSpellSchool "magex_cyclops" WarriorRemovePicks()}
+  cooldown = 1
   sound = "SPELL_HEALING"
 }

@@ -13,7 +13,7 @@
         CreatureMessage {"are spared by the blast" "is spared by the blast"}
       )
   range = 10
-  cooldown = 2
+  cooldown = 3
   maxHits = 1
   projectileViewId = {"wizchtech_blast"}
   message = "shoot from blaster" "shoots from blaster"
@@ -36,7 +36,7 @@
         CreatureMessage {"are spared by the blast" "is spared by the blast"}
       )
   range = 10
-  cooldown = 2
+  cooldown = 3
   maxHits = 2
   projectileViewId = {"wizchtech_blast"}
   message = "shoot from blaster" "shoots from blaster"
@@ -59,7 +59,7 @@
         CreatureMessage {"are spared by the sludge" "is spared by the sludge"}
       )}
   range = 4
-  cooldown = 0
+  cooldown = 1
   fx = {FLAMETHROWER ColorId YELLOW}
   message = "shoot from sprayer" "shoots from sprayer"
   type = ABILITY
@@ -80,7 +80,7 @@
         CreatureMessage {"are spared by the sludge" "is spared by the sludge"}
       )}
   range = 4
-  cooldown = 0
+  cooldown = 1
   fx = {FLAMETHROWER ColorId LIGHT_RED}
   message = "shoot from sprayer" "shoots from sprayer"
   type = ABILITY
@@ -115,7 +115,7 @@
       )
   fx = {FLAMETHROWER ColorId LIGHT_RED}
   range = 4
-  cooldown = {15 31}
+  cooldown = 4
   sound = "SPELL_BLAST"
   message = "breathe fire!" "breathes fire!"
 }
@@ -136,7 +136,7 @@
       )
   fx = {FLAMETHROWER ColorId GREEN}
   range = 4
-  cooldown = {15 31}
+  cooldown = 4
   sound = "SPELL_BLAST"
   message = "breathe poison!" "breathes poison!"
 }
@@ -156,7 +156,7 @@
       )
   fx = {FLAMETHROWER ColorId WHITE}
   range = 4
-  cooldown = {15 31}
+  cooldown = 4
   sound = "SPELL_BLAST"
   message = "breathe black fog!" "breathes black fog!"
 }
@@ -177,7 +177,7 @@
       )
   fx = {FLAMETHROWER ColorId YELLOW}
   range = 4
-  cooldown = {15 31}
+  cooldown = 4
   sound = "SPELL_BLAST"
   message = "breathe acid!" "breathes acid!"
 }
@@ -228,4 +228,138 @@
   range = 4
   cooldown = 5
   message = "spit freezing liquid!" "spits freezing liquid!"
+}
+
+
+
+
+
+"wiztech_psionics_agony"
+{
+  symbol = "⥇"
+  effect = MinDistanceFromStrongEnemy(2) Name "agony" Chain { Lasting 5 WIZTECH_AGONY Lasting 1 IMMOBILE}
+  endOnly = true
+  range = 6
+  cooldown = {5 21}
+  sound = "SPELL_BLAST"
+}
+
+"wiztech_psionics_panic"
+{
+  symbol = "😱"
+  effect = Name "panic attack" Lasting 5 PANIC
+  range = 6
+  cooldown = {25 51}
+  sound = "SPELL_STR_BONUS"
+}
+
+"wiztech_psionics_pacify"
+{
+  symbol = "☮"
+  effect = Name "tranquility" Lasting 5 PEACEFULNESS
+  range = 6
+  cooldown = {20 61}
+  endOnly = true
+  sound = "SPELL_STR_BONUS"
+}
+
+"wiztech_psionics_berzerker"
+{
+  symbol = "⚔"
+  effect = Name "berzerker" Lasting 5 INSANITY
+  range = 6
+  cooldown = {20 61}
+  endOnly = true
+  sound = "SPELL_STR_BONUS"
+}
+
+
+
+
+"wiztech_psionics_pyrokinesis"
+{
+  symbol = "🔥"
+  effect = MinDistanceFromStrongEnemy(2) Name "pyrokinesis"  Fire {}
+  endOnly = true
+  range = 6
+  cooldown = {5 21}
+  sound = "SPELL_BLAST"
+}
+
+"wiztech_psionics_cryokinesis"
+{
+  symbol = "❄"
+  effect = MinDistanceFromStrongEnemy(2) Name "cryokinesis"  Ice {}
+  endOnly = true
+  range = 6
+  cooldown = {5 21}
+  sound = "SPELL_BLAST"
+}
+
+
+
+
+
+"wiztech_psionics_regen"
+{
+  symbol = "❤️"
+  effect = Name "psionic regeneration" AI Health 0.9 0.1 1 -2 {Lasting 40 REGENERATION}
+  targetSelf = true
+  range = 1
+  cooldown = {30 81}
+  sound = "SPELL_DEX_BONUS"
+}
+
+"wiztech_mutagen_injection"
+{
+  symbol = "🗡️"
+  effect = MinDistanceFromStrongEnemy(2) Name "inject mutagen" Description "Sacrifices the creature" Chain {
+            Filter Area 0 Not Enemy {
+			Filter Area 0 Or {HatedBy HATE_MUTANT} {
+			Filter Area 0 LastingEffect WIZTECH_ADVANCED_MUTANT {
+			Suicide DIE
+			Area 1 FixedDamage ACID_DAMAGE 80 SHOOT
+			}
+			ChooseRandom {
+			Polymorph "WIZCHTECH_MUTAGEN_MUTANT_VICTIM_SPITTER" none
+			Polymorph "WIZCHTECH_MUTAGEN_MUTANT_VICTIM_SPITTER" none
+			Polymorph "WIZCHTECH_MUTAGEN_MUTANT_VICTIM_SPITTER" none
+			Polymorph "WIZCHTECH_MUTAGEN_MUTANT_VICTIM_BRUTE" none
+			Polymorph "WIZCHTECH_MUTAGEN_MUTANT_VICTIM_BRUTE" none
+			Polymorph "WIZCHTECH_MUTAGEN_MUTANT_VICTIM_BRUTE" none
+			Polymorph "WIZCHTECH_MUTAGEN_MUTANT_VICTIM_BRUTE" none
+			Polymorph "WIZCHTECH_MUTAGEN_MUTANT_VICTIM_ABBERATION" none
+			}
+			}}
+			Filter Area 0 Or { HatedBy HATE_ELVES HatedBy HATE_DWARVES HatedBy HATE_GREENSKINS HatedBy HATE_HUMANS} {
+			Polymorph "WIZCHTECH_MUTAGEN_MUTANT_VICTIM" none
+			}
+			Filter Or { CreatureId "WOLF" CreatureId "DOG" CreatureId "HUSKY"} {
+			Polymorph "WIZCHTECH_MUTAGEN_MUTANT_HOUND" none
+			}
+			Caster RemoveAbility "wiztech_mutagen_injection"}
+  endOnly = true
+  range = 1
+  cooldown = 200
+  sound = "SPELL_BLAST"
+}
+
+"wiztech_munant_spit"
+{
+  symbol = "⇾"
+  effect = MinDistanceFromStrongEnemy(4) Name "spit acid" Description "Spits an acid"
+      TryNoFriendlyFire(
+        {
+          CreatureMessage { "are hit by the acid" "is hit by the acid"}
+          Damage ACID_DAMAGE SHOOT
+		  Acid {5}
+        },
+        CreatureMessage { "are spared by the acid" "is spared by the acid"}
+      )
+  range = 6
+  cooldown = 3
+  maxHits = 1
+  fx = {FLAMETHROWER ColorId LIGHT_GREEN}
+  message = "shoot a bolt" "shoots a bolt"
+  type = ABILITY
 }
