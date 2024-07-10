@@ -1,0 +1,127 @@
+"MUSHROOM8"
+{
+  name = "mushroom"
+  viewId = { "mushroom8" }
+  canSilentlyReplace = true
+}
+"MUSHROOM9"
+{
+  name = "mushroom9"
+  viewId = { "mushroom2" }
+  canSilentlyReplace = true
+}
+"GIANT_MUSHROOM2"
+{
+  name = "treeshroom"
+  viewId = { "giant_mushroom2" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  fire = 100
+  itemDrop = {{{{"WoodPlank"} 1 { 10 14 }}}}
+  summonedElement = "ENT"
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+"GIANT_MUSHROOM1" inherit "GIANT_MUSHROOM2"
+{
+  viewId = { "giant_mushroom" }
+  name = "giant treeshroom"
+}
+"BLACK_SAND"
+{
+  name = "sand"
+  viewId = { "black_sand" }
+  layer = GROUND
+  walkOverFX = { SAND_DUST Rgb 255 159 128 255 }
+}
+"GIANT_MUSHROOM3" inherit "GIANT_MUSHROOM2"
+{
+  viewId = { "giant_mushroom3" }
+}
+"MAGIC_PYLON" inherit "DISTILLERY"
+{
+  name = "magic pylon"
+  viewId = { "mana_pylon"}
+  usageType = UsageEffect "use" {
+    Chance 0.02 DropItems {"MANA"} {10}
+    Chance 0.005 SummonEnemy "RAT" {1 4} none
+  }
+}
+"WOOD_DEMON_SHRINE"
+{
+  name = "demon shrine"
+  viewId = { "wood_demon_shrine" }
+  blockMovement = true
+  usageTime = 15
+  usageType = BuiltinUsageId DEMON_RITUAL
+  luxury = 0.1
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"STONE_DEMON_SHRINE"
+{
+  name = "demon shrine"
+  viewId = { "stone_demon_shrine" }
+  blockMovement = true
+  usageTime = 10
+  usageType = BuiltinUsageId DEMON_RITUAL
+  luxury = 0.4
+  strength = 80
+  upgrade = "WOOD_DEMON_SHRINE"
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"DEMON_SHRINE" modify append
+ {
+  luxury = 0.8
+  upgrade = "WOOD_DEMON_SHRINE"
+ }
+"NEST"
+{
+  name = "nest"
+  viewId = { "nesting" }
+  tickType = Effect BedHeal()
+  luxury = 0.7
+  usageType = UsageEffect "sleep in" Lasting SLEEP
+  bedType = CAGE
+  layer = FLOOR
+}
+  "GRAIN"
+  {
+    name = "plot of wheat"
+    viewId = { "farm_plot" ColorId LIGHT_BROWN }
+    tickType = Effect Chance 0.001 Chain { DestroyWalls BASH PlaceFurniture "CROPS" }
+    strength = 1
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "MUSHROOM_FARM"
+  {
+    name = "mushroom plot"
+    viewId = { "farm_plot" ColorId DARK_BROWN }
+    tickType = Effect Chance 0.001 Chain {
+	  DestroyWalls BASH
+      ChooseRandom {	  
+	    DropItems {Mushroom Lasting 40 DEF_BONUS} {1 3}
+		DropItems {Mushroom Lasting 40 DAM_BONUS} {1 3}
+		DropItems {Mushroom Lasting 40 REGENERATION} {1 3}
+		DropItems {Mushroom Lasting NIGHT_VISION } {1 3}
+      }
+	}
+    strength = 1
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "TREE_FARM"
+  {
+    name = "sapling plot"
+    viewId = { "farm_plot" ColorId DARK_GREEN }
+    tickType = Effect Chance 0.001 PlaceFurniture "CANIF_TREE"
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }

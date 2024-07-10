@@ -1,0 +1,191 @@
+"ice demon"
+{
+  symbol = "👾"
+  effect = Name "ice demon" Summon "ICE_DEMON" 1 100
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"advanced ice demon"
+{
+  symbol = "👾"
+  effect = Name "advanced ice demon" Summon "ICE_DEMON" { 2 4 } 100
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"dark berserker"
+{
+  symbol = "🐻"
+  effect = Name "dark berserker" Description "Change into a dark mole!" AI Health 0 0.4 0 1 {
+    Polymorph "DARK_MOLE" 30
+    IncreaseAttr DAMAGE 20
+  }
+  message = "" ""
+  cooldown = 100
+}
+"spawning"
+{
+  symbol = "👾"
+  effect = Name "spawning" Summon "DARK_LORD_SPAWN" { 2 4 } 100
+  cooldown = 150
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"dragon berserker"
+{
+  symbol = "🐻"
+  effect = Name "dragon berserker" Description "Change into a dragon!" AI Health 0 0.4 0 1 {
+    Polymorph "GREEN_DRAGON" 30
+    IncreaseAttr DAMAGE 20
+  }
+  message = "" ""
+  cooldown = 100
+}
+"dragon call"
+{
+  symbol = "👾"
+  effect = Name "dragon call" Summon "YELLOW_NAGA" 1 100
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"advanced dragon call"
+{
+  symbol = "👾"
+  effect = Name "advanced dragon call" Summon "YELLOW_NAGA" { 2 4 } 100
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"pack howl"
+{
+  symbol = "👾"
+  effect = Name "pack howl" Summon "DARK_HOUND" { 2 4 } none
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"air elemental"
+{
+  symbol = "👾"
+  effect = Name "air elemental" Summon "AIR_ELEMENTAL" 1 100
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"advanced air elemental"
+{
+  symbol = "👾"
+  effect = Name "air elemental" Summon "AIR_ELEMENTAL" {4} 100
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"water elemental"
+{
+  symbol = "👾"
+  effect = Name "water elemental" Summon "WATER_ELEMENTAL" 1 100
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"poison cloud"
+{
+  symbol = "🌫"
+  effect = Name "poison" Description "Creates a poison cloud." Area 4 Filter DistanceD none 3.2 EmitGas "POISON_GAS" 1
+  cooldown = 40
+}
+"matanggrowth"
+{
+  symbol = "🐻"
+  effect = Name "matagrowth" Description "grow to tower over others!" AI Health 0 0.4 0 1{
+    Polymorph "GIANT_MATANGO" 30
+    IncreaseAttr DAMAGE 20
+  }
+  cooldown = 100
+}
+"propogate"
+{
+  symbol = "👾"
+  effect = Name "propogate" Summon "MATANGO_SPORE" { 10 } none
+  cooldown = 1000
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"demon berserker form"
+{
+  symbol = "🐻"
+  effect = Name "demon berserker" Description "Change into your demon form!" AI Health 0 0.4 0 1 {
+    Polymorph "DEMON_FORM" 30
+    IncreaseAttr DAMAGE 20
+  }
+  cooldown = 100
+}
+"aspect of kali"
+{
+  symbol = "🐻"
+  effect = Name "aspect of kali" Description "Accept a portion of kalis power temporarily!" AI Health 0 0.4 0 1 {
+    Polymorph "KALIAN" 30
+    IncreaseAttr DAMAGE 10
+    IncreaseAttr DEFENSE 10
+  }
+  cooldown = 100
+}
+"omnibus form"
+{
+  symbol = "🐻"
+  effect = Name "omnibus form" Description "Change into an omnibus!" AI Health 0 0.4 0 1 {
+    Polymorph "OMNIBUS" 30
+    IncreaseAttr SPELL_DAMAGE 20
+  }
+  cooldown = 100
+}
+"cause blindness" {
+    symbol = "👀"
+    range = 5
+    effect = Lasting BLIND
+    cooldown = 100
+    sound = "SPELL_DECEPTION"
+  }
+"cripple" {
+    symbol = "X"
+    range = 5
+    effect = Lasting COLLAPSED
+    cooldown = 120
+    sound = "SPELL_BLAST"
+  }
+"weapon dodge" {
+    symbol = "⇠⇢"
+    effect = Lasting 40 MELEE_RESISTANCE
+    cooldown = 90
+    sound = "SPELL_DEX_BONUS"
+  }
+"regeneration" {
+    symbol = "+"
+    effect = Lasting 40 REGENERATION
+    cooldown = 50
+    sound = "SPELL_DEX_BONUS"
+  }
+"summon dog"
+{
+  symbol = "👾"
+  effect = Name "summon dog" Summon "SHIKIGAMI_DOG" { 2 4 } 100
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"summon beetle"
+{
+  symbol = "👾"
+  effect = Name "summon beetle" Summon "SHIKIGAMI_BEETLE" 1 100
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+"summon samurai"
+{
+  symbol = "👾"
+  effect = Name "summon samurai" Summon "SHIKIGAMI_SAMURAI" 1 100
+  cooldown = 100
+  sound = "SPELL_FIRE_SPHERE_PET"
+}
+
+OneTimeAbility("grow dame", "Grows into a matango dame.", { Polymorph "MATANGO_DAME" none } , "+" )
+OneTimeAbility("grow driad", "Grows into a matango driad.", { Polymorph "MATRIAD" none } , "+" )
+OneTimeAbility("grow elemental", "Grows into a matango elemental.", { Polymorph "MATANGO_ELEMENTAL" none } , "+" )
+OneTimeAbility("grow priest", "Grows into a matango priest.", { Polymorph "MATANGO_PRIEST" none } , "+" )
+OneTimeAbility("grow priestess", "Grows into a matango priestess.", { Polymorph "MATANGO_PRIESTESS" none } , "+" )
+OneTimeAbility("grow mage", "Grows into a matango mage.", { Polymorph "MATANGO_MAGE" none } , "+" )
+OneTimeAbility("cultist berserker school", "Grows into a cultist berserker.", { Polymorph "CULTIST_BERSERKER" none } , "+" )
+OneTimeAbility("cultist knight school", "Grows into a cultist knight.", { Polymorph "CULTIST_KNIGHT" none } , "+" )
+OneTimeAbility("cultist witch school", "Grows into a cultist witch.", { Polymorph "CULTIST_WITCH" none } , "+" )
+OneTimeAbility("cultist smith school", "Grows into a cultist smith.", { Polymorph "CULTIST_SMITH" none } , "+" )
