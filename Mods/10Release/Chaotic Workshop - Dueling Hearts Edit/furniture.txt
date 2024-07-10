@@ -8,10 +8,11 @@
     lightEmission = 12
     destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
     strength = 200
-	tickType = Effect Filter Frequency 1000  {
-    Area 2000 Filter CreatureId "DHK_KEEPER" { Lasting 500 SUMMONED  }
-    }
-    destroyedEffect = Chain { Message NORMAL "The Dark Heart has been destroyed!" }
+	tickType = Effect SetFlag "heart_gone" false 
+    destroyedEffect = Chain { 
+								Message NORMAL "The Dark Heart has been destroyed!" 
+								SetFlag "heart_gone" true
+							}
   }
   "DHK_ENTRANCE"
   {
@@ -91,10 +92,11 @@
     lightEmission = 12
     destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
     strength = 200
-	tickType = Effect {
-    Area 2000 Filter CreatureId "DHH_KEEPER" { Heal { FLESH 0.5 } }
-    }
-    destroyedEffect = Chain { Message NORMAL "The Light Heart has been destroyed!" }
+	tickType = Effect SetFlag "heart_gone" false 
+    destroyedEffect = Chain { 
+								Message NORMAL "The Light Heart has been destroyed!" 
+								SetFlag "heart_gone" true
+							}
   }
 
   "DHH_POT"

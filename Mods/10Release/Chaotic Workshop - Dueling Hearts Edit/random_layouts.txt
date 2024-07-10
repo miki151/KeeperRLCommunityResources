@@ -26,3 +26,32 @@ Def DH_DungeonHeart() {
 }
 End
 "DH_DungeonHeart" DH_DungeonHeart()
+
+
+Def DHH_DungeonHeart() {
+  Building("castle_wall", "stone_floor")
+  Border(BOTTOM, 2,
+    Border(TOP, 1,
+      Position(
+        MIDDLE,
+        {3 1},
+        {
+          Reset("stone_floor")
+          Margin(LEFT, 1,
+            Set("torch", "no_corpse"),
+            Border(RIGHT, 1,
+              Set("torch", "no_corpse"))
+          )
+        }
+      )
+    )
+  )
+  Border(BOTTOM, 1,
+    Position(MIDDLE, {1 1}, Reset("stone_floor", "iron_door")))
+  Inside(TOP, 1,
+    Border(TOP, 1,
+      Position(MIDDLE, {1 1}, Set("DHH_HEART", "no_corpse")))
+  )
+}
+End
+"DHH_DungeonHeart" DHH_DungeonHeart()
