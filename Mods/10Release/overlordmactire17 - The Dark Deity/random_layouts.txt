@@ -1,22 +1,10 @@
-Def WorldMapOverlord() {
-  NoiseMap(0.05, {
-    (0.0, 0.05, Filter(On("set_grass"), Set("set_pleasure_cult_grass")))
-  })
-  NoiseMap(0.05, {
-    (0.0, 0.05, Filter(On("set_grass"), Set("set_evil_hobbit")))
-  })
-  NoiseMap(0.05, {
-    (0.0, 0.05, Filter(On("set_grass"), Set("set_hobbit")))
-  })
-  NoiseMap(0.05, {
-    (0.0, 0.05, Filter(On("set_tree"), Set("set_oberon")))
+
+Def WorldMapDeep() {
+  NoiseMap(0.4, {
+    (0.01, 0.8, Filter(And( Not On("set_over1"), Not On("set_over2"),Not On("water_area"), Not On("set_sand"), Not On("set_tree"), Not On("set_mountains"), Not On("set_snow"), Or(On("set_grass"))), Set("set_over3")))
   })
   
-  Filter(On("set_pleasure_cult_grass"), {Set("OV_GRASSLAND_PLEASURE_CULT") Choose(Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))})
-  Filter(On("set_evil_hobbit"), {Set("OV_GRASSLAND_CORRUPT_HOBBIT") Choose(Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))})
-  Filter(On("set_hobbit"), {Set("OV_GRASSLAND_HOBBIT") Choose(Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))})
-  Filter(On("set_oberon"), {Set("OV_GRASSLAND_OBERON") Choose(Set("map_grass1"), Set("map_grass2"), Set("map_grass3"))})
-  }
+  Filter(On("set_over3"), {Remove("GRASSLAND") Set("THE_DEEP") Choose(Set("eg_map_deep"), Set("eg_map_deep"), Set("eg_map_deep"))})}
 End
 
 "world_map" modify {
@@ -43,7 +31,7 @@ End
   WorldMapFeatures()
   WorldMapConnections()
   WorldMapTrees()
-  WorldMapOverlord()
+  WorldMapDeep()
 }
 
 "world_map_test" modify {
@@ -68,5 +56,5 @@ End
   WorldMapFeatures()
   WorldMapConnections()
   WorldMapTrees()
-  WorldMapOverlord()
+  WorldMapDeep()
 }
