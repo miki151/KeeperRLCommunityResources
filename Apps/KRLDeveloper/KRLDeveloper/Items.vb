@@ -37,6 +37,10 @@ Public Class Items
 
     Private Sub ReadItem() Handles Me.Load
         Dim fil As String = Replace(VanillaDir + "\items.txt", "\\", "\")
+        If Not IO.Directory.Exists(fil) Then
+            'try D drive
+            fil = Replace(fil, "C:\Program Files (x86)\", "D:\")
+        End If
         Dim content As String = System.IO.File.ReadAllText(fil)
         Dim kvps As Dictionary(Of String, String) = GetSection(content, CurrentItem)
         For Each ctrl As Control In TabControl1.TabPages(0).Controls

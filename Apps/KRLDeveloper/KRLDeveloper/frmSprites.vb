@@ -18,6 +18,12 @@ Public Class frmSprites
 
     Private Sub me_load() Handles Me.Load
         Try
+
+            If Not IO.Directory.Exists(sDirectory) Then
+                'try D drive
+                sDirectory = Replace(sDirectory, "C:\Program Files (x86)\", "D:\")
+            End If
+
             TextBox1.Text = "*.png"
             TextBox2.Text = sDirectory
             TextBox4.Text = sFolder2
