@@ -5,6 +5,11 @@
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         dgvPlayerCreatures.AutoGenerateColumns = True
 
+        If Not IO.Directory.Exists(VanillaFolder) Then
+            'try D drive
+            VanillaFolder = Replace(VanillaFolder, "C:\Program Files (x86)\", "D:\")
+        End If
+
         'txt.StartsWith("{""") Or
         'txt.StartsWith("type =") Or
         Dim gridData1 As New clsCreaturePopulator

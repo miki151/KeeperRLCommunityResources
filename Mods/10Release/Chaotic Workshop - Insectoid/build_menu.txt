@@ -2,6 +2,12 @@
 # (they do not necessarily correspond to how menu items are grouped into submenus, you can join several
 # groups into a submenu, like beds, cages, pigsty and coffins are in the "living" submenu)
 
+ "ins_arrowslits"
+  {
+    { Furniture {{ "ARCHER_WALL" }                "STONE" 20 }     "Wall with ov_arrowslits"  "Structure"
+      "Outdoor building with ov_arrowslits." }
+  }
+
   "ins_structure"
   {
     { { Dig CutTree }                                        "Dig or cut tree"   "Structure"  
@@ -21,12 +27,9 @@
     { Furniture {{ "FLOOR" }              }               "Building interior" "Structure"
       "" none {} false none true}
 
-    { Furniture {{ "UP_STAIRS" }                  }              "Up stairs"       "Structure"
-      "Build to reach higher z-levels." }
-
-    { Furniture {{ "DOWN_STAIRS" }                }              "Down stairs"       "Structure"
-      "Build to reach deeper z-levels." }
   }
+  
+"ins_structure" modify append Stairs()
 
   "structure_ins" inherit "structure_without_reinforce" append
   {
@@ -34,6 +37,8 @@
       "Reinforced walls are better at stopping enemies from digging into your dungeon."}
   }
   
+"structure_ins" modify append Stairs()
+
   "ins_storage"
   {
     { Furniture {{ "INS_STORAGE" }                      }      "Storage"             "Storage"

@@ -118,6 +118,7 @@ Public Class clsCreaturePopulator
             End If
             outputcolumn = outputcolumn + 1
         Next
+        Return False
 
     End Function
 

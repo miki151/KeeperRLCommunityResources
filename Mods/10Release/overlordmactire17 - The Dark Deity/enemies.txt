@@ -1,0 +1,384 @@
+"INFECTED_VILLAGE"
+{
+  settlement = {
+    type = RandomLayout { "village" { 20 15 } "village"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = {{"INFECTED_PESEANT_LEADER"}}
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "INFECTED_PESEANT"
+        }
+      }
+      civilians = {
+        count = {3 7}
+        all = {
+          1 "INFECTED_CHILD"
+          1 "DARK_DEER"
+          1 "DONKEY"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    race = "humans"
+    stockpiles = {
+      { "gold" 50 "TREASURE_CHEST" }
+    }
+    crops = Crops()
+    furniture = "roomFurniture"
+  }
+}
+"NO_AGGRO_INFECTED_BANDITS"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      leader = {{ "INFECTED_BANDIT" }}
+      fighters = {
+        count = {4 9}
+        all = { 1 "INFECTED_BANDIT" }
+      }
+    }
+    tribe = BANDIT
+    race = "bandits"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  createOnBones = 0.1 { "KOBOLD_CAVE" }
+  immigrants = { 
+    {
+      ids = { "INFECTED_BANDIT" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+}
+"INFECTED_BANDITS" inherit "NO_AGGRO_INFECTED_BANDITS"
+{
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 3
+    triggers = {Resource "GOLD" 500}
+    attackBehaviour = StealResource "GOLD"
+    ransom = 0.5 80
+  }
+}
+"COTTAGE_INFECTED_BANDITS" inherit "NO_AGGRO_INFECTED_BANDITS"
+{
+  createOnBones = 1.0 { "INFECTED_HUMAN_COTTAGE" }
+}
+"INFECTED_HUMAN_COTTAGE"
+{
+  settlement = {
+    type = Builtin COTTAGE "WOOD"
+    tribe = HUMAN
+    crops = Crops()
+    inhabitants = {
+      fighters = {
+        count = {2 4}
+        all = { 1 "INFECTED_PESEANT" }
+      }
+      civilians = {
+        count = {3 7},
+        all = {
+          1 "INFECTED_CHILD"
+          1 "DARK_DEER"
+          1 "DONKEY"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    race = "humans"
+    furniture = "roomFurniture"
+  }
+  config = {
+    guardianInfo = "WITCHMAN" 0.003 1 2
+  }
+}
+"DARK_HOUND_DEN"
+{
+  settlement = {
+    type = Builtin CAVE "DUNGEON"
+    inhabitants = {
+      fighters = {
+        count = {4 9}
+        all = {
+          50 "DARK_HOUND"
+          1 "CROSSBREED_CHILD"
+        }
+      }
+    }
+    tribe = BANDIT
+    race = "dark hounds"
+  }
+  config = {
+    immigrantInterval = 1000
+    maxPopulation = 10
+  }
+  immigrants = { 
+    {
+      ids = { "DARK_HOUND" }
+      traits = { FIGHTER }
+      frequency = 1
+    }
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 5
+    attackBehaviour = KillLeader
+  }
+}
+"DARK_LORDS_KEEP"
+{
+  biome =  "THE_DEEP" 
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+    tribe = GREENSKIN
+    inhabitants = {
+      leader = { { "DARK_LORD" } }
+      fighters = {
+        count = {12 17}
+        all = {
+          1 "DARK_ORC_MAGE_VILLAIN"
+          3 "DARK_ORC_VILLAIN"
+          1 "DARK_ORC_SCOUT_VILLAIN"
+        }
+      }
+      civilians = {
+        count = {6 9}
+        uniques = { "DARK_ELF_LORD" }
+        all = {
+          1 "DARK_ELF"
+          1 "DARK_ELF_CHILD"
+          1 "DONKEY"
+          1 "DARK_DEER"
+          1 "GOAT"
+          1 "PIG"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "greenskins"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "villageShop" }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  otherEnemy = "LIFE_COTTAGE"
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 26
+    ghostProb = 0.1
+    spawnGhosts = 6
+  }
+  behaviour = {
+    minPopulation = 12
+    minTeamSize = 10
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"DARK_ORC_SCOUT_VILLAIN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"DARK_OGRE_VILLAIN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "MINOTAUR" { 1 2 } } {40 40} MAZE }
+    }
+  }
+}
+"DARK_ELF_COTTAGE"
+{
+  settlement = {
+    type = Builtin COTTAGE "WOOD"
+    tribe = DARK_ELF
+    crops = Crops()
+    inhabitants = {
+      fighters = {
+        count = {2 4}
+        all = { 1 "DARK_ELF" }
+      }
+      civilians = {
+        count = {3 7},
+        all = {
+          1 "DARK_ELF_CHILD"
+          1 "DARK_DEER"
+          1 "GOAT"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    race = "dark elves"
+    furniture = "roomFurniture"
+  }
+  config = {
+    guardianInfo = "DARK_ELF_WARRIOR" 0.003 1 2
+  }
+}
+
+"DARK_ELF_COTTAGE_BANDIT"
+{
+  settlement = {
+    type = Builtin COTTAGE "WOOD"
+    tribe = BANDIT
+    crops = Crops()
+    inhabitants = {
+      fighters = {
+        count = {2 4}
+        all = { 1 "DARK_ELF" }
+      }
+      civilians = {
+        count = {3 7},
+        all = {
+          1 "DARK_ELF_CHILD"
+          1 "DARK_DEER"
+          1 "GOAT"
+          1 "COW"
+          1 "PIG"
+        }
+      }
+    }
+    race = "dark elves"
+    furniture = "roomFurniture"
+  }
+  config = {
+    guardianInfo = "DARK_ELF_WARRIOR" 0.003 1 2
+  }
+}
+"LIFE_COTTAGE_BANDIT" inherit "DARK_ELF_COTTAGE_BANDIT"
+{
+  settlement = append {
+    type = Builtin COTTAGE "WOOD_HIDDEN_STAIRS"
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = DOWN
+    levels = {
+      { ExtraEnemy { "DARK_COTTAGE_CELLAR" {1} } {10 10} BASIC }
+    }
+  }
+}
+"LIFE_COTTAGE" inherit "DARK_ELF_COTTAGE"
+{
+  settlement = append {
+    type = Builtin COTTAGE "WOOD_HIDDEN_STAIRS"
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    direction = DOWN
+    levels = {
+      { ExtraEnemy { "DARK_COTTAGE_CELLAR" {1} } {10 10} BASIC }
+    }
+  }
+}
+"DARK_COTTAGE_CELLAR"
+{
+  settlement = {
+    type = RandomLayout { "cottage_cellar" { 4 4 } "default"}
+    tribe = DARK_ELF
+  }
+}
+
+"DARK_LORDS_KEEP_BANDIT"
+{
+  biome =  "THE_DEEP" 
+  settlement = {
+    type = RandomLayout { "castle" { 15 15 20 20 } "default"}
+    tribe = BANDIT
+    inhabitants = {
+      leader = { { "DARK_LORD" } }
+      fighters = {
+        count = {12 17}
+        all = {
+          1 "DARK_ORC_MAGE_VILLAIN"
+          3 "DARK_ORC_VILLAIN"
+          1 "DARK_ORC_SCOUT_VILLAIN"
+        }
+      }
+      civilians = {
+        count = {6 9}
+        uniques = { "DARK_ELF_LORD" }
+        all = {
+          1 "DARK_ELF"
+          1 "DARK_ELF_CHILD"
+          1 "DONKEY"
+          1 "DARK_DEER"
+          1 "GOAT"
+          1 "PIG"
+        }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "greenskins"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "villageShop" }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  otherEnemy = "LIFE_COTTAGE_BANDIT"
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 26
+    ghostProb = 0.1
+    spawnGhosts = 6
+  }
+  behaviour = {
+    minPopulation = 12
+    minTeamSize = 10
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"DARK_ORC_SCOUT_VILLAIN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"DARK_OGRE_VILLAIN"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "MINOTAUR" { 1 2 } } {40 40} MAZE }
+    }
+  }
+}

@@ -10,3 +10,48 @@
   color = ColorId RED
   price = 10
 }
+
+"DH_HAND_OF_EVIL" {
+  name = "hand of evil"
+  adjective = "hand of evil"
+  description = "hand of evil"
+  addedMessage = ARE "hand of evil"
+  removedMessage = ARE "hand of evil"
+  tickEffect = Chain {	
+						Filter Not Flag "heart_gone" {
+						SetCreatureFlag "dying" false
+						}				
+						Filter Flag "heart_gone" {	
+						Filter Not CreatureFlag "dying" {	
+						Lasting 500 DH_HAND_OF_EVIL_DISRUPTED
+						}
+						SetCreatureFlag "dying" true
+						}
+					}
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId BROWN
+}
+
+"DH_HAND_OF_EVIL_DISRUPTED" {
+  name = "Disrupted"
+  adjective = "disrupted"
+  description = "will die once countdown end and to new dungeon heart is build"
+  endEffect = Filter Flag "heart_gone" Lasting 1 SUMMONED
+  combatConsumable = true
+  canWishFor = false
+  color = ColorId RED
+}
+
+"LIGHT_HEART" {
+  name = "lights hero"
+  description = "Recovers a little bit of health every turn when light heart is built."
+  addedMessage = ARE "regenerating"
+  removedMessage = ARE "no longer regenerating"
+  adjective = "regenerating"
+  tickEffect = Filter Not Flag "heart_gone" Heal { FLESH 0.06 }
+  combatConsumable = true
+  price = 12
+  fx = BUFF_RED
+  color = ColorId RED
+}
