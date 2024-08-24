@@ -145,32 +145,31 @@
       race = "slimes"
     }
 }
-  
-  "DGR_CHURCH"
-  {
-    settlement = {
-      type = Predefined {"dgr_church" "DGR_TEMPBRICK"}
-      tribe = HUMAN
-      inhabitants = {
-        leader = { { "DGR_ARCHBISHOPNPC" } }
-        fighters = {
-          count = {14 20}
-          all = {
-            3 "PRIEST"
-            1 "DGR_BISHOPNPC"
-            3 "DGR_GUARDNPC"
-			1 "DGR_FRIARNPC"
-			2 "DGR_CLERICNPC"
-			2 "DGR_TEMPLARNPC"
-			1 "DGR_CRUSADERNPC"
-			1 "DGR_PALADINNPC"
-			1 "ANGEL"
-			1 "DGR_ARCHANGELNPC"
-          }
+
+"DGR_CHURCH"
+{
+  settlement = {
+    type = Predefined {"dgr_church" "DGR_TEMPBRICK"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "DGR_ARCHBISHOPNPC" } }
+      fighters = {
+        count = {12 17}
+        all = {
+            8 "PRIEST"
+            12 "DGR_BISHOPNPC"
+            12 "DGR_CRUSADERNPC"
+            10 "DGR_TEMPLARNPC"
+            6 "DGR_PALADINNPC"
+			4 "ANGEL"
+			2 "DGR_ARCHANGELNPC"
+			1 "DGR_VIRTUENPC"
         }
-        civilians = {
-          count = {6 9}
-          all = {
+      }
+      civilians = {
+        count = {6 9}
+        uniques = { "FATHER_OBLIVION" }
+        all = {
             3 "PESEANT"
             3 "CHILD"
             3 "DONKEY"
@@ -178,102 +177,94 @@
             3 "COW"
             3 "PIG"
             3 "DOG"
-          }
         }
       }
-      locationNameGen = "TOWN"
-      race = "humans"
-      stockpiles = {{ "gold" 150 "TREASURE_CHEST" }}
-      furniture = "dgr_churchFurniture"
-      outsideFeatures = "castleOutside"
     }
-    config = {
-      immigrantInterval = 300
-      maxPopulation = 26
-      ghostProb = 0.1
-      spawnGhosts = 6
-    }
-    behaviour = {
-      minPopulation = 12
-      minTeamSize = 10
-      triggers = {
-        RoomTrigger "THRONE" 0.0003
-        RoomTrigger "IMPALED_HEAD" 0.0001
-        SelfVictims
-        NumConquered 3
-        StolenItems
-        FinishOff
-        Proximity
-      }
-      attackBehaviour = KillLeader
-    }
-    immigrants = {
-      { ids = {"PRIEST"}  traits = {FIGHTER} frequency = 1 }
-      { ids = {"DGR_BISHOPNPC"} traits = {FIGHTER} frequency = 0.7 }
-	  { ids = {"DGR_GUARDNPC"} traits = {FIGHTER} frequency = 1 }
-	  { ids = {"DGR_FRIARNPC"} traits = {FIGHTER} frequency = 0.7 }
-	  { ids = {"DGR_CLERICNPC"} traits = {FIGHTER} frequency = 1 }
-	  { ids = {"DGR_TEMPLARNPC"} traits = {FIGHTER} frequency = 0.7 }
-	  { ids = {"DGR_CRUSADERNPC"} traits = {FIGHTER} frequency = 0.8 }
-	  { ids = {"DGR_PALADINNPC"} traits = {FIGHTER} frequency = 0.7 }
-	  { ids = {"ANGEL"} traits = {FIGHTER} frequency = 0.5 }
-	  { ids = {"DGR_ARCHANGELNPC"} traits = {FIGHTER} frequency = 0.3 }
-    }
-}
-
-  "DGR_BLUE_DRAGON" inherit "RED_DRAGON"
-  {
-	biome = "DGR_HILLS"
-    settlement = {
-      type = Builtin CASTLE2 "BRICK"
-      inhabitants = {
-        leader = { { "DGR_BLUE_DRAGON" } }
-      }
-      race = "dragon"
-      tribe = MONSTER
-	  shopItems = {{16 20} "dragonCave" }
-    }
-    createOnBones = 1.0 { "KNIGHTS" "DGR_CHURCH" "DWARVES" "GREEN_DRAGON" "WARRIORS" }
-}
-  
-  "DGR_HILL_GIANTS"
-  {
-	biome =  "DGR_HILLS" 
-    settlement = {
-      type = Builtin CASTLE2 "WOOD_CASTLE"
-      tribe = MONSTER
-      inhabitants = {
-        fighters = {
-          count = {2 4}
-          all = {
-            1 "DGR_HILL_GIANT"
-          }
-        }
-      }
-      race = "hill giants"
-      furniture = "dungeonOutside"
-    }
-    behaviour = {
-	  minPopulation = 1
-      minTeamSize = 1
-      triggers = {EnemyPopulation 12}
-      attackBehaviour = KillMembers 5
+    locationNameGen = "TOWN"
+    race = "humans"
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "villageShop" }
+    furniture = "dgr_churchFurniture"
+    outsideFeatures = "castleOutside"
   }
-  createOnBones = 1.0 { "WARRIORS" }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 36
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+    prisoners = true
+  }
+  behaviour = {
+    duelChance = 1.0
+    minPopulation = 7
+    minTeamSize = 10
+    ambushChance = 0.05
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"PRIEST"}
+      traits = {FIGHTER}
+      frequency = 0.25
+    }
+    {
+      ids = {"DGR_BISHOPNPC"}
+      traits = {FIGHTER}
+      frequency = 0.15
+    }
+    {
+      ids = {"DGR_CRUSADERNPC"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"DGR_TEMPLARNPC"}
+      traits = {FIGHTER}
+      frequency = 0.75
+    }
+    {
+      ids = {"DGR_PALADINNPC"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+    {
+      ids = {"ANGEL"}
+      traits = {FIGHTER}
+      frequency = 0.25
+    }
+    {
+      ids = {"DGR_ARCHANGELNPC"}
+      traits = {FIGHTER}
+      frequency = 0.10
+    }
+  }
 }
 
-  
-  "DGR_MAGIC_DRAGON"
+"DGR_BLUE_DRAGON"
 {
+  biome = "MOUNTAIN"
   settlement = {
-    type = Predefined {"dgr_magicrift" "DGR_MAGICRIFT"}
+      type = Builtin CASTLE2 "BRICK"
     inhabitants = {
-        leader = { { "DGR_MAGIC_DRAGON" } }
-		fighters = {
-          count = {10 20}
-          all = { 1 "DGR_ARCANE_SPIRIT" }
-		}
+      leader = { { "DGR_BLUE_DRAGON" } }
+      civilians = {
+        count = {4 5}
+        all = { 1 "DGR_BLUE_DRAGONKIN" }
       }
+    }
     race = "dragon"
     tribe = MONSTER
   }
@@ -281,22 +272,111 @@
     leaderAsFighter = true
     ghostProb = 0.03
     spawnGhosts = 1
+    prisoners = true
   }
   behaviour = {
     minPopulation = 0
-    minTeamSize = 10
+    minTeamSize = 1
     triggers = {
-      EnemyPopulation 25
+      EnemyPopulation 22
       NumConquered 3
+      StolenItems
       FinishOff
+      Proximity
     }
-	attackBehaviour = CampAndSpawn {
-      count = {5 10}
-      all = {
-        1 "DGR_ARCANE_SPIRIT"
+    attackBehaviour = KillMembers 12
+  }
+}
+
+
+"DGR_HILL_GIANTS"
+{
+  biome = "DGR_HILLS"
+  settlement = {
+    type = Builtin CASTLE2 "WOOD_CASTLE"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "DGR_HILL_GIANT" } }
+      fighters = {
+        count = {2 4}
+        all = { 1 "DGR_HILL_GIANT" }
       }
     }
+    locationNameGen = "TOWN"
+      race = "hill giants"
+    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
+    furniture = "roomFurniture"
+    outsideFeatures = "castleOutside"
   }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+    ghostProb = 0.1
+    spawnGhosts = 6
+    prisoners = true
+  }
+  behaviour = {
+	minPopulation = 1
+    minTeamSize = 1
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 2
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+	  EnemyPopulation 12
+    }
+    attackBehaviour = KillMembers 5
+    ransom = 0.8 140
+  }
+  immigrants = {
+    {
+      ids = {"DGR_HILL_GIANT"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+  
+"DGR_MAGIC_DRAGON"
+{
+  biome = "MOUNTAIN"
+  settlement = {
+    type = Predefined {"dgr_magicrift" "DGR_MAGICRIFT"}
+    inhabitants = {
+      leader = { { "DGR_MAGIC_DRAGON" } }
+      civilians = {
+        count = {4 5}
+        all = { 1 "DGR_ARCANE_SPIRIT" }
+      }
+    }
+    race = "dragon"
+    tribe = MONSTER
+  }
+  config = {
+    leaderAsFighter = true
+    ghostProb = 0.03
+    spawnGhosts = 1
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    triggers = {
+      EnemyPopulation 22
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+    }
+    attackBehaviour = KillMembers 12
+  }
+  createOnBones = 0.1 { "KNIGHTS" "DWARVES" "GREEN_DRAGON" "ELEMENTALIST" }
   levelConnection = {
       topLevel = ExtraEnemy { "DGR_MAGICRIFT_MATERIAL" }
       levels = {
