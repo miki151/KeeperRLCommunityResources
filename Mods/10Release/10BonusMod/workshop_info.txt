@@ -63,7 +63,8 @@
 }
 
 "BONUS_ADA_LAVA_FORGE" inherit "BONUS_ADA_FORGE" {
-	prefix = Prefix "fine" Scale 1.45 #Better, but for practical purposes should be a rounding error.
+	furniture = "BONUS_ADA_LAVA_FORGE" #Hey, gang, specifying the exact furniture is in fact important! KeeperRL won't figure it out on its own! #LearnFromCSevensMistakes
+	prefix = Prefix "fine" Scale 1.45 #Better than standard lava forge, but for practical purposes should be a rounding error.
 	hideFromTech = true
 }
 #Adoxium forge channels magic.  It's NOT easy to work with, but makes Better gear.
@@ -73,7 +74,7 @@
 	verb = "forges"
 	attr = "FORGE"
 	minAttr = {
-		IRON 30
+		IRON 30 #This may get revisited if the "Iron = Against Magic" idea happens, heads-up!
 		STEEL 45
 		ADA 65
 		ADOXIUM 90
@@ -87,6 +88,7 @@
 }
 
 "BONUS_ADOXIUM_LAVA_FORGE" inherit "BONUS_ADOXIUM_FORGE" {
+	furniture = "BONUS_ADOXIUM_LAVA_FORGE"
 	prefix = Prefix "arcane" Scale 1.75 #Better, but for practical purposes should be a rounding error.
 	hideFromTech = true
 }
@@ -111,7 +113,7 @@
 #}
 
 #Infernite forge is, primarily, a permanently Hot forge, all the benefits of lava forge without actually needing lava.
-#But it also makes working lower-tier stuff pretty easy, and provides its own light.
+#But it also makes working lower-tier stuff pretty easy, speeds steel refining, and provides its own light.
 "BONUS_INFERNITE_FORGE" {
 	furniture = "BONUS_INFERNITE_FORGE"
 	name = "infernite forge"

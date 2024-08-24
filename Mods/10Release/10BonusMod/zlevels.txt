@@ -240,22 +240,33 @@
      	enemy = "BONUS_ADOXIUM_FAIRIES"
       	attackChance = 0.5 #Living next to large quantities of adoxium may unhinge fair folk...
       	}
-	minDepth = 24 #Adoxium starts at z24
+	minDepth = 19 #Adoxium starts at z24 in vanilla, but we change things up a touch
 }
 {
 	type = FullZLevel {
 	enemy = "BONUS_INF_FAIRIES"
       	attackChance = 0.1 #Fire fairies are more content to enjoy their infernite
      	}
-	minDepth = 24
+	minDepth = 19
 }
 {
 	type = FullZLevel {
       	enemy = "BONUS_JOT_FAIRIES"
       	attackChance = 0.1
     	}
-	minDepth = 24 #Water fairies are OK around jothnite
+	minDepth = 19 #Water fairies are OK around jothnite
 }
+
+  {
+    type = EnemyZLevel {
+      enemy = "BONUS_HELL_DUNGEON1"
+	  attackChance = 1.0
+      mountainType = "HELL_MOUNTAIN" #Hell level reinstated, by request
+    }
+    minDepth = 28
+	maxDepth = 28
+	guarantee = true #Trouble with Hell levels is that one can guarantee the terrain & hostiles but not the resources.
+ }
 
 } #Hey, gang, this close-bracket ends the list of generic z-levels. Easy to miss, and breaks the whole mod if you do. Generic z-levels go ABOVE this bracket!
 
@@ -297,6 +308,7 @@
       attackChance = 0.6
     }
     minDepth = 11
+	maxDepth = 22
   }
   { type = FullZLevel { enemy = "ANTS_OPEN" } minDepth = 7 maxDepth = 7}
   { type = FullZLevel { enemy = "TEMPLE" } minDepth = 7 maxDepth = 7}

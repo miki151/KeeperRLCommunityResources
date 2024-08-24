@@ -235,7 +235,7 @@
     }
     body = {
       type = NonHumanoid SMALL
-      material = SPIRIT
+      material = SPIRIT_WITH_BRAIN
     }
 	gender = IT #Dopples don't come Gendered, just sayin'.
 }
@@ -3097,6 +3097,12 @@ End
 		maxLevelIncrease = { SPELL_DAMAGE 11}
 		
 	}
+	#"DOPPLEGANGER" modify append { #Give the dopples the ability to level up.
+	#	body = {
+	#		type = NonHumanoid LARGE
+	#		material = SPIRIT_WITH_BRAIN
+	#	}
+	#}
 	
 
 #######################
@@ -4380,7 +4386,7 @@ End
       }
       body = {
         type = FourLegged HUGE
-        material = SPIRIT
+        material = SPIRIT_WITH_BRAIN
         weight = 100
         addBodyPart = {
           WING 2
@@ -4950,7 +4956,7 @@ End
       }
       body = {
         type = Humanoid LARGE
-        material = SPIRIT
+        material = SPIRIT_WITH_BRAIN
         weight = 0.1
         intrinsicAttacks = {
           TORSO {{{ Intrinsic { "fist_attack" } "spell" 4 {
@@ -4976,6 +4982,49 @@ End
       chatReactionFriendly = "sobs uncontrollably"
       chatReactionHostile = "screams at an ear-shattering pitch!"
     }
+	
+	##
+	#Vampire Keeper
+	##
+	"BONUS_VAMPIRE_KEEPER" inherit "VAMPIRE"
+  {
+    viewId = { "vampire_lord" }
+    attr = {
+      DAMAGE 17
+      DEFENSE 23
+      SPELL_DAMAGE 27
+	  LABORATORY 50
+      MULTI_WEAPON 30
+	  MORGUE 40
+    }
+    name = {
+      name = "vampire voivode"
+      firstNameGen = "VAMPIRE"
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 7
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      FLYING 1
+      RANGED_RESISTANCE 1
+      FIRE_RESISTANT 1
+      DARKNESS_SOURCE 1
+      DISTILLATION_SKILL 1
+    }
+    aiType = RANGED
+    spellSchools = { "zombie mage" "illusion" }
+    chatReactionFriendly = "\"There are times when you simply cannot refuse a drink!\""
+    chatReactionHostile = "\"There are times when you simply cannot refuse a drink!\""
+    inventory = {
+      { "Robe"}
+      { type =  "BONUS_StaffOfBleeding" }
+      { type =  "BONUS_VampiricSword" }
+      { type = Glyph {WEAPON ItemAttrBonus SPELL_DAMAGE 4} chance = 0.3 }
+    }
+  }
+	
+	
 	#Lords Of X, for Necro faction
 	"BONUS_LORD_TEMPLATE" {
 		viewId = {"special_hlgn"}
@@ -4984,7 +5033,7 @@ End
 		}
 		body = {
 		type = NonHumanoid LARGE #Same as Death.
-		material = SPIRIT
+		material = SPIRIT_WITH_BRAIN
 		}
 		permanentEffects = {
 		FLYING 1
@@ -5805,7 +5854,7 @@ End
       }
       body = {
         type = Bird SMALL
-        material = SPIRIT
+        material = SPIRIT_WITH_BRAIN
         weight = 3
       }
       spells = {
@@ -6280,8 +6329,8 @@ End
  "BONUS_DARK_ORC" inherit "ORC"
     {
       attr = {
-        DAMAGE 21
-        DEFENSE 21
+        DAMAGE 23
+        DEFENSE 23
       }
       viewId = { "dark_orc" }
       permanentEffects = {
@@ -6303,8 +6352,8 @@ End
  "BONUS_DARK_OGRE" inherit "OGRE"
     {
       attr = {
-        DAMAGE 23
-        DEFENSE 23
+        DAMAGE 25
+        DEFENSE 25
       }
       viewId = { "dark_ogre" }
       permanentEffects = {
@@ -6326,24 +6375,51 @@ End
     }
  "BONUS_DARK_GOBLIN" inherit "GOBLIN_ARTIFICER"
     {
-      viewId = { "dark_goblin" }
+      viewId = { "dark_goblin_artificer" }
+	  attr = append {
+		DAMAGE 18
+        DEFENSE 18
+		FURNACE 40
+		LABORATORY 40
+		WORKSHOP 40
+		FORGE 50
+		JEWELER 40
+	  }
       permanentEffects = {
         FAST_TRAINING 1
         DISARM_TRAPS_SKILL 1
 		SUNLIGHT_VULNERABLE 1
 		REGENERATION 1
 		RIDER 1
+		SWARMER 1
+      }
+	  name = {
+        name = "goblin engineer"
+        firstNameGen = "ORC"
       }
     }
  "BONUS_DARK_HOBGOBLIN" inherit "BONUS_HOBGOBLIN"
     {
       viewId = { "dark_hobgoblin" }
+	  attr = append {
+		DAMAGE 21
+        DEFENSE 21
+		FURNACE 30
+		LABORATORY 20
+		WORKSHOP 30
+		FORGE 30
+		JEWELER 20
+	  }
+	  maxLevelIncrease = {
+        DAMAGE 7
+      }
       permanentEffects = {
         FAST_TRAINING 1
         DISARM_TRAPS_SKILL 1
 		SUNLIGHT_VULNERABLE 1
 		REGENERATION 1
 		RIDER 1
+		SWARMER 1
       }
     }
   "BONUS_LION_QUEEN"
@@ -6434,7 +6510,7 @@ End
       }
       body = {
         type = HumanoidLike LARGE
-        material = SPIRIT
+        material = SPIRIT #Uh, GOLD is a valid body material??
       }
       permanentEffects = {
         MELEE_RESISTANCE 1
@@ -8194,7 +8270,7 @@ End
       viewId = { "cmbt_incubus" }
       body = {
         type = Humanoid LARGE
-        material = SPIRIT
+        material = SPIRIT_WITH_BRAIN
         intrinsicAttacks = {
           TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
               attackType = HIT
@@ -8246,7 +8322,7 @@ End
       viewId = { "cmbt_omnibus" }
       body = {
         type = Humanoid LARGE
-        material = SPIRIT
+        material = SPIRIT_WITH_BRAIN
         intrinsicAttacks = {
           TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
               attackType = HIT
@@ -8284,7 +8360,7 @@ End
       viewId = { "cmbt_succubus30" }
       body = {
         type = Humanoid LARGE
-        material = SPIRIT
+        material = SPIRIT_WITH_BRAIN
         intrinsicAttacks = {
           TORSO {{
 			isExtraAttack = true
@@ -8778,9 +8854,9 @@ End
 		RIDER 1
 	  }
       name = {
-        name = "gnome_alchemist"
+        name = "gnome alchemist"
         pluralName = "gnomes"
-        firstName = "DWARF"
+        firstNameGen = "DWARF"
       }
       gender = FEMALE
       chatReactionFriendly = "talks about alchemical formulae"
@@ -10846,7 +10922,7 @@ End
     chatReactionHostile = "\"Die!\""
     spells = { "HALOWEEN_SCARE" }
     name = {
-      name = "haloween_spooky"
+      name = "spooky shaman"
       firstNameGen = "DEMON"
     }
     spellSchools = { "haloween_spooky" }
@@ -11116,6 +11192,72 @@ End
        GrantAbility "halloween plague zombie spawn"
     }
     hatedByEffect = HATE_UNDEAD
+  }
+  
+  "BONUS_SATAN_AVATAR" inherit "DEVIL"
+  {
+    viewId = { "satan" }
+    attr = {
+      DEFENSE 65
+      SPELL_DAMAGE 65
+      DAMAGE 65
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT_WITH_BRAIN
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "spell" 1 {
+            attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = SPELL } }}}
+      }
+	  drops = {
+        { "DevilHooves" } 1
+        { "DevilHorns" } 1
+      }
+    }
+    permanentEffects = { FIRE_IMMUNITY 1 }
+    name = {
+      name = "Diabolo"
+      fullTitle = true
+    }
+	deathDescription = "sent HOME." #The second Ghost Rider movie had *some* enjoyable aspects...
+    inventory = {
+      { "InferniteTrident" }
+    }
+  }
+  
+  "BONUS_ADOXIE_AVATAR" inherit "ADOXIE_HEAD"
+  {
+    permanentEffects = append {
+      IMMOBILE 0
+    }
+    attr = append {
+      SPELL_DAMAGE 70 #Adoxie will be arriving Late to the party, might as well buff 'em
+	  DEFENSE 70
+    }
+    spells = {}
+    companions = {
+      { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "ADOXIE_LEFT_HAND" } }
+      { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "ADOXIE_HAND_RIGHT" } }
+      { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "ADOXIE_FOOT_LEFT" } }
+      { count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "ADOXIE_FOOT_RIGHT" } }
+    }
+    body = {
+      type = NonHumanoid HUGE
+      bodyParts = {
+        BACK 1
+        HEAD 1
+        TORSO 1
+      }
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "fist_attack" } "spell" 1 {
+            attackType = HIT meleeAttackAttr = SPELL_DAMAGE attackMsg = SPELL } }}}
+      }
+      material = SPIRIT_WITH_BRAIN
+      drops = {
+        { "AdoxieEye" } 1
+      }
+    }
+	deathDescription = "banished...perhaps...." #You just got a piece of it, not the whole thing!
   }
   
 ############################
@@ -13795,6 +13937,29 @@ viewId = { "war_warg_saddle2" } #Swishos' surplus sprites for the win! Thanks.
       # Take a look a CYCLOPS for a more detailed example.
     }
   }
+  
+  "BONUS_KEEPER_MAGE_NB_EASY" inherit "KEEPER_MAGE_NB"
+    {
+      viewId = { "keeper1NB" Rgb 58 255 106 106 }
+      viewIdUpgrades = { { "keeper2NB" Rgb 58 255 106 106 } { "keeper3NB" Rgb 58 255 106 106 } { "keeper4NB" Rgb 58 255 106 106 } }
+      attr = {
+        DAMAGE 15
+        DEFENSE 15
+        SPELL_DAMAGE 25
+      }
+    }
+	
+	"BONUS_KEEPER_MAGE_NB_HARD" inherit "KEEPER_MAGE_NB"
+    {
+      viewId = { "keeper1NB" Rgb 106 106 255 106 }
+      viewIdUpgrades = { { "keeper2NB" Rgb 106 106 255 106 } { "keeper3NB" Rgb 106 106 255 106 } { "keeper4NB" Rgb 106 106 255 106 } }
+      attr = {
+        DAMAGE 10
+        DEFENSE 10
+        SPELL_DAMAGE 15
+      }
+    }
+  
 "ADVENTURER_MAGE_NB" inherit "KEEPER_MAGE_NB"
   {
     promotionGroup = "spell_adventurer"

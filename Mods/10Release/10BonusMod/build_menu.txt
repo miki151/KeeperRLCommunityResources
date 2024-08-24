@@ -34,7 +34,6 @@ End
 
   "rockblast" { { ImmediateDig "Rockblast (magic)" "Structure" "Destroy rock immediately using magic" none {TechId "rock blast"} } }
 
-
 #########################################
 #From unique gnomes and dwarven fort mods
 #########################################
@@ -1043,10 +1042,13 @@ End
         "Train your minions' archery skills here." none {} true  TRAINING_ROOM}
 	{ Furniture {{ "WORKSHOP" }   "WOOD" 15 }                      "Workshop"          "Crafting"
         "Produces Wooden equipment and torches." "WORKSHOPS" {} true  BUILD_WORKSHOP}
+	#Since the lab is kinda relevant for balsams, limb-regrowth can give the well and the potion recipe only, thanks
     { Furniture {{ "LABORATORY" } "STONE" 10 }                     "Cauldron"          "Crafting"
-        "Allows you to make potions to regrow lost limbs." none {TechId "regrow limbs" }}
+        "Produce balsams to build additional capacity into your undead, and potions to repair them." none {TechId "embalming" }}
     { Furniture {{ "FORGE" } "IRON" 20 } "Forge"                                       "Crafting"
         "Produces metal weapons and armor."    none { TechId "iron working" }}
+	{ Furniture {{ "LAVA_FORGE" }  "IRON" 20 }               "Magma forge"    "Crafting"
+        "Produces improved weapons and armor. Must be placed next to lava."    none { TechId "iron working" }}
     { Furniture { types = { "BONUS_BLOOD_WELL" } cost = "GOLD" 500 limit = 1} "Well of blood" "Installations" ""  none   {DungeonLevel 5 TechId "regrow limbs" } }
     { Furniture { types = { "THRONE" } cost = "GOLD" 500 limit = 4} "Throne" "Installations" ""  none   {DungeonLevel 10} }
   }

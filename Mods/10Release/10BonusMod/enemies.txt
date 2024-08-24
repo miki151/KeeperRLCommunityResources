@@ -2652,14 +2652,14 @@
     minPopulation = 0
     minTeamSize = 5
     triggers = {
-      RoomTrigger "THRONE" 0.0003
-      RoomTrigger "IMPALED_HEAD" 0.0001
+      #RoomTrigger "THRONE" 0.0003 #These are supposed to be FRIENDLY. As in, you can recruit the monks to your service as imp-equivalents.  You should need to deliberately antagonize them.
+      #RoomTrigger "IMPALED_HEAD" 0.0001
       SelfVictims
-      NumConquered 3
+      #NumConquered 3
       StolenItems
-      FinishOff
-      Proximity
-      AggravatingMinions
+      FinishOff #But if you're *that* weak, might as well take your stuff for someone more worthy...
+      #Proximity
+      #AggravatingMinions
     }
     attackBehaviour = KillLeader
     ransom = 0.9 1000
@@ -2818,7 +2818,7 @@
 {
   settlement = {
     type = Builtin CAVE "DARK_ABBEY_DUNGEONS"
-    tribe = MONSTER
+    tribe = HUMAN #Hoping this makes the top level less Hostile to Evil Keepers.
     inhabitants = {
 	  fighters = {
         count = {6 12}
@@ -2837,7 +2837,7 @@
 {
   settlement = {
     type = Builtin CAVE "DARK_ABBEY_DUNGEONS"
-    tribe = MONSTER
+    tribe = HUMAN
     inhabitants = {
       leader = { { "BONUS_PALADIN" } }
 	  fighters = {
@@ -2857,7 +2857,7 @@
 {
   settlement = {
     type = Builtin CAVE "DARK_ABBEY"
-    tribe = MONSTER
+    tribe = DARK_ELF
 	inhabitants = {
 	  fighters = {
         count = {3 6}
@@ -3634,7 +3634,6 @@
         all = { 1 "BONUS_BANDIT_RECRUIT" }
       }
     }
-	locationName = "Agro Bandits"
     tribe = BANDIT
     race = "bandits"
 	furniture = "roomFurniture"
