@@ -246,7 +246,7 @@
 
   
     "LAVA_FORGE" inherit "FORGE" append {
-	{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	{{"SteelOre"}                           5        "IRON" 1      "iron working"} #Work required halved from 10; took WAY too long to convert appreciable quantities. Steel gear has also been buffed.
 	}
 	"BONUS_ADA_FORGE" inherit "FORGE" append {
 	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
@@ -295,7 +295,7 @@
       {item = {"AdoxiumStaff"}    work = 20   cost = none   tech = "magical weapons"  materialTab = true}
 	}
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
-	  {{"SteelOre"}                           10        "IRON" 1      "iron working"}
+	  {{"SteelOre"}                           4        "IRON" 1      "iron working"} # ;-)
 	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
       {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
       {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
@@ -319,7 +319,7 @@
       {item = {"AdoxiumStaff"}    work = 20   cost = none   tech = "magical weapons"  materialTab = true}
 	}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
 	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
       {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
       {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
@@ -343,7 +343,7 @@
       {item = {"AdoxiumStaff"}    work = 20   cost = none   tech = "magical weapons"  materialTab = true}
 	}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
 	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
       {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
       {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
@@ -371,6 +371,32 @@
 		{item = {Potion OneTimeBoost() Polymorph "BONUS_FAIRY_QUEEN" none} work = 20 cost = "GOLD" 100
           requireIngredient = "royal_dust" }
 	}
+	"ENCHANTED_LABORATORY" {
+		{{Potion OneTimeBoost() Name "cold tolerance" Permanent COLD_RESISTANT }  20       "GOLD" 100}
+		{{Potion OneTimeBoost() Name "heat tolerance" Permanent FIRE_RESISTANT }  20       "GOLD" 100}
+		{{Potion OneTimeBoost() Name "acid tolerance" Permanent ACID_RESISTANT }  20       "GOLD" 100}
+		#Advanced Alchemy
+		{{Potion RegrowBodyPart 1}  10       "GOLD" 100  "advanced alchemy"} #CHECK: fix ALL damaged limbs, or just one?
+		{{Potion OneTimeBoost() Name "against all arrows" Permanent RANGED_RESISTANCE }  20       "GOLD" 300 "advanced alchemy"}
+		{{Potion OneTimeBoost() Name "sword stopper skin" Permanent MELEE_RESISTANCE }  20       "GOLD" 300 "advanced alchemy"}
+		{{Potion OneTimeBoost() Name "spell snubber self" Permanent MAGIC_RESISTANCE }  20       "GOLD" 300 "advanced alchemy"}
+		#Beast Mutation
+		{{Potion OneTimeBoost() Name "steed's stature" Permanent STEED }  20       "GOLD" 100 "beast mutation"}
+		{{Potion OneTimeBoost() Name "predator's posture" Permanent AMBUSH_SKILL }  20       "GOLD" 100 "beast mutation"}
+		{{Potion OneTimeBoost() Name "wolf's eye" Permanent NIGHT_VISION }  20       "GOLD" 100 "beast mutation"}
+		{{Potion OneTimeBoost() Name "back of burden" Permanent NO_CARRY_LIMIT }  20       "GOLD" 50 "beast mutation"} #Infinite carry weight *is* abusable, but mostly useful for cargo folks.  Combat needs a spell or two.
+		{{Potion OneTimeBoost() Name "pack's prowess" Permanent SWARMER }  20       "GOLD" 100 "beast mutation"}
+		{{Potion OneTimeBoost() Name "avian ambitions" AddBodyPart WING 2 none }  20       "GOLD" 100 "beast mutation"}
+		{{Potion OneTimeBoost() Name "prey precognition" Permanent WARNING }  20       "GOLD" 60 "beast mutation"} 
+		#Humanoid Mutation
+		{{Potion OneTimeBoost() Name "rider's stature" Permanent RIDER }  20       "GOLD" 100 "humanoid mutation"}
+		{{Potion OneTimeBoost() Name "rogue's dexterity" Permanent DISARM_TRAPS_SKILL }  20       "GOLD" 100 "humanoid mutation"}
+		{{Potion OneTimeBoost() Name "voice of reason" Permanent PSYCHIATRY }  20       "GOLD" 100 "humanoid mutation"}
+		{{Potion OneTimeBoost() Name "im-pune-ity" Permanent ENTERTAINER }  20       "GOLD" 100 "humanoid mutation"}
+		{{Potion OneTimeBoost() Name "elf's eye" Permanent ELF_VISION }  20       "GOLD" 100 "humanoid mutation"}
+		{{Potion OneTimeBoost() Name "archer's coordination" Permanent ARCHER_VISION }  20       "GOLD" 100 "humanoid mutation"}
+		{{Potion OneTimeBoost() Name "industriousness" Permanent FAST_CRAFTING }  20       "GOLD" 80 "humanoid mutation"} #Useful for combat-spec folks who craft as well. Twice the cost of the ring to not tie up the ring slot.
+	}
 }
 	
 "necromancer"
@@ -384,6 +410,10 @@
     {item = {"ArchwoodStaff"}        work = 20  cost = none
           requireIngredient = "archwood" }  
     {{ "Torch"}                 2        "WOOD" 4}
+	{{"LeatherArmor"}          6}
+    {{"LeatherHelm"}           1}
+    {{"LeatherBoots"}          2}
+    {{"LeatherGloves"}         1}
   }
   "ENCHANTED_WORKSHOP" inherit "WORKSHOP" append {}
 
@@ -466,18 +496,18 @@
 	  {item = {"BONUS_JothniteShield"}		 work = 12 		cost = none 	tech = "magical weapons" materialTab = true}
   }
     "LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
 	}
 	"BONUS_ADA_FORGE" inherit "FORGE" append {}
 	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           4        "IRON" 1      "iron working"}
 	}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
 	}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
 	}
 
   "LABORATORY"
@@ -492,6 +522,72 @@
         work = 6 cost = "CORPSE" 1 requireIngredient = "BONUS_paladin_remains"  }
 	  { item = {Assembled{ "BONUS_SPECTRE_OF_DEATH" "fallen paladin" {NO_LIMIT FIGHTER WORKER} {BALSAM} 6}}
         work = 6 cost = "CORPSE" 1 requireIngredient = "BONUS_devils_heart"  }
+  }
+}
+
+"morgue_vamplord"
+{
+  "MORGUE"
+  {
+	  { item = {Assembled{ "ZOMBIE_WORKER" "zombie worker" {NO_LIMIT FIGHTER WORKER} {BALSAM} 3}}
+        work = 6 cost = "CORPSE" 1 }
+      { item = {Assembled{ "ZOMBIE_ARTISAN" "zombie artisan" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 12 cost = "CORPSE" 2 }
+      { item = {Assembled{ "ZOMBIE_MAGE" "zombie mage" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 16 cost = "CORPSE" 3 }
+      { item = {Assembled{ "SKELETON_WARRIOR" "skeleton warrior" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 8 cost = "CORPSE" 1 }
+      { item = {Assembled{ "SKELETON_ARCHER" "skeleton archer" {NO_LIMIT FIGHTER} {BALSAM} 3 }}
+        work = 8 cost = "CORPSE" 1 }
+      { item = {Assembled{ "SKELETON_WOLF" "skeleton wolf" {NO_LIMIT FIGHTER} {BALSAM} 1 }}
+        work = 4 cost = "CORPSE" 1 }
+      { item = {Assembled{ "VAMPIRE" "vampire warrior" {NO_LIMIT FIGHTER} {BALSAM} 5}}
+        work = 20 cost = "CORPSE" 3 tech = "advanced necromancy"}
+      { item = {Assembled{ "VAMPIRE_BRUTE" "vampire brute" {NO_LIMIT FIGHTER} {BALSAM} 3}}
+        work = 20 cost = "CORPSE" 2 tech = "advanced necromancy"}
+      #The vampire lord gets cheaper vampires...but isn't about to make competitors for itself.
+	  #Without Master Necromancy, no need for options at that tier.
+	}
+	
+  "LABORATORY"
+  {
+      {{Balsam AddBodyPart HEAD 1 none}     2 "GOLD" 3 "embalming"}
+      {{Balsam {AddBodyPart WING 2 none Permanent FLYING}}     4 "GOLD" 3 "embalming"}
+      {{Balsam Permanent TELEPATHY}         4 "GOLD" 3 "embalming"}
+      {{Balsam RemovePermanent SLOWED}      4 "GOLD" 3 "embalming"}
+      {{Balsam Permanent SWARMER}           4 "GOLD" 3 "embalming"}
+      {{Balsam Permanent NO_CARRY_LIMIT}    4 "GOLD" 3 "embalming"}
+      {{Balsam IncreaseAttr DIGGING        15}                    4 "GOLD" 3 "embalming"}
+      {{Balsam IncreaseMaxLevel DAMAGE        3}                  4 "GOLD" 3 "embalming"}
+      {{Balsam IncreaseMaxLevel SPELL_DAMAGE  3}                  4 "GOLD" 3 "embalming"}
+      {{Balsam IncreaseMaxLevel RANGED_DAMAGE 3}                  4 "GOLD" 3 "embalming"}
+      {{Balsam Name "lesser damage bonus"        IncreaseAttr DAMAGE        3}   4 "GOLD" 3 "embalming"}
+      {{Balsam Name "lesser defense bonus"       IncreaseAttr DEFENSE       3}   4 "GOLD" 3 "embalming"}
+      {{Balsam Name "lesser ranged damage bonus" IncreaseAttr RANGED_DAMAGE 3}   4 "GOLD" 3 "embalming"}
+      {{Balsam Name "lesser spell damage bonus"  IncreaseAttr  SPELL_DAMAGE 3}   4 "GOLD" 3 "embalming"}
+      {{Balsam SpecialAttr DEFENSE    5  InTerritory}             4 "GOLD" 3 "embalming"}
+      {{Balsam Permanent DARKNESS_SOURCE}   4 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "Limited life, damage boost" Description "Life limited to 2000 turns, +10 damage."
+          { Lasting 2000 SUMMONED  IncreaseAttr DAMAGE 10 }}        8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "Limited life, defense boost" Description "Life limited to 2000 turns, +10 defense."
+          { Lasting 2000 SUMMONED  IncreaseAttr DEFENSE 10 }}       8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "Limited life, ranged damage boost" Description "Life limited to 2000 turns, +10 ranged damage."
+          { Lasting 2000 SUMMONED  IncreaseAttr RANGED_DAMAGE 10 }} 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "Limited life, spell damage boost" Description "Life limited to 2000 turns, +10 spell damage."
+          { Lasting 2000 SUMMONED  IncreaseAttr SPELL_DAMAGE 10 }}  8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Permanent FAST_CRAFTING}                           8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Permanent FAST_TRAINING}                           8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "greater damage bonus"        IncreaseAttr DAMAGE        5} 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "greater defense bonus"       IncreaseAttr DEFENSE       5} 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "greater ranged damage bonus" IncreaseAttr RANGED_DAMAGE 5} 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam Name "greater spell damage bonus"  IncreaseAttr  SPELL_DAMAGE 5} 8 "GOLD" 5 "advanced embalming"}
+      {{Balsam IncreaseAttr "MORGUE" 25}                            8 "GOLD" 5 "advanced embalming"}
+      {{Balsam IncreaseAttr "LABORATORY" 25}                        8 "GOLD" 5 "advanced embalming"}
+      {{Balsam IncreaseAttr "FORGE" 25}                             8 "GOLD" 5 "advanced embalming"}
+      {{Balsam IncreaseAttr "WORKSHOP" 25}                          8 "GOLD" 5 "advanced embalming"}
+      {{Balsam { AddBodyPart ARM 2 none IncreaseAttr MULTI_WEAPON 25 }}
+          8 "GOLD" 5 "advanced embalming"}
+     #VampKeeper doesn't get Master Embalming, so no need for recipes at that level.
   }
 }
 
@@ -625,18 +721,18 @@
 	  {item = {"BONUS_JothniteShield"}		 work = 12 		cost = none 	tech = "magical weapons" materialTab = true}
   }
     "LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           3        "IRON" 1      "iron working"} #Dwarves make steel Faster.
 	}
 	"BONUS_ADA_FORGE" inherit "FORGE" append {}
 	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           2        "IRON" 1      "iron working"}
 	}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           3        "IRON" 1      "iron working"}
 	}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           3        "IRON" 1      "iron working"}
 	}
 
   "LABORATORY"
@@ -916,18 +1012,18 @@
       { item = {"AutomatonArmsBONUS_Jothnite"} work = 2 tech = "automatons" materialTab = true}
   }
     "LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
 	}
 	"BONUS_ADA_FORGE" inherit "FORGE" append {}
 	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           4        "IRON" 1      "iron working"}
 	}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
 	}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           10        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
 	}
     
 
@@ -1048,7 +1144,7 @@
 		{{ "GoldPiece"}                           1        "JOTHNITE"  1       "alchemical conversion"}
 		{{ "VenOre"}                              1        "GOLD"  4	     "alchemical conversion"}
 		{{ "BONUS_CaeliditeOre"}                  1        "GOLD"  4	     "alchemical conversion"}
-		{{ "BONUS_CaeliditeOre"}                  1        "GOLD"  4	     "alchemical conversion"}
+		{{ "InferniteOre"}                        1        "GOLD"  5	     "alchemical conversion"}
 		{{ "AdoxiumOre"}                          1        "GOLD"  5      "alchemical conversion"}
 		{{ "BONUS_JothniteOre"}                   1        "GOLD"  5	     "alchemical conversion"}
 	}

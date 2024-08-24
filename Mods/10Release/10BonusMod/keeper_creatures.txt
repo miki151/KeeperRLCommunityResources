@@ -8,7 +8,7 @@
 "1_dark_mage_extra" inherit "1_dark_mage" {
 	baseName = "Bonus Classic"
     immigrantGroups = append {"dark_keeper_modded" "neutral_allies" "dark_allies_extended" }
-    technology = append { "simplistic animations" "magic contraptions" "dragon taming" "demonic alliance" "rock blast" "combat copulators" "spell circles" "magic inscription" "cyclops mutation" "minotaur mutation"}
+    technology = append { "simplistic animations" "magic contraptions" "dragon taming" "demonic alliance" "rock blast" "combat copulators" "spell circles" "magic inscription" "cyclops mutation" "minotaur mutation" "tauric mutation"}
     initialTech = { "sorcery" }
 	workshopGroups = append { "basic_Bonus_Mod" "techBooks" "Magic metal conversion" "scrolls" "anti-nature" "wizard armory"}
 	villainGroups = append { BONUS_EVIL }
@@ -30,11 +30,11 @@
 	baseName = "Bonus Classic"
     immigrantGroups = append {"dark_knight_modded" "neutral_allies" "dark_allies_extended" "dark_knight_stables" }
     technology = append { "simplistic animations" "magic contraptions" "rock blast" "combat copulators" "advanced smithy" "magic inscription" "spell circles" "horsehandling" "vampiric warhorses" "war wolves" "wargs" }
-    initialTech = { "iron working"}
+    initialTech = { "iron working" }
     workshopGroups = append { "basic_Bonus_Mod"	"techBooks" "fell armory" "Magic metal conversion" "scrolls" "anti-nature"}
 	description = "Upgraded dark knights with tougher enemies."	
 	villainGroups = append { BONUS_EVIL }
-	credit = { "WOOD" 2000 "STONE" 10 "IRON" 100 "ADA" 5 "CROPS" 25 }
+	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
     buildingGroups = append { "spells" "inscription table" "rockblast" "advanced forges"}
 	zLevelGroups = append {"bonus basic"}
   }
@@ -71,10 +71,12 @@
   
 "4_necromancer_extra" inherit "4_necromancer" {
 	baseName = "Bonus Undead"
-	technology = append {"regrow limbs" "zombie hordes" "mummy hordes" "skeleton hordes" "vampire hordes" "lord of war" "lord of magic" "lord of speed" "lord of resistance"}
+	technology = append {"regrow limbs" "zombie hordes" "mummy hordes" "skeleton hordes" "vampire hordes" "lord of war" "lord of magic" "lord of speed" "lord of resistance" }
+	credit = append { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 }
 	description = "Extra technology and extra troops to make your extra enemies EXTRA DEAD."
 	villainGroups = append { BONUS_EVIL }
-	buildingGroups = append {"necro_minion_statues" "throne" "advanced forges"} #Makes the Hordes, dragon immigration, Lords Of X feasible.
+	buildingGroups = append {"necromancer" "necro_minion_statues" "throne" "advanced forges" } #Makes the Hordes, dragon immigration, Lords Of X feasible.
+	workshopGroups = append { "necromancer" }
 	maxPopulation = 10 #Makes the Hordes, dragon immigration, Lords Of X feasible.
 	zLevelGroups = append {"bonus basic" }
   }
@@ -217,23 +219,23 @@
 "4_BonusDev_vampire_lord"
   {
     baseName = "Bonus Undead"
-    creatureId = { "VAMPIRE_LORD" }
+    creatureId = { "BONUS_VAMPIRE_KEEPER" }
     tribeAlignment = EVIL
     immigrantGroups = {"necromancer" "neutral_allies" "dark_allies_extended" "dark_allies_basic" }
     technology = {
         "regrow limbs" "chicken breeding" "pig breeding" "cow breeding" "iron working" "simplistic animations"
-		"magic contraptions" "two-handed weapons" "sorcery" "necromancy" "embalming" "advanced embalming"
+		"magic contraptions" "two-handed weapons" "sorcery" "necromancy" "advanced necromancy" "embalming" "advanced embalming"
         "advanced sorcery" "magical weapons" "master sorcery" "archery"
 		"zombie hordes"  "mummy hordes" "skeleton hordes"  "vampire hordes"
 		"lord of war" "lord of magic" "lord of speed" "lord of resistance" "rock blast" }
     initialTech = { "sorcery" "archery" }
 	maxPopulation = 10 #Makes the Hordes, dragon immigration, Lords Of X feasible.
     buildingGroups = {
-        "structure" "doors" "floors" "storage" "zones" "library" "pigsty_no_crops" "coffins"
+        "structure_necro" "training_necro" "doors" "floors" "storage" "zones" "library" "pigsty_no_crops" "coffins" "beds"
         "prison" "orders" "installations" "magical_installations" "necromancer" "rockblast"
-		"necro_minion_statues" "throne" "advanced forges"
+		"necro_minion_statues" "throne" "advanced forges" "morgue"
     }
-    workshopGroups = { "necromancer" }
+    workshopGroups = { "necromancer" "morgue_vamplord" }
     #Better than a standard vampire lord. He was losing limbs too much.
     specialTraits = {
       Lasting { TELEPATHY }
@@ -362,14 +364,16 @@
 #Easy and hard mode
 "9.1_dark_mage_easy" inherit "1_dark_mage_extra"
 {
-    creatureId = { "BONUS_KEEPER_MAGE_EASY" "BONUS_KEEPER_MAGE_F_EASY" }
+    baseName = "Tweaked Classic"
+	creatureId = { "BONUS_KEEPER_MAGE_EASY" "BONUS_KEEPER_MAGE_F_EASY" "BONUS_KEEPER_MAGE_NB_EASY"}
     immigrantGroups = {"dark_keeper_easy_mode" "neutral_allies" "dark_allies_extended" }
     description = "Play a dark mage in easy mode and get a big bonus on all immigrants. But you have to wear a silly green robe."
 }
 
 "9.2_dark_mage_hard" inherit "1_dark_mage_extra"
 {
-    creatureId = { "BONUS_KEEPER_MAGE_HARD" "BONUS_KEEPER_MAGE_F_HARD" }
+    baseName = "Tweaked Classic"
+	creatureId = { "BONUS_KEEPER_MAGE_HARD" "BONUS_KEEPER_MAGE_F_HARD" "BONUS_KEEPER_MAGE_NB_HARD" }
     immigrantGroups  = {"dark_keeper_hard_mode" "neutral_allies" "dark_allies_extended" }
     description = "Play a dark mage in hard mode and test your skills to the limit for experienced players. You get to wear a cool purple robe."
 }
@@ -777,13 +781,14 @@
   creatureId = { "HALLOWEEN_KEEPER_MAGE" "HALLOWEEN_KEEPER_MAGE_F" }
   tribeAlignment = EVIL
   villainGroups = { EVIL_KEEPER EVIL_COTTAGES BONUS_EVIL}
-  immigrantGroups = {"halloween_spirit" "halloween_keeper" "animations" "neutral_allies" "dark_allies_extended" }
+  immigrantGroups = {"halloween_spirit" "halloween_keeper" "animations" "neutral_allies" "dark_allies_basic" "dark_allies_extended" "halloween_stables" }
   technology = {
       "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
       "rat breeding" "bat breeding" "wolf breeding" "iron working" "jewellery" "two-handed weapons"
       "traps" "archery" "sorcery" "advanced sorcery" "magical weapons" "master sorcery" "demonology"
       "distillation" "magic inscription"
 	   "simplistic animations" "magic contraptions" "dragon taming" "demonic alliance" "rock blast" "combat copulators"
+	   "wolf crossbreeding" "horsehandling" "vampiric warhorses"
   }
   zLevelGroups = { "basic" "evil" }
   initialTech = { "sorcery" }
@@ -792,10 +797,10 @@
       "dining table" "coffins" "halloween_pigsty"
       "training_necro" "crafting" "laboratory" "jeweller" "poetry" "distillery" "furnace"
       "prison" "orders" "throne" "demon_shrine" "installations" "minion_statues" "magical_installations" "healing_totem"
-      "traps" "advanced forges"
+      "traps" "advanced forges" "stable" "inscription table"
   }
   credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
-  workshopGroups = { "basic" "bows"  "basic_Bonus_Mod" "techBooks" "Magic metal conversion" }
+  workshopGroups = { "basic" "bows"  "basic_Bonus_Mod" "techBooks" "Magic metal conversion" "scrolls"}
   description = "Build and manage your dream dungeon, defend against raids, and attack your enemies. Be about as evil as a boogieman can be!"
 }
 
@@ -827,7 +832,7 @@
 }
 
 ############################################
-#Halloween
+#Shadowing's Other Keepers
 ############################################
 
 "3_arcane_mage"
@@ -849,13 +854,12 @@
   buildingGroups = {
       "structure_white_knight" "doors" "floors" "storage" "zones" "library_human" "beds"
       "dining table" "pigsty" "training_human" "crafting" "laboratory" "jeweller" "poetry" "distillery"
-      "furnace" "prison" "orders" "throne_human" "angel_shrine" "installations" "advanced forges"
+      "furnace" "prison" "orders" "throne_human" "angel_shrine" "installations" "advanced forges" "stable"
+	  "inscription table"
   }
   credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 54 } #Provides enough to cover more peasants & 8 or so crop tiles
-  workshopGroups = { "basic" "bows"  "white knights workshop" "basic_Bonus_Mod" "Magic metal conversion" "wizard armory" "techBooksLawful" }
+  workshopGroups = { "basic" "bows"  "white knights workshop" "basic_Bonus_Mod" "Magic metal conversion" "wizard armory" "techBooksLawful" "scrolls" }
   description = "Play as a not-so-evil human race. Recruit knights, priests and angelic beings!"
-# Special traits example, all traits are added
-#   specialTraits = { LastingEffect SPEED ExtraTraining MELEE 5 }
 }
 
 "3_arcane_mage_NB" inherit "3_arcane_mage"{
@@ -878,7 +882,7 @@
   buildingGroups = {
       "structure_necro" "doors" "floors" "storage" "zones" "library_necro" "beds" "coffins"
       "training_necro" "morgue" "crafting" "embalming" "poetry" "distillery" "furnace" "orders"
-      "phylactery" "installations_no_heads" "magical_installations"
+      "phylactery" "installations_no_heads" "magical_installations" "stable"
   }
   workshopGroups = { "morgue" "basic_without_lab" "bows" }
   description = "Craft hordes of undead from the corpses of fallen enemies. "

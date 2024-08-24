@@ -2540,7 +2540,7 @@ End
           initialRecruitment = 1
           requirements = {
             { 0.0 TechId "vampire hordes" }
-            { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+            { 1.0 AttractionInfo 1 {FurnitureType "TRAINING_IRON_NECRO"}}
             { 1.0 CostInfo "CORPSE" 1}
           }
           specialTraits = {
@@ -2917,7 +2917,7 @@ End
         {
           ids = { "SUCCUBUS" }
           traits = { FIGHTER NO_EQUIPMENT }
-          frequency = 0.3
+          frequency = 0.4
           spawnLocation = FurnitureType "DEMON_SHRINE"
           requirements = {
             { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -2932,7 +2932,7 @@ End
 		{
 		  ids = { "BONUS_INCUBUS" }
 		  traits = { FIGHTER NO_EQUIPMENT }
-		  frequency = 0.3
+		  frequency = 0.4
 		  spawnLocation = FurnitureType "DEMON_SHRINE"
 		  requirements = {
 		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -2946,7 +2946,7 @@ End
 		{
 		  ids = { "BONUS_OMNIBUS" }
 		  traits = { FIGHTER NO_EQUIPMENT }
-		  frequency = 0.3
+		  frequency = 0.4
 		  spawnLocation = FurnitureType "DEMON_SHRINE"
 		  requirements = {
 		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -2960,7 +2960,7 @@ End
 		{
           ids = { "BONUS_COMBAT_SUCCUBUS" }
           traits = { FIGHTER }
-          frequency = 0.3
+          frequency = 0.5
           spawnLocation = FurnitureType "DEMON_SHRINE"
           requirements = {
             { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -2975,7 +2975,7 @@ End
 		{
 		  ids = { "BONUS_COMBAT_INCUBUS" }
 		  traits = { FIGHTER }
-		  frequency = 0.3
+		  frequency = 0.5
 		  spawnLocation = FurnitureType "DEMON_SHRINE"
 		  requirements = {
 			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -2990,7 +2990,7 @@ End
 		{
 		  ids = { "BONUS_COMBAT_OMNIBUS" }
 		  traits = { FIGHTER }
-		  frequency = 0.3
+		  frequency = 0.5
 		  spawnLocation = FurnitureType "DEMON_SHRINE"
 		  requirements = {
 			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -3230,6 +3230,56 @@ End
              { 0.03 { Lasting { BAD_BREATH } }}
              { 0.01 { Lasting { ENTERTAINER } }}
     		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+        }
+		{
+          ids = { "BONUS_DARK_GOBLIN" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7 #They're Swarmers. Ideally you swap your artifcers out for these folks...
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {  #Dark wizards are better at Arcane Breeding Programmes than knights, so better outcomes here
+             { 0.05 { ExtraBodyPart HEAD 1}}
+             { 0.05 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
+             { 0.10 { ExtraTraining DAMAGE 5}} #Helps 'em actually fight
+             { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.25 { Lasting { NIGHT_VISION } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+             { 0.02 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.01 { Lasting { BAD_BREATH } }}
+             { 0.03 { Lasting { ENTERTAINER } }}
+			 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+        }
+		{
+          ids = { "BONUS_DARK_HOBGOBLIN" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {  #Dark wizards are better at Arcane Breeding Programmes than knights, so better outcomes here
+             { 0.05 { ExtraBodyPart HEAD 1}}
+             { 0.05 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
+             { 0.10 { ExtraTraining DAMAGE 5}} #Brings them to Orc/Ogre levels
+             { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.25 { Lasting { NIGHT_VISION } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+             { 0.02 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.01 { Lasting { BAD_BREATH } }}
+             { 0.03 { Lasting { ENTERTAINER } }}
+			 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
           }
         }
         {
@@ -3920,6 +3970,56 @@ End
     		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
           }
         }
+		{
+          ids = { "BONUS_DARK_GOBLIN" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7 #They're Swarmers. Ideally you swap your artifcers out for these folks...
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {  #Dark wizards are better at Arcane Breeding Programmes than knights, so better outcomes here
+             { 0.05 { ExtraBodyPart HEAD 1}}
+             { 0.05 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
+             { 0.10 { ExtraTraining DAMAGE 5}} #Helps 'em actually fight
+             { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.25 { Lasting { NIGHT_VISION } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+             { 0.02 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.01 { Lasting { BAD_BREATH } }}
+             { 0.03 { Lasting { ENTERTAINER } }}
+			 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+        }
+		{
+          ids = { "BONUS_DARK_HOBGOBLIN" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {  #Dark wizards are better at Arcane Breeding Programmes than knights, so better outcomes here
+             { 0.05 { ExtraBodyPart HEAD 1}}
+             { 0.05 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
+             { 0.10 { ExtraTraining DAMAGE 5}} #Brings them to Orc/Ogre levels
+             { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.25 { Lasting { NIGHT_VISION } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+             { 0.02 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.01 { Lasting { BAD_BREATH } }}
+             { 0.03 { Lasting { ENTERTAINER } }}
+			 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+        }
     }
     "sandbox"
     {
@@ -3993,6 +4093,54 @@ End
           }
         }
 		{
+          ids = { "BONUS_DARK_GOBLIN" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7 #They're Swarmers. Ideally you swap your artifcers out for these folks...
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {  #Dark wizards are better at Arcane Breeding Programmes than knights, so better outcomes here
+             { 0.05 { ExtraBodyPart HEAD 1}}
+             { 0.05 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
+             { 0.10 { ExtraTraining DAMAGE 5}} #Helps 'em actually fight
+             { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.25 { Lasting { NIGHT_VISION } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+             { 0.02 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.01 { Lasting { BAD_BREATH } }}
+             { 0.03 { Lasting { ENTERTAINER } }}
+          }
+        }
+		{
+          ids = { "BONUS_DARK_HOBGOBLIN" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {  #Dark wizards are better at Arcane Breeding Programmes than knights, so better outcomes here
+             { 0.05 { ExtraBodyPart HEAD 1}}
+             { 0.05 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
+             { 0.10 { ExtraTraining DAMAGE 5}} #Brings them to Orc/Ogre levels
+             { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.25 { Lasting { NIGHT_VISION } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+             { 0.02 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.01 { Lasting { BAD_BREATH } }}
+             { 0.03 { Lasting { ENTERTAINER } }}
+          }
+        }
+		{
           ids = { "RED_DRAGON" }
           traits = { FIGHTER }
           consumeIds = true
@@ -4040,12 +4188,12 @@ End
 		{
           ids = { "CYCLOPS" } #Moved from dark_knight_modded: breeding strange creatures is a Wizard thing. Knights breed more regular mounts and make better weapons & armor
           traits = { FIGHTER }
-          consumeIds = true
           spawnLocation = Pregnancy
+		  frequency = 0.4
           requirements = {
             { 0.0 TechId "cyclops mutation" }
             { 0.0 Pregnancy }
-            { 1.0 CostInfo "GOLD" 500 }
+            { 1.0 CostInfo "GOLD" 300 }
 		  }
         }
 		{
@@ -4056,13 +4204,72 @@ End
           requirements = {
             { 0.0 TechId "minotaur mutation" }
             { 0.0 Pregnancy }
-            { 1.0 CostInfo "GOLD" 500 }
+            { 1.0 CostInfo "GOLD" 100 } #Cheaper becaus it's a one-off, more research needed to make 'em Reliable.
+          }
+		  specialTraits = {  #Wild & crazy results on this one
+             { 0.09 { ExtraBodyPart HEAD 1}}
+             { 0.15 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
+             { 0.30 { ExtraTraining DAMAGE 5}}
+             { 0.15 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+			 { 0.15 { AttrBonus DEFENSE 10 Lasting { SLOWED }}}
+             { 0.25 { Lasting { NIGHT_VISION } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+             { 0.08 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.05 { Lasting { BAD_BREATH } }}
+             { 0.08 { Lasting { ENTERTAINER } }}
+          }
+        }
+		{
+          ids = { "MINOTAUR" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+		  frequency = 0.4
+          requirements = {
+            { 0.0 TechId "tauric mutation" }
+            { 0.0 Pregnancy }
+            { 1.0 CostInfo "GOLD" 300 } #As many as you like.
+          }
+		  specialTraits = {  #Extra research & gold leads to better and more stable breeding.
+             { 0.08 { ExtraBodyPart HEAD 1}}
+             { 0.05 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE}}}
+             { 0.10 { ExtraTraining DAMAGE 5}}
+             { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.25 { Lasting { NIGHT_VISION } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+             { 0.02 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.01 { Lasting { BAD_BREATH } }}
+             { 0.03 { Lasting { ENTERTAINER } }}
+          }
+        }
+		{
+		  ids = { "BONUS_ARACHNE" } 
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.3
+          requirements = {
+            { 0.0 MinTurnRequirement 2000 }
+			{ 0.0 TechId "tauric mutation" }
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {
+			 { 0.35 { Lasting { NIGHT_VISION } }}
+             { 0.01 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.01 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+             { 0.08 { Lasting { DISARM_TRAPS_SKILL } }}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+	         { 0.05 { Lasting { ENTERTAINER } }}
+			 { 0.35 { Lasting { STEED } }}
+			 { 0.25 { Lasting { COPULATION_SKILL } }} #You're welcome, all.
+			 { 0.25 { Lasting { SPIDER_SKILL } }}
           }
         }
 		{
           ids = { "SUCCUBUS" }
           traits = { FIGHTER NO_EQUIPMENT }
-          frequency = 0.3
+          frequency = 0.4
           spawnLocation = FurnitureType "DEMON_SHRINE"
           requirements = {
             { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -4074,7 +4281,7 @@ End
 		{
 		  ids = { "BONUS_INCUBUS" }
 		  traits = { FIGHTER NO_EQUIPMENT }
-		  frequency = 0.3
+		  frequency = 0.4
 		  spawnLocation = FurnitureType "DEMON_SHRINE"
 		  requirements = {
 		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -4085,7 +4292,7 @@ End
 		{
 		  ids = { "BONUS_OMNIBUS" }
 		  traits = { FIGHTER NO_EQUIPMENT }
-		  frequency = 0.3
+		  frequency = 0.4
 		  spawnLocation = FurnitureType "DEMON_SHRINE"
 		  requirements = {
 		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -4096,7 +4303,7 @@ End
         {
           ids = { "BONUS_COMBAT_SUCCUBUS" }
           traits = { FIGHTER }
-          frequency = 0.3
+          frequency = 0.4
           spawnLocation = FurnitureType "DEMON_SHRINE"
           requirements = {
             { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -4108,7 +4315,7 @@ End
 		{
 		  ids = { "BONUS_COMBAT_INCUBUS" }
 		  traits = { FIGHTER }
-		  frequency = 0.3
+		  frequency = 0.4
 		  spawnLocation = FurnitureType "DEMON_SHRINE"
 		  requirements = {
 			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -4120,7 +4327,7 @@ End
 		{
 		  ids = { "BONUS_COMBAT_OMNIBUS" }
 		  traits = { FIGHTER }
-		  frequency = 0.3
+		  frequency = 0.4
 		  spawnLocation = FurnitureType "DEMON_SHRINE"
 		  requirements = {
 			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
@@ -4209,6 +4416,54 @@ End
              { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
              { 0.15 { Lasting { NIGHT_VISION } }} #Since they can't be out in the sun...
              { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+             { 0.05 { Lasting { SWIMMING_SKILL } }}
+             { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.03 { Lasting { BAD_BREATH } }}
+             { 0.01 { Lasting { ENTERTAINER } }}
+          }
+        }
+		{
+          ids = { "BONUS_DARK_GOBLIN" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7 #They're Swarmers. Ideally you swap your artifcers out for these folks...
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {
+             { 0.01 { ExtraBodyPart HEAD 1}}
+             { 0.01 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE} }} #Sorry, but with scaling enemy DEF, 2+10 archery is a joke.
+             { 0.05 { ExtraTraining DAMAGE 5}} #Up to Ogre spec
+             { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.15 { Lasting { NIGHT_VISION } }} #Since they can't be out in the sun...
+             { 0.05 { Lasting { SWIMMING_SKILL } }}
+             { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.03 { Lasting { BAD_BREATH } }}
+             { 0.01 { Lasting { ENTERTAINER } }}
+          }
+        }
+		{
+          ids = { "BONUS_DARK_HOBGOBLIN" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {  
+			 { 0.01 { ExtraBodyPart HEAD 1}}
+             { 0.01 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 Lasting {NO_FRIENDLY_FIRE} }} #Sorry, but with scaling enemy DEF, 2+10 archery is a joke.
+             { 0.05 { ExtraTraining DAMAGE 5}} #Up to Ogre spec
+             { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+             { 0.15 { Lasting { NIGHT_VISION } }} #Since they can't be out in the sun...
              { 0.05 { Lasting { SWIMMING_SKILL } }}
              { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
              { 0.02 { Lasting { HATE_ELVES } }}
@@ -4990,6 +5245,7 @@ End
       spawnLocation = FurnitureType "DEMON_SHRINE"
       requirements = {
         { 0.3 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
         { 0.0 CostInfo "DEMON_PIETY" 1000 }
       }
     }
@@ -5073,8 +5329,66 @@ End
       }
       acceptedAchievement = "succubus_breading"
     }
+	{
+		  ids = { "BONUS_INCUBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.4
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+		  }
+	}
+	{
+		  ids = { "BONUS_OMNIBUS" }
+		  traits = { FIGHTER NO_EQUIPMENT }
+		  frequency = 0.4
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+		  { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+		  { 0.3 AttractionInfo 1 {FurnitureType "BED3"}} #Modded
+          { 0.0 CostInfo "DEMON_PIETY" 1000 }
+		  }
+	}
+	{
+          ids = { "BONUS_COMBAT_SUCCUBUS" }
+          traits = { FIGHTER }
+          frequency = 0.4
+          spawnLocation = FurnitureType "DEMON_SHRINE"
+          requirements = {
+            { 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+            { 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+            { 0.0 CostInfo "DEMON_PIETY" 1000 }
+            { 0.0 TechId "combat copulators" }
+          }
+    }
+	{
+		  ids = { "BONUS_COMBAT_INCUBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.4
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+		  }
+	}
+	{
+		  ids = { "BONUS_COMBAT_OMNIBUS" }
+		  traits = { FIGHTER }
+		  frequency = 0.4
+		  spawnLocation = FurnitureType "DEMON_SHRINE"
+		  requirements = {
+			{ 0.0 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+			{ 0.3 AttractionInfo 1 {FurnitureType "BED3"}}
+			{ 0.0 CostInfo "DEMON_PIETY" 1000 }
+			{ 0.0 TechId "combat copulators" }
+		  }
+	}
     {
-      ids = { "BALROG" "SATAN" "ADOXIE_HEAD" }
+      ids = { "BALROG" "BONUS_SATAN_AVATAR" "BONUS_ADOXIE_AVATAR" }
       traits = { FIGHTER }
       consumeIds = true
       spawnLocation = Pregnancy
@@ -5083,6 +5397,73 @@ End
         { 1.0 CostInfo "GOLD" 100 }
         { 0.0 Pregnancy }
         { 0.0 CostInfo "DEMON_PIETY" 3000 }
+      }
+    }
+	
+	{
+      ids = { "RED_DRAGON" }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = FurnitureType "PORTAL"
+      requirements = {
+        { 1.0 FurnitureType "THRONE" }
+        { 1.0 FurnitureType "PORTAL" }
+        { 1.0 CostInfo "GOLD" 500 }
+        { 0.0 TechId "dragon taming" }
+      }
+    }
+	{
+      ids = { "DEMON_LORD" }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = FurnitureType "PORTAL"
+      requirements = {
+        { 1.0 FurnitureType "THRONE" }
+        { 1.0 FurnitureType "PORTAL" }
+        { 1.0 CostInfo "GOLD" 500 }
+        { 0.0 TechId "demonic alliance" }
+      }
+    }
+	
+}
+
+"halloween_stables" #CSeven is USian and spells it with two "l" characters
+{
+	{
+      ids = { "SST_FK_HORSE" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 50 }
+		{ 0.0 TechId "horsehandling" }
+      }
+    }
+	
+	{
+      ids = { "SST_FK_WAR_WOLF" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 20 }
+		{ 0.0 TechId "wolf breeding" }
+      }
+    }
+	
+	{
+      ids = { "SST_FK_WARG" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 40 }
+		{ 0.0 TechId "wolf crossbreeding" }
+      }
+    }
+	
+	{
+      ids = { "SST_FK_VAMPHORSE" }
+	  #Vamphorses seem plenty powerful enough to count against popcap.
+	  spawnLocation = FurnitureType "GRAVE" #They are undead, after all.  Best not to spawn outside!
+      requirements = {
+        { 0.0 TechId "vampiric warhorses" }
+		{ 0.0 CostInfo "CORPSE" 1}
+		{ 1.0 CostInfo "GOLD" 100 } #Immigration only shows the last CostInfo listed.  $100 is a little more important than 1 corpse.
       }
     }
 }
@@ -5569,6 +5950,8 @@ End
       }
     }
 }
+
+
 
 ###
 #Canine Heroes

@@ -709,6 +709,51 @@ End
     layer = FLOOR
     canBuildOutsideOfTerritory = true  #Modded
   }
+
+###
+#Stairs upgrade (expensive structure should have expensive Luxury)
+#Once again, can't just Append on an Inherit, so copying everything manually :-/
+###
+"UP_STAIRS_CARPET" modify append {
+	name = "stairs"
+    viewId = { "up_staircase_carpet" }
+    canHideHere = true
+  # xForgetAfterBuilding = true
+    usageType = UsageEffect "use stairs" Stairs
+    onBuilt = UP_STAIRS
+	otherStairs = "DOWN_STAIRS_CARPET"
+	luxury = 0.7
+}
+"DOWN_STAIRS_CARPET" modify append {
+	name = "stairs"
+    viewId = { "down_staircase_carpet" }
+    canHideHere = true
+  # xForgetAfterBuilding = true
+    usageType = UsageEffect "use stairs" Stairs
+    onBuilt = DOWN_STAIRS
+	otherStairs = "UP_STAIRS_CARPET"
+	luxury = 0.7
+}
+"UP_STAIRS_CASTLE" modify append {
+	name = "stairs"
+    viewId = { "up_staircase_castle" }
+    canHideHere = true
+  # xForgetAfterBuilding = true
+    usageType = UsageEffect "use stairs" Stairs
+    onBuilt = UP_STAIRS
+	otherStairs = "DOWN_STAIRS_CASTLE"
+	luxury = 0.4
+}
+"DOWN_STAIRS_CASTLE" modify append {
+	name = "stairs"
+    viewId = { "down_staircase_castle" }
+    canHideHere = true
+  # xForgetAfterBuilding = true
+    usageType = UsageEffect "use stairs" Stairs
+    onBuilt = DOWN_STAIRS
+	otherStairs = "UP_STAIRS_CASTLE"
+	luxury = 0.4
+}
   
 ##########
 #Modded
@@ -2321,6 +2366,7 @@ End
   strength = 80
   requiresLight = true
   destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  itemDrop = {{{{"AdaOre"} 1 { 9 12 }}} }
   usageFX = FORGE
   usageSound = {"FORGE_USAGE" 0.2}
   usagePredicate = Area 1 Not FurnitureType "MAGMA"
@@ -2330,7 +2376,7 @@ End
   name = "adamantine magma forge"
   viewId = { "ada_lava_forge" }
   usagePredicate = Not Area 1 Not FurnitureType "MAGMA"
-  upgrade = "FORGE"
+  upgrade = "BONUS_ADA_FORGE"
 }
 
 "BONUS_ADOXIUM_FORGE"
@@ -2343,6 +2389,7 @@ End
   strength = 80
   requiresLight = true
   destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  itemDrop = {{{{"AdoxiumOre"} 1 { 9 12 }}} }
   usageFX = FORGE
   usageSound = {"FORGE_USAGE" 0.2}
   usagePredicate = Area 1 Not FurnitureType "MAGMA"
@@ -2352,7 +2399,7 @@ End
   name = "adoxium magma forge"
   viewId = { "adoxium_lava_forge" }
   usagePredicate = Not Area 1 Not FurnitureType "MAGMA"
-  upgrade = "FORGE"
+  upgrade = "BONUS_ADOXIUM_FORGE"
 }
 
 #"BONUS_SOULFORGE"
@@ -2380,6 +2427,7 @@ End
   strength = 80
   luxury = 0.2 #Mostly the factor of having a forge that never, ever, goes cold.  But it's not particularly comfortable to work.
   destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  itemDrop = {{{{"InferniteOre"} 1 { 9 12 }}} }
   usageFX = FORGE
   usageSound = {"FORGE_USAGE" 0.2}
   lightEmission = 8.2 #Magma tiles emit this much light; since the Infernite Forge is a light source, I don't think it needs to need light.
@@ -2534,16 +2582,6 @@ End
   name = "lava canal"
   viewId = { "dd_floor_lava_canal"}
   layer = FLOOR
-  luxury = 0.4
-  itemDrop = {{{{"Rock"} 1 { 0 2 }}} }
-  lightEmission = 1.7
-}
-
-"DD_FLOOR_LAVA_CANAL_GROUND"
-{
-  name = "lava canal"
-  viewId = { "dd_floor_lava_canal"}
-  layer = GROUND
   luxury = 0.4
   itemDrop = {{{{"Rock"} 1 { 0 2 }}} }
   lightEmission = 1.7

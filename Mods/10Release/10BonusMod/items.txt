@@ -894,7 +894,7 @@ End
 	name = "steel sword"
 	weight = 1.4 #Marginally (0.1 or so) lighter
 	modifiers = {
-      DAMAGE 10 #25% Better; Lava forges add another 40%, so a Fine Steel Sword is as good as a Generic Iron Battleaxe.
+      DAMAGE 15 #Downgrading from adamantine: AdaSword is DAMAGE 20.
     }
     price = 5 #25% More Expensive
     craftingCost = "STEEL" 20
@@ -905,7 +905,7 @@ End
      name = "steel axe"
       weight = 4.8
       modifiers = {
-        DAMAGE 12
+        DAMAGE 17
       }
       price = 37
 	  craftingCost = "STEEL" 25
@@ -916,7 +916,7 @@ End
      name = "steel mace"
       weight = 4.8
       modifiers = {
-        DAMAGE 10
+        DAMAGE 14
 		DEFENSE 2
       }
       price = 37
@@ -930,7 +930,7 @@ End
     equipedViewId = { "steel_spear_v" }
     weight = 2.9
     modifiers = {
-      DAMAGE 8
+      DAMAGE 12
 	  PARRY 1 #One-off bonus, hopefully helps it be Better than iron.
     }
     price = 12
@@ -942,7 +942,7 @@ End
       attackMsg = THRUST
     }
     specialAttr = {
-      DAMAGE 22 Rider
+      DAMAGE 25 Rider
     }
     storageIds = {"weapons" "equipment"}
 	equipmentGroup = "steel equipment"
@@ -954,7 +954,7 @@ End
     name = "steel warhammer"
     weight = 8
     modifiers = {
-      DAMAGE 15
+      DAMAGE 16
     }
     price = 25
     craftingCost = "STEEL" 40
@@ -967,7 +967,7 @@ End
     name = "steel battleaxe"
     weight = 8
     modifiers = {
-      DAMAGE 17
+      DAMAGE 21 #OK, it's better than an AdaSword. Needs the extra tech pick and blocks shields, though.
     }
     price = 37
     craftingCost = "STEEL" 50
@@ -982,7 +982,7 @@ End
     price = 32
     craftingCost = "STEEL" 40
     modifiers = {
-      DEFENSE 7
+      DEFENSE 13 #AdaArmor is 24 DEF.
     }
 	equipmentGroup = "steel equipment"
   }
@@ -995,7 +995,7 @@ End
     price = 10
     craftingCost = "STEEL" 16
     modifiers = {
-      DEFENSE 4
+      DEFENSE 5
     }
 	equipmentGroup = "steel equipment"
   }
@@ -1023,7 +1023,7 @@ End
     price = 10
     craftingCost = "STEEL" 24
     modifiers = {
-      DEFENSE 3
+      DEFENSE 4 #Close to AdaBoots at 5 DEF, but should provide good protection.
     }
   }
   "BONUS_SteelShield"
@@ -1038,7 +1038,7 @@ End
     craftingCost = "STEEL" 24
     modifiers = {
       PARRY 2
-      DEFENSE 4
+      DEFENSE 5
     }
     maxUpgrades = 1
     storageIds = {"armor" "equipment"}
@@ -1719,11 +1719,11 @@ End
     equipmentSlot = WEAPON
 	weight = 2
 	modifiers = {
-        DAMAGE 11
+        DAMAGE 18 #Hopefully this helps them keep up with the arms race. :-/
 		PARRY 2
       }
 	price = 200
-	craftingCost = "IRON" 30
+	craftingCost = "STEEL" 30 #When in doubt: Amazon-spec gear is divinely provided. ("Solar Flare" as the Queen's shield?)
 	weaponInfo = {
         attackType = CUT
 	twoHanded = true
@@ -1735,7 +1735,7 @@ End
 	  3 SpecialAttr DAMAGE 20 HatedBy HATE_UNDEAD
     }
 	storageIds = {"weapons" "equipment"}
-        equipmentGroup = "iron equipment"
+        equipmentGroup = "steel equipment"
  }
 
 "BONUS_IronSpear"
@@ -1812,7 +1812,7 @@ End
     price = 50
     craftingCost = "STEEL" 50
     modifiers = {
-      DEFENSE 9
+      DEFENSE 16
     }
  }
  
@@ -1856,7 +1856,7 @@ End
     price = 50
     craftingCost = "STEEL" 50
     modifiers = {
-      DEFENSE 9
+      DEFENSE 16
     }
  }
  
@@ -1877,6 +1877,8 @@ End
  }
  ##Tower shields
  ##They really need better sprites, but I was in a hurry. -CSeven :-/
+ ##In case it's unclear: these are large, heavy-duty shields that are built to be Hidden Behind.  They can't Parry anything, but make it tougher to shoot you.
+ ##Ideally, I'd implement custom half-off and 75% off ranged for them, and have them set Parry to 0 while equipped.
  
  "BONUS_WoodTowerShield"
  {
@@ -1985,7 +1987,7 @@ End
     }
     maxUpgrades = 3
 	equipmentGroup = "jothnite equipment"
-	carriedTickEffect = JothniteEffect() #Gives fire resistance when equipped, so OK to auto-equip
+	carriedTickEffect = JothniteEffect() #Gives cold resistance when equipped, so OK to auto-equip
     equipedEffect = { RANGED_RESISTANCE COLD_RESISTANT }
 	storageIds = {"armor" "equipment"}
   }
@@ -2021,7 +2023,7 @@ End
 ###
 
 "RoyalDust" {
-	viewId = { "brain" }
+	viewId = { "brain" } #Needs a new sprite. I know. -CSeven
     name = "royal dust"
     itemClass = OTHER
     weight = 5
@@ -2789,7 +2791,7 @@ End
 	craftingCost = "STEEL" 40
     modifiers = {
 	  SPELL_DAMAGE 1
-      DEFENSE 4
+      DEFENSE 7 #Steel armor is 13 DEF.
 	  SPELL_SPEED 5
     }
     genPrefixes = {
