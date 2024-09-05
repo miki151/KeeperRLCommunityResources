@@ -1,0 +1,56 @@
+"peseants" modify
+{
+    {
+      ids = { "PESEANT_PLAYER" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      keybinding = CREATE_IMP
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1 ExponentialCost "CROPS" 10 5 4 }
+      }
+    }
+}
+
+"farm_animals"
+{
+    {
+      ids = { "DOG" }
+      traits = { FIGHTER DOESNT_TRIGGER NO_LIMIT }
+      frequency = 0.1
+    }
+    {
+      ids = { "HORSE_CAN_TRAIN" "DONKEY" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "CROPS" 15 } #Modded
+      }
+    }
+    {
+      ids = { "GOAT" }
+      traits = { NO_LIMIT INCREASE_POPULATION }
+      requirements = {
+        { 1 ExponentialCost "CROPS" 10 5 4 }
+      }
+      frequency = 0.1
+    }
+}
+
+"white_keeper" modify append
+{  
+    {
+      ids = { "HORSE_CAN_TRAIN" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "CROPS" 30 }
+      }
+    }
+    {
+      ids = { "DONKEY" "COW" "GOAT" }
+      traits = { NO_LIMIT INCREASE_POPULATION }
+      requirements = {
+        { 1.0 CostInfo "CROPS" 50 }
+      }
+    }
+    
+}

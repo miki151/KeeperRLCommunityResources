@@ -1,0 +1,50 @@
+  "MUSHROOM_FARM"
+  {
+    name = "mushroom plot"
+    viewId = { "farm_plot" ColorId DARK_BROWN }
+    tickType = Effect Chance 0.001 Chain {
+	  DestroyWalls BASH
+      ChooseRandom {	  
+	    DropItems {Mushroom Lasting 50 DEF_BONUS} {1 3}
+		DropItems {Mushroom Lasting 50 DAM_BONUS} {1 3}
+		DropItems {Mushroom Lasting 50 REGENERATION} {1 3}
+		DropItems {Mushroom Lasting NIGHT_VISION } {1 3}
+      }
+	}
+    strength = 1
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "TREE_FARM"
+  {
+    name = "sapling plot"
+    viewId = { "farm_plot" ColorId DARK_GREEN }
+    tickType = Effect Chance 0.001 PlaceFurniture "CANIF_TREE_FARMED"
+    layer = FLOOR
+    canBuildOutsideOfTerritory = true
+  }
+  "BARN"
+  {
+    name = "barn"
+    viewId = { "haypile" }
+	strength = 50
+	blockingEnemies = true
+    populationIncrease = { 1 none }
+    canBuildOutsideOfTerritory = true
+  }
+  "CROPS" modify
+  {
+    usageType = UsageEffect "scythe " Chain
+	  { Chance 0.3 CreatureMessage { "scythe the field" "scythes the field" }
+	    Chance 0.1 Filter And { CreatureId "IMP" Not Indoors } DropItems {"sack"} 1
+	    Chance 0.1 Filter And { CreatureId "PESEANT_PLAYER" Not Indoors } DropItems {"sack"} 1
+	    Chance 0.1 Filter And { CreatureId "GOBLIN_WORKER" Not Indoors } DropItems {"sack"} 1
+	  }
+    usageTime = 20
+    canBuildOutsideOfTerritory = true
+  }
+ "CANIF_TREE_FARMED" inherit "CANIF_TREE"
+ {
+   destroyedRemains = none
+   strength2 = { 70 DIG }
+ }
