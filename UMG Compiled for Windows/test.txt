@@ -1,0 +1,30 @@
+{
+  Set("rock")
+  Inside(1, {
+    Place({3 3},
+      Reset("floor", "room_floor"),
+      6
+    )
+    Connect(On("floor"),
+      5, On("rock"), Reset("floor")
+    )
+  })
+  Place(
+    {1 1},
+    Set("monster"),
+    4,
+    On("room_floor")
+  )
+}
+
+"floor" . white
+"rock" # gray
+"water" . blue
+"grass" = green
+"sand" = yellow
+"wall" | brown
+"door" + brown
+"mushroom" * magenta
+"lava" ~ red
+"bridge" _ brown
+"monster" & red
