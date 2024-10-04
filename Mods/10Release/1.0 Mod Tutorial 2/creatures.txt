@@ -1,0 +1,97 @@
+"BLUE_DRAGON"
+  {
+    viewId = { "red_dragon" Rgb 33 27 120 255 }
+    attr = {
+      DAMAGE 45
+      SPELL_DAMAGE 50
+      DEFENSE 47
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting INSANITY} } }}}
+      }
+      deathSound = "DYING_DRAGON"
+    }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      RANGED_VULNERABILITY 1
+      STEED 1
+      REGENERATION 1
+    }
+    name = {
+      name = "green dragon"
+      stackName = "dragon"
+      firstNameGen = "DRAGON"
+    }
+    spells = { "healing" "deception" "haste" "magic missile" "advanced magic missile" "dragon greeting" }
+    hatedByEffect = HATE_DRAGONS
+    inventory = {
+      { "GoldPiece" 60 100 }
+      { type = Glyph { WEAPON VictimEffect 0.3 Lasting POISON } chance = 0.3 }
+      { type = Glyph { ARMOR LastingEffect MAGIC_RESISTANCE } chance = 0.3 }
+      { type = Glyph { ARMOR LastingEffect REGENERATION } chance = 0.3 }
+      { type = Glyph { ARMOR ItemAttrBonus DEFENSE 3 } chance = 0.3 }
+      { type = Glyph { WEAPON ItemAttrBonus DAMAGE 3 } chance = 0.3 }
+      { type = Glyph { RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 } chance = 0.3 }
+    }
+    steedAchievement = "rode_dragon"
+  }
+
+"BLACK_DRAGON_PLAYER"
+  {
+    viewId = { "red_dragon" Rgb 80 80 80 255 }
+    attr = {
+      DAMAGE 45
+      DEFENSE 47
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+      drops = {{ "BlackDragonScales" } 1}
+      droppedPartUpgrade = Permanent TELEPATHY
+      deathSound = "DYING_DRAGON"
+    }
+    permanentEffects = {
+      RANGED_VULNERABILITY 1
+      #BLIND 1 ------commented out, the black dragon player must not be blind.
+      TELEPATHY 1
+      STEED 1
+      CAPTURE_RESISTANCE 1
+      REGENERATION 1
+    }
+    name = {
+      name = "black dragon"
+      firstNameGen = "DRAGON"
+      stackName = "dragon"
+    }
+    spells = { "healing" "haste" "cure poison" "black dragon blindness" "dragon greeting"}
+    hatedByEffect = HATE_DRAGONS
+    inventory = {
+      { "GoldPiece" 120 200 }
+      { type = Glyph { WEAPON VictimEffect 0.3 Lasting BLIND } chance = 1.0 }
+      { type = Glyph { WEAPON VictimEffect 0.3 Lasting 50 BLEEDING } chance = 0.3 }
+      { type = Glyph { WEAPON LastingEffect ENTERTAINER } chance = 0.3 }
+      { type = Glyph { ARMOR ItemAttrBonus DEFENSE 3 } chance = 0.3 }
+      { type = Glyph { WEAPON ItemAttrBonus DAMAGE 3 } chance = 0.3 }
+      { type = Glyph { RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 } chance = 0.3 }
+      { type = Glyph { WEAPON SpecialAttr DAMAGE 5 Name "at night" Night } chance = 0.3 }
+    }
+    killedAchievement = "killed_black_dragon"
+    steedAchievement = "rode_dragon"
+  }

@@ -90,23 +90,19 @@
     <!-- Tab content container -->
     <div id="tabContentContainer"><div id="tab0" class="tabcontent" style="display: block;"><label>Enter content of details.txt:</label><span class="checkbox-container"><input type="checkbox" id="viewToggle0"><label for="viewToggle0"> View as code</label></span><textarea id="details_txt" rows="6">"Softmonster"
 
-"1.0 Mod Tutorial 3 - The dragon campaign mod.
+"1.0 Mod Tutorial 2 - The roaming dragons mod
 
-The third lesson in the tutorial series.
-Try the first tutorial '2.0 Mod Tutorial' before doing this one if you are stuck modifying this code.
+Second lesson in the tutorial series.
 
-We keep the roaming dragons from 1.0 Mod Tutorial 2.
+We add all vanilla dragons as dragon adventurers and also add a new blue dragon adventurer to the game with the code for the new type of dragon.
 
-We add a new option to play a special dragon campaign featuring mostly knights and other dragons as enemies.
-
-This mod introduces making changes to campaign_villains.txt and also enemies.txt
+We also create a second version of black dragon, which isn't blind, so that players don't have to play a roaming blind dragon.
 
 Open:
 
-     KeeperRL\\mods\\1.0 Mod Tutorial 3\\NowYouTry.html
+     KeeperRL\\mods\\1.0 Mod Tutorial 2\\NowYouTry.html
 
-....to add your own dragon campaign with new dragons. 
-
+....to add your own dragon adventurer mod with a new dragons. Try the first tutorial '1.0 Mod Tutorial' before doing this one if you are stuck modifying this code.
 
 "</textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token string">"Softmonster"</span>
 
@@ -143,7 +139,7 @@ _________
   baseName = "Roaming Dragon" #The Type of keeper this will appear under in the game
   creatureId = { "RED_DRAGON" } #Found in Vanilla creatures.txt 
   tribeAlignment = EVIL #EVIL or LAWFUL
-  description = "Play as a dragon rampaging villagers." #Make your own description 
+  description = "Play as a red dragon rampaging villagers." #Make your own description 
   villainGroups = { EVIL_KEEPER EVIL_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
   immigrantGroups = {} #Use this if you want to have immigration from immigration.txt
   technology = {} #Use this if you want to have technology from technology.txt
@@ -152,7 +148,7 @@ _________
   buildingGroups = {} #Choose some top level menu groups for building furniture from build_menu.txt
   workshopGroups = {} #Let the keeper craft things by assigning top level workshop item groups from workshops_menu.txt
   minionTraits = {LEADER WORKER} #CIVILIAN and PRISONER are also valid values.
-  maxPopulation = 100 #Increase if you want to allow imigration
+  maxPopulation = 1 #Increase if you want to allow imigration
   startingBase = { 8 8 } "castle_empty" #Choose a random layout from enemies.txt for your keeper's base
   prisoners = false #Or let them capture
   requireQuartersForExp = false #Put to true if you want to force your keeper to build quarters to level up.
@@ -181,54 +177,6 @@ _________
 "9.6 Blue Dragon Adventurer" inherit "9.1 Red Dragon Adventurer"
 {
   creatureId = { "BLUE_DRAGON" } #From the modded version of creatures.txt 
-}
-
-"9.1.1 Red Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
-{
-  creatureId = { "RED_DRAGON" } #Found in Vanilla creatures.txt
-  description = "Play the dragon campaign as a red dragon. The dragon campaign features mostly knights and other dragons as enemies."  
-  baseName = "Dragon Campaign"
-  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
-}
-
-"9.2.1 Green Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
-{
-  creatureId = { "GREEN_DRAGON" } #Found in Vanilla creatures.txt 
-  description = "Play the dragon campaign as a red dragon. The dragon campaign features mostly knights and other dragons as enemies."  
-  baseName = "Dragon Campaign"
-  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
-}
-
-"9.3.1 Yellow Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
-{
-  creatureId = { "YELLOW_DRAGON" } #Found in Vanilla creatures.txt 
-  description = "Play the dragon campaign as a red dragon. The dragon campaign features mostly knights and other dragons as enemies."  
-  baseName = "Dragon Campaign"
-  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
-}
-
-"9.4.1 White Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
-{
-  creatureId = { "WHITE_DRAGON" } #Found in Vanilla creatures.txt 
-  description = "Play the dragon campaign as a white dragon. The dragon campaign features mostly knights and other dragons as enemies."  
-  baseName = "Dragon Campaign"
-  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
-}
-
-"9.5.1 BLACK Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
-{
-  creatureId = { "BLACK_DRAGON_PLAYER" } #Found in Vanilla creatures.txt 
-  description = "Play the dragon campaign as a black dragon. The dragon campaign features mostly knights and other dragons as enemies."  
-  baseName = "Dragon Campaign"
-  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
-}
-
-"9.6.1 Blue Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
-{
-  creatureId = { "BLUE_DRAGON" } #From the modded version of creatures.txt 
-  description = "Play the dragon campaign as a blue dragon. The dragon campaign features mostly knights and other dragons as enemies."  
-  baseName = "Dragon Campaign"
-  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
 }
 </textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token string">"9.1 Red Dragon Adventurer"</span>
 <span class="token punctuation">{</span>
@@ -433,106 +381,21 @@ _________
 
 # https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>miki151<span class="token operator">/</span>keeperrl<span class="token operator">/</span>tree<span class="token operator">/</span>master<span class="token operator">/</span>data_free<span class="token operator">/</span>game_config<span class="token operator">/</span>creatures<span class="token punctuation">.</span>txt
 
-# There is no work to <span class="token keyword">do</span> here yet<span class="token punctuation">.</span></code></pre></div></div><div id="tab3" class="tabcontent" style="display: none;"><label>Enter content of campaign_villains.txt:</label><span class="checkbox-container"><input type="checkbox" id="viewToggle3"><label for="viewToggle3"> View as code</label></span><textarea id="campaign_villains_txt" rows="15">DRAGON_COTTAGES inherit COTTAGES append {
-  {{"map_house2"} "HUMAN_COTTAGE" "Cottage" MINOR}
-  {{"map_house_snow1"} "ESKIMO_COTTAGE" "Cottage" MINOR}
-  {{"map_house1"} "NOMAD_COTTAGE" "Cottage" MINOR}
-  {{"map_house_elf"} "ELVEN_COTTAGE" "Cottage" MINOR}
-  {{"map_dungeon2"} "DWARF_CAVE" "Cave" MINOR}
-  {{"map_dungeon1"} "GOBLIN_CAVE_ALLY" "Cave" MINOR}
-  {{"map_dungeon1"} "HARPY_CAVE" "Cave" MINOR}
-  {{"map_dungeon2"} "DARK_ELF_CAVE" "Cave" MINOR}
-}
+# There is no work to <span class="token keyword">do</span> here yet<span class="token punctuation">.</span></code></pre></div></div><div id="tab3" class="tabcontent" style="display: none;"><label>Enter content of campaign_villains.txt:</label><span class="checkbox-container"><input type="checkbox" id="viewToggle3"><label for="viewToggle3"> View as code</label></span><textarea id="campaign_villains_txt" rows="15">#  { EVIL_KEEPER EVIL_COTTAGES } are already defined here:
 
-DRAGON_CAMPAIGN {
-    {{"map_adoxie"} "MAIN_DUNGEON" "Adoxie priest" MAIN true}
-    {{"map_castle1"} "KNIGHTS" "Knights" MAIN}
-    {{"map_dragon"} "DRAGON_BASE" "Red dragon" MAIN}
-    {{"map_dragon"} "RED_DRAGON" "Red dragon" LESSER}
-    {{"map_white_dragon"} "WHITE_DRAGON" "White dragon" LESSER}
-    {{"map_green_dragon"} "GREEN_DRAGON" "Green dragon" LESSER}
-    {{"map_dragon"} "RED_DRAGON_ALLY" "Red dragon" ALLY}
-    {{"map_white_dragon"} "WHITE_DRAGON_ALLY" "White dragon" ALLY}
-    {{"map_green_dragon"} "GREEN_DRAGON_ALLY" "Green dragon" ALLY}
-}</textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript">#  <span class="token punctuation">{</span> <span class="token constant">EVIL_KEEPER</span> <span class="token constant">EVIL_COTTAGES</span> <span class="token punctuation">}</span> are already defined here<span class="token operator">:</span>
+# https://github.com/miki151/keeperrl/tree/master/data_free/game_config/campaign_villains.txt
+
+# EVIL_KEEPER and EVIL_COTTAGES are two separate list of enemies that will be encountered when playing the keeper.
+
+# This is the normal list for evil keepers</textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript">#  <span class="token punctuation">{</span> <span class="token constant">EVIL_KEEPER</span> <span class="token constant">EVIL_COTTAGES</span> <span class="token punctuation">}</span> are already defined here<span class="token operator">:</span>
 
 # https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>miki151<span class="token operator">/</span>keeperrl<span class="token operator">/</span>tree<span class="token operator">/</span>master<span class="token operator">/</span>data_free<span class="token operator">/</span>game_config<span class="token operator">/</span>campaign_villains<span class="token punctuation">.</span>txt
 
 # <span class="token constant">EVIL_KEEPER</span> and <span class="token constant">EVIL_COTTAGES</span> are two separate list <span class="token keyword">of</span> enemies that will be encountered when playing the keeper<span class="token punctuation">.</span>
 
-# This is the normal list <span class="token keyword">for</span> evil keepers</code></pre></div></div><div id="tab4" class="tabcontent" style="display: none;"><label>Enter content of enemies.txt:</label><span class="checkbox-container"><input type="checkbox" id="viewToggle4"><label for="viewToggle4"> View as code</label></span><textarea id="enemies_txt" rows="15">"DRAGON_BASE"
-{
-  biome = "MOUNTAIN"
-  settlement = {
-    type = Builtin CASTLE2 "BRICK"
-    tribe = MONSTER
-    inhabitants = {
-      leader = { { "RED_DRAGON" } }
-      fighters = {
-        count = {5 10}
-        all = {
-            1 "GREEN_DRAGON"
-            1 "YELLOW_DRAGON"
-            1 "RED_DRAGON"
-	    1 "BLACK_DRAGON"
-	    1 "WHITE_DRAGON"
-	    1 "BLUE_DRAGON"			}
-      }
-    }
-    locationNameGen = "TOWN"
-    race = "dragons"
-    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
-    furniture = "roomFurniture"
-    outsideFeatures = "castleOutside"
-  }
-  config = {
-    immigrantInterval = 300
-    maxPopulation = 10
-    ghostProb = 0.1
-    spawnGhosts = 6
-    prisoners = true
-  }
-  behaviour = {
-    ambushChance = 0.1
-    minPopulation = 3
-    minTeamSize = 5
-    triggers = {
-      RoomTrigger "THRONE" 0.0003
-      RoomTrigger "THRONE_HUMAN" 0.0003
-      RoomTrigger "IMPALED_HEAD" 0.0001
-      SelfVictims
-      NumConquered 2
-      StolenItems
-      FinishOff
-      Proximity
-      AggravatingMinions
-    }
-    attackBehaviour = KillLeader
-  }
-  immigrants = {
-    {
-      ids = {"GREEN_DRAGON" "RED_DRAGON" "YELLOW_DRAGON" "BLACK_DRAGON" "WHITE_DRAGON" "BLUE_DRAGON"}
-      traits = {FIGHTER}
-      frequency = 1
-    }
-  }
-}
+# This is the normal list <span class="token keyword">for</span> evil keepers</code></pre></div></div><div id="tab4" class="tabcontent" style="display: none;"><label>Enter content of enemies.txt:</label><span class="checkbox-container"><input type="checkbox" id="viewToggle4"><label for="viewToggle4"> View as code</label></span><textarea id="enemies_txt" rows="15"># No new enemies need to be defined for this tutorial.
 
-"RED_DRAGON_ALLY" inherit "RED_DRAGON"
-{
-    settlement = append { tribe = DARK_KEEPER }
-}
-
-"WHITE_DRAGON_ALLY" inherit "WHITE_DRAGON"
-{
-    settlement = append { tribe = DARK_KEEPER }
-}
-
-"GREEN_DRAGON_ALLY" inherit "GREEN_DRAGON"
-{
-    settlement = append { tribe = DARK_KEEPER }
-}
-</textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript"># No <span class="token keyword">new</span> <span class="token class-name">enemies</span> need to be defined <span class="token keyword">for</span> <span class="token keyword">this</span> tutorial<span class="token punctuation">.</span>
+# You would put them in here and add them to any custom campaign villains you wanted.</textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript"># No <span class="token keyword">new</span> <span class="token class-name">enemies</span> need to be defined <span class="token keyword">for</span> <span class="token keyword">this</span> tutorial<span class="token punctuation">.</span>
 
 # You would put them <span class="token keyword">in</span> here and add them to any custom campaign villains you wanted<span class="token punctuation">.</span></code></pre></div></div></div>
 
