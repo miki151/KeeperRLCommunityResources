@@ -1,0 +1,952 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeeperRL Mod File Editor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            resize: none;
+            font-family: monospace;
+            margin-bottom: 20px; /* Space between controls */
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto; /* Center the button */
+        }
+        /* Tab styles */
+        .tab {
+            overflow: hidden;
+            background-color: #f1f1f1;
+            margin-bottom: 10px; /* Space between tabs and textareas */
+        }
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #ccc;
+        }
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            margin-bottom: 20px; /* Space between tabs and download button */
+        }
+        .tabcontent textarea {
+            height: 300px;
+        }
+        /* Specific height for detailsInput */
+        #detailsInput {
+            height: 120px; /* Height for at least 6 lines */
+        }
+        .code-container {
+            display: none;
+            margin-top: 10px;
+        }
+        .checkbox-container {
+            display: inline-block;
+            margin-left: 10px; /* Space between label and checkbox */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>KeeperRL Mod File Editor</h1>
+
+    <!-- Mod Name Input -->
+    <label for="modName">Enter Mod Name:</label>
+    <input type="text" id="modName" value="<Change this name>">
+
+    <!-- Tab navigation -->
+    <div class="tab" id="tabContainer"><button class="tablinks" id="defaultOpen">details.txt</button><button class="tablinks active">keeper_creatures.txt</button><button class="tablinks">creatures.txt</button><button class="tablinks">campaign_villains.txt</button><button class="tablinks">enemies.txt</button></div>
+
+    <!-- Tab content container -->
+    <div id="tabContentContainer"><div id="tab0" class="tabcontent" style="display: none;"><label>Enter content of details.txt:</label><span class="checkbox-container"><input type="checkbox" id="viewToggle0"><label for="viewToggle0"> View as code</label></span><textarea id="details_txt" rows="6">"Softmonster"
+
+"1.0 Mod Tutorial 3 - The dragon campaign mod.
+
+The third lesson in the tutorial series.
+Try the first tutorial '2.0 Mod Tutorial' before doing this one if you are stuck modifying this code.
+
+We keep the roaming dragons from 1.0 Mod Tutorial 2.
+
+We add a new option to play a special dragon campaign featuring mostly knights and other dragons as enemies.
+
+This mod introduces making changes to campaign_villains.txt and also enemies.txt
+
+Open:
+
+     KeeperRL\\mods\\1.0 Mod Tutorial 3\\NowYouTry.html
+
+....to add your own dragon campaign with new dragons. 
+
+
+"</textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token string">"Softmonster"</span>
+
+"<span class="token number">1.0</span> Mod Tutorial <span class="token number">3</span> <span class="token operator">-</span> The dragon campaign mod<span class="token punctuation">.</span>
+
+The third lesson <span class="token keyword">in</span> the tutorial series<span class="token punctuation">.</span>
+Try the first tutorial <span class="token string">'2.0 Mod Tutorial'</span> before doing <span class="token keyword">this</span> one <span class="token keyword">if</span> you are stuck modifying <span class="token keyword">this</span> code<span class="token punctuation">.</span>
+
+We keep the roaming dragons from <span class="token number">1.0</span> Mod Tutorial <span class="token number">2.</span>
+
+We add a <span class="token keyword">new</span> <span class="token class-name">option</span> to play a special dragon campaign featuring mostly knights and other dragons <span class="token keyword">as</span> enemies<span class="token punctuation">.</span>
+
+This mod introduces making changes to campaign_villains<span class="token punctuation">.</span>txt and also enemies<span class="token punctuation">.</span>txt
+
+<span class="token literal-property property">Open</span><span class="token operator">:</span>
+
+     KeeperRL\\mods\\<span class="token number">1.0</span> Mod Tutorial <span class="token number">3</span>\\NowYouTry<span class="token punctuation">.</span>html
+
+<span class="token operator">...</span><span class="token punctuation">.</span>to add your own dragon campaign <span class="token keyword">with</span> <span class="token keyword">new</span> <span class="token class-name">dragons<span class="token punctuation">.</span></span> 
+
+
+"</code></pre></div></div><div id="tab1" class="tabcontent" style="display: block;"><label>Enter content of keeper_creatures.txt:</label><span class="checkbox-container"><input type="checkbox" id="viewToggle1"><label for="viewToggle1"> View as code</label></span><textarea id="keeper_creatures_txt" rows="15">"9.1 Red Dragon Adventurer"
+{
+
+  #Edit these values to write your own mod. If you hit 'download your mod' in the editor, your edited version of this web pages will be added to your own mod!
+  # WOW! magic! #
+
+  #You can construct a new keeper just from the pieces of configuration already defined in vanilla.
+  
+  #Vanilla config files are found here: https://github.com/miki151/keeperrl/tree/master/data_free/game_config
+  
+  #eg. https://github.com/miki151/keeperrl/tree/master/data_free/game_config/creatures.txt
+
+  baseName = "Roaming Dragon" #The Type of keeper this will appear under in the game
+  creatureId = { "RED_DRAGON" } #Found in Vanilla creatures.txt 
+  tribeAlignment = EVIL #EVIL or LAWFUL
+  description = "Play as a dragon rampaging villagers." #Make your own description 
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
+  immigrantGroups = {} #Use this if you want to have immigration from immigration.txt
+  technology = {} #Use this if you want to have technology from technology.txt
+  zLevelGroups = { "basic" } #choose the zlevels from zlevels.txt
+  initialTech = { } #Give the keeper any starting tech you want from technology.txt
+  buildingGroups = {} #Choose some top level menu groups for building furniture from build_menu.txt
+  workshopGroups = {} #Let the keeper craft things by assigning top level workshop item groups from workshops_menu.txt
+  minionTraits = {LEADER WORKER} #CIVILIAN and PRISONER are also valid values.
+  maxPopulation = 100 #Increase if you want to allow imigration
+  startingBase = { 8 8 } "castle_empty" #Choose a random layout from enemies.txt for your keeper's base
+  prisoners = false #Or let them capture
+  requireQuartersForExp = false #Put to true if you want to force your keeper to build quarters to level up.
+}
+
+"9.2 Green Dragon Adventurer" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "GREEN_DRAGON" } #Found in Vanilla creatures.txt 
+}
+
+"9.3 Yellow Dragon Adventurer" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "YELLOW_DRAGON" } #Found in Vanilla creatures.txt 
+}
+
+"9.4 White Dragon Adventurer" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "WHITE_DRAGON" } #Found in Vanilla creatures.txt 
+}
+
+"9.5 BLACK Dragon Adventurer" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "BLACK_DRAGON_PLAYER" } #Found in Vanilla creatures.txt 
+}
+
+"9.6 Blue Dragon Adventurer" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "BLUE_DRAGON" } #From the modded version of creatures.txt 
+}
+
+"9.1.1 Red Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "RED_DRAGON" } #Found in Vanilla creatures.txt
+  description = "Play the dragon campaign as a red dragon. The dragon campaign features mostly knights and other dragons as enemies."  
+  baseName = "Dragon Campaign"
+  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
+}
+
+"9.2.1 Green Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "GREEN_DRAGON" } #Found in Vanilla creatures.txt 
+  description = "Play the dragon campaign as a red dragon. The dragon campaign features mostly knights and other dragons as enemies."  
+  baseName = "Dragon Campaign"
+  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
+}
+
+"9.3.1 Yellow Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "YELLOW_DRAGON" } #Found in Vanilla creatures.txt 
+  description = "Play the dragon campaign as a red dragon. The dragon campaign features mostly knights and other dragons as enemies."  
+  baseName = "Dragon Campaign"
+  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
+}
+
+"9.4.1 White Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "WHITE_DRAGON" } #Found in Vanilla creatures.txt 
+  description = "Play the dragon campaign as a white dragon. The dragon campaign features mostly knights and other dragons as enemies."  
+  baseName = "Dragon Campaign"
+  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
+}
+
+"9.5.1 BLACK Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "BLACK_DRAGON_PLAYER" } #Found in Vanilla creatures.txt 
+  description = "Play the dragon campaign as a black dragon. The dragon campaign features mostly knights and other dragons as enemies."  
+  baseName = "Dragon Campaign"
+  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
+}
+
+"9.6.1 Blue Dragon Campaign" inherit "9.1 Red Dragon Adventurer"
+{
+  creatureId = { "BLUE_DRAGON" } #From the modded version of creatures.txt 
+  description = "Play the dragon campaign as a blue dragon. The dragon campaign features mostly knights and other dragons as enemies."  
+  baseName = "Dragon Campaign"
+  villainGroups = { DRAGON_CAMPAIGN DRAGON_COTTAGES } #Can replace EVIL with LAWFUL for different enemies
+}
+</textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+
+  #Edit these values to write your own mod<span class="token punctuation">.</span> If you hit <span class="token string">'download your mod'</span> <span class="token keyword">in</span> the editor<span class="token punctuation">,</span> your edited version <span class="token keyword">of</span> <span class="token keyword">this</span> web pages will be added to your own mod<span class="token operator">!</span>
+  # <span class="token constant">WOW</span><span class="token operator">!</span> magic<span class="token operator">!</span> #
+
+  #You can construct a <span class="token keyword">new</span> <span class="token class-name">keeper</span> just from the pieces <span class="token keyword">of</span> configuration already defined <span class="token keyword">in</span> vanilla<span class="token punctuation">.</span>
+  
+  #Vanilla config files are found here<span class="token operator">:</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>miki151<span class="token operator">/</span>keeperrl<span class="token operator">/</span>tree<span class="token operator">/</span>master<span class="token operator">/</span>data_free<span class="token operator">/</span>game_config
+  
+  #eg<span class="token punctuation">.</span> https<span class="token operator">:</span><span class="token operator">/</span><span class="token operator">/</span>github<span class="token punctuation">.</span>com<span class="token operator">/</span>miki151<span class="token operator">/</span>keeperrl<span class="token operator">/</span>tree<span class="token operator">/</span>master<span class="token operator">/</span>data_free<span class="token operator">/</span>game_config<span class="token operator">/</span>creatures<span class="token punctuation">.</span>txt
+
+  baseName <span class="token operator">=</span> <span class="token string">"Roaming Dragon"</span> #The Type <span class="token keyword">of</span> keeper <span class="token keyword">this</span> will appear under <span class="token keyword">in</span> the game
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"RED_DRAGON"</span> <span class="token punctuation">}</span> #Found <span class="token keyword">in</span> Vanilla creatures<span class="token punctuation">.</span>txt 
+  tribeAlignment <span class="token operator">=</span> <span class="token constant">EVIL</span> #<span class="token constant">EVIL</span> or <span class="token constant">LAWFUL</span>
+  description <span class="token operator">=</span> <span class="token string">"Play as a dragon rampaging villagers."</span> #Make your own description 
+  villainGroups <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token constant">EVIL_KEEPER</span> <span class="token constant">EVIL_COTTAGES</span> <span class="token punctuation">}</span> #Can replace <span class="token constant">EVIL</span> <span class="token keyword">with</span> <span class="token constant">LAWFUL</span> <span class="token keyword">for</span> different enemies
+  immigrantGroups <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> #Use <span class="token keyword">this</span> <span class="token keyword">if</span> you want to have immigration from immigration<span class="token punctuation">.</span>txt
+  technology <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> #Use <span class="token keyword">this</span> <span class="token keyword">if</span> you want to have technology from technology<span class="token punctuation">.</span>txt
+  zLevelGroups <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"basic"</span> <span class="token punctuation">}</span> #choose the zlevels from zlevels<span class="token punctuation">.</span>txt
+  initialTech <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">}</span> #Give the keeper any starting tech you want from technology<span class="token punctuation">.</span>txt
+  buildingGroups <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> #Choose some top level menu groups <span class="token keyword">for</span> building furniture from build_menu<span class="token punctuation">.</span>txt
+  workshopGroups <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span> #Let the keeper craft things by assigning top level workshop item groups from workshops_menu<span class="token punctuation">.</span>txt
+  minionTraits <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token constant">LEADER</span> <span class="token constant">WORKER</span><span class="token punctuation">}</span> #<span class="token constant">CIVILIAN</span> and <span class="token constant">PRISONER</span> are also valid values<span class="token punctuation">.</span>
+  maxPopulation <span class="token operator">=</span> <span class="token number">1</span> #Increase <span class="token keyword">if</span> you want to allow imigration
+  startingBase <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token number">8</span> <span class="token number">8</span> <span class="token punctuation">}</span> <span class="token string">"castle_empty"</span> #Choose a random layout from enemies<span class="token punctuation">.</span>txt <span class="token keyword">for</span> your keeper's base
+  prisoners <span class="token operator">=</span> <span class="token boolean">false</span> #Or <span class="token keyword">let</span> them capture
+  requireQuartersForExp <span class="token operator">=</span> <span class="token boolean">false</span> #Put to <span class="token boolean">true</span> <span class="token keyword">if</span> you want to force your keeper to build quarters to level up<span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.2 Green Dragon Adventurer"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"GREEN_DRAGON"</span> <span class="token punctuation">}</span> #Found <span class="token keyword">in</span> Vanilla creatures<span class="token punctuation">.</span>txt 
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.3 Yellow Dragon Adventurer"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"YELLOW_DRAGON"</span> <span class="token punctuation">}</span> #Found <span class="token keyword">in</span> Vanilla creatures<span class="token punctuation">.</span>txt 
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.4 White Dragon Adventurer"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"WHITE_DRAGON"</span> <span class="token punctuation">}</span> #Found <span class="token keyword">in</span> Vanilla creatures<span class="token punctuation">.</span>txt 
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.5 BLACK Dragon Adventurer"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"BLACK_DRAGON_PLAYER"</span> <span class="token punctuation">}</span> #Found <span class="token keyword">in</span> Vanilla creatures<span class="token punctuation">.</span>txt 
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.6 Blue Dragon Adventurer"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"BLUE_DRAGON"</span> <span class="token punctuation">}</span> #From the modded version <span class="token keyword">of</span> creatures<span class="token punctuation">.</span>txt 
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.1.1 Red Dragon Campaign"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"RED_DRAGON"</span> <span class="token punctuation">}</span> #Found <span class="token keyword">in</span> Vanilla creatures<span class="token punctuation">.</span>txt
+  description <span class="token operator">=</span> <span class="token string">"Play the dragon campaign as a red dragon. The dragon campaign features mostly knights and other dragons as enemies."</span>  
+  baseName <span class="token operator">=</span> <span class="token string">"Dragon Campaign"</span>
+  villainGroups <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token constant">DRAGON_CAMPAIGN</span> <span class="token constant">DRAGON_COTTAGES</span> <span class="token punctuation">}</span> #Can replace <span class="token constant">EVIL</span> <span class="token keyword">with</span> <span class="token constant">LAWFUL</span> <span class="token keyword">for</span> different enemies
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.2.1 Green Dragon Campaign"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"GREEN_DRAGON"</span> <span class="token punctuation">}</span> #Found <span class="token keyword">in</span> Vanilla creatures<span class="token punctuation">.</span>txt 
+  description <span class="token operator">=</span> <span class="token string">"Play the dragon campaign as a red dragon. The dragon campaign features mostly knights and other dragons as enemies."</span>  
+  baseName <span class="token operator">=</span> <span class="token string">"Dragon Campaign"</span>
+  villainGroups <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token constant">DRAGON_CAMPAIGN</span> <span class="token constant">DRAGON_COTTAGES</span> <span class="token punctuation">}</span> #Can replace <span class="token constant">EVIL</span> <span class="token keyword">with</span> <span class="token constant">LAWFUL</span> <span class="token keyword">for</span> different enemies
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.3.1 Yellow Dragon Campaign"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"YELLOW_DRAGON"</span> <span class="token punctuation">}</span> #Found <span class="token keyword">in</span> Vanilla creatures<span class="token punctuation">.</span>txt 
+  description <span class="token operator">=</span> <span class="token string">"Play the dragon campaign as a red dragon. The dragon campaign features mostly knights and other dragons as enemies."</span>  
+  baseName <span class="token operator">=</span> <span class="token string">"Dragon Campaign"</span>
+  villainGroups <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token constant">DRAGON_CAMPAIGN</span> <span class="token constant">DRAGON_COTTAGES</span> <span class="token punctuation">}</span> #Can replace <span class="token constant">EVIL</span> <span class="token keyword">with</span> <span class="token constant">LAWFUL</span> <span class="token keyword">for</span> different enemies
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.4.1 White Dragon Campaign"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"WHITE_DRAGON"</span> <span class="token punctuation">}</span> #Found <span class="token keyword">in</span> Vanilla creatures<span class="token punctuation">.</span>txt 
+  description <span class="token operator">=</span> <span class="token string">"Play the dragon campaign as a white dragon. The dragon campaign features mostly knights and other dragons as enemies."</span>  
+  baseName <span class="token operator">=</span> <span class="token string">"Dragon Campaign"</span>
+  villainGroups <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token constant">DRAGON_CAMPAIGN</span> <span class="token constant">DRAGON_COTTAGES</span> <span class="token punctuation">}</span> #Can replace <span class="token constant">EVIL</span> <span class="token keyword">with</span> <span class="token constant">LAWFUL</span> <span class="token keyword">for</span> different enemies
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.5.1 BLACK Dragon Campaign"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"BLACK_DRAGON_PLAYER"</span> <span class="token punctuation">}</span> #Found <span class="token keyword">in</span> Vanilla creatures<span class="token punctuation">.</span>txt 
+  description <span class="token operator">=</span> <span class="token string">"Play the dragon campaign as a black dragon. The dragon campaign features mostly knights and other dragons as enemies."</span>  
+  baseName <span class="token operator">=</span> <span class="token string">"Dragon Campaign"</span>
+  villainGroups <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token constant">DRAGON_CAMPAIGN</span> <span class="token constant">DRAGON_COTTAGES</span> <span class="token punctuation">}</span> #Can replace <span class="token constant">EVIL</span> <span class="token keyword">with</span> <span class="token constant">LAWFUL</span> <span class="token keyword">for</span> different enemies
+<span class="token punctuation">}</span>
+
+<span class="token string">"9.6.1 Blue Dragon Campaign"</span> inherit <span class="token string">"9.1 Red Dragon Adventurer"</span>
+<span class="token punctuation">{</span>
+  creatureId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"BLUE_DRAGON"</span> <span class="token punctuation">}</span> #From the modded version <span class="token keyword">of</span> creatures<span class="token punctuation">.</span>txt 
+  description <span class="token operator">=</span> <span class="token string">"Play the dragon campaign as a blue dragon. The dragon campaign features mostly knights and other dragons as enemies."</span>  
+  baseName <span class="token operator">=</span> <span class="token string">"Dragon Campaign"</span>
+  villainGroups <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token constant">DRAGON_CAMPAIGN</span> <span class="token constant">DRAGON_COTTAGES</span> <span class="token punctuation">}</span> #Can replace <span class="token constant">EVIL</span> <span class="token keyword">with</span> <span class="token constant">LAWFUL</span> <span class="token keyword">for</span> different enemies
+<span class="token punctuation">}</span>
+</code></pre></div></div><div id="tab2" class="tabcontent" style="display: none;"><label>Enter content of creatures.txt:</label><span class="checkbox-container"><input type="checkbox" id="viewToggle2"><label for="viewToggle2"> View as code</label></span><textarea id="creatures_txt" rows="15">"BLUE_DRAGON"
+  {
+    viewId = { "red_dragon" Rgb 33 27 120 255 }
+    attr = {
+      DAMAGE 45
+      SPELL_DAMAGE 50
+      DEFENSE 47
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting INSANITY} } }}}
+      }
+      deathSound = "DYING_DRAGON"
+    }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      RANGED_VULNERABILITY 1
+      STEED 1
+      REGENERATION 1
+    }
+    name = {
+      name = "green dragon"
+      stackName = "dragon"
+      firstNameGen = "DRAGON"
+    }
+    spells = { "healing" "deception" "haste" "magic missile" "advanced magic missile" "dragon greeting" }
+    hatedByEffect = HATE_DRAGONS
+    inventory = {
+      { "GoldPiece" 60 100 }
+      { type = Glyph { WEAPON VictimEffect 0.3 Lasting POISON } chance = 0.3 }
+      { type = Glyph { ARMOR LastingEffect MAGIC_RESISTANCE } chance = 0.3 }
+      { type = Glyph { ARMOR LastingEffect REGENERATION } chance = 0.3 }
+      { type = Glyph { ARMOR ItemAttrBonus DEFENSE 3 } chance = 0.3 }
+      { type = Glyph { WEAPON ItemAttrBonus DAMAGE 3 } chance = 0.3 }
+      { type = Glyph { RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 } chance = 0.3 }
+    }
+    steedAchievement = "rode_dragon"
+  }
+
+"BLACK_DRAGON_PLAYER"
+  {
+    viewId = { "red_dragon" Rgb 80 80 80 255 }
+    attr = {
+      DAMAGE 45
+      DEFENSE 47
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+      drops = {{ "BlackDragonScales" } 1}
+      droppedPartUpgrade = Permanent TELEPATHY
+      deathSound = "DYING_DRAGON"
+    }
+    permanentEffects = {
+      RANGED_VULNERABILITY 1
+      #BLIND 1 ------commented out, the black dragon player must not be blind.
+      TELEPATHY 1
+      STEED 1
+      CAPTURE_RESISTANCE 1
+      REGENERATION 1
+    }
+    name = {
+      name = "black dragon"
+      firstNameGen = "DRAGON"
+      stackName = "dragon"
+    }
+    spells = { "healing" "haste" "cure poison" "black dragon blindness" "dragon greeting"}
+    hatedByEffect = HATE_DRAGONS
+    inventory = {
+      { "GoldPiece" 120 200 }
+      { type = Glyph { WEAPON VictimEffect 0.3 Lasting BLIND } chance = 1.0 }
+      { type = Glyph { WEAPON VictimEffect 0.3 Lasting 50 BLEEDING } chance = 0.3 }
+      { type = Glyph { WEAPON LastingEffect ENTERTAINER } chance = 0.3 }
+      { type = Glyph { ARMOR ItemAttrBonus DEFENSE 3 } chance = 0.3 }
+      { type = Glyph { WEAPON ItemAttrBonus DAMAGE 3 } chance = 0.3 }
+      { type = Glyph { RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 } chance = 0.3 }
+      { type = Glyph { WEAPON SpecialAttr DAMAGE 5 Name "at night" Night } chance = 0.3 }
+    }
+    killedAchievement = "killed_black_dragon"
+    steedAchievement = "rode_dragon"
+  }
+</textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token string">"BLUE_DRAGON"</span>
+  <span class="token punctuation">{</span>
+    viewId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"red_dragon"</span> Rgb <span class="token number">33</span> <span class="token number">27</span> <span class="token number">120</span> <span class="token number">255</span> <span class="token punctuation">}</span>
+    attr <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token constant">DAMAGE</span> <span class="token number">45</span>
+      <span class="token constant">SPELL_DAMAGE</span> <span class="token number">50</span>
+      <span class="token constant">DEFENSE</span> <span class="token number">47</span>
+    <span class="token punctuation">}</span>
+    body <span class="token operator">=</span> <span class="token punctuation">{</span>
+      type <span class="token operator">=</span> FourLegged <span class="token constant">HUGE</span>
+      corpseIngredientType <span class="token operator">=</span> <span class="token string">"dragon_corpse"</span>
+      addBodyPart <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token constant">WING</span> <span class="token number">2</span>
+      <span class="token punctuation">}</span>
+      intrinsicAttacks <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token constant">HEAD</span> <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token punctuation">{</span> Intrinsic <span class="token punctuation">{</span> <span class="token string">"bite_attack"</span> <span class="token punctuation">}</span> <span class="token string">"fangs"</span> <span class="token number">12</span> <span class="token punctuation">{</span>
+            attackType <span class="token operator">=</span> <span class="token constant">BITE</span>
+            attackMsg <span class="token operator">=</span> <span class="token constant">BITE</span>
+            victimEffect <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0.3</span> Lasting <span class="token constant">INSANITY</span><span class="token punctuation">}</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      deathSound <span class="token operator">=</span> <span class="token string">"DYING_DRAGON"</span>
+    <span class="token punctuation">}</span>
+    permanentEffects <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token constant">MAGIC_RESISTANCE</span> <span class="token number">1</span>
+      <span class="token constant">RANGED_VULNERABILITY</span> <span class="token number">1</span>
+      <span class="token constant">STEED</span> <span class="token number">1</span>
+      <span class="token constant">REGENERATION</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+    name <span class="token operator">=</span> <span class="token punctuation">{</span>
+      name <span class="token operator">=</span> <span class="token string">"green dragon"</span>
+      stackName <span class="token operator">=</span> <span class="token string">"dragon"</span>
+      firstNameGen <span class="token operator">=</span> <span class="token string">"DRAGON"</span>
+    <span class="token punctuation">}</span>
+    spells <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"healing"</span> <span class="token string">"deception"</span> <span class="token string">"haste"</span> <span class="token string">"magic missile"</span> <span class="token string">"advanced magic missile"</span> <span class="token string">"dragon greeting"</span> <span class="token punctuation">}</span>
+    hatedByEffect <span class="token operator">=</span> <span class="token constant">HATE_DRAGONS</span>
+    inventory <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">{</span> <span class="token string">"GoldPiece"</span> <span class="token number">60</span> <span class="token number">100</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">WEAPON</span> VictimEffect <span class="token number">0.3</span> Lasting <span class="token constant">POISON</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">ARMOR</span> LastingEffect <span class="token constant">MAGIC_RESISTANCE</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">ARMOR</span> LastingEffect <span class="token constant">REGENERATION</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">ARMOR</span> ItemAttrBonus <span class="token constant">DEFENSE</span> <span class="token number">3</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">WEAPON</span> ItemAttrBonus <span class="token constant">DAMAGE</span> <span class="token number">3</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">RANGED_WEAPON</span> ItemAttrBonus <span class="token constant">RANGED_DAMAGE</span> <span class="token number">3</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    steedAchievement <span class="token operator">=</span> <span class="token string">"rode_dragon"</span>
+  <span class="token punctuation">}</span>
+
+<span class="token string">"BLACK_DRAGON_PLAYER"</span>
+  <span class="token punctuation">{</span>
+    viewId <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"red_dragon"</span> Rgb <span class="token number">80</span> <span class="token number">80</span> <span class="token number">80</span> <span class="token number">255</span> <span class="token punctuation">}</span>
+    attr <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token constant">DAMAGE</span> <span class="token number">45</span>
+      <span class="token constant">DEFENSE</span> <span class="token number">47</span>
+    <span class="token punctuation">}</span>
+    body <span class="token operator">=</span> <span class="token punctuation">{</span>
+      type <span class="token operator">=</span> FourLegged <span class="token constant">HUGE</span>
+      corpseIngredientType <span class="token operator">=</span> <span class="token string">"dragon_corpse"</span>
+      addBodyPart <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token constant">WING</span> <span class="token number">2</span>
+      <span class="token punctuation">}</span>
+      intrinsicAttacks <span class="token operator">=</span> <span class="token punctuation">{</span>
+        <span class="token constant">HEAD</span> <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token punctuation">{</span> Intrinsic <span class="token punctuation">{</span> <span class="token string">"bite_attack"</span> <span class="token punctuation">}</span> <span class="token string">"fangs"</span> <span class="token number">15</span> <span class="token punctuation">{</span>
+            attackType <span class="token operator">=</span> <span class="token constant">BITE</span>
+            attackMsg <span class="token operator">=</span> <span class="token constant">BITE</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+      drops <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token string">"BlackDragonScales"</span> <span class="token punctuation">}</span> <span class="token number">1</span><span class="token punctuation">}</span>
+      droppedPartUpgrade <span class="token operator">=</span> Permanent <span class="token constant">TELEPATHY</span>
+      deathSound <span class="token operator">=</span> <span class="token string">"DYING_DRAGON"</span>
+    <span class="token punctuation">}</span>
+    permanentEffects <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token constant">RANGED_VULNERABILITY</span> <span class="token number">1</span>
+      #<span class="token constant">BLIND</span> <span class="token number">1</span> <span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span>commented out<span class="token punctuation">,</span> the black dragon player must not be blind<span class="token punctuation">.</span>
+      <span class="token constant">TELEPATHY</span> <span class="token number">1</span>
+      <span class="token constant">STEED</span> <span class="token number">1</span>
+      <span class="token constant">CAPTURE_RESISTANCE</span> <span class="token number">1</span>
+      <span class="token constant">REGENERATION</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+    name <span class="token operator">=</span> <span class="token punctuation">{</span>
+      name <span class="token operator">=</span> <span class="token string">"black dragon"</span>
+      firstNameGen <span class="token operator">=</span> <span class="token string">"DRAGON"</span>
+      stackName <span class="token operator">=</span> <span class="token string">"dragon"</span>
+    <span class="token punctuation">}</span>
+    spells <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token string">"healing"</span> <span class="token string">"haste"</span> <span class="token string">"cure poison"</span> <span class="token string">"black dragon blindness"</span> <span class="token string">"dragon greeting"</span><span class="token punctuation">}</span>
+    hatedByEffect <span class="token operator">=</span> <span class="token constant">HATE_DRAGONS</span>
+    inventory <span class="token operator">=</span> <span class="token punctuation">{</span>
+      <span class="token punctuation">{</span> <span class="token string">"GoldPiece"</span> <span class="token number">120</span> <span class="token number">200</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">WEAPON</span> VictimEffect <span class="token number">0.3</span> Lasting <span class="token constant">BLIND</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">1.0</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">WEAPON</span> VictimEffect <span class="token number">0.3</span> Lasting <span class="token number">50</span> <span class="token constant">BLEEDING</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">WEAPON</span> LastingEffect <span class="token constant">ENTERTAINER</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">ARMOR</span> ItemAttrBonus <span class="token constant">DEFENSE</span> <span class="token number">3</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">WEAPON</span> ItemAttrBonus <span class="token constant">DAMAGE</span> <span class="token number">3</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">RANGED_WEAPON</span> ItemAttrBonus <span class="token constant">RANGED_DAMAGE</span> <span class="token number">3</span> <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+      <span class="token punctuation">{</span> type <span class="token operator">=</span> Glyph <span class="token punctuation">{</span> <span class="token constant">WEAPON</span> SpecialAttr <span class="token constant">DAMAGE</span> <span class="token number">5</span> Name <span class="token string">"at night"</span> Night <span class="token punctuation">}</span> chance <span class="token operator">=</span> <span class="token number">0.3</span> <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    killedAchievement <span class="token operator">=</span> <span class="token string">"killed_black_dragon"</span>
+    steedAchievement <span class="token operator">=</span> <span class="token string">"rode_dragon"</span>
+  <span class="token punctuation">}</span>
+</code></pre></div></div><div id="tab3" class="tabcontent" style="display: none;"><label>Enter content of campaign_villains.txt:</label><span class="checkbox-container"><input type="checkbox" id="viewToggle3"><label for="viewToggle3"> View as code</label></span><textarea id="campaign_villains_txt" rows="15">DRAGON_COTTAGES inherit COTTAGES append {
+  {{"map_house2"} "HUMAN_COTTAGE" "Cottage" MINOR}
+  {{"map_house_snow1"} "ESKIMO_COTTAGE" "Cottage" MINOR}
+  {{"map_house1"} "NOMAD_COTTAGE" "Cottage" MINOR}
+  {{"map_house_elf"} "ELVEN_COTTAGE" "Cottage" MINOR}
+  {{"map_dungeon2"} "DWARF_CAVE" "Cave" MINOR}
+  {{"map_dungeon1"} "GOBLIN_CAVE_ALLY" "Cave" MINOR}
+  {{"map_dungeon1"} "HARPY_CAVE" "Cave" MINOR}
+  {{"map_dungeon2"} "DARK_ELF_CAVE" "Cave" MINOR}
+}
+
+DRAGON_CAMPAIGN {
+    {{"map_adoxie"} "MAIN_DUNGEON" "Adoxie priest" MAIN true}
+    {{"map_castle1"} "KNIGHTS" "Knights" MAIN}
+    {{"map_dragon"} "DRAGON_BASE" "Red dragon" MAIN}
+    {{"map_dragon"} "RED_DRAGON" "Red dragon" LESSER}
+    {{"map_white_dragon"} "WHITE_DRAGON" "White dragon" LESSER}
+    {{"map_green_dragon"} "GREEN_DRAGON" "Green dragon" LESSER}
+    {{"map_dragon"} "RED_DRAGON_ALLY" "Red dragon" ALLY}
+    {{"map_white_dragon"} "WHITE_DRAGON_ALLY" "White dragon" ALLY}
+    {{"map_green_dragon"} "GREEN_DRAGON_ALLY" "Green dragon" ALLY}
+}</textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token constant">DRAGON_COTTAGES</span> inherit <span class="token constant">COTTAGES</span> append <span class="token punctuation">{</span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_house2"</span><span class="token punctuation">}</span> <span class="token string">"HUMAN_COTTAGE"</span> <span class="token string">"Cottage"</span> <span class="token constant">MINOR</span><span class="token punctuation">}</span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_house_snow1"</span><span class="token punctuation">}</span> <span class="token string">"ESKIMO_COTTAGE"</span> <span class="token string">"Cottage"</span> <span class="token constant">MINOR</span><span class="token punctuation">}</span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_house1"</span><span class="token punctuation">}</span> <span class="token string">"NOMAD_COTTAGE"</span> <span class="token string">"Cottage"</span> <span class="token constant">MINOR</span><span class="token punctuation">}</span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_house_elf"</span><span class="token punctuation">}</span> <span class="token string">"ELVEN_COTTAGE"</span> <span class="token string">"Cottage"</span> <span class="token constant">MINOR</span><span class="token punctuation">}</span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_dungeon2"</span><span class="token punctuation">}</span> <span class="token string">"DWARF_CAVE"</span> <span class="token string">"Cave"</span> <span class="token constant">MINOR</span><span class="token punctuation">}</span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_dungeon1"</span><span class="token punctuation">}</span> <span class="token string">"GOBLIN_CAVE_ALLY"</span> <span class="token string">"Cave"</span> <span class="token constant">MINOR</span><span class="token punctuation">}</span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_dungeon1"</span><span class="token punctuation">}</span> <span class="token string">"HARPY_CAVE"</span> <span class="token string">"Cave"</span> <span class="token constant">MINOR</span><span class="token punctuation">}</span>
+  <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_dungeon2"</span><span class="token punctuation">}</span> <span class="token string">"DARK_ELF_CAVE"</span> <span class="token string">"Cave"</span> <span class="token constant">MINOR</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token constant">DRAGON_CAMPAIGN</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_adoxie"</span><span class="token punctuation">}</span> <span class="token string">"MAIN_DUNGEON"</span> <span class="token string">"Adoxie priest"</span> <span class="token constant">MAIN</span> <span class="token boolean">true</span><span class="token punctuation">}</span>
+    <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_castle1"</span><span class="token punctuation">}</span> <span class="token string">"KNIGHTS"</span> <span class="token string">"Knights"</span> <span class="token constant">MAIN</span><span class="token punctuation">}</span>
+    <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_dragon"</span><span class="token punctuation">}</span> <span class="token string">"DRAGON_BASE"</span> <span class="token string">"Red dragon"</span> <span class="token constant">MAIN</span><span class="token punctuation">}</span>
+    <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_dragon"</span><span class="token punctuation">}</span> <span class="token string">"RED_DRAGON"</span> <span class="token string">"Red dragon"</span> <span class="token constant">LESSER</span><span class="token punctuation">}</span>
+    <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_white_dragon"</span><span class="token punctuation">}</span> <span class="token string">"WHITE_DRAGON"</span> <span class="token string">"White dragon"</span> <span class="token constant">LESSER</span><span class="token punctuation">}</span>
+    <span class="token punctuation">{</span><span class="token punctuation">{</span><span class="token string">"map_green_dragon"</span><span class="token punctuation">}</span> <span class="token string">"GREEN_DRAGON"</span> <span class="token string">"Green dragon"</span> <span class="token constant">LESSER</span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div></div><div id="tab4" class="tabcontent" style="display: none;"><label>Enter content of enemies.txt:</label><span class="checkbox-container"><input type="checkbox" id="viewToggle4"><label for="viewToggle4"> View as code</label></span><textarea id="enemies_txt" rows="15">"DRAGON_BASE"
+{
+  biome = "MOUNTAIN"
+  settlement = {
+    type = Builtin CASTLE2 "BRICK"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "RED_DRAGON" } }
+      fighters = {
+        count = {5 10}
+        all = {
+            1 "GREEN_DRAGON"
+            1 "YELLOW_DRAGON"
+            1 "RED_DRAGON"
+	    1 "BLACK_DRAGON"
+	    1 "WHITE_DRAGON"
+	    1 "BLUE_DRAGON"			}
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "dragons"
+    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
+    furniture = "roomFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+    ghostProb = 0.1
+    spawnGhosts = 6
+    prisoners = true
+  }
+  behaviour = {
+    ambushChance = 0.1
+    minPopulation = 3
+    minTeamSize = 5
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 2
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+  }
+  immigrants = {
+    {
+      ids = {"GREEN_DRAGON" "RED_DRAGON" "YELLOW_DRAGON" "BLACK_DRAGON" "WHITE_DRAGON" "BLUE_DRAGON"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+"RED_DRAGON_ALLY" inherit "RED_DRAGON"
+{
+    settlement = append { tribe = DARK_KEEPER }
+}
+
+"WHITE_DRAGON_ALLY" inherit "WHITE_DRAGON"
+{
+    settlement = append { tribe = DARK_KEEPER }
+}
+
+"GREEN_DRAGON_ALLY" inherit "GREEN_DRAGON"
+{
+    settlement = append { tribe = DARK_KEEPER }
+}
+</textarea><div class="code-container" style="display: none;"><pre class="language-javascript" tabindex="0"><code class="language-javascript"><span class="token string">"DRAGON_BASE"</span>
+<span class="token punctuation">{</span>
+  biome <span class="token operator">=</span> <span class="token string">"MOUNTAIN"</span>
+  settlement <span class="token operator">=</span> <span class="token punctuation">{</span>
+    type <span class="token operator">=</span> Builtin <span class="token constant">CASTLE2</span> <span class="token string">"BONUS_BRICK"</span>
+    tribe <span class="token operator">=</span> <span class="token constant">MONSTER</span>
+    inhabitants <span class="token operator">=</span> <span class="token punctuation">{</span>
+      leader <span class="token operator">=</span> <span class="token punctuation">{</span> <span class="token punctuation">{</span> <span class="token string">"RED_DRAGON"</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span>
+      fighters <span class="token operator">=</span> <span class="token punctuation">{</span>
+        count <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">5</span> <span class="token number">10</span><span class="token punctuation">}</span>
+        all <span class="token operator">=</span> <span class="token punctuation">{</span>
+            <span class="token number">1</span> <span class="token string">"GREEN_DRAGON"</span>
+            <span class="token number">1</span> <span class="token string">"YELLOW_DRAGON"</span>
+            <span class="token number">1</span> <span class="token string">"RED_DRAGON"</span>
+	    <span class="token number">1</span> <span class="token string">"BLACK_DRAGON"</span>
+	    <span class="token number">1</span> <span class="token string">"WHITE_DRAGON"</span>
+	    <span class="token number">1</span> <span class="token string">"BLUE_DRAGON"</span>			<span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    locationNameGen <span class="token operator">=</span> <span class="token string">"TOWN"</span>
+    race <span class="token operator">=</span> <span class="token string">"dragons"</span>
+    stockpiles <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> <span class="token string">"gold"</span> <span class="token number">160</span> <span class="token string">"TREASURE_CHEST"</span> <span class="token punctuation">}</span><span class="token punctuation">}</span>
+    furniture <span class="token operator">=</span> <span class="token string">"roomFurniture"</span>
+    outsideFeatures <span class="token operator">=</span> <span class="token string">"castleOutside"</span>
+  <span class="token punctuation">}</span>
+  config <span class="token operator">=</span> <span class="token punctuation">{</span>
+    immigrantInterval <span class="token operator">=</span> <span class="token number">300</span>
+    maxPopulation <span class="token operator">=</span> <span class="token number">10</span>
+    ghostProb <span class="token operator">=</span> <span class="token number">0.1</span>
+    spawnGhosts <span class="token operator">=</span> <span class="token number">6</span>
+    prisoners <span class="token operator">=</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span>
+  behaviour <span class="token operator">=</span> <span class="token punctuation">{</span>
+    ambushChance <span class="token operator">=</span> <span class="token number">0.1</span>
+    minPopulation <span class="token operator">=</span> <span class="token number">3</span>
+    minTeamSize <span class="token operator">=</span> <span class="token number">5</span>
+    triggers <span class="token operator">=</span> <span class="token punctuation">{</span>
+      RoomTrigger <span class="token string">"THRONE"</span> <span class="token number">0.0003</span>
+      RoomTrigger <span class="token string">"THRONE_HUMAN"</span> <span class="token number">0.0003</span>
+      RoomTrigger <span class="token string">"IMPALED_HEAD"</span> <span class="token number">0.0001</span>
+      SelfVictims
+      NumConquered <span class="token number">2</span>
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    <span class="token punctuation">}</span>
+    attackBehaviour <span class="token operator">=</span> KillLeader
+  <span class="token punctuation">}</span>
+  immigrants <span class="token operator">=</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">{</span>
+      ids <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"GREEN_DRAGON"</span> <span class="token string">"RED_DRAGON"</span> <span class="token string">"YELLOW_DRAGON"</span> <span class="token string">"BLACK_DRAGON"</span> <span class="token string">"WHITE_DRAGON"</span> <span class="token string">"BLUE_DRAGON"</span><span class="token punctuation">}</span>
+      traits <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token constant">FIGHTER</span><span class="token punctuation">}</span>
+      frequency <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div></div></div>
+
+    <!-- Download button at the bottom -->
+    <button id="downloadZip">Download your mod as a .zip file</button>
+
+<script>
+    // Array of file names and default content
+    const files = [
+        { name: "details.txt", defaultContent: `"Softmonster"\n"Mod Template"` },
+        { name: "keeper_creatures.txt", defaultContent: `"9.1 Test Keeper"\n{\n}` },
+        { name: "creatures.txt", defaultContent: `` },
+        { name: "campaign_villains.txt", defaultContent: `` },		
+        { name: "enemies.txt", defaultContent: `` }	
+    ];
+
+    // References to DOM elements
+    const tabContainer = document.getElementById("tabContainer");
+    const tabContentContainer = document.getElementById("tabContentContainer");
+
+    // Function to create a tab button
+    function createTabButton(file, index) {
+        const button = document.createElement("button");
+        button.className = "tablinks";
+        button.textContent = file.name;
+        button.onclick = (event) => openTab(event, `tab${index}`);
+        if (index === 0) button.id = "defaultOpen";  // Set default open tab
+        tabContainer.appendChild(button);
+    }
+
+    // Function to add click handler to an existing tab button
+    function addClickHandlerToExistingTabButton(file, index) {
+        const button = Array.from(tabContainer.querySelectorAll("button")).find(btn => btn.textContent === file.name);
+        if (button) {
+            button.onclick = (event) => openTab(event, `tab${index}`);
+        }
+    }
+
+    // Function to create tab content
+    function createTabContent(file, index) {
+        const tabContent = document.createElement("div");
+        tabContent.id = `tab${index}`;
+        tabContent.className = "tabcontent";
+
+        const label = document.createElement("label");
+        label.textContent = `Enter content of ${file.name}:`;
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.id = `viewToggle${index}`;
+        checkbox.addEventListener('change', () => toggleView(index));
+
+        const checkboxLabel = document.createElement("label");
+        checkboxLabel.htmlFor = `viewToggle${index}`;
+        checkboxLabel.textContent = " View as code";
+        
+        const checkboxContainer = document.createElement("span");
+        checkboxContainer.className = "checkbox-container";
+        checkboxContainer.appendChild(checkbox);
+        checkboxContainer.appendChild(checkboxLabel);
+
+        const textarea = document.createElement("textarea");
+        textarea.id = file.name.replace('.', '_');
+        textarea.value = file.defaultContent;
+
+        const codeContainer = document.createElement("div");
+        codeContainer.className = "code-container";
+        const codeBlock = document.createElement("pre");
+        codeBlock.innerHTML = `<code class="language-javascript">${textarea.value}</code>`;
+        codeContainer.appendChild(codeBlock);
+
+        tabContent.appendChild(label);
+        tabContent.appendChild(checkboxContainer);
+        tabContent.appendChild(textarea);
+        tabContent.appendChild(codeContainer);
+        tabContentContainer.appendChild(tabContent);
+    }
+
+    // Function to add checkbox handler to existing tab content
+    function addCheckboxHandlerToExistingTabContent(file, index) {
+        const checkbox = document.getElementById(`viewToggle${index}`);
+        if (checkbox) {
+            checkbox.addEventListener('change', () => toggleView(index));
+        }
+    }
+
+    // Create tabs and content areas dynamically only if they don't already exist
+    files.forEach((file, index) => {
+        // Check if a button with the same file name (or content) already exists
+        const tabExists = Array.from(tabContainer.querySelectorAll("button")).some(btn => btn.textContent === file.name);
+        const contentExists = document.getElementById(`tab${index}`);
+
+        // Create tab button only if it doesn't exist
+        if (!tabExists) {
+            createTabButton(file, index);
+        } else {
+            addClickHandlerToExistingTabButton(file, index);
+        }
+
+        // Create tab content only if it doesn't exist
+        if (!contentExists) {
+            createTabContent(file, index);
+        } else {
+            addCheckboxHandlerToExistingTabContent(file, index);
+        }
+    });
+
+    // Tab switch functionality
+    function openTab(evt, tabName) {
+        // Hide all tab contents
+        const tabcontent = document.getElementsByClassName("tabcontent");
+        Array.from(tabcontent).forEach(content => content.style.display = "none");
+
+        // Deactivate all tab buttons
+        const tablinks = document.getElementsByClassName("tablinks");
+        Array.from(tablinks).forEach(link => link.className = link.className.replace(" active", ""));
+
+        // Show the selected tab content and activate the tab button
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Toggle view between textarea and code
+    function toggleView(index) {
+        const textarea = document.getElementById(files[index].name.replace('.', '_'));
+        const codeContainer = document.querySelector(`#tab${index} .code-container`);
+        const checkbox = document.getElementById(`viewToggle${index}`);
+
+        if (checkbox.checked) {
+            textarea.style.display = "none";
+            codeContainer.style.display = "block";
+        } else {
+            textarea.style.display = "block";
+            codeContainer.style.display = "none";
+        }
+
+        // Update code block with current textarea value
+        const codeBlock = codeContainer.querySelector('code');
+        codeBlock.innerHTML = textarea.value;
+        Prism.highlightElement(codeBlock); // Highlight syntax
+    }
+
+    // Open the first tab by default
+    document.getElementById("defaultOpen").click();
+
+    // Download functionality
+    document.getElementById('downloadZip').addEventListener('click', function () {
+        const modName = document.getElementById('modName').value || 'TestKeeper';
+        const zip = new JSZip();
+
+        // Add file content from each tab to the ZIP file
+        files.forEach(file => {
+            const content = document.getElementById(file.name.replace('.', '_')).value;
+            if (content.trim()) {
+                zip.file(file.name, content);
+            }
+        });
+
+        // Add current HTML (with updated content) to the ZIP file
+        const htmlSource = updateHtmlSourceWithContent();
+        zip.file("NowYouTry.html", htmlSource);
+		
+       // Put in the version info file to make the mod appear in the mods list in-game.
+        zip.file("version_info", "0\n0\nAlpha37");
+
+        // Create the install batch file for the mod.
+        addInstallBatchFile(zip);
+
+        // Generate the ZIP and trigger download
+        zip.generateAsync({ type: "blob" }).then(function (content) {
+            saveAs(content, `${modName}.zip`);
+        });
+    });
+
+    // Function to add Install.bat file to the ZIP archive
+    function addInstallBatchFile(zip) {
+        const installBatContent = `@echo off
+setlocal
+
+:: Get the full path of the current batch file
+set "currentFilePath=%~dp0"
+
+:: Get the name of the folder containing the batch file
+for %%F in ("%currentFilePath%.") do set "currentDirName=%%~nxF"
+
+:: Display the folder name
+echo The folder name containing the batch file is: %currentDirName%
+
+:: Initialize variables
+set "steamDir="
+set "steamAppsDir="
+
+:: Define common Steam installation paths as an array-like structure
+set "commonPaths=C:\\Program Files (x86)\\Steam"
+set "commonPaths2=C:\\Program Files\\Steam"
+set "commonPaths3=D:\\Steam"
+
+:: Check common paths
+for %%P in ("%commonPaths%" "%commonPaths2%" "%commonPaths3%") do (
+    if exist "%%~P\\steam.exe" (
+        set "steamDir=%%~P"
+        set "steamAppsDir=%%~P\\steamapps"
+        goto :found
+    )
+)
+
+:: If Steam is not found, print an error message and pause
+echo Error: Steam installation not found in common paths.
+pause
+exit /b
+
+:found
+echo Steam directory: %steamDir%
+echo SteamApps directory: %steamAppsDir%
+
+:: Set the target directory where the new folder will be created
+set "targetDir=%steamAppsDir%\\common\\KeeperRL\\mods\\%currentDirName%"
+
+:: Create the new folder
+mkdir "%targetDir%" || (
+    echo Error: Failed to create target directory %targetDir%.
+    pause
+    exit /b
+)
+
+:: Copy the contents of the current directory to the new folder
+xcopy "%currentDir%*" "%targetDir%\\" /E /I /Y || (
+    echo Error: Failed to copy files to %targetDir%.
+    pause
+    exit /b
+)
+
+echo Files copied to %targetDir%.
+pause
+`;
+
+        zip.file("Install.bat", installBatContent);
+    }
+
+
+    // Update the HTML source with the current content of each file's tab
+    function updateHtmlSourceWithContent() {
+        let htmlSource = document.documentElement.outerHTML;
+
+        // Update each textarea in the HTML source with the current tab content
+        files.forEach(file => {
+            const content = document.getElementById(file.name.replace('.', '_')).value;
+            const regex = new RegExp(`<textarea id="${file.name.replace('.', '_')}"[\\s\\S]*?<\\/textarea>`, 'g');
+            htmlSource = htmlSource.replace(regex, `<textarea id="${file.name.replace('.', '_')}" rows="${file.name === "details.txt" ? 6 : 15}">${content}</textarea>`);
+        });
+
+        return htmlSource;
+    }
+</script>
+
+
+
+</body></html>

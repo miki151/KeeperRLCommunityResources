@@ -1,0 +1,72 @@
+"DRAGON_BASE"
+{
+  biome = "MOUNTAIN"
+  settlement = {
+    type = Builtin CASTLE2 "BRICK"
+    tribe = MONSTER
+    inhabitants = {
+      leader = { { "RED_DRAGON" } }
+      fighters = {
+        count = {5 10}
+        all = {
+            1 "GREEN_DRAGON"
+            1 "YELLOW_DRAGON"
+            1 "RED_DRAGON"
+	    1 "BLACK_DRAGON"
+	    1 "WHITE_DRAGON"
+	    1 "BLUE_DRAGON"			}
+      }
+    }
+    locationNameGen = "TOWN"
+    race = "dragons"
+    stockpiles = {{ "gold" 160 "TREASURE_CHEST" }}
+    furniture = "roomFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 10
+    ghostProb = 0.1
+    spawnGhosts = 6
+    prisoners = true
+  }
+  behaviour = {
+    ambushChance = 0.1
+    minPopulation = 3
+    minTeamSize = 5
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 2
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+  }
+  immigrants = {
+    {
+      ids = {"GREEN_DRAGON" "RED_DRAGON" "YELLOW_DRAGON" "BLACK_DRAGON" "WHITE_DRAGON" "BLUE_DRAGON"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+}
+
+"RED_DRAGON_ALLY" inherit "RED_DRAGON"
+{
+    settlement = append { tribe = DARK_KEEPER }
+}
+
+"WHITE_DRAGON_ALLY" inherit "WHITE_DRAGON"
+{
+    settlement = append { tribe = DARK_KEEPER }
+}
+
+"GREEN_DRAGON_ALLY" inherit "GREEN_DRAGON"
+{
+    settlement = append { tribe = DARK_KEEPER }
+}
