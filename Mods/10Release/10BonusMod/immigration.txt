@@ -1413,9 +1413,20 @@
 
     "animations"
 	{
-        { ids = { "BONUS_POSSESSED_SWORD" } traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "IRON" 500}  { 0.0 TechId "simplistic animations"}}}
-        { ids = { "BONUS_GHOST_ARMOUR" }    traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "IRON" 500}  { 0.0 TechId "simplistic animations"}}}
-        { ids = { "BONUS_GIANT_ROBOT" }     traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "IRON" 1000}  { 0.0 TechId "magic contraptions"   }}}
+        { ids = { "BONUS_POSSESSED_SWORD" } traits = { FIGHTER } spawnLocation = NearLeader requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"}}}
+        { ids = { "BONUS_GHOST_ARMOUR" }    traits = { FIGHTER } spawnLocation = NearLeader requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"}}}
+        {
+		  ids ={ "BONUS_MINER_BOT" }
+		  traits = { WORKER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 150}  { 0.0 TechId "magic contraptions"  } } #Let's be honest, the forge-as-bed thing doesn't work anymore, not sure it ever did.  Sorry.
+		}
+		{
+		  ids ={ "BONUS_SIEGE_BOT" }
+		  traits = { FIGHTER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 200}  { 0.0 TechId "magic contraptions"  } }
+		}
 	}
 
     "peseant_prisoners"
@@ -2339,8 +2350,8 @@ End
         { ids = { "STONE_GOLEM" }     traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "STONE" 150} { 0.0 TechId "master earth magic"   }}}
         { ids = { "EARTH_ELEMENTAL" } traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "STONE" 200} { 0.0 TechId "elite earth magic"    }}}
         { ids = { "IRON_GOLEM" }      traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "IRON" 120}  { 0.0 TechId "basic metalic magic"  }}}
-        { ids = { "BONUS_POSSESSED_SWORD" } traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "IRON" 500}  { 0.0 TechId "simplistic animations"}}}
-        { ids = { "BONUS_GHOST_ARMOUR" }    traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "IRON" 500}  { 0.0 TechId "simplistic animations"}}}
+        { ids = { "BONUS_POSSESSED_SWORD" } traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"}}}
+        { ids = { "BONUS_GHOST_ARMOUR" }    traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"}}}
         { ids = { "BONUS_GIANT_ROBOT" }     traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "IRON" 1000}  { 0.0 TechId "magic contraptions"   }}}
         { ids = { "ADA_GOLEM" }       traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "ADA" 120}   { 0.0 TechId "master metalic magic" }}}
         { ids = { "AUTOMATON" }       traits = { FIGHTER } spawnLocation = NearLeader noAuto = true requirements = { {  1.0 CostInfo "IRON" 200}  { 0.0 TechId "elite metalic magic"  }}}
@@ -3282,6 +3293,31 @@ End
 			 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
           }
         }
+		{
+          ids = { "BONUS_DARK_HARPY" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {
+             { 0.01 { ExtraBodyPart HEAD 1}}
+             { 0.01 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 }}
+             { 0.05 { ExtraTraining DAMAGE 5}}
+             { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+             { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+             { 0.05 { Lasting { SWIMMING_SKILL } }}
+             { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.03 { Lasting { BAD_BREATH } }}
+             { 0.01 { Lasting { ENTERTAINER } }}
+			 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+        }
         {
           ids = { "BONUS_GHOST_ARMOUR" "BONUS_GHOST_ARMOUR" }
           traits = { FIGHTER NO_LIMIT }
@@ -3312,6 +3348,24 @@ End
     		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
           }
         }
+		{
+		  ids ={ "BONUS_MINER_BOT" }
+		  traits = { WORKER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 150}  { 0.0 TechId "magic contraptions"  } } #Let's be honest, the forge-as-bed thing doesn't work anymore, not sure it ever did.  Sorry.
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+		}
+		{
+		  ids ={ "BONUS_SIEGE_BOT" }
+		  traits = { FIGHTER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 200}  { 0.0 TechId "magic contraptions"  } }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE 5 AttrBonus SPELL_DAMAGE 5 AttrBonus RANGED_DAMAGE 5 AttrBonus DEFENSE 5}}
+          }
+		}
         {
           ids = { "NECROMANCER" }
           traits = { FIGHTER }
@@ -3883,6 +3937,24 @@ End
     		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
           }
         }
+		{
+		  ids ={ "BONUS_MINER_BOT" }
+		  traits = { WORKER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 150}  { 0.0 TechId "magic contraptions"  } } #Let's be honest, the forge-as-bed thing doesn't work anymore, not sure it ever did.  Sorry.
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+		}
+		{
+		  ids ={ "BONUS_SIEGE_BOT" }
+		  traits = { FIGHTER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 200}  { 0.0 TechId "magic contraptions"  } }
+		  specialTraits = {
+    		 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+		}
         {
           ids = { "BONUS_NECROMANCER_LT" }
           traits = { FIGHTER }
@@ -4020,6 +4092,31 @@ End
 			 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
           }
         }
+		{
+          ids = { "BONUS_DARK_HARPY" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {
+             { 0.01 { ExtraBodyPart HEAD 1}}
+             { 0.01 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 }}
+             { 0.05 { ExtraTraining DAMAGE 5}}
+             { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+             { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+             { 0.05 { Lasting { SWIMMING_SKILL } }}
+             { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.03 { Lasting { BAD_BREATH } }}
+             { 0.01 { Lasting { ENTERTAINER } }}
+			 { 1.00 { AttrBonus DAMAGE -5 AttrBonus SPELL_DAMAGE -5 AttrBonus RANGED_DAMAGE -5 AttrBonus DEFENSE -5}}
+          }
+        }
     }
     "sandbox"
     {
@@ -4141,6 +4238,29 @@ End
           }
         }
 		{
+          ids = { "BONUS_DARK_HARPY" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {
+             { 0.05 { ExtraBodyPart HEAD 1}}
+             { 0.05 { ExtraBodyPart WING 2}}
+             { 0.15 { ExtraTraining RANGED_DAMAGE 20 }}
+             { 0.15 { ExtraTraining DAMAGE 5}}
+             { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+             { 0.08 { Lasting { SWIMMING_SKILL } }}
+             { 0.02 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.01 { Lasting { HATE_ELVES } }}
+             { 0.01 { Lasting { HATE_HUMANS } }}
+             { 0.01 { Lasting { BAD_BREATH } }}
+             { 0.05 { Lasting { ENTERTAINER } }}
+          }
+        }
+		{
           ids = { "RED_DRAGON" }
           traits = { FIGHTER }
           consumeIds = true
@@ -4185,6 +4305,18 @@ End
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}}}
         }
+		{
+		  ids ={ "BONUS_MINER_BOT" }
+		  traits = { WORKER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 150}  { 0.0 TechId "magic contraptions"  } } #Let's be honest, the forge-as-bed thing doesn't work anymore, not sure it ever did.  Sorry.
+		}
+		{
+		  ids ={ "BONUS_SIEGE_BOT" }
+		  traits = { FIGHTER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 200}  { 0.0 TechId "magic contraptions"  } }
+		}
 		{
           ids = { "CYCLOPS" } #Moved from dark_knight_modded: breeding strange creatures is a Wizard thing. Knights breed more regular mounts and make better weapons & armor
           traits = { FIGHTER }
@@ -4473,6 +4605,30 @@ End
           }
         }
 		{
+          ids = { "BONUS_DARK_HARPY" }
+          traits = { FIGHTER }
+          spawnLocation = Pregnancy
+          frequency = 0.7
+          requirements = {
+            { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+            { 0.0 Pregnancy }
+          }
+          specialTraits = {
+             { 0.01 { ExtraBodyPart HEAD 1}}
+             { 0.01 { ExtraBodyPart WING 2}}
+             { 0.05 { ExtraTraining RANGED_DAMAGE 20 }}
+             { 0.05 { ExtraTraining DAMAGE 5}}
+             { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+             { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+             { 0.05 { Lasting { SWIMMING_SKILL } }}
+             { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+             { 0.02 { Lasting { HATE_ELVES } }}
+             { 0.02 { Lasting { HATE_HUMANS } }}
+             { 0.03 { Lasting { BAD_BREATH } }}
+             { 0.01 { Lasting { ENTERTAINER } }}
+          }
+        }
+		{
           ids = { "SUCCUBUS" }
           traits = { FIGHTER NO_EQUIPMENT }
           frequency = 0.3
@@ -4556,13 +4712,25 @@ End
           consumeIds = true    
           requirements = { {  1.0 CostInfo "IRON" 20}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
-        {
-          ids = { "BONUS_GIANT_ROBOT" "BONUS_GIANT_ROBOT" }
-          traits = { FIGHTER NO_LIMIT }
-          spawnLocation = FurnitureType "FORGE"
-          consumeIds = true    
-          requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}}}
-        }
+        #{
+        #  ids = { "BONUS_GIANT_ROBOT" "BONUS_GIANT_ROBOT" }
+        #  traits = { FIGHTER NO_LIMIT }
+        #  spawnLocation = FurnitureType "FORGE"
+        #  consumeIds = true    
+        #  requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}}}
+        #}
+		{
+		  ids ={ "BONUS_MINER_BOT" }
+		  traits = { WORKER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 150}  { 0.0 TechId "magic contraptions"  } } #Let's be honest, the forge-as-bed thing doesn't work anymore, not sure it ever did.  Sorry.
+		}
+		{
+		  ids ={ "BONUS_SIEGE_BOT" }
+		  traits = { FIGHTER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 200}  { 0.0 TechId "magic contraptions"  } }
+		}
         {
           ids = { "BONUS_SQUIDHOLDER" }
           traits = { FIGHTER }
@@ -4871,23 +5039,35 @@ End
           ids = { "BONUS_GHOST_ARMOUR" "BONUS_GHOST_ARMOUR" }
           traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          consumeIds = true    
+          consumeIds = true  
           requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
         {
           ids = { "BONUS_POSSESSED_SWORD" "BONUS_POSSESSED_SWORD" }
           traits = { FIGHTER NO_LIMIT }
           spawnLocation = FurnitureType "FORGE"
-          consumeIds = true    
+          consumeIds = true
           requirements = { {  1.0 CostInfo "IRON" 50}  { 0.0 TechId "simplistic animations"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} } 		                    
         }
-        {
-          ids = { "BONUS_GIANT_ROBOT" "BONUS_GIANT_ROBOT" }
-          traits = { FIGHTER NO_LIMIT }
-          spawnLocation = FurnitureType "FORGE"
-          consumeIds = true    
-          requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} }
-        }
+        #{
+        #  ids = { "BONUS_GIANT_ROBOT" "BONUS_GIANT_ROBOT" }
+        #  traits = { FIGHTER NO_LIMIT }
+        #  spawnLocation = FurnitureType "FORGE"
+        #  consumeIds = true    
+        #  requirements = { {  1.0 CostInfo "IRON" 100}  { 0.0 TechId "magic contraptions"  } { 0.3 AttractionInfo 1 {FurnitureType "FORGE"}} }
+        #}
+		{
+		  ids ={ "BONUS_MINER_BOT" }
+		  traits = { WORKER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 150}  { 0.0 TechId "magic contraptions"  } } #Let's be honest, the forge-as-bed thing doesn't work anymore, not sure it ever did.  Sorry.
+		}
+		{
+		  ids ={ "BONUS_SIEGE_BOT" }
+		  traits = { FIGHTER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 200}  { 0.0 TechId "magic contraptions"  } }
+		}
         {
           ids = { "BONUS_MILITIA" }
           traits = { FIGHTER NO_LIMIT }
@@ -5540,6 +5720,21 @@ End
   WhiteCastleRecruits()
 }
 
+"dwarf_miner" #Just in case the Bonus Castle keepers don't get any dwarf spawns in their campaign.
+{
+	{
+	initialRecruitment = 1
+	noAuto = true
+	invisible = true
+	consumeIds = true
+	 ids = { "BONUS_DWARF_MINER"}
+	 traits = { WORKER FIGHTER}
+	 specialTraits = {
+		{ 0.25 { Lasting { DISARM_TRAPS_SKILL } }}
+		{ 0.05 { Lasting { ENTERTAINER } }}
+	 }
+	}
+}
 
 "arcane_keeper"
 {
@@ -5675,6 +5870,18 @@ End
 		{ 0.05 { Lasting { ENTERTAINER } }}
 	 }
 	}
+	{
+	  ids ={ "BONUS_MINER_BOT" }
+	  traits = { WORKER NO_LIMIT }
+	  spawnLocation = NearLeader
+	  requirements = { {  1.0 CostInfo "IRON" 150}  { 0.0 TechId "magic contraptions"  } } #Let's be honest, the forge-as-bed thing doesn't work anymore, not sure it ever did.  Sorry.
+	}
+		{
+		  ids ={ "BONUS_SIEGE_BOT" }
+		  traits = { FIGHTER NO_LIMIT }
+		  spawnLocation = NearLeader
+		  requirements = { {  1.0 CostInfo "IRON" 200}  { 0.0 TechId "magic contraptions"  } }
+		}
     {
       ids = { "GALEAM" }
       traits = { FIGHTER }

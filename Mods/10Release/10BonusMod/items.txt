@@ -264,6 +264,20 @@ End
     weight = 0.5
 	storageIds = {"resources"}
   }
+"SteelSack" #Steel produced In Quantity
+  {
+    viewId = { "sack" }
+    name = "sack of steel"
+    applyMsgFirstPerson = "unload the steel"
+    applyMsgThirdPerson = "unloads the steel"
+    applySound = "FORGE_USAGE"
+    weight = 20
+    applyTime = 3
+    uses = 1
+    price = 10
+    effect = DropItems {"SteelOre"} {9 13} #Random (in)efficiency, but weighted in player's favor ^_^
+    storageIds = {"resources"}
+  }
 "InfOre" #Vanilla ore, but expanded in BonusMod; adoxium tier
   {
     viewId = { "infernite_ore_pile" }
@@ -3011,4 +3025,154 @@ End
   }
   "Cornuthaum3" modify append {
 	equipmentGroup = "mage equipment"
+  }
+  
+  ###
+  #Dark Steel
+  #Necro-specific gear, steel infused with the souls of the dead
+  #Punches way above its material (Infernite-tier damage/defense, Physical rather than Fire, made from cheap Steel)
+  #but only safely usable by UNDEAD_FLESH or BONE creatures
+  #and made at a Soulforge, which needs a fogbank and has a tendency to aggro folks
+  ###
+  "BONUS_DSSword" inherit "BONUS_SteelSword" {
+	viewId = { "dark_steel_sword" }
+	equipedViewId = { "dark_steel_sword_v" }
+	modifiers = {
+		DAMAGE 30
+	}
+	weaponInfo = {
+		attackType = CUT
+		victimEffect = { 0.6 Lasting BLIND }
+	}
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON } #Undead are immune to both ^_^
+  }
+  "BONUS_DSAxe" inherit "BONUS_SteelAxe" {
+	viewId = { "dark_steel_battle_axe" }
+	equipedViewId = { "dark_steel_battle_axe_v" }
+	modifiers = {
+		DAMAGE 45
+	}
+	weaponInfo = {
+		attackType = CUT
+		victimEffect = { 0.6 Lasting BLIND }
+	}
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON }
+  }
+  "BONUS_DSMace" inherit "BONUS_SteelMace" {
+	viewId = { "dark_steel_spiked_mace" }
+	equipedViewId = { "dark_steel_spiked_mace_v" }
+	modifiers = {
+		DAMAGE 40
+		DEFENSE 5
+	}
+	weaponInfo = {
+		attackType = CRUSH
+		victimEffect = { 0.6 Lasting BLIND }
+	}
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON }
+  }
+  "BONUS_DSSpear" inherit "BONUS_SteelSpear" {
+	viewId = { "dark_steel_spear" }
+	equipedViewId = { "dark_steel_spear_v" }
+	modifiers = {
+		DAMAGE 40
+		DEFENSE 5
+		PARRY 1
+	}
+	weaponInfo = {
+		attackType = STAB
+		victimEffect = { 0.6 Lasting BLIND }
+	}
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON }
+  }
+  "BONUS_DSBattleAxe" inherit "BONUS_SteelBattleAxe" {
+	viewId = { "dark_steel_war_axe" }
+	equipedViewId = { "dark_steel_battle_axe_v" }
+	modifiers = {
+		DAMAGE 60
+	}
+	weaponInfo = {
+		attackType = CUT
+		victimEffect = { 0.6 Lasting BLIND }
+		twoHanded = true
+	}
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON }
+  }
+  "BONUS_DSWarHammer" inherit "BONUS_SteelWarHammer" {
+	viewId = { "dark_steel_warhammer" }
+	equipedViewId = { "dark_steel_war_hammer_v" }
+	modifiers = {
+		DAMAGE 55
+	}
+	weaponInfo = {
+		attackType = CRUSH
+		victimEffect = { 0.6 Lasting BLIND }
+		twoHanded = true
+	}
+	genPrefixes = {
+      1 VictimEffect 0.6 Lasting COLLAPSED #Better than Ada.
+    }
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON }
+  }
+  "BONUS_DSShield" inherit "BONUS_SteelShield" {
+	viewId = { "dark_skull_shield" }
+	modifiers = {
+		PARRY 4
+		DEFENSE 15
+	}
+	genPrefixes = {
+		1 LastingEffect TELEPATHY
+	}
+	maxUpgrades = 2
+	equipedEffect = { BLEEDING POISON SUNLIGHT_VULNERABLE }
+  }
+  "BONUS_DSArmor" inherit "BONUS_SteelArmor" {
+	viewId = { "dark_steel_armor" }
+	modifiers = {
+		DEFENSE 40
+	}
+	genPrefixes = {
+		1 LastingEffect TELEPATHY
+	}
+	maxUpgrades = 2
+	equipedEffect = { BLEEDING POISON SUNLIGHT_VULNERABLE }
+  }
+  "BONUS_DSBoots" inherit "BONUS_SteelBoots" {
+	viewId = { "dark_steel_boots" }
+	modifiers = {
+		DEFENSE 12
+	}
+	genPrefixes = {
+		1 LastingEffect TELEPATHY
+	}
+	maxUpgrades = 2
+	equipedEffect = { BLEEDING POISON SUNLIGHT_VULNERABLE }
+  }
+  "BONUS_DSGloves" inherit "BONUS_SteelGloves" {
+	viewId = { "dark_steel_gloves" }
+	modifiers = {
+		DEFENSE 12
+	}
+	genPrefixes = {
+		1 LastingEffect TELEPATHY
+	}
+	maxUpgrades = 2
+	equipedEffect = { BLEEDING POISON SUNLIGHT_VULNERABLE }
+  }
+  "BONUS_DSHelm" inherit "BONUS_SteelHelm" {
+	viewId = { "dark_steel_helmet" }
+	modifiers = {
+		DEFENSE 12
+	}
+	genPrefixes = {
+		1 LastingEffect TELEPATHY
+	}
+	maxUpgrades = 2
+	equipedEffect = { BLEEDING POISON SUNLIGHT_VULNERABLE }
   }

@@ -1662,7 +1662,7 @@
    cooldown = 350
    sound = "SPELL_SUMMON_SPIRIT"
   }
-
+  
 #-------------------------
 #Water spells
 #-------------------------
@@ -2313,6 +2313,15 @@ OneTimeAbility("leadership +10", "leadership +10", {IncreaseAttr LEADERSHIP 10},
  }
  ###
  
+ "BONUS_siege dig"
+{
+  symbol = "X"
+  effect = Name "dig" DestroyWalls DIG
+  range = 1
+  cooldown = 5 #Let defenders hava a chance before it just smacks a hole in the wall.
+  blockedByWall = false
+}
+ 
  ###
  #Potion-dispensing spells (let rescue dogs, witches, etc dispense potions on a cooldown rather than carrying expensive inventory that they waste at the first opportunity)
  ###
@@ -2347,6 +2356,81 @@ OneTimeAbility("leadership +10", "leadership +10", {IncreaseAttr LEADERSHIP 10},
   sound = "SPELL_CURE_POISON"
  }
  
+ #
+ #Swamp witch potions-as-spells, thanks to Rarasek for demonstration
+ #
+"BONUS_poison potion"
+{
+  symbol = "☠"
+  effect = Name "throw poison flask" Description "Throw a potion to release poison gas." Area 1 EmitGas "POISON_GAS" 0.8
+  range = 4
+  endOnly = true
+  projectileViewId = { "potion1" }
+  cooldown = {20 41}
+  message = "throw a poison flask!" "throws a flask!"
+}
+"BONUS_antidote flask"
+ {
+  upgrade = "cure poison"
+  symbol = "⚕�"
+  effect = Name "antidote flask" Description "In case the wrong creatures get poisoned." Area 1 RemoveLasting POISON
+  range = 4
+  cooldown = {20 41}
+  projectileViewId = { "potion1" }
+  message = "throw an antidote flask!" "throws a flask!"
+ }
+"BONUS_sleep potion"
+{
+  symbol = "🕶️"
+  effect = Name "throw a sleeping flask" Description "Throw a potion to put a small group to sleep." Area 1 Lasting SLEEP
+  range = 4
+  endOnly = true
+  projectileViewId = { "potion1" }
+  cooldown = {20 41}
+  message = "throw a sleeping flask!" "throws a flask!"
+}
+
+"BONUS_slow potion"
+{
+  symbol = "🐢"
+  effect = Name "throw a slowing flask" Description "Throw a potion to slow a small group." Area 1 Lasting SLOWED
+  range = 4
+  endOnly = true
+  projectileViewId = { "potion1" }
+  cooldown = {15 31}
+  message = "throw a tranquilizing flask!" "throws a flask!"
+}
+ 
+ "BONUS_blind potion"
+{
+  symbol = "🕶️"
+  effect = Name "throw a blinding flask" Description "Throw a potion to blind a small group." Area 1 Lasting BLIND
+  range = 4
+  endOnly = true
+  projectileViewId = { "potion1" }
+  cooldown = {20 41}
+  message = "throw a blinding flask!" "throws a flask!"
+}
+"BONUS_unblinding flask"
+ {
+  upgrade = "cure blindness"
+  symbol = "⚕�"
+  effect = Name "vision flask" Description "Just in case creatures shouldn't be blinded." Area 1 RemoveLasting BLIND
+  range = 4
+  cooldown = {20 41}
+  projectileViewId = { "potion1" }
+  message = "throw a vision flask!" "throws a flask!"
+ }
+  "BONUS_healing potion"
+{
+  upgrade = "healing"
+  symbol = "❤️"
+  effect = Name "throw a healing flask" Description "Huck a potion to heal a handful of creatures." Area 1 Heal { FLESH }
+  range = 4
+  cooldown = {15 31}
+  projectileViewId = { "potion1" }
+  sound = "SPELL_HEALING"
+ }
  
  ###
  #Better Bows

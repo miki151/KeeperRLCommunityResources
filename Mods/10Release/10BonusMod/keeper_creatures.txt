@@ -34,7 +34,7 @@
     workshopGroups = append { "basic_Bonus_Mod"	"techBooks" "fell armory" "Magic metal conversion" "scrolls" "anti-nature"}
 	description = "Upgraded dark knights with tougher enemies."	
 	villainGroups = append { BONUS_EVIL }
-	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 25 }
+	credit = { "WOOD" 2000 "STONE" 10 "IRON" 50 "ADA" 5 "CROPS" 25 }
     buildingGroups = append { "spells" "inscription table" "rockblast" "advanced forges"}
 	zLevelGroups = append {"bonus basic"}
   }
@@ -52,7 +52,7 @@
  
 "3_white_knight_extra" inherit "3_white_knight" {
 	baseName = "Bonus Castle"
-    immigrantGroups = append { "white_keeper_modded" "neutral_allies" "white_allies_extended" "white_knight_stables" "canine heroes" }
+    immigrantGroups = append { "white_keeper_modded" "neutral_allies" "white_allies_extended" "white_knight_stables" "canine heroes" "dwarf_miner"}
     technology = append { "simplistic animations" "magic contraptions" "rock blast" "legendary heroes" "royal jewellery" "unicorn taming" "advanced smithy" "magic inscription" "spell circles" "equine husbandry" "canine heroes"  }
 	workshopGroups = append { "white knights workshop" "basic_Bonus_Mod" "law armory" "Magic metal conversion" "scrolls" "anti-nature" "techBooksLawful"}
 	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 54 } #Should be enough for 8 starting peasants and 7-8 crop patches, which *should* permit straightforward farming start.
@@ -64,6 +64,7 @@
 "3_white_knight_NB" inherit "3_white_knight" {
 	creatureId = { "KEEPER_KNIGHT_WHITE_NB" }
 	description = "Build & manage your dream castle, defend against the forces of Evil, and bring peace to the realm through the judicious employment of knights, priests, and angelic beings."
+	credit = { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 "CROPS" 54 } #Just in case the `inherit` happens before the `modify append`.
 }
 "3_white_knight_NB_extra" inherit "3_white_knight_extra" {
 	creatureId = { "KEEPER_KNIGHT_WHITE_NB" }
@@ -75,8 +76,8 @@
 	credit = append { "WOOD" 2000 "STONE" 10 "IRON" 10 "ADA" 5 }
 	description = "Extra technology and extra troops to make your extra enemies EXTRA DEAD."
 	villainGroups = append { BONUS_EVIL }
-	buildingGroups = append {"necromancer" "necro_minion_statues" "throne" "advanced forges" } #Makes the Hordes, dragon immigration, Lords Of X feasible.
-	workshopGroups = append { "necromancer" }
+	buildingGroups = append {"necromancer" "necro_minion_statues" "throne" "advanced forges" "soulforge" } #Makes the Hordes, dragon immigration, Lords Of X feasible.
+	workshopGroups = append { "necromancer" "soulforge"}
 	maxPopulation = 10 #Makes the Hordes, dragon immigration, Lords Of X feasible.
 	zLevelGroups = append {"bonus basic" }
   }
@@ -233,9 +234,9 @@
     buildingGroups = {
         "structure_necro" "training_necro" "doors" "floors" "storage" "zones" "library" "pigsty_no_crops" "coffins" "beds"
         "prison" "orders" "installations" "magical_installations" "necromancer" "rockblast"
-		"necro_minion_statues" "throne" "advanced forges" "morgue"
+		"necro_minion_statues" "throne" "advanced forges" "morgue" "soulforge"
     }
-    workshopGroups = { "necromancer" "morgue_vamplord" }
+    workshopGroups = { "necromancer" "morgue_vamplord" "soulforge"}
     #Better than a standard vampire lord. He was losing limbs too much.
     specialTraits = {
       Lasting { TELEPATHY }
@@ -494,7 +495,7 @@
 "BONUS_03_cleric_hero_adventurers"
 {
   baseName = "Adventurer 2"
-  creatureId = { "BONUS_CLERIC_HERO" } #Needs a feminine sprite
+  creatureId = { "BONUS_CLERIC_HERO_ADV" } #Needs a feminine sprite
   tribeAlignment = LAWFUL
   description = "Be a cleric hero."
   villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
@@ -614,7 +615,7 @@
 "BONUS_09_dwarf_baron_adventurers"
 {
   baseName = "Adventurer 3"
-  creatureId = { "BONUS_DWARF_BARON" }
+  creatureId = { "BONUS_DWARF_BARON_ADV" }
   tribeAlignment = LAWFUL
   description = "Play as a dwarf baron to bring justice to the land."
   villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
@@ -634,7 +635,7 @@
 "BONUS_10_minotaur_adventurers"
 {
   baseName = "Adventurer 3"
-  creatureId = { "BONUS_MINOTAUR" }
+  creatureId = { "BONUS_MINOTAUR_ADV" }
   tribeAlignment = EVIL
   description = "Crush your enemies as a single minotaur warrior."
   villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
@@ -654,7 +655,7 @@
 "BONUS_11_warrior_hero_adventurers"
 {
   baseName = "Adventurer 3"
-  creatureId = { "BONUS_WARRIOR_HERO" }
+  creatureId = { "BONUS_WARRIOR_HERO_ADV" }
   tribeAlignment = LAWFUL
   description = "Play as a warrior hero."
   villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
@@ -694,7 +695,7 @@
 "BONUS_13_cyclops_adventurers"
 {
   baseName = "Adventurer 4"
-  creatureId = { "BONUS_CYCLOPS" }
+  creatureId = { "BONUS_CYCLOPS_ADV" }
   tribeAlignment = EVIL
   description = "Slaughter the world as a lone cyclops."
   villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
@@ -714,7 +715,7 @@
 "BONUS_14_thief_hero_adventurers"
 {
   baseName = "Adventurer 4"
-  creatureId = { "BONUS_THIEF_HERO" "BONUS_THIEF_HERO_F" }
+  creatureId = { "BONUS_THIEF_HERO_ADV" "BONUS_THIEF_HERO_F_ADV" }
   tribeAlignment = LAWFUL #As specified in the Soft Monster original. This is more the "thief" than the "Evil Assassin" adventurer.
   description = "Play as an archer assassin. Travel light, rely on stealth and arrows."
   villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
@@ -734,7 +735,7 @@
 "BONUS_15_wizard_adventurer_adventurers"
 {
   baseName = "Adventurer 4"
-  creatureId = { "BONUS_WIZARD_ADVENTURER" }
+  creatureId = { "BONUS_WIZARD_ADVENTURER" } #Separate from BONUS_WIZARD_HERO the NPC, yay!
   tribeAlignment = LAWFUL
   description = "Wizard hero class. Train magic powers."
   villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
@@ -841,7 +842,7 @@
   creatureId = { "GOODWIZ_KEEPER_MAGE_ARCANE" "GOODWIZ_KEEPER_MAGE_ARCANE_F" }
   tribeAlignment = LAWFUL
   villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES BONUS_LAWFUL}
-  immigrantGroups = {"peseants" "arcane_keeper" "white_stables" "canine heroes" }
+  immigrantGroups = {"peseants" "arcane_keeper" "white_stables" "canine heroes" "dwarf_miner" }
   technology = {
       "alchemy" "advanced alchemy" "alchemical conversion"
       "chicken breeding" "pig breeding" "cow breeding"  "iron working" "jewellery" "two-handed weapons" "archery" "sorcery"
@@ -896,10 +897,11 @@
 	baseName = "Bonus Undead"
 	technology = append { "zombie hordes"  "mummy hordes" "skeleton hordes"  "vampire hordes"
 		"lord of war" "lord of magic" "lord of speed" "lord of resistance" "advanced smithy"}
+	initialTech = { "necromancy"}
 	villainGroups = append { BONUS_EVIL }
 	zLevelGroups = append { "bonus basic" }
-	buildingGroups = append {"necro_minion_statues" "throne" "advanced forges"}
-	workshopGroups = append { "fell armory" }
+	buildingGroups = append {"necro_minion_statues" "throne" "advanced forges" "soulforge"}
+	workshopGroups = append { "fell armory" "soulforge_martial" }
 	description = "Extra technology and powerful melee Keeper, so you don't need as many extra troops to make your extra enemies EXTRA DEAD."
 	maxPopulation = 10
 }
