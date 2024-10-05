@@ -1,0 +1,487 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeeperRL Mod File Editor</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/themes/prism.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.28.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            resize: none;
+            font-family: monospace;
+            margin-bottom: 20px; /* Space between controls */
+        }
+        /* CSS to style the button container */
+        .button-container {
+            display: flex; /* Use flexbox for layout */
+            margin-top: 20px; /* Space above the buttons */
+        }
+
+        /* Style for the buttons */
+        button {
+            padding: 10px 20px; /* Add some padding */
+            font-size: 16px; /* Increase font size */
+            cursor: pointer; /* Change cursor to pointer */
+        }
+		
+        /* Style for the tab navigation */
+        .tab {
+            background-color: #f1f1f1;
+            display: flex; /* Example display, adjust as needed */
+            border-bottom: 1px solid #ccc; /* Bottom border to separate from content */
+            margin-bottom: 8px; /* This margin creates the gap between the tab and the content */
+        }
+		
+        .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 5px 5px;
+            transition: 0.3s;
+        }
+        .tab button:hover {
+            background-color: #ddd;
+        }
+        .tab button.active {
+            background-color: #ccc;
+        }
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+            margin-bottom: 20px; /* Space between tabs and download button */
+        }
+        .tabcontent textarea {
+            height: 300px;
+        }
+        /* Specific height for detailsInput */
+        #detailsInput {
+            height: 120px; /* Height for at least 6 lines */
+        }
+        .code-container {
+            display: none;
+            margin-top: 10px;
+        }
+        .checkbox-container {
+            display: inline-block;
+            margin-left: 10px; /* Space between label and checkbox */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>KeeperRL Mod File Editor</h1>
+
+    <!-- Mod Name Input -->
+    <label for="modName">Enter Mod Name:</label>
+    <input type="text" id="modName" value="<Change this name>">
+
+    <!-- Tab navigation -->
+    <div class="tab" id="tabContainer"><button class="tablinks active" id="defaultOpen">details.txt</button><button class="tablinks">keeper_creatures.txt</button><button class="tablinks">creatures.txt</button><button class="tablinks">campaign_villains.txt</button><button class="tablinks">enemies.txt</button><button class="tablinks">immigration.txt</button><button class="tablinks">buffs.txt</button><button class="tablinks">build_menu.txt</button></div>
+    <!-- Tab content container -->
+    <div id="tabContentContainer"></div>
+
+    <div class="button-container">
+        <button id="downloadButton">Download this HTML Template</button>
+        <button id="downloadZip">Download this content as a new mod in a .zip file</button>
+    </div>
+	
+<script>
+
+    document.getElementById('downloadButton').addEventListener('click', function() {
+            // Get the current HTML source
+            let htmlSource = document.documentElement.outerHTML;
+
+            // Create a DOM parser to manipulate the HTML
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlSource, 'text/html');
+
+            // Check for the specified nodes and remove them if they exist
+            const tabContainer = doc.getElementById('tabContentContainer');
+			
+			if (tabContainer) {
+                tabContainer.innerHTML = ''; // Empty the content
+            }
+
+            // Check for the specified nodes and remove them if they exist
+            const tabContentContainer = doc.getElementById('tabContentContainer');
+
+            if (tabContentContainer) {
+                tabContentContainer.innerHTML = ''; // Empty the content
+            }
+			
+            // Create a Blob from the modified HTML source
+            const blob = new Blob([doc.documentElement.outerHTML], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+
+            // Create a temporary anchor element for download
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Mod Builder Template.html';
+            document.body.appendChild(a);
+            a.click();
+
+            // Clean up
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        });
+
+    // Array of file names and default content
+    const files = [
+        { name: "details.txt", defaultContent: `"Softmonster"\n"Mod Template"` },
+        { name: "keeper_creatures.txt", defaultContent: `"9.1 Test Keeper"\n{\n}` },
+        { name: "creatures.txt", defaultContent: `` },
+        { name: "campaign_villains.txt", defaultContent: `` },		
+        { name: "enemies.txt", defaultContent: `` },
+		{ name: "immigration.txt", defaultContent: `` },	
+		{ name: "buffs.txt", defaultContent: `` },
+		{ name: "build_menu.txt", defaultContent: `` }	
+    ];
+
+    // References to DOM elements
+    const tabContainer = document.getElementById("tabContainer");
+    const tabContentContainer = document.getElementById("tabContentContainer");
+
+    // Function to create a tab button
+    function createTabButton(file, index) {
+        const button = document.createElement("button");
+        button.className = "tablinks";
+        button.textContent = file.name;
+        button.onclick = (event) => openTab(event, `tab${index}`);
+        if (index === 0) button.id = "defaultOpen";  // Set default open tab
+        tabContainer.appendChild(button);
+    }
+
+    // Function to add click handler to an existing tab button
+    function addClickHandlerToExistingTabButton(file, index) {
+        const button = Array.from(tabContainer.querySelectorAll("button")).find(btn => btn.textContent === file.name);
+        if (button) {
+            button.onclick = (event) => openTab(event, `tab${index}`);
+        }
+    }
+
+	// Function to create tab content
+	function createTabContent(file, index) {
+		const baseUrl = 'https://github.com/miki151/keeperrl/tree/master/data_free/game_config/';
+		const tabContent = document.createElement("div");
+		tabContent.id = `tab${index}`;
+		tabContent.className = "tabcontent";
+
+		const label = document.createElement("label");
+		label.textContent = `Enter content of ${file.name}:`;
+
+		const checkbox = document.createElement("input");
+		checkbox.type = "checkbox";
+		checkbox.id = `viewToggle${index}`;
+		checkbox.addEventListener('change', () => toggleView(index));
+
+		const checkboxLabel = document.createElement("label");
+		checkboxLabel.htmlFor = `viewToggle${index}`;
+		checkboxLabel.textContent = " View as code";
+
+		const checkboxContainer = document.createElement("div");
+		checkboxContainer.appendChild(checkbox);
+		checkboxContainer.appendChild(checkboxLabel);
+
+		const textarea = document.createElement("textarea");
+		textarea.id = file.name.replace('.', '_');
+		textarea.value = file.defaultContent;
+
+		const codeContainer = document.createElement("div");
+		codeContainer.className = "code-container";
+		const codeBlock = document.createElement("pre");
+		codeBlock.innerHTML = `<code class="language-javascript">${textarea.value}</code>`;
+		codeContainer.appendChild(codeBlock);
+
+		// Create a hyperlink if not details.txt
+		if (file.name !== 'details.txt') {
+			const linkContainer = document.createElement("div");
+			const link = document.createElement("a");
+			link.href = `${baseUrl}${file.name}`;
+			link.textContent = `Link to vanilla ${file.name}`;
+			link.target = "_blank"; // Open link in a new tab
+			link.className = "tab-link"; // Add a class for styling if needed
+			linkContainer.appendChild(link);
+			tabContent.appendChild(linkContainer);
+		}
+
+		// Create labels for cursor position (line and column number)
+		const cursorPositionLabel = document.createElement("div");
+		cursorPositionLabel.className = "cursor-position";
+		cursorPositionLabel.textContent = "Line: 1, Column: 1";
+
+		// Event listener to update cursor position
+		textarea.addEventListener("input", () => updateCursorPosition(textarea, cursorPositionLabel));
+		textarea.addEventListener("click", () => updateCursorPosition(textarea, cursorPositionLabel));
+
+		// Append elements to the tab content
+		tabContent.appendChild(label);
+		tabContent.appendChild(checkboxContainer);
+		tabContent.appendChild(textarea);
+		tabContent.appendChild(codeContainer);
+		tabContent.appendChild(cursorPositionLabel); // Append the cursor position label
+		tabContentContainer.appendChild(tabContent);
+	}
+
+	// Function to update the cursor position (line and column)
+	function updateCursorPosition(textarea, label) {
+		const value = textarea.value;
+		const position = textarea.selectionStart;
+		const lines = value.substr(0, position).split("\n");
+		const lineNumber = lines.length;
+		const columnNumber = lines[lines.length - 1].length + 1;
+		label.textContent = `Line: ${lineNumber}, Column: ${columnNumber}`;
+	}
+
+    // Function to add checkbox handler to existing tab content
+    function addCheckboxHandlerToExistingTabContent(file, index) {
+        const checkbox = document.getElementById(`viewToggle${index}`);
+        if (checkbox) {
+            checkbox.addEventListener('change', () => toggleView(index));
+        }
+    }
+
+    // Create tabs and content areas dynamically only if they don't already exist
+    files.forEach((file, index) => {
+        // Check if a button with the same file name (or content) already exists
+        const tabExists = Array.from(tabContainer.querySelectorAll("button")).some(btn => btn.textContent === file.name);
+        const contentExists = document.getElementById(`tab${index}`);
+
+        // Create tab button only if it doesn't exist
+        if (!tabExists) {
+            createTabButton(file, index);
+        } else {
+            addClickHandlerToExistingTabButton(file, index);
+        }
+
+        // Create tab content only if it doesn't exist
+        if (!contentExists) {
+            createTabContent(file, index);
+        } else {
+            addCheckboxHandlerToExistingTabContent(file, index);
+        }
+    });
+
+    // Tab switch functionality
+    function openTab(evt, tabName) {
+        // Hide all tab contents
+        const tabcontent = document.getElementsByClassName("tabcontent");
+        Array.from(tabcontent).forEach(content => content.style.display = "none");
+
+        // Deactivate all tab buttons
+        const tablinks = document.getElementsByClassName("tablinks");
+        Array.from(tablinks).forEach(link => link.className = link.className.replace(" active", ""));
+
+        // Show the selected tab content and activate the tab button
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    // Toggle view between textarea and code
+    function toggleView(index) {
+        const textarea = document.getElementById(files[index].name.replace('.', '_'));
+        const codeContainer = document.querySelector(`#tab${index} .code-container`);
+        const checkbox = document.getElementById(`viewToggle${index}`);
+
+        if (checkbox.checked) {
+            textarea.style.display = "none";
+            codeContainer.style.display = "block";
+        } else {
+            textarea.style.display = "block";
+            codeContainer.style.display = "none";
+        }
+
+        // Update code block with current textarea value
+        const codeBlock = codeContainer.querySelector('code');
+        codeBlock.innerHTML = textarea.value;
+        Prism.highlightElement(codeBlock); // Highlight syntax
+    }
+
+    // Open the first tab by default
+    document.getElementById("defaultOpen").click();
+
+    // Download functionality
+    document.getElementById('downloadZip').addEventListener('click', function () {
+	    const zip = new JSZip();
+        const modName = document.getElementById('modName').value || 'TestKeeper';
+		const sanitizedModName = modName.replace(/[<>:"/\\|?*]/g, '_');
+		const modFolder = zip.folder(sanitizedModName);		
+
+        // Add file content from each tab to the ZIP file
+        files.forEach(file => {
+            const content = document.getElementById(file.name.replace('.', '_')).value;
+            if (content.trim()) {
+                modFolder.file(file.name, content);
+            }
+        });
+
+        // Add current HTML (with updated content) to the ZIP file
+        const htmlSource = updateHtmlSourceWithContent();
+        modFolder.file("NowYouTry.html", htmlSource);
+		
+       // Put in the version info file to make the mod appear in the mods list in-game.
+        modFolder.file("version_info", "0\n0\nAlpha37");
+
+        // Create the install batch file for the mod.
+        addInstallBatchFile(modFolder);
+
+        // Generate the ZIP and trigger download
+        zip.generateAsync({ type: "blob" }).then(function (content) {
+            saveAs(content, `${modName}.zip`);
+        });
+    });
+		
+	// Function to add installer file to the ZIP archive
+	function addInstallBatchFile(modFolder) {
+		const installBatContent = `
+@echo off
+setlocal enabledelayedexpansion
+
+:: Get the full path of the current batch file
+set "currentFilePath=%~dp0"
+
+:: Get the name of the folder containing the batch file
+for %%F in ("%currentFilePath%.") do set "currentDirName=%%~nxF"
+
+:: Display the folder name
+echo The folder name containing the batch file is: %currentDirName%
+
+:: Initialize variables
+set "steamDir="
+set "steamAppsDir="
+
+:: Define common Steam installation paths as an array-like structure
+set "commonPaths1=C:\\Program Files (x86)\\Steam\\steamapps\\common\\KeeperRL"
+set "commonPaths2=C:\\Program Files\\Steam\\steamapps\\common\\KeeperRL"
+set "commonPaths3=D:\\Steam\\steamapps\\common\\KeeperRL"
+set "commonPaths4=C:\\KeeperRL"
+set "commonPaths5=C:\\Program Files (x86)\\KeeperRL"
+set "commonPaths6=C:\\Program Files\\KeeperRL"
+
+:: Check common paths
+for %%P in ("%commonPaths1%" "%commonPaths2%" "%commonPaths3%" "%commonPaths4%" "%commonPaths5%" "%commonPaths6%") do (
+    echo Looking for KeeperRL... %%~P\\keeper.exe?
+    if exist "%%~P\\keeper.exe" (
+        set "KeeperRLDir=%%~P"
+        set "targetDir=%%~P\\mods\\%currentDirName%\\"
+        goto :found
+    )
+)
+
+:: If KeeperRL is not found, print an error message and exit with error
+echo Error: KeeperRL installation not found in common paths.
+pause
+exit /b 1
+
+:found
+echo KeeperRL directory = %KeeperRLDir%
+echo Mod Target directory = %targetDir%
+
+:: Create the new folder or handle overwrite
+if exist "%targetDir%" (
+    echo Mod directory already exists. Do you want to overwrite the files in the existing mod folder?
+    set /p choice=Do you want to overwrite existing mod files? [Y/N]:
+
+    if /i !choice!==N (
+        echo Exiting...
+        pause
+        exit /b 0
+    )
+
+    echo Overwriting mod files...
+
+) else (
+    mkdir "%targetDir%"
+    if errorlevel 1 (
+        echo Error: Failed to create directory %targetDir%.
+        pause
+        exit /b 1
+    )
+    echo %targetDir% created.
+)
+
+echo Installing mod from %currentFilePath%
+echo Installing mod to %targetDir%
+
+:: Ensure the source is not the same as the target
+if /i "%currentFilePath%"=="%targetDir%" (
+    echo Error: Source and target directories are the same. Aborting to prevent cyclic copy.
+    pause
+    exit /b 1
+)
+
+:: Exclude the target directory from the copy
+xcopy "%currentFilePath%*" "%targetDir%\\" /E /I /Y /F || (
+    echo Error: Failed to copy files to %targetDir%.
+    pause
+    exit /b 1
+)
+
+echo Files successfully copied to %targetDir%.
+echo Mod installed to %targetDir%.
+
+:: Ask if the user wants to run KeeperRL now
+set /p choice=Do you want to run Keeper RL right now? (Y/N): 
+
+if /i %choice%==Y (
+    echo Starting Keeper RL...
+    
+    :: Save the current directory but switch to KeeperRL directory
+    pushd "%KeeperRLDir%"
+    
+    start "" "%KeeperRLDir%\\keeper.exe" || (
+        echo Error: Failed to start Keeper RL.
+        popd
+        pause
+        exit /b 1
+    )
+
+    :: Return to the original directory
+    popd
+) else (
+    echo Keeper RL will not be started.
+    pause
+)
+
+exit /b 0
+`;
+
+		modFolder.file("Windows Installer.bat", installBatContent);
+	}
+
+
+    // Update the HTML source with the current content of each file's tab
+    function updateHtmlSourceWithContent() {
+        let htmlSource = document.documentElement.outerHTML;
+
+        // Update each textarea in the HTML source with the current tab content
+        files.forEach(file => {
+            const content = document.getElementById(file.name.replace('.', '_')).value;
+            const regex = new RegExp(`<textarea id="${file.name.replace('.', '_')}"[\\s\\S]*?<\\/textarea>`, 'g');
+            htmlSource = htmlSource.replace(regex, `<textarea id="${file.name.replace('.', '_')}" rows="${file.name === "details.txt" ? 6 : 15}">${content}</textarea>`);
+        });
+
+        return htmlSource;
+    }
+</script>
+
+
+
+</body></html>
