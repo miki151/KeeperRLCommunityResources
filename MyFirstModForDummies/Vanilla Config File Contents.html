@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeeperRL Vanilla Config Files as commited to Github on last page refresh</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .tabs {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping */
+            border-bottom: 1px solid #ccc;
+        }
+        .tab {
+            padding: 10px;
+            cursor: pointer;
+            background: #f4f4f4;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+            margin-bottom: 5px; /* Add bottom margin for spacing when wrapping */
+        }
+        .tab.active {
+            background: #fff;
+            border-bottom: none;
+        }
+        .content {
+            display: none;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        .content.active {
+            display: block;
+        }
+        pre {
+            margin: 0;
+            background: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>KeeperRL Vanilla Config Files as commited to Github on last page refresh</h1>
+    <div class="tabs" id="tabContainer"></div>
+    <div id="contentContainer"></div>
+
+    <script>
+        async function fetchFiles() {
+            const url = "https://api.github.com/repos/miki151/keeperrl/contents/data_free/game_config";
+            const response = await fetch(url);
+            const files = await response.json();
+            const tabContainer = document.getElementById('tabContainer');
+            const contentContainer = document.getElementById('contentContainer');
+
+            files.forEach(file => {
+                const tab = document.createElement('div');
+                tab.className = 'tab';
+                tab.textContent = file.name;
+                tab.onclick = () => showContent(file.name, file.path);
+                tabContainer.appendChild(tab);
+
+                const contentDiv = document.createElement('div');
+                contentDiv.className = 'content';
+                contentDiv.id = file.name.replace(/\.[^/.]+$/, ""); // Remove file extension for ID
+                contentContainer.appendChild(contentDiv);
+            });
+        }
+
+        async function showContent(name, path) {
+            const contentDiv = document.getElementById(name.replace(/\.[^/.]+$/, ""));
+            const url = `https://raw.githubusercontent.com/miki151/keeperrl/master/${path}`;
+            const response = await fetch(url);
+            const rawData = await response.text();
+            contentDiv.innerHTML = `<pre><code class="language-clike">${rawData}</code></pre>`;
+            const codeBlock = contentDiv.querySelector('code');
+            Prism.highlightElement(codeBlock); // Highlight the specific code block
+            
+            // Update active tab
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.content').forEach(content => content.classList.remove('active'));
+            const activeTab = Array.from(document.querySelectorAll('.tab')).find(tab => tab.textContent === name);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+            contentDiv.classList.add('active');
+        }
+
+        fetchFiles();
+    </script>
+</body>
+</html>
