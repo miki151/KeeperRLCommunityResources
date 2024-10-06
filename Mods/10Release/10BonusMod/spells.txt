@@ -1710,10 +1710,11 @@
  
  "BONUS_acid blast"
  #More powerful acid bolt spell with a longer range but larger cooldown
+ #FINALLY doesn't hit friendlies, thanks SoftMonster for the filter syntax help
  {
    upgrade = "BONUS_water blast"
    symbol = "~~"
-   effect = Name "acid blast" { Damage SPELL_DAMAGE SPELL Blast Acid{} }
+   effect = Name "acid blast" { Filter Enemy Damage SPELL_DAMAGE SPELL Filter Enemy Blast Filter Enemy Acid{} }
    fx = {FLAMETHROWER ColorId YELLOW}
    range = 10
    cooldown = 20
