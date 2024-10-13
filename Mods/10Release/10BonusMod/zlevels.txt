@@ -9,15 +9,17 @@
 #Locks lava access (and thus upgraded metalworking) until z6 (guaranteed lava on z8)
 #Fixed Special-levels are 3 (ally vault), 8 (swarmer vault), 13 (ada golems), 18 (black dragon), 23 (hostile balrog)
 #Adoxium & infernite are hell-locked: z24+, the terrain attacks (hard on miners) and folks have created very meta workarounds
-#so that's probably best bypassed if possible
+#though Rock Blast should make extraction straightforward, and even without it BonusMod offers other digging options
 #Random desirable feature: enchanted pond, allows upgraded lab & workshop; ideally on lava level for centralized crafting
 #
 #Goblin matrons are on z10
 
 #If all went to plan, here's the current fixed z-stack:
+#~~z06 Enchanted pool with lava lakes, one-stop crafting~~ This isn't yet going to plan :-/
 #z18 Black Dragon
 #z23 Balrog
 #z24 Sea Of Bones
+#z28 Hell (single-floor)
 #This is intended to allow bonus & regular content to coexist, and (ideally) reduce the problems with hell terrain killing off workers.
 "bonus basic" {
 
@@ -29,6 +31,15 @@
 	minDepth = 0
 	maxDepth = 1
   }
+  #Guaranteed enchanted pool level, tends to build over terrain and crash if you dig into it, despite using what *should* be working vanilla code
+#  {
+#    type = FullZLevel {
+#	  enemy = "BONUS_ENCHANTED_POOL"
+#	}
+#	minDepth = 1 #Testing purposes, kthx
+#	maxDepth = 1
+#	guarantee = true
+# }
   {
     type = EnemyZLevel {
       enemy = "Z_LEVEL_FULL"
@@ -60,7 +71,7 @@
     }
     minDepth = 2
   }
-  { # adamantium, the ores are added automatically around the golems
+  { 
     type = FullZLevel {
       enemy = "BONUS_IRON_Z_GOLEMS"
     }
@@ -72,6 +83,7 @@
       enemy = "BONUS_STONE_Z_GOLEMS"
     }
     minDepth = 2
+	maxDepth = 22
   }
 
 #Imported vanilla fixed levels, guaranteed as in vanilla

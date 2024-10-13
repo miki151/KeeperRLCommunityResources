@@ -211,3 +211,10 @@ Def HoleToGround() {
 End
 
 "hole_to_ground" HoleToGround()
+
+
+"bonus_z_level_enchantedpool" {
+		Set("set_territory") # Even though its an empty level, some code will crash if territory is empty
+		ZLevelMostlyFull("lava")
+		Place({12 12}, EnchantedPool(), 1, On("hard_rock"))
+	}
