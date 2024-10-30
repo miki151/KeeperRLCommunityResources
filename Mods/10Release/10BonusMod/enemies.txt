@@ -1116,6 +1116,48 @@
   }
 }
 
+"BONUS_BLUE_DRAGON"
+{
+  biome = "DESERT"
+  settlement = {
+    type = RandomLayout { "castle_empty" { 30 30 } "dragon" }
+    inhabitants = {
+      leader = { { "BONUS_BLUE_DRAGON" } }
+      civilians = {
+        count = {4 5}
+        all = { 1 "FIRE_ELEMENTAL" }
+      }
+    }
+    race = "dragon"
+    tribe = MONSTER
+  }
+  config = {
+    leaderAsFighter = true
+    ghostProb = 0.03
+    spawnGhosts = 1
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    triggers = {
+      EnemyPopulation 22
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+    }
+    attackBehaviour = KillMembers 12
+  }
+  createOnBones = 0.1 { "THIEVES" "BONUS_PYRAMID" }
+  levelConnection = {
+    topLevel = ExtraEnemy {"MAIN_DUNGEON_ENTRY"}
+    levels = {
+      { MainEnemy {32 32} BASIC }
+    }
+  }
+}
+
 "BONUS_UNICORN_HERD"
 {
   biome = "BONUS_HERB_GRASSLAND"
@@ -6676,7 +6718,7 @@ settlement = {
 
 "BONUS_DRAGONS"
 {
-  biome = "BONUS_VOLCANIC" #testing crash issue
+  biome = "BONUS_VOLCANIC"
   settlement = {
     type = Builtin CASTLE2 "BONUS_VOLCANIC_BRICK"
     tribe = MONSTER
@@ -6688,11 +6730,13 @@ settlement = {
             1 "BONUS_ANCIENT_GREEN_DRAGON"
             1 "GREEN_DRAGON"
             1 "RED_DRAGON"
+			1 "BONUS_ANCIENT_YELLOW_DRAGON"
 			1 "YELLOW_DRAGON"
             2 "BONUS_YOUNG_GREEN_DRAGON"
             2 "BONUS_YOUNG_RED_DRAGON"
-            5 "BONUS_GREEN_DRAGONEWT"
-            5 "BONUS_RED_DRAGONNEWT"
+			2 "BONUS_YOUNG_YELLOW_DRAGON"
+            4 "BONUS_GREEN_DRAGONEWT"
+            4 "BONUS_RED_DRAGONNEWT"
 			}
       }
     }
@@ -7944,7 +7988,7 @@ settlement = {
 #Ideas for future villains#
 ###########################
 #Ant Hive
-#Grand Elvish City
+#Grand Elvish City -Elf King says hi
 #Three cyclops
 #The forty thieves -Kinda handled, what with desert thieves, but could be made More Flavorful
 #Wolfville -Kinda hendled, werewolf city (it's pretty Overt though)

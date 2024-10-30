@@ -2046,12 +2046,27 @@ End
     storageIds = {"upgrades" "equipment"}
 }
 
+"BlueDragonScales" #Can't have a new dragon color without scales!
+  {
+    viewId = { "dragon_scales" ColorId BLUE }
+    name = "blue dragon scales"
+    itemClass = OTHER
+    weight = 5
+    price = 100
+    ingredientType = "blue_scales"
+    storageIds = {"upgrades" "equipment"}
+  }
+
 "WirtBook" {
 	viewId = {"book"}
 	name = "Tome Of Escape"
 	itemClass = OTHER
 	weight = 1
     price = 500
+	description = "Contains the secrets of getting out in a hurry..."
+    applyTime = 5
+    uses = 1
+    usedUpMsg = true
 	effect = GrantAbility "escape"
 	storageIds = {"equipment"}
 }
@@ -2065,7 +2080,7 @@ End
         DAMAGE 5
 		SPELL_DAMAGE 5
     }
-	weight = 801 #Typical human carry capacity = 800 ^_^
+	weight = 800 #Typical human carry capacity = 800 ^_^
     price = 5000
 	craftingCost = "GOLD" 5000 #Furnaces for 2500 gold, not too shabby! 
     weaponInfo = {

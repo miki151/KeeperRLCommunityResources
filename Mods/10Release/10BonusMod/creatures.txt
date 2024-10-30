@@ -4080,7 +4080,7 @@ End
 	FORGE 35
   }
   permanentEffects = append {
-	NO_FRIENDLY_FIRE 1 #Earth Blast is very good at hitting friendlies and causing infighting, but needs reworked at the spell level
+	NO_FRIENDLY_FIRE 1 #Earth Blast is very good at hitting friendlies and causing infighting, but hopefully has been fixed at the spell level
   }
   name = {
 	name = "earth fairy"
@@ -4485,6 +4485,153 @@ End
         FEMALE { "young_greendragon" ColorId LIGHT_GREEN }
       }
 	}
+	"BONUS_YOUNG_YELLOW_DRAGON" inherit "YELLOW_DRAGON"
+    {
+      viewId = { "young_reddragon" ColorId LIGHT_BROWN } #young_reddragon supports palette-swapping
+      attr = {
+        DAMAGE 35
+        DEFENSE 35
+		ACID_DAMAGE 30
+      }
+      name = {
+        name = "young yellow dragon"
+        pluralName = "dragons"
+        firstNameGen = "DRAGON"
+      }
+      chatReactionFriendly = "\"Krii Roos Iiz, Los Mey\""
+      chatReactionHostile = "\"ROOOAAAR!\""
+      inventory = {
+        {  "GoldPiece" 40 70 }
+      }
+      genderAlternatives = {
+        FEMALE { "young_reddragon" ColorId LIGHT_BROWN }
+      }
+	}
+	"BONUS_ANCIENT_YELLOW_DRAGON" inherit "YELLOW_DRAGON"
+    {
+      viewId = { "ancient_reddragon" }
+      attr = {
+        DAMAGE 80
+        DEFENSE 65
+		ACID_DAMAGE 60 #There're a depressing amount of folks who are immune to acid damage.  So Yellow Dragons who live to become Ancient probably know a little more about fighting.
+      }
+      name = {
+        name = "ancient yellow dragon"
+        pluralName = "dragons"
+        firstNameGen = "DRAGON"
+      }
+      chatReactionFriendly = "\"Krii Roos Iiz Grah-Zeymahzin... Nii Ag Pah\""
+      chatReactionHostile = "ignores your attempt to communicate."
+      genderAlternatives = {
+        FEMALE { "ancient_reddragon" ColorId ORANGE_BROWN }
+	  }
+	}
+	#
+	#Soft Monster's additional dragons!
+	#
+	"BONUS_BLUE_DRAGON"
+	{
+	viewId = { "red_dragon" Rgb 33 27 120 255 }
+    attr = {
+      DAMAGE 45
+      SPELL_DAMAGE 50
+      DEFENSE 47
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting INSANITY} } }}}
+      }
+      deathSound = "DYING_DRAGON"
+	  drops = {{ "BlueDragonScales"} 1}
+	  droppedPartUpgrade = {Permanent INSANITY IncreaseAttr DAMAGE 10 IncreaseAttr DEFENSE 10 }
+    }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      RANGED_VULNERABILITY 1
+      STEED 1
+      REGENERATION 1
+    }
+	maxLevelIncrease = {
+		DAMAGE 7
+	}
+    name = {
+      name = "blue dragon"
+      stackName = "dragon"
+      firstNameGen = "DRAGON"
+    }
+    spells = { "healing" "deception" "haste" "magic missile" "advanced magic missile" "dragon greeting" }
+    hatedByEffect = HATE_DRAGONS
+    inventory = {
+      { "GoldPiece" 60 100 }
+      { type = Glyph { WEAPON VictimEffect 0.3 Lasting INSANITY } chance = 0.3 }
+      { type = Glyph { ARMOR LastingEffect MAGIC_RESISTANCE } chance = 0.3 }
+      { type = Glyph { ARMOR LastingEffect REGENERATION } chance = 0.3 }
+      { type = Glyph { ARMOR ItemAttrBonus DEFENSE 3 } chance = 0.3 }
+      { type = Glyph { WEAPON ItemAttrBonus DAMAGE 3 } chance = 0.3 }
+      { type = Glyph { RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 } chance = 0.3 }
+    }
+	chatReactionFriendly = "\"Aal Lii Wah Lii Pah Lii Wah Gii\""
+	chatReactionHostile = "\"Fah Iiz!\""
+    steedAchievement = "rode_dragon"
+	
+	genderAlternatives = {
+        FEMALE { "red_dragon" ColorId SKY_BLUE }
+	  }
+	
+	}
+	
+	#Player-character dragons
+	"BLACK_DRAGON_PLAYER"
+  {
+    viewId = { "red_dragon" Rgb 80 80 80 255 }
+    attr = {
+      DAMAGE 45
+      DEFENSE 47
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+      drops = {{ "BlackDragonScales" } 1}
+      droppedPartUpgrade = Permanent TELEPATHY
+      deathSound = "DYING_DRAGON"
+    }
+    permanentEffects = {
+      RANGED_VULNERABILITY 1
+      #BLIND 1 ------commented out, the black dragon player must not be blind.
+      TELEPATHY 1
+      STEED 1
+      CAPTURE_RESISTANCE 1
+      REGENERATION 1
+    }
+    name = {
+      name = "black dragon"
+      firstNameGen = "DRAGON"
+      stackName = "dragon"
+    }
+    spells = { "healing" "haste" "cure poison" "black dragon blindness" "dragon greeting"}
+    hatedByEffect = HATE_DRAGONS
+    inventory = { #Unless the PC dragon is going to adopt adventurers or otherwise acquire gear-using & -crafting minions, they can't make effective use of glyphs.
+      { "GoldPiece" 120 200 }
+    }
+    steedAchievement = "rode_dragon"
+  }
+  ###
  "BONUS_ZOMBIE_DRAGON"
     {
       viewId = { "zombiedragon" }
@@ -10957,6 +11104,7 @@ End
       type = Humanoid MEDIUM
       droppedPartUpgrade = IncreaseAttr DEFENSE 2
     }
+	companions = { {count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "BONUS_WITCH_BROOM" }} }
     name = {
       name = "witch"
       pluralName = "witches"
@@ -11132,6 +11280,7 @@ End
       type = Humanoid MEDIUM
       droppedPartUpgrade = IncreaseAttr DEFENSE 2
     }
+	companions = { {count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "BONUS_WITCH_BROOM" }} } #check with Shadowing
     name = {
       name = "witch"
       pluralName = "witches"
@@ -13003,6 +13152,7 @@ End
       pluralName = "witches"
       firstName = "Cornelia"
     }
+	companions = { {count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "BONUS_WITCH_BROOM" }} }
     aiType = RANGED
     gender = FEMALE
     chatReactionFriendly = "curses all humans"
@@ -14033,6 +14183,38 @@ viewId = { "war_warg_saddle2" } #Swishos' surplus sprites for the win! Thanks.
       name = "veteran warg"
       pluralName = "veteran wargs"
       groupName = "pack"
+    }
+}
+
+"BONUS_WITCH_BROOM"
+{
+	viewId = { "riding_broom" }
+		attr = {
+			DAMAGE 20 #It's a magically-animated broom. Not built for combat.
+			DEFENSE 20
+		}
+		body = {
+			type = NonHumanoid MEDIUM #Witches are smol. Who knew?
+			weight = 10
+			
+			intrinsicAttacks = {
+			  TORSO {{itemType = { Intrinsic { "claws_attack" }  "bristles" 5 { attackType = HIT attackMsg = CLAW victimEffect = {0.2 Lasting BLIND} } } }}
+			}
+		}
+		permanentEffects = {
+			FLYING 1
+			STEED 1
+			SWARMER 1 #Don't underestimate it...
+		}
+	#The broom can't talk? doesn't mean it can't express feelings.
+	chatReactionFriendly = "sweeps some dust off of you."
+    chatReactionHostile = "sweeps dust at you."
+	petReaction = "vibrates gently, as if purring."
+	
+	name = {
+      name = "riding broom"
+      pluralName = "riding brooms"
+      groupName = "murder"
     }
 }
  
