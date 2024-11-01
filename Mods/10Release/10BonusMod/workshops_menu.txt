@@ -188,6 +188,13 @@
 #Adding them here SHOULD work, see elsewhere in this file, but for Forge stuff it seemed to break syntax.  ???
 
 "basic_Bonus_Mod" {
+
+	"WORKSHOP"
+	{
+		{item = { "BONUS_LeatherWhip"}          	work = 25       cost = none        materialTab = true}
+	}
+	"ENCHANTED_WORKSHOP" inherit "WORKSHOP" {}
+
   "FORGE"
   {
     {item = { "BONUS_SteelSword"}  work = 20 	cost = none 	tech = "iron working" 	materialTab = true}
@@ -198,6 +205,7 @@
     {item = { "BONUS_SteelShield"}             work = 12       cost = none		  tech = "iron working" materialTab = true}
 	{item = { "BONUS_SteelWarHammer"}          work = 20       cost = none        tech = "two-handed weapons" materialTab = true}
     {item = { "BONUS_SteelBattleAxe"}          work = 22       cost = none        tech = "two-handed weapons" materialTab = true}
+	{item = { "BONUS_SteelWhip"}          	work = 25       cost = none        tech = "magical weapons" materialTab = true}
     {item = { "BONUS_VenSword"}  work = 20 	cost = none 	tech = "magical weapons" 	materialTab = true}
     {item = { "BONUS_VenArmor"}              work = 30       cost = none		  tech = "magical weapons" materialTab = true}
     {item = { "BONUS_VenHelm"}               work = 15       cost = none		  tech = "magical weapons" materialTab = true}
@@ -209,6 +217,7 @@
 	{item = {"BONUS_CaeliditeSword"}        work = 20   cost = none   materialTab = true}
     {item = {"BONUS_CaeliditeWarHammer"}    work = 20   cost = none   	tech = "two-handed weapons"  materialTab = true}
     {item = {"BONUS_CaeliditeBattleAxe"}    work = 22   cost = none   	tech = "two-handed weapons"  materialTab = true}
+	{item = {"BONUS_CaeliditeWhip"}         work = 25       cost = none        tech = "magical weapons" materialTab = true}
 	{item = {"BONUS_CaeliditeArmor"}		 work = 30 		cost = none 	  tech = "magical weapons" materialTab = true}
 	{item = {"BONUS_CaeliditeHelm"}		 	 work = 15 	cost = none   	  tech = "magical weapons" materialTab = true}
 	{item = {"BONUS_CaeliditeBoots"}		 work = 15 		cost = none 	tech = "magical weapons" materialTab = true}
@@ -234,19 +243,23 @@
     {item = { "BONUS_InfShield"}             work = 12       cost = none		  tech = "magical weapons" materialTab = true}
     {item = { "BONUS_InfWarHammer"}          work = 20       cost = none        tech = "magical weapons" materialTab = true}
     {item = { "BONUS_InfBattleAxe"}          work = 22       cost = none        tech = "magical weapons" materialTab = true}
-	  {item = {"BONUS_JothniteSword"}        work = 20   cost = none   materialTab = true}
+	{item = { "BONUS_InferniteWhip"}         work = 25       cost = none        tech = "magical weapons" materialTab = true}
+	{item = {"BONUS_JothniteSword"}        work = 20   cost = none   materialTab = true}
       {item = {"BONUS_JothniteWarHammer"}    work = 20   cost = none   tech = "two-handed weapons"  materialTab = true}
       {item = {"BONUS_JothniteBattleAxe"}    work = 22   cost = none   tech = "two-handed weapons"  materialTab = true}
+	  {item = { "BONUS_JothniteWhip"}          	work = 25       cost = none        tech = "magical weapons" materialTab = true}
 	{item = {"BONUS_JothniteArmor"}	 	 work = 30 		cost = none 	tech = "magical weapons" materialTab = true}
 	{item = {"BONUS_JothniteHelm"}		 	 work = 15 		cost = none 	tech = "magical weapons" materialTab = true}
 	{item = {"BONUS_JothniteBoots"}	 	 work = 15 		cost = none 	tech = "magical weapons" materialTab = true}
 	{item = {"BONUS_JothniteGloves"}		 work = 6 		cost = none  	tech = "magical weapons" materialTab = true}
 	{item = {"BONUS_JothniteShield"}		 work = 12 		cost = none 	tech = "magical weapons" materialTab = true}
+	{item = { "BONUS_AdoxiumWhip"}          	work = 25       cost = none        tech = "magical weapons" materialTab = true}
 	}
 
   
     "LAVA_FORGE" inherit "FORGE" append {
 	{{"SteelOre"}                           5        "IRON" 1      "iron working"} #Work required halved from 10; took WAY too long to convert appreciable quantities. Steel gear has also been buffed.
+	{{"SteelSack"}                           10        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 	"BONUS_ADA_FORGE" inherit "FORGE" append {
 	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
@@ -296,6 +309,7 @@
 	}
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
 	  {{"SteelOre"}                           4        "IRON" 1      "iron working"} # ;-)
+	  {{"SteelSack"}                           8        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
       {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
       {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
@@ -320,6 +334,7 @@
 	}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelSack"}                           10        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
       {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
       {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
@@ -344,6 +359,7 @@
 	}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelSack"}                           10        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	  {item = {"Sword"}          work = 10    cost = none   materialTab = true}
       {item = {"ChainArmor"}     work = 30    cost = none   materialTab = true}
       {item = {"IronHelm"}        work = 8    cost = none   materialTab = true}
@@ -367,26 +383,40 @@
       {item = {"AdoxiumStaff"}    work = 20   cost = none   tech = "magical weapons"  materialTab = true}
 	}
 	
+	#Reminder: Item, effect(s), amount of work, "RESOURCE IT COSTS", how much of that resource, "tech prerequisite". Syntax errors are no fun.
+	
 	"LABORATORY" {
 		{item = {Potion OneTimeBoost() Polymorph "BONUS_FAIRY_QUEEN" none} work = 20 cost = "GOLD" 100
           requireIngredient = "royal_dust" }
+		{{Potion PlaceFurniture GRASS} 10 "GOLD" 50 "terraforming"} #Mostly for hostile biomes like desert, volcanic, etc
+		{{Potion PlaceFurniture ROAD} 10 "WOOD" 1 "terraforming"}
+		{{Potion PlaceFurniture ENCHANTED_WATER} 40 "GOLD" 50 "terraforming"}
+		{{Potion PlaceFurniture MAGMA} 40 "INFERNITE" 25 "terraforming"}
 	}
 	"ENCHANTED_LABORATORY" {
 		{{Potion OneTimeBoost() Name "cold tolerance" Permanent COLD_RESISTANT }  20       "GOLD" 100}
 		{{Potion OneTimeBoost() Name "heat tolerance" Permanent FIRE_RESISTANT }  20       "GOLD" 100}
 		{{Potion OneTimeBoost() Name "acid tolerance" Permanent ACID_RESISTANT }  20       "GOLD" 100}
+		{{Potion PlaceFurniture ENCHANTED_WATER} 20 "GOLD" 20} #Faster, cheaper, and easier (no tech) with Enchanted Pool available
+		{{Potion PlaceFurniture MAGMA} 20 "INFERNITE" 25}
+		{{Potion PlaceFurniture GRASS} 5 "GOLD" 25}
+		{{Potion PlaceFurniture ROAD} 5 "WOOD" 1}
 		#Advanced Alchemy
-		{{Potion RegrowBodyPart 1}  10       "GOLD" 100  "advanced alchemy"} #CHECK: fix ALL damaged limbs, or just one?
+		{{Potion RegrowBodyPart 5}  10       "GOLD" 100  "advanced alchemy"} #RGP, then the number should be the amount of limbs it'll fix.  This should get a dragon or similar winged multi-limbed creature Fully Operational.
 		{{Potion OneTimeBoost() Name "against all arrows" Permanent RANGED_RESISTANCE }  20       "GOLD" 300 "advanced alchemy"}
 		{{Potion OneTimeBoost() Name "sword stopper skin" Permanent MELEE_RESISTANCE }  20       "GOLD" 300 "advanced alchemy"}
 		{{Potion OneTimeBoost() Name "spell snubber self" Permanent MAGIC_RESISTANCE }  20       "GOLD" 300 "advanced alchemy"}
+		#For those times when you find yourself with an underpowered elemental attack; these *should* stack.  Which is why they cost 300 gold per, it'll add up.
+		{{Potion OneTimeBoost() Name "acid's burn" IncreaseAttr ACID_DAMAGE 10 }  20       "GOLD" 300}
+		{{Potion OneTimeBoost() Name "burning wrath" IncreaseAttr FIRE_DAMAGE 10 }  20       "GOLD" 300}
+		{{Potion OneTimeBoost() Name "icy incarnation" IncreaseAttr COLD_DAMAGE 10 }  20       "GOLD" 300} #Probably needs a better name.
 		#Beast Mutation
 		{{Potion OneTimeBoost() Name "steed's stature" Permanent STEED }  20       "GOLD" 100 "beast mutation"}
 		{{Potion OneTimeBoost() Name "predator's posture" Permanent AMBUSH_SKILL }  20       "GOLD" 100 "beast mutation"}
 		{{Potion OneTimeBoost() Name "wolf's eye" Permanent NIGHT_VISION }  20       "GOLD" 100 "beast mutation"}
 		{{Potion OneTimeBoost() Name "back of burden" Permanent NO_CARRY_LIMIT }  20       "GOLD" 50 "beast mutation"} #Infinite carry weight *is* abusable, but mostly useful for cargo folks.  Combat needs a spell or two.
 		{{Potion OneTimeBoost() Name "pack's prowess" Permanent SWARMER }  20       "GOLD" 100 "beast mutation"}
-		{{Potion OneTimeBoost() Name "avian ambitions" AddBodyPart WING 2 none }  20       "GOLD" 100 "beast mutation"}
+		{{Potion OneTimeBoost() Name "avian ambitions" AddBodyPart WING 2 none }  20       "GOLD" 100 "beast mutation"} #Fairly cheap, BUT vulnerable to Wing Damage.
 		{{Potion OneTimeBoost() Name "prey precognition" Permanent WARNING }  20       "GOLD" 60 "beast mutation"} 
 		#Humanoid Mutation
 		{{Potion OneTimeBoost() Name "rider's stature" Permanent RIDER }  20       "GOLD" 100 "humanoid mutation"}
@@ -497,22 +527,26 @@
   }
     "LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelSack"}                           10        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 	"BONUS_ADA_FORGE" inherit "FORGE" append {}
 	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           4        "IRON" 1      "iron working"}
+		{{"SteelSack"}                          8        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelSack"}                           10        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelSack"}                           10        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 
   "LABORATORY"
   {
-    {{Potion RegrowBodyPart 1}  10       "GOLD" 100  "regrow limbs"}
+    {{Potion RegrowBodyPart 5}  10       "GOLD" 100  "regrow limbs"}
     {{ "BONUS_SpyingCrystal"} 10	   "GOLD" 50}
   }
   
@@ -522,6 +556,38 @@
         work = 6 cost = "CORPSE" 1 requireIngredient = "BONUS_paladin_remains"  }
 	  { item = {Assembled{ "BONUS_SPECTRE_OF_DEATH" "fallen paladin" {NO_LIMIT FIGHTER WORKER} {BALSAM} 6}}
         work = 6 cost = "CORPSE" 1 requireIngredient = "BONUS_devils_heart"  }
+  }
+}
+
+"soulforge"
+{
+  "BONUS_SOULFORGE" #Does NOT inherit other forges...
+  {
+	{item = { "BONUS_DSSword"}  			work = 20 	    cost = none 	tech = "iron working" 	materialTab = true}
+    {item = { "BONUS_DSArmor"}              work = 30       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_DSHelm"}               work = 15       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_DSBoots"}              work = 15       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_DSGloves"}             work = 6        cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_DSShield"}             work = 12       cost = none		  tech = "iron working" materialTab = true}
+	{item = { "BONUS_DSWarHammer"}          work = 20       cost = none        tech = "two-handed weapons" materialTab = true}
+    {item = { "BONUS_DSBattleAxe"}          work = 22       cost = none        tech = "two-handed weapons" materialTab = true}
+  }
+}
+"soulforge_martial"
+{
+  "BONUS_SOULFORGE"
+  {
+	{item = { "BONUS_DSSword"}  			work = 20 	    cost = none 	tech = "iron working" 	materialTab = true}
+    {item = { "BONUS_DSArmor"}              work = 30       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_DSHelm"}               work = 15       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_DSBoots"}              work = 15       cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_DSGloves"}             work = 6        cost = none		  tech = "iron working" materialTab = true}
+    {item = { "BONUS_DSShield"}             work = 12       cost = none		  tech = "iron working" materialTab = true}
+	{item = { "BONUS_DSWarHammer"}          work = 20       cost = none        tech = "two-handed weapons" materialTab = true}
+    {item = { "BONUS_DSBattleAxe"}          work = 22       cost = none        tech = "two-handed weapons" materialTab = true}
+	{item = { "BONUS_DSMace"}         		work = 14       cost = none 	tech = "advanced smithy" materialTab = true}
+    {item = { "BONUS_DSAxe"}          		work = 18       cost = none 	tech = "advanced smithy" materialTab = true}
+	{item = { "BONUS_DSSpear"}    			work = 18       cost = none 	tech = "advanced smithy" materialTab = true}
   }
 }
 
@@ -722,17 +788,21 @@
   }
     "LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           3        "IRON" 1      "iron working"} #Dwarves make steel Faster.
+		{{"SteelSack"}                          6        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 	"BONUS_ADA_FORGE" inherit "FORGE" append {}
 	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           2        "IRON" 1      "iron working"}
+		{{"SteelSack"}                          4        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           3        "IRON" 1      "iron working"}
+		{{"SteelSack"}                          6        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           3        "IRON" 1      "iron working"}
+		{{"SteelSack"}                          6        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 
   "LABORATORY"
@@ -803,7 +873,7 @@
     {{Ring RANGED_RESISTANCE}    40 "GOLD"   200 "royal jewellery"}
     {{Ring TELEPATHY}            40 "GOLD"   300 "royal jewellery"}
     {{Ring FLYING}               40 "GOLD"   400 "royal jewellery"}
-    {{Ring NO_CARRY_LIMIT}       40 "GOLD"   200 "royal jewellery"}
+    {{Ring NO_CARRY_LIMIT}       40 "GOLD"    60 "royal jewellery"}
   }
 }
 
@@ -880,17 +950,24 @@
     {{ "BONUS_JothniteWarHammer"}          1       "ADA" 0}
     {{ "BONUS_JothniteBattleAxe"}          1       "ADA" 0}
   }
-    "LAVA_FORGE" inherit "FORGE" append {}
+  #Sandbox gets the Dwarf rate.
+    "LAVA_FORGE" inherit "FORGE" append {
+		{{"SteelOre"}                           2        "IRON" 1      "iron working"}
+		{{"SteelSack"}                           4        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
+	}
     "BONUS_ADA_FORGE" inherit "FORGE" append {}
 	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           2        "IRON" 1      "iron working"}
+		{{"SteelSack"}                           4        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           2        "IRON" 1      "iron working"}
+		{{"SteelSack"}                           4        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
-		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelOre"}                           2        "IRON" 1      "iron working"}
+		{{"SteelSack"}                           4        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 
   "LABORATORY"
@@ -947,6 +1024,7 @@
 	{{TechBook "alchemy"}                  1    "GOLD" 1000}
 	{{TechBook "advanced alchemy"}         1    "GOLD" 1000 "alchemy"}
 	{{TechBook "alchemical conversion"}    1    "GOLD" 1000 "alchemy"}
+	{{TechBook "terraforming"}		       1    "GOLD" 1000 "alchemy"}
 	{{TechBook "humanoid mutation"}        1    "GOLD" 1000 "alchemy"}
 	{{TechBook "beast mutation"}           1    "GOLD" 1000 "alchemy"}
 	{{TechBook "pig breeding"}             1    "GOLD" 1000 "chicken breeding" }
@@ -970,12 +1048,12 @@
 	{{TechBook "alchemy"}                  1    "GOLD" 1000}
 	{{TechBook "advanced alchemy"}         1    "GOLD" 1000 "alchemy"}
 	{{TechBook "alchemical conversion"}    1    "GOLD" 1000 "alchemy"}
+	{{TechBook "terraforming"}		       1    "GOLD" 1000 "alchemy"}
 	{{TechBook "canine heroes"}            1    "GOLD" 1000 "chicken breeding"}
 	{{TechBook "royal jewellery"}          1    "GOLD" 1000 "jewellery"}
 	{{TechBook "pig breeding"}             1    "GOLD" 1000 "chicken breeding"}
 	{{TechBook "jewellery"}                1    "GOLD" 1000 "iron working"}
 	{{TechBook "two-handed weapons"}       1    "GOLD" 1000 "iron working"}
-	{{TechBook "traps"}                    1    "GOLD" 1000}
 	{{TechBook "archery"}                  1    "GOLD" 1000}
 	{{TechBook "sorcery"}                  1    "GOLD" 1000}
 	{{TechBook "advanced sorcery"}         1    "GOLD" 1000 "sorcery"}
@@ -1013,17 +1091,21 @@
   }
     "LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelSack"}                          10        "IRON" 10      "iron working"} #Twice the work and 10x the cost for ~10x result. Maybe a lil' more.
 	}
 	"BONUS_ADA_FORGE" inherit "FORGE" append {}
 	"BONUS_ADOXIUM_FORGE" inherit "FORGE" append {}
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           4        "IRON" 1      "iron working"}
+		{{"SteelSack"}                          8        "IRON" 10      "iron working"}
 	}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelSack"}                          10        "IRON" 10      "iron working"}
 	}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {
 		{{"SteelOre"}                           5        "IRON" 1      "iron working"}
+		{{"SteelSack"}                          10        "IRON" 10      "iron working"}
 	}
     
 
@@ -1084,7 +1166,28 @@
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {}
-	    
+	
+	"LAVA_JEWELER"
+	{
+	{{Glyph { ARMOR LastingEffect SPEED }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { ARMOR LastingEffect TELEPATHY }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { ARMOR LastingEffect SWIMMING_SKILL }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { ARMOR LastingEffect RIDER }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { ARMOR LastingEffect STEED }} 10 "GOLD" 100 "magical weapons"} #Steed gear is situational given Knights get steed-breeding, but just in case.
+	{{Glyph { ARMOR LastingEffect FLYING }} 10 "GOLD" 200 "magical weapons"} #*Not* subject to Wing Damage.
+	{{Glyph { ARMOR LastingEffect AMBUSH_SKILL }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { ARMOR LastingEffect COPULATION_SKILL }} 10 "GOLD" 100 "magical weapons"} #If you're gonna designate a Copulator, might as well give them the protection of player-made gear.
+    {{Glyph { WEAPON LastingEffect RAGE }} 10 "GOLD" 100 "magical weapons"}
+    {{Glyph { WEAPON VictimEffect 0.3 Lasting 20 COLLAPSED }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { WEAPON VictimEffect 0.3 Lasting 20 BLEEDING }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { WEAPON VictimEffect 0.3 Lasting 20 PANIC }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { RANGED_WEAPON LastingEffect ELF_VISION }} 10 "GOLD" 20 "magical weapons"}
+    {{Glyph { RANGED_WEAPON LastingEffect NIGHT_VISION }} 10 "GOLD" 20 "magical weapons"} #Costs the same as the amulet.
+	{{Glyph { RANGED_WEAPON VictimEffect 0.4 Fire { 40 } }} 10 "INFERNITE" 10 "magical weapons"} #Elemental arrows\
+	{{Glyph { RANGED_WEAPON VictimEffect 0.4 Ice { 40 } }} 10 "JOTHNITE" 10 "magical weapons"} #Elemental arrows   - These add additional damage on top of the actual shot, if I understand them correctly.
+	{{Glyph { RANGED_WEAPON VictimEffect 0.4 Acid { 40 } }} 10 "CAELIDITE" 10 "magical weapons"} #Elemental arrows/
+	{{Glyph { RANGED_WEAPON VictimEffect 0.3 Lasting 20 SLOWED }} 10 "GOLD" 100 "magical weapons"} #Got a feeling this'll be one of the more lethal options.  May nerf or eliminate.
+	}
  }
 
  "law armory"
@@ -1124,6 +1227,31 @@
 	"BONUS_INFERNITE_FORGE" inherit "FORGE" append {}
 	"BONUS_ADA_LAVA_FORGE" inherit "FORGE" append {}
 	"BONUS_ADOXIUM_LAVA_FORGE" inherit "FORGE" append {}
+	
+	"LAVA_JEWELER"
+	{
+	{{Glyph { ARMOR LastingEffect SPEED }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { ARMOR LastingEffect TELEPATHY }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { ARMOR LastingEffect RIDER }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { ARMOR LastingEffect SWIMMING_SKILL }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { ARMOR LastingEffect SWARMER }} 10 "GOLD" 100 "magical weapons"} #Lawful probably shouldn't be tacking up their troops.  Coordinating them more effectively seems reasonable though.
+	{{Glyph { ARMOR LastingEffect FLYING }} 10 "GOLD" 200 "magical weapons"} #*Not* subject to Wing Damage.
+	{{Glyph { ARMOR LastingEffect RIDER }} 10 "GOLD" 50 "magical weapons"}
+	{{Glyph { ARMOR LastingEffect AMBUSH_SKILL }} 10 "GOLD" 100 "magical weapons"}
+	#Designating Copulators is a sign you should be playing EVIL and not LAWFUL.
+    {{Glyph { WEAPON ItemAttrBonus DEFENSE 4 }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { WEAPON ItemAttrBonus PARRY 1 }} 10 "GOLD" 100 "magical weapons"}
+    {{Glyph { WEAPON VictimEffect 0.3 Lasting 20 COLLAPSED }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { WEAPON VictimEffect 0.3 Lasting 20 RANGED_VULNERABILITY }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { WEAPON VictimEffect 0.3 Lasting 20 PANIC }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { WEAPON VictimEffect 0.3 Lasting 20 MELEE_VULNERABILITY }} 10 "GOLD" 100 "magical weapons"}
+	{{Glyph { RANGED_WEAPON LastingEffect ELF_VISION }} 10 "GOLD" 20 "magical weapons"}
+    {{Glyph { RANGED_WEAPON LastingEffect NIGHT_VISION }} 10 "GOLD" 20 "magical weapons"} #Costs the same as the amulet.
+	{{Glyph { RANGED_WEAPON VictimEffect 0.4 Fire { 40 } }} 10 "INFERNITE" 10 "magical weapons"} #Elemental arrows\
+	{{Glyph { RANGED_WEAPON VictimEffect 0.4 Ice { 40 } }} 10 "JOTHNITE" 10 "magical weapons"} #Elemental arrows   - These add additional damage on top of the actual shot, if I understand them correctly.
+	{{Glyph { RANGED_WEAPON VictimEffect 0.4 Acid { 40 } }} 10 "CAELIDITE" 10 "magical weapons"} #Elemental arrows/
+	{{Glyph { RANGED_WEAPON VictimEffect 0.3 Lasting 20 SLOWED }} 10 "GOLD" 100 "magical weapons"}
+	}
 
  }
 
@@ -1164,7 +1292,6 @@
 	
 	"FORGE"
 	{	{item = { "BONUS_SteelStaff"}			 work = 20	   cost = none tech = "magical weapons" materialTab = true}
-		{item = { "BONUS_mageArmorAdoxium"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
 		{item = { "BONUS_mageArmorSteel"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
 		{item = { "BONUS_mageArmorAda"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}
 		{item = { "BONUS_mageArmorVen"}			 work = 35	   cost = none tech = "magical weapons" materialTab = true}

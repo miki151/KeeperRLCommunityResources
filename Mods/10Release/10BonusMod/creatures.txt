@@ -1195,7 +1195,7 @@ End
  ##################################
   
   
-  "BONUS_WIZARD_HERO"
+  "BONUS_WIZARD_HERO" #HERO units will be Recruitable for Bonus Castle types, the Lawful counterpart to Legendary Breeding etc.
     {
       viewId = { "keeper_f1" Rgb 120 0 255 255 }
       name = {
@@ -1204,12 +1204,12 @@ End
         fullTitle = true
     }
     body = {
-      type = Humanoid MEDIUM
+      type = Humanoid LARGE
     }
     gender = FEMALE
     attr = {
 	  DAMAGE 10
-      DEFENSE 10
+      DEFENSE 22
       SPELL_DAMAGE 35
 	  LABORATORY 30
     }
@@ -1226,15 +1226,19 @@ End
     chatReactionHostile  = "\"The war shall be won!\""
     hatedByEffect = HATE_HUMANS
       inventory = {
-        {  "LeatherArmor" }
+        { type = "BONUS_mageArmorLeather" prefixChance = 1}
         {  "WoodenStaff" }
         {  "LeatherHelm" }
         {  "LeatherBoots" }
         {  "LeatherGloves" }
       }
-	promotionGroup = "spell_adventurer"
-    promotionCost = 1
-    maxPromotions = 1000
+	##
+	#Commented out for explanation purposes here: Adventurer-PC style levelups (as in, based on Malvolence) don't seem to play well with capture & conversion (probable cause of crashes)
+	#as well as tend to all dump to the first through Immigration.  So, hard Nope.  Thanks.
+	##
+	#promotionGroup = "spell_adventurer"
+    #promotionCost = 1
+    #maxPromotions = 1000
   }
 
     "BONUS_WARRIOR_HERO"
@@ -1250,7 +1254,7 @@ End
     }
     attr = {
       DAMAGE 25
-      DEFENSE 25
+      DEFENSE 37
 	  WORKSHOP 25
 	  FORGE 25
     }
@@ -1272,10 +1276,20 @@ End
     deathDescription = "killed, fighting to the last"
     hatedByEffect = HATE_HUMANS
 	
+  }
+  "BONUS_WARRIOR_HERO_ADV" inherit "BONUS_WARRIOR_HERO"
+  {
+    attr = {
+	  DAMAGE 25
+      DEFENSE 25
+	  WORKSHOP 25
+	  FORGE 25
+	}
 	promotionGroup = "melee_adventurer"
     promotionCost = 1
     maxPromotions = 1000
   }
+  
   "BONUS_THIEF_HERO"
     {
       viewId = { "assassin_archer" }
@@ -1285,7 +1299,7 @@ End
         fullTitle = true
       }
     body = {
-      type = Humanoid SMALL
+      type = Humanoid LARGE #If they're supposed to be capable of Riding and illustrated as human, it helps if they're not looking to ride a raven or a wolf...
       }
     attr = {
 	  DAMAGE 25
@@ -1300,8 +1314,6 @@ End
       }
     spellSchools = { "bonus dark stealth" } #Patched, should be SPELL_DAMAGE
     permanentEffects = {
-      ELF_VISION 1
-      NIGHT_VISION 1
       FAST_TRAINING 1
       AMBUSH_SKILL 1
       SWIMMING_SKILL 1
@@ -1309,21 +1321,20 @@ End
 	  RIDER 1
       }
     chatReactionFriendly = "chats about when they robbed a shop"
-    chatReactionHostile  = "\"A knife awaits your back my friend!\""
+    chatReactionHostile  = "\"An arrow awaits your back my friend!\""
     hatedByEffect = HATE_HUMANS
       inventory = {
         {  "Bow" }
         { type =  "Knife" prefixChance = 1}
         { Amulet RANGED_RESISTANCE 1 1 0.05}
-        { Amulet AMBUSH_SKILL 1 1 0.05}
-        { Amulet DISARM_TRAPS_SKILL 1 1 0.05}
-        { Amulet ELF_VISION 1 1 0.05}
-        { Amulet NIGHT_VISION 1 1 0.05}
-        { Amulet SWIMMING_SKILL 1 1 0.05}
+        #Why start with an amulet for a skill you have by default??
+		#{ Amulet AMBUSH_SKILL 1 1 0.05}
+        #{ Amulet DISARM_TRAPS_SKILL 1 1 0.05}
+        { Amulet ELF_VISION 1 1 0.25}
+        { Amulet NIGHT_VISION 1 1 0.25}
+        #{ Amulet SWIMMING_SKILL 1 1 0.05}
       }
-	promotionGroup = "ranged_adventurer"
-    promotionCost = 1
-    maxPromotions = 1000
+	
   }
   
   "BONUS_THIEF_HERO_F" inherit "BONUS_THIEF_HERO"
@@ -1336,11 +1347,43 @@ End
 		}
 	gender = FEMALE
   }
+  
+  "BONUS_THIEF_HERO_ADV" inherit "BONUS_THIEF_HERO"
+  {
+    promotionGroup = "ranged_adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
+  }
+  
+  "BONUS_THIEF_HERO_F_ADV" inherit "BONUS_THIEF_HERO"
+  {
+    viewId = { "assassin_archer_female" }
+	name = {
+		name = "Archer Assassin"
+		firstNameGen = "FIRST_FEMALE"
+		fullTitle = true
+		}
+	gender = FEMALE
+	
+    promotionGroup = "ranged_adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
+  }
 
   "BONUS_WIZARD_ADVENTURER" inherit "BONUS_WIZARD_HERO"
     {
+	attr = {
+	  DAMAGE 10
+      DEFENSE 10
+      SPELL_DAMAGE 35
+	  LABORATORY 30
+	}
     maxLevelIncrease = {
       SPELL_DAMAGE 20 }
+	  
+	promotionGroup = "spell_adventurer"
+    promotionCost = 1
+    maxPromotions = 1000
     }
 	
   "BONUS_WARRIOR_ADVENTURER"
@@ -1427,7 +1470,7 @@ End
         {  "FirstAidKit" 2 4 }
         {  "ArchwoodStaff"}
         {  "LeatherGloves"}
-        { type =  "Robe" prefixChance = 1 }
+        { type =  "BONUS_mageArmorLeather" prefixChance = 1 }
         {  "LeatherHelm"}
         {  "LeatherBoots"}
         {  "GoldPiece" 16 26 }
@@ -1502,7 +1545,7 @@ End
 	}
   "BONUS_BARBARIAN_ADVENTURER"
     {
-      viewId = { "barbarian" }
+      viewId = { "barbarian2" }
       attr = {
         DAMAGE 26
         DEFENSE 18 
@@ -1538,12 +1581,47 @@ End
     promotionCost = 1
     maxPromotions = 1000
     }
-  "BONUS_BARBARIAN_ADVENTURER_FEMALE" inherit "BONUS_BARBARIAN_ADVENTURER"
+  "BONUS_BARBARIAN_ADVENTURER_NPC"
     {
-      viewId = { "barbarian_female" }
-      gender = FEMALE
+      viewId = { "barbarian2" }
+      attr = {
+        DAMAGE 26
+        DEFENSE 18 
+      }
+      body = {
+        type = Humanoid LARGE
+      }
       name = {
         name = "barbarian"
+        firstNameGen = "FIRST_MALE"
+        fullTitle = true
+       }
+      permanentEffects = {
+        REGENERATION 1
+		RIDER 1
+      }
+      maxLevelIncrease = {
+        DAMAGE 30
+      }
+      hatedByEffect = HATE_HUMANS
+      spellSchools = { "bonus fighter" "bonus barbarian" }
+	   spells = {
+		 "BONUS_battle cry"
+	  }
+      inventory = {
+        { countMin = 2 countMax = 4 type = Potion Heal {FLESH} }
+        {  "BattleAxe"}
+		{  "LeatherArmor"}
+        {  "LeatherBoots"}
+        {  "GoldPiece" 16 26 }
+      }
+    }
+  "BONUS_BARBARIAN_ADVENTURER_FEMALE" inherit "BONUS_BARBARIAN_ADVENTURER_NPC"
+    {
+      viewId = { "barbarian_female2" }
+      gender = FEMALE
+      name = {
+        name = "barbarian2"
         firstNameGen = "FIRST_FEMALE"
         fullTitle = true
       }
@@ -1696,12 +1774,12 @@ End
         fullTitle = true
     }
     body = {
-      type = Humanoid MEDIUM
+      type = Humanoid LARGE
     }
     attr = {
 	  DAMAGE 5
       SPELL_DAMAGE 15
-      DEFENSE 40
+      DEFENSE 52
 	  JEWELER 30
     }
     spellSchools = { "bonus healer" "bonus high priest" }
@@ -1720,13 +1798,23 @@ End
     chatReactionHostile  = "\"Your afterlife will be horrible!\""
     hatedByEffect = HATE_HUMANS
       inventory = {
-        {  "LeatherArmor" }
+        {  "BONUS_mageArmorLeather" }
         {  "WoodenStaff" }
         {  "LeatherHelm" }
         {  "LeatherBoots" }
         {  "LeatherGloves" }
       }
-	promotionGroup = "spell_adventurer"
+  }
+  
+  "BONUS_CLERIC_HERO_ADV" inherit "BONUS_CLERIC_HERO"
+  {
+    attr = {  
+	  DAMAGE 5
+      SPELL_DAMAGE 15
+      DEFENSE 40
+	  JEWELER 30
+	}  
+    promotionGroup = "spell_adventurer"
     promotionCost = 1
     maxPromotions = 1000
   }
@@ -1901,12 +1989,45 @@ End
         {  "GoldPiece" 80 120 }
         { type =  "BONUS_DwarvenBeer" chance = 0.1 }
     }
+	#No Malevolence promotions for NPCs, only Adventurer classes kthx!
+	#promotionGroup = "melee_adventurer"
+    #promotionCost = 1
+    #maxPromotions = 1000
+  }
+  
+  "BONUS_DWARF_BARON_ADV" inherit "DWARF_BARON" {
+    inventory = {
+        { type =  "BONUS_VenBattleAxe" prefixChance = 1 }
+        { Potion Heal {FLESH} 2 3 }
+        { type =  "AdaArmor" prefixChance = 1 }
+        {  "AdaBoots" } #Modded
+        {  "AdaHelm" } #Modded
+        { type =  "Torch" chance = 0.3 }
+        {  "GoldPiece" 80 120 }
+        { type =  "BONUS_DwarvenBeer" chance = 0.1 }
+    }
 	promotionGroup = "melee_adventurer"
     promotionCost = 1
     maxPromotions = 1000
   }
   
     "BONUS_MINOTAUR" inherit "MINOTAUR" {
+    inventory = {
+		{ type =  "BONUS_VenBattleAxe" prefixChance = 0.1 }
+		{  "AdaArmor" 1 1 0.03 }
+		{  "AdaBoots" 1 1 0.03 }
+		{  "AdaGloves" 1 1 0.03 }
+		{  "AdaHelm" 1 1 0.03 }
+		{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
+		{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
+		{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
+		{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
+		{ Potion Permanent SPEED 1 1 0.03 }
+		{ Potion RegrowBodyPart 1 1 1 0.03 }
+		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
+      }
+    }
+	"BONUS_MINOTAUR_ADV" inherit "MINOTAUR" {
     inventory = {
 		{ type =  "BONUS_VenBattleAxe" prefixChance = 0.1 }
 		{  "AdaArmor" 1 1 0.03 }
@@ -1941,10 +2062,27 @@ End
 		{ Potion RegrowBodyPart 1 1 1 0.03 }
 		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
       }
+    }
+	
+	"BONUS_CYCLOPS_ADV" inherit "CYCLOPS" {
+    inventory = {
+		{ type =  "Sword" prefixChance = 0.1 }
+		{  "AdaArmor" 1 1 0.03 }
+		{  "AdaBoots" 1 1 0.03 }
+		{  "AdaGloves" 1 1 0.03 }
+		{  "AdaHelm" 1 1 0.03 }
+		{ type = Potion IncreaseAttr DAMAGE 1, chance = 0.01 }
+		{ type = Potion IncreaseAttr DEFENSE 1 chance = 0.01 }
+		{ type = Potion IncreaseAttr RANGED_DAMAGE 1 chance = 0.01 }
+		{ type = Potion IncreaseAttr SPELL_DAMAGE 1 chance = 0.01 }
+		{ Potion Permanent SPEED 1 1 0.03 }
+		{ Potion RegrowBodyPart 1 1 1 0.03 }
+		{ Scroll Permanent DARKNESS_SOURCE 1 1 0.03 }
+      }
 	promotionGroup = "melee_adventurer"
     promotionCost = 1
     maxPromotions = 1000
-    }	
+    }
 
 "BONUS_IMMORTAL_DEATH" inherit "DEATH" {
     spells = {
@@ -2288,6 +2426,7 @@ End
     attr = {
       DAMAGE 55
       DEFENSE 52
+	  FIRE_DAMAGE 40
     }
       chatReactionFriendly = "\"Lingrah Laas Wah Hi\""
       chatReactionHostile = "\"Aal Yol Du Hi Joor!\""
@@ -3097,6 +3236,12 @@ End
 		maxLevelIncrease = { SPELL_DAMAGE 11}
 		
 	}
+	
+	"ACOLYTE" modify append { #Church workforce, let 'em farm
+		permanentEffects = append {
+			CROPS_SKILL 1
+		}
+	}
 	#"DOPPLEGANGER" modify append { #Give the dopples the ability to level up.
 	#	body = {
 	#		type = NonHumanoid LARGE
@@ -3219,7 +3364,7 @@ End
       attr = {
         DAMAGE 30
         DEFENSE 36  
-        RANGED_DAMAGE 23 
+        RANGED_DAMAGE 20
       }
       body = {
         type = Humanoid LARGE
@@ -3236,12 +3381,13 @@ End
         RANGED_DAMAGE 7
       }
       permanentEffects = {
-        SPEED 1
+        #SPEED 1 #Archer is a touch too armored to high-speed everywhere...and it's Really Difficult for starting folks.
         HATE_GREENSKINS 1
       }
+	  spells = { "warhorse_haste" } #Making centaurs capable of horse bursts of SPEED rather than perma-haste ought to make them a touch more manageable.
       name = {
         name = "centaur archer"
-        pluralName = "centaurs"
+        pluralName = "centaur archers"
 	    firstNameGen = "FIRST_FEMALE"
       }
       chatReactionFriendly = "\"curses all greenskins\""
@@ -3278,7 +3424,7 @@ End
       }
       name = {
         name = "centaur farmer"
-        pluralName = "Centaurs"
+        pluralName = "centaur farmers"
 	    firstNameGen = "FIRST_MALE"
       }
       chatReactionFriendly = "talks about farming"
@@ -3307,7 +3453,7 @@ End
       }
       name = {
         name = "centaur hunter"
-        pluralName = "Centaurs"
+        pluralName = "centaur hunters"
     	firstNameGen = "FIRST_FEMALE"
       }
       chatReactionFriendly = "talks about methods of tracking animals"
@@ -3381,12 +3527,13 @@ End
         DEFENSE 8   
       }
       permanentEffects = {
-        SPEED 1
+        SPEED 1 #Children have so much energy! ^_^
       }
       name = {
         name = "centaur child"
         pluralName = "centaur children"
       }
+	  noCopulation = true
       chatReactionFriendly = "talks about playing in the fields"
       chatReactionHostile = "\"Don't hurt me!\""
 	  inventory = {
@@ -3724,6 +3871,7 @@ End
   chatReactionHostile = "\"Die, fiend!\""
   inventory = {
 	{ type =  "Robe" prefixChance = 1}
+	{  "BONUS_AmazonWhip" }
 	{  "ArchwoodStaff" }
 	{ type = Glyph {ARMOR LastingEffect POISON_RESISTANT} chance = 0.2 }
   }   
@@ -3918,6 +4066,7 @@ End
 	pluralName = "fairies"
 	firstNameGen = "BONUS_PIXIE"
   }
+  noCopulation = true #Tough call on this one; since she doesn't want to become a sex demon (and believes she will), feels like she'd rather not receive their attentions.  Open to further discussion.
   chatReactionFriendly = "talks about not wanting to become a succubus"
   chatReactionHostile = "\"Die, Whelp!\""
 }
@@ -3938,7 +4087,7 @@ End
 	FORGE 35
   }
   permanentEffects = append {
-	NO_FRIENDLY_FIRE 1 #Earth Blast is apparently very good at hitting friendlies and causing infighting?
+	NO_FRIENDLY_FIRE 1 #Earth Blast is very good at hitting friendlies and causing infighting, but needs reworked at the spell level
   }
   name = {
 	name = "earth fairy"
@@ -3968,6 +4117,11 @@ End
 "BONUS_FIRE_FAIRY" inherit "BONUS_AIR_FAIRY"
 {
   viewId = { "fire_fairy" }
+  attr = append { #Might as well give 'em some crafting capability
+	FURNACE 50
+	FORGE 35
+	FIRE_DAMAGE 40 #Hopefully helps out, let me know if it doesn't
+  }
   body = {
 	type = Humanoid MEDIUM
 	material = FLESH
@@ -4004,6 +4158,14 @@ End
 "BONUS_LIGHT_FAIRY" inherit "BONUS_AIR_FAIRY"
 {
   viewId = { "light_fairy" }
+  attr = { #The better to help or smite folks with
+	DAMAGE 20
+	DEFENSE 16 
+	SPELL_DAMAGE 45  
+	LABORATORY 20
+	WORKSHOP 40
+	JEWELER 40
+  }
   spellSchools = { "mage" }
   spells = {
 	"healing"
@@ -4274,6 +4436,7 @@ End
       attr = {
         DAMAGE 75
         DEFENSE 60
+		FIRE_DAMAGE 60 #Without this, it's effectively just garlic breath.  You notice it being breathed on you...and that's it.
       }
       name = {
         name = "ancient red dragon"
@@ -4292,6 +4455,7 @@ End
       attr = {
         DAMAGE 35
         DEFENSE 35
+		FIRE_DAMAGE 35
       }
       name = {
         name = "young red dragon"
@@ -4328,6 +4492,153 @@ End
         FEMALE { "young_greendragon" ColorId LIGHT_GREEN }
       }
 	}
+	"BONUS_YOUNG_YELLOW_DRAGON" inherit "YELLOW_DRAGON"
+    {
+      viewId = { "young_reddragon" ColorId LIGHT_BROWN } #young_reddragon supports palette-swapping
+      attr = {
+        DAMAGE 35
+        DEFENSE 35
+		ACID_DAMAGE 30
+      }
+      name = {
+        name = "young yellow dragon"
+        pluralName = "dragons"
+        firstNameGen = "DRAGON"
+      }
+      chatReactionFriendly = "\"Krii Roos Iiz, Los Mey\""
+      chatReactionHostile = "\"ROOOAAAR!\""
+      inventory = {
+        {  "GoldPiece" 40 70 }
+      }
+      genderAlternatives = {
+        FEMALE { "young_reddragon" ColorId LIGHT_BROWN }
+      }
+	}
+	"BONUS_ANCIENT_YELLOW_DRAGON" inherit "YELLOW_DRAGON"
+    {
+      viewId = { "ancient_reddragon" }
+      attr = {
+        DAMAGE 80
+        DEFENSE 65
+		ACID_DAMAGE 60 #There're a depressing amount of folks who are immune to acid damage.  So Yellow Dragons who live to become Ancient probably know a little more about fighting.
+      }
+      name = {
+        name = "ancient yellow dragon"
+        pluralName = "dragons"
+        firstNameGen = "DRAGON"
+      }
+      chatReactionFriendly = "\"Krii Roos Iiz Grah-Zeymahzin... Nii Ag Pah\""
+      chatReactionHostile = "ignores your attempt to communicate."
+      genderAlternatives = {
+        FEMALE { "ancient_reddragon" ColorId ORANGE_BROWN }
+	  }
+	}
+	#
+	#Soft Monster's additional dragons!
+	#
+	"BONUS_BLUE_DRAGON"
+	{
+	viewId = { "red_dragon" Rgb 33 27 120 255 }
+    attr = {
+      DAMAGE 45
+      SPELL_DAMAGE 50
+      DEFENSE 47
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting INSANITY} } }}}
+      }
+      deathSound = "DYING_DRAGON"
+	  drops = {{ "BlueDragonScales"} 1}
+	  droppedPartUpgrade = {Permanent INSANITY IncreaseAttr DAMAGE 10 IncreaseAttr DEFENSE 10 }
+    }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      RANGED_VULNERABILITY 1
+      STEED 1
+      REGENERATION 1
+    }
+	maxLevelIncrease = {
+		DAMAGE 7
+	}
+    name = {
+      name = "blue dragon"
+      stackName = "dragon"
+      firstNameGen = "DRAGON"
+    }
+    spells = { "healing" "deception" "haste" "magic missile" "advanced magic missile" "dragon greeting" }
+    hatedByEffect = HATE_DRAGONS
+    inventory = {
+      { "GoldPiece" 60 100 }
+      { type = Glyph { WEAPON VictimEffect 0.3 Lasting INSANITY } chance = 0.3 }
+      { type = Glyph { ARMOR LastingEffect MAGIC_RESISTANCE } chance = 0.3 }
+      { type = Glyph { ARMOR LastingEffect REGENERATION } chance = 0.3 }
+      { type = Glyph { ARMOR ItemAttrBonus DEFENSE 3 } chance = 0.3 }
+      { type = Glyph { WEAPON ItemAttrBonus DAMAGE 3 } chance = 0.3 }
+      { type = Glyph { RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 } chance = 0.3 }
+    }
+	chatReactionFriendly = "\"Aal Lii Wah Lii Pah Lii Wah Gii\""
+	chatReactionHostile = "\"Fah Iiz!\""
+    steedAchievement = "rode_dragon"
+	
+	genderAlternatives = {
+        FEMALE { "red_dragon" ColorId SKY_BLUE }
+	  }
+	
+	}
+	
+	#Player-character dragons
+	"BLACK_DRAGON_PLAYER"
+  {
+    viewId = { "red_dragon" Rgb 80 80 80 255 }
+    attr = {
+      DAMAGE 45
+      DEFENSE 47
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+      drops = {{ "BlackDragonScales" } 1}
+      droppedPartUpgrade = Permanent TELEPATHY
+      deathSound = "DYING_DRAGON"
+    }
+    permanentEffects = {
+      RANGED_VULNERABILITY 1
+      #BLIND 1 ------commented out, the black dragon player must not be blind.
+      TELEPATHY 1
+      STEED 1
+      CAPTURE_RESISTANCE 1
+      REGENERATION 1
+    }
+    name = {
+      name = "black dragon"
+      firstNameGen = "DRAGON"
+      stackName = "dragon"
+    }
+    spells = { "healing" "haste" "cure poison" "black dragon blindness" "dragon greeting"}
+    hatedByEffect = HATE_DRAGONS
+    inventory = { #Unless the PC dragon is going to adopt adventurers or otherwise acquire gear-using & -crafting minions, they can't make effective use of glyphs.
+      { "GoldPiece" 120 200 }
+    }
+    steedAchievement = "rode_dragon"
+  }
+  ###
  "BONUS_ZOMBIE_DRAGON"
     {
       viewId = { "zombiedragon" }
@@ -4428,15 +4739,16 @@ End
       genderAlternatives = {
         FEMALE { "red_dragonewt" ColorId LIGHT_RED }
 	  }
-      attr = {
+      attr = { #Red dragonewts are better at the forge & furnace
         DAMAGE 18
         DEFENSE 18 
         SPELL_DAMAGE 20 
         RANGED_DAMAGE 12 
-        LABORATORY 15
+        LABORATORY 5
         WORKSHOP 15
-        FORGE 15
-        DIGGING 5
+        FORGE 20
+		FURNACE 30
+        DIGGING 10
       }
       body = {
         type = Humanoid LARGE
@@ -4483,6 +4795,17 @@ End
       genderAlternatives = {
         FEMALE { "red_dragonewt" ColorId LIGHT_GREEN }
 	  }
+	  attr = { #Green dragonewts are better at the lab & shop
+        DAMAGE 18
+        DEFENSE 18 
+        SPELL_DAMAGE 20 
+        RANGED_DAMAGE 12 
+        LABORATORY 35
+        WORKSHOP 20
+        FORGE 5
+		FURNACE 10
+        DIGGING 10
+      }
       body = {
         type = Humanoid LARGE
         material = FLESH
@@ -4689,8 +5012,9 @@ End
       viewId = { "hell_portal" }
       attr = {
         DAMAGE 0
-        DEFENSE 35
-        SPELL_DAMAGE 20   
+        DEFENSE 40 #Ocean Portal has 30 DEF
+        SPELL_DAMAGE 35 #The Ocean Portal hits for 60...
+		FIRE_DAMAGE 35 #Just in case.
       }
       spells = {
         "BONUS_magma bolt"
@@ -4722,6 +5046,10 @@ End
         REGENERATION 1
       }
       cantEquip = true
+	  inventory = {
+        {  "InferniteOre" 10 25 }
+		{  "AdoxiumOre" 10 25 }
+      }
       name = {
         name = "hell portal"
       }
@@ -6330,8 +6658,11 @@ End
     {
       attr = {
         DAMAGE 23
-        DEFENSE 23
+        DEFENSE 28
       }
+	  maxLevelIncrease = {
+      DAMAGE 12
+    }
       viewId = { "dark_orc" }
       permanentEffects = {
         FAST_TRAINING 1
@@ -6339,13 +6670,17 @@ End
 		REGENERATION 1
 		RIDER 1
       }
+	  name = {
+        name = "noctorc"
+        firstNameGen = "ORC"
+      }
     }
  "BONUS_DARK_ORC_FEMALE" inherit "BONUS_DARK_ORC"
     {
       viewId = { "dark_orc_female" }
       gender = FEMALE
       name = {
-        name = "orc"
+        name = "noctorc"
         firstNameGen = "BONUS_ORC_FEMALE"
       }
     }
@@ -6353,8 +6688,11 @@ End
     {
       attr = {
         DAMAGE 25
-        DEFENSE 25
+        DEFENSE 32
       }
+	  maxLevelIncrease = {
+      DAMAGE 16
+    }
       viewId = { "dark_ogre" }
       permanentEffects = {
         FAST_TRAINING 1
@@ -6363,13 +6701,17 @@ End
 		REGENERATION 1
 		RIDER 1
       }
+	  name = {
+        name = "dark ogre"
+        firstNameGen = "ORC"
+      }
     }
  "BONUS_DARK_OGRE_FEMALE" inherit "BONUS_DARK_OGRE"
     {
       viewId = { "dark_ogre_female" }
       gender = FEMALE
       name = {
-        name = "ogre"
+        name = "dark ogress"
         firstNameGen = "BONUS_ORC_FEMALE"
       }
     }
@@ -6390,7 +6732,6 @@ End
         DISARM_TRAPS_SKILL 1
 		SUNLIGHT_VULNERABLE 1
 		REGENERATION 1
-		RIDER 1
 		SWARMER 1
       }
 	  name = {
@@ -6421,7 +6762,41 @@ End
 		RIDER 1
 		SWARMER 1
       }
+	  name = {
+        name = "goborc"
+        firstNameGen = "ORC"
+      }
     }
+ "BONUS_DARK_HARPY" inherit "HARPY"
+ {
+   viewId = { "dark_harpy" }
+   attr = append {
+	  DAMAGE 18
+      DEFENSE 26
+      RANGED_DAMAGE 25
+   }
+   body = append {
+		intrinsicAttacks = {
+			LEG  {{itemType = { Intrinsic { "claws_attack" } "talons" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+		}
+	}
+	maxLevelIncrease = {
+        DAMAGE 7
+		RANGED_DAMAGE 12
+      }
+	permanentEffects = {
+        FAST_TRAINING 1
+		NIGHT_VISION 1
+        DISARM_TRAPS_SKILL 1
+		SUNLIGHT_VULNERABLE 1
+		SWARMER 1
+      }
+	  name = {
+        name = "nightwing"
+        firstNameGen = "BONUS_ORC_FEMALE"
+      }
+ }
+###
   "BONUS_LION_QUEEN"
     {
       viewId = { "lion_queen" }
@@ -6432,7 +6807,7 @@ End
       body = {
         type = Humanoid MEDIUM
         intrinsicAttacks = {
-          ARM {{{ Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW }}} }
+          ARM {{itemType = { Intrinsic { "claws_attack" } "claws" 10 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
         }
       }
       gender = FEMALE
@@ -7747,7 +8122,7 @@ End
         fullTitle = true
       }
 	}
-  "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE1" inherit "BONUS_BARBARIAN_ADVENTURER"
+  "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE1" inherit "BONUS_BARBARIAN_ADVENTURER_NPC"
     {
       attr = {
         DAMAGE 42
@@ -7790,7 +8165,7 @@ End
     }
   "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE1_F" inherit "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE1"
     {
-      viewId = { "barbarian_female" }
+      viewId = { "barbarian_female2" }
       gender = FEMALE
       name = {
         name = "barbarian"
@@ -7798,7 +8173,7 @@ End
         fullTitle = true
       }
 	}
-  "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE2" inherit "BONUS_BARBARIAN_ADVENTURER"
+  "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE2" inherit "BONUS_BARBARIAN_ADVENTURER_NPC"
     {
       attr = {
         DAMAGE 58
@@ -7841,7 +8216,7 @@ End
     }
   "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE2_F" inherit "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE2"
     {
-      viewId = { "barbarian_female" }
+      viewId = { "barbarian_female2" }
       gender = FEMALE
       name = {
         name = "barbarian"
@@ -7849,7 +8224,7 @@ End
         fullTitle = true
       }
 	}
-  "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE3" inherit "BONUS_BARBARIAN_ADVENTURER"
+  "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE3" inherit "BONUS_BARBARIAN_ADVENTURER_NPC"
     {
       attr = {
         DAMAGE 74
@@ -7893,7 +8268,7 @@ End
     }
   "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE3_F" inherit "BONUS_BARBARIAN_ADVENTURER_NPC_MELEE3"
     {
-      viewId = { "barbarian_female" }
+      viewId = { "barbarian_female2" }
       gender = FEMALE
       name = {
         name = "barbarian"
@@ -8389,6 +8764,51 @@ End
 	chatReactionHostile = "\"Tsk tsk. If you keep waving that around, you'll tire yourself out.\""
 	petReaction = "growls seductively and encourages you to fully appreciate her physique."
     }
+	"BONUS_DISGUISED_INCUBUS"
+	{
+	viewId = { "fraternicubus" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      DAMAGE 12 #Hmm, something's Missing...
+    }
+	spells = { "healing" "damage bonus" "defense bonus" "advanced healing" "BONUS_incubus_reveal" } #Buffs & healing don't actually *need* spell_damage, IIRC...
+    chatReactionFriendly = "discusses the pantheon at length, in rather *exhaustive* detail...*yawn*"
+    chatReactionHostile = "\"I'm sure we could resolve this more peacefully.\""
+    name = {
+      name = "armed brother"
+      firstNameGen = "FIRST_MALE"
+    }
+    hatedByEffect = HATE_HUMANS
+	}
+	"BONUS_DISGUISED_SUCCUBUS"
+	{
+	viewId = { "sororubus" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 12
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+	gender = FEMALE
+    maxLevelIncrease = {
+      DAMAGE 12 #Hmm, something's Missing...
+    }
+	spells = { "healing" "damage bonus" "defense bonus" "advanced healing" "BONUS_succubus_reveal" } #Buffs & healing don't actually *need* spell_damage, IIRC...
+    chatReactionFriendly = "discusses the pantheon at length, in rather *exhaustive* detail...*yawn*"
+    chatReactionHostile = "\"I'm sure we could resolve this more peacefully.\""
+    name = {
+      name = "warrior nun"
+      firstNameGen = "FIRST_FEMALE"
+    }
+    hatedByEffect = HATE_HUMANS
+	}
     
 	"BONUS_MILITIA_PLAYER"
     {
@@ -9062,11 +9482,68 @@ End
       permanentEffects = {
         MELEE_RESISTANCE 1
         RANGED_RESISTANCE 1
-        POISON_RESISTANT 1
-        SLEEP_RESISTANT 1
+        #POISON_RESISTANT 1 #IRON creatures are immune to sleep & poison
+        #SLEEP_RESISTANT 1
       }
       name = {
         name = "giant contraption"
+      }
+    }
+	"BONUS_SIEGE_BOT"
+    {
+      viewId = { "BONUS_siege_bot" }
+      attr = {
+        DAMAGE 45
+		RANGED_DAMAGE 50
+        DEFENSE 65
+      }
+      body = {
+      type = HumanoidLike HUGE
+      material = IRON
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "hammer" 15 {
+          attackType = HIT
+          attackMsg = SWING }}}}
+        }
+	  }
+      chatReactionFriendly = "\"BREACHER. READY.\""
+      chatReactionHostile = "\"OBSTACLE. BREACH.\""
+      cantEquip = true
+	  spells = { "BONUS_siege dig" "shoot bolt"} #That's a crossbow mounted in its mouth.
+      permanentEffects = {
+        MELEE_RESISTANCE 1
+        RANGED_RESISTANCE 1
+      }
+      name = {
+        name = "arcanomatic breacher"
+      }
+    }
+	"BONUS_MINER_BOT"
+    {
+      viewId = { "BONUS_miner_bot" }
+      attr = {
+        DAMAGE 45
+        DEFENSE 55
+		DIGGING 50
+      }
+      body = {
+      type = HumanoidLike HUGE
+      material = IRON
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "hammer" 10 {
+          attackType = HIT
+          attackMsg = SWING }}}}
+      }}
+      chatReactionFriendly = "\"Let's. Get. Digging.\""
+      chatReactionHostile = "\"I. Pick. You.\""
+      cantEquip = true
+      permanentEffects = {
+        MELEE_RESISTANCE 1
+        RANGED_RESISTANCE 1
+		NO_CARRY_LIMIT 1
+      }
+      name = {
+        name = "arcanomatic miner"
       }
     }
     "BONUS_POSSESSED_SWORD"
@@ -9480,6 +9957,19 @@ End
         { type =  "Torch" chance = 0.9 }
         {  "IronOre" 2 10 }
         { type =  "BONUS_DwarvenBeer" chance = 0.05 }
+      }
+}
+"BONUS_DWARF_MINER_TRIBE" inherit "BONUS_DWARF_MINER"
+{
+      inventory = {
+        { type = "BONUS_SteelAxe" prefixChance = 0.1 } #These folks do the dangerous digging.
+        { countMin = 1 countMax = 2 type = Potion Heal {FLESH} chance = 0.2 }
+        {  "LeatherArmor" }
+		{  "BONUS_SteelHelm" } # Head protection is important when mining!
+        {  "LeatherBoots" }
+        { type =  "Torch" chance = 0.9 }
+        {  "IronOre" 2 10 }
+        { type =  "BONUS_DwarvenBeer" chance = 0.1 }
       }
 }
 "BONUS_DWARF_MONK_TRIBE" inherit "BONUS_DWARF_MONK"
@@ -10682,6 +11172,7 @@ End
       type = Humanoid MEDIUM
       droppedPartUpgrade = IncreaseAttr DEFENSE 2
     }
+	companions = { {count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "BONUS_WITCH_BROOM" }} }
     name = {
       name = "witch"
       pluralName = "witches"
@@ -10857,6 +11348,7 @@ End
       type = Humanoid MEDIUM
       droppedPartUpgrade = IncreaseAttr DEFENSE 2
     }
+	companions = { {count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "BONUS_WITCH_BROOM" }} } #check with Shadowing
     name = {
       name = "witch"
       pluralName = "witches"
@@ -11600,6 +12092,8 @@ End
     }
 	spells = { "advanced healing" }
 	gender = MALE
+	chatReactionFriendly = "discusses the pleasures of the flesh"
+	chatReactionHostile = "shouts defiance!"
     name = {
       name = "monk"
 	  firstNameGen = "GERMANIC"
@@ -12728,6 +13222,7 @@ End
       pluralName = "witches"
       firstName = "Cornelia"
     }
+	companions = { {count = 1 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "BONUS_WITCH_BROOM" }} }
     aiType = RANGED
     gender = FEMALE
     chatReactionFriendly = "curses all humans"
@@ -12746,6 +13241,7 @@ End
     maxLevelIncrease = {
       SPELL_DAMAGE 4
     }
+	spellSchools = { "Bonus swamp witch" }
     hatedByEffect = HATE_HUMANS
     inventory = {
       { "Knife"}
@@ -12758,7 +13254,9 @@ End
       { Potion Lasting SPEED }
       { type = "SpiderRing" chance = 0.2 }
     }
-  } 
+  }
+
+###
 
 "BONUS_AUTOMATON_CORPUS_CAELIDITE" inherit "AUTOMATON_CORPUS_WOOD"
   {
@@ -13755,6 +14253,39 @@ viewId = { "war_warg_saddle2" } #Swishos' surplus sprites for the win! Thanks.
       name = "veteran warg"
       pluralName = "veteran wargs"
       groupName = "pack"
+    }
+}
+
+"BONUS_WITCH_BROOM"
+{
+	viewId = { "riding_broom" }
+		attr = {
+			DAMAGE 20 #It's a magically-animated broom. Not built for combat.
+			DEFENSE 20
+		}
+		body = {
+			type = NonHumanoid MEDIUM #Witches are smol. Who knew?
+			material = WOOD
+			weight = 10
+			
+			intrinsicAttacks = {
+			  TORSO {{itemType = { Intrinsic { "claws_attack" }  "bristles" 5 { attackType = HIT attackMsg = CLAW victimEffect = {0.2 Lasting BLIND} } } }}
+			}
+		}
+		permanentEffects = {
+			FLYING 1
+			STEED 1
+			SWARMER 1 #Don't underestimate it...
+		}
+	#The broom can't talk? doesn't mean it can't express feelings.
+	chatReactionFriendly = "sweeps some dust off of you."
+    chatReactionHostile = "sweeps dust at you."
+	petReaction = "vibrates gently, as if purring."
+	
+	name = {
+      name = "riding broom"
+      pluralName = "riding brooms"
+      groupName = "murder"
     }
 }
  

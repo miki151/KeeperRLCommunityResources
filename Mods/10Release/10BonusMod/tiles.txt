@@ -30,8 +30,8 @@
   { "assassin_archer" "@" ColorId GRAY }
   { "assassin_archer_female" "@" ColorId GRAY }
   { "assassin_female" "@" ColorId GRAY }
-  { "barbarian" "@" ColorId YELLOW }
-  { "barbarian_female" "@" ColorId YELLOW }
+  { "barbarian2" "@" ColorId YELLOW }
+  { "barbarian_female2" "@" ColorId YELLOW }
   { "dwarf_beer" "!" ColorId YELLOW } 
   { "eye_scout" "e" ColorId RED }
   { "high_priest" "p" ColorId WHITE }
@@ -87,7 +87,7 @@
   { "centaur_hunter" "p" ColorId BROWN }
   { "centaur_king" "p" ColorId YELLOW }
   { "centaur_knight" "p" ColorId YELLOW }
-  { viewId = "centaur_priestess" symbol = "p" color = ColorId DARK_GRAY weaponOrigin = {2 9}}
+  { viewId = "centaur_priestess" symbol = "p" color = ColorId DARK_GRAY}
   { "cow_demon" "u" ColorId RED }
   { "elf_soldier" "@" ColorId GREEN }
   { viewId = "elf_king" symbol = "@" color = ColorId YELLOW  weaponOrigin = {5 14} }
@@ -102,6 +102,7 @@
   { viewId = "dark_orc_captain" symbol = "o" color = ColorId BLACK weaponOrigin = {5 21}}
   { viewId = "dark_ogre_female" symbol = "O" color = ColorId BLACK weaponOrigin = {5 18}}
   { viewId = "dark_ogre" symbol = "T" color = ColorId BLACK weaponOrigin = {4 18}}
+  { "dark_harpy" "R" ColorId BLACK }
   { "demon_fairy" "h" ColorId RED }
   { "earth_fairy" "h" ColorId BROWN }
   { "electric_fairy" "h" ColorId YELLOW }
@@ -392,7 +393,12 @@
   { viewId = "dark_steel_sword" symbol = ")" color = ColorId GRAY } 
   { viewId = "dark_steel_war_axe" symbol = ")" color = ColorId GRAY } 
   { viewId = "dark_steel_spear" symbol = "/" color = ColorId GRAY}
-  { viewId = "dark_steel_war_hammer" symbol = ")" color = ColorId GRAY}
+  { viewId = "dark_steel_warhammer" symbol = ")" color = ColorId GRAY}
+  { viewId = "dark_skull_shield" symbol = "[" color = ColorId GRAY}
+  { "dark_steel_armor" "[" ColorId GRAY }
+  { "dark_steel_gloves" "[" ColorId GRAY }
+  { "dark_steel_boots" "[" ColorId GRAY }
+  { "dark_steel_helmet" "[" ColorId GRAY }
   { viewId = "ice_axe_v" symbol = ")" color = ColorId BLUE}
   { viewId = "poison_sword_v" symbol = ")" color = ColorId GREEN}
   
@@ -479,6 +485,8 @@
   {viewId = "cmbt_omnibus" symbol = "&" color = ColorId PURPLE weaponOrigin = {5 23} }
   {"incubus" "&" ColorId PINK }
   {"cmbt_incubus" "&" ColorId BLUE }
+  { viewId = "fraternicubus" symbol = "@" color = ColorId LIGHT_GRAY weaponOrigin = {4 13} }
+  { viewId = "sororubus" symbol = "@" color = ColorId LIGHT_GRAY weaponOrigin = {4 13} }
   {viewId = "dark_goblin_artificer" symbol = "o" color = ColorId BLACK weaponOrigin = {6 17}}
   { "steelpile" "✱" ColorId GRAY true "steelpile" }
   { viewId = "ada_forge" symbol = "&" color = ColorId LIGHT_BLUE  roundShadow = true }
@@ -502,6 +510,9 @@
   { viewId = "goblin_cavalry" symbol = "o" color = ColorId RED  weaponOrigin = {6 18}}
   { "goblin_archer_B" "o" ColorId RED }
   { "amazon_hunter" "p" ColorId PURPLE }
+  { "BONUS_miner_bot" "T" ColorId YELLOW }
+  { "BONUS_siege_bot" "T" ColorId BLACK }
+  { "riding_broom" "_" ColorId YELLOW }
   { "longbow" ")" ColorId GREEN }
   { "arch_longbow" ")" ColorId LIGHT_BLUE }
   { "recurvebow" "(" ColorId BROWN } #Intentional use of the other parenthesis.
@@ -509,27 +520,38 @@
   { "wood_twrshld" "[" ColorId BROWN}
   { "steel_twrshld" "[" ColorId LIGHT_GRAY}
   { "adox_twrshld" "[" ColorId PINK}
+  { viewId = "staff_gold" symbol = "/" color = ColorId YELLOW }
+  { "leather_whip" "(" ColorId LIGHT_BROWN}
+  { "steel_whip" "(" ColorId LIGHT_GRAY}
+  { "caelidite_whip" "(" ColorId GREEN}
+  { "adoxium_whip" "(" ColorId PINK}
+  { "infernite_whip" "(" ColorId RED}
+  { "jothnite_whip" "(" ColorId LIGHT_BLUE}
+  { "amazon_elder_whip" "(" ColorId YELLOW}
+  { viewId = "portal_law" symbol = "𝚯" color = ColorId WHITE
+  isSymbolFont = true roundShadow = true }
   
-  #Campaign map
+  #Campaign map, cross-ref random_layouts and biomes for what tile goes on which
   { "map_fairy_tower" "O" ColorId RED }
-  { "map_small_feature1" "." ColorId GREEN }
-  { "map_small_feature2" "." ColorId GREEN }
-  { "map_small_feature3" "." ColorId GREEN }
-  { "map_small_feature4" "." ColorId GREEN }
-  { "map_small_feature5" "." ColorId GREEN }
-  { "map_small_feature6" "." ColorId GREEN }
-  { "map_small_feature7" "." ColorId GREEN }
-  { "map_small_feature8" "." ColorId GREEN }
-  { "map_small_feature9" "." ColorId GREEN }
-  { "map_small_feature10" "." ColorId GREEN }
-  { "map_small_feature11" "." ColorId GREEN }
-  { "map_small_feature12" "." ColorId GREEN }
-  { "map_small_feature13" "." ColorId GREEN }
-  { "map_small_feature14" "." ColorId GREEN }
-  { "map_small_feature15" "." ColorId GREEN }
-  { "map_small_feature16" "." ColorId GREEN }
-  { "map_small_feature17" "." ColorId GREEN }
+  { "map_small_feature1" "." ColorId PINK } #Feyland, Elf Forest
+  { "map_small_feature2" "." ColorId GREEN } #Dark Swamp
+  { "map_small_feature3" "." ColorId GREEN } #Orc Village
+  { "map_small_feature4" "." ColorId GREEN } #Orc Clan
+  { "map_small_feature5" "." ColorId GREEN } ####Currently UNUSED
+  { "map_small_feature6" "." ColorId LIGHT_BLUE } #Palace (Royal Estates/King), using the Lawful-Keeper Team Color
+  { "map_small_feature7" "." ColorId PURPLE } #Besieged Grassland (Lawful Under Attack)
+  { "map_small_feature8" "." ColorId VIOLET } #Haunted Grassland
+  { "map_small_feature9" "." ColorId LIGHT_BLUE } #Dwarf Mountain
+  { "map_small_feature10" "." ColorId RED }  #*Volcanic* should NOT be green!
+  { "map_small_feature11" "." ColorId LIGHT_GRAY } #City (thriving)
+  { "map_small_feature12" "." ColorId BLACK } #Shadow Palace
+  { "map_small_feature13" "." ColorId DARK_GRAY } #Spider Mountain
+  { "map_small_feature14" "." ColorId GREEN } ####Currently UNUSED
+  { "map_small_feature15" "." ColorId GREEN } #BOTH Abbeys, should be revisited >_<, Herbland
+  { "map_small_feature16" "." ColorId LIGHT_GRAY } #Dwarf Hills
+  { "map_small_feature17" "." ColorId DARK_GRAY } #Dark Elf Mountain, Bandit Wilds
   { "map_fort" "^" ColorId WHITE }
+  { "map_blue_dragon" "D" ColorId BLUE }
   
   #1.0 rework of Adventurer mode
   {viewId = "player" symbol = "@" color = ColorId GREEN weaponOrigin = {4 13}}
@@ -833,7 +855,9 @@
   { viewId = "dd_green_crystal" symbol = "c" color = ColorId GREEN animated = true }
   { viewId = "dd_standing_armor_1" symbol = "X" color = ColorId GRAY }
   { viewId = "dd_wall_fountain_n" symbol = "F" color = ColorId BLUE animated = true }
+  { viewId = "dd_wall_fountain_n2" symbol = "F" color = ColorId BLUE animated = true }
   { viewId = "dd_wall_fountain_blood_n" symbol = "F" color = ColorId RED animated = true }
+  { viewId = "dd_wall_fountain_blood_n2" symbol = "F" color = ColorId RED animated = true }
   { viewId = "dd_sand_wall_fountain_n" symbol = "F" color = ColorId BLUE animated = true }
   { viewId = "dd_sand_wall_fountain_blood_n" symbol = "F" color = ColorId RED animated = true }
   { viewId = "dd_swish_barrel" symbol = "B" color = ColorId BROWN roundShadow = true  }
@@ -946,3 +970,5 @@
   
 { viewId = "evil_stone_wall" symbol = "#" color = ColorId BLACK
   wallShadow = true wallConnections = true }
+ #CSeven adding onto DD 
+ { viewId = "bonus_wall_fountain_lava_n" symbol = "F" color = ColorId LIGHT_RED animated = true }

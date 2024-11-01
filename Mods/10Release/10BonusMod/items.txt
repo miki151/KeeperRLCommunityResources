@@ -182,6 +182,8 @@ Def ARMOUR_PREFIXES()
     }
 End
 
+#These don't tend to play well with gear included in BonusMod.  May revisit later.
+
 "Knife" modify append { SHARP_WEAPON_PREFIXES()  }
 "AssassinsKnife" modify append { SHARP_WEAPON_PREFIXES()  }
 "UnicornHorn" modify append { SHARP_WEAPON_PREFIXES()  }
@@ -263,6 +265,20 @@ End
     resourceId = "STEEL"
     weight = 0.5
 	storageIds = {"resources"}
+  }
+"SteelSack" #Steel produced In Quantity
+  {
+    viewId = { "sack" }
+    name = "sack of steel"
+    applyMsgFirstPerson = "unload the steel"
+    applyMsgThirdPerson = "unloads the steel"
+    applySound = "FORGE_USAGE"
+    weight = 20
+    applyTime = 3
+    uses = 1
+    price = 10
+    effect = DropItems {"SteelOre"} {9 13} #Random (in)efficiency, but weighted in player's favor ^_^
+    storageIds = {"resources"}
   }
 "InfOre" #Vanilla ore, but expanded in BonusMod; adoxium tier
   {
@@ -2031,6 +2047,50 @@ End
     ingredientType = "royal_dust"
     storageIds = {"upgrades" "equipment"}
 }
+
+"BlueDragonScales" #Can't have a new dragon color without scales!
+  {
+    viewId = { "dragon_scales" ColorId BLUE }
+    name = "blue dragon scales"
+    itemClass = OTHER
+    weight = 5
+    price = 100
+    ingredientType = "blue_scales"
+    storageIds = {"upgrades" "equipment"}
+  }
+
+"WirtBook" {
+	viewId = {"book"}
+	name = "Tome Of Escape"
+	itemClass = OTHER
+	weight = 1
+    price = 500
+	description = "Contains the secrets of getting out in a hurry..."
+    applyTime = 5
+    uses = 1
+    usedUpMsg = true
+	effect = GrantAbility "escape"
+	storageIds = {"equipment"}
+}
+
+"WirtStaff" {
+	viewId = {"staff_gold"}
+	name = "gro-Bonk's Auric Eldritch Alpenstock of Puissance" #Pretty sure Diablo 2 didn't have Alpenstocken, and personalizing it to an Elder Scrolls Orc name might be confusing.  But yeah.
+	itemClass = WEAPON
+    equipmentSlot = WEAPON
+    modifiers = {
+        DAMAGE 5
+		SPELL_DAMAGE 5
+    }
+	weight = 800 #Typical human carry capacity = 800 ^_^
+    price = 5000
+	craftingCost = "GOLD" 5000 #Furnaces for 2500 gold, not too shabby! 
+    weaponInfo = {
+        attackType = CRUSH
+		victimEffect = { 1.0 Lasting COLLAPSED}
+    }
+	storageIds = {"weapons" "equipment"}
+}
  
 ########################
 #Ideas for future items#
@@ -2695,7 +2755,7 @@ End
   }
   
   ###
-  #Better Bows
+  #Better Bows (and whips, other ranged attacks)
   ###
   "BONUS_longbow"
   {
@@ -2751,6 +2811,129 @@ End
     maxUpgrades = 2
   }
   
+  "BONUS_LeatherWhip"
+  {
+    viewId = { "leather_whip" }
+    name = "whip"
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"leather whip"}
+    weight = 1
+    modifiers = {
+      DAMAGE 2
+    }
+    price = 10
+	maxUpgrades = 1
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "basic equipment"
+  }
+  
+  "BONUS_SteelWhip"
+  {
+    viewId = { "steel_whip" }
+    name = "steel whip"
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"steel whip"}
+    weight = 2
+    modifiers = {
+      DAMAGE 4
+    }
+    price = 40
+	craftingCost = "STEEL" 10
+	maxUpgrades = 1
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "steel equipment"
+  }
+  "BONUS_CaeliditeWhip"
+  {
+    viewId = { "caelidite_whip" }
+    name = "caelidite whip"
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"caelidite whip"}
+    weight = 2
+    modifiers = {
+      DAMAGE 4
+	  ACID_DAMAGE 10
+    }
+    price = 250
+	craftingCost = "CAELIDITE" 10
+	maxUpgrades = 1
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "caelidite equipment"
+  }
+  "BONUS_AdoxiumWhip"
+  {
+    viewId = { "adoxium_whip" }
+    name = "adoxium whip"
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"adoxium whip"}
+    weight = 2
+    modifiers = {
+	  SPELL_DAMAGE 15
+    }
+    price = 500
+	craftingCost = "ADOXIUM" 10
+	maxUpgrades = 3
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "adoxium equipment"
+  }
+  "BONUS_InferniteWhip"
+  {
+    viewId = { "infernite_whip" }
+    name = "infernite whip"
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"infernite whip"}
+    weight = 2
+    modifiers = {
+	  DAMAGE 4
+	  FIRE_DAMAGE 15
+    }
+    price = 500
+	craftingCost = "INFERNITE" 10
+	maxUpgrades = 2
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "infernite equipment"
+  }
+  "BONUS_JothniteWhip"
+  {
+    viewId = { "jothnite_whip" }
+    name = "jothnite whip"
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"jothnite whip"}
+    weight = 2
+    modifiers = {
+	  DAMAGE 4
+	  COLD_DAMAGE 15
+    }
+    price = 500
+	craftingCost = "JOTHNITE" 10
+	maxUpgrades = 2
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "jothnite equipment"
+  }
+  
+  "BONUS_AmazonWhip"
+  {
+    viewId = { "amazon_elder_whip" }
+    name = "Daystar"
+    equipmentSlot = RANGED_WEAPON
+    equipedAbility = {"Daystar"}
+    weight = 2
+    modifiers = {
+	  DAMAGE 5
+	  SPELL_DAMAGE 5
+    }
+	genPrefixes = {
+      1 ItemAttrBonus SPELL_DAMAGE 5
+	  1 SpecialAttr DEFENSE 10 HatedBy HATE_UNDEAD 
+    }
+    price = 400
+	craftingCost = "ADA" 10
+	maxUpgrades = 2
+    storageIds = {"bows" "weapons" "equipment"}
+    equipmentGroup = "infernite equipment"
+  }
+  
+  
   ###
   #Mage Armors & other such gear
   ###
@@ -2766,8 +2949,8 @@ End
     weight = 8
     price = 20
     modifiers = {
-	  SPELL_DAMAGE 1
-      DEFENSE 2
+	  SPELL_DAMAGE 2
+      DEFENSE 3 #This makes Leather Mage a straight upgrade over Leather standard...but given that Iron, if not Steel, will generally be available at the same time, kinda needed.
 	  SPELL_SPEED 5
     }
     genPrefixes = {
@@ -2790,9 +2973,9 @@ End
     price = 40
 	craftingCost = "STEEL" 40
     modifiers = {
-	  SPELL_DAMAGE 1
-      DEFENSE 7 #Steel armor is 13 DEF.
-	  SPELL_SPEED 5
+	  SPELL_DAMAGE 2
+      DEFENSE 10 #Steel armor is 13 DEF; however, 7 DEF was enough of a Nerf that casters were seeking out non-mage armor.
+	  SPELL_SPEED 6
     }
     genPrefixes = {
       1 ItemAttrBonus DEFENSE 4
@@ -3011,4 +3194,154 @@ End
   }
   "Cornuthaum3" modify append {
 	equipmentGroup = "mage equipment"
+  }
+  
+  ###
+  #Dark Steel
+  #Necro-specific gear, steel infused with the souls of the dead
+  #Punches way above its material (Infernite-tier damage/defense, Physical rather than Fire, made from cheap Steel)
+  #but only safely usable by UNDEAD_FLESH or BONE creatures
+  #and made at a Soulforge, which needs a fogbank and has a tendency to aggro folks
+  ###
+  "BONUS_DSSword" inherit "BONUS_SteelSword" {
+	viewId = { "dark_steel_sword" }
+	equipedViewId = { "dark_steel_sword_v" }
+	modifiers = {
+		DAMAGE 30
+	}
+	weaponInfo = {
+		attackType = CUT
+		victimEffect = { 0.6 Lasting BLIND }
+	}
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON } #Undead are immune to both ^_^
+  }
+  "BONUS_DSAxe" inherit "BONUS_SteelAxe" {
+	viewId = { "dark_steel_battle_axe" }
+	equipedViewId = { "dark_steel_battle_axe_v" }
+	modifiers = {
+		DAMAGE 45
+	}
+	weaponInfo = {
+		attackType = CUT
+		victimEffect = { 0.6 Lasting BLIND }
+	}
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON }
+  }
+  "BONUS_DSMace" inherit "BONUS_SteelMace" {
+	viewId = { "dark_steel_spiked_mace" }
+	equipedViewId = { "dark_steel_spiked_mace_v" }
+	modifiers = {
+		DAMAGE 40
+		DEFENSE 5
+	}
+	weaponInfo = {
+		attackType = CRUSH
+		victimEffect = { 0.6 Lasting BLIND }
+	}
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON }
+  }
+  "BONUS_DSSpear" inherit "BONUS_SteelSpear" {
+	viewId = { "dark_steel_spear" }
+	equipedViewId = { "dark_steel_spear_v" }
+	modifiers = {
+		DAMAGE 40
+		DEFENSE 5
+		PARRY 1
+	}
+	weaponInfo = {
+		attackType = STAB
+		victimEffect = { 0.6 Lasting BLIND }
+	}
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON }
+  }
+  "BONUS_DSBattleAxe" inherit "BONUS_SteelBattleAxe" {
+	viewId = { "dark_steel_war_axe" }
+	equipedViewId = { "dark_steel_battle_axe_v" }
+	modifiers = {
+		DAMAGE 60
+	}
+	weaponInfo = {
+		attackType = CUT
+		victimEffect = { 0.6 Lasting BLIND }
+		twoHanded = true
+	}
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON }
+  }
+  "BONUS_DSWarHammer" inherit "BONUS_SteelWarHammer" {
+	viewId = { "dark_steel_warhammer" }
+	equipedViewId = { "dark_steel_war_hammer_v" }
+	modifiers = {
+		DAMAGE 55
+	}
+	weaponInfo = {
+		attackType = CRUSH
+		victimEffect = { 0.6 Lasting BLIND }
+		twoHanded = true
+	}
+	genPrefixes = {
+      1 VictimEffect 0.6 Lasting COLLAPSED #Better than Ada.
+    }
+	maxUpgrades = 0
+	equipedEffect = { BLEEDING POISON }
+  }
+  "BONUS_DSShield" inherit "BONUS_SteelShield" {
+	viewId = { "dark_skull_shield" }
+	modifiers = {
+		PARRY 4
+		DEFENSE 15
+	}
+	genPrefixes = {
+		1 LastingEffect TELEPATHY
+	}
+	maxUpgrades = 2
+	equipedEffect = { BLEEDING POISON SUNLIGHT_VULNERABLE }
+  }
+  "BONUS_DSArmor" inherit "BONUS_SteelArmor" {
+	viewId = { "dark_steel_armor" }
+	modifiers = {
+		DEFENSE 40
+	}
+	genPrefixes = {
+		1 LastingEffect TELEPATHY
+	}
+	maxUpgrades = 2
+	equipedEffect = { BLEEDING POISON SUNLIGHT_VULNERABLE }
+  }
+  "BONUS_DSBoots" inherit "BONUS_SteelBoots" {
+	viewId = { "dark_steel_boots" }
+	modifiers = {
+		DEFENSE 12
+	}
+	genPrefixes = {
+		1 LastingEffect TELEPATHY
+	}
+	maxUpgrades = 2
+	equipedEffect = { BLEEDING POISON SUNLIGHT_VULNERABLE }
+  }
+  "BONUS_DSGloves" inherit "BONUS_SteelGloves" {
+	viewId = { "dark_steel_gloves" }
+	modifiers = {
+		DEFENSE 12
+	}
+	genPrefixes = {
+		1 LastingEffect TELEPATHY
+	}
+	maxUpgrades = 2
+	equipedEffect = { BLEEDING POISON SUNLIGHT_VULNERABLE }
+  }
+  "BONUS_DSHelm" inherit "BONUS_SteelHelm" {
+	viewId = { "dark_steel_helmet" }
+	modifiers = {
+		DEFENSE 12
+	}
+	genPrefixes = {
+		1 LastingEffect TELEPATHY
+	}
+	maxUpgrades = 2
+	equipedEffect = { BLEEDING POISON SUNLIGHT_VULNERABLE }
   }

@@ -1662,7 +1662,7 @@
    cooldown = 350
    sound = "SPELL_SUMMON_SPIRIT"
   }
-
+  
 #-------------------------
 #Water spells
 #-------------------------
@@ -2313,6 +2313,41 @@ OneTimeAbility("leadership +10", "leadership +10", {IncreaseAttr LEADERSHIP 10},
  }
  ###
  
+ "BONUS_siege dig"
+{
+  symbol = "X"
+  effect = Name "dig" DestroyWalls DIG
+  range = 1
+  cooldown = 5 #Let defenders hava a chance before it just smacks a hole in the wall.
+  blockedByWall = false
+}
+
+"BONUS_incubus_reveal"
+{
+  symbol = "🐻" #should be Male
+  effect = Name "Un-disguise" Description "Shed the disguise and use your full power." AI Health 0.6 1.0 1 -2 {
+    Polymorph "BONUS_COMBAT_INCUBUS" 30
+    IncreaseAttr DAMAGE 22
+	IncreaseAttr DEFENSE 23
+	IncreaseAttr SPELL_DAMAGE 36
+  }
+  message = "" ""
+  cooldown = 35
+}
+
+"BONUS_succubus_reveal"
+{
+  symbol = "🐻" #should be Female
+  effect = Name "Un-disguise" Description "Shed the disguise and use your full power." AI Health 0.6 1.0 1 -2 {
+    Polymorph "BONUS_COMBAT_SUCCUBUS" 30
+    IncreaseAttr DAMAGE 22
+	IncreaseAttr DEFENSE 23
+	IncreaseAttr SPELL_DAMAGE 36
+  }
+  message = "" ""
+  cooldown = 35
+}
+ 
  ###
  #Potion-dispensing spells (let rescue dogs, witches, etc dispense potions on a cooldown rather than carrying expensive inventory that they waste at the first opportunity)
  ###
@@ -2347,6 +2382,81 @@ OneTimeAbility("leadership +10", "leadership +10", {IncreaseAttr LEADERSHIP 10},
   sound = "SPELL_CURE_POISON"
  }
  
+ #
+ #Swamp witch potions-as-spells, thanks to Rarasek for demonstration
+ #
+"BONUS_poison potion"
+{
+  symbol = "☠"
+  effect = Name "throw poison flask" Description "Throw a potion to release poison gas." Area 1 EmitGas "POISON_GAS" 0.8
+  range = 4
+  endOnly = true
+  projectileViewId = { "potion1" }
+  cooldown = {20 41}
+  message = "throw a poison flask!" "throws a flask!"
+}
+"BONUS_antidote flask"
+ {
+  upgrade = "cure poison"
+  symbol = "⚕�"
+  effect = Name "antidote flask" Description "In case the wrong creatures get poisoned." Area 1 RemoveLasting POISON
+  range = 4
+  cooldown = {20 41}
+  projectileViewId = { "potion1" }
+  message = "throw an antidote flask!" "throws a flask!"
+ }
+"BONUS_sleep potion"
+{
+  symbol = "🕶️"
+  effect = Name "throw a sleeping flask" Description "Throw a potion to put a small group to sleep." Area 1 Lasting SLEEP
+  range = 4
+  endOnly = true
+  projectileViewId = { "potion1" }
+  cooldown = {20 41}
+  message = "throw a sleeping flask!" "throws a flask!"
+}
+
+"BONUS_slow potion"
+{
+  symbol = "🐢"
+  effect = Name "throw a slowing flask" Description "Throw a potion to slow a small group." Area 1 Lasting SLOWED
+  range = 4
+  endOnly = true
+  projectileViewId = { "potion1" }
+  cooldown = {15 31}
+  message = "throw a tranquilizing flask!" "throws a flask!"
+}
+ 
+ "BONUS_blind potion"
+{
+  symbol = "🕶️"
+  effect = Name "throw a blinding flask" Description "Throw a potion to blind a small group." Area 1 Lasting BLIND
+  range = 4
+  endOnly = true
+  projectileViewId = { "potion1" }
+  cooldown = {20 41}
+  message = "throw a blinding flask!" "throws a flask!"
+}
+"BONUS_unblinding flask"
+ {
+  upgrade = "cure blindness"
+  symbol = "⚕�"
+  effect = Name "vision flask" Description "Just in case creatures shouldn't be blinded." Area 1 RemoveLasting BLIND
+  range = 4
+  cooldown = {20 41}
+  projectileViewId = { "potion1" }
+  message = "throw a vision flask!" "throws a flask!"
+ }
+  "BONUS_healing potion"
+{
+  upgrade = "healing"
+  symbol = "❤️"
+  effect = Name "throw a healing flask" Description "Huck a potion to heal a handful of creatures." Area 1 Heal { FLESH }
+  range = 4
+  cooldown = {15 31}
+  projectileViewId = { "potion1" }
+  sound = "SPELL_HEALING"
+ }
  
  ###
  #Better Bows
@@ -2387,6 +2497,79 @@ OneTimeAbility("leadership +10", "leadership +10", {IncreaseAttr LEADERSHIP 10},
   message = "shoot an arrow" "shoots an arrow"
   type = ABILITY
  }
+ 
+ "leather whip"
+{
+  symbol = "ℒ"
+  effect = Name "leather whip" Description "Inflicts melee damage at range, can draw blood" { Damage DAMAGE CUT Chance 0.2 Lasting 2 BLEEDING }
+  fx = {BALROGS_WHIP ColorId BROWN}
+  range = 4
+  cooldown = 2
+  endOnly = true
+  message = "lash your whip!" "lashes their whip!"
+}
+ "steel whip"
+{
+  symbol = "ℒ"
+  effect = Name "steel whip" Description "Inflicts melee damage at range, can draw blood" { Damage DAMAGE CUT Chance 0.4 Lasting 2 BLEEDING }
+  fx = {BALROGS_WHIP ColorId GRAY}
+  range = 4
+  cooldown = 2
+  endOnly = true
+  message = "lash your whip!" "lashes their whip!"
+}
+ "caelidite whip"
+{
+  symbol = "ℒ"
+  effect = Name "caelidite whip" Description "Inflicts acid and melee damage, will cause bleeding wounds" { Acid{} Damage DAMAGE CUT Chance 1 Lasting 10 BLEEDING }
+  #Bleed damage is 3% per tick, so 30% max per hit.
+  fx = {BALROGS_WHIP ColorId GREEN}
+  range = 4
+  cooldown = 2
+  endOnly = true
+  message = "lash your whip!" "lashes their whip!"
+}
+ "jothnite whip"
+{
+  symbol = "ℒ"
+  effect = Name "jothnite whip" Description "Inflicts cold and melee damage at range, can freeze" { Ice{} Damage DAMAGE CUT Chance 0.2 Lasting 3 FROZEN }
+  fx = {BALROGS_WHIP ColorId SKY_BLUE}
+  range = 4
+  cooldown = 2
+  endOnly = true
+  message = "lash your whip!" "lashes their whip!"
+}
+ "infernite whip"
+{
+  symbol = "ℒ"
+  effect = Name "infernite whip" Description "Inflicts fire and melee damage at range" { Fire{} Damage DAMAGE CUT }
+  #Balrog's is spell damage; this is physical.
+  fx = {BALROGS_WHIP ColorId RED}
+  range = 4
+  cooldown = 2
+  endOnly = true
+  message = "lash your whip!" "lashes their whip!"
+}
+ "adoxium whip"
+{
+  symbol = "ℒ"
+  effect = Name "adoxium whip" Description "Inflicts spell damage at range, can cancel" { Damage SPELL_DAMAGE SPELL Chance 0.3 Lasting 5 MAGIC_CANCELLATION }
+  fx = {BALROGS_WHIP ColorId PINK}
+  range = 4
+  cooldown = 2
+  endOnly = true
+  message = "lash your whip!" "lashes their whip!"
+}
+ "Daystar"
+{
+  symbol = "ℒ"
+  effect = Name "Daystar" Description "Impose the Sun Goddess' will upon your opposition." { Damage SPELL_DAMAGE SPELL Filter BodyMaterial UNDEAD_FLESH InjureBodyPart LEG }
+  fx = {BALROGS_WHIP ColorId YELLOW}
+  range = 4
+  cooldown = 2
+  endOnly = true
+  message = "lash your whip!" "lashes their whip!"
+}
 
 # Spells.txt - Checklist
 #############################

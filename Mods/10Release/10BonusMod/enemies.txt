@@ -223,7 +223,11 @@
     ambushChance = 0.05
     minPopulation = 4
     minTeamSize = 4
-    triggers = {StolenItems}
+    triggers = {
+		StolenItems
+		RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge isn't a joke.
+		Resource "WOOD" 2500 #Save the trees!
+	}
     attackBehaviour = KillLeader
   }
   immigrants = {
@@ -297,6 +301,7 @@
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "THRONE_HUMAN" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge isn't a joke.
       NumConquered 3
       FinishOff
       Proximity
@@ -922,6 +927,7 @@
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "THRONE_HUMAN" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge isn't a joke.
       SelfVictims
       NumConquered 3
       StolenItems
@@ -1023,6 +1029,7 @@
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "THRONE_HUMAN" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge isn't a joke.
       SelfVictims
       NumConquered 3
       StolenItems
@@ -1107,6 +1114,48 @@
       { MainEnemy {32 32} BASIC }
     }
   }
+}
+
+"BONUS_BLUE_DRAGON"
+{
+  biome = "DESERT"
+  settlement = {
+    type = RandomLayout { "castle_empty" { 30 30 } "dragon" }
+    inhabitants = {
+      leader = { { "BONUS_BLUE_DRAGON" } }
+      civilians = {
+        count = {4 5}
+        all = { 1 "BONUS_BANSHEE" } #Open to revision, but these are a Clue, folks
+      }
+    }
+    race = "dragon"
+    tribe = MONSTER
+  }
+  config = {
+    leaderAsFighter = true
+    ghostProb = 0.03
+    spawnGhosts = 1
+    prisoners = true
+  }
+  behaviour = {
+    minPopulation = 0
+    minTeamSize = 1
+    triggers = {
+      EnemyPopulation 22
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+    }
+    attackBehaviour = KillMembers 12
+  }
+  createOnBones = 0.1 { "THIEVES" "BONUS_PYRAMID" }
+  #levelConnection = {
+  #  topLevel = ExtraEnemy {"MAIN_DUNGEON_ENTRY"}
+  #  levels = {
+  #    { MainEnemy {32 32} MINETOWN }
+  #  }
+  #}
 }
 
 "BONUS_UNICORN_HERD"
@@ -1326,6 +1375,7 @@
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge isn't a joke.
       SelfVictims
       StolenItems
       FinishOff
@@ -1637,6 +1687,7 @@
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge isn't a joke.
       SelfVictims
       StolenItems
       FinishOff
@@ -2624,12 +2675,12 @@
         count = {6 9}
         all = {
           1 "BONUS_DEVIL_ABBEY"
-		  2 "DEMON_DWELLER"
-		  3 "SUCCUBUS"
+		  2 "BONUS_DISGUISED_INCUBUS"
+		  2 "BONUS_DISGUISED_SUCCUBUS"
         }
       }
       civilians = {
-        count = {5 10}
+        count = {5 12}
         all = {
           1 "BONUS_DARK_MONK"
         }
@@ -2671,12 +2722,12 @@
       frequency = 0.25
     }
     {
-      ids = {"DEMON_DWELLER"}
+      ids = {"BONUS_DISGUISED_INCUBUS"}
       traits = {FIGHTER}
       frequency = 0.5
     }
     {
-      ids = {"SUCCUBUS"}
+      ids = {"BONUS_DISGUISED_SUCCUBUS"}
       traits = {FIGHTER}
       frequency = 0.5
     }
@@ -2705,11 +2756,11 @@
     inhabitants = {
       leader = { { "BONUS_DEMON_PRIEST_DESTROY_ALTAR" } }
       fighters = {
-        count = {6 9}
+        count = {7 11}
         all = {
           1 "BONUS_DEVIL_ABBEY"
-		  2 "DEMON_DWELLER"
-		  3 "SUCCUBUS"
+		  2 "BONUS_DISGUISED_INCUBUS"
+		  3 "BONUS_DISGUISED_SUCCUBUS"
         }
       }
       civilians = {
@@ -3233,6 +3284,7 @@
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.5 #Soulforge isn't a joke.
       SelfVictims
       NumConquered 3
       StolenItems
@@ -3418,6 +3470,7 @@
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge isn't a joke.
       SelfVictims
       NumConquered 3
       StolenItems
@@ -3764,6 +3817,7 @@
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.0005 #Soulforge isn't a joke.
       SelfVictims
       NumConquered 2
       StolenItems
@@ -3936,6 +3990,7 @@
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.005 #Soulforge isn't a joke.
       SelfVictims
       NumConquered 2
       StolenItems
@@ -4109,6 +4164,7 @@
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.005 #Soulforge isn't a joke.
       SelfVictims
       NumConquered 2
       StolenItems
@@ -4321,6 +4377,7 @@
       triggers = {
         RoomTrigger "THRONE" 0.0003
         RoomTrigger "IMPALED_HEAD" 0.0001
+		RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge isn't a joke.
         SelfVictims
         StolenItems
         FinishOff
@@ -4332,7 +4389,7 @@
     }
     immigrants = {
       {
-        ids = { "BONUS_DWARF_MILITIA_TRIBE" "BONUS_DWARF_FIGHTER_TRIBE" "BONUS_DWARF_WARRIOR_TRIBE" "BONUS_ELITE_DWARF_WARRIOR_TRIBE" "BONUS_DWARF_MONK_TRIBE"} #Modded
+        ids = { "BONUS_DWARF_MILITIA_TRIBE" "BONUS_DWARF_MINER_TRIBE" "BONUS_DWARF_FIGHTER_TRIBE" "BONUS_DWARF_WARRIOR_TRIBE" "BONUS_ELITE_DWARF_WARRIOR_TRIBE" "BONUS_DWARF_MONK_TRIBE"} #Modded
         traits = {FIGHTER}
         frequency = 1
       }
@@ -4435,7 +4492,7 @@
         all = {
           1 "BONUS_DWARF_WARRIOR_TRIBE"
           1 "BONUS_ELITE_DWARF_WARRIOR_TRIBE"
-          6 "BONUS_DWARF_WORKER_TRIBE"
+          6 "BONUS_DWARF_MINER_TRIBE"
           }
         }
       civilians = {
@@ -4554,6 +4611,7 @@
     triggers = {
       RoomTrigger "THRONE" 0.003 #Building a Throne directly challenges the King's right to rule.
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05
       SelfVictims
       StolenItems
       FinishOff
@@ -4567,17 +4625,48 @@
     {
       ids = {"BONUS_ROYAL_ARCHER"}
       traits = {FIGHTER}
-      frequency = 1
+      frequency = 2
     }
     {
       ids = {"BONUS_ROYAL_KNIGHT"}
       traits = {FIGHTER}
-      frequency = 1
+      frequency = 3
     }
 	{
       ids = {"BONUS_ROYAL_PRIEST"}
       traits = {FIGHTER}
-      frequency = 1
+      frequency = 2
+    }
+	#Kings can recruit more Adventurers
+	{
+      ids = {"BONUS_ADVENTURER_NPC_SPELL1_F"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+	{
+      ids = {"BONUS_ADVENTURER_NPC_SPELL1"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+	{
+      ids = {"BONUS_ADVENTURER_NPC_MELEE1_F"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+	{
+      ids = {"BONUS_ADVENTURER_NPC_MELEE1"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+	{
+      ids = {"BONUS_ADVENTURER_NPC_ARCHER1_F"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+	{
+      ids = {"BONUS_ADVENTURER_NPC_ARCHER1"}
+      traits = {FIGHTER}
+      frequency = 0.5
     }
   }
   levelConnection = {
@@ -4640,17 +4729,48 @@
     {
       ids = {"BONUS_SHADOW_ARCHER"}
       traits = {FIGHTER}
-      frequency = 1
+      frequency = 3
     }
     {
       ids = {"BONUS_SHADOW_KNIGHT"}
       traits = {FIGHTER}
-      frequency = 1
+      frequency = 2
     }
 	{
       ids = {"BONUS_SHADOW_PRIEST"}
       traits = {FIGHTER}
-      frequency = 1
+      frequency = 3
+    }
+	#So can Shadow Kings
+	{
+      ids = {"BONUS_ASSASSIN_ADVENTURER_NPC_SPELL1_F"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+	{
+      ids = {"BONUS_ASSASSIN_ADVENTURER_NPC_SPELL1"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+	{
+      ids = {"BONUS_ASSASSIN_ADVENTURER_NPC_MELEE1_F"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+	{
+      ids = {"BONUS_ASSASSIN_ADVENTURER_NPC_MELEE1"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+	{
+      ids = {"BONUS_ASSASSIN_ADVENTURER_NPC_ARCHER1_F"}
+      traits = {FIGHTER}
+      frequency = 0.5
+    }
+	{
+      ids = {"BONUS_ASSASSIN_ADVENTURER_NPC_ARCHER1"}
+      traits = {FIGHTER}
+      frequency = 0.5
     }
   }
 }
@@ -4688,6 +4808,7 @@
       triggers = {
         RoomTrigger "THRONE" 0.0003
         RoomTrigger "IMPALED_HEAD" 0.0001
+		RoomTrigger "BONUS_SOULFORGE" 0.005
         SelfVictims
         StolenItems
         FinishOff
@@ -4744,6 +4865,7 @@
       minTeamSize = 4
       triggers = {
         EnemyPopulation 15
+		RoomTrigger "BONUS_SOULFORGE" 0.1 #ABOMINATION!
       }
       attackBehaviour = KillLeader
     }
@@ -4801,6 +4923,7 @@
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05
       SelfVictims
       StolenItems
       FinishOff
@@ -5018,7 +5141,9 @@
     }
   }
 }
-  
+
+##Z-level folks below
+
 "BONUS_GARGOYLE_ENTRANCE"
   {
     settlement = {
@@ -5033,6 +5158,14 @@
       }
     }
   } 
+
+"BONUS_ENCHANTED_POOL"
+  {
+    settlement = {
+    type = RandomLayout { "bonus_z_level_enchantedpool" { 80 80 } "default" }
+    tribe = MONSTER
+    }
+  }
   
 "BONUS_HELL_DUNGEON1"
   {
@@ -5492,7 +5625,7 @@ settlement = {
             1 "BONUS_GORGON"
             1 "BONUS_CLERIC_HERO"
             1 "BONUS_WIZARD_HERO"
-            1 "BONUS_WIZARD_ADVENTURER"
+            #1 "BONUS_WIZARD_ADVENTURER" #Nope! this one gets Malevolence promotions, so strictly Adventurer PC.
             1 "GOBLIN_CHICKENMANCER"
             1 "BONUS_GOBLIN_HIGH_PRIEST"
             1 "BONUS_GOBLIN_LEPRECHAUN"
@@ -5933,7 +6066,10 @@ settlement = {
     behaviour = {
       minPopulation = 4
       minTeamSize = 4
-      triggers = { NumConquered 5 }
+      triggers = {
+		NumConquered 5
+		RoomTrigger "BONUS_SOULFORGE" 0.005 #Soulforge isn't a joke.
+		}
       attackBehaviour = KillLeader
     }
     levelConnection = {
@@ -6335,6 +6471,7 @@ settlement = {
       SelfVictims
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Even Illusia doesn't like the Soulforge.
       EnemyPopulation 50
       NumConquered 17
     }
@@ -6540,6 +6677,24 @@ settlement = {
       furniture = "BONUS_cryptCoffins"
       outsideFeatures = "villageOutside"
     }
+	behaviour = {
+    ambushChance = 0.1
+    minPopulation = 3
+    minTeamSize = 5
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Competition must die!
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.8 140
+  }
     config = {
       immigrantInterval = 100
       maxPopulation = 20
@@ -6562,7 +6717,7 @@ settlement = {
 
 "BONUS_DRAGONS"
 {
-  biome = "BONUS_VOLCANIC" #testing crash issue
+  biome = "BONUS_VOLCANIC"
   settlement = {
     type = Builtin CASTLE2 "BONUS_VOLCANIC_BRICK"
     tribe = MONSTER
@@ -6574,11 +6729,13 @@ settlement = {
             1 "BONUS_ANCIENT_GREEN_DRAGON"
             1 "GREEN_DRAGON"
             1 "RED_DRAGON"
+			1 "BONUS_ANCIENT_YELLOW_DRAGON"
 			1 "YELLOW_DRAGON"
             2 "BONUS_YOUNG_GREEN_DRAGON"
             2 "BONUS_YOUNG_RED_DRAGON"
-            5 "BONUS_GREEN_DRAGONEWT"
-            5 "BONUS_RED_DRAGONNEWT"
+			2 "BONUS_YOUNG_YELLOW_DRAGON"
+            4 "BONUS_GREEN_DRAGONEWT"
+            4 "BONUS_RED_DRAGONNEWT"
 			}
       }
     }
@@ -6704,6 +6861,7 @@ settlement = {
     triggers = {
       RoomTrigger "THRONE" 0.0005
       RoomTrigger "THRONE_HUMAN" 0.0005
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Souls forged are souls not in hell!
       SelfVictims
       NumConquered 4
       StolenItems
@@ -7084,6 +7242,7 @@ settlement = {
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge isn't a joke.
       SelfVictims
       NumConquered 3
       StolenItems
@@ -7286,6 +7445,7 @@ settlement = {
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge isn't a joke.
       SelfVictims
       NumConquered 3
       StolenItems
@@ -7366,6 +7526,7 @@ settlement = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "THRONE_HUMAN" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.0005 #Soulforge isn't a joke.
       SelfVictims
       NumConquered 2
       StolenItems
@@ -7786,6 +7947,7 @@ settlement = {
     triggers = {
       RoomTrigger "THRONE" 0.0003
       RoomTrigger "IMPALED_HEAD" 0.0001
+	  RoomTrigger "BONUS_SOULFORGE" 0.05 #Soulforge is competition...
       SelfVictims
       NumConquered 3
       StolenItems
@@ -7825,7 +7987,7 @@ settlement = {
 #Ideas for future villains#
 ###########################
 #Ant Hive
-#Grand Elvish City
+#Grand Elvish City -Elf King says hi
 #Three cyclops
 #The forty thieves -Kinda handled, what with desert thieves, but could be made More Flavorful
 #Wolfville -Kinda hendled, werewolf city (it's pretty Overt though)
