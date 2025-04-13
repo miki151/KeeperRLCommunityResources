@@ -1,4 +1,43 @@
-  "KEEPER_RED_DRAGON" inherit "KEEPER_MAGE"
+  "KEEPER_DRAGON" inherit "KEEPER_MAGE"
+    {
+      viewId = { "keeper_red_dragon1" }
+      viewIdUpgrades = { { "keeper_red_dragon2" } { "keeper_red_dragon3" } { "keeper_red_dragon4" } }
+      name = {
+        name = "red Dragon"
+        firstNameGen = "DRAGON"
+        fullTitle = true
+      }
+      attr = {
+        DAMAGE 15
+        DEFENSE 15
+        SPELL_DAMAGE 15
+	LABORATORY 50
+      }
+      maxLevelIncrease = {
+        DAMAGE 12
+        SPELL_DAMAGE 12
+      }
+      body = {
+        type = Humanoid HUGE
+        intrinsicAttacks = {
+          HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+              attackType = BITE
+              attackMsg = BITE
+              victimEffect = {0.5 Fire{20}} } }}}
+        }
+	  drops = { {"RedDragonScales"} 1}
+      droppedPartUpgrade = GrantAbility "dragon fire"
+      }
+      permanentEffects = {
+        CAPTURE_RESISTANCE 1
+        REGENERATION 1
+      }
+      spellSchools = { "fighter" "dragon_k_dragon" }
+      spells = { "dragon fire" }
+      hatedByEffect = HATE_DRAGONS
+    }
+
+  "KEEPER_RED_DRAGON" inherit "KEEPER_DRAGON"
     {
       viewId = { "keeper_red_dragon1" }
       viewIdUpgrades = { { "keeper_red_dragon2" } { "keeper_red_dragon3" } { "keeper_red_dragon4" } }
@@ -31,20 +70,18 @@
       permanentEffects = {
         FIRE_IMMUNITY 1
         RANGED_VULNERABILITY 1
-        CAPTURE_RESISTANCE 1
-        REGENERATION 1
       }
       spellSchools = { "fighter" "dragon_k_dragon" }
       spells = { "dragon fire" }
       hatedByEffect = HATE_DRAGONS
     }
 
-  "KEEPER_RED_DRAGON_F" inherit "KEEPER_RED_DRAGON"
+  "KEEPER_RED_DRAGON_F" inherit "KEEPER_DRAGON"
     {
     gender = FEMALE
     }
 	
-  "KEEPER_YELLOW_DRAGON" inherit "KEEPER_RED_DRAGON"
+  "KEEPER_YELLOW_DRAGON" inherit "KEEPER_DRAGON"
     {
       viewId = { "keeper_red_dragon1" Rgb 240 200 0 255 }
       viewIdUpgrades = { { "keeper_red_dragon2" Rgb 240 200 0 255 } { "keeper_red_dragon3" Rgb 240 200 0 255 } { "keeper_red_dragon4" Rgb 240 200 0 255 } }
@@ -77,8 +114,6 @@
       permanentEffects = {
         ACID_IMMUNITY 1
         RANGED_VULNERABILITY 1
-        CAPTURE_RESISTANCE 1
-        REGENERATION 1
       }
       spellSchools = { "fighter" "dragon_k_dragon" }
       spells = { "dragon acid breath" }
@@ -90,7 +125,7 @@
     gender = FEMALE
     }
 
-  "KEEPER_BLACK_DRAGON" inherit "KEEPER_RED_DRAGON"
+  "KEEPER_BLACK_DRAGON" inherit "KEEPER_DRAGON"
     {
       viewId = { "keeper_red_dragon1" Rgb 80 80 80 255 }
       viewIdUpgrades = { { "keeper_red_dragon2" Rgb 80 80 80 255 } { "keeper_red_dragon3" Rgb 80 80 80 255 } { "keeper_red_dragon4" Rgb 80 80 80 255 } }
@@ -110,13 +145,10 @@
         droppedPartUpgrade = GrantAbility "dragon mind breath"
       }
       permanentEffects = {
-        RANGED_VULNERABILITY 1
         BLIND 1
         TELEPATHY 1
         AMBUSH_SKILL 1
-        
-        CAPTURE_RESISTANCE 1
-        REGENERATION 1
+        RANGED_VULNERABILITY 1
       }
       spellSchools = { "fighter" "dragon_k_dragon" }
       spells = { "dragon mind breath" }
@@ -128,7 +160,7 @@
     gender = FEMALE
     }
 
-  "KEEPER_GREEN_DRAGON" inherit "KEEPER_RED_DRAGON"
+  "KEEPER_GREEN_DRAGON" inherit "KEEPER_DRAGON"
     {
       viewId = { "keeper_red_dragon1" Rgb 33 120 27 255 }
       viewIdUpgrades = { { "keeper_red_dragon2" Rgb 33 120 27 255 } { "keeper_red_dragon3" Rgb 33 120 27 255 } { "keeper_red_dragon4" Rgb 33 120 27 255 } }
@@ -151,8 +183,6 @@
       permanentEffects = {
         POISON_RESISTANT 1
         RANGED_VULNERABILITY 1
-        CAPTURE_RESISTANCE 1
-        REGENERATION 1
       }
       spellSchools = { "fighter" "dragon_k_dragon" }
       spells = { "dragon poison breath" }
@@ -164,7 +194,7 @@
     gender = FEMALE
     }
 
-  "KEEPER_WHITE_DRAGON" inherit "KEEPER_RED_DRAGON"
+  "KEEPER_WHITE_DRAGON" inherit "KEEPER_DRAGON"
     {
       viewId = { "keeper_red_dragon1" Rgb 240 240 240 255 }
       viewIdUpgrades = { { "keeper_red_dragon2" Rgb 240 240 240 255 } { "keeper_red_dragon3" Rgb 240 240 240 255 } { "keeper_red_dragon4" Rgb 240 240 240 255 } }
@@ -184,10 +214,8 @@
         droppedPartUpgrade = GrantAbility "dragon ice breath"
       }
       permanentEffects = {
-        RANGED_VULNERABILITY 1
         COLD_IMMUNITY 1
-        CAPTURE_RESISTANCE 1
-        REGENERATION 1
+        RANGED_VULNERABILITY 1
       }
       spellSchools = { "fighter" "dragon_k_dragon" }
       spells = { "dragon ice breath" }
@@ -199,7 +227,7 @@
     gender = FEMALE
     }
 	
-  "KEEPER_BONE_DRAGON" inherit "KEEPER_RED_DRAGON"
+  "KEEPER_BONE_DRAGON" inherit "KEEPER_DRAGON"
     {
       viewId = { "keeper_bone_dragon1" }
       viewIdUpgrades = { { "keeper_bone_dragon2" } { "keeper_bone_dragon3" } { "keeper_bone_dragon4" } }
@@ -234,7 +262,6 @@
       permanentEffects = {
         RANGED_RESISTANCE 1
 		MELEE_RESISTANCE 1
-        CAPTURE_RESISTANCE 1
       }
       spellSchools = { "fighter" "dragon_k_bone_dragon" }
       spells = { "dragon black fog breath" }

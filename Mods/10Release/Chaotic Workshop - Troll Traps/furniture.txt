@@ -218,7 +218,21 @@
   name = "hole"
   viewId = { "sokoban_hole" }
   onBuilt = DOWN_STAIRS
-  tickType = Effect {Filter Not LastingEffect FLYING {Area 0 Stairs} }
+  tickType = Effect {
+#    Filter Enemy {
+      Filter Not LastingEffect FLYING {
+        Stairs
+      }
+#    }
+  }
+  canBuildOutsideOfTerritory = true
+  otherStairs = "BLANK"
+}
+
+"BLANK"
+{
+  name = "blank"
+  layer = CEILING
   canBuildOutsideOfTerritory = true
 }
 

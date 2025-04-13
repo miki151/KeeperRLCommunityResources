@@ -126,3 +126,153 @@
   wall = true
   viewLayer = FLOOR_BACKGROUND
 }
+
+  "DRAGON_NEST" inherit "BED2"
+  {
+    name = "dragon nest"
+    viewId = { "dragon_nest" }
+    luxury = 0.4
+  }
+  "DRAGONS_HORDE" inherit "BED3"
+  {
+    name = "dragon's hoard"
+    viewId = { "horde_bed" }
+    luxury = 0.8
+  }
+  "HORDE"
+  {
+    name = "hoard"
+    viewId = { "horde" }
+    canHideHere = true
+    lightEmission = 8.2
+    strength = 30
+    luxury = .5
+  }
+  "GRAND_HORDE"
+  {
+    name = "grand horde"
+    viewId = { "horde_grand" }
+    canHideHere = true
+    usageType = UsageEffect "lounges on" Chain { CreatureMessage {"lounge on the grand hoard" "lounges on the grand hoard"} Audience none }
+    luxury = 1.0
+    strength = 80
+    populationIncrease = { 10 none }
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  }
+  "DRAGON_TOTEM"
+  {
+    name = "dragon totem"
+    viewId = { "dragon_totem" }
+    luxury = 0.1
+    lightEmission = 8.2
+    canBuildOutsideOfTerritory = true
+  }
+  "HORDE_FLOOR"
+  {
+    name = "gold strewn floor"
+    viewId = { "gold_floor1" }
+    luxury = 0.7
+    layer = FLOOR
+  }
+  "EGG_EXPERIMENTS"
+  {
+    name = "egg experiment's table"
+    viewId = { "egg_experiment" }
+    blockMovement = true
+    usageType = BuiltinUsageId STUDY
+    usageTime = 5
+    canHideHere = true
+    fire = 70
+    strength = 50
+    maxTraining = {
+      SPELL_DAMAGE 1
+    }
+    requiresLight = true
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  }
+  "EGG_NEST"
+  {
+    name = "dragon egg"
+    viewId = { "egg_nest" }
+    usageType = UsageEffect "delicately sits on" Chain { CreatureMessage {"sit on the nest" "sits on the nest"} Audience none }
+    usageTime = 5
+    canHideHere = true
+    fire = 70
+    strength = 50
+    requiresLight = true
+    destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  }
+  "DRAGON_SHRINE"
+  {
+    name = "dragon shrine"
+    viewId = { "dragon_shrine" }
+    blockMovement = true
+    usageTime = 5
+    usageType = BuiltinUsageId DEMON_RITUAL
+    luxury = 0.4
+    strength = 80
+    destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  }
+  "GAS_CLOUD"
+  {
+    name = "choking gas"
+    viewId = { "trap"  Rgb 58 156 68 255 }
+    layer = CEILING
+    constructMessage = none
+    onBuilt = SET_ON_FIRE
+    destroyedEffect = Chain {Area 1 EmitGas "POISON_GAS" 2.5 Lasting POISON}
+    hostileSpell = true
+    fire = 5
+  }
+  "ICE_CLOUD"
+  {
+    name = "frigid blast"
+    viewId = { "trap"  Rgb 58 156 68 255 }
+    layer = CEILING
+    constructMessage = none
+    onBuilt = SET_ON_FIRE
+    destroyedEffect = Chain { Message NORMAL "Ice cloud!" Ice{} }
+    hostileSpell = true
+    fire = 5
+  }
+  "ACID_CLOUD"
+  {
+    name = "acidic vapors"
+    viewId = { "trap"  Rgb 58 156 68 255 }
+    layer = CEILING
+    constructMessage = none
+    onBuilt = SET_ON_FIRE
+    destroyedEffect = Chain { Acid{} Lasting BLIND Damage SPELL_DAMAGE SPELL }
+    hostileSpell = true
+    fire = 5
+  }
+
+"MAGEX_SHALLOW_GRAVE_BONE_HELPER_I"
+{
+  name = "grave"
+  viewId = { "mud" }
+  tickType = Effect Chain {
+		Summon "MAGEX_BONE_HELPER" 1 100
+		Area 0 RemoveFurniture "MAGEX_SHALLOW_GRAVE_BONE_HELPER_I"
+    }
+}
+
+"MAGEX_SHALLOW_GRAVE_BONE_HELPER_II"
+{
+  name = "grave"
+  viewId = { "mud" }
+  tickType = Effect Chain {
+		Summon "MAGEX_BONE_HELPER" 2 200
+		Area 0 RemoveFurniture "MAGEX_SHALLOW_GRAVE_BONE_HELPER_II"
+    }
+}
+
+"MAGEX_SHALLOW_GRAVE_BONE_HELPER_III"
+{
+  name = "grave" 
+  viewId = { "mud" }
+  tickType = Effect Chain {
+		Summon "MAGEX_BONE_HELPER" 3 300
+		Area 0 RemoveFurniture "MAGEX_SHALLOW_GRAVE_BONE_HELPER_III"
+    }
+}

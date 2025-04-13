@@ -818,6 +818,7 @@
   {
   name = {
       name = "fire kami"
+      firstNameGen = "JAPANESE_KAMI_FIRE"
     }
     spells = { "fire breath" }
   }
@@ -826,6 +827,7 @@
   {
   name = {
       name = "earth kami"
+      firstNameGen = "JAPANESE_KAMI_EARTH"
     }
     spells = { "dig" }
   }
@@ -834,6 +836,7 @@
   {
   name = {
       name = "water kami"
+      firstNameGen = "JAPANESE_KAMI_WATER"
     }
     spells = { "deception" }
   }
@@ -842,6 +845,7 @@
   {
   name = {
       name = "air kami"
+      firstNameGen = "JAPANESE_KAMI_WIND"
     }
     spells = { "fog cloud" }
   }
@@ -1814,6 +1818,7 @@
     }
   name = {
       name = "fire kansen"
+      firstNameGen = "JAPANESE_KANSEN_FIRE"
     }
     spells = { "fire breath" }
   }
@@ -1825,6 +1830,7 @@
     }
   name = {
       name = "earth kansen"
+      firstNameGen = "JAPANESE_KANSEN_EARTH"
     }
     spells = { "dig" }
   }
@@ -1836,6 +1842,7 @@
     }
   name = {
       name = "water kansen"
+      firstNameGen = "JAPANESE_KANSEN_WATER"
     }
     spells = { "deception" }
   }
@@ -1848,6 +1855,7 @@
     }
   name = {
       name = "air kansen"
+      firstNameGen = "JAPANESE_KANSEN_WIND"
     }
     spells = { "fog cloud" }
   }
@@ -2397,7 +2405,7 @@
     chatReactionHostile = "\"Die!\""
     name = {
       name = "Shinrei"
-      firstNameGen = "JAPANESE_MALE"
+      firstNameGen = "JAPANESE_KAMI_MISC"
     }
     spells = { "NIPPON_SHINREI_BLESSING" "NIPPON_SHINREI_CURSE" "NIPPON_SHINREI_CALL" }
     gender = IT
@@ -2544,7 +2552,222 @@
     }
 }
   
+#########################################################################################################################################
+#                                                      Kawa-shin no ryōiki                                                              #
+#########################################################################################################################################
+
+############
+#  Suijin  #
+############
+
+
+"NIPPON_KEEPER_SUIJIN"
+  {
+    viewId = { "jp_yokai_suijin_01" }
+    viewIdUpgrades = { { "jp_yokai_suijin_02" } { "jp_yokai_suijin_03" } { "jp_yokai_suijin_04" } }
+    name = {
+      name = "suijin"
+      firstNameGen = "JAPANESE_SUIJIN"
+      fullTitle = true
+    }
+    body = {
+      type = Humanoid HUGE
+      material = WATER
+    }
+    attr = {
+      DAMAGE 12
+      DEFENSE 12
+      SPELL_DAMAGE 20
+      LABORATORY 10
+    }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      SWIMMING_SKILL 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+      SPELL_DAMAGE 12
+    }
+    aiType = RANGED
+    spellSchools = { "JP_SUIJIN" }
+    spells = { "jp_suijin_heal_self" }
+    inventory = {
+      { "Robe"}
+      { "WoodenStaff" }
+    }
+    hatedByEffect = HATE_YOKAI
+  }
+
+################
+#  Koi Summon  #
+################
+
+"NIPPON_KOI_SUMMON"
+  {
+    viewId = { "jp_yokai_koi_01" }
+    genderAlternatives = {
+      IT { "jp_kami_wolf" }
+      IT { "jp_kami_fox" }
+    }
+    attr = {
+      DAMAGE 2
+      DEFENSE 12 
+    }
+    body = {
+      type = NonHumanoid SMALL
+      bodyParts = {
+        LEG 1
+        WING 2
+        TORSO 1
+      }
+      weight = 0.1
+      deathSound = none
+      canBeRevived = false
+    }
+    permanentEffects = {
+      SWIMMING_SKILL 1
+    }
+	gender = IT
+    aiType = RANGED
+    noChase = true
+    name = {
+      name = "mystical koi"
+      pluralName = "mystical kois"
+    }
+    hatedByEffect = HATE_YOKAI
+  }
+
+################
+#  Kawa otoko  #
+################
+
+"NIPPON_KAWA_OTOKO"
+  {
+    viewId = { "jp_yokai_kawa_otoko" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 17 
+      DIGGING 16
+      WORKSHOP 25
+      FURNACE 25
+      JEWELER 25
+      FORGE 30
+    }
+    body = {
+      type = Humanoid LARGE
+      material = WATER
+    }
+    permanentEffects = {
+      SLOWED 1
+	  ENTERTAINER 1
+      SWIMMING_SKILL 1
+      NO_CARRY_LIMIT 1
+    }
+	gender = MALE
+    name = {
+      name = "kawa otoko"
+    }
+    hatedByEffect = HATE_YOKAI
+  }
   
+###########
+#  Kappa  #
+###########
+
+"NIPPON_KAPPA"
+  {
+    viewId = { "jp_yokai_kappa" }
+    attr = {
+      DAMAGE 20
+      MULTI_WEAPON 5
+      DEFENSE 7
+    }
+    body = {
+      type = Humanoid LARGE
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 4 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "beak" 3 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      SWIMMING_SKILL 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 8
+    }
+    spells = { "jp_extract_shirikodama" }
+    name = {
+      name = "kappa"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    hatedByEffect = HATE_YOKAI
+  }
+
+#############
+#  Garappa  #
+#############
+
+"NIPPON_GARAPPA"
+  {
+    viewId = { "jp_yokai_garappa" }
+    attr = {
+      DAMAGE 24
+      MULTI_WEAPON 10
+      DEFENSE 14
+    }
+    body = {
+      type = Humanoid LARGE
+      intrinsicAttacks = {
+        LEG  {{ itemType = { Intrinsic { "claws_attack" } "claws" 6 { attackType = HIT attackMsg = CLAW }} isExtraAttack = true }}
+        HEAD {{ itemType = { Intrinsic { "bite_attack" }  "beak" 5 { attackType = BITE attackMsg = BITE }} isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      DISTILLATION_SKILL 1
+      SWIMMING_SKILL 1
+	  COPULATION_SKILL 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
+    spells = { "jp_extract_shirikodama" }
+    name = {
+      name = "garappa"
+      firstNameGen = "JAPANESE_MALE"
+    }
+    hatedByEffect = HATE_YOKAI
+  }
+
+##################
+#  Kappa Musume  #
+##################
+"NIPPON_KAPPA_MUSUME"
+  {
+    viewId = { "jp_yokai_kappa_musume" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 8
+      SPELL_DAMAGE 16 
+      LABORATORY 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      SPELL_DAMAGE 7
+    }
+    aiType = RANGED
+    name = {
+      name = "priest"
+      firstNameGen = "JAPANESE_FEMALE"
+    }
+    spellSchools = { "healer" }
+    spells = { "healing" }
+    hatedByEffect = HATE_YOKAI
+  }
 #################################################################################################################################
 #                                                         modify                                                                #
 #################################################################################################################################

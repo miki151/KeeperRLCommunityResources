@@ -562,7 +562,7 @@
       traits = { FIGHTER }
       frequency = 0.2
       requirements = {
-        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
       }
       specialTraits = {
          { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "DOG" }}}}
@@ -590,7 +590,7 @@
       frequency = 0.3
       requirements = {
         { 0.0 MinTurnRequirement 2000 }
-        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
         { 0.3 AttractionInfo 1 {ItemIndex RANGED_WEAPON}}
       }
       specialTraits = {
@@ -611,7 +611,34 @@
       }
     }
     {
-      ids = { "DE_MYSTIC" }
+      ids = { "HE_CENSOR" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "DOG" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { ELF_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.02 { Lasting { HATE_GREENSKINS } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }   
+    {
+      ids = { "HE_ARCHMAGE" }
       traits = { FIGHTER }
       frequency = 0.3
       requirements = {
@@ -633,5 +660,20 @@
          { 0.01 { Lasting { ENTERTAINER } }}
       }
     }
-    DarkRecruits()
+    {
+      ids = { "HORSE_CAN_TRAIN" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 50 }
+        { 1.0 AttractionInfo 2 {FurnitureType "STABLE"}}
+      }
+    }
+    {
+      ids = { "NEUTRAL_GRYPHON_CAN_TRAIN" }
+      traits = { NO_LIMIT }
+      requirements = {
+        { 1.0 CostInfo "GOLD" 100 }
+        { 1.0 AttractionInfo 2 {FurnitureType "STABLE"}}
+      }
+    }
 }

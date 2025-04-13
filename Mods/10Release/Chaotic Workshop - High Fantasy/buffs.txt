@@ -670,3 +670,179 @@
   price = 200
 }
 
+"MAGEX_HOLY_RESISTANT" RESISTANCE("holy", MAGEX_HOLY_DAMAGE)
+"MAGEX_HOLY_VULNERABILITY" VULNERABILITY("holy", MAGEX_HOLY_DAMAGE)
+"MAGEX_HOLY_IMMUNITY" IMMUNITY("holy", MAGEX_HOLY_DAMAGE)
+
+"MAGEX_HOLY_DAMAGE" {
+  name = "holy damage"
+  adjective = "deals holy damage"
+  description = "All dealt melee damage is transformed into holy damage."
+  addedMessage = "deal" "deals" "holy damage"
+  removedMessage = "no longer deal" "no longer deals" "holy damage"
+  fx = BUFF_PURPLE
+  color = ColorId PURPLE
+  price = 50
+  modifyDamageAttr = DAMAGE MAGEX_HOLY_DAMAGE
+}
+
+"MAGEX_HOLY_SPELL_DAMAGE" {
+  name = "holy damage"
+  adjective = "deals holy damage"
+  description = "All dealt spell damage is transformed into holy damage."
+  addedMessage = "deal" "deals" "holy damage"
+  removedMessage = "no longer deal" "no longer deals" "holy damage"
+  fx = BUFF_PURPLE
+  color = ColorId PURPLE
+  price = 50
+  modifyDamageAttr = SPELL_DAMAGE MAGEX_HOLY_DAMAGE
+}
+
+"MAGEX_HOLY_RANGED_DAMAGE" {
+  name = "holy damage"
+  adjective = "deals holy damage"
+  description = "All dealt spell damage is transformed into holy damage."
+  addedMessage = "deal" "deals" "holy damage"
+  removedMessage = "no longer deal" "no longer deals" "holy damage"
+  fx = BUFF_PURPLE
+  color = ColorId PURPLE
+  price = 50
+  modifyDamageAttr = RANGED_DAMAGE MAGEX_HOLY_DAMAGE
+}
+
+"MAGEX_UNHOLY_RESISTANT" RESISTANCE("unholy", MAGEX_UNHOLY_DAMAGE)
+"MAGEX_UNHOLY_VULNERABILITY" VULNERABILITY("unholy", MAGEX_UNHOLY_DAMAGE)
+"MAGEX_UNHOLY_IMMUNITY" IMMUNITY("unholy", MAGEX_UNHOLY_DAMAGE)
+
+"MAGEX_UNHOLY_DAMAGE" {
+  name = "unholy damage"
+  adjective = "deals unholy damage"
+  description = "All dealt melee damage is transformed into unholy damage."
+  addedMessage = "deal" "deals" "unholy damage"
+  removedMessage = "no longer deal" "no longer deals" "unholy damage"
+  fx = BUFF_PURPLE
+  color = ColorId PURPLE
+  price = 50
+  modifyDamageAttr = DAMAGE MAGEX_UNHOLY_DAMAGE
+}
+
+"MAGEX_UNHOLY_SPELL_DAMAGE" {
+  name = "unholy damage"
+  adjective = "deals unholy damage"
+  description = "All dealt spell damage is transformed into unholy damage."
+  addedMessage = "deal" "deals" "unholy damage"
+  removedMessage = "no longer deal" "no longer deals" "unholy damage"
+  fx = BUFF_PURPLE
+  color = ColorId PURPLE
+  price = 50
+  modifyDamageAttr = SPELL_DAMAGE MAGEX_UNHOLY_DAMAGE
+}
+
+"KOBOLD_WORKER" {
+  name = "worker"
+  adjective = "working"
+  description = "works"
+  addedMessage = "feel ready to work" "seems ready to work" ""
+  removedMessage = "no longer feel ready to work" "no longer seems ready to work" ""  
+  startEffect = Chain { AddMinionTrait WORKER AddMinionTrait NO_EQUIPMENT AddMinionTrait NO_LIMIT RemoveMinionTrait FIGHTER}
+  endEffect = Chain { RemoveMinionTrait WORKER RemoveMinionTrait NO_EQUIPMENT RemoveMinionTrait NO_LIMIT AddMinionTrait FIGHTER}
+  combatConsumable = true
+  color = ColorId PINK
+  price = 200
+}
+
+
+"MAGEX_PSIONIC_RESISTANT" RESISTANCE("psionic", MAGEX_PSIONIC_DAMAGE)
+"MAGEX_PSIONIC_VULNERABILITY" VULNERABILITY("psionic", MAGEX_PSIONIC_DAMAGE)
+"MAGEX_PSIONIC_IMMUNITY" IMMUNITY("psionic", MAGEX_PSIONIC_DAMAGE)
+
+
+"MAGEX_PSIONIC_SPELL" {
+  name = "psionic damage"
+  adjective = "deals psionic damage"
+  description = "All dealt melee damage is transformed into psionic damage."
+  addedMessage = "deal" "deals" "psionic damage"
+  removedMessage = "no longer deal" "no longer deals" "psionic damage"
+  fx = BUFF_RED
+  color = ColorId RED
+  price = 50
+  modifyDamageAttr = SPELL_DAMAGE MAGEX_PSIONIC_DAMAGE
+}
+
+"MAGEX_PSIONIC_DAMAGE" {
+  name = "psionic damage"
+  adjective = "deals psionic damage"
+  description = "All dealt melee damage is transformed into psionic damage."
+  addedMessage = "deal" "deals" "psionic damage"
+  removedMessage = "no longer deal" "no longer deals" "psionic damage"
+  fx = BUFF_RED
+  color = ColorId RED
+  price = 50
+  modifyDamageAttr = DAMAGE MAGEX_PSIONIC_DAMAGE
+}
+
+"MAGEX_SPELL_BONUS" ATTR_BUFF(SPELL_DAMAGE, "spell damage", "spell damage", 3, "powerfull", 20)
+"MAGEX_NECRO_BONUS" ATTR_BUFF(MAGEX_NECROTIC_DAMAGE, "necrotic damage", "necrotic damage", 3, "powerfull", 20)
+
+"MAGEX_BONE_HELPER_I" {
+  name = "digging"
+  adjective = "digging"
+  description = "digging"
+  combatConsumable = true
+  color = ColorId PINK
+  price = 200
+}
+
+
+"MAGEX_BEHEMOTH_REGENERATION" {
+  name = "behemoth´s regeneration"
+  description = "Recovers a little bit of health every turn."
+  addedMessage = ARE "regenerating"
+  removedMessage = ARE "no longer regenerating"
+  adjective = "regenerating"
+  tickEffect = Filter Not LastingEffect FROZEN Heal { FLESH 0.03 }
+  combatConsumable = true
+  price = 12
+  fx = BUFF_RED
+  color = ColorId RED
+}
+
+"MAGEX_DIVINITY_RESISTANT" RESISTANCE("divine", DIVINITY)
+"MAGEX_DIVINITY_VULNERABILITY" VULNERABILITY("divine", DIVINITY)
+"MAGEX_DIVINITY_IMMUNITY" IMMUNITY("divine", DIVINITY)
+
+"MAGEX_DIVINITY_DAMAGE" {
+  name = "divine damage"
+  adjective = "deals divine damage"
+  description = "All dealt melee damage is transformed into divine damage."
+  addedMessage = "deal" "deals" "divine damage"
+  removedMessage = "no longer deal" "no longer deals" "divine damage"
+  fx = BUFF_PURPLE
+  color = ColorId PURPLE
+  price = 50
+  modifyDamageAttr = DAMAGE DIVINITY
+}
+
+"MAGEX_DIVINITY_SPELL_DAMAGE" {
+  name = "divine damage"
+  adjective = "deals divine damage"
+  description = "All dealt spell damage is transformed into divine damage."
+  addedMessage = "deal" "deals" "divine damage"
+  removedMessage = "no longer deal" "no longer deals" "divine damage"
+  fx = BUFF_PURPLE
+  color = ColorId PURPLE
+  price = 50
+  modifyDamageAttr = SPELL_DAMAGE DIVINITY
+}
+
+"MAGEX_DIVINITY_RANGED_DAMAGE" {
+  name = "divine damage"
+  adjective = "deals divine damage"
+  description = "All dealt spell damage is transformed into divine damage."
+  addedMessage = "deal" "deals" "divine damage"
+  removedMessage = "no longer deal" "no longer deals" "divine damage"
+  fx = BUFF_PURPLE
+  color = ColorId PURPLE
+  price = 50
+  modifyDamageAttr = RANGED_DAMAGE DIVINITY
+}

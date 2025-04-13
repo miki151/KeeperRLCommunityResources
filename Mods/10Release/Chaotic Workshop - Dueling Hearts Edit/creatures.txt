@@ -617,7 +617,7 @@
 		RIDER 1
       }
       inventory = {
-	      { type = Simple "Scythe" }
+	      { type = Simple "DHK_Scythe" }
 	      { type = Simple "IronHelm" }
 	      { type = Simple "ChainArmor" }
 	      { type = Simple "IronGloves" }
@@ -669,6 +669,7 @@
       DAMAGE 0
       DEFENSE 1
     }
+    aiType = RANGED
     body = {
         type = NonHumanoid SMALL
         minionFood = true
@@ -676,18 +677,47 @@
           LEG 2
           TORSO 1
           HEAD 1
-        }}
+        }
+        weight = 3
+        ambientSound = 0.01 {"CHICKEN_AMBIENT" 0.2}}
     permanentEffects = {
       SLOWED 1
     }
+    noChase = true
     deathEffect =  Chain {
-      DropItems { Simple "ChickenMeat"} {1 2}
+      DropItems { Simple "DHK_ChickenMeat"} {1 2}
     }
     name = {
       name = "chicken"
     }
   }
 
+"DHK_MICRO_PIG"
+  {
+    viewId = { "dhk_micropiglet" }
+    attr = {
+      DAMAGE 3
+      DEFENSE 1
+    }
+    aiType = RANGED
+    body = {
+      type = FourLegged MEDIUM
+      weight = 3
+      ambientSound = 0.01 {"PIG_AMBIENT" 0.2}
+      minionFood = true
+    }
+    permanentEffects = {
+      SLOWED 1
+    }
+    deathEffect =  Chain {
+      DropItems { Simple "DHK_MicroBacon"} {1 2}
+    }
+    noChase = true
+    name = {
+      name = "micropiglet"
+    }
+  }
+  
  "DHK_IMP_SUMMON"
     {
       viewId = { "dhk_imp" }

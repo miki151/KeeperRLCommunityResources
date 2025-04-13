@@ -14,8 +14,32 @@
         "" }
   }
 
-  "log walls"
+  "fe_structure"
   {
+    { { Dig CutTree }                                        "Dig or cut tree"   "Structure"
+      "" "DIG" {} true DIG_OR_CUT_TREES}
+# If you want you can use "just dig" or "just cut tree" in your mod
+#    { Dig                                                          "Dig"   "Structure" }
+#    { CutTree                                                      "Cut tree"   "Structure" }
+    { Furniture {{ "MOUNTAIN" }             "STONE" 5 }      "Soft rock"         "Structure" }
+    { Furniture {{ "MOUNTAIN2" }            "STONE" 10 }     "Hard rock"         "Structure" }
+
+    { Furniture {{ "PIT" }                        "STONE" 0 }      "Dig a pit"         "Structure"
+      "Dig a pit in the ground. Building next to water or lava will cause it to fill up." }
+
+    { { FillPit }                                        "Fill a pit"   "Structure"}
+
+    { Furniture {{ "FILL_UP_WATER_FLOOR" }        "STONE" 5 }     "Fill lava or water""Structure"
+      "" }
+
+    { Furniture {{ "FLOOR" }              }               "Building interior" "Structure"
+      "" none {} false none true}
+
+    { Furniture {{ "WOOD_WALL" }                  "WOOD" 4 }       "Wooden wall"   "Structure"
+      "Outdoor building. Tiles covered by the roof are considered territory and can be built on." }
+
+    { Furniture {{ "WOOD_PILLAR" }                "WOOD" 2 }       "Wooden pillar"     "Structure"
+      "Acts as roof support, but doesn't block movement." }
 
     { Furniture {{ "FE_WOOD_PILLAR" }                "WOOD" 2 }       "Wooden pillar"     "Structure"
       "Acts as roof support, but doesn't block movement." }
@@ -25,4 +49,13 @@
 
     { Furniture {{ "FE_ARCHER_WALL" }                "WOOD" 20 }     "Wall with arrowslits"  "Structure"
       "Outdoor building with arrowslits." }
+	  
+    { Furniture {{ "BRIDGE" }                     "WOOD" 5 }       "Wooden bridge"     "Structure"
+      "Build to pass over water. Will burn on lava." }
+
+    { Furniture {{ "STONE_BRIDGE" }               "STONE" 5 }      "Stone bridge"      "Structure"
+      "Build to pass over water or lava." }
+	  
   }
+
+  "fe_structure" modify append Stairs()

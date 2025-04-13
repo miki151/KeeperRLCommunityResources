@@ -1,31 +1,71 @@
 "1_dark_mage" modify {
+    immigrantGroups = append { "black_stables" }
     technology = append {
       "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
 	  "glyph carving" "advanced glyph carving" "master glyph carving" 
 	  "golem construction" "advanced golem construction" "master golem construction" 
-      "summoning" "advanced summoning" "master summoning"
+      "summoning" "advanced summoning" "master summoning" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
 	  }
-	buildingGroups = append { "magecrafting" }
+	buildingGroups = append { "magecrafting" "mass" }
     workshopGroups = append { "scribing_evil" "glyphcarving" "golem_carving" "element_summoning" "demon_summoning"}
   }
 "2_dark_knight" modify {
-    immigrantGroups = {"magex_goblin" "dark_keeper"}
+    immigrantGroups = {"magex_goblin" "dark_keeper" "black_stables" }
     technology = append {
       "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
 	  "glyph carving" "advanced glyph carving" "master glyph carving" 
 	  "golem construction" "advanced golem construction" "master golem construction" 
-      "summoning" "advanced summoning" "master summoning"
+      "summoning" "advanced summoning" "master summoning" "advanced theology" "expert theology"
+	  "luxury" "small temptations" "big temptations" 
 	  }
     buildingGroups = {
         "structure" "doors" "floors" "storage" "zones" "library" "throne" "beds"
         "dining table" "coffins" "pigsty"
         "training" "crafting" "laboratory" "jeweller" "poetry" "distillery" "furnace" "demon_shrine"
-        "prison" "orders" "installations" "minion_statues" "traps" "magecrafting"
+        "prison" "orders" "installations" "minion_statues" "traps" "magecrafting" "mass"
     }
     workshopGroups = append { "scribing_evil" "glyphcarving" "golem_carving" "element_summoning" "demon_summoning"}
   }
 
 "3_white_knight" modify {
+    technology = append {
+      "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
+	  "glyph carving" "advanced glyph carving" "master glyph carving" 
+	  "golem construction" "advanced golem construction" "master golem construction" 
+      "summoning" "advanced summoning" "master summoning" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
+	  }
+	buildingGroups = append { "saint_statues" "magecrafting" "mass" }
+    workshopGroups = append { "scribing_good" "glyphcarving" "golem_carving" "element_summoning" "angel_summoning"}
+  }
+
+"2_arcane_mage" inherit "1_dark_mage"
+{
+  baseName = "Castle"
+  creatureId = { "MAGEX_KEEPER_MAGE_ARCANE" "MAGEX_KEEPER_MAGE_ARCANE_F" }
+  tribeAlignment = LAWFUL
+  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
+  immigrantGroups = {"magex_cherub" "arcane_keeper" "white_recruits" "white_stables" }
+    technology = append {
+      "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
+	  "glyph carving" "advanced glyph carving" "master glyph carving" 
+	  "golem construction" "advanced golem construction" "master golem construction" 
+      "summoning" "advanced summoning" "master summoning" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
+	  }
+  buildingGroups = {
+      "structure" "doors" "floors" "storage" "zones" "library" "beds"
+      "dining table" "stable" "coffins" "pigsty"
+      "training" "crafting" "laboratory" "jeweller" "poetry" "distillery" "furnace"
+      "prison" "orders" "throne" "demon_shrine" "installations" "saint_statues" "magical_installations" "healing_totem"
+      "traps" "magecrafting" "mass" 
+  }
+    workshopGroups = append { "scribing_evil" "glyphcarving" "golem_carving" "element_summoning" "angel_summoning"}
+}
+
+"3_zchurch" modify {
+    immigrantGroups = append { "white_keeper_external" "white_stables" }
     technology = append {
       "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
 	  "glyph carving" "advanced glyph carving" "master glyph carving" 
@@ -36,17 +76,8 @@
     workshopGroups = append { "scribing_good" "glyphcarving" "golem_carving" "element_summoning" "angel_summoning"}
   }
 
-"2_arcane_mage" inherit "3_white_knight"
-{
-  baseName = "Castle"
-  creatureId = { "MAGEX_KEEPER_MAGE_ARCANE" "MAGEX_KEEPER_MAGE_ARCANE_F" }
-  tribeAlignment = LAWFUL
-  villainGroups = { LAWFUL_KEEPER LAWFUL_COTTAGES }
-  immigrantGroups = {"magex_cherub" "arcane_keeper" "white_recruits"}
-  initialTech = { "sorcery" }
-}
-
-"4_necromancer" modify {
+"3_zmother" modify {
+    immigrantGroups = append { "white_keeper_external" "white_stables" }
     technology = append {
       "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
 	  "glyph carving" "advanced glyph carving" "master glyph carving" 
@@ -54,6 +85,19 @@
       "summoning" "advanced summoning" "master summoning"
 	  }
 	buildingGroups = append { "magecrafting" }
+    workshopGroups = append { "scribing_good" "glyphcarving" "golem_carving" "element_summoning" "angel_summoning"}
+  }
+
+"4_necromancer" modify {
+    immigrantGroups = append { "black_stables_no_pop" }
+    technology = append {
+      "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
+	  "glyph carving" "advanced glyph carving" "master glyph carving" 
+	  "golem construction" "advanced golem construction" "master golem construction" 
+      "summoning" "advanced summoning" "master summoning" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
+	  }
+	buildingGroups = append { "magecrafting" "mass" }
     workshopGroups = append { "scribing_necro" "glyphcarving" "golem_carving_no_popu" "morgue_new" "element_summoning"}
   }
 
@@ -63,17 +107,22 @@
   creatureId = { "MAGEX_KEEPER_GRAVE_KNIGHT" "MAGEX_KEEPER_GRAVE_KNIGHT_F" }
   tribeAlignment = EVIL
   villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
-  immigrantGroups = {"necromancer" }
+  immigrantGroups = {"necromancer" "black_stables_no_pop" "dark_recruits_external" }
   technology = { "embalming" "advanced embalming" "master embalming" "necromancy"
       "advanced necromancy" "master necromancy" "archery" "sorcery" "advanced sorcery"
       "magical weapons" "master sorcery" "iron working" "two-handed weapons" "distillation"
+	  "advanced theology" "expert theology" "luxury" "small temptations" "big temptations" 
+      "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
+	  "glyph carving" "advanced glyph carving" "master glyph carving" 
+	  "golem construction" "advanced golem construction" "master golem construction" 
+      "summoning" "advanced summoning" "master summoning" 
   }
   zLevelGroups = { "basic" "evil" }
   initialTech = { "necromancy" }
   buildingGroups = {
       "structure_necro" "doors" "floors" "storage" "zones" "library_necro" "beds" "coffins"
       "training_necro" "morgue" "crafting" "embalming" "poetry" "distillery" "furnace" "orders"
-      "phylactery" "installations_no_heads" "magical_installations"
+      "phylactery" "installations_no_heads" "magical_installations" "mass"
   }
   workshopGroups = { "morgue" "basic_without_lab" "bows" }
   description = "Craft hordes of undead from the corpses of fallen enemies. "
@@ -84,37 +133,237 @@
 }
 
 "6_dwarves" modify {
+  immigrantGroups = { "white_stables_no_pop" }
     technology = append {
       "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
 	  "glyph carving" "advanced glyph carving" "master glyph carving" 
 	  "golem construction" "advanced golem construction" "master golem construction" 
-      "summoning" "advanced summoning" "master summoning"
+      "summoning" "advanced summoning" "master summoning" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
 	  }
-	buildingGroups = append { "magecrafting" }
+	buildingGroups = append { "magecrafting" "mass" }
     workshopGroups = append { "scribing_good" "glyphcarving" "golem_carving_no_popu" "element_summoning"}
   }
   
 "7_goblins" modify {
+    immigrantGroups = append { "black_stables" }
     technology = append {
       "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
 	  "glyph carving" "advanced glyph carving" "master glyph carving" 
 	  "golem construction" "advanced golem construction" "master golem construction" 
-      "summoning" "advanced summoning" "master summoning"
+      "summoning" "advanced summoning" "master summoning" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
 	  }
-	buildingGroups = append { "magecrafting" }
+	buildingGroups = append { "magecrafting" "mass" }
     workshopGroups = append { "scribing_evil" "glyphcarving" "golem_carving" "scribing_goblin" "element_summoning"}
   }
+  
+
+"9_cyclops" modify append
+{
+  immigrantGroups = append { "black_stables_no_pop" "dark_recruits_external" }
+}
+
+"91_dark_mage_adventurer" modify append
+{
+  immigrantGroups = append { "black_stables_no_pop" }
+}
+
+"92_dark_knight_adventurer" modify append
+{
+  immigrantGroups = append { "black_stables_no_pop" }
+}
+
+"92_white_mage_adventurer" inherit "93_white_knight_adventurer"
+{
+  creatureId = { "ADVENTURER_MAGE_WHITE" "ADVENTURER_MAGE_WHITE_F" }
+}
+
+"94_adoxie_adventurer" modify append
+{
+  immigrantGroups = append { "black_stables_no_pop" }
+}
 
 "5_gnomes" modify append
 {
+  immigrantGroups = { "white_stables_no_pop" }
   technology = append {
       "scroll scribing" "advanced scroll scribing" "master scroll scribing" 
 	  "glyph carving" "advanced glyph carving" "master glyph carving" 
 	  "golem construction" "advanced golem construction" "master golem construction" 
       "summoning" "advanced summoning" "master summoning" "sorcery" "advanced sorcery" "master sorcery"
+	  "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
   }
   
     initialTech = { "automatons" "sorcery" }
-	buildingGroups = append { "magecrafting" "library_human" }
+	buildingGroups = append { "magecrafting" "library_human" "mass" }
     workshopGroups = append { "scribing_good" "glyphcarving" "golem_carving_no_popu" "element_summoning"}
 }
+
+"magex_red_dragon"
+  {
+  baseName = "Dragon 1"
+    creatureId = { "KEEPER_RED_DRAGON"  "KEEPER_RED_DRAGON_F" }
+    tribeAlignment = EVIL
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+    immigrantGroups = {"kobolds" "red" "dragon_k_dragon" "black_stables" "dark_recruits_external" }
+    technology = {
+      "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
+      "chicken breeding" "pig breeding" "cow breeding" "iron working" "jewellery" "two-handed weapons"
+      "traps" "archery" "sorcery" "advanced sorcery" "magical weapons" "master sorcery" "demonology"
+      "distillation" "dragon whelp" "draconic growth" "draconic magic" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
+    }
+    zLevelGroups = { "basic" "evil" }
+    initialTech = { "dragon whelp" }
+    buildingGroups = {
+      "structure" "doors" "floors" "storage" "zones" "library" "throne" "demon_shrine" "installations" "minion_statues" "magical_installations" "healing_totem" "beds"
+      "dining table" "stable" "coffins" "pigsty"
+      "training" "crafting" "laboratory" "jeweller" "poetry" "distillery" "furnace" "prison" "orders" 
+      "traps" "horde" "mass" 
+    }
+    workshopGroups = { "basic" "dragon_k_dragon" }
+    description = "A fiery Red Dragon.  Build a hoard, conquer the world with hordes of Kobolds, and glory in your own magnificence!"
+    minionTraits = { LEADER WORKER NO_LIMIT }
+    maxPopulation = 10
+  }
+  
+"magex_yellow_dragon"
+  {
+  baseName = "Dragon 1"
+    creatureId = { "KEEPER_YELLOW_DRAGON"  "KEEPER_YELLOW_DRAGON_F" }
+    tribeAlignment = EVIL
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+    immigrantGroups = {"kobolds" "yellow" "dragon_k_dragon" "black_stables" "dark_recruits_external" }
+    technology = {
+      "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
+      "chicken breeding" "pig breeding" "cow breeding" "iron working" "jewellery" "two-handed weapons"
+      "traps" "archery" "sorcery" "advanced sorcery" "magical weapons" "master sorcery" "demonology"
+      "distillation" "dragon whelp" "draconic growth" "draconic magic" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
+    }
+    zLevelGroups = { "basic" "evil" }
+    initialTech = { "dragon whelp" }
+    buildingGroups = {
+      "structure" "doors" "floors" "storage" "zones" "library" "throne" "demon_shrine" "installations" "minion_statues" "magical_installations" "healing_totem" "beds"
+      "dining table" "stable" "coffins" "pigsty"
+      "training" "crafting" "laboratory" "jeweller" "poetry" "distillery" "furnace" "prison" "orders" 
+      "traps" "horde" "mass" 
+    }
+    workshopGroups = { "basic" "dragon_k_dragon" }
+    description = "A acidic Yellow Dragon.  Build a hoard, conquer the world with hordes of Kobolds, and glory in your own magnificence!"
+    minionTraits = { LEADER WORKER NO_LIMIT }
+    maxPopulation = 10
+  }
+  
+"magex_black_dragon"
+  {
+  baseName = "Dragon 1"
+    creatureId = { "KEEPER_BLACK_DRAGON"  "KEEPER_BLACK_DRAGON_F" }
+    tribeAlignment = EVIL
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+    immigrantGroups = {"kobolds" "black" "dragon_k_dragon" "black_stables" "dark_recruits_external" }
+    technology = {
+      "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
+      "chicken breeding" "pig breeding" "cow breeding" "iron working" "jewellery" "two-handed weapons"
+      "traps" "archery" "sorcery" "advanced sorcery" "magical weapons" "master sorcery" "demonology"
+      "distillation" "dragon whelp" "draconic growth" "draconic magic" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
+    }
+    zLevelGroups = { "basic" "evil" }
+    initialTech = { "dragon whelp" }
+    buildingGroups = {
+      "structure" "doors" "floors" "storage" "zones" "library" "throne" "demon_shrine" "installations" "minion_statues" "magical_installations" "healing_totem" "beds"
+      "dining table" "stable" "coffins" "pigsty"
+      "training" "crafting" "laboratory" "jeweller" "poetry" "distillery" "furnace" "prison" "orders" 
+      "traps" "horde" "mass" 
+    }
+    workshopGroups = { "basic" "dragon_k_dragon" }
+    description = "An horryfing Black Dragon.  Blind, telepathic, and capable of blinding others.  Build a hoard, conquer the world with hordes of Kobolds, and glory in your own magnificence!"
+    minionTraits = { LEADER WORKER NO_LIMIT }
+  }
+"magex_white_dragon"
+  {
+  baseName = "Dragon 2"
+    creatureId = { "KEEPER_WHITE_DRAGON"  "KEEPER_WHITE_DRAGON_F" }
+    tribeAlignment = EVIL
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+    immigrantGroups = {"kobolds" "white" "dragon_k_dragon" "black_stables" "dark_recruits_external" }
+    technology = {
+      "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
+      "chicken breeding" "pig breeding" "cow breeding" "iron working" "jewellery" "two-handed weapons"
+      "traps" "archery" "sorcery" "advanced sorcery" "magical weapons" "master sorcery" "demonology"
+      "distillation" "dragon whelp" "draconic growth" "draconic magic" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
+    }
+    zLevelGroups = { "basic" "evil" }
+    initialTech = { "dragon whelp" }
+    buildingGroups = {
+      "structure" "doors" "floors" "storage" "zones" "library" "throne" "demon_shrine" "installations" "minion_statues" "magical_installations" "healing_totem" "beds"
+      "dining table" "stable" "coffins" "pigsty"
+      "training" "crafting" "laboratory" "jeweller" "poetry" "distillery" "furnace" "prison" "orders" 
+      "traps" "horde" "mass" 
+    }
+    workshopGroups = { "basic" "dragon_k_dragon" }
+    description = "An icy White Dragon.  Build a hoard, conquer the world with hordes of Kobolds, and glory in your own magnificence!"
+    minionTraits = { LEADER WORKER NO_LIMIT }
+  }
+  
+"magex_green_dragon"
+  {
+  baseName = "Dragon 2"
+    creatureId = { "KEEPER_GREEN_DRAGON"  "KEEPER_GREEN_DRAGON_F" }
+    tribeAlignment = EVIL
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+    immigrantGroups = {"kobolds" "green" "dragon_k_dragon" "black_stables" "dark_recruits_external" }
+    technology = {
+      "alchemy" "advanced alchemy" "alchemical conversion" "humanoid mutation" "beast mutation"
+      "chicken breeding" "pig breeding" "cow breeding" "iron working" "jewellery" "two-handed weapons"
+      "traps" "archery" "sorcery" "advanced sorcery" "magical weapons" "master sorcery" "demonology"
+      "distillation" "dragon whelp" "draconic growth" "draconic magic" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
+    }
+    zLevelGroups = { "basic" "evil" }
+    initialTech = { "dragon whelp" }
+    buildingGroups = {
+      "structure" "doors" "floors" "storage" "zones" "library" "throne" "beds"
+      "dining table" "stable" "coffins" "pigsty"
+      "training" "crafting" "laboratory" "jeweller" "poetry" "distillery" "furnace" "demon_shrine"
+      "prison" "orders" "installations" "minion_statues" "magical_installations" "healing_totem"
+      "traps" "horde" "mass" 
+    }
+    workshopGroups = { "basic" "dragon_k_dragon" }
+    description = "A venomous Green Dragon.  Build a hoard, conquer the world with hordes of Kobolds, and glory in your own magnificence!"
+    minionTraits = { LEADER WORKER NO_LIMIT }
+  }
+  
+"magex_bone_dragon"
+  {
+  baseName = "Undead"
+    creatureId = { "KEEPER_BONE_DRAGON"  "KEEPER_BONE_DRAGON_F" }
+    tribeAlignment = EVIL
+  villainGroups = { EVIL_KEEPER EVIL_COTTAGES }
+    immigrantGroups = {"kobolds" "bone" "dragon_k_dragon" "black_stables" "dark_recruits_external" }
+    technology = { "embalming" "advanced embalming" "master embalming" "necromancy"
+      "advanced necromancy" "master necromancy" "archery" "sorcery" "advanced sorcery"
+      "magical weapons" "master sorcery" "iron working" "two-handed weapons" "distillation"
+      "dragon whelp" "draconic magic" "advanced theology" "expert theology" 
+	  "luxury" "small temptations" "big temptations" 
+    }
+    zLevelGroups = { "basic" "evil" }
+    initialTech = { "dragon whelp" "necromancy" }
+    buildingGroups = {
+      "structure_necro" "doors" "floors" "storage" "zones" "library_necro" "beds" "stable" "coffins"
+      "training_necro" "morgue" "crafting" "embalming" "poetry" "distillery" "furnace" "orders"
+      "phylactery" "installations_no_heads" "magical_installations" "undead horde" "mass" 
+    }
+    workshopGroups = { "basic_without_lab" "dragon_k_dragon" "magex_necro_dragon" }
+    description = "A undead Bone Dragon.  Build a hoard, conquer the world with hordes of Undead Kobolds, and glory in your own magnificence!"
+	credit = { "CORPSE" 20 }
+    maxPopulation = 1
+    minionTraits = { LEADER WORKER NO_LIMIT }
+    flags = { "abomination_upgrades" }
+    prisoners = false
+}
+  

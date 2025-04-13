@@ -36,7 +36,7 @@
 
   "DHK_CHICKEN_COOP"
   {
-    name = "chicken coop"
+    name = "henhouse"
     viewId = { "dhk_chicken_coop" }
     blockMovement = true
     tickType = Effect Chance 0.005 SummonEnemy "DHK_CHICKEN" {1} none
@@ -49,6 +49,21 @@
     }
   }
 
+  "DHK_MICROPIGLET_COOP"
+  {
+    name = "pighouse"
+    viewId = { "dhk_chicken_coop" }
+    blockMovement = true
+    tickType = Effect Chance 0.005 SummonEnemy "DHK_CHICKEN" {1} none
+    strength = 1
+    requiresLight = true
+  	destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  	usageFX = none
+  	usageType = UsageEffect "use" Chain {
+    CreatureMessage { "wait for chicken" "waits for chicken" }
+    }
+  }
+  
 "DHK_SUMMONING"
 {
   name = "summoning chamber"

@@ -888,7 +888,7 @@
     spellSchools = { "illusion" "vampire" }
     name = {
       name = "betrayer"
-      firstNameGen = "VAMPIRE"
+      firstNameGen = "HIGH ELF MALE"
     }
     hatedByEffect = HATE_UNDEAD
     inventory = {
@@ -1457,11 +1457,12 @@
     }
     name = {
       name = "high lord"
-      firstNameGen = "FIRST_MALE"
+      firstNameGen = "HIGH ELF MALE"
       fullTitle = true
     }
     viewIdUpgrades = { { "he_autocrath_02" } { "he_autocrath_03" } { "he_autocrath_04" }}
     permanentEffects = {
+	  LEADERSHIP 1
       RIDER 1
     }
     maxLevelIncrease = {
@@ -1483,7 +1484,7 @@
     gender = FEMALE
     name = {
       name = "knight"
-      firstNameGen = "FIRST_FEMALE"
+      firstNameGen = "HIGH ELF FEMALE"
       fullTitle = true
     }
   }
@@ -1509,7 +1510,7 @@
     aiType = RANGED
     permanentEffects = {
       DISTILLATION_SKILL 1
-      ELF_VISION 1
+	  LEADERSHIP 1
 	  RIDER 1
     }
     name = {
@@ -1533,8 +1534,7 @@
     chatReactionFriendly = "curses all dwarves"
     chatReactionHostile = "\"Die!\""
     permanentEffects = {
-      MAGIC_RESISTANCE 1
-      ELF_VISION 1
+	  RIDER 1
     }
     name = {
       name = "child"
@@ -1560,7 +1560,6 @@
     chatReactionFriendly = "talks about crafting"
     chatReactionHostile = "\"Die!\""
 	permanentEffects = {
-      ELF_VISION 1
 	  RIDER 1
     }
     maxLevelIncrease = {
@@ -1569,7 +1568,7 @@
     aiType = RANGED
     name = {
       name = "craftmaster"
-      firstNameGen = "FOREST ELF FEMALE"
+      firstNameGen = "HIGH ELF MALE"
     }
 	hatedByEffect = HATE_ELVES
   }
@@ -1597,7 +1596,7 @@
     }
     name = {
       name = "legionare"
-      firstNameGen = "FIRST_MALE"
+      firstNameGen = "HIGH ELF MALE"
     }
 	hatedByEffect = HATE_ELVES
   }
@@ -1627,7 +1626,123 @@
     aiType = RANGED
     name = {
       name = "legionare crossbowman"
-      firstNameGen = "FIRST_MALE"
+      firstNameGen = "HIGH ELF MALE"
     }
     hatedByEffect = HATE_ELVES
+  } 
+
+"HE_ARCHMAGE"
+  {
+    viewId = { "he_archmage" }
+    attr = {
+      DEFENSE 8
+      SPELL_DAMAGE 30 
+	  LABORATORY 20
+    }
+    aiType = RANGED
+    body = {
+      type = Humanoid MEDIUM
+    }
+    chatReactionFriendly = "feel the might of arcane"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      RIDER 1
+    }
+	spellSchools = { "EU_HIGH_ELF_ARCHMAGE_ELEGANCE" }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 8
+    }
+    name = {
+      name = "archmage"
+	  pluralName = "archmages"
+	  firstNameGen = "HIGH ELF MALE"
+    }
+    hatedByEffect = HATE_ELVES
+    inventory = {
+      { type = "WoodenStaff" prefixChance = 1 }
+      { "LeatherArmor"}
+      { "GoldPiece" 80 120 }
+    }
+  }
+  
+"HE_CENSOR"
+  {
+    viewId = { "he_censor" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 32
+      FURNACE 15
+      WORKSHOP 15
+      FORGE 15
+    }
+    body = {
+      type = Humanoid MEDIUM
+    }
+	spellSchools = { "EU_HIGH_ELF_CENSOR" }
+    maxLevelIncrease = {
+      DAMAGE 9
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+	  LEADERSHIP 1
+      RIDER 1
+    }
+    name = {
+      name = "censor"
+      firstNameGen = "HIGH ELF MALE"
+    }
+	hatedByEffect = HATE_ELVES
+  }
+  
+"NEUTRAL_GRYPHON"
+  {
+    viewId = { "neutral_gryphon" }
+    attr = {
+      DAMAGE 32
+      DEFENSE 14
+    }
+    body = {
+      type = FourLegged LARGE
+      weight = 500
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "beak" 7 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+    }
+    permanentEffects = {
+      STEED 1
+    }
+    noChase = true
+    petReaction = "screams"
+    name = {
+      name = "gryphon"
+    }
+  }
+  
+"NEUTRAL_GRYPHON_CAN_TRAIN" inherit "NEUTRAL_GRYPHON"
+  {
+    attr = {
+      DAMAGE 32
+      DEFENSE 32
+    }
+    afterKilledSomeone = {
+      ApplyToSteed CreatureMessage { "are more experienced" "is more experienced"}
+      ApplyToSteed Filter Kills 3 Polymorph "NEUTRAL_WAR_GRYPHON" none
+    }
+  }
+"NEUTRAL_WAR_GRYPHON" inherit "NEUTRAL_GRYPHON"
+  {
+    viewId = { "he_wargryph" }
+    attr = {
+      DAMAGE 46
+      DEFENSE 46
+    }
+    name = {
+      name = "wargryph"
+    }
+    spells = { "warhorse_haste" }
   }
