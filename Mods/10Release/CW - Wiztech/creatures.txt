@@ -1,0 +1,824 @@
+"WIZCHTECH_LARGE_BASE"
+  {
+    viewId = { "wizchtech_large_base_1" }
+    genderAlternatives = {
+      IT { "wizchtech_large_base_2" }
+      IT { "wizchtech_large_base_3" }
+    }
+    attr = {
+      DEFENSE 24
+    }
+    body = {
+      type = NonHumanoid HUGE
+      material = FLESH
+      xCanPickUpItems = true
+      bodyParts = {
+	    HEAD 1
+        BACK 1
+        TORSO 1
+      }
+    }
+    permanentEffects = {
+      IMMOBILE 1
+	  ACID_RESISTANT 1
+    }
+    name = {
+      name = "Leiche"
+    }
+    hatedByEffect = HATE_FRANKENSTEIN
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+    gender = IT
+  }
+  
+"WIZCHTECH_MEDIUM_BASE"
+  {
+    viewId = { "wizchtech_medium_base_1" }
+    genderAlternatives = {
+      IT { "wizchtech_medium_base_2" }
+    }
+    attr = {
+      DEFENSE 24
+    }
+    body = {
+      type = NonHumanoid LARGE
+      material = FLESH
+      xCanPickUpItems = true
+      bodyParts = {
+	    HEAD 1
+        BACK 1
+        TORSO 1
+      }
+    }
+    permanentEffects = {
+      IMMOBILE 1
+	  ACID_RESISTANT 1
+    }
+    name = {
+      name = "Leiche"
+    }
+    hatedByEffect = HATE_FRANKENSTEIN
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+    gender = IT
+  }
+ 
+"WIZCHTECH_SOLIDER_BRUTE"
+  {
+    viewId = { "wizchtech_large_brute" }
+    attr = {
+	  DAMAGE 12
+      DEFENSE 24
+    }
+    body = {
+      type = NonHumanoid LARGE
+      material = FLESH
+      xCanPickUpItems = true
+      bodyParts = {
+	    HEAD 1
+        BACK 1
+        TORSO 1
+		ARM 2
+      }
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 12 {
+            attackType = HIT
+            attackMsg = SWING} }}}
+      }
+    }
+    name = {
+      name = "Leiche"
+    }
+    hatedByEffect = HATE_FRANKENSTEIN
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+	permanentEffects = {
+	  ACID_RESISTANT 1
+    }
+    gender = IT
+  }
+  
+  
+"WIZCHTECH_SOLIDER_BLASTER"
+  {
+    viewId = { "wizchtech_large_blaster" }
+    attr = {
+	  DAMAGE 12
+      DEFENSE 24
+	  RANGED_DAMAGE 30
+    }
+    body = {
+      type = NonHumanoid LARGE
+      material = FLESH
+      xCanPickUpItems = true
+      bodyParts = {
+	    HEAD 1
+        BACK 1
+        TORSO 1
+		ARM 1
+      }
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 12 {
+            attackType = HIT
+            attackMsg = SWING} }}}
+      }
+    }
+	permanentEffects = {
+	  ACID_RESISTANT 1
+    }
+	spells = { "wizchtech_shoot_blaster" }
+    name = {
+      name = "Leiche"
+    }
+    hatedByEffect = HATE_FRANKENSTEIN
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+    gender = IT
+  }
+
+
+"WIZCHTECH_DRACHEN_BASE"
+  {
+    viewId = { "wizchtech_pseudo_dragon_base" }
+    attr = {
+      DAMAGE 45
+      DEFENSE 47
+      ACID_DAMAGE 40
+    }
+    body = {
+      type = NonHumanoid HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+	    HEAD 1
+        BACK 1
+        TORSO 1
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 24 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+      drops = {{ "YellowDragonScales" } 1}
+    }
+    permanentEffects = {
+      ACID_IMMUNITY 1
+      BLIND 1
+      TELEPATHY 1
+	  IMMOBILE 1
+      RANGED_VULNERABILITY 1
+      CAPTURE_RESISTANCE 1
+      STEED 1
+      REGENERATION 1
+    }
+    name = {
+      name = "drachen"
+      firstNameGen = "DRAGON"
+      stackName = "drachen"
+    }
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+    spells = { "healing" "haste" "black dragon blindness" "acid stream" "dragon greeting"}
+    hatedByEffect = HATE_FRANKENSTEIN
+    inventory = {
+      { "GoldPiece" 120 200 }
+      { type = Glyph {WEAPON VictimEffect 0.3 Acid{30} } chance = 0.1 }
+      { type = Glyph {WEAPON VictimEffect 0.3 Lasting 50 BLEEDING } chance = 0.3 }
+      { type = Glyph {WEAPON LastingEffect ENTERTAINER } chance = 0.3 }
+      { type = Glyph {ARMOR ItemAttrBonus DEFENSE 3 } chance = 0.3 }
+      { type = Glyph {WEAPON ItemAttrBonus DAMAGE 3 } chance = 0.3 }
+      { type = Glyph {RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 3 } chance = 0.3 }
+    }
+    gender = IT
+    steedAchievement = "rode_dragon"
+  }
+
+"WIZCHTECH_PROPPELER"
+  {
+    viewId = { "wizchtech_medium_propeller_head" }
+    attr = {
+      DAMAGE 9
+      DEFENSE 13 
+	  MULTI_WEAPON 20
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+	    ARM 3
+        LEG 4
+        TORSO 1
+      }
+      weight = 0.3
+      deathSound = none
+      intrinsicAttacks = {
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 12 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+      }
+    }
+	deathEffect = DropItems { "WIZCHTECH_BUSTED_HEART"} {1}
+	permanentEffects = {
+	  ACID_RESISTANT 1
+    }
+    gender = IT
+    name = {
+      name = "propellerkopf"
+    }
+    hatedByEffect = HATE_FRANKENSTEIN
+  }
+  
+"WIZCHTECH_MEISTER"
+  {
+    viewId = { "wizchtech_Mesiter_1" }
+	genderAlternatives = {
+	  MALE { "wizchtech_Mesiter_2" }
+      MALE { "wizchtech_Mesiter_3" }
+	  MALE { "wizchtech_Mesiter_4" }
+      FEMALE { "wizchtech_Mesiter_1" }
+	  FEMALE { "wizchtech_Mesiter_2" }
+      FEMALE { "wizchtech_Mesiter_3" }
+	  FEMALE { "wizchtech_Mesiter_4" }
+    }
+    attr = {
+      DAMAGE 12
+      DEFENSE 13 
+	  RANGED_DAMAGE 15
+      DIGGING 10 
+      FURNACE 10
+      WORKSHOP 25
+      FORGE 25
+      LABORATORY 25
+	  JEWELER 25
+	  WIZCHTECH_SURGERY 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    aiType = RANGED
+    chatReactionFriendly = "talks about experiments"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "meister"
+    }
+	permanentEffects = {
+      NIGHT_VISION 1
+      DISTILLATION_SKILL 1
+      RIDER 1
+      SLOW_TRAINING 1
+	  ACID_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE				2
+      SPELL_DAMAGE			4
+	  RANGED_DAMAGE			8
+    }
+    promotionGroup = "wiztech"
+    promotionCost = 0.5
+    spells = { "wizchtech_surgery" }
+	inventory = {
+      { "Robe"}
+	  { "WIZCHTECH_BLASTER" }
+	  { "WIZCHTECH_MUTAGEN" }
+	  { "WIZCHTECH_MUTAGEN" }
+	  { "WIZCHTECH_MUTAGEN" }
+    }
+    hatedByEffect = HATE_HUMANS
+  }
+  
+"WIZCHTECH_CLONING_ACCIDENT"
+  {
+    viewId = { "wizchtech_malformant_01" }
+	genderAlternatives = {
+      IT { "wizchtech_malformant_02" }
+	  IT { "wizchtech_malformant_03" }
+    }
+    attr = {
+      DAMAGE 13
+      DEFENSE 9
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+	  ACID_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 3
+    }
+	spells = { "wiztech_accident_puke" }
+	gender = IT
+    name = {
+      name = "Ausfall"
+    }
+    hatedByEffect = HATE_MUTANT
+  }
+  
+"WIZCHTECH_ACID_SLIME"
+  {
+    viewId = { "wizchtech_acid_slime" }
+    body = {
+      type = NonHumanoid LARGE
+      material = TOXIC_SLIME
+      weight = 300
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "touch" 0 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 1 Acid{30}}} }}}
+      }
+    }
+    attr = {
+      DAMAGE 10
+      DEFENSE 3 
+    }
+	aiType = RANGED
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      SWIMMING_SKILL 1
+	  ACID_RESISTANT 1
+    }
+    name = {
+      name = "acid slime"
+    }
+    gender = IT
+  }
+  
+ 
+
+"WIZCHTECH_MUTAGEN_MUTANT_VICTIM"
+  {
+    viewId = { "wiztech_mutagen_victim_01" }
+	genderAlternatives = {
+      IT { "wiztech_mutagen_victim_02" }
+	  IT { "wiztech_mutagen_victim_03" }
+    }
+    attr = {
+      DAMAGE 20
+      DEFENSE 7
+	  DIGGING 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      UNSTABLE 1
+	  ACID_RESISTANT 1
+    }
+    chatReactionFriendly = "....groan..."
+    chatReactionHostile = "\"Die!\""
+    gender = IT
+    name = {
+      name = "mutant"
+    }
+    hatedByEffect = HATE_MUTANT
+  }
+
+"WIZCHTECH_MUTAGEN_MUTANT_VICTIM_BRUTE"
+  {
+    viewId = { "wiztech_mutagen_victim_brute" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 17
+	  DIGGING 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      UNSTABLE 1
+	  REGENERATION 1
+	  ACID_RESISTANT 1
+	  WIZTECH_ADVANCED_MUTANT 1
+    }
+    chatReactionFriendly = "....groan..."
+    chatReactionHostile = "\"Die!\""
+    gender = IT
+    name = {
+      name = "mutant brute"
+    }
+    hatedByEffect = HATE_MUTANT
+  }
+
+"WIZCHTECH_MUTAGEN_MUTANT_VICTIM_SPITTER"
+  {
+    viewId = { "wiztech_mutagen_victim_puker" }
+    attr = {
+      DAMAGE 10
+      ACID_DAMAGE 20
+      DEFENSE 7
+	  DIGGING 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      UNSTABLE 1
+	  ACID_RESISTANT 1
+	  WIZTECH_ADVANCED_MUTANT 1
+    }
+    chatReactionFriendly = "....groan..."
+    chatReactionHostile = "\"Die!\""
+    gender = IT
+    name = {
+      name = "mutant spitter"
+    }
+    deathEffect = Area 1 {FixedDamage ACID_DAMAGE 40 SHOOT}
+	spells = {"wiztech_munant_spit"}
+    hatedByEffect = HATE_MUTANT
+  }
+
+"WIZCHTECH_MUTAGEN_MUTANT_VICTIM_ABBERATION"
+  {
+    viewId = { "wiztech_mutagen_victim_abberation" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 27
+      ACID_DAMAGE 20
+	  DIGGING 20
+    }
+    body = {
+      type = NonHumanoid HUGE
+      weight = 350
+      intrinsicAttacks = {
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 7 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = { 0.1 Acid{} } } }}}
+      }
+      xCanPickUpItems = true
+      bodyParts = {
+	    HEAD 1
+        ARM 2
+        TORSO 1
+		LEG 2
+      }
+    }
+    permanentEffects = {
+      UNSTABLE 1
+	  REGENERATION 1
+	  ACID_RESISTANT 1
+	  WIZTECH_ADVANCED_MUTANT 1
+    }
+    chatReactionFriendly = "....groan..."
+    chatReactionHostile = "\"Die!\""
+    gender = IT
+    name = {
+      name = "mutant"
+    }
+    deathEffect = Area 1 {FixedDamage ACID_DAMAGE 40 SHOOT}
+	spells = {"wiztech_munant_spit"}
+    hatedByEffect = HATE_MUTANT
+  }     
+
+"WIZCHTECH_MUTAGEN_MUTANT_HOUND"
+  {
+    viewId = { "wiztech_mutant_hound" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 11
+    }
+    body = {
+      type = FourLegged LARGE
+      weight = 35
+      intrinsicAttacks = {
+        LEG  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 7 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = { 0.1 Acid{} } } }}}
+      }
+      deathSound = "DOG_DEATH"
+      ambientSound = 0.01 {"WOLF_AMBIENT" 0.2}
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      EXPLORE_NOCTURNAL_SKILL 1
+      STEED 1
+	  REGENERATION 1
+	  ACID_RESISTANT 1
+	  WIZTECH_ADVANCED_MUTANT 1
+    }
+    name = {
+      name = "mutant hound"
+      pluralName = "mutant hounds"
+      firstNameGen = "DOG"
+      groupName = "pack"
+    }
+  }
+
+  
+		
+"WIZCHTECH_MUTAGEN_MUTANT_WORKER"
+  {
+    viewId = { "wiztech_mutagen_victim_worker" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10 
+      DIGGING 10
+      FURNACE 5
+      WORKSHOP 15
+      FORGE 15
+    }
+    fixedAttr = { FORGE FURNACE WORKSHOP }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      RIDER 1
+	  ACID_RESISTANT 1
+    }
+    chatReactionFriendly = "talks about scavenging"
+    chatReactionHostile = "\"Die!\""
+    gender = MALE
+    aiType = RANGED
+    name = {
+      name = "mutant worker"
+      firstNameGen = "MUTIE"
+    }
+    hatedByEffect = HATE_MUTANT
+  }
+
+"WIZCHTECH_MUTAGEN_MUTANT_SCRAPSMITH"
+  {
+    viewId = { "wiztech_mutagen_victim_scrapsmith" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 13
+      FURNACE 25
+      LABORATORY 15
+      WORKSHOP 30
+      FORGE 30
+      JEWELER 30
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about crafting"
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      DISARM_TRAPS_SKILL 1
+      RIDER 1
+	  ACID_RESISTANT 1
+    }
+    aiType = RANGED
+    name = {
+      name = "mutant scrapsmith"
+      firstNameGen = "MUTIE"
+    }
+    hatedByEffect = HATE_MUTANT
+    inventory = {
+      { "Club"}
+      { type = "LeatherBoots" chance = 0.3 }
+    }
+  }
+  
+"WIZCHTECH_MUTAGEN_MUTANT_WARRIOR"
+  {
+    viewId = { "wiztech_mutagen_victim_weaponbearer" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 15
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about fighting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "mutant warrior"
+      firstNameGen = "MUTIE"
+    }
+    hatedByEffect = HATE_MUTANT
+    permanentEffects = {
+      RIDER 1
+	  ACID_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"WIZCHTECH_MUTAGEN_MUTANT_ENFONCER"
+  {
+    viewId = { "wiztech_mutagen_victim_enfoncer" }
+    attr = {
+      DAMAGE 19
+      DEFENSE 18
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about fighting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "mutant enfoncer"
+      firstNameGen = "MUTIE"
+    }
+    hatedByEffect = HATE_MUTANT
+    permanentEffects = {
+      RIDER 1
+	  ACID_RESISTANT 1
+	  WIZTECH_ENFONCER 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    inventory = {
+      { "HeavyClub"}
+      { "LeatherArmor"}
+    }
+  }
+  
+"WIZCHTECH_MUTAGEN_MUTANT_ARCHER"
+  {
+    viewId = { "wiztech_mutagen_victim_archer" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 12
+      RANGED_DAMAGE 14
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about hunting"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "mutant hunter"
+      firstNameGen = "MUTIE"
+    }
+    hatedByEffect = HATE_MUTANT
+    permanentEffects = {
+      RIDER 1
+	  ACID_RESISTANT 1
+    }
+    spellSchools = { "archer" }
+    maxLevelIncrease = {
+      RANGED_DAMAGE 7
+    }
+    inventory = {
+      { "Bow"}
+      { "LeatherArmor"}
+    }
+  }
+
+"WIZCHTECH_MUTAGEN_MUTANT_WIZARD"
+  {
+    viewId = { "wiztech_mutagen_victim_mindspeaker" }
+    attr = {
+      DAMAGE 5
+      DEFENSE 10
+      SPELL_DAMAGE 16
+      LABORATORY 35
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about psionics"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "mutant mindspeater"
+      firstNameGen = "MUTIE"
+    }
+    hatedByEffect = HATE_MUTANT
+    permanentEffects = {
+      RIDER 1
+	  ACID_RESISTANT 1
+      TELEPATHY 1
+    }
+    maxLevelIncrease = {
+      SPELL_DAMAGE 7
+    }
+    spellSchools = { "wiztech_psionics" }
+    inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+  }
+
+"WIZCHTECH_MUTAGEN_MUTANT_KEEPER"
+  {
+    viewId = { "wiztech_mutagen_victim_warlord_01" }
+    viewIdUpgrades = { { "wiztech_mutagen_victim_warlord_02" } { "wiztech_mutagen_victim_warlord_03" } { "wiztech_mutagen_victim_warlord_04" }}
+    attr = {
+      DAMAGE 20
+      DEFENSE 16
+      MULTI_WEAPON 40
+      FURNACE 15
+      FORGE 10
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "mutant warlord"
+      firstNameGen = "MUTIE"
+      fullTitle = true
+    }
+    hatedByEffect = HATE_MUTANT
+    permanentEffects = {
+      RIDER 1
+	  ACID_RESISTANT 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+      SPELL_DAMAGE 3
+    }
+    spellSchools = { "fighter" }
+    spells = { "healing" }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+"WIZCHTECH_MUTAGEN_MUTANT_KEEPER_ADVENTURER" inherit "WIZCHTECH_MUTAGEN_MUTANT_KEEPER"
+  {
+    promotionGroup = "melee_adventurer"
+    promotionCost = 1
+    maxLevelIncrease = {
+      DAMAGE 50
+    }
+    inventory = AdventurerEquipment("Sword")
+  }
+
+"WIZCHTECH_MUTAGEN_MUTANT_VICTIM_ABBERATION_TAME"
+  {
+    viewId = { "wiztech_mutagen_victim_abberation_tamed" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 27
+      ACID_DAMAGE 20
+    }
+    body = {
+      type = NonHumanoid HUGE
+      weight = 350
+      intrinsicAttacks = {
+        ARM  {{itemType = { Intrinsic { "claws_attack" } "claws" 8 { attackType = HIT attackMsg = CLAW } } isExtraAttack = true }}
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 7 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = { 0.1 Acid{} } } }}}
+      }
+      xCanPickUpItems = true
+      bodyParts = {
+	    HEAD 1
+        ARM 2
+        TORSO 1
+		LEG 2
+      }
+    }
+    permanentEffects = {
+	  REGENERATION 1
+	  ACID_RESISTANT 1
+	  WIZTECH_ADVANCED_MUTANT 1
+    }
+    chatReactionFriendly = "....groan..."
+    chatReactionHostile = "\"Die!\""
+    gender = IT
+    name = {
+      name = "mutant tamed abberation"
+    }
+    deathEffect = Area 1 {FixedDamage ACID_DAMAGE 40 SHOOT}
+	spells = {"wiztech_munant_spit"}
+    hatedByEffect = HATE_MUTANT
+  }  
+
+  
+"WIZCHTECH_MUTAGEN_MUTANT_WARRIOR_HERO"
+  {
+    viewId = { "wiztech_mutagen_victim_shieldbearer" }
+    attr = {
+      DAMAGE 18
+      DEFENSE 21
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about fighting"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "mutant warrior"
+      firstNameGen = "MUTIE_STABBA"
+    }
+    hatedByEffect = HATE_MUTANT
+    permanentEffects = {
+      RIDER 1
+	  ACID_RESISTANT 1
+	  RANGED_RESISTANCE 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+    }
+    inventory = {
+      { "Sword"}
+      { "LeatherArmor"}
+    }
+  }
+    

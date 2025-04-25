@@ -1,0 +1,266 @@
+
+"soup_peon"
+{
+    {
+      ids = { "SOUP_ORC_PEON" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      keybinding = CREATE_IMP
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1 ExponentialCost "SOUP_SOUP_BOWL" 5 1 4 }
+      }
+    }
+}
+
+"soup_ork"
+{
+    {
+      ids = { "SOUP_ORC_WIMP" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "SOUP_TRAINING_1"}}
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE } } } }
+         { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "WOLF" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.02 { Lasting { SOUP_PLAGUE } }}
+      }
+    }
+    {
+      ids = { "SOUP_ORC_BEEF" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "SOUP_TRAINING_2"}}
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE } } } }
+         { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "WOLF" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.02 { Lasting { SOUP_PLAGUE } }}
+      }
+    }
+    {
+      ids = { "SOUP_ORC_COWARD" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+      }
+      frequency = 0.4
+      specialTraits = {
+         { 0.02 { SpecialAttr RANGED_DAMAGE 20 CreatureStatus CIVILIAN }}
+         { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.15 { SpecialAttr RANGED_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { Lasting { RANGED_VULNERABILITY } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { Lasting { BAD_BREATH } }}
+         { 0.02 { Lasting { SOUP_PLAGUE } }}
+         { 0.03 { AttrBonus RANGED_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "SOUP_ORC_LEPPER" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "LABORATORY"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      frequency = 0.3
+      specialTraits = {
+         { 0.10 { CompanionInfo { summonFreq = 0.1 creatures = { "SOUP_FLARG" }}}}
+         { 0.10 { CompanionInfo { summonFreq = 0.2 creatures = { "SOUP_FLARG_LARVA" }}}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.15 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "ORC_WEIRDO" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "SOUP_BOOKCASE_1"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      frequency = 0.3
+      specialTraits = {
+         { 0.01 { CompanionInfo { summonFreq = 0.1 creatures = { "WOLF" }}}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.15 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.02 { Lasting { SOUP_PLAGUE } }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "SOUP_CORPSE_LOVER" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "SOUP_BOOKCASE_2"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      frequency = 0.3
+      specialTraits = {
+         { 0.01 { CompanionInfo { statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "SOUP_ZOMBIE" "SOUP_SKELETON"}}}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.15 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+         { 0.02 { Lasting { SOUP_PLAGUE } }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "SOUP_FLARG" }
+      traits = { FIGHTER DOESNT_TRIGGER NO_LIMIT }
+      frequency = 0.3
+      consumeIds = true
+      requirements = {
+        { 0.0 TechId "flarg breeding" }
+        { 1.0 CostInfo "SOUP_SOUP_BOWL" 12 }
+      }
+    }
+    {
+      ids = { "SOUP_FLARG_GIANT" }
+      traits = { FIGHTER DOESNT_TRIGGER NO_LIMIT }
+      frequency = 0.2
+      requirements = {
+        { 0.0 TechId "flarg breeding" }
+        { 1.0 CostInfo "SOUP_SOUP_BOWL" 25 }
+      }
+    }
+    {
+      ids = { "SOUP_FLARG_SPAWNER" }
+      traits = { FIGHTER DOESNT_TRIGGER NO_LIMIT }
+      frequency = 0.1
+      requirements = {
+        { 0.0 TechId "flarg breeding" }
+        { 1.0 CostInfo "SOUP_SOUP_BOWL" 50 }
+      }
+      specialTraits = {
+         { 0.1 { Lasting { INSANITY }}}
+      }
+    }
+    {
+      ids = { "SOUP_SQUIG" }
+      traits = { FIGHTER DOESNT_TRIGGER NO_LIMIT }
+      frequency = 0.3
+      requirements = {
+        { 0.0 TechId "squig breeding" }
+        { 1.0 CostInfo "SOUP_SOUP_BOWL" 25 }
+        { 1.0 AttractionInfo 2 {FurnitureType "STABLE"}}
+      }
+    }
+    {
+      ids = { "SOUP_SQUIG_LARGE" }
+      traits = { FIGHTER DOESNT_TRIGGER NO_LIMIT }
+      frequency = 0.3
+      requirements = {
+        { 0.0 TechId "squig breeding" }
+        { 1.0 CostInfo "SOUP_SOUP_BOWL" 50 }
+        { 1.0 AttractionInfo 2 {FurnitureType "STABLE"}}
+      }
+    }
+
+    {
+      ids = { "DARK_ELF_WARRIOR" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "DARK_ELVES_ALLY" } 3 }
+        { 1.0 CostInfo "GOLD" 20 }
+      }
+    }
+    {
+      ids = { "GOBLIN_ARTIFICER_VILLAIN" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      requirements = {
+        { 0.0 RecruitmentInfo { "GOBLIN_BLACKSMITH" } 0 }
+        { 1.0 CostInfo "GOLD" 250 }
+      }
+    }
+    {
+      ids = { "GOBLIN_WARRIOR" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "GOBLIN_CAVE_ALLY" } 3 }
+        { 1.0 CostInfo "GOLD" 5 }
+      }
+    }
+    {
+      ids = { "HARPY" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "HARPY_CAVE" } 3 }
+        { 1.0 CostInfo "GOLD" 12 }
+      }
+    }
+    {
+      ids = { "VAMPIRE" }
+      traits = { FIGHTER }
+      requirements = {
+        { 0.0 RecruitmentInfo { "Z_LEVEL_VAMPIRE_VAULT" } 0 }
+      }
+    }
+}

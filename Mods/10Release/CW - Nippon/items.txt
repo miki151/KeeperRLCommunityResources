@@ -1,0 +1,871 @@
+
+Def NipponCurseProgress()
+Filter And { Not HatedBy HATE_UNDEAD Not HatedBy HATE_DEMONS }{ Filter LastingEffect     NIPPON_CURSE_RAMPANT      {Chain {Permanent NIPPON_CURSE_CONSIMUNG Permanent INSANITY}} }
+Filter LastingEffect     NIPPON_CURSE_RAMPANT      {Lasting 100 NIPPON_CURSE_OVERWHELMING }
+Filter LastingEffect     NIPPON_CURSE_STRONG       {Lasting 100 NIPPON_CURSE_RAMPANT }
+Filter LastingEffect     NIPPON_CURSE              {Lasting 100 NIPPON_CURSE_STRONG }
+Filter LastingEffect     NIPPON_CURSE_WEAK         {Lasting 100 NIPPON_CURSE }
+Filter LastingEffect     NIPPON_CURSE_MINOR        {Lasting 100 NIPPON_CURSE_WEAK }
+Lasting 100 NIPPON_CURSE_MINOR 
+End
+
+
+#################################################################################################################################
+#                                                       talismans                                                               #
+#################################################################################################################################  
+
+
+"NIPPON_WAR_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId PINK }
+    shortName = "talisman of war"
+    name = "talisman of war"
+    plural = "talismans of war"
+    blindName = "paper"
+    applyVerb = "prepare" "prepares"
+    weight = 0.1
+    effect = Description "prepares war talisman, that gives increased attack and defence." { AI And{CreatureFlag "war_talisman"} 1 -1 {
+															SetCreatureFlag "war_talisman" true
+															GrantAbility "NIPPON_WAR_TALISMAN"}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"NIPPON_SLOW_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId LIGHT_BROWN }
+    shortName = "talisman of slow"
+    name = "talisman of slow"
+    plural = "talismans of slow"
+    blindName = "paper"
+    applyVerb = "prepare" "prepares"
+    weight = 0.1
+    effect = Description "prepares slow talisman, that slowes the target." { AI And{CreatureFlag "slow_talisman"} 1 -1 {
+															SetCreatureFlag "slow_talisman" true
+															GrantAbility "NIPPON_SLOW_TALISMAN"}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"NIPPON_MAGIC_RESISTANCE_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId WHITE }
+    shortName = "talisman of magic resistance"
+    name = "talisman of magic resistance"
+    plural = "talismans of magic resistance"
+    blindName = "paper"
+    applyVerb = "prepare" "prepares"
+    weight = 0.1
+    effect = Description "prepares magical resistance talisman, that gives resistance to mysthical and elemental attacks." { AI And{CreatureFlag "magic_resistance_talisman"} 1 -1 {
+															SetCreatureFlag "magic_resistance_talisman" true
+															GrantAbility "NIPPON_MAGIC_RESISTANCE_TALISMAN"}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"NIPPON_MATERIAL_RESISTANCE_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId WHITE }
+    shortName = "talisman of material resistance"
+    name = "talisman of material resistance"
+    plural = "talismans of material resistance"
+    blindName = "paper"
+    applyVerb = "prepare" "prepares"
+    weight = 0.1
+    effect = Description "prepares talisman of material resistance, that gives resistance against material attacks." { AI And{CreatureFlag "material_resistance_talisman"} 1 -1 {
+															SetCreatureFlag "material_resistance_talisman" true
+															GrantAbility "NIPPON_MATERIAL_RESISTANCE_TALISMAN"}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  } 
+
+"NIPPON_FIRE_ATTACK_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId RED }
+    shortName = "talisman of fire"
+    name = "talisman of fire"
+    plural = "talismans of fire"
+    blindName = "paper"
+    applyVerb = "prepare" "prepares"
+    weight = 0.1
+    effect = Description "prepares talisman of fire, granting you fire attack." { AI And{CreatureFlag "fire_attack_talisman"} 1 -1 {
+															SetCreatureFlag "fire_attack_talisman" true
+															GrantAbility "NIPPON_FIRE_ATTACK_TALISMAN"}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"NIPPON_ACID_ATTACK_TALISMAN" inherit "NIPPON_FIRE_ATTACK_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId YELLOW }
+	shortName = "talisman of acid"
+    name = "talisman of acid"
+    plural = "talismans of acid"
+	effect = Description "prepares talisman of acid, granting you acid attack." { AI And{CreatureFlag "acid_attack_talisman"} 1 -1 {
+															SetCreatureFlag "acid_attack_talisman" true
+															GrantAbility "NIPPON_ACID_ATTACK_TALISMAN"}}
+  }
+
+"NIPPON_COLD_ATTACK_TALISMAN" inherit "NIPPON_FIRE_ATTACK_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId LIGHT_BLUE }
+	shortName = "talisman of cold"
+    name = "talisman of cold"
+    plural = "talismans of cold"
+	effect = Description "prepares talisman of cold, granting you cold attack." { AI And{CreatureFlag "cold_attack_talisman"} 1 -1 {
+															SetCreatureFlag "cold_attack_talisman" true
+															GrantAbility "NIPPON_COLD_ATTACK_TALISMAN"}}
+  }
+  
+"NIPPON_RESTORATION_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId GREEN }
+    shortName = "talisman of restoration"
+    name = "talisman of restoration"
+    plural = "talismans of restoration"
+    blindName = "paper"
+    applyVerb = "prepare" "prepares"
+    weight = 0.1
+    effect = Description "prepares talisman of restoration, allowing you to grant regeneration." { AI And{CreatureFlag "restoration_talisman"} 1 -1 {
+															SetCreatureFlag "restoration_talisman" true
+															GrantAbility "NIPPON_RESTORATION_TALISMAN"}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+ 
+"NIPPON_PURIFICATION_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId PURPLE }
+    shortName = "talisman of purification"
+    name = "talisman of purification"
+    plural = "talismans of purification"
+    blindName = "paper"
+    applyVerb = "prepare" "prepares"
+    weight = 0.1
+    effect = Description "prepares talisman of purification, allowing you to purify magic from creatures." { AI And{CreatureFlag "purification_talisman"} 1 -1 {
+															SetCreatureFlag "purification_talisman" true
+															GrantAbility "NIPPON_PURIFICATION_TALISMAN"}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"NIPPON_HOLD_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId BROWN }
+    shortName = "talisman of imprisonment"
+    name = "talisman of imprisonment"
+    plural = "talismans of imprisonment"
+    blindName = "paper"
+    applyVerb = "prepare" "prepares"
+    weight = 0.1
+    effect = Description "prepares talisman of imprisonment, allowing you to immobilize creature." { AI And{CreatureFlag "stun_talisman"} 1 -1 {
+															SetCreatureFlag "stun_talisman" true
+															GrantAbility "NIPPON_HOLD_TALISMAN"}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"NIPPON_ELEMENTAL_TALISMAN"
+  {
+    viewId = { "jp_talisman_01" ColorId BLACK }
+    shortName = "talisman of kami summoning"
+    name = "talisman of kami summoning"
+    plural = "talismans of kami summoning"
+    blindName = "paper"
+    applyVerb = "prepare" "prepares"
+    weight = 0.1
+    effect = Description "prepares talisman of kami summoning, allowing you to summon kami of elements." { AI And{CreatureFlag "kami_talisman"} 1 -1 {
+															SetCreatureFlag "kami_talisman" true
+															GrantAbility "NIPPON_ELEMENTAL_TALISMAN"}}
+    price = 10
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"NIPPON_RESERVE_SHIKIGAMI"
+  {
+    viewId = { "jp_shikigami_01" }
+    shortName = "reserve shikigami"
+    name = "reserve shikigami"
+    plural = "reserve shikigamis"
+    blindName = "paper"
+    applyVerb = "prepare" "prepares"
+    weight = 0.1
+    uses = 1
+	burnTime = 1
+    price = 1000
+    effect = Summon "NIPPON_SHIKIGAMI" {1} 60
+    effectDescription = false
+    storageIds = {"equipment"}
+  }
+  
+  
+#################################################################################################################################
+#                                                        weapons                                                                #
+#################################################################################################################################  
+
+"NIPPON_KOTORIBAKO"
+  {
+    viewId = { "jp_kotoribako" }
+    shortName = "kotoribako"
+    name = "kotoribako"
+    plural = "kotoribako"
+    blindName = "small chest"
+    applyVerb = "open" "opens"
+    weight = 0.1
+    effect = Description "opens the kotoribako, unleashing evil within." { 	NipponCurseProgress() 
+																			Summon "JP_EVIL_SPIRIT" 4 100 
+																			DropItems {"Skeleton"} 1
+																			Area 5 Filter Enemy {NipponCurseProgress()}
+																			Area 3 {EmitGas "NIPPON_MIASMA_SMOKE" 1}}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"NIPPON_NAILS"
+  {
+    viewId = { "jp_kotoribako" }
+    shortName = "norowareta tsume"
+    name = "norowareta tsume"
+    plural = "norowareta tsume"
+    blindName = "bunch of nails"
+    applyVerb = "hammer" "hammers"
+    weight = 0.1
+    effect = Description "break the barrier, unleash the evil, twist the body." AI And{CreatureFlag "nippon_curse_ox"} 1 -1 {FirstSuccessful { 
+	Filter Night {
+      Area 0 ChainUntilFail {
+        RemoveFurniture "CANIF_TREE"
+        {
+          GrantAbility "NIPPON_ELEMENTAL_TALISMAN"
+		  SetCreatureFlag "nippon_curse_ox" true
+          Message NORMAL "Curse is prepared!"
+        }
+        RemoveFurniture "DECID_TREE"
+        {
+          GrantAbility "NIPPON_ELEMENTAL_TALISMAN"
+		  SetCreatureFlag "nippon_curse_ox" true
+          Message NORMAL "Curse is prepared!"
+        }
+        RemoveFurniture "TREE_SNOW"
+        {
+          GrantAbility "NIPPON_ELEMENTAL_TALISMAN"
+		  SetCreatureFlag "nippon_curse_ox" true
+          Message NORMAL "Curse is prepared!"
+        }
+        RemoveFurniture "SWAMPTREE"
+        {
+          GrantAbility "NIPPON_ELEMENTAL_TALISMAN"
+		  SetCreatureFlag "nippon_curse_ox" true
+          Message NORMAL "Curse is prepared!"
+        }
+        RemoveFurniture "PALM_TREE"
+        {
+          GrantAbility "NIPPON_ELEMENTAL_TALISMAN"
+		  SetCreatureFlag "nippon_curse_ox" true
+          Message NORMAL "Curse is prepared!"
+        }
+        RemoveFurniture "GUM_TREE"
+        {
+          GrantAbility "NIPPON_ELEMENTAL_TALISMAN"
+		  SetCreatureFlag "nippon_curse_ox" true
+          Message NORMAL "Curse is prepared!"
+        }
+        RemoveFurniture "GUM_TREE"
+        {
+          GrantAbility "NIPPON_ELEMENTAL_TALISMAN"
+		  SetCreatureFlag "nippon_curse_ox" true
+          Message NORMAL "Curse is prepared!"
+        }
+        RemoveFurniture "NIPPON_SAKURA_01"
+        {
+          GrantAbility "NIPPON_ELEMENTAL_TALISMAN"
+		  SetCreatureFlag "nippon_curse_ox" true
+          Message NORMAL "Curse is prepared!"
+        }
+        RemoveFurniture "NIPPON_SAKURA_02"
+        {
+          GrantAbility "NIPPON_ELEMENTAL_TALISMAN"
+		  SetCreatureFlag "nippon_curse_ox" true
+          Message NORMAL "Curse is prepared!"
+        }
+        RemoveFurniture "NIPPON_SAKURA_03"
+        {
+          GrantAbility "NIPPON_ELEMENTAL_TALISMAN"
+		  SetCreatureFlag "nippon_curse_ox" true
+          Message NORMAL "Curse is prepared!"
+        }
+      }
+      Message NORMAL "Nothing happens."
+    }}}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"NIPPON_HINNAGAMI"
+  {
+    viewId = { "jp_hinnagami_it" }
+    shortName = "JP_HINNAGAMI"
+    name = "JP_HINNAGAMI"
+    plural = "JP_HINNAGAMI"
+    blindName = "doll"
+    applyVerb = "awaken" "awakens"
+    weight = 0.1
+    effect = Description "awaken the hinnagami." AI And{CreatureFlag "nippon_hinnagami"} 1 -1  { 	
+													Permanent UNSTABLE 
+													Permanent NIPPON_LOW_MORALE
+													SetCreatureFlag "nippon_hinnagami" true
+													AddCompanion {count = 1 statsBase = DEFENSE summonFreq = 0.1 creatures = {"NIPPON_HINNAGAMI"} }}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"NIPPON_CURSED_INK"
+  {
+    viewId = { "jp_ink_pot" }
+    shortName = "norowareta inku"
+    name = "norowareta inku"
+    plural = "norowareta inku"
+    blindName = "inkwell"
+    applyVerb = "contracted" "contracts"
+    weight = 0.1
+    effect = Description "sacrifice your blood to cursed ink in order to forge an pact." { AI And{CreatureFlag "nippon_blood_ink"} 1 -1 {
+															SetCreatureFlag "nippon_blood_ink" true
+															GrantAbility "NIPPON_BLOODSUCKING_INK"}}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+
+"NIPPON_LAMP"
+  {
+    viewId = { "jp_lamp" }
+    ownedEffect = NIPPON_GHOST_LAMP
+    name = "gosutoranpu"
+    plural = "gosutoranpu"
+    price = 2
+	weight = 0.1
+    storageIds = {"equipment"}
+    equipmentGroup = "light emitting equipment"
+  }
+
+"NIPPON_KODOKU"
+  {
+    viewId = { "jp_kodoku" }
+    shortName = "kodoku"
+    name = "kodoku"
+    plural = "kodoku"
+    blindName = "flask"
+    applyVerb = "unleash" "unleashes"
+    weight = 0.1
+    effect = Description "awaken the hinnagami." AI Indoors 1 -1 Chain { Lasting 25 CONSUMPTION_SKILL NipponCurseProgress() NipponCurseProgress() NipponCurseProgress()}
+    price = 100
+    burnTime = 1
+    uses = 1
+    storageIds = {"scrolls" "equipment"}
+  }
+  
+"NIPPON_SACRIFICAL_KNIFE"
+  {
+    viewId = { "knife" }
+    equipedViewId = { "knife_v" }
+    name = "sacrifical knife"
+    plural = "sacrifical knives"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 0.3
+    modifiers = {
+      DAMAGE 4
+    }
+    price = 1
+    weaponInfo = {
+      attackType = STAB
+      attackMsg = THRUST
+    }
+    genPrefixes = {
+      1 VictimEffect 0.1 Lasting POISON
+    }
+    equipedAbility = { "NIPPON_SACRIFICAL_KNIFE" }
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "basic equipment"
+  }
+
+"NIPPON_ONRYO_MASK"
+  {
+    viewId = { "jp_onryo_mask" }
+    shortName = "mask"
+    name = "onryo mask"
+    itemClass = ARMOR
+    equipmentSlot = HELMET
+    weight = 4
+    price = 8
+    equipedEffect = {NIPPON_ONRYO_MASK}
+    equipWarning = "This mask is cursed. Continue?"
+    maxUpgrades = 3
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "artifact equipment"
+  }
+
+"NIPPON_ONI_MASK"
+  {
+    viewId = { "jp_oni_mask" }
+    shortName = "mask"
+    name = "oni mask"
+    itemClass = ARMOR
+    equipmentSlot = HELMET
+    weight = 4
+    price = 8
+    equipedEffect = {NIPPON_ONI_MASK}
+    equipWarning = "This mask is cursed. Continue?"
+    maxUpgrades = 3
+    storageIds = {"armor" "equipment"}
+    equipmentGroup = "artifact equipment"
+  }
+  
+  
+#################################################################################################################################
+#                                                        weapons                                                                #
+#################################################################################################################################  
+
+"Nippon_Spear"
+  {
+    viewId = { "spear" }
+    equipedViewId = { "spear_v" }
+    name = "spear"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      DAMAGE 8
+    }
+    price = 4
+    weaponInfo = {
+      attackType = STAB
+      attackMsg = THRUST
+      twoHanded = true
+    }
+    specialAttr = {
+      DAMAGE 15 Rider
+    }
+	
+    genPrefixes = {
+      1 VictimEffect 0.3 Fire { 25 }
+      1 VictimEffect 0.1 Lasting POISON
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 3
+        LastingEffect HALLU
+      }
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "basic equipment"
+  }
+  
+"Nippon_Bokken"
+  {
+    viewId = { "jp_bokken" }
+    equipedViewId = { "jp_bokken_v" }
+    name = "bokken"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 2
+    modifiers = {
+      DAMAGE 4
+    }
+    price = 2
+    weaponInfo = {
+      attackType = CRUSH
+    }
+    genPrefixes = {
+      1 VictimEffect 0.3 Fire { 25 }
+      1 VictimEffect 0.1 Lasting POISON
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 3
+        LastingEffect HALLU
+      }
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 0
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "basic equipment"
+  }
+  
+"Nippon_Katana"
+  {
+    viewId = { "jp_katana" }
+    equipedViewId = { "jp_katana_v" }
+    name = "katana"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      DAMAGE 8
+    }
+    price = 4
+    craftingCost = "IRON" 20
+    weaponInfo = {
+      attackType = CUT
+    }
+    genPrefixes = {
+      1 VictimEffect 0.3 Fire { 25 }
+      1 VictimEffect 0.1 Lasting POISON
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 3
+        LastingEffect HALLU
+      }
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "iron equipment"
+  }
+  
+"AdaNippon_Katana" inherit "Nippon_Katana"
+  {
+    viewId = { "jp_adakatana" }
+    equipedViewId = { "jp_adakatana_v" }
+    name = "adamantine katana"
+    shortName = "adamantine"
+    modifiers = {
+      DAMAGE 11
+    }
+    price = 20
+    craftingCost = "ADA" 20
+    genPrefixes = {
+      1 VictimEffect 0.2 Acid{30}
+      1 VictimEffect 0.3 Fire{30}
+      1 VictimEffect 0.2 Lasting POISON
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    equipmentGroup = "adamantine equipment"
+  }
+
+"InferniteNippon_Katana" inherit "AdaNippon_Katana"
+  {
+    viewId = { "jp_infernite_katana" }
+    equipedViewId = { "jp_infernite_katana_v" }
+    name = "infernite katana"
+    shortName = "infernite"
+    price = 200
+    craftingCost = "INFERNITE" 20
+    genPrefixes = {
+      1 VictimEffect 0.2 Lasting 50 BLEEDING
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    carriedTickEffect = InferniteEffect()
+    autoEquipPredicate = LastingEffect FIRE_RESISTANT
+    ownedEffect = LIGHT_SOURCE
+    equipedEffect = {FIRE_DAMAGE}
+    equipmentGroup = "infernite equipment"
+  }
+
+"Nippon_Naginata"
+  {
+    viewId = { "jp_naginata" }
+    equipedViewId = { "jp_naginata_v" }
+    name = "naginata"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 8
+    modifiers = {
+      DAMAGE 12
+    }
+    price = 30
+    craftingCost = "IRON" 50
+    weaponInfo = {
+      attackType = CUT
+      attackMsg = THRUST
+      twoHanded = true
+    }
+    specialAttr = {
+      DAMAGE 15 Rider
+    }
+    genPrefixes = {
+      1 VictimEffect 0.2 Lasting 50 BLEEDING
+      1 LastingEffect RAGE
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "iron equipment"
+  }
+  
+"Nippon_AdaNaginata" inherit "Nippon_Naginata"
+  {
+    viewId = { "jp_adanaginata" }
+    equipedViewId = { "jp_adanaginata_v"}
+    shortName = "adamantine"
+    name = "adamantine naginata"
+    modifiers = {
+      DAMAGE 16
+    }
+    price = 150
+    craftingCost = "ADA" 50
+    genPrefixes = {
+      1 VictimEffect 0.5 Lasting 50 BLEEDING
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 2
+    equipmentGroup = "adamantine equipment"
+  }
+  
+"Nippon_InferniteNaginata" inherit "Nippon_AdaNaginata"
+  {
+    viewId = { "jp_infernite_naginata" }
+    equipedViewId = { "jp_infernite_naginata_v" }
+    shortName = "infernite"
+    name = "infernite naginata"
+    price = 1500
+    craftingCost = "INFERNITE" 50
+    genPrefixes = {
+      1 VictimEffect 0.5 Lasting 50 BLEEDING
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    carriedTickEffect = InferniteEffect()
+    autoEquipPredicate = LastingEffect FIRE_RESISTANT
+    ownedEffect = LIGHT_SOURCE
+    equipedEffect = {FIRE_DAMAGE}
+    equipmentGroup = "infernite equipment"
+  }
+  
+"Nippon_Kanabo"
+  {
+    viewId = { "jp_kanabo" }
+    equipedViewId = { "jp_kanabo_v" }
+    name = "kanabo"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 8
+    modifiers = {
+      DAMAGE 12
+    }
+    price = 20
+    craftingCost = "IRON" 40
+    weaponInfo = {
+      attackType = CRUSH
+      twoHanded = true
+    }
+    genPrefixes = {
+      1 VictimEffect 0.3 Lasting COLLAPSED
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "iron equipment"
+  }
+  
+"Nippon_AdaKanabo" inherit "Nippon_Kanabo"
+  {
+    viewId = { "jp_ada_kanabo" }
+    equipedViewId = { "jp_ada_kanabo_v" }
+    name = "adamantine kanabo"
+    modifiers = {
+      DAMAGE 15
+    }
+    price = 100
+    craftingCost = "ADA" 40
+    genPrefixes = {
+      1 VictimEffect 0.5 Lasting COLLAPSED
+      1 JoinPrefixes {
+        ItemAttrBonus DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 2
+    equipmentGroup = "adamantine equipment"
+  }
+  
+"Nippon_InferniteKanabo" inherit "Nippon_AdaKanabo"
+  {
+    viewId = { "jp_infernite_kanabo" }
+    equipedViewId = { "jp_infernite_kanabo_v" }
+    shortName = "infernite"
+    name = "infernite kanabo"
+    price = 1000
+    craftingCost = "INFERNITE" 40
+    carriedTickEffect = InferniteEffect()
+    autoEquipPredicate = LastingEffect FIRE_RESISTANT
+    ownedEffect = LIGHT_SOURCE
+    equipedEffect = {FIRE_DAMAGE}
+    equipmentGroup = "infernite equipment"
+  }
+  
+
+"Nippon_WoodenStaff"
+  {
+    viewId = { "jp_wooden_staff" }
+    equipedViewId = { "jp_wooden_staff_v" }
+    name = "wooden staff"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+      SPELL_DAMAGE 2
+	  SPELL_SPEED 2
+    }
+    price = 30
+    weaponInfo = {
+      attackType = SPELL
+      attackMsg = WAVE
+      meleeAttackAttr = SPELL_DAMAGE
+    }
+    genPrefixes = {
+      1 VictimEffect 1.0 Escape{}
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "basic equipment"
+  }
+  
+"Nippon_IronStaff" inherit "Nippon_WoodenStaff"
+  {
+    viewId = { "jp_iron_staff" }
+    equipedViewId = { "jp_iron_staff_v" }
+    name = "iron staff"
+    modifiers = {
+      SPELL_DAMAGE 4
+	  SPELL_SPEED 4
+    }
+    price = 60
+    craftingCost = "IRON" 40
+    genPrefixes = {
+      1 VictimEffect 1.0 Escape{}
+      1 VictimEffect 0.4 DestroyEquipment
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 20
+        AttackerEffect Suicide DIE
+      }
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 2
+    equipmentGroup = "iron equipment"
+  }
+  
+"Nippon_AdoxiumStaff" inherit "Nippon_IronStaff"
+  {
+    viewId = { "jp_adoxium_staff" }
+    equipedViewId = { "jp_adoxium_staff_v" }
+    name = "adoxium staff"
+    modifiers = {
+      SPELL_DAMAGE 7
+      SPELL_SPEED 17
+    }
+    price = 1800
+    craftingCost = "ADOXIUM" 40
+    genPrefixes = {
+      1 VictimEffect 0.2 Lasting INSANITY
+      1 VictimEffect 0.2 DestroyEquipment
+      1 VictimEffect 0.5 Fire{20}
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_DAMAGE 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 5
+    equipmentGroup = "adoxium equipment"
+  }
+  
+  
+"Nippon_Fan"
+  {
+    viewId = { "jp_fan" }
+    equipedViewId = { "jp_fan_v" }
+    name = "fab"
+    itemClass = WEAPON
+    equipmentSlot = WEAPON
+    weight = 1.5
+    modifiers = {
+	  SPELL_SPEED 8
+    }
+    price = 30
+    weaponInfo = {
+      attackType = SPELL
+      attackMsg = WAVE
+      meleeAttackAttr = SPELL_DAMAGE
+    }
+    genPrefixes = {
+      1 VictimEffect 1.0 Escape{}
+      1 VictimEffect 0.4 DestroyEquipment
+      1 JoinPrefixes {
+        ItemAttrBonus SPELL_SPEED 8
+        AttackerEffect { Lasting 5 NIPPON_INCREASE_CURSE}
+      }
+    }
+    maxUpgrades = 1
+    storageIds = {"weapons" "equipment"}
+    equipmentGroup = "basic equipment"
+  }
+  
+"JP_SHIRIKODAMA"
+  {
+    viewId = { "jp_shirikodama" }
+    name = "shirikodama"
+    itemClass = OTHER
+    price = 1
+    resourceId = "JP_SHIRIKODAMA"
+    weight = 0.01
+    wishedCount = { 500 1000 }
+    storageIds = {"resources"}
+  }

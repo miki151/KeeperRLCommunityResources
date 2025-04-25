@@ -1,0 +1,388 @@
+"halloween_spirit"
+{
+    {
+      ids = { "HALLOWEEN_IMP" }
+      traits = { WORKER NO_LIMIT NO_EQUIPMENT NO_LEISURE_ZONE }
+      spawnLocation = NearLeader
+      keybinding = CREATE_IMP
+      sound = {"CREATE_IMP" 2}
+      noAuto = true
+      initialRecruitment = 4
+      requirements = {
+        { 1 ExponentialCost "GOLD" 30 5 4 }
+      }
+    }
+}
+
+"halloween_keeper"
+{
+    {
+      ids = { "HALLOWEEN_ZOMBIE_ARTISAN" }
+      traits = { FIGHTER NO_AUTO_EQUIPMENT }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "FORGE" FurnitureType "WORKSHOP" FurnitureType "JEWELLER"}}
+      }
+      specialTraits = {
+         { 0.03 { AttrBonus FORGE 20 Lasting { INSANITY } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "HALLOWEEN_PUMPKIN_SOLIER" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD_NECRO"}}
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "DOG" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.01 { ExtraBodyPart HEAD 1}}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "HALLOWEEN_PUMPKIN_SHAMAN" }
+      traits = { FIGHTER }
+      frequency = 0.1
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD_NECRO" FurnitureType "LABORATORY"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+         { 0.10 { Lasting { MAGIC_RESISTANCE } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "HALLOWEEN_WITCH_PLAYER" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD_NECRO" FurnitureType "LABORATORY"}}
+        { 0.0 MinTurnRequirement 500 }
+      }
+      specialTraits = {
+         { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "DOG" }}}}
+         { 0.2 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.03 { Lasting { RIDER } SpecialAttr SPELL_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "ZOMBIE" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+         { 0.03 { CompanionInfo {summonFreq = 0.1 creatures = { "FLY" }}}}
+         { 0.2 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.1 { ExtraBodyPart HEAD 1}}
+         { 1.0 { Lasting { SWARMER } }}
+         { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "DOG" }}}}
+         { 0.01 { SpecialAttr DEFENSE 10 HatedBy HATE_DRAGONS }}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 8 Not Humanoid }}
+         { 0.03 { Lasting { RIDER } SpecialAttr SPELL_DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.10 { ExtraTraining SPELL_DAMAGE 4}}
+         { 0.05 { SpecialAttr SPELL_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { AttrBonus SPELL_SPEED 30 }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "SKELETON_WARRIOR" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD_NECRO"}}
+      }
+      specialTraits = {
+         { 0.01 { ExtraIntrinsicAttack
+            HEAD
+            { Intrinsic { "bite_attack" } "fangs" 5 {
+                attackType = BITE
+                attackMsg = BITE
+                victimEffect = {0.1 Lasting POISON} } } } }
+         { 0.01 { CompanionInfo {summonFreq = 0.1 creatures = { "DOG" }}}}
+         { 0.01 { SpecialAttr DAMAGE 10 CreatureStatus LEADER }}
+         { 0.03 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+         { 0.02 { SpecialAttr DEFENSE 8 HatedBy HATE_HUMANS }}
+         { 0.02 { SpecialAttr DEFENSE 8 Not Humanoid }}
+         { 0.05 { SpecialAttr DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.01 { ExtraBodyPart HEAD 1}}
+         { 0.01 { ExtraBodyPart WING 2}}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { ExtraTraining DAMAGE 2}}
+         { 0.03 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+         { 0.05 { Lasting { NIGHT_VISION } }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.05 { Lasting { MAGIC_VULNERABILITY } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.03 { Lasting { BAD_BREATH } }}
+         { 0.01 { Lasting { ENTERTAINER } }}
+      }
+    }
+    {
+      ids = { "HALLOWEEN_SKELETON_ARCHER" }
+      traits = { FIGHTER }
+      frequency = 0.5
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+         { 0.02 { SpecialAttr RANGED_DAMAGE 20 CreatureStatus CIVILIAN }}
+         { 0.03 { AttrBonus RANGED_DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { AttrBonus DEFENSE 5 Lasting { SLOWED }}}
+         { 0.05 { Lasting { RANGED_VULNERABILITY } }}
+         { 0.05 { SpecialAttr RANGED_DAMAGE 5 Name "when drunk" Attacker LastingEffect DRUNK }}
+         { 0.05 { Lasting { DISARM_TRAPS_SKILL } }}
+         { 0.05 { Lasting { SWIMMING_SKILL } }}
+         { 0.02 { Lasting { HATE_ELVES } }}
+         { 0.02 { Lasting { HATE_HUMANS } }}
+         { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+         { 0.05 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "VAMPIRE" }
+      traits = { FIGHTER }
+      frequency = 0.2
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON_NECRO"}}
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+         { 0.03 { CompanionInfo {summonFreq = 0.1 creatures = { "BAT" }}}}
+         { 0.02 { SpecialAttr SPELL_DAMAGE 7 HatedBy HATE_ELVES }}
+         { 0.3 { Lasting { TELEPATHY } }}
+         { 0.3 { Lasting { FIRE_RESISTANT } }}
+         { 0.05 { Lasting { HATE_GREENSKINS } }}
+         { 0.02 { AttrBonus SPELL_SPEED 30 }}
+         { 0.3 { Lasting { FLYING } }}
+         { 0.1 { Lasting { ENTERTAINER } }}
+         { 0.03 { AttrBonus SPELL_DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "MUMMY" }
+      traits = { FIGHTER }
+      frequency = 0.1
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON_NECRO"}}
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+        { 0.02 { SpecialAttr DAMAGE 7 HatedBy HATE_ELVES }}
+        { 1.0 { Lasting { BAD_BREATH } }}
+      }
+     }
+    {
+      ids = { "HALLOWEEN_KNIGHT" }
+      traits = { FIGHTER }
+      frequency = 0.7
+      spawnLocation = FurnitureType "GRAVE"
+      requirements = {
+        { 0.0 MinTurnRequirement 1000 }
+        { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON_NECRO"}}
+        { 0.0 CostInfo "CORPSE" 1}
+      }
+      specialTraits = {
+        { 0.05 { SpecialAttr DAMAGE 8 HatedBy HATE_DRAGONS }}
+        { 0.05 { ExtraTraining RANGED_DAMAGE 2}}
+        { 0.05 { ExtraTraining DAMAGE 2}}
+        { 0.05 { SpecialAttr DAMAGE 6 Name "when riding steed" Attacker Rider }}
+        { 0.05 { OneOfTraits { Lasting { FAST_TRAINING } Lasting { SLOW_TRAINING } } }}
+        { 0.05 { Lasting { HATE_ELVES } }}
+        { 0.05 { Lasting { HATE_DWARVES } }}
+        { 0.05 { Lasting { HATE_GREENSKINS } }}
+        { 0.03 { Lasting { BAD_BREATH } }}
+      }
+    }
+    {
+      ids = { "LOST_SOUL" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+      requirements = {
+        { 0.3 AttractionInfo 1 {FurnitureType "DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 300 }
+      }
+    }
+    {
+      ids = { "SUCCUBUS" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+      requirements = {
+        { 0.3 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 1000 }
+      }
+    }
+    {
+      ids = { "HALLOWEEN_DEMON" }
+      traits = { FIGHTER NO_EQUIPMENT }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+      requirements = {
+        { 0.3 AttractionInfo 2 {FurnitureType "DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 1000 }
+      }
+    }
+    {
+      ids = { "DOPPLEGANGER" }
+      traits = { FIGHTER }
+      frequency = 0.3
+      spawnLocation = FurnitureType "DEMON_SHRINE"
+      requirements = {
+        { 0.3 AttractionInfo 3 {FurnitureType "DEMON_SHRINE"}}
+        { 0.0 CostInfo "DEMON_PIETY" 3000 }
+      }
+    }
+    {
+      ids = { "WEREWOLF" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 0.1
+      requirements = {
+        { 0.0 MinTurnRequirement 2000 }
+        { 0.0 FurnitureType "BEAST_CAGE" }
+        { 0.3 AttractionInfo 2 {FurnitureType "TRAINING_IRON_NECRO"}}
+      }
+      specialTraits = {
+         { 1.0 { SpecialAttr DAMAGE 7 Name "at night" Night }}
+         { 0.1 { SpecialAttr DAMAGE 5 HatedBy HATE_HUMANS }}
+         { 0.1 { AttrBonus DAMAGE 13 Lasting { INSANITY }}}
+         { 0.03 { Lasting { INSANITY }}}
+         { 0.1 { Lasting { HATE_UNDEAD }}}
+         { 0.3 { Lasting { AMBUSH_SKILL } }}
+         { 0.1 { Lasting { ENTERTAINER } }}
+         { 0.03 { AttrBonus DAMAGE 10 AttrBonus DEFENSE 10 Lasting { AGGRAVATES }}}
+      }
+    }
+    {
+      ids = { "SHELOB" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      frequency = 0.1
+      requirements = {
+        { 0.0 MinTurnRequirement 2000 }
+        { 0.0 FurnitureType "BEAST_CAGE" }
+        { 0.0 TechId "beast mutation" }
+      }
+      specialTraits = {
+        { 1.0 { CompanionInfo {count = 4 summonFreq = 0.1 creatures = { "BAT" }}}}
+      }
+	}
+    DarkRecruits()
+    {
+      ids = { "SPECIAL_HMBN" "SPECIAL_HMBW" "SPECIAL_HMGN" "SPECIAL_HMGW" }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = Pregnancy
+      requirements = {
+        { 0.0 TechId "humanoid mutation" }
+        { 0.0 Pregnancy }
+        { 1.0 CostInfo "GOLD" 100 }
+      }
+      specialTraits = {
+      }
+      acceptedAchievement = "succubus_breading"
+    }
+    {
+      ids = { "SPECIAL_BMBN" "SPECIAL_BMBW" "SPECIAL_BMGN" "SPECIAL_BMGW" }
+      traits = { FIGHTER DOESNT_TRIGGER }
+      consumeIds = true
+      spawnLocation = Pregnancy
+      requirements = {
+        { 0.0 TechId "beast mutation" }
+        { 0.0 Pregnancy }
+        { 1.0 CostInfo "GOLD" 100 }
+      }
+      acceptedAchievement = "succubus_breading"
+    }
+    {
+      ids = { "BALROG" "SATAN" "ADOXIE_HEAD" }
+      traits = { FIGHTER }
+      consumeIds = true
+      spawnLocation = Pregnancy
+      requirements = {
+        { 0.0 TechId "demonology" }
+        { 1.0 CostInfo "GOLD" 100 }
+        { 0.0 Pregnancy }
+        { 0.0 CostInfo "DEMON_PIETY" 3000 }
+      }
+    }
+}
+
+"halloween_zombie"
+{
+    {
+      ids = { "HALLOWEEN_PLAGUE_ZOMBIE" }
+      traits = { LEADER WORKER NO_LIMIT }
+      invisible = true
+      noAuto = true
+      initialRecruitment = 4
+      spawnLocation = NearLeader
+    }
+}

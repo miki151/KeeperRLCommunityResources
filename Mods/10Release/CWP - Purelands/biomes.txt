@@ -1,0 +1,306 @@
+
+"swish_cherry_blossom_biome" inherit "GRASSLAND"
+{
+  lakes = {
+    size = {7 12}
+    count = {5 8}
+  }
+  sandType = "SAND"
+  mountains = {
+    lowlandRatio = 0.5
+    hillRatio = 0.1
+    hill = "HILL"
+    grass = "swish_grass_blossom"
+    mountain = "MOUNTAIN2"
+    mountainDeep = "MOUNTAIN2"
+    mountainFloor = "FLOOR"
+  }
+  forests = {
+    {
+      ratio = 0.7
+      density = 0.08
+      onType = "swish_grass_blossom"
+      trees = "swish_vegetationblossom"
+    }
+	{
+      ratio = 0.08
+      density = 0.04
+      onType = "HILL"
+      trees = "swish_vegetationblossom_hill"
+    }
+  }
+  wildlife = {
+    count = { 9 12 }
+    all = {
+      15 "DEER"
+      5 "RAT"
+
+    }
+  }
+  darkKeeperEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_samurai_village" count = { 1 2 } }
+
+  }
+  whiteKeeperEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_samurai_village" count = { 1 2 } }
+  }
+  darkKeeperBaseEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_samurai_village" count = { 1 2 } }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_samurai_village" count = { 1 2 } }
+  }
+  viewId = { "swish_cherry_blossom" }
+  name = "sakura"
+}
+
+"DESERT" modify append {
+
+  forests = {
+    {
+      ratio = 0.8
+      density = 0.005
+      onType = "SAND"
+      trees = "vegetationDesert"
+    }
+  }
+  wildlife = {
+    count = { 6 12 }
+    all = {
+      1 "SNAKE"
+    }
+  }
+}
+"swish_jungle_biome"
+{
+  lakes = {
+    size = {6 14}
+    count = {20 25}
+  }
+  items = "swishjungleItems"
+  sandType = "swish_grass_jungle"
+  itemCount = {20 40}
+  mountains = {
+    lowlandRatio = 0.60
+    hillRatio = 0.01
+    hill = "HILL"
+    grass = "swish_grass_jungle"
+    mountain = "MOUNTAIN"
+    mountainDeep = "MOUNTAIN2"
+    mountainFloor = "FLOOR"
+  }
+  forests = {
+    {
+      ratio = 0.95
+      density = 0.75
+      onType = "swish_grass_jungle"
+      trees = "swish_vegetationjungle"
+    }
+	{
+      ratio = 0.02
+      density = 0.01
+      onType = "HILL"
+      trees = "swish_vegetationjungle"
+    }
+  }
+  wildlife = {
+    count = { 45 55 }
+    all = {
+      50 "swish_tapir"
+      20 "swish_snake"
+      20 "swish_monkey"
+      15 "swish_micro_raptor"
+      15 "swish_jungle_spider"
+      10 "swish_gorilla"
+      05 "swish_tiki_monster"
+      05 "swish_elephant"
+      05 "swish_sloth2"
+      03 "swish_tiger"
+      03 "swish_raptor"
+    }
+  }
+  darkKeeperEnemies = {
+    { id = "LIZARDMEN_COTTAGE" count = { 1 2 } }
+    { id = "swish_tiki_small" count = { 1 2 } }
+    { id = "sloth_mother" count = { 1 2 } }
+    { id = "COTTAGE_BANDITS" probability = 0.3 }
+    { id = "CORPSES" probability = 0.1 }
+
+  }
+  whiteKeeperEnemies = {
+    { id = "LIZARDMEN_COTTAGE" count = { 1 2 } }
+    { id = "swish_tiki_small" count = { 1 2 } }
+    { id = "sloth_mother" count = { 1 2 } }
+    { id = "COTTAGE_BANDITS" probability = 0.3 }
+    { id = "CORPSES" probability = 0.1 }
+
+  }
+  darkKeeperBaseEnemies = {
+    { id = "LIZARDMEN_SMALL" }
+    { id = "swish_tiki_small" count = { 1 2 } }
+    { id = "sloth_mother" count = { 1 2 } }
+    { id = "COTTAGE_BANDITS" }
+    { id = "KOBOLD_CAVE" }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "LIZARDMEN_SMALL" }
+    { id = "swish_tiki_small" count = { 1 2 } }
+    { id = "sloth_mother" count = { 1 2 } }
+    { id = "COTTAGE_BANDITS" }
+    { id = "KOBOLD_CAVE" }
+  }
+  viewId = { "swish_tree_jungle" }
+  name = "jungle"
+}
+
+"swish_volcano_biome"
+{
+  lakes = {
+    size = {6 15}
+    count = {8 10}
+    where = MOUNTAIN
+  }
+  overrideWaterType = "MAGMA"
+  sandType = "swish_magma_border"
+  mountains = {
+    lowlandRatio = 0.4
+    hillRatio = 0.2
+    hill = "swish_magma_fertile"
+    grass = "swish_magma_floor"
+    mountain = "MOUNTAIN2"
+    mountainDeep = "MOUNTAIN2"
+    mountainFloor = "FLOOR"
+  }
+  forests = {
+    {
+      ratio = 0.4
+      density = 0.7
+      onType = "swish_magma_fertile"
+      trees = "swish_vegetationvolcanic2"
+    }
+	{
+      ratio = 0.5
+      density = 0.1
+      onType = "swish_hell_floor"
+      trees = "swish_vegetationvolcanic"
+    }
+  }
+  wildlife = {
+    count = { 12 15 }
+    all = {
+      20 "swish_iron_hermit"
+      15 "swish_fire_newt"
+      5 "LAVA_GOLEM"
+      5 "swish_infernite_hermit"
+      2 "swish_infernite_golem"
+    }
+  }
+  darkKeeperEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_dragon_closed" }
+    { id = "swish_newts_closed" count = { 1 2 } }
+    { id = "swish_kobold_village" count = { 2 3 } }
+    { id = "swish_firecrabs_closed" count = { 1 2 } }
+  }
+  whiteKeeperEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_dragon_closed" }
+    { id = "swish_newts_closed" count = { 1 2 } }
+    { id = "swish_kobold_village" count = { 2 3 } }
+    { id = "swish_firecrabs_closed" count = { 1 2 } }
+  }
+  darkKeeperBaseEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_dragon_closed" }
+    { id = "swish_newts_closed" count = { 1 2 } }
+    { id = "swish_kobold_village" count = { 2 3 } }
+    { id = "swish_firecrabs_closed" count = { 1 2 } }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_dragon_closed" }
+    { id = "swish_newts_closed" count = { 1 2 } }
+    { id = "swish_kobold_village" count = { 2 3 } }
+    { id = "swish_firecrabs_closed" count = { 1 2 } }
+  }
+  viewId = { "swish_hell_gate" }
+  name = "volcanic"
+}
+
+"swish_hell_biome"
+{
+  lakes = {
+    size = {6 15}
+    count = {8 10}
+    where = MOUNTAIN
+  }
+  overrideWaterType = "MAGMA"
+  sandType = "swish_magma_border"
+  mountains = {
+    lowlandRatio = 0.4
+    hillRatio = 0.2
+    hill = "swish_magma_fertile"
+    grass = "swish_magma_floor"
+    mountain = "MOUNTAIN2"
+    mountainDeep = "MOUNTAIN2"
+    mountainFloor = "FLOOR"
+  }
+  forests = {
+    {
+      ratio = 0.4
+      density = 0.7
+      onType = "swish_magma_fertile"
+      trees = "swish_vegetationvolcanic2"
+    }
+	{
+      ratio = 0.5
+      density = 0.1
+      onType = "swish_hell_floor"
+      trees = "swish_vegetationvolcanic"
+    }
+  }
+  wildlife = {
+    count = { 12 15 }
+    all = {
+      20 "swish_iron_hermit"
+      15 "swish_fire_newt"
+      5 "LAVA_GOLEM"
+      5 "swish_infernite_hermit"
+      2 "swish_infernite_golem"
+    }
+  }
+  darkKeeperEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_dragon_closed" }
+    { id = "swish_newts_closed" count = { 1 2 } }
+    { id = "swish_kobold_village" count = { 2 3 } }
+    { id = "swish_firecrabs_closed" count = { 1 2 } }
+  }
+  whiteKeeperEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_dragon_closed" }
+    { id = "swish_newts_closed" count = { 1 2 } }
+    { id = "swish_kobold_village" count = { 2 3 } }
+    { id = "swish_firecrabs_closed" count = { 1 2 } }
+  }
+  darkKeeperBaseEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_dragon_closed" }
+    { id = "swish_newts_closed" count = { 1 2 } }
+    { id = "swish_kobold_village" count = { 2 3 } }
+    { id = "swish_firecrabs_closed" count = { 1 2 } }
+  }
+  whiteKeeperBaseEnemies = {
+    { id = "CORPSES" probability = 0.1 }
+    { id = "swish_dragon_closed" }
+    { id = "swish_newts_closed" count = { 1 2 } }
+    { id = "swish_kobold_village" count = { 2 3 } }
+    { id = "swish_firecrabs_closed" count = { 1 2 } }
+  }
+  viewId = { "swish_hell_gate" }
+  name = "volcanic"
+}

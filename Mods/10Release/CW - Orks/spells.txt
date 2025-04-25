@@ -1,0 +1,39 @@
+"soup_soup_backpack_eat"
+{
+  symbol = "❤️"
+  effect = Name "eat soup" Filter Not CreatureFlag "soup_dropped"
+							Chain { Lasting 150 HIGH_MORALE
+									Heal { FLESH }
+									SetCreatureFlag "soup_dropped" true}
+  cooldown = {10 31}
+  sound = "SPELL_HEALING"
+}
+
+"soup_soup_backpack"
+{
+  symbol = "❤️"
+  effect = Name "drop soup" Filter Not CreatureFlag "soup_dropped"
+							Chain {DropItems { "SOUP_SOUP_BOWL"} {1}
+							SetCreatureFlag "soup_dropped" true}
+  cooldown = {10 31}
+  sound = "SPELL_HEALING"
+}
+
+"soup_summon_flarg_larvas"
+{
+  symbol = "🐝"
+  effect = Name "spawn larvas" Summon "SOUP_FLARG_LARVA" {3 7} 100
+  cooldown = {3 9}
+  sound = "SPELL_SUMMON_INSECTS"
+}
+
+"soup_plague_puke"
+{
+  symbol = "☠"
+  effect = Name "puke" Area 1 Lasting 200 SOUP_PLAGUE
+  fx = {FLAMETHROWER ColorId YELLOW}
+  range = 4
+  cooldown = {15 31}
+  sound = "SPELL_BLAST"
+  message = "puke!" "pukes!"
+}

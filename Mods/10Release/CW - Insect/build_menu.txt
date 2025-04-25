@@ -1,0 +1,135 @@
+# "structure", "doors", etc are groups that are then used in the last column in player_creatures.txt.
+# (they do not necessarily correspond to how menu items are grouped into submenus, you can join several
+# groups into a submenu, like beds, cages, pigsty and coffins are in the "living" submenu)
+
+ "ins_arrowslits"
+  {
+    { Furniture {{ "ARCHER_WALL" }                "STONE" 20 }     "Wall with ov_arrowslits"  "Structure"
+      "Outdoor building with ov_arrowslits." }
+  }
+
+  "ins_structure"
+  {
+    { { Dig CutTree }                                        "Dig or cut tree"   "Structure"  
+      "" "DIG" {} true DIG_OR_CUT_TREES}
+# If you want you can use "just dig" or "just cut tree" in your mod
+#    { Dig                                                          "Dig"   "Structure" }
+#    { CutTree                                                      "Cut tree"   "Structure" }
+    { Furniture {{ "MOUNTAIN" }             "STONE" 5 }      "Soft rock"         "Structure" }
+    { Furniture {{ "MOUNTAIN2" }            "STONE" 10 }     "Hard rock"         "Structure" }
+
+    { Furniture {{ "PIT" }                        "STONE" 0 }      "Dig a pit"         "Structure"
+      "Dig a pit in the ground. Building next to water or lava will cause it to fill up." }
+
+    { Furniture {{ "FILL_UP_WATER_FLOOR" }        "STONE" 20 }     "Fill lava or water""Structure"
+      "" }
+
+    { Furniture {{ "FLOOR" }              }               "Building interior" "Structure"
+      "" none {} false none true}
+
+  }
+  
+"ins_structure" modify append Stairs()
+
+  "structure_ins" inherit "structure_without_reinforce" append
+  {
+    { Furniture {{ "INS_DUNGEON_WALL_ADV" "INS_DUNGEON_WALL2_ADV" } "STONE" 3}       "Reinforce wall"    "Structure"
+      "Reinforced walls are better at stopping enemies from digging into your dungeon."}
+  }
+  
+"structure_ins" modify append Stairs()
+
+  "ins_storage"
+  {
+    { Furniture {{ "INS_STORAGE" }                      }      "Storage"             "Storage"
+        "All things are stored here."}
+  }
+
+  "ins_chewing"
+  {
+    { Furniture {{ "INS_CHEWING_SPOT" }}                      "Chewing Spot"          "Crafting"
+        "Here your creatures chew hardly edible materials intro better edible ones." "WORKSHOPS" {} true  BUILD_WORKSHOP}
+}
+
+  "ins_ant_crafting"
+  {
+    { Furniture {{ "WORKSHOP" }   "WOOD" 15 }                      "Workshop"          "Crafting"
+        "Produces leather equipment, traps, first-aid kits and other."   none {TechId "basic tools"}}
+
+    { Furniture {{ "FORGE" }      "IRON" 20 }                      "Forge"             "Crafting"
+        "Produces metal weapons and armor."    none { TechId "iron tools" }}
+
+    { Furniture {{ "FURNACE" }      "STONE" 50 }                   "Furnace"             "Crafting"
+        "Smelt and recycle unneeded items."   none { TechId "iron tools" }}
+    
+}
+
+  "ins_living"
+  {
+    { Furniture {{ "INS_BED01" }       "WOOD" 12 }                      "Bed"         "Living"
+        "Minions sleep here." "BEDS" {} true  BUILD_BED }
+
+    { Furniture {{ "BED1" }       "WOOD" 12 }                      "Basic bed"         "Living"
+        "Humanoid minions sleep here." none {TechId "higher brain functions"}}
+ 
+    { Furniture {{ "INS_BLACK_NECTAR_ANT" }       "INSECT_CHEW" 50 }                      "Nectar Ant"         "Living"
+        "Feed your ants and increase population by 5."}
+		
+    { Furniture {{ "INS_MITE_COOP" }     "INSECT_CHEW" 5 }                 "mite coop"      "Living"
+        "" none {TechId "mite farm"}}
+		
+    { Furniture {{ "INS_SLAVE_PEN" }     "STONE" 5 }                 "slave pen"      "Living"
+        "" none {TechId "enslavement"}}
+			
+    { Furniture {{ "INS_MUD_FENCE" } "STONE" 1 }                     "mud fence"      "Living"
+        "Require to keep farm animals from escaping." }
+}
+
+  "ins_ant_training"
+  {
+    { Furniture {{ "TRAINING_WOOD" } "WOOD" 12 }                   "Wooden dummy"      "Training room"
+        "Train your minions' melee skills here."   none { TechId "basic tools" } }
+
+    { Furniture {{ "TRAINING_IRON" } "IRON" 12 }                   "Iron dummy"        "Training room"
+        "Train your minions' melee skills here."   none { TechId "iron tools" } }
+
+    { Furniture {{ "ARCHERY_RANGE" } "WOOD" 12 }                   "Archery target"    "Training room"
+        "Train your minions' archery skills here." none { TechId "basic tools" }}
+
+}
+
+"ins_fly_automatons"
+  {
+    { Furniture {{ "INS_SCAVENGED_AUTOMATON_ENGINE_WOOD" } "WOOD" 100 }                "Wooden engine"   "Automaton engines"
+        ""            none { TechId "automatons" }}
+    { Furniture {{ "INS_SCAVENGED_AUTOMATON_ENGINE_IRON" } "IRON" 100 }                "Iron engine"   "Automaton engines"
+        ""            none { TechId "automatons" }}
+    { Furniture {{ "INS_SCAVENGED_AUTOMATON_ENGINE_ADA" } "ADA" 100 }                "Adamantine engine"   "Automaton engines"
+        ""            none { TechId "automatons" }}
+  }
+
+  "ins_library"
+  {
+    { Furniture {{ "INS_BOOKCASE_WOOD"}   "WOOD" 15 }                 "Wooden bookcase"   "Library"
+        "Train your minions' magical powers here." "BOOKCASES"     {TechId "sorcery"} true BUILD_LIBRARY }
+
+    { Furniture {{ "INS_BOOKCASE_IRON"}   "IRON" 15 }                 "Iron bookcase"     "Library"
+        "Train your minions' magical powers here." none          {TechId "advanced sorcery"} }
+
+    { Furniture {{ "INS_BOOKCASE_GOLD"}   "GOLD" 15 }                 "Golden bookcase"   "Library"
+        "Train your minions' magical powers here." none           {TechId "master sorcery"}}
+  }
+  
+  "ins_training"
+  {
+    { Furniture {{ "INS_TRAINING_WOOD" } "WOOD" 12 }                   "Wooden dummy"      "Training room"
+        "Train your minions' melee skills here." "TRAINING_DUMMIES" {} true  TRAINING_ROOM}
+
+    { Furniture {{ "INS_TRAINING_IRON" } "IRON" 12 }                   "Iron dummy"        "Training room"
+        "Train your minions' melee skills here."   none { TechId "iron working" } }
+
+    { Furniture {{ "INS_TRAINING_ADA" }  "ADA"  12 }                   "Adamantine dummy"  "Training room"
+        "Train your minions' melee skills here."   none { TechId "iron working" }}
+    { Furniture {{ "ARCHERY_RANGE" } "WOOD" 12 }                   "Archery target"    "Training room"
+        "Train your minions' archery skills here." none { TechId "archery" }}
+  }

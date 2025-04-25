@@ -1,0 +1,640 @@
+"SOUP_ORC_KEEPER"
+  {
+    viewId = { "soup_ravener_01" }
+    attr = {
+      DAMAGE 26
+      DEFENSE 21
+      MULTI_WEAPON 40
+	  SOUP_COOKING 30
+      FURNACE 25
+      FORGE 25
+      WORKSHOP 5
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    name = {
+      name = "ravener"
+      firstNameGen = "ORC"
+      fullTitle = true
+    }
+    viewIdUpgrades = { { "soup_ravener_02" } { "soup_ravener_03" } { "soup_ravener_04" }}
+    permanentEffects = {
+      RIDER 1
+      SLOW_TRAINING 1
+	  SOUP_PLAGUE_IMMUNITY 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 12
+      SPELL_DAMAGE 3
+    }
+    spellSchools = { "fighter" }
+    spells = { "soup_soup_backpack_eat" "soup_soup_backpack" }
+    afterKilledSomeone = {
+      CreatureMessage { "made soup" "made soup"}
+	  FirstSuccessful{
+	  Filter Not CreatureFlag "soup_dropped"{
+							Chain {DropItems { "SOUP_SOUP_BOWL"} {1}
+	  SetCreatureFlag "soup_dropped" true}}
+	  Filter CreatureFlag "soup_dropped"{
+							Chain {SetCreatureFlag "soup_dropped" false}}}
+    }
+    inventory = {
+      { "LeatherArmor"}
+      { "LeatherHelm"}
+      { "Sword"}
+    }
+  }
+  
+"SOUP_ORC_PEON"
+  {
+    viewId = { "soup_peon" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 16 
+      DIGGING 20
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "....why...."
+    chatReactionHostile = "\"Die!\""
+    hatedByEffect = HATE_GREENSKINS
+    gender = MALE
+    aiType = RANGED
+    afterKilledSomeone = {
+      CreatureMessage { "are more experienced" "is more experienced"}
+      Filter Kills 3 {
+	  Polymorph "SOUP_ORC_WIMP" none
+	  RemoveMinionTrait WORKER
+	  RemoveMinionTrait NO_EQUIPMENT
+	  RemoveMinionTrait NO_LEISURE_ZONE
+	  RemoveMinionTrait NO_LIMIT
+	  AddMinionTrait FIGHTER
+	  }
+    }
+    permanentEffects = {
+      RIDER 1
+      SLOW_TRAINING 1
+	  SOUP_PLAGUE_IMMUNITY 1
+    }
+    name = {
+      name = "ork peon"
+      firstNameGen = "ORC"
+    }
+  }
+
+"SOUP_ORC_WIMP"
+  {
+    viewId = { "soup_wimp" }
+    attr = {
+      DAMAGE 19
+      DEFENSE 21
+      FURNACE 5
+      WORKSHOP 5
+      FORGE 25
+    }
+    fixedAttr = { FORGE FURNACE WORKSHOP }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "mmm.... soup..."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "ork wimp"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      RIDER 1
+      SLOW_TRAINING 1
+	  SOUP_PLAGUE_IMMUNITY 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+    afterKilledSomeone = {
+      CreatureMessage { "are more experienced" "is more experienced"}
+	  Filter And { Kills 6 Not CreatureFlag "soup_is_warrior"} {
+			IncreaseMaxLevel DAMAGE 3
+			IncreaseAttr MULTI_WEAPON 10
+			SetCreatureFlag "soup_is_warrior" true
+			SetCreatureName "ork warrior"
+          Filter Gender MALE SetViewId {"soup_raider"}
+			}
+    }
+  }
+
+"SOUP_ORC_COWARD"
+  {
+    viewId = { "soup_coward" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 18
+      RANGED_DAMAGE 14
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "talks about bows and arrows"
+    chatReactionHostile = "\"Die!\""
+    aiType = RANGED
+    name = {
+      name = "ork coward"
+      firstNameGen = "ORC"
+    }
+    spellSchools = { "archer" }
+    maxLevelIncrease = {
+      RANGED_DAMAGE 4
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "Bow"}
+      { "LeatherArmor"}
+    }
+    permanentEffects = {
+      RIDER 1
+      SLOW_TRAINING 1
+	  SOUP_PLAGUE_IMMUNITY 1
+    }
+    afterKilledSomeone = {
+      CreatureMessage { "are more experienced" "is more experienced"}
+	  Filter And { Kills 6 Not CreatureFlag "soup_is_warrior"} {
+			IncreaseMaxLevel RANGED_DAMAGE 3
+			IncreaseAttr RANGED_DAMAGE 4
+			SetCreatureFlag "soup_is_warrior" true
+			SetCreatureName "ork hunter"
+          Filter Gender MALE SetViewId {"soup_hunter"}
+			}
+    }
+  }
+    
+"ORC_WEIRDO"
+  {
+    viewId = { "soup_weirdo" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 16
+      SPELL_DAMAGE 16 
+      LABORATORY 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    aiType = RANGED
+    chatReactionFriendly = "curses all elves"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      SPELL_DAMAGE 4
+    }
+    spellSchools = { "soup_shaman" }
+    name = {
+      name = "ork weirdo"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      RIDER 1
+      SLOW_TRAINING 1
+	  SOUP_PLAGUE_IMMUNITY 1
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+    afterKilledSomeone = {
+      CreatureMessage { "are more experienced" "is more experienced"}
+	  Filter And { Kills 6 Not CreatureFlag "soup_is_warrior"} {
+		ChooseRandom {
+	        {AddCompanion {count = 4 statsBase = SPELL_DAMAGE summonFreq = 0.1 creatures = { "SOUP_FLARG" } }
+			SetCreatureFlag "soup_is_warrior" true
+			SetCreatureName "ork flargcaller"
+            SetViewId {"soup_flargcaller"}}
+		
+	        {IncreaseMaxLevel SPELL_DAMAGE 3
+			IncreaseAttr SPELL_SPEED 10
+			SetCreatureFlag "soup_is_warrior" true
+			SetCreatureName "ork shaman"
+            SetViewId {"soup_shaman"}}
+			
+			{IncreaseMaxLevel SPELL_DAMAGE 3
+			IncreaseAttr SPELL_SPEED 10
+			SetCreatureFlag "soup_is_warrior" true
+			SetCreatureName "ork shaman"
+            SetViewId {"soup_shaman"}}
+			
+			{IncreaseMaxLevel SPELL_DAMAGE 3
+			IncreaseAttr SPELL_SPEED 10
+			SetCreatureFlag "soup_is_warrior" true
+			SetCreatureName "ork shaman"
+            SetViewId {"soup_shaman"}}
+			
+			{IncreaseMaxLevel SPELL_DAMAGE 3
+			IncreaseAttr SPELL_SPEED 10
+			SetCreatureFlag "soup_is_warrior" true
+			SetCreatureName "ork shaman"
+            SetViewId {"soup_shaman"}}
+			}}
+  }}
+
+"SOUP_ORC_BEEF"
+  {
+    viewId = { "soup_beef" }
+    attr = {
+      DAMAGE 22
+      DEFENSE 42
+    }
+    body = {
+      type = Humanoid HUGE
+    }
+    chatReactionFriendly = "mmm.... soup..."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "ork beef"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      RIDER 1
+      SLOW_TRAINING 1
+	  SOUP_PLAGUE_IMMUNITY 1
+	  MELEE_RESISTANCE 1
+	  RANGED_RESISTANCE 1
+	  MAGIC_VULNERABILITY 1
+	  ACID_VULNERABILITY 1
+	  COLD_VULNERABILITY 1
+	  FIRE_VULNERABILITY 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 3
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+    afterKilledSomeone = {
+      CreatureMessage { "are more experienced" "is more experienced"}
+	  Filter And { Kills 6 Not CreatureFlag "soup_is_warrior"} {
+			IncreaseMaxLevel DAMAGE 3
+			IncreaseAttr DEFENSE 10
+			SetCreatureFlag "soup_is_warrior" true
+			SetCreatureName "ork wallbreaker"
+          Filter Gender MALE SetViewId {"soup_wallbreaker"}
+			}
+    }
+  }  
+ 
+"SOUP_ORC_LEPPER"
+  {
+    viewId = { "soup_wimp" }
+    attr = {
+      DAMAGE 16
+      DEFENSE 18
+    }
+    fixedAttr = { FORGE FURNACE WORKSHOP }
+    body = {
+      type = Humanoid LARGE
+    }
+    chatReactionFriendly = "mmm.... soup..."
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "ork wimp"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      RIDER 1
+      SLOW_TRAINING 1
+	  SOUP_PLAGUE_IMMUNITY 1
+	  SOUP_PLAGUE 1
+	  REGENERATION 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 3
+    }
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "Club"}
+      { "LeatherArmor"}
+    }
+    spells = { "soup_plague_puke" }
+    afterKilledSomeone = {
+      CreatureMessage { "are more experienced" "is more experienced"}
+	  Filter And { Kills 6 Not CreatureFlag "soup_is_warrior"} {
+			IncreaseAttr DEFENSE 8
+			IncreaseMaxLevel DAMAGE 3
+			SetCreatureFlag "soup_is_warrior" true
+			SetCreatureName "ork plaguebearer"
+			Permanent SOUP_PLAGUE_WIND
+          Filter Gender MALE SetViewId {"soup_plaguebearer"}
+			}
+    }
+  }
+ 
+  
+
+"SOUP_FLARG_LARVA"
+  {
+    viewId = { "soup_larva" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 12 
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 6
+        TORSO 1
+		HEAD 1
+      }
+      weight = 0.35
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "touch_attack" } "infest" 4 {
+            attackType = HIT
+            attackMsg = TOUCH
+            victimEffect = { 1 Lasting 40 SOUP_INFEST}
+            attackerEffect = {Suicide DIE} } }}}
+      }
+      deathSound = none
+      canBeRevived = false
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+    }
+    noChase = true
+    name = {
+      name = "flarg larva"
+      pluralName = "flarg larvas"
+    }
+  } 
+
+"SOUP_FLARG"
+  {
+    viewId = { "soup_fly" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 12 
+    }
+    body = {
+      type = NonHumanoid MEDIUM
+      bodyParts = {
+        LEG 6
+        WING 2
+        TORSO 1
+		HEAD 1
+      }
+      weight = 0.35
+      intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 4 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+      deathSound = none
+      canBeRevived = false
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      STEED 1
+    }
+    noChase = true
+    name = {
+      name = "flarg"
+      pluralName = "flargs"
+    }
+  }
+  
+"SOUP_FLARG_GIANT"
+  {
+    viewId = { "soup_fly_big" }
+    attr = {
+      DAMAGE 9
+      DEFENSE 18
+    }
+    body = {
+      type = NonHumanoid LARGE
+      bodyParts = {
+        LEG 6
+        WING 2
+        TORSO 1
+		HEAD 1
+      }
+      weight = 0.35
+      intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 4 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+      deathSound = none
+      canBeRevived = false
+    }
+    permanentEffects = {
+      NIGHT_VISION 1
+      SLOWED 1
+      STEED 1
+    }
+    noChase = true
+    name = {
+      name = "flarg"
+      pluralName = "flargs"
+    }
+  }
+  
+"SOUP_FLARG_SPAWNER"
+  {
+    viewId = { "soup_big_fly_mother" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 38
+    }
+    body = {
+      type = NonHumanoid LARGE
+      bodyParts = {
+        LEG 8
+        TORSO 1
+		HEAD 1
+      }
+      weight = 400
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{itemType = { Intrinsic { "bite_attack" }  "fangs" 4 { attackType = BITE attackMsg = BITE} } isExtraAttack = true }}
+      }
+      droppedPartUpgrade = IncreaseAttr DAMAGE 5
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      NIGHT_VISION 1
+      SLOWED 1
+      STEED 1
+    }
+    aiType = RANGED
+    spells = { "soup_summon_flarg_larvas" }
+    companions = {{count = 4 spawnAway = false statsBase = DAMAGE summonFreq = 0.02 creatures = { "SOUP_FLARG_LARVA" }}}
+    gender = FEMALE
+    name = {
+      name = "flarg"
+      pluralName = "flargs"
+    }
+  }
+  
+"SOUP_SQUIG"
+  {
+    viewId = { "soup_squig_1" }
+    genderAlternatives = {
+      IT { "soup_squig_1" }
+      IT { "soup_squig_2" }
+    }
+    attr = {
+      DAMAGE 10
+      DEFENSE 7
+    }
+    body = {
+      type = FourLegged MEDIUM
+      weight = 50
+      bodyParts = {
+        LEG 2
+        HEAD 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE}}}
+      }}
+	}
+    permanentEffects = {
+	  UNSTABLE 1
+    }
+	gender = IT
+    petReaction = "\"Meh-eh-eh!\""
+    noChase = true
+    name = {
+      name = "squig"
+    }
+  }
+  
+"SOUP_SQUIG_LARGE"
+  {
+    viewId = { "soup_squig_big_1" }
+    genderAlternatives = {
+      IT { "soup_squig_big_1" }
+      IT { "soup_squig_big_2" }
+    }
+    attr = {
+      DAMAGE 15
+      DEFENSE 10
+    }
+    body = {
+      type = FourLegged LARGE
+      weight = 50
+      bodyParts = {
+        LEG 2
+        HEAD 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 9 {
+            attackType = BITE
+            attackMsg = BITE}}}
+      }}
+	}
+    permanentEffects = {
+      STEED 1
+	  UNSTABLE 1
+    }
+	gender = IT
+    petReaction = "\"Meh-eh-eh!\""
+    noChase = true
+    name = {
+      name = "squig"
+    }
+  }
+  
+  
+
+"SOUP_CORPSE_LOVER"
+  {
+    viewId = { "soup_corpse_lover" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 16
+      SPELL_DAMAGE 16 
+      LABORATORY 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    aiType = RANGED
+    chatReactionFriendly = "curses all elves"
+    chatReactionHostile = "\"Die!\""
+    maxLevelIncrease = {
+      SPELL_DAMAGE 4
+    }
+    spellSchools = { "soup_necro" }
+    name = {
+      name = "ork corpse lover"
+      firstNameGen = "ORC"
+    }
+    permanentEffects = {
+      RIDER 1
+      SLOW_TRAINING 1
+	  SOUP_PLAGUE_IMMUNITY 1
+    }
+    companions = {{count = 4 spawnAway = false statsBase = SPELL_DAMAGE summonFreq = 0.02 creatures = { "SOUP_ZOMBIE" "SOUP_SKELETON" }}}
+    hatedByEffect = HATE_GREENSKINS
+    inventory = {
+      { "WoodenStaff"}
+      { "LeatherArmor"}
+    }
+    afterKilledSomeone = {
+      CreatureMessage { "are more experienced" "is more experienced"}
+	  Filter And { Kills 6 Not CreatureFlag "soup_is_warrior"} {
+			IncreaseMaxLevel SPELL_DAMAGE 3
+			IncreaseAttr SPELL_SPEED 10
+			SetCreatureFlag "soup_is_warrior" true
+			SetCreatureName "ork necromancer"
+          Filter Gender MALE SetViewId {"soup_necromancer"}
+			}
+    }
+  }
+  
+"SOUP_ZOMBIE"
+  {
+    viewId = { "soup_ork_zombie" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 17 
+    }
+    body = {
+      type = Humanoid LARGE
+      material = UNDEAD_FLESH
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      SLOWED 1
+      SWARMER 1
+    }
+    name = {
+      name = "zombie"
+    }
+    hatedByEffect = HATE_UNDEAD
+  }
+
+"SOUP_SKELETON"
+  {
+    viewId = { "soup_ork_skeleton" }
+    attr = {
+      DAMAGE 14
+      DEFENSE 14
+    }
+    body = {
+      type = Humanoid LARGE
+      material = BONE
+    }
+    permanentEffects = {
+      RANGED_RESISTANCE 1
+      SLOWED 1
+    }
+    name = {
+      name = "skeleton"
+    }
+    hatedByEffect = HATE_UNDEAD
+  }

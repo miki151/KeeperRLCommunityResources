@@ -1,0 +1,1059 @@
+"DEER" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {10 15}
+  }
+"BOAR" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {10 20}
+  }
+"FOX" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {5 12}
+  }
+"KANGAROO" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {10 15}
+  }
+"CAVE_BEAR" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {25 35}
+  }
+"RAT" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {1 2}
+  }
+"HORSE" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {15 20}
+  }
+"COW" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {20 25}
+  }
+"DONKEY" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {10 15}
+  }
+"PIG" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {1 2}
+  }
+"GOAT" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {5 10}
+  }
+"JACKAL" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {5 10}
+  }
+"WOLF" modify append
+  {
+deathEffect = DropItems { "swish_leather" } {10 15}
+  }
+"swish_snake" inherit "SNAKE"
+
+{
+  viewId = { "swish_snake" }
+  name = { "snake" }
+}
+
+"swish_jungle_spider" inherit "SPIDER"
+
+{
+  viewId = { "swish_jungle_spider" }
+    body = {
+      type = NonHumanoid SMALL
+      bodyParts = {
+        LEG 8
+        TORSO 1
+      }
+      weight = 0.3
+      deathSound = none
+      intrinsicAttacks = {
+        TORSO {{{ Intrinsic { "bite_attack" } "fangs" 1 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Lasting POISON} } }}}
+      }
+    }
+  name = { "jungle spider" }
+}
+
+"swish_tiger" inherit "WOLF"
+
+{
+  viewId = { "swish_tiger" }
+  attr = {
+         DAMAGE 30
+         DEFENSE 20 
+         }
+  name = { "sabretooth tiger" }
+deathEffect = DropItems { "swish_leather" } {20 25}
+}
+"swish_tiki_monster"
+  {
+    viewId = { "swish_tiki_monster" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10 
+    }
+    body = {
+      type = Humanoid MEDIUM
+      intrinsicAttacks = {
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE         
+            attackMsg = BITE } }}}
+      }
+}
+    permanentEffects = {
+      SPEED 1
+      POISON_RESISTANT 1
+      ELF_VISION 1
+    }
+    maxLevelIncrease = {
+      DAMAGE 5
+    }
+    chatReactionFriendly = "curses all humans"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "grok tribesman"
+      pluralName = "grok tribesmen"
+    }
+    inventory = {
+	  { "swish_tiki_spear"}
+      { "LeatherArmor"}
+      { "GoldPiece" 2 4 }
+    }
+  }
+"swish_tiki_blowdart" inherit "swish_tiki_monster"
+{
+  viewId = { "swish_tiki_blowdart" }
+    attr = {
+      RANGED_DAMAGE 5
+      DEFENSE 10 
+    }
+    permanentEffects = {
+      POISON_RESISTANT 1
+      ELF_VISION 1
+    }
+    aiType = RANGED
+    name = {
+      name = "grok blowdart tribesman"
+      pluralName = "grok blowdart tribesmen"
+     }
+    inventory = {
+      { "swishblowdart"}
+      { "LeatherArmor"}
+      { "swish_jungle_cure"}
+      { "GoldPiece" 2 4 }
+    }
+}
+"swish_tiki_boss" inherit "swish_tiki_monster"
+{
+  viewId = { "swish_tiki_boss" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 25 
+      SPELL_DAMAGE  25
+    }
+    companions = {{
+      count = 7
+      spawnAway = false
+      statsBase = DAMAGE
+      summonFreq = 0.05
+      creatures = { "swish_tiki_monster" }}
+    }
+    name = {
+      name = "Chieftain Gronk"
+     }
+     spells = { "advanced healing" "defense bonus" }
+    inventory = {
+	  { "swish_tiki_staff"}
+      { "LeatherArmor"}
+      { "swish_jungle_cure"}
+      { "GoldPiece" 2 4 }
+    }
+}
+"swish_raptor"
+  {
+    viewId = { "swish_raptor" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 30
+    }
+    body = {
+      type = NonHumanoid HUGE
+      drops = {
+        { "swish_carnosaur_head" } 1
+      }
+      addBodyPart = {
+        TORSO 1
+        HEAD 1
+        ARM 2
+        LEG 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+      FIRE_RESISTANT 1
+      MELEE_RESISTANCE 1
+      ELF_VISION 1
+      SPEED 1
+    }
+    name = {
+      name = "carnosaur"
+    }
+  }
+"swish_sloth_juvenile"
+  {
+    viewId = { "swish_sloth_juvenile" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 15
+    }
+    body = {
+      type = FourLegged LARGE
+      weight = 400
+    }
+    permanentEffects = {
+      SLOWED 1
+    }
+    noChase = true
+    name = {
+      name = "sloth juvenile"
+      pluralName = "sloth juveniles"
+    }
+deathEffect = DropItems { "swish_leather" } {10 15}
+  }
+"swish_sloth" inherit "swish_sloth_juvenile"
+  {
+    viewId = { "swish_sloth" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 20 
+    }
+    noChase = true
+    name = {
+      name = "sloth mother"
+      pluralName = "sloths mothers"
+    }
+deathEffect = DropItems { "swish_leather" } {25 30}
+  }
+"swish_sloth2" inherit "swish_sloth_juvenile"
+  {
+    viewId = { "swish_sloth" }
+    attr = {
+      DAMAGE 40
+      DEFENSE 20 
+    }
+    noChase = true
+    name = {
+      name = "sloth"
+      pluralName = "sloths"
+    }
+  }
+"swish_tapir"
+  {
+    viewId = { "swish_tapir" }
+    attr = {
+      DAMAGE 10
+      DEFENSE 10 
+    }
+    aiType = RANGED
+    body = {
+      type = FourLegged LARGE
+      weight = 400
+    }
+    permanentEffects = {
+      SPEED 1
+    }
+    noChase = true
+    name = {
+      name = "tapir"
+      pluralName = "tapirs"
+    }
+deathEffect = DropItems { "swish_leather" } {10 20}
+  }
+"swish_micro_raptor"
+  {
+    viewId = { "swish_micro_raptor" }
+    attr = {
+      DAMAGE 9
+      DEFENSE 10
+    }
+    body = {
+      type = NonHumanoid SMALL
+      addBodyPart = {
+        TORSO 1
+        HEAD 1
+        ARM 2
+        LEG 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 4 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+      SPEED 2
+    }
+    name = {
+      name = "micro raptor"
+    }
+  }
+"swish_wyrm_desert"
+  {
+    viewId = { "swish_wyrm_desert" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 35 
+	  DIGGING 20
+    }
+    body = {
+      type = NonHumanoid HUGE
+      weight = 400
+      bodyParts = {
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.25 Lasting POISON} } }}}
+      }
+    }
+    name = {
+      name = "desert wyrm"
+    }
+     spells = { "swish_wyrm_tail" }
+  }
+"swish_wyrm_desert_tail"
+  {
+    viewId = { "swish_wyrm_desert_tail" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 30 
+    }
+    body = {
+      type = NonHumanoid HUGE
+      weight = 400
+      bodyParts = {
+        TORSO 1
+      }
+    }
+    name = {
+      name = "desert wyrm tail"
+    }
+  }
+"swish_wyrm"
+  {
+    viewId = { "swish_wyrm" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 35 
+    }
+    permanentEffects = {
+      SWIMMING_SKILL 1
+    }
+    body = {
+      type = NonHumanoid HUGE
+      weight = 400
+      bodyParts = {
+        HEAD 1
+        TORSO 1
+      }
+      deathSound = none
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 6 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.1 Lasting POISON} } }}}
+      }
+    }
+    name = {
+      name = "water wyrm"
+    }
+     spells = { "swish_wyrm_tail2" }
+  }
+"swish_wyrm_tail"
+  {
+    viewId = { "swish_wyrm_tail" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 30 
+    }
+    body = {
+      type = NonHumanoid HUGE
+      weight = 400
+      bodyParts = {
+        TORSO 1
+      }
+    }
+    name = {
+      name = "water wyrm tail"
+    }
+  }
+"swish_monkey"
+  {
+    viewId = { "swish_monke" }
+    attr = {
+      DAMAGE 6
+      DEFENSE 12
+    }
+    body = {
+      type = Humanoid SMALL
+    }
+    aiType = RANGED
+    permanentEffects = {
+      ELF_VISION 1
+      SPEED 1
+    }
+     spells = { "jump" }
+    name = {
+      name = "monkey"
+    }
+deathEffect = DropItems { "swish_leather" } {5 12}
+  }
+"swish_gorilla"
+  {
+    viewId = { "swish_gorilla" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 25
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    permanentEffects = {
+      ELF_VISION 1
+    }
+     spells = { "bolster" }
+    name = {
+      name = "gorilla"
+    }
+deathEffect = DropItems { "swish_leather" } {20 25}
+  }
+"swish_elephant"
+  {
+    viewId = { "swish_elephant" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 45
+    }
+    aiType = RANGED
+    body = {
+      type = FourLegged LARGE
+      weight = 1000
+    }
+    noChase = true
+    name = {
+      name = "elephant"
+    }
+deathEffect = DropItems { "swish_leather" } {50 75}
+  }
+
+"GREEN_DRAGON" modify append 
+{
+  viewId = { "swish_winged_dragon" }
+}
+
+"BLACK_DRAGON" modify append 
+{
+  viewId = { "swish_winged_dragon_black" }
+}
+
+"RED_DRAGON" modify append 
+{
+  viewId = { "swish_winged_dragon_red" }
+}
+
+"WHITE_DRAGON" modify append 
+{
+  viewId = { "swish_winged_dragon_white" }
+}
+
+"YELLOW_DRAGON" modify append 
+{
+  viewId = { "swish_winged_dragon_yellow" }
+}
+
+"swish_fire_newt"
+  {
+    viewId = { "swish_fire_newt" }
+    attr = {
+	  FIRE_DAMAGE 6
+      DAMAGE 12
+      DEFENSE 15 
+    }
+    body = {
+      type = FourLegged MEDIUM
+      weight = 200
+      intrinsicAttacks = {
+        LEG {{{ Intrinsic { "claws_attack" } "claws" 3 {
+            attackType = HIT
+            attackMsg = CLAW
+            victimEffect = {0.5 Fire{}} } }}}
+      }
+    }
+    permanentEffects = {
+      SPEED 1
+      FIRE_RESISTANT 1
+      LIGHT_SOURCE 1
+    }
+    name = {
+      name = "fire newt"
+    }
+  }
+
+"swish_samurai_peasantf" inherit "PESEANT"
+  {
+    viewId = { "swish_samurai_peasantf" }
+  }
+
+"swish_samurai_peasant" inherit "PESEANT"
+  {
+    viewId = { "swish_samurai_peasant" }
+  }
+
+"swish_samurai_civ"
+  {
+    viewId = { "swish_samurai_civ" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 18
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "samurai guard"
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "swish_old_katana"}
+      { "LeatherArmor"}
+      { "LeatherBoots"}
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+
+"swish_samurai"
+  {
+    viewId = { "swish_samurai" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 30
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "samurai soldier"
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "swish_katana" }
+      { "swish_karuta_gane_gloves" }
+      { "swish_karuta_gane_boots" }
+      { "swish_karuta_gane_body" }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+"swish_samurai_heavy"
+  {
+    viewId = { "swish_samurai_heavy" }
+    attr = {
+      DAMAGE 35
+      DEFENSE 40
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "samurai veteran"
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "swish_katana" }
+      { "swish_karuta_gane_gloves" }
+      { "swish_karuta_gane_boots" }
+      { "swish_karuta_gane_body" }
+      { "swish_karuta_gane_helmet" }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 6 16 }
+    }
+  }
+"swish_samurai_daimyo"
+  {
+    viewId = { "swish_samurai_daimyo" }
+    attr = {
+      DAMAGE 40
+      DEFENSE 45
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "samurai daimyo"
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "swish_meitou_katana" }
+      { "swish_karuta_gane_gloves" }
+      { "swish_karuta_gane_boots" }
+      { "swish_karuta_gane_body" }
+      { "swish_karuta_gane_helmet" }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 6 16 }
+      { "swish_meitou_ingot" 1 2 }
+    }
+  }
+"swish_samurai_shogan"
+  {
+    viewId = { "swish_samurai_shogan" }
+    attr = {
+      DAMAGE 45
+      DEFENSE 45
+      RANGED_DAMAGE 35
+    }
+    body = {
+      type = Humanoid LARGE
+    }
+    maxLevelIncrease = {
+      DAMAGE 4
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      RANGED_RESISTANCE 1
+    }
+    chatReactionFriendly = "curses all dungeons"
+    chatReactionHostile = "\"Die!\""
+    name = {
+      name = "the Shogan"
+    }
+    hatedByEffect = HATE_HUMANS
+    inventory = {
+      { "Bow"}
+      { "swish_meitou_naginata" }
+      { "swish_karuta_gane_gloves" }
+      { "swish_karuta_gane_boots" }
+      { "swish_karuta_gane_body" }
+      { "swish_karuta_gane_helmet" }
+      { type = "Torch" chance = 0.3 }
+      { "GoldPiece" 150 175 }
+      { "swish_meitou_ingot" 2 4 }
+    }
+  }
+"swish_samurai_civ2" inherit "swish_samurai_civ"
+  {
+    viewId = { "swish_samurai_civ2" }
+  }
+"swish_samurai_female" inherit "PESEANT"
+  {
+    viewId = { "swish_samurai_female" }
+    name = {
+      name = "samurai wife"
+           }
+  }
+"swish_samurai_female2" inherit "PESEANT"
+  {
+    viewId = { "swish_samurai_female2" }
+    name = {
+      name = "samurai wife"
+           }
+  }
+"swish_samurai_female3" inherit "PESEANT"
+  {
+    viewId = { "swish_samurai_female3" }
+    name = {
+      name = "samurai wife"
+           }
+  }
+"swish_iron_hermit"
+  {
+    viewId = { "swish_iron_hermit" }
+    attr = {
+      DAMAGE 15
+      DEFENSE 35
+    }
+    body = {
+      type = FourLegged LARGE
+      material = IRON
+      weight = 400
+      }
+    permanentEffects = {
+      SLOWED 1
+      FIRE_RESISTANT 1
+      MELEE_RESISTANCE 1
+    }
+    name = {
+      name = "iron crab"
+    }
+  }
+"swish_infernite_hermit"
+  {
+    viewId = { "swish_infernite_hermit" }
+    attr = {
+      DAMAGE 25
+      DEFENSE 45
+    }
+    body = {
+      type = FourLegged LARGE
+      material = IRON
+      weight = 500
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 7 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Fire{}} } }}}
+      }
+      }
+    permanentEffects = {
+      SLOWED 1
+      FIRE_RESISTANT 1
+      MELEE_RESISTANCE 1
+      LIGHT_SOURCE 1
+    }
+    name = {
+      name = "infernite crab"
+    }
+    inventory = {
+      { "InferniteOre" 5 10 }
+    }
+  }
+"ECHI_CHIEFTEN"
+  {
+    viewId = { "echi_chieften" }
+    attr = {
+	DAMAGE 18
+	DEFENSE 20
+	RANGED_DAMAGE 14
+	WORKSHOP 20
+	MULTI_WEAPON 40
+	}
+	body = {
+	  type = Humanoid MEDIUM
+	  intrinsicAttacks = {
+	  ARM {{{ Intrinsic { "fist_attack" } "fists" 1 {
+	  attackType = HIT
+	  attackMsg = SWING } }}}
+	  }
+	}
+	permanentEffects = {
+		SWIMMING_SKILL 1
+		SWARMER 1
+	}
+	maxLevelIncrease = {
+		DAMAGE 8
+		RANGED_DAMAGE  6
+	}
+	 chatReactionFriendly = "talks about kobolds"
+	 chatReactionHostile = "\"Die!\""
+	 name = {
+	 name = "kobold chieften"
+	 }
+	inventory = {
+	{ "Sword"}
+	}
+  }
+"ECHI_KOBOLD"
+  {
+    viewId = { "echi_kobold" }
+    attr = {
+	DAMAGE 15
+	DEFENSE 15
+	RANGED_DAMAGE 12
+	}
+	body = {
+	  type = Humanoid MEDIUM
+	  intrinsicAttacks = {
+	  ARM {{{ Intrinsic { "fist_attack" } "fists" 1 {
+	  attackType = HIT
+	  attackMsg = SWING } }}}
+	  }
+	}
+	permanentEffects = {
+		SWIMMING_SKILL 1
+		SWARMER 1
+	}
+	maxLevelIncrease = {
+		DAMAGE 8
+		RANGED_DAMAGE  6
+	}
+	 chatReactionFriendly = "talks about kobolds"
+	 chatReactionHostile = "\"Die!\""
+	 name = {
+	 name = "kobold"
+	 }
+	inventory = {
+	{ "Sword"}
+	}
+  }
+  "swish_infernite_golem"
+  {
+    viewId = { "swish_infernite_golem" }
+    attr = {
+      DAMAGE 30
+      DEFENSE 50 
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = IRON
+      intrinsicAttacks = {
+        ARM {{{ Intrinsic { "fist_attack" } "fists" 10 {
+            attackType = HIT
+            attackMsg = SWING
+            victimEffect = {0.8 Fire{}} } }}}
+      }
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      SLOWED 1
+      FIRE_RESISTANT 1
+      LIGHT_SOURCE 1
+    }
+    name = {
+      name = "lava golem"
+    }
+    inventory = {
+      { "InferniteOre" 10 20 }
+    }
+  }
+"swish_adoxium_golem"
+  {
+    viewId = { "swish_adoxium_golem" }
+    attr = {
+      DAMAGE 46
+      DEFENSE 46 
+      SPELL_DAMAGE  40
+    }
+    body = {
+      type = HumanoidLike LARGE
+      material = ROCK
+    }
+    permanentEffects = {
+      MELEE_RESISTANCE 1
+      SLOWED 1
+      MAGIC_RESISTANCE 1
+      FIRE_RESISTANT 1
+    }
+    name = {
+      name = "adoxium golem"
+    }
+    inventory = {
+      { "AdoxiumOre" 10 20 }
+    }
+     spells = { "expert magic missile" }
+  }
+"swish_slasher_demon"
+  {
+    viewId = { "swish_slasher_demon" }
+    attr = {
+      DAMAGE 40
+      DEFENSE 25 
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            attackerEffect = { RegrowBodyPart 1 }
+            victimEffect = { 0.5 Lasting 50 BLEEDING  } } }}}
+      }
+    }
+    chatReactionFriendly = "\"All men be cursed!\""
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      NIGHT_VISION 1
+      RANGED_RESISTANCE 1
+      SPEED 1
+      FIRE_RESISTANT 1
+    }
+    name = {
+      name = "slasher demon"
+    }
+  }
+"swish_ripper_demon"
+  {
+    viewId = { "swish_ripper_demon" }
+    attr = {
+      DAMAGE 20
+      DEFENSE 20 
+    }
+    body = {
+      type = Humanoid LARGE
+      material = SPIRIT
+      intrinsicAttacks = {
+        HEAD {{
+          isExtraAttack = true
+          itemType = { Intrinsic { "bite_attack" } "fangs" 5 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = { 0.1 Lasting 50 BLEEDING  } } }}}
+      }
+    }
+    chatReactionFriendly = "\"All men be cursed!\""
+    chatReactionHostile = "\"Die!\""
+    permanentEffects = {
+      NIGHT_VISION 1
+      SPEED 1
+      FIRE_RESISTANT 1
+    }
+    name = {
+      name = "ripper demon"
+    }
+  }
+"swish_hell_gate"
+  {
+    viewId = { "swish_hell_gate" }
+    attr = {
+      DEFENSE 60
+      SPELL_DAMAGE  40
+    }
+    body = {
+      type = NonHumanoid HUGE
+      material = SPIRIT
+      drops = {
+        { "swish_portal_core" } 1
+      }
+    }
+     spells = {
+      "summon ripper demon"
+      "summon slasher demon"
+      "summon spiked demon"
+    }
+    permanentEffects = {
+      IMMOBILE 1
+      MAGIC_RESISTANCE 1
+      MELEE_RESISTANCE 1
+      RANGED_RESISTANCE 1
+      SLEEP_RESISTANT 1
+      FIRE_RESISTANT 1
+    }
+    name = {
+      name = "hell gate"
+      fullTitle = true
+    }
+    chatReactionHostile = "\"You cannot stop Hell itself!\""
+    deathDescription = "It is pointless we shall just open another gate!"
+  }
+"swish_spiked_horrorPL"
+  {
+    viewId = { "swish_spiked_horrorPL" }
+    attr = {
+      DAMAGE 40
+      DEFENSE 40
+      SPELL_DAMAGE  25
+    }
+    body = {
+      type = FourLegged HUGE
+      addBodyPart = {
+        ARM 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+    }
+    permanentEffects = {
+      RANGED_VULNERABILITY 1
+      TELEPATHY 1
+      FIRE_RESISTANT 1
+    }
+    name = {
+      name = "spiked demon"
+    }
+     spells = { "haste" "fire breath" "cure poison" }
+  }
+"swish_skele_warriorPL"
+    {
+      viewId = { "swish_skele_warriorPL" }
+      attr = {
+        DAMAGE 20
+        DEFENSE 25
+      }
+      body = {
+        type = Humanoid LARGE
+        material = BONE
+      }
+      permanentEffects = {
+        RANGED_RESISTANCE 1
+        POISON_RESISTANT 1
+        FIRE_RESISTANT 1
+      }
+      name = {
+        name = "skeletal warrior"
+      }
+      hatedByEffect = HATE_UNDEAD
+    }
+
+"SHADOPATCH_SKELETON"
+  {
+    viewId = { "shadopatch_skeleton" }
+    attr = {
+      DAMAGE 12
+      DEFENSE 10
+    }
+    body = {
+      type = Humanoid LARGE
+      material = BONE
+    }
+    maxLevelIncrease = {
+      DAMAGE 7
+    }
+    name = {
+      name = "skeleton"
+    }
+    permanentEffects = {
+      RIDER 1
+    }
+    hatedByEffect = HATE_UNDEAD
+  }

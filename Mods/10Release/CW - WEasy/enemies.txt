@@ -1,0 +1,55 @@
+"TUTORIAL_THIEF_VILLAGE"
+{
+  settlement = {
+    type = RandomLayout { "village" { 20 15 } "desert_village"}
+    tribe = BANDIT
+    inhabitants = {
+      leader = {{"TUTORIAL_THIEF_LEADER"}}
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "TUTORIAL_THIEF"
+        }
+      }
+    }
+    race = "humans"
+    stockpiles = {
+      { "gold" 50 "TREASURE_CHEST" }
+    }
+    crops = Crops()
+    furniture = "roomFurniture"
+  }
+  config = {
+    alwaysMount = true
+  }
+}
+
+"TUTORIAL_DARK_ELF_CAVE"
+{
+  settlement = {
+    type = Builtin SMALL_MINETOWN "DUNGEON"
+    tribe = DARK_ELF
+	inhabitants = {
+      leader = {{"DARK_ELF"}}
+      fighters = {
+        count = {2 4}
+        all = {
+          1 "DARK_ELF"
+        }
+      }
+      civilians = {
+        count = {1 3}
+        all = {
+          1 "DARK_ELF_CHILD"
+        }
+      }
+    }
+    race = "dark elves"
+    stockpiles = {
+      { "gold" 50 "TREASURE_CHEST" }
+    }
+    outsideFeatures = "dungeonOutside"
+    furniture = "roomFurniture"
+    surroundWithResources = 6    
+  }
+}
