@@ -48,13 +48,9 @@ for /f "delims=" %%D in ('dir "%SOURCE_DIR%" /b /ad') do (
     )
 )
 
-echo All files and folders (except 'npp') copied to the 'npp' folder.
-pause
-
-
-echo.
 echo Done! Git and Notepad++ have been extracted to:
 echo %NPP_DIR%
 
-pause
+start "" "%~dp0npp\notepad++.exe"
+
 exit
