@@ -1,0 +1,58 @@
+#random_layouts.txt
+
+#######################################
+#                                     #
+# Learning how to make random layouts #
+#                                     #
+#######################################
+
+#Each random map has a name eg. "simple_cave"
+#Each random map is enclosed in { }
+#Each independent instruction is called a "generator".
+#Each random map contains an independent instruction (generator) to draw itself inside the { }
+
+#Generators build maps by enclosing other generators.
+#Generators can be nested as deep as you like.
+
+#Double click this link and paste in generators inside the { } to test them:
+# https://keeperrl.com/~michal/umg/
+
+#Example random map:
+
+
+#The outer part enclosed below in { } is a special unnested generator that contains a chain of generators
+#The chain of generators specifies how to fill a rectangular map space of unspecified dimensions.
+
+
+"simple_cave" #Layout name.
+
+#Paste everything below here into the URL to test it
+{
+
+  #This line is a nested generator at depth 1 (first in chain)
+  Set("rock") 
+  
+  #This block is a nested generator at depth 1  (second in chain)
+  Inside(1, {
+  
+	#This block is a #nested generator at depth 1
+    Place({3 3},
+      Reset("floor", "room_floor"), #Without the comma, this block is a nested generator at depth 2
+      6
+    )
+	
+	#This block is a #nested generator at depth 1
+    Connect(On("floor"),
+      5, On("rock"), Reset("floor")
+    )
+  })
+  
+  #nested generator at depth 1 (3rd in chain)
+  Place(
+    {1 1},
+    Set("monster"), #Without the comma, this block is a nested generator at depth 2
+    4,
+    On("room_floor") #This line is a nested generator at depth 2
+  )
+}
+
