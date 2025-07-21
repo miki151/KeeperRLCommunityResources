@@ -264,7 +264,7 @@
       invisible = true
       hiddenInHelp = true
       requirements = {
-		{ 0.0 TechId "goblin_lore" }
+		{ 0.0 TechId "goblin lore" }
       }
     }
     {
@@ -288,7 +288,7 @@
       frequency = 0.7
       requirements = {
         { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_WOOD"}}
-		{ 0.0 TechId "goblin_lore" }
+		{ 0.0 TechId "goblin lore" }
       }
       specialTraits = {
          { 0.01 { ExtraIntrinsicAttack
@@ -349,7 +349,7 @@
       requirements = {
         { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD" FurnitureType "LABORATORY"}}
         { 0.0 MinTurnRequirement 500 }
-		{ 0.0 TechId "goblin_lore" }
+		{ 0.0 TechId "goblin lore" }
       }
       specialTraits = {
          { 0.05 { AttrBonus LABORATORY 20 }}
@@ -364,7 +364,7 @@
       traits = { FIGHTER }
       requirements = {
         { 0.1 AttractionInfo 1 {FurnitureType "TRAINING_IRON"}}
-		{ 0.0 TechId "goblin_lore" }
+		{ 0.0 TechId "goblin lore" }
       }
       frequency = 0.2
       specialTraits = {
@@ -390,7 +390,7 @@
       ids = { "GOBLIN_ARCHER" }
       traits = { FIGHTER }
       requirements = {
-	    { 0.0 TechId "goblin_lore" }
+	    { 0.0 TechId "goblin lore" }
         { 0.1 AttractionInfo 1 {FurnitureType "ARCHERY_RANGE"}}
       }
       frequency = 0.4
@@ -415,7 +415,7 @@
       requirements = {
         { 0.1 AttractionInfo 1 {FurnitureType "BOOKCASE_WOOD"}}
         { 0.0 MinTurnRequirement 500 }
-		{ 0.0 TechId "goblin_lore" }
+		{ 0.0 TechId "goblin lore" }
       }
       frequency = 0.3
       specialTraits = {
@@ -433,7 +433,7 @@
       spawnLocation = Pregnancy
       requirements = {
         { 0.0 Pregnancy }
-		{ 0.0 TechId "goblin_lore" }
+		{ 0.0 TechId "goblin lore" }
       }
       frequency = 0.5
     }
@@ -444,7 +444,7 @@
       requirements = {
         { 0.0 Pregnancy }
         { 1.0 AttractionInfo 1 {FurnitureType "BOOKCASE_IRON"}}
-		{ 0.0 TechId "goblin_lore" }
+		{ 0.0 TechId "goblin lore" }
       }
       frequency = 0.5
     }
@@ -454,7 +454,7 @@
       spawnLocation = Pregnancy
       requirements = {
         { 0.0 Pregnancy }
-		{ 0.0 TechId "goblin_lore" }
+		{ 0.0 TechId "goblin lore" }
       }
       frequency = 0.5
     }
@@ -5111,17 +5111,19 @@ End
           specialTraits = {
              { 0.01 { ExtraBodyPart WING 2}}
           }
-        }		
-        {
-          ids = { "BONUS_ELEPHANT" }
-          traits = { FIGHTER }
-          frequency = 0.2
-		  consumeIds = true
-          initialRecruitment = 1
-          requirements = {
-            { 0.0 TechId "advanced sorcery" }
-          }
         }
+#Truth be told, I've no idea why we summon an Elephant one-off. 
+#Commenting it out for now and we can find a better place to have it show up (Illusia/fairy/orcwoods?). -CSeven.		
+        #{
+        #  ids = { "BONUS_ELEPHANT" }
+        #  traits = { FIGHTER }
+        #  frequency = 0.2
+		#  consumeIds = true
+        #  initialRecruitment = 1
+        #  requirements = {
+        #    { 0.0 TechId "advanced sorcery" }
+        #  }
+        #}
         {
           ids = { "BONUS_BENGAL_TIGER" }
           traits = { FIGHTER }
@@ -5132,16 +5134,17 @@ End
             { 0.0 AttractionInfo 1 { FurnitureType "PIGSTY" } } 
           }
         }
-        {
-          ids = { "BONUS_SPRITE" }
-          traits = { FIGHTER }
-          frequency = 0.2
-		  consumeIds = true
-          initialRecruitment = 1
-          requirements = {
-            { 0.0 TechId "alchemy" }
-          }
-        }
+#Church doesn't get alchemy either, so gonna need to find a new way to make sprites recruitable.
+#        {
+#          ids = { "BONUS_SPRITE" }
+#          traits = { FIGHTER }
+#          frequency = 0.2
+#		  consumeIds = true
+#          initialRecruitment = 1
+#          requirements = {
+#            { 0.0 TechId "alchemy" }
+#         }
+#        }
         {
           ids = { "BONUS_WARRIOR_HERO" "BONUS_THIEF_HERO" "BONUS_WIZARD_HERO" "BONUS_CLERIC_HERO" }
           traits = { FIGHTER }

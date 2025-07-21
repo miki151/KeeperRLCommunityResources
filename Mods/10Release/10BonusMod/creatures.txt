@@ -326,22 +326,22 @@
     modify append { deathEffect =   SetFlag   "advanced sorcery" true }
 
 "GOBLIN_SHAMAN"
-    modify append { deathEffect =   SetFlag   "goblin_lore" true }
+    modify append { deathEffect =   SetFlag   "goblin lore" true }
 "GOBLIN_WORKER"
-    modify append { deathEffect =   SetFlag   "goblin_lore" true }
+    modify append { deathEffect =   SetFlag   "goblin lore" true }
 "GOBLIN_MATRON"
-    modify append { deathEffect =   SetFlag   "goblin_lore" true }
+    modify append { deathEffect =   SetFlag   "goblin lore" true }
 "GOBLIN_WARRIOR"
-    modify append { deathEffect =   SetFlag   "goblin_lore" true }
+    modify append { deathEffect =   SetFlag   "goblin lore" true }
 "GOBLIN_WIZARD"
-    modify append { deathEffect =   SetFlag   "goblin_lore" true }
+    modify append { deathEffect =   SetFlag   "goblin lore" true }
 "GOBLIN_KABOOMER"
-    modify append { deathEffect =   SetFlag   "goblin_lore" true }
+    modify append { deathEffect =   SetFlag   "goblin lore" true }
 "GOBLIN_CHICKENMANCER"
-    modify append { deathEffect =   SetFlag   "goblin_lore" true }
+    modify append { deathEffect =   SetFlag   "goblin lore" true }
 
 "GNOME"
-    modify append { deathEffect =   SetFlag   "gnomish_lore" true }
+    modify append { deathEffect =   SetFlag   "automatons" true } #There is no "gnomish lore".
 
 "ZOMBIE"
     modify append { deathEffect =   SetFlag   "necromancy" true }
@@ -4577,7 +4577,7 @@ End
     spells = { "healing" "deception" "haste" "magic missile" "advanced magic missile" "dragon greeting" }
     hatedByEffect = HATE_DRAGONS
     inventory = {
-      { "GoldPiece" 60 100 }
+      { "GoldPiece" 120 200 }
       { type = Glyph { WEAPON VictimEffect 0.3 Lasting INSANITY } chance = 0.3 }
       { type = Glyph { ARMOR LastingEffect MAGIC_RESISTANCE } chance = 0.3 }
       { type = Glyph { ARMOR LastingEffect REGENERATION } chance = 0.3 }
@@ -4613,7 +4613,7 @@ End
         HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
             attackType = BITE
             attackMsg = BITE } }}}
-      }
+        }
       drops = {{ "BlackDragonScales" } 1}
       droppedPartUpgrade = Permanent TELEPATHY
       deathSound = "DYING_DRAGON"
@@ -4637,7 +4637,155 @@ End
       { "GoldPiece" 120 200 }
     }
     steedAchievement = "rode_dragon"
+	genderAlternatives = {
+        FEMALE { "red_dragon" Rgb 60 60 60 255 }
+	}
   }
+  
+  "WHITE_DRAGON_PLAYER"
+  {
+    viewId = { "red_dragon" Rgb 240 240 240 255 }
+    attr = {
+      DAMAGE 45
+      DEFENSE 47
+      COLD_DAMAGE 40
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+            attackType = BITE
+            attackMsg = BITE } }}}
+      }
+      drops = {{ "WhiteDragonScales" } 1}
+      deathSound = "DYING_DRAGON"
+    }
+    permanentEffects = {
+      RANGED_VULNERABILITY 1
+      COLD_IMMUNITY 1
+      STEED 1
+      CAPTURE_RESISTANCE 1
+      REGENERATION 1
+    }
+    name = {
+      name = "white dragon"
+      firstNameGen = "DRAGON"
+      stackName = "dragon"
+    }
+    spells = { "healing" "haste" "cure poison" "ice cone" "dragon greeting"}
+    hatedByEffect = HATE_DRAGONS
+    inventory = {
+      { "GoldPiece" 120 200 }
+    }
+    steedAchievement = "rode_dragon"
+	genderAlternatives = {
+        FEMALE { "red_dragon" Rgb 250 250 250 255 }
+	}
+}
+
+"RED_DRAGON_PLAYER"
+  {
+    viewId = { "red_dragon" }
+    attr = {
+      DAMAGE 45
+      DEFENSE 47
+      FIRE_DAMAGE 40
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 15 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.5 Fire{30}} } }}}
+      }
+      drops = { { "RedDragonScales" } 1}
+      droppedPartUpgrade = GrantAbility "fire breath"
+      deathSound = "DYING_DRAGON"
+    }
+    permanentEffects = {
+      FIRE_IMMUNITY 1
+      RANGED_VULNERABILITY 1
+      STEED 1
+      CAPTURE_RESISTANCE 1
+      REGENERATION 1
+    }
+    name = {
+      name = "red dragon"
+      firstNameGen = "DRAGON"
+      stackName = "dragon"
+    }
+    spells = { "healing" "deception" "haste" "cure poison" "fire breath" "fire trap" "dragon greeting" }
+    hatedByEffect = HATE_DRAGONS
+    inventory = {
+      { "GoldPiece" 120 200 }
+    }
+    steedAchievement = "rode_dragon"
+	genderAlternatives = {
+        FEMALE { "red_dragon" ColorId LIGHT_RED }
+	}
+  }
+  
+  "BONUS_BLUE_DRAGON_PLAYER"
+	{
+	viewId = { "red_dragon" Rgb 33 27 120 255 }
+    attr = {
+      DAMAGE 45
+      SPELL_DAMAGE 50
+      DEFENSE 47
+    }
+    body = {
+      type = FourLegged HUGE
+      corpseIngredientType = "dragon_corpse"
+      addBodyPart = {
+        WING 2
+      }
+      intrinsicAttacks = {
+        HEAD {{{ Intrinsic { "bite_attack" } "fangs" 12 {
+            attackType = BITE
+            attackMsg = BITE
+            victimEffect = {0.3 Lasting INSANITY} } }}}
+      }
+      deathSound = "DYING_DRAGON"
+	  drops = {{ "BlueDragonScales"} 1}
+	  droppedPartUpgrade = {Permanent INSANITY IncreaseAttr DAMAGE 10 IncreaseAttr DEFENSE 10 }
+    }
+    permanentEffects = {
+      MAGIC_RESISTANCE 1
+      RANGED_VULNERABILITY 1
+      STEED 1
+      REGENERATION 1
+    }
+	maxLevelIncrease = {
+		DAMAGE 7
+	}
+    name = {
+      name = "blue dragon"
+      stackName = "dragon"
+      firstNameGen = "DRAGON"
+    }
+    spells = { "healing" "deception" "haste" "magic missile" "advanced magic missile" "dragon greeting" }
+    hatedByEffect = HATE_DRAGONS
+    inventory = {
+      { "GoldPiece" 120 200 }
+    }
+	chatReactionFriendly = "\"Aal Lii Wah Lii Pah Lii Wah Gii\""
+	chatReactionHostile = "\"Fah Iiz!\""
+    steedAchievement = "rode_dragon"
+	
+	genderAlternatives = {
+        FEMALE { "red_dragon" ColorId SKY_BLUE }
+	  }
+	
+	}
   ###
  "BONUS_ZOMBIE_DRAGON"
     {
