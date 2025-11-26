@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 :: Set target folder
-set "TARGET_DIR=."
+set "TARGET_DIR=.\"
 set "NPP_DIR=%TARGET_DIR%\npp"
 
 :: URLs for the latest versions (as of 2025 — update if needed)
@@ -51,6 +51,7 @@ for /f "delims=" %%D in ('dir "%SOURCE_DIR%" /b /ad') do (
 echo Done! Git and Notepad++ have been extracted to:
 echo %NPP_DIR%
 
-start "" "%~dp0npp\notepad++.exe"
+Start %NPP_DIR%\Notepad++.exe
+erase %NPP_DIR%\Run.bat
 
 exit
