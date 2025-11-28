@@ -1,0 +1,168 @@
+"default" {
+  "floor" { Place "FLOOR" Flag EMPTY_ROOM }
+  "wood_floor" { Place "FLOOR" Place "FLOOR_WOOD1" Flag EMPTY_ROOM }
+  "stone_floor" { Place "FLOOR" Place "FLOOR_STONE1" Flag EMPTY_ROOM }
+  "set_territory" Flag EMPTY_ROOM
+  "no_territory" RemoveFlag EMPTY_ROOM
+  "resources" RemoveFlag NO_RESOURCES
+  "clear_furniture" ClearFurniture
+  "dining_table" Place "DINING_TABLE"
+  "rock" Place "MOUNTAIN"
+  "hard_rock" Place "MOUNTAIN2"
+  "water" { ClearFurniture Place "WATER"}
+  "underground_water" { ClearFurniture Place "UNDERGROUND_WATER"}
+  "mud_floor" { ClearFurniture Place "MUD_FLOOR" Flag EMPTY_ROOM}
+  "kraken_water" { ClearFurniture Place "KRAKEN_WATER"}
+  "enchanted_water" { ClearFurniture Place "ENCHANTED_WATER"}
+  "enchanted_workshop" { Place "ENCHANTED_WORKSHOP"}
+  "enchanted_lab" { Place "ENCHANTED_LABORATORY"}
+  "witch_cauldron" { Place "WITCH_LABORATORY"}
+  "lava" { ClearFurniture Place "MAGMA"}
+  "stockpile" Stockpile 0
+  "bed" Place "BED1"
+  "haypile" Place "HAYPILE"
+  "stable" Place "STABLE"
+  "wall" Place "WOOD_WALL"
+  "wood_wall" Place "WOOD_WALL"
+  "castle_wall" Place "CASTLE_WALL"
+  "archer_wall" Place "ARCHER_WALL"
+  "ruin_wall" Place "RUIN_WALL"
+  "wood_door" Place "WOOD_DOOR"
+  "wood_gate" Place "WOOD_GATE"
+  "hidden_door" Place "HIDDEN_CASTLE_DOOR"
+  "stone_bridge" Place "STONE_BRIDGE"
+  "wood_bridge" Place "BRIDGE"
+  "treasure_chest" Place "TREASURE_CHEST"
+  "adventurer_chest" Place "ADVENTURER_CHEST"
+  "iron_door" Place "IRON_DOOR"
+  "iron_gate" Place "IRON_GATE"
+  "iron_gate_blocking" Place "IRON_GATE_BLOCKING"
+  "iron_door_blocking" PlaceHostile "IRON_DOOR_BLOCKING"
+  "down_stairs0" Stairs DOWN "DOWN_STAIRS" 0
+  "up_stairs0" Stairs UP "UP_STAIRS" 0
+  "down_stairs1" Stairs DOWN "DOWN_STAIRS" 1
+  "up_stairs1" Stairs UP "UP_STAIRS" 1
+  "clear_middle" ClearLayer MIDDLE
+  "outside_furniture" OutsideFurniture
+  "inside_furniture" InsideFurniture
+  "loot_coffin" { Place "LOOT_COFFIN" Items "chest" Items "corpse" }
+  "armor_chest" { Place "CHEST" Items "armorChest" }
+  "pamphlet_chest" { Place "CHEST" Items "pamphlets" }
+  "knife_chest" { Place "ASSASSIN_CHEST" Items "assassinChest" }
+  "ada_chest" { Place "CHEST" Items "lakeChest" }
+  "weapon_rack" Place "WEAPON_RACK"
+  "swarmer_chest" { Place "CHEST" Items "swarmerChest" }
+  "blacksmith_chest" { Place "CHEST" Items "blacksmithChest" }
+  "zombie_chest" { Place "CHEST" Items "zombieChest" }
+  "torch" Place "GROUND_TORCH"
+  "throne" Place "THRONE"
+  "broken_throne" Place "BROKEN_THRONE"
+  "forge" Place "FORGE"
+  "lava_forge" Place "LAVA_FORGE"
+  "crops" Place "CROPS"
+  "scarecrow" Place "SCARECROW"
+  "corpse" Items "battle_corpse"
+  "wizard_corpse" Items "wizard_corpse"
+  "gnome_corpse" Items "gnome_corpse"
+  "automaton_parts" Items "automaton_parts"
+  "shop0" Shop 0
+  "fog" AddGas "FOG"
+  "spider_web" Place "SPIDER_WEB"
+  "connect" { RemoveFlag NO_DIG Flag CONNECT_CORRIDOR }
+  "no_dig" Flag NO_DIG
+  "prison_bars" PlaceHostile "PRISON_BARS"
+  "prison_door_unlocked" PlaceHostile "PRISON_DOOR"
+  "prison_door" PlaceHostile "PRISON_DOOR_LOCKED"
+  "prison" Place "PRISON"
+  "ant_worker" HostileCreature "ANT_WORKER"
+  "bat" PeacefulCreature "BAT"
+  "elf_archer" AlliedPrisoner "ELF_ARCHER"
+  "ghost_spawn" Place "GHOST_SPAWN"
+  "gargoyle" Place "GARGOYLE_TRAP"
+  "workshop" Place "WORKSHOP"
+  "special_tree" Place "SPECIAL_TREE"
+  "haunted_tree" Place "HAUNTED_TREE"
+  "haunted_tree2" Place "HAUNTED_TREE2"
+  "haunted_tree3" Place "HAUNTED_TREE3"
+  "haunted_tree4" Place "HAUNTED_TREE4"
+  "haunted_tree5" Place "HAUNTED_TREE5"
+  "haunted_tree6" Place "HAUNTED_TREE6"
+  "haunted_tree7" Place "HAUNTED_TREE7"
+  "haunted_tree8" Place "HAUNTED_TREE8"
+  "haunted_effigy" Place "HAUNTED_EFFIGY"
+  "haunted_effigy2" Place "HAUNTED_EFFIGY2"
+  "haunted_effigy3" Place "HAUNTED_EFFIGY3"
+}
+
+"z_level_hell" inherit "default" append {
+  "hard_rock" Place "HELL_MOUNTAIN"
+  "water" { ClearFurniture Place "MAGMA"}
+}
+
+"z_level_vampire_vault" inherit "default" append {
+  "bed" Place "COFFIN1"
+  "workshop" Place "BOOKCASE_WOOD"
+}
+
+"z_level_dwarf_vault" inherit "default" append {
+  "bed" Place "BED1"
+  "workshop" Place "FORGE"
+}
+
+"adoxie_feet_entry" inherit "default" append {
+  "adoxie_left_foot" Place "ADOXIE_LEFT_FOOT"
+  "adoxie_right_foot" Place "ADOXIE_RIGHT_FOOT"
+  "down_stairs0" Stairs DOWN "ADOXIE_FEET_ALTAR" 0
+  "castle_wall" Place "DUNGEON_WALL"
+}
+
+"adoxie_feet" inherit "default" append {
+  "prophet_remains" { Place "REMAINS_TABLE" Items "prophetRemains" }
+  "rock" Place "NECRO_WALL"
+  "castle_wall" Place "NECRO_WALL"
+  "floor" { Place "FLOOR" Place "FLOOR_STONE2" }
+  "adoxie_feet_trigger" Place "ADOXIE_FEET_TRIGGER"
+}
+
+"village" inherit "default" append {
+  "stone_floor" Chain { ClearFurniture Place "FLOOR" Place "FLOOR_WOOD1" Flag EMPTY_ROOM }
+  "castle_wall" Place "WOOD_WALL"
+}
+
+"black_market_entry" inherit "default" append {
+  "up_stairs1" Stairs UP "INACTIVE_PORTAL" 1
+}
+
+"guard_post_floor2" inherit "default" append {
+  "up_stairs0" Stairs UP "BOOKCASE_STAIRS" 0
+}
+
+"adoxie_temple" inherit "default" append {
+  "down_stairs0" Stairs DOWN "ADOXIE_STATUE_TEMPLE" 0
+}
+
+"blacksmith" inherit "default" append {
+  "down_stairs0" Stairs DOWN "FORGE_STAIRS" 0
+}
+
+"dragon" inherit "default" append {
+  "chest" { Place "NONFLAMMABLE_CHEST" Items "dragonChest" }
+}
+
+"z_level_castle" inherit "default" append {
+  "castle_wall" Place "DUNGEON_WALL2"
+  "archer_wall" Place "DUNGEON_WALL2"
+  "black_dragon_weapon" Items "blackDragonWeapons"
+}
+
+"adoxie_statue_under" inherit "default" append {
+  "trap" Place "BOULDER_TRAP"
+  "chest" { Place "CHEST" Items "armorChest" }
+  "scroll_chest" { Place "CHEST" Items "adoxieScroll" }
+}
+
+"thief_stable" inherit "default" append {
+  "mud_floor" { ClearFurniture Place "SAND_FLOOR" Flag EMPTY_ROOM}
+  "wood_wall" Place "SANDSTONE_WALL"
+  "castle_wall" Place "SANDSTONE_WALL"
+}

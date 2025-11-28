@@ -1,0 +1,102 @@
+"KNIGHTS" modify
+{
+ settlement = {
+    closeToPlayer = true
+    type = Builtin CEMETERY "INNER_MAP"
+    locationName = "Castle Grounds"
+    race = "undead"
+    tribe = MONSTER
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "KNIGHTS_INNER_MAP" {1} } {100 100} BASIC }
+   }
+ }
+}
+
+"KNIGHTS_INNER_MAP"
+{
+  settlement = {
+    type = RandomLayout { "castle_grounds" { 94 94 95 95 } "default"}
+    tribe = HUMAN
+    inhabitants = {
+      leader = { { "DUKE" } }
+      fighters = {
+        count = {12 17}
+        all = {
+          1 "PRIEST"
+          3 "KNIGHT"
+          1 "ARCHER"
+        }
+      }
+      civilians = {
+        count = {6 9}
+        uniques = { "FATHER_OBLIVION" }
+        all = {
+          1 "PESEANT"
+          1 "PESEANT_F"
+          2 "CHILD"
+          2 "DONKEY"
+          2 "COW"
+          1 "DOG"
+          2 "PIG"
+       }
+      }
+      steeds = {
+        all = { 1 "WARHORSE" }
+      }
+    }
+    locationNameGen = "TOWN"
+    race = ENEMIES_KNIGHTS_RACE
+    stockpiles = {{ "gold" 140 "TREASURE_CHEST" }}
+    shopItems = {{8 16} "villageShop" }
+    furniture = "castleFurniture"
+    outsideFeatures = "castleOutside"
+  }
+  config = {
+    immigrantInterval = 300
+    maxPopulation = 36
+    ghostProb = 0.1
+    spawnGhosts = 6
+    alwaysMount = true
+    prisoners = true
+  }
+  behaviour = {
+    duelChance = 1.0
+    minPopulation = 7
+    minTeamSize = 10
+    ambushChance = 0.05
+    triggers = {
+      RoomTrigger "THRONE" 0.0003
+      RoomTrigger "THRONE_HUMAN" 0.0003
+      RoomTrigger "IMPALED_HEAD" 0.0001
+      SelfVictims
+      NumConquered 3
+      StolenItems
+      FinishOff
+      Proximity
+      AggravatingMinions
+    }
+    attackBehaviour = KillLeader
+    ransom = 0.9 400
+  }
+  immigrants = {
+    {
+      ids = {"ARCHER"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+    {
+      ids = {"KNIGHT"}
+      traits = {FIGHTER}
+      frequency = 1
+    }
+  }
+  levelConnection = {
+    topLevel = MainEnemy
+    levels = {
+      { ExtraEnemy { "MINOTAUR" { 1 2 } } {40 40} MAZE }
+    }
+  }
+}

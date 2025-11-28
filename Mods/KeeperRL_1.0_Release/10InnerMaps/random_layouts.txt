@@ -1,0 +1,12 @@
+"castle_grounds" {
+  Reset("forest")
+  Position(MIDDLE, {40 40}, CellularAutomaton(Reset("grass"), 0.75))
+  Position(MIDDLE, {30 30}, { CellularAutomaton(Reset("water"), 1) Position(TOP_CENTER, {2 8},Reset("stone_bridge") ) } )
+  Position(MIDDLE, {22 22}, Reset("hill"))
+  Position(MIDDLE, {20 20}, {Choose(Castle(2), Castle(3))})
+  Remove("up_stairs0")
+  Position(TOP_CENTER, {10 30}, { Reset("grass") Place({1 1}, Set("torch"), 30)} )
+  Position(TOP_CENTER, {2 30}, { Reset("floor") Set("no_territory") } )
+  Position(TOP_CENTER, {93 1}, Reset("rock"))
+  Position(TOP_CENTER, {1 1}, Set("exit") )
+}

@@ -1,0 +1,2682 @@
+"TRAINING_WOOD"
+{
+  name = FURNITURE_TRAINING_WOOD_NAME
+  viewId = { "training_wood" }
+  blockMovement = true
+  usageType = BuiltinUsageId TRAIN
+  fire = 50
+  canHideHere = true
+  strength = 80
+  maxTraining = {
+    DAMAGE 3
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"TRAINING_IRON"
+{
+  name = FURNITURE_TRAINING_IRON_NAME
+  viewId = { "training_iron" }
+  blockMovement = true
+  usageType = BuiltinUsageId TRAIN
+  canHideHere = true
+  strength = 80
+  upgrade = "TRAINING_WOOD"
+  maxTraining = {
+    DAMAGE 7
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"TRAINING_ADA"
+{
+  name = FURNITURE_TRAINING_ADA_NAME
+  viewId = { "training_ada" }
+  blockMovement = true
+  usageType = BuiltinUsageId TRAIN
+  canHideHere = true
+  strength = 80
+  upgrade = "TRAINING_IRON"
+  maxTraining = {
+    DAMAGE 99
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+Def TRAINING(SUF1, SUF2)
+"TRAINING_WOOD" + SUF1 inherit "TRAINING_WOOD" { viewId = { "training_wood" + SUF2 } }
+"TRAINING_IRON" + SUF1 inherit "TRAINING_IRON" { viewId = { "training_iron" + SUF2 } upgrade = "TRAINING_WOOD" + SUF1 }
+"TRAINING_ADA" + SUF1 inherit "TRAINING_ADA" { viewId = { "training_ada" + SUF2 } upgrade = "TRAINING_IRON" + SUF1 }
+End
+TRAINING("_HUMAN", "_human")
+TRAINING("_NECRO", "_necro")
+TRAINING("_DWARF", "_dwarf")
+"ARCHERY_RANGE"
+{
+  name = FURNITURE_ARCHERY_RANGE_NAME
+  viewId = { "archery_range" }
+  blockMovement = true
+  noProjectiles = true
+  usageType = BuiltinUsageId ARCHERY_RANGE
+  canHideHere = true
+  strength = 80
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  canBuildOutsideOfTerritory = true
+}
+"WORKSHOP"
+{
+  name = FURNITURE_WORKSHOP_NAME
+  viewId = { "workshop" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 80
+  requiresLight = true
+  usageFX = WORKSHOP
+  usageSound = {"WORKSHOP_USAGE" 0.2}
+}
+"ENCHANTED_WORKSHOP" inherit "WORKSHOP"
+{
+  name = FURNITURE_WORKSHOP_NAME1
+  viewId = { "enchanted_workshop" }
+  usagePredicate = Not Area 1 Not FurnitureType "ENCHANTED_WATER"
+}
+"WORKSHOP_TOOL_STAND"
+{
+  name = FURNITURE_WORKSHOP_TOOL_STAND_NAME
+  viewId = { "workshop_tool_stand" }
+  blockMovement = true
+  canHideHere = true
+  fire = 50
+  strength = 80
+  workshopSpeedBoost = {
+    1.2 "WORKSHOP"
+    1.2 "ENCHANTED_WORKSHOP"
+  }
+}
+"FORGE"
+{
+  name = FURNITURE_FORGE_NAME
+  viewId = { "forge" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  strength = 80
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  usageFX = FORGE
+  usageSound = {"FORGE_USAGE" 0.2}
+}
+"LAVA_FORGE" inherit "FORGE"
+{
+  name = FURNITURE_FORGE_NAME1
+  viewId = { "lava_forge" }
+  usagePredicate = Not Area 1 Not FurnitureType "MAGMA"
+  upgrade = "FORGE"
+}
+"FORGE_QUENCHING_BUCKET"
+{
+  name = FURNITURE_FORGE_QUENCHING_BUCKET_NAME
+  viewId = { "forge_quenching_bucket" }
+  blockMovement = true
+  canHideHere = true
+  strength = 80
+  workshopSpeedBoost = {
+    1.2 "FORGE"
+    1.2 "LAVA_FORGE"
+  }
+}
+"LABORATORY"
+{
+  name = FURNITURE_LABORATORY_NAME
+  viewId = { "cauldron" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  strength = 80
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  usageFX = LABORATORY
+  usageSound = {"LABORATORY_USAGE" 0.2}
+}
+"ENCHANTED_LABORATORY" inherit "LABORATORY"
+{
+  name = FURNITURE_LABORATORY_NAME1
+  viewId = { "enchanted_cauldron" }
+  usageFX = ENCHANTED_LABORATORY
+  usagePredicate = Not Area 1 Not FurnitureType "ENCHANTED_WATER"
+  upgrade = "LABORATORY"
+}
+"WITCH_LABORATORY" inherit "LABORATORY"
+{
+  name = FURNITURE_WITCH_LAB_NAME
+  viewId = { "cauldron_empty" }
+}
+"MORTAR_AND_PESTLE"
+{
+  name = FURNITURE_MORTAR_AND_PESTLE_NAME
+  viewId = { "mortar_and_pestle" }
+  blockMovement = true
+  canHideHere = true
+  fire = 50
+  strength = 80
+  workshopSpeedBoost = {
+    1.2 "LABORATORY"
+    1.2 "ENCHANTED_LABORATORY"
+  }
+}
+"CAULDRON_TAR"
+{
+  name = FURNITURE_CAULDRON_TAR_NAME
+  viewId = { "cauldron_tar" }
+  blockMovement = true
+  canHideHere = true
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"JEWELLER"
+{
+  name = FURNITURE_JEWELLER_NAME
+  viewId = { "jeweller" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 40
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  usageFX = JEWELLER
+}
+"LAVA_JEWELLER" inherit "JEWELLER"
+{
+  name = FURNITURE_JEWELLER_NAME1
+  viewId = { "lava_jeweller" }
+  usageFX = LAVA_JEWELLER
+  usagePredicate = Not Area 1 Not FurnitureType "MAGMA"
+  upgrade = "JEWELLER"
+  fire = none
+}
+"JEWELLER_POLISHING_WHEEL"
+{
+  name = FURNITURE_JEWELLER_POLISHING_WHEEL_NAME
+  viewId = { "jeweller_polishing_wheel" }
+  blockMovement = true
+  canHideHere = true
+  strength = 80
+  workshopSpeedBoost = {
+    1.2 "JEWELER"
+    1.2 "LAVA_JEWELER"
+  }
+}
+"MORGUE_TABLE"
+{
+  name = FURNITURE_MORGUE_TABLE_NAME
+  viewId = { "morgue_table" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 50
+  strength = 80
+  requiresLight = true
+  usageFX = EMBALMENT
+}
+"MORGUE_INSTRUMENT_TABLE"
+{
+  name = FURNITURE_MORGUE_INSTRUMENT_TABLE_NAME
+  viewId = { "morgue_instrument_table" }
+  blockMovement = true
+  canHideHere = true
+  strength = 80
+  workshopSpeedBoost = {
+    1.2 "MORGUE"
+  }
+}
+"POETRY_TABLE" inherit "JEWELLER"
+{
+  name = FURNITURE_JEWELLER_NAME2
+  viewId = { "poetry_table" }
+  usageFX = none
+}
+"DINING_TABLE" inherit "JEWELLER"
+{
+  viewId = { "dining_table" }
+  name = FURNITURE_JEWELLER_NAME3
+  usageFX = none
+  diningFurniture = DINING_TABLE
+  usageType = UsageEffect FURNITURE_JEWELLER_USAGETYPE Filter Humanoid {
+    CreatureMessage { FURNITURE_JEWELLER_SECONDPERSON FURNITURE_JEWELLER_THIRDPERSON}
+    Lasting SATIATED
+  }
+}
+"HAYPILE"
+{
+  viewId = { "haypile" }
+  name = FURNITURE_HAYPILE_NAME
+  #blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  fire = 100
+  strength = 10
+  destroyFX = { DESTROY_FURNITURE Rgb 200 200 0 255 }
+  diningFurniture = HAYPILE
+  usageType = UsageEffect FURNITURE_HAYPILE_USAGETYPE Filter Not Humanoid {
+    CreatureMessage { FURNITURE_HAYPILE_SECONDPERSON FURNITURE_HAYPILE_THIRDPERSON}
+    Lasting SATIATED
+  }
+}
+"DISTILLERY"
+{
+  name = FURNITURE_DISTILLERY_NAME
+  viewId = { "distillery" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  strength = 100
+  usageType = UsageEffect FURNITURE_DISTILLERY_USAGETYPE {
+    Chance 0.02 DropItems {"Moonshine"} {1}
+    Chance 0.005 SummonEnemy "RAT" {1 4} none
+  }
+}
+"FURNACE"
+{
+  name = FURNITURE_FURNACE_NAME
+  viewId = { "furnace" }
+  blockMovement = true
+  usageTime = 5
+  canHideHere = true
+  strength = 100
+  lightEmission = 4.2
+}
+"BOOKCASE_WOOD"
+{
+  name = FURNITURE_BOOKCASE_WOOD_NAME
+  viewId = { "bookcase_wood" }
+  blockMovement = true
+  usageType = BuiltinUsageId STUDY
+  usageTime = 5
+  canHideHere = true
+  fire = 70
+  strength = 50
+  maxTraining = {
+    SPELL_DAMAGE 3
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"BOOKCASE_IRON"
+{
+  name = FURNITURE_BOOKCASE_IRON_NAME
+  viewId = { "bookcase_iron" }
+  blockMovement = true
+  usageType = BuiltinUsageId STUDY
+  usageTime = 5
+  canHideHere = true
+  fire = 70
+  strength = 50
+  upgrade = "BOOKCASE_WOOD"
+  maxTraining = {
+    SPELL_DAMAGE 7
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"BOOKCASE_GOLD"
+{
+  name = FURNITURE_BOOKCASE_GOLD_NAME
+  viewId = { "bookcase_gold" }
+  blockMovement = true
+  usageType = BuiltinUsageId STUDY
+  usageTime = 5
+  canHideHere = true
+  fire = 70
+  strength = 50
+  upgrade = "BOOKCASE_IRON"
+  maxTraining = {
+    SPELL_DAMAGE 99
+  }
+  requiresLight = true
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+Def BOOKCASES(SUF1, SUF2)
+"BOOKCASE_WOOD" + SUF1 inherit "BOOKCASE_WOOD" { viewId = { "bookcase_wood" + SUF2 } }
+"BOOKCASE_IRON" + SUF1 inherit "BOOKCASE_IRON" { viewId = { "bookcase_iron" + SUF2 } upgrade = "BOOKCASE_WOOD" + SUF1 }
+"BOOKCASE_GOLD" + SUF1 inherit "BOOKCASE_GOLD" { viewId = { "bookcase_gold" + SUF2 } upgrade = "BOOKCASE_IRON" + SUF1 }
+End
+BOOKCASES("_NECRO", "_necro")
+BOOKCASES("_HUMAN", "_human")
+
+"SCRIPTORIUM" inherit "POETRY_TABLE"
+{
+  name = FURNITURE_POETRY_TABLE_NAME
+  viewId = { "scriptorium" }
+  usageFX = none
+}
+"SCRIPTORIUM_HOLY_TOKEN"
+{
+  name = FURNITURE_SCRIPTORIUM_HOLY_TOKEN_NAME
+  viewId = { "scriptorium_holy_token" }
+  blockMovement = true
+  canHideHere = true
+  strength = 80
+  fire = 30
+  workshopSpeedBoost = {
+    1.2 "SCRIPTORIUM"
+  }
+}
+"ROSTRUM_WOOD"
+{
+  name = FURNITURE_ROSTRUM_WOOD_NAME
+  viewId = { "rostrum_wood" }
+  canHideHere = true
+  usageType = UsageEffect FURNITURE_ROSTRUM_WOOD_USAGETYPE {
+     FirstSuccessful {
+       Filter EquipedIngredient "adoxie_prayer" {
+         SoundEffect { "black_mass" }
+         Area 1 EmitGas "BLACK_MASS_SMOKE" 10
+         ChooseRandom {
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID1
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID2
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID3
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID4
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID5
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID6
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID7
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID8
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID9
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID10
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID11
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID12
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID13
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID14
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID15
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID16
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID17
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID18
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID19
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID20
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID21
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID22
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID23
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID24
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID25
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID26
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID27
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID28
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID29
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID30
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID31
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID32
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID33
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID34
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID35
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID36
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID37
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID38
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID39
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_ID40
+         }
+       }
+       {
+         SoundEffect { "latin_mass" }
+         Area 6 Filter DistanceD none 6 Chance 0.2 Fx { MASS Rgb 100 100 255 100 }
+         ChooseRandom {
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR1
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR2
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR3
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR4
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR5
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR6
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR7
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR8
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR9
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR10
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR11
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR12
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR13
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR14
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR15
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR16
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR17
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR18
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR19
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR20
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR21
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR22
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR23
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR24
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR25
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR26
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR27
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR28
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR29
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR30
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR31
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR32
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR33
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR34
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR35
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR36
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR37
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR38
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR39
+           Message NORMAL FURNITURE_ROSTRUM_WOOD_COLOR40
+         }
+       }
+     }
+    Filter Not LastingEffect PREACHING Lasting 200 PREACHING
+  }
+  strength = 5
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"ROSTRUM_IRON" inherit "ROSTRUM_WOOD"
+{
+  name = FURNITURE_ROSTRUM_WOOD_NAME1
+  viewId = { "rostrum_iron" }
+  strength = 20
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"ROSTRUM_GOLD" inherit "ROSTRUM_WOOD"
+{
+  name = FURNITURE_ROSTRUM_WOOD_NAME2
+  viewId = { "rostrum_gold" }
+  strength = 20
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"PEW_WOOD"
+{
+  name = FURNITURE_PEW_WOOD_NAME
+  viewId = { "pew_wood" }
+  canHideHere = true
+  usageType = UsageEffect FURNITURE_PEW_WOOD_USAGETYPE {
+    Filter LastingEffect DRUNK {
+      CreatureMessage { FURNITURE_PEW_WOOD_SECONDPERSON FURNITURE_PEW_WOOD_THIRDPERSON }
+      Lasting SLEEP
+    }
+  }
+  strength = 5
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"PEW_IRON" inherit "PEW_WOOD"
+{
+  viewId = { "pew_iron" }
+  name = FURNITURE_PEW_WOOD_NAME1
+  upgrade = "PEW_WOOD"
+  strength = 20
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"PEW_GOLD" inherit "PEW_WOOD"
+{
+  viewId = { "pew_gold" }
+  name = FURNITURE_PEW_WOOD_NAME2
+  upgrade = "PEW_IRON"
+  strength = 20
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"PRAYER_BENCH_WOOD"
+{
+  name = FURNITURE_PRAYER_BENCH_WOOD_NAME
+  viewId = { "prayer_bench_wood" }
+  canHideHere = true
+  usageType = BuiltinUsageId PRAY
+  maxTraining = {
+    DIVINITY 3
+  }
+  strength = 5
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"PRAYER_BENCH_IRON" inherit "PRAYER_BENCH_WOOD"
+{
+  name = FURNITURE_PRAYER_BENCH_WOOD_NAME1
+  viewId = { "prayer_bench_iron" }
+  upgrade = "PRAYER_BENCH_WOOD"
+  maxTraining = {
+    DIVINITY 7
+  }
+  strength = 15
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"PRAYER_BENCH_GOLD" inherit "PRAYER_BENCH_WOOD"
+{
+  name = FURNITURE_PRAYER_BENCH_WOOD_NAME2
+  viewId = { "prayer_bench_gold" }
+  upgrade = "PRAYER_BENCH_IRON"
+  maxTraining = {
+    DIVINITY 99
+  }
+  strength = 15
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"CONFESSIONAL"
+{
+  name = FURNITURE_CONFESSIONAL_NAME
+  viewId = { "confessional" }
+  canHideHere = true
+  usageType = UsageEffect FURNITURE_CONFESSIONAL_USAGETYPE Filter And {
+    Not FurnitureType "CONFESSIONAL"
+    Not Area 1 Not And {
+      LastingEffect CONFESSING_SKILL
+      FurnitureType "CONFESSIONAL"
+    }
+  } {
+    Filter LastingEffect SINNED {
+      RemoveLasting SINNED
+      CollectiveMessage FURNITURE_CONFESSIONAL_USAGETYPE1
+      Filter ExperienceBelow 5 {
+        AddExperience 1
+        CollectiveMessage FURNITURE_CONFESSIONAL_USAGETYPE2
+      }
+    }
+  }
+  strength = 15
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"LUXURIOUS_CONFESSIONAL" inherit "CONFESSIONAL"
+{
+  name = FURNITURE_CONFESSIONAL_NAME1
+  viewId = { "luxurious_confessional" }
+  usageType = UsageEffect FURNITURE_CONFESSIONAL_USAGETYPE Filter And {
+    Not FurnitureType "LUXURIOUS_CONFESSIONAL"
+    Not Area 1 Not And {
+      LastingEffect CONFESSING_SKILL
+      FurnitureType "LUXURIOUS_CONFESSIONAL"
+    }
+  } {
+    Filter LastingEffect MORTAL_SINNED {
+      RemovePermanent MORTAL_SINNED
+      Achievement "mortal_sin"
+      CollectiveMessage FURNITURE_CONFESSIONAL_USAGETYPE3
+      Filter ExperienceBelow 20 {
+        AddExperience 3
+        CollectiveMessage FURNITURE_CONFESSIONAL_USAGETYPE2
+      }
+    }
+  }
+  strength = 35
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"THRONE"
+{
+  name = FURNITURE_THRONE_NAME
+  viewId = { "throne" }
+  canHideHere = true
+  usageType = UsageEffect FURNITURE_THRONE_USAGETYPE { CreatureMessage { FURNITURE_THRONE_SECONDPERSON FURNITURE_THRONE_THIRDPERSON } Audience none }
+  luxury = 1.0
+  strength = 80
+  populationIncrease = { 10 none }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"THRONE_HUMAN" inherit "THRONE"
+{
+  viewId = { "throne_human" }
+}
+"BROKEN_THRONE" inherit "THRONE"
+{
+  name = FURNITURE_THRONE_NAME1
+  usageType = UsageEffect FURNITURE_THRONE_USAGETYPE {
+    CreatureMessage { FURNITURE_THRONE_SECONDPERSON FURNITURE_THRONE_THIRDPERSON }
+    SummonEnemy "GOBLIN_WARRIOR" {3 5} none
+    RemoveFurniture "BROKEN_THRONE"
+  }
+  populationIncrease = { 0 none }
+}
+"IMPALED_HEAD"
+{
+  name = FURNITURE_IMPALED_HEAD_NAME
+  viewId = { "impaled_head" }
+  strength = 10
+  destroyFX = { DESTROY_FURNITURE ColorId WHITE }
+  canBuildOutsideOfTerritory = true
+}
+
+Def BedHeal() Heal { FLESH 0.005 } End
+
+"BEAST_CAGE"
+{
+  name = FURNITURE_BEAST_CAGE_NAME
+  viewId = { "beast_cage" }
+  usageType = UsageEffect FURNITURE_BEAST_CAGE_USAGETYPE Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  fire = 50
+  strength = 40
+  bedType = CAGE
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"BED1"
+{
+  name = FURNITURE_BED1_NAME
+  viewId = { "bed1" }
+  usageType = UsageEffect FURNITURE_BED1_USAGETYPE Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  fire = 50
+  strength = 40
+  bedType = BED
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"BED2"
+{
+  name = FURNITURE_BED2_NAME
+  viewId = { "bed2" }
+  usageType = UsageEffect FURNITURE_BED2_USAGETYPE Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  fire = 50
+  luxury = 0.3
+  strength = 40
+  upgrade = "BED1"
+  bedType = BED
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"BED3"
+{
+  name = FURNITURE_BED3_NAME
+  viewId = { "bed3" }
+  usageType = UsageEffect FURNITURE_BED3_USAGETYPE Lasting SLEEP
+  tickType = Effect BedHeal()
+  canHideHere = true
+  luxury = 0.7
+  fire = 50
+  strength = 40
+  upgrade = "BED2"
+  bedType = BED
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"GRAVE"
+{
+  name = FURNITURE_GRAVE_NAME
+  viewId = { "grave" }
+  canHideHere = true
+  tickType = Effect BedHeal()
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+  storageIds = {"corpses"}
+}
+"AUTOMATON_ENGINE_WOOD"
+{
+  name = FURNITURE_AUTOMATON_ENGINE_WOOD_NAME
+  viewId = { "automaton_engine" Rgb 180 140 55 255 }
+  canHideHere = true
+  strength = 50
+  blockMovement = true
+  populationIncrease = { 1 8 }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"AUTOMATON_ENGINE_IRON"
+{
+  name = FURNITURE_AUTOMATON_ENGINE_IRON_NAME
+  viewId = { "automaton_engine" Rgb 140 148 148 255 }
+  canHideHere = true
+  strength = 50
+  blockMovement = true
+  populationIncrease = { 1 24 }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"AUTOMATON_ENGINE_ADA"
+{
+  name = FURNITURE_AUTOMATON_ENGINE_ADA_NAME
+  viewId = { "automaton_engine" Rgb 148 189 189 255 }
+  canHideHere = true
+  strength = 50
+  blockMovement = true
+  populationIncrease = { 1 none }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"DEMON_SHRINE"
+{
+  name = FURNITURE_DEMON_SHRINE_NAME
+  viewId = { "demon_shrine" }
+  blockMovement = true
+  usageTime = 5
+  usageType = BuiltinUsageId DEMON_RITUAL
+  luxury = 0.4
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"ANGEL_SHRINE" inherit "DEMON_SHRINE"
+{
+  name = FURNITURE_DEMON_SHRINE_NAME1
+  viewId = { "angel_shrine" }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"PRISON"
+{
+  name = FURNITURE_PRISON_NAME
+  viewId = { "prison" }
+  tickType = Effect BedHeal()
+  usageType = UsageEffect FURNITURE_PRISON_USAGETYPE Lasting SLEEP
+  bedType = PRISON
+  layer = FLOOR
+}
+"PRISON_BARS"
+{
+  name = FURNITURE_PRISON_BARS_NAME
+  viewId = { "prison_bars" }
+  blockMovement = true
+  strength = 160
+  wall = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"PRISON_DOOR"
+{
+  name = FURNITURE_PRISON_DOOR_NAME
+  viewId = { "prison_door_ew" }
+  movementSet = {
+    traits = { WALK }
+    blockingEnemies = true
+    blockingPrisoners = true
+  }
+  canHideHere = true
+  blockAllVision = true
+  strength = 80
+  requiredSupport = { { { E W } } { { N S } {"prison_door_ns"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"PRISON_DOOR_LOCKED" inherit "PRISON_DOOR"
+{
+  movementSet = {}
+}
+"ANIMAL_FENCE"
+{
+  name = FURNITURE_ANIMAL_FENCE_NAME
+  viewId = { "fence" }
+  movementSet = {
+    traits = { WALK }
+    blockingFarmAnimals = true
+  }
+  strength = 10
+  wall = true
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"AUTOMATON_STORAGE"
+{
+  name = FURNITURE_AUTOMATON_STORAGE_NAME
+  viewId = { "automaton_storage" }
+  emptyViewId = { "automaton_storage_empty" }
+  canHideHere = true
+  fire = 50
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"automaton_parts"}
+  hidesItems = true
+}
+"JEWELLERY_STORAGE"
+{
+  name = FURNITURE_JEWELLERY_STORAGE_NAME
+  viewId = { "jewelry_storage" }
+  emptyViewId = { "jewelry_storage_empty" }
+  canHideHere = true
+  fire = 50
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"jewellery"}
+  hidesItems = true
+}
+"BOOK_STORAGE"
+{
+  name = FURNITURE_BOOK_STORAGE_NAME
+  viewId = { "prayer_book_storage" }
+  emptyViewId = { "prayer_book_storage_empty" }
+  canHideHere = true
+  fire = 50
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"books"}
+  hidesItems = true
+}
+"ARMOR_RACK"
+{
+  name = FURNITURE_ARMOR_RACK_NAME
+  viewId = { "armor_rack" }
+  emptyViewId = { "armor_rack_empty" }
+  canHideHere = true
+  fire = 50
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"armor"}
+  hidesItems = true
+}
+"WEAPON_RACK"
+{
+  name = FURNITURE_WEAPON_RACK_NAME
+  viewId = { "weapon_rack" }
+  emptyViewId = { "weapon_rack_empty" }
+  canHideHere = true
+  fire = 50
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"weapons"}
+  hidesItems = true
+}
+"BOW_RACK" inherit "WEAPON_RACK"
+{
+  name = FURNITURE_WEAPON_RACK_NAME1
+  viewId = { "bow_rack" }
+  emptyViewId = { "bow_rack_empty" }
+  storageIds = {"bows"}
+}
+"SCROLL_STORAGE"
+{
+  name = FURNITURE_SCROLL_STORAGE_NAME
+  viewId = { "scroll_storage" }
+  emptyViewId = { "scroll_storage_empty" }
+  canHideHere = true
+  fire = 50
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"scrolls"}
+  hidesItems = true
+}
+"POTION_STORAGE"
+{
+  name = FURNITURE_POTION_STORAGE_NAME
+  viewId = { "potion_storage" }
+  emptyViewId = { "potion_storage_empty" }
+  canHideHere = true
+  fire = 50
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"potions"}
+  hidesItems = true
+}
+"TREASURE_CHEST"
+{
+  name = FURNITURE_TREASURE_CHEST_NAME
+  viewId = { "treasurechest" }
+  emptyViewId = { "treasurechest_empty" }
+  canHideHere = true
+  fire = 50
+  luxury = 0.4
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"gold"}
+  hidesItems = true
+}
+"ADVENTURER_CHEST"
+{
+  name = FURNITURE_ADVENTURER_CHEST_NAME
+  viewId = { "chest" }
+  emptyViewId = { "treasurechest_empty" }
+  canHideHere = true
+  fire = 50
+  luxury = 0.4
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+  storageIds = {"equipment" "gold"}
+  hidesItems = true
+}
+"EYEBALL"
+{
+  name = FURNITURE_EYEBALL_NAME
+  viewId = { "eyeball" }
+  blockMovement = true
+  canHideHere = true
+  lightEmission = 8.2
+  strength = 30
+  canBuildOutsideOfTerritory = true
+  eyeball = true
+}
+"WHIPPING_POST"
+{
+  name = FURNITURE_WHIPPING_POST_NAME
+  viewId = { "whipping_post" }
+  usageType = BuiltinUsageId TIE_UP
+  fire = 30
+  strength = 30
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"GALLOWS"
+{
+  name = FURNITURE_GALLOWS_NAME
+  viewId = { "gallows" }
+  usageType = BuiltinUsageId TIE_UP
+  fire = 30
+  strength = 30
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"PHYLACTERY"
+{
+  name = FURNITURE_PHYLACTERY_NAME
+  viewId = { "phylactery" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 1.0
+  strength = 200
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  usageType = UsageEffect FURNITURE_PHYLACTERY_USAGETYPE {
+    Area 1
+    Filter And { FurnitureType "PHYLACTERY" Not Flag "tmp" } {
+      PlaceFurniture "PHYLACTERY_ACTIVE"
+      SetPhylactery
+      SetFlag "tmp" true
+    }
+    SetFlag "tmp" false
+  }
+}
+"PHYLACTERY_ACTIVE" inherit "PHYLACTERY"
+{
+  usageType = none
+  name = FURNITURE_PHYLACTERY_NAME1
+  viewId = { "phylactery_active" }
+}
+"MINION_STATUE"
+{
+  name = FURNITURE_MINION_STATUE_NAME
+  viewId = { "minion_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.7
+  strength = 50
+  populationIncrease = { 1 none }
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"STONE_MINION_STATUE"
+{
+  name = FURNITURE_STONE_MINION_STATUE_NAME
+  viewId = { "stone_minion_statue" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 50
+  populationIncrease = { 1 4 }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"SAINT_STATUE" inherit "MINION_STATUE"
+{
+  onBuilt = SAINT_STATUE
+  viewId = { "saint_statue" }
+}
+"STONE_SAINT_STATUE" inherit "STONE_MINION_STATUE"
+{
+  onBuilt = SAINT_STATUE
+  viewId = { "stone_saint_statue" }
+}
+"CORPSE_DISPLAY1"
+{
+  name = FURNITURE_CORPSE_DISPLAY1_NAME
+  viewId = { "corpse_display1" }
+  blockMovement = true
+  canHideHere = true
+  luxury = 0.3
+  strength = 10
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"CORPSE_DISPLAY2" inherit "CORPSE_DISPLAY1"
+{
+  viewId = { "corpse_display2" }
+}
+"ADOXIE_STATUE_TEMPLE"
+{
+  name = FURNITURE_ADOXIE_STATUE_TEMPLE_NAME
+  viewId = { "adoxie_statue" }
+  blockMovement = true
+  luxury = 0.7
+  strength = 250
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+# if there is a destroyedEffect then the standard "is destroyed" text is not displayed, you need to add your own
+  destroyedRemains = "DOWN_STAIRS"
+  destroyedEffect = {
+    Message NORMAL FURNITURE_ADOXIE_STATUE_TEMPLE_DESTROYEDEFFECT
+    Analytics "milestone" "adoxieTempleStatue"
+  }
+}
+"ADOXIE_STATUE_VAULT" inherit "ADOXIE_STATUE_TEMPLE"
+{
+  destroyedEffect = {
+    Message NORMAL FURNITURE_ADOXIE_STATUE_TEMPLE_DESTROYEDEFFECT
+    Analytics "milestone" "adoxieVaultStatue"
+  }
+}
+"ADOXIE_STATUE" inherit "ADOXIE_STATUE_TEMPLE"
+{
+  destroyedEffect = {
+    Message HIGH FURNITURE_ADOXIE_STATUE_TEMPLE_DESTROYEDEFFECT1
+    SummonEnemy "ADOXIE_HEAD" {1} none
+    Analytics "milestone" "adoxieComesToLife"
+  }
+  destroyedRemains = "DOWN_STAIRS_ADOXIE"
+}
+"ADOXIE_LEFT_FOOT"
+{
+  name = FURNITURE_ADOXIE_LEFT_FOOT_NAME
+  viewId = { "adoxie_foot_statue_left" }
+  blockMovement = true
+  tickType = Effect
+    Filter Flag "adoxie_left_foot_trigger" {
+      RemoveFurniture "ADOXIE_LEFT_FOOT"
+      SummonEnemy "ADOXIE_FOOT_LEFT_TRAP" {1} none
+      SetFlag "adoxie_left_foot_trigger" false
+    }
+}
+"ADOXIE_RIGHT_FOOT" inherit "ADOXIE_LEFT_FOOT"
+{
+  name = FURNITURE_ADOXIE_LEFT_FOOT_NAME1
+  viewId = { "adoxie_foot_statue_right" }
+  tickType = Effect
+    Filter Flag "adoxie_right_foot_trigger" {
+      RemoveFurniture "ADOXIE_RIGHT_FOOT"
+      SummonEnemy "ADOXIE_FOOT_RIGHT_TRAP" {1} none
+      SetFlag "adoxie_right_foot_trigger" false
+    }
+}
+"ADOXIE_FEET_TRIGGER"
+{
+  name = FURNITURE_ADOXIE_FEET_TRIGGER_NAME
+  layer = CEILING
+  itemsRemovedEffect = {
+    SetFlag "adoxie_left_foot_trigger" true
+    SetFlag "adoxie_right_foot_trigger" true
+    Analytics "milestone" "adoxieFeetTriggered"
+  }
+}
+"ADOXIE_FEET_ALTAR"
+{
+  name = FURNITURE_ADOXIE_FEET_ALTAR_NAME
+  viewId = { "altar" }
+  blockMovement = true
+  luxury = 0.7
+  strength = 250
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+  destroyedRemains = "DOWN_STAIRS"
+}
+"BARRICADE"
+{
+  name = FURNITURE_BARRICADE_NAME
+  viewId = { "barricade" }
+  blockMovement = true
+  fire = 50
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"CANIF_TREE"
+{
+  name = FURNITURE_CANIF_TREE_NAME
+  viewId = { "canif_tree" }
+  canHideHere = true
+  blockVision = { NORMAL }
+  destroyedRemains = "TREE_TRUNK"
+  burntRemains = "BURNT_TREE"
+  dissolveTo = "BURNT_TREE"
+  strength2 = {
+    100 BOULDER
+    70 CUT
+  }
+  tickType = Effect Chance 0.002 {
+    Filter Night SoundEffect { "OWL_AMBIENT" 0.2 }
+    Filter Not Night SoundEffect { "SONGBIRD_AMBIENT" 0.2 }
+  }
+  fire = 100
+  itemDrop = {{{{"WoodPlank"} 1 { 8 14 }}}}
+  summonedElement = "ENT"
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+"DECID_TREE" inherit "CANIF_TREE"
+{
+  viewId = { "decid_tree" }
+}
+"SPECIAL_TREE" inherit "CANIF_TREE"
+{
+  viewId = { "special_tree" }
+}
+"TREE_SNOW" inherit "CANIF_TREE"
+{
+  viewId = { "tree_snow" }
+}
+"SWAMPTREE" inherit "CANIF_TREE"
+{
+  viewId = { "swamptree" }
+}
+"HAUNTED_TREE" inherit "CANIF_TREE"
+{
+  viewId = { "haunted_tree" }
+}
+"HAUNTED_TREE2" inherit "CANIF_TREE"
+{
+  viewId = { "haunted_tree2" }
+}
+"HAUNTED_TREE3" inherit "CANIF_TREE"
+{
+  viewId = { "haunted_tree3" }
+}
+"HAUNTED_TREE4" inherit "CANIF_TREE"
+{
+  viewId = { "haunted_tree4" }
+}
+"HAUNTED_TREE5" inherit "CANIF_TREE"
+{
+  viewId = { "haunted_tree5" }
+}
+"HAUNTED_TREE6" inherit "CANIF_TREE"
+{
+  viewId = { "haunted_tree6" }
+}
+"HAUNTED_TREE7" inherit "CANIF_TREE"
+{
+  viewId = { "haunted_tree7" }
+}
+"HAUNTED_TREE8" inherit "CANIF_TREE"
+{
+  viewId = { "haunted_tree8" }
+}
+"HAUNTED_EFFIGY"
+{
+  name = FURNITURE_EFFIGY_NAME
+  viewId = { "haunted_effigy" }
+}
+"HAUNTED_EFFIGY2" inherit "HAUNTED_EFFIGY"
+{
+  viewId = { "haunted_effigy2" }
+}
+"HAUNTED_EFFIGY3" inherit "HAUNTED_EFFIGY"
+{
+  viewId = { "haunted_effigy3" }
+}
+"CACTUS1" inherit "CANIF_TREE"
+{
+  viewId = { "cactus1" }
+  name = FURNITURE_CANIF_TREE_NAME1
+  destroyedRemains = none
+  summonedElement = none
+  tickType = none
+}
+"PALM_TREE" inherit "CANIF_TREE"
+{
+  tickType = none
+  viewId = { "palm_tree" }
+}
+"GUM_TREE" inherit "CANIF_TREE"
+{
+  tickType = none
+  viewId = { "tree_gum" }
+}
+"GIANT_MUSHROOM" inherit "CANIF_TREE"
+{
+  viewId = { "giant_mushroom" }
+  name = FURNITURE_CANIF_TREE_NAME2
+  clearFogOfWar = true
+  tickType = none
+  blockVision = {}
+}
+"TREE_TRUNK"
+{
+  name = FURNITURE_TREE_TRUNK_NAME
+  viewId = { "tree_trunk" }
+  canSilentlyReplace = true
+  removeInstantly = true
+}
+"BURNT_TREE"
+{
+  name = FURNITURE_BURNT_TREE_NAME
+  viewId = { "burnt_tree" }
+  removeInstantly = true
+  canHideHere = true
+  strength = 30
+}
+"BUSH"
+{
+  name = FURNITURE_BUSH_NAME
+  viewId = { "bush" }
+  strength2 = {
+    20 BOULDER
+    10 CUT
+  }
+  canHideHere = true
+  fire = 30
+  itemDrop = {{{{"WoodPlank"} 1 { 2 4 }}}}
+  tryDestroyFX = { WOOD_SPLINTERS }
+}
+"SWAMPPLANT" inherit "BUSH"
+{
+  name = FURNITURE_BUSH_NAME1
+  viewId = { "swampplant" }
+  canSilentlyReplace = true
+  removeInstantly = true
+}
+"STONES"
+{
+  name = FURNITURE_STONES_NAME
+  viewId = { "stones" }
+  canSilentlyReplace = true
+  removeInstantly = true
+}
+"TERMITE_MOUND"
+{
+  name = FURNITURE_TERMITE_MOUND_NAME
+  viewId = { "termite_mound" }
+  canSilentlyReplace = true
+  removeInstantly = true
+}
+"FLOWER1"
+{
+  name = FURNITURE_FLOWER1_NAME
+  viewId = { "flower1" }
+  canSilentlyReplace = true
+  removeInstantly = true
+}
+"FLOWER2" inherit "FLOWER1"
+{
+  viewId = { "flower2" }
+}
+"FLOWER3" inherit "FLOWER1"
+{
+  viewId = { "flower3" }
+}
+"STABLE"
+{
+  name = FURNITURE_STABLE_NAME
+  viewId = { "mud" }
+  usageType = UsageEffect FURNITURE_STABLE_USAGETYPE Lasting SLEEP
+  viewLayer = FLOOR_BACKGROUND
+  bedType = STABLE
+  tickType = Effect BedHeal()
+  canBuildOutsideOfTerritory = false
+  layer = FLOOR
+}
+"CROPS"
+{
+  name = FURNITURE_CROPS_NAME
+  viewId = { "swish_wheat" }
+  usageType = UsageEffect FURNITURE_CROPS_USAGETYPE Chance 0.3 CreatureMessage { FURNITURE_CROPS_SECONDPERSON FURNITURE_CROPS_THIRDPERSON}
+  usageTime = 3
+  layer = FLOOR
+  viewLayer = FLOOR
+}
+"CHICKEN_COOP"
+{
+  name = FURNITURE_CHICKEN_COOP_NAME
+  viewId = { "mud" }
+  viewLayer = FLOOR_BACKGROUND
+  tickType = Effect Chance 0.05 Filter
+    And {
+      IsClosedOffPigsty
+      CanCreatureEnter
+      Area 1 Not CreatureId "CHICKEN"
+    }
+    Summon "CHICKEN" 1 none
+  canBuildOutsideOfTerritory = true
+  populationIncrease = { 0.25 4 true }
+}
+"PIGSTY"
+{
+  name = FURNITURE_PIGSTY_NAME
+  viewId = { "mud" }
+  tickType = Effect Chance 0.05 Filter
+    And {
+      IsClosedOffPigsty
+      CanCreatureEnter
+      Area 1 Not CreatureId "PIG"
+    }
+    Summon "PIG" 1 none
+  canBuildOutsideOfTerritory = true
+  populationIncrease = { 0.5 8 true }
+}
+"COW_PEN"
+{
+  name = FURNITURE_COW_PEN_NAME
+  viewId = { "mud" }
+  tickType = Effect Chance 0.05 Filter
+    And {
+      IsClosedOffPigsty
+      CanCreatureEnter
+      Area 1 Not CreatureId "COW"
+    }
+    Summon "COW" 1 none
+  canBuildOutsideOfTerritory = true
+  populationIncrease = { 1 16 true }
+}
+"GROUND_TORCH"
+{
+  name = FURNITURE_GROUND_TORCH_NAME
+  viewId = { "standing_torch" }
+  luxury = 0.1
+  lightEmission = 8.2
+}
+"TORCH_N"
+{
+  name = FURNITURE_TORCH_NAME
+  viewId = { "torch" }
+  lightEmission = 8.2
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  requiredSupport = { { { N } } }
+  canBuildOutsideOfTerritory = true
+}
+"TORCH_S" inherit "TORCH_N"
+{
+  viewLayer = TORCH2
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+"TORCH_E" inherit "TORCH_S"
+{
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+"TORCH_W" inherit "TORCH_S"
+{
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+"CANDELABRUM_N" inherit "TORCH_N"
+{
+  name = FURNITURE_CANDELABRUM_NAME
+  viewId = { "candelabrum_ns" }
+  luxury = 0.3
+}
+"CANDELABRUM_S" inherit "TORCH_S"
+{
+  name = FURNITURE_CANDELABRUM_NAME
+  viewId = { "candelabrum_ns" }
+  luxury = 0.3
+}
+"CANDELABRUM_E" inherit "TORCH_E"
+{
+  name = FURNITURE_CANDELABRUM_NAME
+  viewId = { "candelabrum_e" }
+  luxury = 0.3
+}
+"CANDELABRUM_W" inherit "TORCH_W"
+{
+  name = FURNITURE_CANDELABRUM_NAME
+  viewId = { "candelabrum_w" }
+  luxury = 0.3
+}
+"PAINTING_N"
+{
+  name = FURNITURE_PAINTING_N_NAME
+  viewId = { "canvas_n" }
+  layer = CEILING
+  viewLayer = TORCH1
+  attachmentDir = N
+  luxury = 0.3
+  requiredSupport = { { { N } } }
+}
+"PAINTING_S" inherit "PAINTING_N"
+{
+  viewId = { "canvas_s" }
+  attachmentDir = S
+  requiredSupport = { { { S } } }
+}
+"PAINTING_E" inherit "PAINTING_S"
+{
+  viewId = { "canvas_e" }
+  attachmentDir = E
+  requiredSupport = { { { E } } }
+}
+"PAINTING_W" inherit "PAINTING_S"
+{
+  viewId = { "canvas_w" }
+  attachmentDir = W
+  requiredSupport = { { { W } } }
+}
+"TORTURE_TABLE"
+{
+  name = FURNITURE_TORTURE_TABLE_NAME
+  viewId = { "torture_table" }
+  canHideHere = true
+  usageType = BuiltinUsageId TIE_UP
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"FOUNTAIN"
+{
+  name = FURNITURE_FOUNTAIN_NAME
+  viewId = { "fountain" }
+  canHideHere = true
+  luxury = 0.7
+  usageType = UsageEffect FURNITURE_FOUNTAIN_USAGETYPE
+      {
+        CreatureMessage { FURNITURE_FOUNTAIN_SECONDPERSON FURNITURE_FOUNTAIN_THIRDPERSON}
+        ChooseRandom {
+          Heal { FLESH }
+          Lasting SLEEP
+          Lasting SLOWED
+          Lasting BLIND
+          Lasting INVISIBLE
+          Lasting POISON
+          Lasting POISON_RESISTANT
+          Lasting FLYING
+          Lasting SPEED
+        }
+      }
+  summonedElement = "WATER_ELEMENTAL"
+  strength = 80
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"ALTAR"
+{
+  name = FURNITURE_ALTAR_NAME
+  viewId = { "altar" }
+  canHideHere = true
+  strength = 80
+  usageType = UsageEffect FURNITURE_ALTAR_USAGETYPE {
+    CreatureMessage { FURNITURE_ALTAR_SECONDPERSON FURNITURE_ALTAR_THIRDPERSON}
+    DestroyWalls BASH
+    ChooseRandom {
+      {
+        Message NORMAL FURNITURE_ALTAR_THIRDPERSON3
+        ChooseRandom {
+          Permanent RAGE
+          Permanent BLIND
+          Permanent PANIC
+          Permanent SPEED
+          Permanent FLYING
+          Permanent SLOWED
+          Permanent INSANITY
+          Permanent COLLAPSED
+#          Permanent INVISIBLE
+          Permanent TELEPATHY
+          Permanent MELEE_RESISTANCE
+          Permanent MELEE_VULNERABILITY
+          Permanent MAGIC_RESISTANCE
+          Permanent MAGIC_VULNERABILITY
+          Permanent RANGED_RESISTANCE
+          Permanent RANGED_VULNERABILITY
+          Permanent BAD_BREATH
+          Permanent NIGHT_VISION
+        }
+      }
+      {
+        Message NORMAL FURNITURE_ALTAR_THIRDPERSON3
+        ChooseRandom {
+          IncreaseAttr DAMAGE -3
+          IncreaseAttr DAMAGE 3
+          IncreaseAttr RANGED_DAMAGE -3
+          IncreaseAttr RANGED_DAMAGE 3
+          IncreaseAttr SPELL_DAMAGE -3
+          IncreaseAttr SPELL_DAMAGE 3
+          IncreaseAttr DEFENSE -3
+          IncreaseAttr DEFENSE 3
+          Acid{30}
+          Fire{30}
+          Lasting 40 DAM_BONUS
+          Lasting BLIND
+          Lasting POISON
+          Lasting 50 BLEEDING
+          Lasting HALLU
+        }
+      }
+      {
+        Message NORMAL FURNITURE_ALTAR_AMOUNT
+        SummonEnemy "ANGEL" {3 6} none
+      }
+      {
+        CreatureMessage { FURNITURE_ALTAR_SECONDPERSON1 FURNITURE_ALTAR_THIRDPERSON1}
+        DropItems {"GoldPiece"} {50 100}
+      }
+      {
+        CreatureMessage { FURNITURE_ALTAR_SECONDPERSON2 FURNITURE_ALTAR_THIRDPERSON2}
+        ChooseRandom {
+          DropItems {Glyph { ARMOR ItemAttrBonus DAMAGE 2}} {1}
+          DropItems {Glyph { ARMOR ItemAttrBonus DEFENSE 2}} {1}
+          DropItems {Glyph { ARMOR LastingEffect TELEPATHY}} {1}
+          DropItems {Glyph { WEAPON VictimEffect 0.3 Lasting 50 BLEEDING}} {1}
+          DropItems {Glyph { RANGED_WEAPON ItemAttrBonus RANGED_DAMAGE 2}} {1}
+        }
+      }
+    }
+  }
+  destroyedRemains = "ALTAR_DES"
+}
+"ALTAR_DES"
+{
+  name = FURNITURE_ALTAR_DES_NAME
+  viewId = { "altar_des" }
+  canHideHere = true
+}
+"CHEST_WITH_ITEMS"
+{
+  name = FURNITURE_CHEST_WITH_ITEMS_NAME
+  viewId = { "chest" }
+  canHideHere = true
+  tickType = Effect {
+    DropItemList "chest"
+    PlaceFurniture "CHEST"
+  }
+  fire = 50
+  strength = 30
+}
+"CHEST"
+{
+  name = FURNITURE_CHEST_NAME
+  viewId = { "chest" }
+  emptyViewId = { "opened_chest" }
+  canHideHere = true
+  hidesItems = true
+  fire = 50
+  strength = 30
+}
+"REMAINS_TABLE"
+{
+  name = FURNITURE_REMAINS_TABLE_NAME
+  viewId = { "remains_table" }
+  emptyViewId = { "remains_table_empty" }
+  canHideHere = true
+  hidesItems = true
+  strength = 30
+}
+"NONFLAMMABLE_CHEST" inherit "CHEST"
+{
+  fire = none
+}
+"ASSASSIN_CHEST" inherit "CHEST"
+{
+  entryType = Effect Achievement "assassin"
+}
+"BOOKCASE_STAIRS" inherit "BOOKCASE_WOOD"
+{
+  destroyedRemains = "UP_STAIRS"
+  destroyedEffect = {
+    Message NORMAL FURNITURE_BOOKCASE_WOOD_DESTROYEDEFFECT
+    Analytics "milestone" "bookcaseStairs"
+  }
+}
+"DINING_TABLE_STAIRS" inherit "DINING_TABLE"
+{
+  destroyedRemains = "DOWN_STAIRS"
+  destroyedEffect = {
+    Message NORMAL FURNITURE_DINING_TABLE_DESTROYEDEFFECT
+    Analytics "milestone" "diningTableStairs"
+  }
+}
+"FORGE_STAIRS" inherit "FORGE"
+{
+  destroyedRemains = "DOWN_STAIRS"
+  destroyedEffect = {
+    Message NORMAL FURNITURE_FORGE_DESTROYEDEFFECT
+    Analytics "milestone" "forgeStairs"
+  }
+}
+"OPENED_CHEST"
+{
+  name = FURNITURE_OPENED_CHEST_NAME
+  viewId = { "opened_chest" }
+  canHideHere = true
+  fire = 50
+  strength = 30
+}
+Def CoffinHeal(Prob)
+  Filter
+      And { LastingEffect SLEEP Or { BodyMaterial UNDEAD_FLESH BodyMaterial BONE } }
+      Chance Prob RegrowBodyPart 1
+End
+"COFFIN1"
+{
+  name = FURNITURE_COFFIN1_NAME
+  viewId = { "coffin1" }
+  canHideHere = true
+  usageType = UsageEffect FURNITURE_COFFIN1_USAGETYPE Lasting SLEEP
+  tickType = Effect CoffinHeal(0.005)
+  fire = 50
+  strength = 40
+  bedType = COFFIN
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"COFFIN2"
+{
+  name = FURNITURE_COFFIN2_NAME
+  viewId = { "coffin2" }
+  canHideHere = true
+  usageType = UsageEffect FURNITURE_COFFIN2_USAGETYPE Lasting SLEEP
+  tickType = Effect CoffinHeal(0.0125)
+  luxury = 0.3
+  fire = 50
+  strength = 40
+  upgrade = "COFFIN1"
+  bedType = COFFIN
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"COFFIN3"
+{
+  name = FURNITURE_COFFIN3_NAME
+  viewId = { "coffin3" }
+  canHideHere = true
+  usageType = UsageEffect FURNITURE_COFFIN3_USAGETYPE Lasting SLEEP
+  tickType = Effect CoffinHeal(0.05)
+  luxury = 0.7
+  fire = 50
+  strength = 40
+  upgrade = "COFFIN2"
+  bedType = COFFIN
+  destroyFX = { DESTROY_FURNITURE Rgb 190 190 40 255 }
+}
+"LOOT_COFFIN"
+{
+  name = FURNITURE_LOOT_COFFIN_NAME
+  viewId = { "coffin1" }
+  emptyViewId = { "opened_coffin" }
+  canHideHere = true
+  hidesItems = true
+  fire = 50
+  strength = 40
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"WOOD_DOOR"
+{
+  name = FURNITURE_WOOD_DOOR_NAME
+  viewId = { "wood_door_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 160
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { E W } } { { N S } {"wood_door_ns"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"WOOD_GATE"
+{
+  name = FURNITURE_WOOD_GATE_NAME
+  viewId = { "wood_gate_w" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  fire = 50
+  strength = 240
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { W } } { { N } {"wood_gate_n"} } { { E } {"wood_gate_e"} } { { S } {"wood_gate_s"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"IRON_DOOR"
+{
+  name = FURNITURE_IRON_DOOR_NAME
+  viewId = { "iron_door_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  strength = 240
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { E W } } { { N S } {"iron_door_ns"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"IRON_DOOR_BLOCKING" inherit "IRON_DOOR"
+{
+  blockMovement = true
+}
+"IRON_GATE"
+{
+  name = FURNITURE_IRON_GATE_NAME
+  viewId = { "iron_gate_w" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  strength = 320
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { W } } { { N } {"iron_gate_n"} } { { E } {"iron_gate_e"} } { { S } {"iron_gate_s"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"IRON_GATE_BLOCKING" inherit "IRON_GATE"
+{
+  blockMovement = true
+}
+"ADA_DOOR"
+{
+  name = FURNITURE_ADA_DOOR_NAME
+  viewId = { "ada_door_ew" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  strength = 480
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { E W } } { { N S } {"ada_door_ns"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"ADA_GATE"
+{
+  name = FURNITURE_ADA_GATE_NAME
+  viewId = { "ada_gate_w" }
+  blockingEnemies = true
+  canHideHere = true
+  blockAllVision = true
+  strength = 540
+  clickType = LOCK
+  canBuildOutsideOfTerritory = true
+  requiredSupport = { { { W } } { { N } {"ada_gate_n"} } { { E } {"ada_gate_e"} } { { S } {"ada_gate_s"} } }
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"WELL"
+{
+  name = FURNITURE_WELL_NAME
+  viewId = { "well" }
+  canHideHere = true
+  fire = 50
+  summonedElement = "WATER_ELEMENTAL"
+  strength = 80
+}
+"SNOWMAN"
+{
+  name = FURNITURE_SNOWMAN_NAME
+  viewId = { "snowman" }
+  canHideHere = true
+  blockMovement = true
+  strength = 10
+  meltInfo = { none }
+}
+"KEEPER_BOARD"
+{
+  name = FURNITURE_KEEPER_BOARD_NAME
+  viewId = { "notice_board" }
+  canHideHere = true
+  usageType = BuiltinUsageId KEEPER_BOARD
+  clickType = KEEPER_BOARD
+  fire = 50
+  strength = 50
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"UP_STAIRS"
+{
+  name = FURNITURE_UP_STAIRS_NAME
+  viewId = { "up_staircase" }
+  canHideHere = true
+# xForgetAfterBuilding = true
+  usageType = UsageEffect FURNITURE_UP_STAIRS_USAGETYPE Stairs
+  onBuilt = UP_STAIRS
+}
+"UP_STAIRS_CARPET" inherit "UP_STAIRS"
+{
+  viewId = { "up_staircase_carpet" }
+  otherStairs = "DOWN_STAIRS_CARPET"
+}
+"UP_STAIRS_CASTLE" inherit "UP_STAIRS"
+{
+  viewId = { "up_staircase_castle" }
+  otherStairs = "DOWN_STAIRS_CASTLE"
+}
+"DOWN_STAIRS" inherit "UP_STAIRS"
+{
+  name = FURNITURE_DOWN_STAIRS_NAME
+  viewId = { "down_staircase" }
+  onBuilt = DOWN_STAIRS
+}
+"DOWN_STAIRS_CARPET" inherit "DOWN_STAIRS"
+{
+  viewId = { "down_staircase_carpet" }
+  otherStairs = "UP_STAIRS_CARPET"
+}
+"DOWN_STAIRS_CASTLE" inherit "DOWN_STAIRS"
+{
+  viewId = { "down_staircase_castle" }
+  otherStairs = "UP_STAIRS_CASTLE"
+}
+"UP_STAIRS_ROCK" inherit "UP_STAIRS"
+{
+  viewId = { "up_staircase_rock" }
+}
+"DOWN_STAIRS_ROCK" inherit "DOWN_STAIRS"
+{
+  viewId = { "down_staircase_rock" }
+}
+"PORTAL_STAIRS"
+{
+  viewId = { "portal" ColorId PURPLE }
+  name = FURNITURE_PORTAL_STAIRS_NAME
+  canHideHere = true
+  constructMessage = none
+  usageType = UsageEffect FURNITURE_PORTAL_STAIRS_USAGETYPE {Stairs Fx { TELEPORT_OUT }}
+}
+"DOWN_STAIRS_ADOXIE"
+{
+  name = FURNITURE_DOWN_STAIRS_NAME
+  viewId = { "down_staircase" }
+  canHideHere = true
+  usageType = UsageEffect FURNITURE_UP_STAIRS_USAGETYPE { Message NORMAL FURNITURE_DOWN_STAIRS_ADOXIE_USAGETYPE1 Stairs }
+  onBuilt = DOWN_STAIRS
+}
+"INACTIVE_PORTAL"
+{
+  name = FURNITURE_INACTIVE_PORTAL_NAME
+  viewId = { "inactive_portal" }
+  usageType = UsageEffect FURNITURE_INACTIVE_PORTAL_USAGETYPE Message NORMAL FURNITURE_INACTIVE_PORTAL_USAGETYPE1
+}
+"SOKOBAN_HOLE"
+{
+  name = FURNITURE_SOKOBAN_HOLE_NAME
+  viewId = { "sokoban_hole" }
+  entryType = Sokoban
+}
+"BRIDGE"
+{
+  name = FURNITURE_BRIDGE_NAME
+  viewId = { "bridge" }
+  overrideMovement = true
+  fire = 50
+  removeNonFriendly = true
+  removeWithCreaturePresent = false
+  bridge = true
+  canBuildOutsideOfTerritory = true
+}
+"STONE_BRIDGE" inherit "BRIDGE"
+{
+  viewId = { "bridge_stone" }
+  fire = 0
+  name = FURNITURE_BRIDGE_NAME2
+}
+"ROAD"
+{
+  name = FURNITURE_ROAD_NAME
+  viewId = { "road" }
+}
+"MOUNTAIN"
+{
+  name = FURNITURE_MOUNTAIN_NAME
+  viewId = { "mountain" }
+  blockMovement = true
+  blockAllVision = true
+  constructMessage = FILL_UP
+  #viewLayer = FLOOR_BACKGROUND
+  wall = true
+  xForgetAfterBuilding = true
+  strength2 = {
+    200 BOULDER
+    30 DIG
+    200 HOSTILE_DIG
+  }
+  summonedElement = "EARTH_ELEMENTAL"
+  canBuildOutsideOfTerritory = true
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 220 210 180 255 }
+}
+"SANDSTONE" inherit "MOUNTAIN"
+{
+  name = FURNITURE_MOUNTAIN_NAME1
+  viewId = { "mountain_sand" }
+}
+"RED_SANDSTONE" inherit "SANDSTONE"
+{
+  viewId = { "red_sandstone" }
+}
+"GLACIER" inherit "MOUNTAIN"
+{
+  name = FURNITURE_MOUNTAIN_NAME2
+  viewId = { "glacier" }
+}
+"MOUNTAIN_SKULLS" inherit "MOUNTAIN"
+{
+  name = FURNITURE_MOUNTAIN_NAME3
+  viewId = { "mountain_skulls" }
+}
+"WALL_SKULLS" inherit "MOUNTAIN"
+{
+  name = FURNITURE_MOUNTAIN_NAME4
+  viewId = { "wall_skulls" }
+}
+"MOUNTAIN2" inherit "MOUNTAIN"
+{
+  name = FURNITURE_MOUNTAIN_NAME5
+  viewId = { "mountain2" }
+  strength2 = {
+    500 BOULDER
+    70 DIG
+    500 HOSTILE_DIG
+  }
+  canBuildOutsideOfTerritory = true
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+"HELL_MOUNTAIN" inherit "MOUNTAIN2"
+{
+  name = FURNITURE_MOUNTAIN2_NAME
+  viewId = { "hell_mountain" }
+  lightEmission = 2.2
+  destroyedEffect = {
+    Message NORMAL FURNITURE_IS_DUG_OUT(FURNITURE_MOUNTAIN2_NAME)
+    Chance 0.05 SummonEnemy "LAVA_GOLEM" {1} none
+  }
+}
+"ADAMANTIUM_ORE" inherit "MOUNTAIN2"
+{
+  name = FURNITURE_MOUNTAIN2_NAME1
+  viewId = { "adamantium_ore" }
+  clearFogOfWar = true
+  itemDrop = {{{{"AdaOre"} 1 { 16 28 }}}}
+  strength2 = {
+    500 BOULDER
+    500 DIG
+    500 HOSTILE_DIG
+  }
+  minedAchievement = "mined_ada"
+}
+"HELL_ADAMANTIUM_ORE" inherit "ADAMANTIUM_ORE"
+{
+  viewId = { "hell_adamantium_ore" }
+}
+"ADOXIUM_ORE" inherit "MOUNTAIN2"
+{
+  name = FURNITURE_MOUNTAIN2_NAME2
+  viewId = { "adoxium_ore" }
+  clearFogOfWar = true
+  itemDrop = {{{{"AdoxiumOre"} 1 { 16 28 }}}}
+  strength2 = {
+    200 BOULDER
+    220 DIG
+    200 HOSTILE_DIG
+  }
+  minedAchievement = "mined_adoxium"
+}
+"INFERNITE_ORE" inherit "MOUNTAIN2"
+{
+  name = FURNITURE_MOUNTAIN2_NAME3
+  viewId = { "infernite_ore" }
+  clearFogOfWar = true
+  itemDrop = {{{{"InferniteOre"} 1 { 16 28 }}}}
+  lightEmission = 4.2
+  tickType = Effect {
+    Area 1 Chance 0.03 SetFurnitureOnFire
+    Chance 0.1 SetFurnitureOnFire
+  }
+  strength2 = {
+    200 BOULDER
+    220 DIG
+    200 HOSTILE_DIG
+  }
+  minedAchievement = "mined_infernite"
+}
+"IRON_ORE" inherit "MOUNTAIN2"
+{
+  name = FURNITURE_MOUNTAIN2_NAME4
+  viewId = { "iron_ore" }
+  clearFogOfWar = true
+  itemDrop = {{{{"IronOre"} 1 { 16 28 }}}}
+  strength2 = {
+    200 BOULDER
+    220 DIG
+    200 HOSTILE_DIG
+  }
+  minedAchievement = "mined_iron"
+}
+"STONE" inherit "MOUNTAIN2"
+{
+  name = FURNITURE_MOUNTAIN2_NAME5
+  viewId = { "stone" }
+  clearFogOfWar = true
+  itemDrop = {{{{"Rock"} 1 { 16 28 }}}}
+  strength2 = {
+    200 BOULDER
+    250 DIG
+    200 HOSTILE_DIG
+  }
+}
+"HELL_STONE" inherit "STONE"
+{
+  viewId = { "hell_stone" }
+}
+"GOLD_ORE" inherit "MOUNTAIN2"
+{
+  name = FURNITURE_MOUNTAIN2_NAME6
+  viewId = { "gold_ore" }
+  clearFogOfWar = true
+  itemDrop = {{{{"GoldPiece"} 1 { 16 28 }}}}
+  strength2 = {
+    200 BOULDER
+    220 DIG
+    200 HOSTILE_DIG
+  }
+}
+"HELL_GOLD_ORE" inherit "GOLD_ORE"
+{
+  viewId = { "hell_gold_ore" }
+}
+"DUNGEON_WALL"
+{
+  name = FURNITURE_DUNGEON_WALL_NAME
+  viewId = { "dungeon_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  #viewLayer = FLOOR_BACKGROUND
+  xForgetAfterBuilding = true
+  luxury = 0.2
+  constructMessage = REINFORCE
+  builtOver = {"MOUNTAIN"}
+  canBuildOutsideOfTerritory = true
+  strength2 = {
+    300 BOULDER
+    100 DIG
+    1900 HOSTILE_DIG
+  }
+  destroyFX = { ROCK_CLOUD Rgb 220 210 180 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 220 210 180 255 }
+}
+"DUNGEON_WALL2" inherit "DUNGEON_WALL"
+{
+  viewId = { "dungeon_wall2" }
+  builtOver = {"MOUNTAIN2"}
+  destroyFX = { ROCK_CLOUD Rgb 200 200 200 255 }
+  tryDestroyFX = { ROCK_SPLINTERS Rgb 200 200 200 255 }
+}
+"NECRO_WALL" inherit "DUNGEON_WALL"
+{
+  viewId = { "necro_wall" }
+}
+"NECRO_WALL2" inherit "DUNGEON_WALL2"
+{
+  viewId = { "necro_wall2" }
+}
+"DWARF_WALL" inherit "DUNGEON_WALL"
+{
+  viewId = { "dwarf_wall" }
+}
+"DWARF_WALL2" inherit "DUNGEON_WALL2"
+{
+  viewId = { "dwarf_wall2" }
+}
+"SANDSTONE_WALL" inherit "DUNGEON_WALL"
+{
+  viewId = { "sandstone_wall" }
+}
+"PIT"
+{
+  name = FURNITURE_PIT_NAME
+  viewId = { "pit" }
+  movementSet = {
+    traits = { FLY }
+  }
+  xForgetAfterBuilding = true
+  tickType = Pit
+  canBuildOutsideOfTerritory = true
+  strength2 = {
+    70 FILL
+  }
+}
+"CASTLE_PILLAR"
+{
+  name = FURNITURE_CASTLE_PILLAR_NAME
+  viewId = { "castle_pillar" }
+  strength2 = {
+    300 BOULDER
+    100 DIG
+    1900 HOSTILE_DIG
+  }
+  canBuildOutsideOfTerritory = true
+}
+"CASTLE_WALL" inherit "CASTLE_PILLAR"
+{
+  name = FURNITURE_CASTLE_PILLAR_NAME1
+  viewId = { "castle_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  #viewLayer = FLOOR_BACKGROUND
+}
+"ARCHER_WALL" inherit "CASTLE_WALL"
+{
+  name = FURNITURE_CASTLE_WALL_NAME
+  viewId = { "archer_wall" }
+  blockVision = { NORMAL ELF }
+}
+"HIDDEN_CASTLE_DOOR"
+{
+  name = FURNITURE_CASTLE_PILLAR_NAME1
+  viewId = { "castle_wall" }
+  blockAllVision = true
+  strength = 1
+  #viewLayer = FLOOR_BACKGROUND
+  entryType = Effect {
+      Message NORMAL FURNITURE_HIDDEN_CASTLE_DOOR_ENTRYTYPE
+      Fx { TELEPORT_OUT }
+      DestroyWalls BASH
+  }
+}
+"SNOW_WALL" inherit "CASTLE_WALL"
+{
+  viewId = { "snow_wall" }
+  meltInfo = { none }
+}
+"WOOD_PILLAR"
+{
+  name = FURNITURE_WOOD_PILLAR_NAME
+  viewId = { "wood_pillar" }
+#wall = true
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+  }
+  summonedElement = "ENT"
+  fire = 100
+  canBuildOutsideOfTerritory = true
+  destroyFX = { DESTROY_FURNITURE Rgb 120 87 46 255 }
+}
+"WOOD_WALL" inherit "WOOD_PILLAR"
+{
+  name = FURNITURE_WOOD_PILLAR_NAME1
+  viewId = { "wood_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  #viewLayer = FLOOR_BACKGROUND
+}
+"MUD_WALL"
+{
+  name = FURNITURE_MUD_WALL_NAME
+  viewId = { "mud_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  strength2 = {
+    100 BOULDER
+  }
+}
+"RUIN_WALL"
+{
+  name = FURNITURE_RUIN_WALL_NAME
+  viewId = { "ruin_wall" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+  canBuildOutsideOfTerritory = true
+  strength2 = {
+    100 BOULDER
+    100 DIG
+    300 HOSTILE_DIG
+  }
+}
+"BLACK_WALL"
+{
+  name = FURNITURE_BLACK_WALL_NAME
+  viewId = { "black" }
+  blockMovement = true
+  blockAllVision = true
+  wall = true
+}
+"BLACK_FLOOR"
+{
+  name = FURNITURE_BLACK_FLOOR_NAME
+  viewId = { "black" }
+  layer = GROUND
+}
+"FLOOR_WOOD1"
+{
+  name = FURNITURE_FLOOR_WOOD1_NAME
+  viewId = { "wood_floor1" }
+  fire = 50
+  luxury = 0.1
+  layer = FLOOR
+}
+"FLOOR_WOOD2" inherit "FLOOR_WOOD1"
+{
+  viewId = { "wood_floor2" }
+}
+"FLOOR_WOOD3" inherit "FLOOR_WOOD1"
+{
+  viewId = { "wood_floor3" }
+}
+"FLOOR_WOOD4" inherit "FLOOR_WOOD1"
+{
+  viewId = { "wood_floor4" }
+}
+"FLOOR_WOOD5" inherit "FLOOR_WOOD1"
+{
+  viewId = { "wood_floor5" }
+}
+"FLOOR_STONE1"
+{
+  name = FURNITURE_FLOOR_STONE1_NAME
+  viewId = { "stone_floor1" }
+  luxury = 0.3
+  layer = FLOOR
+}
+"FLOOR_STONE2" inherit "FLOOR_STONE1"
+{
+  viewId = { "stone_floor2" }
+}
+"FLOOR_STONE3" inherit "FLOOR_STONE1"
+{
+  viewId = { "stone_floor3" }
+}
+"FLOOR_STONE4" inherit "FLOOR_STONE1"
+{
+  viewId = { "stone_floor4" }
+}
+"FLOOR_STONE5" inherit "FLOOR_STONE1"
+{
+  viewId = { "stone_floor5" }
+}
+"FLOOR_CARPET1"
+{
+  name = FURNITURE_FLOOR_CARPET1_NAME
+  viewId = { "carpet_floor1" }
+  luxury = 0.7
+  layer = FLOOR
+}
+"FLOOR_CARPET2" inherit "FLOOR_CARPET1"
+{
+  viewId = { "carpet_floor2" }
+}
+"FLOOR_CARPET3" inherit "FLOOR_CARPET1"
+{
+  viewId = { "carpet_floor3" }
+}
+"FLOOR_CARPET4" inherit "FLOOR_CARPET1"
+{
+  viewId = { "carpet_floor4" }
+}
+"FLOOR_CARPET5" inherit "FLOOR_CARPET1"
+{
+  viewId = { "carpet_floor5" }
+}
+"CARPET4_GROUND" inherit "FLOOR_CARPET4"
+{
+  layer = GROUND
+}
+"FLOOR_SPEED"
+{
+  name = FURNITURE_FLOOR_SPEED_NAME
+  viewId = { "floor_speed" }
+  luxury = 0.7
+  layer = FLOOR
+  lastingEffect = ALLY SPEED 0
+}
+"FLOOR_BLIND"
+{
+  name = FURNITURE_FLOOR_BLIND_NAME
+  viewId = { "floor_blind" }
+  luxury = 0.7
+  layer = FLOOR
+  lastingEffect = ENEMY BLIND 0
+}
+"FLOOR_INVI"
+{
+  name = FURNITURE_FLOOR_INVI_NAME
+  viewId = { "floor_invi" }
+  luxury = 0.7
+  layer = FLOOR
+  lastingEffect = ALLY INVISIBLE 0
+}
+"FLOOR_PEACE"
+{
+  name = FURNITURE_FLOOR_PEACE_NAME
+  viewId = { "floor_peace" }
+  luxury = 0.7
+  layer = FLOOR
+  lastingEffect = ENEMY PEACEFULNESS 0
+}
+"HEALING_TOTEM"
+{
+  name = FURNITURE_HEALING_TOTEM_NAME
+  viewId = { "totem" Rgb 156 58 68 255 }
+  lastingEffect = ALLY REGENERATION 3 # ALLY/ENEMY LastingEffect radius
+  blockMovement = true
+  canHideHere = true
+  strength = 100
+}
+"BLEEDING_TOTEM" inherit "HEALING_TOTEM"
+{
+  name = FURNITURE_HEALING_TOTEM_NAME1
+  viewId = { "totem" Rgb 156 58 156 255 }
+  lastingEffect = ENEMY BLEEDING 7
+}
+"ALARM_TRAP"
+{
+  name = FURNITURE_ALARM_TRAP_NAME
+  viewId = { "trap"  Rgb 186 58 68 255 }
+  entryType = Trap { Alarm false }
+  warning = true
+  constructMessage = SET_UP
+}
+"INVISIBLE_ALARM"
+{
+  name = ""
+  viewId = { "empty" }
+  entryType = Trap { Alarm true true }
+}
+"POISON_GAS_TRAP"
+{
+  name = FURNITURE_POISON_GAS_TRAP_NAME
+  viewId = { "trap"  Rgb 58 156 68 255 }
+  entryType = Trap { Area 1 EmitGas "POISON_GAS" 0.4 }
+  warning = true
+  constructMessage = SET_UP
+}
+"WEB_TRAP"
+{
+  name = FURNITURE_WEB_TRAP_NAME
+  viewId = { "web_trap" }
+  entryType = Trap { Lasting ENTANGLED }
+  warning = true
+  constructMessage = SET_UP
+}
+"SPIDER_WEB"
+{
+  name = FURNITURE_SPIDER_WEB_NAME
+  viewId = { "web_trap" }
+  entryType = Trap { Lasting ENTANGLED true }
+}
+"SURPRISE_TRAP"
+{
+  name = FURNITURE_SURPRISE_TRAP_NAME
+  viewId = { "surprise_trap" }
+  entryType = Trap { Audience none }
+  warning = true
+  constructMessage = SET_UP
+}
+"TERROR_TRAP"
+{
+  name = FURNITURE_TERROR_TRAP_NAME
+  viewId = { "trap" Rgb 156 50 156 255 }
+  entryType = Trap { Lasting PANIC }
+  warning = true
+  constructMessage = SET_UP
+}
+"FIRE_TRAP"
+{
+  name = FURNITURE_FIRE_TRAP_NAME
+  viewId = { "trap" ColorId ORANGE }
+  entryType = Trap { PlaceFurniture "FIRE_WALL" }
+  warning = true
+  constructMessage = SET_UP
+}
+"TRAP_TRIGGER"
+{
+  name = FURNITURE_TRAP_TRIGGER_NAME
+  viewId = { "trap"  Rgb 58 58 156 255 }
+  entryType = Trap { Area 1 TriggerTrap }
+  warning = true
+  constructMessage = SET_UP
+}
+"DESTROY_WALLS_TRAP"
+{
+  name = FURNITURE_DESTROY_WALLS_TRAP_NAME
+  viewId = { "trap" ColorId GRAY }
+  entryType = Trap { Area 2 DestroyWalls DIG }
+  warning = true
+  constructMessage = SET_UP
+}
+"BOULDER_TRAP"
+{
+  name = FURNITURE_BOULDER_TRAP_NAME
+  viewId = { "boulder" }
+  blockMovement = true
+Def Boulder(Id) {
+  Message CRITICAL FURNITURE_BOULDER_TRAP_TICKTYPE
+  UnseenMessage CRITICAL FURNITURE_BOULDER_TRAP_TICKTYPE1
+  SummonEnemy Id 1 none
+} End
+  tickType = Trap 4 {
+    Boulder("ROLLING_BOULDER_N")
+    Boulder("ROLLING_BOULDER_S")
+    Boulder("ROLLING_BOULDER_W")
+    Boulder("ROLLING_BOULDER_E")
+  }
+  strength = 40
+  warning = true
+  constructMessage = SET_UP
+  viewLayer = CREATURE
+}
+"BLAST_TRAP"
+{
+  name = FURNITURE_BLAST_TRAP_NAME
+  viewId = { "trap" ColorId PINK }
+  tickType = Trap 1 {
+    DirectedBlast {0 -1} 4
+    DirectedBlast {0 1} 4
+    DirectedBlast {1 0} 4
+    DirectedBlast {-1 0} 4
+  }
+  warning = true
+  constructMessage = SET_UP
+}
+"GARGOYLE_TRAP"
+{
+  name = FURNITURE_GARGOYLE_TRAP_NAME
+  viewId = { "gargoyle_statue" }
+  blockMovement = true
+  tickType = Trap 1 {
+    Def SummonGargoyle() {
+      Message HIGH FURNITURE_GARGOYLE_TRAP_TICKTYPE
+      SummonEnemy "GARGOYLE" 1 20
+    } End
+    SummonGargoyle()
+    SummonGargoyle()
+    SummonGargoyle()
+    SummonGargoyle()
+  }
+  strength = 40
+  warning = true
+  constructMessage = SET_UP
+}
+"SCARECROW"
+{
+  name = FURNITURE_SCARECROW_NAME
+  viewId = { "scarecrow" }
+  blockMovement = true
+  strength = 40
+  fire = 10
+  viewLayer = CREATURE
+}
+"PORTAL"
+{
+  name = FURNITURE_PORTAL_NAME
+  viewId = { "portal" }
+  strength = 40
+  usageType = BuiltinUsageId PORTAL
+  onBuilt = PORTAL
+  destroyFX = { DESTROY_FURNITURE Rgb 120 120 120 255 }
+}
+"METEOR_SHOWER"
+{
+  name = FURNITURE_METEOR_SHOWER_NAME
+  layer = CEILING
+  constructMessage = none
+  tickType = MeteorShower
+  xForgetAfterBuilding = true
+}
+"FIRE_WALL"
+{
+  name = FURNITURE_FIRE_WALL_NAME
+  viewId = { "empty" }
+  layer = CEILING
+  constructMessage = none
+  onBuilt = SET_ON_FIRE
+  burnsDownMessage = STOPS_BURNING
+  hostileSpell = true
+  xForgetAfterBuilding = true
+  fire = 10
+}
+"WATER"
+{
+  name = FURNITURE_WATER_NAME
+  viewId = { "water" }
+  bloodCountdown = 30
+  layer = GROUND
+  waterDepth = 100
+  entryType = Water
+  droppedItems = { ITEM_SINKS ITEMS_SINK FURNITURE_WATER_UNSEENMESSAGE }
+  defaultBridge = "BRIDGE"
+  summonedElement = "WATER_ELEMENTAL"
+  freezeTo = "ICE"
+  fillPit = "WATER"
+  canSilentlyReplace = true
+  movementSet = {
+    traits = { FLY SWIM }
+    forcibleTraits = { WALK }
+  }
+  walkIntoFX = { WATER_SPLASH Rgb 82 148 255 255 }
+  walkIntoSound = { "WATER_WALK_INTO" 0.3 }
+}
+"UNDERGROUND_WATER" inherit "WATER"
+{
+  tickType = Effect Chance 0.002 SoundEffect { "UNDERGROUND_WATER_AMBIENT" 0.2 }
+}
+"ENCHANTED_WATER" inherit "WATER"
+{
+  name = FURNITURE_WATER_NAME1
+  viewId = { "enchanted_water" }
+  bloodCountdown = none
+  fillPit = "ENCHANTED_WATER"
+  walkIntoFX = { WATER_SPLASH Rgb 255 82 148 255 }
+  tickType = Effect Chance 0.00002 Filter Area 10 Not CreatureId "KRAKEN" SummonEnemy "KRAKEN" 1 none
+}
+"KRAKEN_WATER" inherit "WATER"
+{
+  tickType = Effect {
+    SummonEnemy "KRAKEN" 1 none
+    PlaceFurniture "WATER"
+  }
+}
+"SHALLOW_WATER1" inherit "WATER"
+{
+  name = FURNITURE_WATER_NAME2
+  waterDepth = 1.5
+  droppedItems = none
+  movementSet = {
+    traits = { FLY SWIM WADE }
+    forcibleTraits = { WALK }
+  }
+}
+"SHALLOW_WATER2" inherit "SHALLOW_WATER1"
+{
+  waterDepth = 0.5
+}
+"MAGMA" {
+  name = FURNITURE_MAGMA_NAME
+  viewId = { "magma" }
+  layer = GROUND
+  entryType = Magma
+  droppedItems = { ITEM_BURNS ITEMS_BURN }
+  lightEmission = 8.2
+  defaultBridge = "STONE_BRIDGE"
+  summonedElement = "FIRE_ELEMENTAL"
+  freezeTo = "FLOOR"
+  fillPit = "MAGMA"
+  canSilentlyReplace = true
+  tickType = Effect Chance 0.1 {
+    Area 1 Chance 0.3 SetFurnitureOnFire
+    SetFurnitureOnFire
+    Chance 0.02 SoundEffect { "LAVA_AMBIENT" 0.2 }
+  }
+  movementSet = {
+    traits = { FLY }
+    forcibleTraits = { WALK }
+  }
+}
+"TAR" {
+  name = FURNITURE_TAR_NAME
+  viewId = { "tar" }
+  layer = GROUND
+  defaultBridge = "STONE_BRIDGE"
+  tickType = Effect
+    Filter And { Not LastingEffect FLYING Not BodyMaterial SPIRIT Not LastingEffect IMMOBILE} {
+      Chance 0.1 {
+        CreatureMessage { FURNITURE_TAR_SECONDPERSON FURNITURE_TAR_THIRDPERSON}
+        Lasting IMMOBILE
+      }
+      Filter Not LastingEffect IMMOBILE Chance 0.5 {
+        CreatureMessage {FURNITURE_TAR_SECONDPERSON1 FURNITURE_TAR_THIRDPERSON1}
+        Lasting SLOWED
+      }
+    }
+}
+"SAND"
+{
+  name = FURNITURE_SAND_NAME
+  viewId = { "sand" }
+  layer = GROUND
+  walkOverFX = { SAND_DUST Rgb 255 229 178 255 }
+}
+"SAND_FLOOR" inherit "SAND"
+{
+  buildingFloor = true
+}
+"RED_SAND"
+{
+  name = FURNITURE_RED_SAND_NAME
+  viewId = { "red_sand" }
+  layer = GROUND
+  walkOverFX = { SAND_DUST Rgb 255 159 128 255 }
+}
+"GRASS"
+{
+  name = FURNITURE_GRASS_NAME
+  viewId = { "grass" }
+  layer = GROUND
+}
+"SNOW"
+{
+  name = FURNITURE_SNOW_NAME
+  viewId = { "snow" }
+  layer = GROUND
+}
+"ICE"
+{
+  name = FURNITURE_ICE_NAME
+  viewId = { "ice" }
+  layer = GROUND
+  meltInfo = { "WATER" }
+}
+"MUD"
+{
+  name = FURNITURE_MUD_NAME
+  viewId = { "mud" }
+  layer = GROUND
+}
+"MUD_FLOOR" inherit "MUD"
+{
+  buildingFloor = true
+}
+"SWAMPGRASS"
+{
+  name = FURNITURE_SWAMPGRASS_NAME
+  viewId = { "swampgrass" }
+  tickType = Effect Chance 0.006 SoundEffect { "FROG_AMBIENT" 0.15 }
+  layer = GROUND
+}
+"HILL"
+{
+  name = FURNITURE_HILL_NAME
+  viewId = { "hill" }
+  layer = GROUND
+}
+"FILL_UP_WATER_FLOOR"
+{
+  name = FURNITURE_FLOOR_NAME
+  viewId = { "floor" }
+  layer = GROUND
+  canBuildOutsideOfTerritory = true
+  xForgetAfterBuilding = true
+  builtOver = {"WATER" "SHALLOW_WATER1" "SHALLOW_WATER2" "MAGMA" "UNDERGROUND_WATER"}
+}
+"FLOOR"
+{
+  name = FURNITURE_FLOOR_NAME
+  viewId = { "floor" }
+  layer = GROUND
+  canBuildOutsideOfTerritory = true
+  buildingFloor = true
+  builtOver = {"HILL" "GRASS" "SWAMPGRASS" "SAND" "SNOW" "FILL_UP_WATER_FLOOR" "ROOF"}
+}
+"GHOST_SPAWN" inherit "FLOOR"
+{
+  tickType = Effect Chance 0.002 Filter Area 10 Not CreatureId "LOST_SOUL" SummonEnemy "LOST_SOUL" 1 none
+}
+"ROOF"
+{
+  name = FURNITURE_ROOF_NAME
+  viewId = { "roof" }
+  layer = GROUND
+}
+"FLOOR_RED" inherit "FLOOR"
+{
+  name = FURNITURE_FLOOR_NAME1
+  viewId = { "floor_red" }
+}
+"TUTORIAL_ENTRANCE"
+{
+  name = FURNITURE_TUTORIAL_ENTRANCE_NAME
+  viewId = { "tutorial_entrance" }
+  layer = CEILING
+  viewLayer = TORCH2
+  canBuildOutsideOfTerritory = true
+}
